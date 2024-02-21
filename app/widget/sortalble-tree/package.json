@@ -1,0 +1,33 @@
+{
+  "name": "sortalble-tree",
+  "version": "1.0.0",
+  "description": "Hoşgeldiniz! 👋👋🏿👋🏽👋🏻👋🏾👋🏼",
+  "main": "shell.js",
+  "scripts": {
+    "build": "node shell.js",
+    "wbuild": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tuval/core": "^0.0.103",
+    "@tuval/forms": "^1.0.166",
+    "react-sortable-hoc": "^2.0.0",
+    "react-sortable-tree": "^2.8.0",
+    "shelljs": "^0.8.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "array-move": "^4.0.0",
+    "css-loader": "^6.10.0",
+    "frontend-collective-react-dnd-scrollzone": "^1.0.2",
+    "react-dnd": "^7.7.0",
+    "react-dnd-html5-backend": "^7.0.1",
+    "to-string-loader": "^1.2.0"
+  }
+}
