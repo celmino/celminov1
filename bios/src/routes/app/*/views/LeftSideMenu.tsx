@@ -1,6 +1,6 @@
 
-import { Models, Query, Services, useCreateDatabase, useCreateRealm, useGetMe, useGetOrganization, useGetRealm, useGetTeam, useListDatabases, useListDocuments, useListRealms, useListTeams, useUpdatePrefs } from "@realmocean/sdk";
-import { is } from "@tuval/core";
+import { Models, Query, Services, useCreateDatabase, useCreateRealm, useDeleteCache, useGetMe, useGetOrganization, useGetRealm, useGetTeam, useListDatabases, useListDocuments, useListRealms, useListTeams, useUpdatePrefs } from "@realmocean/sdk";
+import { EventBus, is } from "@tuval/core";
 import {
     DialogPosition,
     ForEach,
@@ -29,9 +29,10 @@ import {
     cTrailing,
     cVertical,
     getAppFullName,
+    nanoid,
     useNavigate, useParams, useQueryParams
 } from "@tuval/forms";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DatabaseNameView } from "./DatabaseNameView";
 import { Text } from '@realmocean/vibe';
 import { DynoDialog } from '@realmocean/ui'
@@ -210,6 +211,14 @@ const topMenu = [
 
 ]
 
+function addZeroDigitToNumberReturnString(number, countOfZero) {
+    let str = number + '';
+    while (str.length < countOfZero) {
+        str = '0' + str;
+    }
+    return str;
+}
+
 let global_openedIDs = {};
 export const LeftSideMenuView = (selectedItem: string) => {
     const showAllWorkspaces = true;
@@ -233,6 +242,12 @@ export const LeftSideMenuView = (selectedItem: string) => {
                     // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
                 ]);
 
+                const { documents: workspaceTreeITems, isLoading: isWorkspaceTreeLoading } = useListDocuments(workspaceId, 'workspace', 'ws_tree', [
+                    // Query.equal('parent', '-1'),
+                    Query.limit(250),
+                    // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
+                ]);
+
                 const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
                 const [iconInfo, setIconInfo] = useState<any>({});
 
@@ -243,7 +258,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                 let _hideHandle;
 
                 return (
-                    isLoading ? Fragment() :
+                    (isLoading || isWorkspaceTreeLoading) ? Fragment() :
                         VStack({ alignment: cTopLeading })(
                             VStack({ alignment: cTopLeading })(
                                 VStack({ alignment: cTopLeading })(
@@ -402,137 +417,89 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         //    )
                                     ),
                                     UIViewBuilder(() => {
-                                        const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
-
-                                        const [treeItems, setTreeItems] = useState(documents.map((document) => ({
-                                            id: document.$id,
-                                            title: document.name,
-                                            type: 'applet',
-                                            view: (node, toggle) => {
-                                                const isEditing = false;
-                                                const isSelected = false;
-                                                const nodeType = 'root';
-                                                return (
-                                                    HStack({ alignment: cLeading, spacing: 2 })(
-                                                        // Title
-                                                        (isEditing && is.string(node.title)) ? UIViewBuilder(() => {
-                                                            const [newTitle, setNewTitle] = useState(node.title);
-                                                            //  const { updateDocument } = useUpdateDocument(workspaceId);
-                                                            return (
-                                                                HStack({ alignment: cLeading })(
-                                                                    TextField()
-                                                                        .border('0')
-                                                                        .fontSize(14)
-                                                                        // .fontWeight('500')
-                                                                        .marginLeft(-2)
-                                                                        .padding(cVertical, 3)
-                                                                        .value(newTitle)
-                                                                        .onChange((value) => setNewTitle(value))
-                                                                        .outline({ focus: 'none' })
-                                                                        .onBlur(() => {
-                                                                            if (node.title !== newTitle) {
-                                                                              //  titleChanged(newTitle)
-                                                                            }
-                                                                            //editingChanged(false);
-                                                                        })
-                                                                )
-                                                                    .height()
-                                                                    .onClickAway(() => {
-                                                                        if (node.title !== newTitle) {
-                                                                            //titleChanged(newTitle)
-                                                                            /*  updateDocument({
-                                                                                 databaseId: 'workspace',
-                                                                                 collectionId: 'applets',
-                                                                                 documentId: appletId,
-                                                                                 data: {
-                                                                                     name: newTitle
-                                                                                 }
-                                                                             }); */
-                                                                        }
-                                                                       // editingChanged(false);
-                                                                        //setIsEditing(false);
-                                                                    })
-                                        
-                                                            )
-                                                        })
-                                                            :
-                                        
-                                                            HStack({ alignment: cLeading, spacing: 5 })(
-                                                                is.string(node.title) ?
-                                                                    HStack({ alignment: cLeading })(
-                                                                        Text(node.title)
-                                                                            .fontWeight(isSelected ? '400' : '400')
-                                                                            .fontSize(nodeType === 'root' ? 14 : 14)
-                                                                            .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
-                                                                            .foregroundColor(isSelected ? '#7b68ee' : 'rgb(21, 23, 25)')
-                                                                            .lineHeight(22)
-                                                                    )
-                                        
-                                                                        //.width('calc(100% - 40px)')
-                                                                        .height(32)
-                                                                    : node.title
-                                                            )
-                                                                .onClick(() => {
-                                                                    //requestNavigation();
-                                                                })
-                                                                .overflow('hidden')
-                                                                .height(),
-                                                       /*  Spacer(),
-                                                        (menu == null && editMenu == null) ? Fragment() :
-                                                            HStack({ alignment: cTrailing })(
-                                                                HStack({ spacing: 3 })(
-                                                                    menu == null ? Fragment() :
-                                                                        MenuButton()
-                                                                            .model(menu)
-                                                                            .icon(AddIcon),
-                                                                    editMenu == null ? Fragment() :
-                                                                        MenuButton()
-                                                                            .model(editMenu)
-                                                                            .icon(EditIcon)
-                                                                )
-                                                            )
-                                                                .onClick((e) => {
-                                                                    e.preventDefault();
-                                                                    e.stopPropagation();
-                                                                })
-                                        
-                                                                .width(64).height(32).padding(cHorizontal, 5)
-                                                                .display('var(--show-space-action-buttons)'), */
-                                                    )
-                                                        .transition('transform .12s ease-in-out')
-                                                        .transform('translate3d(0px, 0, 0)')
-                                                        .fontWeight('500')
-                                                        .height()//.padding(5)
-                                                        .minHeight(30)
-                                                        .background({ default: isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
-                                                        .cornerRadius(6)
-                                                        .variable('--show-space-action-buttons', { default: 'none', hover: isEditing ? 'none' : 'flex' })
-                                                        .variable(`--display-caret`, { default: 'hidden', hover: 'visible' })
-                                                        .variable(`--display-icon`, { default: 'visible', hover: 'hidden' })
-                                                )
-                                            },
-                                            children: [{ title: 'sadasd' , children: [
-                                                { title: 'sadasd' },
-                                                { title: 'sadasd' }
-                                            ]}]/* ({node, done }) => {
-                                                console.log(node);
-                                                Services.Databases.listDocuments(workspaceId, node.id, 'dm_tree', [
-                                                ]).then( documents => {
-                                                    done(
-                                                        documents.documents.map(document=> ({
-                                                            title: document.name, 
-                                                            children: ({ done }) => {
-                                                                done([{ title: 'son' }])
-                                                            }
-                                                        }))
-                                                    )
-                                                        
+                                        const { deleteCache } = useDeleteCache(workspaceId);
+                                        useEffect(() => {
+                                            EventBus.Default.on('applet.added', ({ treeItem }) => {
+                                                deleteCache();
+                                                Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
+                                                    Query.limit(250)
+                                                ]).then(({ documents }) => {
+                                                    setTreeItems(buildTree(documents));
                                                 });
-                                                
-                                                
-                                            } */
 
-                                        })));
+                                            })
+                                        }, [])
+                                        //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
+
+                                        function findChildsInTree(workspaceTree,parentNode) {
+                                            const children = [];
+                                            workspaceTree.forEach(item => {
+                                                if (item.parent === parentNode.$id) {
+                                                    children.push(item);
+                                                }
+                                            })
+
+                                            return children;
+                                        }
+
+
+
+
+                                        function findItemInTree(tree, id) {
+                                            let result = null;
+                                            function findItemInTreeRecursive(tree, id) {
+                                                if (tree.id === id) {
+                                                    result = tree;
+                                                    return;
+                                                }
+                                                if (tree.children) {
+                                                    tree.children.forEach(child => {
+                                                        findItemInTreeRecursive(child, id);
+                                                    })
+                                                }
+                                            }
+                                            findItemInTreeRecursive(tree, id);
+                                            return result;
+                                        }
+
+                                        function buildClidren(workspaceTree,parentNode) {
+                                            const item = findItemInTree(workspaceTree, parentNode.$id);
+                                            const children: any[] = findChildsInTree(workspaceTree,item);
+                                            parentNode.children = children.map(child => {
+                                                return {
+                                                    id: child.$id,
+                                                    title: child.title,
+                                                    parent: child.parent,
+                                                    path: child.path,
+                                                    children: buildClidren(workspaceTree,child)
+                                                }
+                                            })
+                                        }
+
+                                        function buildTree(workspaceTree) {
+                                            const tree = [];
+                                            workspaceTree.forEach(item => {
+                                                if (item.parent === '-1') {
+                                                    const node = {
+                                                        id: item.$id,
+                                                        title: item.name,
+                                                        parent: item.parent,
+                                                        path: item.path,
+                                                        children: []
+                                                    };
+                                                    tree.push(node);
+                                                    buildClidren(workspaceTree,node);
+                                                }
+                                            })
+                                            console.log('---------tree--------')
+                                            console.log(tree)
+                                            return tree;
+                                        }
+
+                                        const [prevTreeItems, setPrevTreeItems] = useState([]);
+                                        const [treeItems, setTreeItems] = useState(buildTree(workspaceTreeITems));
+
+
                                         const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
                                             if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
                                                 return false;
@@ -551,18 +518,73 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         };
                                         return (
                                             VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                Text(JSON.stringify(workspaceTreeITems)),
                                                 documents ?
                                                     ScrollView({ axes: cVertical, alignment: cTopLeading })(
 
                                                         UIWidget('com.celmino.widget.sortable-tree')
                                                             .config({
                                                                 treeItems: treeItems,
-                                                                onChange: (treeItems) => {
-                                                                    // console.log(treeItems)
-                                                                    setTreeItems(treeItems)
+                                                                onChange: (_treeItems) => {
+                                                                    //  setPrevTreeItems([...treeItems]);
+                                                                    setTreeItems(_treeItems);
+
                                                                 },
-                                                                onMoveNode: (e) => {
-                                                                    console.log(e)
+                                                                onMoveNode: ({ treeData }) => {
+                                                                    const newTreeData = [...treeData];
+
+
+                                                                    function reCreateIndex(parentNode) {
+                                                                        if (parentNode.children) {
+                                                                            parentNode.children.forEach((child, index) => {
+                                                                                child.prevParent = child.parent;
+                                                                                child.prevPath = child.path;
+                                                                                child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                                child.parent = parentNode.id;
+                                                                                if (child.prevPath == null) {
+                                                                                    child.prevPath = child.path;
+                                                                                }
+                                                                                if (child.prevParent == null) {
+                                                                                    child.prevParent = child.parent;
+                                                                                }
+                                                                                reCreateIndex(child);
+                                                                            });
+                                                                        }
+                                                                    }
+
+                                                                    newTreeData.forEach((item, index) => {
+                                                                        item.prevParent = item.parent;
+                                                                        item.prevPath = item.path;
+                                                                        item.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                        item.parent = '-1';
+                                                                        reCreateIndex(item);
+                                                                    });
+
+
+                                                                    function getChanges(parentNode) {
+                                                                        if (parentNode.children) {
+                                                                            parentNode.children.forEach((child) => {
+                                                                                if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                                                    console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                                                }
+                                                                                getChanges(child);
+                                                                            });
+                                                                        }
+                                                                    }
+
+                                                                    newTreeData.forEach((item, index) => {
+                                                                        if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                                                            console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                                        }
+                                                                        getChanges(item);
+                                                                    });
+
+
+
+
+                                                                    console.log(newTreeData)
+
+
                                                                 }
                                                             }),
                                                         // Text(documents[0]['opa']),

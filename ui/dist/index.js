@@ -8174,6 +8174,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Applets__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Applets */ "./src/Applets.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -8244,6 +8246,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
+
 var appletMenu = [
     {
         category: 'Explore',
@@ -8299,6 +8302,7 @@ var SelectAppletDialog = /** @class */ (function (_super) {
     SelectAppletDialog.prototype.LoadView = function () {
         var _this = this;
         var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'applets').createDocument;
+        var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'ws_tree').createDocument;
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(''), installingOpa = _a[0], setInstallingOpa = _a[1];
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('applet').fontSize(20).fontWeight('700'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('library').fontSize(20).fontWeight('400')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Close).onClick(function () { return _this.OnCancel(); })).height(50).padding().background('#F9FAFB'), 
         /*     Search().width(300).allHeight(70).padding()
@@ -8362,6 +8366,17 @@ var SelectAppletDialog = /** @class */ (function (_super) {
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
+                                    createWorkspaceTreeItem({
+                                        data: {
+                                            name: opa.name,
+                                            type: 'applet',
+                                            parent: this.parent,
+                                            iconName: opa.iconName,
+                                            iconCategory: opa.iconCategory,
+                                        }
+                                    }, function (treeItem) {
+                                        _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: treeItem });
+                                    });
                                     if (!opa.databases) return [3 /*break*/, 5];
                                     setInstallingOpa(opa.type);
                                     _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Client.setProject(this.workspaceId);

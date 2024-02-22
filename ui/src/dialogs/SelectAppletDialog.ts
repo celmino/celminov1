@@ -3,6 +3,7 @@ import { Button, ButtonSize, ButtonType, DialogView, ForEach, HStack, Heading, I
 import { useCreateDocument, Services, ID } from "@realmocean/sdk";
 import { Text, TextField } from "@realmocean/vibe";
 import { Applets } from "../Applets";
+import { EventBus } from "@tuval/core";
 
 
 const appletMenu = [
@@ -75,6 +76,7 @@ export class SelectAppletDialog extends DialogView {
     public override LoadView(): UIView {
 
         const { createDocument } = useCreateDocument(this.workspaceId, 'workspace', 'applets');
+        const { createDocument: createWorkspaceTreeItem } = useCreateDocument(this.workspaceId, 'workspace', 'ws_tree');
         const [installingOpa, setInstallingOpa] = useState('');
 
         return (
@@ -180,6 +182,19 @@ export class SelectAppletDialog extends DialogView {
                                                             parent: this.parent
                                                         }
                                                     }, async (applet) => {
+
+                                                        createWorkspaceTreeItem({
+                                                            data: {
+                                                                name: opa.name,
+                                                                type: 'applet',
+                                                                parent: this.parent,
+                                                                iconName: opa.iconName,
+                                                                iconCategory: opa.iconCategory,
+                                                            }
+                                                        }, (treeItem) => {
+                                                            EventBus.Default.fire('applet.added', { treeItem })
+                                                        });
+
                                                         if (opa.databases) {
                                                             setInstallingOpa(opa.type);
                                                             Services.Client.setProject(this.workspaceId);

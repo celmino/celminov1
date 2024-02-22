@@ -33,13 +33,13 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                 .onClick(() => {
                                     navigate('/app/organization/select');
                                 }),
-                           
+
                             Heading('Workspaces').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90),
                             Heading(organization?.name).fontSize('2.8rem').foregroundColor('#090e13')
-                            .fontFamily('Graphik Medium,sans-serif'),
+                                .fontFamily('Graphik Medium,sans-serif'),
                             VStack(
                                 ...ForEach(realms)(realm =>
-                                    HStack({ alignment: cLeading, spacing:10 })(
+                                    HStack({ alignment: cLeading, spacing: 10 })(
                                         HStack({ alignment: cLeading })(
                                             Text(realm.name).fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
                                         ).height(),
@@ -59,14 +59,14 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                             HDivider().height(1).background('rgba(125, 141, 154, 0.1)'),
                             HStack({ alignment: cLeading })(
                                 Text('Create a new workspace').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
-                            ).height() .padding('1.6rem 2rem 1.6rem 0'),
+                            ).height().padding('1.6rem 2rem 1.6rem 0'),
                             HStack({ alignment: cLeading })(
                                 Text('Log in with another email').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
-                            ).height() .padding('1.6rem 2rem 1.6rem 0')
-                            .onClick(() => {
-                                navigate('/logout');
-                            }),
-                            /* HStack(
+                            ).height().padding('1.6rem 2rem 1.6rem 0')
+                                .onClick(() => {
+                                    navigate('/logout');
+                                }),
+                             HStack(
                                 TextField()
                                     .padding()
                                     .border('none')
@@ -79,7 +79,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                     })
 
                             ).width('50%')
-                                .height(), */
+                                .height(), 
                             Button().renderer(ButtonRenderer).label('Submit')
                                 .loading(isLoading)
                                 .disabled(isLoading)
@@ -98,6 +98,17 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         const typeAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false);
                                         const iconName = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false);
                                         const iconCategory = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false);
+
+                                        //Tree Collection Creating
+                                        const treeCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree');
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false);
+
 
 
                                         navigate(`/app/workspace/${workspace.$id}`)
