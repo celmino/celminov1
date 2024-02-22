@@ -141,6 +141,8 @@ class TreeNode extends React.Component<any,any> {
       style = { left: scaffoldBlockPxWidth * scaffoldBlockCount };
     }
 
+    style['left'] = '0px';
+
     return connectDropTarget(
       <div
         {...otherProps}
@@ -154,6 +156,7 @@ class TreeNode extends React.Component<any,any> {
               isOver,
               canDrop,
               draggedNode,
+              scaffoldBlockCount
             })
           )}
         </div>

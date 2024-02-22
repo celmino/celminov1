@@ -3335,7 +3335,7 @@ var AppController2 = /** @class */ (function (_super) {
     AppController2.prototype.LoadView = function () {
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var isLoading = false;
-        var _b = this.props.config || {}, item = _b.item, workspaceId = _b.workspaceId;
+        var _b = this.props.config || {}, item = _b.item, workspaceId = _b.workspaceId, onItemSelected = _b.onItemSelected;
         // const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
         var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getListId)();
         /* useEffect(() => {
@@ -3392,7 +3392,27 @@ var AppController2 = /** @class */ (function (_super) {
                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
                     onClick: function () { return navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(node.appletId, "/settings/general")); }
                 }
-            ]; }
+            ]; },
+            requestNavigation: function () {
+                //  alert(JSON.stringify(item));
+                if (onItemSelected == null) {
+                    switch (item.type) {
+                        case 'folder':
+                            navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(item.appletId, "/folder/").concat(item.$id));
+                            break;
+                        case 'document':
+                            navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(item.appletId, "/document/").concat(item.$id));
+                            break;
+                    }
+                }
+                else {
+                    onItemSelected({
+                        workspaceId: workspaceId,
+                        appletId: item.appletId,
+                        item: item
+                    });
+                }
+            },
         }));
     };
     return AppController2;
@@ -3866,13 +3886,14 @@ var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__W
                         type: 'document',
                         parent: data.parent,
                         tree_widget: 'com.celmino.widget.document-management-tree',
+                        appletId: appletId,
                         path: (new Date()).getTime().toString(),
                         iconName: 'bell',
                         iconCategory: 'Icons',
                         //viewer:'com.tuvalsoft.viewer.document'
                     }
                 }, function (item) {
-                    _tuval_core__WEBPACK_IMPORTED_MODULE_1__.EventBus.Default.fire('applet.added', { item: item });
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_1__.EventBus.Default.fire('applet.added', { treeItem: item });
                 });
                 createTreeItem({
                     documentId: document.$id,

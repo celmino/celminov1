@@ -23,6 +23,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
     render() {
         const {
             scaffoldBlockPxWidth,
+            scaffoldBlockCount,
             toggleChildrenVisibility,
             connectDragPreview,
             connectDragSource,
@@ -104,6 +105,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
             buttonStyle = { right: -0.5 * scaffoldBlockPxWidth } as any;
         }
 
+        
         return (
 
             HStack({ alignment: 'cLeading' })(
@@ -137,8 +139,12 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                 ReactView(
                                                                     toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (
                                                                         <div>
+                                                                           
+                                                                           
                                                                             {
+                                                                                
                                                                                 HStack(
+                                                                                    !is.nullOrEmpty(node.iconName) && 
                                                                                     HStack(
                                                                                         //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
                                                                                         UIWidget("com.tuvalsoft.widget.icons")
@@ -157,7 +163,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                         .position('absolute')
                                                                                         //.background('#FCE8E8')
                                                                                         .allWidth(18).allHeight(18)
-                                                                                        .opacity('var(--opacity-icon)')
+                                                                                        .opacity( 'var(--opacity-icon)')
                                                                                         .cornerRadius(5),
                                                                                     HStack(
                                                                                         Icon(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
@@ -168,7 +174,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                         .transition('opacity .12s ease-in-out')
                                                                                         .foregroundColor('rgba(109,122,131,0.9)')
                                                                                         .allWidth(20).allHeight(20).cursor('pointer')
-                                                                                        .opacity(`var(--opacity-caret)`)
+                                                                                        .opacity(is.nullOrEmpty(node.iconName) ? '1' : `var(--opacity-caret)`)
                                                                                         .onClick(() =>
                                                                                             toggleChildrenVisibility({
                                                                                                 node,
@@ -255,7 +261,8 @@ class MyNodeRendererDefault extends React.Component<any, any> {
             )
                 .cornerRadius(6)
                 .background({ default: node.isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
-                .transition('all .12s ease-in-out')
+               // .transition('all .12s ease-in-out')
+                .paddingLeft(`${(scaffoldBlockCount-1) * 20}px`)
                 //  .paddingLeft(parentNode != null ? `${getParentCount(parentNode) * 20}px` : '')
                 .variable(`--opacity-caret`, { default: '0', hover: '1' })
                 .variable(`--opacity-icon`, { default: '1', hover: '0' }).render()

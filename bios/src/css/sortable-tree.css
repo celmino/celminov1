@@ -120,6 +120,7 @@
  */
 .rst__rowLandingPad,
 .rst__rowCancelPad {
+  height: 20px !important;
   background: hsl(158, 50%, 70%) !important;
   border: none !important;
   box-shadow: none !important;
@@ -511,10 +512,11 @@
 
 .rst__nodeContent {
   position: absolute;
-  margin-left: -28px;;
+  /* margin-left: -28px;; */
   top: 0;
   bottom: 0;
   width: 100%;
+  transition: top 0.5s ease-in-out;;
 }
 
 /* ==========================================================================

@@ -50978,9 +50978,9 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyNodeRendererDefault.prototype.render = function () {
-        var _a = this.props, scaffoldBlockPxWidth = _a.scaffoldBlockPxWidth, toggleChildrenVisibility = _a.toggleChildrenVisibility, connectDragPreview = _a.connectDragPreview, connectDragSource = _a.connectDragSource, isDragging = _a.isDragging, canDrop = _a.canDrop, canDrag = _a.canDrag, node = _a.node, title = _a.title, subtitle = _a.subtitle, draggedNode = _a.draggedNode, path = _a.path, treeIndex = _a.treeIndex, isSearchMatch = _a.isSearchMatch, isSearchFocus = _a.isSearchFocus, buttons = _a.buttons, className = _a.className, style = _a.style, didDrop = _a.didDrop, treeId = _a.treeId, isOver = _a.isOver, // Not needed, but preserved for other renderers
+        var _a = this.props, scaffoldBlockPxWidth = _a.scaffoldBlockPxWidth, scaffoldBlockCount = _a.scaffoldBlockCount, toggleChildrenVisibility = _a.toggleChildrenVisibility, connectDragPreview = _a.connectDragPreview, connectDragSource = _a.connectDragSource, isDragging = _a.isDragging, canDrop = _a.canDrop, canDrag = _a.canDrag, node = _a.node, title = _a.title, subtitle = _a.subtitle, draggedNode = _a.draggedNode, path = _a.path, treeIndex = _a.treeIndex, isSearchMatch = _a.isSearchMatch, isSearchFocus = _a.isSearchFocus, buttons = _a.buttons, className = _a.className, style = _a.style, didDrop = _a.didDrop, treeId = _a.treeId, isOver = _a.isOver, // Not needed, but preserved for other renderers
         parentNode = _a.parentNode, // Needed for dndManager
-        rowDirection = _a.rowDirection, otherProps = __rest(_a, ["scaffoldBlockPxWidth", "toggleChildrenVisibility", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "buttons", "className", "style", "didDrop", "treeId", "isOver", "parentNode", "rowDirection"]);
+        rowDirection = _a.rowDirection, otherProps = __rest(_a, ["scaffoldBlockPxWidth", "scaffoldBlockCount", "toggleChildrenVisibility", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "buttons", "className", "style", "didDrop", "treeId", "isOver", "parentNode", "rowDirection"]);
         var nodeTitle = title || node.title;
         var nodeSubtitle = subtitle || node.subtitle;
         var rowDirectionClass = rowDirection === 'rtl' ? 'rst__rtl' : null;
@@ -51016,31 +51016,32 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
         }
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({ style: { height: '100%', width: '100%' } }, otherProps),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, connectDragPreview(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__row', isLandingPadActive && 'rst__rowLandingPad', isLandingPadActive && !canDrop && 'rst__rowCancelPad', isSearchMatch && 'rst__rowSearchMatch', isSearchFocus && 'rst__rowSearchFocus', rowDirectionClass, className), style: __assign({ opacity: isDraggedDescendant ? 0.5 : 1 }, style) }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading', spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(connectDragSource(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: '100%' } }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(
-                //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
-                    .config({
-                    readonly: true,
-                    selectedIcon: 'bookmark',
-                    selectedCategory: 'Icons',
-                    color: 'gray',
-                    backgroundColor: '',
-                    width: 20,
-                    height: 20,
-                    padding: 1
-                }))
-                    .transition('opacity .12s ease-in-out')
-                    .position('absolute')
-                    //.background('#FCE8E8')
-                    .allWidth(18).allHeight(18)
-                    .opacity('var(--opacity-icon)')
-                    .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(node.iconName) &&
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(
+                    //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
+                        .config({
+                        readonly: true,
+                        selectedIcon: 'bookmark',
+                        selectedCategory: 'Icons',
+                        color: 'gray',
+                        backgroundColor: '',
+                        width: 20,
+                        height: 20,
+                        padding: 1
+                    }))
+                        .transition('opacity .12s ease-in-out')
+                        .position('absolute')
+                        //.background('#FCE8E8')
+                        .allWidth(18).allHeight(18)
+                        .opacity('var(--opacity-icon)')
+                        .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                     .transition('transform .12s ease-in-out'))
                     .position('absolute')
                     .transition('opacity .12s ease-in-out')
                     .foregroundColor('rgba(109,122,131,0.9)')
                     .allWidth(20).allHeight(20).cursor('pointer')
-                    .opacity("var(--opacity-caret)")
+                    .opacity(_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(node.iconName) ? '1' : "var(--opacity-caret)")
                     .onClick(function () {
                     return toggleChildrenVisibility({
                         node: node,
@@ -51083,7 +51084,8 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
             }))).render()))))))
             .cornerRadius(6)
             .background({ default: node.isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
-            .transition('all .12s ease-in-out')
+            // .transition('all .12s ease-in-out')
+            .paddingLeft("".concat((scaffoldBlockCount - 1) * 20, "px"))
             //  .paddingLeft(parentNode != null ? `${getParentCount(parentNode) * 20}px` : '')
             .variable("--opacity-caret", { default: '0', hover: '1' })
             .variable("--opacity-icon", { default: '1', hover: '0' }).render());
@@ -52097,6 +52099,7 @@ var TreeNode = /** @class */ (function (_super) {
             // Default ltr
             style = { left: scaffoldBlockPxWidth * scaffoldBlockCount };
         }
+        style['left'] = '0px';
         return connectDropTarget(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({}, otherProps, { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_1__["default"])('rst__node', rowDirectionClass) }),
             scaffold,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rst__nodeContent", style: style }, react__WEBPACK_IMPORTED_MODULE_0__.Children.map(children, function (child) {
@@ -52104,6 +52107,7 @@ var TreeNode = /** @class */ (function (_super) {
                     isOver: isOver,
                     canDrop: canDrop,
                     draggedNode: draggedNode,
+                    scaffoldBlockCount: scaffoldBlockCount
                 });
             }))));
     };

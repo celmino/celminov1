@@ -192,10 +192,11 @@ export class SelectAppletDialog extends DialogView {
                                                                 appletId:applet.$id,
                                                                 parent: this.parent,
                                                                 path: (new Date()).getTime().toString(),
-                                                                iconName: opa.iconName,
+                                                                iconName:opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
                                                                 iconCategory: opa.iconCategory,
                                                             }
                                                         }, (treeItem) => {
+                                                          
                                                             EventBus.Default.fire('applet.added', { treeItem })
                                                         });
 

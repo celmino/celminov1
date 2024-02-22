@@ -26,7 +26,7 @@ export class AppController2 extends UIController {
 
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
-        const { item, workspaceId } = this.props.config || {};
+        const { item, workspaceId, onItemSelected } = this.props.config || {};
 
         // const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
 
@@ -97,7 +97,25 @@ export class AppController2 extends UIController {
                             icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
                             onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${node.appletId}/settings/general`)
                         }
-                    ]
+                    ],
+                    requestNavigation: () => {
+                      //  alert(JSON.stringify(item));
+                        if (onItemSelected == null) {
+                            switch (item.type) {
+                                case 'folder':
+                                    navigate(`/app/workspace/${workspaceId}/applet/${item.appletId}/folder/${item.$id}`);
+                                    break;
+                                case 'document':
+                                    navigate(`/app/workspace/${workspaceId}/applet/${item.appletId}/document/${item.$id}`);
+                                    break;
+
+                            }
+                        } else {
+                            onItemSelected({
+                                workspaceId, appletId:item.appletId, item
+                            })
+                        }
+                    },
 
                 })
 

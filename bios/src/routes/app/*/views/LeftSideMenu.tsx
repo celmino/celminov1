@@ -433,6 +433,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         DatabaseNameView(database, false, () => { })
                                         //    )
                                     ),
+                                    isWorkspaceTreeLoading ? Fragment():
                                     UIViewBuilder(() => {
                                         const params = useParams();
                                         const { deleteCache } = useDeleteCache(workspaceId);
@@ -440,7 +441,9 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
 
                                         useEffect(() => {
+                                            setTreeItems(buildTree(workspaceTreeITems));
                                             EventBus.Default.on('applet.added', ({ treeItem }) => {
+                                               
                                                 deleteCache();
                                                 Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
                                                     Query.limit(250)
@@ -490,7 +493,21 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                     title: child.name,
                                                     parent: child.parent,
                                                     path: child.path,
-                                                    tree_widget: item.tree_widget,
+                                                    tree_widget: child.tree_widget,
+                                                    view: (node) => {
+                                                        return (
+                                                            HStack(
+                                                                child.tree_widget != null ?
+                                                                    UIWidget(child.tree_widget)
+                                                                        .config({
+                                                                            item: child,
+                                                                            ...(params || {}),
+                                                                            appletId: child.appletId
+                                                                        }) :
+                                                                    Text(child.name)
+                                                            )
+                                                        )
+                                                    },
                                                     children: buildClidren(workspaceTree, child)
                                                 }
                                             })
@@ -500,7 +517,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                         function buildTree(workspaceTree) {
                                             const tree = [];
-                                            let rootItems = workspaceTree.filter(item => item.parent === '-1');
+                                            let rootItems = workspaceTree?.filter(item => item.parent === '-1');
                                             rootItems = sortByStringField(rootItems, "path");
                                             rootItems.forEach(item => {
                                                 if (item.parent === '-1') {
@@ -531,13 +548,12 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                     buildClidren(workspaceTree, node);
                                                 }
                                             })
-                                            console.log('---------tree--------')
-                                            console.log(tree)
+                                           console.log('build tree');
                                             return tree;
                                         }
 
                                         const [prevTreeItems, setPrevTreeItems] = useState([]);
-                                        const [treeItems, setTreeItems] = useState(buildTree(workspaceTreeITems));
+                                        const [treeItems, setTreeItems] = useState([]);
                                       
 
                                         const canDrop = ({ node, nextParent, prevPath, nextPath }) => {

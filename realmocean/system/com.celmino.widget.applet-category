@@ -33,8 +33,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -51,23 +49,23 @@ var __extends = (undefined && undefined.__extends) || (function () {
     };
 })();
 
-
 var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
     __extends(WorkspaceTreeWidgetController, _super);
     function WorkspaceTreeWidgetController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     WorkspaceTreeWidgetController.prototype.LoadView = function () {
-        var _a = this.props.config || {}, workspaceId = _a.workspaceId, appletId = _a.appletId, onItemSelected = _a.onItemSelected;
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }), applet = _b.document, isAppletLoading = _b.isLoading;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(applet === null || applet === void 0 ? void 0 : applet.name)
+        var _a = this.props.config || {}, workspaceId = _a.workspaceId, appletId = _a.appletId, onItemSelected = _a.onItemSelected, item = _a.item;
+        // const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId })
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item === null || item === void 0 ? void 0 : item.name)
             .fontSize(16)
             .fontWeight('500')
-            .foregroundColor('#222522')).height(20)
-            .marginVertical(5)
+            .foregroundColor('#222522'))
+            .allHeight(30)
+            //.marginVertical(5)
             .padding()
             .background('#E4EAE2')
-            .cornerRadius(10)
+            .cornerRadius(5)
         //.clipPath('polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 50%, 0 0)')
         );
     };
@@ -96,17 +94,6 @@ module.exports = {
         'PMThreadWorker': 'ThreadWorker.ts'
     } */
 }
-
-/***/ }),
-
-/***/ "@realmocean/sdk":
-/*!*********************************!*\
-  !*** external "realmocean$sdk" ***!
-  \*********************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = realmocean$sdk;
 
 /***/ }),
 

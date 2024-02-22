@@ -3291,6 +3291,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var Applets = [
     {
+        name: 'CRM - Gıda',
+        type: 'Template',
+        tree_type: 'com.celmino.widget.custom-applet-tree',
+        applet_type: 'com.celmino.applet.custom',
+        description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
+        image: '/images/applets/google_drive.svg',
+        //icon: '\\d320',
+        enabled: true,
+        databases: [
+            {
+                "name": "Customer Discovery",
+                "id": "document_management",
+                "category": "app",
+                "collections": []
+            }
+        ]
+    },
+    {
+        name: 'CRM - İnşaat ve Emlak',
+        type: 'Template',
+        tree_type: 'com.celmino.widget.custom-applet-tree',
+        applet_type: 'com.celmino.applet.custom',
+        description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
+        image: '/images/applets/google_drive.svg',
+        //icon: '\\d320',
+        enabled: true,
+        databases: [
+            {
+                "name": "Customer Discovery",
+                "id": "document_management",
+                "category": "app",
+                "collections": []
+            }
+        ]
+    },
+    {
+        name: 'CRM - Eğitim',
+        type: 'Template',
+        tree_type: 'com.celmino.widget.custom-applet-tree',
+        applet_type: 'com.celmino.applet.custom',
+        description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
+        image: '/images/applets/google_drive.svg',
+        //icon: '\\d320',
+        enabled: true,
+        databases: [
+            {
+                "name": "Customer Discovery",
+                "id": "document_management",
+                "category": "app",
+                "collections": []
+            }
+        ]
+    },
+    {
         name: 'StartUp accelerator management',
         type: 'Solution',
         tree_type: 'com.celmino.widget.custom-applet-tree',
@@ -8031,10 +8085,21 @@ var Applets = [
         type: 'Applet',
         tree_type: 'com.celmino.widget.applet-category',
         applet_type: 'com.celmino.applet.category',
-        description: 'Split your applets by category.',
-        // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
+        description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+        // image: '/images/applets/documents.png',
+        iconCategory: 'Icons',
+        iconName: 'bell',
         icon: '\\d320',
-        enabled: true
+        iconBackColor: '#66B47C',
+        enabled: true,
+        databases: [
+            {
+                "name": "Applet Category",
+                "id": "applet_category",
+                "category": "app",
+                "collections": []
+            }
+        ]
     },
     {
         name: 'Drive',
@@ -8375,7 +8440,7 @@ var SelectAppletDialog = /** @class */ (function (_super) {
                                             appletId: applet.$id,
                                             parent: this.parent,
                                             path: (new Date()).getTime().toString(),
-                                            iconName: opa.iconName,
+                                            iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
                                             iconCategory: opa.iconCategory,
                                         }
                                     }, function (treeItem) {

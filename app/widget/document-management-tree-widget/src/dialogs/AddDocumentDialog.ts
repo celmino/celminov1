@@ -58,13 +58,15 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
                                     type: 'document',
                                     parent:data.parent,
                                     tree_widget: 'com.celmino.widget.document-management-tree',
+                                    appletId,
                                     path: (new Date()).getTime().toString(),
                                     iconName: 'bell',
                                     iconCategory: 'Icons',
                                     //viewer:'com.tuvalsoft.viewer.document'
                                 }
                             }, (item)=> {
-                                EventBus.Default.fire('applet.added', { item })
+                               
+                                EventBus.Default.fire('applet.added', { treeItem: item})
                             })
 
                             createTreeItem({
