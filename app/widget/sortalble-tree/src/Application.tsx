@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SortableTree from './tree';
 import { ReactView, UIFormController, UIView, HStack } from '@tuval/forms'
-
+import FileExplorerTheme from 'react-sortable-tree-theme-file-explorer';
 
 const manifest = {
     application: {
@@ -37,7 +37,15 @@ export class Tree extends React.Component<any, any> {
 
         this.state = {
             treeData: [
-                { title: 'Chicken', children: [{ title: 'Egg' }] },
+                {
+                    title: 'Chicken', children: ({ done }) => {
+                        done([{
+                            title: 'Egg', children: ({ done }) => {
+                                done([{ title: 'son' }])
+                            }
+                        }]);
+                    }
+                },
                 { title: 'Chicken1', children: [{ title: 'Egg1' }] },
                 { title: 'Chicken2', children: [{ title: 'Egg2' }] }
             ],
@@ -46,13 +54,16 @@ export class Tree extends React.Component<any, any> {
 
     render() {
         return (
-            <div style={{ height: 400 }}>
-                <SortableTree
-                    rowHeight={() => 32}
-                    treeData={this.state.treeData}
-                    onChange={treeData => this.setState({ treeData })}
-                />
-            </div>
+
+            <SortableTree
+
+                scaffoldBlockPxWidth={32}
+                rowHeight={() => 32}
+                treeData={this.props.items}
+                onChange={this.props.onChange}
+                onMoveNode={this.props.onMoveNode}
+            />
+
         );
     }
 }
@@ -61,11 +72,12 @@ export class Tree extends React.Component<any, any> {
 export class MyTestController extends UIFormController {
 
     public override LoadView(): UIView {
+        const { treeItems, onChange, onMoveNode } = this.props.config;
         return (
             HStack({ alignment: 'cTopLeading' })(
                 ReactView(
-                    <div style={{ height: '500px' }}>
-                        <Tree />
+                    <div style={{ height: '500px', width: '100%' }}>
+                        <Tree items={treeItems} onChange={onChange} onMoveNode={onMoveNode} />
                     </div>
                 )
             )

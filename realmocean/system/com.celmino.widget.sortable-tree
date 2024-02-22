@@ -50888,25 +50888,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/tree/node-renderer-default.tsx":
-/*!********************************************!*\
-  !*** ./src/tree/node-renderer-default.tsx ***!
-  \********************************************/
+/***/ "./src/tree/my-node-renderer.tsx":
+/*!***************************************!*\
+  !*** ./src/tree/my-node-renderer.tsx ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CaretDown1: () => (/* binding */ CaretDown1),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/tree-data-utils */ "./src/tree/utils/tree-data-utils.ts");
 /* harmony import */ var _utils_classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/classnames */ "./src/tree/utils/classnames.ts");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -50958,12 +50961,23 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-var NodeRendererDefault = /** @class */ (function (_super) {
-    __extends(NodeRendererDefault, _super);
-    function NodeRendererDefault() {
+
+var CaretDown1 = function (props) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.276 8.5 8.813 4.294C8.143 3.666 7 4.111 7 5v10c0 .89 1.144 1.334 1.813.706l4.463-4.206c.965-1 .965-2 0-3Z" }))); };
+function getParentCount(node) {
+    var count = 1;
+    while (node) {
+        count++;
+        node = node.parentNode;
+    }
+    return count;
+}
+var MyNodeRendererDefault = /** @class */ (function (_super) {
+    __extends(MyNodeRendererDefault, _super);
+    function MyNodeRendererDefault() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    NodeRendererDefault.prototype.render = function () {
+    MyNodeRendererDefault.prototype.render = function () {
         var _a = this.props, scaffoldBlockPxWidth = _a.scaffoldBlockPxWidth, toggleChildrenVisibility = _a.toggleChildrenVisibility, connectDragPreview = _a.connectDragPreview, connectDragSource = _a.connectDragSource, isDragging = _a.isDragging, canDrop = _a.canDrop, canDrag = _a.canDrag, node = _a.node, title = _a.title, subtitle = _a.subtitle, draggedNode = _a.draggedNode, path = _a.path, treeIndex = _a.treeIndex, isSearchMatch = _a.isSearchMatch, isSearchFocus = _a.isSearchFocus, buttons = _a.buttons, className = _a.className, style = _a.style, didDrop = _a.didDrop, treeId = _a.treeId, isOver = _a.isOver, // Not needed, but preserved for other renderers
         parentNode = _a.parentNode, // Needed for dndManager
         rowDirection = _a.rowDirection, otherProps = __rest(_a, ["scaffoldBlockPxWidth", "toggleChildrenVisibility", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "buttons", "className", "style", "didDrop", "treeId", "isOver", "parentNode", "rowDirection"]);
@@ -50982,7 +50996,14 @@ var NodeRendererDefault = /** @class */ (function (_super) {
             }
             else {
                 // Show the handle used to initiate a drag-and-drop
-                handle = connectDragSource(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "" }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icons.Drag)).width(32).height(32).render()), {
+                handle = connectDragSource(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })(
+                /*   HStack(
+                      Icon(Icons.Drag)
+                  ).width(16), */
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(nodeTitle))
+                    .onClick(function () {
+                    alert('clicked');
+                })).render()), {
                     dropEffect: 'copy',
                 });
             }
@@ -50993,38 +51014,65 @@ var NodeRendererDefault = /** @class */ (function (_super) {
         if (rowDirection === 'rtl') {
             buttonStyle = { right: -0.5 * scaffoldBlockPxWidth };
         }
-        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({ style: { height: '100%' } }, otherProps),
-            toggleChildrenVisibility &&
-                node.children &&
-                (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(node.expanded ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('-') :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('+'))
-                    .width(16)
-                    .height(16)
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({ style: { height: '100%', width: '100%' } }, otherProps),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, connectDragPreview(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__row', isLandingPadActive && 'rst__rowLandingPad', isLandingPadActive && !canDrop && 'rst__rowCancelPad', isSearchMatch && 'rst__rowSearchMatch', isSearchFocus && 'rst__rowSearchFocus', rowDirectionClass, className), style: __assign({ opacity: isDraggedDescendant ? 0.5 : 1 }, style) }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading', spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(
+                //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
+                    .config({
+                    readonly: true,
+                    selectedIcon: 'bookmark',
+                    selectedCategory: 'Icons',
+                    color: 'gray',
+                    backgroundColor: '',
+                    width: 20,
+                    height: 20,
+                    padding: 1
+                }))
+                    .transition('opacity .12s ease-in-out')
                     .position('absolute')
-                    .left('-22px')
-                    .top('50%')
-                    .shadow('0 0 0 1px #000')
-                    .transform('translate(-50%, -50%)')
+                    //.background('#FCE8E8')
+                    .allWidth(18).allHeight(18)
+                    .opacity('var(--opacity-icon)')
+                    .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
+                    .transition('transform .12s ease-in-out'))
+                    .position('absolute')
+                    .transition('opacity .12s ease-in-out')
+                    .foregroundColor('rgba(109,122,131,0.9)')
+                    .allWidth(20).allHeight(20).cursor('pointer')
+                    .opacity("var(--opacity-caret)")
                     .onClick(function () {
                     return toggleChildrenVisibility({
                         node: node,
                         path: path,
                         treeIndex: treeIndex,
                     });
-                })
+                }))
+                    .allWidth(30).allHeight(30)
+                    .transition('transform .12s ease-in-out')
                     .render(),
-                node.expanded && !isDragging && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: scaffoldBlockPxWidth }, className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__lineChildren', rowDirectionClass) })))),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__rowWrapper', rowDirectionClass) }, connectDragPreview(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__row', isLandingPadActive && 'rst__rowLandingPad', isLandingPadActive && !canDrop && 'rst__rowCancelPad', isSearchMatch && 'rst__rowSearchMatch', isSearchFocus && 'rst__rowSearchFocus', rowDirectionClass, className), style: __assign({ opacity: isDraggedDescendant ? 0.5 : 1 }, style) },
-                handle,
-                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])(
-                    /* 'rst__rowContents', */
-                    !canDrag && 'rst__rowContentsDragDisabled', rowDirectionClass) }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(nodeTitle)).render()))))));
+                node.expanded && !isDragging && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: scaffoldBlockPxWidth }, className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__lineChildren', rowDirectionClass) })))) : ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)().allWidth(20).allHeight(20).render())), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(connectDragSource(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: '100%' } }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })(
+            /*   HStack(
+                  Icon(Icons.Drag)
+              ).width(16), */
+            _tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
+                node: node,
+                path: path,
+                treeIndex: treeIndex,
+            }); }) :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(nodeTitle)))
+                .cursor('pointer')
+                .render()), {
+                dropEffect: 'copy',
+            }))).render()))))))
+            .transition('all .12s ease-in-out')
+            //  .paddingLeft(parentNode != null ? `${getParentCount(parentNode) * 20}px` : '')
+            .variable("--opacity-caret", { default: '0', hover: '1' })
+            .variable("--opacity-icon", { default: '1', hover: '0' }).render());
     };
-    return NodeRendererDefault;
+    return MyNodeRendererDefault;
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component)));
-NodeRendererDefault.defaultProps = {
+MyNodeRendererDefault.defaultProps = {
     isSearchMatch: false,
     isSearchFocus: false,
     canDrag: false,
@@ -51039,36 +51087,36 @@ NodeRendererDefault.defaultProps = {
     subtitle: null,
     rowDirection: 'ltr',
 };
-NodeRendererDefault.propTypes = {
-    node: prop_types__WEBPACK_IMPORTED_MODULE_4___default().shape({}).isRequired,
-    title: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_4___default().node)]),
-    subtitle: prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_4___default().node)]),
-    path: prop_types__WEBPACK_IMPORTED_MODULE_4___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_4___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_4___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number)])).isRequired,
-    treeIndex: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number).isRequired,
-    treeId: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string).isRequired,
-    isSearchMatch: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
-    isSearchFocus: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
-    canDrag: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
-    scaffoldBlockPxWidth: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().number).isRequired,
-    toggleChildrenVisibility: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func),
-    buttons: prop_types__WEBPACK_IMPORTED_MODULE_4___default().arrayOf((prop_types__WEBPACK_IMPORTED_MODULE_4___default().node)),
-    className: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
-    style: prop_types__WEBPACK_IMPORTED_MODULE_4___default().shape({}),
+MyNodeRendererDefault.propTypes = {
+    node: prop_types__WEBPACK_IMPORTED_MODULE_5___default().shape({}).isRequired,
+    title: prop_types__WEBPACK_IMPORTED_MODULE_5___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_5___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_5___default().node)]),
+    subtitle: prop_types__WEBPACK_IMPORTED_MODULE_5___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_5___default().func), (prop_types__WEBPACK_IMPORTED_MODULE_5___default().node)]),
+    path: prop_types__WEBPACK_IMPORTED_MODULE_5___default().arrayOf(prop_types__WEBPACK_IMPORTED_MODULE_5___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_5___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_5___default().number)])).isRequired,
+    treeIndex: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().number).isRequired,
+    treeId: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().string).isRequired,
+    isSearchMatch: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+    isSearchFocus: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+    canDrag: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
+    scaffoldBlockPxWidth: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().number).isRequired,
+    toggleChildrenVisibility: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().func),
+    buttons: prop_types__WEBPACK_IMPORTED_MODULE_5___default().arrayOf((prop_types__WEBPACK_IMPORTED_MODULE_5___default().node)),
+    className: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().string),
+    style: prop_types__WEBPACK_IMPORTED_MODULE_5___default().shape({}),
     // Drag and drop API functions
     // Drag source
-    connectDragPreview: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func).isRequired,
-    connectDragSource: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().func).isRequired,
-    parentNode: prop_types__WEBPACK_IMPORTED_MODULE_4___default().shape({}), // Needed for dndManager
-    isDragging: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool).isRequired,
-    didDrop: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool).isRequired,
-    draggedNode: prop_types__WEBPACK_IMPORTED_MODULE_4___default().shape({}),
+    connectDragPreview: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().func).isRequired,
+    connectDragSource: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().func).isRequired,
+    parentNode: prop_types__WEBPACK_IMPORTED_MODULE_5___default().shape({}), // Needed for dndManager
+    isDragging: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool).isRequired,
+    didDrop: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool).isRequired,
+    draggedNode: prop_types__WEBPACK_IMPORTED_MODULE_5___default().shape({}),
     // Drop target
-    isOver: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool).isRequired,
-    canDrop: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().bool),
+    isOver: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool).isRequired,
+    canDrop: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().bool),
     // rtl support
-    rowDirection: (prop_types__WEBPACK_IMPORTED_MODULE_4___default().string),
+    rowDirection: (prop_types__WEBPACK_IMPORTED_MODULE_5___default().string),
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NodeRendererDefault);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyNodeRendererDefault);
 
 
 /***/ }),
@@ -51134,15 +51182,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_virtualized_styles_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-virtualized/styles.css */ "./node_modules/react-virtualized/styles.css");
 /* harmony import */ var react_virtualized_styles_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_virtualized_styles_css__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _tree_node__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./tree-node */ "./src/tree/tree-node.tsx");
-/* harmony import */ var _node_renderer_default__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./node-renderer-default */ "./src/tree/node-renderer-default.tsx");
-/* harmony import */ var _tree_placeholder__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./tree-placeholder */ "./src/tree/tree-placeholder.tsx");
-/* harmony import */ var _placeholder_renderer_default__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./placeholder-renderer-default */ "./src/tree/placeholder-renderer-default.tsx");
-/* harmony import */ var _utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/tree-data-utils */ "./src/tree/utils/tree-data-utils.ts");
-/* harmony import */ var _utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils/memoized-tree-data-utils */ "./src/tree/utils/memoized-tree-data-utils.ts");
-/* harmony import */ var _utils_generic_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./utils/generic-utils */ "./src/tree/utils/generic-utils.ts");
-/* harmony import */ var _utils_default_handlers__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./utils/default-handlers */ "./src/tree/utils/default-handlers.ts");
-/* harmony import */ var _utils_dnd_manager__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./utils/dnd-manager */ "./src/tree/utils/dnd-manager.ts");
-/* harmony import */ var _utils_classnames__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./utils/classnames */ "./src/tree/utils/classnames.ts");
+/* harmony import */ var _tree_placeholder__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./tree-placeholder */ "./src/tree/tree-placeholder.tsx");
+/* harmony import */ var _placeholder_renderer_default__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./placeholder-renderer-default */ "./src/tree/placeholder-renderer-default.tsx");
+/* harmony import */ var _utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./utils/tree-data-utils */ "./src/tree/utils/tree-data-utils.ts");
+/* harmony import */ var _utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/memoized-tree-data-utils */ "./src/tree/utils/memoized-tree-data-utils.ts");
+/* harmony import */ var _utils_generic_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils/generic-utils */ "./src/tree/utils/generic-utils.ts");
+/* harmony import */ var _utils_default_handlers__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./utils/default-handlers */ "./src/tree/utils/default-handlers.ts");
+/* harmony import */ var _utils_dnd_manager__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./utils/dnd-manager */ "./src/tree/utils/dnd-manager.ts");
+/* harmony import */ var _utils_classnames__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./utils/classnames */ "./src/tree/utils/classnames.ts");
+/* harmony import */ var _my_node_renderer__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./my-node-renderer */ "./src/tree/my-node-renderer.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -51191,8 +51239,8 @@ var treeIdCounter = 1;
 var mergeTheme = function (props) {
     var merged = __assign(__assign({}, props), { style: __assign(__assign({}, props.theme.style), props.style), innerStyle: __assign(__assign({}, props.theme.innerStyle), props.innerStyle), reactVirtualizedListProps: __assign(__assign({}, props.theme.reactVirtualizedListProps), props.reactVirtualizedListProps) });
     var overridableDefaults = {
-        nodeContentRenderer: _node_renderer_default__WEBPACK_IMPORTED_MODULE_8__["default"],
-        placeholderRenderer: _placeholder_renderer_default__WEBPACK_IMPORTED_MODULE_10__["default"],
+        nodeContentRenderer: _my_node_renderer__WEBPACK_IMPORTED_MODULE_16__["default"],
+        placeholderRenderer: _placeholder_renderer_default__WEBPACK_IMPORTED_MODULE_9__["default"],
         rowHeight: 62,
         scaffoldBlockPxWidth: 44,
         slideRegionSize: 100,
@@ -51216,13 +51264,13 @@ var ReactSortableTree = /** @class */ (function (_super) {
     function ReactSortableTree(props) {
         var _this = _super.call(this, props) || this;
         var _a = mergeTheme(props), dndType = _a.dndType, nodeContentRenderer = _a.nodeContentRenderer, treeNodeRenderer = _a.treeNodeRenderer, isVirtualized = _a.isVirtualized, slideRegionSize = _a.slideRegionSize;
-        _this.dndManager = new _utils_dnd_manager__WEBPACK_IMPORTED_MODULE_15__["default"](_this);
+        _this.dndManager = new _utils_dnd_manager__WEBPACK_IMPORTED_MODULE_14__["default"](_this);
         // Wrapping classes for use with react-dnd
         _this.treeId = "rst__".concat(treeIdCounter);
         treeIdCounter += 1;
         _this.dndType = dndType || _this.treeId;
         _this.nodeContentRenderer = _this.dndManager.wrapSource(nodeContentRenderer);
-        _this.treePlaceholderRenderer = _this.dndManager.wrapPlaceholder(_tree_placeholder__WEBPACK_IMPORTED_MODULE_9__["default"]);
+        _this.treePlaceholderRenderer = _this.dndManager.wrapPlaceholder(_tree_placeholder__WEBPACK_IMPORTED_MODULE_8__["default"]);
         _this.treeNodeRenderer = _this.dndManager.wrapTarget(treeNodeRenderer);
         // Prepare scroll-on-drag options for this list
         if (isVirtualized) {
@@ -51299,6 +51347,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
     };
     // listen to dragging
     ReactSortableTree.prototype.componentDidUpdate = function (prevProps, prevState) {
+        ReactSortableTree.loadLazyChildren(this.props, this.state);
         // if it is not the same then call the onDragStateChanged
         if (this.state.dragging !== prevState.dragging) {
             if (this.props.onDragStateChanged) {
@@ -51313,7 +51362,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
         this.clearMonitorSubscription();
     };
     ReactSortableTree.prototype.getRows = function (treeData) {
-        return (0,_utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_12__.memoizedGetFlatDataFromTree)({
+        return (0,_utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.memoizedGetFlatDataFromTree)({
             ignoreCollapsed: true,
             getNodeKey: this.props.getNodeKey,
             treeData: treeData,
@@ -51331,7 +51380,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
     ReactSortableTree.prototype.toggleChildrenVisibility = function (_a) {
         var targetNode = _a.node, path = _a.path;
         var instanceProps = this.state.instanceProps;
-        var treeData = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.changeNodeAtPath)({
+        var treeData = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.changeNodeAtPath)({
             treeData: instanceProps.treeData,
             path: path,
             newNode: function (_a) {
@@ -51350,7 +51399,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
     };
     ReactSortableTree.prototype.moveNode = function (_a) {
         var node = _a.node, prevPath = _a.path, prevTreeIndex = _a.treeIndex, depth = _a.depth, minimumTreeIndex = _a.minimumTreeIndex;
-        var _b = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.insertNode)({
+        var _b = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.insertNode)({
             treeData: this.state.draggingTreeData,
             newNode: node,
             depth: depth,
@@ -51384,16 +51433,16 @@ var ReactSortableTree = /** @class */ (function (_super) {
         }
         var newState = {};
         // if onlyExpandSearchedNodes collapse the tree and search
-        var _a = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.find)({
+        var _a = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.find)({
             getNodeKey: getNodeKey,
             treeData: onlyExpandSearchedNodes
-                ? (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.toggleExpandedForAll)({
+                ? (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.toggleExpandedForAll)({
                     treeData: instanceProps.treeData,
                     expanded: false,
                 })
                 : instanceProps.treeData,
             searchQuery: searchQuery,
-            searchMethod: searchMethod || _utils_default_handlers__WEBPACK_IMPORTED_MODULE_14__.defaultSearchMethod,
+            searchMethod: searchMethod || _utils_default_handlers__WEBPACK_IMPORTED_MODULE_13__.defaultSearchMethod,
             searchFocusOffset: searchFocusOffset,
             expandAllMatchPaths: expand && !singleSearch,
             expandFocusMatchPaths: !!expand,
@@ -51420,7 +51469,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
         var _this = this;
         var path = _a.path;
         this.setState(function (prevState) {
-            var _a = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.removeNode)({
+            var _a = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.removeNode)({
                 treeData: prevState.instanceProps.treeData,
                 path: path,
                 getNodeKey: _this.props.getNodeKey,
@@ -51447,7 +51496,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
             // Fall back to the tree data if something is being dragged in from
             //  an external element
             var newDraggingTreeData = draggingTreeData || instanceProps.treeData;
-            var addedResult = (0,_utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_12__.memoizedInsertNode)({
+            var addedResult = (0,_utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.memoizedInsertNode)({
                 treeData: newDraggingTreeData,
                 newNode: draggedNode,
                 depth: draggedDepth,
@@ -51461,7 +51510,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
                 draggedNode: draggedNode,
                 draggedDepth: draggedDepth,
                 draggedMinimumTreeIndex: draggedMinimumTreeIndex,
-                draggingTreeData: (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.changeNodeAtPath)({
+                draggingTreeData: (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.changeNodeAtPath)({
                     treeData: newDraggingTreeData,
                     path: expandedParentPath.slice(0, -1),
                     newNode: function (_a) {
@@ -51508,7 +51557,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
             // If copying is enabled, a drop outside leaves behind a copy in the
             //  source tree
             if (shouldCopy) {
-                treeData = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.changeNodeAtPath)({
+                treeData = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.changeNodeAtPath)({
                     treeData: instanceProps.treeData, // use treeData unaltered by the drag operation
                     path: path,
                     newNode: function (_a) {
@@ -51545,7 +51594,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
     // calls the onChange callback on the new treeData
     ReactSortableTree.loadLazyChildren = function (props, state) {
         var instanceProps = state.instanceProps;
-        (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.walk)({
+        (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.walk)({
             treeData: instanceProps.treeData,
             getNodeKey: props.getNodeKey,
             callback: function (_a) {
@@ -51563,7 +51612,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
                         treeIndex: treeIndex,
                         // Provide a helper to append the new data when it is received
                         done: function (childrenArray) {
-                            return props.onChange((0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.changeNodeAtPath)({
+                            return props.onChange((0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.changeNodeAtPath)({
                                 treeData: instanceProps.treeData,
                                 path: path,
                                 newNode: function (_a) {
@@ -51624,7 +51673,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
         var swapFrom = null;
         var swapLength = null;
         if (draggedNode && draggedMinimumTreeIndex !== null) {
-            var addedResult = (0,_utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_12__.memoizedInsertNode)({
+            var addedResult = (0,_utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.memoizedInsertNode)({
                 treeData: treeData,
                 newNode: draggedNode,
                 depth: draggedDepth,
@@ -51634,8 +51683,8 @@ var ReactSortableTree = /** @class */ (function (_super) {
             });
             var swapTo = draggedMinimumTreeIndex;
             swapFrom = addedResult.treeIndex;
-            swapLength = 1 + (0,_utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_12__.memoizedGetDescendantCount)({ node: draggedNode });
-            rows = (0,_utils_generic_utils__WEBPACK_IMPORTED_MODULE_13__.slideRows)(this.getRows(addedResult.treeData), swapFrom, swapTo, swapLength);
+            swapLength = 1 + (0,_utils_memoized_tree_data_utils__WEBPACK_IMPORTED_MODULE_11__.memoizedGetDescendantCount)({ node: draggedNode });
+            rows = (0,_utils_generic_utils__WEBPACK_IMPORTED_MODULE_12__.slideRows)(this.getRows(addedResult.treeData), swapFrom, swapTo, swapLength);
         }
         else {
             rows = this.getRows(treeData);
@@ -51714,7 +51763,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
                 });
             });
         }
-        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_16__["default"])('rst__tree', className, rowDirectionClass), style: containerStyle }, list));
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_15__["default"])('rst__tree', className, rowDirectionClass), style: containerStyle }, list));
     };
     return ReactSortableTree;
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component)));
@@ -51825,7 +51874,7 @@ ReactSortableTree.defaultProps = {
     className: '',
     dndType: null,
     generateNodeProps: null,
-    getNodeKey: _utils_default_handlers__WEBPACK_IMPORTED_MODULE_14__.defaultGetNodeKey,
+    getNodeKey: _utils_default_handlers__WEBPACK_IMPORTED_MODULE_13__.defaultGetNodeKey,
     innerStyle: {},
     isVirtualized: false,
     maxDepth: null,
@@ -51858,7 +51907,7 @@ var SortableTreeWithoutDndContext = function (props) { return (react__WEBPACK_IM
 // for when component is used with other components using react-dnd.
 // see: https://github.com/gaearon/react-dnd/issues/186
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_utils_dnd_manager__WEBPACK_IMPORTED_MODULE_15__["default"].wrapRoot(SortableTreeWithoutDndContext));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_utils_dnd_manager__WEBPACK_IMPORTED_MODULE_14__["default"].wrapRoot(SortableTreeWithoutDndContext));
 
 
 /***/ }),
@@ -53604,6 +53653,17 @@ function find(_a) {
 
 /***/ }),
 
+/***/ "@tuval/core":
+/*!*****************************!*\
+  !*** external "tuval$core" ***!
+  \*****************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = tuval$core;
+
+/***/ }),
+
 /***/ "@tuval/forms":
 /*!******************************!*\
   !*** external "tuval$forms" ***!
@@ -54400,7 +54460,17 @@ var Tree = /** @class */ (function (_super) {
         var _this = _super.call(this, props) || this;
         _this.state = {
             treeData: [
-                { title: 'Chicken', children: [{ title: 'Egg' }] },
+                {
+                    title: 'Chicken', children: function (_a) {
+                        var done = _a.done;
+                        done([{
+                                title: 'Egg', children: function (_a) {
+                                    var done = _a.done;
+                                    done([{ title: 'son' }]);
+                                }
+                            }]);
+                    }
+                },
                 { title: 'Chicken1', children: [{ title: 'Egg1' }] },
                 { title: 'Chicken2', children: [{ title: 'Egg2' }] }
             ],
@@ -54408,9 +54478,7 @@ var Tree = /** @class */ (function (_super) {
         return _this;
     }
     Tree.prototype.render = function () {
-        var _this = this;
-        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { height: 400 } },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { rowHeight: function () { return 32; }, treeData: this.state.treeData, onChange: function (treeData) { return _this.setState({ treeData: treeData }); } })));
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 32; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode }));
     };
     return Tree;
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component)));
@@ -54421,8 +54489,9 @@ var MyTestController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyTestController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { height: '500px' } },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Tree, null)))));
+        var _a = this.props.config, treeItems = _a.treeItems, onChange = _a.onChange, onMoveNode = _a.onMoveNode;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { height: '500px', width: '100%' } },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Tree, { items: treeItems, onChange: onChange, onMoveNode: onMoveNode })))));
     };
     return MyTestController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));

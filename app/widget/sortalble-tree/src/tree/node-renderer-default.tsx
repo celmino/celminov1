@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isDescendant } from './utils/tree-data-utils';
 import classnames from './utils/classnames';
-import { HStack, Text, Icon, Icons } from '@tuval/forms'
+import { HStack, Text } from '@tuval/forms'
 
 
 class NodeRendererDefault extends React.Component<any, any> {
@@ -60,13 +60,7 @@ class NodeRendererDefault extends React.Component<any, any> {
         );
       } else {
         // Show the handle used to initiate a drag-and-drop
-        handle = connectDragSource(<div className="">
-          {
-            HStack(
-              Icon(Icons.Drag)
-            ).width(32).height(32).render()
-          }
-        </div>, {
+        handle = connectDragSource(<div className="rst__moveHandle" />, {
           dropEffect: 'copy',
         });
       }
@@ -92,13 +86,13 @@ class NodeRendererDefault extends React.Component<any, any> {
                     Text('-') :
                     Text('+')
                 )
-                  .width(16)
-                  .height(16)
-                  .position('absolute')
-                  .left('-22px')
-                  .top('50%')
-                  .shadow('0 0 0 1px #000')
-                  .transform('translate(-50%, -50%)')
+                .width(16)
+                .height(16)
+                .position('absolute')
+                .left('-22px')
+                .top('50%')
+                .shadow('0 0 0 1px #000')
+                .transform('translate(-50%, -50%)')
                   .onClick(() =>
                     toggleChildrenVisibility({
                       node,
@@ -108,7 +102,7 @@ class NodeRendererDefault extends React.Component<any, any> {
                   )
                   .render()
               }
-              {/*  <button
+             {/*   <button
                 type="button"
                 aria-label={node.expanded ? 'Collapse' : 'Expand'}
                 className={classnames(
@@ -156,17 +150,12 @@ class NodeRendererDefault extends React.Component<any, any> {
 
               <div
                 className={classnames(
-                  /* 'rst__rowContents', */
+                  'rst__rowContents',
                   !canDrag && 'rst__rowContentsDragDisabled',
                   rowDirectionClass
                 )}
               >
-                {
-                  HStack(
-                    Text(nodeTitle)
-                  ).render()
-                }
-                {/* <div className={classnames('rst__rowLabel', rowDirectionClass)}>
+                <div className={classnames('rst__rowLabel', rowDirectionClass)}>
                   <span
                     className={classnames(
                       'rst__rowTitle',
@@ -204,7 +193,7 @@ class NodeRendererDefault extends React.Component<any, any> {
                       {btn}
                     </div>
                   ))}
-                </div> */}
+                </div>
               </div>
             </div>
           )}

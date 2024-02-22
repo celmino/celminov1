@@ -28,6 +28,7 @@
     "frontend-collective-react-dnd-scrollzone": "^1.0.2",
     "react-dnd": "^7.7.0",
     "react-dnd-html5-backend": "^7.0.1",
+    "react-sortable-tree-theme-file-explorer": "^2.0.0",
     "to-string-loader": "^1.2.0"
   }
 }

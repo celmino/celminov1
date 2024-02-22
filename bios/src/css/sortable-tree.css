@@ -97,7 +97,7 @@
 .ReactVirtualized__List {
 }
 .rst__rowWrapper {
-  /*padding: 10px 10px 10px 0;*/
+  padding: 10px 10px 10px 0;
   height: 100%;
   box-sizing: border-box;
 }
@@ -415,7 +415,7 @@
 .rst__lineChildren::after {
   content: '';
   position: absolute;
-  background-color: black;
+  /* background-color: black; */
   width: 1px;
   left: 50%;
   bottom: 0;
@@ -509,8 +509,10 @@
 
 .rst__nodeContent {
   position: absolute;
+  margin-left: -28px;;
   top: 0;
   bottom: 0;
+  width: 100%;
 }
 
 /* ==========================================================================
@@ -536,7 +538,7 @@
 .rst__lineHalfVerticalBottom::after {
   position: absolute;
   content: '';
-  background-color: black;
+  /* background-color: black; */
 }
 
 /**

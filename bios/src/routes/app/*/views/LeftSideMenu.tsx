@@ -1,5 +1,5 @@
 
-import { Models, Query, useCreateDatabase, useCreateRealm, useGetMe, useGetOrganization, useGetRealm, useGetTeam, useListDatabases, useListDocuments, useListRealms, useListTeams, useUpdatePrefs } from "@realmocean/sdk";
+import { Models, Query, Services, useCreateDatabase, useCreateRealm, useGetMe, useGetOrganization, useGetRealm, useGetTeam, useListDatabases, useListDocuments, useListRealms, useListTeams, useUpdatePrefs } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import {
     DialogPosition,
@@ -11,6 +11,7 @@ import {
     HeadingSizes,
     Icon,
     Icons,
+    MenuButton,
     PopupButton,
     ReactView,
     ScrollView,
@@ -25,6 +26,7 @@ import {
     VStack,
     cHorizontal,
     cLeading, cTopLeading,
+    cTrailing,
     cVertical,
     getAppFullName,
     useNavigate, useParams, useQueryParams
@@ -47,6 +49,10 @@ function a(strings: TemplateStringsArray, ...expr: Array<any>): string {
     });
     return str;
 }
+
+export const CaretDown1 = props => (
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M13.276 8.5 8.813 4.294C8.143 3.666 7 4.111 7 5v10c0 .89 1.144 1.334 1.813.706l4.463-4.206c.965-1 .965-2 0-3Z"></path></svg>
+)
 
 
 export const CollapseRightIcon = props => (
@@ -232,7 +238,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                 const { updatePrefs } = useUpdatePrefs({});
 
-                const [isSorting, setIsSorting] = useState(true);
+                const [isSorting, setIsSorting] = useState(false);
 
                 let _hideHandle;
 
@@ -397,34 +403,189 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                     ),
                                     UIViewBuilder(() => {
                                         const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
+
+                                        const [treeItems, setTreeItems] = useState(documents.map((document) => ({
+                                            id: document.$id,
+                                            title: document.name,
+                                            type: 'applet',
+                                            view: (node, toggle) => {
+                                                const isEditing = false;
+                                                const isSelected = false;
+                                                const nodeType = 'root';
+                                                return (
+                                                    HStack({ alignment: cLeading, spacing: 2 })(
+                                                        // Title
+                                                        (isEditing && is.string(node.title)) ? UIViewBuilder(() => {
+                                                            const [newTitle, setNewTitle] = useState(node.title);
+                                                            //  const { updateDocument } = useUpdateDocument(workspaceId);
+                                                            return (
+                                                                HStack({ alignment: cLeading })(
+                                                                    TextField()
+                                                                        .border('0')
+                                                                        .fontSize(14)
+                                                                        // .fontWeight('500')
+                                                                        .marginLeft(-2)
+                                                                        .padding(cVertical, 3)
+                                                                        .value(newTitle)
+                                                                        .onChange((value) => setNewTitle(value))
+                                                                        .outline({ focus: 'none' })
+                                                                        .onBlur(() => {
+                                                                            if (node.title !== newTitle) {
+                                                                              //  titleChanged(newTitle)
+                                                                            }
+                                                                            //editingChanged(false);
+                                                                        })
+                                                                )
+                                                                    .height()
+                                                                    .onClickAway(() => {
+                                                                        if (node.title !== newTitle) {
+                                                                            //titleChanged(newTitle)
+                                                                            /*  updateDocument({
+                                                                                 databaseId: 'workspace',
+                                                                                 collectionId: 'applets',
+                                                                                 documentId: appletId,
+                                                                                 data: {
+                                                                                     name: newTitle
+                                                                                 }
+                                                                             }); */
+                                                                        }
+                                                                       // editingChanged(false);
+                                                                        //setIsEditing(false);
+                                                                    })
+                                        
+                                                            )
+                                                        })
+                                                            :
+                                        
+                                                            HStack({ alignment: cLeading, spacing: 5 })(
+                                                                is.string(node.title) ?
+                                                                    HStack({ alignment: cLeading })(
+                                                                        Text(node.title)
+                                                                            .fontWeight(isSelected ? '400' : '400')
+                                                                            .fontSize(nodeType === 'root' ? 14 : 14)
+                                                                            .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
+                                                                            .foregroundColor(isSelected ? '#7b68ee' : 'rgb(21, 23, 25)')
+                                                                            .lineHeight(22)
+                                                                    )
+                                        
+                                                                        //.width('calc(100% - 40px)')
+                                                                        .height(32)
+                                                                    : node.title
+                                                            )
+                                                                .onClick(() => {
+                                                                    //requestNavigation();
+                                                                })
+                                                                .overflow('hidden')
+                                                                .height(),
+                                                       /*  Spacer(),
+                                                        (menu == null && editMenu == null) ? Fragment() :
+                                                            HStack({ alignment: cTrailing })(
+                                                                HStack({ spacing: 3 })(
+                                                                    menu == null ? Fragment() :
+                                                                        MenuButton()
+                                                                            .model(menu)
+                                                                            .icon(AddIcon),
+                                                                    editMenu == null ? Fragment() :
+                                                                        MenuButton()
+                                                                            .model(editMenu)
+                                                                            .icon(EditIcon)
+                                                                )
+                                                            )
+                                                                .onClick((e) => {
+                                                                    e.preventDefault();
+                                                                    e.stopPropagation();
+                                                                })
+                                        
+                                                                .width(64).height(32).padding(cHorizontal, 5)
+                                                                .display('var(--show-space-action-buttons)'), */
+                                                    )
+                                                        .transition('transform .12s ease-in-out')
+                                                        .transform('translate3d(0px, 0, 0)')
+                                                        .fontWeight('500')
+                                                        .height()//.padding(5)
+                                                        .minHeight(30)
+                                                        .background({ default: isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
+                                                        .cornerRadius(6)
+                                                        .variable('--show-space-action-buttons', { default: 'none', hover: isEditing ? 'none' : 'flex' })
+                                                        .variable(`--display-caret`, { default: 'hidden', hover: 'visible' })
+                                                        .variable(`--display-icon`, { default: 'visible', hover: 'hidden' })
+                                                )
+                                            },
+                                            children: [{ title: 'sadasd' , children: [
+                                                { title: 'sadasd' },
+                                                { title: 'sadasd' }
+                                            ]}]/* ({node, done }) => {
+                                                console.log(node);
+                                                Services.Databases.listDocuments(workspaceId, node.id, 'dm_tree', [
+                                                ]).then( documents => {
+                                                    done(
+                                                        documents.documents.map(document=> ({
+                                                            title: document.name, 
+                                                            children: ({ done }) => {
+                                                                done([{ title: 'son' }])
+                                                            }
+                                                        }))
+                                                    )
+                                                        
+                                                });
+                                                
+                                                
+                                            } */
+
+                                        })));
+                                        const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
+                                            if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
+                                                return false;
+                                            }
+
+                                            if (node.isTwin && nextParent && nextParent.isTwin) {
+                                                return false;
+                                            }
+
+                                            const noGrandkidsDepth = nextPath.indexOf('no-grandkids');
+                                            if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
+                                                return false;
+                                            }
+
+                                            return true;
+                                        };
                                         return (
                                             VStack({ alignment: cTopLeading, spacing: 5 })(
                                                 documents ?
                                                     ScrollView({ axes: cVertical, alignment: cTopLeading })(
-                                                       
+
                                                         UIWidget('com.celmino.widget.sortable-tree')
-                                                        .config({}),
+                                                            .config({
+                                                                treeItems: treeItems,
+                                                                onChange: (treeItems) => {
+                                                                    // console.log(treeItems)
+                                                                    setTreeItems(treeItems)
+                                                                },
+                                                                onMoveNode: (e) => {
+                                                                    console.log(e)
+                                                                }
+                                                            }),
                                                         // Text(documents[0]['opa']),
-                                                        isSorting ?
-                                                            SortableListView()
-                                                                .items(realms)
-                                                                .renderItem(realm =>
-                                                                    UIWidget(realm['opa'])
-                                                                        .config({
-                                                                            ...(useParams() || {}),
-                                                                            appletId: realm.$id
-                                                                        }),
-                                                                )
-                                                                .onChange(realms => setRealms(realms)) :
-                                                            VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                                ...ForEach(documents)(applet =>
-                                                                    UIWidget(applet['opa'])
-                                                                        .config({
-                                                                            ...(useParams() || {}),
-                                                                            appletId: applet.$id
-                                                                        }),
-                                                                )
-                                                            )
+                                                        /*  isSorting ?
+                                                             SortableListView()
+                                                                 .items(realms)
+                                                                 .renderItem(realm =>
+                                                                     UIWidget(realm['opa'])
+                                                                         .config({
+                                                                             ...(useParams() || {}),
+                                                                             appletId: realm.$id
+                                                                         }),
+                                                                 )
+                                                                 .onChange(realms => setRealms(realms)) :
+                                                             VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                                 ...ForEach(documents)(applet =>
+                                                                     UIWidget(applet['opa'])
+                                                                         .config({
+                                                                             ...(useParams() || {}),
+                                                                             appletId: applet.$id
+                                                                         }),
+                                                                 )
+                                                             ) */
                                                     ) : Fragment()
                                                 /*  ...ForEach(spaces)(space =>
                                                      Text(space.name)

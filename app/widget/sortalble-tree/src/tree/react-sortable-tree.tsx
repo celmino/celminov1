@@ -34,6 +34,7 @@ import {
 } from './utils/default-handlers';
 import DndManager from './utils/dnd-manager';
 import classnames from './utils/classnames';
+import MyNodeRendererDefault from './my-node-renderer';
 
 let treeIdCounter = 1;
 
@@ -49,7 +50,7 @@ const mergeTheme = props => {
   };
 
   const overridableDefaults = {
-    nodeContentRenderer: NodeRendererDefault,
+    nodeContentRenderer: MyNodeRendererDefault,
     placeholderRenderer: PlaceholderRendererDefault,
     rowHeight: 62,
     scaffoldBlockPxWidth: 44,
@@ -208,6 +209,7 @@ class ReactSortableTree extends React.Component<any, any> {
 
   // listen to dragging
   componentDidUpdate(prevProps, prevState) {
+   ReactSortableTree.loadLazyChildren(this.props, this.state);
     // if it is not the same then call the onDragStateChanged
     if (this.state.dragging !== prevState.dragging) {
       if (this.props.onDragStateChanged) {
@@ -509,6 +511,7 @@ class ReactSortableTree extends React.Component<any, any> {
       treeData: instanceProps.treeData,
       getNodeKey: props.getNodeKey,
       callback: ({ node, path, lowerSiblingCounts, treeIndex }) => {
+        
         // If the node has children defined by a function, and is either expanded
         //  or set to load even before expansion, run the function.
         if (
@@ -517,6 +520,7 @@ class ReactSortableTree extends React.Component<any, any> {
           (node.expanded || props.loadCollapsedLazyChildren)
         ) {
           // Call the children fetching function
+          
           node.children({
             node,
             path,
