@@ -5914,6 +5914,19 @@ function a(strings) {
     });
     return str;
 }
+function sortByStringField(arr, field) {
+    return arr.slice().sort(function (a, b) {
+        var nameA = a[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
+        var nameB = b[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+}
 var CaretDown1 = function (props) { return (react__WEBPACK_IMPORTED_MODULE_3___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
     react__WEBPACK_IMPORTED_MODULE_3___default().createElement("path", { d: "M13.276 8.5 8.813 4.294C8.143 3.666 7 4.111 7 5v10c0 .89 1.144 1.334 1.813.706l4.463-4.206c.965-1 .965-2 0-3Z" }))); };
 var CollapseRightIcon = function (props) { return (react__WEBPACK_IMPORTED_MODULE_3___default().createElement("svg", { viewBox: "0 0 24 24", style: { color: 'gray' }, width: "24", height: "24", "aria-hidden": "true" },
@@ -6135,35 +6148,30 @@ var LeftSideMenuView = function (selectedItem) {
                         function findChildsInTree(workspaceTree, parentNode) {
                             var children = [];
                             workspaceTree.forEach(function (item) {
-                                if (item.parent === parentNode.$id) {
+                                if (item.parent === (parentNode === null || parentNode === void 0 ? void 0 : parentNode.$id)) {
                                     children.push(item);
                                 }
                             });
                             return children;
                         }
                         function findItemInTree(tree, id) {
-                            var result = null;
-                            function findItemInTreeRecursive(tree, id) {
-                                if (tree.id === id) {
-                                    result = tree;
-                                    return;
+                            var result;
+                            tree.forEach(function (item) {
+                                if (item.$id === id) {
+                                    result = item;
                                 }
-                                if (tree.children) {
-                                    tree.children.forEach(function (child) {
-                                        findItemInTreeRecursive(child, id);
-                                    });
-                                }
-                            }
-                            findItemInTreeRecursive(tree, id);
+                            });
                             return result;
                         }
                         function buildClidren(workspaceTree, parentNode) {
-                            var item = findItemInTree(workspaceTree, parentNode.$id);
+                            debugger;
+                            var item = findItemInTree(workspaceTree, parentNode.id);
                             var children = findChildsInTree(workspaceTree, item);
+                            children = sortByStringField(children, "path");
                             parentNode.children = children.map(function (child) {
                                 return {
                                     id: child.$id,
-                                    title: child.title,
+                                    title: child.name,
                                     parent: child.parent,
                                     path: child.path,
                                     children: buildClidren(workspaceTree, child)
@@ -6172,7 +6180,9 @@ var LeftSideMenuView = function (selectedItem) {
                         }
                         function buildTree(workspaceTree) {
                             var tree = [];
-                            workspaceTree.forEach(function (item) {
+                            var rootItems = workspaceTree.filter(function (item) { return item.parent === '-1'; });
+                            rootItems = sortByStringField(rootItems, "path");
+                            rootItems.forEach(function (item) {
                                 if (item.parent === '-1') {
                                     var node = {
                                         id: item.$id,

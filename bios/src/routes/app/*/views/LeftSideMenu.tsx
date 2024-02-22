@@ -51,6 +51,21 @@ function a(strings: TemplateStringsArray, ...expr: Array<any>): string {
     return str;
 }
 
+
+function sortByStringField(arr, field) {
+    return arr.slice().sort(function(a, b) {
+        var nameA = a[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
+        var nameB = b[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
 export const CaretDown1 = props => (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M13.276 8.5 8.813 4.294C8.143 3.666 7 4.111 7 5v10c0 .89 1.144 1.334 1.813.706l4.463-4.206c.965-1 .965-2 0-3Z"></path></svg>
 )
@@ -434,7 +449,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         function findChildsInTree(workspaceTree,parentNode) {
                                             const children = [];
                                             workspaceTree.forEach(item => {
-                                                if (item.parent === parentNode.$id) {
+                                                if (item.parent === parentNode?.$id) {
                                                     children.push(item);
                                                 }
                                             })
@@ -446,29 +461,26 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
 
                                         function findItemInTree(tree, id) {
-                                            let result = null;
-                                            function findItemInTreeRecursive(tree, id) {
-                                                if (tree.id === id) {
-                                                    result = tree;
-                                                    return;
+                                            let result;
+                                            tree.forEach(item => {
+                                                if (item.$id === id) {
+                                                    result = item;
                                                 }
-                                                if (tree.children) {
-                                                    tree.children.forEach(child => {
-                                                        findItemInTreeRecursive(child, id);
-                                                    })
-                                                }
-                                            }
-                                            findItemInTreeRecursive(tree, id);
+                                              
+                                            });
                                             return result;
                                         }
 
                                         function buildClidren(workspaceTree,parentNode) {
-                                            const item = findItemInTree(workspaceTree, parentNode.$id);
-                                            const children: any[] = findChildsInTree(workspaceTree,item);
+                                            debugger;
+                                            const item = findItemInTree(workspaceTree, parentNode.id);
+                                            let children: any[] = findChildsInTree(workspaceTree,item);
+                                            children = sortByStringField(children, "path");
+                                            
                                             parentNode.children = children.map(child => {
                                                 return {
                                                     id: child.$id,
-                                                    title: child.title,
+                                                    title: child.name,
                                                     parent: child.parent,
                                                     path: child.path,
                                                     children: buildClidren(workspaceTree,child)
@@ -478,7 +490,9 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                         function buildTree(workspaceTree) {
                                             const tree = [];
-                                            workspaceTree.forEach(item => {
+                                            let rootItems = workspaceTree.filter(item => item.parent === '-1');
+                                            rootItems = sortByStringField(rootItems, "path");
+                                            rootItems.forEach(item => {
                                                 if (item.parent === '-1') {
                                                     const node = {
                                                         id: item.$id,
