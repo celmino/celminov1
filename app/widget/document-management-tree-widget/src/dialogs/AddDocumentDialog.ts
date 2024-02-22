@@ -1,4 +1,5 @@
 import { useCreateDocument } from "@realmocean/sdk";
+import { EventBus } from "@tuval/core";
 import { UIViewBuilder, useFormController, useDialog, useFormBuilder, useNavigate, Button, Text } from "@tuval/forms";
 
 
@@ -18,6 +19,8 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
 
     const views = []
     const { workspaceId, appletId } = formMeta;
+
+    const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
     const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'dm_tree');
     const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'dm_documents');
     const { createDocument: createDocumentContent } = useCreateDocument(workspaceId, appletId, 'dm_document_contents');
@@ -30,7 +33,7 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
             .onClick(() => {
 
                 const data = { ...formController.GetFormData() }
-               
+
                 createDocument(
                     {
                         data: {
@@ -38,21 +41,41 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
                         }
                     },
                     (document) => {
+
+
+
                         createDocumentContent({
                             documentId: document.$id,
                             data: {
                                 content: ''
                             }
-                        },  (document) => {
+                        }, (document) => {
+
+                            createWorkspaceTreeItem({
+                                documentId: document.$id,
+                                data: {
+                                    name: data.name,
+                                    type: 'document',
+                                    parent:data.parent,
+                                    tree_widget: 'com.celmino.widget.document-management-tree',
+                                    path: (new Date()).getTime().toString(),
+                                    iconName: 'bell',
+                                    iconCategory: 'Icons',
+                                    //viewer:'com.tuvalsoft.viewer.document'
+                                }
+                            }, (item)=> {
+                                EventBus.Default.fire('applet.added', { item })
+                            })
+
                             createTreeItem({
                                 documentId: document.$id,
                                 data: {
                                     ...data,
                                     type: 'document',
-                                    viewer:'com.tuvalsoft.viewer.document'
+                                    viewer: 'com.tuvalsoft.viewer.document'
                                 }
                             }, () => dialog.Hide())
-    
+
                         })
 
                     }

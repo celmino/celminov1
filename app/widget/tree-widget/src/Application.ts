@@ -5,6 +5,7 @@ import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { SaveFolderAction } from './dialogs/AddFolderDialog';
 import { SaveDocumentAction } from './dialogs/AddDocumentDialog';
 import { SaveWhiteboardAction } from './dialogs/AddWhiteboardDialog';
+import { AppController2 } from './AppController2';
 
 const manifest = require('./manifest');
 
@@ -22,7 +23,7 @@ function App(manifest: any) {
 @App(manifest)
 export class RatingWidget {
     public GetMainController() {
-       return MyTestController;
+       return AppController2;
     }
 }
 

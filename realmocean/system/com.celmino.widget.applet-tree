@@ -3287,16 +3287,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/AppController.ts":
-/*!******************************!*\
-  !*** ./src/AppController.ts ***!
-  \******************************/
+/***/ "./src/AppController2.ts":
+/*!*******************************!*\
+  !*** ./src/AppController2.ts ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   MyTestController: () => (/* binding */ MyTestController)
+/* harmony export */   AppController2: () => (/* binding */ AppController2)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -3305,6 +3305,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialogs/AddSpaceDialog */ "./src/dialogs/AddSpaceDialog.ts");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
 /* harmony import */ var _views_TreeNode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/TreeNode */ "./src/views/TreeNode.ts");
+/* harmony import */ var _views_TreeNode2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/TreeNode2 */ "./src/views/TreeNode2.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -3331,6 +3332,7 @@ var __assign = (undefined && undefined.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+
 
 
 
@@ -3369,15 +3371,16 @@ var subNodes = function (level, nodeType, parentId, workspaceId, appletId) { ret
         });
     })));
 }); };
-var MyTestController = /** @class */ (function (_super) {
-    __extends(MyTestController, _super);
-    function MyTestController() {
+var AppController2 = /** @class */ (function (_super) {
+    __extends(AppController2, _super);
+    function AppController2() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    MyTestController.prototype.LoadView = function () {
-        var _a = this.props.config || {}, workspaceId = _a.workspaceId, appletId = _a.appletId, appletName = _a.appletName, subNodes = _a.subNodes, requestMenu = _a.requestMenu, requestEditMenu = _a.requestEditMenu, requestNavigation = _a.requestNavigation, isEditing = _a.isEditing, editingChanged = _a.editingChanged, titleChanged = _a.titleChanged, isSelected = _a.isSelected, iconName = _a.iconName, iconCategory = _a.iconCategory;
+    AppController2.prototype.LoadView = function () {
+        var _a = this.props.config || {}, node = _a.node, workspaceId = _a.workspaceId, appletId = _a.appletId, appletName = _a.appletName, subNodes = _a.subNodes, requestMenu = _a.requestMenu, requestEditMenu = _a.requestEditMenu, requestNavigation = _a.requestNavigation, isEditing = _a.isEditing, editingChanged = _a.editingChanged, titleChanged = _a.titleChanged, isSelected = _a.isSelected, iconName = _a.iconName, iconCategory = _a.iconCategory;
         // const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId })
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.OptionsContext)(function () { return ((0,_views_TreeNode__WEBPACK_IMPORTED_MODULE_4__.TreeNode)({
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.OptionsContext)(function () { return ((0,_views_TreeNode2__WEBPACK_IMPORTED_MODULE_5__.TreeNode2)({
+            node: node,
             title: appletName,
             isSelected: isSelected,
             requestMenu: requestMenu,
@@ -3390,11 +3393,13 @@ var MyTestController = /** @class */ (function (_super) {
             iconCategory: iconCategory,
             //isExpand: expanded,
             //expandChanged: setExpanded,
-            subNode: function (nodeType) { return (subNodes(_views_TreeNode__WEBPACK_IMPORTED_MODULE_4__.TreeNode, 1, nodeType, '-1', workspaceId, appletId)); }
+            subNode: function (nodeType) { return (void 0
+            //subNodes(TreeNode, 1, nodeType, '-1', workspaceId, appletId)
+            ); }
         })); })
             .options(__assign({}, (this.props.config || {}))));
     };
-    return MyTestController;
+    return AppController2;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveSpace', _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_2__.SaveSpaceAction);
@@ -4245,6 +4250,122 @@ var TreeNode = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPORT
 
 /***/ }),
 
+/***/ "./src/views/TreeNode2.ts":
+/*!********************************!*\
+  !*** ./src/views/TreeNode2.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeNode2: () => (/* binding */ TreeNode2)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Icons */ "./src/Icons.tsx");
+
+
+
+
+var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+    var node = treeNodeProps.node, _a = treeNodeProps.isLoading, isLoading = _a === void 0 ? false : _a, _b = treeNodeProps.isEditing, isEditing = _b === void 0 ? false : _b, _c = treeNodeProps.isSelected, isSelected = _c === void 0 ? false : _c, _d = treeNodeProps.title, title = _d === void 0 ? '' : _d, _e = treeNodeProps.level, level = _e === void 0 ? 0 : _e, _f = treeNodeProps.menuModel, menuModel = _f === void 0 ? [] : _f, _g = treeNodeProps.subNode, subNode = _g === void 0 ? function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(); } : _g, _h = treeNodeProps.nodeType, nodeType = _h === void 0 ? 'root' : _h, _j = treeNodeProps.titleChanged, titleChanged = _j === void 0 ? function () { return void 0; } : _j, _k = treeNodeProps.editingChanged, editingChanged = _k === void 0 ? function () { return void 0; } : _k, _l = treeNodeProps.iconName, iconName = _l === void 0 ? '' : _l, _m = treeNodeProps.iconCategory, iconCategory = _m === void 0 ? '' : _m, _o = treeNodeProps.requestIcon, requestIcon = _o === void 0 ? function () { return void 0; } : _o, _p = treeNodeProps.requestNavigation, requestNavigation = _p === void 0 ? function () { return void 0; } : _p, _q = treeNodeProps.requestMenu, requestMenu = _q === void 0 ? function () { return []; } : _q, _r = treeNodeProps.requestEditMenu, requestEditMenu = _r === void 0 ? function () { return null; } : _r;
+    var _s = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), expanded = _s[0], setExpanded = _s[1];
+    var menu = requestMenu(node);
+    var editMenu = requestEditMenu(node);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 2 })(
+    // Title
+    (isEditing && _tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(title)) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(title), newTitle = _a[0], setNewTitle = _a[1];
+        //  const { updateDocument } = useUpdateDocument(workspaceId);
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)()
+            .border('0')
+            .fontSize(14)
+            // .fontWeight('500')
+            .marginLeft(-2)
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, 3)
+            .value(newTitle)
+            .onChange(function (value) { return setNewTitle(value); })
+            .outline({ focus: 'none' })
+            .onBlur(function () {
+            if (title !== newTitle) {
+                titleChanged(newTitle);
+            }
+            editingChanged(false);
+        }))
+            .height()
+            .onClickAway(function () {
+            if (title !== newTitle) {
+                titleChanged(newTitle);
+                /*  updateDocument({
+                     databaseId: 'workspace',
+                     collectionId: 'applets',
+                     documentId: appletId,
+                     data: {
+                         name: newTitle
+                     }
+                 }); */
+            }
+            editingChanged(false);
+            //setIsEditing(false);
+        }));
+    })
+        :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(title) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(title)
+                    .fontWeight(isSelected ? '400' : '400')
+                    .fontSize(nodeType === 'root' ? 14 : 14)
+                    .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
+                    .foregroundColor(isSelected ? '#7b68ee' : 'rgb(21, 23, 25)')
+                    .lineHeight(22))
+                    //.width('calc(100% - 40px)')
+                    .height(32)
+                : title)
+                .onClick(function () {
+                requestNavigation();
+            })
+                .overflow('hidden')
+                .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (menu == null && editMenu == null) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 3 })(menu == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
+                .model(menu)
+                .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.AddIcon), editMenu == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
+                .model(editMenu)
+                .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.EditIcon)))
+            .onClick(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        })
+            .width(64).height(32).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5)
+            .display('var(--show-space-action-buttons)'))
+        .transition('transform .12s ease-in-out')
+        //.width('calc(100% - 0px)')
+        .transform('translate3d(0px, 0, 0)')
+        .fontWeight('500')
+        .height() //.padding(5)
+        .minHeight(30)
+        //.padding(cVertical, isEditing ? 0 : 5)
+        .paddingLeft("".concat(20 * level, "px"))
+        .background({ default: isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
+        .cornerRadius(6)
+        //.clipPath(isSelected ? 'polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 50%, 0 0)' : '')
+        .variable('--show-space-action-buttons', { default: 'none', hover: isEditing ? 'none' : 'flex' })
+        .variable("--display-caret", { default: 'hidden', hover: 'visible' })
+        .variable("--display-icon", { default: 'visible', hover: 'hidden' })
+        .variable("--opacity-caret", { default: '0', hover: '1' })
+        .variable("--opacity-icon", { default: '1', hover: '0' }), expanded ?
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(subNode(nodeType))
+            .height() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()).height());
+}); };
+
+
+/***/ }),
+
 /***/ "./src/manifest.js":
 /*!*************************!*\
   !*** ./src/manifest.js ***!
@@ -4400,13 +4521,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   RatingWidget: () => (/* binding */ RatingWidget)
 /* harmony export */ });
-/* harmony import */ var _AppController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppController */ "./src/AppController.ts");
-/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/ui */ "@realmocean/ui");
-/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_ui__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialogs/AddSpaceDialog */ "./src/dialogs/AddSpaceDialog.ts");
-/* harmony import */ var _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialogs/AddFolderDialog */ "./src/dialogs/AddFolderDialog.ts");
-/* harmony import */ var _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialogs/AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
-/* harmony import */ var _dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dialogs/AddWhiteboardDialog */ "./src/dialogs/AddWhiteboardDialog.ts");
+/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/ui */ "@realmocean/ui");
+/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dialogs/AddSpaceDialog */ "./src/dialogs/AddSpaceDialog.ts");
+/* harmony import */ var _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dialogs/AddFolderDialog */ "./src/dialogs/AddFolderDialog.ts");
+/* harmony import */ var _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialogs/AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
+/* harmony import */ var _dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialogs/AddWhiteboardDialog */ "./src/dialogs/AddWhiteboardDialog.ts");
+/* harmony import */ var _AppController2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AppController2 */ "./src/AppController2.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4432,7 +4553,7 @@ var RatingWidget = /** @class */ (function () {
     function RatingWidget() {
     }
     RatingWidget.prototype.GetMainController = function () {
-        return _AppController__WEBPACK_IMPORTED_MODULE_0__.MyTestController;
+        return _AppController2__WEBPACK_IMPORTED_MODULE_5__.AppController2;
     };
     RatingWidget = __decorate([
         App(manifest)
@@ -4440,10 +4561,10 @@ var RatingWidget = /** @class */ (function () {
     return RatingWidget;
 }());
 
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction('saveSpace', _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_2__.SaveSpaceAction);
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction('dm_saveFolder', _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_3__.SaveFolderAction);
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction('saveDocument', _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_4__.SaveDocumentAction);
-_realmocean_ui__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.injectAction('saveWhiteboard', _dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_5__.SaveWhiteboardAction);
+_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveSpace', _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_1__.SaveSpaceAction);
+_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('dm_saveFolder', _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__.SaveFolderAction);
+_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveDocument', _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.SaveDocumentAction);
+_realmocean_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveWhiteboard', _dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_4__.SaveWhiteboardAction);
 
 })();
 

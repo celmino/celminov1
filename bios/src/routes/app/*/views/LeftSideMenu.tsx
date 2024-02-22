@@ -1,5 +1,5 @@
 
-import { Models, Query, Services, useCreateDatabase, useCreateRealm, useDeleteCache, useGetMe, useGetOrganization, useGetRealm, useGetTeam, useListDatabases, useListDocuments, useListRealms, useListTeams, useUpdatePrefs } from "@realmocean/sdk";
+import { Models, Query, Services, useCreateDatabase, useCreateRealm, useDeleteCache, useGetMe, useGetOrganization, useGetRealm, useGetTeam, useListDatabases, useListDocuments, useListRealms, useListTeams, useUpdateDocument, useUpdatePrefs } from "@realmocean/sdk";
 import { EventBus, is } from "@tuval/core";
 import {
     DialogPosition,
@@ -40,6 +40,8 @@ import { AddAppletDialog } from "../../../../dialogs/AddAppletDialog";
 import { useGetCurrentOrganization } from "../../../../hooks/useGetCurrentOrganization";
 import { SelectAppletDialog } from "@celmino/ui";
 
+
+const expandeds = {};
 function a(strings: TemplateStringsArray, ...expr: Array<any>): string {
     let str = '';
     strings.forEach((string, i) => {
@@ -53,7 +55,7 @@ function a(strings: TemplateStringsArray, ...expr: Array<any>): string {
 
 
 function sortByStringField(arr, field) {
-    return arr.slice().sort(function(a, b) {
+    return arr.slice().sort(function (a, b) {
         var nameA = a[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
         var nameB = b[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
         if (nameA < nameB) {
@@ -432,7 +434,11 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         //    )
                                     ),
                                     UIViewBuilder(() => {
+                                        const params = useParams();
                                         const { deleteCache } = useDeleteCache(workspaceId);
+                                        
+
+
                                         useEffect(() => {
                                             EventBus.Default.on('applet.added', ({ treeItem }) => {
                                                 deleteCache();
@@ -446,7 +452,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         }, [])
                                         //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
 
-                                        function findChildsInTree(workspaceTree,parentNode) {
+                                        function findChildsInTree(workspaceTree, parentNode) {
                                             const children = [];
                                             workspaceTree.forEach(item => {
                                                 if (item.parent === parentNode?.$id) {
@@ -466,26 +472,30 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                 if (item.$id === id) {
                                                     result = item;
                                                 }
-                                              
+
                                             });
                                             return result;
                                         }
 
-                                        function buildClidren(workspaceTree,parentNode) {
+                                        function buildClidren(workspaceTree, parentNode) {
                                             debugger;
-                                            const item = findItemInTree(workspaceTree, parentNode.id);
-                                            let children: any[] = findChildsInTree(workspaceTree,item);
-                                            children = sortByStringField(children, "path");
+                                            const item = findItemInTree(workspaceTree, parentNode.$id);
+                                            let children: any[] = findChildsInTree(workspaceTree, item);
                                             
+                                            children = sortByStringField(children, "path");
+
                                             parentNode.children = children.map(child => {
                                                 return {
-                                                    id: child.$id,
+                                                    $id: child.$id,
                                                     title: child.name,
                                                     parent: child.parent,
                                                     path: child.path,
-                                                    children: buildClidren(workspaceTree,child)
+                                                    tree_widget: item.tree_widget,
+                                                    children: buildClidren(workspaceTree, child)
                                                 }
                                             })
+
+                                            return parentNode.children ;
                                         }
 
                                         function buildTree(workspaceTree) {
@@ -495,14 +505,30 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                             rootItems.forEach(item => {
                                                 if (item.parent === '-1') {
                                                     const node = {
-                                                        id: item.$id,
-                                                        title: item.name,
+                                                        $id: item.$id,
+                                                        title: expandeds?.[item.$id] ? true : false,
                                                         parent: item.parent,
                                                         path: item.path,
+                                                        tree_widget: item.tree_widget,
+                                                        expanded: expandeds?.[item.$id] ? true : false,
+                                                        view: (node) => {
+                                                            return (
+                                                                HStack(
+                                                                    item.tree_widget != null ?
+                                                                        UIWidget(item.tree_widget)
+                                                                            .config({
+                                                                                item: item,
+                                                                                ...(params || {}),
+                                                                                appletId: item.$id
+                                                                            }) :
+                                                                        Text(item.name)
+                                                                )
+                                                            )
+                                                        },
                                                         children: []
                                                     };
                                                     tree.push(node);
-                                                    buildClidren(workspaceTree,node);
+                                                    buildClidren(workspaceTree, node);
                                                 }
                                             })
                                             console.log('---------tree--------')
@@ -512,7 +538,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                         const [prevTreeItems, setPrevTreeItems] = useState([]);
                                         const [treeItems, setTreeItems] = useState(buildTree(workspaceTreeITems));
-
+                                      
 
                                         const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
                                             if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
@@ -544,6 +570,17 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                     setTreeItems(_treeItems);
 
                                                                 },
+                                                                onVisibilityToggle: ({ node, expanded }) => {
+                                                                  
+                                                                    if (expanded) {
+                                                                        expandeds[node.$id] = true;
+                                                                    } else {
+                                                                        delete expandeds[node.$id];
+                                                                    }
+
+                                                                    console.log(expandeds);
+                                                                    
+                                                                },
                                                                 onMoveNode: ({ treeData }) => {
                                                                     const newTreeData = [...treeData];
 
@@ -554,7 +591,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                 child.prevParent = child.parent;
                                                                                 child.prevPath = child.path;
                                                                                 child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                                child.parent = parentNode.id;
+                                                                                child.parent = parentNode.$id;
                                                                                 if (child.prevPath == null) {
                                                                                     child.prevPath = child.path;
                                                                                 }
@@ -574,12 +611,13 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                         reCreateIndex(item);
                                                                     });
 
-
+                                                                    const changes = [];
                                                                     function getChanges(parentNode) {
                                                                         if (parentNode.children) {
                                                                             parentNode.children.forEach((child) => {
                                                                                 if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
-                                                                                    console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                                                   // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                                                   changes.push(child);
                                                                                 }
                                                                                 getChanges(child);
                                                                             });
@@ -588,13 +626,19 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                                                     newTreeData.forEach((item, index) => {
                                                                         if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
-                                                                            console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                                            //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                                            changes.push(item);
                                                                         }
                                                                         getChanges(item);
                                                                     });
 
 
-
+                                                                    changes.forEach(item => {
+                                                                        Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                                                            path:item.path,
+                                                                            parent: item.parent
+                                                                        })
+                                                                    })
 
                                                                     console.log(newTreeData)
 

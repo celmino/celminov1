@@ -51081,6 +51081,8 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                 .render()), {
                 dropEffect: 'copy',
             }))).render()))))))
+            .cornerRadius(6)
+            .background({ default: node.isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
             .transition('all .12s ease-in-out')
             //  .paddingLeft(parentNode != null ? `${getParentCount(parentNode) * 20}px` : '')
             .variable("--opacity-caret", { default: '0', hover: '1' })
@@ -54494,7 +54496,7 @@ var Tree = /** @class */ (function (_super) {
         return _this;
     }
     Tree.prototype.render = function () {
-        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 32; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode }));
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 32; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode, onVisibilityToggle: this.props.onVisibilityToggle }));
     };
     return Tree;
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component)));
@@ -54505,9 +54507,9 @@ var MyTestController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyTestController.prototype.LoadView = function () {
-        var _a = this.props.config, treeItems = _a.treeItems, onChange = _a.onChange, onMoveNode = _a.onMoveNode;
+        var _a = this.props.config, treeItems = _a.treeItems, onChange = _a.onChange, onMoveNode = _a.onMoveNode, onVisibilityToggle = _a.onVisibilityToggle;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { height: '500px', width: '100%' } },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Tree, { items: treeItems, onChange: onChange, onMoveNode: onMoveNode })))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Tree, { items: treeItems, onChange: onChange, onMoveNode: onMoveNode, onVisibilityToggle: onVisibilityToggle })))));
     };
     return MyTestController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));

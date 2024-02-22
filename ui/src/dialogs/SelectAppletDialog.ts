@@ -184,10 +184,14 @@ export class SelectAppletDialog extends DialogView {
                                                     }, async (applet) => {
 
                                                         createWorkspaceTreeItem({
+                                                            documentId: applet.$id,
                                                             data: {
                                                                 name: opa.name,
                                                                 type: 'applet',
+                                                                tree_widget:opa.tree_type,
+                                                                appletId:applet.$id,
                                                                 parent: this.parent,
+                                                                path: (new Date()).getTime().toString(),
                                                                 iconName: opa.iconName,
                                                                 iconCategory: opa.iconCategory,
                                                             }

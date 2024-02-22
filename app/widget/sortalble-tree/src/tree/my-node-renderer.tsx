@@ -253,6 +253,8 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                     </div>
                 )
             )
+                .cornerRadius(6)
+                .background({ default: node.isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
                 .transition('all .12s ease-in-out')
                 //  .paddingLeft(parentNode != null ? `${getParentCount(parentNode) * 20}px` : '')
                 .variable(`--opacity-caret`, { default: '0', hover: '1' })

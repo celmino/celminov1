@@ -62,6 +62,7 @@ export class Tree extends React.Component<any, any> {
                 treeData={this.props.items}
                 onChange={this.props.onChange}
                 onMoveNode={this.props.onMoveNode}
+                onVisibilityToggle={this.props.onVisibilityToggle}
             />
 
         );
@@ -72,12 +73,12 @@ export class Tree extends React.Component<any, any> {
 export class MyTestController extends UIFormController {
 
     public override LoadView(): UIView {
-        const { treeItems, onChange, onMoveNode } = this.props.config;
+        const { treeItems, onChange, onMoveNode, onVisibilityToggle } = this.props.config;
         return (
             HStack({ alignment: 'cTopLeading' })(
                 ReactView(
                     <div style={{ height: '500px', width: '100%' }}>
-                        <Tree items={treeItems} onChange={onChange} onMoveNode={onMoveNode} />
+                        <Tree items={treeItems} onChange={onChange} onMoveNode={onMoveNode} onVisibilityToggle={onVisibilityToggle}/>
                     </div>
                 )
             )

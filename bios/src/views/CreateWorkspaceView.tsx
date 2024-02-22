@@ -106,6 +106,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false);
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false);
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false);
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false);
                                         await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false);
 
