@@ -108,7 +108,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
         
         return (
 
-            HStack({ alignment: 'cLeading' })(
+            HStack({ alignment: 'cTopLeading' })(
                 ReactView(
                     <div style={{ height: '100%', width: '100%' }} {...otherProps}>
                         <div>

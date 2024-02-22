@@ -350,7 +350,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                         )
                                             .height().cursor('pointer')
-                                            .padding(10)
+                                            .padding(cHorizontal, 10)
                                             .background({ hover: '#E8EAED' })
                                             .cornerRadius(6)
 
@@ -481,7 +481,6 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         }
 
                                         function buildClidren(workspaceTree, parentNode) {
-                                            debugger;
                                             const item = findItemInTree(workspaceTree, parentNode.$id);
                                             let children: any[] = findChildsInTree(workspaceTree, item);
                                             
@@ -574,7 +573,6 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         };
                                         return (
                                             VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                Text(JSON.stringify(workspaceTreeITems)),
                                                 documents ?
                                                     ScrollView({ axes: cVertical, alignment: cTopLeading })(
 
@@ -689,7 +687,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
 
 
-                                            ).padding(8)
+                                            ).padding(cHorizontal, 8)
                                         )
                                     }
                                     ),

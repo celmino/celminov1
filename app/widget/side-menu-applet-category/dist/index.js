@@ -58,13 +58,13 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var _a = this.props.config || {}, workspaceId = _a.workspaceId, appletId = _a.appletId, onItemSelected = _a.onItemSelected, item = _a.item;
         // const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId })
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item === null || item === void 0 ? void 0 : item.name)
-            .fontSize(16)
+            .fontSize(14)
             .fontWeight('500')
             .foregroundColor('#222522'))
-            .allHeight(30)
+            .height(30)
             //.marginVertical(5)
-            .padding()
-            .background('#E4EAE2')
+            //  .padding()
+            // .background('#E4EAE2')
             .cornerRadius(5)
         //.clipPath('polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 50%, 0 0)')
         );

@@ -120,11 +120,10 @@
  */
 .rst__rowLandingPad,
 .rst__rowCancelPad {
-  height: 20px !important;
   background: hsl(158, 50%, 70%) !important;
-  border: none !important;
+  border: dashed 3px hsl(158, 50%, 50%) !important;
   box-shadow: none !important;
-  outline: dashed 3px hsl(158, 50%, 50%) !important;
+  outline: none !important;
   border-radius: 6px;
 }
 .rst__rowLandingPad > *,
@@ -516,7 +515,6 @@
   top: 0;
   bottom: 0;
   width: 100%;
-  transition: top 0.5s ease-in-out;;
 }
 
 /* ==========================================================================

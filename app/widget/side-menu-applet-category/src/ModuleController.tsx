@@ -14,14 +14,14 @@ export class WorkspaceTreeWidgetController extends UIController {
         return (
             HStack({ alignment: cLeading })(
                 Text(item?.name)
-                    .fontSize(16)
+                    .fontSize(14)
                     .fontWeight('500')
                     .foregroundColor('#222522')
             )
-                .allHeight(30)
+                .height(30)
                 //.marginVertical(5)
-                .padding()
-                .background('#E4EAE2')
+              //  .padding()
+               // .background('#E4EAE2')
                 .cornerRadius(5)
             //.clipPath('polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 50%, 0 0)')
         )
