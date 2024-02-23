@@ -4341,19 +4341,19 @@ var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPOR
                 requestNavigation();
             })
                 .overflow('hidden')
-                .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (menu == null && editMenu == null) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 3 })(menu == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+                .height(), (menu == null && editMenu == null) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })(menu == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
                 .model(menu)
                 .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.AddIcon), editMenu == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
                 .model(editMenu)
-                .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.EditIcon)))
+                .icon(_Icons__WEBPACK_IMPORTED_MODULE_3__.EditIcon))
             .onClick(function (e) {
             e.preventDefault();
             e.stopPropagation();
         })
-            .width(64).height(32).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5)
+            .allWidth(64).height(32).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5)
             .display('var(--show-space-action-buttons)'))
         .transition('transform .12s ease-in-out')
         //.width('calc(100% - 0px)')

@@ -133,10 +133,9 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                         })
                         .overflow('hidden')
                         .height(),
-                Spacer(),
                 (menu == null && editMenu == null) ? Fragment() :
                     HStack({ alignment: cTrailing })(
-                        HStack({ spacing: 3 })(
+                       
                             menu == null ? Fragment() :
                                 MenuButton()
                                     .model(menu)
@@ -145,14 +144,14 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                                 MenuButton()
                                     .model(editMenu)
                                     .icon(EditIcon)
-                        )
+                        
                     )
                         .onClick((e) => {
                             e.preventDefault();
                             e.stopPropagation();
                         })
 
-                        .width(64).height(32).padding(cHorizontal, 5)
+                        .allWidth(64).height(32).padding(cHorizontal, 5)
                         .display('var(--show-space-action-buttons)'),
             )
                 .transition('transform .12s ease-in-out')

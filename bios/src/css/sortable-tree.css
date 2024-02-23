@@ -125,6 +125,7 @@
   box-shadow: none !important;
   outline: none !important;
   border-radius: 6px;
+  height: 30px !important;
 }
 .rst__rowLandingPad > *,
 .rst__rowCancelPad > * {

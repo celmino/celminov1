@@ -74,7 +74,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 2 })(
         // Title
-        (isEditing && _tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(title)) ?
+        (isEditing && _tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(item === null || item === void 0 ? void 0 : item.name)) ?
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)()
                 .border('0')
                 .fontSize(14)
@@ -104,7 +104,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                 //setIsEditing(false);
             })
             :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(title)
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item === null || item === void 0 ? void 0 : item.name)
                     .fontSize(14)
                     .fontWeight('500')
                     .foregroundColor('#222522')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()

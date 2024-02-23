@@ -2319,4 +2319,76 @@ export declare const Icons: {
         tags: string[];
         icon: () => React.JSX.Element;
     };
+    abacus: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    atom: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    award: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "award-alt": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    backpack: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "bell-school": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    book: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "book-alt": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "book-open": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    brain: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    cell: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    diary: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
 };

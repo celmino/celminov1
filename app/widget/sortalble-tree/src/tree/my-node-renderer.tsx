@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isDescendant } from './utils/tree-data-utils';
 import classnames from './utils/classnames';
-import { HStack, Text, Icon, Icons, Fragment, ReactView, UIWidget } from '@tuval/forms'
+import { HStack, Text, Icon, Icons, Fragment, ReactView, UIWidget, darken, lighten } from '@tuval/forms'
 import { is } from '@tuval/core'
 
 export const CaretDown1 = props => (
@@ -105,6 +105,8 @@ class MyNodeRendererDefault extends React.Component<any, any> {
             buttonStyle = { right: -0.5 * scaffoldBlockPxWidth } as any;
         }
 
+        const light = 0.812;
+        const dark = 0.188;
         return (
             HStack({ alignment: 'cTopLeading' })(
                 ReactView(
@@ -143,10 +145,10 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                     UIWidget("com.tuvalsoft.widget.icons")
                                                                                         .config({
                                                                                             readonly: true,
-                                                                                            selectedIcon: 'bookmark',
-                                                                                            selectedCategory: 'Icons',
-                                                                                            color: 'gray',
-                                                                                            backgroundColor: '',
+                                                                                            selectedIcon: node.iconName,
+                                                                                            selectedCategory: node.iconCategory,
+                                                                                            color: darken('#8EC351', dark),
+                                                                                            backgroundColor: lighten('#8EC351', light),
                                                                                             width: 20,
                                                                                             height: 20,
                                                                                             padding: 1
@@ -155,7 +157,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                     .transition('opacity .12s ease-in-out')
                                                                                     .position('absolute')
                                                                                     //.background('#FCE8E8')
-                                                                                    .allWidth(18).allHeight(18)
+                                                                                    .allWidth(30).allHeight(30)
                                                                                     .opacity('var(--opacity-icon)')
                                                                                     .cornerRadius(5),
                                                                                 HStack(
@@ -202,10 +204,10 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                         UIWidget("com.tuvalsoft.widget.icons")
                                                                             .config({
                                                                                 readonly: true,
-                                                                                selectedIcon: 'bookmark',
-                                                                                selectedCategory: 'Icons',
-                                                                                color: 'gray',
-                                                                                backgroundColor: '',
+                                                                                selectedIcon: node.iconName,
+                                                                                selectedCategory: node.iconCategory,
+                                                                                color: darken('#8EC351', dark),
+                                                                                backgroundColor: lighten('#8EC351', light),
                                                                                 width: 20,
                                                                                 height: 20,
                                                                                 padding: 1
@@ -214,7 +216,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                         .transition('opacity .12s ease-in-out')
                                                                         // .position('absolute')
                                                                         //.background('#FCE8E8')
-                                                                        .allWidth(18).allHeight(18)
+                                                                        .allWidth(30).allHeight(30)
                                                                         // .opacity('var(--opacity-icon)')
                                                                         .cornerRadius(5)
                                                                 )
@@ -258,10 +260,10 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                 UIWidget("com.tuvalsoft.widget.icons")
                                                                     .config({
                                                                         readonly: true,
-                                                                        selectedIcon: 'bookmark',
-                                                                        selectedCategory: 'Icons',
-                                                                        color: 'gray',
-                                                                        backgroundColor: '',
+                                                                        selectedIcon: node.iconName,
+                                                                        selectedCategory: node.iconCategory,
+                                                                        color: darken('#8EC351', dark),
+                                                                        backgroundColor: lighten('#8EC351', light),
                                                                         width: 20,
                                                                         height: 20,
                                                                         padding: 1
@@ -270,7 +272,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                 .transition('opacity .12s ease-in-out')
                                                                 .position('absolute')
                                                                 //.background('#FCE8E8')
-                                                                .allWidth(18).allHeight(18)
+                                                                .allWidth(30).allHeight(30)
                                                                 .opacity('var(--opacity-icon)')
                                                                 .cornerRadius(5),
                                                             HStack(
@@ -317,10 +319,10 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                     UIWidget("com.tuvalsoft.widget.icons")
                                                         .config({
                                                             readonly: true,
-                                                            selectedIcon: 'bookmark',
-                                                            selectedCategory: 'Icons',
-                                                            color: 'gray',
-                                                            backgroundColor: '',
+                                                            selectedIcon: node.iconName,
+                                                            selectedCategory: node.iconCategory,
+                                                            color: darken('#8EC351', dark),
+                                                            backgroundColor: lighten('#8EC351', light),
                                                             width: 20,
                                                             height: 20,
                                                             padding: 1
@@ -329,7 +331,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                     .transition('opacity .12s ease-in-out')
                                                     // .position('absolute')
                                                     //.background('#FCE8E8')
-                                                    .allWidth(18).allHeight(18)
+                                                    .allWidth(30).allHeight(30)
                                                     // .opacity('var(--opacity-icon)')
                                                     .cornerRadius(5)
                                             )

@@ -7,3 +7,6 @@ export declare const TimelineIcon: () => React.JSX.Element;
 export declare const CalendarIcon: () => React.JSX.Element;
 export declare const ReportIcon: () => React.JSX.Element;
 export declare const FeedIcon: () => React.JSX.Element;
+export declare const DocumentIcon: () => React.JSX.Element;
+export declare const WhiteboardIcon: () => React.JSX.Element;
+export declare const FormIcon: () => React.JSX.Element;

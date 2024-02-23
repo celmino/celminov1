@@ -18,9 +18,10 @@ import { AddFolderDialog } from './dialogs/AddFolderDialog';
 import { AddListDialog } from './dialogs/AddListDialog';
 import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { AddWhiteboardDialog } from './dialogs/AddWhiteboardDialog';
-import { BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, TableIcon, TimelineIcon } from './resources/Icons';
+import { BoardIcon, CalendarIcon, DocumentIcon, FeedIcon, FormIcon, ListIcon, ReportIcon, TableIcon, TimelineIcon } from './resources/Icons';
 import { getAppletId, getDocumentId, getListId, getViewId, isAppletOnly, isAppletSettings } from './utils';
 import { SelectAppletDialog } from '@celmino/ui';
+import { EventBus } from '@tuval/core';
 
 
 const subNodes = (TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected) => UIViewBuilder(() => {
@@ -228,27 +229,28 @@ export class CustomAppletTreeModuleController extends UIController {
          }, []); */
 
         // const [expanded, setExpanded] = useLocalStorageState('work_management_tree', false);
-        const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId })
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'wm_tree');
 
         return (
-            isAppletLoading ? Spinner() :
+          
                 UIViewBuilder(() => {
-                    const [appletName, setAppletName] = useState(applet.name);
+                 
                     return (
                         UIWidget('com.celmino.widget.applet-tree')
                             .config({
                                 node: item,
                                 workspaceId,
-                                appletId,
-                                appletName: appletName,
-                                isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
+                                appletId: item.appletId,
+                                appletName: item.name,
+                                iconName: item.iconName,
+                                iconCategory: item.iconCategory,
+                                //isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
                                 isEditing: isEditing,
                                 editingChanged: (status) => setIsEditing(status),
                                 titleChanged: (title) => {
-                                    setAppletName(title);
+                                   
                                     updateDocument({
                                         databaseId: 'workspace',
                                         collectionId: 'applets',
@@ -256,6 +258,17 @@ export class CustomAppletTreeModuleController extends UIController {
                                         data: {
                                             name: title
                                         }
+                                    }, ()=>{
+                                        updateDocument({
+                                            databaseId: 'workspace',
+                                            collectionId: 'ws_tree',
+                                            documentId: item.$id,
+                                            data: {
+                                                name: title
+                                            }
+                                        }, () => {
+                                            EventBus.Default.fire('applet.added', { treeItem: item })
+                                        })
                                     })
                                 },
                                 subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
@@ -263,40 +276,72 @@ export class CustomAppletTreeModuleController extends UIController {
                                 },
                                 requestMenu: () => {
                                     return [
-                                        /*  {
-                                             title: 'Add items',
-                                             type: 'Title'
-                                         }, */
+                                        {
+                                            title: 'Add view',
+                                            type: 'Title'
+                                        },
+                                        {
+                                            title: 'Table',
+                                            icon: Icon(TableIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                        },
+
+                                        {
+                                            title: 'Board',
+                                            icon: Icon(BoardIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddBoardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                        },
                                         {
                                             title: 'List',
-                                            icon: SvgIcon('cu3-icon-sidebarList', '#151719', '18px', '18px'),
-                                            onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, '-1', '/'))
+                                            icon: Icon(ListIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                        },
+                                        {
+                                            title: 'Timeline',
+                                            icon: Icon(TimelineIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                        },
+                                        {
+                                            title: 'Calendar',
+                                            icon: Icon(CalendarIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                        },
+                                        {
+                                            title: 'Report',
+                                            icon: Icon(ReportIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                        },
+                                        {
+                                            title: 'Feed',
+                                            icon: Icon(FeedIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                         },
                                         {
                                             type: 'Divider'
                                         },
                                         {
                                             title: 'Document',
-                                            icon: SvgIcon('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-                                            onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, '-1', '/'))
+                                            icon: Icon(DocumentIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                         },
                                         {
                                             title: 'Whiteboard',
-                                            icon: SvgIcon('cu3-icon-sidebarWhiteboards', '#151719', '18px', '18px'),
-                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, '-1', '/'))
+                                            icon: Icon(ReportIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                        },
+                                        {
+                                            title: 'Form',
+                                            icon: Icon(FormIcon).foregroundColor('#7C828D'),
+                                            onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                         },
                                         {
                                             type: 'Divider'
                                         },
+
                                         {
                                             title: 'Folder',
                                             icon: SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                                            onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, '-1', '/'))
-                                        },
-                                        {
-                                            title: 'Smart Folder',
-                                            icon: SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                                            onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, '-1', '/'))
+                                            onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                         },
                                         {
                                             title: 'Applet',

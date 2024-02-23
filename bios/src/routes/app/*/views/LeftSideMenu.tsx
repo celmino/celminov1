@@ -494,6 +494,8 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         parent: child.parent,
                                                         path: child.path,
                                                         tree_widget: child.tree_widget,
+                                                        iconName: child.iconName,
+                                                        iconCategory: child.iconCategory,
                                                         expanded: expandeds?.[item.$id] ? true : false,
                                                         canDrag: true,
                                                         view: (node) => {
@@ -508,6 +510,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                             }) :
                                                                         Text(child.name)
                                                                 )
+                                                                .width('calc(100% - 32px)')
                                                             )
                                                         },
                                                         children: buildClidren(workspaceTree, child)
@@ -525,11 +528,13 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                     if (item.parent === '-1') {
                                                         const node = {
                                                             $id: item.$id,
-                                                            title: expandeds?.[item.$id] ? true : false,
+                                                            title: item.name,
                                                             parent: item.parent,
                                                             path: item.path,
                                                             tree_widget: item.tree_widget,
                                                             expanded: expandeds?.[item.$id] ? true : false,
+                                                            iconName: item.iconName,
+                                                            iconCategory: item.iconCategory,
                                                             canDrag: false,
                                                             view: (node) => {
                                                                 return (
@@ -542,9 +547,9 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                     appletId: item.$id
                                                                                 }) :
                                                                             Text(item.name)
-                                                                    )
+                                                                    ).width('calc(100% - 32px)')
                                                                 )
-                                                            },
+                                                            }, 
                                                             children: []
                                                         };
                                                         tree.push(node);
@@ -659,12 +664,12 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                             });
 
 
-                                                                            changes.forEach(item => {
+                                                                             changes.forEach(item => {
                                                                                 Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
                                                                                     path: item.path,
                                                                                     parent: item.parent
                                                                                 })
-                                                                            })
+                                                                            }) 
 
                                                                             console.log(newTreeData)
 
@@ -695,7 +700,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             ) : Fragment()
                                                     )
                                                     .cornerRadius(6)
-                                                    .outline(isEditable ? 'dot 1px green' : 'none')
+                                                    .outline(isEditable ? 'dotted 2px green' : 'none')
                                                     /*  ...ForEach(spaces)(space =>
                                                          Text(space.name)
                                                      ), */

@@ -51014,6 +51014,8 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
         if (rowDirection === 'rtl') {
             buttonStyle = { right: -0.5 * scaffoldBlockPxWidth };
         }
+        var light = 0.812;
+        var dark = 0.188;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({ style: { width: '100%' } }, otherProps),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, canDrag ?
                 connectDragPreview(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__row', isLandingPadActive && 'rst__rowLandingPad', isLandingPadActive && !canDrop && 'rst__rowCancelPad', isSearchMatch && 'rst__rowSearchMatch', isSearchFocus && 'rst__rowSearchFocus', rowDirectionClass, className), style: __assign({ opacity: isDraggedDescendant ? 0.5 : 1 }, style) }, connectDragSource(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: '100%' } }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(node.iconName) &&
@@ -51022,10 +51024,10 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
                         .config({
                         readonly: true,
-                        selectedIcon: 'bookmark',
-                        selectedCategory: 'Icons',
-                        color: 'gray',
-                        backgroundColor: '',
+                        selectedIcon: node.iconName,
+                        selectedCategory: node.iconCategory,
+                        color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
+                        backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
                         width: 20,
                         height: 20,
                         padding: 1
@@ -51033,7 +51035,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         .transition('opacity .12s ease-in-out')
                         .position('absolute')
                         //.background('#FCE8E8')
-                        .allWidth(18).allHeight(18)
+                        .allWidth(30).allHeight(30)
                         .opacity('var(--opacity-icon)')
                         .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                     .transition('transform .12s ease-in-out'))
@@ -51056,10 +51058,10 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
                     .config({
                     readonly: true,
-                    selectedIcon: 'bookmark',
-                    selectedCategory: 'Icons',
-                    color: 'gray',
-                    backgroundColor: '',
+                    selectedIcon: node.iconName,
+                    selectedCategory: node.iconCategory,
+                    color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
+                    backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
                     width: 20,
                     height: 20,
                     padding: 1
@@ -51067,7 +51069,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     .transition('opacity .12s ease-in-out')
                     // .position('absolute')
                     //.background('#FCE8E8')
-                    .allWidth(18).allHeight(18)
+                    .allWidth(30).allHeight(30)
                     // .opacity('var(--opacity-icon)')
                     .cornerRadius(5))
                     .allWidth(30).allHeight(30)
@@ -51088,10 +51090,10 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
                             .config({
                             readonly: true,
-                            selectedIcon: 'bookmark',
-                            selectedCategory: 'Icons',
-                            color: 'gray',
-                            backgroundColor: '',
+                            selectedIcon: node.iconName,
+                            selectedCategory: node.iconCategory,
+                            color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
+                            backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
                             width: 20,
                             height: 20,
                             padding: 1
@@ -51099,7 +51101,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                             .transition('opacity .12s ease-in-out')
                             .position('absolute')
                             //.background('#FCE8E8')
-                            .allWidth(18).allHeight(18)
+                            .allWidth(30).allHeight(30)
                             .opacity('var(--opacity-icon)')
                             .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                         .transition('transform .12s ease-in-out'))
@@ -51122,10 +51124,10 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
                         .config({
                         readonly: true,
-                        selectedIcon: 'bookmark',
-                        selectedCategory: 'Icons',
-                        color: 'gray',
-                        backgroundColor: '',
+                        selectedIcon: node.iconName,
+                        selectedCategory: node.iconCategory,
+                        color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
+                        backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
                         width: 20,
                         height: 20,
                         padding: 1
@@ -51133,7 +51135,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         .transition('opacity .12s ease-in-out')
                         // .position('absolute')
                         //.background('#FCE8E8')
-                        .allWidth(18).allHeight(18)
+                        .allWidth(30).allHeight(30)
                         // .opacity('var(--opacity-icon)')
                         .cornerRadius(5))
                         .allWidth(30).allHeight(30)
@@ -54564,7 +54566,7 @@ var Tree = /** @class */ (function (_super) {
         return _this;
     }
     Tree.prototype.render = function () {
-        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 32; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode, onVisibilityToggle: this.props.onVisibilityToggle, canDrag: this.props.canDrag }));
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 30; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode, onVisibilityToggle: this.props.onVisibilityToggle, canDrag: this.props.canDrag }));
     };
     return Tree;
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component)));

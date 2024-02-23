@@ -1,4 +1,5 @@
 import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
+import { EventBus } from "@tuval/core";
 
 import { HStack, TextField, UIFormController, UIWidget, VStack, cLeading, 
     cTopLeading, useParams,Text } from "@tuval/forms";
@@ -65,6 +66,18 @@ export class GeneralSettingsController extends UIFormController {
                                             iconName: value.iconName,
                                             iconCategory: value.iconCategory
                                         }
+                                    }, ()=> {
+                                        updateDocument({
+                                            databaseId: 'workspace',
+                                            collectionId: 'ws_tree',
+                                            documentId: appletId,
+                                            data: {
+                                                iconName: value.iconName,
+                                                iconCategory: value.iconCategory
+                                            }
+                                        }, () => {
+                                            EventBus.Default.fire('applet.added', { treeItem: value })
+                                        })
                                     })
                                 },
                                 selectedIcon: applet?.iconName,

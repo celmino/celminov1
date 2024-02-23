@@ -3081,6 +3081,16 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+function hexToRgb(hex) {
+    // Remove '#' if present
+    hex = hex.replace(/^#/, '');
+    // Convert to RGB
+    var bigint = parseInt(hex, 16);
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+    return [r, g, b];
+}
 var MyTestController = /** @class */ (function (_super) {
     __extends(MyTestController, _super);
     function MyTestController() {
@@ -3089,7 +3099,17 @@ var MyTestController = /** @class */ (function (_super) {
     MyTestController.prototype.LoadView = function () {
         var _a, _b, _c, _d, _e;
         var _hideHandle;
-        var _f = this.props.config || {}, selectedIcon = _f.selectedIcon, selectedCategory = _f.selectedCategory, _g = _f.onChange, onChange = _g === void 0 ? void 0 : _g, _h = _f.width, width = _h === void 0 ? 36 : _h, _j = _f.height, height = _j === void 0 ? 36 : _j, _k = _f.padding, padding = _k === void 0 ? 5 : _k, _l = _f.tooltip, tooltip = _l === void 0 ? '' : _l, _m = _f.color, color = _m === void 0 ? 'white' : _m, _o = _f.backgroundColor, backgroundColor = _o === void 0 ? 'transparent' : _o, _p = _f.readonly, readonly = _p === void 0 ? false : _p;
+        var light = 0.812;
+        var dark = 0.188;
+        //#E72065
+        var _f = this.props.config || {}, selectedIcon = _f.selectedIcon, selectedCategory = _f.selectedCategory, _g = _f.onChange, onChange = _g === void 0 ? void 0 : _g, _h = _f.width, width = _h === void 0 ? 36 : _h, _j = _f.height, height = _j === void 0 ? 36 : _j, _k = _f.padding, padding = _k === void 0 ? 5 : _k, _l = _f.tooltip, tooltip = _l === void 0 ? '' : _l, _m = _f.color, color = _m === void 0 ? '#E72065' : _m, 
+        //  backgroundColor = 'transparent',
+        _o = _f.readonly, 
+        //  backgroundColor = 'transparent',
+        readonly = _o === void 0 ? false : _o;
+        var _p = hexToRgb('#E72065'), r = _p[0], g = _p[1], b = _p[2];
+        var backgroundColor = "rgba(".concat(r, ",").concat(g, ",").concat(b, ",").concat(.15, ")");
+        var foregroundColor = "rgba(".concat(r, ",").concat(g, ",").concat(b, ",").concat(.95, ")");
         // const [selectedEmoji, setSelectedEmoji] = useState(this.props.config.selectedEmoji);
         // const [selectedIcon, setSelectedIcon] = useState(this.props.config.selectedIcon);
         // const [selectedCuIcon, setSelectedCuIcon] = useState(this.props.config.selectedCuIcon);
@@ -3105,22 +3125,22 @@ var MyTestController = /** @class */ (function (_super) {
         });
         return (readonly ?
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'Icons' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_b = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _b === void 0 ? void 0 : _b.icon).width(width).height(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_c = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _c === void 0 ? void 0 : _c.icon).width(width).height(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()).width(width).height(height).padding(padding)
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_b = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _b === void 0 ? void 0 : _b.icon).allWidth(width).allHeight(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_c = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _c === void 0 ? void 0 : _c.icon).allWidth(width).allHeight(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()).allWidth(width + 4).allHeight(height + 4).padding(padding)
                 // .background('#40BC86')
-                .foregroundColor(color)
+                .foregroundColor(foregroundColor)
                 .cornerRadius(5)
-                .background(backgroundColor)
+                .background(selectedCategory === 'Emoji' ? '' : backgroundColor)
             :
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'Icons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_d = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _d === void 0 ? void 0 : _d.icon).width(width).height(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).width(width).height(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()).width(width).height(height).padding(padding)
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_d = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _d === void 0 ? void 0 : _d.icon).allWidth(width).allHeight(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).allWidth(width).allHeight(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()).allWidth(width + 4).allHeight(height + 4).padding(padding)
                     // .background('#40BC86')
-                    .foregroundColor(color)
+                    .foregroundColor(foregroundColor)
                     .cornerRadius(5)
-                    .background(backgroundColor))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Segmented)().options(["Icons", "CuIcons", "Emoji"]).onChange(function (value) {
+                    .background(selectedCategory === 'Emoji' ? '' : backgroundColor))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Segmented)().options(["Icons", "CuIcons", "Emoji"]).onChange(function (value) {
                     setMode(value);
                 }).renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_6__.SegmentedRenderer), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().paddingLeft('25px').placeholder('Search...')
                     .border('none').shadow({ focus: 'none' })).height().padding(5))
@@ -3143,8 +3163,8 @@ var MyTestController = /** @class */ (function (_super) {
                             .width()
                             .height()
                             .cornerRadius(4)
-                            .background({ hover: '#E8EAED' })
-                            .foregroundColor({ hover: 'blue' })
+                            .background({ hover: backgroundColor })
+                            .foregroundColor({ default: foregroundColor })
                             .padding(5)
                             .onClick(function () {
                             if (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(onChange)) {
@@ -4200,154 +4220,154 @@ var Icons = {
         category: 'user interface',
         name: 'draggabledots',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", "data-name": "Layer 1", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8.5 10a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm0 7a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm7-10a2 2 0 1 0-2-2 2 2 0 0 0 2 2Zm-7-4a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm7 14a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm0-7a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z", id: "draggabledots" }))); }
     },
     "edit": {
         category: 'user interface',
         name: 'edit',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M21 12a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h6a1 1 0 0 0 0-2H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1Zm-15 .76V17a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .71-.29l6.92-6.93L21.71 8a1 1 0 0 0 0-1.42l-4.24-4.29a1 1 0 0 0-1.42 0l-2.82 2.83-6.94 6.93a1 1 0 0 0-.29.71Zm10.76-8.35 2.83 2.83-1.42 1.42-2.83-2.83ZM8 13.17l5.93-5.93 2.83 2.83L10.83 16H8Z", id: "edit" }))); }
     },
     "edit-alt": {
         category: 'user interface',
         name: 'edit-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M5 18h4.24a1 1 0 0 0 .71-.29l6.92-6.93L19.71 8a1 1 0 0 0 0-1.42l-4.24-4.29a1 1 0 0 0-1.42 0l-2.82 2.83-6.94 6.93a1 1 0 0 0-.29.71V17a1 1 0 0 0 1 1Zm9.76-13.59 2.83 2.83-1.42 1.42-2.83-2.83ZM6 13.17l5.93-5.93 2.83 2.83L8.83 16H6ZM21 20H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z", id: "edit-alt" }))); }
     },
     "elipsis-double-v-alt": {
         category: 'user interface',
         name: 'elipsis-double-v-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8.5 17c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm7-10c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-7 3c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm7 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-7-14c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z", id: "elipsis-double-v-alt" }))); }
     },
     "ellipsis-h": {
         category: 'user interface',
         name: 'ellipsis-h.',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 10a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm-7 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm14 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z", id: "ellipsis-h" }))); }
     },
     "ellipsis-v": {
         category: 'user interface',
         name: 'ellipsis-v',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 7a2 2 0 1 0-2-2 2 2 0 0 0 2 2Zm0 10a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm0-7a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z", id: "ellipsis-v" }))); }
     },
     "estate": {
         category: 'user interface',
         name: 'estate',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m20 8-6-5.26a3 3 0 0 0-4 0L4 8a3 3 0 0 0-1 2.26V19a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-8.75A3 3 0 0 0 20 8Zm-6 12h-4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1Zm5-1a1 1 0 0 1-1 1h-2v-5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v5H6a1 1 0 0 1-1-1v-8.75a1 1 0 0 1 .34-.75l6-5.25a1 1 0 0 1 1.32 0l6 5.25a1 1 0 0 1 .34.75Z", id: "estate" }))); }
     },
     "exclamation": {
         category: 'user interface',
         name: 'exclamation',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", "data-name": "Layer 1", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 14a1 1 0 0 0 1-1V7a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Zm0 4a1.25 1.25 0 1 0-1.25-1.25A1.25 1.25 0 0 0 12 18Z", id: "exclamation" }))); }
     },
     "exclamation-circle": {
         category: 'user interface',
         name: 'exclamation-circle',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { "data-name": "Layer 1", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { "data-name": "Layer 1", xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 14a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 12 14Zm0-1.5a1 1 0 0 0 1-1v-3a1 1 0 0 0-2 0v3a1 1 0 0 0 1 1ZM12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8.01 8.01 0 0 1-8 8Z", id: "exclamation-circle" }))); }
     },
     "exclamation-octagon": {
         category: 'user interface',
         name: 'exclamation-octagon',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 7a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V8a1 1 0 0 0-1-1Zm0 8a1 1 0 1 0 1 1 1 1 0 0 0-1-1Zm9.71-7.44-5.27-5.27a1.05 1.05 0 0 0-.71-.29H8.27a1.05 1.05 0 0 0-.71.29L2.29 7.56a1.05 1.05 0 0 0-.29.71v7.46a1.05 1.05 0 0 0 .29.71l5.27 5.27a1.05 1.05 0 0 0 .71.29h7.46a1.05 1.05 0 0 0 .71-.29l5.27-5.27a1.05 1.05 0 0 0 .29-.71V8.27a1.05 1.05 0 0 0-.29-.71ZM20 15.31 15.31 20H8.69L4 15.31V8.69L8.69 4h6.62L20 8.69Z", id: "exclamation-octagon" }))); }
     },
     "exclamation-triangle": {
         category: 'user interface',
         name: 'exclamation-triangle',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 16a1 1 0 1 0 1 1 1 1 0 0 0-1-1Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z", id: "exclamation-triangle" }))); }
     },
     "external-link-alt": {
         category: 'user interface',
         name: 'external-link-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M18 10.82a1 1 0 0 0-1 1V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h7.18a1 1 0 0 0 0-2H5a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3h11a3 3 0 0 0 3-3v-7.18a1 1 0 0 0-1-1Zm3.92-8.2a1 1 0 0 0-.54-.54A1 1 0 0 0 21 2h-6a1 1 0 0 0 0 2h3.59L8.29 14.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L20 5.41V9a1 1 0 0 0 2 0V3a1 1 0 0 0-.08-.38Z", id: "external-link-alt" }))); }
     },
     "eye-slash": {
         category: 'user interface',
         name: 'eye-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10.94 6.08A6.93 6.93 0 0 1 12 6c3.18 0 6.17 2.29 7.91 6a15.23 15.23 0 0 1-.9 1.64 1 1 0 0 0-.16.55 1 1 0 0 0 1.86.5 15.77 15.77 0 0 0 1.21-2.3 1 1 0 0 0 0-.79C19.9 6.91 16.1 4 12 4a7.77 7.77 0 0 0-1.4.12 1 1 0 1 0 .34 2ZM3.71 2.29a1 1 0 0 0-1.42 1.42l3.1 3.09a14.62 14.62 0 0 0-3.31 4.8 1 1 0 0 0 0 .8C4.1 17.09 7.9 20 12 20a9.26 9.26 0 0 0 5.05-1.54l3.24 3.25a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42Zm6.36 9.19 2.45 2.45A1.81 1.81 0 0 1 12 14a2 2 0 0 1-2-2 1.81 1.81 0 0 1 .07-.52ZM12 18c-3.18 0-6.17-2.29-7.9-6a12.09 12.09 0 0 1 2.7-3.79L8.57 10A4 4 0 0 0 14 15.43L15.59 17A7.24 7.24 0 0 1 12 18Z", id: "eye-slash" }))); }
     },
     "favorite": {
         category: 'user interface',
         name: 'favorite',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M22 9.67a1 1 0 0 0-.86-.67l-5.69-.83L12.9 3a1 1 0 0 0-1.8 0L8.55 8.16 2.86 9a1 1 0 0 0-.81.68 1 1 0 0 0 .25 1l4.13 4-1 5.68a1 1 0 0 0 1.47 1.08l5.1-2.67 5.1 2.67a.93.93 0 0 0 .46.12 1 1 0 0 0 .59-.19 1 1 0 0 0 .4-1l-1-5.68 4.13-4A1 1 0 0 0 22 9.67Zm-6.15 4a1 1 0 0 0-.29.88l.72 4.2-3.76-2a1.06 1.06 0 0 0-.94 0l-3.76 2 .72-4.2a1 1 0 0 0-.29-.88l-3-3 4.21-.61a1 1 0 0 0 .76-.55L12 5.7l1.88 3.82a1 1 0 0 0 .76.55l4.21.61Z", id: "favorite" }))); }
     },
     "feedback": {
         category: 'user interface',
         name: 'feedback',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M22 1h-7a2.44 2.44 0 0 0-2.41 2l-.92 5.05a2.44 2.44 0 0 0 .53 2 2.47 2.47 0 0 0 1.88.88H17l-.25.66a3.26 3.26 0 0 0 3 4.41 1 1 0 0 0 .92-.59l2.24-5.06A1 1 0 0 0 23 10V2a1 1 0 0 0-1-1Zm-1 8.73-1.83 4.13a1.33 1.33 0 0 1-.45-.4 1.23 1.23 0 0 1-.14-1.16l.38-1a1.68 1.68 0 0 0-.2-1.58A1.7 1.7 0 0 0 17.35 9h-3.29a.46.46 0 0 1-.35-.16.5.5 0 0 1-.09-.37l.92-5A.44.44 0 0 1 15 3h6ZM9.94 13.05H7.05l.25-.66A3.26 3.26 0 0 0 4.25 8a1 1 0 0 0-.92.59l-2.24 5.06a1 1 0 0 0-.09.4v8a1 1 0 0 0 1 1h7a2.44 2.44 0 0 0 2.41-2l.92-5a2.44 2.44 0 0 0-.53-2 2.47 2.47 0 0 0-1.86-1Zm-.48 7.58A.44.44 0 0 1 9 21H3v-6.73l1.83-4.13a1.33 1.33 0 0 1 .45.4 1.23 1.23 0 0 1 .14 1.16l-.38 1a1.68 1.68 0 0 0 .2 1.58 1.7 1.7 0 0 0 1.41.74h3.29a.46.46 0 0 1 .35.16.5.5 0 0 1 .09.37Z", id: "feedback" }))); }
     },
     "fidget-spinner": {
         category: 'user interface',
         name: 'fidget-spinner',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", "data-name": "Layer 1", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 7a1 1 0 1 0 1 1 1 1 0 0 0-1-1Zm-5.696 9.134a1 1 0 1 0 1.366.366 1 1 0 0 0-1.366-.366Zm11.392 0a1 1 0 1 0 .366 1.366 1 1 0 0 0-.366-1.366Zm2.914-2.791a4.918 4.918 0 0 0-4.526-1.197l-.419-.763a4.989 4.989 0 0 0-2.503-8.251 5.035 5.035 0 0 0-4.279.958A4.978 4.978 0 0 0 7 8a4.929 4.929 0 0 0 1.352 3.392l-.419.75a4.989 4.989 0 0 0-5.926 6.286 5.03 5.03 0 0 0 2.97 3.226 4.97 4.97 0 0 0 6.588-3.19l.867.014a4.981 4.981 0 0 0 4.76 3.524 5.017 5.017 0 0 0 4.8-3.573 4.95 4.95 0 0 0-1.382-5.086Zm-.528 4.495a3.006 3.006 0 0 1-4.386 1.76 2.965 2.965 0 0 1-1.352-1.705 1.994 1.994 0 0 0-1.91-1.43h-.869a1.995 1.995 0 0 0-1.91 1.43 2.98 2.98 0 0 1-3.948 1.899 2.993 2.993 0 0 1 1.767-5.704 1.967 1.967 0 0 0 2.173-.942l.436-.754a1.995 1.995 0 0 0-.281-2.369 2.98 2.98 0 0 1 .329-4.37 2.993 2.993 0 0 1 4.069 4.369 2 2 0 0 0-.283 2.37l.435.753a1.974 1.974 0 0 0 2.174.943 2.988 2.988 0 0 1 3.556 3.75Z", id: "fidget-spinner" }))); }
     },
     "file-lanscape-slash": {
         category: 'user interface',
         name: 'file-lanscape-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M22 10.94a1.31 1.31 0 0 0-.06-.27v-.09a1.07 1.07 0 0 0-.19-.28l-6-6a1.07 1.07 0 0 0-.28-.19h-.09a.88.88 0 0 0-.33-.11h-4.39a1 1 0 0 0 0 2H14v3a3 3 0 0 0 3 3h3v3.34a1 1 0 1 0 2 0v-4.4ZM17 10a1 1 0 0 1-1-1V7.41L18.59 10ZM3.71 2.29a1 1 0 0 0-1.42 1.42l.91.9A3 3 0 0 0 2 7v10a3 3 0 0 0 3 3h13.59l1.7 1.71a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42ZM5 18a1 1 0 0 1-1-1V7a1 1 0 0 1 .66-.93L16.59 18Z", id: "file-lanscape-slash" }))); }
     },
     "file-slash": {
         category: 'user interface',
         name: 'file-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m21.71 20.29-18-18a1 1 0 0 0-1.42 1.42L4 5.41V19a3 3 0 0 0 3 3h10a3 3 0 0 0 2.39-1.2l.9.91a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42ZM17 20H7a1 1 0 0 1-1-1V7.41l11.93 11.93A1 1 0 0 1 17 20ZM8.66 4H12v3a3 3 0 0 0 3 3h3v3.34a1 1 0 1 0 2 0v-4.4a1.31 1.31 0 0 0-.06-.27v-.09a1.07 1.07 0 0 0-.19-.28l-6-6a1.07 1.07 0 0 0-.28-.19h-.09L13.06 2h-4.4a1 1 0 0 0 0 2ZM14 5.41 16.59 8H15a1 1 0 0 1-1-1Z", id: "file-slash" }))); }
     },
     "filter": {
         category: 'user interface',
         name: 'filter',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19 2H5a3 3 0 0 0-3 3v1.17a3 3 0 0 0 .25 1.2v.06a2.81 2.81 0 0 0 .59.86L9 14.41V21a1 1 0 0 0 .47.85A1 1 0 0 0 10 22a1 1 0 0 0 .45-.11l4-2A1 1 0 0 0 15 19v-4.59l6.12-6.12a2.81 2.81 0 0 0 .59-.86v-.06a3 3 0 0 0 .29-1.2V5a3 3 0 0 0-3-3Zm-5.71 11.29A1 1 0 0 0 13 14v4.38l-2 1V14a1 1 0 0 0-.29-.71L5.41 8h13.18ZM20 6H4V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Z", id: "filter" }))); }
     },
     "filter-slash": {
         category: 'user interface',
         name: 'filter-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", "data-name": "Layer 1", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19.22 6h-6.56a1 1 0 0 0 0 2h6.56a.78.78 0 0 1 .78.78v.78h-3.78a1 1 0 1 0 0 2h2.37l-.7.69a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l1.88-1.88a2.51 2.51 0 0 0 .54-.8v-.1A2.59 2.59 0 0 0 22 9.82v-1A2.79 2.79 0 0 0 19.22 6ZM3.71 2.29a1 1 0 0 0-1.42 1.42l2.85 2.84A2.73 2.73 0 0 0 4 8.78v1a2.65 2.65 0 0 0 .24 1.1v.06a2.61 2.61 0 0 0 .54.81l5.41 5.4V21a1 1 0 0 0 .47.85 1 1 0 0 0 .53.15 1 1 0 0 0 .45-.11l3.56-1.78a1 1 0 0 0 .55-.89v-2l4.51 4.52a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42ZM6 8.78a.76.76 0 0 1 .5-.72L6.59 8l1.56 1.56H6Zm8.07 7.29a1 1 0 0 0-.29.71v1.82l-1.56.78v-2.6a1 1 0 0 0-.29-.71l-4.52-4.51h2.74l4.22 4.22Z", id: "filter-slash" }))); }
     },
     "fire": {
         category: 'user interface',
         name: 'fire',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", "data-name": "Layer 1", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m8.468 8.395-.002.001-.003.002Zm9.954-.187a1.237 1.237 0 0 0-.23-.175 1 1 0 0 0-1.4.411 5.782 5.782 0 0 1-1.398 1.778 8.664 8.664 0 0 0 .134-1.51 8.714 8.714 0 0 0-4.4-7.582 1 1 0 0 0-1.492.806 7.017 7.017 0 0 1-2.471 4.942l-.23.187a8.513 8.513 0 0 0-1.988 1.863 8.983 8.983 0 0 0 3.656 13.908 1 1 0 0 0 1.377-.926 1.05 1.05 0 0 0-.05-.312 6.977 6.977 0 0 1-.19-2.581 9.004 9.004 0 0 0 4.313 4.016.997.997 0 0 0 .715.038 8.995 8.995 0 0 0 3.654-14.863Zm-3.905 12.831a6.964 6.964 0 0 1-3.577-4.402 8.908 8.908 0 0 1-.18-.964 1 1 0 0 0-.799-.845.982.982 0 0 0-.191-.018 1 1 0 0 0-.867.5 8.959 8.959 0 0 0-1.205 4.718 6.985 6.985 0 0 1-1.176-9.868 6.555 6.555 0 0 1 1.562-1.458.745.745 0 0 0 .075-.055s.296-.245.306-.25a8.968 8.968 0 0 0 2.9-4.633 6.736 6.736 0 0 1 1.385 8.088 1 1 0 0 0 1.184 1.418 7.856 7.856 0 0 0 3.862-2.688 7 7 0 0 1-3.279 10.457Z", id: "fire" }))); }
     },
     "folder-slash": {
         category: 'user interface',
         name: 'folder-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m21.71 20.29-1.6-1.6-16.4-16.4a1 1 0 0 0-1.42 1.42l1.4 1.39A3 3 0 0 0 3 7v11a3 3 0 0 0 3 3h12a3 3 0 0 0 1.29-.3l1 1a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.41ZM6 19a1 1 0 0 1-1-1V7a1 1 0 0 1 .12-.46L17.59 19Zm4.62-13a1 1 0 0 1 .89.67l.54 1.64A1 1 0 0 0 13 9h5a1 1 0 0 1 1 1v4.34a1 1 0 1 0 2 0V10a3 3 0 0 0-3-3h-4.28l-.32-1a3 3 0 0 0-2.68-2 1 1 0 0 0-.1 2Z", id: "folder-slash" }))); }
     },
     "football-american": {
@@ -4361,266 +4381,266 @@ var Icons = {
         category: 'user interface',
         name: 'glass',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19.75 2.33A1 1 0 0 0 19 2H5a1 1 0 0 0-.75.33 1 1 0 0 0-.25.78l1.8 16.22a3 3 0 0 0 3 2.67h6.42a3 3 0 0 0 3-2.67L20 3.11a1 1 0 0 0-.25-.78ZM16.2 19.11a1 1 0 0 1-1 .89H8.79a1 1 0 0 1-1-.89L6.78 10h10.44ZM17.44 8H6.56l-.44-4h11.76Z", id: "glass" }))); }
     },
     "glass-martini": {
         category: 'user interface',
         name: 'glass-martini',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M18 20h-5v-5.06A9 9 0 0 0 21 6a8.72 8.72 0 0 0-.67-3.39 1 1 0 0 0-.22-.32L20 2.21a.92.92 0 0 0-.21-.13.94.94 0 0 0-.28-.08H4.5a.94.94 0 0 0-.29.06A2.12 2.12 0 0 0 4 2.2l-.12.09a1 1 0 0 0-.22.32A8.72 8.72 0 0 0 3 6a9 9 0 0 0 8 8.94V20H6a1 1 0 0 0 0 2h12a1 1 0 0 0 0-2ZM5 6a6.91 6.91 0 0 1 .29-2h13.42A6.91 6.91 0 0 1 19 6 7 7 0 0 1 5 6Z", id: "glass-martini" }))); }
     },
     "glass-martini-alt": {
         category: 'user interface',
         name: 'glass-martini-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M21.78 3.62a1 1 0 0 0 .12-1.05A1 1 0 0 0 21 2H3a1 1 0 0 0-.9.57 1 1 0 0 0 .12 1.05L11 14.6V20H5.25a1 1 0 0 0 0 2h13.5a1 1 0 0 0 0-2H13v-5.4ZM5.08 4h13.84l-2.4 3h-9ZM12 12.65 9.08 9h5.84Z", id: "glass-martini-alt" }))); }
     },
     "glass-martini-alt-slash": {
         category: 'user interface',
         name: 'glass-martini-alt-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m19.71 16.29-14-14a1 1 0 0 0-1.42 1.42L6.59 6H5a1 1 0 0 0-.9.57 1 1 0 0 0 .12 1L11 16.1V20H6.75a1 1 0 0 0 0 2h10.5a1 1 0 0 0 0-2H13v-3.9l1.64-2 3.65 3.65a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.46ZM7.08 8h1.51l1.89 1.89H8.59ZM12 14.15l-1.81-2.26h2.29l.74.74ZM14.66 8h2.26l-.63.79a1 1 0 0 0 .15 1.4 1 1 0 0 0 .63.22 1 1 0 0 0 .78-.37l1.93-2.42a1 1 0 0 0 .12-1A1 1 0 0 0 19 6h-4.34a1 1 0 0 0 0 2Z", id: "glass-martini-alt-slash" }))); }
     },
     "glass-tea": {
         category: 'user interface',
         name: 'glass-tea',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19 3a3 3 0 0 0-2.23-1H7.23a3 3 0 0 0-3 3.33l1.56 14a3 3 0 0 0 3 2.67h6.42a3 3 0 0 0 3-2.67l1.56-14A3 3 0 0 0 19 3Zm-2.8 16.11a1 1 0 0 1-1 .89H8.79a1 1 0 0 1-1-.89L6.78 10h10.44ZM17.44 8H6.56l-.32-2.89a1 1 0 0 1 .25-.78A1 1 0 0 1 7.23 4h9.54a1 1 0 0 1 .74.33 1 1 0 0 1 .25.78ZM14 18a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1Zm-4 0a1 1 0 0 0 1-1v-4a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1Z", id: "glass-tea" }))); }
     },
     "globe": {
         category: 'user interface',
         name: 'globe',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M21.41 8.64v-.05a10 10 0 0 0-18.78 0s0 0 0 .05a9.86 9.86 0 0 0 0 6.72v.05a10 10 0 0 0 18.78 0s0 0 0-.05a9.86 9.86 0 0 0 0-6.72ZM4.26 14a7.82 7.82 0 0 1 0-4h1.86a16.73 16.73 0 0 0 0 4Zm.82 2h1.4a12.15 12.15 0 0 0 1 2.57A8 8 0 0 1 5.08 16Zm1.4-8h-1.4a8 8 0 0 1 2.37-2.57A12.15 12.15 0 0 0 6.48 8ZM11 19.7A6.34 6.34 0 0 1 8.57 16H11Zm0-5.7H8.14a14.36 14.36 0 0 1 0-4H11Zm0-6H8.57A6.34 6.34 0 0 1 11 4.3Zm7.92 0h-1.4a12.15 12.15 0 0 0-1-2.57A8 8 0 0 1 18.92 8ZM13 4.3A6.34 6.34 0 0 1 15.43 8H13Zm0 15.4V16h2.43A6.34 6.34 0 0 1 13 19.7Zm2.86-5.7H13v-4h2.86a14.36 14.36 0 0 1 0 4Zm.69 4.57a12.15 12.15 0 0 0 1-2.57h1.4a8 8 0 0 1-2.4 2.57ZM19.74 14h-1.86a16.16 16.16 0 0 0 .12-2 16.28 16.28 0 0 0-.12-2h1.86a7.82 7.82 0 0 1 0 4Z", id: "globe" }))); }
     },
     "break": {
         category: 'user interface',
         name: 'break',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.46a1 1 0 0 0 1.42 0l7.45-7.46a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.45L12 18.81l-6.75-6.75a4.26 4.26 0 0 1 5.54-6.45l-1.71 4a1 1 0 0 0 0 .83 1 1 0 0 0 .65.53l2.77.7-1.4 2.89a1 1 0 0 0 .46 1.34 1 1 0 0 0 .44.1 1 1 0 0 0 .9-.56l2-4a1 1 0 0 0 0-.86 1.05 1.05 0 0 0-.67-.55l-2.83-.71 1.45-3.39a4.26 4.26 0 0 1 5.92 6.13Z", id: "heart-break" }))); }
     },
     "heart-break": {
         category: 'user interface',
         name: 'heart-break',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.46a1 1 0 0 0 1.42 0l7.45-7.46a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.45L12 18.81l-6.75-6.75a4.26 4.26 0 0 1 5.54-6.45l-1.71 4a1 1 0 0 0 0 .83 1 1 0 0 0 .65.53l2.77.7-1.4 2.89a1 1 0 0 0 .46 1.34 1 1 0 0 0 .44.1 1 1 0 0 0 .9-.56l2-4a1 1 0 0 0 0-.86 1.05 1.05 0 0 0-.67-.55l-2.83-.71 1.45-3.39a4.26 4.26 0 0 1 5.92 6.13Z", id: "heart-break" }))); }
     },
     "history": {
         category: 'user interface',
         name: 'history',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 2a10 10 0 0 0-6.88 2.77V3a1 1 0 0 0-2 0v4.5a1 1 0 0 0 1 1h4.5a1 1 0 0 0 0-2h-2.4A8 8 0 1 1 4 12a1 1 0 0 0-2 0A10 10 0 1 0 12 2Zm0 6a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h2a1 1 0 0 0 0-2h-1V9a1 1 0 0 0-1-1Z", id: "history" }))); }
     },
     "history-alt": {
         category: 'user interface',
         name: 'history-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11.44 2a10 10 0 0 0-6.88 2.77V3a1 1 0 0 0-2 0v4.5a1 1 0 0 0 1 1h4.5a1 1 0 0 0 0-2h-2.4A8 8 0 1 1 11.44 20a1 1 0 1 0 0 2 10 10 0 1 0 0-20Zm0 6a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h2a1 1 0 0 0 0-2h-1V9a1 1 0 0 0-1-1Z", id: "history-alt" }))); }
     },
     "home": {
         category: 'user interface',
         name: 'home',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m21.66 10.25-9-8a1 1 0 0 0-1.32 0l-9 8a1 1 0 0 0-.27 1.11A1 1 0 0 0 3 12h1v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9h1a1 1 0 0 0 .93-.64 1 1 0 0 0-.27-1.11ZM13 20h-2v-3a1 1 0 0 1 2 0Zm5 0h-3v-3a3 3 0 0 0-6 0v3H6v-8h12ZM5.63 10 12 4.34 18.37 10Z", id: "home" }))); }
     },
     "hourglass": {
         category: 'user interface',
         name: 'hourglass',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M18.992 21.002h-1v-1.667a5 5 0 0 0-.3-1.678.969.969 0 0 0-.036-.084 4.977 4.977 0 0 0-.664-1.237l-1.4-1.867a3.02 3.02 0 0 1-.6-1.801v-1.01a3.021 3.021 0 0 1 .878-2.12l.657-.658a4.946 4.946 0 0 0 1.397-2.839c0-.013.008-.025.008-.04l-.003-.013a5.018 5.018 0 0 0 .063-.643V3.002h1a1 1 0 0 0 0-2h-14a1 1 0 0 0 0 2h1v2.343a5.018 5.018 0 0 0 .063.643l-.003.014c0 .014.007.026.008.04A4.946 4.946 0 0 0 7.456 8.88l.657.657a3.021 3.021 0 0 1 .879 2.121v1.01a3.022 3.022 0 0 1-.6 1.8l-1.4 1.868a4.982 4.982 0 0 0-.665 1.237.976.976 0 0 0-.036.084 5.003 5.003 0 0 0-.3 1.678v1.667h-1a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Zm-11-16v-2h8v2Zm.878 2.464a2.97 2.97 0 0 1-.377-.464h6.997a2.97 2.97 0 0 1-.377.464l-.657.657a4.96 4.96 0 0 0-1.422 2.879H10.95a4.96 4.96 0 0 0-1.422-2.879Zm1.122 8.202a5.037 5.037 0 0 0 .988-2.666h2.023a5.033 5.033 0 0 0 .989 2.666l1 1.334h-6Zm6 5.334h-8v-1.667a2.954 2.954 0 0 1 .027-.333h7.945a2.954 2.954 0 0 1 .028.333Z", id: "hourglass" }))); }
     },
     "image-alt-slash": {
         category: 'user interface',
         name: 'image-alt-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m21.71 20.29-.93-.93-.09-.1-.06-.07-.5-.5-.13-.07-5.18-5.2-.09-.08-3.2-3.21-.1-.13-7.72-7.71a1 1 0 0 0-1.42 1.42l1 1A3 3 0 0 0 3 6v12a3 3 0 0 0 3 3h12a2.9 2.9 0 0 0 1.27-.31s0 0 .05 0l.95 1a1 1 0 0 0 1.42 0 1 1 0 0 0 .02-1.4ZM5 6.41l3.24 3.24a2.84 2.84 0 0 0-.67.48L5 12.71ZM6 19a1 1 0 0 1-1-1v-2.46l4-4a.81.81 0 0 1 1.1 0L17.59 19ZM9.66 5H18a1 1 0 0 1 1 1v5.94a1 1 0 1 0-1.42 1.42l1.74 1.74a1 1 0 0 0 1.42 0 1 1 0 0 0 .29-.72V6a3 3 0 0 0-3-3H9.66a1 1 0 0 0 0 2Z", id: "image-alt-slash" }))); }
     },
     "image-slash": {
         category: 'user interface',
         name: 'image-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19.5 4H10a1 1 0 0 0 0 2h9.5a1 1 0 0 1 1 1v6.76l-1.88-1.88a3 3 0 0 0-1.14-.71 1 1 0 1 0-.64 1.9.82.82 0 0 1 .36.23l3.31 3.29a.66.66 0 0 0 0 .15.83.83 0 0 0 0 .15 1.18 1.18 0 0 0 .13.18.48.48 0 0 0 .09.11.9.9 0 0 0 .2.14.6.6 0 0 0 .11.06.91.91 0 0 0 .37.08 1 1 0 0 0 1-1V7a3 3 0 0 0-2.91-3ZM3.21 2.29a1 1 0 0 0-1.42 1.42L3.18 5.1A3 3 0 0 0 2.5 7v10a3 3 0 0 0 3 3h12.59l1.7 1.71a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42ZM4.5 7a1 1 0 0 1 .12-.46l2.72 2.71a3 3 0 0 0-1 .63L4.5 11.76Zm1 11a1 1 0 0 1-1-1v-2.42l3.3-3.29a1 1 0 0 1 1.4 0L15.91 18Z", id: "image-slash" }))); }
     },
     "inbox": {
         category: 'user interface',
         name: 'inbox',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19.056 2h-14a3.003 3.003 0 0 0-3 3v14a3.003 3.003 0 0 0 3 3h14a3.003 3.003 0 0 0 3-3V5a3.003 3.003 0 0 0-3-3Zm-14 2h14a1.001 1.001 0 0 1 1 1v8H17.59a1.997 1.997 0 0 0-1.664.89L14.52 16H9.59l-1.406-2.11A1.997 1.997 0 0 0 6.52 13H4.056V5a1.001 1.001 0 0 1 1-1Zm14 16h-14a1.001 1.001 0 0 1-1-1v-4H6.52l1.406 2.11A1.997 1.997 0 0 0 9.59 18h4.93a1.997 1.997 0 0 0 1.664-.89L17.59 15h2.465v4a1.001 1.001 0 0 1-1 1Z", id: "inbox" }))); }
     },
     "info": {
         category: 'user interface',
         name: 'info',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 10a1 1 0 0 0-1 1v6a1 1 0 0 0 2 0v-6a1 1 0 0 0-1-1Zm0-4a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 12 6Z", id: "info" }))); }
     },
     "info-circle": {
         category: 'user interface',
         name: 'info-circle',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { "data-name": "Layer 1", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { "data-name": "Layer 1", xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8.01 8.01 0 0 1-8 8Zm0-8.5a1 1 0 0 0-1 1v3a1 1 0 0 0 2 0v-3a1 1 0 0 0-1-1Zm0-4a1.25 1.25 0 1 0 1.25 1.25A1.25 1.25 0 0 0 12 7.5Z", id: "info-circle" }))); }
     },
     "key-skeleton": {
         category: 'user interface',
         name: 'key-skeleton',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m21 4.41.71-.7a1 1 0 1 0-1.42-1.42l-1.4 1.41-2.83 2.83-6.31 6.3a5 5 0 1 0 1.42 1.42l5.59-5.6 2.12 2.13a1 1 0 1 0 1.41-1.42l-2.12-2.12 1.42-1.41.7.7a1 1 0 1 0 1.42-1.41ZM7 20a3 3 0 1 1 3-3 3 3 0 0 1-3 3Z", id: "key-skeleton" }))); }
     },
     "key-skeleton-alt": {
         category: 'user interface',
         name: 'key-skeleton-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m21.71 6.53-1.42-1.41 1.42-1.41a1 1 0 1 0-1.42-1.42L9.75 12.83a5 5 0 1 0 1.42 1.42l4.88-4.89 1.41 1.42a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29 1 1 0 0 0 0-1.42L17.46 8l1.42-1.42L20.29 8a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29 1 1 0 0 0 0-1.47ZM7 20a3 3 0 1 1 3-3 3 3 0 0 1-3 3Z", id: "key-skeleton-alt" }))); }
     },
     "keyboard": {
         category: 'user interface',
         name: 'keyboard',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6.21 13.29a.93.93 0 0 0-.33-.21 1 1 0 0 0-.76 0 .9.9 0 0 0-.54.54 1 1 0 1 0 1.84 0 1 1 0 0 0-.21-.33ZM13.5 11h1a1 1 0 0 0 0-2h-1a1 1 0 0 0 0 2Zm-4 0h1a1 1 0 0 0 0-2h-1a1 1 0 0 0 0 2Zm-3-2h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2ZM20 5H4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3Zm1 11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1Zm-6-3H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2Zm3.5-4h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm.71 4.29a1 1 0 0 0-.33-.21 1 1 0 0 0-.76 0 .93.93 0 0 0-.33.21 1 1 0 0 0-.21.33 1 1 0 1 0 1.92.38.84.84 0 0 0-.08-.38 1 1 0 0 0-.21-.33Z", id: "keyboard" }))); }
     },
     "keyboard-alt": {
         category: 'user interface',
         name: 'keyboard-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6.71 9.29a1 1 0 0 0-1.42 0 1 1 0 0 0-.21.33 1 1 0 0 0 .21 1.09 1.15 1.15 0 0 0 .33.21A.84.84 0 0 0 6 11a1 1 0 0 0 .92-1.38 1 1 0 0 0-.21-.33ZM10 11a1 1 0 0 0 .92-1.38 1 1 0 0 0-.21-.33 1 1 0 0 0-.9-.29.6.6 0 0 0-.19.06l-.18.09-.15.12A1.05 1.05 0 0 0 9 10a1 1 0 0 0 1 1Zm-3.62 2.08a1 1 0 0 0-.76 0A1 1 0 0 0 5 14a1 1 0 0 0 1.38.92 1.15 1.15 0 0 0 .33-.21A1 1 0 0 0 7 14a1 1 0 0 0-.29-.71.93.93 0 0 0-.33-.21ZM14 13h-4a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2Zm.71-3.71a1 1 0 0 0-1.42 0 1 1 0 0 0-.21.33A1 1 0 1 0 15 10a.84.84 0 0 0-.08-.38 1 1 0 0 0-.21-.33Zm3.85 3.88a.76.76 0 0 0-.18-.09 1 1 0 0 0-.76 0 1.15 1.15 0 0 0-.33.21A1.05 1.05 0 0 0 17 14a1 1 0 1 0 2 0 1.05 1.05 0 0 0-.29-.71ZM20 5H4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3Zm1 11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1Zm-2.29-6.71A1 1 0 0 0 17 10a1 1 0 1 0 1.92-.38 1 1 0 0 0-.21-.33Z", id: "keyboard-alt" }))); }
     },
     "keyboard-hide": {
         category: 'user interface',
         name: 'keyboard-hide',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6.71 10.29a1.15 1.15 0 0 0-.33-.21 1 1 0 0 0-1.09.21 1 1 0 0 0-.21.33 1 1 0 0 0 .21 1.09 1.15 1.15 0 0 0 .33.21 1 1 0 0 0 1.3-1.3 1 1 0 0 0-.21-.33Zm2.58-2.58A1 1 0 0 0 10 8a.84.84 0 0 0 .38-.08 1.15 1.15 0 0 0 .33-.21 1.15 1.15 0 0 0 .21-.33.94.94 0 0 0 0-.76 1.15 1.15 0 0 0-.21-.33 1 1 0 0 0-1.42 0 1.15 1.15 0 0 0-.21.33.94.94 0 0 0 0 .76 1.15 1.15 0 0 0 .21.33ZM6.71 6.29A1 1 0 0 0 5 7a1 1 0 0 0 .08.38 1.15 1.15 0 0 0 .21.33A1 1 0 0 0 6 8a.84.84 0 0 0 .38-.08 1.15 1.15 0 0 0 .33-.21 1.15 1.15 0 0 0 .21-.33.94.94 0 0 0 0-.76 1.15 1.15 0 0 0-.21-.33Zm6.58 12L12 19.59l-1.29-1.3a1 1 0 0 0-1.42 1.42l2 2a1 1 0 0 0 1.42 0l2-2a1 1 0 0 0-1.42-1.42Zm5.42-12A1 1 0 0 0 17 7a.84.84 0 0 0 .08.38 1.15 1.15 0 0 0 .21.33 1 1 0 0 0 1.42 0 1.15 1.15 0 0 0 .21-.33A.84.84 0 0 0 19 7a1 1 0 0 0-.08-.38 1.15 1.15 0 0 0-.21-.33ZM14 10h-4a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2Zm6-8H4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1Zm-2.29-2.71a1 1 0 0 0-.33-.21.92.92 0 0 0-.76 0 1.15 1.15 0 0 0-.33.21A1.05 1.05 0 0 0 17 11a1 1 0 1 0 1.92-.38 1 1 0 0 0-.21-.33Zm-5.09-4.21a1.15 1.15 0 0 0-.33.21A1.05 1.05 0 0 0 13 7a1 1 0 0 0 .08.38 1.15 1.15 0 0 0 .21.33A1 1 0 0 0 14 8a.84.84 0 0 0 .38-.08 1.15 1.15 0 0 0 .33-.21 1.15 1.15 0 0 0 .21-.33A.84.84 0 0 0 15 7a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-1.09-.21Z", id: "keyboard-hide" }))); }
     },
     "keyboard-show": {
         category: 'user interface',
         name: 'keyboard-show',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6.71 10.29A1 1 0 0 0 5 11a1 1 0 1 0 1.92-.38 1 1 0 0 0-.21-.33Zm2.58-2.58A1 1 0 0 0 10 8a1 1 0 0 0 .71-.29 1.15 1.15 0 0 0 .21-.33A1 1 0 0 0 11 7a1.05 1.05 0 0 0-.29-.71l-.15-.12-.18-.09a.6.6 0 0 0-.19-.08 1 1 0 0 0-.9.27 1 1 0 0 0-.21.33.94.94 0 0 0 0 .76 1.15 1.15 0 0 0 .21.35ZM6.56 6.17a.76.76 0 0 0-.18-.09L6.2 6a1 1 0 0 0-.91.27 1 1 0 0 0-.21.33.94.94 0 0 0 0 .76 1.15 1.15 0 0 0 .21.33 1.15 1.15 0 0 0 .33.21A.84.84 0 0 0 6 8a1 1 0 0 0 .71-.29 1.15 1.15 0 0 0 .21-.33A1 1 0 0 0 7 7a1.05 1.05 0 0 0-.29-.71Zm6.15 12.12a1 1 0 0 0-1.42 0l-2 2a1 1 0 0 0 1.42 1.42l1.29-1.3 1.29 1.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42Zm6-8a1 1 0 0 0-1.42 0 1 1 0 0 0-.21.33 1 1 0 0 0 1.3 1.3 1.15 1.15 0 0 0 .33-.21A1 1 0 0 0 19 11a.84.84 0 0 0-.08-.38 1 1 0 0 0-.21-.33ZM14 10h-4a1 1 0 0 0 0 2h4a1 1 0 0 0 0-2Zm6-8H4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1Zm-3.38-6.92a.93.93 0 0 0-.33.21A1.05 1.05 0 0 0 17 7a1 1 0 0 0 .08.38 1.15 1.15 0 0 0 .21.33A1 1 0 0 0 18 8a1 1 0 0 0 .71-.29 1.15 1.15 0 0 0 .21-.33A1 1 0 0 0 19 7a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-1.09-.21Zm-3.06.09-.18-.09L14.2 6a1 1 0 0 0-.58.06.93.93 0 0 0-.33.21 1 1 0 0 0-.21.33.94.94 0 0 0 0 .76 1.15 1.15 0 0 0 .21.33A1 1 0 0 0 14 8a1 1 0 0 0 .71-.29 1.15 1.15 0 0 0 .21-.33A1 1 0 0 0 15 7a1.05 1.05 0 0 0-.29-.71Z", id: "keyboard-show" }))); }
     },
     "lamp": {
         category: 'user interface',
         name: 'lamp',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M18 2.78A1 1 0 0 0 17 2H7a1 1 0 0 0-1 .78l-2 9a1 1 0 0 0 .2.85A1 1 0 0 0 5 13h3.94A8.26 8.26 0 0 1 9 14a8.92 8.92 0 0 1-2.57 6.3 1 1 0 0 0 .71 1.7h9.72a1 1 0 0 0 .71-1.7A8.92 8.92 0 0 1 15 14a8.26 8.26 0 0 1 .06-1H16v2a1 1 0 0 0 2 0v-2h1a1 1 0 0 0 .78-.37 1 1 0 0 0 .2-.85ZM9.22 20A10.9 10.9 0 0 0 11 14c0-.33 0-.67-.05-1h2.1c0 .33-.05.67-.05 1a10.9 10.9 0 0 0 1.78 6Zm-3-9L7.8 4h8.4l1.55 7Z", id: "lamp" }))); }
     },
     "layer-group": {
         category: 'user interface',
         name: 'layer-group',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m2.5 8.86 9 5.2a1 1 0 0 0 1 0l9-5.2A1 1 0 0 0 22 8a1 1 0 0 0-.5-.87l-9-5.19a1 1 0 0 0-1 0l-9 5.19A1 1 0 0 0 2 8a1 1 0 0 0 .5.86ZM12 4l7 4-7 4-7-4Zm8.5 7.17L12 16l-8.5-4.87a1 1 0 0 0-1.37.37 1 1 0 0 0 .37 1.36l9 5.2a1 1 0 0 0 1 0l9-5.2a1 1 0 0 0 .37-1.36 1 1 0 0 0-1.37-.37Zm0 4L12 20l-8.5-4.87a1 1 0 0 0-1.37.37 1 1 0 0 0 .37 1.36l9 5.2a1 1 0 0 0 1 0l9-5.2a1 1 0 0 0 .37-1.36 1 1 0 0 0-1.37-.37Z", id: "layer-group" }))); }
     },
     "layer-group-slash": {
         category: 'user interface',
         name: 'layer-group-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10.26 5 12 4l7 4-3.15 1.83a1 1 0 0 0-.37 1.36 1 1 0 0 0 1.37.37l4.65-2.69a1 1 0 0 0 0-1.74l-9-5.2a1 1 0 0 0-1 0l-2.24 1.3a1 1 0 0 0-.37 1.37 1 1 0 0 0 1.37.4ZM3.71 2.29a1 1 0 0 0-1.42 1.42L4.54 6l-2 1.17a1 1 0 0 0 0 1.74l9 5.2a1 1 0 0 0 1 0l.1-.06 1.07 1.07-1.67 1-8.54-4.99a1 1 0 1 0-1 1.74l9 5.2a1 1 0 0 0 .5.13 1 1 0 0 0 .5-.13l2.63-1.52 1.07 1.07L12 20l-8.5-4.87a1 1 0 0 0-1 1.74l9 5.2a1 1 0 0 0 1 0l5.17-3 2.62 2.63a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42ZM5 8l1-.58 2.75 2.75Zm15.5 3.13-2.12 1.22a1 1 0 0 0 1 1.74l2.12-1.22a1 1 0 1 0-1-1.74Z", id: "layer-group-slash" }))); }
     },
     "layers": {
         category: 'user interface',
         name: 'layers',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m2.5 10.56 9 5.2a1 1 0 0 0 1 0l9-5.2a1 1 0 0 0 0-1.73l-9-5.2a1 1 0 0 0-1 0l-9 5.2a1 1 0 0 0 0 1.73ZM12 5.65l7 4-7 4.05-7-4.01Zm8.5 7.79L12 18.35l-8.5-4.91a1 1 0 0 0-1.37.36 1 1 0 0 0 .37 1.37l9 5.2a1 1 0 0 0 1 0l9-5.2a1 1 0 0 0 .37-1.37 1 1 0 0 0-1.37-.36Z", id: "layers" }))); }
     },
     "layers-slash": {
         category: 'user interface',
         name: 'layers-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m20.49 13.94-.34.2a1 1 0 0 0-.35 1.37 1 1 0 0 0 .86.49 1 1 0 0 0 .51-.14l.34-.2a1 1 0 0 0-1-1.72Zm-8.84-7.58.35-.21 7 4-1.76 1a1 1 0 0 0 .5 1.87 1 1 0 0 0 .5-.13L21.5 11a1 1 0 0 0 0-1.74l-9-5.19a1 1 0 0 0-1 0l-.85.49a1 1 0 0 0 1 1.74ZM3.71 2.29a1 1 0 0 0-1.42 1.42l3.64 3.63-3.43 2a1 1 0 0 0 0 1.74l9 5.2a1.09 1.09 0 0 0 .5.13 1.13 1.13 0 0 0 .5-.13l1.5-.88 1.45 1.46-3.44 2-8.51-4.93a1 1 0 0 0-1 1.74l9 5.2a1 1 0 0 0 1 0l4.41-2.55 3.38 3.39a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42Zm8.29 12-7-4.1 2.4-1.38 5.12 5.13Z", id: "layers-slash" }))); }
     },
     "life-ring": {
         category: 'user interface',
         name: 'life-ring',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M22 11.05v-.33l-.09-.6-.09-.39c0-.17-.08-.34-.13-.51s-.08-.27-.13-.4a2.17 2.17 0 0 1-.07-.24s0 0 0-.05a10.1 10.1 0 0 0-5.9-5.9s0 0-.05 0l-.23-.07-.42-.13c-.15 0-.31-.08-.46-.12l-.46-.1-.46-.07c-.16 0-.31 0-.48-.06s-.35 0-.52 0L12 2h-.91c-.17 0-.32 0-.48.06l-.46.07-.46.1c-.15 0-.31.07-.46.12l-.42.13-.23.07h-.05a10.1 10.1 0 0 0-5.9 5.9s0 0 0 .05a2.17 2.17 0 0 1-.07.24c0 .13-.09.26-.13.4s-.09.34-.13.51l-.09.39-.09.6v2.56l.09.6.09.39c0 .17.08.34.13.51s.08.27.13.4a2.17 2.17 0 0 1 .07.24.43.43 0 0 1 0 .07 10 10 0 0 0 5.89 5.88s0 0 .05 0l.24.07.4.13.51.13.39.09.6.09h.33c.31 0 .63.05.95.05s.64 0 .95-.05h.33l.6-.09.39-.09.51-.13.4-.13.24-.07h.05a10 10 0 0 0 5.89-5.88.43.43 0 0 1 0-.07c0-.08.05-.16.07-.24s.09-.26.13-.4.09-.34.13-.51l.09-.39.09-.6v-.33c0-.31.05-.63.05-.95s.09-.56.09-.87Zm-6.3-6.16a8 8 0 0 1 3.46 3.46l-2.86 1a5.14 5.14 0 0 0-1.64-1.64Zm-5.36-.7c.21-.05.41-.08.61-.11h.24a8.24 8.24 0 0 1 1.72 0h.24c.2 0 .4.06.61.11h.06l-1 2.86A4.49 4.49 0 0 0 12 7a4.4 4.4 0 0 0-.73.06l-1-2.86Zm-1.94.7 1 2.86a5.14 5.14 0 0 0-1.65 1.64l-2.86-1a8 8 0 0 1 3.46-3.5Zm-4.21 8.82a4.17 4.17 0 0 1-.1-.6v-.25a7.42 7.42 0 0 1 0-1.72v-.25a4.17 4.17 0 0 1 .1-.6s0 0 0-.06l2.86 1a4.47 4.47 0 0 0 0 1.46l-2.86 1v.02Zm4.16 5.4a8 8 0 0 1-3.46-3.46l2.86-1a5.14 5.14 0 0 0 1.64 1.64Zm5.36.7c-.21.05-.41.08-.61.11h-.24a8.24 8.24 0 0 1-1.72 0h-.24c-.2 0-.4-.06-.61-.11h-.06l1-2.86a4.47 4.47 0 0 0 1.46 0l1 2.86Zm-.67-5c-.17.06-.34.1-.5.14a2.73 2.73 0 0 1-1 0c-.16 0-.33-.08-.5-.14A3 3 0 0 1 9.2 13a3.23 3.23 0 0 1-.14-.51 2.63 2.63 0 0 1 0-1 3.23 3.23 0 0 1 .13-.49A3 3 0 0 1 11 9.2c.17-.06.34-.1.5-.14a2.73 2.73 0 0 1 1 0c.16 0 .33.08.5.14a3 3 0 0 1 1.8 1.8 3.23 3.23 0 0 1 .14.51 2.63 2.63 0 0 1 0 1 3.23 3.23 0 0 1-.14.51A3 3 0 0 1 13 14.8Zm2.61 4.31-1-2.86a5.14 5.14 0 0 0 1.64-1.64l2.86 1a8 8 0 0 1-3.5 3.49ZM20 12.86v.25a4.17 4.17 0 0 1-.1.6s0 0 0 .06l-2.86-1a4.47 4.47 0 0 0 0-1.46l2.86-1v.06a4.17 4.17 0 0 1 .1.6v.25a7.42 7.42 0 0 1 0 1.72Z", id: "life-ring" }))); }
     },
     "link": {
         category: 'user interface',
         name: 'link',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m10 17.55-1.77 1.72a2.47 2.47 0 0 1-3.5-3.5l4.54-4.55a2.46 2.46 0 0 1 3.39-.09l.12.1a1 1 0 0 0 1.4-1.43 2.75 2.75 0 0 0-.18-.21 4.46 4.46 0 0 0-6.09.22l-4.6 4.55a4.48 4.48 0 0 0 6.33 6.33L11.37 19A1 1 0 0 0 10 17.55ZM20.69 3.31a4.49 4.49 0 0 0-6.33 0L12.63 5A1 1 0 0 0 14 6.45l1.73-1.72a2.47 2.47 0 0 1 3.5 3.5l-4.54 4.55a2.46 2.46 0 0 1-3.39.09l-.12-.1a1 1 0 0 0-1.4 1.43 2.75 2.75 0 0 0 .23.21 4.47 4.47 0 0 0 6.09-.22l4.55-4.55a4.49 4.49 0 0 0 .04-6.33Z", id: "link" }))); }
     },
     "link-add": {
         category: 'user interface',
         name: 'link-add',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m12.11 15.39-3.88 3.88a2.47 2.47 0 0 1-3.5 0 2.46 2.46 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42Zm-3.28-.22a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42ZM21 18h-1v-1a1 1 0 0 0-2 0v1h-1a1 1 0 0 0 0 2h1v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 0-2Zm-4.19-4.47 3.88-3.89a4.48 4.48 0 0 0-6.33-6.33l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.47 2.47 0 0 1 3.5 0 2.46 2.46 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0Z", id: "link-add" }))); }
     },
     "link-alt": {
         category: 'user interface',
         name: 'link-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z", id: "link-alt" }))); }
     },
     "link-broken": {
         category: 'user interface',
         name: 'link-broken',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.76 10.59a1 1 0 0 0 .26-2l-1.76-.44a1 1 0 1 0-.52 1.93l1.76.47a.78.78 0 0 0 .26.04ZM8.62 5a1 1 0 0 0 1 .74.82.82 0 0 0 .26 0 1 1 0 0 0 .7-1.22l-.47-1.76a1 1 0 1 0-1.93.52Zm4.83 10A1 1 0 0 0 12 15l-3.5 3.56a2.21 2.21 0 0 1-3.06 0 2.15 2.15 0 0 1 0-3.06L9 12a1 1 0 1 0-1.41-1.41L4 14.08A4.17 4.17 0 1 0 9.92 20l3.53-3.53a1 1 0 0 0 0-1.47ZM5.18 6.59a1 1 0 0 0 .7.29 1 1 0 0 0 .71-.29 1 1 0 0 0 0-1.41L5.3 3.89A1 1 0 0 0 3.89 5.3Zm16.08 7.33-1.76-.47a1 1 0 1 0-.5 1.93l1.76.47h.26a1 1 0 0 0 .26-2ZM15.38 19a1 1 0 0 0-1.23-.7 1 1 0 0 0-.7 1.22l.47 1.76a1 1 0 0 0 1 .74 1.15 1.15 0 0 0 .26 0 1 1 0 0 0 .71-1.23Zm3.44-1.57a1 1 0 0 0-1.41 1.41l1.29 1.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41ZM21.2 7a4.16 4.16 0 0 0-7.12-3l-3.53 3.56A1 1 0 1 0 12 9l3.5-3.56a2.21 2.21 0 0 1 3.06 0 2.15 2.15 0 0 1 0 3.06L15 12a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0L20 9.92A4.19 4.19 0 0 0 21.2 7Z", id: "link-broken" }))); }
     },
     "link-h": {
         category: 'user interface',
         name: 'link-h',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8 12a1 1 0 0 0 1 1h6a1 1 0 0 0 0-2H9a1 1 0 0 0-1 1Zm2 3H7a3 3 0 0 1 0-6h3a1 1 0 0 0 0-2H7a5 5 0 0 0 0 10h3a1 1 0 0 0 0-2Zm7-8h-3a1 1 0 0 0 0 2h3a3 3 0 0 1 0 6h-3a1 1 0 0 0 0 2h3a5 5 0 0 0 0-10Z", id: "link-h" }))); }
     },
     "list-ol": {
         category: 'user interface',
         name: 'list-ol',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7 20H4v-.1c0-.5.4-.9.9-.9 1.4 0 2.6-.9 3-2.2.4-1.6-.5-3.3-2.1-3.7-1.3-.4-2.7.2-3.4 1.4-.3.5-.1 1.1.4 1.4.5.3 1.1.1 1.4-.4.3-.5.9-.6 1.4-.3.1.1.2.1.2.2.2.3.2.6.2.9-.2.4-.6.7-1 .7-1.7 0-3 1.3-3 2.9V21c0 .6.4 1 1 1h4c.6 0 1-.4 1-1s-.4-1-1-1zm4-13h10c.6 0 1-.4 1-1s-.4-1-1-1H11c-.6 0-1 .4-1 1s.4 1 1 1zM7 9H6V3c0-.6-.4-1-1-1s-1 .4-1 1v1H3c-.6 0-1 .4-1 1s.4 1 1 1h1v3H3c-.6 0-1 .4-1 1s.4 1 1 1h4c.6 0 1-.4 1-1s-.4-1-1-1zm14 7H11c-.6 0-1 .4-1 1s.4 1 1 1h10c.6 0 1-.4 1-1s-.4-1-1-1z", id: "list-ol" }))); }
     },
     "list-ol-alt": {
         category: 'user interface',
         name: 'list-ol-alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7 20H4v-.1c0-.5.4-.9.9-.9 1.4 0 2.6-.9 3-2.2.4-1.6-.5-3.3-2.1-3.7-1.3-.4-2.7.2-3.4 1.4-.3.5-.1 1.1.4 1.4.5.3 1.1.1 1.4-.4.3-.5.9-.6 1.4-.3.1.1.2.1.2.2.2.3.2.6.2.9-.2.4-.6.7-1 .7-1.7 0-3 1.3-3 2.9V21c0 .6.4 1 1 1h4c.6 0 1-.4 1-1s-.4-1-1-1zM7 9H6V3c0-.6-.4-1-1-1s-1 .4-1 1v1H3c-.6 0-1 .4-1 1s.4 1 1 1h1v3H3c-.6 0-1 .4-1 1s.4 1 1 1h4c.6 0 1-.4 1-1s-.4-1-1-1zm4-3h10c.6 0 1-.4 1-1s-.4-1-1-1H11c-.6 0-1 .4-1 1s.4 1 1 1zm10 14H11c-.6 0-1 .4-1 1s.4 1 1 1h10c.6 0 1-.4 1-1s-.4-1-1-1zm0-11H11c-.6 0-1 .4-1 1s.4 1 1 1h10c.6 0 1-.4 1-1s-.4-1-1-1zm0 6H11c-.6 0-1 .4-1 1s.4 1 1 1h10c.6 0 1-.4 1-1s-.4-1-1-1z", id: "list-ol-alt" }))); }
     },
     "lock-slash": {
         category: 'user interface',
         name: 'lock-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10.84 5.38a2 2 0 0 1 2.57.21A2 2 0 0 1 14 7v3a1 1 0 0 0 1 1h1a1 1 0 0 1 1 1v.34a1 1 0 0 0 2 0V12a3 3 0 0 0-3-3V7a4 4 0 0 0-1.17-2.83 4.06 4.06 0 0 0-5.19-.39 1 1 0 1 0 1.2 1.6Zm10.87 14.91-18-18a1 1 0 0 0-1.42 1.42L7.62 9A3 3 0 0 0 5 12v6a3 3 0 0 0 3 3h8a3 3 0 0 0 2.39-1.2l1.9 1.91a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42ZM16 19H8a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h1.59l2.07 2.07A1 1 0 0 0 11 14v2a1 1 0 0 0 2 0v-1.59l3.93 3.93A1 1 0 0 1 16 19Z", id: "lock-slash" }))); }
     },
     "map-marker-slash": {
         category: 'user interface',
         name: 'map-marker-slash',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10.63 5.49a6 6 0 0 1 7.21 7.2 1 1 0 0 0 .74 1.21.9.9 0 0 0 .23 0 1 1 0 0 0 1-.76 8 8 0 0 0-9.61-9.62 1 1 0 0 0 .46 2Zm11.08 14.58-4.27-4.27L3.71 2.07a1 1 0 0 0-1.42 0 1 1 0 0 0 0 1.41L5.5 6.69A8 8 0 0 0 6.34 17l4.95 4.95a1 1 0 0 0 1.42 0l4-4 3.56 3.56a1 1 0 0 0 1.42-1.41Zm-9.59-6.76a2 2 0 0 1-1.53-.57 2 2 0 0 1-.59-1.53Zm-.12 6.5-4.24-4.24a6 6 0 0 1-.82-7.44L8.41 9.6a4 4 0 0 0 .76 4.55A4 4 0 0 0 12 15.33a3.93 3.93 0 0 0 1.73-.41l1.58 1.58Z", id: "map-marker-slash" }))); }
     },
     "megaphone": {
@@ -5917,6 +5937,91 @@ var Icons = {
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
         icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", "data-name": "Layer 1", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M23 9.71a8.5 8.5 0 0 0-.91-4.13 2.92 2.92 0 0 0-1.72-1A78.36 78.36 0 0 0 12 4.27a78.45 78.45 0 0 0-8.34.3 2.87 2.87 0 0 0-1.46.74c-.9.83-1 2.25-1.1 3.45a48.29 48.29 0 0 0 0 6.48 9.55 9.55 0 0 0 .3 2 3.14 3.14 0 0 0 .71 1.36 2.86 2.86 0 0 0 1.49.78 45.18 45.18 0 0 0 6.5.33c3.5.05 6.57 0 10.2-.28a2.88 2.88 0 0 0 1.53-.78 2.49 2.49 0 0 0 .61-1 10.58 10.58 0 0 0 .52-3.4c.04-.56.04-3.94.04-4.54ZM9.74 14.85V8.66l5.92 3.11c-1.66.92-3.85 1.96-5.92 3.08Z", id: "youtube" }))); }
+    },
+    //--------
+    "abacus": {
+        category: 'brand logo',
+        name: 'abacus',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M21 2a1 1 0 0 0-1 1v3h-4V5a1 1 0 0 0-2 0v1h-2V5a1 1 0 0 0-2 0v1H8V5a1 1 0 0 0-2 0v1H4V3a1 1 0 0 0-2 0v16a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V3a1 1 0 0 0-1-1Zm-1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3h2v1a1 1 0 0 0 2 0v-1h2v1a1 1 0 0 0 2 0v-1h4v1a1 1 0 0 0 2 0v-1h2Zm0-5h-2v-1a1 1 0 0 0-2 0v1h-4v-1a1 1 0 0 0-2 0v1H8v-1a1 1 0 0 0-2 0v1H4V8h2v1a1 1 0 0 0 2 0V8h2v1a1 1 0 0 0 2 0V8h2v1a1 1 0 0 0 2 0V8h4Z", id: "abacus" }))); }
+    },
+    "atom": {
+        category: 'brand logo',
+        name: 'atom',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 11a1 1 0 1 0 1 1 1 1 0 0 0-1-1Zm7.62 1 .11-.14C21.08 10 21.4 8.29 20.66 7S18.26 5.14 16 5.37h-.18C14.91 3.3 13.56 2 12 2S9.09 3.3 8.19 5.4L8 5.37C5.74 5.14 4.08 5.71 3.34 7s-.42 3 .93 4.86l.11.14-.11.14C2.92 14 2.6 15.71 3.34 17 4 18.1 5.27 18.68 7 18.68c.31 0 .63 0 1-.05h.18C9.09 20.7 10.44 22 12 22s2.91-1.3 3.81-3.4h.18c.34 0 .66.05 1 .05 1.77 0 3.07-.58 3.7-1.68.74-1.29.42-3-.93-4.86ZM5.07 8c.25-.44 1-.68 2-.68h.49a14.78 14.78 0 0 0-.35 1.87 15 15 0 0 0-1.45 1.25C5 9.44 4.78 8.5 5.07 8Zm0 8c-.29-.5 0-1.44.67-2.47a15 15 0 0 0 1.45 1.25 14.94 14.94 0 0 0 .35 1.88c-1.24.08-2.18-.16-2.47-.66ZM12 4c.56 0 1.23.66 1.8 1.83a17.6 17.6 0 0 0-1.8.63 17.6 17.6 0 0 0-1.8-.63C10.77 4.66 11.44 4 12 4Zm0 16c-.56 0-1.23-.66-1.8-1.83a17.6 17.6 0 0 0 1.8-.63 17.6 17.6 0 0 0 1.8.63C13.23 19.34 12.56 20 12 20Zm2.93-6.31c-.46.32-.93.62-1.43.91s-1 .55-1.5.78q-.75-.35-1.5-.78c-.5-.29-1-.59-1.43-.91C9 13.15 9 12.59 9 12s0-1.15.07-1.69c.46-.32.93-.62 1.43-.91s1-.55 1.5-.78q.75.35 1.5.78c.5.29 1 .59 1.43.91 0 .54.07 1.1.07 1.69s0 1.15-.07 1.69Zm4 2.31c-.29.5-1.23.75-2.47.66a14.94 14.94 0 0 0 .35-1.88 15 15 0 0 0 1.45-1.25c.74 1.03.96 1.97.67 2.47Zm-.67-5.53a15 15 0 0 0-1.45-1.25 14.78 14.78 0 0 0-.35-1.87h.49c1 0 1.73.24 2 .68s.05 1.41-.69 2.44Z", id: "atom" }))); }
+    },
+    "award": {
+        category: 'brand logo',
+        name: 'award',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m20.87 17.25-2.71-4.68A6.9 6.9 0 0 0 19 9.25a7 7 0 0 0-14 0 6.9 6.9 0 0 0 .84 3.32l-2.71 4.68a1 1 0 0 0 .87 1.5h2.87l1.46 2.46a1 1 0 0 0 .18.22 1 1 0 0 0 .69.28h.14a1 1 0 0 0 .73-.49L12 17.9l1.93 3.35a1 1 0 0 0 .73.48h.14a1 1 0 0 0 .7-.28.87.87 0 0 0 .17-.21l1.46-2.46H20a1 1 0 0 0 .87-.5 1 1 0 0 0 0-1.03ZM9.19 18.78l-.89-1.49a1 1 0 0 0-.85-.49H5.72l1.43-2.48a7 7 0 0 0 3.57 1.84ZM12 14.25a5 5 0 1 1 5-5 5 5 0 0 1-5 5Zm4.55 2.55a1 1 0 0 0-.85.49l-.89 1.49-1.52-2.65a7.06 7.06 0 0 0 3.56-1.84l1.43 2.48Z", id: "award" }))); }
+    },
+    "award-alt": {
+        category: 'brand logo',
+        name: 'Award alt',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 1a7 7 0 0 0-5 11.89V22a1 1 0 0 0 1.45.89L12 21.12l3.55 1.77A1 1 0 0 0 16 23a1 1 0 0 0 .53-.15A1 1 0 0 0 17 22v-9.11A7 7 0 0 0 12 1Zm3 19.38-2.55-1.27a1 1 0 0 0-.9 0L9 20.38v-6.06a7 7 0 0 0 2 .6V16a1 1 0 0 0 2 0v-1.08a7 7 0 0 0 2-.6ZM12 13a5 5 0 1 1 5-5 5 5 0 0 1-5 5Z", id: "award-alt" }))); }
+    },
+    "backpack": {
+        category: 'brand logo',
+        name: 'Backpack',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13 10h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2Zm5 0a4 4 0 0 0-3-3.86V5a3 3 0 0 0-6 0v1.14A4 4 0 0 0 6 10a4 4 0 0 0-4 4v3a3 3 0 0 0 3 3h1.18A3 3 0 0 0 9 22h6a3 3 0 0 0 2.82-2H19a3 3 0 0 0 3-3v-3a4 4 0 0 0-4-4ZM6 18H5a1 1 0 0 1-1-1v-3a2 2 0 0 1 2-2Zm5-13a1 1 0 0 1 2 0v1h-2Zm5 14a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Zm0-4.44a3.91 3.91 0 0 0-2-.56h-4a3.91 3.91 0 0 0-2 .56V10a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2ZM20 17a1 1 0 0 1-1 1h-1v-6a2 2 0 0 1 2 2Z", id: "backpack" }))); }
+    },
+    "bell-school": {
+        category: 'brand logo',
+        name: 'Bell School',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M21 8a2 2 0 1 0-2.27 2 4.49 4.49 0 0 1-3 5.85 3 3 0 0 0-1.3-1.43 7 7 0 1 0-10.9 0A3 3 0 0 0 2 17v1a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-.19a6.47 6.47 0 0 0 4.58-8.59A2 2 0 0 0 21 8Zm-7 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h.41a6.94 6.94 0 0 0 7.18 0H13a1 1 0 0 1 1 1Zm-5-3a5 5 0 1 1 5-5 5 5 0 0 1-5 5Zm0-6a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z", id: "bell-school" }))); }
+    },
+    "book": {
+        category: 'brand logo',
+        name: 'Book',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M15 6H9a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Zm-1 4h-4V8h4Zm3-8H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H6V4h11a1 1 0 0 1 1 1Z", id: "book" }))); }
+    },
+    "book-alt": {
+        category: 'brand logo',
+        name: 'Book Alt',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M15 6H9a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Zm-1 4h-4V8h4Zm3-8H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H6V4h11a1 1 0 0 1 1 1Z", id: "book" }))); }
+    },
+    "book-open": {
+        category: 'brand logo',
+        name: 'Book Open',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M21.17 2.06A13.1 13.1 0 0 0 19 1.87a12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2 13.1 13.1 0 0 0-2.17.19 1 1 0 0 0-.83 1v12a1 1 0 0 0 1.17 1 10.9 10.9 0 0 1 8.25 1.91l.12.07h.11a.91.91 0 0 0 .7 0h.11l.12-.07A10.9 10.9 0 0 1 20.83 16 1 1 0 0 0 22 15V3a1 1 0 0 0-.83-.94ZM11 15.35a12.87 12.87 0 0 0-6-1.48H4v-10a8.69 8.69 0 0 1 1 0 10.86 10.86 0 0 1 6 1.8Zm9-1.44h-1a12.87 12.87 0 0 0-6 1.48V5.67a10.86 10.86 0 0 1 6-1.8 8.69 8.69 0 0 1 1 0Zm1.17 4.15a13.1 13.1 0 0 0-2.17-.19 12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2.05 13.1 13.1 0 0 0-2.17.19A1 1 0 0 0 2 19.21a1 1 0 0 0 1.17.79 10.9 10.9 0 0 1 8.25 1.91 1 1 0 0 0 1.16 0A10.9 10.9 0 0 1 20.83 20a1 1 0 0 0 1.17-.79 1 1 0 0 0-.83-1.15Z", id: "book-open" }))); }
+    },
+    "brain": {
+        category: 'brand logo',
+        name: 'Brain',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M22 11a4 4 0 0 0-2-3.48A3 3 0 0 0 20 7a3 3 0 0 0-3-3h-.18A3 3 0 0 0 12 2.78 3 3 0 0 0 7.18 4H7a3 3 0 0 0-3 3 3 3 0 0 0 0 .52 4 4 0 0 0-.55 6.59A4 4 0 0 0 7 20h.18A3 3 0 0 0 12 21.22 3 3 0 0 0 16.82 20H17a4 4 0 0 0 3.5-5.89A4 4 0 0 0 22 11ZM11 8.55a4.72 4.72 0 0 0-.68-.32 1 1 0 0 0-.64 1.9A2 2 0 0 1 11 12v1.55a4.72 4.72 0 0 0-.68-.32 1 1 0 0 0-.64 1.9A2 2 0 0 1 11 17v2a1 1 0 0 1-1 1 1 1 0 0 1-.91-.6 4.07 4.07 0 0 0 .48-.33 1 1 0 1 0-1.28-1.54A2 2 0 0 1 7 18a2 2 0 0 1-2-2 2 2 0 0 1 .32-1.06A3.82 3.82 0 0 0 6 15a1 1 0 0 0 0-2 1.84 1.84 0 0 1-.69-.13A2 2 0 0 1 5 9.25a3.1 3.1 0 0 0 .46.35 1 1 0 1 0 1-1.74.9.9 0 0 1-.34-.33A.92.92 0 0 1 6 7a1 1 0 0 1 1-1 .76.76 0 0 1 .21 0 3.85 3.85 0 0 0 .19.47 1 1 0 0 0 1.37.37 1 1 0 0 0 .36-1.34A1.06 1.06 0 0 1 9 5a1 1 0 0 1 2 0Zm7.69 4.32A1.84 1.84 0 0 1 18 13a1 1 0 0 0 0 2 3.82 3.82 0 0 0 .68-.06A2 2 0 0 1 19 16a2 2 0 0 1-2 2 2 2 0 0 1-1.29-.47 1 1 0 0 0-1.28 1.54 4.07 4.07 0 0 0 .48.33 1 1 0 0 1-.91.6 1 1 0 0 1-1-1v-2a2 2 0 0 1 1.32-1.87 1 1 0 0 0-.64-1.9 4.72 4.72 0 0 0-.68.32V12a2 2 0 0 1 1.32-1.87 1 1 0 0 0-.64-1.9 4.72 4.72 0 0 0-.68.32V5a1 1 0 0 1 2 0 1.06 1.06 0 0 1-.13.5 1 1 0 0 0 .36 1.37 1 1 0 0 0 1.37-.37 3.85 3.85 0 0 0 .19-.5.76.76 0 0 1 .21 0 1 1 0 0 1 1 1 1 1 0 0 1-.17.55.9.9 0 0 1-.33.31 1 1 0 0 0 1 1.74 2.66 2.66 0 0 0 .5-.35 2 2 0 0 1-.27 3.62Z", id: "brain" }))); }
+    },
+    "cell": {
+        category: 'brand logo',
+        name: 'Cell',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M21.49 4.73 17 2.17a1 1 0 0 0-1 0l-4 2.28-4-2.28a1 1 0 0 0-1 0L2.51 4.73A1 1 0 0 0 2 5.6v5.12a1 1 0 0 0 .51.87l4 2.27v4.54a1 1 0 0 0 .51.87l4.5 2.56a1 1 0 0 0 1 0L17 19.27a1 1 0 0 0 .51-.87v-4.54l4-2.27a1 1 0 0 0 .51-.87V5.6a1 1 0 0 0-.53-.87ZM4 10.14v-4l3.5-2 3.5 2v4l-3.5 2Zm11.5 7.68-3.5 2-3.5-2v-4l3.5-2 3.5 2Zm4.5-7.68-3.5 2-3.5-2v-4l3.5-2 3.5 2Z", id: "cell" }))); }
+    },
+    "diary": {
+        category: 'brand logo',
+        name: 'Diary',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M17 2H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-1h9a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm-3 16H6V4h8Zm4-1a1 1 0 0 1-1 1h-1V4h1a1 1 0 0 1 1 1Z", id: "diary" }))); }
     },
 };
 

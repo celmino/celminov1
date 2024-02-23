@@ -9,7 +9,7 @@ import {
     SvgIcon,
     Text, TextField,
     UIController, UIView, VStack,
-    cTopLeading, useEffect,
+    cTopLeading, darken, hex2rgb, lighten, useEffect,
     useState
 } from '@tuval/forms';
 
@@ -22,11 +22,29 @@ import Picker from '@emoji-mart/react'
 import React from 'react';
 import { SegmentedRenderer } from '@realmocean/antd';
 
+function hexToRgb(hex) {
+    // Remove '#' if present
+    hex = hex.replace(/^#/, '');
+    
+    // Convert to RGB
+    let bigint = parseInt(hex, 16);
+    let r = (bigint >> 16) & 255;
+    let g = (bigint >> 8) & 255;
+    let b = bigint & 255;
+    
+    return [r, g, b];
+}
 
 
 export class MyTestController extends UIController {
     public override LoadView(): UIView {
         let _hideHandle;
+
+        const light = 0.812;
+        const dark = 0.188;
+
+        //#E72065
+
 
         const {
             selectedIcon,
@@ -37,9 +55,14 @@ export class MyTestController extends UIController {
             height = 36,
             padding = 5,
             tooltip = '',
-            color = 'white',
-            backgroundColor = 'transparent',
+            color = '#E72065',
+            //  backgroundColor = 'transparent',
             readonly = false } = this.props.config || {};
+
+           
+        const [ r, g, b ] = hexToRgb('#E72065');
+        const backgroundColor = `rgba(${r},${g},${b},${.15})`;
+        const foregroundColor = `rgba(${r},${g},${b},${.95})`;
 
 
         // const [selectedEmoji, setSelectedEmoji] = useState(this.props.config.selectedEmoji);
@@ -66,32 +89,32 @@ export class MyTestController extends UIController {
             readonly ?
                 HStack(
                     (selectedCategory === 'Icons' && selectedIcon) ?
-                        Icon(Icons[selectedIcon]?.icon).width(width).height(height) : Fragment(),
+                        Icon(Icons[selectedIcon]?.icon).allWidth(width).allHeight(height) : Fragment(),
                     (selectedCategory === 'CuIcons' && selectedIcon) ?
-                        Icon(CuIcons[selectedIcon]?.icon).width(width).height(height) : Fragment(),
+                        Icon(CuIcons[selectedIcon]?.icon).allWidth(width).allHeight(height) : Fragment(),
                     (selectedCategory === 'Emoji' && selectedIcon) ?
                         Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment(),
 
-                ).width(width).height(height).padding(padding)
+                ).allWidth(width + 4).allHeight(height + 4).padding(padding)
                     // .background('#40BC86')
-                    .foregroundColor(color)
+                    .foregroundColor(foregroundColor)
                     .cornerRadius(5)
-                    .background(backgroundColor)
+                    .background(selectedCategory === 'Emoji' ? '' :backgroundColor)
                 :
                 PopupButton(
                     HStack(
                         (selectedCategory === 'Icons' && selectedIcon) ?
-                            Icon(Icons[selectedIcon]?.icon).width(width).height(height) : Fragment(),
+                            Icon(Icons[selectedIcon]?.icon).allWidth(width).allHeight(height) : Fragment(),
                         (selectedCategory === 'CuIcons' && selectedIcon) ?
-                            Icon(CuIcons[selectedIcon]?.icon).width(width).height(height) : Fragment(),
+                            Icon(CuIcons[selectedIcon]?.icon).allWidth(width).allHeight(height) : Fragment(),
                         (selectedCategory === 'Emoji' && selectedIcon) ?
                             Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment(),
 
-                    ).width(width).height(height).padding(padding)
+                    ).allWidth(width + 4).allHeight(height + 4).padding(padding)
                         // .background('#40BC86')
-                        .foregroundColor(color)
+                        .foregroundColor(foregroundColor)
                         .cornerRadius(5)
-                        .background(backgroundColor)
+                        .background(selectedCategory === 'Emoji' ? '' : backgroundColor)
                 )(
 
                     VStack({ alignment: cTopLeading, spacing: 10 })(
@@ -135,8 +158,8 @@ export class MyTestController extends UIController {
                                             .width()
                                             .height()
                                             .cornerRadius(4)
-                                            .background({ hover: '#E8EAED' })
-                                            .foregroundColor({ hover: 'blue' })
+                                            .background({ hover: backgroundColor })
+                                            .foregroundColor({default: foregroundColor })
                                             .padding(5)
                                             .onClick(() => {
                                                 if (is.function(onChange)) {

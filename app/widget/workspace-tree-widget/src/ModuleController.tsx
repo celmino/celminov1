@@ -217,21 +217,20 @@ export class WorkspaceTreeWidgetController extends UIController {
 
         let listId = getListId();
 
-        const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId })
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'wm_tree');
 
         return (
-            isAppletLoading ? Spinner() :
+           
                 UIWidget('com.celmino.widget.applet-tree')
                     .config({
                         node: item,
                         workspaceId,
                         appletId,
-                        appletName: applet.name,
-                        iconName: applet.iconName,
-                        iconCategory: applet.iconCategory,
+                        appletName: item.name,
+                        iconName: item.iconName,
+                        iconCategory: item.iconCategory,
                         isEditing: isEditing,
                         isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
                         editingChanged: (status) => setIsEditing(status),

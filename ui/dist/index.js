@@ -8526,7 +8526,7 @@ var SelectAppletDialog = /** @class */ (function (_super) {
     };
     SelectAppletDialog.prototype.OnOK = function (applet) {
         this.ShowDialogAsyncResolve(applet);
-        this.Hide();
+        //  this.Hide();
     };
     SelectAppletDialog.prototype.OnCancel = function () {
         this.Hide();

@@ -26,10 +26,9 @@ export class WorkspaceTreeWidgetController extends UIController {
         return (
             HStack({ alignment: cLeading, spacing: 2 })(
                 // Title
-                (isEditing && is.string(title)) ?
+                (isEditing && is.string(item?.name)) ?
                     HStack({ alignment: cLeading })(
                         TextField()
-
                             .border('0')
                             .fontSize(14)
                             // .fontWeight('500')
@@ -49,7 +48,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                                     }
                                 }, () => {
                                     EventBus.Default.fire('applet.added', { treeItem: item })
-                                }) 
+                                })  
                             })
                     )
                         .height()
@@ -67,7 +66,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                     :
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
-                            Text(title)
+                            Text(item?.name)
                                 .fontSize(14)
                                 .fontWeight('500')
                                 .foregroundColor('#222522')
