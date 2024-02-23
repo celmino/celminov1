@@ -45,6 +45,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddBoardDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialogs/AddBoardDialog */ "./src/dialogs/AddBoardDialog.ts");
 /* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./resources/Icons */ "./src/resources/Icons.tsx");
 /* harmony import */ var _dialogs_AddMeetingSpace__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialogs/AddMeetingSpace */ "./src/dialogs/AddMeetingSpace.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_11__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -60,6 +62,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -220,7 +223,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var isLoading = false;
         var items = (this.props.data || {}).items;
-        var _b = this.props.config || {}, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected;
+        var _b = this.props.config || {}, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_2__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
         var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getListId)();
         var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }), applet = _d.document, isAppletLoading = _d.isLoading;
@@ -228,11 +231,12 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         return (isAppletLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
                 .config({
+                node: item,
                 workspaceId: workspaceId,
-                appletId: appletId,
-                appletName: applet.name,
-                iconName: applet.iconName,
-                iconCategory: applet.iconCategory,
+                appletId: item.appletId,
+                appletName: item.name,
+                iconName: item.iconName,
+                iconCategory: item.iconCategory,
                 isEditing: isEditing,
                 isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_2__.isAppletSettings)(appletId) || (0,_utils__WEBPACK_IMPORTED_MODULE_2__.isAppletOnly)(appletId),
                 editingChanged: function (status) { return setIsEditing(status); },
@@ -253,12 +257,48 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                                 name: title
                             }
                         });
+                        updateDocument({
+                            databaseId: 'workspace',
+                            collectionId: 'ws_tree',
+                            documentId: item.$id,
+                            data: {
+                                name: title
+                            }
+                        }, function () { return _tuval_core__WEBPACK_IMPORTED_MODULE_11__.EventBus.Default.fire('applet.added', { treeItem: item }); });
                     });
                 },
                 subNodes: function (TreeNode, level, nodeType, parentId, workspaceId, appletId) {
                     return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected);
                 },
-                requestMenu: function () {
+                requestNavigation: function () {
+                    if (onItemSelected == null) {
+                        switch (item.type) {
+                            case 'space':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/space-").concat(item.$id, "/meetings"));
+                                break;
+                            case 'list':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.$id));
+                                break;
+                            case 'board':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
+                                break;
+                            case 'document':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/document/").concat(item.$id));
+                                break;
+                            case 'whiteboard':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/whiteboard/").concat(item.$id));
+                                break;
+                        }
+                    }
+                    else {
+                        onItemSelected({
+                            workspaceId: workspaceId,
+                            appletId: appletId,
+                            item: item
+                        });
+                    }
+                },
+                requestMenu: function (node) {
                     return [
                         /*  {
                              title: 'Add items',
@@ -267,7 +307,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                         {
                             title: 'Meeting Space',
                             icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarList', '#151719', '18px', '18px'),
-                            onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_1__.DynoDialog.Show((0,_dialogs_AddMeetingSpace__WEBPACK_IMPORTED_MODULE_10__.AddMeetingSpace)(workspaceId, appletId)); }
+                            onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_1__.DynoDialog.Show((0,_dialogs_AddMeetingSpace__WEBPACK_IMPORTED_MODULE_10__.AddMeetingSpace)(workspaceId, appletId, node.$id)); }
                         },
                         /* {
                             type: 'Divider'
@@ -1012,8 +1052,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -1027,12 +1069,13 @@ var __assign = (undefined && undefined.__assign) || function () {
 };
 
 
-var SaveMeetingSpace = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+
+var SaveMeetingSpace = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
     var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
+    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useDialog)();
+    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder)();
+    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
     var invalidateResource = null;
     var formMutate = null;
     var createMutate = null;
@@ -1040,16 +1083,33 @@ var SaveMeetingSpace = function (formMeta, action) { return (0,_tuval_forms__WEB
     var isFormMutateExcuting = false;
     var isFormLoading = false;
     var views = [];
-    var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId;
+    var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId, parent = formMeta.parent;
+    var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, 'workspace', 'ws_tree').createDocument;
     var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'wm_tree').createDocument;
     var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, appletId, 'meeting_space'), createDocument = _a.createDocument, isLoading = _a.isLoading;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save meeting space'))
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Save meeting space'))
         .loading(isLoading)
         .onClick(function () {
         var data = __assign({}, formController.GetFormData());
         createDocument({
             data: __assign({}, data)
         }, function (space) {
+            createWorkspaceTreeItem({
+                documentId: space.$id,
+                data: {
+                    name: data.name,
+                    type: 'space',
+                    parent: parent,
+                    tree_widget: 'com.celmino.widget.meeeting-tree',
+                    appletId: appletId,
+                    path: (new Date()).getTime().toString(),
+                    iconName: 'bell',
+                    iconCategory: 'Icons',
+                    //viewer:'com.tuvalsoft.viewer.document'
+                }
+            }, function (item) {
+                _tuval_core__WEBPACK_IMPORTED_MODULE_1__.EventBus.Default.fire('applet.added', { treeItem: item });
+            });
             createTreeItem({
                 documentId: space.$id,
                 data: __assign(__assign({}, data), { parent: '-1', type: 'space' })
@@ -1057,10 +1117,11 @@ var SaveMeetingSpace = function (formMeta, action) { return (0,_tuval_forms__WEB
         });
     }));
 }); };
-var AddMeetingSpace = function (workspaceId, appletId) { return ({
+var AddMeetingSpace = function (workspaceId, appletId, parent) { return ({
     "title": 'Create meeting space',
     workspaceId: workspaceId,
     appletId: appletId,
+    parent: parent,
     /*   "mutation":"_create_workspace", */
     "actions": [
         {
@@ -1431,6 +1492,17 @@ module.exports = realmocean$sdk;
 
 "use strict";
 module.exports = realmocean$ui;
+
+/***/ }),
+
+/***/ "@tuval/core":
+/*!*****************************!*\
+  !*** external "tuval$core" ***!
+  \*****************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = tuval$core;
 
 /***/ }),
 

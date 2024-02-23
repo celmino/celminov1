@@ -1,7 +1,12 @@
+import { APQCApplet } from "./applets/APQC";
+import { InvestorsInTurkey } from "./applets/InvestorsInTurkey";
+import { WorldApplet } from "./applets/World";
 
 
 export const Applets = [
-
+    InvestorsInTurkey,
+    APQCApplet,
+    WorldApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',

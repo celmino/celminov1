@@ -23,6 +23,7 @@ import { AddBoardDialog } from './dialogs/AddBoardDialog';
 import React from 'react';
 import { BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, TableIcon, TimelineIcon } from './resources/Icons';
 import { SelectAppletDialog } from '@celmino/ui';
+import { EventBus } from '@tuval/core';
 
 
 const subNodes = (TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected) => UIViewBuilder(() => {
@@ -209,7 +210,7 @@ export class WorkspaceTreeWidgetController extends UIController {
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
         const { items } = this.props.data || {};
-        const { workspaceId, appletId, onItemSelected } = this.props.config || {};
+        const { workspaceId, appletId, onItemSelected, item } = this.props.config || {};
 
 
         const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
@@ -225,6 +226,7 @@ export class WorkspaceTreeWidgetController extends UIController {
             isAppletLoading ? Spinner() :
                 UIWidget('com.celmino.widget.applet-tree')
                     .config({
+                        node: item,
                         workspaceId,
                         appletId,
                         appletName: applet.name,
@@ -244,18 +246,20 @@ export class WorkspaceTreeWidgetController extends UIController {
                             }, () => {
                                 updateDocument({
                                     databaseId: 'workspace',
-                                    collectionId: 'applets',
-                                    documentId: appletId,
+                                    collectionId: 'ws_tree',
+                                    documentId: item.$id,
                                     data: {
                                         name: title
                                     }
+                                }, () => {
+                                    EventBus.Default.fire('applet.added', { treeItem: item })
                                 })
                             })
                         },
                         subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
                             return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected)
                         },
-                        requestMenu: () => {
+                        requestMenu: (node) => {
                             return [
                                 /*  {
                                      title: 'Add items',
@@ -264,7 +268,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                                 {
                                     title: 'List',
                                     icon: SvgIcon('cu3-icon-sidebarList', '#151719', '18px', '18px'),
-                                    onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, '-1', '/'))
+                                    onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, node.$id, '/'))
                                 },
                                 {
                                     type: 'Divider'

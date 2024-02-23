@@ -1,4 +1,5 @@
 import { ID, Service, Services, useCreateDocument } from "@realmocean/sdk";
+import { EventBus } from "@tuval/core";
 import {
     Button,
     Text,
@@ -25,6 +26,8 @@ export const SaveListAction = (formMeta, action) => UIViewBuilder(() => {
     const views = []
     const { databaseId, collectionId, workspaceId, appletId } = formController.GetFormData();
 
+    const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
+  
     const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'wm_tree');
     const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'wm_lists');
 
@@ -50,6 +53,25 @@ export const SaveListAction = (formMeta, action) => UIViewBuilder(() => {
                         }
                     },
                     async (list) => {
+
+                        createWorkspaceTreeItem({
+                            documentId: list.$id,
+                            data: {
+                                name: data.name,
+                                type: 'document',
+                                parent:data.parent,
+                                tree_widget: 'com.celmino.widget.document-management-tree',
+                                appletId,
+                                path: (new Date()).getTime().toString(),
+                                iconName: 'bell',
+                                iconCategory: 'Icons',
+                                //viewer:'com.tuvalsoft.viewer.document'
+                            }
+                        }, (item)=> {
+                           
+                            EventBus.Default.fire('applet.added', { treeItem: item})
+                        })
+                        
                         await Services.Databases.createCollection(workspaceId, appletId, 'wm_list_' + list.$id, list.name);
                         await Services.Databases.createCollection(workspaceId, appletId, 'wm_list_' + list.$id + '_stages', list.name + '_stages');
                         await Services.Databases.createCollection(workspaceId, appletId, 'wm_list_' + list.$id + '_views', list.name + '_views');

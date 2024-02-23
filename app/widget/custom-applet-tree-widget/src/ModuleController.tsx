@@ -204,7 +204,7 @@ export class CustomAppletTreeModuleController extends UIController {
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
         const { items } = this.props.data || {};
-        const { workspaceId, appletId, onItemSelected } = this.props.config || {};
+        const { workspaceId, appletId, onItemSelected ,item } = this.props.config || {};
 
 
         const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
@@ -240,6 +240,7 @@ export class CustomAppletTreeModuleController extends UIController {
                     return (
                         UIWidget('com.celmino.widget.applet-tree')
                             .config({
+                                node: item,
                                 workspaceId,
                                 appletId,
                                 appletName: appletName,

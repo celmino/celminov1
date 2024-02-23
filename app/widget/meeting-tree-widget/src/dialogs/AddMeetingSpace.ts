@@ -1,4 +1,5 @@
 import { useCreateDocument, Permission, Role } from "@realmocean/sdk";
+import { EventBus } from "@tuval/core";
 import { UIViewBuilder, useFormController, useDialog, useFormBuilder, useNavigate, Button, Text } from "@tuval/forms";
 
 export const SaveMeetingSpace = (formMeta, action) => UIViewBuilder(() => {
@@ -16,8 +17,10 @@ export const SaveMeetingSpace = (formMeta, action) => UIViewBuilder(() => {
     let isFormLoading = false;
 
     const views = []
-    const { workspaceId,appletId } = formMeta;
+    const { workspaceId,appletId,parent } = formMeta;
 
+
+    const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
     const { createDocument: createTreeItem } = useCreateDocument(workspaceId,appletId, 'wm_tree');
     const { createDocument, isLoading } = useCreateDocument(workspaceId,appletId, 'meeting_space');
    
@@ -40,6 +43,23 @@ export const SaveMeetingSpace = (formMeta, action) => UIViewBuilder(() => {
                         }
                     },
                     (space) => {
+                        createWorkspaceTreeItem({
+                            documentId: space.$id,
+                            data: {
+                                name: data.name,
+                                type: 'space',
+                                parent:parent,
+                                tree_widget: 'com.celmino.widget.meeeting-tree',
+                                appletId,
+                                path: (new Date()).getTime().toString(),
+                                iconName: 'bell',
+                                iconCategory: 'Icons',
+                                //viewer:'com.tuvalsoft.viewer.document'
+                            }
+                        }, (item)=> {
+                           
+                            EventBus.Default.fire('applet.added', { treeItem: item})
+                        })
                         createTreeItem({
                             documentId: space.$id,
                             data: {
@@ -56,10 +76,11 @@ export const SaveMeetingSpace = (formMeta, action) => UIViewBuilder(() => {
     )
 }
 )
-export const AddMeetingSpace = (workspaceId: string,appletId: string) => ({
+export const AddMeetingSpace = (workspaceId: string,appletId: string, parent: string) => ({
     "title": 'Create meeting space',
     workspaceId,
     appletId,
+    parent,
     /*   "mutation":"_create_workspace", */
     "actions": [
         {

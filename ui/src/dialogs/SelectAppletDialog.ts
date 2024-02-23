@@ -1,16 +1,16 @@
-import { Button, ButtonSize, ButtonType, DialogView, ForEach, HStack, Heading, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState } from "@tuval/forms";
+import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack, Heading, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState } from "@tuval/forms";
 
 import { useCreateDocument, Services, ID } from "@realmocean/sdk";
-import { Text, TextField } from "@realmocean/vibe";
+import { Text } from "@realmocean/vibe";
 import { Applets } from "../Applets";
 import { EventBus } from "@tuval/core";
 
 
 const appletMenu = [
     {
-        category: 'Explore',
+        category: 'Applets',
         items: [
-            { name: 'All applets', icon: 'Apps' },
+            { name: 'All', icon: 'Apps' },
             { name: 'Featured', icon: 'Star' },
             { name: 'Recent', icon: 'Clock' },
             { name: 'Popular', icon: 'Fire' },
@@ -18,27 +18,29 @@ const appletMenu = [
         ]
     },
     {
-        category: 'Browse by category',
+        category: 'Data',
         items: [
-            { name: 'Data', icon: 'Data' },
+            { name: 'All', icon: 'Data' },
             { name: 'Design', icon: 'Design' },
             { name: 'Development', icon: 'Development' },
             { name: 'Finance', icon: 'Finance' },
-            { name: 'Health', icon: 'Health' },
-            { name: 'HR', icon: 'HR' },
-            { name: 'Marketing', icon: 'Marketing' },
-            { name: 'Operations', icon: 'Operations' },
-            { name: 'Sales', icon: 'Sales' },
-            { name: 'Security', icon: 'Security' },
-            { name: 'Support', icon: 'Support' },
-            { name: 'Other', icon: 'Other' }
+            { name: 'Health', icon: 'Health' }
         ]
-    }
+    },
+    {
+        category: 'Solutions',
+        items: [
+            { name: 'All', icon: 'Data' },
+            { name: 'Design', icon: 'Design' },
+            { name: 'Development', icon: 'Development' }
+        ]
+    },
+    
 ]
 
 export class SelectAppletDialog extends DialogView {
 
-    private last_added_opa_type: string;
+
 
     @ViewProperty()
     private filtered_opas: any[];
@@ -78,6 +80,7 @@ export class SelectAppletDialog extends DialogView {
         const { createDocument } = useCreateDocument(this.workspaceId, 'workspace', 'applets');
         const { createDocument: createWorkspaceTreeItem } = useCreateDocument(this.workspaceId, 'workspace', 'ws_tree');
         const [installingOpa, setInstallingOpa] = useState('');
+        const [searchText, setSearchText] = useState(null);
 
         return (
             VStack({ alignment: cTopLeading })(
@@ -85,6 +88,18 @@ export class SelectAppletDialog extends DialogView {
                     HStack({ alignment: cLeading })(
                         Text('applet').fontSize(20).fontWeight('700'),
                         Text('library').fontSize(20).fontWeight('400')
+                    ).width(),
+                    HStack(
+                        TextField()
+                        .value(searchText)
+                            .placeholder('Search applets').minWidth(300).maxWidth(700).height(40).padding()
+                            .cornerRadius(6)
+                            .border({ default: 'solid 1px #E4EAE2', focus: 'solid 1px #E4EAE2' })
+                            .onChange((e) => {
+                                setSearchText(e);
+                                this.filtered_opas = Applets.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1);
+                               
+                            }),
                     ),
                     Icon(Icons.Close).onClick(() => this.OnCancel())
                 ).height(50).padding().background('#F9FAFB'),
@@ -188,15 +203,15 @@ export class SelectAppletDialog extends DialogView {
                                                             data: {
                                                                 name: opa.name,
                                                                 type: 'applet',
-                                                                tree_widget:opa.tree_type,
-                                                                appletId:applet.$id,
+                                                                tree_widget: opa.tree_type,
+                                                                appletId: applet.$id,
                                                                 parent: this.parent,
                                                                 path: (new Date()).getTime().toString(),
-                                                                iconName:opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
+                                                                iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
                                                                 iconCategory: opa.iconCategory,
                                                             }
                                                         }, (treeItem) => {
-                                                          
+
                                                             EventBus.Default.fire('applet.added', { treeItem })
                                                         });
 

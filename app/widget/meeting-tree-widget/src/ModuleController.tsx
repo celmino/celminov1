@@ -23,6 +23,7 @@ import { AddBoardDialog } from './dialogs/AddBoardDialog';
 import React from 'react';
 import { BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, TableIcon, TimelineIcon } from './resources/Icons';
 import { AddMeetingSpace } from './dialogs/AddMeetingSpace';
+import { EventBus } from '@tuval/core';
 
 
 const subNodes = (TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected) => UIViewBuilder(() => {
@@ -192,7 +193,7 @@ export class WorkspaceTreeWidgetController extends UIController {
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
         const { items } = this.props.data || {};
-        const { workspaceId, appletId, onItemSelected } = this.props.config || {};
+        const { workspaceId, appletId, onItemSelected, item } = this.props.config || {};
 
 
         const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
@@ -205,11 +206,12 @@ export class WorkspaceTreeWidgetController extends UIController {
             isAppletLoading ? Spinner() :
                 UIWidget('com.celmino.widget.applet-tree')
                     .config({
+                        node: item,
                         workspaceId,
-                        appletId,
-                        appletName: applet.name,
-                        iconName: applet.iconName,
-                        iconCategory: applet.iconCategory,
+                        appletId: item.appletId,
+                        appletName: item.name,
+                        iconName: item.iconName,
+                        iconCategory: item.iconCategory,
                         isEditing: isEditing,
                         isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
                         editingChanged: (status) => setIsEditing(status),
@@ -230,12 +232,50 @@ export class WorkspaceTreeWidgetController extends UIController {
                                         name: title
                                     }
                                 })
+
+                                updateDocument({
+                                    databaseId: 'workspace',
+                                    collectionId: 'ws_tree',
+                                    documentId: item.$id,
+                                    data: {
+                                        name: title
+                                    }
+                                }, () => EventBus.Default.fire('applet.added', { treeItem: item }))
                             })
                         },
                         subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
                             return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected)
                         },
-                        requestMenu: () => {
+                        requestNavigation: () => {
+                            if (onItemSelected == null) {
+                                switch (item.type) {
+                                    case 'space':
+                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/space-${item.$id}/meetings`);
+                                        break;
+                                    case 'list':
+                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${item.$id}`);
+                                        break;
+                                    case 'board':
+                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${item.parent}/view/${item.$id}`);
+                                        break;
+                                    case 'document':
+                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/document/${item.$id}`);
+                                        break;
+                                    case 'whiteboard':
+                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/whiteboard/${item.$id}`);
+                                        break;
+    
+                                }
+                            } else {
+    
+                                onItemSelected({
+                                    workspaceId: workspaceId,
+                                    appletId: appletId,
+                                    item
+                                })
+                            }
+                        },
+                        requestMenu: (node) => {
                             return [
                                 /*  {
                                      title: 'Add items',
@@ -244,7 +284,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                                 {
                                     title: 'Meeting Space',
                                     icon: SvgIcon('cu3-icon-sidebarList', '#151719', '18px', '18px'),
-                                    onClick: () => DynoDialog.Show(AddMeetingSpace(workspaceId, appletId))
+                                    onClick: () => DynoDialog.Show(AddMeetingSpace(workspaceId, appletId, node.$id))
                                 },
                                 /* {
                                     type: 'Divider'

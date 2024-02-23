@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isDescendant } from './utils/tree-data-utils';
 import classnames from './utils/classnames';
-import { HStack, Text } from '@tuval/forms'
-
 
 class NodeRendererDefault extends React.Component<any, any> {
   render() {
@@ -69,9 +67,9 @@ class NodeRendererDefault extends React.Component<any, any> {
     const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node);
     const isLandingPadActive = !didDrop && isDragging;
 
-    let buttonStyle = { left: -0.5 * scaffoldBlockPxWidth };
+    let buttonStyle: any = { left: -0.5 * scaffoldBlockPxWidth };
     if (rowDirection === 'rtl') {
-      buttonStyle = { right: -0.5 * scaffoldBlockPxWidth } as any;
+      buttonStyle = { right: -0.5 * scaffoldBlockPxWidth };
     }
 
     return (
@@ -80,29 +78,7 @@ class NodeRendererDefault extends React.Component<any, any> {
           node.children &&
           (node.children.length > 0 || typeof node.children === 'function') && (
             <div>
-              {
-                HStack(
-                  node.expanded ?
-                    Text('-') :
-                    Text('+')
-                )
-                .width(16)
-                .height(16)
-                .position('absolute')
-                .left('-22px')
-                .top('50%')
-                .shadow('0 0 0 1px #000')
-                .transform('translate(-50%, -50%)')
-                  .onClick(() =>
-                    toggleChildrenVisibility({
-                      node,
-                      path,
-                      treeIndex,
-                    })
-                  )
-                  .render()
-              }
-             {/*   <button
+              <button
                 type="button"
                 aria-label={node.expanded ? 'Collapse' : 'Expand'}
                 className={classnames(
@@ -117,7 +93,7 @@ class NodeRendererDefault extends React.Component<any, any> {
                     treeIndex,
                   })
                 }
-              />  */}
+              />
 
               {node.expanded && !isDragging && (
                 <div
@@ -164,10 +140,10 @@ class NodeRendererDefault extends React.Component<any, any> {
                   >
                     {typeof nodeTitle === 'function'
                       ? nodeTitle({
-                        node,
-                        path,
-                        treeIndex,
-                      })
+                          node,
+                          path,
+                          treeIndex,
+                        })
                       : nodeTitle}
                   </span>
 
@@ -175,10 +151,10 @@ class NodeRendererDefault extends React.Component<any, any> {
                     <span className="rst__rowSubtitle">
                       {typeof nodeSubtitle === 'function'
                         ? nodeSubtitle({
-                          node,
-                          path,
-                          treeIndex,
-                        })
+                            node,
+                            path,
+                            treeIndex,
+                          })
                         : nodeSubtitle}
                     </span>
                   )}

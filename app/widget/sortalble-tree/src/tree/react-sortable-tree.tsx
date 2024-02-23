@@ -35,6 +35,8 @@ import {
 import DndManager from './utils/dnd-manager';
 import classnames from './utils/classnames';
 import MyNodeRendererDefault from './my-node-renderer';
+import MyNodeRendererDefault3 from './my-node-renderer3';
+import MyNodeRendererDefault4 from './my-node-renderer4';
 
 let treeIdCounter = 1;
 

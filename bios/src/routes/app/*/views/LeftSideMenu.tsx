@@ -433,264 +433,279 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         DatabaseNameView(database, false, () => { })
                                         //    )
                                     ),
-                                    isWorkspaceTreeLoading ? Fragment():
-                                    UIViewBuilder(() => {
-                                        const params = useParams();
-                                        const { deleteCache } = useDeleteCache(workspaceId);
-                                        
+                                    isWorkspaceTreeLoading ? Fragment() :
+                                        UIViewBuilder(() => {
+                                            const params = useParams();
+                                            const { deleteCache } = useDeleteCache(workspaceId);
+                                            const [isEditable, setIsEditable] = useState(false);
 
 
-                                        useEffect(() => {
-                                            setTreeItems(buildTree(workspaceTreeITems));
-                                            EventBus.Default.on('applet.added', ({ treeItem }) => {
-                                               
-                                                deleteCache();
-                                                Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
-                                                    Query.limit(250)
-                                                ]).then(({ documents }) => {
-                                                    setTreeItems(buildTree(documents));
+
+                                            useEffect(() => {
+                                                setTreeItems(buildTree(workspaceTreeITems));
+                                                EventBus.Default.on('applet.added', ({ treeItem }) => {
+
+                                                    deleteCache();
+                                                    Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
+                                                        Query.limit(250)
+                                                    ]).then(({ documents }) => {
+                                                        setTreeItems(buildTree(documents));
+                                                    });
+
+                                                })
+                                            }, [])
+                                            //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
+
+                                            function findChildsInTree(workspaceTree, parentNode) {
+                                                const children = [];
+                                                workspaceTree.forEach(item => {
+                                                    if (item.parent === parentNode?.$id) {
+                                                        children.push(item);
+                                                    }
+                                                })
+
+                                                return children;
+                                            }
+
+
+
+
+                                            function findItemInTree(tree, id) {
+                                                let result;
+                                                tree.forEach(item => {
+                                                    if (item.$id === id) {
+                                                        result = item;
+                                                    }
+
                                                 });
+                                                return result;
+                                            }
 
-                                            })
-                                        }, [])
-                                        //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
+                                            function buildClidren(workspaceTree, parentNode) {
+                                                const item = findItemInTree(workspaceTree, parentNode.$id);
+                                                let children: any[] = findChildsInTree(workspaceTree, item);
 
-                                        function findChildsInTree(workspaceTree, parentNode) {
-                                            const children = [];
-                                            workspaceTree.forEach(item => {
-                                                if (item.parent === parentNode?.$id) {
-                                                    children.push(item);
-                                                }
-                                            })
+                                                children = sortByStringField(children, "path");
 
-                                            return children;
-                                        }
-
-
-
-
-                                        function findItemInTree(tree, id) {
-                                            let result;
-                                            tree.forEach(item => {
-                                                if (item.$id === id) {
-                                                    result = item;
-                                                }
-
-                                            });
-                                            return result;
-                                        }
-
-                                        function buildClidren(workspaceTree, parentNode) {
-                                            const item = findItemInTree(workspaceTree, parentNode.$id);
-                                            let children: any[] = findChildsInTree(workspaceTree, item);
-                                            
-                                            children = sortByStringField(children, "path");
-
-                                            parentNode.children = children.map(child => {
-                                                return {
-                                                    $id: child.$id,
-                                                    title: child.name,
-                                                    parent: child.parent,
-                                                    path: child.path,
-                                                    tree_widget: child.tree_widget,
-                                                    view: (node) => {
-                                                        return (
-                                                            HStack(
-                                                                child.tree_widget != null ?
-                                                                    UIWidget(child.tree_widget)
-                                                                        .config({
-                                                                            item: child,
-                                                                            ...(params || {}),
-                                                                            appletId: child.appletId
-                                                                        }) :
-                                                                    Text(child.name)
-                                                            )
-                                                        )
-                                                    },
-                                                    children: buildClidren(workspaceTree, child)
-                                                }
-                                            })
-
-                                            return parentNode.children ;
-                                        }
-
-                                        function buildTree(workspaceTree) {
-                                            const tree = [];
-                                            let rootItems = workspaceTree?.filter(item => item.parent === '-1');
-                                            rootItems = sortByStringField(rootItems, "path");
-                                            rootItems.forEach(item => {
-                                                if (item.parent === '-1') {
-                                                    const node = {
-                                                        $id: item.$id,
-                                                        title: expandeds?.[item.$id] ? true : false,
-                                                        parent: item.parent,
-                                                        path: item.path,
-                                                        tree_widget: item.tree_widget,
+                                                parentNode.children = children.map(child => {
+                                                    return {
+                                                        $id: child.$id,
+                                                        title: child.name,
+                                                        parent: child.parent,
+                                                        path: child.path,
+                                                        tree_widget: child.tree_widget,
                                                         expanded: expandeds?.[item.$id] ? true : false,
+                                                        canDrag: true,
                                                         view: (node) => {
                                                             return (
                                                                 HStack(
-                                                                    item.tree_widget != null ?
-                                                                        UIWidget(item.tree_widget)
+                                                                    child.tree_widget != null ?
+                                                                        UIWidget(child.tree_widget)
                                                                             .config({
-                                                                                item: item,
+                                                                                item: child,
                                                                                 ...(params || {}),
-                                                                                appletId: item.$id
+                                                                                appletId: child.appletId
                                                                             }) :
-                                                                        Text(item.name)
+                                                                        Text(child.name)
                                                                 )
                                                             )
                                                         },
-                                                        children: []
-                                                    };
-                                                    tree.push(node);
-                                                    buildClidren(workspaceTree, node);
+                                                        children: buildClidren(workspaceTree, child)
+                                                    }
+                                                })
+
+                                                return parentNode.children;
+                                            }
+
+                                            function buildTree(workspaceTree) {
+                                                const tree = [];
+                                                let rootItems = workspaceTree?.filter(item => item.parent === '-1');
+                                                rootItems = sortByStringField(rootItems, "path");
+                                                rootItems.forEach(item => {
+                                                    if (item.parent === '-1') {
+                                                        const node = {
+                                                            $id: item.$id,
+                                                            title: expandeds?.[item.$id] ? true : false,
+                                                            parent: item.parent,
+                                                            path: item.path,
+                                                            tree_widget: item.tree_widget,
+                                                            expanded: expandeds?.[item.$id] ? true : false,
+                                                            canDrag: false,
+                                                            view: (node) => {
+                                                                return (
+                                                                    HStack(
+                                                                        item.tree_widget != null ?
+                                                                            UIWidget(item.tree_widget)
+                                                                                .config({
+                                                                                    item: item,
+                                                                                    ...(params || {}),
+                                                                                    appletId: item.$id
+                                                                                }) :
+                                                                            Text(item.name)
+                                                                    )
+                                                                )
+                                                            },
+                                                            children: []
+                                                        };
+                                                        tree.push(node);
+                                                        buildClidren(workspaceTree, node);
+                                                    }
+                                                })
+                                                console.log('build tree');
+                                                return tree;
+                                            }
+
+                                            const [prevTreeItems, setPrevTreeItems] = useState([]);
+                                            const [treeItems, setTreeItems] = useState([]);
+
+
+                                            const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
+                                                if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
+                                                    return false;
                                                 }
-                                            })
-                                           console.log('build tree');
-                                            return tree;
+
+                                                if (node.isTwin && nextParent && nextParent.isTwin) {
+                                                    return false;
+                                                }
+
+                                                const noGrandkidsDepth = nextPath.indexOf('no-grandkids');
+                                                if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
+                                                    return false;
+                                                }
+
+                                                return true;
+                                            };
+                                            return (
+                                                VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                    HStack().background('gray').width(32).height(32)
+                                                        .onClick(() => {
+                                                            setIsEditable(!isEditable)
+                                                        }),
+
+                                                    HStack({ alignment: cTopLeading })(
+                                                        documents ?
+                                                            ScrollView({ axes: cVertical, alignment: cTopLeading })(
+
+                                                                UIWidget('com.celmino.widget.sortable-tree')
+                                                                    .config({
+                                                                        canDrag:isEditable,
+                                                                        treeItems: treeItems,
+                                                                        onChange: (_treeItems) => {
+                                                                            //  setPrevTreeItems([...treeItems]);
+                                                                            setTreeItems(_treeItems);
+
+                                                                        },
+                                                                        onVisibilityToggle: ({ node, expanded }) => {
+
+                                                                            if (expanded) {
+                                                                                expandeds[node.$id] = true;
+                                                                            } else {
+                                                                                delete expandeds[node.$id];
+                                                                            }
+
+                                                                            console.log(expandeds);
+
+                                                                        },
+
+                                                                        onMoveNode: ({ treeData }) => {
+                                                                            const newTreeData = [...treeData];
+
+
+                                                                            function reCreateIndex(parentNode) {
+                                                                                if (parentNode.children) {
+                                                                                    parentNode.children.forEach((child, index) => {
+                                                                                        child.prevParent = child.parent;
+                                                                                        child.prevPath = child.path;
+                                                                                        child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                                        child.parent = parentNode.$id;
+                                                                                        if (child.prevPath == null) {
+                                                                                            child.prevPath = child.path;
+                                                                                        }
+                                                                                        if (child.prevParent == null) {
+                                                                                            child.prevParent = child.parent;
+                                                                                        }
+                                                                                        reCreateIndex(child);
+                                                                                    });
+                                                                                }
+                                                                            }
+
+                                                                            newTreeData.forEach((item, index) => {
+                                                                                item.prevParent = item.parent;
+                                                                                item.prevPath = item.path;
+                                                                                item.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                                item.parent = '-1';
+                                                                                reCreateIndex(item);
+                                                                            });
+
+                                                                            const changes = [];
+                                                                            function getChanges(parentNode) {
+                                                                                if (parentNode.children) {
+                                                                                    parentNode.children.forEach((child) => {
+                                                                                        if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                                                            // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                                                            changes.push(child);
+                                                                                        }
+                                                                                        getChanges(child);
+                                                                                    });
+                                                                                }
+                                                                            }
+
+                                                                            newTreeData.forEach((item, index) => {
+                                                                                if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                                                                    //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                                                    changes.push(item);
+                                                                                }
+                                                                                getChanges(item);
+                                                                            });
+
+
+                                                                            changes.forEach(item => {
+                                                                                Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                                                                    path: item.path,
+                                                                                    parent: item.parent
+                                                                                })
+                                                                            })
+
+                                                                            console.log(newTreeData)
+
+
+                                                                        }
+                                                                    }),
+                                                                // Text(documents[0]['opa']),
+                                                                /*  isSorting ?
+                                                                     SortableListView()
+                                                                         .items(realms)
+                                                                         .renderItem(realm =>
+                                                                             UIWidget(realm['opa'])
+                                                                                 .config({
+                                                                                     ...(useParams() || {}),
+                                                                                     appletId: realm.$id
+                                                                                 }),
+                                                                         )
+                                                                         .onChange(realms => setRealms(realms)) :
+                                                                     VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                                         ...ForEach(documents)(applet =>
+                                                                             UIWidget(applet['opa'])
+                                                                                 .config({
+                                                                                     ...(useParams() || {}),
+                                                                                     appletId: applet.$id
+                                                                                 }),
+                                                                         )
+                                                                     ) */
+                                                            ) : Fragment()
+                                                    )
+                                                    .cornerRadius(6)
+                                                    .outline(isEditable ? 'dot 1px green' : 'none')
+                                                    /*  ...ForEach(spaces)(space =>
+                                                         Text(space.name)
+                                                     ), */
+
+
+
+                                                ).padding(cHorizontal, 8)
+                                            )
                                         }
-
-                                        const [prevTreeItems, setPrevTreeItems] = useState([]);
-                                        const [treeItems, setTreeItems] = useState([]);
-                                      
-
-                                        const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
-                                            if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
-                                                return false;
-                                            }
-
-                                            if (node.isTwin && nextParent && nextParent.isTwin) {
-                                                return false;
-                                            }
-
-                                            const noGrandkidsDepth = nextPath.indexOf('no-grandkids');
-                                            if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
-                                                return false;
-                                            }
-
-                                            return true;
-                                        };
-                                        return (
-                                            VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                documents ?
-                                                    ScrollView({ axes: cVertical, alignment: cTopLeading })(
-
-                                                        UIWidget('com.celmino.widget.sortable-tree')
-                                                            .config({
-                                                                treeItems: treeItems,
-                                                                onChange: (_treeItems) => {
-                                                                    //  setPrevTreeItems([...treeItems]);
-                                                                    setTreeItems(_treeItems);
-
-                                                                },
-                                                                onVisibilityToggle: ({ node, expanded }) => {
-                                                                  
-                                                                    if (expanded) {
-                                                                        expandeds[node.$id] = true;
-                                                                    } else {
-                                                                        delete expandeds[node.$id];
-                                                                    }
-
-                                                                    console.log(expandeds);
-                                                                    
-                                                                },
-                                                                onMoveNode: ({ treeData }) => {
-                                                                    const newTreeData = [...treeData];
-
-
-                                                                    function reCreateIndex(parentNode) {
-                                                                        if (parentNode.children) {
-                                                                            parentNode.children.forEach((child, index) => {
-                                                                                child.prevParent = child.parent;
-                                                                                child.prevPath = child.path;
-                                                                                child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                                child.parent = parentNode.$id;
-                                                                                if (child.prevPath == null) {
-                                                                                    child.prevPath = child.path;
-                                                                                }
-                                                                                if (child.prevParent == null) {
-                                                                                    child.prevParent = child.parent;
-                                                                                }
-                                                                                reCreateIndex(child);
-                                                                            });
-                                                                        }
-                                                                    }
-
-                                                                    newTreeData.forEach((item, index) => {
-                                                                        item.prevParent = item.parent;
-                                                                        item.prevPath = item.path;
-                                                                        item.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                        item.parent = '-1';
-                                                                        reCreateIndex(item);
-                                                                    });
-
-                                                                    const changes = [];
-                                                                    function getChanges(parentNode) {
-                                                                        if (parentNode.children) {
-                                                                            parentNode.children.forEach((child) => {
-                                                                                if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
-                                                                                   // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                                                   changes.push(child);
-                                                                                }
-                                                                                getChanges(child);
-                                                                            });
-                                                                        }
-                                                                    }
-
-                                                                    newTreeData.forEach((item, index) => {
-                                                                        if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
-                                                                            //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                                            changes.push(item);
-                                                                        }
-                                                                        getChanges(item);
-                                                                    });
-
-
-                                                                    changes.forEach(item => {
-                                                                        Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                                            path:item.path,
-                                                                            parent: item.parent
-                                                                        })
-                                                                    })
-
-                                                                    console.log(newTreeData)
-
-
-                                                                }
-                                                            }),
-                                                        // Text(documents[0]['opa']),
-                                                        /*  isSorting ?
-                                                             SortableListView()
-                                                                 .items(realms)
-                                                                 .renderItem(realm =>
-                                                                     UIWidget(realm['opa'])
-                                                                         .config({
-                                                                             ...(useParams() || {}),
-                                                                             appletId: realm.$id
-                                                                         }),
-                                                                 )
-                                                                 .onChange(realms => setRealms(realms)) :
-                                                             VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                                 ...ForEach(documents)(applet =>
-                                                                     UIWidget(applet['opa'])
-                                                                         .config({
-                                                                             ...(useParams() || {}),
-                                                                             appletId: applet.$id
-                                                                         }),
-                                                                 )
-                                                             ) */
-                                                    ) : Fragment()
-                                                /*  ...ForEach(spaces)(space =>
-                                                     Text(space.name)
-                                                 ), */
-
-
-
-                                            ).padding(cHorizontal, 8)
-                                        )
-                                    }
-                                    ),
+                                        ),
                                     HStack(
                                         UIViewBuilder(() => {
                                             const { createRealm } = useCreateRealm();

@@ -4298,6 +4298,18 @@ var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPOR
             editingChanged(false);
         }))
             .height()
+            .onDragStart(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        })
+            .onDragOver(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        })
+            .onDragLeave(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        })
             .onClickAway(function () {
             if (title !== newTitle) {
                 titleChanged(newTitle);
@@ -4360,7 +4372,8 @@ var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPOR
         .variable("--opacity-caret", { default: '0', hover: '1' })
         .variable("--opacity-icon", { default: '1', hover: '0' }), expanded ?
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(subNode(nodeType))
-            .height() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()).height());
+            .height() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
+        .height());
 }); };
 
 

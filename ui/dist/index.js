@@ -3289,7 +3289,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Applets: () => (/* binding */ Applets)
 /* harmony export */ });
+/* harmony import */ var _applets_APQC__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applets/APQC */ "./src/applets/APQC.ts");
+/* harmony import */ var _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./applets/InvestorsInTurkey */ "./src/applets/InvestorsInTurkey.ts");
+/* harmony import */ var _applets_World__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applets/World */ "./src/applets/World.ts");
+
+
+
 var Applets = [
+    _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_1__.InvestorsInTurkey,
+    _applets_APQC__WEBPACK_IMPORTED_MODULE_0__.APQCApplet,
+    _applets_World__WEBPACK_IMPORTED_MODULE_2__.WorldApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -8221,6 +8230,163 @@ var Applets = [
 
 /***/ }),
 
+/***/ "./src/applets/APQC.ts":
+/*!*****************************!*\
+  !*** ./src/applets/APQC.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   APQCApplet: () => (/* binding */ APQCApplet)
+/* harmony export */ });
+var APQCApplet = {
+    name: 'APQC',
+    type: 'Data',
+    tree_type: 'com.celmino.widget.custom-applet-tree',
+    applet_type: 'com.celmino.applet.custom',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "World",
+            "id": "world",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/InvestorsInTurkey.ts":
+/*!******************************************!*\
+  !*** ./src/applets/InvestorsInTurkey.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   InvestorsInTurkey: () => (/* binding */ InvestorsInTurkey)
+/* harmony export */ });
+var InvestorsInTurkey = {
+    name: 'Investors In Turkey',
+    type: 'Data',
+    tree_type: 'com.celmino.widget.custom-applet-tree',
+    applet_type: 'com.celmino.applet.custom',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Investors In Turkey",
+            "id": "world",
+            "category": "app",
+            "collections": [
+                {
+                    "name": "Investers",
+                    "id": "investers",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "investerType",
+                            "type": "string"
+                        },
+                        {
+                            "key": "location",
+                            "type": "string"
+                        },
+                        {
+                            "key": "link",
+                            "type": "string"
+                        }
+                    ],
+                    "documents": [
+                        {
+                            "name": "BUBA Campus",
+                            "investerType": 'Accelerator Fund',
+                            "location": "Istanbul / Turkey",
+                            "link": "https://www.bubacampus.com"
+                        },
+                        {
+                            "name": "Firewalk",
+                            "investerType": 'Accelerator Fund',
+                            "location": "Ankara / Turkey",
+                            "link": "https://firewalk.vc"
+                        },
+                        {
+                            "name": "Games United",
+                            "investerType": 'Accelerator Fund',
+                            "location": "Istanbul / Turkey",
+                            "link": "https://www.gamesunited.co"
+                        },
+                        {
+                            "name": "Growth Circuit Ventures",
+                            "investerType": 'Accelerator Fund',
+                            "location": "Ankara / Turkey",
+                            "link": "http://www.growthcircuit.co"
+                        }
+                    ]
+                },
+            ]
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/World.ts":
+/*!******************************!*\
+  !*** ./src/applets/World.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   WorldApplet: () => (/* binding */ WorldApplet)
+/* harmony export */ });
+var WorldApplet = {
+    name: 'World',
+    type: 'Data',
+    tree_type: 'com.celmino.widget.custom-applet-tree',
+    applet_type: 'com.celmino.applet.custom',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "World",
+            "id": "world",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
 /***/ "./src/dialogs/SelectAppletDialog.ts":
 /*!*******************************************!*\
   !*** ./src/dialogs/SelectAppletDialog.ts ***!
@@ -8314,9 +8480,9 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 var appletMenu = [
     {
-        category: 'Explore',
+        category: 'Applets',
         items: [
-            { name: 'All applets', icon: 'Apps' },
+            { name: 'All', icon: 'Apps' },
             { name: 'Featured', icon: 'Star' },
             { name: 'Recent', icon: 'Clock' },
             { name: 'Popular', icon: 'Fire' },
@@ -8324,22 +8490,23 @@ var appletMenu = [
         ]
     },
     {
-        category: 'Browse by category',
+        category: 'Data',
         items: [
-            { name: 'Data', icon: 'Data' },
+            { name: 'All', icon: 'Data' },
             { name: 'Design', icon: 'Design' },
             { name: 'Development', icon: 'Development' },
             { name: 'Finance', icon: 'Finance' },
-            { name: 'Health', icon: 'Health' },
-            { name: 'HR', icon: 'HR' },
-            { name: 'Marketing', icon: 'Marketing' },
-            { name: 'Operations', icon: 'Operations' },
-            { name: 'Sales', icon: 'Sales' },
-            { name: 'Security', icon: 'Security' },
-            { name: 'Support', icon: 'Support' },
-            { name: 'Other', icon: 'Other' }
+            { name: 'Health', icon: 'Health' }
         ]
-    }
+    },
+    {
+        category: 'Solutions',
+        items: [
+            { name: 'All', icon: 'Data' },
+            { name: 'Design', icon: 'Design' },
+            { name: 'Development', icon: 'Development' }
+        ]
+    },
 ];
 var SelectAppletDialog = /** @class */ (function (_super) {
     __extends(SelectAppletDialog, _super);
@@ -8369,7 +8536,16 @@ var SelectAppletDialog = /** @class */ (function (_super) {
         var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'applets').createDocument;
         var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'ws_tree').createDocument;
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(''), installingOpa = _a[0], setInstallingOpa = _a[1];
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('applet').fontSize(20).fontWeight('700'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('library').fontSize(20).fontWeight('400')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Close).onClick(function () { return _this.OnCancel(); })).height(50).padding().background('#F9FAFB'), 
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null), searchText = _b[0], setSearchText = _b[1];
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('applet').fontSize(20).fontWeight('700'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('library').fontSize(20).fontWeight('400')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)()
+            .value(searchText)
+            .placeholder('Search applets').minWidth(300).maxWidth(700).height(40).padding()
+            .cornerRadius(6)
+            .border({ default: 'solid 1px #E4EAE2', focus: 'solid 1px #E4EAE2' })
+            .onChange(function (e) {
+            setSearchText(e);
+            _this.filtered_opas = _Applets__WEBPACK_IMPORTED_MODULE_3__.Applets.filter(function (opa) { return opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1; });
+        })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Close).onClick(function () { return _this.OnCancel(); })).height(50).padding().background('#F9FAFB'), 
         /*     Search().width(300).allHeight(70).padding()
                 .onChange((e) => this.filtered_opas = opas.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1)), */
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(appletMenu)(function (menu) {

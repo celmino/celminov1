@@ -57,6 +57,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                     return (
                         HStack({ alignment: cLeading })(
                             TextField()
+
                                 .border('0')
                                 .fontSize(14)
                                 // .fontWeight('500')
@@ -71,8 +72,27 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                                     }
                                     editingChanged(false);
                                 })
+                               
+                                 
+                               
+                              
+                               
+                                
                         )
                             .height()
+                            
+                            .onDragStart((e) => {
+                                e.preventDefault();
+                                 e.stopPropagation();
+                             })
+                             .onDragOver((e) => {
+                                e.preventDefault();
+                                 e.stopPropagation();
+                             })
+                             .onDragLeave((e) => {
+                                e.preventDefault();
+                                 e.stopPropagation();
+                             })
                             .onClickAway(() => {
                                 if (title !== newTitle) {
                                     titleChanged(newTitle)
@@ -158,6 +178,9 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                     subNode(nodeType)
                 )
                     .height() : Fragment()
-        ).height()
+        )
+
+            .height()
+
     )
 })

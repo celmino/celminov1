@@ -3306,6 +3306,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
 /* harmony import */ var _views_localStorageState__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/localStorageState */ "./src/views/localStorageState.tsx");
 /* harmony import */ var _ContextMenu__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ContextMenu */ "./src/ContextMenu.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_6__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -3327,6 +3329,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var AppController2 = /** @class */ (function (_super) {
     __extends(AppController2, _super);
     function AppController2() {
@@ -3335,7 +3338,7 @@ var AppController2 = /** @class */ (function (_super) {
     AppController2.prototype.LoadView = function () {
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var isLoading = false;
-        var _b = this.props.config || {}, item = _b.item, workspaceId = _b.workspaceId, onItemSelected = _b.onItemSelected;
+        var _b = this.props.config || {}, item = _b.item, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected;
         // const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
         var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getListId)();
         /* useEffect(() => {
@@ -3356,25 +3359,30 @@ var AppController2 = /** @class */ (function (_super) {
             iconCategory: item.iconCategory,
             isEditing: isEditing,
             //isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
-            editingChanged: function (status) { return setIsEditing(status); },
+            editingChanged: function (status) {
+                item.canDrag = !status;
+                setIsEditing(status);
+            },
             titleChanged: function (title) {
-                /* updateDocument({
+                updateDocument({
                     databaseId: 'workspace',
                     collectionId: 'applets',
                     documentId: appletId,
                     data: {
                         name: title
                     }
-                }, () => {
+                }, function () {
                     updateDocument({
                         databaseId: 'workspace',
-                        collectionId: 'applets',
-                        documentId: appletId,
+                        collectionId: 'ws_tree',
+                        documentId: item.$id,
                         data: {
                             name: title
                         }
-                    })
-                }) */
+                    }, function () {
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_6__.EventBus.Default.fire('applet.added', { treeItem: item });
+                    });
+                });
             },
             subNodes: function (TreeNode, level, nodeType, parentId, workspaceId, appletId) {
                 return [];

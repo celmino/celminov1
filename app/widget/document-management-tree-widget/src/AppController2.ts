@@ -17,6 +17,7 @@ import { LeftSideMenuView } from './views/WorkspaceTree';
 import { useLocalStorageState } from './views/localStorageState';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 import { ContextMenu, EditContextMenu } from './ContextMenu';
+import { EventBus } from '@tuval/core';
 
 
 
@@ -26,7 +27,7 @@ export class AppController2 extends UIController {
 
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
-        const { item, workspaceId, onItemSelected } = this.props.config || {};
+        const { item, workspaceId, appletId, onItemSelected } = this.props.config || {};
 
         // const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
 
@@ -60,9 +61,13 @@ export class AppController2 extends UIController {
                     iconCategory: item.iconCategory,
                     isEditing: isEditing,
                     //isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
-                    editingChanged: (status) => setIsEditing(status),
+                    editingChanged: (status) => {
+                        item.canDrag = !status;
+                        setIsEditing(status)
+                    },
                     titleChanged: (title) => {
-                        /* updateDocument({
+
+                        updateDocument({
                             databaseId: 'workspace',
                             collectionId: 'applets',
                             documentId: appletId,
@@ -72,13 +77,16 @@ export class AppController2 extends UIController {
                         }, () => {
                             updateDocument({
                                 databaseId: 'workspace',
-                                collectionId: 'applets',
-                                documentId: appletId,
+                                collectionId: 'ws_tree',
+                                documentId: item.$id,
                                 data: {
                                     name: title
                                 }
+                            }, () => {
+                                EventBus.Default.fire('applet.added', { treeItem: item })
                             })
-                        }) */
+
+                        })
                     },
                     subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
                         return [];
@@ -99,7 +107,7 @@ export class AppController2 extends UIController {
                         }
                     ],
                     requestNavigation: () => {
-                      //  alert(JSON.stringify(item));
+                        //  alert(JSON.stringify(item));
                         if (onItemSelected == null) {
                             switch (item.type) {
                                 case 'folder':
@@ -112,7 +120,7 @@ export class AppController2 extends UIController {
                             }
                         } else {
                             onItemSelected({
-                                workspaceId, appletId:item.appletId, item
+                                workspaceId, appletId: item.appletId, item
                             })
                         }
                     },

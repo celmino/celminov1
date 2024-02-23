@@ -105,164 +105,260 @@ class MyNodeRendererDefault extends React.Component<any, any> {
             buttonStyle = { right: -0.5 * scaffoldBlockPxWidth } as any;
         }
 
-        
         return (
-
             HStack({ alignment: 'cTopLeading' })(
                 ReactView(
-                    <div style={{ height: '100%', width: '100%' }} {...otherProps}>
+                    <div style={{ width: '100%' }} {...otherProps}>
                         <div>
                             {
-                                connectDragPreview(
-                                    <div
-                                        className={classnames(
-                                            'rst__row',
-                                            isLandingPadActive && 'rst__rowLandingPad',
-                                            isLandingPadActive && !canDrop && 'rst__rowCancelPad',
-                                            isSearchMatch && 'rst__rowSearchMatch',
-                                            isSearchFocus && 'rst__rowSearchFocus',
-                                            rowDirectionClass,
-                                            className
-                                        )}
-                                        style={{
-                                            opacity: isDraggedDescendant ? 0.5 : 1,
-                                            ...style,
-                                        }}
-                                    >
-                                        {
-                                            HStack({ alignment: 'cLeading', spacing: 5 })(
-
-                                                ReactView(
-                                                    connectDragSource(<div style={{ width: '100%' }}>
-                                                        {
-                                                            HStack({ alignment: 'cLeading' })(
-                                                                ReactView(
-                                                                    toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (
-                                                                        <div>
-                                                                           
-                                                                           
-                                                                            {
-                                                                                
+                                canDrag ?
+                                    connectDragPreview(
+                                        <div
+                                            className={classnames(
+                                                'rst__row',
+                                                isLandingPadActive && 'rst__rowLandingPad',
+                                                isLandingPadActive && !canDrop && 'rst__rowCancelPad',
+                                                isSearchMatch && 'rst__rowSearchMatch',
+                                                isSearchFocus && 'rst__rowSearchFocus',
+                                                rowDirectionClass,
+                                                className
+                                            )}
+                                            style={{
+                                                opacity: isDraggedDescendant ? 0.5 : 1,
+                                                ...style,
+                                            }}
+                                        >
+                                            {
+                                                connectDragSource(<div style={{ width: '100%' }}>
+                                                    {
+                                                        HStack({ alignment: 'cLeading' })(
+                                                            ReactView(
+                                                                toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (
+                                                                    <div>
+                                                                        {
+                                                                            HStack(
+                                                                                !is.nullOrEmpty(node.iconName) &&
                                                                                 HStack(
-                                                                                    !is.nullOrEmpty(node.iconName) && 
-                                                                                    HStack(
-                                                                                        //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
-                                                                                        UIWidget("com.tuvalsoft.widget.icons")
-                                                                                            .config({
-                                                                                                readonly: true,
-                                                                                                selectedIcon: 'bookmark',
-                                                                                                selectedCategory: 'Icons',
-                                                                                                color: 'gray',
-                                                                                                backgroundColor: '',
-                                                                                                width: 20,
-                                                                                                height: 20,
-                                                                                                padding: 1
-                                                                                            })
-                                                                                    )
-                                                                                        .transition('opacity .12s ease-in-out')
-                                                                                        .position('absolute')
-                                                                                        //.background('#FCE8E8')
-                                                                                        .allWidth(18).allHeight(18)
-                                                                                        .opacity( 'var(--opacity-icon)')
-                                                                                        .cornerRadius(5),
-                                                                                    HStack(
-                                                                                        Icon(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
-                                                                                            .transition('transform .12s ease-in-out')
-                                                                                    )
-                                                                                        .position('absolute')
-
-                                                                                        .transition('opacity .12s ease-in-out')
-                                                                                        .foregroundColor('rgba(109,122,131,0.9)')
-                                                                                        .allWidth(20).allHeight(20).cursor('pointer')
-                                                                                        .opacity(is.nullOrEmpty(node.iconName) ? '1' : `var(--opacity-caret)`)
-                                                                                        .onClick(() =>
-                                                                                            toggleChildrenVisibility({
-                                                                                                node,
-                                                                                                path,
-                                                                                                treeIndex,
-                                                                                            })
-                                                                                        )
+                                                                                    //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
+                                                                                    UIWidget("com.tuvalsoft.widget.icons")
+                                                                                        .config({
+                                                                                            readonly: true,
+                                                                                            selectedIcon: 'bookmark',
+                                                                                            selectedCategory: 'Icons',
+                                                                                            color: 'gray',
+                                                                                            backgroundColor: '',
+                                                                                            width: 20,
+                                                                                            height: 20,
+                                                                                            padding: 1
+                                                                                        })
                                                                                 )
-                                                                                    .allWidth(30).allHeight(30)
-                                                                                    .transition('transform .12s ease-in-out')
+                                                                                    .transition('opacity .12s ease-in-out')
+                                                                                    .position('absolute')
+                                                                                    //.background('#FCE8E8')
+                                                                                    .allWidth(18).allHeight(18)
+                                                                                    .opacity('var(--opacity-icon)')
+                                                                                    .cornerRadius(5),
+                                                                                HStack(
+                                                                                    Icon(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
+                                                                                        .transition('transform .12s ease-in-out')
+                                                                                )
+                                                                                    .position('absolute')
 
-                                                                                    .render()
+                                                                                    .transition('opacity .12s ease-in-out')
+                                                                                    .foregroundColor('rgba(109,122,131,0.9)')
+                                                                                    .allWidth(20).allHeight(20).cursor('pointer')
+                                                                                    .opacity(is.nullOrEmpty(node.iconName) ? '1' : `var(--opacity-caret)`)
+                                                                                    .onClick(() =>
+                                                                                        toggleChildrenVisibility({
+                                                                                            node,
+                                                                                            path,
+                                                                                            treeIndex,
+                                                                                        })
+                                                                                    )
+                                                                            )
+                                                                                .allWidth(30).allHeight(30)
+                                                                                .transition('transform .12s ease-in-out')
+
+                                                                                .render()
 
 
 
-                                                                            }
+                                                                        }
 
 
-                                                                            {node.expanded && !isDragging && (
-                                                                                <div
-                                                                                    style={{ width: scaffoldBlockPxWidth }}
-                                                                                    className={classnames('rst__lineChildren', rowDirectionClass)}
-                                                                                />
-                                                                            )}
-                                                                        </div>
-                                                                    )
-                                                                ),
-                                                                (node.children == null || node.children.length === 0) && (
+                                                                        {/*  {node.expanded && !isDragging && (
+                                                                        <div
+                                                                            style={{ width: scaffoldBlockPxWidth }}
+                                                                            className={classnames('rst__lineChildren', rowDirectionClass)}
+                                                                        />
+                                                                    )} */}
+                                                                    </div>
+                                                                )
+                                                            ),
+                                                            (node.children == null || node.children.length === 0) && (
+                                                                HStack(
                                                                     HStack(
-                                                                        HStack(
-                                                                            //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
-                                                                            UIWidget("com.tuvalsoft.widget.icons")
-                                                                                .config({
-                                                                                    readonly: true,
-                                                                                    selectedIcon: 'bookmark',
-                                                                                    selectedCategory: 'Icons',
-                                                                                    color: 'gray',
-                                                                                    backgroundColor: '',
-                                                                                    width: 20,
-                                                                                    height: 20,
-                                                                                    padding: 1
-                                                                                })
-                                                                        )
-                                                                            .transition('opacity .12s ease-in-out')
-                                                                            // .position('absolute')
-                                                                            //.background('#FCE8E8')
-                                                                            .allWidth(18).allHeight(18)
-                                                                            // .opacity('var(--opacity-icon)')
-                                                                            .cornerRadius(5)
+                                                                        //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
+                                                                        UIWidget("com.tuvalsoft.widget.icons")
+                                                                            .config({
+                                                                                readonly: true,
+                                                                                selectedIcon: 'bookmark',
+                                                                                selectedCategory: 'Icons',
+                                                                                color: 'gray',
+                                                                                backgroundColor: '',
+                                                                                width: 20,
+                                                                                height: 20,
+                                                                                padding: 1
+                                                                            })
                                                                     )
-                                                                        .allWidth(30).allHeight(30)
-                                                                        .transition('transform .12s ease-in-out')
+                                                                        .transition('opacity .12s ease-in-out')
+                                                                        // .position('absolute')
+                                                                        //.background('#FCE8E8')
+                                                                        .allWidth(18).allHeight(18)
+                                                                        // .opacity('var(--opacity-icon)')
+                                                                        .cornerRadius(5)
+                                                                )
+                                                                    .allWidth(30).allHeight(30)
+                                                                    .transition('transform .12s ease-in-out')
 
-                                                                ),
+                                                            ),
 
-                                                                is.function(node.view) ? node.view(node, () => toggleChildrenVisibility({
-                                                                    node,
-                                                                    path,
-                                                                    treeIndex,
-                                                                })) :
-                                                                    HStack({ alignment: 'cLeading' })(
-                                                                        Text(nodeTitle)
-                                                                    )
+                                                            is.function(node.view) ? node.view(node, () => toggleChildrenVisibility({
+                                                                node,
+                                                                path,
+                                                                treeIndex,
+                                                            })) :
+                                                                HStack({ alignment: 'cLeading' })(
+                                                                    Text(nodeTitle)
+                                                                )
+                                                        )
+                                                            .cursor('pointer')
+                                                            .render()
+                                                    }
+
+                                                </div>, {
+                                                    dropEffect: 'move',
+                                                })
+                                            }
+
+
+
+                                        </div>
+                                    )
+                                    :
+                                    HStack({ alignment: 'cLeading' })(
+                                        ReactView(
+                                            toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (
+                                                <div>
+                                                    {
+                                                        HStack(
+                                                            !is.nullOrEmpty(node.iconName) &&
+                                                            HStack(
+                                                                //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
+                                                                UIWidget("com.tuvalsoft.widget.icons")
+                                                                    .config({
+                                                                        readonly: true,
+                                                                        selectedIcon: 'bookmark',
+                                                                        selectedCategory: 'Icons',
+                                                                        color: 'gray',
+                                                                        backgroundColor: '',
+                                                                        width: 20,
+                                                                        height: 20,
+                                                                        padding: 1
+                                                                    })
                                                             )
-                                                                .cursor('pointer')
-                                                                .render()
-                                                        }
+                                                                .transition('opacity .12s ease-in-out')
+                                                                .position('absolute')
+                                                                //.background('#FCE8E8')
+                                                                .allWidth(18).allHeight(18)
+                                                                .opacity('var(--opacity-icon)')
+                                                                .cornerRadius(5),
+                                                            HStack(
+                                                                Icon(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
+                                                                    .transition('transform .12s ease-in-out')
+                                                            )
+                                                                .position('absolute')
 
-                                                    </div>, {
-                                                        dropEffect: 'copy',
-                                                    }))
-                                            ).render()
+                                                                .transition('opacity .12s ease-in-out')
+                                                                .foregroundColor('rgba(109,122,131,0.9)')
+                                                                .allWidth(20).allHeight(20).cursor('pointer')
+                                                                .opacity(is.nullOrEmpty(node.iconName) ? '1' : `var(--opacity-caret)`)
+                                                                .onClick(() =>
+                                                                    toggleChildrenVisibility({
+                                                                        node,
+                                                                        path,
+                                                                        treeIndex,
+                                                                    })
+                                                                )
+                                                        )
+                                                            .allWidth(30).allHeight(30)
+                                                            .transition('transform .12s ease-in-out')
+
+                                                            .render()
 
 
-                                        }
+
+                                                    }
 
 
+                                                    {/*  {node.expanded && !isDragging && (
+                                                    <div
+                                                        style={{ width: scaffoldBlockPxWidth }}
+                                                        className={classnames('rst__lineChildren', rowDirectionClass)}
+                                                    />
+                                                )} */}
+                                                </div>
+                                            )
+                                        ),
+                                        (node.children == null || node.children.length === 0) && (
+                                            HStack(
+                                                HStack(
+                                                    //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
+                                                    UIWidget("com.tuvalsoft.widget.icons")
+                                                        .config({
+                                                            readonly: true,
+                                                            selectedIcon: 'bookmark',
+                                                            selectedCategory: 'Icons',
+                                                            color: 'gray',
+                                                            backgroundColor: '',
+                                                            width: 20,
+                                                            height: 20,
+                                                            padding: 1
+                                                        })
+                                                )
+                                                    .transition('opacity .12s ease-in-out')
+                                                    // .position('absolute')
+                                                    //.background('#FCE8E8')
+                                                    .allWidth(18).allHeight(18)
+                                                    // .opacity('var(--opacity-icon)')
+                                                    .cornerRadius(5)
+                                            )
+                                                .allWidth(30).allHeight(30)
+                                                .transition('transform .12s ease-in-out')
 
-                                    </div>
-                                )}
+                                        ),
+
+                                        is.function(node.view) ? node.view(node, () => toggleChildrenVisibility({
+                                            node,
+                                            path,
+                                            treeIndex,
+                                        })) :
+                                            HStack({ alignment: 'cLeading' })(
+                                                Text(nodeTitle)
+                                            )
+                                    )
+                                        .cursor('pointer')
+                                        .render()
+                            }
                         </div>
                     </div>
                 )
             )
+                .height()
                 .cornerRadius(6)
                 .background({ default: node.isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
-               // .transition('all .12s ease-in-out')
-                .paddingLeft(`${(scaffoldBlockCount-1) * 20}px`)
+                // .transition('all .12s ease-in-out')
+                .paddingLeft(`${(scaffoldBlockCount - 1) * 20}px`)
                 //  .paddingLeft(parentNode != null ? `${getParentCount(parentNode) * 20}px` : '')
                 .variable(`--opacity-caret`, { default: '0', hover: '1' })
                 .variable(`--opacity-icon`, { default: '1', hover: '0' }).render()

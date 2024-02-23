@@ -6135,6 +6135,7 @@ var LeftSideMenuView = function (selectedItem) {
                         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
                             var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
                             var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useDeleteCache)(workspaceId).deleteCache;
+                            var _a = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false), isEditable = _a[0], setIsEditable = _a[1];
                             (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
                                 setTreeItems(buildTree(workspaceTreeITems));
                                 _tuval_core__WEBPACK_IMPORTED_MODULE_1__.EventBus.Default.on('applet.added', function (_a) {
@@ -6178,6 +6179,8 @@ var LeftSideMenuView = function (selectedItem) {
                                         parent: child.parent,
                                         path: child.path,
                                         tree_widget: child.tree_widget,
+                                        expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : false,
+                                        canDrag: true,
                                         view: function (node) {
                                             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)(child.tree_widget != null ?
                                                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)(child.tree_widget)
@@ -6202,6 +6205,7 @@ var LeftSideMenuView = function (selectedItem) {
                                             path: item.path,
                                             tree_widget: item.tree_widget,
                                             expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : false,
+                                            canDrag: false,
                                             view: function (node) {
                                                 return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)(item.tree_widget != null ?
                                                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)(item.tree_widget)
@@ -6217,8 +6221,8 @@ var LeftSideMenuView = function (selectedItem) {
                                 console.log('build tree');
                                 return tree;
                             }
-                            var _a = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]), prevTreeItems = _a[0], setPrevTreeItems = _a[1];
-                            var _b = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]), treeItems = _b[0], setTreeItems = _b[1];
+                            var _b = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]), prevTreeItems = _b[0], setPrevTreeItems = _b[1];
+                            var _c = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)([]), treeItems = _c[0], setTreeItems = _c[1];
                             var canDrop = function (_a) {
                                 var node = _a.node, nextParent = _a.nextParent, prevPath = _a.prevPath, nextPath = _a.nextPath;
                                 if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
@@ -6233,9 +6237,13 @@ var LeftSideMenuView = function (selectedItem) {
                                 }
                                 return true;
                             };
-                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 5 })(documents ?
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)().background('gray').width(32).height(32)
+                                .onClick(function () {
+                                setIsEditable(!isEditable);
+                            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })(documents ?
                                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)('com.celmino.widget.sortable-tree')
                                     .config({
+                                    canDrag: isEditable,
                                     treeItems: treeItems,
                                     onChange: function (_treeItems) {
                                         //  setPrevTreeItems([...treeItems]);
@@ -6305,7 +6313,9 @@ var LeftSideMenuView = function (selectedItem) {
                                         });
                                         console.log(newTreeData);
                                     }
-                                })) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)()
+                                })) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)())
+                                .cornerRadius(6)
+                                .outline(isEditable ? 'dot 1px green' : 'none')
                             /*  ...ForEach(spaces)(space =>
                                  Text(space.name)
                              ), */
