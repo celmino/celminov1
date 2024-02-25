@@ -2,7 +2,7 @@ import { UIController, UIRoute, UIRoutes, UIView, UIViewBuilder, VStack } from "
 import { AppletController } from "./+controller";
 import { CollectionController } from "./collection-[collectionId]/+controller";
 import { SettingsController } from "./settings/+controller";
-import { HomeController } from "./*/+controller";
+import {HomeController}from './*/+controller'
 
 
 export class RouteController extends UIController {
@@ -14,7 +14,7 @@ export class RouteController extends UIController {
                     UIRoutes(
                         UIRoute('/', AppletController).children(
                             UIRoute('', HomeController)
-
+                           
                         ),
                         UIRoute('/settings', SettingsController)
                     )
@@ -27,7 +27,7 @@ export class RouteController extends UIController {
     }
     public LoadView(): UIView {
 
-
+     
 
         return this.routeView();
 

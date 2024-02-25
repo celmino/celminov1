@@ -149,8 +149,8 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                             selectedCategory: node.iconCategory,
                                                                                             color: darken('#8EC351', dark),
                                                                                             backgroundColor: lighten('#8EC351', light),
-                                                                                            width: 20,
-                                                                                            height: 20,
+                                                                                            width: 24,
+                                                                                            height: 24,
                                                                                             padding: 1
                                                                                         })
                                                                                 )
@@ -208,8 +208,8 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                 selectedCategory: node.iconCategory,
                                                                                 color: darken('#8EC351', dark),
                                                                                 backgroundColor: lighten('#8EC351', light),
-                                                                                width: 20,
-                                                                                height: 20,
+                                                                                width: 24,
+                                                                                height: 24,
                                                                                 padding: 1
                                                                             })
                                                                     )
@@ -264,8 +264,8 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                         selectedCategory: node.iconCategory,
                                                                         color: darken('#8EC351', dark),
                                                                         backgroundColor: lighten('#8EC351', light),
-                                                                        width: 20,
-                                                                        height: 20,
+                                                                        width: 24,
+                                                                        height: 24,
                                                                         padding: 1
                                                                     })
                                                             )
@@ -323,8 +323,8 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                             selectedCategory: node.iconCategory,
                                                             color: darken('#8EC351', dark),
                                                             backgroundColor: lighten('#8EC351', light),
-                                                            width: 20,
-                                                            height: 20,
+                                                            width: 24,
+                                                            height: 24,
                                                             padding: 1
                                                         })
                                                 )

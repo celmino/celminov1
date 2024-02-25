@@ -3393,16 +3393,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_calendars__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/calendars */ "@realmocean/calendars");
-/* harmony import */ var _realmocean_calendars__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_calendars__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
-/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_4__);
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -3414,7 +3412,6 @@ var __assign = (undefined && undefined.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-
 
 
 
@@ -3434,8 +3431,8 @@ var SaveMeetingAction = function (formMeta, action) { return (0,_tuval_forms__WE
     var isFormLoading = false;
     var views = [];
     var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId;
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useCreateDocument)(workspaceId, appletId, 'meeting'), createDocument = _a.createDocument, isLoading = _a.isLoading;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)('Save meeting space'))
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useCreateDocument)(workspaceId, appletId, 'meeting'), createDocument = _a.createDocument, isLoading = _a.isLoading;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_4__.Text)('Save meeting space'))
         .loading(isLoading)
         .onClick(function () {
         var data = __assign({}, formController.GetFormData());
@@ -3447,13 +3444,13 @@ var SaveMeetingAction = function (formMeta, action) { return (0,_tuval_forms__WE
     }));
 }); };
 var getStartDate = function () {
-    var start = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_3__.moment)(new Date());
+    var start = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(new Date());
     var remainder = 15 - (start.minute() % 15);
-    var dateTime = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_3__.moment)(start).add(remainder, "minutes").toDate();
+    var dateTime = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(start).add(remainder, "minutes").toDate();
     return dateTime;
 };
 var getEndDate = function () {
-    return (0,_tuval_core__WEBPACK_IMPORTED_MODULE_3__.moment)(getStartDate()).add(1, 'hour').toDate();
+    return (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(getStartDate()).add(1, 'hour').toDate();
 };
 var AddMeetingDialog = function (workspaceId, appletId, parent) { return ({
     "title": 'Create meeting',
@@ -3479,20 +3476,20 @@ var AddMeetingDialog = function (workspaceId, appletId, parent) { return ({
         "start_at": {
             "label": "From",
             "type": "datetimepicker",
-            datePickerRenderer: _realmocean_antd__WEBPACK_IMPORTED_MODULE_2__.DatePickerRenderer,
-            timePickerRenderer: _realmocean_calendars__WEBPACK_IMPORTED_MODULE_1__.TimePickerRenderer,
+            datePickerRenderer: _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.DatePickerRenderer,
+            timePickerRenderer: _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.DatePickerRenderer,
             "name": "start_at",
             defaultValue: getStartDate(),
             onChange: function (controller, value) {
-                controller.SetValue('end_at', (0,_tuval_core__WEBPACK_IMPORTED_MODULE_3__.moment)(value).add(1, 'hour').toDate());
+                controller.SetValue('end_at', (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(value).add(1, 'hour').toDate());
                 console.log(JSON.stringify(controller.GetFormData()));
             }
         },
         "end_at": {
             "label": "To",
             "type": "datetimepicker",
-            datePickerRenderer: _realmocean_antd__WEBPACK_IMPORTED_MODULE_2__.DatePickerRenderer,
-            timePickerRenderer: _realmocean_calendars__WEBPACK_IMPORTED_MODULE_1__.TimePickerRenderer,
+            datePickerRenderer: _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.DatePickerRenderer,
+            timePickerRenderer: _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.DatePickerRenderer,
             "name": "end_at",
             defaultValue: getEndDate()
         },
@@ -4820,17 +4817,6 @@ module.exports = {
 
 "use strict";
 module.exports = realmocean$antd;
-
-/***/ }),
-
-/***/ "@realmocean/calendars":
-/*!***************************************!*\
-  !*** external "realmocean$calendars" ***!
-  \***************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = realmocean$calendars;
 
 /***/ }),
 

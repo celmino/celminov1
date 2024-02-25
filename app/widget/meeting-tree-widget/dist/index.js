@@ -226,6 +226,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var _b = this.props.config || {}, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_2__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
         var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_2__.getListId)();
+        var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
         var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }), applet = _d.document, isAppletLoading = _d.isLoading;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useUpdateDocument)(workspaceId).updateDocument;
         return (isAppletLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
@@ -271,10 +272,18 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                     return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected);
                 },
                 requestNavigation: function () {
+                    function process(value) {
+                        if (_tuval_core__WEBPACK_IMPORTED_MODULE_11__.is.string(value)) {
+                            return value == undefined ? '' : value.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase();
+                        }
+                        else {
+                            return '';
+                        }
+                    }
                     if (onItemSelected == null) {
                         switch (item.type) {
                             case 'space':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/space-").concat(item.$id, "/meetings"));
+                                navigate("/app/".concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet === null || applet === void 0 ? void 0 : applet.name), "-").concat(appletId, "/").concat(process(item.name), "-").concat(item.$id, "/meetings"));
                                 break;
                             case 'list':
                                 navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.$id));

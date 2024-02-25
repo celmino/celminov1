@@ -4,13 +4,13 @@ import {
 } from '@tuval/forms';
 
 import { LeftSideMenuView } from './views/WorkspaceTree';
-import { useGetWorkspaces } from '@celmino/workprotocol';
+import { useGetWorkspace, useGetWorkspaces } from '@celmino/workprotocol';
 import { useSessionService } from '@realmocean/services';
 import { WorkbenchIcons } from './views/WorkbenchIcons';
 import { AddSpaceDialog, SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { DynoDialog } from '@realmocean/ui';
 import { getAppletId, getDocumentId, getListId, getViewId, isAppletOnly, isAppletSettings } from './utils';
-import { Query, useGetDocument, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
+import { Query, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
 import { useLocalStorageState } from './views/localStorageState';
 import { TextField, Text as VibeText } from '@realmocean/vibe';
 import { AddFolderDialog } from './dialogs/AddFolderDialog';
@@ -23,7 +23,7 @@ import { AddBoardDialog } from './dialogs/AddBoardDialog';
 import React from 'react';
 import { BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, TableIcon, TimelineIcon } from './resources/Icons';
 import { AddMeetingSpace } from './dialogs/AddMeetingSpace';
-import { EventBus } from '@tuval/core';
+import { EventBus, is } from '@tuval/core';
 
 
 const subNodes = (TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected) => UIViewBuilder(() => {
@@ -200,6 +200,7 @@ export class WorkspaceTreeWidgetController extends UIController {
 
         let listId = getListId();
 
+        const { realm } = useGetRealm({ realmId: workspaceId, enabled: true })
         const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId })
         const { updateDocument } = useUpdateDocument(workspaceId);
         return (
@@ -247,10 +248,18 @@ export class WorkspaceTreeWidgetController extends UIController {
                             return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected)
                         },
                         requestNavigation: () => {
+                            function process(value) {
+                                if (is.string(value)) {
+                                    return value == undefined ? '' : value.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()
+                                } else {
+                                    return '';
+                                }
+                            }
+
                             if (onItemSelected == null) {
                                 switch (item.type) {
                                     case 'space':
-                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/space-${item.$id}/meetings`);
+                                        navigate(`/app/${process(realm?.name)}-${workspaceId}/${process(applet?.name)}-${appletId}/${process(item.name)}-${item.$id}/meetings`);
                                         break;
                                     case 'list':
                                         navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${item.$id}`);
@@ -264,10 +273,10 @@ export class WorkspaceTreeWidgetController extends UIController {
                                     case 'whiteboard':
                                         navigate(`/app/workspace/${workspaceId}/applet/${appletId}/whiteboard/${item.$id}`);
                                         break;
-    
+
                                 }
                             } else {
-    
+
                                 onItemSelected({
                                     workspaceId: workspaceId,
                                     appletId: appletId,

@@ -249,7 +249,7 @@ export function Editor() {
   // list of marks should be placed inside your component
   const marks = [Bold, Italic, CodeMark, Underline, Strike];
   return (
-    <div style={{ width: '500px', marginLeft: '100px' }}>
+    <div style={{ width: 'calc(100% - 50px)', marginLeft:'50px' }}>
       <YooptaEditor<any>
         value={editorValue}
         onChange={(val: YooptaValue[]) => setEditorValue(val)}

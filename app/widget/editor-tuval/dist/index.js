@@ -78218,7 +78218,7 @@ function Editor() {
     const [editorValue, setEditorValue] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(initialValue);
     // list of marks should be placed inside your component
     const marks = [_yoopta_marks__WEBPACK_IMPORTED_MODULE_14__.Bold, _yoopta_marks__WEBPACK_IMPORTED_MODULE_14__.Italic, _yoopta_marks__WEBPACK_IMPORTED_MODULE_14__.CodeMark, _yoopta_marks__WEBPACK_IMPORTED_MODULE_14__.Underline, _yoopta_marks__WEBPACK_IMPORTED_MODULE_14__.Strike];
-    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { width: '500px', marginLeft: '100px' } },
+    return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", { style: { width: 'calc(100% - 50px)', marginLeft: '50px' } },
         react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_yoopta_editor__WEBPACK_IMPORTED_MODULE_4__["default"], { value: editorValue, onChange: (val) => setEditorValue(val), plugins: plugins, marks: marks, placeholder: "Start typing...", offline: "withNotionExample", autoFocus: true, tools: TOOLS })));
 }
 class EditorController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {

@@ -1,6 +1,6 @@
 
 export const AppletCategory = {
-    name: 'Applet Category',
+    name: 'Workspace',
     type: 'Applet',
     tree_type: 'com.celmino.widget.applet-category',
     applet_type: 'com.celmino.applet.category',

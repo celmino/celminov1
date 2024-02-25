@@ -587,7 +587,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                       
                                                             ScrollView({ axes: cVertical, alignment: cTopLeading })(
 
-                                                                UIWidget('com.celmino.widget.sortable-list')
+                                                               /*  UIWidget('com.celmino.widget.sortable-list')
                                                                     .config({
                                                                         items: [
                                                                             {
@@ -600,7 +600,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                 )
                                                                             }
                                                                         ]
-                                                                    }),
+                                                                    }), */
 
                                                                 UIWidget('com.celmino.widget.sortable-tree')
                                                                     .config({

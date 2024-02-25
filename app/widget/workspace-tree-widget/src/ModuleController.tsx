@@ -1,29 +1,24 @@
 import {
-    Button, ForEach, FormBuilder, Fragment, HStack, Heading, Icon, Icons, Loader,
-    LoaderSizes, MenuButton, OptionsContext, Spacer, Spinner, SvgIcon, Text, UIController, UIView, UIViewBuilder, UIWidget, VStack, cHorizontal, cLeading, cTopLeading, cTrailing, cVertical, useEffect, useNavigate, useParams, useState
+    ForEach, FormBuilder, Fragment, HStack,
+    Icon,
+    SvgIcon,
+    UIController, UIView, UIViewBuilder, UIWidget, VStack,
+    cLeading, cTopLeading,
+    useNavigate, useParams, useState
 } from '@tuval/forms';
 
-import { LeftSideMenuView } from './views/WorkspaceTree';
-import { useGetWorkspaces } from '@celmino/workprotocol';
-import { useSessionService } from '@realmocean/services';
-import { WorkbenchIcons } from './views/WorkbenchIcons';
-import { AddSpaceDialog, SaveSpaceAction } from './dialogs/AddSpaceDialog';
-import { DynoDialog } from '@realmocean/ui';
-import { getAppletId, getDocumentId, getListId, getViewId, isAppletOnly, isAppletSettings } from './utils';
+import { SelectAppletDialog } from '@celmino/ui';
 import { Query, useCreateDocument, useGetDocument, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
-import { useLocalStorageState } from './views/localStorageState';
-import { TextField, Text as VibeText } from '@realmocean/vibe';
+import { DynoDialog } from '@realmocean/ui';
+import { EventBus } from '@tuval/core';
+import { AddBoardDialog } from './dialogs/AddBoardDialog';
+import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 import { AddFolderDialog } from './dialogs/AddFolderDialog';
 import { AddListDialog } from './dialogs/AddListDialog';
-import { SelectOpaDialog } from './dialogs/SelectOpaDialog';
-import { opas } from './Opas';
-import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
+import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { AddWhiteboardDialog } from './dialogs/AddWhiteboardDialog';
-import { AddBoardDialog } from './dialogs/AddBoardDialog';
-import React from 'react';
 import { BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, TableIcon, TimelineIcon } from './resources/Icons';
-import { SelectAppletDialog } from '@celmino/ui';
-import { EventBus } from '@tuval/core';
+import { getAppletId, getDocumentId, getListId, getViewId, isAppletOnly, isAppletSettings } from './utils';
 
 
 const subNodes = (TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected) => UIViewBuilder(() => {

@@ -10,7 +10,6 @@ import {
     useFormController,
     useNavigate
 } from "@tuval/forms";
-import { _DatePickerRenderer, TimePickerRenderer } from '@realmocean/calendars'
 import { DatePickerRenderer } from '@realmocean/antd'
 import { moment } from "@tuval/core";
 import { useCreateDocument } from "@realmocean/sdk";
@@ -101,7 +100,7 @@ export const AddMeetingDialog = (workspaceId: string, appletId: string, parent: 
             "label": "From",
             "type": "datetimepicker",
             datePickerRenderer: DatePickerRenderer,
-            timePickerRenderer: TimePickerRenderer,
+            timePickerRenderer: DatePickerRenderer,
             "name": "start_at",
             defaultValue: getStartDate(),
             onChange: (controller, value) => {
@@ -113,7 +112,7 @@ export const AddMeetingDialog = (workspaceId: string, appletId: string, parent: 
             "label": "To",
             "type": "datetimepicker",
             datePickerRenderer: DatePickerRenderer,
-            timePickerRenderer: TimePickerRenderer,
+            timePickerRenderer: DatePickerRenderer,
             "name": "end_at",
             defaultValue: getEndDate()
         },

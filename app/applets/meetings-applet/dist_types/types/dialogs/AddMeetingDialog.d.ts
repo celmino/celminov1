@@ -1,4 +1,3 @@
-import { TimePickerRenderer } from '@realmocean/calendars';
 import { DatePickerRenderer } from '@realmocean/antd';
 export declare const SaveMeetingAction: (formMeta: any, action: any) => import("@tuval/forms").UIViewBuilderClass;
 export declare const AddMeetingDialog: (workspaceId: string, appletId: string, parent: string) => {
@@ -24,7 +23,7 @@ export declare const AddMeetingDialog: (workspaceId: string, appletId: string, p
             label: string;
             type: string;
             datePickerRenderer: typeof DatePickerRenderer;
-            timePickerRenderer: typeof TimePickerRenderer;
+            timePickerRenderer: typeof DatePickerRenderer;
             name: string;
             defaultValue: any;
             onChange: (controller: any, value: any) => void;
@@ -33,7 +32,7 @@ export declare const AddMeetingDialog: (workspaceId: string, appletId: string, p
             label: string;
             type: string;
             datePickerRenderer: typeof DatePickerRenderer;
-            timePickerRenderer: typeof TimePickerRenderer;
+            timePickerRenderer: typeof DatePickerRenderer;
             name: string;
             defaultValue: any;
         };

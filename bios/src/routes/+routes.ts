@@ -28,7 +28,14 @@ export const Routes = () => {
                 UIRoute('organization/select', OrganizationSelectController),
                 UIRoute('workspace/', WorkspaceLayoutController).children(
                     UIRoute(':workspaceId', WorkspaceController).children(
-                        UIRoute('applet/:appletId/*', AppletController)
+                        UIRoute('applet/:appletId/*', AppletController),
+                        UIRoute(':appletId/*', AppletController)
+                    )
+                ),
+                UIRoute(':workspaceId', WorkspaceLayoutController).children(
+                    UIRoute('', WorkspaceController).children(
+                        UIRoute('applet/:appletId/*', AppletController),
+                        UIRoute(':appletId/*', AppletController)
                     )
                 ),
                 UIRoute('workspace/select', WorkspaceSelectController)

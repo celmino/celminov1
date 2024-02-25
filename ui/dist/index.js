@@ -3291,16 +3291,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _applets_APQC__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applets/APQC */ "./src/applets/APQC.ts");
 /* harmony import */ var _applets_AppletCategory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./applets/AppletCategory */ "./src/applets/AppletCategory.ts");
-/* harmony import */ var _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applets/InvestorsInTurkey */ "./src/applets/InvestorsInTurkey.ts");
-/* harmony import */ var _applets_World__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/World */ "./src/applets/World.ts");
+/* harmony import */ var _applets_Divider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applets/Divider */ "./src/applets/Divider.ts");
+/* harmony import */ var _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/InvestorsInTurkey */ "./src/applets/InvestorsInTurkey.ts");
+/* harmony import */ var _applets_World__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/World */ "./src/applets/World.ts");
+
 
 
 
 
 var Applets = [
-    _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_2__.InvestorsInTurkey,
+    _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_3__.InvestorsInTurkey,
     _applets_APQC__WEBPACK_IMPORTED_MODULE_0__.APQCApplet,
-    _applets_World__WEBPACK_IMPORTED_MODULE_3__.WorldApplet,
+    _applets_World__WEBPACK_IMPORTED_MODULE_4__.WorldApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -3536,13 +3538,13 @@ var Applets = [
         ]
     },
     {
-        name: 'Custom Applet',
+        name: 'Database',
         type: 'Applet',
         tree_type: 'com.celmino.widget.custom-applet-tree',
         applet_type: 'com.celmino.applet.custom',
         description: 'Monitor your process details in timeframe chart.',
         // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
-        icon: '\\d20d',
+        icon: '\\d278',
         iconBackColor: '#66B47C',
         enabled: true,
         databases: [
@@ -8207,6 +8209,7 @@ var Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
+    _applets_Divider__WEBPACK_IMPORTED_MODULE_2__.AppletDivider
 ];
 
 
@@ -8260,7 +8263,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AppletCategory: () => (/* binding */ AppletCategory)
 /* harmony export */ });
 var AppletCategory = {
-    name: 'Applet Category',
+    name: 'Workspace',
     type: 'Applet',
     tree_type: 'com.celmino.widget.applet-category',
     applet_type: 'com.celmino.applet.category',
@@ -8274,6 +8277,42 @@ var AppletCategory = {
     databases: [
         {
             "name": "Applet Category",
+            "id": "applet_category",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Divider.ts":
+/*!********************************!*\
+  !*** ./src/applets/Divider.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletDivider: () => (/* binding */ AppletDivider)
+/* harmony export */ });
+var AppletDivider = {
+    name: 'Divider',
+    type: 'Applet',
+    tree_type: 'com.celmino.widget.applet-tree-divider',
+    applet_type: 'com.celmino.applet.category',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Divider",
             "id": "applet_category",
             "category": "app",
             "collections": []

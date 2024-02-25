@@ -1,5 +1,6 @@
 import { APQCApplet } from "./applets/APQC";
 import { AppletCategory } from "./applets/AppletCategory";
+import { AppletDivider } from "./applets/Divider";
 import { InvestorsInTurkey } from "./applets/InvestorsInTurkey";
 import { WorldApplet } from "./applets/World";
 
@@ -272,13 +273,13 @@ export const Applets = [
         ]
     },
     {
-        name: 'Custom Applet',
+        name: 'Database',
         type: 'Applet',
         tree_type: 'com.celmino.widget.custom-applet-tree',
         applet_type: 'com.celmino.applet.custom',
         description: 'Monitor your process details in timeframe chart.',
         // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
-        icon: '\\d20d',
+        icon: '\\d278',
         iconBackColor: '#66B47C',
         enabled: true,
         databases: [
@@ -5023,5 +5024,6 @@ export const Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
+    AppletDivider
 ];
 

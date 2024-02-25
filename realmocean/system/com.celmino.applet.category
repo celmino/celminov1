@@ -36201,7 +36201,9 @@ var HomeController = /** @class */ (function (_super) {
                 }) */
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useUpdateDocument)(workspaceId).updateDocument;
         return ((isDocumentLoading || isTreeItemLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)("com.tuvalsoft.widget.icons")
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(
+            //@ts-ignore
+            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)("com.tuvalsoft.widget.icons")
                 .config({
                 onChange: function (value) {
                     updateDocument({
@@ -36308,8 +36310,10 @@ var HomeController = /** @class */ (function (_super) {
                         });
                     }
                 }),
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.tuvalsoft.widget.editor-tuval')
-                        .config({}));
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.tuvalsoft.widget.editor-tuval')
+                        .config({}))
+                        .paddingLeft('clamp(84px,50%,calc(50% - 420px))')
+                        .paddingRight('clamp(84px,50%,calc(50% - 420px))'));
             }))
                 .background('white')
                 .render())));

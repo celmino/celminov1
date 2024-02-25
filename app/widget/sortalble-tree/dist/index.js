@@ -51028,8 +51028,8 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         selectedCategory: node.iconCategory,
                         color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
                         backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
-                        width: 20,
-                        height: 20,
+                        width: 24,
+                        height: 24,
                         padding: 1
                     }))
                         .transition('opacity .12s ease-in-out')
@@ -51062,8 +51062,8 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     selectedCategory: node.iconCategory,
                     color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
                     backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
-                    width: 20,
-                    height: 20,
+                    width: 24,
+                    height: 24,
                     padding: 1
                 }))
                     .transition('opacity .12s ease-in-out')
@@ -51094,8 +51094,8 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                             selectedCategory: node.iconCategory,
                             color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
                             backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
-                            width: 20,
-                            height: 20,
+                            width: 24,
+                            height: 24,
                             padding: 1
                         }))
                             .transition('opacity .12s ease-in-out')
@@ -51128,8 +51128,8 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         selectedCategory: node.iconCategory,
                         color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
                         backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
-                        width: 20,
-                        height: 20,
+                        width: 24,
+                        height: 24,
                         padding: 1
                     }))
                         .transition('opacity .12s ease-in-out')

@@ -7,7 +7,7 @@ import { EventBus, is } from "@tuval/core";
 import DocViewer, { DocViewerRenderers } from "@cyntler/react-doc-viewer";
 import { SimpleImage } from "../../tools/SimplePlugin";
 import InlineImage from 'editorjs-inline-image';
-import {Editor} from './view/Editor';
+import { Editor } from './view/Editor';
 
 const docs = [
     { uri: "https://url-to-my-pdf.pdf" }, // Remote file
@@ -51,7 +51,7 @@ export class HomeController extends UIController {
 
                                 ActionPanel(),
                                 VStack({ alignment: cTopLeading })(
-                                   
+
                                     UIWidget("com.tuvalsoft.widget.icons")
                                         .config({
                                             onChange: (value) => {
@@ -121,7 +121,7 @@ export class HomeController extends UIController {
  
                                                  })
                                          ) */
-                                         
+
                                         UIWidget('com.tuvalsoft.widget.editorjs')
                                             .config({
                                                 defaultValue: null,//is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
@@ -166,9 +166,13 @@ export class HomeController extends UIController {
                                                     })
                                                 }
                                             }),
+                                        HStack({ alignment: cTopLeading })(
                                             UIWidget('com.tuvalsoft.widget.editor-tuval')
-                                            .config({
-                                            })
+                                                .config({
+                                                })
+                                        )
+                                            .paddingLeft('clamp(84px,50%,calc(50% - 420px))')
+                                            .paddingRight('clamp(84px,50%,calc(50% - 420px))')
 
                                     )
                                 })

@@ -1,15 +1,13 @@
-import { Button, FormBuilder, Fragment, HStack, Heading, Icon, Icons, Loader, LoaderSizes, OptionsContext, Spacer, SvgIcon, Text, UIController, UIView, UIWidget, VStack, cLeading, cTopLeading, useEffect, useState } from '@tuval/forms';
+import { FormBuilder, Fragment, HStack, Heading, Icon, Icons, Loader, LoaderSizes, OptionsContext, Spacer, UIController, UIView, VStack, cLeading, cTopLeading, useEffect, useState } from '@tuval/forms';
 
-import { LeftSideMenuView } from './views/WorkspaceTree';
-import { useGetWorkspaces } from '@celmino/workprotocol';
-import { useSessionService } from '@realmocean/services';
-import { WorkbenchIcons } from './views/WorkbenchIcons';
-import { AddSpaceDialog, SaveSpaceAction } from './dialogs/AddSpaceDialog';
-import { DynoDialog } from '@realmocean/ui';
-import { getAppletName, getNoteId } from './utils';
 import { useGetDocument } from '@realmocean/sdk';
-import { useLocalStorageState } from './views/localStorageState';
+import { DynoDialog } from '@realmocean/ui';
 import { AddNotebookDialog } from './dialogs/AddNotebookDialog';
+import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
+import { getAppletName, getNoteId } from './utils';
+import { WorkbenchIcons } from './views/WorkbenchIcons';
+import { LeftSideMenuView } from './views/WorkspaceTree';
+import { useLocalStorageState } from './views/localStorageState';
 
 
 
