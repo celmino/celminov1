@@ -2,7 +2,7 @@ import {
     HStack,
     MenuButton,
     SvgIcon,
-    Text, TextField, UIController, UIView, UIViewBuilder, cLeading, cVertical, useState
+    Text, TextField, UIController, UIView, UIViewBuilder, cLeading, cVertical, useNavigate, useState
 } from '@tuval/forms';
 
 import { Query, useGetDocument, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
@@ -23,6 +23,8 @@ export class WorkspaceTreeWidgetController extends UIController {
         const [title, setTitle] = useState(item?.name);
         const { updateDocument } = useUpdateDocument(workspaceId);
 
+        const navigate = useNavigate();
+
         return (
             HStack({ alignment: cLeading, spacing: 2 })(
                 // Title
@@ -39,16 +41,26 @@ export class WorkspaceTreeWidgetController extends UIController {
                             .outline({ focus: 'none' })
                             .onBlur(() => {
 
-                                 updateDocument({
+                                updateDocument({
                                     databaseId: 'workspace',
-                                    collectionId: 'ws_tree',
+                                    collectionId: 'applets',
                                     documentId: item.$id,
                                     data: {
                                         name: title
                                     }
                                 }, () => {
-                                    EventBus.Default.fire('applet.added', { treeItem: item })
+                                    updateDocument({
+                                        databaseId: 'workspace',
+                                        collectionId: 'ws_tree',
+                                        documentId: item.$id,
+                                        data: {
+                                            name: title
+                                        }
+                                    }, () => {
+                                        EventBus.Default.fire('applet.added', { treeItem: item })
+                                    })  
                                 })  
+                                
                             })
                     )
                         .height()
@@ -93,6 +105,9 @@ export class WorkspaceTreeWidgetController extends UIController {
                         .cornerRadius(5)
                 //.clipPath('polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 50%, 0 0)')
             )
+            .onClick(()=> {
+                navigate(`/app/workspace/${workspaceId}/applet/${appletId}`);
+            })
         )
     }
 }

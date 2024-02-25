@@ -6046,22 +6046,17 @@ var LeftSideMenuView = function (selectedItem) {
             var databases = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDatabases)(workspaceId, [
                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('category', 'applet')
             ]).databases;
-            var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, 'workspace', 'applets', [
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('parent', '-1'),
-                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.limit(250),
-                // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
-            ]), documents = _b.documents, isLoading = _b.isLoading;
-            var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
+            var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
                 // Query.equal('parent', '-1'),
                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.limit(250),
                 // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
-            ]), workspaceTreeITems = _c.documents, isWorkspaceTreeLoading = _c.isLoading;
+            ]), workspaceTreeITems = _b.documents, isWorkspaceTreeLoading = _b.isLoading;
             var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
-            var _d = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({}), iconInfo = _d[0], setIconInfo = _d[1];
+            var _c = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)({}), iconInfo = _c[0], setIconInfo = _c[1];
             var updatePrefs = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdatePrefs)({}).updatePrefs;
-            var _e = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false), isSorting = _e[0], setIsSorting = _e[1];
+            var _d = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false), isSorting = _d[0], setIsSorting = _d[1];
             var _hideHandle;
-            return ((isLoading || isWorkspaceTreeLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
+            return ((isWorkspaceTreeLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() : workspaceTreeITems == null ? (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)('null') :
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height(1).background('#ECEDEE'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 2 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(topMenu)(function (menuItem) {
                     return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 8 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(menuItem.icon), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(menuItem.title)
                         .foregroundColor('rgb(21, 23, 25)')
@@ -6181,7 +6176,7 @@ var LeftSideMenuView = function (selectedItem) {
                                         tree_widget: child.tree_widget,
                                         iconName: child.iconName,
                                         iconCategory: child.iconCategory,
-                                        expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : false,
+                                        expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : false,
                                         canDrag: true,
                                         view: function (node) {
                                             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)(child.tree_widget != null ?
@@ -6245,80 +6240,87 @@ var LeftSideMenuView = function (selectedItem) {
                             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)().background('gray').width(32).height(32)
                                 .onClick(function () {
                                 setIsEditable(!isEditable);
-                            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })(documents ?
-                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)('com.celmino.widget.sortable-tree')
-                                    .config({
-                                    canDrag: isEditable,
-                                    treeItems: treeItems,
-                                    onChange: function (_treeItems) {
-                                        //  setPrevTreeItems([...treeItems]);
-                                        setTreeItems(_treeItems);
-                                    },
-                                    onVisibilityToggle: function (_a) {
-                                        var node = _a.node, expanded = _a.expanded;
-                                        if (expanded) {
-                                            expandeds[node.$id] = true;
-                                        }
-                                        else {
-                                            delete expandeds[node.$id];
-                                        }
-                                        console.log(expandeds);
-                                    },
-                                    onMoveNode: function (_a) {
-                                        var treeData = _a.treeData;
-                                        var newTreeData = __spreadArray([], treeData, true);
-                                        function reCreateIndex(parentNode) {
-                                            if (parentNode.children) {
-                                                parentNode.children.forEach(function (child, index) {
-                                                    child.prevParent = child.parent;
-                                                    child.prevPath = child.path;
-                                                    child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                    child.parent = parentNode.$id;
-                                                    if (child.prevPath == null) {
-                                                        child.prevPath = child.path;
-                                                    }
-                                                    if (child.prevParent == null) {
-                                                        child.prevParent = child.parent;
-                                                    }
-                                                    reCreateIndex(child);
-                                                });
-                                            }
-                                        }
-                                        newTreeData.forEach(function (item, index) {
-                                            item.prevParent = item.parent;
-                                            item.prevPath = item.path;
-                                            item.path = addZeroDigitToNumberReturnString(index, 3);
-                                            item.parent = '-1';
-                                            reCreateIndex(item);
-                                        });
-                                        var changes = [];
-                                        function getChanges(parentNode) {
-                                            if (parentNode.children) {
-                                                parentNode.children.forEach(function (child) {
-                                                    if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
-                                                        // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                        changes.push(child);
-                                                    }
-                                                    getChanges(child);
-                                                });
-                                            }
-                                        }
-                                        newTreeData.forEach(function (item, index) {
-                                            if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
-                                                //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                changes.push(item);
-                                            }
-                                            getChanges(item);
-                                        });
-                                        changes.forEach(function (item) {
-                                            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                path: item.path,
-                                                parent: item.parent
-                                            });
-                                        });
-                                        console.log(newTreeData);
+                            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)('com.celmino.widget.sortable-list')
+                                .config({
+                                items: [
+                                    {
+                                        id: 1,
+                                        view: function (node) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)('Name'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)().height(32).padding())); }
                                     }
-                                })) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)())
+                                ]
+                            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)('com.celmino.widget.sortable-tree')
+                                .config({
+                                canDrag: isEditable,
+                                treeItems: treeItems,
+                                onChange: function (_treeItems) {
+                                    //  setPrevTreeItems([...treeItems]);
+                                    setTreeItems(_treeItems);
+                                },
+                                onVisibilityToggle: function (_a) {
+                                    var node = _a.node, expanded = _a.expanded;
+                                    if (expanded) {
+                                        expandeds[node.$id] = true;
+                                    }
+                                    else {
+                                        delete expandeds[node.$id];
+                                    }
+                                    console.log(expandeds);
+                                },
+                                onMoveNode: function (_a) {
+                                    var treeData = _a.treeData;
+                                    var newTreeData = __spreadArray([], treeData, true);
+                                    function reCreateIndex(parentNode) {
+                                        if (parentNode.children) {
+                                            parentNode.children.forEach(function (child, index) {
+                                                child.prevParent = child.parent;
+                                                child.prevPath = child.path;
+                                                child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                child.parent = parentNode.$id;
+                                                if (child.prevPath == null) {
+                                                    child.prevPath = child.path;
+                                                }
+                                                if (child.prevParent == null) {
+                                                    child.prevParent = child.parent;
+                                                }
+                                                reCreateIndex(child);
+                                            });
+                                        }
+                                    }
+                                    newTreeData.forEach(function (item, index) {
+                                        item.prevParent = item.parent;
+                                        item.prevPath = item.path;
+                                        item.path = addZeroDigitToNumberReturnString(index, 3);
+                                        item.parent = '-1';
+                                        reCreateIndex(item);
+                                    });
+                                    var changes = [];
+                                    function getChanges(parentNode) {
+                                        if (parentNode.children) {
+                                            parentNode.children.forEach(function (child) {
+                                                if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                    // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                    changes.push(child);
+                                                }
+                                                getChanges(child);
+                                            });
+                                        }
+                                    }
+                                    newTreeData.forEach(function (item, index) {
+                                        if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                            //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                            changes.push(item);
+                                        }
+                                        getChanges(item);
+                                    });
+                                    changes.forEach(function (item) {
+                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                            path: item.path,
+                                            parent: item.parent
+                                        });
+                                    });
+                                    console.log(newTreeData);
+                                }
+                            })))
                                 .cornerRadius(6)
                                 .outline(isEditable ? 'dotted 2px green' : 'none')
                             /*  ...ForEach(spaces)(space =>

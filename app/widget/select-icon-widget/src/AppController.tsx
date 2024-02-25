@@ -14,7 +14,7 @@ import {
 } from '@tuval/forms';
 
 import { useGetAccount, useGetTenantAccounts } from '@celmino/directoryprotocol';
-import { is } from '@tuval/core';
+import { Convert, is } from '@tuval/core';
 import { useClickAway } from "@uidotdev/usehooks";
 import { CuIcons, Icons } from './Icons';
 import data from '@emoji-mart/data'
@@ -25,17 +25,17 @@ import { SegmentedRenderer } from '@realmocean/antd';
 function hexToRgb(hex) {
     // Remove '#' if present
     hex = hex.replace(/^#/, '');
-    
+
     // Convert to RGB
     let bigint = parseInt(hex, 16);
     let r = (bigint >> 16) & 255;
     let g = (bigint >> 8) & 255;
     let b = bigint & 255;
-    
+
     return [r, g, b];
 }
 
-
+const ratio = .7;
 export class MyTestController extends UIController {
     public override LoadView(): UIView {
         let _hideHandle;
@@ -59,8 +59,8 @@ export class MyTestController extends UIController {
             //  backgroundColor = 'transparent',
             readonly = false } = this.props.config || {};
 
-           
-        const [ r, g, b ] = hexToRgb('#E72065');
+
+        const [r, g, b] = hexToRgb('#E72065');
         const backgroundColor = `rgba(${r},${g},${b},${.15})`;
         const foregroundColor = `rgba(${r},${g},${b},${.95})`;
 
@@ -88,29 +88,35 @@ export class MyTestController extends UIController {
         return (
             readonly ?
                 HStack(
-                    (selectedCategory === 'Icons' && selectedIcon) ?
-                        Icon(Icons[selectedIcon]?.icon).allWidth(width).allHeight(height) : Fragment(),
-                    (selectedCategory === 'CuIcons' && selectedIcon) ?
-                        Icon(CuIcons[selectedIcon]?.icon).allWidth(width).allHeight(height) : Fragment(),
-                    (selectedCategory === 'Emoji' && selectedIcon) ?
-                        Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment(),
+                    HStack(
+                        (selectedCategory === 'Icons' && selectedIcon) ?
+                            Icon(Icons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
+                        (selectedCategory === 'CuIcons' && selectedIcon) ?
+                            Icon(CuIcons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
+                        (selectedCategory === 'Emoji' && selectedIcon) ?
+                            Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment()
+                    )
+                        .allWidth(Convert.ToInt32(width * ratio)).allHeight(Convert.ToInt32(height * ratio))
 
-                ).allWidth(width + 4).allHeight(height + 4).padding(padding)
+                ).allWidth(width).allHeight(height).padding(padding)
                     // .background('#40BC86')
                     .foregroundColor(foregroundColor)
                     .cornerRadius(5)
-                    .background(selectedCategory === 'Emoji' ? '' :backgroundColor)
+                    .background(selectedCategory === 'Emoji' ? '' : backgroundColor)
                 :
                 PopupButton(
                     HStack(
-                        (selectedCategory === 'Icons' && selectedIcon) ?
-                            Icon(Icons[selectedIcon]?.icon).allWidth(width).allHeight(height) : Fragment(),
-                        (selectedCategory === 'CuIcons' && selectedIcon) ?
-                            Icon(CuIcons[selectedIcon]?.icon).allWidth(width).allHeight(height) : Fragment(),
-                        (selectedCategory === 'Emoji' && selectedIcon) ?
-                            Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment(),
+                        HStack(
+                            (selectedCategory === 'Icons' && selectedIcon) ?
+                                Icon(Icons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
+                            (selectedCategory === 'CuIcons' && selectedIcon) ?
+                                Icon(CuIcons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
+                            (selectedCategory === 'Emoji' && selectedIcon) ?
+                                Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment()
+                        )
+                            .allWidth(Convert.ToInt32(width * ratio)).allHeight(Convert.ToInt32(height * ratio))
 
-                    ).allWidth(width + 4).allHeight(height + 4).padding(padding)
+                    ).allWidth(width).allHeight(height).padding(padding)
                         // .background('#40BC86')
                         .foregroundColor(foregroundColor)
                         .cornerRadius(5)
@@ -159,7 +165,7 @@ export class MyTestController extends UIController {
                                             .height()
                                             .cornerRadius(4)
                                             .background({ hover: backgroundColor })
-                                            .foregroundColor({default: foregroundColor })
+                                            .foregroundColor({ default: foregroundColor })
                                             .padding(5)
                                             .onClick(() => {
                                                 if (is.function(onChange)) {

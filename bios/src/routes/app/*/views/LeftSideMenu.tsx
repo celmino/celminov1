@@ -253,11 +253,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                     Query.equal('category', 'applet')
                 ]);
 
-                const { documents, isLoading } = useListDocuments(workspaceId, 'workspace', 'applets', [
-                    Query.equal('parent', '-1'),
-                    Query.limit(250),
-                    // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
-                ]);
+                
 
                 const { documents: workspaceTreeITems, isLoading: isWorkspaceTreeLoading } = useListDocuments(workspaceId, 'workspace', 'ws_tree', [
                     // Query.equal('parent', '-1'),
@@ -275,7 +271,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                 let _hideHandle;
 
                 return (
-                    (isLoading || isWorkspaceTreeLoading) ? Fragment() :
+                    (isWorkspaceTreeLoading) ? Fragment() : workspaceTreeITems == null ? Text('null') :
                         VStack({ alignment: cTopLeading })(
                             VStack({ alignment: cTopLeading })(
                                 VStack({ alignment: cTopLeading })(
@@ -496,7 +492,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         tree_widget: child.tree_widget,
                                                         iconName: child.iconName,
                                                         iconCategory: child.iconCategory,
-                                                        expanded: expandeds?.[item.$id] ? true : false,
+                                                        expanded: expandeds?.[child.$id] ? true : false,
                                                         canDrag: true,
                                                         view: (node) => {
                                                             return (
@@ -510,7 +506,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                             }) :
                                                                         Text(child.name)
                                                                 )
-                                                                .width('calc(100% - 32px)')
+                                                                    .width('calc(100% - 32px)')
                                                             )
                                                         },
                                                         children: buildClidren(workspaceTree, child)
@@ -549,7 +545,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                             Text(item.name)
                                                                     ).width('calc(100% - 32px)')
                                                                 )
-                                                            }, 
+                                                            },
                                                             children: []
                                                         };
                                                         tree.push(node);
@@ -588,12 +584,27 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         }),
 
                                                     HStack({ alignment: cTopLeading })(
-                                                        documents ?
+                                                      
                                                             ScrollView({ axes: cVertical, alignment: cTopLeading })(
+
+                                                                UIWidget('com.celmino.widget.sortable-list')
+                                                                    .config({
+                                                                        items: [
+                                                                            {
+                                                                                id: 1,
+                                                                                view: (node) => (
+                                                                                    VStack(
+                                                                                        Text('Name'),
+                                                                                        TextField().height(32).padding()
+                                                                                    )
+                                                                                )
+                                                                            }
+                                                                        ]
+                                                                    }),
 
                                                                 UIWidget('com.celmino.widget.sortable-tree')
                                                                     .config({
-                                                                        canDrag:isEditable,
+                                                                        canDrag: isEditable,
                                                                         treeItems: treeItems,
                                                                         onChange: (_treeItems) => {
                                                                             //  setPrevTreeItems([...treeItems]);
@@ -664,12 +675,12 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                             });
 
 
-                                                                             changes.forEach(item => {
+                                                                            changes.forEach(item => {
                                                                                 Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
                                                                                     path: item.path,
                                                                                     parent: item.parent
                                                                                 })
-                                                                            }) 
+                                                                            })
 
                                                                             console.log(newTreeData)
 
@@ -697,10 +708,10 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                  }),
                                                                          )
                                                                      ) */
-                                                            ) : Fragment()
+                                                            ) 
                                                     )
-                                                    .cornerRadius(6)
-                                                    .outline(isEditable ? 'dotted 2px green' : 'none')
+                                                        .cornerRadius(6)
+                                                        .outline(isEditable ? 'dotted 2px green' : 'none')
                                                     /*  ...ForEach(spaces)(space =>
                                                          Text(space.name)
                                                      ), */

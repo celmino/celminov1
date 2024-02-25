@@ -3091,6 +3091,7 @@ function hexToRgb(hex) {
     var b = bigint & 255;
     return [r, g, b];
 }
+var ratio = .7;
 var MyTestController = /** @class */ (function (_super) {
     __extends(MyTestController, _super);
     function MyTestController() {
@@ -3124,19 +3125,21 @@ var MyTestController = /** @class */ (function (_super) {
             setIsOpen(false);
         });
         return (readonly ?
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'Icons' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_b = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _b === void 0 ? void 0 : _b.icon).allWidth(width).allHeight(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_c = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _c === void 0 ? void 0 : _c.icon).allWidth(width).allHeight(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()).allWidth(width + 4).allHeight(height + 4).padding(padding)
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'Icons' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_b = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _b === void 0 ? void 0 : _b.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_c = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _c === void 0 ? void 0 : _c.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
+                .allWidth(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(width * ratio)).allHeight(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(height * ratio))).allWidth(width).allHeight(height).padding(padding)
                 // .background('#40BC86')
                 .foregroundColor(foregroundColor)
                 .cornerRadius(5)
                 .background(selectedCategory === 'Emoji' ? '' : backgroundColor)
             :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'Icons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_d = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _d === void 0 ? void 0 : _d.icon).allWidth(width).allHeight(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).allWidth(width).allHeight(height) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()).allWidth(width + 4).allHeight(height + 4).padding(padding)
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'Icons' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_d = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _d === void 0 ? void 0 : _d.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
+                    .allWidth(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(width * ratio)).allHeight(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(height * ratio))).allWidth(width).allHeight(height).padding(padding)
                     // .background('#40BC86')
                     .foregroundColor(foregroundColor)
                     .cornerRadius(5)

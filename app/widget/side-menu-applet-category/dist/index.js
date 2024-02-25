@@ -72,6 +72,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _b[0], setIsEditing = _b[1];
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(item === null || item === void 0 ? void 0 : item.name), title = _c[0], setTitle = _c[1];
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
+        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 2 })(
         // Title
         (isEditing && _tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(item === null || item === void 0 ? void 0 : item.name)) ?
@@ -87,13 +88,22 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                 .onBlur(function () {
                 updateDocument({
                     databaseId: 'workspace',
-                    collectionId: 'ws_tree',
+                    collectionId: 'applets',
                     documentId: item.$id,
                     data: {
                         name: title
                     }
                 }, function () {
-                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
+                    updateDocument({
+                        databaseId: 'workspace',
+                        collectionId: 'ws_tree',
+                        documentId: item.$id,
+                        data: {
+                            name: title
+                        }
+                    }, function () {
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
+                    });
                 });
             }))
                 .height()
@@ -127,7 +137,10 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                     // .background('#E4EAE2')
                     .cornerRadius(5)
         //.clipPath('polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 50%, 0 0)')
-        ));
+        )
+            .onClick(function () {
+            navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId));
+        }));
     };
     return WorkspaceTreeWidgetController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
