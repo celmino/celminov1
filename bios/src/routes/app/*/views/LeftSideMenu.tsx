@@ -39,6 +39,7 @@ import { DynoDialog } from '@realmocean/ui'
 import { AddAppletDialog } from "../../../../dialogs/AddAppletDialog";
 import { useGetCurrentOrganization } from "../../../../hooks/useGetCurrentOrganization";
 import { SelectAppletDialog } from "@celmino/ui";
+import { EmptyView } from "../../../../views/EmptyView";
 
 
 const expandeds = {};
@@ -253,7 +254,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                     Query.equal('category', 'applet')
                 ]);
 
-                
+
 
                 const { documents: workspaceTreeITems, isLoading: isWorkspaceTreeLoading } = useListDocuments(workspaceId, 'workspace', 'ws_tree', [
                     // Query.equal('parent', '-1'),
@@ -268,10 +269,13 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                 const [isSorting, setIsSorting] = useState(false);
 
+                const [isEditable, setIsEditable] = useState(false);
+                
+
                 let _hideHandle;
 
                 return (
-                    (isWorkspaceTreeLoading) ? Fragment() : workspaceTreeITems == null ? Text('null') :
+                    (isWorkspaceTreeLoading) ? Fragment() : (workspaceTreeITems == null) ? Text('null') :
                         VStack({ alignment: cTopLeading })(
                             VStack({ alignment: cTopLeading })(
                                 VStack({ alignment: cTopLeading })(
@@ -335,7 +339,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                 .shadow('0px 1px 4px rgba(81,97,108,0.1), 0 0 0 1px rgba(229,232,235,0.5)')
                                                 .cornerRadius(6),
                                             VStack({ alignment: cLeading })(
-                                                Text('WORKSPACE').fontSize('1rem'),
+                                                Text('REALM').fontSize('1rem'),
                                                 HStack({ alignment: cLeading })(
                                                     Text(realm?.name).fontSize(16).fontWeight('500')
                                                         .foregroundColor('rgb(21, 23, 25)')
@@ -352,6 +356,8 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                     )(
                                         UIViewBuilder(() => {
+
+                                            
 
                                             const { realm }: { realm: Models.Realm } = useGetRealm({
                                                 realmId: workspaceId,
@@ -384,10 +390,16 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                     ).padding(5),
                                                     HDivider().height(1).background('#ECEDEE'),
                                                     VStack({ alignment: cTopLeading })(
-                                                        Text('SWITCH WORKSPACES').fontSize(12),
-                                                        ...ForEach(realms)(realm => (
+                                                        HStack({ alignment: cLeading, spacing: 5 })(
+                                                            Icon(SvgIcon('cu3-icon-settings')),
+                                                            Text('Change Realm')
+                                                        )
+                                                            .padding(5)
+                                                            .height(),
+                                                        ...ForEach(/* realms */[])(realm => (
                                                             HStack({ alignment: cLeading })(
                                                                 Text(realm.name)
+
                                                             ).background({ hover: '#E8EAED' })
                                                                 .cursor('pointer')
                                                                 .padding(5)
@@ -404,7 +416,9 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                     navigate(`/app/workspace/${realm.$id}`)
                                                                 })
                                                         ))
-                                                    ).padding()
+                                                    )
+                                                        .onClick(() => navigate(`/app/workspace/select`))
+                                                        .padding()
 
                                                 ).width(250)
                                             )
@@ -429,11 +443,40 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         DatabaseNameView(database, false, () => { })
                                         //    )
                                     ),
-                                    isWorkspaceTreeLoading ? Fragment() :
+                                    HStack({ alignment: cTrailing, spacing: 5 })(
+                                        HStack(
+                                            Icon(Icons.Add).fontSize(14)
+                                        )
+                                            .cornerRadius(6)
+                                            .foregroundColor('#7c828d')
+                                            .background({ default: '#e4e4e4', hover: '#e4e4e4' })
+
+                                            .allWidth(24).allHeight(24)
+                                            .onClick(() => {
+                                                SelectAppletDialog.Show(workspaceId);
+
+                                            }),
+                                        HStack(
+                                            Icon(Icons.Drag).fontSize(14)
+                                        )
+                                            .cornerRadius(6)
+                                            .foregroundColor('#7c828d')
+                                            .background({ default: '#e4e4e4', hover: '#e4e4e4' })
+
+                                            .allWidth(24).allHeight(24)
+                                            .onClick(() => {
+                                                setIsEditable(!isEditable)
+                                            })
+                                    ).height(40)
+                                        .cornerRadius(6)
+                                        .background('#f3f4f7')
+
+                                        .cursor('pointer'),
+                                    isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView() :
                                         UIViewBuilder(() => {
                                             const params = useParams();
                                             const { deleteCache } = useDeleteCache(workspaceId);
-                                            const [isEditable, setIsEditable] = useState(false);
+                                         
 
 
 
@@ -578,137 +621,132 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                             };
                                             return (
                                                 VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                    HStack().background('gray').width(32).height(32)
-                                                        .onClick(() => {
-                                                            setIsEditable(!isEditable)
-                                                        }),
-
                                                     HStack({ alignment: cTopLeading })(
-                                                      
-                                                            ScrollView({ axes: cVertical, alignment: cTopLeading })(
 
-                                                               /*  UIWidget('com.celmino.widget.sortable-list')
-                                                                    .config({
-                                                                        items: [
-                                                                            {
-                                                                                id: 1,
-                                                                                view: (node) => (
-                                                                                    VStack(
-                                                                                        Text('Name'),
-                                                                                        TextField().height(32).padding()
-                                                                                    )
-                                                                                )
-                                                                            }
-                                                                        ]
-                                                                    }), */
+                                                        ScrollView({ axes: cVertical, alignment: cTopLeading })(
 
-                                                                UIWidget('com.celmino.widget.sortable-tree')
-                                                                    .config({
-                                                                        canDrag: isEditable,
-                                                                        treeItems: treeItems,
-                                                                        onChange: (_treeItems) => {
-                                                                            //  setPrevTreeItems([...treeItems]);
-                                                                            setTreeItems(_treeItems);
+                                                            /*  UIWidget('com.celmino.widget.sortable-list')
+                                                                 .config({
+                                                                     items: [
+                                                                         {
+                                                                             id: 1,
+                                                                             view: (node) => (
+                                                                                 VStack(
+                                                                                     Text('Name'),
+                                                                                     TextField().height(32).padding()
+                                                                                 )
+                                                                             )
+                                                                         }
+                                                                     ]
+                                                                 }), */
 
-                                                                        },
-                                                                        onVisibilityToggle: ({ node, expanded }) => {
+                                                            UIWidget('com.celmino.widget.sortable-tree')
+                                                                .config({
+                                                                    canDrag: isEditable,
+                                                                    treeItems: treeItems,
+                                                                    onChange: (_treeItems) => {
+                                                                        //  setPrevTreeItems([...treeItems]);
+                                                                        setTreeItems(_treeItems);
 
-                                                                            if (expanded) {
-                                                                                expandeds[node.$id] = true;
-                                                                            } else {
-                                                                                delete expandeds[node.$id];
-                                                                            }
+                                                                    },
+                                                                    onVisibilityToggle: ({ node, expanded }) => {
 
-                                                                            console.log(expandeds);
-
-                                                                        },
-
-                                                                        onMoveNode: ({ treeData }) => {
-                                                                            const newTreeData = [...treeData];
-
-
-                                                                            function reCreateIndex(parentNode) {
-                                                                                if (parentNode.children) {
-                                                                                    parentNode.children.forEach((child, index) => {
-                                                                                        child.prevParent = child.parent;
-                                                                                        child.prevPath = child.path;
-                                                                                        child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                                        child.parent = parentNode.$id;
-                                                                                        if (child.prevPath == null) {
-                                                                                            child.prevPath = child.path;
-                                                                                        }
-                                                                                        if (child.prevParent == null) {
-                                                                                            child.prevParent = child.parent;
-                                                                                        }
-                                                                                        reCreateIndex(child);
-                                                                                    });
-                                                                                }
-                                                                            }
-
-                                                                            newTreeData.forEach((item, index) => {
-                                                                                item.prevParent = item.parent;
-                                                                                item.prevPath = item.path;
-                                                                                item.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                                item.parent = '-1';
-                                                                                reCreateIndex(item);
-                                                                            });
-
-                                                                            const changes = [];
-                                                                            function getChanges(parentNode) {
-                                                                                if (parentNode.children) {
-                                                                                    parentNode.children.forEach((child) => {
-                                                                                        if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
-                                                                                            // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                                                            changes.push(child);
-                                                                                        }
-                                                                                        getChanges(child);
-                                                                                    });
-                                                                                }
-                                                                            }
-
-                                                                            newTreeData.forEach((item, index) => {
-                                                                                if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
-                                                                                    //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                                                    changes.push(item);
-                                                                                }
-                                                                                getChanges(item);
-                                                                            });
-
-
-                                                                            changes.forEach(item => {
-                                                                                Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                                                    path: item.path,
-                                                                                    parent: item.parent
-                                                                                })
-                                                                            })
-
-                                                                            console.log(newTreeData)
-
-
+                                                                        if (expanded) {
+                                                                            expandeds[node.$id] = true;
+                                                                        } else {
+                                                                            delete expandeds[node.$id];
                                                                         }
-                                                                    }),
-                                                                // Text(documents[0]['opa']),
-                                                                /*  isSorting ?
-                                                                     SortableListView()
-                                                                         .items(realms)
-                                                                         .renderItem(realm =>
-                                                                             UIWidget(realm['opa'])
-                                                                                 .config({
-                                                                                     ...(useParams() || {}),
-                                                                                     appletId: realm.$id
-                                                                                 }),
-                                                                         )
-                                                                         .onChange(realms => setRealms(realms)) :
-                                                                     VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                                         ...ForEach(documents)(applet =>
-                                                                             UIWidget(applet['opa'])
-                                                                                 .config({
-                                                                                     ...(useParams() || {}),
-                                                                                     appletId: applet.$id
-                                                                                 }),
-                                                                         )
-                                                                     ) */
-                                                            ) 
+
+                                                                        console.log(expandeds);
+
+                                                                    },
+
+                                                                    onMoveNode: ({ treeData }) => {
+                                                                        const newTreeData = [...treeData];
+
+
+                                                                        function reCreateIndex(parentNode) {
+                                                                            if (parentNode.children) {
+                                                                                parentNode.children.forEach((child, index) => {
+                                                                                    child.prevParent = child.parent;
+                                                                                    child.prevPath = child.path;
+                                                                                    child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                                    child.parent = parentNode.$id;
+                                                                                    if (child.prevPath == null) {
+                                                                                        child.prevPath = child.path;
+                                                                                    }
+                                                                                    if (child.prevParent == null) {
+                                                                                        child.prevParent = child.parent;
+                                                                                    }
+                                                                                    reCreateIndex(child);
+                                                                                });
+                                                                            }
+                                                                        }
+
+                                                                        newTreeData.forEach((item, index) => {
+                                                                            item.prevParent = item.parent;
+                                                                            item.prevPath = item.path;
+                                                                            item.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                            item.parent = '-1';
+                                                                            reCreateIndex(item);
+                                                                        });
+
+                                                                        const changes = [];
+                                                                        function getChanges(parentNode) {
+                                                                            if (parentNode.children) {
+                                                                                parentNode.children.forEach((child) => {
+                                                                                    if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                                                        // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                                                        changes.push(child);
+                                                                                    }
+                                                                                    getChanges(child);
+                                                                                });
+                                                                            }
+                                                                        }
+
+                                                                        newTreeData.forEach((item, index) => {
+                                                                            if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                                                                //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                                                changes.push(item);
+                                                                            }
+                                                                            getChanges(item);
+                                                                        });
+
+
+                                                                        changes.forEach(item => {
+                                                                            Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                                                                path: item.path,
+                                                                                parent: item.parent
+                                                                            })
+                                                                        })
+
+                                                                        console.log(newTreeData)
+
+
+                                                                    }
+                                                                }),
+                                                            // Text(documents[0]['opa']),
+                                                            /*  isSorting ?
+                                                                 SortableListView()
+                                                                     .items(realms)
+                                                                     .renderItem(realm =>
+                                                                         UIWidget(realm['opa'])
+                                                                             .config({
+                                                                                 ...(useParams() || {}),
+                                                                                 appletId: realm.$id
+                                                                             }),
+                                                                     )
+                                                                     .onChange(realms => setRealms(realms)) :
+                                                                 VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                                     ...ForEach(documents)(applet =>
+                                                                         UIWidget(applet['opa'])
+                                                                             .config({
+                                                                                 ...(useParams() || {}),
+                                                                                 appletId: applet.$id
+                                                                             }),
+                                                                     )
+                                                                 ) */
+                                                        )
                                                     )
                                                         .cornerRadius(6)
                                                         .outline(isEditable ? 'dotted 2px green' : 'none')

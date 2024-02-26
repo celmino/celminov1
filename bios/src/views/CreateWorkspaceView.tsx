@@ -25,6 +25,8 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                 return (
                     VStack(
                         VStack({ spacing: 10 })(
+                            Heading(organization?.name).fontSize('2.8rem').foregroundColor('#090e13')
+                                .fontFamily('Graphik Medium,sans-serif'),
                             HStack(
                                 Text('Select another organization')
                                     .fontSize(16)
@@ -34,9 +36,8 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                     navigate('/app/organization/select');
                                 }),
 
-                            Heading('Workspaces').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90),
-                            Heading(organization?.name).fontSize('2.8rem').foregroundColor('#090e13')
-                                .fontFamily('Graphik Medium,sans-serif'),
+                            Heading('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90),
+
                             VStack(
                                 ...ForEach(realms)(realm =>
                                     HStack({ alignment: cLeading, spacing: 10 })(
@@ -58,7 +59,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                             ).padding(cHorizontal, 20).height().maxWidth('100%'),
                             HDivider().height(1).background('rgba(125, 141, 154, 0.1)'),
                             HStack({ alignment: cLeading })(
-                                Text('Create a new workspace').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
+                                Text('Create a new realm').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
                             ).height().padding('1.6rem 2rem 1.6rem 0'),
                             HStack({ alignment: cLeading })(
                                 Text('Log in with another email').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
@@ -66,7 +67,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                 .onClick(() => {
                                     navigate('/logout');
                                 }),
-                             HStack(
+                            HStack(
                                 TextField()
                                     .padding()
                                     .border('none')
@@ -79,7 +80,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                     })
 
                             ).width('50%')
-                                .height(), 
+                                .height(),
                             Button().renderer(ButtonRenderer).label('Submit')
                                 .loading(isLoading)
                                 .disabled(isLoading)

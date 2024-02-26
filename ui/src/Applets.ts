@@ -1,7 +1,9 @@
 import { APQCApplet } from "./applets/APQC";
 import { AppletCategory } from "./applets/AppletCategory";
 import { AppletDivider } from "./applets/Divider";
+import { EmailsApplet } from "./applets/Emails";
 import { InvestorsInTurkey } from "./applets/InvestorsInTurkey";
+import { WebsiteApplet } from "./applets/Website";
 import { WorldApplet } from "./applets/World";
 
 
@@ -5024,6 +5026,8 @@ export const Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
-    AppletDivider
+    AppletDivider,
+    WebsiteApplet,
+    EmailsApplet
 ];
 

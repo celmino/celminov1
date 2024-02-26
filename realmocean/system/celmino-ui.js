@@ -3292,17 +3292,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_APQC__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applets/APQC */ "./src/applets/APQC.ts");
 /* harmony import */ var _applets_AppletCategory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./applets/AppletCategory */ "./src/applets/AppletCategory.ts");
 /* harmony import */ var _applets_Divider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applets/Divider */ "./src/applets/Divider.ts");
-/* harmony import */ var _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/InvestorsInTurkey */ "./src/applets/InvestorsInTurkey.ts");
-/* harmony import */ var _applets_World__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/World */ "./src/applets/World.ts");
+/* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
+/* harmony import */ var _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/InvestorsInTurkey */ "./src/applets/InvestorsInTurkey.ts");
+/* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
+/* harmony import */ var _applets_World__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/World */ "./src/applets/World.ts");
+
+
 
 
 
 
 
 var Applets = [
-    _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_3__.InvestorsInTurkey,
+    _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_4__.InvestorsInTurkey,
     _applets_APQC__WEBPACK_IMPORTED_MODULE_0__.APQCApplet,
-    _applets_World__WEBPACK_IMPORTED_MODULE_4__.WorldApplet,
+    _applets_World__WEBPACK_IMPORTED_MODULE_6__.WorldApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -8209,7 +8213,9 @@ var Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
-    _applets_Divider__WEBPACK_IMPORTED_MODULE_2__.AppletDivider
+    _applets_Divider__WEBPACK_IMPORTED_MODULE_2__.AppletDivider,
+    _applets_Website__WEBPACK_IMPORTED_MODULE_5__.WebsiteApplet,
+    _applets_Emails__WEBPACK_IMPORTED_MODULE_3__.EmailsApplet
 ];
 
 
@@ -8323,6 +8329,42 @@ var AppletDivider = {
 
 /***/ }),
 
+/***/ "./src/applets/Emails.ts":
+/*!*******************************!*\
+  !*** ./src/applets/Emails.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   EmailsApplet: () => (/* binding */ EmailsApplet)
+/* harmony export */ });
+var EmailsApplet = {
+    name: 'Emails',
+    type: 'Applet',
+    tree_type: 'com.celmino.widget.applet-category',
+    applet_type: 'com.celmino.applet.category',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d339',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Emails",
+            "id": "applet_category",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
 /***/ "./src/applets/InvestorsInTurkey.ts":
 /*!******************************************!*\
   !*** ./src/applets/InvestorsInTurkey.ts ***!
@@ -8401,6 +8443,42 @@ var InvestorsInTurkey = {
                     ]
                 },
             ]
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Website.ts":
+/*!********************************!*\
+  !*** ./src/applets/Website.ts ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   WebsiteApplet: () => (/* binding */ WebsiteApplet)
+/* harmony export */ });
+var WebsiteApplet = {
+    name: 'Website',
+    type: 'Applet',
+    tree_type: 'com.celmino.widget.applet-category',
+    applet_type: 'com.celmino.applet.category',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Website",
+            "id": "applet_category",
+            "category": "app",
+            "collections": []
         }
     ]
 };

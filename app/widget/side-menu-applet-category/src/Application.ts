@@ -1,5 +1,5 @@
 import {  UIController } from '@tuval/forms';
-import { WorkspaceTreeWidgetController } from './ModuleController';
+import { CustomAppletTreeModuleController } from './ModuleController';
 import { FormBuilder } from '@realmocean/ui';
 
 
@@ -19,7 +19,7 @@ function App(manifest: any) {
 @App(manifest)
 export class RatingWidget {
     public GetMainController() {
-       return WorkspaceTreeWidgetController;
+       return CustomAppletTreeModuleController;
     }
 }
 
