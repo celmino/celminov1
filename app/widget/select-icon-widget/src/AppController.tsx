@@ -21,6 +21,7 @@ import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 import React from 'react';
 import { SegmentedRenderer } from '@realmocean/antd';
+import { SystemIcons } from './SystemIcons';
 
 function hexToRgb(hex) {
     // Remove '#' if present
@@ -55,14 +56,30 @@ export class MyTestController extends UIController {
             height = 36,
             padding = 5,
             tooltip = '',
-            color = '#E72065',
+            iconColor = null,
             //  backgroundColor = 'transparent',
             readonly = false } = this.props.config || {};
 
 
-        const [r, g, b] = hexToRgb('#E72065');
-        const backgroundColor = `rgba(${r},${g},${b},${.15})`;
-        const foregroundColor = `rgba(${r},${g},${b},${.95})`;
+
+        let backgroundColor;
+        let foregroundColor;
+
+        if (iconColor == null) {
+            backgroundColor = 'transparent';
+            foregroundColor = '#79858F';
+        } else {
+            try {
+                backgroundColor = 'transparent';
+                foregroundColor = '#79858F';
+                /*      const [r, g, b] = hexToRgb(iconColor);
+                     backgroundColor = `rgba(${r},${g},${b},${.15})`;
+                     foregroundColor = `rgba(${r},${g},${b},${.95})`; */
+            } catch (e) {
+                backgroundColor = 'transparent';
+                foregroundColor = '#79858F';
+            }
+        }
 
 
         // const [selectedEmoji, setSelectedEmoji] = useState(this.props.config.selectedEmoji);
@@ -89,7 +106,9 @@ export class MyTestController extends UIController {
             readonly ?
                 HStack(
                     HStack(
-                        (selectedCategory === 'SvgIcon' && selectedIcon) ?
+                        (selectedCategory === 'SystemIcons' && selectedIcon) ?
+                            Icon(SvgIcon(SystemIcons[selectedIcon])) : Fragment(),
+                        (selectedCategory === 'SvgIcons' && selectedIcon) ?
                             Icon(SvgIcon(selectedIcon)) : Fragment(),
                         (selectedCategory === 'Icons' && selectedIcon) ?
                             Icon(Icons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
@@ -109,6 +128,8 @@ export class MyTestController extends UIController {
                 PopupButton(
                     HStack(
                         HStack(
+                            (selectedCategory === 'SystemIcons' && selectedIcon) ?
+                                Icon(SvgIcon(SystemIcons[selectedIcon])) : Fragment(),
                             (selectedCategory === 'SvgIcon' && selectedIcon) ?
                                 Icon(SvgIcon(selectedIcon)) : Fragment(),
                             (selectedCategory === 'Icons' && selectedIcon) ?

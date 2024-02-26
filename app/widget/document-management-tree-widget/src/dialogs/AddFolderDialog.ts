@@ -56,8 +56,8 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
                                 tree_widget: 'com.celmino.widget.document-management-tree',
                                 appletId,
                                 path: (new Date()).getTime().toString(),
-                                iconName: 'bell',
-                                iconCategory: 'Icons',
+                                iconName: 'cu3-icon-sidebarFolder',
+                                iconCategory: 'SvgIcons',
                                 //viewer:'com.tuvalsoft.viewer.document'
                             }
                         }, (item)=> {

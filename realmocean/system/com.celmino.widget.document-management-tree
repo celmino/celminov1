@@ -3906,8 +3906,8 @@ var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__W
                         tree_widget: 'com.celmino.widget.document-management-tree',
                         appletId: appletId,
                         path: (new Date()).getTime().toString(),
-                        iconName: 'bell',
-                        iconCategory: 'Icons',
+                        iconName: 'document',
+                        iconCategory: 'SystemIcons',
                         //viewer:'com.tuvalsoft.viewer.document'
                     }
                 }, function (item) {
@@ -4059,17 +4059,14 @@ var SaveFolderAction = function (formMeta, action) { return (0,_tuval_forms__WEB
                     tree_widget: 'com.celmino.widget.document-management-tree',
                     appletId: appletId,
                     path: (new Date()).getTime().toString(),
-                    iconName: 'bell',
-                    iconCategory: 'Icons',
+                    iconName: 'cu3-icon-sidebarFolder',
+                    iconCategory: 'SvgIcons',
                     //viewer:'com.tuvalsoft.viewer.document'
                 }
             }, function (item) {
                 _tuval_core__WEBPACK_IMPORTED_MODULE_1__.EventBus.Default.fire('applet.added', { treeItem: item });
+                dialog.Hide();
             });
-            createTreeItem({
-                documentId: folder.$id,
-                data: __assign(__assign({}, data), { type: 'folder' })
-            }, function () { return dialog.Hide(); });
         });
     }));
 }); };

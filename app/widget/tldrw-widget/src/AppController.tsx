@@ -78,6 +78,12 @@ export class MyTestController extends UIController {
                         // Pass in the array of custom tools
                         tools={customTools}
                         overrides={uiOverrides}
+                        onMount={(editor) => {
+                            setTimeout(() => {
+                                console.log('snapshot')
+                           console.log(JSON.stringify(editor.store.getSnapshot()))
+                            }, 10000)
+                        }}
                     />
             )
         )

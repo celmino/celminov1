@@ -538,6 +538,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         tree_widget: child.tree_widget,
                                                         iconName: child.iconName,
                                                         iconCategory: child.iconCategory,
+                                                        iconColor: item.iconColor,
                                                         expanded: expandeds?.[child.$id] ? true : false,
                                                         canDrag: true,
                                                         view: (node) => {
@@ -577,6 +578,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             expanded: expandeds?.[item.$id] ? true : false,
                                                             iconName: item.iconName,
                                                             iconCategory: item.iconCategory,
+                                                            iconColor: item.iconColor,
                                                             canDrag: false,
                                                             view: (node) => {
                                                                 return (

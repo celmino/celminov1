@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import { is } from '@tuval/core';
+import { HStack, Icon, ReactView, Text, UIWidget } from '@tuval/forms';
 import PropTypes from 'prop-types';
-import { isDescendant } from './utils/tree-data-utils';
+import React from 'react';
 import classnames from './utils/classnames';
-import { HStack, Text, Icon, Icons, Fragment, ReactView, UIWidget, darken, lighten } from '@tuval/forms'
-import { is } from '@tuval/core'
+import { isDescendant } from './utils/tree-data-utils';
 
 export const CaretDown1 = props => (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M13.276 8.5 8.813 4.294C8.143 3.666 7 4.111 7 5v10c0 .89 1.144 1.334 1.813.706l4.463-4.206c.965-1 .965-2 0-3Z"></path></svg>
@@ -147,8 +147,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                             readonly: true,
                                                                                             selectedIcon: node.iconName,
                                                                                             selectedCategory: node.iconCategory,
-                                                                                            color: darken('#8EC351', dark),
-                                                                                            backgroundColor: lighten('#8EC351', light),
+                                                                                            color: node.iconColor ,
                                                                                             width: 24,
                                                                                             height: 24,
                                                                                             padding: 1
@@ -197,7 +196,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                     </div>
                                                                 )
                                                             ),
-                                                            (node.children == null || node.children.length === 0) && (
+                                                            (node.children == null || node.children.length === 0 && node.iconName != null) && (
                                                                 HStack(
                                                                     HStack(
                                                                         //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
@@ -206,8 +205,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                 readonly: true,
                                                                                 selectedIcon: node.iconName,
                                                                                 selectedCategory: node.iconCategory,
-                                                                                color: darken('#8EC351', dark),
-                                                                                backgroundColor: lighten('#8EC351', light),
+                                                                                color: node.iconColor,
                                                                                 width: 24,
                                                                                 height: 24,
                                                                                 padding: 1
@@ -262,8 +260,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                         readonly: true,
                                                                         selectedIcon: node.iconName,
                                                                         selectedCategory: node.iconCategory,
-                                                                        color: darken('#8EC351', dark),
-                                                                        backgroundColor: lighten('#8EC351', light),
+                                                                        color: node.iconColor,
                                                                         width: 24,
                                                                         height: 24,
                                                                         padding: 1
@@ -312,7 +309,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                 </div>
                                             )
                                         ),
-                                        (node.children == null || node.children.length === 0) && (
+                                        (node.children == null || node.children.length === 0 && node.iconName != null) && (
                                             HStack(
                                                 HStack(
                                                     //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
@@ -321,8 +318,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                             readonly: true,
                                                             selectedIcon: node.iconName,
                                                             selectedCategory: node.iconCategory,
-                                                            color: darken('#8EC351', dark),
-                                                            backgroundColor: lighten('#8EC351', light),
+                                                            color: node.iconColor ,
                                                             width: 24,
                                                             height: 24,
                                                             padding: 1

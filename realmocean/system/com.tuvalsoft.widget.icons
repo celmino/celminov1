@@ -3052,12 +3052,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _uidotdev_usehooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @uidotdev/usehooks */ "./node_modules/@uidotdev/usehooks/index.js");
 /* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Icons */ "./src/Icons.tsx");
-/* harmony import */ var _emoji_mart_data__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @emoji-mart/data */ "./node_modules/@emoji-mart/data/sets/14/native.json");
+/* harmony import */ var _emoji_mart_data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @emoji-mart/data */ "./node_modules/@emoji-mart/data/sets/14/native.json");
 /* harmony import */ var _emoji_mart_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @emoji-mart/react */ "./node_modules/@emoji-mart/react/dist/module.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _SystemIcons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SystemIcons */ "./src/SystemIcons.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -3073,6 +3074,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -3103,14 +3105,30 @@ var MyTestController = /** @class */ (function (_super) {
         var light = 0.812;
         var dark = 0.188;
         //#E72065
-        var _f = this.props.config || {}, selectedIcon = _f.selectedIcon, selectedCategory = _f.selectedCategory, _g = _f.onChange, onChange = _g === void 0 ? void 0 : _g, _h = _f.width, width = _h === void 0 ? 36 : _h, _j = _f.height, height = _j === void 0 ? 36 : _j, _k = _f.padding, padding = _k === void 0 ? 5 : _k, _l = _f.tooltip, tooltip = _l === void 0 ? '' : _l, _m = _f.color, color = _m === void 0 ? '#E72065' : _m, 
+        var _f = this.props.config || {}, selectedIcon = _f.selectedIcon, selectedCategory = _f.selectedCategory, _g = _f.onChange, onChange = _g === void 0 ? void 0 : _g, _h = _f.width, width = _h === void 0 ? 36 : _h, _j = _f.height, height = _j === void 0 ? 36 : _j, _k = _f.padding, padding = _k === void 0 ? 5 : _k, _l = _f.tooltip, tooltip = _l === void 0 ? '' : _l, _m = _f.iconColor, iconColor = _m === void 0 ? null : _m, 
         //  backgroundColor = 'transparent',
         _o = _f.readonly, 
         //  backgroundColor = 'transparent',
         readonly = _o === void 0 ? false : _o;
-        var _p = hexToRgb('#E72065'), r = _p[0], g = _p[1], b = _p[2];
-        var backgroundColor = "rgba(".concat(r, ",").concat(g, ",").concat(b, ",").concat(.15, ")");
-        var foregroundColor = "rgba(".concat(r, ",").concat(g, ",").concat(b, ",").concat(.95, ")");
+        var backgroundColor;
+        var foregroundColor;
+        if (iconColor == null) {
+            backgroundColor = 'transparent';
+            foregroundColor = '#79858F';
+        }
+        else {
+            try {
+                backgroundColor = 'transparent';
+                foregroundColor = '#79858F';
+                /*      const [r, g, b] = hexToRgb(iconColor);
+                     backgroundColor = `rgba(${r},${g},${b},${.15})`;
+                     foregroundColor = `rgba(${r},${g},${b},${.95})`; */
+            }
+            catch (e) {
+                backgroundColor = 'transparent';
+                foregroundColor = '#79858F';
+            }
+        }
         // const [selectedEmoji, setSelectedEmoji] = useState(this.props.config.selectedEmoji);
         // const [selectedIcon, setSelectedIcon] = useState(this.props.config.selectedIcon);
         // const [selectedCuIcon, setSelectedCuIcon] = useState(this.props.config.selectedCuIcon);
@@ -3119,13 +3137,14 @@ var MyTestController = /** @class */ (function (_super) {
         /*    useEffect(() => {
                setSelectedAccountId(this.props.config.selectedAccountId);
            }, [this.props.config.selectedAccountId]) */
-        var _q = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isOpen = _q[0], setIsOpen = _q[1];
-        var _r = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((_a = this.props.config.selectedCategory) !== null && _a !== void 0 ? _a : 'Icons'), mode = _r[0], setMode = _r[1];
+        var _p = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isOpen = _p[0], setIsOpen = _p[1];
+        var _q = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((_a = this.props.config.selectedCategory) !== null && _a !== void 0 ? _a : 'Icons'), mode = _q[0], setMode = _q[1];
         var ref = (0,_uidotdev_usehooks__WEBPACK_IMPORTED_MODULE_2__.useClickAway)(function () {
             setIsOpen(false);
         });
         return (readonly ?
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SvgIcon' && selectedIcon) ?
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SystemIcons' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(_SystemIcons__WEBPACK_IMPORTED_MODULE_7__.SystemIcons[selectedIcon])) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'SvgIcons' && selectedIcon) ?
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(selectedIcon)) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Icons' && selectedIcon) ?
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_b = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _b === void 0 ? void 0 : _b.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_c = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _c === void 0 ? void 0 : _c.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
@@ -3136,7 +3155,8 @@ var MyTestController = /** @class */ (function (_super) {
                 .cornerRadius(5)
                 .background(selectedCategory === 'Emoji' ? '' : backgroundColor)
             :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SvgIcon' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SystemIcons' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(_SystemIcons__WEBPACK_IMPORTED_MODULE_7__.SystemIcons[selectedIcon])) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'SvgIcon' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(selectedIcon)) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Icons' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_d = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _d === void 0 ? void 0 : _d.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
@@ -3151,7 +3171,7 @@ var MyTestController = /** @class */ (function (_super) {
                     .border('none').shadow({ focus: 'none' })).height().padding(5))
                     .borderBottom('1px solid #E8EAED')
                     .height(), mode === 'Emoji' ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_emoji_mart_react__WEBPACK_IMPORTED_MODULE_4__["default"], { data: _emoji_mart_data__WEBPACK_IMPORTED_MODULE_7__, onEmojiSelect: function (e) {
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_emoji_mart_react__WEBPACK_IMPORTED_MODULE_4__["default"], { data: _emoji_mart_data__WEBPACK_IMPORTED_MODULE_8__, onEmojiSelect: function (e) {
                             if (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(onChange)) {
                                 onChange({
                                     iconCategory: 'Emoji',
@@ -6028,6 +6048,41 @@ var Icons = {
         icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M17 2H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1 1 1 0 0 0 1-1v-1h9a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm-3 16H6V4h8Zm4-1a1 1 0 0 1-1 1h-1V4h1a1 1 0 0 1 1 1Z", id: "diary" }))); }
     },
+};
+
+
+/***/ }),
+
+/***/ "./src/SystemIcons.tsx":
+/*!*****************************!*\
+  !*** ./src/SystemIcons.tsx ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SystemIcons: () => (/* binding */ SystemIcons)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var SystemIcons = {
+    "folder": {
+        category: 'brand logo',
+        name: 'address-book',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 512 512" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { fill: "currentColor", d: "M96 0C60.7 0 32 28.7 32 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H96zM208 288h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H144c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V80zM496 192c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V336z" }, " "))); }
+    },
+    "document": {
+        category: 'brand logo',
+        name: 'document',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "25", fill: "currentColor", "aria-hidden": "true" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6 4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4.286v-4.286c0-.789.64-1.428 1.428-1.428H16V12h-4v4l4-4V6a2 2 0 0 0-2-2H6Z" })))); }
+    }
 };
 
 

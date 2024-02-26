@@ -50900,16 +50900,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   CaretDown1: () => (/* binding */ CaretDown1),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/tree-data-utils */ "./src/tree/utils/tree-data-utils.ts");
-/* harmony import */ var _utils_classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/classnames */ "./src/tree/utils/classnames.ts");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/classnames */ "./src/tree/utils/classnames.ts");
+/* harmony import */ var _utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/tree-data-utils */ "./src/tree/utils/tree-data-utils.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -50962,8 +50962,8 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-var CaretDown1 = function (props) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.276 8.5 8.813 4.294C8.143 3.666 7 4.111 7 5v10c0 .89 1.144 1.334 1.813.706l4.463-4.206c.965-1 .965-2 0-3Z" }))); };
+var CaretDown1 = function (props) { return (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_2___default().createElement("path", { d: "M13.276 8.5 8.813 4.294C8.143 3.666 7 4.111 7 5v10c0 .89 1.144 1.334 1.813.706l4.463-4.206c.965-1 .965-2 0-3Z" }))); };
 function getParentCount(node) {
     var count = 1;
     while (node) {
@@ -50989,18 +50989,18 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
             if (typeof node.children === 'function' && node.expanded) {
                 // Show a loading symbol on the handle when the children are expanded
                 //  and yet still defined by a function (a callback to fetch the children)
-                handle = (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rst__loadingHandle" },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rst__loadingCircle" }, __spreadArray([], new Array(12), true).map(function (_, index) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { 
+                handle = (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { className: "rst__loadingHandle" },
+                    react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { className: "rst__loadingCircle" }, __spreadArray([], new Array(12), true).map(function (_, index) { return (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { 
                         // eslint-disable-next-line react/no-array-index-key
-                        key: index, className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__loadingCirclePoint', rowDirectionClass) })); }))));
+                        key: index, className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_3__["default"])('rst__loadingCirclePoint', rowDirectionClass) })); }))));
             }
             else {
                 // Show the handle used to initiate a drag-and-drop
-                handle = connectDragSource(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })(
+                handle = connectDragSource(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })(
                 /*   HStack(
                       Icon(Icons.Drag)
                   ).width(16), */
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(nodeTitle))
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(nodeTitle))
                     .onClick(function () {
                     alert('clicked');
                 })).render()), {
@@ -51008,7 +51008,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                 });
             }
         }
-        var isDraggedDescendant = draggedNode && (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_1__.isDescendant)(draggedNode, node);
+        var isDraggedDescendant = draggedNode && (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_4__.isDescendant)(draggedNode, node);
         var isLandingPadActive = !didDrop && isDragging;
         var buttonStyle = { left: -0.5 * scaffoldBlockPxWidth };
         if (rowDirection === 'rtl') {
@@ -51016,18 +51016,17 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
         }
         var light = 0.812;
         var dark = 0.188;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({ style: { width: '100%' } }, otherProps),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, canDrag ?
-                connectDragPreview(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_2__["default"])('rst__row', isLandingPadActive && 'rst__rowLandingPad', isLandingPadActive && !canDrop && 'rst__rowCancelPad', isSearchMatch && 'rst__rowSearchMatch', isSearchFocus && 'rst__rowSearchFocus', rowDirectionClass, className), style: __assign({ opacity: isDraggedDescendant ? 0.5 : 1 }, style) }, connectDragSource(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: '100%' } }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(node.iconName) &&
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", __assign({ style: { width: '100%' } }, otherProps),
+            react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, canDrag ?
+                connectDragPreview(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_3__["default"])('rst__row', isLandingPadActive && 'rst__rowLandingPad', isLandingPadActive && !canDrop && 'rst__rowCancelPad', isSearchMatch && 'rst__rowSearchMatch', isSearchFocus && 'rst__rowSearchFocus', rowDirectionClass, className), style: __assign({ opacity: isDraggedDescendant ? 0.5 : 1 }, style) }, connectDragSource(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { style: { width: '100%' } }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(!_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(node.iconName) &&
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
                     //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)("com.tuvalsoft.widget.icons")
                         .config({
                         readonly: true,
                         selectedIcon: node.iconName,
                         selectedCategory: node.iconCategory,
-                        color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
-                        backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
+                        color: node.iconColor,
                         width: 24,
                         height: 24,
                         padding: 1
@@ -51037,13 +51036,13 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         //.background('#FCE8E8')
                         .allWidth(30).allHeight(30)
                         .opacity('var(--opacity-icon)')
-                        .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
+                        .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                     .transition('transform .12s ease-in-out'))
                     .position('absolute')
                     .transition('opacity .12s ease-in-out')
                     .foregroundColor('rgba(109,122,131,0.9)')
                     .allWidth(20).allHeight(20).cursor('pointer')
-                    .opacity(_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(node.iconName) ? '1' : "var(--opacity-caret)")
+                    .opacity(_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(node.iconName) ? '1' : "var(--opacity-caret)")
                     .onClick(function () {
                     return toggleChildrenVisibility({
                         node: node,
@@ -51053,15 +51052,14 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                 }))
                     .allWidth(30).allHeight(30)
                     .transition('transform .12s ease-in-out')
-                    .render()))), (node.children == null || node.children.length === 0) && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(
+                    .render()))), (node.children == null || node.children.length === 0 && node.iconName != null) && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
                 //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)("com.tuvalsoft.widget.icons")
                     .config({
                     readonly: true,
                     selectedIcon: node.iconName,
                     selectedCategory: node.iconCategory,
-                    color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
-                    backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
+                    color: node.iconColor,
                     width: 24,
                     height: 24,
                     padding: 1
@@ -51073,27 +51071,26 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     // .opacity('var(--opacity-icon)')
                     .cornerRadius(5))
                     .allWidth(30).allHeight(30)
-                    .transition('transform .12s ease-in-out')), _tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
+                    .transition('transform .12s ease-in-out')), _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
                     node: node,
                     path: path,
                     treeIndex: treeIndex,
                 }); }) :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(nodeTitle)))
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(nodeTitle)))
                     .cursor('pointer')
                     .render()), {
                     dropEffect: 'move',
                 })))
                 :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(node.iconName) &&
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(!_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(node.iconName) &&
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
                         //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)("com.tuvalsoft.widget.icons")
                             .config({
                             readonly: true,
                             selectedIcon: node.iconName,
                             selectedCategory: node.iconCategory,
-                            color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
-                            backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
+                            color: node.iconColor,
                             width: 24,
                             height: 24,
                             padding: 1
@@ -51103,13 +51100,13 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                             //.background('#FCE8E8')
                             .allWidth(30).allHeight(30)
                             .opacity('var(--opacity-icon)')
-                            .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
+                            .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                         .transition('transform .12s ease-in-out'))
                         .position('absolute')
                         .transition('opacity .12s ease-in-out')
                         .foregroundColor('rgba(109,122,131,0.9)')
                         .allWidth(20).allHeight(20).cursor('pointer')
-                        .opacity(_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(node.iconName) ? '1' : "var(--opacity-caret)")
+                        .opacity(_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(node.iconName) ? '1' : "var(--opacity-caret)")
                         .onClick(function () {
                         return toggleChildrenVisibility({
                             node: node,
@@ -51119,15 +51116,14 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     }))
                         .allWidth(30).allHeight(30)
                         .transition('transform .12s ease-in-out')
-                        .render()))), (node.children == null || node.children.length === 0) && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(
+                        .render()))), (node.children == null || node.children.length === 0 && node.iconName != null) && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
                     //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)("com.tuvalsoft.widget.icons")
                         .config({
                         readonly: true,
                         selectedIcon: node.iconName,
                         selectedCategory: node.iconCategory,
-                        color: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.darken)('#8EC351', dark),
-                        backgroundColor: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.lighten)('#8EC351', light),
+                        color: node.iconColor,
                         width: 24,
                         height: 24,
                         padding: 1
@@ -51139,12 +51135,12 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         // .opacity('var(--opacity-icon)')
                         .cornerRadius(5))
                         .allWidth(30).allHeight(30)
-                        .transition('transform .12s ease-in-out')), _tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
+                        .transition('transform .12s ease-in-out')), _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
                         node: node,
                         path: path,
                         treeIndex: treeIndex,
                     }); }) :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(nodeTitle)))
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(nodeTitle)))
                         .cursor('pointer')
                         .render()))))
             .height()
@@ -51157,7 +51153,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
             .variable("--opacity-icon", { default: '1', hover: '0' }).render());
     };
     return MyNodeRendererDefault;
-}((react__WEBPACK_IMPORTED_MODULE_0___default().Component)));
+}((react__WEBPACK_IMPORTED_MODULE_2___default().Component)));
 MyNodeRendererDefault.defaultProps = {
     isSearchMatch: false,
     isSearchFocus: false,
