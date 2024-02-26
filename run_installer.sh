@@ -7,3 +7,7 @@ docker run -it --rm \
     # docker rm $(docker ps -a -q)
 
     # docker rmi $(docker images | grep 'realmocean/realmocean')
+
+    # for delete volumes 
+
+    ## docker volume rm $(docker volume ls -q --filter dangling=true)

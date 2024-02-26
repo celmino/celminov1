@@ -13,7 +13,7 @@ import {
     cTopLeading, cVertical, useEffect,
     useState
 } from '@tuval/forms';
-import { TuRectangle, TuShape, TuView, TuViewGridStyle, TuViewSnapStyle, ViewRenderingMode } from '@realmocean/diagram';
+//import { TuRectangle, TuShape, TuView, TuViewGridStyle, TuViewSnapStyle, ViewRenderingMode } from '@realmocean/diagram';
 import { CGSize } from "@tuval/cg";
 
 import { useGetAccount, useGetTenantAccounts } from '@celmino/directoryprotocol';
@@ -37,8 +37,8 @@ export class MyTestController extends UIFormController {
        
 
 
-        const tuView = new TuView();
-        //tuView.GridStyle = TuViewGridStyle.Dot;
+       /*  const tuView = new TuView();
+        tuView.GridStyle = TuViewGridStyle.Dot;
         tuView.GridSnapDrag = TuViewSnapStyle.Jump;
         tuView.GridCellSize = new CGSize(10, 10)
 
@@ -64,7 +64,7 @@ export class MyTestController extends UIFormController {
         rect1.Pen = Pens.Black;
         rect1.Brush = Brushes.Green;
 
-        tuView.Document.Add(rect1);
+        tuView.Document.Add(rect1); */
 
         const { attributes, items, groupBy, onItemClick } = this.props.config;
         const field = attributes.find((field) => field.key === groupBy);

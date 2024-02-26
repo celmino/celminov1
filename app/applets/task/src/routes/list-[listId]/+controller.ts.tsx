@@ -29,6 +29,7 @@ import { SelectViewDialog } from "../../dialogs/SelectViewDialog";
 import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
 import React from "react";
+import { EventBus } from "@tuval/core";
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -71,16 +72,37 @@ export class ListController extends UIFormController {
 
 
 
+
         return (
 
-            (viewId == null && list?.defaultViewId != null) ?    VStack({ alignment: cTopLeading })(
+            (viewId == null && list?.defaultViewId != null) ? VStack({ alignment: cTopLeading })(
                 //ActionPanel(),
                 //ViewHeader('test'),
 
                 ScrollView({ axes: cVertical, alignment: cTopLeading })(
                     VStack({ alignment: cTopLeading })(
                         ActionPanel(),
-                        ViewHeader(list?.name),
+                        ViewHeader(list?.name, (e) => {
+                            updateDocument({
+                                databaseId: appletId,
+                                collectionId: 'wm_lists',
+                                documentId: listId,
+                                data: {
+                                    name: e
+                                }
+                            }, ()=> {
+                                updateDocument({
+                                    databaseId: 'workspace',
+                                    collectionId: 'ws_tree',
+                                    documentId: listId,
+                                    data: {
+                                        name: e
+                                    }
+                                }, ()=> {
+                                    EventBus.Default.fire('applet.added', { treeItem: list })
+                                })
+                            })
+                        }),
                         VStack({ alignment: cTopLeading })(
                             VStack({ alignment: cTopLeading })(
                                 UIViewBuilder(() => {
@@ -373,9 +395,9 @@ export class ListController extends UIFormController {
                                             })
                                     )
                                         .background('white') */
-                                       // .borderTop('1px solid rgba(0,0,0,.05)')
-                                      //  .borderBottom('1px solid rgba(0,0,0,.05)')
-                                    
+                                    // .borderTop('1px solid rgba(0,0,0,.05)')
+                                    //  .borderBottom('1px solid rgba(0,0,0,.05)')
+
 
 
                                 )
@@ -385,9 +407,9 @@ export class ListController extends UIFormController {
 
                                 UIRouteOutlet().width('100%').height('100%')
                             )
-                            .cornerRadius(10)
-                            .overflow('hidden')
-                            .render()
+                                .cornerRadius(10)
+                                .overflow('hidden')
+                                .render()
                         }
                     </DialogStack>
                 )

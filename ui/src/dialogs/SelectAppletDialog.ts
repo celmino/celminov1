@@ -1,4 +1,4 @@
-import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack, Heading, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState } from "@tuval/forms";
+import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack, Heading, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState, Fragment } from "@tuval/forms";
 
 import { useCreateDocument, Services, ID } from "@realmocean/sdk";
 import { Text } from "@realmocean/vibe";
@@ -17,7 +17,7 @@ const appletMenu = [
             { name: 'My applets', icon: 'User' }
         ]
     },
-    {
+   /*  {
         category: 'Data',
         items: [
             { name: 'All', icon: 'Data' },
@@ -34,7 +34,7 @@ const appletMenu = [
             { name: 'Design', icon: 'Design' },
             { name: 'Development', icon: 'Development' }
         ]
-    },
+    }, */
     
 ]
 
@@ -132,6 +132,7 @@ export class SelectAppletDialog extends DialogView {
                     ScrollView({ axes: cVertical, alignment: cTopLeading })(
                         HStack({ alignment: cTopLeading })(
                             ...ForEach(this.filtered_opas)(opa =>
+                                !opa.enabled ? Fragment() :
                                 VStack(
                                     VStack({ alignment: cTopLeading, spacing: 5 })(
                                         HStack(
@@ -145,7 +146,7 @@ export class SelectAppletDialog extends DialogView {
 
                                             //.background(opa.iconBackColor || '#9A0707'),
                                             Spacer(),
-                                            Text(opa.type).fontSize('1.4rem').fontWeight('500').foregroundColor('hsl(205, 9%, 47%)')
+                                            //Text(opa.type).fontSize('1.4rem').fontWeight('500').foregroundColor('hsl(205, 9%, 47%)')
                                         ).height()
                                         //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
                                         ,

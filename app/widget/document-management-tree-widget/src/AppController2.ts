@@ -6,7 +6,7 @@ import {
     UIController, UIView, UIViewBuilder, UIWidget, VStack, cHorizontal, cLeading, cTopLeading, cTrailing, cVertical, useEffect, useNavigate, useState
 } from '@tuval/forms';
 
-import { Query, useGetDocument, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
+import { Query, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
 import { DynoDialog } from '@realmocean/ui';
 import { Text, TextField, Text as VibeText } from '@realmocean/vibe';
 import { AddFolderDialog } from './dialogs/AddFolderDialog';
@@ -17,8 +17,16 @@ import { LeftSideMenuView } from './views/WorkspaceTree';
 import { useLocalStorageState } from './views/localStorageState';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 import { ContextMenu, EditContextMenu } from './ContextMenu';
-import { EventBus } from '@tuval/core';
+import { EventBus, is } from '@tuval/core';
 
+
+function process(value) {
+    if (is.string(value)) {
+        return value == undefined ? '' : value.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()
+    } else {
+        return '';
+    }
+}
 
 
 export class AppController2 extends UIController {
@@ -33,6 +41,8 @@ export class AppController2 extends UIController {
 
         let listId = getListId();
 
+        const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
+        const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId })
 
 
 
@@ -111,10 +121,10 @@ export class AppController2 extends UIController {
                         if (onItemSelected == null) {
                             switch (item.type) {
                                 case 'folder':
-                                    navigate(`/app/workspace/${workspaceId}/applet/${item.appletId}/folder/${item.$id}`);
+                                    navigate(`/app/${realm?.name}-${workspaceId}/${applet.name}-${applet.$id}/folder/${item.$id}`);
                                     break;
                                 case 'document':
-                                    navigate(`/app/workspace/${workspaceId}/applet/${item.appletId}/document/${item.$id}`);
+                                    navigate(`/app/${realm?.name}-${workspaceId}/${applet.name}-${applet.$id}/document/${item.$id}`);
                                     break;
 
                             }

@@ -36203,6 +36203,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../views/ViewHeader */ "./src/views/ViewHeader.ts");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_5__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -36259,6 +36261,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 function replaceNonMatchingCharacters(originalText) {
     var replacementTable = {
         'ı': 'i',
@@ -36294,7 +36297,27 @@ var ListController = /** @class */ (function (_super) {
         return ((viewId == null && (list === null || list === void 0 ? void 0 : list.defaultViewId) != null) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
         //ActionPanel(),
         //ViewHeader('test'),
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_2__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_3__.ViewHeader)(list === null || list === void 0 ? void 0 : list.name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_2__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_3__.ViewHeader)(list === null || list === void 0 ? void 0 : list.name, function (e) {
+            updateDocument({
+                databaseId: appletId,
+                collectionId: 'wm_lists',
+                documentId: listId,
+                data: {
+                    name: e
+                }
+            }, function () {
+                updateDocument({
+                    databaseId: 'workspace',
+                    collectionId: 'ws_tree',
+                    documentId: listId,
+                    data: {
+                        name: e
+                    }
+                }, function () {
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_5__.EventBus.Default.fire('applet.added', { treeItem: list });
+                });
+            });
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
             var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.list')
                 .config({

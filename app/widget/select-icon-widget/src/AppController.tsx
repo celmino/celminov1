@@ -89,6 +89,8 @@ export class MyTestController extends UIController {
             readonly ?
                 HStack(
                     HStack(
+                        (selectedCategory === 'SvgIcon' && selectedIcon) ?
+                            Icon(SvgIcon(selectedIcon)) : Fragment(),
                         (selectedCategory === 'Icons' && selectedIcon) ?
                             Icon(Icons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
                         (selectedCategory === 'CuIcons' && selectedIcon) ?
@@ -107,6 +109,8 @@ export class MyTestController extends UIController {
                 PopupButton(
                     HStack(
                         HStack(
+                            (selectedCategory === 'SvgIcon' && selectedIcon) ?
+                                Icon(SvgIcon(selectedIcon)) : Fragment(),
                             (selectedCategory === 'Icons' && selectedIcon) ?
                                 Icon(Icons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
                             (selectedCategory === 'CuIcons' && selectedIcon) ?

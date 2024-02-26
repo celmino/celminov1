@@ -28,6 +28,8 @@ export class ProxyController extends UIController {
         return (
             isLoading ? Fragment():
             VStack(
+                Text('sdad'),
+                Text(appletId),
                 ActionPanel(),
                 DocumentHeader(document?.name, (e)=> {
                  

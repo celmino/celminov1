@@ -16,7 +16,7 @@ export const ContextMenu = (workspaceId: string, appletId: string, parent = '-1'
     {
         title: 'Document',
         icon: SvgIcon('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-        onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.editorjs'))
+        onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, parent, path, 'document'))
     },
     {
         title: 'Wiki document',

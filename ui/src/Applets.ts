@@ -1,4 +1,5 @@
 import { APQCApplet } from "./applets/APQC";
+import { ActivitiesApplet } from "./applets/Activities";
 import { AppletCategory } from "./applets/AppletCategory";
 import { AppletDivider } from "./applets/Divider";
 import { EmailsApplet } from "./applets/Emails";
@@ -8,9 +9,9 @@ import { WorldApplet } from "./applets/World";
 
 
 export const Applets = [
-    InvestorsInTurkey,
-    APQCApplet,
-    WorldApplet,
+    /*  InvestorsInTurkey,
+     APQCApplet,
+     WorldApplet, */
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -19,7 +20,7 @@ export const Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -39,7 +40,7 @@ export const Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -59,7 +60,7 @@ export const Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -80,7 +81,7 @@ export const Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -100,7 +101,7 @@ export const Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -121,7 +122,7 @@ export const Applets = [
         description: 'Manage your produck development life circle.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -141,7 +142,7 @@ export const Applets = [
         description: 'Manage your produck development life circle.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -162,7 +163,7 @@ export const Applets = [
         description: 'Track Video stages and grouped tasks. Write your scripts, brainstorm ideas, and add notes. Calculate budget and never miss deadlines.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -182,7 +183,7 @@ export const Applets = [
         description: 'Track Video stages and grouped tasks. Write your scripts, brainstorm ideas, and add notes. Calculate budget and never miss deadlines.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -202,7 +203,7 @@ export const Applets = [
         description: 'Time to make your Feedback aggregation shine bright like a 💎',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -222,7 +223,7 @@ export const Applets = [
         description: 'Here you can aggregate feedback from different sources, manage conversations, and extract useful insights.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -242,7 +243,7 @@ export const Applets = [
         description: 'Monitor your process details in timeframe chart.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -4618,6 +4619,10 @@ export const Applets = [
                                 "type": "string"
                             },
                             {
+                                "key": "viewer",
+                                "type": "string"
+                            },
+                            {
                                 "key": "icon_name",
                                 "type": "string"
                             },
@@ -4909,8 +4914,8 @@ export const Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
-   
-   AppletCategory,
+
+    AppletCategory,
     {
         name: 'Drive',
         type: 'Applet',
@@ -5028,6 +5033,7 @@ export const Applets = [
     },
     AppletDivider,
     WebsiteApplet,
-    EmailsApplet
+    EmailsApplet,
+    ActivitiesApplet
 ];
 

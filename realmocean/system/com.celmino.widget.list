@@ -123,7 +123,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MyTestController\": () => (/* binding */ MyTestController)\n/* harmony export */ });\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ \"@tuval/forms\");\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _realmocean_diagram__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/diagram */ \"@realmocean/diagram\");\n/* harmony import */ var _realmocean_diagram__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_diagram__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _tuval_cg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/cg */ \"@tuval/cg\");\n/* harmony import */ var _tuval_cg__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_cg__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _views_TaskTable_TaskTable2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/TaskTable/TaskTable2 */ \"./src/views/TaskTable/TaskTable2.tsx\");\n/* harmony import */ var _tuval_graphics__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/graphics */ \"@tuval/graphics\");\n/* harmony import */ var _tuval_graphics__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_graphics__WEBPACK_IMPORTED_MODULE_4__);\nvar __extends = (undefined && undefined.__extends) || (function () {\n    var extendStatics = function (d, b) {\n        extendStatics = Object.setPrototypeOf ||\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };\n        return extendStatics(d, b);\n    };\n    return function (d, b) {\n        if (typeof b !== \"function\" && b !== null)\n            throw new TypeError(\"Class extends value \" + String(b) + \" is not a constructor or null\");\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\n\n\n\n\n\nvar MyTestController = /** @class */ (function (_super) {\n    __extends(MyTestController, _super);\n    function MyTestController() {\n        return _super !== null && _super.apply(this, arguments) || this;\n    }\n    MyTestController.prototype.LoadView = function () {\n        var _a;\n        var tuView = new _realmocean_diagram__WEBPACK_IMPORTED_MODULE_1__.TuView();\n        //tuView.GridStyle = TuViewGridStyle.Dot;\n        tuView.GridSnapDrag = _realmocean_diagram__WEBPACK_IMPORTED_MODULE_1__.TuViewSnapStyle.Jump;\n        tuView.GridCellSize = new _tuval_cg__WEBPACK_IMPORTED_MODULE_2__.CGSize(10, 10);\n        tuView.Width = 2000;\n        tuView.Height = 3000;\n        tuView.RenderingMode = _realmocean_diagram__WEBPACK_IMPORTED_MODULE_1__.ViewRenderingMode.Canvas;\n        var rect = new _realmocean_diagram__WEBPACK_IMPORTED_MODULE_1__.TuRectangle();\n        rect.Left = 0;\n        rect.Top = 0;\n        rect.Width = 150;\n        rect.Height = 105;\n        rect.Pen = _tuval_graphics__WEBPACK_IMPORTED_MODULE_4__.Pens.Black;\n        rect.Brush = _tuval_graphics__WEBPACK_IMPORTED_MODULE_4__.Brushes.White;\n        tuView.Document.Add(rect);\n        var rect1 = new _realmocean_diagram__WEBPACK_IMPORTED_MODULE_1__.TuRectangle();\n        rect1.Left = 320;\n        rect1.Top = 230;\n        rect1.Width = 150;\n        rect1.Height = 105;\n        rect1.Pen = _tuval_graphics__WEBPACK_IMPORTED_MODULE_4__.Pens.Black;\n        rect1.Brush = _tuval_graphics__WEBPACK_IMPORTED_MODULE_4__.Brushes.Green;\n        tuView.Document.Add(rect1);\n        var _b = this.props.config, attributes = _b.attributes, items = _b.items, groupBy = _b.groupBy, onItemClick = _b.onItemClick;\n        var field = attributes.find(function (field) { return field.key === groupBy; });\n        var groups = [];\n        if ((field === null || field === void 0 ? void 0 : field.type) === 'dropdown') {\n            var _c = JSON.parse((_a = field.type_content) !== null && _a !== void 0 ? _a : '{}').options, options = _c === void 0 ? [] : _c;\n            groups = options;\n        }\n        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.OptionsContext)(function () {\n            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(\n            // tuView as any,\n            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_TaskTable_TaskTable2__WEBPACK_IMPORTED_MODULE_3__.TaskTable2)(items, groups))))\n                .cornerRadius(10)\n                .padding(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().height(50)));\n        })\n            .options(this.props.config));\n    };\n    return MyTestController;\n}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController));\n\n\n\n//# sourceURL=webpack://tuval-core/./src/AppController.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MyTestController\": () => (/* binding */ MyTestController)\n/* harmony export */ });\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ \"@tuval/forms\");\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _views_TaskTable_TaskTable2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/TaskTable/TaskTable2 */ \"./src/views/TaskTable/TaskTable2.tsx\");\nvar __extends = (undefined && undefined.__extends) || (function () {\n    var extendStatics = function (d, b) {\n        extendStatics = Object.setPrototypeOf ||\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };\n        return extendStatics(d, b);\n    };\n    return function (d, b) {\n        if (typeof b !== \"function\" && b !== null)\n            throw new TypeError(\"Class extends value \" + String(b) + \" is not a constructor or null\");\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\n\n\nvar MyTestController = /** @class */ (function (_super) {\n    __extends(MyTestController, _super);\n    function MyTestController() {\n        return _super !== null && _super.apply(this, arguments) || this;\n    }\n    MyTestController.prototype.LoadView = function () {\n        /*  const tuView = new TuView();\n         tuView.GridStyle = TuViewGridStyle.Dot;\n         tuView.GridSnapDrag = TuViewSnapStyle.Jump;\n         tuView.GridCellSize = new CGSize(10, 10)\n \n         tuView.Width = 2000;\n         tuView.Height = 3000;\n         tuView.RenderingMode = ViewRenderingMode.Canvas;\n \n         const rect = new TuRectangle();\n         rect.Left = 0;\n         rect.Top = 0;\n         rect.Width = 150;\n         rect.Height = 105;\n         rect.Pen = Pens.Black;\n         rect.Brush = Brushes.White;\n \n         tuView.Document.Add(rect);\n \n         const rect1 = new TuRectangle();\n         rect1.Left = 320;\n         rect1.Top = 230;\n         rect1.Width = 150;\n         rect1.Height = 105;\n         rect1.Pen = Pens.Black;\n         rect1.Brush = Brushes.Green;\n \n         tuView.Document.Add(rect1); */\n        var _a;\n        var _b = this.props.config, attributes = _b.attributes, items = _b.items, groupBy = _b.groupBy, onItemClick = _b.onItemClick;\n        var field = attributes.find(function (field) { return field.key === groupBy; });\n        var groups = [];\n        if ((field === null || field === void 0 ? void 0 : field.type) === 'dropdown') {\n            var _c = JSON.parse((_a = field.type_content) !== null && _a !== void 0 ? _a : '{}').options, options = _c === void 0 ? [] : _c;\n            groups = options;\n        }\n        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.OptionsContext)(function () {\n            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(\n            // tuView as any,\n            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_TaskTable_TaskTable2__WEBPACK_IMPORTED_MODULE_1__.TaskTable2)(items, groups))))\n                .cornerRadius(10)\n                .padding(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().height(50)));\n        })\n            .options(this.props.config));\n    };\n    return MyTestController;\n}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController));\n\n\n\n//# sourceURL=webpack://tuval-core/./src/AppController.tsx?");
 
 /***/ }),
 
@@ -346,17 +346,6 @@ module.exports = realmocean$antd;
 
 /***/ }),
 
-/***/ "@realmocean/diagram":
-/*!*************************************!*\
-  !*** external "realmocean$diagram" ***!
-  \*************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = realmocean$diagram;
-
-/***/ }),
-
 /***/ "@realmocean/ui":
 /*!********************************!*\
   !*** external "realmocean$ui" ***!
@@ -379,17 +368,6 @@ module.exports = tuval$core;
 
 /***/ }),
 
-/***/ "@tuval/cg":
-/*!**************************************!*\
-  !*** external "tuval$core$graphics" ***!
-  \**************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = tuval$core$graphics;
-
-/***/ }),
-
 /***/ "@tuval/forms":
 /*!******************************!*\
   !*** external "tuval$forms" ***!
@@ -398,17 +376,6 @@ module.exports = tuval$core$graphics;
 
 "use strict";
 module.exports = tuval$forms;
-
-/***/ }),
-
-/***/ "@tuval/graphics":
-/*!*********************************!*\
-  !*** external "tuval$graphics" ***!
-  \*********************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = tuval$graphics;
 
 /***/ }),
 

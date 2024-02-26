@@ -28,5 +28,10 @@ export declare const AddDocumentDialog: (workspaceId: string, appletId: string, 
             type: string;
             value: string;
         };
+        viewer: {
+            name: string;
+            type: string;
+            value: string;
+        };
     };
 };

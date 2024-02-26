@@ -60,7 +60,7 @@ export class DocumentController extends UIController {
 
                                                 })
                                         ) */
-                                          UIWidget(document?.type)
+                                          UIWidget(document?.viewer)
                                              .config({
                                                  defaultValue: is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
                                                  clamp:true,

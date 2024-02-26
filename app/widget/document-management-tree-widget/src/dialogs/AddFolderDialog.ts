@@ -1,4 +1,5 @@
 import { useCreateDocument } from "@realmocean/sdk";
+import { EventBus } from "@tuval/core";
 import {
     Button,
     Text,
@@ -21,8 +22,11 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
     let isFormMutateExcuting = false;
     let isFormLoading = false;
 
-    const views = []
+    const views = [];
+
+
     const {  workspaceId, appletId } = formMeta;
+    const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
     const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'dm_tree');
     const { createDocument, isLoading } = useCreateDocument(workspaceId,appletId, 'dm_folders');
    
@@ -43,13 +47,25 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
                         }
                     },
                     (folder) => {
-                        createTreeItem({
+                        createWorkspaceTreeItem({
                             documentId: folder.$id,
                             data: {
-                                ...data,
-                                type: 'folder'
+                                name: data.name,
+                                type: 'folder',
+                                parent:data.parent,
+                                tree_widget: 'com.celmino.widget.document-management-tree',
+                                appletId,
+                                path: (new Date()).getTime().toString(),
+                                iconName: 'bell',
+                                iconCategory: 'Icons',
+                                //viewer:'com.tuvalsoft.viewer.document'
                             }
-                        }, () => dialog.Hide())
+                        }, (item)=> {
+                            EventBus.Default.fire('applet.added', { treeItem: item});
+                            dialog.Hide();
+                        })
+
+                     
 
                     }
                 )

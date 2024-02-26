@@ -3125,7 +3125,8 @@ var MyTestController = /** @class */ (function (_super) {
             setIsOpen(false);
         });
         return (readonly ?
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'Icons' && selectedIcon) ?
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SvgIcon' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(selectedIcon)) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Icons' && selectedIcon) ?
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_b = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _b === void 0 ? void 0 : _b.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_c = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _c === void 0 ? void 0 : _c.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
@@ -3135,7 +3136,8 @@ var MyTestController = /** @class */ (function (_super) {
                 .cornerRadius(5)
                 .background(selectedCategory === 'Emoji' ? '' : backgroundColor)
             :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'Icons' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SvgIcon' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(selectedIcon)) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Icons' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_d = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _d === void 0 ? void 0 : _d.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())

@@ -39879,7 +39879,7 @@ var DocumentController = /** @class */ (function (_super) {
 
                          })
                  ) */
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)(document === null || document === void 0 ? void 0 : document.type)
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)(document === null || document === void 0 ? void 0 : document.viewer)
                     .config({
                     defaultValue: _tuval_core__WEBPACK_IMPORTED_MODULE_5__.is.nullOrEmpty(content === null || content === void 0 ? void 0 : content.content) ? null : JSON.parse(content.content),
                     clamp: true,
@@ -40060,7 +40060,7 @@ var ProxyController = /** @class */ (function (_super) {
             documentId: documentId
         }), content = _b.document, isLoading = _b.isLoading;
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.DocumentHeader)(document === null || document === void 0 ? void 0 : document.name, function (e) {
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('sdad'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(appletId), (0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.DocumentHeader)(document === null || document === void 0 ? void 0 : document.name, function (e) {
             }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)('com.tuvalsoft.widget.editorjs')
                 .config({
                 defaultValue: _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(content === null || content === void 0 ? void 0 : content.content) ? null : JSON.parse(content.content),
@@ -40242,69 +40242,77 @@ var FolderView = function (workspaceId, folderId) { return (0,_tuval_forms__WEBP
     var appletId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)().appletId;
     var document = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useGetDocument)({
         projectId: workspaceId,
-        databaseId: appletId,
-        collectionId: 'dm_folders',
+        databaseId: 'workspace',
+        collectionId: 'ws_tree',
         documentId: folderId
     }).document;
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListDocuments)(workspaceId, appletId, 'dm_folders', [
+    /*  const { documents: folders, isLoading: isFoldersLoading } = useListDocuments(workspaceId, appletId, 'dm_folders', [
+         Query.equal('parent', folderId)
+     ]); */
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListDocuments)(workspaceId, 'workspace', 'ws_tree', [
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.Query.equal('parent', folderId)
-    ]), folders = _a.documents, isFoldersLoading = _a.isLoading;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useListDocuments)(workspaceId, appletId, 'dm_documents', [
-        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.Query.equal('parent', folderId)
-    ]), documents = _b.documents, isDocumentsLoading = _b.isLoading;
+    ]), documents = _a.documents, isDocumentsLoading = _a.isLoading;
     var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_6__.useUpdateDocument)(workspaceId).updateDocument;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_FolderHeader__WEBPACK_IMPORTED_MODULE_4__.FolderHeader)(document === null || document === void 0 ? void 0 : document.name, function (e) {
-        updateDocument({
-            databaseId: appletId,
-            collectionId: 'dm_documents',
-            documentId: folderId,
-            data: {
-                name: e
-            }
-        });
-    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-        var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_9__.Table)()
-            .height()
-            .columns([
-            {
-                id: 'name',
-                loadingStateType: 'medium-text',
-                title: 'Name',
-                width: '50%',
-                view: function (row) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(row['type'] === 'folder' ?
-                    (0,_FolderName__WEBPACK_IMPORTED_MODULE_5__.FolderName)(row) :
-                    row['type'] === 'document' ?
-                        (0,_DocumentName__WEBPACK_IMPORTED_MODULE_3__.DocumentName)(row) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
-                    .onClick(function () {
-                    openDialog({
-                        title: row.name,
-                        view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-                            var DocumentProxyController = /** @class */ (function (_super) {
-                                __extends(DocumentProxyController, _super);
-                                function DocumentProxyController() {
-                                    return _super !== null && _super.apply(this, arguments) || this;
-                                }
-                                return DocumentProxyController;
-                            }(_ProxyController__WEBPACK_IMPORTED_MODULE_2__.ProxyController));
-                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_7___default().createElement(DocumentProxyController, { workspaceId: workspaceId, documentId: row.$id }, " ")));
-                        })
-                    });
-                })); }
-            },
-            {
-                id: '$createdAt',
-                loadingStateType: 'medium-text',
-                title: 'Created',
-                width: '50%',
-                format: function (value) { return (0,_tuval_core__WEBPACK_IMPORTED_MODULE_8__.moment)(value).format('DD.MM.YYYY HH:mm:ss'); }
-            }
-        ])
-            .isLoading(isFoldersLoading || isDocumentsLoading)
-            .rows([].concat(folders === null || folders === void 0 ? void 0 : folders.map(function (folder) { return (__assign({ type: 'folder' }, folder)); })).concat(documents === null || documents === void 0 ? void 0 : documents.map(function (document) { return (__assign({ type: 'document' }, document)); }))))
-            .padding());
-    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
-        .background('white'));
+    return (isDocumentsLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_FolderHeader__WEBPACK_IMPORTED_MODULE_4__.FolderHeader)(document === null || document === void 0 ? void 0 : document.name, function (e) {
+            updateDocument({
+                databaseId: appletId,
+                collectionId: 'dm_documents',
+                documentId: folderId,
+                data: {
+                    name: e
+                }
+            });
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+            var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_9__.Table)()
+                .height()
+                .columns([
+                {
+                    id: 'type',
+                    loadingStateType: 'medium-text',
+                    title: 'Name',
+                    width: '50%',
+                    view: function (row) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(row['type'] === 'folder' ?
+                        (0,_FolderName__WEBPACK_IMPORTED_MODULE_5__.FolderName)(row) :
+                        row['type'] === 'document' ?
+                            (0,_DocumentName__WEBPACK_IMPORTED_MODULE_3__.DocumentName)(row) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
+                        .onClick(function () {
+                        row['type'] === 'folder' ?
+                            openDialog({
+                                title: row.name,
+                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                                    return (FolderView(workspaceId, row.$id));
+                                })
+                            }) :
+                            openDialog({
+                                title: row.name,
+                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                                    var DocumentProxyController = /** @class */ (function (_super) {
+                                        __extends(DocumentProxyController, _super);
+                                        function DocumentProxyController() {
+                                            return _super !== null && _super.apply(this, arguments) || this;
+                                        }
+                                        return DocumentProxyController;
+                                    }(_ProxyController__WEBPACK_IMPORTED_MODULE_2__.ProxyController));
+                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_7___default().createElement(DocumentProxyController, { workspaceId: workspaceId, appletId: appletId, documentId: row.$id }, " ")));
+                                })
+                            });
+                    })); }
+                },
+                {
+                    id: '$createdAt',
+                    loadingStateType: 'medium-text',
+                    title: 'Created',
+                    width: '50%',
+                    format: function (value) { return (0,_tuval_core__WEBPACK_IMPORTED_MODULE_8__.moment)(value).format('DD.MM.YYYY HH:mm:ss'); }
+                }
+            ])
+                .isLoading(isDocumentsLoading)
+                .rows([].concat(documents === null || documents === void 0 ? void 0 : documents.map(function (document) { return (__assign({}, document)); }))))
+                .padding());
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
+            .background('white'));
 }); };
 
 

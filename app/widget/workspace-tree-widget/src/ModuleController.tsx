@@ -8,9 +8,9 @@ import {
 } from '@tuval/forms';
 
 import { SelectAppletDialog } from '@celmino/ui';
-import { Query, useCreateDocument, useGetDocument, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
+import { Query, useCreateDocument, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
 import { DynoDialog } from '@realmocean/ui';
-import { EventBus } from '@tuval/core';
+import { EventBus, is } from '@tuval/core';
 import { AddBoardDialog } from './dialogs/AddBoardDialog';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 import { AddFolderDialog } from './dialogs/AddFolderDialog';
@@ -37,12 +37,12 @@ const subNodes = (TreeNode, level, nodeType, parentId, workspaceId, appletId, on
                     UIViewBuilder(() => {
                         const { document: applet, isLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: item.$id })
                         return (
-                            isLoading ? Fragment(): 
-                            UIWidget(applet['opa'])
-                                .config({
-                                    ...(useParams() || {}),
-                                    appletId: applet.$id
-                                })
+                            isLoading ? Fragment() :
+                                UIWidget(applet['opa'])
+                                    .config({
+                                        ...(useParams() || {}),
+                                        appletId: applet.$id
+                                    })
                         )
                     })
 
@@ -196,6 +196,14 @@ const subNodes = (TreeNode, level, nodeType, parentId, workspaceId, appletId, on
 
 })
 
+function process(value) {
+    if (is.string(value)) {
+        return value == undefined ? '' : value.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()
+    } else {
+        return '';
+    }
+}
+
 export class WorkspaceTreeWidgetController extends UIController {
 
     public override LoadView(): UIView {
@@ -215,122 +223,153 @@ export class WorkspaceTreeWidgetController extends UIController {
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'wm_tree');
+        const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
+        const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
 
         return (
-           
-                UIWidget('com.celmino.widget.applet-tree')
-                    .config({
-                        node: item,
-                        workspaceId,
-                        appletId,
-                        appletName: item.name,
-                        iconName: item.iconName,
-                        iconCategory: item.iconCategory,
-                        isEditing: isEditing,
-                        isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
-                        editingChanged: (status) => setIsEditing(status),
-                        titleChanged: (title) => {
+
+            UIWidget('com.celmino.widget.applet-tree')
+                .config({
+                    node: item,
+                    workspaceId,
+                    appletId,
+                    appletName: item.name,
+                    iconName: item.iconName,
+                    iconCategory: item.iconCategory,
+                    isEditing: isEditing,
+                    isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
+                    editingChanged: (status) => setIsEditing(status),
+                    titleChanged: (title) => {
+                        updateDocument({
+                            databaseId: 'workspace',
+                            collectionId: 'applets',
+                            documentId: appletId,
+                            data: {
+                                name: title
+                            }
+                        }, () => {
                             updateDocument({
                                 databaseId: 'workspace',
-                                collectionId: 'applets',
-                                documentId: appletId,
+                                collectionId: 'ws_tree',
+                                documentId: item.$id,
                                 data: {
                                     name: title
                                 }
                             }, () => {
-                                updateDocument({
-                                    databaseId: 'workspace',
-                                    collectionId: 'ws_tree',
-                                    documentId: item.$id,
-                                    data: {
-                                        name: title
-                                    }
-                                }, () => {
-                                    EventBus.Default.fire('applet.added', { treeItem: item })
-                                })
+                                EventBus.Default.fire('applet.added', { treeItem: item })
                             })
-                        },
-                        subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
-                            return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected)
-                        },
-                        requestMenu: (node) => {
-                            return [
-                                /*  {
-                                     title: 'Add items',
-                                     type: 'Title'
-                                 }, */
-                                {
-                                    title: 'List',
-                                    icon: SvgIcon('cu3-icon-sidebarList', '#151719', '18px', '18px'),
-                                    onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, node.$id, '/'))
-                                },
-                                {
-                                    type: 'Divider'
-                                },
-                                {
-                                    title: 'Document',
-                                    icon: SvgIcon('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-                                    onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, '-1', '/'))
-                                },
-                                {
-                                    title: 'Whiteboard',
-                                    icon: SvgIcon('cu3-icon-sidebarWhiteboards', '#151719', '18px', '18px'),
-                                    onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, '-1', '/'))
-                                },
-                                {
-                                    type: 'Divider'
-                                },
-                                {
-                                    title: 'Folder',
-                                    icon: SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                                    onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, '-1', '/'))
-                                },
-                                {
-                                    title: 'Smart Folder',
-                                    icon: SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                                    onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, '-1', '/'))
-                                },
-                                {
-                                    title: 'Applet',
-                                    icon: SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                                    onClick: () => {
-                                        SelectAppletDialog.Show(workspaceId, appletId).then((applet) => {
-                                            createTreeItem({
-                                                documentId: applet.$id,
-                                                data: {
-                                                    name: applet.name,
-                                                    path: "/",
-                                                    parent: '-1',
-                                                    type: 'applet'
-                                                }
-                                            }, () => void 0)
-                                        });
-                                    }
-                                },
-
-
-
-                            ]
-
-
-                        },
-
-                        requestEditMenu: () => [
-
+                        })
+                    },
+                    subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
+                        return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected)
+                    },
+                    requestMenu: (node) => {
+                        return [
+                            /*  {
+                                 title: 'Add items',
+                                 type: 'Title'
+                             }, */
                             {
-                                title: 'Rename',
-                                icon: SvgIcon('svg-sprite-global__edit', '#151719', '18px', '18px'),
-                                onClick: () => setIsEditing(true)
+                                title: 'List',
+                                icon: SvgIcon('cu3-icon-sidebarList', '#151719', '18px', '18px'),
+                                onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, node.$id, '/'))
+                            },
+                            {
+                                type: 'Divider'
+                            },
+                            {
+                                title: 'Document',
+                                icon: SvgIcon('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+                                onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, '-1', '/'))
+                            },
+                            {
+                                title: 'Whiteboard',
+                                icon: SvgIcon('cu3-icon-sidebarWhiteboards', '#151719', '18px', '18px'),
+                                onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, '-1', '/'))
+                            },
+                            {
+                                type: 'Divider'
+                            },
+                            {
+                                title: 'Folder',
+                                icon: SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
+                                onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, '-1', '/'))
+                            },
+                            {
+                                title: 'Smart Folder',
+                                icon: SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
+                                onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, '-1', '/'))
+                            },
+                            {
+                                title: 'Applet',
+                                icon: SvgIcon('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
+                                onClick: () => {
+                                    SelectAppletDialog.Show(workspaceId, appletId).then((applet) => {
+                                        createTreeItem({
+                                            documentId: applet.$id,
+                                            data: {
+                                                name: applet.name,
+                                                path: "/",
+                                                parent: '-1',
+                                                type: 'applet'
+                                            }
+                                        }, () => void 0)
+                                    });
+                                }
                             },
 
-                            {
-                                title: 'Applet settings',
-                                icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${appletId}/settings/general`)
-                            }
+
+
                         ]
 
-                    })
+
+                    },
+                    requestNavigation: () => {
+                        if (onItemSelected == null) {
+                            switch (item.type) {
+                                case 'folder':
+                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/folder/${item.$id}`);
+                                    break;
+                                case 'list':
+                                    navigate(`/app/${process(realm?.name)}-${workspaceId}/${process(applet)}-${appletId}/list/${item.$id}`);
+                                    break;
+                                case 'board':
+                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${item.parent}/view/${item.$id}`);
+                                    break;
+                                case 'document':
+                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/document/${item.$id}`);
+                                    break;
+                                case 'whiteboard':
+                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/whiteboard/${item.$id}`);
+                                    break;
+
+                            }
+                        } else {
+
+                            onItemSelected({
+                                workspaceId: workspaceId,
+                                appletId: appletId,
+                                item
+                            })
+                        }
+                    },
+
+                    requestEditMenu: () => [
+
+                        {
+                            title: 'Rename',
+                            icon: SvgIcon('svg-sprite-global__edit', '#151719', '18px', '18px'),
+                            onClick: () => setIsEditing(true)
+                        },
+
+                        {
+                            title: 'Applet settings',
+                            icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                            onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${appletId}/settings/general`)
+                        }
+                    ]
+
+                })
         )
     }
 }

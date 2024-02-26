@@ -33,22 +33,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dialogs/AddSpaceDialog */ "./src/dialogs/AddSpaceDialog.ts");
-/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/ui */ "@realmocean/ui");
-/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_ui__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dialogs/AddFolderDialog */ "./src/dialogs/AddFolderDialog.ts");
-/* harmony import */ var _dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialogs/AddListDialog */ "./src/dialogs/AddListDialog.ts");
-/* harmony import */ var _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialogs/AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
-/* harmony import */ var _dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialogs/AddWhiteboardDialog */ "./src/dialogs/AddWhiteboardDialog.ts");
-/* harmony import */ var _dialogs_AddBoardDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialogs/AddBoardDialog */ "./src/dialogs/AddBoardDialog.ts");
-/* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./resources/Icons */ "./src/resources/Icons.tsx");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @realmocean/ui */ "@realmocean/ui");
+/* harmony import */ var _realmocean_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_realmocean_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _dialogs_AddBoardDialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dialogs/AddBoardDialog */ "./src/dialogs/AddBoardDialog.ts");
+/* harmony import */ var _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialogs/AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
+/* harmony import */ var _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialogs/AddFolderDialog */ "./src/dialogs/AddFolderDialog.ts");
+/* harmony import */ var _dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialogs/AddListDialog */ "./src/dialogs/AddListDialog.ts");
+/* harmony import */ var _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialogs/AddSpaceDialog */ "./src/dialogs/AddSpaceDialog.ts");
+/* harmony import */ var _dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialogs/AddWhiteboardDialog */ "./src/dialogs/AddWhiteboardDialog.ts");
+/* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./resources/Icons */ "./src/resources/Icons.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -89,13 +89,13 @@ var __assign = (undefined && undefined.__assign) || function () {
 
 
 var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useListDocuments)(workspaceId, appletId, 'wm_tree', [
-        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.Query.equal('parent', parentId)
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, appletId, 'wm_tree', [
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.equal('parent', parentId)
     ]), items = _a.documents, isLoading = _a.isLoading;
     var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items)(function (item) {
         return item.type === 'applet' ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-            var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: item.$id }), applet = _a.document, isLoading = _a.isLoading;
+            var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: item.$id }), applet = _a.document, isLoading = _a.isLoading;
             return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)(applet['opa'])
                     .config(__assign(__assign({}, ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)() || {})), { appletId: applet.$id })));
@@ -104,14 +104,14 @@ var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, apple
                 title: item.name,
                 level: level,
                 nodeType: item.type,
-                isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getListId)() === item.$id || (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getDocumentId)() === item.$id || (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getViewId)() === item.$id,
+                isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_12__.getListId)() === item.$id || (0,_utils__WEBPACK_IMPORTED_MODULE_12__.getDocumentId)() === item.$id || (0,_utils__WEBPACK_IMPORTED_MODULE_12__.getViewId)() === item.$id,
                 subNode: function (nodeType) { return subNodes(TreeNode, level + 1, nodeType, item.$id, workspaceId, appletId, onItemSelected); },
                 requestIcon: function (nodeType, selected, expanded) {
                     switch (nodeType) {
                         case 'list':
                             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarList', selected ? '#7b68ee' : '#151719', '18px', '18px')).foregroundColor('#7C828D');
                         case 'board':
-                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_10__.BoardIcon).foregroundColor('#7C828D');
+                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_11__.BoardIcon).foregroundColor('#7C828D');
                         case 'folder':
                             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(expanded ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolder', '#151719', '18px', '18px')).foregroundColor('#7C828D');
                         default:
@@ -153,7 +153,7 @@ var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, apple
                                 {
                                     title: 'List',
                                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarList', '#151719', '18px', '18px'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_6__.AddListDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_8__.AddListDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     type: 'Divider'
@@ -161,12 +161,12 @@ var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, apple
                                 {
                                     title: 'Document',
                                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_7__.AddDocumentDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_6__.AddDocumentDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     title: 'Whiteboard',
                                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarWhiteboards', '#151719', '18px', '18px'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_8__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_10__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     type: 'Divider'
@@ -174,7 +174,7 @@ var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, apple
                                 {
                                     title: 'Folder',
                                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_5__.AddFolderDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_7__.AddFolderDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                             ];
                         case 'list':
@@ -185,38 +185,38 @@ var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, apple
                                 },
                                 {
                                     title: 'Table',
-                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_10__.TableIcon).foregroundColor('#7C828D'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_6__.AddListDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_11__.TableIcon).foregroundColor('#7C828D'),
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_8__.AddListDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     title: 'Board',
-                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_10__.BoardIcon).foregroundColor('#7C828D'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddBoardDialog__WEBPACK_IMPORTED_MODULE_9__.AddBoardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_11__.BoardIcon).foregroundColor('#7C828D'),
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddBoardDialog__WEBPACK_IMPORTED_MODULE_5__.AddBoardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     title: 'List',
-                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_10__.ListIcon).foregroundColor('#7C828D'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_8__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_11__.ListIcon).foregroundColor('#7C828D'),
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_10__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     title: 'Timeline',
-                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_10__.TimelineIcon).foregroundColor('#7C828D'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_8__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_11__.TimelineIcon).foregroundColor('#7C828D'),
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_10__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     title: 'Calendar',
-                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_10__.CalendarIcon).foregroundColor('#7C828D'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_8__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_11__.CalendarIcon).foregroundColor('#7C828D'),
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_10__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     title: 'Report',
-                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_10__.ReportIcon).foregroundColor('#7C828D'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_8__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_11__.ReportIcon).foregroundColor('#7C828D'),
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_10__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     title: 'Feed',
-                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_10__.FeedIcon).foregroundColor('#7C828D'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_8__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_11__.FeedIcon).foregroundColor('#7C828D'),
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_10__.AddWhiteboardDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                                 {
                                     type: 'Divider'
@@ -224,7 +224,7 @@ var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, apple
                                 {
                                     title: 'Folder',
                                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_5__.AddFolderDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                                    onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_7__.AddFolderDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                                 },
                             ];
                     }
@@ -233,6 +233,14 @@ var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, apple
             });
     })));
 }); };
+function process(value) {
+    if (_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.string(value)) {
+        return value == undefined ? '' : value.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase();
+    }
+    else {
+        return '';
+    }
+}
 var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
     __extends(WorkspaceTreeWidgetController, _super);
     function WorkspaceTreeWidgetController() {
@@ -244,10 +252,12 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var isLoading = false;
         var items = (this.props.data || {}).items;
         var _b = this.props.config || {}, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
-        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_3__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
-        var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getListId)();
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useUpdateDocument)(workspaceId).updateDocument;
-        var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useCreateDocument)(workspaceId, appletId, 'wm_tree').createDocument;
+        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_12__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
+        var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_12__.getListId)();
+        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(workspaceId).updateDocument;
+        var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useCreateDocument)(workspaceId, appletId, 'wm_tree').createDocument;
+        var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
+        var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }), applet = _d.document, isAppletLoading = _d.isLoading;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
             .config({
             node: item,
@@ -257,7 +267,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
             iconName: item.iconName,
             iconCategory: item.iconCategory,
             isEditing: isEditing,
-            isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.isAppletSettings)(appletId) || (0,_utils__WEBPACK_IMPORTED_MODULE_3__.isAppletOnly)(appletId),
+            isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_12__.isAppletSettings)(appletId) || (0,_utils__WEBPACK_IMPORTED_MODULE_12__.isAppletOnly)(appletId),
             editingChanged: function (status) { return setIsEditing(status); },
             titleChanged: function (title) {
                 updateDocument({
@@ -276,7 +286,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                             name: title
                         }
                     }, function () {
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_12__.EventBus.Default.fire('applet.added', { treeItem: item });
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: item });
                     });
                 });
             },
@@ -292,7 +302,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                     {
                         title: 'List',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarList', '#151719', '18px', '18px'),
-                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_6__.AddListDialog)(workspaceId, appletId, node.$id, '/')); }
+                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddListDialog__WEBPACK_IMPORTED_MODULE_8__.AddListDialog)(workspaceId, appletId, node.$id, '/')); }
                     },
                     {
                         type: 'Divider'
@@ -300,12 +310,12 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                     {
                         title: 'Document',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_7__.AddDocumentDialog)(workspaceId, appletId, '-1', '/')); }
+                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_6__.AddDocumentDialog)(workspaceId, appletId, '-1', '/')); }
                     },
                     {
                         title: 'Whiteboard',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarWhiteboards', '#151719', '18px', '18px'),
-                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_8__.AddWhiteboardDialog)(workspaceId, appletId, '-1', '/')); }
+                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddWhiteboardDialog__WEBPACK_IMPORTED_MODULE_10__.AddWhiteboardDialog)(workspaceId, appletId, '-1', '/')); }
                     },
                     {
                         type: 'Divider'
@@ -313,18 +323,18 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                     {
                         title: 'Folder',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_5__.AddFolderDialog)(workspaceId, appletId, '-1', '/')); }
+                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_7__.AddFolderDialog)(workspaceId, appletId, '-1', '/')); }
                     },
                     {
                         title: 'Smart Folder',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
-                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_2__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_5__.AddFolderDialog)(workspaceId, appletId, '-1', '/')); }
+                        onClick: function () { return _realmocean_ui__WEBPACK_IMPORTED_MODULE_3__.DynoDialog.Show((0,_dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_7__.AddFolderDialog)(workspaceId, appletId, '-1', '/')); }
                     },
                     {
                         title: 'Applet',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
                         onClick: function () {
-                            _celmino_ui__WEBPACK_IMPORTED_MODULE_11__.SelectAppletDialog.Show(workspaceId, appletId).then(function (applet) {
+                            _celmino_ui__WEBPACK_IMPORTED_MODULE_1__.SelectAppletDialog.Show(workspaceId, appletId).then(function (applet) {
                                 createTreeItem({
                                     documentId: applet.$id,
                                     data: {
@@ -338,6 +348,34 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                         }
                     },
                 ];
+            },
+            requestNavigation: function () {
+                if (onItemSelected == null) {
+                    switch (item.type) {
+                        case 'folder':
+                            navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/folder/").concat(item.$id));
+                            break;
+                        case 'list':
+                            navigate("/app/".concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet), "-").concat(appletId, "/list/").concat(item.$id));
+                            break;
+                        case 'board':
+                            navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
+                            break;
+                        case 'document':
+                            navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/document/").concat(item.$id));
+                            break;
+                        case 'whiteboard':
+                            navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/whiteboard/").concat(item.$id));
+                            break;
+                    }
+                }
+                else {
+                    onItemSelected({
+                        workspaceId: workspaceId,
+                        appletId: appletId,
+                        item: item
+                    });
+                }
             },
             requestEditMenu: function () { return [
                 {
@@ -356,7 +394,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
     return WorkspaceTreeWidgetController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
-_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveSpace', _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_1__.SaveSpaceAction);
+_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('saveSpace', _dialogs_AddSpaceDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSpaceAction);
 
 
 /***/ }),
@@ -844,9 +882,9 @@ var SaveListAction = function (formMeta, action) { return (0,_tuval_forms__WEBPA
                             documentId: list.$id,
                             data: {
                                 name: data.name,
-                                type: 'document',
+                                type: 'list',
                                 parent: data.parent,
-                                tree_widget: 'com.celmino.widget.document-management-tree',
+                                tree_widget: 'com.celmino.widget.workspace-tree',
                                 appletId: appletId,
                                 path: (new Date()).getTime().toString(),
                                 iconName: 'bell',

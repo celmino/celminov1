@@ -6097,14 +6097,14 @@ var LeftSideMenuView = function (selectedItem) {
                 ), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTrailing, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icons.Add).fontSize(14))
                         .cornerRadius(6)
                         .foregroundColor('#7c828d')
-                        .background({ default: '#e4e4e4', hover: '#e4e4e4' })
+                        .background({ default: '#e4e4e455', hover: '#e4e4e4' })
                         .allWidth(24).allHeight(24)
                         .onClick(function () {
                         _celmino_ui__WEBPACK_IMPORTED_MODULE_7__.SelectAppletDialog.Show(workspaceId);
                     }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icons.Drag).fontSize(14))
                         .cornerRadius(6)
                         .foregroundColor('#7c828d')
-                        .background({ default: '#e4e4e4', hover: '#e4e4e4' })
+                        .background({ default: isEditable ? '#e4e4e4' : '#e4e4e455', hover: '#e4e4e4' })
                         .allWidth(24).allHeight(24)
                         .onClick(function () {
                         setIsEditable(!isEditable);
@@ -8115,7 +8115,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 var EmptyView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 30 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d24d').fontSize(120)
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop, spacing: 30 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d24d').fontSize(120)
         .foregroundColor('#CFD6DE'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("No applet found")
         .fontFamily('Shadows Into Light Two,serif')
         .fontSize(25)

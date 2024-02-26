@@ -58,9 +58,9 @@ export const SaveListAction = (formMeta, action) => UIViewBuilder(() => {
                             documentId: list.$id,
                             data: {
                                 name: data.name,
-                                type: 'document',
+                                type: 'list',
                                 parent:data.parent,
-                                tree_widget: 'com.celmino.widget.document-management-tree',
+                                tree_widget: 'com.celmino.widget.workspace-tree',
                                 appletId,
                                 path: (new Date()).getTime().toString(),
                                 iconName: 'bell',

@@ -41,16 +41,13 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
                         }
                     },
                     (document) => {
-
-
-
                         createDocumentContent({
                             documentId: document.$id,
                             data: {
                                 content: ''
                             }
                         }, (document) => {
-
+                            
                             createWorkspaceTreeItem({
                                 documentId: document.$id,
                                 data: {
@@ -141,6 +138,11 @@ export const AddDocumentDialog = (workspaceId: string, appletId: string, parent:
                     "name": "path",
                     "type": "virtual",
                     "value": path
+                },
+                "viewer": {
+                    "name": "viewer",
+                    "type": "virtual",
+                    "value": "com.tuvalsoft.widget.editorjs"
                 },
                 /*   "description": {
                       "label": "Description",

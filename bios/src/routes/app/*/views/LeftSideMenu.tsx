@@ -452,7 +452,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         )
                                             .cornerRadius(6)
                                             .foregroundColor('#7c828d')
-                                            .background({ default: '#e4e4e4', hover: '#e4e4e4' })
+                                            .background({ default: '#e4e4e455', hover: '#e4e4e4' })
 
                                             .allWidth(24).allHeight(24)
                                             .onClick(() => {
@@ -464,7 +464,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         )
                                             .cornerRadius(6)
                                             .foregroundColor('#7c828d')
-                                            .background({ default: '#e4e4e4', hover: '#e4e4e4' })
+                                            .background({ default: isEditable ? '#e4e4e4': '#e4e4e455', hover: '#e4e4e4' })
 
                                             .allWidth(24).allHeight(24)
                                             .onClick(() => {

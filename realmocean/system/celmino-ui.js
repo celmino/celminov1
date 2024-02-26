@@ -3289,24 +3289,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Applets: () => (/* binding */ Applets)
 /* harmony export */ });
-/* harmony import */ var _applets_APQC__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applets/APQC */ "./src/applets/APQC.ts");
+/* harmony import */ var _applets_Activities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applets/Activities */ "./src/applets/Activities.ts");
 /* harmony import */ var _applets_AppletCategory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./applets/AppletCategory */ "./src/applets/AppletCategory.ts");
 /* harmony import */ var _applets_Divider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applets/Divider */ "./src/applets/Divider.ts");
 /* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
-/* harmony import */ var _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/InvestorsInTurkey */ "./src/applets/InvestorsInTurkey.ts");
-/* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
-/* harmony import */ var _applets_World__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/World */ "./src/applets/World.ts");
-
-
+/* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
 
 
 
 
 
 var Applets = [
-    _applets_InvestorsInTurkey__WEBPACK_IMPORTED_MODULE_4__.InvestorsInTurkey,
-    _applets_APQC__WEBPACK_IMPORTED_MODULE_0__.APQCApplet,
-    _applets_World__WEBPACK_IMPORTED_MODULE_6__.WorldApplet,
+    /*  InvestorsInTurkey,
+     APQCApplet,
+     WorldApplet, */
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -3315,7 +3311,7 @@ var Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3333,7 +3329,7 @@ var Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3351,7 +3347,7 @@ var Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3369,7 +3365,7 @@ var Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3387,7 +3383,7 @@ var Applets = [
         description: 'Educators can share educational materials, monitor student engagement, and collect feedback using this template.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3405,7 +3401,7 @@ var Applets = [
         description: 'Manage your produck development life circle.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3423,7 +3419,7 @@ var Applets = [
         description: 'Manage your produck development life circle.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3441,7 +3437,7 @@ var Applets = [
         description: 'Track Video stages and grouped tasks. Write your scripts, brainstorm ideas, and add notes. Calculate budget and never miss deadlines.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3459,7 +3455,7 @@ var Applets = [
         description: 'Track Video stages and grouped tasks. Write your scripts, brainstorm ideas, and add notes. Calculate budget and never miss deadlines.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3477,7 +3473,7 @@ var Applets = [
         description: 'Time to make your Feedback aggregation shine bright like a 💎',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3495,7 +3491,7 @@ var Applets = [
         description: 'Here you can aggregate feedback from different sources, manage conversations, and extract useful insights.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -3513,7 +3509,7 @@ var Applets = [
         description: 'Monitor your process details in timeframe chart.',
         image: '/images/applets/google_drive.svg',
         //icon: '\\d320',
-        enabled: true,
+        enabled: false,
         databases: [
             {
                 "name": "Customer Discovery",
@@ -7814,6 +7810,10 @@ var Applets = [
                                 "type": "string"
                             },
                             {
+                                "key": "viewer",
+                                "type": "string"
+                            },
+                            {
                                 "key": "icon_name",
                                 "type": "string"
                             },
@@ -8214,27 +8214,28 @@ var Applets = [
         enabled: true
     },
     _applets_Divider__WEBPACK_IMPORTED_MODULE_2__.AppletDivider,
-    _applets_Website__WEBPACK_IMPORTED_MODULE_5__.WebsiteApplet,
-    _applets_Emails__WEBPACK_IMPORTED_MODULE_3__.EmailsApplet
+    _applets_Website__WEBPACK_IMPORTED_MODULE_4__.WebsiteApplet,
+    _applets_Emails__WEBPACK_IMPORTED_MODULE_3__.EmailsApplet,
+    _applets_Activities__WEBPACK_IMPORTED_MODULE_0__.ActivitiesApplet
 ];
 
 
 /***/ }),
 
-/***/ "./src/applets/APQC.ts":
-/*!*****************************!*\
-  !*** ./src/applets/APQC.ts ***!
-  \*****************************/
+/***/ "./src/applets/Activities.ts":
+/*!***********************************!*\
+  !*** ./src/applets/Activities.ts ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   APQCApplet: () => (/* binding */ APQCApplet)
+/* harmony export */   ActivitiesApplet: () => (/* binding */ ActivitiesApplet)
 /* harmony export */ });
-var APQCApplet = {
-    name: 'APQC',
-    type: 'Data',
+var ActivitiesApplet = {
+    name: 'Activities',
+    type: 'Applet',
     tree_type: 'com.celmino.widget.custom-applet-tree',
     applet_type: 'com.celmino.applet.custom',
     description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
@@ -8365,91 +8366,6 @@ var EmailsApplet = {
 
 /***/ }),
 
-/***/ "./src/applets/InvestorsInTurkey.ts":
-/*!******************************************!*\
-  !*** ./src/applets/InvestorsInTurkey.ts ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   InvestorsInTurkey: () => (/* binding */ InvestorsInTurkey)
-/* harmony export */ });
-var InvestorsInTurkey = {
-    name: 'Investors In Turkey',
-    type: 'Data',
-    tree_type: 'com.celmino.widget.custom-applet-tree',
-    applet_type: 'com.celmino.applet.custom',
-    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
-    // image: '/images/applets/documents.png',
-    iconCategory: 'Icons',
-    iconName: 'bell',
-    icon: '\\d320',
-    iconBackColor: '#66B47C',
-    enabled: true,
-    databases: [
-        {
-            "name": "Investors In Turkey",
-            "id": "world",
-            "category": "app",
-            "collections": [
-                {
-                    "name": "Investers",
-                    "id": "investers",
-                    "attributes": [
-                        {
-                            "key": "name",
-                            "type": "string"
-                        },
-                        {
-                            "key": "investerType",
-                            "type": "string"
-                        },
-                        {
-                            "key": "location",
-                            "type": "string"
-                        },
-                        {
-                            "key": "link",
-                            "type": "string"
-                        }
-                    ],
-                    "documents": [
-                        {
-                            "name": "BUBA Campus",
-                            "investerType": 'Accelerator Fund',
-                            "location": "Istanbul / Turkey",
-                            "link": "https://www.bubacampus.com"
-                        },
-                        {
-                            "name": "Firewalk",
-                            "investerType": 'Accelerator Fund',
-                            "location": "Ankara / Turkey",
-                            "link": "https://firewalk.vc"
-                        },
-                        {
-                            "name": "Games United",
-                            "investerType": 'Accelerator Fund',
-                            "location": "Istanbul / Turkey",
-                            "link": "https://www.gamesunited.co"
-                        },
-                        {
-                            "name": "Growth Circuit Ventures",
-                            "investerType": 'Accelerator Fund',
-                            "location": "Ankara / Turkey",
-                            "link": "http://www.growthcircuit.co"
-                        }
-                    ]
-                },
-            ]
-        }
-    ]
-};
-
-
-/***/ }),
-
 /***/ "./src/applets/Website.ts":
 /*!********************************!*\
   !*** ./src/applets/Website.ts ***!
@@ -8477,42 +8393,6 @@ var WebsiteApplet = {
         {
             "name": "Website",
             "id": "applet_category",
-            "category": "app",
-            "collections": []
-        }
-    ]
-};
-
-
-/***/ }),
-
-/***/ "./src/applets/World.ts":
-/*!******************************!*\
-  !*** ./src/applets/World.ts ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   WorldApplet: () => (/* binding */ WorldApplet)
-/* harmony export */ });
-var WorldApplet = {
-    name: 'World',
-    type: 'Data',
-    tree_type: 'com.celmino.widget.custom-applet-tree',
-    applet_type: 'com.celmino.applet.custom',
-    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
-    // image: '/images/applets/documents.png',
-    iconCategory: 'Icons',
-    iconName: 'bell',
-    icon: '\\d320',
-    iconBackColor: '#66B47C',
-    enabled: true,
-    databases: [
-        {
-            "name": "World",
-            "id": "world",
             "category": "app",
             "collections": []
         }
@@ -8624,24 +8504,24 @@ var appletMenu = [
             { name: 'My applets', icon: 'User' }
         ]
     },
-    {
-        category: 'Data',
-        items: [
-            { name: 'All', icon: 'Data' },
-            { name: 'Design', icon: 'Design' },
-            { name: 'Development', icon: 'Development' },
-            { name: 'Finance', icon: 'Finance' },
-            { name: 'Health', icon: 'Health' }
-        ]
-    },
-    {
-        category: 'Solutions',
-        items: [
-            { name: 'All', icon: 'Data' },
-            { name: 'Design', icon: 'Design' },
-            { name: 'Development', icon: 'Development' }
-        ]
-    },
+    /*  {
+         category: 'Data',
+         items: [
+             { name: 'All', icon: 'Data' },
+             { name: 'Design', icon: 'Design' },
+             { name: 'Development', icon: 'Development' },
+             { name: 'Finance', icon: 'Finance' },
+             { name: 'Health', icon: 'Health' }
+         ]
+     },
+     {
+         category: 'Solutions',
+         items: [
+             { name: 'All', icon: 'Data' },
+             { name: 'Design', icon: 'Design' },
+             { name: 'Development', icon: 'Development' }
+         ]
+     }, */
 ];
 var SelectAppletDialog = /** @class */ (function (_super) {
     __extends(SelectAppletDialog, _super);
@@ -8696,194 +8576,195 @@ var SelectAppletDialog = /** @class */ (function (_super) {
             }), false)).height().marginBottom('var(--spacing-large)');
         })).padding('var(--spacing-medium)')
             .width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.filtered_opas)(function (opa) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(opa.image &&
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(opa.image).width(50).height(50).cornerRadius('20%')
-                    .filter(opa.type === 'Applet' ? 'grayscale(1)' : 'none'), opa.icon &&
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(opa.icon).fontSize(40).foregroundColor('rgb(109, 122, 131)')).width(50).height(50).cornerRadius('20%'), 
-            //.background(opa.iconBackColor || '#9A0707'),
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.type).fontSize('1.4rem').fontWeight('500').foregroundColor('hsl(205, 9%, 47%)')).height()
-            //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
-            , (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2))
-                .minHeight('4rem')
-                .height(), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Add'))
-                // .loading(isLoading && (opa.type === this.last_added_opa_type))
-                .disabled(!opa.enabled)
-                .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
-                .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
-                .loading(installingOpa === opa.type)
-                .width('100%')
-                .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
-                var _this = this;
-                return __generator(this, function (_a) {
-                    /*  this.SetValue('name', opa.name);
-                     this.SetValue('folder_id', this.folder_id);
-                     this.SetValue('space_id', this.space_id);
-                    this.SetValue('item_type', 'opa');
-                     this.SetValue('item_sub_type', opa.type);
-                     this.SetValue('app_id', 'com.tuvalsoft.app.workbench');
-                     this.SetValue('content', '')
+            return !opa.enabled ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(opa.image &&
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(opa.image).width(50).height(50).cornerRadius('20%')
+                        .filter(opa.type === 'Applet' ? 'grayscale(1)' : 'none'), opa.icon &&
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(opa.icon).fontSize(40).foregroundColor('rgb(109, 122, 131)')).width(50).height(50).cornerRadius('20%'), 
+                //.background(opa.iconBackColor || '#9A0707'),
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height()
+                //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
+                , (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2))
+                    .minHeight('4rem')
+                    .height(), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Add'))
+                    // .loading(isLoading && (opa.type === this.last_added_opa_type))
+                    .disabled(!opa.enabled)
+                    .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
+                    .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
+                    .loading(installingOpa === opa.type)
+                    .width('100%')
+                    .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
+                    var _this = this;
+                    return __generator(this, function (_a) {
+                        /*  this.SetValue('name', opa.name);
+                         this.SetValue('folder_id', this.folder_id);
+                         this.SetValue('space_id', this.space_id);
+                        this.SetValue('item_type', 'opa');
+                         this.SetValue('item_sub_type', opa.type);
+                         this.SetValue('app_id', 'com.tuvalsoft.app.workbench');
+                         this.SetValue('content', '')
 
-                     this.last_added_opa_type = opa.type; */
-                    /* fetch('./data.json')
-                    .then((response) => response.json())
-                    .then((json) => console.log(json)); */
-                    createDocument({
-                        data: {
-                            name: opa.name,
-                            opa: opa.tree_type,
-                            type: opa.applet_type,
-                            iconName: opa.iconName,
-                            iconCategory: opa.iconCategory,
-                            parent: this.parent
-                        }
-                    }, function (applet) { return __awaiter(_this, void 0, void 0, function () {
-                        var _loop_1, this_1, i;
-                        var _this = this;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0:
-                                    createWorkspaceTreeItem({
-                                        documentId: applet.$id,
-                                        data: {
-                                            name: opa.name,
-                                            type: 'applet',
-                                            tree_widget: opa.tree_type,
-                                            appletId: applet.$id,
-                                            parent: this.parent,
-                                            path: (new Date()).getTime().toString(),
-                                            iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
-                                            iconCategory: opa.iconCategory,
-                                        }
-                                    }, function (treeItem) {
-                                        _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: treeItem });
-                                    });
-                                    if (!opa.databases) return [3 /*break*/, 5];
-                                    setInstallingOpa(opa.type);
-                                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Client.setProject(this.workspaceId);
-                                    _loop_1 = function (i) {
-                                        var template, name_1, id, category, collections, db_1, _loop_2, j, error_1;
-                                        return __generator(this, function (_b) {
-                                            switch (_b.label) {
-                                                case 0:
-                                                    template = opa.databases[i];
-                                                    name_1 = template.name, id = template.id, category = template.category, collections = template.collections;
-                                                    _b.label = 1;
-                                                case 1:
-                                                    _b.trys.push([1, 7, , 8]);
-                                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(this_1.workspaceId, applet.$id, opa.name, category)];
-                                                case 2:
-                                                    db_1 = _b.sent();
-                                                    _loop_2 = function (j) {
-                                                        var collection, name_2, id_1, attributes, documents, col, i_1, _c, key, type, _d, defaultValue, _e, size, _f;
-                                                        return __generator(this, function (_g) {
-                                                            switch (_g.label) {
-                                                                case 0:
-                                                                    collection = collections[j];
-                                                                    name_2 = collection.name, id_1 = collection.id, attributes = collection.attributes, documents = collection.documents;
-                                                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(this_1.workspaceId, db_1.$id, id_1, name_2, [], false)];
-                                                                case 1:
-                                                                    col = _g.sent();
-                                                                    i_1 = 0;
-                                                                    _g.label = 2;
-                                                                case 2:
-                                                                    if (!(i_1 < attributes.length)) return [3 /*break*/, 12];
-                                                                    _c = attributes[i_1], key = _c.key, type = _c.type, _d = _c.defaultValue, defaultValue = _d === void 0 ? null : _d, _e = _c.size, size = _e === void 0 ? 255 : _e;
-                                                                    _f = type;
-                                                                    switch (_f) {
-                                                                        case 'string': return [3 /*break*/, 3];
-                                                                        case 'number': return [3 /*break*/, 5];
-                                                                        case 'datetime': return [3 /*break*/, 7];
-                                                                        case 'boolean': return [3 /*break*/, 9];
-                                                                    }
-                                                                    return [3 /*break*/, 11];
-                                                                case 3: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(this_1.workspaceId, db_1.$id, col.$id, key, size, false, '', false)];
-                                                                case 4:
-                                                                    _g.sent();
-                                                                    return [3 /*break*/, 11];
-                                                                case 5: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createIntegerAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false)];
-                                                                case 6:
-                                                                    _g.sent();
-                                                                    return [3 /*break*/, 11];
-                                                                case 7: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDatetimeAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false)];
-                                                                case 8:
-                                                                    _g.sent();
-                                                                    return [3 /*break*/, 11];
-                                                                case 9: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createBooleanAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false, defaultValue !== null && defaultValue !== void 0 ? defaultValue : false)];
-                                                                case 10:
-                                                                    _g.sent();
-                                                                    return [3 /*break*/, 11];
-                                                                case 11:
-                                                                    i_1++;
-                                                                    return [3 /*break*/, 2];
-                                                                case 12:
-                                                                    setTimeout(function () {
-                                                                        documents === null || documents === void 0 ? void 0 : documents.forEach(function (document) { return __awaiter(_this, void 0, void 0, function () {
-                                                                            var doc;
-                                                                            return __generator(this, function (_a) {
-                                                                                switch (_a.label) {
-                                                                                    case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(this.workspaceId, db_1.$id, col.$id, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.ID.unique(), document)];
-                                                                                    case 1:
-                                                                                        doc = _a.sent();
-                                                                                        console.log(doc);
-                                                                                        return [2 /*return*/];
-                                                                                }
-                                                                            });
-                                                                        }); });
-                                                                    }, 3000);
-                                                                    return [2 /*return*/];
-                                                            }
-                                                        });
-                                                    };
-                                                    j = 0;
-                                                    _b.label = 3;
-                                                case 3:
-                                                    if (!(j < collections.length)) return [3 /*break*/, 6];
-                                                    return [5 /*yield**/, _loop_2(j)];
-                                                case 4:
-                                                    _b.sent();
-                                                    _b.label = 5;
-                                                case 5:
-                                                    j++;
-                                                    return [3 /*break*/, 3];
-                                                case 6: return [3 /*break*/, 8];
-                                                case 7:
-                                                    error_1 = _b.sent();
-                                                    console.log(error_1);
-                                                    return [3 /*break*/, 8];
-                                                case 8: return [2 /*return*/];
-                                            }
-                                        });
-                                    };
-                                    this_1 = this;
-                                    i = 0;
-                                    _a.label = 1;
-                                case 1:
-                                    if (!(i < opa.databases.length)) return [3 /*break*/, 4];
-                                    return [5 /*yield**/, _loop_1(i)];
-                                case 2:
-                                    _a.sent();
-                                    _a.label = 3;
-                                case 3:
-                                    i++;
-                                    return [3 /*break*/, 1];
-                                case 4:
-                                    setInstallingOpa('');
-                                    this.OnOK(applet);
-                                    return [3 /*break*/, 6];
-                                case 5:
-                                    this.OnOK(applet);
-                                    _a.label = 6;
-                                case 6: return [2 /*return*/];
+                         this.last_added_opa_type = opa.type; */
+                        /* fetch('./data.json')
+                        .then((response) => response.json())
+                        .then((json) => console.log(json)); */
+                        createDocument({
+                            data: {
+                                name: opa.name,
+                                opa: opa.tree_type,
+                                type: opa.applet_type,
+                                iconName: opa.iconName,
+                                iconCategory: opa.iconCategory,
+                                parent: this.parent
                             }
-                        });
-                    }); });
-                    return [2 /*return*/];
-                });
-            }); })).height()).height(250).width(290)
-                .padding()
-                .shadow({ hover: 'var(--box-shadow-medium)' })
-                .cornerRadius('var(--border-radius-medium)')
-                .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding();
+                        }, function (applet) { return __awaiter(_this, void 0, void 0, function () {
+                            var _loop_1, this_1, i;
+                            var _this = this;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        createWorkspaceTreeItem({
+                                            documentId: applet.$id,
+                                            data: {
+                                                name: opa.name,
+                                                type: 'applet',
+                                                tree_widget: opa.tree_type,
+                                                appletId: applet.$id,
+                                                parent: this.parent,
+                                                path: (new Date()).getTime().toString(),
+                                                iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
+                                                iconCategory: opa.iconCategory,
+                                            }
+                                        }, function (treeItem) {
+                                            _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: treeItem });
+                                        });
+                                        if (!opa.databases) return [3 /*break*/, 5];
+                                        setInstallingOpa(opa.type);
+                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Client.setProject(this.workspaceId);
+                                        _loop_1 = function (i) {
+                                            var template, name_1, id, category, collections, db_1, _loop_2, j, error_1;
+                                            return __generator(this, function (_b) {
+                                                switch (_b.label) {
+                                                    case 0:
+                                                        template = opa.databases[i];
+                                                        name_1 = template.name, id = template.id, category = template.category, collections = template.collections;
+                                                        _b.label = 1;
+                                                    case 1:
+                                                        _b.trys.push([1, 7, , 8]);
+                                                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(this_1.workspaceId, applet.$id, opa.name, category)];
+                                                    case 2:
+                                                        db_1 = _b.sent();
+                                                        _loop_2 = function (j) {
+                                                            var collection, name_2, id_1, attributes, documents, col, i_1, _c, key, type, _d, defaultValue, _e, size, _f;
+                                                            return __generator(this, function (_g) {
+                                                                switch (_g.label) {
+                                                                    case 0:
+                                                                        collection = collections[j];
+                                                                        name_2 = collection.name, id_1 = collection.id, attributes = collection.attributes, documents = collection.documents;
+                                                                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(this_1.workspaceId, db_1.$id, id_1, name_2, [], false)];
+                                                                    case 1:
+                                                                        col = _g.sent();
+                                                                        i_1 = 0;
+                                                                        _g.label = 2;
+                                                                    case 2:
+                                                                        if (!(i_1 < attributes.length)) return [3 /*break*/, 12];
+                                                                        _c = attributes[i_1], key = _c.key, type = _c.type, _d = _c.defaultValue, defaultValue = _d === void 0 ? null : _d, _e = _c.size, size = _e === void 0 ? 255 : _e;
+                                                                        _f = type;
+                                                                        switch (_f) {
+                                                                            case 'string': return [3 /*break*/, 3];
+                                                                            case 'number': return [3 /*break*/, 5];
+                                                                            case 'datetime': return [3 /*break*/, 7];
+                                                                            case 'boolean': return [3 /*break*/, 9];
+                                                                        }
+                                                                        return [3 /*break*/, 11];
+                                                                    case 3: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(this_1.workspaceId, db_1.$id, col.$id, key, size, false, '', false)];
+                                                                    case 4:
+                                                                        _g.sent();
+                                                                        return [3 /*break*/, 11];
+                                                                    case 5: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createIntegerAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false)];
+                                                                    case 6:
+                                                                        _g.sent();
+                                                                        return [3 /*break*/, 11];
+                                                                    case 7: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDatetimeAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false)];
+                                                                    case 8:
+                                                                        _g.sent();
+                                                                        return [3 /*break*/, 11];
+                                                                    case 9: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createBooleanAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false, defaultValue !== null && defaultValue !== void 0 ? defaultValue : false)];
+                                                                    case 10:
+                                                                        _g.sent();
+                                                                        return [3 /*break*/, 11];
+                                                                    case 11:
+                                                                        i_1++;
+                                                                        return [3 /*break*/, 2];
+                                                                    case 12:
+                                                                        setTimeout(function () {
+                                                                            documents === null || documents === void 0 ? void 0 : documents.forEach(function (document) { return __awaiter(_this, void 0, void 0, function () {
+                                                                                var doc;
+                                                                                return __generator(this, function (_a) {
+                                                                                    switch (_a.label) {
+                                                                                        case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(this.workspaceId, db_1.$id, col.$id, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.ID.unique(), document)];
+                                                                                        case 1:
+                                                                                            doc = _a.sent();
+                                                                                            console.log(doc);
+                                                                                            return [2 /*return*/];
+                                                                                    }
+                                                                                });
+                                                                            }); });
+                                                                        }, 3000);
+                                                                        return [2 /*return*/];
+                                                                }
+                                                            });
+                                                        };
+                                                        j = 0;
+                                                        _b.label = 3;
+                                                    case 3:
+                                                        if (!(j < collections.length)) return [3 /*break*/, 6];
+                                                        return [5 /*yield**/, _loop_2(j)];
+                                                    case 4:
+                                                        _b.sent();
+                                                        _b.label = 5;
+                                                    case 5:
+                                                        j++;
+                                                        return [3 /*break*/, 3];
+                                                    case 6: return [3 /*break*/, 8];
+                                                    case 7:
+                                                        error_1 = _b.sent();
+                                                        console.log(error_1);
+                                                        return [3 /*break*/, 8];
+                                                    case 8: return [2 /*return*/];
+                                                }
+                                            });
+                                        };
+                                        this_1 = this;
+                                        i = 0;
+                                        _a.label = 1;
+                                    case 1:
+                                        if (!(i < opa.databases.length)) return [3 /*break*/, 4];
+                                        return [5 /*yield**/, _loop_1(i)];
+                                    case 2:
+                                        _a.sent();
+                                        _a.label = 3;
+                                    case 3:
+                                        i++;
+                                        return [3 /*break*/, 1];
+                                    case 4:
+                                        setInstallingOpa('');
+                                        this.OnOK(applet);
+                                        return [3 /*break*/, 6];
+                                    case 5:
+                                        this.OnOK(applet);
+                                        _a.label = 6;
+                                    case 6: return [2 /*return*/];
+                                }
+                            });
+                        }); });
+                        return [2 /*return*/];
+                    });
+                }); })).height()).height(250).width(290)
+                    .padding()
+                    .shadow({ hover: 'var(--box-shadow-medium)' })
+                    .cornerRadius('var(--border-radius-medium)')
+                    .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding();
         })).wrap('wrap').height()))));
     };
     SelectAppletDialog.Show = function (workspaceId, parent) {
