@@ -270,7 +270,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                 const [isSorting, setIsSorting] = useState(false);
 
                 const [isEditable, setIsEditable] = useState(false);
-                
+
 
                 let _hideHandle;
 
@@ -336,7 +336,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         }
                                                     })
                                             ).width(36).height(36)
-                                                .shadow('0px 1px 4px rgba(81,97,108,0.1), 0 0 0 1px rgba(229,232,235,0.5)')
+                                                //.shadow('0px 1px 4px rgba(81,97,108,0.1), 0 0 0 1px rgba(229,232,235,0.5)')
                                                 .cornerRadius(6),
                                             VStack({ alignment: cLeading })(
                                                 Text('REALM').fontSize('1rem'),
@@ -351,13 +351,14 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         )
                                             .height().cursor('pointer')
                                             .padding(cHorizontal, 10)
+                                            .padding(cVertical, 5)
                                             .background({ hover: '#E8EAED' })
                                             .cornerRadius(6)
 
                                     )(
                                         UIViewBuilder(() => {
 
-                                            
+
 
                                             const { realm }: { realm: Models.Realm } = useGetRealm({
                                                 realmId: workspaceId,
@@ -385,6 +386,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             Icon(SvgIcon('cu3-icon-settings')),
                                                             Text('Settings')
                                                         )
+                                                        .cursor('pointer')
                                                             .padding(5)
                                                             .height()
                                                     ).padding(5),
@@ -394,6 +396,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             Icon(SvgIcon('cu3-icon-settings')),
                                                             Text('Change Realm')
                                                         )
+                                                        .cursor('pointer')
                                                             .padding(5)
                                                             .height(),
                                                         ...ForEach(/* realms */[])(realm => (
@@ -476,7 +479,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         UIViewBuilder(() => {
                                             const params = useParams();
                                             const { deleteCache } = useDeleteCache(workspaceId);
-                                         
+
 
 
 
@@ -759,84 +762,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                 ).padding(cHorizontal, 8)
                                             )
                                         }
-                                        ),
-                                    HStack(
-                                        UIViewBuilder(() => {
-                                            const { createRealm } = useCreateRealm();
-                                            const { workspace_id } = useParams();
-                                            return (
-                                                HStack({ spacing: 5 })(
-                                                    //FontIcon(FontIcons.Add, 'sm', '#656f7d'),
-
-                                                    Text('New Applet').fontSize(11).fontWeight('500')
-
-
-                                                )
-                                                    .margin('5px 20px')
-                                                    .cornerRadius(5)
-                                                    .cursor('pointer')
-                                                    .foregroundColor('#7c828d')
-                                                    .background({ default: '#f3f4f7', hover: '#e4e4e4' })
-                                                    .height(24)
-                                                    .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                                                    .padding('8px 12px 8px 26px')
-                                                    .onClick(() => {
-                                                        DynoDialog.Show(AddAppletDialog(workspaceId));
-
-                                                    })
-                                            )
-                                        })
-                                    ).height(),
-
-                                    HStack(
-                                        UIViewBuilder(() => {
-                                            const { createDatabase } = useCreateDatabase(workspaceId);
-                                            return (
-                                                HStack({ spacing: 5 })(
-                                                    //FontIcon(FontIcons.Add, 'sm', '#656f7d'),
-                                                    Text('Install Applet').fontSize(11).fontWeight('500')
-                                                )
-                                                    .margin('5px 20px')
-                                                    .cornerRadius(5)
-                                                    .cursor('pointer')
-                                                    .foregroundColor('#7c828d')
-                                                    .background({ default: '#f3f4f7', hover: '#e4e4e4' })
-                                                    .height(24)
-                                                    .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                                                    .padding('8px 12px 8px 26px')
-                                                    .onClick(async () => {
-                                                        SelectAppletDialog.Show(workspaceId);
-                                                    })
-                                            )
-                                        })
-                                    ).height(),
-                                    HStack(
-                                        UIViewBuilder(() => {
-                                            const { createDatabase } = useCreateDatabase(workspaceId);
-                                            return (
-                                                HStack({ spacing: 5 })(
-                                                    //FontIcon(FontIcons.Add, 'sm', '#656f7d'),
-                                                    Text('Templates').fontSize(11).fontWeight('500')
-                                                )
-                                                    .margin('5px 20px')
-                                                    .cornerRadius(5)
-                                                    .cursor('pointer')
-                                                    .foregroundColor('#7c828d')
-                                                    .background({ default: '#f3f4f7', hover: '#e4e4e4' })
-                                                    .height(24)
-                                                    .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                                                    .padding('8px 12px 8px 26px')
-                                                    .onClick(async () => {
-                                                        SelectAppletDialog.Show(workspaceId);
-                                                    })
-                                            )
-                                        })
-                                    ).height(),
-
-
-
-
-
+                                        )
                                 )
 
                             )
