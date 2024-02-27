@@ -2517,4 +2517,148 @@ export declare const Icons: {
         tags: string[];
         icon: () => React.JSX.Element;
     };
+    "accessible-icon-alt": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    ban: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "closed-captioning": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "closed-captioning-slash": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    copyright: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "creative-commons-pd": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    mars: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "parking-circle": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "parking-square": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    registered: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    servicemark: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    trademark: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "trademark-circle": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    venus: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    wheelchair: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    airplay: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    backward: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "bolt-slash": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    boombox: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    camera: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "camera-change": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "camera-plus": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "clapper-board": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "compact-disc": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
 };

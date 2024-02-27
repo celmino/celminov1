@@ -6195,6 +6195,174 @@ var Icons = {
         icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m21.9 7.59-1-3.87a3 3 0 0 0-3.71-2.12l-1.93.52a1 1 0 0 0-.71 1.23l.26 1L4.19 7.16a1 1 0 0 0-.71 1.22l.26 1-1 .26a1 1 0 0 0 .25 2 1.09 1.09 0 0 0 .26 0l1-.27.26 1a1 1 0 0 0 .46.6 1 1 0 0 0 .5.14.75.75 0 0 0 .26 0L9 12.08v.42a2.9 2.9 0 0 0 .3 1.28l-5 5a1 1 0 0 0 1.41 1.42l5-5 .28.11v6.19a1 1 0 0 0 2 0v-6.18a2.52 2.52 0 0 0 .29-.12l5 5a1 1 0 1 0 1.41-1.42l-5-5A3.09 3.09 0 0 0 15 12.5v-2l1.35-.36.25 1a1 1 0 0 0 1 .74h.26l1.93-.52a3 3 0 0 0 2.11-3.77ZM13 12.5a1 1 0 0 1-.28.69 1 1 0 0 1-.69.28 1 1 0 0 1-.7-.29 1 1 0 0 1-.29-.7v-1L13 11Zm-6.81-1.74-.52-1.93 9.66-2.59.26 1 .26 1Zm13.68-1.9a1 1 0 0 1-.61.47l-1 .26-.78-2.9L17 4.76l-.26-1 1-.26a1 1 0 0 1 1.23.71l1 3.87a1 1 0 0 1-.1.78Z", id: "telescope" }))); }
     },
+    "accessible-icon-alt": {
+        category: 'brand logo',
+        name: 'accessible-icon-alt',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M16 7a2 2 0 1 0-2-2 2 2 0 0 0 2 2Zm-3.3 11.4A4 4 0 1 1 9.05 12a1 1 0 1 0-.22-2 6 6 0 0 0 .67 12 6 6 0 0 0 4.8-2.4 1 1 0 0 0-1.6-1.2Zm6.8 1.6h-1v-5a1 1 0 0 0-1-1h-4.57l1.69-4.66v-.31a1.1 1.1 0 0 0 0-.18 1.06 1.06 0 0 0 0-.19 1.4 1.4 0 0 0-.09-.17.72.72 0 0 0-.11-.15.64.64 0 0 0-.15-.13s0-.06-.08-.08L9.71 5.55h-.12a1.06 1.06 0 0 0-.19-.06H9a.8.8 0 0 0-.2.07h-.11L6 7.13A1 1 0 0 0 6.48 9 1 1 0 0 0 7 8.87l2.23-1.3 3.24 1.88-1.89 5.21a.88.88 0 0 0 0 .16.58.58 0 0 0 0 .18 3 3 0 0 0 .08.38l.11.15a.57.57 0 0 0 .11.16.67.67 0 0 0 .14.09 1.22 1.22 0 0 0 .19.12 1 1 0 0 0 .34.06h5v5a1 1 0 0 0 1 1h2a1 1 0 0 0 0-2Z", id: "accessible-icon-alt" }))); }
+    },
+    "ban": {
+        category: 'brand logo',
+        name: 'ban',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 0 1-8-8 7.92 7.92 0 0 1 1.69-4.9L16.9 18.31A7.92 7.92 0 0 1 12 20Zm6.31-3.1L7.1 5.69A7.92 7.92 0 0 1 12 4a8 8 0 0 1 8 8 7.92 7.92 0 0 1-1.69 4.9Z", id: "ban" }))); }
+    },
+    "closed-captioning": {
+        category: 'brand logo',
+        name: 'closed-captioning',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11.24 13.14a1 1 0 0 0-1.37.36 1 1 0 0 1-1.58.19A.93.93 0 0 1 8 13v-2a1 1 0 0 1 1.88-.48 1 1 0 0 0 1.37.34 1 1 0 0 0 .34-1.38 3.08 3.08 0 0 0-.46-.59A3 3 0 0 0 9 8a3 3 0 0 0-3 3v2a3 3 0 0 0 5.59 1.5 1 1 0 0 0-.35-1.36Zm6 0a1 1 0 0 0-1.37.36 1 1 0 0 1-1.58.19A.93.93 0 0 1 14 13v-2a1 1 0 0 1 1.88-.48 1 1 0 0 0 1.37.34 1 1 0 0 0 .34-1.38 3.08 3.08 0 0 0-.46-.59A3 3 0 0 0 15 8a3 3 0 0 0-3 3v2a3 3 0 0 0 5.59 1.5 1 1 0 0 0-.35-1.36ZM12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Z", id: "closed-captioning" }))); }
+    },
+    "closed-captioning-slash": {
+        category: 'brand logo',
+        name: 'closed-captioning-slash',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 0 1-8-8 7.92 7.92 0 0 1 1.69-4.9L7.2 8.61A3 3 0 0 0 6 11v2a3 3 0 0 0 5.59 1.5 1 1 0 1 0-1.72-1 1 1 0 0 1-1.58.19A.93.93 0 0 1 8 13v-2a1 1 0 0 1 .67-.92L12 13.46A3 3 0 0 0 14.54 16l2.36 2.36A7.92 7.92 0 0 1 12 20Zm6.31-3.1-1.52-1.52a2.94 2.94 0 0 0 .8-.88 1 1 0 1 0-1.72-1 1 1 0 0 1-.55.41L14 12.59V11a1 1 0 0 1 1.88-.48 1 1 0 0 0 1.37.34 1 1 0 0 0 .34-1.38 3.08 3.08 0 0 0-.46-.59A3 3 0 0 0 12 10.62l-.35-.35a1 1 0 0 0-.1-.79 3.08 3.08 0 0 0-.46-.59 2.94 2.94 0 0 0-1.67-.84L7.1 5.69A7.92 7.92 0 0 1 12 4a8 8 0 0 1 8 8 7.92 7.92 0 0 1-1.69 4.9Z", id: "closed-captioning-slash" }))); }
+    },
+    "copyright": {
+        category: 'brand logo',
+        name: 'copyright',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11 9h2a1 1 0 0 1 1 1 1 1 0 0 0 2 0 3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v4a3 3 0 0 0 3 3h2a3 3 0 0 0 3-3 1 1 0 0 0-2 0 1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1Zm1-7a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Z", id: "copyright" }))); }
+    },
+    "creative-commons-pd": {
+        category: 'brand logo',
+        name: 'creative-commons-pd',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 0 1-8-8 7.92 7.92 0 0 1 1.69-4.9l2.36 2.37A3.07 3.07 0 0 0 8 10v4a3 3 0 0 0 3 3h2a3 3 0 0 0 1.89-.69l2 2A7.92 7.92 0 0 1 12 20Zm-2-6v-2.59l3.46 3.46A.91.91 0 0 1 13 15h-2a1 1 0 0 1-1-1Zm8.31 2.9L16 14.53a3.07 3.07 0 0 0 0-.53 1 1 0 0 0-1-1 .91.91 0 0 0-.46.13l-4-4A.91.91 0 0 1 11 9h2a1 1 0 0 1 1 1 1 1 0 0 0 2 0 3 3 0 0 0-3-3h-2a3 3 0 0 0-1.89.69l-2-2A7.92 7.92 0 0 1 12 4a8 8 0 0 1 8 8 7.92 7.92 0 0 1-1.69 4.9Z", id: "creative-commons-pd" }))); }
+    },
+    "mars": {
+        category: 'brand logo',
+        name: 'mars',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M20.42 4.12a1 1 0 0 0-.54-.54 1 1 0 0 0-.38-.08h-4a1 1 0 0 0 0 2h1.59l-2.4 2.4a7 7 0 1 0 1.41 1.41l2.4-2.4V8.5a1 1 0 0 0 2 0v-4a1 1 0 0 0-.08-.38ZM14 17a5 5 0 1 1 0-7 5 5 0 0 1 0 7Z", id: "mars" }))); }
+    },
+    "parking-circle": {
+        category: 'parking-circle',
+        name: 'mars',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13 7h-3a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-2h2a3 3 0 0 0 3-3v-1a3 3 0 0 0-3-3Zm1 4a1 1 0 0 1-1 1h-2V9h2a1 1 0 0 1 1 1Zm-2-9a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Z", id: "parking-circle" }))); }
+    },
+    "parking-square": {
+        category: 'parking-circle',
+        name: 'parking-square',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 6H9a1 1 0 0 0-1 1v10a1 1 0 0 0 2 0v-3h2a4 4 0 0 0 0-8Zm0 6h-2V8h2a2 2 0 0 1 0 4Zm7-10H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1Z", id: "parking-square" }))); }
+    },
+    "registered": {
+        category: 'parking-circle',
+        name: 'registered',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm.5-13h-3a1 1 0 0 0-1 1v8a1 1 0 0 0 2 0v-2h2a1 1 0 0 1 1 1v1a1 1 0 0 0 2 0v-1a3 3 0 0 0-.78-2 3 3 0 0 0 .78-2v-1a3 3 0 0 0-3-3Zm1 4a1 1 0 0 1-1 1h-2V9h2a1 1 0 0 1 1 1Z", id: "registered" }))); }
+    },
+    "servicemark": {
+        category: 'parking-circle',
+        name: 'servicemark',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M5.5 9h4a1 1 0 0 0 0-2h-4a3 3 0 0 0 0 6h2a1 1 0 0 1 0 2h-4a1 1 0 0 0 0 2h4a3 3 0 0 0 0-6h-2a1 1 0 0 1 0-2Zm15.92-1.38a1 1 0 0 0-.54-.54 1 1 0 0 0-.76 0 1 1 0 0 0-.33.21L17 10.09l-2.79-2.8a1 1 0 0 0-.33-.21 1 1 0 0 0-.76 0 1 1 0 0 0-.54.54 1 1 0 0 0-.08.38v8a1 1 0 0 0 2 0v-5.59l1.79 1.8a1 1 0 0 0 1.42 0l1.79-1.8V16a1 1 0 0 0 2 0V8a1 1 0 0 0-.08-.38Z", id: "servicemark" }))); }
+    },
+    "trademark": {
+        category: 'parking-circle',
+        name: 'trademark',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M9.5 7h-6a1 1 0 0 0 0 2h2v7a1 1 0 0 0 2 0V9h2a1 1 0 0 0 0-2Zm11.92.62a1 1 0 0 0-.54-.54 1 1 0 0 0-.76 0 1 1 0 0 0-.33.21L17 10.09l-2.79-2.8a1 1 0 0 0-.33-.21 1 1 0 0 0-.76 0 1 1 0 0 0-.54.54 1 1 0 0 0-.08.38v8a1 1 0 0 0 2 0v-5.59l1.79 1.8a1 1 0 0 0 1.42 0l1.79-1.8V16a1 1 0 0 0 2 0V8a1 1 0 0 0-.08-.38Z", id: "trademark" }))); }
+    },
+    "trademark-circle": {
+        category: 'parking-circle',
+        name: 'trademark-circle',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10 9H7a1 1 0 0 0 0 2h.5v3a1 1 0 0 0 2 0v-3h.5a1 1 0 0 0 0-2Zm7.38.08a1 1 0 0 0-1.09.21L15 10.59l-1.29-1.3a1 1 0 0 0-1.09-.21A1 1 0 0 0 12 10v4a1 1 0 0 0 2 0v-1.59l.29.3a1 1 0 0 0 1.42 0l.29-.3V14a1 1 0 0 0 2 0v-4a1 1 0 0 0-.62-.92ZM12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Z", id: "trademark-circle" }))); }
+    },
+    "venus": {
+        category: 'parking-circle',
+        name: 'trademark-circle',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19 9a7 7 0 1 0-8 6.92V18h-1a1 1 0 0 0 0 2h1v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 0-2h-1v-2.08A7 7 0 0 0 19 9Zm-7 5a5 5 0 1 1 5-5 5 5 0 0 1-5 5Z", id: "venus" }))); }
+    },
+    "wheelchair": {
+        category: 'parking-circle',
+        name: 'wheelchair',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 6.5a2 2 0 1 0-2-2 2 2 0 0 0 2 2Zm7.5 14h-1v-5a1 1 0 0 0-1-1h-5v-2h5a1 1 0 0 0 0-2h-5v-2a1 1 0 0 0-2 0v7a1 1 0 0 0 1 1h5v5a1 1 0 0 0 1 1h2a1 1 0 0 0 0-2Zm-6.8-1.6a4 4 0 0 1-7.2-2.4 4 4 0 0 1 2.4-3.66A1 1 0 1 0 7.1 11a6 6 0 1 0 7.2 9.1 1 1 0 0 0-1.6-1.2Z", id: "wheelchair" }))); }
+    },
+    "airplay": {
+        category: 'parking-circle',
+        name: 'airplay',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12.83 13.45a1 1 0 0 0-1.66 0l-4 6a1 1 0 0 0 0 1A1 1 0 0 0 8 21h8a1 1 0 0 0 .88-.53 1 1 0 0 0-.05-1ZM9.87 19 12 15.8l2.13 3.2ZM19 3H5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h.85a1 1 0 1 0 0-2H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1h-.85a1 1 0 0 0 0 2H19a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Z", id: "airplay" }))); }
+    },
+    "backward": {
+        category: 'parking-circle',
+        name: 'backward',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M20.67 5.85a2.63 2.63 0 0 0-2.67 0l-4 2.3a2.67 2.67 0 0 0-4-2.31L3.33 9.69a2.67 2.67 0 0 0 0 4.62L10 18.16a2.66 2.66 0 0 0 2.67 0A2.65 2.65 0 0 0 14 15.85l4 2.31a2.69 2.69 0 0 0 1.33.36 2.61 2.61 0 0 0 1.34-.37 2.63 2.63 0 0 0 1.33-2.3v-7.7a2.63 2.63 0 0 0-1.33-2.3Zm-8.67 10a.66.66 0 0 1-.33.58.69.69 0 0 1-.67 0l-6.67-3.85a.67.67 0 0 1 0-1.16L11 7.57a.67.67 0 0 1 .67 0 .66.66 0 0 1 .33.58Zm8 0a.67.67 0 0 1-1 .57l-5-2.88v-3.08l5-2.88a.67.67 0 0 1 1 .57Z", id: "backward" }))); }
+    },
+    "bolt-slash": {
+        category: 'parking-circle',
+        name: 'bolt-slash',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8.67 4.23A1 1 0 0 0 9.6 4h5.1l-1.27 4.74a1 1 0 0 0 .17.87 1 1 0 0 0 .79.39H18l-1.13 1.24a1 1 0 0 0 .07 1.41 1 1 0 0 0 .67.26 1 1 0 0 0 .74-.33L21 9.67A1 1 0 0 0 20.23 8h-4.54L17 3.26a1 1 0 0 0-.18-.87A1 1 0 0 0 16 2H9a1 1 0 0 0-1 .74V3a1 1 0 0 0 .67 1.23Zm13 16.06-18-18a1 1 0 0 0-1.38 1.42L6.61 8l-1.26 4.74a1 1 0 0 0 .18.87 1 1 0 0 0 .79.39h3.84l-1.81 6.74a1 1 0 0 0 .49 1.14 1 1 0 0 0 .48.12 1 1 0 0 0 .74-.33l4.85-5.34 5.38 5.38a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42ZM7.62 12l.63-2.34L10.59 12Zm3.73 5.28 1-3.56 1.2 1.19Z", id: "bolt-slash" }))); }
+    },
+    "boombox": {
+        category: 'parking-circle',
+        name: 'boombox',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M17 2H7a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1Zm-3.62-8.2A3 3 0 0 0 15 9a3 3 0 0 0-6 0 3 3 0 0 0 .62 1.8 4 4 0 1 0 4.76 0ZM12 8a1 1 0 1 1-1 1 1 1 0 0 1 1-1Zm0 8a2 2 0 1 1 2-2 2 2 0 0 1-2 2Z", id: "boombox" }))); }
+    },
+    "camera": {
+        category: 'parking-circle',
+        name: 'camera',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19 6.5h-1.28l-.32-1a3 3 0 0 0-2.84-2H9.44A3 3 0 0 0 6.6 5.55l-.32 1H5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-8a3 3 0 0 0-3-3.05Zm1 11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h2a1 1 0 0 0 1-.68l.54-1.64a1 1 0 0 1 .95-.68h5.12a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .9.68h2a1 1 0 0 1 1 1Zm-8-9a4 4 0 1 0 4 4 4 4 0 0 0-4-4Zm0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2Z", id: "camera" }))); }
+    },
+    "camera-change": {
+        category: 'parking-circle',
+        name: 'camera-change',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", "data-name": "Layer 1", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m12.29 5.21 1.5 1.5a1 1 0 0 0 1.42 0 1 1 0 0 0 .13-1.21H19a1 1 0 0 0 0-2h-3.66a1 1 0 0 0-.13-1.21 1 1 0 0 0-1.42 0l-1.5 1.5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33Zm10.63 3.91a1 1 0 0 0-.21-.33l-1.5-1.5a1 1 0 0 0-1.42 0 1 1 0 0 0-.13 1.21H16a1 1 0 0 0 0 2h3.66a1 1 0 0 0 .13 1.21 1 1 0 0 0 1.42 0l1.5-1.5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76ZM11 10a4 4 0 1 0 4 4 4 4 0 0 0-4-4Zm0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2Zm9-3a1 1 0 0 0-1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h2a1 1 0 0 0 1-.69l.54-1.62a1 1 0 0 1 .9-.69H10a1 1 0 0 0 0-2H8.44a3 3 0 0 0-2.85 2.06L5.28 8H4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-5a1 1 0 0 0-1-1Z", id: "camera-change" }))); }
+    },
+    "camera-plus": {
+        category: 'parking-circle',
+        name: 'camera-plus',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M20 10.5a1 1 0 0 0-1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h2a1 1 0 0 0 1-.68l.54-1.64a1 1 0 0 1 .95-.68H14a1 1 0 0 0 0-2H8.44A3 3 0 0 0 5.6 6.55l-.32 1H4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-7a1 1 0 0 0-1-1.05Zm-9-1a4 4 0 1 0 4 4 4 4 0 0 0-4-4Zm0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2Zm11-11h-1v-1a1 1 0 0 0-2 0v1h-1a1 1 0 0 0 0 2h1v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 0-2Z", id: "camera-plus" }))); }
+    },
+    "clapper-board": {
+        category: 'parking-circle',
+        name: 'clapper-board',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M19 2H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm-2.91 2-4 4H7.91l4-4ZM4 5a1 1 0 0 1 1-1h4.09l-4 4H4Zm16 14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11h-5.09l4-4H19a1 1 0 0 1 1 1Z", id: "clapper-board" }))); }
+    },
+    "compact-disc": {
+        category: 'parking-circle',
+        name: 'compact-disc',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8Zm0-11a3 3 0 1 0 3 3 3 3 0 0 0-3-3Zm0 4a1 1 0 1 1 1-1 1 1 0 0 1-1 1Z", id: "compact-disc" }))); }
+    }
 };
 
 
