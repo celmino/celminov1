@@ -2,6 +2,7 @@ import { UIController, UIRoute, UIRoutes, UIView, UIViewBuilder, VStack } from "
 import { AppletController } from "./+controller";
 import { CollectionController } from "./collection-[collectionId]/+controller";
 import { SettingsController } from "./settings/+controller";
+import { GeneralSettingsController } from "./settings/general/+controller";
 
 
 export class RouteController extends UIController {
@@ -22,7 +23,10 @@ export class RouteController extends UIController {
                             UIRoute(':view_id', ViewController),
                             UIRoute(':view_id/*', ViewController) */
                         ),
-                        UIRoute('/settings', SettingsController)
+                        UIRoute('/settings', SettingsController).children(
+                            //UIRoute('features', FeatureSettingsController),
+                            UIRoute('general', GeneralSettingsController)
+                        )
                     )
                 )
                     .background('var(--primary-background-color)')

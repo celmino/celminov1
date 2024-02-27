@@ -3291,9 +3291,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _applets_Activities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applets/Activities */ "./src/applets/Activities.ts");
 /* harmony import */ var _applets_AppletCategory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./applets/AppletCategory */ "./src/applets/AppletCategory.ts");
-/* harmony import */ var _applets_Divider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applets/Divider */ "./src/applets/Divider.ts");
-/* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
-/* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
+/* harmony import */ var _applets_Dashboards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applets/Dashboards */ "./src/applets/Dashboards.ts");
+/* harmony import */ var _applets_Divider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/Divider */ "./src/applets/Divider.ts");
+/* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
+/* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
+
 
 
 
@@ -3303,6 +3305,7 @@ var Applets = [
     /*  InvestorsInTurkey,
      APQCApplet,
      WorldApplet, */
+    _applets_Dashboards__WEBPACK_IMPORTED_MODULE_2__.DashboardsApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -8160,7 +8163,7 @@ var Applets = [
         enabled: true
     },
     {
-        name: 'Work Mining',
+        name: 'Data Mining',
         type: 'Applet',
         tree_type: 'com.tuvalsoft.opa.task',
         description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
@@ -8213,9 +8216,9 @@ var Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
-    _applets_Divider__WEBPACK_IMPORTED_MODULE_2__.AppletDivider,
-    _applets_Website__WEBPACK_IMPORTED_MODULE_4__.WebsiteApplet,
-    _applets_Emails__WEBPACK_IMPORTED_MODULE_3__.EmailsApplet,
+    _applets_Divider__WEBPACK_IMPORTED_MODULE_3__.AppletDivider,
+    _applets_Website__WEBPACK_IMPORTED_MODULE_5__.WebsiteApplet,
+    _applets_Emails__WEBPACK_IMPORTED_MODULE_4__.EmailsApplet,
     _applets_Activities__WEBPACK_IMPORTED_MODULE_0__.ActivitiesApplet
 ];
 
@@ -8294,6 +8297,42 @@ var AppletCategory = {
 
 /***/ }),
 
+/***/ "./src/applets/Dashboards.ts":
+/*!***********************************!*\
+  !*** ./src/applets/Dashboards.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DashboardsApplet: () => (/* binding */ DashboardsApplet)
+/* harmony export */ });
+var DashboardsApplet = {
+    name: 'Dashboards',
+    type: 'Applet',
+    tree_type: 'com.celmino.widget.custom-applet-tree',
+    applet_type: 'com.celmino.applet.custom',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Dashboards",
+            "id": "world",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
 /***/ "./src/applets/Divider.ts":
 /*!********************************!*\
   !*** ./src/applets/Divider.ts ***!
@@ -8342,7 +8381,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   EmailsApplet: () => (/* binding */ EmailsApplet)
 /* harmony export */ });
 var EmailsApplet = {
-    name: 'Emails',
+    name: 'Messaging',
     type: 'Applet',
     tree_type: 'com.celmino.widget.applet-category',
     applet_type: 'com.celmino.applet.category',
@@ -8931,7 +8970,19 @@ var colors = [
     '#8EC351',
     '#FBA32F',
     '#FC551F',
-    '#B04E31'
+    '#B04E31',
+    '#8077F1',
+    '#6A85FF',
+    '#40A6E5',
+    '#3FB1B2',
+    '#64C6A2',
+    '#F9BE34',
+    '#E78845',
+    '#DC646A',
+    '#F17EAD',
+    '#C580E6',
+    '#BBA399',
+    '#595D66'
 ];
 var ColorSelect = function (_a) {
     var onSelect = _a.onSelect;

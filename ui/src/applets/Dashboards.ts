@@ -1,19 +1,21 @@
-export const EmailsApplet = {
-    name: 'Messaging',
+
+
+export const DashboardsApplet = {
+    name: 'Dashboards',
     type: 'Applet',
-    tree_type: 'com.celmino.widget.applet-category',
-    applet_type: 'com.celmino.applet.category',
+    tree_type: 'com.celmino.widget.custom-applet-tree',
+    applet_type: 'com.celmino.applet.custom',
     description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d339',
+    icon: '\\d320',
     iconBackColor: '#66B47C',
     enabled: true,
     databases: [
         {
-            "name": "Emails",
-            "id": "applet_category",
+            "name": "Dashboards",
+            "id": "world",
             "category": "app",
             "collections": []
         }

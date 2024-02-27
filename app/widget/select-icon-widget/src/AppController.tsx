@@ -16,12 +16,13 @@ import {
 import { useGetAccount, useGetTenantAccounts } from '@celmino/directoryprotocol';
 import { Convert, is } from '@tuval/core';
 import { useClickAway } from "@uidotdev/usehooks";
-import { CuIcons, Icons } from './Icons';
+import {  Icons } from './Icons';
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 import React from 'react';
 import { SegmentedRenderer } from '@realmocean/antd';
 import { SystemIcons } from './SystemIcons';
+import { CuIcons } from './CuIcons';
 
 function hexToRgb(hex) {
     // Remove '#' if present
@@ -111,7 +112,7 @@ export class MyTestController extends UIController {
                         (selectedCategory === 'Icons' && selectedIcon) ?
                             Icon(Icons[selectedIcon]?.icon).width('100%').height('100%') : Fragment(),
                         (selectedCategory === 'CuIcons' && selectedIcon) ?
-                            Icon(CuIcons[selectedIcon]?.icon).width('100%').height('100%') : Fragment(),
+                            Icon(CuIcons[selectedIcon]?.icon).width(`${Convert.ToInt32(width * ratio * .7)}px`).height(`${Convert.ToInt32(height * ratio * .7)}px`) : Fragment(),
                         (selectedCategory === 'Emoji' && selectedIcon) ?
                             Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment()
                     )
@@ -122,6 +123,8 @@ export class MyTestController extends UIController {
                     .foregroundColor(foregroundColor)
                     .cornerRadius(5)
                     .background(selectedCategory === 'Emoji' ? '' : backgroundColor)
+                    
+
                 :
                 PopupButton(
                     HStack(
@@ -131,9 +134,9 @@ export class MyTestController extends UIController {
                             (selectedCategory === 'SvgIcon' && selectedIcon) ?
                                 Icon(SvgIcon(selectedIcon)) : Fragment(),
                             (selectedCategory === 'Icons' && selectedIcon) ?
-                                Icon(Icons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
+                                Icon(Icons[selectedIcon]?.icon).width('100%').height('100%') : Fragment(),
                             (selectedCategory === 'CuIcons' && selectedIcon) ?
-                                Icon(CuIcons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
+                                Icon(CuIcons[selectedIcon]?.icon).width(`${Convert.ToInt32(width * ratio *0.7)}px`).height(`${Convert.ToInt32(height * ratio * 0.7)}px`) : Fragment(),
                             (selectedCategory === 'Emoji' && selectedIcon) ?
                                 Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment()
                         )
@@ -217,8 +220,8 @@ export class MyTestController extends UIController {
                                             .width()
                                             .height()
                                             .cornerRadius(4)
-                                            .background({ hover: '#E8EAED' })
-                                            .foregroundColor({ hover: 'blue' })
+                                            .background({ hover: backgroundColor })
+                                            .foregroundColor({ default: foregroundColor })
                                             .padding(5)
                                             .onClick(() => {
                                                 if (is.function(onChange)) {

@@ -1,6 +1,6 @@
 import React from "react";
 export declare const TestIcon: () => React.JSX.Element;
-export declare const CuIcons: {
+export declare const _CuIcons: {
     "address-book": {
         category: string;
         name: string;

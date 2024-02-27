@@ -1,6 +1,7 @@
 import { APQCApplet } from "./applets/APQC";
 import { ActivitiesApplet } from "./applets/Activities";
 import { AppletCategory } from "./applets/AppletCategory";
+import { DashboardsApplet } from "./applets/Dashboards";
 import { AppletDivider } from "./applets/Divider";
 import { EmailsApplet } from "./applets/Emails";
 import { InvestorsInTurkey } from "./applets/InvestorsInTurkey";
@@ -12,6 +13,7 @@ export const Applets = [
     /*  InvestorsInTurkey,
      APQCApplet,
      WorldApplet, */
+     DashboardsApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -4978,7 +4980,7 @@ export const Applets = [
         enabled: true
     },
     {
-        name: 'Work Mining',
+        name: 'Data Mining',
         type: 'Applet',
         tree_type: 'com.tuvalsoft.opa.task',
         description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',

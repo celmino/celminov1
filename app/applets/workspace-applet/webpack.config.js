@@ -77,6 +77,7 @@ const umdConfig = {
         '@realmocean/antd': 'realmocean$antd',
         
 
+        '@celmino/ui': 'celmino$ui',
 
         'react': 'tuval$react',
         'react-dom/client': 'tuval$react$dom',
