@@ -99,6 +99,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         const typeAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false);
                                         const iconName = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false);
                                         const iconCategory = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false);
+                                        const themeColor = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false,'-1');
 
                                         //Tree Collection Creating
                                         const treeCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree');

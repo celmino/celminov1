@@ -2391,4 +2391,130 @@ export declare const Icons: {
         tags: string[];
         icon: () => React.JSX.Element;
     };
+    "diary-alt": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    dna: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    flask: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "flask-potion": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "game-structure": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "graduation-cap": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    medal: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "meeting-board": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    notebooks: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    notes: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    podium: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    presentation: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "presentation-check": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "presentation-edit": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "presentation-lines": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "presentation-minus": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "presentation-play": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "presentation-plus": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    "presentation-times": {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    robot: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
+    telescope: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
 };

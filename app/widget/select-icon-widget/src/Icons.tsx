@@ -3317,7 +3317,7 @@ export const Icons = {
         name: 'Book',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
         icon: () => (
-            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" viewBox="0 0 24 24"><path d="M15 6H9a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Zm-1 4h-4V8h4Zm3-8H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H6V4h11a1 1 0 0 1 1 1Z" id="book"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M15 6H9a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Zm-1 4h-4V8h4Zm3-8H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H6V4h11a1 1 0 0 1 1 1Z" id="book"></path></svg>
         )
     },
 
@@ -3326,7 +3326,7 @@ export const Icons = {
         name: 'Book Alt',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
         icon: () => (
-            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" viewBox="0 0 24 24"><path d="M15 6H9a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Zm-1 4h-4V8h4Zm3-8H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H6V4h11a1 1 0 0 1 1 1Z" id="book"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M15 6H9a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1Zm-1 4h-4V8h4Zm3-8H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H6V4h11a1 1 0 0 1 1 1Z" id="book"></path></svg>
         )
     },
 
@@ -3366,6 +3366,179 @@ export const Icons = {
         )
     },
 
+    "diary-alt": {
+        category: 'brand logo',
+        name: 'diary-alt',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M17 2H5a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h12a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3ZM8 20H6V4h2Zm10-1a1 1 0 0 1-1 1h-7V4h7a1 1 0 0 1 1 1Z" id="diary-alt"></path></svg>)
+    },
+    "dna": {
+        category: 'brand logo',
+        name: 'diary-alt',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.2 13.73a1 1 0 0 0-1.41-.05A11.18 11.18 0 0 0 4 22a1 1 0 0 0 2 0 9.15 9.15 0 0 1 3.15-6.86 1 1 0 0 0 .05-1.41Zm10.17 4.64a10.86 10.86 0 0 0-1.6-3A14.31 14.31 0 0 0 14.06 12C16.3 10.57 20 7.4 20 2a1 1 0 0 0-2 0c0 5.4-4.59 8.17-6 8.89A13.42 13.42 0 0 1 9.31 9H12a1 1 0 0 0 0-2H7.55a9.39 9.39 0 0 1-1-2H15a1 1 0 0 0 0-2H6.06A8.14 8.14 0 0 1 6 2a1 1 0 0 0-2 0c0 7.57 7.3 10.79 7.61 10.92A12.93 12.93 0 0 1 14.7 15H12a1 1 0 0 0 0 2h4.43a9.07 9.07 0 0 1 1 2H9a1 1 0 0 0 0 2h8.94a8.26 8.26 0 0 1 .06 1 1 1 0 0 0 2 0 10.5 10.5 0 0 0-.22-2.19 9.23 9.23 0 0 0-.41-1.44Z" id="dna"></path></svg>
+    },
+    "flask": {
+        category: 'brand logo',
+        name: 'diary-alt',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M20.11 17.49 15 8.73V4h1a1 1 0 0 0 0-2H8a1 1 0 0 0 0 2h1v4.73l-5.11 8.76A3 3 0 0 0 6.48 22h11a3 3 0 0 0 2.59-4.51Zm-9.25-8A1 1 0 0 0 11 9V4h2v5a1 1 0 0 0 .14.5L14 11h-4Zm7.52 10a1 1 0 0 1-.86.5h-11a1 1 0 0 1-.86-.5 1 1 0 0 1 0-1L8.83 13h6.35l3.2 5.5a1 1 0 0 1 0 1ZM10 15a1 1 0 1 0 1 1 1 1 0 0 0-1-1Zm4 1a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z" id="flask"></path></svg>
+    },
+    "flask-potion": {
+        category: 'brand logo',
+        name: 'flask-potion',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () =>
+        (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M18.93 11.67a.42.42 0 0 0 0-.1A7.4 7.4 0 0 0 15 7.62V4h1a1 1 0 0 0 0-2H8a1 1 0 0 0 0 2h1v3.62a7.4 7.4 0 0 0-3.89 4 .42.42 0 0 0 0 .1 7.5 7.5 0 1 0 13.86 0Zm-8.62-2.41a1 1 0 0 0 .69-.95V4h2v4.31a1 1 0 0 0 .69.95A5.43 5.43 0 0 1 16.23 11H7.77a5.43 5.43 0 0 1 2.54-1.74ZM12 20a5.51 5.51 0 0 1-5.5-5.5 5.34 5.34 0 0 1 .22-1.5h10.56a5.34 5.34 0 0 1 .22 1.5A5.51 5.51 0 0 1 12 20Zm2-4a1 1 0 1 0 1 1 1 1 0 0 0-1-1Zm-4-1a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z" id="flask-potion"></path></svg>
+        )
+    },
+    "game-structure": {
+        category: 'brand logo',
+        name: 'game-structure',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M21 18h-2v-3a1 1 0 0 0-1-1h-5v-2.71l1.13.59a1 1 0 0 0 1.45-1.05l-.4-2.37 1.72-1.69a1 1 0 0 0 .26-1 1 1 0 0 0-.81-.68L14 4.72l-1.1-2.16a1 1 0 0 0-1.8 0L10 4.72l-2.39.35a1 1 0 0 0-.81.68 1 1 0 0 0 .26 1l1.76 1.71-.4 2.37a1 1 0 0 0 1.45 1.05l1.13-.59V14H6a1 1 0 0 0-1 1v3H3a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1h4v1a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1H7v-2h10v2h-2a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1h4v1a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1Zm-9-9.37a1 1 0 0 0-.47.12l-.8.42.15-.9a1 1 0 0 0-.29-.88l-.65-.64.9-.13a1 1 0 0 0 .76-.54l.4-.82.4.82a1 1 0 0 0 .76.54l.9.13-.65.64a1 1 0 0 0-.29.88l.15.9-.8-.42a1 1 0 0 0-.47-.12Z" id="game-structure"></path></svg>
+        )
+    },
+    "graduation-cap": {
+        category: 'brand logo',
+        name: 'graduation-cap',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="m21.49 10.19-1-.55-9-5h-.11a1.06 1.06 0 0 0-.19-.06h-.37a1.17 1.17 0 0 0-.2.06h-.11l-9 5a1 1 0 0 0 0 1.74L4 12.76v4.74a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-4.74l2-1.12v2.86a1 1 0 0 0 2 0v-3.44a1 1 0 0 0-.51-.87ZM16 17.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-3.63l4.51 2.5.15.06h.09a1 1 0 0 0 .25 0 1 1 0 0 0 .25 0h.09a.47.47 0 0 0 .15-.06l4.51-2.5Zm-5-3.14L4.06 10.5 11 6.64l6.94 3.86Z" id="graduation-cap"></path></svg>
+        )
+    },
+    "medal": {
+        category: 'brand logo',
+        name: 'medal',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M21.38 5.76a1 1 0 0 0-.47-.61l-5.2-3a1 1 0 0 0-1.37.36L12 6.57 9.66 2.51a1 1 0 0 0-1.37-.36l-5.2 3a1 1 0 0 0-.47.61 1 1 0 0 0 .1.75l4 6.83A5.91 5.91 0 0 0 6 16a6 6 0 1 0 11.34-2.72l3.9-6.76a1 1 0 0 0 .14-.76ZM5 6.38l3.46-2L11.68 10A5.94 5.94 0 0 0 8 11.58ZM12 20a4 4 0 0 1-4-4 4 4 0 0 1 4-4 4 4 0 1 1 0 8Zm4-8.45a5.9 5.9 0 0 0-1.86-1.15l-.98-1.83 2.42-4.19 3.46 2Z" id="medal"></path></svg>
+        )
+    },
+    "meeting-board": {
+        category: 'brand logo',
+        name: 'meeting-board',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M7 10h2a1 1 0 0 0 0-2H7a1 1 0 0 0 0 2Zm14-6h-8V3a1 1 0 0 0-2 0v1H3a1 1 0 0 0-1 1v10a3 3 0 0 0 3 3h4.59l-2.3 2.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l2.29-2.3V21a1 1 0 0 0 2 0v-1.59l2.29 2.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42L14.41 18H19a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1Zm-1 11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6h16ZM7 14h6a1 1 0 0 0 0-2H7a1 1 0 0 0 0 2Z" id="meeting-board"></path></svg>
+        )
+    },
+    "notebooks": {
+        category: 'brand logo',
+        name: 'notebooks',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M21 6a1 1 0 0 0-1 1v10a3 3 0 0 1-3 3H7a1 1 0 0 0 0 2h10a5 5 0 0 0 5-5V7a1 1 0 0 0-1-1Zm-3 9V5a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3ZM10 4h2v4.86l-.36-.3a1 1 0 0 0-1.28 0l-.36.3ZM4 15V5a1 1 0 0 1 1-1h3v7a1 1 0 0 0 1.65.76L11 10.63l1.35 1.13A1 1 0 0 0 13 12a1.06 1.06 0 0 0 .42-.09A1 1 0 0 0 14 11V4h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z" id="notebooks"></path></svg>
+        )
+    },
+    "notes": {
+        category: 'brand logo',
+        name: 'notes',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M16 14H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2Zm0-4h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2Zm4-6h-3V3a1 1 0 0 0-2 0v1h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H4a1 1 0 0 0-1 1v14a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1Zm-1 15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2v1a1 1 0 0 0 2 0V6h2Z" id="notes"></path></svg>
+        )
+    },
+    "podium": {
+        category: 'brand logo',
+        name: 'podium',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M19.79 7.13a1 1 0 0 0-.79-.38H8v-.5a2 2 0 0 1 1.46-1.92 1.5 1.5 0 0 0 1 .42h1a1.5 1.5 0 0 0 0-3h-1a1.49 1.49 0 0 0-1.17.57A4 4 0 0 0 6 6.25v.5H5a1 1 0 0 0-.79.38A1 1 0 0 0 4 8l.62 2.49a3 3 0 0 0 2.48 2.22l.78 7H7a1 1 0 0 0 0 2h10a1 1 0 0 0 0-2h-.88l.78-7a3 3 0 0 0 2.45-2.23L20 8a1 1 0 0 0-.21-.87ZM14.1 19.75H9.9l-.78-7h5.76ZM17.41 10a1 1 0 0 1-1 .76H7.56a1 1 0 0 1-1-.76l-.28-1.25h11.44Z" id="podium"></path></svg>
+        )
+    },
+    "presentation": {
+        category: 'brand logo',
+        name: 'presentation',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M21 14h-1V4h1a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2h1v10H3a1 1 0 0 0 0 2h8v1.15l-4.55 3A1 1 0 0 0 7 22a.94.94 0 0 0 .55-.17L11 19.55V21a1 1 0 0 0 2 0v-1.45l3.45 2.28A.94.94 0 0 0 17 22a1 1 0 0 0 .55-1.83l-4.55-3V16h8a1 1 0 0 0 0-2Zm-3 0H6V4h12Z" id="presentation"></path></svg>
+        )
+    },
+    "presentation-check": {
+        category: 'brand logo',
+        name: 'presentation-check',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M10.29 11.71a1 1 0 0 0 1.42 0l4-4a1 1 0 1 0-1.42-1.42L11 9.59l-1.29-1.3a1 1 0 0 0-1.42 1.42ZM21 14h-1V4h1a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2h1v10H3a1 1 0 0 0 0 2h8v1.15l-4.55 3A1 1 0 0 0 7 22a.94.94 0 0 0 .55-.17L11 19.55V21a1 1 0 0 0 2 0v-1.45l3.45 2.28A.94.94 0 0 0 17 22a1 1 0 0 0 .55-1.83l-4.55-3V16h8a1 1 0 0 0 0-2Zm-3 0H6V4h12Z" id="presentation-check"></path></svg>
+        )
+    },
+    "presentation-edit": {
+        category: 'brand logo',
+        name: 'presentation-edit',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.41 13h2.42a1 1 0 0 0 .71-.29l3.58-3.58a1 1 0 0 0 0-1.41l-2.42-2.4a1 1 0 0 0-1.41 0L8.71 8.9a1 1 0 0 0-.3.7V12a1 1 0 0 0 1 1Zm1-3L13 7.44l1 1L11.42 11h-1ZM21 14h-1V4h1a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2h1v10H3a1 1 0 0 0 0 2h8v1.15l-4.55 3A1 1 0 0 0 7 22a.94.94 0 0 0 .55-.17L11 19.55V21a1 1 0 0 0 2 0v-1.45l3.45 2.28A.94.94 0 0 0 17 22a1 1 0 0 0 .55-1.83l-4.55-3V16h8a1 1 0 0 0 0-2Zm-3 0H6V4h12Z" id="presentation-edit"></path></svg>
+        )
+    },
+    "presentation-lines": {
+        category: 'brand logo',
+        name: 'presentation-lines',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M10.17 10.55a1 1 0 0 0 .73.45 1 1 0 0 0 .81-.29l1.13-1.14 1.33 2A1 1 0 0 0 15 12a.94.94 0 0 0 .55-.17 1 1 0 0 0 .28-1.38l-2-3A1 1 0 0 0 13.1 7a1 1 0 0 0-.81.29l-1.13 1.14-1.33-2a1 1 0 1 0-1.66 1.1ZM21 14h-1V4h1a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2h1v10H3a1 1 0 0 0 0 2h8v1.15l-4.55 3A1 1 0 0 0 7 22a.94.94 0 0 0 .55-.17L11 19.55V21a1 1 0 0 0 2 0v-1.45l3.45 2.28A.94.94 0 0 0 17 22a1 1 0 0 0 .55-1.83l-4.55-3V16h8a1 1 0 0 0 0-2Zm-3 0H6V4h12Z" id="presentation-lines-alt"></path></svg>
+        )
+    },
+    "presentation-minus": {
+        category: 'brand logo',
+        name: 'presentation-minus',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M10 10h4a1 1 0 0 0 0-2h-4a1 1 0 0 0 0 2Zm11 4h-1V4h1a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2h1v10H3a1 1 0 0 0 0 2h8v1.15l-4.55 3A1 1 0 0 0 7 22a.94.94 0 0 0 .55-.17L11 19.55V21a1 1 0 0 0 2 0v-1.45l3.45 2.28A.94.94 0 0 0 17 22a1 1 0 0 0 .55-1.83l-4.55-3V16h8a1 1 0 0 0 0-2Zm-3 0H6V4h12Z" id="presentation-minus"></path></svg>
+        )
+    },
+    "presentation-play": {
+        category: 'brand logo',
+        name: 'presentation-play',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M21 14h-1V4h1a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2h1v10H3a1 1 0 0 0 0 2h8v1.15l-4.55 3A1 1 0 0 0 7 22a.94.94 0 0 0 .55-.17L11 19.55V21a1 1 0 0 0 2 0v-1.45l3.45 2.28A.94.94 0 0 0 17 22a1 1 0 0 0 .55-1.83l-4.55-3V16h8a1 1 0 0 0 0-2Zm-3 0H6V4h12Zm-8.39-1.74a1.73 1.73 0 0 0 1.76 0l3-1.74a1.76 1.76 0 0 0 0-3l-3-1.74a1.73 1.73 0 0 0-1.76 0 1.71 1.71 0 0 0-.87 1.52v3.48a1.71 1.71 0 0 0 .87 1.48Zm1.13-4.58L13 9l-2.28 1.32Z" id="presentation-play"></path></svg>
+        )
+    },
+    "presentation-plus": {
+        category: 'brand logo',
+        name: 'presentation-plus',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M21 14h-1V4h1a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2h1v10H3a1 1 0 0 0 0 2h8v1.15l-4.55 3A1 1 0 0 0 7 22a.94.94 0 0 0 .55-.17L11 19.55V21a1 1 0 0 0 2 0v-1.45l3.45 2.28A.94.94 0 0 0 17 22a1 1 0 0 0 .55-1.83l-4.55-3V16h8a1 1 0 0 0 0-2Zm-3 0H6V4h12Zm-8-4h1v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 0-2h-1V7a1 1 0 0 0-2 0v1h-1a1 1 0 0 0 0 2Z" id="presentation-plus"></path></svg>
+        )
+    },
+    "presentation-times": {
+        category: 'brand logo',
+        name: 'presentation-times',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.29 11.71a1 1 0 0 0 1.42 0l1.29-1.3 1.29 1.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 9l1.3-1.29a1 1 0 1 0-1.42-1.42L12 7.59l-1.29-1.3a1 1 0 0 0-1.42 1.42L10.59 9l-1.3 1.29a1 1 0 0 0 0 1.42ZM21 14h-1V4h1a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2h1v10H3a1 1 0 0 0 0 2h8v1.15l-4.55 3A1 1 0 0 0 7 22a.94.94 0 0 0 .55-.17L11 19.55V21a1 1 0 0 0 2 0v-1.45l3.45 2.28A.94.94 0 0 0 17 22a1 1 0 0 0 .55-1.83l-4.55-3V16h8a1 1 0 0 0 0-2Zm-3 0H6V4h12Z" id="presentation-times"></path></svg>
+        )
+    },
+
+    "robot": {
+        category: 'brand logo',
+        name: 'robot',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" viewBox="0 0 24 24"><path d="M9 15a1 1 0 1 0 1 1 1 1 0 0 0-1-1Zm-7-1a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1Zm20 0a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-1-1Zm-5-7h-4V5.72A2 2 0 0 0 14 4a2 2 0 0 0-4 0 2 2 0 0 0 1 1.72V7H7a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3Zm-3.28 2-.5 2h-2.44l-.5-2ZM18 19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1h1.22L9 12.24a1 1 0 0 0 1 .76h4a1 1 0 0 0 1-.76L15.78 9H17a1 1 0 0 1 1 1Zm-3-4a1 1 0 1 0 1 1 1 1 0 0 0-1-1Z" id="robot"></path></svg>
+        )
+    },
+    "telescope": {
+        category: 'brand logo',
+        name: 'telescope',
+        tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
+        icon: () => (
+            <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" viewBox="0 0 24 24"><path d="m21.9 7.59-1-3.87a3 3 0 0 0-3.71-2.12l-1.93.52a1 1 0 0 0-.71 1.23l.26 1L4.19 7.16a1 1 0 0 0-.71 1.22l.26 1-1 .26a1 1 0 0 0 .25 2 1.09 1.09 0 0 0 .26 0l1-.27.26 1a1 1 0 0 0 .46.6 1 1 0 0 0 .5.14.75.75 0 0 0 .26 0L9 12.08v.42a2.9 2.9 0 0 0 .3 1.28l-5 5a1 1 0 0 0 1.41 1.42l5-5 .28.11v6.19a1 1 0 0 0 2 0v-6.18a2.52 2.52 0 0 0 .29-.12l5 5a1 1 0 1 0 1.41-1.42l-5-5A3.09 3.09 0 0 0 15 12.5v-2l1.35-.36.25 1a1 1 0 0 0 1 .74h.26l1.93-.52a3 3 0 0 0 2.11-3.77ZM13 12.5a1 1 0 0 1-.28.69 1 1 0 0 1-.69.28 1 1 0 0 1-.7-.29 1 1 0 0 1-.29-.7v-1L13 11Zm-6.81-1.74-.52-1.93 9.66-2.59.26 1 .26 1Zm13.68-1.9a1 1 0 0 1-.61.47l-1 .26-.78-2.9L17 4.76l-.26-1 1-.26a1 1 0 0 1 1.23.71l1 3.87a1 1 0 0 1-.1.78Z" id="telescope"></path></svg>
+        )
+    },
+
+
     
-    
+
+
+
+
+
+
+
 }

@@ -81,7 +81,7 @@ export class GeneralSettingsController extends UIFormController {
                                     })
                                 },
                                 selectedIcon: applet?.iconName,
-                                color: applet?.bg_color,
+                                color: applet?.themeColor,
                                 selectedCategory: applet?.iconCategory,
                                 width: 32,
                                 height: 32
@@ -98,21 +98,42 @@ export class GeneralSettingsController extends UIFormController {
                 )
                     .height()
                     .margin('0 0 30px'),
-                Text('asdffds'),
-                ColorSelect({
-                    onSelect: (color) => {
-                        updateDocument({
-                            databaseId: 'workspace',
-                            collectionId: 'ws_tree',
-                            documentId: appletId,
-                            data: {
-                                iconColor: color
-                            }
-                        }, (item) => {
-                            EventBus.Default.fire('applet.added', { treeItem: item })
-                        })
-                    }
-                }).width(200)
+                HStack({ alignment: cLeading, spacing: 10 })(
+                    HStack({ alignment: cLeading })(
+                        Text('Theme Color')
+                            .fontSize(16).fontWeight('600')
+                            .foregroundColor('rgb(42, 46, 52)')
+                            .lineHeight(32),
+                    ).height().width(300),
+                    ColorSelect({
+                        onSelect: (color) => {
+
+                            updateDocument({
+                                databaseId: 'workspace',
+                                collectionId: 'applets',
+                                documentId: appletId,
+                                data: {
+                                    themeColor: color
+                                }
+                            }, () => {
+                                updateDocument({
+                                    databaseId: 'workspace',
+                                    collectionId: 'ws_tree',
+                                    documentId: appletId,
+                                    data: {
+                                        iconColor: color
+                                    }
+                                }, (item) => {
+                                    EventBus.Default.fire('applet.added', { treeItem: item })
+                                })
+                            })
+
+
+                        }
+                    }).width(500)
+                )
+                    .height()
+                    .margin('0 0 30px'),
 
 
 

@@ -41110,7 +41110,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
                 });
             },
             selectedIcon: applet === null || applet === void 0 ? void 0 : applet.iconName,
-            color: applet === null || applet === void 0 ? void 0 : applet.bg_color,
+            color: applet === null || applet === void 0 ? void 0 : applet.themeColor,
             selectedCategory: applet === null || applet === void 0 ? void 0 : applet.iconCategory,
             width: 32,
             height: 32
@@ -41120,20 +41120,34 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             .cornerRadius(6)
             .padding(4)
             //.background('#FCE8E8')
-            .width(44).height(44).cornerRadius(5), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('asdffds'), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.ColorSelect)({
+            .width(44).height(44).cornerRadius(5))
+            .height()
+            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Theme Color')
+            .fontSize(16).fontWeight('600')
+            .foregroundColor('rgb(42, 46, 52)')
+            .lineHeight(32)).height().width(300), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.ColorSelect)({
             onSelect: function (color) {
                 updateDocument({
                     databaseId: 'workspace',
-                    collectionId: 'ws_tree',
+                    collectionId: 'applets',
                     documentId: appletId,
                     data: {
-                        iconColor: color
+                        themeColor: color
                     }
-                }, function (item) {
-                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
+                }, function () {
+                    updateDocument({
+                        databaseId: 'workspace',
+                        collectionId: 'ws_tree',
+                        documentId: appletId,
+                        data: {
+                            iconColor: color
+                        }
+                    }, function (item) {
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
+                    });
                 });
             }
-        }))
+        }).width(500))
             .height()
             .margin('0 0 30px'))
             .padding('24px 48px'));

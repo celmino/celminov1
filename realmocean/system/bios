@@ -8058,7 +8058,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                         name: workspaceName,
                         organizationId: organization === null || organization === void 0 ? void 0 : organization.$id,
                     }, function (workspace) { return __awaiter(void 0, void 0, void 0, function () {
-                        var database, appletCol, nameAttr, parent, opaAttr, typeAttr, iconName, iconCategory, treeCol;
+                        var database, appletCol, nameAttr, parent, opaAttr, typeAttr, iconName, iconCategory, themeColor, treeCol;
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace')];
@@ -8085,32 +8085,35 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false)];
                                 case 8:
                                     iconCategory = _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree')];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1')];
                                 case 9:
+                                    themeColor = _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree')];
+                                case 10:
                                     treeCol = _a.sent();
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false)];
-                                case 10:
-                                    _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false)];
                                 case 11:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false)];
                                 case 12:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false)];
                                 case 13:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false)];
                                 case 14:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
                                 case 15:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
                                 case 16:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
                                 case 17:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
+                                case 18:
                                     _a.sent();
                                     navigate("/app/workspace/".concat(workspace.$id));
                                     return [2 /*return*/];
