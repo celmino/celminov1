@@ -729,7 +729,7 @@ export declare const Icons: {
         tags: string[];
         icon: () => React.JSX.Element;
     };
-    ccalender: {
+    calender: {
         category: string;
         name: string;
         tags: string[];

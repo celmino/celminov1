@@ -18,3 +18,7 @@ export class SelectAppletDialog extends DialogView {
     static Show(workspaceId: string, parent?: string): Promise<any>;
 }
 
+export const ColorSelect: ({ onSelect }: {
+    onSelect: any;
+}) => import("@tuval/forms").HStackClass;
+

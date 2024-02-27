@@ -36,7 +36,7 @@ function hexToRgb(hex) {
     return [r, g, b];
 }
 
-const ratio = .7;
+const ratio = .8;
 export class MyTestController extends UIController {
     public override LoadView(): UIView {
         let _hideHandle;
@@ -56,7 +56,7 @@ export class MyTestController extends UIController {
             height = 36,
             padding = 5,
             tooltip = '',
-            iconColor = null,
+            color,
             //  backgroundColor = 'transparent',
             readonly = false } = this.props.config || {};
 
@@ -65,16 +65,14 @@ export class MyTestController extends UIController {
         let backgroundColor;
         let foregroundColor;
 
-        if (iconColor == null) {
+        if (color == null || color === '-1') {
             backgroundColor = 'transparent';
             foregroundColor = '#79858F';
         } else {
             try {
-                backgroundColor = 'transparent';
-                foregroundColor = '#79858F';
-                /*      const [r, g, b] = hexToRgb(iconColor);
-                     backgroundColor = `rgba(${r},${g},${b},${.15})`;
-                     foregroundColor = `rgba(${r},${g},${b},${.95})`; */
+                const [r, g, b] = hexToRgb(color);
+                backgroundColor = `rgba(${r},${g},${b},${.15})`;
+                foregroundColor = `rgba(${r},${g},${b},${.95})`;
             } catch (e) {
                 backgroundColor = 'transparent';
                 foregroundColor = '#79858F';
@@ -107,13 +105,13 @@ export class MyTestController extends UIController {
                 HStack(
                     HStack(
                         (selectedCategory === 'SystemIcons' && selectedIcon) ?
-                            Icon(SvgIcon(SystemIcons[selectedIcon])) : Fragment(),
+                            Icon(SystemIcons[selectedIcon]?.icon).width(`100%`).height(`100%`) : Fragment(),
                         (selectedCategory === 'SvgIcons' && selectedIcon) ?
-                            Icon(SvgIcon(selectedIcon)) : Fragment(),
+                            Icon(SvgIcon(selectedIcon, foregroundColor, `${Convert.ToInt32(width * ratio)}px`, `${Convert.ToInt32(height * ratio)}px`)) : Fragment(),
                         (selectedCategory === 'Icons' && selectedIcon) ?
-                            Icon(Icons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
+                            Icon(Icons[selectedIcon]?.icon).width('100%').height('100%') : Fragment(),
                         (selectedCategory === 'CuIcons' && selectedIcon) ?
-                            Icon(CuIcons[selectedIcon]?.icon).width('100').height('100%') : Fragment(),
+                            Icon(CuIcons[selectedIcon]?.icon).width('100%').height('100%') : Fragment(),
                         (selectedCategory === 'Emoji' && selectedIcon) ?
                             Text(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : Fragment()
                     )

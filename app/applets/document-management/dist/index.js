@@ -41033,6 +41033,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_4__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -41048,6 +41050,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -41117,7 +41120,20 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             .cornerRadius(6)
             .padding(4)
             //.background('#FCE8E8')
-            .width(44).height(44).cornerRadius(5))
+            .width(44).height(44).cornerRadius(5), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('asdffds'), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.ColorSelect)({
+            onSelect: function (color) {
+                updateDocument({
+                    databaseId: 'workspace',
+                    collectionId: 'ws_tree',
+                    documentId: appletId,
+                    data: {
+                        iconColor: color
+                    }
+                }, function (item) {
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('applet.added', { treeItem: item });
+                });
+            }
+        }))
             .height()
             .margin('0 0 30px'))
             .padding('24px 48px'));
@@ -42658,6 +42674,17 @@ module.exports = {
         'PMThreadWorker': 'ThreadWorker.ts'
     } */
 }
+
+/***/ }),
+
+/***/ "@celmino/ui":
+/*!*****************************!*\
+  !*** external "celmino$ui" ***!
+  \*****************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = celmino$ui;
 
 /***/ }),
 

@@ -3093,36 +3093,34 @@ function hexToRgb(hex) {
     var b = bigint & 255;
     return [r, g, b];
 }
-var ratio = .7;
+var ratio = .8;
 var MyTestController = /** @class */ (function (_super) {
     __extends(MyTestController, _super);
     function MyTestController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyTestController.prototype.LoadView = function () {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f;
         var _hideHandle;
         var light = 0.812;
         var dark = 0.188;
         //#E72065
-        var _f = this.props.config || {}, selectedIcon = _f.selectedIcon, selectedCategory = _f.selectedCategory, _g = _f.onChange, onChange = _g === void 0 ? void 0 : _g, _h = _f.width, width = _h === void 0 ? 36 : _h, _j = _f.height, height = _j === void 0 ? 36 : _j, _k = _f.padding, padding = _k === void 0 ? 5 : _k, _l = _f.tooltip, tooltip = _l === void 0 ? '' : _l, _m = _f.iconColor, iconColor = _m === void 0 ? null : _m, 
+        var _g = this.props.config || {}, selectedIcon = _g.selectedIcon, selectedCategory = _g.selectedCategory, _h = _g.onChange, onChange = _h === void 0 ? void 0 : _h, _j = _g.width, width = _j === void 0 ? 36 : _j, _k = _g.height, height = _k === void 0 ? 36 : _k, _l = _g.padding, padding = _l === void 0 ? 5 : _l, _m = _g.tooltip, tooltip = _m === void 0 ? '' : _m, color = _g.color, 
         //  backgroundColor = 'transparent',
-        _o = _f.readonly, 
+        _o = _g.readonly, 
         //  backgroundColor = 'transparent',
         readonly = _o === void 0 ? false : _o;
         var backgroundColor;
         var foregroundColor;
-        if (iconColor == null) {
+        if (color == null || color === '-1') {
             backgroundColor = 'transparent';
             foregroundColor = '#79858F';
         }
         else {
             try {
-                backgroundColor = 'transparent';
-                foregroundColor = '#79858F';
-                /*      const [r, g, b] = hexToRgb(iconColor);
-                     backgroundColor = `rgba(${r},${g},${b},${.15})`;
-                     foregroundColor = `rgba(${r},${g},${b},${.95})`; */
+                var _p = hexToRgb(color), r = _p[0], g = _p[1], b = _p[2];
+                backgroundColor = "rgba(".concat(r, ",").concat(g, ",").concat(b, ",").concat(.15, ")");
+                foregroundColor = "rgba(".concat(r, ",").concat(g, ",").concat(b, ",").concat(.95, ")");
             }
             catch (e) {
                 backgroundColor = 'transparent';
@@ -3137,17 +3135,17 @@ var MyTestController = /** @class */ (function (_super) {
         /*    useEffect(() => {
                setSelectedAccountId(this.props.config.selectedAccountId);
            }, [this.props.config.selectedAccountId]) */
-        var _p = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isOpen = _p[0], setIsOpen = _p[1];
-        var _q = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((_a = this.props.config.selectedCategory) !== null && _a !== void 0 ? _a : 'Icons'), mode = _q[0], setMode = _q[1];
+        var _q = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isOpen = _q[0], setIsOpen = _q[1];
+        var _r = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((_a = this.props.config.selectedCategory) !== null && _a !== void 0 ? _a : 'Icons'), mode = _r[0], setMode = _r[1];
         var ref = (0,_uidotdev_usehooks__WEBPACK_IMPORTED_MODULE_2__.useClickAway)(function () {
             setIsOpen(false);
         });
         return (readonly ?
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SystemIcons' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(_SystemIcons__WEBPACK_IMPORTED_MODULE_7__.SystemIcons[selectedIcon])) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'SvgIcons' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(selectedIcon)) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Icons' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_b = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _b === void 0 ? void 0 : _b.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_c = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _c === void 0 ? void 0 : _c.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_b = _SystemIcons__WEBPACK_IMPORTED_MODULE_7__.SystemIcons[selectedIcon]) === null || _b === void 0 ? void 0 : _b.icon).width("100%").height("100%") : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'SvgIcons' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(selectedIcon, foregroundColor, "".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(width * ratio), "px"), "".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(height * ratio), "px"))) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Icons' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_c = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _c === void 0 ? void 0 : _c.icon).width('100%').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_d = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _d === void 0 ? void 0 : _d.icon).width('100%').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
                 .allWidth(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(width * ratio)).allHeight(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(height * ratio))).allWidth(width).allHeight(height).padding(padding)
                 // .background('#40BC86')
@@ -3158,8 +3156,8 @@ var MyTestController = /** @class */ (function (_super) {
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((selectedCategory === 'SystemIcons' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(_SystemIcons__WEBPACK_IMPORTED_MODULE_7__.SystemIcons[selectedIcon])) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'SvgIcon' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(selectedIcon)) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Icons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_d = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _d === void 0 ? void 0 : _d.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_e = _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons[selectedIcon]) === null || _e === void 0 ? void 0 : _e.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'CuIcons' && selectedIcon) ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((_f = _Icons__WEBPACK_IMPORTED_MODULE_3__.CuIcons[selectedIcon]) === null || _f === void 0 ? void 0 : _f.icon).width('100').height('100%') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (selectedCategory === 'Emoji' && selectedIcon) ?
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(selectedIcon).fontSize(width > 20 ? width * 0.70 : width) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
                     .allWidth(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(width * ratio)).allHeight(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(height * ratio))).allWidth(width).allHeight(height).padding(padding)
                     // .background('#40BC86')
@@ -4108,7 +4106,7 @@ var Icons = {
         icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", viewBox: "0 0 24 24" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M11.66 7H15v1a1 1 0 0 0 2 0V7h1a1 1 0 0 1 1 1v3h-1.34a1 1 0 0 0 0 2H19v1.34a1 1 0 1 0 2 0V8a3 3 0 0 0-3-3h-1V4a1 1 0 0 0-2 0v1h-3.34a1 1 0 0 0 0 2Zm10.05 13.29-1.6-1.6-16.4-16.4a1 1 0 0 0-1.42 1.42l1.91 1.9A3 3 0 0 0 3 8v10a3 3 0 0 0 3 3h12a3 3 0 0 0 1.29-.3l1 1a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.41ZM5 8a1 1 0 0 1 .66-.93L9.59 11H5Zm1 11a1 1 0 0 1-1-1v-5h6.59l6 6Z", id: "calendar-slash" }))); }
     },
-    "ccalender": {
+    "calender": {
         category: 'user interface',
         name: 'calender',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
@@ -6079,7 +6077,7 @@ var SystemIcons = {
         category: 'brand logo',
         name: 'document',
         tags: ['bullseye', 'bullseye', 'center', 'circle', 'focus', 'target', 'ui', 'user interface'],
-        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "25", fill: "currentColor", "aria-hidden": "true" },
+        icon: function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", "aria-hidden": "true" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6 4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4.286v-4.286c0-.789.64-1.428 1.428-1.428H16V12h-4v4l4-4V6a2 2 0 0 0-2-2H6Z" })))); }
     }

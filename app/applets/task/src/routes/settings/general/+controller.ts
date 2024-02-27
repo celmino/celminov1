@@ -1,3 +1,4 @@
+import { ColorSelect } from "@celmino/ui";
 import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
 
@@ -95,7 +96,22 @@ export class GeneralSettingsController extends UIFormController {
                         .width(44).height(44).cornerRadius(5),
                 )
                     .height()
-                    .margin('0 0 30px')
+                    .margin('0 0 30px'),
+                    ColorSelect({
+                        onSelect: (color) => {
+                            updateDocument({
+                                databaseId: 'workspace',
+                                collectionId: 'ws_tree',
+                                documentId: appletId,
+                                data: {
+                                    iconColor: color
+                                }
+                            }, (item) => {
+                                EventBus.Default.fire('applet.added', { treeItem: item })
+                            })
+                        }
+                    }).width(200)
+    
 
 
 

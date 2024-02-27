@@ -2,6 +2,7 @@ import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
 import { Text } from "@realmocean/vibe";
 import { EventBus } from "@tuval/core";
 import { HStack, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading, useParams } from "@tuval/forms";
+import { ColorSelect } from '@celmino/ui'
 
 export class GeneralSettingsController extends UIFormController {
     public LoadView() {
@@ -65,7 +66,7 @@ export class GeneralSettingsController extends UIFormController {
                                             iconName: value.iconName,
                                             iconCategory: value.iconCategory
                                         }
-                                    }, ()=> {
+                                    }, () => {
                                         updateDocument({
                                             databaseId: 'workspace',
                                             collectionId: 'ws_tree',
@@ -92,9 +93,26 @@ export class GeneralSettingsController extends UIFormController {
                         .padding(4)
                         //.background('#FCE8E8')
                         .width(44).height(44).cornerRadius(5),
+
+
                 )
                     .height()
-                    .margin('0 0 30px')
+                    .margin('0 0 30px'),
+                Text('asdffds'),
+                ColorSelect({
+                    onSelect: (color) => {
+                        updateDocument({
+                            databaseId: 'workspace',
+                            collectionId: 'ws_tree',
+                            documentId: appletId,
+                            data: {
+                                iconColor: color
+                            }
+                        }, (item) => {
+                            EventBus.Default.fire('applet.added', { treeItem: item })
+                        })
+                    }
+                }).width(200)
 
 
 

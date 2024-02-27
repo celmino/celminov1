@@ -145,6 +145,7 @@
         "webpack-cli": "^4.7.2"
     },
     "dependencies": {
+        "@celmino/ui": "^1.0.12",
         "@celmino/workprotocol": "^0.0.118",
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",

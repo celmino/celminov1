@@ -8854,11 +8854,123 @@ if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.workerContext()) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ColorSelect: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorSelect),
 /* harmony export */   SelectAppletDialog: () => (/* reexport safe */ _dialogs__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog)
 /* harmony export */ });
 /* harmony import */ var _dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dialogs */ "./src/dialogs/index.ts");
-/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+/* harmony import */ var _views__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views */ "./src/views/index.ts");
+/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
 
+
+
+
+
+/***/ }),
+
+/***/ "./src/views/ColorSelect/ColorItemView.ts":
+/*!************************************************!*\
+  !*** ./src/views/ColorSelect/ColorItemView.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ColorItemView: () => (/* binding */ ColorItemView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+var ColorItemView = function (color) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)()
+        .cursor('pointer')
+        .width(20)
+        .height(20)
+        .background(color)
+        .cornerRadius('100%')
+        .border('1px solid rgba(0, 0, 0, 0.14)'))
+        .width(32)
+        .height(32)
+        .cornerRadius(6)
+        .background({ hover: 'rgba(109, 122, 131, 0.2)' }));
+};
+
+
+/***/ }),
+
+/***/ "./src/views/ColorSelect/ColorSelectView.ts":
+/*!**************************************************!*\
+  !*** ./src/views/ColorSelect/ColorSelectView.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ColorSelect: () => (/* binding */ ColorSelect)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ColorItemView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorItemView */ "./src/views/ColorSelect/ColorItemView.ts");
+
+
+var colors = [
+    '#4A4A4A',
+    '#6A849B',
+    '#BEC5CC',
+    '#D40915',
+    '#E72065',
+    '#9C2BAF',
+    '#673DB6',
+    '#3E53B4',
+    '#2978FB',
+    '#199EE3',
+    '#1FBED3',
+    '#159789',
+    '#4FAF54',
+    '#8EC351',
+    '#FBA32F',
+    '#FC551F',
+    '#B04E31'
+];
+var ColorSelect = function (_a) {
+    var onSelect = _a.onSelect;
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 2 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(colors)(function (color) { return ((0,_ColorItemView__WEBPACK_IMPORTED_MODULE_1__.ColorItemView)(color)
+        .onClick(function () { return onSelect(color); })); })).wrap('wrap');
+};
+
+
+/***/ }),
+
+/***/ "./src/views/ColorSelect/index.ts":
+/*!****************************************!*\
+  !*** ./src/views/ColorSelect/index.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ColorSelect: () => (/* reexport safe */ _ColorSelectView__WEBPACK_IMPORTED_MODULE_0__.ColorSelect)
+/* harmony export */ });
+/* harmony import */ var _ColorSelectView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorSelectView */ "./src/views/ColorSelect/ColorSelectView.ts");
+
+
+
+/***/ }),
+
+/***/ "./src/views/index.ts":
+/*!****************************!*\
+  !*** ./src/views/index.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ColorSelect: () => (/* reexport safe */ _ColorSelect__WEBPACK_IMPORTED_MODULE_0__.ColorSelect)
+/* harmony export */ });
+/* harmony import */ var _ColorSelect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorSelect */ "./src/views/ColorSelect/index.ts");
 
 
 

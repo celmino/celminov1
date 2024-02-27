@@ -6191,7 +6191,7 @@ var LeftSideMenuView = function (selectedItem) {
                                         tree_widget: child.tree_widget,
                                         iconName: child.iconName,
                                         iconCategory: child.iconCategory,
-                                        iconColor: item.iconColor,
+                                        iconColor: child.iconColor,
                                         expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : false,
                                         canDrag: true,
                                         view: function (node) {

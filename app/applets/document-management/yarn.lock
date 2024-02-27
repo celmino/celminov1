@@ -113,6 +113,18 @@
   resolved "https://registry.npmjs.org/@celmino/taskprotocol/-/taskprotocol-0.0.94.tgz"
   integrity sha512-QStItUv4eGM9/eGHWmuhwUjwHtK+KhlwWVQaKOzqlA48yz4xU7n/W1a/M4YFwBx0kog4vLxL1H9kEQV5b4Xx9A==
 
+"@celmino/ui@1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@celmino/ui/-/ui-1.0.12.tgz#080b07ed39bc4491548f85f4685f0eecb789ed47"
+  integrity sha512-GY/bFLs3MHVbTQee3YmJN+xTNxJXub9Lq4Wis6f961wsYb5qKmiw0fxG/8DcLJd6EUTRTnntbdQTLLmmrVbisw==
+  dependencies:
+    "@tuval/forms" "^1.0.109"
+    css-loader "^6.8.1"
+    sass "^1.63.6"
+    sass-loader "^13.3.2"
+    style-loader "^3.3.3"
+    to-string-loader "^1.2.0"
+
 "@celmino/workprotocol@^0.0.118":
   version "0.0.118"
   resolved "https://registry.npmjs.org/@celmino/workprotocol/-/workprotocol-0.0.118.tgz"
