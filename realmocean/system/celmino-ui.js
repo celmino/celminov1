@@ -3290,7 +3290,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Applets: () => (/* binding */ Applets)
 /* harmony export */ });
 /* harmony import */ var _applets_Activities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applets/Activities */ "./src/applets/Activities.ts");
-/* harmony import */ var _applets_AppletCategory__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./applets/AppletCategory */ "./src/applets/AppletCategory.ts");
+/* harmony import */ var _applets_Workspace__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./applets/Workspace */ "./src/applets/Workspace.ts");
 /* harmony import */ var _applets_Dashboards__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applets/Dashboards */ "./src/applets/Dashboards.ts");
 /* harmony import */ var _applets_Divider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/Divider */ "./src/applets/Divider.ts");
 /* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
@@ -8100,7 +8100,7 @@ var Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
-    _applets_AppletCategory__WEBPACK_IMPORTED_MODULE_1__.AppletCategory,
+    _applets_Workspace__WEBPACK_IMPORTED_MODULE_1__.WorkspaceApplet,
     {
         name: 'Drive',
         type: 'Applet',
@@ -8261,42 +8261,6 @@ var ActivitiesApplet = {
 
 /***/ }),
 
-/***/ "./src/applets/AppletCategory.ts":
-/*!***************************************!*\
-  !*** ./src/applets/AppletCategory.ts ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AppletCategory: () => (/* binding */ AppletCategory)
-/* harmony export */ });
-var AppletCategory = {
-    name: 'Workspace',
-    type: 'Applet',
-    tree_type: 'com.celmino.widget.applet-category',
-    applet_type: 'com.celmino.applet.category',
-    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
-    // image: '/images/applets/documents.png',
-    iconCategory: 'Icons',
-    iconName: 'bell',
-    icon: '\\d320',
-    iconBackColor: '#66B47C',
-    enabled: true,
-    databases: [
-        {
-            "name": "Applet Category",
-            "id": "applet_category",
-            "category": "app",
-            "collections": []
-        }
-    ]
-};
-
-
-/***/ }),
-
 /***/ "./src/applets/Dashboards.ts":
 /*!***********************************!*\
   !*** ./src/applets/Dashboards.ts ***!
@@ -8434,6 +8398,96 @@ var WebsiteApplet = {
             "id": "applet_category",
             "category": "app",
             "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Workspace.ts":
+/*!**********************************!*\
+  !*** ./src/applets/Workspace.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   WorkspaceApplet: () => (/* binding */ WorkspaceApplet)
+/* harmony export */ });
+var WorkspaceApplet = {
+    name: 'Workspace',
+    type: 'Applet',
+    tree_type: 'com.celmino.widget.workspace-tree',
+    applet_type: 'com.celmino.applet.category',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Workspace",
+            "id": "workspace_applet",
+            "category": "app",
+            "collections": [
+                {
+                    "name": "Documents",
+                    "id": "com.celmino.collection.workspace-document",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "parent",
+                            "type": "string"
+                        },
+                        {
+                            "key": "path",
+                            "type": "string"
+                        },
+                        {
+                            "key": "viewer",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_category",
+                            "type": "string"
+                        },
+                        {
+                            "key": "bg_color",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fg_color",
+                            "type": "string"
+                        }
+                    ],
+                },
+                {
+                    "name": "Document Contents",
+                    "id": "com.celmino.collection.workspace-document-contents",
+                    "attributes": [
+                        {
+                            "key": "content",
+                            "type": "string",
+                            "size": 932000
+                        }
+                    ],
+                },
+            ]
         }
     ]
 };

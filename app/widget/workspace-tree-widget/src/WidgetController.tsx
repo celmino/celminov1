@@ -22,6 +22,7 @@ import { BoardIcon, CalendarIcon, DocumentIcon, FeedIcon, FormIcon, ListIcon, Re
 import { getAppletId, getDocumentId, getListId, getViewId } from './utils';
 //import { SelectAppletDialog } from '@celmino/ui';
 import { EventBus } from '@tuval/core';
+import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 
 
 export class CustomAppletTreeModuleController extends UIController {
@@ -111,7 +112,7 @@ export class CustomAppletTreeModuleController extends UIController {
                                         {
                                             title: 'Table',
                                             icon: Icon(TableIcon).foregroundColor('#7C828D'),
-                                            //onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                            //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                         },
 
                                         {
@@ -150,7 +151,7 @@ export class CustomAppletTreeModuleController extends UIController {
                                         {
                                             title: 'Document',
                                             icon: Icon(DocumentIcon).foregroundColor('#7C828D'),
-                                            //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                            onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
                                         },
                                         {
                                             title: 'Whiteboard',

@@ -1,4 +1,7 @@
-export declare const SaveDocumentAction: (formMeta: any, action: any) => import("@tuval/forms").UIViewBuilderClass;
+export declare const SaveDocumentAction: {
+    (formMeta: any, action: any): import("@tuval/forms").UIViewBuilderClass;
+    Id: string;
+};
 export declare const AddDocumentDialog: (workspaceId: string, appletId: string, parent: string, path: string) => {
     title: string;
     workspaceId: string;
@@ -19,6 +22,11 @@ export declare const AddDocumentDialog: (workspaceId: string, appletId: string, 
             value: string;
         };
         path: {
+            name: string;
+            type: string;
+            value: string;
+        };
+        viewer: {
             name: string;
             type: string;
             value: string;

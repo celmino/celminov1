@@ -1,6 +1,6 @@
 import { APQCApplet } from "./applets/APQC";
 import { ActivitiesApplet } from "./applets/Activities";
-import { AppletCategory } from "./applets/AppletCategory";
+import { WorkspaceApplet } from "./applets/Workspace";
 import { DashboardsApplet } from "./applets/Dashboards";
 import { AppletDivider } from "./applets/Divider";
 import { EmailsApplet } from "./applets/Emails";
@@ -4917,7 +4917,7 @@ export const Applets = [
         enabled: true
     },
 
-    AppletCategory,
+    WorkspaceApplet,
     {
         name: 'Drive',
         type: 'Applet',

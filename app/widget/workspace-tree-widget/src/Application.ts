@@ -1,12 +1,8 @@
 import {  UIController } from '@tuval/forms';
-import { WorkspaceTreeWidgetController } from './ModuleController';
+import { CustomAppletTreeModuleController } from './WidgetController';
 import { FormBuilder } from '@realmocean/ui';
-import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
-import { SaveFolderAction } from './dialogs/AddFolderDialog';
-import { SaveListAction } from './dialogs/AddListDialog';
 import { SaveDocumentAction } from './dialogs/AddDocumentDialog';
-import { SaveWhiteboardAction } from './dialogs/AddWhiteboardDialog';
-import { SaveBoardAction } from './dialogs/AddBoardDialog';
+
 
 const manifest = require('./manifest');
 
@@ -24,16 +20,11 @@ function App(manifest: any) {
 @App(manifest)
 export class RatingWidget {
     public GetMainController() {
-       return WorkspaceTreeWidgetController;
+       return CustomAppletTreeModuleController;
     }
 }
 
-FormBuilder.injectAction('saveSpace', SaveSpaceAction);
-FormBuilder.injectAction('saveFolder', SaveFolderAction);
-FormBuilder.injectAction('saveList', SaveListAction);
-FormBuilder.injectAction('wm_saveDocument', SaveDocumentAction);
-FormBuilder.injectAction('wm_saveWhiteboard', SaveWhiteboardAction);
-FormBuilder.injectAction('wm_saveBoard', SaveBoardAction);
+FormBuilder.injectAction(SaveDocumentAction.Id, SaveDocumentAction);
 
 
 
