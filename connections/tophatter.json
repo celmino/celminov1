@@ -1,0 +1,438 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "products",
+                        "name": "PRODUCTS",
+                        "endpoints": [
+                            {
+                                "id": "get_products",
+                                "url": "/products.json",
+                                "name": "List Products",
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Filter the results by product status. Possible values are: in_stock, sold_out, enabled, disabled, and deleted. If not set, products with any status are returned.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "in_stock",
+                                            "sold_out",
+                                            "enabled",
+                                            "disabled",
+                                            "deleted"
+                                        ]
+                                    },
+                                    {
+                                        "id": "category",
+                                        "name": "category",
+                                        "description": " Filter the results by product category. If not set, products under all categories are returned. Only the first two levels of categorization are accepted. For example, instead of Electronics  Audio  Headphones you can only specify Electronics Audio for this filter.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "show_rejected",
+                                        "description": "Enable sorting on returned products. Possible values are below",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "created_at_ascending",
+                                            "created_at_descending",
+                                            "updated_at_ascending",
+                                            "updated_at_descending",
+                                            "unique_id_ascending",
+                                            "unique_id_descending",
+                                            "ratings_average_ascending",
+                                            "ratings_average_descending"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_product",
+                                "url": "/products/retrieve.json",
+                                "name": "Retrieve a Product",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "identifier",
+                                        "name": "identifier",
+                                        "description": "The unique ID of the product to retrieve.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_product",
+                                "url": "/products/search.json",
+                                "name": "Search Products",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "query",
+                                        "description": "A search query string.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "variations",
+                        "name": "VARIATIONS",
+                        "endpoints": [
+                            {
+                                "id": "get_variation",
+                                "url": "/variations/retrieve.json",
+                                "name": "Retrieve a Product Variation",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "identifier",
+                                        "name": "identifier",
+                                        "description": "The unique ID of the variation to retrieve.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "ORDERS",
+                        "endpoints": [
+                            {
+                                "id": "get_order",
+                                "url": "/orders/retrieve.json",
+                                "name": "Retrieve an Order",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "order_id",
+                                        "name": "ORDER ID",
+                                        "description": "The order_id of the order you wish to retrieve.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_orders",
+                                "url": "/orders.json",
+                                "name": "List Orders",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "An optional filter. The following values are accepted: fulfilled, unfulfilled, and refunded.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "fulfilled",
+                                            "unfulfilled",
+                                            "refunded"
+                                        ]
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "Start",
+                                        "description": "An optional date filter. Only orders created after this date will be returned.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Productattributes",
+                        "name": "PRODUCT ATTRIBUTES",
+                        "endpoints": [
+                            {
+                                "id": "get_brands",
+                                "url": "/metadata/brands.json",
+                                "name": "Brands",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_materials",
+                                "url": "/metadata/materials.json",
+                                "name": "Materials",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_sizes",
+                                "url": "/metadata/sizes.json",
+                                "doesNotSupportPaging": true,
+                                "name": "Sizes"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "order_attributes",
+                        "name": "ORDER ATTRIBUTES",
+                        "endpoints": [
+                            {
+                                "id": "get_carriers",
+                                "url": "/metadata/carriers",
+                                "doesNotSupportPaging": true,
+                                "name": "Carriers"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "products",
+                        "name": "PRODUCTS",
+                        "sampleData": {
+                            "identifier": "pro1",
+                            "internal_id": 14643131,
+                            "category": "Accessories | Bags | Crossbody",
+                            "title": "earrings",
+                            "description": "dfghjk",
+                            "condition": "New",
+                            "brand": "Adidas",
+                            "material": "sxdd",
+                            "available_quantity": 12,
+                            "variations": [
+                                {
+                                    "identifier": "pro1-red",
+                                    "internal_id": 32364512,
+                                    "size": null,
+                                    "color": "Red",
+                                    "quantity": 4,
+                                    "created_at": "2018-07-10T00:50:51-07:00",
+                                    "disabled_at": null,
+                                    "deleted_at": null
+                                },
+                                {
+                                    "identifier": "pro1",
+                                    "internal_id": 32453639,
+                                    "size": null,
+                                    "color": "Gold",
+                                    "quantity": 8,
+                                    "created_at": "2018-07-13T03:14:32-07:00",
+                                    "disabled_at": null,
+                                    "deleted_at": null
+                                }
+                            ],
+                            "retail_price": null,
+                            "cost_basis": 400,
+                            "shipping_price": 20,
+                            "shipping_origin": "India",
+                            "weight": null,
+                            "starting_bid": 1,
+                            "buy_now_price": 150,
+                            "days_to_fulfill": 3,
+                            "days_to_deliver": 14,
+                            "expedited_shipping_price": null,
+                            "expedited_days_to_deliver": null,
+                            "buy_one_get_one_price": null,
+                            "primary_image": "https://images.tophatter.com/033af47f1290ba58fcb273cbb71dcba2/original.jpg",
+                            "extra_images": "https://images.tophatter.com/45085f7388cc9bcbe64862196b690d52/original.jpg|https://images.tophatter.com/e17e41149729abfae85069ba2be16a49/original.jpg",
+                            "all_images": [
+                                {
+                                    "thumbnail": "https://images.tophatter.com/033af47f1290ba58fcb273cbb71dcba2/thumbnail.jpg",
+                                    "square": "https://images.tophatter.com/033af47f1290ba58fcb273cbb71dcba2/square.jpg",
+                                    "medium": "https://images.tophatter.com/033af47f1290ba58fcb273cbb71dcba2/medium.jpg",
+                                    "large": "https://images.tophatter.com/033af47f1290ba58fcb273cbb71dcba2/large.jpg",
+                                    "original": "https://images.tophatter.com/033af47f1290ba58fcb273cbb71dcba2/original.jpg"
+                                },
+                                {
+                                    "thumbnail": "https://images.tophatter.com/45085f7388cc9bcbe64862196b690d52/thumbnail.jpg",
+                                    "square": "https://images.tophatter.com/45085f7388cc9bcbe64862196b690d52/square.jpg",
+                                    "medium": "https://images.tophatter.com/45085f7388cc9bcbe64862196b690d52/medium.jpg",
+                                    "large": "https://images.tophatter.com/45085f7388cc9bcbe64862196b690d52/large.jpg",
+                                    "original": "https://images.tophatter.com/45085f7388cc9bcbe64862196b690d52/original.jpg"
+                                },
+                                {
+                                    "thumbnail": "https://images.tophatter.com/e17e41149729abfae85069ba2be16a49/thumbnail.jpg",
+                                    "square": "https://images.tophatter.com/e17e41149729abfae85069ba2be16a49/square.jpg",
+                                    "medium": "https://images.tophatter.com/e17e41149729abfae85069ba2be16a49/medium.jpg",
+                                    "large": "https://images.tophatter.com/e17e41149729abfae85069ba2be16a49/large.jpg",
+                                    "original": "https://images.tophatter.com/e17e41149729abfae85069ba2be16a49/original.jpg"
+                                }
+                            ],
+                            "ratings_count": 0,
+                            "ratings_average": null,
+                            "created_at": "2018-07-10T00:50:51-07:00",
+                            "updated_at": "2018-07-13T03:14:32-07:00",
+                            "disabled_at": null,
+                            "deleted_at": null
+                        },
+                        "operations": [
+                            {
+                                "id": "create_product",
+                                "url": "/products.json  ",
+                                "name": "Create a Product",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "identifier",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_product",
+                                "url": "/products/update.json",
+                                "name": "Update a Product",
+                                "method": "POST"
+                            },
+                            {
+                                "id": "enable_product",
+                                "url": "/products/enable.json",
+                                "name": "Enable a Product",
+                                "method": "POST"
+                            },
+                            {
+                                "id": "disable_product",
+                                "url": "/products/disable.json",
+                                "name": "Disable a Product",
+                                "method": "POST"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "variations",
+                        "name": "VARIATIONS",
+                        "sampleData": {
+                            "product_identifier": "pro1",
+                            "product_internal_id": 14643131,
+                            "identifier": "pro1",
+                            "internal_id": 32453639,
+                            "size": null,
+                            "color": "Gold",
+                            "quantity": 8,
+                            "created_at": "2018-07-13T03:14:32-07:00",
+                            "disabled_at": null,
+                            "deleted_at": null
+                        },
+                        "operations": [
+                            {
+                                "id": "create_variation",
+                                "url": "/variations.json",
+                                "name": "Create a Variation",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "identifier",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_variant",
+                                "url": "/variations/update.json",
+                                "name": "Update a Variation",
+                                "method": "POST"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "order",
+                        "name": "ORDER",
+                        "sampleData": {
+                            "order_id": 40184783,
+                            "status": "refunded",
+                            "carrier": null,
+                            "tracking_number": null,
+                            "product_name": "Winter Puffy Down Jacket",
+                            "product_identifier": "32464821020",
+                            "variation_identifier": "32464821020-XL-Black",
+                            "customer_id": 15513591,
+                            "reason": "Jane Doe",
+                            "customer_name": "Jane Doe",
+                            "address1": "1108 118th AVE",
+                            "type": "qwe",
+                            "city": "Dawson Creek",
+                            "state": "BC",
+                            "postal_code": "V1G 3H5",
+                            "country": "CAN",
+                            "available_refunds": {},
+                            "refund_amount": 6,
+                            "disbursement_amount": -15,
+                            "seller_fees_amount": 21,
+                            "seller_fees": [
+                                {
+                                    "type": "commission_fee",
+                                    "amount": 2.1
+                                },
+                                {
+                                    "type": "success_fee",
+                                    "amount": 1
+                                },
+                                {
+                                    "type": "refund_deduction_fee",
+                                    "amount": 17.9
+                                }
+                            ],
+                            "paid_at": "2017-10-12T01:13:50-07:00",
+                            "annotation": "sdfg"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_order",
+                                "url": "/orders/fulfill.json",
+                                "name": "Fulfill an Order",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "order_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "refund_order",
+                                "url": "/orders/refund.json",
+                                "name": "Refund an Order",
+                                "method": "POST"
+                            },
+                            {
+                                "id": "annotate_order",
+                                "url": "/orders/annotate.json",
+                                "name": "Annotate an Order",
+                                "method": "POST"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

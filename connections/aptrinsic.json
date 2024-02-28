@@ -1,0 +1,468 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "token",
+            "nextPagePath": "scrollId",
+            "pageArgument": "scrollId"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "sessionevent",
+                        "name": "SessionEvent",
+                        "endpoints": [
+                            {
+                                "id": "session_get",
+                                "url": "/v1/events/session",
+                                "resourcePath": "sessionInitializedEvents",
+                                "name": "Get Session events",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue} Filter terms within a single filter parameter are joined by a logical AND. Separate filter parameters are joined by a logical OR."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.Supported sort fields"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "featurematchevent",
+                        "name": "FeatureMatchEvent",
+                        "endpoints": [
+                            {
+                                "id": "featurematchevents_get",
+                                "url": "/v1/events/feature_match",
+                                "name": "Get feature match events",
+                                "resourcePath": "featureMatchEvents",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue} Filter terms within a single filter parameter are joined by a logical AND. Separate filter parameters are joined by a logical OR."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.Supported sort fields"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "identifyevent",
+                        "name": "IdentifyEvent",
+                        "endpoints": [
+                            {
+                                "id": "events_get",
+                                "url": "/v1/events/identify",
+                                "name": "Get Identify events",
+                                "resourcePath": "identifyEvents",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue} Filter terms within a single filter parameter are joined by a logical AND. Separate filter parameters are joined by a logical OR."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.Supported sort fields"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "feature",
+                        "name": "Feature",
+                        "endpoints": [
+                            {
+                                "id": "feature_list",
+                                "url": "/v1/feature",
+                                "name": "Get features",
+                                "resourcePath": "features",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "pageNumber"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "propertyKey",
+                                        "name": "PropertyKey",
+                                        "description": "Get features for given property key.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "feature_get",
+                                "url": "/v1/feature/:_featureId",
+                                "name": "Get feature",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "featureId",
+                                        "name": "Feature ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "endpoints": [
+                            {
+                                "id": "accounts_list",
+                                "url": "/v1/accounts",
+                                "name": "Get accounts",
+                                "resourcePath": "accounts",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue} Filter terms within a single filter parameter are joined by a logical AND. Separate filter parameters are joined by a logical OR."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.Supported sort fields"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "account_get",
+                                "url": "/v1/accounts/:_accountId",
+                                "name": "Get account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "users_list",
+                                "url": "/v1/users",
+                                "name": "Get Users",
+                                "resourcePath": "users",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "The filter parameter accepts a list of semicolon-separated filters in the form: {fieldName}{operator}{fieldValue} Filter terms within a single filter parameter are joined by a logical AND. Separate filter parameters are joined by a logical OR."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "The sort parameter accepts a list of semi-colon separated fields names, each with an optional dash to imply descending sort order.Supported sort fields"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "user_get",
+                                "url": "/v1/users/:_userId",
+                                "name": "Get User",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "customevent",
+                        "name": "Custom events",
+                        "operations": [
+                            {
+                                "id": "create_customevent",
+                                "url": "/v1/events/custom",
+                                "name": "Create custom event",
+                                "sampleData": {
+                                    "eventId": "string",
+                                    "identifyId": "string",
+                                    "propertyKey": "string",
+                                    "date": 0,
+                                    "eventType": "string",
+                                    "sessionId": "string",
+                                    "userType": "LEAD",
+                                    "accountId": "string",
+                                    "eventName": "string",
+                                    "attributes": {},
+                                    "url": "string",
+                                    "referrer": "string",
+                                    "remoteHost": "string"
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "sampleData": {
+                            "id": "string",
+                            "name": "string",
+                            "trackedSubscriptionId": "string",
+                            "sfdcId": "string",
+                            "lastSeenDate": 0,
+                            "dunsNumber": "string",
+                            "industry": "string",
+                            "numberOfEmployees": 0,
+                            "sicCode": "string",
+                            "website": "string",
+                            "naicsCode": "string",
+                            "plan": "string",
+                            "location": {
+                                "countryName": "United States",
+                                "countryCode": "USA",
+                                "stateName": "California",
+                                "stateCode": "CA",
+                                "city": "San Mateo",
+                                "street": "101 Broadway",
+                                "postalCode": "94010",
+                                "continent": "NA",
+                                "regionName": "string",
+                                "timeZone": "string",
+                                "coordinates": {
+                                    "latitude": 37.567147,
+                                    "longitude": -122.324211
+                                }
+                            },
+                            "propertyKeys": "[ 'AP-XXXXXXXXXX-2' ]",
+                            "customAttributes": {}
+                        },
+                        "operations": [
+                            {
+                                "id": "create_account",
+                                "url": "v1/accounts",
+                                "name": "Create account",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "accounts_list",
+                                        "extract": "accounts[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_account",
+                                "url": "v1/accounts/:_accountId",
+                                "name": "Update account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "accounts_list",
+                                        "extract": "accounts[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_account",
+                                "url": [
+                                    "v1/accounts/:_accountId",
+                                    "v1/accounts"
+                                ],
+                                "name": "Create or Update account",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "accounts_list",
+                                        "extract": "accounts[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "identifyId": "string",
+                            "type": "LEAD",
+                            "gender": "MALE",
+                            "email": "string",
+                            "firstName": "string",
+                            "lastName": "string",
+                            "signUpDate": 0,
+                            "firstVisitDate": 0,
+                            "title": "string",
+                            "phone": "string",
+                            "score": 0,
+                            "role": "string",
+                            "subscriptionId": "string",
+                            "accountId": "string",
+                            "location": {
+                                "countryName": "United States",
+                                "countryCode": "USA",
+                                "stateName": "California",
+                                "stateCode": "CA",
+                                "city": "San Mateo",
+                                "street": "101 Broadway",
+                                "postalCode": "94010",
+                                "continent": "NA",
+                                "regionName": "string",
+                                "timeZone": "string",
+                                "coordinates": {
+                                    "latitude": 37.567147,
+                                    "longitude": -122.324211
+                                }
+                            },
+                            "propertyKeys": "[ 'AP-XXXXXXXXXX-2' ]",
+                            "customAttributes": {},
+                            "globalUnsubscribe": false,
+                            "sfdcContactId": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_user",
+                                "url": "v1/users",
+                                "name": "Create user",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "users_list",
+                                        "extract": "users[0].identifyId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_user",
+                                "url": "v1/users/:_userId",
+                                "name": "Update user",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "users_list",
+                                        "extract": "users[0].identifyId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_user",
+                                "url": [
+                                    "v1/users/:_userId",
+                                    "v1/users"
+                                ],
+                                "name": "Create or Update user",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "users_list",
+                                        "extract": "users[0].identifyId"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

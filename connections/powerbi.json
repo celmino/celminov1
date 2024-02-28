@@ -1,0 +1,2593 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "versions": [
+            {
+                "version": "v1.0",
+                "paging": {
+                    "pagingMethod": "skipargument",
+                    "skipArgument": "$skip"
+                },
+                "resources": [
+                    {
+                        "id": "admin",
+                        "name": "Admin",
+                        "endpoints": [
+                            {
+                                "id": "dashboards_getdashboardsasadmin",
+                                "url": "/v1.0/myorg/admin/dashboards",
+                                "name": "Dashboards GetDashboardsAsAdmin",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "dashboards_getdashboardsingroupasadmin",
+                                "url": "/v1.0/myorg/admin/groups/:_groupId/dashboards",
+                                "name": "Dashboards GetDashboardsInGroupAsAdmin",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "dashboards_getdashboardstilesasadmin",
+                                "url": "/v1.0/myorg/admin/dashboards/:_dashboardKey/tiles",
+                                "name": "Dashboards GetTilesAsAdmin",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "fieldType": "input",
+                                        "description": "The dashboard id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "datasets_getdatasetsasadmin",
+                                "url": "/v1.0/myorg/admin/datasets",
+                                "name": "Datasets GetDatasetsAsAdmin",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "datasets_getdatasetsingroupasadmin",
+                                "url": "/v1.0/myorg/admin/groups/:_groupId/datasets",
+                                "name": "Datasets GetDatasetsInGroupAsAdmin",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "datasets_getdatasourcesasadmin",
+                                "url": "/v1.0/myorg/admin/datasets/:_datasetKey/datasources",
+                                "name": "Datasets GetDatasourcesAsAdmin",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of the dataset",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "groups_getgroupsasadmin",
+                                "url": "/v1.0/myorg/admin/groups",
+                                "name": "Groups GetGroupsAsAdmin",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "fieldType": "input",
+                                        "description": "Expands related entities inline"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "imports_getimportsasadmin",
+                                "url": "/v1.0/myorg/admin/imports",
+                                "name": "Imports GetImportsAsAdmin",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "fieldType": "input",
+                                        "description": "Expands related entities inline"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "reports_getreportsasadmin",
+                                "url": "/v1.0/myorg/admin/reports",
+                                "name": "Reports GetReportsAsAdmin",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "reports_getreportsingroupasadmin",
+                                "url": "/v1.0/myorg/admin/groups/:_groupId/reports",
+                                "name": "Reports GetReportsInGroupAsAdmin",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "available_features",
+                        "name": "Available Features",
+                        "endpoints": [
+                            {
+                                "id": "get_availablefeaturebyname",
+                                "url": "/v1.0/myorg/availableFeatures:_featureName",
+                                "name": "Get Available Feature By Name",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "featureName",
+                                        "name": "Feature Name",
+                                        "fieldType": "input",
+                                        "description": "The feature name",
+                                        "config": {
+                                            "prefix": "(featureName='",
+                                            "suffix": "')"
+                                        },
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_availablefeature",
+                                "url": "/v1.0/myorg/availableFeatures",
+                                "name": "Get Available Features",
+                                "resourcePath": "features",
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "capacities",
+                        "name": "Capacities",
+                        "endpoints": [
+                            {
+                                "id": "get_capacities",
+                                "url": "/v1.0/myorg/capacities",
+                                "name": "Get Capacities",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "dashboards",
+                        "name": "Dashboards",
+                        "endpoints": [
+                            {
+                                "id": "get_dashboard",
+                                "url": "/v1.0/myorg/dashboards/:_dashboardKey",
+                                "name": "Get Dashboard",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "fieldType": "input",
+                                        "description": "Id of dashboard",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_groupdashboard",
+                                "url": "/v1.0/myorg/groups/:_groupId/dashboards/:_dashboardKey",
+                                "name": "Get Dashboard In Group",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "fieldType": "input",
+                                        "description": "Id of dashboard",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_dashboards",
+                                "url": "/v1.0/myorg/dashboards",
+                                "name": "Get Dashboards",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_groupdashboards",
+                                "url": "/v1.0/myorg/groups/:_groupId/dashboards",
+                                "name": "Get Dashboards In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of group",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tile",
+                                "url": "/v1.0/myorg/dashboards/:_dashboardKey/tiles/:_tileKey",
+                                "name": "Get Tile",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "fieldType": "input",
+                                        "description": "Id of the dashboard",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tileKey",
+                                        "name": "Tile Key",
+                                        "fieldType": "input",
+                                        "description": "The tile id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tileingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/dashboards/:_dashboardKey/tiles/:_tileKey",
+                                "name": "Get Tile In Group",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "fieldType": "input",
+                                        "description": "Id of the dashboard",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tileKey",
+                                        "name": "Tile Key",
+                                        "fieldType": "input",
+                                        "description": "The tile id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tiles",
+                                "url": "/v1.0/myorg/dashboards/:_dashboardKey/tiles",
+                                "name": "Get Tiles",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "fieldType": "input",
+                                        "description": "Id of the dashboard",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tilesingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/dashboards/:_dashboardKey/tiles",
+                                "name": "Get Tiles In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "fieldType": "input",
+                                        "description": "Id of the dashboard",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "datasets",
+                        "name": "Datasets",
+                        "endpoints": [
+                            {
+                                "id": "get_datasetbyid",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey",
+                                "name": "Get Dataset By Id",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_datasetbyidingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey",
+                                "name": "Get Dataset By Id In Group",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_datasets",
+                                "url": "/v1.0/myorg/datasets",
+                                "name": "Get Datasets",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_datasetsingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets",
+                                "name": "Get Datasets In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of group",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_datasources",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/datasources",
+                                "name": "Get Datasources",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_datasourcesingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/datasources",
+                                "name": "Get Datasources In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_gatewaydatasourcesingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/Default.GetBoundGatewayDatasources",
+                                "name": "Get Gateway Datasources In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_parameters",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/parameters",
+                                "name": "Get Parameters",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_groupparameters",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/parameters",
+                                "name": "Get Parameters In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_refreshhistory",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/refreshes",
+                                "name": "Get Refresh History",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "fieldType": "input",
+                                        "description": "The requested number of entries in the refresh history, if not provided the default is all available entries"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_refreshhistoryingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/refreshes",
+                                "name": "Get Refresh History In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "Id of group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "Id of Dataset",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "fieldType": "input",
+                                        "description": "The requested number of entries in the refresh history, if not provided the default is all available entries"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "gateways",
+                        "name": "Gateways",
+                        "endpoints": [
+                            {
+                                "id": "get_datasourcebyid",
+                                "url": "/v1.0/myorg/gateways/:_gatewayId/datasources/:_datasourceId",
+                                "name": "Get Datasource By Id",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "gatewayId",
+                                        "name": "Gateway Id",
+                                        "fieldType": "input",
+                                        "description": "The gateway id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasourceId",
+                                        "name": "Datasource Id",
+                                        "fieldType": "input",
+                                        "description": "The datasource id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_datasourcestatusbyid",
+                                "url": "/v1.0/myorg/gateways/:_gatewayId/datasources/:_datasourceId/status",
+                                "name": "Get Datasource Status By Id",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "gatewayId",
+                                        "name": "Gateway Id",
+                                        "fieldType": "input",
+                                        "description": "The gateway id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasourceId",
+                                        "name": "Datasource Id",
+                                        "fieldType": "input",
+                                        "description": "The datasource id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_datasourceusers",
+                                "url": "/v1.0/myorg/gateways/:_gatewayId/datasources/:_datasourceId/users",
+                                "name": "Get Datasource Users",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "gatewayId",
+                                        "name": "Gateway Id",
+                                        "fieldType": "input",
+                                        "description": "The gateway id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasourceId",
+                                        "name": "Datasource Id",
+                                        "fieldType": "input",
+                                        "description": "The datasource id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_datasources",
+                                "url": "/v1.0/myorg/gateways/:_gatewayId/datasources",
+                                "name": "Get Datasources",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "gatewayId",
+                                        "name": "Gateway Id",
+                                        "fieldType": "input",
+                                        "description": "The gateway id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_gatewaybyid",
+                                "url": "/v1.0/myorg/gateways/:_gatewayId",
+                                "name": "Get Gateway By Id",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "gatewayId",
+                                        "name": "Gateway Id",
+                                        "fieldType": "input",
+                                        "description": "The gateway id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_gateways",
+                                "url": "/v1.0/myorg/gateways",
+                                "name": "Get Gateways",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groups",
+                        "name": "Groups",
+                        "endpoints": [
+                            {
+                                "id": "get_groupusers",
+                                "url": "/v1.0/myorg/groups/:_groupId/users",
+                                "name": "Get Group Users",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_groups",
+                                "url": "/v1.0/myorg/groups",
+                                "name": "Get Groups",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Filters the results, based on a boolean condition"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "imports",
+                        "name": "Imports",
+                        "endpoints": [
+                            {
+                                "id": "get_importbyid",
+                                "url": "/v1.0/myorg/imports/:_importId",
+                                "name": "Get Import By Id",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "importId",
+                                        "name": "Import Id",
+                                        "fieldType": "input",
+                                        "description": "The import id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_importbyidingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/imports/:_importId",
+                                "name": "Get Import By Id In Group",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "importId",
+                                        "name": "Import Id",
+                                        "fieldType": "input",
+                                        "description": "The import id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_imports",
+                                "url": "/v1.0/myorg/imports",
+                                "name": "Get Imports",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_importsingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/imports",
+                                "name": "Get Imports In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "The Group id",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "push_datasets",
+                        "name": "Push Datasets",
+                        "endpoints": [
+                            {
+                                "id": "datasets_gettables",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/tables",
+                                "name": "Datasets GetTables",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tablesgroups",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/tables",
+                                "name": "Datasets GetTablesInGroup",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "fieldType": "input",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rseports",
+                        "name": "Reports",
+                        "endpoints": [
+                            {
+                                "id": "export_report",
+                                "url": "/v1.0/myorg/reports/:_reportKey/Export",
+                                "name": "Export Report",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "fieldType": "input",
+                                        "description": "The report id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_report",
+                                "url": "/v1.0/myorg/reports/:_reportKey",
+                                "name": "Get Report",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "fieldType": "input",
+                                        "description": "The report id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_reportsingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/reports/:_reportKey",
+                                "name": "Get Report In Group",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "fieldType": "input",
+                                        "description": "The report id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_reports",
+                                "url": "/v1.0/myorg/reports",
+                                "name": "Get Reports",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_reportsingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/reports",
+                                "name": "Get Reports In Group",
+                                "resourcePath": "value",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "The Group id",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "v1.0",
+                "resources": [
+                    {
+                        "id": "callouts",
+                        "name": "Callouts",
+                        "operations": [
+                            {
+                                "id": "delete_adomainfromtheorganization",
+                                "url": "/v1.0/myorg/admin/groups/:_groupId/users/:_user",
+                                "name": "Groups DeleteUserAsAdmin",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Removes user permissions to the specified workspace for an organization.",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user",
+                                        "in": "path",
+                                        "description": "The user principal name (UPN) of the user to remove (usually the user's email)",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "domainname": "zylkernew.com"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "capacities",
+                        "name": "Capacities",
+                        "operations": [
+                            {
+                                "id": "groups_assignmyworkspacetocapacity",
+                                "url": "/v1.0/myorg/AssignToCapacity",
+                                "name": "Groups AssignMyWorkspaceToCapacity",
+                                "method": "POST",
+                                "description": "Assigns 'My Workspace' to the specified capacity",
+                                "sampleData": {
+                                    "capacityId": "0f084df7-c13d-451b-af5f-ed0c466403b2"
+                                }
+                            },
+                            {
+                                "id": "groups_assigntocapacity",
+                                "url": "/v1.0/myorg/groups/:_groupId/AssignToCapacity",
+                                "name": "Groups AssignToCapacity",
+                                "method": "POST",
+                                "description": "Assigns 'My Workspace' to the specified capacity",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group Id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "capacityId": "0f084df7-c13d-451b-af5f-ed0c466403b2"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "dashboards",
+                        "name": "Dashboards",
+                        "operations": [
+                            {
+                                "id": "add_dashboard",
+                                "url": "/v1.0/myorg/dashboards",
+                                "name": "Add Dashboard",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Add a domain to the organization.",
+                                "parameters": [
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "in": "path",
+                                        "description": "The dashboard id",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "SalesMarketing"
+                                }
+                            },
+                            {
+                                "id": "add_dashboardingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/dashboards",
+                                "name": "Add Dashboard In Group",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new empty dashboard on the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "in": "path",
+                                        "description": "The dashboard id",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "SalesMarketing"
+                                }
+                            },
+                            {
+                                "id": "clone_tile",
+                                "url": "/v1.0/myorg/dashboards/:_dashboardKey/tiles/:_tileKey/Clone",
+                                "name": "Clone Tile",
+                                "method": "POST",
+                                "description": "Clones the specified tile from my workspace",
+                                "parameters": [
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "in": "path",
+                                        "description": "The dashboard id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tileKey",
+                                        "name": "tile Key",
+                                        "in": "path",
+                                        "description": "The tile id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "positionConflictAction": "zylkernew.com",
+                                    "targetDashboardId": "1234",
+                                    "targetModelId": "7894",
+                                    "targetReportId": "7856",
+                                    "targetWorkspaceId": "45689"
+                                }
+                            },
+                            {
+                                "id": "clone_tileingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/dashboards/:_dashboardKey/tiles/:_tileKey/Clone",
+                                "name": "Clone Tile In Group",
+                                "method": "POST",
+                                "description": "Clones the specified tile from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "in": "path",
+                                        "description": "The dashboard id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tileKey",
+                                        "name": "tile Key",
+                                        "in": "path",
+                                        "description": "The tile id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "positionConflictAction": "zylkernew.com",
+                                    "targetDashboardId": "1234",
+                                    "targetModelId": "7894",
+                                    "targetReportId": "7856",
+                                    "targetWorkspaceId": "45689"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "datasets",
+                        "name": "Datasets",
+                        "operations": [
+                            {
+                                "id": "delete_datasetbyid",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey",
+                                "name": "Delete Dataset By Id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes specified dataset from 'My Workspace'",
+                                "parameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_datasetbyidingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey",
+                                "name": "Delete Dataset By Id In Group",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "refresh_dataset",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/refreshes",
+                                "name": "Refresh Dataset",
+                                "method": "POST",
+                                "description": "Triggers a refresh to occur for the specified dataset from 'My Workspace'",
+                                "parameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "notifyOption": "MailOnFailure"
+                                }
+                            },
+                            {
+                                "id": "refresh_datasetingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/refreshes",
+                                "name": "Refresh Dataset In Group",
+                                "method": "POST",
+                                "description": "Triggers a refresh to occur for the specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "notifyOption": "MailOnFailure"
+                                }
+                            },
+                            {
+                                "id": "set_alldatasetconnections",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/Default.SetAllConnections",
+                                "name": "Set All Dataset Connections",
+                                "method": "POST",
+                                "description": "Updates all connections for the specified dataset from workspace",
+                                "parameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "connectionString": "data source=MyServer.database.windows.net;initial catalog=MyDatabase;persist security info=True;encrypt=True;trustservercertificate=False"
+                                }
+                            },
+                            {
+                                "id": "set_alldatasetconnectionsingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/Default.SetAllConnections",
+                                "name": "Set All Dataset Connections In Group",
+                                "method": "POST",
+                                "description": "Updates all connections for the specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "connectionString": "data source=MyServer.database.windows.net;initial catalog=MyDatabase;persist security info=True;encrypt=True;trustservercertificate=False"
+                                }
+                            },
+                            {
+                                "id": "take_overingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/Default.TakeOver",
+                                "name": "Take Over In Group",
+                                "method": "POST",
+                                "description": "Transfers ownership over the specified dataset to the current authorized user",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {}
+                            },
+                            {
+                                "id": "update_datasources",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/Default.UpdateDatasources",
+                                "name": "Update Datasources",
+                                "method": "POST",
+                                "description": "Updates the datasources of the specified dataset from my workspace",
+                                "parameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "updateDetails": [
+                                        {
+                                            "datasourceSelector": {
+                                                "datasourceType": "Sql",
+                                                "connectionDetails": {
+                                                    "server": "My-Sql-Server",
+                                                    "database": "My-Sql-Database"
+                                                }
+                                            },
+                                            "connectionDetails": {
+                                                "server": "New-Sql-Server",
+                                                "database": "New-Sql-Database"
+                                            }
+                                        },
+                                        {
+                                            "datasourceSelector": {
+                                                "datasourceType": "OData",
+                                                "connectionDetails": {
+                                                    "url": "http://services.odata.org/V4/Northwind/Northwind.svc"
+                                                }
+                                            },
+                                            "connectionDetails": {
+                                                "url": "http://services.odata.org/V4/Odata/Northwind.svc"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "update_datasourcesingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/Default.TakeOver",
+                                "name": "Update Datasources In Group",
+                                "method": "POST",
+                                "description": "Updates the datasources of the specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "updateDetails": [
+                                        {
+                                            "datasourceSelector": {
+                                                "datasourceType": "Sql",
+                                                "connectionDetails": {
+                                                    "server": "My-Sql-Server",
+                                                    "database": "My-Sql-Database"
+                                                }
+                                            },
+                                            "connectionDetails": {
+                                                "server": "New-Sql-Server",
+                                                "database": "New-Sql-Database"
+                                            }
+                                        },
+                                        {
+                                            "datasourceSelector": {
+                                                "datasourceType": "OData",
+                                                "connectionDetails": {
+                                                    "url": "http://services.odata.org/V4/Northwind/Northwind.svc"
+                                                }
+                                            },
+                                            "connectionDetails": {
+                                                "url": "http://services.odata.org/V4/Odata/Northwind.svc"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "update_parameters",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/Default.UpdateParameters",
+                                "name": "Update Parameters",
+                                "method": "POST",
+                                "description": "Updates the parameters values for the specified dataset from my workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "updateDetails": [
+                                        {
+                                            "name": "DatabaseName",
+                                            "newValue": "NewDB"
+                                        },
+                                        {
+                                            "name": "MaxId",
+                                            "newValue": "5678"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "updateparameters_ingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/Default.UpdateParameters",
+                                "name": "Update Parameters In Group",
+                                "method": "POST",
+                                "description": "Updates the parameters values for the specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "updateDetails": [
+                                        {
+                                            "name": "DatabaseName",
+                                            "newValue": "NewDB"
+                                        },
+                                        {
+                                            "name": "MaxId",
+                                            "newValue": "5678"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "embed_token",
+                        "name": "Embed Token",
+                        "operations": [
+                            {
+                                "id": "dashboards_generatetokeningroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/dashboards/:_dashboardKey/GenerateToken",
+                                "name": "Dashboards GenerateTokenInGroup",
+                                "method": "POST",
+                                "description": "Generates an embed token to view the specified dashboard from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "in": "path",
+                                        "description": "The Dashboard id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "accessLevel": "View",
+                                    "allowSaveAs": false,
+                                    "datasetId": "12345",
+                                    "identities": [
+                                        {
+                                            "username": "john@contoso.com",
+                                            "roles": [
+                                                "sales"
+                                            ],
+                                            "datasets": [
+                                                "cfafbeb1-8037-4d0c-896e-a46fb27ff229"
+                                            ]
+                                        },
+                                        {
+                                            "username": "john_contoso",
+                                            "roles": [
+                                                "product"
+                                            ],
+                                            "datasets": [
+                                                "a8b062ca-5730-468f-9df7-43c2ba76bf5e"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "datasets_generatetokeningroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/GenerateToken",
+                                "name": "Datasets GenerateTokenInGroup",
+                                "method": "POST",
+                                "description": "Generates an embed token to Embed Q&A based on the specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "accessLevel": "View",
+                                    "allowSaveAs": false,
+                                    "datasetId": "12345",
+                                    "identities": [
+                                        {
+                                            "username": "john@contoso.com",
+                                            "roles": [
+                                                "sales"
+                                            ],
+                                            "datasets": [
+                                                "cfafbeb1-8037-4d0c-896e-a46fb27ff229"
+                                            ]
+                                        },
+                                        {
+                                            "username": "john_contoso",
+                                            "roles": [
+                                                "product"
+                                            ],
+                                            "datasets": [
+                                                "a8b062ca-5730-468f-9df7-43c2ba76bf5e"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "reports_generatetokenforcreateingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/reports/GenerateToken",
+                                "name": "Reports GenerateTokenForCreateInGroup",
+                                "method": "POST",
+                                "description": "Generates an embed token to allow report creation on the specified workspace based on the specified dataset",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "accessLevel": "View",
+                                    "allowSaveAs": false,
+                                    "datasetId": "12345",
+                                    "identities": [
+                                        {
+                                            "username": "john@contoso.com",
+                                            "roles": [
+                                                "sales"
+                                            ],
+                                            "datasets": [
+                                                "cfafbeb1-8037-4d0c-896e-a46fb27ff229"
+                                            ]
+                                        },
+                                        {
+                                            "username": "john_contoso",
+                                            "roles": [
+                                                "product"
+                                            ],
+                                            "datasets": [
+                                                "a8b062ca-5730-468f-9df7-43c2ba76bf5e"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "reports_generatetokeningroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/reports/:_reportKey/GenerateToken",
+                                "name": "Reports GenerateTokenInGroup",
+                                "method": "POST",
+                                "description": "Generates an embed token to view or edit the specified report from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "accessLevel": "View",
+                                    "allowSaveAs": false,
+                                    "datasetId": "12345",
+                                    "identities": [
+                                        {
+                                            "username": "john@contoso.com",
+                                            "roles": [
+                                                "sales"
+                                            ],
+                                            "datasets": [
+                                                "cfafbeb1-8037-4d0c-896e-a46fb27ff229"
+                                            ]
+                                        },
+                                        {
+                                            "username": "john_contoso",
+                                            "roles": [
+                                                "product"
+                                            ],
+                                            "datasets": [
+                                                "a8b062ca-5730-468f-9df7-43c2ba76bf5e"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "dashboards_generatetokeningroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/dashboards/:_dashboardKey/tiles/:_tileKey/GenerateToken",
+                                "name": "Dashboards GenerateTokenInGroup",
+                                "method": "POST",
+                                "description": "Generates an embed token to view the specified tile from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "dashboardKey",
+                                        "name": "Dashboard Key",
+                                        "in": "path",
+                                        "description": "The Dashboard id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tileKey",
+                                        "name": "Tile Key",
+                                        "in": "path",
+                                        "description": "The Tile id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "accessLevel": "View",
+                                    "allowSaveAs": false,
+                                    "datasetId": "12345",
+                                    "identities": [
+                                        {
+                                            "username": "john@contoso.com",
+                                            "roles": [
+                                                "sales"
+                                            ],
+                                            "datasets": [
+                                                "cfafbeb1-8037-4d0c-896e-a46fb27ff229"
+                                            ]
+                                        },
+                                        {
+                                            "username": "john_contoso",
+                                            "roles": [
+                                                "product"
+                                            ],
+                                            "datasets": [
+                                                "a8b062ca-5730-468f-9df7-43c2ba76bf5e"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "gateways",
+                        "name": "Gateways",
+                        "operations": [
+                            {
+                                "id": "add_datasourceuser",
+                                "url": "/v1.0/myorg/gateways/:_gatewayId/datasources/:_datasourceId/users",
+                                "name": "Add Datasource User",
+                                "method": "POST",
+                                "description": "Gives the specified user permissions to use the specified datasource",
+                                "parameters": [
+                                    {
+                                        "id": "gatewayId",
+                                        "name": "Gateway Id",
+                                        "in": "path",
+                                        "description": "The Gateway id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasourceId",
+                                        "name": "Datasource Id",
+                                        "in": "path",
+                                        "description": "The Datasource id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "emailAddress": "john@contoso.com",
+                                    "datasourceAccessRight": "Read"
+                                }
+                            },
+                            {
+                                "id": "delete_datasource",
+                                "url": "/v1.0/myorg/gateways/:_gatewayId/datasources/:_datasourceId",
+                                "name": "Delete Datasource",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes the specified datasource from the specified gateway",
+                                "parameters": [
+                                    {
+                                        "id": "gatewayId",
+                                        "name": "Gateway Id",
+                                        "in": "path",
+                                        "description": "The Gateway id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasourceId",
+                                        "name": "Datasource Id",
+                                        "in": "path",
+                                        "description": "The Datasource id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_datasourceuser",
+                                "url": "/v1.0/myorg/groups/:_groupId/users/:_user",
+                                "name": "Delete Datasource User",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Removes the specified user from the specified datasource",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user",
+                                        "in": "path",
+                                        "description": "The user principal name (UPN) of the user to remove (usually the user's email)",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "domainname": "zylkernew.com"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "group",
+                        "name": "Group",
+                        "operations": [
+                            {
+                                "id": "add_groupuser",
+                                "url": "/v1.0/myorg/groups/:_groupId/users",
+                                "name": "Add Group User",
+                                "method": "POST",
+                                "description": "Gives the specified user permissions to the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "emailAddress": "john@contoso.com",
+                                    "groupUserAccessRight": "Admin"
+                                }
+                            },
+                            {
+                                "id": "create_group",
+                                "url": "/v1.0/myorg/groups",
+                                "name": "Create Group",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates new workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "sample group"
+                                }
+                            },
+                            {
+                                "id": "delete_group",
+                                "url": "/v1.0/myorg/groups/:_groupId",
+                                "name": "Delete Group",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_useringroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/users/:_user",
+                                "name": "Delete User In Group",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes the specified user permissions to the specified workspaces",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user",
+                                        "in": "path",
+                                        "description": "The user principal name (UPN) of the user to remove (usually the user's email)",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "imports",
+                        "name": "Imports",
+                        "operations": [
+                            {
+                                "id": "create_temporaryuploadlocation",
+                                "url": "/v1.0/myorg/imports/createTemporaryUploadLocation",
+                                "name": "Create Temporary Upload Location",
+                                "method": "POST",
+                                "description": "Creates a temporary blob storage to be used to import pbix files larger than 1 GB"
+                            },
+                            {
+                                "id": "create_temporaryuploadlocationingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/imports/createTemporaryUploadLocation",
+                                "name": "Create Temporary Upload Location In Group",
+                                "method": "POST",
+                                "description": "Create Temporary Upload Location In Group",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "push_datasets",
+                        "name": "Push Datasets",
+                        "operations": [
+                            {
+                                "id": "datasets_postdataset",
+                                "url": "/v1.0/myorg/datasets",
+                                "name": "Datasets PostDataset",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new dataset on 'My Workspace'",
+                                "parameters": [
+                                    {
+                                        "id": "datasetId",
+                                        "name": "Dataset Id",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "SalesMarketing",
+                                    "defaultMode": "PUSH",
+                                    "IsEffectiveIdentityRequired": true,
+                                    "IsEffectiveIdentityRolesRequired": true,
+                                    "IsOnPremGatewayRequired": true,
+                                    "IsRefreshable": true,
+                                    "addRowsAPIEnabled": true,
+                                    "configuredBy": "name",
+                                    "datasources": [
+                                        {
+                                            "connectionDetails": {
+                                                "database": "abcd",
+                                                "server": "tygh",
+                                                "url": "https://powerbi.com"
+                                            },
+                                            "connectionString": "qwer",
+                                            "datasourceId": "qwer",
+                                            "datasourceType": "qwer",
+                                            "gatewayId": "qwer",
+                                            "name": "qwer"
+                                        }
+                                    ],
+                                    "defaultRetentionPolicy": "wegdfb",
+                                    "id": "1234",
+                                    "relationships": [
+                                        {
+                                            "crossFilteringBehavior": "name",
+                                            "fromColumn": 123,
+                                            "fromTable": 123,
+                                            "name": 123,
+                                            "toColumn": 123,
+                                            "toTable": 123
+                                        }
+                                    ],
+                                    "webUrl": "34525",
+                                    "tables": [
+                                        {
+                                            "name": "Product",
+                                            "columns": [
+                                                {
+                                                    "name": "ProductID",
+                                                    "dataType": "Int64"
+                                                },
+                                                {
+                                                    "name": "Name",
+                                                    "dataType": "string"
+                                                },
+                                                {
+                                                    "name": "Category",
+                                                    "dataType": "string"
+                                                },
+                                                {
+                                                    "name": "IsCompete",
+                                                    "dataType": "bool"
+                                                },
+                                                {
+                                                    "name": "ManufacturedOn",
+                                                    "dataType": "DateTime"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "datasets_postdatasetingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets",
+                                "name": "Datasets PostDatasetInGroup",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new dataset on the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "SalesMarketing",
+                                    "defaultMode": "PUSH",
+                                    "IsEffectiveIdentityRequired": true,
+                                    "IsEffectiveIdentityRolesRequired": true,
+                                    "IsOnPremGatewayRequired": true,
+                                    "IsRefreshable": true,
+                                    "addRowsAPIEnabled": true,
+                                    "configuredBy": "name",
+                                    "datasources": [
+                                        {
+                                            "connectionDetails": {
+                                                "database": "abcd",
+                                                "server": "tygh",
+                                                "url": "https://powerbi.com"
+                                            },
+                                            "connectionString": "qwer",
+                                            "datasourceId": "qwer",
+                                            "datasourceType": "qwer",
+                                            "gatewayId": "qwer",
+                                            "name": "qwer"
+                                        }
+                                    ],
+                                    "defaultRetentionPolicy": "wegdfb",
+                                    "id": "1234",
+                                    "relationships": [
+                                        {
+                                            "crossFilteringBehavior": "name",
+                                            "fromColumn": 123,
+                                            "fromTable": 123,
+                                            "name": 123,
+                                            "toColumn": 123,
+                                            "toTable": 123
+                                        }
+                                    ],
+                                    "webUrl": "34525",
+                                    "tables": [
+                                        {
+                                            "name": "Product",
+                                            "columns": [
+                                                {
+                                                    "name": "ProductID",
+                                                    "dataType": "Int64"
+                                                },
+                                                {
+                                                    "name": "Name",
+                                                    "dataType": "string"
+                                                },
+                                                {
+                                                    "name": "Category",
+                                                    "dataType": "string"
+                                                },
+                                                {
+                                                    "name": "IsCompete",
+                                                    "dataType": "bool"
+                                                },
+                                                {
+                                                    "name": "ManufacturedOn",
+                                                    "dataType": "DateTime"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "datasets_postrows",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/tables/:_tableName/rows",
+                                "name": "Datasets PostRows",
+                                "method": "POST",
+                                "description": "Adds new data rows to the specified table within the specified dataset from 'My Workspace'",
+                                "parameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tableName",
+                                        "name": "Table Name",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "rows": [
+                                        {
+                                            "ProductID": 1,
+                                            "Name": "Adjustable Race",
+                                            "Category": "Components",
+                                            "IsCompete": true,
+                                            "ManufacturedOn": "07/30/2014"
+                                        },
+                                        {
+                                            "ProductID": 2,
+                                            "Name": "LL Crankarm",
+                                            "Category": "Components",
+                                            "IsCompete": true,
+                                            "ManufacturedOn": "07/30/2014"
+                                        },
+                                        {
+                                            "ProductID": 3,
+                                            "Name": "HL Mountain Frame - Silver",
+                                            "Category": "Bikes",
+                                            "IsCompete": true,
+                                            "ManufacturedOn": "07/30/2014"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "datasets_postrowsingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/tables/:_tableName/rows",
+                                "name": "Datasets PostRowsInGroup",
+                                "method": "POST",
+                                "description": "Adds new data rows to the specified table within the specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tableName",
+                                        "name": "Table Name",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "rows": [
+                                        {
+                                            "ProductID": 1,
+                                            "Name": "Adjustable Race",
+                                            "Category": "Components",
+                                            "IsCompete": true,
+                                            "ManufacturedOn": "07/30/2014"
+                                        },
+                                        {
+                                            "ProductID": 2,
+                                            "Name": "LL Crankarm",
+                                            "Category": "Components",
+                                            "IsCompete": true,
+                                            "ManufacturedOn": "07/30/2014"
+                                        },
+                                        {
+                                            "ProductID": 3,
+                                            "Name": "HL Mountain Frame - Silver",
+                                            "Category": "Bikes",
+                                            "IsCompete": true,
+                                            "ManufacturedOn": "07/30/2014"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "datasets_deleterows",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/tables/:_tableName/rows",
+                                "name": "Datasets DeleteRows",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes all rows from the specified table within the specified dataset from workspace",
+                                "parameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tableName",
+                                        "name": "Table Name",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "datasets_deleterowsingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/tables/:_tableName/rows",
+                                "name": "Datasets DeleteRowsInGroup",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes all rows from the specified table within the specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tableName",
+                                        "name": "Table Name",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "datasets_puttableingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/datasets/:_datasetKey/tables/:_tableName",
+                                "name": "Datasets PutTableInGroup",
+                                "method": "PATCH",
+                                "description": "Updates the metdata and schema for the specified table within the specified dataset from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tableName",
+                                        "name": "Table Name",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "tableName": "NewProduct",
+                                    "columns": [
+                                        {
+                                            "name": "ProductID",
+                                            "dataType": "Int64"
+                                        },
+                                        {
+                                            "name": "Name",
+                                            "dataType": "string"
+                                        },
+                                        {
+                                            "name": "Category",
+                                            "dataType": "string"
+                                        },
+                                        {
+                                            "name": "IsCompete",
+                                            "dataType": "bool"
+                                        },
+                                        {
+                                            "name": "ManufacturedOn",
+                                            "dataType": "DateTime"
+                                        },
+                                        {
+                                            "name": "NewColumn",
+                                            "dataType": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "datasets_puttable",
+                                "url": "/v1.0/myorg/datasets/:_datasetKey/tables/:_tableName",
+                                "name": "Datasets PutTable",
+                                "method": "PATCH",
+                                "description": "Updates the metdata and schema for the specified table within the specified dataset from my workspace",
+                                "parameters": [
+                                    {
+                                        "id": "datasetKey",
+                                        "name": "Dataset Key",
+                                        "in": "path",
+                                        "description": "The Dataset id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tableName",
+                                        "name": "Table Name",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "tableName": "NewProduct",
+                                    "columns": [
+                                        {
+                                            "name": "ProductID",
+                                            "dataType": "Int64"
+                                        },
+                                        {
+                                            "name": "Name",
+                                            "dataType": "string"
+                                        },
+                                        {
+                                            "name": "Category",
+                                            "dataType": "string"
+                                        },
+                                        {
+                                            "name": "IsCompete",
+                                            "dataType": "bool"
+                                        },
+                                        {
+                                            "name": "ManufacturedOn",
+                                            "dataType": "DateTime"
+                                        },
+                                        {
+                                            "name": "NewColumn",
+                                            "dataType": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reports",
+                        "name": "Reports",
+                        "operations": [
+                            {
+                                "id": "rebind_report",
+                                "url": "/v1.0/myorg/reports/:_reportKey/Rebind",
+                                "name": "Rebind Report",
+                                "method": "POST",
+                                "description": "Rebinds the specified report from 'My Workspace' workspace to the requested dataset",
+                                "parameters": [
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "datasetId": "iuggikj"
+                                }
+                            },
+                            {
+                                "id": "rebind_reportingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/reports/:_reportKey/Rebind",
+                                "name": "Rebind Report In Group",
+                                "method": "POST",
+                                "description": "Rebinds the specified report from the specified workspace to the requested dataset",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "datasetId": "iuggikj"
+                                }
+                            },
+                            {
+                                "id": "clone_report",
+                                "url": "/v1.0/myorg/reports/:_reportKey/Clone",
+                                "name": "Clone Report",
+                                "method": "POST",
+                                "description": "Clones the specified report from 'My Workspace'",
+                                "parameters": [
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "targetModelId": "iuggikj",
+                                    "name": "iuggikj",
+                                    "targetWorkspaceId": "iuggikj"
+                                }
+                            },
+                            {
+                                "id": "clone_reportingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/reports/:_reportKey/Clone",
+                                "name": "Clone Report In Group",
+                                "method": "POST",
+                                "description": "Clones the specified report from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The Group id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "targetModelId": "iuggikj",
+                                    "name": "iuggikj",
+                                    "targetWorkspaceId": "iuggikj"
+                                }
+                            },
+                            {
+                                "id": "delete_report",
+                                "url": "/v1.0/myorg/reports/:_reportKey",
+                                "name": "Delete Report",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes the specified report from workspace",
+                                "parameters": [
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "datasets_deleterowsingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/reports/:_reportKey",
+                                "name": "Datasets DeleteRowsInGroup",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes the specified report from the specified workspace",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_reportcontent",
+                                "url": "/v1.0/myorg/reports/:_reportKey/UpdateReportContent",
+                                "name": "Update Report Content",
+                                "method": "PATCH",
+                                "description": "Updates the specified report from 'My Workspace' to have the same content as the specified report in the request body",
+                                "parameters": [
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "sourceReport": "jihfdhk",
+                                    "sourceType": "iuggikj"
+                                }
+                            },
+                            {
+                                "id": "update_reportcontentingroup",
+                                "url": "/v1.0/myorg/groups/:_groupId/reports/:_reportKey/UpdateReportContent",
+                                "name": "Update Report Content In Group",
+                                "method": "PATCH",
+                                "description": "Updates the specified report from the specified workspace to have the same content as the specified report in the request body",
+                                "parameters": [
+                                    {
+                                        "id": "groupId",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The workspace id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "reportKey",
+                                        "name": "Report Key",
+                                        "in": "path",
+                                        "description": "The Report id",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "sourceReport": "jihfdhk",
+                                    "sourceType": "iuggikj"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,483 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "returns",
+                        "name": "Returns",
+                        "endpoints": [
+                            {
+                                "id": "list_returns",
+                                "url": "returns.json",
+                                "name": "Retrieve collection of RMAs",
+                                "description": "This API returns return information which can be filtered by creation date, refunded date, status, RMA.",
+                                "resourcePath": "data",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "min_updated_at": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSSZ"
+                                },
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Retrieves the matching records with the specified value.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "authorized",
+                                            "in_transit",
+                                            "delivered",
+                                            "pending_refund",
+                                            "refunded"
+                                        ]
+                                    },
+                                    {
+                                        "id": "min_updated_at",
+                                        "name": "min_updated_at",
+                                        "description": "Retrieves the records which are updated after the specified date (format: 2017-02-22T20:28:13.000Z)."
+                                    },
+                                    {
+                                        "id": "max_updated_at",
+                                        "name": "max_updated_at",
+                                        "description": "Retrieves the records which are updated before the specified date (format: 2017-02-22T20:28:13.000Z)."
+                                    },
+                                    {
+                                        "id": "min_refunded_at",
+                                        "name": "min_refunded_at",
+                                        "description": "Retrieves the records which are refunded after the specified date (format: 2017-02-22T20:28:13.000Z)."
+                                    },
+                                    {
+                                        "id": "max_refunded_at",
+                                        "name": "max_refunded_at",
+                                        "description": "Retrieves the records which are refunded before the specified date (format: 2017-02-22T20:28:13.000Z)."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_returns",
+                                "url": "returns/:_id.json",
+                                "name": "Retrieve single RMA details",
+                                "description": "Returns detailed data for a single RMA.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Return ID.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "include",
+                                        "description": "Includes the values of the specified properties in the response data."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "refund_requests",
+                        "name": "Refund_Requests",
+                        "endpoints": [
+                            {
+                                "id": "get_refundrequests",
+                                "url": "refund_requests.json",
+                                "name": "Retrieve collection of Refund requests",
+                                "description": "This API returns refund requests information.",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Retrieves the matching records with the specified value.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "NOT_FOUND",
+                                            "INCOMPLETE",
+                                            "IGNORED",
+                                            "ERROR"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_notrefunded",
+                                "url": "refund_requests/not_refunded.json",
+                                "name": "Retrieve collection of not refunded requests",
+                                "description": "Returns detailed data of not refunded requests.",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "refunds",
+                        "name": "Refunds",
+                        "sampleData": {
+                            "package_id": "123676676787878768456",
+                            "tracking_number": "Z138HJKH98HJH70",
+                            "restocking_fee": "0",
+                            "items": [
+                                {
+                                    "order_line_item_id": "454556565777",
+                                    "quantity": 1,
+                                    "restock": true
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_refund",
+                                "url": "refunds",
+                                "name": "Refund shopper based on package information",
+                                "method": "POST",
+                                "description": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": "returns",
+                        "name": "Returns",
+                        "operations": [
+                            {
+                                "id": "authorize_returns",
+                                "url": "returns/:_id/authorize.json",
+                                "name": "Authorize Return",
+                                "method": "POST",
+                                "sampleData": {
+                                    "data": {
+                                        "type": "returns",
+                                        "id": "327031",
+                                        "attributes": {
+                                            "rma": "327031",
+                                            "ext_store_id": null,
+                                            "shopper_email": "email@domain.com",
+                                            "currency": "USD",
+                                            "status": "authorized",
+                                            "order_shipping_refund": "0.00",
+                                            "return_shipping_quote_amount": "19.73",
+                                            "return_shipping_refund_amount": "0.00",
+                                            "return_shipping_paid_amount": "19.73",
+                                            "subtotal_amount": "190.00",
+                                            "estimated_refund_amount": "186.66",
+                                            "refund_amount": "0.00",
+                                            "restocking_fee_amount": "0.00",
+                                            "tax_amount": "16.39",
+                                            "discount_amount": "0.00",
+                                            "shopper_message": "",
+                                            "merchant_notes": null,
+                                            "is_exchange": false,
+                                            "is_gift": false,
+                                            "is_exempt_from_shipping": false,
+                                            "return_label_amount": "19.73",
+                                            "csr_user_id": 7117,
+                                            "shopper_address": {
+                                                "name": "Shopper",
+                                                "line1": "4418 Shopper AVE",
+                                                "city": "Shopper CITY",
+                                                "state": "MO",
+                                                "postal_code": "64110-1830",
+                                                "country_code": "US"
+                                            }
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "ReturnID",
+                                        "description": "Return ID.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deliver_returns",
+                                "url": "returns/:_id/deliver.json",
+                                "name": "Deliver Return",
+                                "method": "POST",
+                                "sampleData": {
+                                    "data": {
+                                        "type": "returns",
+                                        "id": "327031",
+                                        "attributes": {
+                                            "rma": "327031",
+                                            "ext_store_id": null,
+                                            "shopper_email": "email@domain.com",
+                                            "currency": "USD",
+                                            "status": "authorized",
+                                            "order_shipping_refund": "0.00",
+                                            "return_shipping_quote_amount": "19.73",
+                                            "return_shipping_refund_amount": "0.00",
+                                            "return_shipping_paid_amount": "19.73",
+                                            "subtotal_amount": "190.00",
+                                            "estimated_refund_amount": "186.66",
+                                            "refund_amount": "0.00",
+                                            "restocking_fee_amount": "0.00",
+                                            "tax_amount": "16.39",
+                                            "discount_amount": "0.00",
+                                            "shopper_message": "",
+                                            "merchant_notes": null,
+                                            "is_exchange": false,
+                                            "is_gift": false,
+                                            "is_exempt_from_shipping": false,
+                                            "return_label_amount": "19.73",
+                                            "csr_user_id": 7117,
+                                            "shopper_address": {
+                                                "name": "Shopper",
+                                                "line1": "4418 Shopper AVE",
+                                                "city": "Shopper CITY",
+                                                "state": "MO",
+                                                "postal_code": "64110-1830",
+                                                "country_code": "US"
+                                            }
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "ReturnID",
+                                        "in": "path",
+                                        "description": "Return ID.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "store_return_dropoff",
+                                "url": "returns/:_id/drop-off?return_refund_shipping=true",
+                                "name": "Store return drop off",
+                                "method": "POST",
+                                "sampleData": {},
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "ReturnID",
+                                        "in": "path",
+                                        "description": "Return ID.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "refund_externally_areturn",
+                                "url": "returns/:_id/refund-externally",
+                                "name": "Refund externally a return",
+                                "method": "POST",
+                                "sampleData": {
+                                    "data": {
+                                        "type": "returns",
+                                        "id": "327031",
+                                        "attributes": {
+                                            "rma": "327031",
+                                            "ext_store_id": null,
+                                            "shopper_email": "email@domain.com",
+                                            "currency": "USD",
+                                            "status": "canceled",
+                                            "order_shipping_refund": "0.00",
+                                            "return_shipping_quote_amount": "19.73",
+                                            "return_shipping_refund_amount": "0.00",
+                                            "return_shipping_paid_amount": "19.73",
+                                            "subtotal_amount": "190.00",
+                                            "estimated_refund_amount": "186.66",
+                                            "refund_amount": "0.00",
+                                            "restocking_fee_amount": "0.00",
+                                            "tax_amount": "16.39",
+                                            "discount_amount": "0.00",
+                                            "shopper_message": "",
+                                            "merchant_notes": null,
+                                            "is_exchange": false,
+                                            "is_gift": false,
+                                            "is_exempt_from_shipping": false,
+                                            "return_label_amount": "19.73",
+                                            "csr_user_id": 7117,
+                                            "shopper_address": {
+                                                "name": "Shopper",
+                                                "line1": "4418 Shopper AVE",
+                                                "city": "Shopper CITY",
+                                                "state": "MO",
+                                                "postal_code": "64110-1830",
+                                                "country_code": "US"
+                                            },
+                                            "created_at": "2021-12-09T15:11:32.273Z",
+                                            "updated_at": "2021-12-09T15:37:32.072Z",
+                                            "refunded_at": "2021-12-09T15:37:32.000Z"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "ReturnID",
+                                        "in": "path",
+                                        "description": "Return ID.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_areturn",
+                                "url": "returns/:_id/cancel",
+                                "name": "Cancel a return",
+                                "method": "POST",
+                                "sampleData": {
+                                    "data": {
+                                        "type": "returns",
+                                        "id": "327031",
+                                        "attributes": {
+                                            "rma": "327031",
+                                            "ext_store_id": null,
+                                            "shopper_email": "email@domain.com",
+                                            "currency": "USD",
+                                            "status": "canceled",
+                                            "order_shipping_refund": "0.00",
+                                            "return_shipping_quote_amount": "19.73",
+                                            "return_shipping_refund_amount": "0.00",
+                                            "return_shipping_paid_amount": "19.73",
+                                            "subtotal_amount": "190.00",
+                                            "estimated_refund_amount": "186.66",
+                                            "refund_amount": "0.00",
+                                            "restocking_fee_amount": "0.00",
+                                            "tax_amount": "16.39",
+                                            "discount_amount": "0.00",
+                                            "shopper_message": "",
+                                            "merchant_notes": null,
+                                            "is_exchange": false,
+                                            "is_gift": false,
+                                            "is_exempt_from_shipping": false,
+                                            "return_label_amount": "19.73",
+                                            "csr_user_id": 7117,
+                                            "shopper_address": {
+                                                "name": "Shopper",
+                                                "line1": "4418 Shopper AVE",
+                                                "city": "Shopper CITY",
+                                                "state": "MO",
+                                                "postal_code": "64110-1830",
+                                                "country_code": "US"
+                                            },
+                                            "created_at": "2021-12-09T15:11:32.273Z",
+                                            "updated_at": "2021-12-09T15:37:32.072Z",
+                                            "refunded_at": "2021-12-09T15:37:32.000Z"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "ReturnID",
+                                        "in": "path",
+                                        "description": "Return ID.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_return_notes",
+                                "url": "returns/:_id/notes",
+                                "name": "Update return notes",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "note": "My note"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "ReturnID",
+                                        "in": "path",
+                                        "description": "Return ID.",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "note"
+                                ]
+                            },
+                            {
+                                "id": "set_return_alert",
+                                "url": "returns/:_id/alert",
+                                "name": "Set return alert",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "alert_code": "UNSELLABLE_ITEM"
+                                },
+                                "requiredMappings": [
+                                    "alert_code"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "ReturnID",
+                                        "in": "path",
+                                        "description": "Return ID.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_return_alert",
+                                "url": "returns/:_id/alert",
+                                "name": "Delete return alert",
+                                "method": "DELETE",
+                                "sampleData": {},
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "ReturnID",
+                                        "in": "path",
+                                        "description": "Return ID.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

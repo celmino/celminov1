@@ -1,0 +1,2374 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "allowUndefinedResource": true,
+        "urlResolution": [],
+        "paging": {},
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "corporate_identity",
+                        "name": "Corporate Identity",
+                        "endpoints": [
+                            {
+                                "id": "match",
+                                "url": "/V6.0/organizations",
+                                "name": "Match",
+                                "resourcePath": "MatchResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "match",
+                                        "name": "match",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "MatchTypeText",
+                                        "name": "MatchTypeText",
+                                        "fieldType": "select",
+                                        "description": "Text describing the nature of match to be applied during the match process. When MatchTypeText is set as 'SBRI', this indicates that the match will be performed against the D&B Small Business repository.",
+                                        "options": [
+                                            "SBRI",
+                                            "Advanced",
+                                            "Basic"
+                                        ]
+                                    },
+                                    {
+                                        "id": "DUNSNumber",
+                                        "name": "DUNSNumber",
+                                        "description": "The subject identifier under the Data Universal Numbering System of the inquired subject. Or D&B's identification number, which provides unique identification of the inquired organization, in accordance with the Data Universal Numbering System (D-U-N-S)."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cleanse_match",
+                                "url": "/V6.0/organizations",
+                                "name": "Cleanse,then Match",
+                                "resourcePath": "GetCleanseMatchResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "TerritoryName",
+                                        "name": "TerritoryName",
+                                        "description": "Territory Abbreviated Name for US and Canada (eg: NY for New York). Full Territory Name for all other countries"
+                                    },
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "description": "Text describing the nature of match to be applied during the match process. When MatchTypeText is set as 'SBRI', this indicates that the match will be performed against the D&B Small Business repository.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "cleansematch",
+                                        "name": "cleansematch",
+                                        "fieldType": "select",
+                                        "description": "Text describing the nature of match to be applied during the match process.",
+                                        "required": true,
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "SubjectName",
+                                        "name": "SubjectName",
+                                        "description": "Text recording the name of the inquired organization by which it is known / identified"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "small_business",
+                        "name": "Small Business",
+                        "endpoints": [
+                            {
+                                "id": "locating_small_business",
+                                "url": "/V6.0/organizations",
+                                "name": "Locating Small Businesses",
+                                "resourcePath": "MatchResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "match",
+                                        "name": "match",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "MatchTypeText",
+                                        "name": "MatchTypeText",
+                                        "fieldType": "select",
+                                        "description": "Text describing the nature of match to be applied during the match process. When MatchTypeText is set as 'SBRI', this indicates that the match will be performed against the D&B Small Business repository.",
+                                        "options": [
+                                            "SBRI",
+                                            "Advanced",
+                                            "Basic"
+                                        ]
+                                    },
+                                    {
+                                        "id": "SubjectName",
+                                        "name": "SubjectName",
+                                        "description": "The subject identifier under the Data Universal Numbering System of the inquired subject.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "StreetAddressLine",
+                                        "name": "StreetAddressLine"
+                                    },
+                                    {
+                                        "id": "TerritoryName",
+                                        "name": "TerritoryName",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "FullPostalCode",
+                                        "name": "FullPostalCode"
+                                    },
+                                    {
+                                        "id": "PrimaryTownName",
+                                        "name": "PrimaryTownName"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "risk_insight",
+                                "url": "/V3.2/organizations/:_DUNS/products/:_product_id",
+                                "name": "Risk Insight",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "required": true,
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject.."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "fico_score_profile",
+                                "url": "/V5.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "FICO Score Profile",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "country_data",
+                        "name": "Country Data",
+                        "endpoints": [
+                            {
+                                "id": "country_risk",
+                                "url": "/V3.2/organizations/:_CountryISOAlpha2Code/products/:_product_id",
+                                "name": "Country Risk",
+                                "resourcePath": "OrderCountryReportResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject.",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "country_insight",
+                                "url": "/V3.2/organizations/:_CountryISOAlpha2Code/products/:_product_id",
+                                "name": "Country Insight",
+                                "resourcePath": "OrderCountryReportResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject.",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "supplier_risk",
+                        "name": "Supplier Risk",
+                        "endpoints": [
+                            {
+                                "id": "global_supplier_risk",
+                                "url": "/V3.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Global Supplier Risk",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "know_your_vendor",
+                                "url": "/V3.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Know Your Vendor",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "trade_payments",
+                        "name": "Trade Payments",
+                        "endpoints": [
+                            {
+                                "id": "payment_summary",
+                                "url": "/V4.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Payment Summary",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "payment_details",
+                                "url": "/V4.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Payment Details",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stress_predictors",
+                        "name": "Stress Predictors",
+                        "endpoints": [
+                            {
+                                "id": "predictive_risk",
+                                "url": "/V5.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Predictive Risk",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "financial_stress_score",
+                                "url": "/V5.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Financial Stress Score",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "commercial_credit_score",
+                                "url": "/V5.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Commercial Credit Score",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "emma_score",
+                                "url": "/V5.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "EMMA Score",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "total_loss_predictor",
+                                "url": "/V5.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Total Loss Predictor",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "triple_play_score",
+                                "url": "/V5.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Triple Play Score",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ApplicationTransactionId",
+                                        "name": "ApplicationTransactionID",
+                                        "description": "A number assigned by the calling application to uniquely identify this request."
+                                    },
+                                    {
+                                        "id": "ArchiveProductOptOutIndicator",
+                                        "name": "ArchiveProductOptOutIndicator",
+                                        "description": "A number assigned by the calling application to uniquely identify this request.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "financial_overview",
+                        "name": "Financial Overview",
+                        "endpoints": [
+                            {
+                                "id": "finanacial_highlights",
+                                "url": "/V4.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Financial Highlights and Statements",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "market_analysis_report",
+                                "url": "/V3.2/organizations/:_DUNS/products/:_product_id",
+                                "name": "Market Analysis Report",
+                                "resourcePath": "OrderCountryReportResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "industry_data",
+                        "name": "Industry Data",
+                        "endpoints": [
+                            {
+                                "id": "locate_industry_codes",
+                                "url": "/V6.4/industries",
+                                "name": "Locate Industry Codes",
+                                "resourcePath": "OrderProductResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "IndustryCode-1",
+                                        "name": "IndustryCode-1",
+                                        "description": "An alphanumeric value identifying a business activity based on the scheme specified by the typeText. For instance, 1611 represents the highway and street construction industry in the U.S. SIC (Standard Industrial Classification) system. Clarification Note: These are generally external codes created by an external authoritative body, like the U.S. Office of Management and Budget (OMB), but D&B may have created extensions to more precisely define an activity, as in the case of the SIC 2+2 (the last 4 digits of an 8-digit SIC)."
+                                    },
+                                    {
+                                        "id": "IndustryCodeTypeCode-1",
+                                        "name": "IndustryCodeTypeCode-1",
+                                        "description": "Attribute Possible values: 19295 [UK SIC 2007]; 3599 [D&B Standard Industry Code]; 700 [NAICS]"
+                                    },
+                                    {
+                                        "id": "ReturnOnlyPremiumIndustryIndicator",
+                                        "name": "ReturnOnlyPremiumIndustryIndicator",
+                                        "description": "When true (set to 1), only the industries part of First Research Industry List have to be listed in the search response. When false (set to 0) all the industries that match the search criteria have to be listed in the search response."
+                                    },
+                                    {
+                                        "id": "findindustry",
+                                        "name": "findindustry",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "location_profiles",
+                                "url": "/V4.0/industries/location-:_state_territory/:_product_id",
+                                "name": "Location Profiles",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "state_territory",
+                                        "name": "state_territory",
+                                        "description": "Code represented in ISO 3166-2 scheme defining the name of a principal subdivision (e.g., province or state) of a country coded in ISO 3166-1; e.g., US-NJ represents the state New Jersey in United States, CA-ON represents the province Ontario in Canada. The first part is the ISO 3166-1 alpha-2 code of the country; The second part is a string of up to three alphanumeric characters, which is usually obtained from national sources and stems from coding systems already in use in the country concerned, but may also be developed by the ISO itself.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ApplicationTransactionID",
+                                        "name": "Application Transaction ID",
+                                        "description": "A number assigned by the calling application to uniquely identify this request."
+                                    },
+                                    {
+                                        "id": "TransactionTimestamp",
+                                        "name": "Transaction Timestamp",
+                                        "description": "The date and time when this request was created. When the request is from an intermediary, such as a workflow manager or service bus, this is the date and time when the message was sent to the D&B function, i.e., the date and time when the xml document was created by the requesting intermediary."
+                                    },
+                                    {
+                                        "id": "SubmittingOfficeID",
+                                        "name": "Submitting Office ID",
+                                        "description": "A number that identifies the system or the software application from where this request originated. / A number used to uniquely identfy the D&B business segment or delivery channel from where this request originated."
+                                    },
+                                    {
+                                        "id": "LanguagePreferenceCode",
+                                        "name": "Language Preference Code",
+                                        "fieldType": "integer",
+                                        "description": "A D&B code value that defines the language in which the customer wants this product to be rendered."
+                                    },
+                                    {
+                                        "id": "ArchiveProductOptOutIndicator",
+                                        "name": "Archive Product Opt Out Indicator",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "ExtendArchivePeriodIndicator",
+                                        "name": "Extend Archive Period Indicator",
+                                        "description": "When 'true' the duration to archive the data is to be extended. Note: There is an additional cost for extending the archival period of the data purchased. When 'false' the duration to archive the data is not to be extended.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "PortfolioAssetContainerID",
+                                        "name": "Portfolio Asset Container ID"
+                                    },
+                                    {
+                                        "id": "CustomerReferenceText-1",
+                                        "name": "CustomerReferenceText-1",
+                                        "description": "A freeform reference string provided by the customer to be linked to the product in order to support subsequent order reconciliation."
+                                    },
+                                    {
+                                        "id": "CustomerBillingEndorsementText",
+                                        "name": "Customer Billing Endorsement Text",
+                                        "description": "Text that is filled in by customer and commonly contains requesting individual or department name, or customer's own account/reference number and/or name for the case on which the product was provided.This text is a reference used during the billing process."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "standard_code_tables",
+                                "url": "/V2/referencedata/indscd",
+                                "name": "Standard Code Tables",
+                                "resourcePath": "OrderProductResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "IndsCdTypCd",
+                                        "name": "IndsCdTypCd",
+                                        "description": "Possible values: 1015 [US Standard Industry Code 1972 - 4 digit]; 1016 [US Standard Industry Code 1972 - 4 digit (European version)]; 12901 [Norwegian NACE]; 1716 [Norwegian Activity Code - D&amp;B NACE]; 1743 [SW NACE Code]; 18052 [Sweden Classification of Economic Activities in the EC, Rev. 2]; 18053 [Denmark Classification of Economic Activities in the EC , Rev. 2]; 19295 [UK Standard Industry Code 2007]; 19307 [Belgium NACE 2008]; 19556 [Netherlands SBI 2008]; 20056 [Norwegian NACE Revision 2]; 20078 [Nomenclature of French Activities Revision 2 (NAF Rev. 2)]; 20107 [Finnish NACE Revision 2]; 2086 [NAF Code: Nomenclature d&apos;Activit&#233; Fran&#231;aise]; 2831 [1977 Canada 8 digits]; 3599 [Standard Industry Code - 8 digit]; 3609 [NACE Revision 1]; 3843 [BL NACE]; 3844 [BL VAT NACE]; 3845 [BL Social Security NACE - 4 digit]; 3846 [BL Euro DB NACE]; 3847 [BL Registered Contractor Code]; 399 [US Standard Industry Code 1987 - 4 digit]; 490 [DK Nace: DB93 +]; 570 [FIN NACE]; 6082 [NL CBS Industry Code 5 digit - 1993]; 6083 [NL KvK Industry Code (BIK) 6 digit - 1995]; 6967 [WZ 93]; 700 [North American Industry Classification System]; 8101 [BL Joint Committee Classification].",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "ApplicationTransactionID",
+                                        "name": "Application Transaction ID",
+                                        "description": "An alphanumeric string that uniquely identifies the transaction being requested."
+                                    },
+                                    {
+                                        "id": "TransactionTimestamp",
+                                        "name": "Transaction Time stamp",
+                                        "description": "dateTime"
+                                    },
+                                    {
+                                        "id": "PrfdLangCd",
+                                        "name": "PrfdLangCd",
+                                        "required": true,
+                                        "description": "integer up to 7 digits."
+                                    },
+                                    {
+                                        "id": "PrfdWritScrpCd",
+                                        "name": "PrfdWritScrpCd",
+                                        "required": true,
+                                        "description": "integer up to 7 digits."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "industry_profiles",
+                                "url": "/V4.0/industries/industrycode-:_code_value-:_code_type/:_product_id",
+                                "name": "Industry Profiles",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "code_value",
+                                        "name": "code_value",
+                                        "description": "An alphanumeric value identifying a business activity based on the scheme specified by the typeText. For instance, 1611 represents the highway and street construction industry in the U.S. SIC (Standard Industrial Classification) system. Clarification Note: These are generally external codes created by an external authoritative body, like the U.S. Office of Management and Budget (OMB), but D&B may have created extensions to more precisely define an activity, as in the case of the SIC 2+2 (the last 4 digits of an 8-digit SIC).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "code_type",
+                                        "name": "code_type",
+                                        "description": "Possible values: 25838 [D&B Hoovers Industry Code]",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company_data",
+                        "name": "Company Data",
+                        "endpoints": [
+                            {
+                                "id": "locating_companies",
+                                "url": "/V6.4/organizations",
+                                "name": "Locating Companies",
+                                "pathParameters": [
+                                    {
+                                        "id": "mailbox_id",
+                                        "name": "Mailbox ID",
+                                        "description": "Unique identifier for the Mailbox",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "top_competitors",
+                                "url": "/V6.4/organizations/:_DUNS/competitors",
+                                "name": "Top Competitors",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "company_profiles",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Company Profiles",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "company_news",
+                                "url": "/V3.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Company News",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "WB1784_record",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "WB1784 Record",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "sdmr_record",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "SDMR Record",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "corporate_linkage",
+                                "url": "/V4.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Corporate Linkage",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "business_information_report",
+                                "url": "/V3.2/organizations/:_DUNS/products/:_product_id",
+                                "name": "Business Information Report",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "DNBproductID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    },
+                                    {
+                                        "id": "IncludeAttachmentIndicator",
+                                        "name": "IncludeAttachmentIndicator",
+                                        "description": "When true (set to 1), the Content Object will be returned as an MTOM Attachment. When false (set to 0), the content object will be returned embedded within the XML / JSON Response.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "other_reports",
+                                "url": "/V3.2/organizations/:_DUNS/products/:_product_id",
+                                "name": "Other Reports",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "DNBproductID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    },
+                                    {
+                                        "id": "IncludeAttachmentIndicator",
+                                        "name": "IncludeAttachmentIndicator",
+                                        "description": "When true (set to 1), the Content Object will be returned as an MTOM Attachment. When false (set to 0), the content object will be returned embedded within the XML / JSON Response.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "comprehensive_reports",
+                                "url": "/V3.2/organizations/:_DUNS/products/:_product_id",
+                                "name": "Comprehensive Report",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "DNBproductID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    },
+                                    {
+                                        "id": "IncludeAttachmentIndicator",
+                                        "name": "IncludeAttachmentIndicator",
+                                        "description": "When true (set to 1), the Content Object will be returned as an MTOM Attachment. When false (set to 0), the content object will be returned embedded within the XML / JSON Response.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "compact_reports",
+                                "url": "/V3.2/organizations/:_DUNS/products/:_product_id",
+                                "name": "Compact Reports",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "DNBproductID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    },
+                                    {
+                                        "id": "IncludeAttachmentIndicator",
+                                        "name": "IncludeAttachmentIndicator",
+                                        "description": "When true (set to 1), the Content Object will be returned as an MTOM Attachment. When false (set to 0), the content object will be returned embedded within the XML / JSON Response.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "business_background_report",
+                                "url": "/V3.2/organizations/:_DUNS/products/:_product_id",
+                                "name": "Business Background",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "DNBproductID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    },
+                                    {
+                                        "id": "IncludeAttachmentIndicator",
+                                        "name": "IncludeAttachmentIndicator",
+                                        "description": "When true (set to 1), the Content Object will be returned as an MTOM Attachment. When false (set to 0), the content object will be returned embedded within the XML / JSON Response.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "minority_linkage",
+                                "url": "/V4.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Minority Linkage",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "people_data",
+                        "name": "People Data",
+                        "endpoints": [
+                            {
+                                "id": "locating_contacts",
+                                "url": "/V6.4/organizations",
+                                "name": "Locating Contacts",
+                                "resourcePath": "FindContactResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "findcontact",
+                                        "name": "findcontact",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "KeywordText",
+                                        "name": "KeywordText"
+                                    },
+                                    {
+                                        "id": "KeywordContactText",
+                                        "name": "KeywordContactText"
+                                    },
+                                    {
+                                        "id": "SearchModeDescription",
+                                        "name": "SearchModeDescription",
+                                        "description": "Text describing the nature of search to be applied during the search process."
+                                    },
+                                    {
+                                        "id": "InclusionDataDescription",
+                                        "name": "InclusionDataDescription",
+                                        "description": "Text that denotes an inclusion requirement that the Search process should apply to allow subjects from being returned as candidates. For example if the value is specified as Out of Business, then the Search process should return candidates that have an Operating Status which denotes Out Of Business."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "email_lookup",
+                                "url": "/V6.4/organizations",
+                                "name": "E-mail Lookup",
+                                "resourcePath": "FindContactResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "findcontact",
+                                        "name": "findcontact",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "KeywordText",
+                                        "name": "KeywordText"
+                                    },
+                                    {
+                                        "id": "ContactEmailAddress",
+                                        "name": "ContactEmailAddress",
+                                        "description": "Text recording the electronic mail address used by a subject by which the subject can transmit and or receive text messages, links, and files electronically, typically via a network, like the Internet."
+                                    },
+                                    {
+                                        "id": "KeywordContactText",
+                                        "name": "KeywordContactText"
+                                    },
+                                    {
+                                        "id": "SearchModeDescription",
+                                        "name": "SearchModeDescription",
+                                        "description": "Text describing the nature of search to be applied during the search process."
+                                    },
+                                    {
+                                        "id": "InclusionDataDescription",
+                                        "name": "InclusionDataDescription",
+                                        "description": "Text that denotes an inclusion requirement that the Search process should apply to allow subjects from being returned as candidates. For example if the value is specified as Out of Business, then the Search process should return candidates that have an Operating Status which denotes Out Of Business."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "contact_profiles",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Contact Profiles",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "findcontact",
+                                        "name": "findcontact",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "ContactEmailAddress",
+                                        "name": "ContactEmailAddress",
+                                        "description": "Text describing the nature of match to be applied during the match process. When MatchTypeText is set as 'SBRI', this indicates that the match will be performed against the D&B Small Business repository."
+                                    },
+                                    {
+                                        "id": "SearchModeDescription",
+                                        "name": "SearchModeDescription",
+                                        "description": "Text describing the nature of search to be applied during the search process."
+                                    },
+                                    {
+                                        "id": "InclusionDataDescription",
+                                        "name": "InclusionDataDescription",
+                                        "description": "Text that denotes an inclusion requirement that the Search process should apply to allow subjects from being returned as candidates. For example if the value is specified as Out of Business, then the Search process should return candidates that have an Operating Status which denotes Out Of Business."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "website_visitors",
+                                "url": "/dataexchange/profound/domain",
+                                "name": "Website Visitors",
+                                "resourcePath": "OrderProductResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ContactEmailAddress",
+                                        "name": "ContactEmailAddress",
+                                        "description": "Text describing the nature of match to be applied during the match process. When MatchTypeText is set as 'SBRI', this indicates that the match will be performed against the D&B Small Business repository."
+                                    },
+                                    {
+                                        "id": "SearchModeDescription",
+                                        "name": "SearchModeDescription",
+                                        "description": "Text describing the nature of match to be applied during the match process. When MatchTypeText is set as 'SBRI', this indicates that the match will be performed against the D&B Small Business repository."
+                                    },
+                                    {
+                                        "id": "InclusionDataDescription",
+                                        "name": "InclusionDataDescription",
+                                        "description": "Text describing the nature of match to be applied during the match process. When MatchTypeText is set as 'SBRI', this indicates that the match will be performed against the D&B Small Business repository."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "legal_records",
+                        "name": "Legal Records",
+                        "endpoints": [
+                            {
+                                "id": "suits",
+                                "url": "/V3.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Suits",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "judgments",
+                                "url": "/V3.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Judgments",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "bankruptcies",
+                                "url": "/V3.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Bankruptcies",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ucc_finanacing",
+                                "url": "/V3.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "UCC Financing",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "liens",
+                                "url": "/V3.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Liens",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "product_catalog",
+                        "name": "Product Catalog",
+                        "endpoints": [
+                            {
+                                "id": "availability",
+                                "url": "/V2.2/organizations/:_DUNS/products/:_product_id",
+                                "name": "Availability",
+                                "resourcePath": "ListAvailableProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "full_catalog",
+                                "url": "/V2.3/productcatalog",
+                                "name": "Full Catalog",
+                                "resourcePath": "GetProductCatalogResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "ApplicationTransactionID",
+                                        "name": "ApplicationTransactionID",
+                                        "description": "A number assigned by the calling application to uniquely identify this request.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "DNBProductID-9",
+                                        "name": "DNBProductID-9",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "DNBProductID-7",
+                                        "name": "DNBProductID-7",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "ReturnMonitorableElementsIndicator",
+                                        "name": "ReturnMonitorableElementsIndicator",
+                                        "description": "When true (set to 1), it indicates that the response contains the monitorable elements along with the product. When false (set to 0), it indicates that the response will not contain monitorable elements."
+                                    },
+                                    {
+                                        "id": "DNBProductID-8",
+                                        "name": "DNBProductID-8",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "DNBProductID-5",
+                                        "name": "DNBProductID-5",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "DNBProductID-6",
+                                        "name": "DNBProductID-6",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "CountryISOAlpha2Code-1",
+                                        "name": "CountryISOAlpha2Code-1",
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject."
+                                    },
+                                    {
+                                        "id": "DNBProductID-3",
+                                        "name": "DNBProductID-3",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "DNBProductID-4",
+                                        "name": "DNBProductID-4",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "DNBProductID-11",
+                                        "name": "DNBProductID-11",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "DNBProductID-1",
+                                        "name": "DNBProductID-1",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "ReturnOnlyMonitorableProductsIndicator",
+                                        "name": "ReturnOnlyMonitorableProductsIndicator",
+                                        "description": "When true (set to 1), it indicates that the response contains only monitorable products. When false (set to 0), it indicates that the response will contain both monitorable and non monitorable products."
+                                    },
+                                    {
+                                        "id": "DNBProductID-10",
+                                        "name": "DNBProductID-10",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    },
+                                    {
+                                        "id": "DNBProductID-2",
+                                        "name": "DNBProductID-2",
+                                        "description": "An alphanumeric string that uniquely identifies this product provided by the customer."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ratings",
+                        "name": "Ratings",
+                        "endpoints": [
+                            {
+                                "id": "create_ratings",
+                                "url": "/V5.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Credit Ratings",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "supplier_risk_ratings",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Supplier Risk Ratings",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "viability_ratings",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Viability Ratings",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "monitoring",
+                        "name": "Monitoring",
+                        "endpoints": [
+                            {
+                                "id": "list_monitoring_profile",
+                                "url": "/V7.1/monitoring/monitoringprofiles",
+                                "name": "List Monitoring Profile",
+                                "resourcePath": "OrderProductResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "CandidateDisplayStartSequenceNumber",
+                                        "name": "CandidateDisplayStartSequenceNumber",
+                                        "description": "Records the Display sequence number of the results"
+                                    },
+                                    {
+                                        "id": "MonitoringProfileStatusText",
+                                        "name": "MonitoringProfileStatusText",
+                                        "description": "Records the status of the monitoring profile.Possible values: Active; Cancelled"
+                                    },
+                                    {
+                                        "id": "ServiceVersionNumber",
+                                        "name": "ServiceVersionNumber",
+                                        "description": "A number that identifies the version of the Service for the product being monitored. If the Service Version is not provided in the request, the response will contain results for all the available versions."
+                                    },
+                                    {
+                                        "id": "DNBProductID",
+                                        "name": "DNBProductID",
+                                        "description": "Records the product code that is provided by the customer to create a profile"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_user_preference",
+                                "url": "/V2.2/userpreference",
+                                "name": "List User Preference",
+                                "resourcePath": "ListPreferenceResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "SortDirectionText",
+                                        "name": "SortDirectionText",
+                                        "description": "Records the direction of sorting. Possbile values are Ascending, Descending"
+                                    },
+                                    {
+                                        "id": "ApplicationAreaName",
+                                        "name": "ApplicationAreaName",
+                                        "description": "Records the ApplicationAreaName of the results"
+                                    },
+                                    {
+                                        "id": "CreatedToDate",
+                                        "name": "CreatedToDate",
+                                        "description": "Records the enddate of the date range to list the user preference"
+                                    },
+                                    {
+                                        "id": "SortBasisText",
+                                        "name": "SortBasisText",
+                                        "description": "Records the list of fields based on which sorting is possible"
+                                    },
+                                    {
+                                        "id": "CreatedFromDate",
+                                        "name": "CreatedFromDate",
+                                        "description": "Records the start date of the date range to list the user preference"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_notification_profile",
+                                "url": "/V7.1/monitoring/notificationprofiles",
+                                "name": "List Notification Profile",
+                                "resourcePath": "ListNotificationProfileResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "DeliveryFormat",
+                                        "name": "DeliveryFormat",
+                                        "description": "Possible values: XML, JSON"
+                                    },
+                                    {
+                                        "id": "DeliveryMode",
+                                        "name": "DeliveryMode",
+                                        "description": "Possible values: Email; HTTPCallBack; MQOutput"
+                                    },
+                                    {
+                                        "id": "amCandidatePerPageMaximumQuantity",
+                                        "name": "amCandidatePerPageMaximumQuantity",
+                                        "description": "Records the maximum quantity that can be displayed per page"
+                                    },
+                                    {
+                                        "id": "DeliveryChannelUserPreferenceName",
+                                        "name": "DeliveryChannelUserPreferenceName",
+                                        "description": "Records the DeliveryChannelUserPreferenceName of the results"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_monitoring_registration",
+                                "url": "/V7.1/monitoring/notificationprofiles",
+                                "name": "List Monitoring Registration",
+                                "resourcePath": "ListMonitoringRegistrationResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "ServiceVersionNumber",
+                                        "name": "ServiceVersionNumber",
+                                        "description": "A number that identifies the version of the Service."
+                                    },
+                                    {
+                                        "id": "ApplicationTransactionID",
+                                        "name": "ApplicationTransactionID",
+                                        "description": "A number assigned by the calling application to uniquely identify this request."
+                                    },
+                                    {
+                                        "id": "DNBProductID",
+                                        "name": "DNBProductID",
+                                        "description": "Records the product code that is provided by the customer to create a profile"
+                                    },
+                                    {
+                                        "id": "MonitoringLevel",
+                                        "name": "MonitoringLevel",
+                                        "description": "A alphanumeric string which determines the level of details that the customer will receive during a change event.Possible values: Level1; Level2"
+                                    },
+                                    {
+                                        "id": "SortBasisText",
+                                        "name": "SortBasisText",
+                                        "description": "Records the list of fields based on which sorting is possible.Possible values: DUNSNumber; CountryISOAlpha2Code; MonitoringProfileID; DNBProductID; MonitoringLevel; NotificationProfileID; RegistrationStartDate; SubjectCategoryText; AutoRenewalIndicator; MonitoringRegistartionStatusText"
+                                    },
+                                    {
+                                        "id": "SortDirectionText",
+                                        "name": "SortDirectionText",
+                                        "description": "Records the direction of sorting. Possbile values are Ascending, Descending"
+                                    },
+                                    {
+                                        "id": "CandidatePerPageMaximumQuantity",
+                                        "name": "CandidatePerPageMaximumQuantity",
+                                        "description": "Records the maximum quantity that can be displayed per page"
+                                    },
+                                    {
+                                        "id": "CandidateDisplayStartSequenceNumber",
+                                        "name": "CandidateDisplayStartSequenceNumber",
+                                        "description": "Records the Display sequence number of the results"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_monitoring_product",
+                                "url": "/V7.1/monitoring/organizations/:_id",
+                                "name": "Get Monitoring Product",
+                                "resourcePath": "ListMonitoringRegistrationResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "productID",
+                                        "description": "Records the product code that is provided by the customer to create a profile"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ServiceVersionNumber",
+                                        "name": "ServiceVersionNumber",
+                                        "description": "A number that identifies the version of the Service."
+                                    },
+                                    {
+                                        "id": "TransactionTimestamp",
+                                        "name": "TransactionTimestamp",
+                                        "description": "The date and time when this request was created. When the request is from an intermediary, such as a workflow manager or service bus, this is the date and time when the message was sent to the D&B function, i.e., the date and time when the xml document was created by the requesting intermediary."
+                                    },
+                                    {
+                                        "id": "ApplicationTransactionID",
+                                        "name": "ApplicationTransactionID",
+                                        "description": "A number assigned by the calling application to uniquely identify this request."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_change_notice",
+                                "url": "/V7.1/monitoring/changenotices",
+                                "name": "List Change Notice",
+                                "resourcePath": "ListChangeNoticeResponse",
+                                "queryParameters": [
+                                    {
+                                        "id": "ServiceVersionNumber",
+                                        "name": "ServiceVersionNumber",
+                                        "description": "A number that identifies the version of the Service."
+                                    },
+                                    {
+                                        "id": "TransactionTimestamp",
+                                        "name": "TransactionTimestamp",
+                                        "description": "The date and time when this request was created. When the request is from an intermediary, such as a workflow manager or service bus, this is the date and time when the message was sent to the D&B function, i.e., the date and time when the xml document was created by the requesting intermediary."
+                                    },
+                                    {
+                                        "id": "DUNSNumber",
+                                        "name": "DUNSNumber",
+                                        "description": "Records the duns number that is registered for Monitoring."
+                                    },
+                                    {
+                                        "id": "MonitoringProfileID-1",
+                                        "name": "MonitoringProfileID-1",
+                                        "description": "A number that uniquely identifies a set of events and their thresholds, used to monitor a DUNS or a set of DUNS."
+                                    },
+                                    {
+                                        "id": "MonitoringLevel",
+                                        "name": "MonitoringLevel",
+                                        "description": "A alphanumeric string which determines the level of details that the customer will receive during a change event.Possible values: Level1; Level2"
+                                    },
+                                    {
+                                        "id": "GetCountOnlyIndicator",
+                                        "name": "GetCountOnlyIndicator",
+                                        "description": "When true (set to 1) this indicates that the count related to the resultset is to be returned in the response. When false (set to 0) this indicates that the details pertaining to result is to be returned in the response."
+                                    },
+                                    {
+                                        "id": "SortBasisText-1",
+                                        "name": "SortBasisText-1",
+                                        "description": "Records the list of fields based on which sorting is possible"
+                                    },
+                                    {
+                                        "id": "SortDirectionText-1",
+                                        "name": "SortDirectionText-1",
+                                        "description": "Records the direction of sorting. Possbile values are Ascending, Descending"
+                                    },
+                                    {
+                                        "id": "CandidatePerPageMaximumQuantity",
+                                        "name": "CandidatePerPageMaximumQuantity",
+                                        "description": "Records the maximum quantity that can be displayed per page"
+                                    },
+                                    {
+                                        "id": "CandidateDisplayStartSequenceNumber",
+                                        "name": "CandidateDisplayStartSequenceNumber",
+                                        "description": "Records the Display sequence number of the results"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "compliance",
+                        "name": "Compliance",
+                        "endpoints": [
+                            {
+                                "id": "usa_patriot_act",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "USA PATRIOT Act",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ownership_verification",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Ownership Verification",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "identity_report_verification",
+                                "url": "/V6.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Identity & Report Verification",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "know_your_customer",
+                                "url": "/V6.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Know Your Customer",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "electronic_credit_file",
+                                "url": "/V6.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Electronic Credit File",
+                                "resourcePath": "OrderCompanyReportResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "required": true,
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject."
+                                    },
+                                    {
+                                        "id": "ProductFormatPreferenceCode",
+                                        "name": "ProductFormatPreferenceCode",
+                                        "required": true,
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "uk_company_filings",
+                                "url": "/V2.2/organizations/:_DUNS/publicdocuments",
+                                "name": "UK Company Filings",
+                                "resourcePath": "ListAvailablePublicDocumentsResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "required": true,
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO)identifying the country of the inquired subject."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ultimate_beneficial_ownership",
+                                "url": "/V6.0/organizations/:_DUNS/products/:_product_id",
+                                "name": "Ultimate Beneficial Ownership",
+                                "resourcePath": "OrderProductResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "OwnershipPercentage",
+                                        "name": "OwnershipPercentage",
+                                        "description": "The percentage criteria to be applied on the requested product for the inquired subject. The response would include all results with a shareholding percentage greater than this value inclusive. E.g., 20, 50. When NULL it indicates that there is no restriction or cut off percentage."
+                                    },
+                                    {
+                                        "id": "OwnershipType",
+                                        "name": "OwnershipType",
+                                        "description": "A code that identifies the level of filter to applied on the requested product for the inquired subject, whether to include direct, indirect, both direct and indirect owners, or just beneficial owners etc. When NULL it indicates that there are no restrictions set on the request."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "sanctions_watch_list",
+                                "url": "/V6.1/organizations/:_DUNS/products/:_product_id",
+                                "name": "Sanctions & Watch Lists",
+                                "resourcePath": "GetCleanseMatchResponse",
+                                "pathParameters": [
+                                    {
+                                        "id": "DUNS",
+                                        "name": "D-U-N-S Number",
+                                        "description": "The D-U-N-S Number is D&B's identification number, which provides unique identification of this organization, in accordance with the Data Universal Numbering System (D-U-N-S).",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "productID",
+                                        "description": "An alphanumeric string that uniquely identifies the product being requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ApplicationTransactionID",
+                                        "name": "ApplicationTransactionID",
+                                        "description": "Unique Transaction ID of the request generated by the service"
+                                    },
+                                    {
+                                        "id": "CustomerReferenceText-1",
+                                        "name": "CustomerReferenceText-1",
+                                        "description": "A freeform reference string provided by the customer to be linked to the product in order to support subsequent order reconciliation."
+                                    },
+                                    {
+                                        "id": "CustomerBillingEndorsementText",
+                                        "name": "CustomerBillingEndorsementText",
+                                        "description": "A D&B code value that describes the defined structure in which the product is to be rendered, e.g., txt, xml, pdf."
+                                    },
+                                    {
+                                        "id": "CountryISOAlpha2Code",
+                                        "name": "CountryISOAlpha2Code",
+                                        "description": "The two-letter country code, defined in the ISO 3166-1 scheme published by International Organization for Standardization (ISO), identifying the country for this address."
+                                    },
+                                    {
+                                        "id": "CustomerReferenceText-2",
+                                        "name": "CustomerReferenceText-2",
+                                        "description": "A freeform reference string provided by the customer to be linked to the product in order to support subsequent order reconciliation."
+                                    },
+                                    {
+                                        "id": "CustomerReferenceText-3",
+                                        "name": "CustomerReferenceText-3",
+                                        "description": "A freeform reference string provided by the customer to be linked to the product in order to support subsequent order reconciliation."
+                                    },
+                                    {
+                                        "id": "streetaddressline",
+                                        "name": "streetaddressline",
+                                        "description": "Text that records the street address components as it would be presented on an address label. This includes, but is not limited to, details such as street name, street number, building name, estate name."
+                                    },
+                                    {
+                                        "id": "PrimaryTownName",
+                                        "name": "PrimaryTownName",
+                                        "description": "The name of the town or city recognized by the Postal Authority for delivering mail."
+                                    },
+                                    {
+                                        "id": "TerritoryName",
+                                        "name": "TerritoryName",
+                                        "description": "Territory Abbreviated Name for US and Canada (e.g.: NY for New York). Full Territory Name for all other countries. The name of a locally governed area which forms part of a centrally governed nation. As a guiding principle this is a geographic area which could theoretically exist as a separate nation. In the U.S. this would be a State in the UK this would be one of the Home Nations."
+                                    },
+                                    {
+                                        "id": "PostalCode",
+                                        "name": "PostalCode",
+                                        "description": "An identifier used by the local country Postal Authority to identify a particular geographic location. For example, in Belgium, Postal Code 9000 identifies the town of GHENT."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "monitoring",
+                        "name": "Monitoring",
+                        "operations": [
+                            {
+                                "id": "create_monitoring_profiles",
+                                "url": "/V7.1/monitoring/monitoringprofiles",
+                                "name": "Create Monitoring Profile",
+                                "method": "POST",
+                                "sampleData": {
+                                    "mon:CreateMonitoringProfileRequest": {
+                                        "@xmlns$mon": "http://services.dnb.com/MonitoringServiceV2.0",
+                                        "TransactionDetail": {
+                                            "ApplicationTransactionID": "Test",
+                                            "TransactionTimestamp": "2016-12-11T09:29:10Z"
+                                        },
+                                        "CreateMonitoringProfileRequestDetail": {
+                                            "MonitoringProfileSpecification": {
+                                                "MonitoringProfileName": "DemoProfile",
+                                                "DNBProductID": "DCP_PREM",
+                                                "MonitoringLevel": "Level2",
+                                                "ReturnChangedDataOnlyIndicator": "true",
+                                                "ReturnSignificantChangeOnlyIndicator": "true"
+                                            },
+                                            "InquiryReferenceText": {
+                                                "CustomerReferenceText": "Ref Text"
+                                            }
+                                        }
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_monitoring_profiles",
+                                "url": "/V7.1/monitoring/monitoringprofiles/:_MonitoringProfileID",
+                                "name": "Update Monitoring Profile",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "mon:UpdateMonitoringProfileRequest": {
+                                        "@xmlns$mon": "http://services.dnb.com/MonitoringServiceV2.0",
+                                        "TransactionDetail": {
+                                            "ApplicationTransactionID": "UpdateMonitoringProfile",
+                                            "TransactionTimestamp": "2016-12-03T09:30:47-05:00"
+                                        },
+                                        "UpdateMonitoringProfileRequestDetail": {
+                                            "MonitoringProfileUpdateSpecification": {
+                                                "MonitoringProfileName": "DemoProfile",
+                                                "ServiceVersionNumber": "5.3",
+                                                "MonitoringElementDetail": {
+                                                    "MonitoringElement": {
+                                                        "PCMElementXPATHText": "//Organization/Telecommunication",
+                                                        "MonitoringChanges": {
+                                                            "ChangeCondition": "AnyChange"
+                                                        }
+                                                    }
+                                                },
+                                                "MonitoringProfileStatusText": "Active",
+                                                "ReturnSignificantChangeOnlyIndicator": "true",
+                                                "InquiryReferenceText": {
+                                                    "CustomerReferenceText": "Ref Text"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "MonitoringProfileID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_user_reference",
+                                "url": "/V7.1/monitoring/userpreference",
+                                "name": "Create User Preference",
+                                "method": "POST",
+                                "sampleData": {
+                                    "user:CreatePreferenceRequest": {
+                                        "@xmlns$user": "http://services.dnb.com/UserServiceV2.0",
+                                        "user:TransactionDetail": {
+                                            "user:ApplicationTransactionID": "John_Email_Pref_Creation"
+                                        },
+                                        "user:PreferenceRequestDetail": {
+                                            "user:PreferenceSpecification": {
+                                                "user:PreferenceType": "Email",
+                                                "user:ApplicationAreaName": "Monitoring",
+                                                "user:PreferenceName": "John-email",
+                                                "user:PreferenceDescription": "John Email",
+                                                "user:PreferenceValueText": "john@mycompany.com",
+                                                "user:DefaultPreference": "false"
+                                            }
+                                        }
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_user_reference",
+                                "url": "/V7.1/monitoring/userpreference",
+                                "name": "Update User Preference",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "UpdatePreferenceRequest": {
+                                        "@xmlns": "http://services.dnb.com/UserServiceV2.0",
+                                        "TransactionDetail": {
+                                            "ApplicationTransactionID": "ID-001"
+                                        },
+                                        "UpdatePreferenceRequestDetail": {
+                                            "PreferenceDetail": {
+                                                "PreferenceType": "Email",
+                                                "ApplicationAreaName": "Monitoring",
+                                                "PreferenceName": "John-email"
+                                            },
+                                            "PreferenceUpdateSpecification": {
+                                                "ApplicationAreaName": "Monitoring",
+                                                "PreferenceName": "John-updatedemail",
+                                                "PreferenceValueText": "john_UpdatedEmail@mycompany.com",
+                                                "PreferenceStatusText": "Active",
+                                                "DefaultPreference": "true"
+                                            }
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_notification_profile",
+                                "url": "/V7.1/monitoring/notificationprofiles",
+                                "name": "Create Notification Profile",
+                                "method": "POST",
+                                "sampleData": {
+                                    "mon:CreateNotificationProfileRequest": {
+                                        "@xmlns$mon": "http://services.dnb.com/MonitoringServiceV2.0",
+                                        "TransactionDetail": {
+                                            "ApplicationTransactionID": "ID_001"
+                                        },
+                                        "CreateNotificationProfileRequestDetail": {
+                                            "NotificationProfileSpecification": {
+                                                "NotificationProfileName": "Notification_Profile_Email_01",
+                                                "NotificationProfileDescription": "Email Notofication Proile",
+                                                "DeliveryMode": "Email",
+                                                "DeliveryChannelUserPreferenceName": "restDemoPreference",
+                                                "DeliveryFrequency": "Immediate",
+                                                "DeliveryFormat": "XML",
+                                                "StopDeliveryIndicator": "false"
+                                            },
+                                            "InquiryReferenceText": {
+                                                "CustomerReferenceText": "Notification_Profile_Email_01"
+                                            }
+                                        }
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_notification_profile",
+                                "url": "/V7.1/monitoring/userpreference/:_NotificationProfileID",
+                                "name": "Update Notification Profile",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "mon:UpdateNotificationProfileRequest": {
+                                        "@xmlns$mon": "http://services.dnb.com/MonitoringServiceV2.0",
+                                        "TransactionDetail": {
+                                            "ApplicationTransactionID": "STG_NTFC_UAT",
+                                            "TransactionTimestamp": "2016-12-15T09:30:47Z"
+                                        },
+                                        "UpdateNotificationProfileRequestDetail": {
+                                            "NotificationProfileDetail": {
+                                                "NotificationProfileName": "STG_NTFC_UAT",
+                                                "DeliveryChannelUserPreferenceName": "STG_USERPREF_UAT",
+                                                "DeliveryMode": "Email",
+                                                "DeliveryFrequency": "Immediate",
+                                                "DeliveryFormat": "JSON",
+                                                "NotificationProfileStatusText": "Active",
+                                                "StopDeliveryIndicator": "false"
+                                            },
+                                            "InquiryReferenceText": {
+                                                "CustomerReferenceText": [
+                                                    "STG_NTFC_UAT",
+                                                    "STG_NTFC_UAT",
+                                                    "STG_NTFC_UAT"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "NotificationProfileID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_notification_profile",
+                                "url": "/V7.1/monitoring/registrations",
+                                "name": "Add Monitoring Registration",
+                                "method": "POST",
+                                "sampleData": {
+                                    "mon:AddMonitoringRegistrationRequest": {
+                                        "@xmlns$mon": "http://services.dnb.com/MonitoringServiceV2.0",
+                                        "TransactionDetail": {
+                                            "ApplicationTransactionID": "ID_003"
+                                        },
+                                        "AddMonitoringRegistrationRequestDetail": {
+                                            "InquiryDetail": {
+                                                "DUNSNumber": "16144166",
+                                                "CountryISOAlpha2Code": "US"
+                                            },
+                                            "MonitoringRegistrationSpecification": {
+                                                "MonitoringProfileID": 8932,
+                                                "NotificationProfileID": 4336,
+                                                "TradeUpIndicator": "false",
+                                                "AutoRenewalIndicator": "false",
+                                                "SubjectCategoryText": "High"
+                                            },
+                                            "InquiryReferenceDetail": {
+                                                "CustomerReferenceText": "16144166_Monitoring_Sept2013",
+                                                "CustomerBillingEndorsementText": "16144166_Monitoring"
+                                            }
+                                        }
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_monitoring_registration",
+                                "url": "/V7.1/monitoring/registrations",
+                                "name": "Update Monitoring Registration",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "mon:UpdateMonitoringRegistrationRequest": {
+                                        "@xmlns$mon": "http://services.dnb.com/MonitoringServiceV2.0",
+                                        "TransactionDetail": {
+                                            "ApplicationTransactionID": "UPDATE_REGISTRATION",
+                                            "TransactionTimestamp": "2016-12-16T05:52:07.753Z"
+                                        },
+                                        "UpdateMonitoringRegistrationRequestDetail": {
+                                            "MonitoringRegistrationDetail": {
+                                                "DUNSNumber": "804735132",
+                                                "MonitoringProfileID": "8932",
+                                                "NotificationProfileID": "4336"
+                                            },
+                                            "MonitoringRegistrationUpdateSpecification": {
+                                                "MonitoringRegistrationStatusText": "Active"
+                                            },
+                                            "InquiryReferenceText": {
+                                                "CustomerReferenceText": [
+                                                    "UPDATE_REGISTRATION"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

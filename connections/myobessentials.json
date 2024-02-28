@@ -1,0 +1,1260 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "versions": [
+            {
+                "version": "v0",
+                "paging": {
+                    "pagingMethod": "pageargument",
+                    "pageArgument": "page",
+                    "lastPageStatusCode": 404
+                },
+                "resources": [
+                    {
+                        "id": "accountclassification",
+                        "name": "Account Classifications",
+                        "endpoints": [
+                            {
+                                "id": "list_accountclassification",
+                                "url": "/account/classifications",
+                                "name": "Returns all account classifications",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "List all account classifications for MYOB Essentials",
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "Get_accountclassification",
+                                "url": "/account/classifications/:_account_classification_uid",
+                                "name": "Get an account classification",
+                                "doesNotSupportPaging": true,
+                                "description": "Get an account classifications for MYOB Essentials",
+                                "pathParameters": [
+                                    {
+                                        "id": "account_classification_uid",
+                                        "name": "Account Classification UID",
+                                        "required": true,
+                                        "description": "Unique account classification identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounttypes",
+                        "name": "Account Types",
+                        "endpoints": [
+                            {
+                                "id": "list_accounttypes",
+                                "url": "/account/types",
+                                "name": "Returns all account types",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "List all account types for MYOB Essentials",
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "Get_accounttype",
+                                "url": "/account/types/:_account_type_uid",
+                                "name": "Get an account type",
+                                "doesNotSupportPaging": true,
+                                "description": "Get an account types for MYOB Essentials",
+                                "pathParameters": [
+                                    {
+                                        "id": "account_type_uid",
+                                        "name": "Account Type UID",
+                                        "required": true,
+                                        "description": "Unique account classification identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "businesses",
+                        "name": "Businesses",
+                        "endpoints": [
+                            {
+                                "id": "list_businesses",
+                                "url": "/businesses",
+                                "name": "Returns all businesses for a user",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Returns all MYOB Essentials businesses for a user",
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "Get_business",
+                                "url": "/businesses/:_business_uid",
+                                "name": "Get Business",
+                                "doesNotSupportPaging": true,
+                                "description": "Get Business for MYOB Essentials",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "endpoints": [
+                            {
+                                "id": "list_contact",
+                                "url": "/businesses/:_business_uid/contacts",
+                                "name": "Returns all contacts",
+                                "resourcePath": "items",
+                                "description": "Returns all MYOB Essentials contacts",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "includeBalances",
+                                        "name": "Include Balances",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Will include calculated balance fields in the response. Eg ?includeBalances=true"
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Will filter the results on the active field. Eg ?active=true"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Customer",
+                                            "Supplier",
+                                            "Other",
+                                            "Customer,Supplier"
+                                        ],
+                                        "description": "Will filter the results on the type field. Eg. ?type=Supplier. Valid combinations are: \n * Customer\n* Supplier\n* Other,\n* Customer,Supplier"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Get_contact",
+                                "url": "/businesses/:_business_uid/contacts/:_contact_uid",
+                                "name": "Get a contact",
+                                "doesNotSupportPaging": true,
+                                "description": "Get  a contact for a MYOB Essentials business",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    },
+                                    {
+                                        "id": "contact_uid",
+                                        "name": "Contact UID",
+                                        "required": true,
+                                        "description": "Unique contact identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "items",
+                        "name": "Inventory : Items",
+                        "endpoints": [
+                            {
+                                "id": "list_items",
+                                "url": "/businesses/:_business_uid/inventory/items",
+                                "name": "Returns all items",
+                                "resourcePath": "items",
+                                "description": "Returns all MYOB Essentials Inventory items",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "sold",
+                                        "name": "Sold",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Will filter the results on the sold field for sellable items. Eg. ?sold=true (Value: true and false)"
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Will filter the results on the active field. Eg ?active=true"
+                                    },
+                                    {
+                                        "id": "q",
+                                        "name": "Q",
+                                        "description": "Will search the results on either item name or item number field which contains the search key. Eg. ?q=key"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Get_item",
+                                "url": "/businesses/:_business_uid/inventory/items/:_item_uid",
+                                "name": "Get an item",
+                                "doesNotSupportPaging": true,
+                                "description": "Get  an item for a MYOB Essentials business",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    },
+                                    {
+                                        "id": "item_uid",
+                                        "name": "Item UID",
+                                        "required": true,
+                                        "description": "Unique item identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "taxtypes",
+                        "name": "Tax Types",
+                        "endpoints": [
+                            {
+                                "id": "list_taxtypes",
+                                "url": "/tax/types",
+                                "name": "Returns all Tax Types",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Returns all MYOB Essentials tax types",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "Get_taxtype",
+                                "url": "/tax/types/:_tax_type_uid",
+                                "name": "Get Tax type",
+                                "doesNotSupportPaging": true,
+                                "description": "Get tax type for a MYOB Essentials business",
+                                "pathParameters": [
+                                    {
+                                        "id": "tax_type_uid",
+                                        "name": "Tax Type UID",
+                                        "required": true,
+                                        "description": "Unique Tax type identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "GeneralLedger : Accounts",
+                        "endpoints": [
+                            {
+                                "id": "list_accounts",
+                                "url": "/businesses/:_business_uid/generalledger/accounts",
+                                "name": "Returns all accounts",
+                                "resourcePath": "items",
+                                "description": "Returns all MYOB Essentials accounts",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "will filter the results on the active field. Eg ?active=true"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "description": "will filter the results on the type field. Eg. ?type=1 (Value: \"1\" indicates Banking type, \"9\" indicates Income type and \"11\" indicates Expense type)"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Get_account",
+                                "url": "/businesses/:_business_uid/generalledger/accounts/:_account_uid",
+                                "name": "Get an account",
+                                "doesNotSupportPaging": true,
+                                "description": "Get an account for a MYOB Essentials business",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    },
+                                    {
+                                        "id": "account_uid",
+                                        "name": "Account UID",
+                                        "required": true,
+                                        "description": "Unique account identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "generalledgeracccountbalances",
+                        "name": "GeneralLedger : Accounts : AccountBalances",
+                        "endpoints": [
+                            {
+                                "id": "list_accountbalances",
+                                "url": "/businesses/:_business_uid/generalledger/accounts/balances",
+                                "name": "Returns account balances for the current financial year",
+                                "resourcePath": "items",
+                                "description": "Returns account balances for the current financial year",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Get_accountbalances_by_date",
+                                "url": "/businesses/:_business_uid/generalledger/accounts/balances",
+                                "resourcePath": "items",
+                                "name": "Returns account balances for a specified date range",
+                                "description": "Get account balance for specified range for a MYOB Essentials business",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fromDate",
+                                        "name": "From Date",
+                                        "required": true,
+                                        "description": "The {from_date} and {to_date} parameters specify the date range for which account balances are calculated. Both {from_date} and {to_date} must be within the same financial year for the business and have the format: yyyy-MM-dd."
+                                    },
+                                    {
+                                        "id": "toDate",
+                                        "name": "To Date",
+                                        "required": true,
+                                        "description": "The {from_date} and {to_date} parameters specify the date range for which account balances are calculated. Both {from_date} and {to_date} must be within the same financial year for the business and have the format: yyyy-MM-dd."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "generalledgeraccounting",
+                        "name": "GeneralLedger : AccountingProperties",
+                        "endpoints": [
+                            {
+                                "id": "list_accounting",
+                                "url": "/businesses/:_business_uid/generalledger/accountingproperties",
+                                "name": "Returns the accounting properties pertaining to financial year",
+                                "doesNotSupportPaging": true,
+                                "description": "Returns the accounting properties pertaining to financial year, conversion date and lock date",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "journalreference",
+                        "name": "GeneralLedger : JournalEntries : JournalReference",
+                        "endpoints": [
+                            {
+                                "id": "list_journalreference",
+                                "url": "/businesses/:_business_uid/generalledger/journalentries/nextReference",
+                                "name": "Gets the next unique journal reference number",
+                                "doesNotSupportPaging": true,
+                                "description": "Will Retrive the Next unique number for Journal reference",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoices",
+                        "name": "Sale : Invoices",
+                        "endpoints": [
+                            {
+                                "id": "list_invoices",
+                                "url": "/businesses/:_business_uid/sale/invoices",
+                                "name": "Returns all sale invoice types",
+                                "resourcePath": "items",
+                                "description": "Returns all sale invoice types",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "invoice_number",
+                                        "name": "Invoice Number",
+                                        "description": "will filter the results on the invoiceNumber field. Eg ?invoiceNumber=IV0000001"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "description": "will filter the results on the status field. Eg. ?status=OPEN"
+                                    },
+                                    {
+                                        "id": "contact_uid",
+                                        "name": "Contact UID",
+                                        "description": "will filter the results on the contact uid field. Eg. ?contact=1234"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Get_invoice",
+                                "url": "/businesses/:_business_uid/sale/invoices/:_invoice_uid",
+                                "name": "Get a sale invoice",
+                                "doesNotSupportPaging": true,
+                                "description": "Get sale invoice type for an MYOB Essentials business",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    },
+                                    {
+                                        "id": "invoice_uid",
+                                        "name": "Invoice UID",
+                                        "required": true,
+                                        "description": "Unique invoice identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoicesreference",
+                        "name": "Sale : Invoices : InvoiceReference",
+                        "endpoints": [
+                            {
+                                "id": "list_invoicereference",
+                                "url": "/businesses/:_business_uid/sale/invoices/nextReference",
+                                "name": "Gets the next unique invoice number",
+                                "doesNotSupportPaging": true,
+                                "description": "Will Retrive the Next unique number for Invoice Number",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customerPayments",
+                        "name": "Sale : CustomerPayments : PaymentReference",
+                        "endpoints": [
+                            {
+                                "id": "list_paymentreference",
+                                "url": "/businesses/:_business_uid/sale/payments/nextReference",
+                                "name": "Gets the next unique customer payment reference number",
+                                "doesNotSupportPaging": true,
+                                "description": "Will Retrive the Next unique number for Customer Payment reference",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business UID",
+                                        "required": true,
+                                        "description": "Unique business identifier in the form of a guid."
+                                    }
+                                ],
+                                "queryParameters": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "v0",
+                "resources": [
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "sampleData": {
+                            "name": "Bob's Supplies",
+                            "types": [
+                                "Supplier"
+                            ],
+                            "firstName": "Bill",
+                            "lastName": "Smith",
+                            "phone": "12341234",
+                            "fax": "98679876",
+                            "position": "Manager",
+                            "notes": "This is a contact note",
+                            "mobile": "1111 1111",
+                            "email": "bob.smith@example.com",
+                            "abn": "80000000001",
+                            "ird": "",
+                            "reportable": false,
+                            "active": true,
+                            "individual": false,
+                            "shippingAddress": {
+                                "addressLine1": "12 Wesley Crt",
+                                "addressLine2": null,
+                                "suburb": "Burwood East",
+                                "state": "VIC",
+                                "postCode": "3151",
+                                "country": "Australia"
+                            },
+                            "billingAddress": {
+                                "addressLine1": "12 Spooner Street",
+                                "addressLine2": null,
+                                "suburb": "Melbourne",
+                                "state": "VIC",
+                                "postCode": "3000",
+                                "country": "Australia"
+                            },
+                            "website": "http://www.bob.smith.com",
+                            "customerBalance": 140
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contact",
+                                "url": "/businesses/:_business_uid/contacts",
+                                "name": "Create a contact",
+                                "description": "create a contact for a MYOB Essentials business",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_contact",
+                                "url": "/businesses/:_business_uid/contacts/:_contact_uid",
+                                "name": "Update a contact",
+                                "method": "PUT",
+                                "description": "Update a contact for a MYOB Essentials business",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_contact",
+                                "name": "Create or Update a contact",
+                                "url": [
+                                    "/businesses/:_business_uid/contacts/:_contact_uid",
+                                    "/businesses/:_business_uid/contacts"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_contact",
+                                "url": "/businesses/:_business_uid/contacts/:_contact_uid",
+                                "name": "Delete a contact",
+                                "description": "Delete a contact for a MYOB Essentials business",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "items",
+                        "name": "Inventory : Items",
+                        "sampleData": {
+                            "uid": "27",
+                            "uri": "{domain}/businesses/19/inventory/items/27",
+                            "number": "Fix hammer",
+                            "name": "Bobs service",
+                            "description": "Fitted new handle",
+                            "unitOfMeasure": "HRS",
+                            "unitDescription": "By the hour",
+                            "type": "Service",
+                            "active": true,
+                            "salePrice": 5,
+                            "purchasePrice": 0,
+                            "saleAccount": {
+                                "uid": "860",
+                                "uri": "{domain}/businesses/19/generalledger/accounts/860",
+                                "name": "Fee income",
+                                "displayId": "4-1200"
+                            },
+                            "saleTaxType": {
+                                "uid": "13",
+                                "uri": "{domain}/tax/types/13",
+                                "code": "NTR",
+                                "name": "Not Reportable"
+                            },
+                            "purchaseAccount": {
+                                "uid": "828",
+                                "uri": "{domain}/businesses/19/generalledger/accounts/828",
+                                "name": "Accounts receivable",
+                                "displayId": "1-1800"
+                            },
+                            "purchaseTaxType": {
+                                "uid": "13",
+                                "uri": "{domain}/tax/types/13",
+                                "code": "NTR",
+                                "name": "Not Reportable"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_item",
+                                "url": "/businesses/:_business_uid/inventory/items/:_item_uid",
+                                "name": "Create an item",
+                                "description": "create an item for a MYOB Essentials business",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "item_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_items",
+                                        "extract": "items[0].uid"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_item",
+                                "url": "/businesses/:_business_uid/inventory/items/:_item_uid",
+                                "name": "Update an item",
+                                "method": "PUT",
+                                "description": "Update an item for a MYOB Essentials business",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "item_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_items",
+                                        "extract": "items[0].uid"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_item",
+                                "name": "Create or Update an item",
+                                "url": [
+                                    "/businesses/:_business_uid/inventory/items/:_item_uid",
+                                    "/businesses/:_business_uid/inventory/items"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "item_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_items",
+                                        "extract": "items[0].uid"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_item",
+                                "url": "/businesses/:_business_uid/inventory/items/:_item_uid",
+                                "name": "Delete an item",
+                                "description": "Delete an item for a MYOB Essentials business",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "item_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_items",
+                                        "extract": "items[0].uid"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "GeneralLedger : Accounts",
+                        "sampleData": {
+                            "uid": "844",
+                            "uri": "{domain}/businesses/19/generalledger/accounts/844",
+                            "name": "Cheque account",
+                            "displayId": "1-1000",
+                            "type": {
+                                "uid": "1",
+                                "uri": "{domain}/account/types/1",
+                                "name": "Banking",
+                                "classification": {
+                                    "uid": "1",
+                                    "uri": "{domain}/account/classifications/1",
+                                    "name": "Asset"
+                                }
+                            },
+                            "taxType": {
+                                "uid": "13",
+                                "uri": "{domain}/tax/types/13",
+                                "code": "NTR",
+                                "name": "Not Reportable"
+                            },
+                            "active": true
+                        },
+                        "operations": [
+                            {
+                                "id": "create_account",
+                                "url": "/businesses/:_business_uid/generalledger/accounts",
+                                "name": "Create an account",
+                                "description": "create an account for a MYOB Essentials business",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "item_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_account",
+                                "url": "/businesses/:_business_uid/generalledger/accounts/:_account_uid",
+                                "name": "Update an account",
+                                "method": "PUT",
+                                "description": "Update an account for a MYOB Essentials business",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "account_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_account",
+                                "name": "Create or Update an account",
+                                "url": [
+                                    "/businesses/:_business_uid/generalledger/accounts/:_account_uid",
+                                    "/businesses/:_business_uid/generalledger/accounts"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "account_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "journalentries",
+                        "name": "GeneralLedger : JournalEntries",
+                        "sampleData": {
+                            "transactionDate": "2014-10-06T00:00:00",
+                            "reference": "JE123",
+                            "notes": "A journal transaction note",
+                            "gstInclusive": true,
+                            "journalEntries": [
+                                {
+                                    "account": {
+                                        "uid": "799"
+                                    },
+                                    "taxType": {
+                                        "uid": "10"
+                                    },
+                                    "description": "journal entry 1 description",
+                                    "amount": "550.00",
+                                    "taxAmount": "40.00",
+                                    "credit": true
+                                },
+                                {
+                                    "account": {
+                                        "uid": "781"
+                                    },
+                                    "taxType": {
+                                        "uid": "13"
+                                    },
+                                    "description": "journal entry 2 description",
+                                    "amount": "550.00",
+                                    "credit": false
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_journalentries",
+                                "url": "/businesses/:_business_uid/generalledger/journalentries",
+                                "name": "Creates a General Journal transaction",
+                                "description": "create a General Journal transaction for a MYOB Essentials business",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoices",
+                        "name": "Sale : Invoices",
+                        "sampleData": {
+                            "uid": "59",
+                            "uri": "{domain}/businesses/109649/sale/invoices/3291078919",
+                            "contact": {
+                                "uid": "34",
+                                "uri": "{domain}/businesses/109649/contacts/34",
+                                "name": "Bob's Supplies"
+                            },
+                            "invoiceNumber": "IV00000229",
+                            "issueDate": "2014-08-19",
+                            "dueDate": "2014-08-26",
+                            "gstInclusive": true,
+                            "lines": [
+                                {
+                                    "account": {
+                                        "uid": "6422566",
+                                        "uri": "{domain}/businesses/109649/generalledger/accounts/6422566",
+                                        "name": "Other income",
+                                        "displayId": "8-1400"
+                                    },
+                                    "item": {
+                                        "uid": "27",
+                                        "uri": "{domain}/businesses/109649/inventory/items/27",
+                                        "number": "Item 133",
+                                        "name": "Hammer"
+                                    },
+                                    "taxType": {
+                                        "uid": "10",
+                                        "uri": "{domain}/tax/types/10",
+                                        "code": "GST",
+                                        "name": "Goods & Services Tax"
+                                    },
+                                    "unitOfMeasure": "Qty",
+                                    "description": "Hammers",
+                                    "quantity": 2,
+                                    "unitPrice": 5.99,
+                                    "total": 11.98
+                                }
+                            ],
+                            "notes": "An invoice note",
+                            "purchaseOrderNumber": "PO0000056",
+                            "total": 11.98,
+                            "gst": 1.09,
+                            "amountPaid": 0,
+                            "amountDue": 11.98,
+                            "status": "Open",
+                            "displayStatus": "Not Paid"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_invoice",
+                                "url": "/businesses/:_business_uid/inventory/sale/invoices",
+                                "name": "Create a sale invoice",
+                                "description": "create a sale invoice types for an MYOB Essentials business",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "item_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_invoices",
+                                        "extract": "items[0].uid"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_item",
+                                "url": "/businesses/:_business_uid/sale/invoices/:_invoice_uid",
+                                "name": "Update a sale invoice",
+                                "method": "PUT",
+                                "description": "Update a sale invoice types for a MYOB Essentials business",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "invoice_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_invoices",
+                                        "extract": "items[0].uid"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_invoice",
+                                "name": "Create or Update a sale invoice",
+                                "url": [
+                                    "/businesses/:_business_uid/sale/invoices/:_invoice_uid",
+                                    "/businesses/:_business_uid/sale/invoices"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "invoice_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_invoices",
+                                        "extract": "items[0].uid"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_invoice",
+                                "url": "/businesses/:_business_uid/sale/invoices/:_invoice_uid",
+                                "name": "Delete a sale invoice",
+                                "description": "Delete a sales invoice for a MYOB Essentials business",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "invoice_uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_invoices",
+                                        "extract": "items[0].uid"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customerpayment",
+                        "name": "Sale : CustomerPayments",
+                        "sampleData": {
+                            "paymentDate": "2014-08-21",
+                            "reference": "CP000001",
+                            "notes": "Payment for widgets",
+                            "account": {
+                                "uid": "36453"
+                            },
+                            "customer": {
+                                "uid": "12"
+                            },
+                            "invoices": [
+                                {
+                                    "invoice": {
+                                        "uid": "1"
+                                    },
+                                    "paymentAmount": "110.00"
+                                },
+                                {
+                                    "invoice": {
+                                        "uid": "6"
+                                    },
+                                    "paymentAmount": "110.00"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customerpayments",
+                                "url": "/businesses/:_business_uid/inventory/sale/payments",
+                                "name": "Create a Customer payments ",
+                                "description": "create a customer payments for an MYOB Essentials business",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_uid",
+                                        "name": "Business ID",
+                                        "description": "The unique uid for any given business.",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,236 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "allowUndefinedResource": true,
+        "urlResolution": [],
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page",
+            "lastPageStatusCode": 500,
+            "lastPagePath": "non_field_errors",
+            "lastPageValue": "Invalid page."
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "mailboxes",
+                        "name": "Mailboxes",
+                        "endpoints": [
+                            {
+                                "id": "list_mailboxes",
+                                "url": "/parser",
+                                "name": "List mailboxes",
+                                "resourcePath": "results",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "get_mailbox",
+                                "url": "/parser/:_mailbox_id",
+                                "name": "Retrieve a mailbox",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "mailbox_id",
+                                        "name": "Mailbox ID",
+                                        "description": "Unique identifier for the Mailbox",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "documents_mailboxes",
+                        "name": "Documents in a mailbox",
+                        "endpoints": [
+                            {
+                                "id": "get_mailbox",
+                                "url": "/parser/:_mailbox_id/document_set",
+                                "name": "List documents in a given mailbox",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "mailbox_id",
+                                        "name": "Mailbox ID",
+                                        "description": "Unique identifier for the Mailbox",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "document",
+                        "name": "Document",
+                        "sampleData": {
+                            "subject": "The title of your document, or email subject",
+                            "sender": "radial@gmail.com",
+                            "recipient": "radial@in.parseur.com",
+                            "body_html": "<html><body>Document content as HTML. This one has priority over text content if both are present.</body></html>",
+                            "body_plain": "Document content as text. This one is only used if body_html is empty.",
+                            "id": 680850,
+                            "result": "{}",
+                            "parser": 5504,
+                            "template": null,
+                            "match_master_template": false,
+                            "status": "INCOMING",
+                            "is_accounted": false,
+                            "attached_to": null,
+                            "message_headers": [
+                                [
+                                    "Standard-SMTP-Header",
+                                    "Any usual email header goes here"
+                                ],
+                                [
+                                    "X-Envelope-From",
+                                    "<original.sender@corporate.email>"
+                                ]
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_document",
+                                "url": "/email",
+                                "name": "Create a document",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mailboxes",
+                        "name": "Mailboxes",
+                        "sampleData": {
+                            "id": 5504,
+                            "name": "radial",
+                            "email_prefix": "radial",
+                            "parser_object_count": 0,
+                            "webhook_count": 0,
+                            "document_count": 1,
+                            "template_count": 0,
+                            "document_per_status_count": {
+                                "INCOMING": 1,
+                                "PROGRESS": 0,
+                                "PARSEDOK": 0,
+                                "PARSEDKO": 0,
+                                "QUOTAEXC": 0,
+                                "SKIPPED": 0,
+                                "DELETED": 0,
+                                "EXPORTKO": 0
+                            },
+                            "owner_id": 3305,
+                            "owner_email": "celigo-labs@celigo.com",
+                            "last_activity": "2018-09-27T07:51:59.935710Z",
+                            "master_parser_name": null,
+                            "process_attachments": true,
+                            "is_master": false,
+                            "received_field": false,
+                            "received_date_field": false,
+                            "received_time_field": false,
+                            "sender_field": false,
+                            "to_field": false,
+                            "cc_field": false,
+                            "bcc_field": false,
+                            "recipient_field": false,
+                            "original_recipient_field": false,
+                            "subject_field": false,
+                            "template_field": false,
+                            "html_document_field": false,
+                            "text_document_field": false,
+                            "document_url_field": false,
+                            "public_document_url_field": false,
+                            "recipient_suffix_field": false,
+                            "last_reply_field": false,
+                            "available_webhook_set": [],
+                            "webhook_set": []
+                        },
+                        "operations": [
+                            {
+                                "id": "create_mailbox",
+                                "url": "/parser",
+                                "name": "Create a mailbox",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_mailbox",
+                                "url": "/parser/mailbox_id",
+                                "name": "Update a mailbox",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "mailbox_id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_mailbox",
+                                "url": [
+                                    "/parser/mailbox_id",
+                                    "/parser"
+                                ],
+                                "name": "Create or Update a specific mailbox",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "mailbox_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

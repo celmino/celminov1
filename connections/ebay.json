@@ -1,0 +1,2036 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "accountapi_fulfillment_policy",
+                        "name": "Account API : fulfillment_policy",
+                        "endpoints": [
+                            {
+                                "id": "list_fulfillment_policies",
+                                "url": "sell/account/v1/fulfillment_policy",
+                                "description": "Retrieves all the fulfillment policies associated with the specified marketplace.",
+                                "name": "getFulfillmentPolicies",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next"
+                                },
+                                "resourcePath": "fulfillmentPolicies",
+                                "queryParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_fulfillment_policy",
+                                "url": "sell/account/v1/fulfillment_policy/:_fulfillmentPolicyId",
+                                "description": "Retrieves the fulfillment policy associated with the specified fulfillment policy ID.",
+                                "name": "getFulfillmentPolicy",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "fulfillmentPolicyId",
+                                        "name": "Fulfillment Policy ID",
+                                        "placeholder": "unique eBay-assigned ID",
+                                        "description": "A unique eBay-assigned ID for a fulfillment policy that's generated when the policy is created.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_by_fulfillmentpolicy_name",
+                                "url": "sell/account/v1/fulfillment_policy/get_by_policy_name",
+                                "description": "Retrieves the fulfillment policy associated with the specified fulfillment policy name.",
+                                "name": "getFulfillmentPolicyByName",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Use this query parameter to specify the user-defined name of the fulfillment policy you want to retrieve.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_payment_policy",
+                        "name": "Account API : payment_policy",
+                        "endpoints": [
+                            {
+                                "id": "list_payment_policies",
+                                "url": "sell/account/v1/payment_policy",
+                                "description": "Retrieves all the payment policies associated with the specified marketplace.",
+                                "name": "getPaymentPolicies",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next"
+                                },
+                                "resourcePath": "paymentPolicies",
+                                "queryParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_payment_policy",
+                                "url": "sell/account/v1/payment_policy/:_paymentpolicyid",
+                                "description": "Retrieves the payment policy associated with the specified payment policy ID.",
+                                "name": "getPaymentPolicy",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "paymentpolicyid",
+                                        "name": "Payment Policy ID",
+                                        "placeholder": "unique eBay-assigned ID",
+                                        "description": "A unique eBay-assigned ID for a payment policy that's generated when the policy is created.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_by_paymentpolicy_name",
+                                "url": "sell/account/v1/payment_policy/get_by_policy_name",
+                                "description": "Retrieves the payment policy associated with the specified payment policy name.",
+                                "name": "getPaymentPolicyByName",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Use this query parameter to specify the user-defined name of the Payment policy you want to retrieve.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_privilege",
+                        "name": "Account API : privilege",
+                        "endpoints": [
+                            {
+                                "id": "get_privileges",
+                                "url": "sell/account/v1/privilege/",
+                                "description": "Retrieves a seller's account privileges (e.g., selling limits and registration status).",
+                                "name": "getPrivileges"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_program",
+                        "name": "Account API : program",
+                        "endpoints": [
+                            {
+                                "id": "get_opted_in_programs",
+                                "url": "sell/account/v1/program/get_opted_in_programs",
+                                "name": "getOptedInPrograms",
+                                "description": "Retrieves the eBay seller programs for which the seller has \"opted-in.\"",
+                                "resourcePath": "programs"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_rate_table",
+                        "name": "Account API : rate_table",
+                        "endpoints": [
+                            {
+                                "id": "get_rate_table",
+                                "url": "sell/account/v1/rate_table/",
+                                "description": "Returns details about the shipping rate tables defined by the seller for the counrty specified.",
+                                "name": "getRateTables",
+                                "resourcePath": "rateTables",
+                                "queryParameters": [
+                                    {
+                                        "id": "country_code",
+                                        "name": "Country Code",
+                                        "description": "A two-letter ISO 3166-1 Alpha-2 country code that specifies the country for which you want shipping rate table information. If you do not specify a county, the call returns all the seller-defined rate tables.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_return_policy",
+                        "name": "Account API : return_policy",
+                        "endpoints": [
+                            {
+                                "id": "list_return_policies",
+                                "url": "sell/account/v1/return_policy/",
+                                "description": "Retrieves all the return policies associated with the specified marketplace.",
+                                "name": "getReturnPolicies",
+                                "resourcePath": "returnPolicies",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_return_policy",
+                                "url": "sell/account/v1/payment_policy/:_returnpolicyid",
+                                "description": "Retrieves the return policy associated with the specified return policy ID.",
+                                "name": "getReturnPolicy",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "returnpolicyid",
+                                        "name": "Return Policy ID",
+                                        "placeholder": "unique eBay-assigned ID",
+                                        "description": "A unique eBay-assigned ID for a return policy that's generated when the policy is created.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_by_returnpolicy_name",
+                                "url": "sell/account/v1/return_policy/get_by_policy_name",
+                                "name": "getReturnPolicyByName",
+                                "doesNotSupportPaging": true,
+                                "description": "Retrieves the return policy associated with the specified return policy name.",
+                                "queryParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Use this query parameter to specify the user-defined name of the policy you want to retrieve.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_sales_tax",
+                        "name": "Account API : sales_tax",
+                        "endpoints": [
+                            {
+                                "id": "list_sales_taxes",
+                                "url": "sell/account/v1/sales_tax/",
+                                "description": "Retrieves the sales tax table for the specified country. The sales tax table is defined by the seller and is comprised of entries for the different jurisdictions in the country.",
+                                "name": "getSalesTaxes",
+                                "resourcePath": "salesTaxes",
+                                "queryParameters": [
+                                    {
+                                        "id": "country_code",
+                                        "name": "Country Code",
+                                        "description": "A two-letter ISO 3166-1 Alpha-2.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sales_tax",
+                                "url": "sell/account/v1/sales_tax/:_countryCode/:_jurisdictionId",
+                                "name": "getSalesTax",
+                                "description": "Retrieves a sales tax table entry, as specified by a jurisdiction in a country.",
+                                "pathParameters": [
+                                    {
+                                        "id": "jurisdictionId",
+                                        "name": "Jurisdiction ID",
+                                        "placeholder": "Unique ID for a sales tax jurisdiction",
+                                        "description": "Unique ID for a sales tax jurisdiction.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "countryCode",
+                                        "name": "Country Code",
+                                        "placeholder": "A two-letter ISO 3166-1 Alpha-2",
+                                        "description": "A two-letter ISO 3166-1 Alpha-2.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_location",
+                        "name": "Inventory API : location",
+                        "endpoints": [
+                            {
+                                "id": "list_inventorylocations",
+                                "url": "sell/inventory/v1/location/",
+                                "name": "getInventoryLocations",
+                                "description": "This call is used to retrieve a list of inventory locations as defined by the seller.",
+                                "resourcePath": "locations",
+                                "paging": {
+                                    "pagingMethod": "skipargument",
+                                    "skipArgument": "offset"
+                                }
+                            },
+                            {
+                                "id": "get_inventorylocation",
+                                "url": "sell/inventory/v1/location/:_merchantLocationKey",
+                                "name": "getInventoryLocation",
+                                "description": "This call is used to retrieve the details of the specified inventory location.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantLocationKey",
+                                        "name": "Merchant Location Key",
+                                        "placeholder": "A unique merchant-defined key (ID)",
+                                        "description": "A unique merchant-defined key (ID) for an inventory location. This value is passed in at the end of the call URI to specify the inventory location to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_inventory_item",
+                        "name": "Inventory API : Inventory_Item",
+                        "endpoints": [
+                            {
+                                "id": "list_inventory_items",
+                                "url": "sell/inventory/v1/inventory_item/",
+                                "description": "This call retrieves all inventory item records defined for the seller's account.",
+                                "name": "getInventoryItems",
+                                "resourcePath": "inventoryItems",
+                                "paging": {
+                                    "pagingMethod": "skipargument",
+                                    "skipArgument": "offset"
+                                }
+                            },
+                            {
+                                "id": "get_inventory_item",
+                                "url": "sell/inventory/v1/inventory_item/:_sku",
+                                "description": "This call retrieves the inventory item record for a given SKU.",
+                                "name": "getInventoryItem",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sku",
+                                        "name": "SKU",
+                                        "placeholder": "Seller-defined SKU value",
+                                        "description": "This is the seller-defined SKU value of the product whose inventory item record you wish to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_inventory_item_group",
+                        "name": "Inventory API : Inventory_Item_group",
+                        "endpoints": [
+                            {
+                                "id": "get_inventory_item_group",
+                                "url": "sell/inventory/v1/inventory_item_group/:_inventoryItemGroupKey",
+                                "name": "getInventoryItemGroup",
+                                "description": "This call retrieves the inventory item group for a given inventoryItemGroupKey value.",
+                                "pathParameters": [
+                                    {
+                                        "id": "inventoryItemGroupKey",
+                                        "name": "Inventory Item group Key",
+                                        "required": true,
+                                        "placeholder": "Unique inventory item group",
+                                        "description": "The unique identifier of an inventory item group. This value is assigned by the seller when an inventory item group is created. The inventoryItemGroupKey value for the inventory item group to retrieve is passed in at the end of the call URI."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_productcompatibility",
+                        "name": "Inventory API : Inventory_Item : product_compatibility",
+                        "endpoints": [
+                            {
+                                "id": "get_product_compatibility",
+                                "url": "sell/inventory/v1/inventory_item/:_SKU/product_compatibility",
+                                "name": "getProductCompatibility",
+                                "doesNotSupportPaging": true,
+                                "description": "This call is used by the seller to retrieve the list of products that are compatible with the inventory item.",
+                                "pathParameters": [
+                                    {
+                                        "id": "SKU",
+                                        "name": "SKU",
+                                        "placeholder": "Seller-defined SKU value",
+                                        "description": "This is the seller-defined SKU value of the product whose inventory item record you wish to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_offer",
+                        "name": "Inventory API : offer",
+                        "endpoints": [
+                            {
+                                "id": "list_offers",
+                                "url": "sell/inventory/v1/offer",
+                                "name": "getOffers",
+                                "description": "This call retrieves all existing offers for the specified SKU value.",
+                                "resourcePath": "offers",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "sku",
+                                        "name": "SKU",
+                                        "description": "The seller-defined SKU value is passed in as a query parameter. All offers associated with this product are returned in the response.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "format",
+                                        "name": "Format",
+                                        "description": "This enumeration value sets the listing format for the offer. This query parameter will be passed in if the seller only wants to see offers in this specified listing format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_offer",
+                                "url": "sell/inventory/v1/offer/:_offerId",
+                                "name": "getOffer",
+                                "description": "This call retrieves a specific offer.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "offerId",
+                                        "name": "Offer ID",
+                                        "required": true,
+                                        "placeholder": "Unique Offer ID",
+                                        "description": "The unique identifier of the offer that is to be retrieved."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_listingfees",
+                                "url": "sell/inventory/v1/offer/get_listing_fees",
+                                "name": "getListingFees",
+                                "description": "This call is used to retrieve the expected listing fees for one to 250 unpublished offers.",
+                                "method": "POST",
+                                "bodyParameters": [
+                                    {
+                                        "id": "offers[0].offerId",
+                                        "name": "Offer ID",
+                                        "required": true,
+                                        "placeholder": "Unique Offer ID",
+                                        "description": "The unique identifier of the offer that is to be retrieved."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "compliancepi_listing_violation_summary",
+                        "name": "Compliance API : listing_violation_summary",
+                        "endpoints": [
+                            {
+                                "id": "get_listing_violation_summary",
+                                "url": "sell/compliance/v1/listing_violation_summary",
+                                "name": "getListingViolationsSummary",
+                                "description": "This call returns listing violation counts.",
+                                "headers": {
+                                    "X-EBAY-C-MARKETPLACE-ID": "EBAY-US"
+                                },
+                                "resourcePath": "violationSummaries",
+                                "queryParameters": [
+                                    {
+                                        "id": "compliance_type",
+                                        "name": "Compliance Type",
+                                        "fieldType": "input",
+                                        "description": "A user passes in one or more compliance type values through this query parameter. See ComplianceTypeEnum for more information on the compliance types that can be passed in here. If more than one compliance type values is used, delimit these values with a comma. If no compliance type values are passed in, the listing count for all compliance types will be returned."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "compliancepi_listing_violation",
+                        "name": "Compliance API : listing_violation",
+                        "endpoints": [
+                            {
+                                "id": "get_listing_violation_summary",
+                                "url": "sell/compliance/v1/listing_violation",
+                                "name": "getListingViolations",
+                                "description": "This call returns specific listing violations for three different compliance types.",
+                                "headers": {
+                                    "X-EBAY-C-MARKETPLACE-ID": "EBAY-US"
+                                },
+                                "resourcePath": "listingViolations",
+                                "queryParameters": [
+                                    {
+                                        "id": "compliance_type",
+                                        "name": "Compliance Type",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "A user passes in one or more compliance type values through this query parameter. See ComplianceTypeEnum for more information on the compliance types that can be passed in here. If more than one compliance type values is used, delimit these values with a comma. If no compliance type values are passed in, the listing count for all compliance types will be returned."
+                                    },
+                                    {
+                                        "id": "listing_id",
+                                        "name": "Listing ID",
+                                        "fieldType": "input",
+                                        "description": "This query parameter is used if the user wants to view all listing violations for one or more eBay listings. The string value passed into this field is the unique identifier of the listing, sometimes referred to as the Item ID. If this query parameter is used, all other query parameters (if provided) are ignored. Either the listing_id or a compliance_type query parameter must be used, and if the seller only wants to view listing violations of a specific compliance type, both of these parameters can be used."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillmentapi_order",
+                        "name": "Fulfillment API : order",
+                        "endpoints": [
+                            {
+                                "id": "list_orders",
+                                "url": "sell/fulfillment/v1/order",
+                                "name": "getOrders",
+                                "description": "Search for and retrieve the details of multiple orders.",
+                                "resourcePath": "orders",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "filter": "lastmodifieddate:{{encodeURI '['}}{{encodeURI lastExportDateTime}}..{{encodeURI ']'}}"
+                                    }
+                                },
+                                "paging": {
+                                    "pagingMethod": "skipargument",
+                                    "skipArgument": "offset"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "orderIds",
+                                        "name": "Order IDs",
+                                        "description": "A comma-separated list of the unique identifiers of the orders to retrieve (maximum 50). These values were originally generated by eBay as a result of the buyer's checkout process"
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "textarea",
+                                        "description": "One or more comma-separated criteria for narrowing down the collection of orders returned by this call. These criteria correspond to specific fields in the response payload. Multiple filter criteria combine to further restrict the results. Here is an example of a getOrders method using all of these filters: \nGET https://api.ebay.com/sell/v1/order?\nfilter=creationdate:%5B2016-03-21T08:25:43.511Z..2016-04-21T08:25:43.511Z%5D,\nlastmodifieddate:%5B2016-05-15T08:25:43.511Z..%5D,\norderfulfillmentstatus:%7BNOT_STARTED%7CIN_PROGRESS%7D\n\nNote: This method requires that certain special characters in the URI query string be percent-encoded: \n[ = %5B\n       ] = %5D\n       { = %7B\n       | = %7C\n       } = %7D \nThis query filter example uses these codes."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_order",
+                                "url": "sell/fulfillment/v1/order/:_orderId",
+                                "name": "getOrder",
+                                "description": "Retrieve the details of a specific order.",
+                                "pathParameters": [
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "fieldType": "input",
+                                        "placeholder": "Unique identifier of the order",
+                                        "required": true,
+                                        "description": "The unique identifier of the order. This value was returned by the getOrders call in the orders.orderId field; for example, 170009092860-9849164007!140000000544476."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillmentapi_shippingfulfillment",
+                        "name": "Fulfillment API : order : shipping_fulfillment",
+                        "endpoints": [
+                            {
+                                "id": "list_shippingfulfillment",
+                                "url": "sell/fulfillment/v1/order/:_orderId/shipping_fulfillment",
+                                "name": "getShippingFulfillments",
+                                "description": "Retrieve the details of all shipping fulfillments defined for an order.",
+                                "resourcePath": "fulfillments",
+                                "paging": {
+                                    "pagingMethod": "skipargument",
+                                    "skipArgument": "offset"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "fieldType": "input",
+                                        "placeholder": "Unique identifier of the order",
+                                        "required": true,
+                                        "description": "The unique identifier of the order. This value was returned by the getOrders call in the orders.orderId field; for example, 170009092860-9849164007!140000000544476."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_shipppingfulfillment",
+                                "url": "sell/fulfillment/v1/order/:_orderId/shipping_fulfillment/:_fulfillmentId",
+                                "name": "getShippingFulfillment",
+                                "description": "Retrieve the details of a specified shipping fulfillment definition for an order.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "fieldType": "input",
+                                        "placeholder": "Unique identifier of the order",
+                                        "required": true,
+                                        "description": "The unique identifier of the order. This value was returned by the getOrders call in the orders.orderId field; for example, 170009092860-9849164007!140000000544476."
+                                    },
+                                    {
+                                        "id": "fulfillmentId",
+                                        "name": "Fulfillment ID",
+                                        "fieldType": "input",
+                                        "placeholder": "Unique identifier of the fulfillment",
+                                        "required": true,
+                                        "description": "The unique identifier of the fulfillment. This eBay-generated value was created by the Create Shipping Fulfillment call, and returned by the getShippingFulfillments call in the fulfillments.fulfillmentId field; for example, 9405509699937003457459."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "analyticsapi_seller_standards_profile",
+                        "name": "Analytics API : seller_standards_profile",
+                        "endpoints": [
+                            {
+                                "id": "find_sellerstandardsprofiles",
+                                "url": "sell/analytics/v1/seller_standards_profile",
+                                "name": "findSellerStandardsProfiles",
+                                "description": "Retrieves all the seller's profiles.",
+                                "resourcePath": "standardsProfiles",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "get_getSellerStandardsProfile",
+                                "url": "sell/analytics/v1/seller_standards_profile/:_program/:_cycle",
+                                "name": "getSellerStandardsProfile",
+                                "description": "Retrieves a seller's profile based on the specified program and cycle.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "program",
+                                        "name": "Program",
+                                        "fieldType": "input",
+                                        "placeholder": "PROGRAM_DE or PROGRAM_UK...",
+                                        "required": true,
+                                        "description": "Specifies the program of the requested profile."
+                                    },
+                                    {
+                                        "id": "cycle",
+                                        "name": "Cycle",
+                                        "fieldType": "input",
+                                        "placeholder": "CURRENT OR PROJECTED",
+                                        "required": true,
+                                        "description": "Specifies the cycle of the requested profile"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "analyticsapi_trafficreport",
+                        "name": "Analytics API : traffic_report",
+                        "endpoints": [
+                            {
+                                "id": "get_traffic_report",
+                                "url": "sell/analytics/v1/traffic_report",
+                                "name": "getTrafficReport",
+                                "description": "Generates a seller's traffic report based on specified days or listings. You can specify the metrics to include in the report and use filters to refine the data returned.",
+                                "resourcePath": "standardsProfiles",
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "fieldType": "input",
+                                        "description": "Specifies a single metric to be sorted and whether you want to sort in ascending or descending order. Specifying a metric in this field, sorts that data in ascending order. To sort in descending order add - in front of the metric. This is helpful when the seller wants to see metrics starting with the greatest number, such as the CLICK_THROUGH_RATE (sort=-CLICK_THROUGH_RATE). "
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "Limits the report data returned. You can refine the report data returned using the date_range, listing_ids, and marketplace_ids filters."
+                                    },
+                                    {
+                                        "id": "metric",
+                                        "name": "Metric",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "Specifies a comma separated list of the metrics you want included in the report. "
+                                    },
+                                    {
+                                        "id": "dimension",
+                                        "name": "Dimension",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "For example: \n * If you specify dimension=day and metric=CLICK_THROUGH_RATE, the traffic report would contain the number of times a buyer saw a listing impression and then clicked through to the listing page for each day in the date range.\n * If you specify dimension=listing and metric=LISTING_IMPRESSION_STORE, the traffic report would contain the number of times that listing appeared on the seller's store."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "metadataapi_country",
+                        "name": "Metadata API : country",
+                        "endpoints": [
+                            {
+                                "id": "get_salestaxjurisdictions",
+                                "url": "sell/metadata/v1/country/:_countryCode/sales_tax_jurisdiction",
+                                "name": "getSalesTaxJurisdictions",
+                                "description": "Retrieves sales tax jurisdictions for the specified country, letting sellers establish optional tax tables. Countries with tax jurisdictions are CA, IN, and US.",
+                                "resourcePath": "salesTaxJurisdictions",
+                                "pathParameters": [
+                                    {
+                                        "id": "countryCode",
+                                        "name": "Country Code",
+                                        "placeholder": "A two-letter ISO 3166-1 Alpha-2 country code",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "A two-letter ISO 3166-1 Alpha-2 country code. eBay provides sales tax jurisdiction information for Canada, India, and the United States.Valid values for this path parameter are CA, IN, and US."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "metadataapi_marketplace",
+                        "name": "Metadata API : marketplace",
+                        "endpoints": [
+                            {
+                                "id": "get_compatibilitypolicies",
+                                "url": "sell/metadata/v1/marketplace/:_marketplace_id/get_automotive_parts_compatibility_policies",
+                                "name": "getAutomotivePartsCompatibilityPolicies",
+                                "description": "Returns the eBay policies that define how to list automotive-parts-compatibility items in the categories of a specific marketplace.",
+                                "resourcePath": "automotivePartsCompatibilityPolicies",
+                                "pathParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "fieldType": "select",
+                                        "required": true,
+                                        "options": [
+                                            "EBAY_MOTORS_US",
+                                            "EBAY_AU",
+                                            "EBAY_CA",
+                                            "EBAY_DE",
+                                            "EBAY_ES",
+                                            "EBAY_FR",
+                                            "EBAY_GB",
+                                            "EBAY_IT"
+                                        ],
+                                        "description": "Specifies the eBay marketplace for which policy information is returned."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category that has child nodes, eBay returns policy information for all the leaf categories of the parent node. Example: filter=categoryIds:{100|101|102}\n Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: filter=categoryIds%3A%7B100%7C101%7C102%7D"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_conditionpolicies",
+                                "url": "sell/metadata/v1/marketplace/:_marketplace_id/get_item_condition_policies",
+                                "name": "getItemConditionPolicies",
+                                "description": "Returns the eBay policies that define how to specify item conditions in the categories of a specific marketplace.",
+                                "resourcePath": "itemConditionPolicies",
+                                "pathParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category that has child nodes, eBay returns policy information for all the leaf categories of the parent node. Example: filter=categoryIds:{100|101|102}\n Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: filter=categoryIds%3A%7B100%7C101%7C102%7D"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_structurepolicies",
+                                "url": "sell/metadata/v1/marketplace/:_marketplace_id/get_listing_structure_policies",
+                                "name": "getListingStructurePolicies",
+                                "description": "Returns the eBay policies that define the allowed listing structures (i.e. whether item variations are supported) for the categories of a specific marketplace.",
+                                "resourcePath": "listingStructurePolicies",
+                                "pathParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category that has child nodes, eBay returns policy information for all the leaf categories of the parent node. Example: filter=categoryIds:{100|101|102}\n Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: filter=categoryIds%3A%7B100%7C101%7C102%7D"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_negotiatedpricepolicies",
+                                "url": "sell/metadata/v1/marketplace/:_marketplace_id/get_negotiated_price_policies",
+                                "name": "getNegotiatedPricePolicies",
+                                "description": "Returns the eBay policies that define the supported negotiated price (best offer) features for the categories of a specific marketplace.",
+                                "resourcePath": "negotiatedPricePolicies",
+                                "pathParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category that has child nodes, eBay returns policy information for all the leaf categories of the parent node. Example: filter=categoryIds:{100|101|102}\n Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: filter=categoryIds%3A%7B100%7C101%7C102%7D"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_return_policies",
+                                "url": "sell/metadata/v1/marketplace/:_marketplace_id/get_return_policies",
+                                "name": "getReturnPolicies",
+                                "description": "Returns the eBay policies that define whether or not you must include a return policy for the items you list in the categories of a specific marketplace.",
+                                "resourcePath": "returnPolicies",
+                                "pathParameters": [
+                                    {
+                                        "id": "marketplace_id",
+                                        "name": "Marketplace ID",
+                                        "description": "Use this query parameter to specify the eBay marketplace related to the policy you want to retrieve.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "Limits the response by returning eBay policy information for only the leaf categories specified by this parameter. Set filter to a list of categoryId values. You can specify up to 50 category IDs by separating each with a pipe character ('|'). If you specify more than 50 categoryId values, eBay returns a warning along with the results for the first 50 IDs. If you specify a category that has child nodes, eBay returns policy information for all the leaf categories of the parent node. Example: filter=categoryIds:{100|101|102}\n Note that you must URL-encode the list of category ID values, which results in the following filter for the above example: filter=categoryIds%3A%7B100%7C101%7C102%7D"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "accountapi_fulfillment_policy",
+                        "name": "Account API : fulfillment_policy",
+                        "sampleData": {
+                            "categoryTypes": [
+                                {
+                                    "default": true,
+                                    "name": "ALL_EXCLUDING_MOTORS_VEHICLES"
+                                }
+                            ],
+                            "description": "string",
+                            "freightShipping": false,
+                            "globalShipping": false,
+                            "marketplaceId": "EBAY_US",
+                            "pickupDropOff": true,
+                            "name": "Domestic free shipping",
+                            "handlingTime": {
+                                "unit": "DAY",
+                                "value": "1"
+                            },
+                            "shippingOptions": [
+                                {
+                                    "costType": "CALCULATED",
+                                    "insuranceFee": {
+                                        "currency": "AED",
+                                        "value": "string"
+                                    },
+                                    "insuranceOffered": "boolean",
+                                    "optionType": "DOMESTIC",
+                                    "packageHandlingCost": {
+                                        "currency": "AED",
+                                        "value": "string"
+                                    },
+                                    "rateTableId": "string",
+                                    "shippingServices": [
+                                        {
+                                            "additionalShippingCost": {
+                                                "currency": "AED",
+                                                "value": "string"
+                                            },
+                                            "buyerResponsibleForPickup": "boolean",
+                                            "buyerResponsibleForShipping": "boolean",
+                                            "cashOnDeliveryFee": {
+                                                "currency": "AED",
+                                                "value": "string"
+                                            },
+                                            "freeShipping": "boolean",
+                                            "shippingCarrierCode": "string",
+                                            "shippingCost": {
+                                                "currency": "AED",
+                                                "value": "string"
+                                            },
+                                            "shippingServiceCode": "string",
+                                            "shipToLocations": {
+                                                "regionExcluded": [
+                                                    {
+                                                        "regionName": "string",
+                                                        "regionType": "COUNTRY"
+                                                    }
+                                                ],
+                                                "regionIncluded": [
+                                                    {
+                                                        "regionName": "string",
+                                                        "regionType": "COUNTRY"
+                                                    }
+                                                ]
+                                            },
+                                            "sortOrder": "integer",
+                                            "surcharge": {
+                                                "currency": "AED",
+                                                "value": "string"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ],
+                            "shipToLocations": {
+                                "regionExcluded": [
+                                    {
+                                        "regionName": "string",
+                                        "regionType": "COUNTRY"
+                                    }
+                                ],
+                                "regionIncluded": [
+                                    {
+                                        "regionName": "string",
+                                        "regionType": "COUNTRY"
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_fulfillmentpolicy",
+                                "url": "sell/account/v1/fulfillment_policy",
+                                "description": "Creates a fulfillment policy for the associated seller account.",
+                                "name": "createFulfillmentPolicy",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "fulfillmentPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_by_fulfillmentpolicy_name",
+                                        "extract": "fulfillmentPolicyId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_fulfillmentpolicy",
+                                "url": "sell/account/v1/fulfillment_policy/:_fulfillmentPolicyId",
+                                "description": "Updates the fulfillment policy associated with the specified fulfillment policy ID.",
+                                "name": "updateFulfillmentPolicy",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "fulfillmentPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_by_fulfillmentpolicy_name",
+                                        "extract": "fulfillmentPolicyId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_fulfillmentpolicy",
+                                "url": [
+                                    "/sell/account/v1/fulfillment_policy/:_fulfillmentPolicyId",
+                                    "/sell/account/v1/fulfillment_policy"
+                                ],
+                                "description": "Create or Updates the fulfillment policy associated with the specified fulfillment policy ID.",
+                                "name": "createOrUpdateFulfillmentPolicy",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "fulfillmentPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_by_fulfillmentpolicy_name",
+                                        "extract": "fulfillmentPolicyId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_fulfillmentpolicy",
+                                "url": "sell/account/v1/fulfillment_policy/:_fulfillmentPolicyId",
+                                "name": "deleteFulfillmentPolicy",
+                                "description": "Deletes a fulfillment policy from the associated seller account.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "fulfillmentPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_by_fulfillmentpolicy_name",
+                                        "extract": "fulfillmentPolicyId"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_payment_policy",
+                        "name": "Account API : payment_policy",
+                        "sampleData": {
+                            "categoryTypes": [
+                                {
+                                    "default": "boolean",
+                                    "name": "CategoryTypeEnum : [MOTORS_VEHICLES,ALL_EXCLUDING_MOTORS_VEHICLES]"
+                                }
+                            ],
+                            "deposit": {
+                                "amount": {
+                                    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                                    "value": "string"
+                                },
+                                "dueIn": {
+                                    "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+                                    "value": "integer"
+                                },
+                                "paymentMethods": [
+                                    {
+                                        "brands": [
+                                            "PaymentInstrumentBrandEnum : [AMERICAN_EXPRESS,DISCOVER,MASTERCARD...]"
+                                        ],
+                                        "paymentMethodType": "PaymentMethodTypeEnum : [CASH_IN_PERSON,CASH_ON_DELIVERY,CASH_ON_PICKUP...]",
+                                        "recipientAccountReference": {
+                                            "referenceId": "string",
+                                            "referenceType": "RecipientAccountReferenceTypeEnum : [PAYPAL_EMAIL]"
+                                        }
+                                    }
+                                ]
+                            },
+                            "description": "string",
+                            "fullPaymentDueIn": {
+                                "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+                                "value": "integer"
+                            },
+                            "immediatePay": "boolean",
+                            "marketplaceId": "MarketplaceIdEnum : [EBAY_AT,EBAY_AU,EBAY_BE...]",
+                            "name": "string",
+                            "paymentInstructions": "string",
+                            "paymentMethods": [
+                                {
+                                    "brands": [
+                                        "PaymentInstrumentBrandEnum : [AMERICAN_EXPRESS,DISCOVER,MASTERCARD...]"
+                                    ],
+                                    "paymentMethodType": "PaymentMethodTypeEnum : [CASH_IN_PERSON,CASH_ON_DELIVERY,CASH_ON_PICKUP...]",
+                                    "recipientAccountReference": {
+                                        "referenceId": "string",
+                                        "referenceType": "RecipientAccountReferenceTypeEnum : [PAYPAL_EMAIL]"
+                                    }
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_paymentpolicy",
+                                "url": "sell/account/v1/payment_policy",
+                                "description": "Creates a payment policy for the associated seller account.",
+                                "name": "createPaymentPolicy",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "paymentPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_paymentpolicy",
+                                "url": "sell/account/v1/payment_policy/:_paymentPolicyId",
+                                "description": "Updates the payment policy associated with the specified payment policy ID.",
+                                "name": "updatePaymentPolicy",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "paymentPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_by_paymentpolicy_name",
+                                        "extract": "paymentPolicyId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_payment_policy",
+                                "url": [
+                                    "/sell/account/v1/payment_policy/:_paymentPolicyId",
+                                    "/sell/account/v1/payment_policy"
+                                ],
+                                "description": "Creates or Updates the payment policy associated with the specified payment policy ID.",
+                                "name": "createOrUpdatePaymentPolicy",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "paymentPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_fulfillmentpolicy",
+                                "url": "sell/account/v1/payment_policy/:_paymentPolicyId",
+                                "name": "deletePaymentPolicy",
+                                "description": "Deletes a payment policy from the associated seller account.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "paymentPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_by_paymentpolicy_name",
+                                        "extract": "paymentPolicyId"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_program",
+                        "name": "Account API : program",
+                        "sampleData": {
+                            "programType": "OUT_OF_STOCK_CONTROL"
+                        },
+                        "operations": [
+                            {
+                                "id": "optintoprogram",
+                                "url": "sell/account/v1/program/opt_in",
+                                "name": "optInToProgram",
+                                "description": "Opts the seller in to the specified eBay seller program.",
+                                "method": "POST"
+                            },
+                            {
+                                "id": "optoutofprogram",
+                                "url": "sell/account/v1/program/opt_out",
+                                "description": "Opts the seller out of the specified eBay seller program.",
+                                "name": "optOutOfProgram",
+                                "method": "POST"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_return_policy",
+                        "name": "Account API : return_policy",
+                        "sampleData": {
+                            "categoryTypes": [
+                                {
+                                    "default": "boolean",
+                                    "name": "CategoryTypeEnum : [MOTORS_VEHICLES,ALL_EXCLUDING_MOTORS_VEHICLES]"
+                                }
+                            ],
+                            "description": "string",
+                            "extendedHolidayReturnsOffered": "boolean",
+                            "marketplaceId": "MarketplaceIdEnum : [EBAY_AT,EBAY_AU,EBAY_BE...]",
+                            "name": "string",
+                            "refundMethod": "RefundMethodEnum : [MERCHANDISE_CREDIT,MONEY_BACK]",
+                            "restockingFeePercentage": "string",
+                            "returnInstructions": "string",
+                            "returnMethod": "ReturnMethodEnum : [EXCHANGE,REPLACEMENT]",
+                            "returnPeriod": {
+                                "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+                                "value": "integer"
+                            },
+                            "returnsAccepted": "boolean",
+                            "returnShippingCostPayer": "ReturnShippingCostPayerEnum : [BUYER,SELLER]"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_returnpolicy",
+                                "url": "sell/account/v1/return_policy/",
+                                "description": "Creates a return policy for the associated seller account.",
+                                "name": "createReturnPolicy",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "returnPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_returnpolicy",
+                                "url": "sell/account/v1/return_policy/:_returnPolicyId",
+                                "description": "Updates the return policy associated with the specified return policy ID.",
+                                "name": "updateReturnPolicy",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "returnPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_by_returnpolicy_name",
+                                        "extract": "returnPolicyId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_return_policy",
+                                "url": [
+                                    "/sell/account/v1/return_policy/:_returnPolicyId",
+                                    "/sell/account/v1/return_policy/"
+                                ],
+                                "description": "Creates or Updates the return policy associated with the specified return policy ID.",
+                                "name": "createOrUpdatePaymentPolicy",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "returnPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_returnpolicy",
+                                "url": "sell/account/v1/return_policy/:_returnPolicyId",
+                                "name": "deleteReturnPolicy",
+                                "description": "Deletes a return policy from the associated seller account.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "returnPolicyId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_by_returnpolicy_name",
+                                        "extract": "returnPolicyId"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountapi_sales_tax",
+                        "name": "Account API : sales_tax",
+                        "sampleData": {
+                            "salesTaxPercentage": "string",
+                            "shippingAndHandlingTaxed": true
+                        },
+                        "operations": [
+                            {
+                                "id": "create_or_replacesalesax",
+                                "url": "sell/account/v1/sales_tax/:_countryCode/:_jurisdictionId",
+                                "name": "createOrReplaceSalesTax",
+                                "description": "Creates or updates a sales tax table entry, as specified by a jurisdiction in a country.",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "countryCode",
+                                        "name": "Country Code",
+                                        "placeholder": "A two-letter ISO 3166-1 Alpha-2",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "jurisdictionId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_salesax",
+                                "url": "sell/account/v1/sales_tax/:_countryCode/:_jurisdictionId",
+                                "name": "deleteSalesTax",
+                                "description": "Deletes a sales tax table entry, as specified by a jurisdiction in a country.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "countryCode",
+                                        "name": "Country Code",
+                                        "placeholder": "A two-letter ISO 3166-1 Alpha-2",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "jurisdictionId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_location",
+                        "name": "Inventory API : location",
+                        "sampleData": {
+                            "location": {
+                                "address": {
+                                    "addressLine1": "string",
+                                    "addressLine2": "string",
+                                    "city": "string",
+                                    "country": "CountryCodeEnum : [AD,AE,AF...]",
+                                    "county": "string",
+                                    "postalCode": "string",
+                                    "stateOrProvince": "string"
+                                },
+                                "geoCoordinates": {
+                                    "latitude": "number",
+                                    "longitude": "number"
+                                }
+                            },
+                            "locationAdditionalInformation": "string",
+                            "locationInstructions": "string",
+                            "locationTypes": [
+                                "StoreTypeEnum : [STORE,WAREHOUSE]"
+                            ],
+                            "locationWebUrl": "string",
+                            "merchantLocationStatus": "StatusEnum : [DISABLED,ENABLED]",
+                            "name": "string",
+                            "operatingHours": [
+                                {
+                                    "dayOfWeekEnum": "DayOfWeekEnum : [MONDAY,TUESDAY,WEDNESDAY...]",
+                                    "intervals": [
+                                        {
+                                            "close": "string",
+                                            "open": "string"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "phone": "string",
+                            "specialHours": [
+                                {
+                                    "date": "string",
+                                    "intervals": [
+                                        {
+                                            "close": "string",
+                                            "open": "string"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_inventorylocation",
+                                "url": "sell/inventory/v1/location/:_merchantLocationKey",
+                                "name": "createInventoryLocation",
+                                "description": "This call is used to create a store or warehouse location for the associated seller.",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantLocationKey",
+                                        "name": "Merchant Location Key",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "A unique merchant-defined key (ID)."
+                                    },
+                                    {
+                                        "id": "inventory_location_id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_inventorylocation",
+                                "url": "sell/inventory/v1/location/:_merchantLocationKey/update_location_details",
+                                "name": "updateInventoryLocation",
+                                "description": "This call is used to update the details of a specified inventory location.",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantLocationKey",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "enable_inventorylocation",
+                                "url": "sell/inventory/v1/location/:_merchantLocationKey/enable",
+                                "name": "enableInventoryLocation",
+                                "description": "This call is used to enable a disabled inventory location.",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantLocationKey",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "disable_inventorylocation",
+                                "url": "sell/inventory/v1/location/:_merchantLocationKey/disable",
+                                "name": "disableInventoryLocation",
+                                "description": "This call is used to disable the specified inventory location.",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantLocationKey",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_inventorylocation",
+                                "url": "sell/inventory/v1/location/:_merchantLocationKey",
+                                "name": "deleteInventoryLocation",
+                                "description": "This call is used to delete the specified inventory location from the seller's account.",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantLocationKey",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_inventory_item",
+                        "name": "Inventory API : Inventory_Item",
+                        "sampleData": {
+                            "availability": {
+                                "pickupAtLocationAvailability": [
+                                    {
+                                        "availabilityType": "AvailabilityTypeEnum : [IN_STOCK,OUT_OF_STOCK,SHIP_TO_STORE]",
+                                        "fulfillmentTime": {
+                                            "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+                                            "value": "integer"
+                                        },
+                                        "merchantLocationKey": "string",
+                                        "quantity": "integer"
+                                    }
+                                ],
+                                "shipToLocationAvailability": {
+                                    "quantity": "integer"
+                                }
+                            },
+                            "condition": "ConditionEnum : [NEW,LIKE_NEW,NEW_OTHER...]",
+                            "conditionDescription": "string",
+                            "packageWeightAndSize": {
+                                "dimensions": {
+                                    "height": "number",
+                                    "length": "number",
+                                    "unit": "LengthUnitOfMeasureEnum : [INCH,FEET,CENTIMETER...]",
+                                    "width": "number"
+                                },
+                                "packageType": "PackageTypeEnum : [LETTER,BULKY_GOODS,CARAVAN...]",
+                                "weight": {
+                                    "unit": "WeightUnitOfMeasureEnum : [POUND,KILOGRAM,OUNCE...]",
+                                    "value": "number"
+                                }
+                            },
+                            "product": {
+                                "aspects": "object",
+                                "brand": "string",
+                                "description": "string",
+                                "imageUrls": [
+                                    "string"
+                                ],
+                                "mpn": "string",
+                                "subtitle": "string",
+                                "title": "string",
+                                "isbn": [
+                                    "string"
+                                ],
+                                "upc": [
+                                    "string"
+                                ],
+                                "ean": [
+                                    "string"
+                                ],
+                                "epid": "string"
+                            },
+                            "sku": "string",
+                            "groupIds": [
+                                "string"
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_replace_inventoryitem",
+                                "url": "sell/inventory/v1/inventory_item/:_sku",
+                                "description": "This call creates a new inventory item record or updates an existing inventory item record.",
+                                "name": "createOrReplaceInventoryItem",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "sku",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_inventoryitem",
+                                "url": "sell/inventory/v1/inventory_item/:_sku",
+                                "description": "This call is used to delete an inventory item record associated with a specified SKU.",
+                                "name": "deleteInventoryItem",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "sku",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_productcompatibility",
+                        "name": "Inventory API : Inventory_Item : product_compatibility",
+                        "sampleData": {
+                            "compatibleProducts": [
+                                {
+                                    "productFamilyProperties": {
+                                        "make": "string",
+                                        "model": "string",
+                                        "year": "string",
+                                        "trim": "string",
+                                        "engine": "string"
+                                    },
+                                    "productIdentifier": {
+                                        "epid": "string",
+                                        "gtin": "string",
+                                        "ktype": "string"
+                                    },
+                                    "notes": "string"
+                                }
+                            ],
+                            "sku": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_replace_productcompatibility",
+                                "url": "sell/inventory/v1/inventory_item/:_sku/product_compatibility",
+                                "description": "This call is used by the seller to create or replace a list of products that are compatible with the inventory item.",
+                                "name": "createOrReplaceProductCompatibility",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "sku",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_productcompatibility",
+                                "url": "sell/inventory/v1/inventory_item/:_sku/product_compatibility",
+                                "description": "This call is used by the seller to delete the list of products that are compatible with the inventory item.",
+                                "name": "deleteProductCompatibility",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "sku",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_inventory_item_group",
+                        "name": "Inventory API : Inventory_Item_group",
+                        "sampleData": {
+                            "aspects": "object",
+                            "description": "string",
+                            "inventoryItemGroupKey": "string",
+                            "imageUrls": [
+                                "string"
+                            ],
+                            "subtitle": "string",
+                            "title": "string",
+                            "variantSKUs": [
+                                "string"
+                            ],
+                            "variesBy": {
+                                "aspectsImageVariesBy": [
+                                    "string"
+                                ],
+                                "specifications": [
+                                    {
+                                        "name": "string",
+                                        "values": [
+                                            "string"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_replaceinventoryitemgroup",
+                                "url": "sell/inventory/v1/inventory_item_group/:_inventoryItemGroupKey",
+                                "name": "createOrReplaceInventoryItemGroup",
+                                "description": "This call creates a new inventory item group or updates an existing inventory item group.",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "inventoryItemGroupKey",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_inventoryitemgroup",
+                                "url": "sell/inventory/v1/inventory_item_group/:_inventoryItemGroupKey",
+                                "name": "deleteInventoryItemGroup",
+                                "description": "This call deletes the inventory item group for a given inventoryItemGroupKey value.",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "inventoryItemGroupKey",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventoryapi_offer",
+                        "name": "Inventory API : offer",
+                        "sampleData": {
+                            "availableQuantity": "integer",
+                            "categoryId": "string",
+                            "listingDescription": "string",
+                            "listingPolicies": {
+                                "paymentPolicyId": "string",
+                                "returnPolicyId": "string",
+                                "shippingCostOverrides": [
+                                    {
+                                        "surcharge": {
+                                            "value": "string",
+                                            "currency": "string"
+                                        },
+                                        "additionalShippingCost": {
+                                            "value": "string",
+                                            "currency": "string"
+                                        },
+                                        "priority": "integer",
+                                        "shippingCost": {
+                                            "value": "string",
+                                            "currency": "string"
+                                        },
+                                        "shippingServiceType": "ShippingServiceTypeEnum : [DOMESTIC,INTERNATIONAL]"
+                                    }
+                                ],
+                                "fulfillmentPolicyId": "string"
+                            },
+                            "merchantLocationKey": "string",
+                            "pricingSummary": {
+                                "minimumAdvertisedPrice": {
+                                    "value": "string",
+                                    "currency": "string"
+                                },
+                                "pricingVisibility": "MinimumAdvertisedPriceHandlingEnum : [NONE,PRE_CHECKOUT,DURING_CHECKOUT]",
+                                "originallySoldForRetailPriceOn": "SoldOnEnum : [ON_EBAY,OFF_EBAY,ON_AND_OFF_EBAY]",
+                                "originalRetailPrice": {
+                                    "value": "string",
+                                    "currency": "string"
+                                },
+                                "price": {
+                                    "value": "string",
+                                    "currency": "string"
+                                }
+                            },
+                            "quantityLimitPerBuyer": "integer",
+                            "tax": {
+                                "applyTax": "boolean",
+                                "thirdPartyTaxCategory": "string",
+                                "vatPercentage": "number"
+                            },
+                            "storeCategoryNames": [
+                                "string"
+                            ],
+                            "sku": "string",
+                            "marketplaceId": "MarketplaceEnum",
+                            "format": "FormatTypeEnum : [FIXED_PRICE]"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_offer",
+                                "url": "sell/inventory/v1/offer",
+                                "name": "createOffer",
+                                "description": "This call creates an offer for a specific product on a specific eBay marketplace",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "offerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_offers",
+                                        "extract": "offers[0].offerId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_offer",
+                                "url": "sell/inventory/v1/offer/:_offerId",
+                                "name": "updateOffer",
+                                "description": "This call updates an existing published or unpublished offer.",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "offerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_offers",
+                                        "extract": "offers[0].offerId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_offer",
+                                "url": [
+                                    "/sell/inventory/v1/offer/:_offerId",
+                                    "/sell/inventory/v1/offer"
+                                ],
+                                "description": "This call Creates or updates an existing published or unpublished offer.",
+                                "name": "createOrUpdateOffer",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "offerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_offers",
+                                        "extract": "offers[0].offerId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_offer",
+                                "url": "sell/inventory/v1/offer/:_offerId",
+                                "name": "deleteOffer",
+                                "description": "This call deletes a specific published or unpublished offer.",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "offerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_offers",
+                                        "extract": "offers[0].offerId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "publish_offer",
+                                "url": "sell/inventory/v1/offer/:_offerId/publish/",
+                                "name": "publishOffer",
+                                "description": "This call is used to convert an unpublished offer into a published offer, or live eBay listing.",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "offerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_offers",
+                                        "extract": "offers[0].offerId"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "publish_offerbyinventory",
+                                "url": "sell/inventory/v1/offer/publish_by_inventory_item_group/",
+                                "name": "publishOfferByInventoryItemGroup",
+                                "description": "This call is used to convert all unpublished offers associated with an inventory item group into a published offer.",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Language": "en-US"
+                                },
+                                "sampleData": {
+                                    "inventoryItemGroupKey": "string",
+                                    "marketplaceId": "MarketplaceEnum : [EBAY_US,EBAY_MOTORS,EBAY_CA...]"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillmentapi_shippingfulfillment",
+                        "name": "Fulfillment API : order: shipping_fulfillment",
+                        "sampleData": {
+                            "lineItems": [
+                                {
+                                    "lineItemId": "string",
+                                    "quantity": "integer"
+                                }
+                            ],
+                            "shippedDate": "string",
+                            "shippingCarrierCode": "string",
+                            "trackingNumber": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_shipping_fulfillment",
+                                "url": "sell/fulfillment/v1/order/:_orderId/shipping_fulfillment",
+                                "name": "createShippingFulfillment",
+                                "description": "Define a package and its shipping information for an order.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "placeholder": "Unique identifier of the order",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,932 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "linkheader",
+            "linkHeaderRelation": "next"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "account",
+                        "name": "Account",
+                        "endpoints": [
+                            {
+                                "id": "get_accounts",
+                                "url": "/v3/accounts",
+                                "name": "Get accounts for a user",
+                                "resourcePath": "accounts"
+                            },
+                            {
+                                "id": "get_account_id",
+                                "url": "/v3/accounts/:_id",
+                                "name": "Get details for Account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "The unique ID of the account to retrieve.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_summary",
+                                "url": "/v3/accounts/:_id/summary",
+                                "name": "Get summary for Account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Th  e unique ID of the account to retrieve.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_instruments",
+                                "url": "/v3/accounts/:_id/instruments",
+                                "name": "Get All Instrument Details for Account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "The unique ID of the account to retrieve.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_changes",
+                                "url": "/v3/accounts/:_id/changes",
+                                "name": "Get All changes for Account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "The unique ID of the account to retrieve.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "sinceTransactionID",
+                                        "name": "TransactionID",
+                                        "description": "ID of the Transaction to get Account changes since.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "instrument",
+                        "name": "Instrument",
+                        "endpoints": [
+                            {
+                                "id": "get_instrument_candles",
+                                "url": "/v3/instruments/:_id/candles",
+                                "name": "Fetch candlestick data for instrument",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Instrument ID",
+                                        "description": "The unique ID of the account to retrieve.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "price",
+                                        "name": "Price",
+                                        "description": "The Price component(s) to get candlestick data for. Can contain any combination of the characters “M” (midpoint candles) “B” (bid candles) and “A” (ask candles). [default=M]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "granularity",
+                                        "name": "granularity",
+                                        "description": "The granularity of the candlesticks to fetch [default=S5]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "The number of candlesticks to return in the reponse. Count should not be specified if both the start and end parameters are provided, as the time range combined with the graularity will determine the number of candlesticks to return. [default=500, maximum=5000]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "from",
+                                        "description": "The start of the time range to fetch candlesticks for.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "to",
+                                        "description": "The end of the time range to fetch candlesticks for. ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "smooth",
+                                        "name": "smooth",
+                                        "description": "A flag that controls whether the candlestick is “smoothed” or not. A smoothed candlestick uses the previous candle’s close price as its open price, while an unsmoothed candlestick uses the first price from its time range as its open price. [default=False]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includeFirst",
+                                        "name": "includeFirst",
+                                        "description": "A flag that controls whether the candlestick that is covered by the from time should be included in the results. This flag enables clients to use the timestamp of the last completed candlestick received to poll for future candlesticks but avoid receiving the previous candlestick repeatedly. [default=True]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "dailyAlignment",
+                                        "name": "dailyAlignment",
+                                        "description": "The hour of the day (in the specified timezone) to use for granularities that have daily alignments. [default=17, minimum=0, maximum=23]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "alignmentTimezone",
+                                        "name": "alignmentTimezone",
+                                        "description": "The timezone to use for the dailyAlignment parameter. Candlesticks with daily alignment will be aligned to the dailyAlignment hour within the alignmentTimezone. Note that the returned times will still be represented in UTC. [default=America/New_York]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "weeklyAlignment",
+                                        "name": "weeklyAlignment",
+                                        "description": "The day of the week used for granularities that have weekly alignment. [default=Friday]",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_orderBook",
+                                "url": "/v3/instruments/:_id/orderBook",
+                                "name": "Fetch an order book for an instrument",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Instrument ID",
+                                        "description": "The unique ID of the account to retrieve.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "time",
+                                        "name": "time",
+                                        "description": "The time of the snapshot to fetch. If not specified, then the most recent snapshot is fetched.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_positionBook",
+                                "url": "/v3/instruments/:_id/positionBook",
+                                "name": "Fetch an position book for an instrument",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Instrument ID",
+                                        "description": "The unique ID of the account to retrieve.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "time",
+                                        "name": "time",
+                                        "description": "The time of the snapshot to fetch. If not specified, then the most recent snapshot is fetched.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "order",
+                        "name": "Order",
+                        "endpoints": [
+                            {
+                                "id": "get_order",
+                                "url": "/v3/accounts/:_accid/orders",
+                                "name": "Get a list of Orders in an Account",
+                                "pathParameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ids",
+                                        "name": "ids",
+                                        "description": "List of Order IDs to retrieve",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "state",
+                                        "description": "The state to filter the requested Orders by [default=PENDING]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "instrument",
+                                        "name": "instrument",
+                                        "description": "The instrument to filter the requested orders by.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "The maximum number of Orders to return [default=50, maximum=500]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "beforeID",
+                                        "name": "beforeID",
+                                        "description": "The maximum Order ID to return. If not provided the most recent Orders in the Account are returned",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_pendingorders",
+                                "url": "/v3/accounts/:_id/pendingOrders",
+                                "name": "Get all Pending Orders",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_order_id",
+                                "url": "/v3/accounts/:_id/orders/:_orderid",
+                                "name": "Get all Pending Orders",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "orderid",
+                                        "name": "Order ID",
+                                        "description": "The Order Specifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "trade",
+                        "name": "Trade",
+                        "endpoints": [
+                            {
+                                "id": "get_trades",
+                                "url": "/v3/accounts/:_accid/trades",
+                                "name": "Get a list of Trades for an Account",
+                                "pathParameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ids",
+                                        "name": "ids",
+                                        "description": "List of Order IDs to retrieve",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "state",
+                                        "description": "The state to filter the requested Orders by [default=PENDING]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "instrument",
+                                        "name": "instrument",
+                                        "description": "The instrument to filter the requested orders by",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "The maximum number of Orders to return [default=50, maximum=500]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "beforeID",
+                                        "name": "beforeID",
+                                        "description": "The maximum Order ID to return. If not provided the most recent Orders in the Account are returned",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_openTrades",
+                                "url": "/v3/accounts/:_id/openTrades",
+                                "name": "Get a list of open Trades for an Account",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_trade_id",
+                                "url": "/v3/accounts/:_id/trades/:_tradeid",
+                                "name": "Get the details of a specific Trade in an Account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tradeid",
+                                        "name": "Trade ID",
+                                        "description": "Specifier for the Trade",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "name": "Position",
+                        "endpoints": [
+                            {
+                                "id": "get_positions",
+                                "url": "/v3/accounts/:_id/positions",
+                                "name": "List all Position details for Account",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_openPositions",
+                                "url": "/v3/accounts/:_id/positions/:_instrument",
+                                "name": "Get the details of a single instrument's Position in an Account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "instrument",
+                                        "name": "Instrument Name",
+                                        "description": "Name of the Instrument",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pricing",
+                        "name": "Pricing",
+                        "endpoints": [
+                            {
+                                "id": "get_pricing",
+                                "url": "/v3/accounts/:_id/pricing",
+                                "name": "Get pricing information for a specified list of instruments for an Account",
+                                "resourcePath": "prices",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "instruments",
+                                        "name": "instruments",
+                                        "description": "List of Instruments to get pricing for. ",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "since",
+                                        "name": "since",
+                                        "description": "Date/Time filter to apply to the response. Only prices and home conversions (if requested) with a time later than this filter (i.e. the price has changed after the since time) will be provided, and are filtered independently.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includeUnitsAvailable",
+                                        "name": "includeUnitsAvailable",
+                                        "description": "Flag that enables the inclusion of the unitsAvailable field in the returned Price objects. [default=True]Deprecated: Will be removed in a future API update.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includeHomeConversions",
+                                        "name": "includeHomeConversions",
+                                        "description": "Flag that enables the inclusion of the homeConversions field in the returned response. An entry will be returned for each currency in the set of all base and quote currencies present in the requested instruments list. [default=False]",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transaction",
+                        "name": "Transaction",
+                        "endpoints": [
+                            {
+                                "id": "get_transactions",
+                                "url": "/v3/accounts/:_id/transactions",
+                                "name": "Get a list of Transactions",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "from",
+                                        "description": "The starting time (inclusive) of the time range for the Transactions being queried. [default=Account Creation Time]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "to",
+                                        "description": "The ending time (inclusive) of the time range for the Transactions being queried. [default=Request Time]",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "A filter for restricting the types of Transactions to retreive.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_Transaction_id",
+                                "url": "/v3/accounts/:_id/transactions/:_transactionid",
+                                "name": "Get the details of a single Account Transaction",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "transactionid",
+                                        "name": "Transaction Id",
+                                        "description": "A Transaction ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_idrange",
+                                "url": "/v3/accounts/:_id/transactions/idrange",
+                                "name": "Get a range of Transactions for an Account based on Transaction IDs",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "from",
+                                        "description": "The starting time (inclusive) of the time range for the Transactions being queried. [default=Account Creation Time]",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "to",
+                                        "description": "The ending time (inclusive) of the time range for the Transactions being queried. [default=Request Time]",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "A filter for restricting the types of Transactions to retreive.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sinceid",
+                                "url": "/v3/accounts/:_id/transactions/sinceid",
+                                "name": "Get a range of Transactions for an Account starting at a provided on Transaction ID",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "description": "Account Identifier",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "The ID of the last Transacion fetched. This query will return all Transactions newer than the TransactionID.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "account",
+                        "name": "Account",
+                        "sampleData": {
+                            "type": "CLIENT_CONFIGURE",
+                            "alias": "My New Account",
+                            "id": "33",
+                            "userID": 8803482,
+                            "accountID": "101-001-8803482-001",
+                            "batchID": "33",
+                            "requestID": "60466295771445436",
+                            "time": "1531386433.281261531"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_configuration",
+                                "url": "/v3/accounts/:_accid/configuration",
+                                "name": "Set the client-configurable portions of an Account",
+                                "method": "PATCH",
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "order",
+                        "name": "Order",
+                        "sampleData": {
+                            "order": {
+                                "price": "1.5000",
+                                "stopLossOnFill": {
+                                    "timeInForce": "GTC",
+                                    "price": "1.7000"
+                                },
+                                "takeProfitOnFill": {
+                                    "price": "1.14530"
+                                },
+                                "timeInForce": "GTC",
+                                "instrument": "USD_CAD",
+                                "units": "-1000",
+                                "type": "LIMIT",
+                                "tradeID": "6368",
+                                "positionFill": "DEFAULT"
+                            },
+                            "clientExtensions": {
+                                "comment": "New comment for my limit order",
+                                "id": "123",
+                                "tag": "123"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_order",
+                                "url": "/v3/accounts/:_accid/orders",
+                                "name": "Create an Order for an Account",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_order",
+                                        "extract": "orders[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_order",
+                                "url": "/v3/accounts/:_accid/orders/:_id",
+                                "name": "Replace an Order in an Account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_order",
+                                        "extract": "orders[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_order_cancel",
+                                "url": "/v3/accounts/:_accid/orders/:_id/cancel",
+                                "name": "Cancel a Pending Order in an Account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_order",
+                                        "extract": "orders[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_order_clientExtensions",
+                                "url": "/v3/accounts/:_accid/orders/:_id/clientExtensions",
+                                "name": "Update the Client Extensions for an Order in an Account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_order",
+                                        "extract": "orders[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "trade",
+                        "name": "Trade",
+                        "sampleData": {
+                            "clientExtensions": {
+                                "comment": "This is a USD/CAD trade",
+                                "tag": "trade tag",
+                                "id": "my_usd_cad_trade"
+                            },
+                            "units": "10",
+                            "takeProfit": {
+                                "timeInForce": "GTC",
+                                "price": "0.5"
+                            },
+                            "stopLoss": {
+                                "timeInForce": "GTC",
+                                "price": "2.5"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_order",
+                                "url": "/v3/accounts/:_accid/trades/:_id/close",
+                                "name": "Close a specific open Trade in an Account",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_trades",
+                                        "extract": "trades[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_trades_clientExtensions",
+                                "url": "/v3/accounts/:_accid/trades/:_id/clientExtensions",
+                                "name": "Update the Client Extensions for an Trade in an Account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_trades",
+                                        "extract": "trades[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_trades_orders",
+                                "url": "/v3/accounts/:_accid/trades/:_id/orders",
+                                "name": "Create,replace and cancel a Trade's nip in an Account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_trades",
+                                        "extract": "trades[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "position",
+                        "name": "Position",
+                        "sampleData": {
+                            "longUnits": "99"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_position",
+                                "url": "/v3/accounts/:_accid/positions/:_instrument/close",
+                                "name": "Close the open Position for a  instrument in an Account",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "accid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

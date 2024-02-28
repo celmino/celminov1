@@ -1,0 +1,2146 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "nextpageurl",
+            "nextPagePath": "[@odata.nextLink]"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "notebooks",
+                        "name": "Notebooks",
+                        "endpoints": [
+                            {
+                                "id": "list_usernotebooks",
+                                "url": "/users/:_userId/onenote/notebooks",
+                                "name": "List user's notebooks",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of notebook objects for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_notebooks",
+                                "url": "/me/onenote/notebooks",
+                                "name": "List notebooks",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of notebook objects for signed-in user.",
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_usernotebook",
+                                "url": "/users/:_userId/onenote/notebooks/:_notebookId",
+                                "name": "Get user's notebook",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieve the properties and relationships of a notebook object for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a Notebook"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_notebook",
+                                "url": "/me/onenote/notebooks/:_notebookId",
+                                "name": "Get notebook",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieve the properties and relationships of a notebook object for signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a Notebook"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_usernotebooksections",
+                                "url": "/users/:_userId/onenote/notebooks/:_notebookId/sections",
+                                "name": "List user's notebook sections",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of section objects from the specified notebook for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a Notebook"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_notebooksections",
+                                "url": "/me/onenote/notebooks/:_notebookId/sections",
+                                "name": "List notebook sections",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of section objects from the specified notebook for signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a Notebook"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_usernotebooksectiongroups",
+                                "url": "/users/:_userId/onenote/notebooks/:_notebookId/sectionGroups",
+                                "name": "List user's notebook section groups",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of section groups from the specified notebook for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a Notebook"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_notebooksectiongroups",
+                                "url": "/me/onenote/notebooks/:_notebookId/sectionGroups",
+                                "name": "List notebook section groups",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of section groups from the specified notebook for signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a Notebook"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_userrecentnotebooks",
+                                "url": "/users/:_userId/onenote/notebooks/getrecentnotebooks(includePersonalNotebooks=:_includePersonalNotebooksvalue)",
+                                "name": "Get user's recent notebooks",
+                                "resourcePath": "value",
+                                "description": "Get a list of recentNotebook instances that have been accessed by another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includePersonalNotebooksvalue",
+                                        "name": "Include Personal Notebooks Value",
+                                        "required": true,
+                                        "description": "Include notebooks owned by the user. Set to true to include notebooks owned by the user; otherwise, set to false. If you don't include the includePersonalNotebooks parameter, your request will return a 400 error response.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_recentnotebooks",
+                                "url": "/me/onenote/notebooks/getrecentnotebooks(includePersonalNotebooks=:_includePersonalNotebooksvalue)",
+                                "name": "Get recent notebooks",
+                                "resourcePath": "value",
+                                "description": "Get a list of recentNotebook instances that have been accessed by the signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "includePersonalNotebooksvalue",
+                                        "name": "Include Personal Notebooks Value",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sections",
+                        "name": "Sections",
+                        "endpoints": [
+                            {
+                                "id": "list_usersections",
+                                "url": "/users/:_userId/onenote/sections",
+                                "name": "List user's sections",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of section objects for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_sections",
+                                "url": "/me/onenote/sections",
+                                "name": "List sections",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of section objects for signed-in user.",
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_usersection",
+                                "url": "/users/:_userId/onenote/sections/:_sectionId",
+                                "name": "Get user's section",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieve the properties and relationships of a section object for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sectionId",
+                                        "name": "Section Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a Section"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_section",
+                                "url": "/me/onenote/sections/:_sectionId",
+                                "name": "Get section",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieve the properties and relationships of a section object for signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "sectionId",
+                                        "name": "Section Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a section"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_usersectionpages",
+                                "url": "/users/:_userId/onenote/sections/:_sectionId/pages",
+                                "name": "List user's section pages",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of page objects from the specified section for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sectionId",
+                                        "name": "Section Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a section"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_sectionpages",
+                                "url": "/me/onenote/sections/:_sectionId/pages",
+                                "name": "List section pages",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of page objects from the specified section for signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "sectionId",
+                                        "name": "Section Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a section"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sectiongroups",
+                        "name": "Section groups",
+                        "endpoints": [
+                            {
+                                "id": "list_usersectiongroups",
+                                "url": "/users/:_userId/onenote/sectionGroups",
+                                "name": "List user's section groups",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of sectionGroup objects for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_sectiongroups",
+                                "url": "/me/onenote/sectionGroups",
+                                "name": "List section groups",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of sectionGroup objects for signed-in user.",
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_usersectiongroup",
+                                "url": "/users/:_userId/onenote/sectionGroups/:_sectionGroupId",
+                                "name": "Get user's section group",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieve the properties and relationships of a sectionGroup object for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sectionGroupId",
+                                        "name": "Section Group Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a section group."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sectiongroup",
+                                "url": "/me/onenote/sectionGroups/:_sectionGroupId",
+                                "name": "Get section group",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieve the properties and relationships of a sectionGroup object for signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "sectionGroupId",
+                                        "name": "Section Group Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a section group."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_usersectiongroupsections",
+                                "url": "/users/:_userId/onenote/sectionGroups/:_sectionGroupId/sections",
+                                "name": "List user's sections from specific section group",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of section objects from the specified section group for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sectionGroupId",
+                                        "name": "Section Group Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a section group"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_sectiongroupsections",
+                                "url": "/me/onenote/sectionGroups/:_sectionGroupId/sections",
+                                "name": "List sections from specific section group",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of section objects from the specified section group for signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "sectionGroupId",
+                                        "name": "Section Group Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a section group"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pages",
+                        "name": "Pages",
+                        "endpoints": [
+                            {
+                                "id": "list_userpages",
+                                "url": "/users/:_userId/onenote/pages",
+                                "name": "List user's pages",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of page objects for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_pages",
+                                "url": "/me/onenote/pages",
+                                "name": "List pages",
+                                "resourcePath": "value",
+                                "description": "Retrieve a list of page objects for signed-in user.",
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_userpage",
+                                "url": "/users/:_userId/onenote/pages/:_pageId",
+                                "name": "Get user's page",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieve the properties and relationships of a page object for another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "pageId",
+                                        "name": "Page Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a page"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_page",
+                                "url": "/me/onenote/pages/:_pageId",
+                                "name": "Get page",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieve the properties and relationships of a page object for signed-in user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "pageId",
+                                        "name": "Page Id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Id of a page"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "notes",
+                        "name": "Notes",
+                        "sampleData": {
+                            "content": "stream",
+                            "contentUrl": "string",
+                            "createdByAppId": "string",
+                            "createdDateTime": "String (timestamp)",
+                            "id": "string (identifier)",
+                            "lastModifiedDateTime": "String (timestamp)",
+                            "level": 1024,
+                            "links": {
+                                "@odata.type": "microsoft.graph.pageLinks"
+                            },
+                            "order": 1024,
+                            "self": "string",
+                            "title": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_page",
+                                "url": "/me/onenote/pages",
+                                "name": "Create page",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "text/html"
+                                },
+                                "description": "Create a new OneNote page in the default section of the default notebook for signed-in user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_userpage",
+                                "url": "/users/:_userId/onenote/pages",
+                                "name": "Create user's page",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "text/html"
+                                },
+                                "description": "Create a new OneNote page in the default section of the default notebook for another user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notebooks",
+                        "name": "Notebooks",
+                        "sampleData": {
+                            "createdBy": {
+                                "@odata.type": "microsoft.graph.identitySet"
+                            },
+                            "createdDateTime": "String (timestamp)",
+                            "id": "string (identifier)",
+                            "isDefault": true,
+                            "isShared": true,
+                            "lastModifiedBy": {
+                                "@odata.type": "microsoft.graph.identitySet"
+                            },
+                            "lastModifiedDateTime": "String (timestamp)",
+                            "links": {
+                                "@odata.type": "microsoft.graph.notebookLinks"
+                            },
+                            "displayName": "string",
+                            "sectionGroupsUrl": "string",
+                            "sectionsUrl": "string",
+                            "self": "string",
+                            "userRole": "String"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_usernotebook",
+                                "url": "/users/:_userId/onenote/notebooks",
+                                "name": "Create user's notebook",
+                                "method": "POST",
+                                "description": "Create a new OneNote notebook for another user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usernotebooks",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_notebook",
+                                "url": "/me/onenote/notebooks",
+                                "name": "Create notebook",
+                                "method": "POST",
+                                "description": "Create a new OneNote notebook for signed-in user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_notebooks",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sections",
+                        "name": "Sections",
+                        "sampleData": {
+                            "createdBy": {
+                                "@odata.type": "microsoft.graph.identitySet"
+                            },
+                            "createdDateTime": "String (timestamp)",
+                            "id": "string (identifier)",
+                            "isDefault": true,
+                            "lastModifiedBy": {
+                                "@odata.type": "microsoft.graph.identitySet"
+                            },
+                            "lastModifiedDateTime": "String (timestamp)",
+                            "links": {
+                                "@odata.type": "microsoft.graph.sectionLinks"
+                            },
+                            "displayName": "string",
+                            "pagesUrl": "string",
+                            "self": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_usersection",
+                                "url": "/users/:_userId/onenote/notebooks/:_notebookId/sections",
+                                "name": "Create user's section in specific notebook",
+                                "method": "POST",
+                                "description": "Create a new section in the specified notebook for another user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "in": "path",
+                                        "description": "Id of a Notebook",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usernotebooksections",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_sections",
+                                "url": "/me/onenote/notebooks/:_notebookId/sections",
+                                "name": "Create section in specific notebook",
+                                "method": "POST",
+                                "description": "Create a new section in the specified notebook for signed-in user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "in": "path",
+                                        "description": "Id of a Notebook",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_notebooksections",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sectiongroups",
+                        "name": "Section groups",
+                        "sampleData": {
+                            "createdBy": {
+                                "@odata.type": "microsoft.graph.identitySet"
+                            },
+                            "createdDateTime": "String (timestamp)",
+                            "id": "string (identifier)",
+                            "lastModifiedBy": {
+                                "@odata.type": "microsoft.graph.identitySet"
+                            },
+                            "lastModifiedDateTime": "String (timestamp)",
+                            "displayName": "string",
+                            "sectionGroupsUrl": "string",
+                            "sectionsUrl": "string",
+                            "self": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_usersections_specificsectiongroup",
+                                "url": "/users/:_userId/onenote/sectionGroups/:_sectionGroupId/sections",
+                                "name": "Create user's section in specific section group",
+                                "method": "POST",
+                                "description": "Create a new section in the specified section group for another user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "sectionGroupId",
+                                        "name": "Section Group Id",
+                                        "in": "path",
+                                        "description": "Id of a section group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usersectiongroupsections",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_sections_specificsectiongroup",
+                                "url": "/me/onenote/sectionGroups/:_sectionGroupId/sections",
+                                "name": "Create section in specific section group",
+                                "method": "POST",
+                                "description": "Create a new section in the specified section group for signed-in user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sectionGroupId",
+                                        "name": "Section Group Id",
+                                        "in": "path",
+                                        "description": "Id of a section group",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_sectiongroupsections",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_usersectiongroups_specificnotebooks",
+                                "url": "/users/:_userId/onenote/notebooks/:_notebookId/sectionGroups",
+                                "name": "Create user's section group in the specific notebook",
+                                "method": "POST",
+                                "description": "Create a new section group in the specified notebook for another user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "in": "path",
+                                        "description": "Id of a Notebook",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usernotebooksectiongroups",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_sectiongroups_specificnotebooks",
+                                "url": "/me/onenote/notebooks/:_notebookId/sectionGroups",
+                                "name": "Create section group in the specific notebook",
+                                "method": "POST",
+                                "description": "Create a new section group in the specified notebook for signed-in user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "notebookId",
+                                        "name": "Notebook Id",
+                                        "in": "path",
+                                        "description": "Id of a Notebook",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_notebooksectiongroups",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pages",
+                        "name": "Pages",
+                        "sampleData": {
+                            "content": "stream",
+                            "contentUrl": "string",
+                            "createdByAppId": "string",
+                            "createdDateTime": "String (timestamp)",
+                            "id": "string (identifier)",
+                            "lastModifiedDateTime": "String (timestamp)",
+                            "level": 1024,
+                            "links": {
+                                "@odata.type": "microsoft.graph.pageLinks"
+                            },
+                            "order": 1024,
+                            "self": "string",
+                            "title": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_userpage_specificsection",
+                                "url": "/users/:_userId/onenote/sections/:_sectionId/pages",
+                                "name": "Create user's page in the specific section",
+                                "method": "POST",
+                                "description": "Create a new page in the specified section for another user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "sectionId",
+                                        "name": "Section Id",
+                                        "in": "path",
+                                        "description": "Id of a section",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usersectionpages",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_page_specificsection",
+                                "url": "/me/onenote/sections/:_sectionId/pages",
+                                "name": "Create page in the specific section",
+                                "method": "POST",
+                                "description": "Create a new page in the specified section for signed-in user.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sectionId",
+                                        "name": "Section Id",
+                                        "in": "path",
+                                        "description": "Id of a section",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_sectionpages",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_userpage",
+                                "url": "/users/:_userId/onenote/pages/:_pageId/content",
+                                "name": "Update user's page",
+                                "method": "PATCH",
+                                "description": "Update the content of a OneNote page for another user.",
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id"
+                                    },
+                                    {
+                                        "id": "pageId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_page",
+                                "url": "/me/onenote/pages/:_pageId/content",
+                                "name": "Update page",
+                                "method": "PATCH",
+                                "description": "Update the content of a OneNote page for signed-in user.",
+                                "parameters": [
+                                    {
+                                        "id": "pageId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_userpage",
+                                "url": "/users/:_userId/onenote/pages/:_pageId",
+                                "name": "Delete user's page",
+                                "method": "DELETE",
+                                "description": "Delete a OneNote page for another user.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id"
+                                    },
+                                    {
+                                        "id": "pageId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_page",
+                                "url": "/me/onenote/pages/:_pageId",
+                                "name": "Delete page",
+                                "method": "DELETE",
+                                "description": "Delete a OneNote page for signed-in user.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "pageId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

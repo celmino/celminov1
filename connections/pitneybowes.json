@@ -1,0 +1,639 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "carrierrules",
+                        "name": "Carrier Rules",
+                        "endpoints": [
+                            {
+                                "id": "carrier_rules",
+                                "url": "/shippingservices/v1/information/rules/rating-services",
+                                "name": "Get Carrier Rules",
+                                "description": "This operation retrieves the rules governing the carrier’s services, including the available parcel types and the limits on weights and dimensions.",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "carrier",
+                                        "name": "Carrier",
+                                        "fieldType": "input",
+                                        "description": "The carrier name. Currently this must be set to: USPS",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "originCountryCode",
+                                        "name": "Origin Country Code",
+                                        "fieldType": "input",
+                                        "description": "The two-character ISO country code for the country where the shipment originates.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "destinationCountryCode",
+                                        "name": "Destination Country Code",
+                                        "fieldType": "input",
+                                        "description": "The two-character ISO country code for the country of the shipment’s destination address.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "rateTypeId",
+                                        "name": "Rate Type Id",
+                                        "fieldType": "input",
+                                        "description": "The type of rate requested, such as COMMERCIAL_BASE."
+                                    },
+                                    {
+                                        "id": "futureShipmentDate",
+                                        "name": "Future Shipment Date",
+                                        "fieldType": "input",
+                                        "description": "This is required if the shipment is a future day shipment."
+                                    },
+                                    {
+                                        "id": "returnShipment",
+                                        "name": "Return Shipment",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "If true, provides only services applicable for return shipment."
+                                    },
+                                    {
+                                        "id": "compactResponse",
+                                        "name": "Compact Response",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "If true, returns only summary, without special service details."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "endpoints": [
+                            {
+                                "id": "reprint_ashipment",
+                                "url": "/shippingservices/v1/shipments/:_id",
+                                "name": "Reprint a Shipment",
+                                "description": "This operation reprints a shipment label for which the initial Create Shipment request was successful but for which the label image or URL was lost. To use this API call, you must have the shipmentId from the response to the original request.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "fieldType": "input",
+                                        "description": " The shipment ID that was issued when shipment label was generated.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "manifests",
+                        "name": "Manifests",
+                        "endpoints": [
+                            {
+                                "id": "reprint_amanifest",
+                                "url": "/shippingservices/v1/manifests/:_id",
+                                "name": "Reprint a Manifest",
+                                "description": "This operation reprints a manifest for which the initial Create Manifest request was successful but the response object did not save properly.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Manifests ID",
+                                        "fieldType": "input",
+                                        "description": "The unique ID of the manifest that was assigned when it was created.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tracking",
+                        "name": "Tracking",
+                        "endpoints": [
+                            {
+                                "id": "tracking_information",
+                                "url": "/shippingservices/v1/tracking/:_number",
+                                "name": "Get Package Status",
+                                "description": "Shipment labels that are printed using the PB Shipping APIs are automatically tracked. This operation retrieves package status for a label.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "number",
+                                        "name": "Tracking Number",
+                                        "fieldType": "input",
+                                        "description": "The tracking number for the shipment.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "packageIdentifierType",
+                                        "name": "Package Identifier Type",
+                                        "fieldType": "input",
+                                        "description": "Type of package identifier.Valid Value(s): TrackingNumber",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "carrier",
+                                        "name": "Carrier",
+                                        "fieldType": "input",
+                                        "description": "The carrier name. Currently this must be set to: USPS",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactionreports",
+                        "name": "Transaction Reports",
+                        "endpoints": [
+                            {
+                                "id": "transaction_reports",
+                                "url": "/shippingservices/v4/ledger/developers/:_developerId/transactions/reports",
+                                "name": "List Transaction Reports",
+                                "description": "This operation retrieves all transactions for a specified period of time.",
+                                "resourcePath": "content",
+                                "pathParameters": [
+                                    {
+                                        "id": "developerId",
+                                        "name": "Developer ID",
+                                        "fieldType": "input",
+                                        "description": "Your Pitney Bowes developer ID.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fromDate",
+                                        "name": "From Date",
+                                        "fieldType": "input",
+                                        "description": "The beginning of the date range for transactions.For example:fromDate=2016-10-05T00:00:00Z"
+                                    },
+                                    {
+                                        "id": "toDate",
+                                        "name": "To Date",
+                                        "fieldType": "input",
+                                        "description": "The end of the date range for transactions.For example:toDate=2018-01-02T23:59:00Z"
+                                    },
+                                    {
+                                        "id": "transactionId",
+                                        "name": "Transaction ID",
+                                        "fieldType": "input",
+                                        "description": "The unique string that identifies all the transactions associated with a given shipment."
+                                    },
+                                    {
+                                        "id": "parcelTrackingNumber",
+                                        "name": "Parcel Tracking Number",
+                                        "fieldType": "input",
+                                        "description": "Parcel tracking number of the shipment."
+                                    },
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant Id",
+                                        "fieldType": "input",
+                                        "description": "The value of the postalReportingNumber element in the merchant object. This value is also the merchant’s Shipper ID."
+                                    },
+                                    {
+                                        "id": "transactionType",
+                                        "name": "Transaction Type",
+                                        "fieldType": "input",
+                                        "description": "Transaction Type."
+                                    },
+                                    {
+                                        "id": "printStatus",
+                                        "name": "printStatus",
+                                        "fieldType": "input",
+                                        "description": "The status of a USPS SBR (scan-based return) label."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Defines a property to sort on and the sort order."
+                                    },
+                                    {
+                                        "id": "size",
+                                        "name": "Size",
+                                        "fieldType": "input",
+                                        "description": "Page size of the result set for the specified query filters. Specifically, the number of transactions to return per page in the result set."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_archived_reports",
+                                "url": "/shippingservices/v4/ledger/developers/:_developerId/transactions/archived",
+                                "name": "Get Archived Reports",
+                                "resourcePath": "content",
+                                "pathParameters": [
+                                    {
+                                        "id": "developerId",
+                                        "name": "Developer ID",
+                                        "fieldType": "input",
+                                        "description": "Your Pitney Bowes developer ID.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fromDate",
+                                        "name": "From Date",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "The beginning of the date range for transactions.For example:fromDate=2016-10-05T00:00:00Z"
+                                    },
+                                    {
+                                        "id": "toDate",
+                                        "name": "To Date",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "The end of the date range for transactions.For example:toDate=2018-01-02T23:59:00Z"
+                                    },
+                                    {
+                                        "id": "transactionId",
+                                        "name": "Transaction ID",
+                                        "fieldType": "input",
+                                        "description": "The unique string that identifies all the transactions associated with a given shipment."
+                                    },
+                                    {
+                                        "id": "parcelTrackingNumber",
+                                        "name": "Parcel Tracking Number",
+                                        "fieldType": "input",
+                                        "description": "Parcel tracking number of the shipment."
+                                    },
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant Id",
+                                        "fieldType": "input",
+                                        "description": "The value of the postalReportingNumber element in the merchant object. This value is also the merchant’s Shipper ID."
+                                    },
+                                    {
+                                        "id": "transactionType",
+                                        "name": "Transaction Type",
+                                        "fieldType": "input",
+                                        "description": "Transaction Type."
+                                    },
+                                    {
+                                        "id": "shipDetails",
+                                        "name": "shipDetails",
+                                        "fieldType": "input",
+                                        "description": "If set to 1, the API returns the following fields for each transaction:'dimensionalWeightOz','valueOfGoods','specialServices','customMessage1'.If set to 0, the fields are not returned. "
+                                    },
+                                    {
+                                        "id": "size",
+                                        "name": "Size",
+                                        "fieldType": "input",
+                                        "description": "Page size of the result set for the specified query filters. Specifically, the number of transactions to return per page in the result set."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "countrieslist",
+                        "name": "Countries List",
+                        "endpoints": [
+                            {
+                                "id": "list_countries",
+                                "url": "/shippingservices/v1/countries",
+                                "name": "List Countries",
+                                "doesNotSupportPaging": true,
+                                "description": "This operation returns a list of supported destination countries to which the carrier offers international shipping services.",
+                                "queryParameters": [
+                                    {
+                                        "id": "carrier",
+                                        "name": "Carrier",
+                                        "fieldType": "input",
+                                        "description": "The carrier name. Currently this must be set to: USPS",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "originCountryCode",
+                                        "name": "Origin Country Code",
+                                        "fieldType": "input",
+                                        "description": "The two-character ISO country code of origin.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "merchants",
+                        "name": "Merchants",
+                        "endpoints": [
+                            {
+                                "id": "all_merchants",
+                                "url": "/shippingservices/v1/developers/:_id/merchants",
+                                "name": "Get All Merchants",
+                                "description": "This operation retrieves all the merchants registered under your Developer ID. This includes both merchants you have registered directly through your application and merchants who have registered under your Developer ID via a Pitney Bowes URL.",
+                                "resourcePath": "content",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Developer ID",
+                                        "fieldType": "input",
+                                        "description": "Your Pitney Bowes developer ID."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Defines a property to sort on and the sort order."
+                                    },
+                                    {
+                                        "id": "size",
+                                        "name": "Size",
+                                        "fieldType": "input",
+                                        "description": "Page size of the result set for the specified query filters. Specifically, the number of transactions to return per page in the result set."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "account_balances",
+                                "url": "/shippingservices/v1/developers/:_developerId/merchants/:_postalReportingNumber/account-balance",
+                                "name": "Get Account Balances",
+                                "description": "This operation retrieves the current balances for the PB Postage Account and, if present, the PB Line of Credit. The operation retrieves the balances at the time the API call was made and does not reflect transactions still in progress.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "developerId",
+                                        "name": "Developer ID",
+                                        "fieldType": "input",
+                                        "description": "Your Pitney Bowes developer ID."
+                                    },
+                                    {
+                                        "id": "postalReportingNumber",
+                                        "name": "Postal Reporting Number",
+                                        "fieldType": "input",
+                                        "description": "The unique ID used to identify the merchant."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "refill_settings",
+                                "url": "/shippingservices/v1/developers/:_developerId/merchants/:_postalReportingNumber/autorefillrule",
+                                "name": "Get Refill Settings",
+                                "description": "This operation retrieves the auto refill settings for a merchant’s PB Postage Account. If auto refill is enabled (which is the default), the postage account automatically replenishes by a pre-determined amount when the balance falls below the pre-determined refill threshold.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "developerId",
+                                        "name": "Developer ID",
+                                        "fieldType": "input",
+                                        "description": "Your Pitney Bowes developer ID."
+                                    },
+                                    {
+                                        "id": "postalReportingNumber",
+                                        "name": "Postal Reporting Number",
+                                        "fieldType": "input",
+                                        "description": "The unique ID used to identify the merchant."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "carrier_license_aggrement",
+                        "name": "Carrier License Aggrement",
+                        "endpoints": [
+                            {
+                                "id": "get_carrierlicense_aggrement",
+                                "name": "Get Carrier License Aggrement",
+                                "description": "This operation retrieves a carrier’s license agreement.",
+                                "url": "/shippingservices/v1/carrier/license-agreements",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "carrier",
+                                        "name": "Carrier",
+                                        "fieldType": "select",
+                                        "description": "The carrier.",
+                                        "options": [
+                                            "UPS",
+                                            "FEDEX"
+                                        ],
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "originCountryCode",
+                                        "name": "Origin Country Code",
+                                        "description": "The two-character ISO country code for the origin country.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "rates",
+                        "name": "Rates",
+                        "sampleData": {
+                            "fromAddress": {
+                                "cityTown": "Cooperstown",
+                                "stateProvince": "NY",
+                                "postalCode": "13326",
+                                "countryCode": "US",
+                                "name": "James Brother",
+                                "company": "Mary Imogene Basset Hospital",
+                                "phone": "203-924-2428",
+                                "email": "james.b@email.com"
+                            },
+                            "toAddress": {
+                                "cityTown": "Cooperstown",
+                                "stateProvince": "NY",
+                                "postalCode": "13326",
+                                "countryCode": "US",
+                                "name": "James Brother",
+                                "company": "Mary Imogene Basset Hospital",
+                                "phone": "203-924-2428",
+                                "email": "james.b@email.com"
+                            },
+                            "parcel": {
+                                "weight": {
+                                    "weight": 1,
+                                    "unitOfMeasurement": "OZ"
+                                },
+                                "dimension": {
+                                    "length": 5,
+                                    "width": 0.25,
+                                    "height": 4,
+                                    "unitOfMeasurement": "IN",
+                                    "irregularParcelGirth": 1
+                                }
+                            },
+                            "rates": [
+                                {
+                                    "carrier": "USPS",
+                                    "parcelType": "PKG",
+                                    "inductionPostalCode": "06484"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "rate_apackage",
+                                "url": "/shippingservices/v1/rates",
+                                "name": "Rate a Parcel",
+                                "method": "POST",
+                                "description": "This operation rates a package for one or more services before a shipment label is purchased and printed."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "merchants",
+                        "name": "Merchants",
+                        "operations": [
+                            {
+                                "id": "update_auto_refill_settings",
+                                "url": "shippingservices/v1/developers/:_developerId/merchants/:_postalReportingNumber/autorefillrule",
+                                "name": "Update Auto Refill Settings",
+                                "method": "POST",
+                                "sampleData": {
+                                    "merchantId": "87127911",
+                                    "threshold": 200,
+                                    "addAmount": 500,
+                                    "enabled": true
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "developerId",
+                                        "name": "developerId",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "postalReportingNumber",
+                                        "name": "postalReportingNumber",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "merchantId",
+                                    "threshold",
+                                    "addAmount"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "addresses",
+                        "name": "Addresses",
+                        "operations": [
+                            {
+                                "id": "validate_an_address",
+                                "url": "shippingservices/v1/addresses/verify",
+                                "name": "Validate an Address",
+                                "method": "POST",
+                                "sampleData": {
+                                    "addressLines": [
+                                        "27 Waterview Drive"
+                                    ],
+                                    "cityTown": "Shelton",
+                                    "stateProvince": "CT",
+                                    "postalCode": "0000",
+                                    "countryCode": "US",
+                                    "company": "Pitney Bowes Inc.",
+                                    "name": "John Smith",
+                                    "phone": "203-000-0000",
+                                    "email": "john@example.com"
+                                },
+                                "headers": {
+                                    "Accept-Language": "en-US"
+                                },
+                                "requiredMappings": [
+                                    "addressLines",
+                                    "cityTown",
+                                    "stateProvince",
+                                    "postalCode",
+                                    "countryCode"
+                                ]
+                            },
+                            {
+                                "id": "suggest_addresses",
+                                "url": "shippingservices/v1/addresses/verify?returnSuggestions=:_returnSuggestions",
+                                "name": "Suggest Addresses",
+                                "method": "POST",
+                                "sampleData": {
+                                    "addressLines": [
+                                        "27 Waterview Drive"
+                                    ],
+                                    "cityTown": "Shelton",
+                                    "stateProvince": "CT",
+                                    "postalCode": "0000",
+                                    "countryCode": "US",
+                                    "company": "Pitney Bowes Inc.",
+                                    "name": "John Smith",
+                                    "phone": "203-000-0000",
+                                    "email": "john@example.com"
+                                },
+                                "headers": {
+                                    "Accept-Language": "en-US"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "returnSuggestions",
+                                        "name": "returnSuggestions",
+                                        "in": "path",
+                                        "description": "To return suggested addresses, set this to true.",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "addressLines",
+                                    "cityTown",
+                                    "stateProvince",
+                                    "postalCode",
+                                    "countryCode"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

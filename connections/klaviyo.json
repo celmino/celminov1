@@ -1,0 +1,1086 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "queryParameters": [
+            {
+                "id": "api_key",
+                "name": "API Key",
+                "description": "API Key",
+                "defaultValue": "{{connection.rest.encrypted.apiKey}}",
+                "readOnly": true,
+                "required": true
+            }
+        ],
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "metricapi",
+                        "name": "Metrics API",
+                        "endpoints": [
+                            {
+                                "id": "list_metrics",
+                                "url": "v1/metrics",
+                                "name": "Listing metrics",
+                                "resourcePath": "data",
+                                "description": "Returns a list of all the metrics in Klaviyo"
+                            },
+                            {
+                                "id": "list_completeevent",
+                                "url": "v1/metrics/timeline",
+                                "name": "Listing the complete event timeline",
+                                "resourcePath": "data",
+                                "description": "Returns a batched timeline of all events in your Klaviyo account.",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "since",
+                                        "name": "Since",
+                                        "description": "Either a Unix timestamp (UTC) to use as starting datetime, OR a UUID obtained from the next attribute of a prior API call. Defaults to current time."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "string, 'asc' or 'desc', defaults to 'desc'Sort order to apply to timeline."
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "description": "integer, Number of events to return in a batch. Default = 50, Max = 100"
+                                    }
+                                ],
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "pageArgument": "since",
+                                    "nextPagePath": "next"
+                                }
+                            },
+                            {
+                                "id": "list_eventtimeline",
+                                "url": "v1/metric/:_METRIC_ID/timeline",
+                                "name": "Listing the event timeline for a particular metric",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "description": "Returns a batched timeline for one specific type of metric.",
+                                "pathParameters": [
+                                    {
+                                        "id": "METRIC_ID",
+                                        "name": "Metric ID",
+                                        "description": "Get Metric ID from Listing metrics",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "since",
+                                        "name": "Since",
+                                        "description": "Either a Unix timestamp (UTC) to use as starting datetime, OR a UUID obtained from the next attribute of a prior API call. Defaults to current time."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "string, 'asc' or 'desc', defaults to 'desc'Sort order to apply to timeline."
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "description": "optional, integer, defaults to 100Number of events to return in a batch."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_exporting",
+                                "url": "v1/metric/:_METRIC_ID/export",
+                                "name": "Exporting metric data",
+                                "doesNotSupportPaging": true,
+                                "description": "Export event data from Klaviyo, optionally filtering and segmented on available event properties. ",
+                                "pathParameters": [
+                                    {
+                                        "id": "METRIC_ID",
+                                        "name": "Metric ID",
+                                        "description": "Get Metric ID from Listing metrics",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "start_date",
+                                        "name": "Start Date",
+                                        "description": "Beginning of timeframe to pull event data for. The default value is 1 month ago."
+                                    },
+                                    {
+                                        "id": "end_date",
+                                        "name": "End Date",
+                                        "description": "End of timeframe to pull event data for. The default is the current day"
+                                    },
+                                    {
+                                        "id": "unit",
+                                        "name": "Unit",
+                                        "description": "Granularity to bucket data points into - one of ‘day’, ‘week’, or ‘month’. Defaults to ‘day’."
+                                    },
+                                    {
+                                        "id": "measurement",
+                                        "name": "Measurement",
+                                        "description": "Type of metric to fetch - one of ‘unique’, ‘count’, ‘value’, or ‘sum’. Defaults to ‘count’. For 'sum' a property name to operate on must be supplied as a JSON-encoded list like '[\"sum\",\"ItemCount\"]'"
+                                    },
+                                    {
+                                        "id": "where",
+                                        "name": "Where",
+                                        "description": "JSON-encoded listConditions to use to filter the set of events. A max of 1 condition can be given. Where and by parameters cannot be specified at the same time."
+                                    },
+                                    {
+                                        "id": "by",
+                                        "name": "By",
+                                        "description": "The name of a property to segment the event data on. Where and by parameters cannot be specified at the same time."
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "description": "Maximum number of segments to return. The default value is 25."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "profieapi",
+                        "name": "Profiles API",
+                        "endpoints": [
+                            {
+                                "id": "get_person",
+                                "url": "v1/person/:_PERSON_ID",
+                                "name": "Retrieving a Person's Attributes",
+                                "doesNotSupportPaging": true,
+                                "description": "Retrieve all the data attributes for a person, based on the Klaviyo Person ID.",
+                                "pathParameters": [
+                                    {
+                                        "id": "PERSON_ID",
+                                        "name": "Person ID",
+                                        "description": "Unique identifier of Person Id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_persontimeline",
+                                "url": "v1/person/:_PERSON_ID/metrics/timeline",
+                                "name": "Listing a person's complete event timeline",
+                                "resourcePath": "data",
+                                "description": "Returns a batched timeline of all events for a person.",
+                                "pathParameters": [
+                                    {
+                                        "id": "PERSON_ID",
+                                        "name": "Person ID",
+                                        "description": "Unique, identifier of Person Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "since",
+                                        "name": "Since",
+                                        "description": "Either a Unix timestamp (UTC) to use as starting datetime, OR a UUID obtained from the next attribute of a prior API call. Defaults to current time."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "string, 'asc' or 'desc', defaults to 'desc'Sort order to apply to timeline."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_personeventtimeline",
+                                "url": "v1/person/:_PERSON_ID/metric/:_METRIC_ID/timeline",
+                                "name": "Listing a person's event timeline for a particular metric",
+                                "resourcePath": "data",
+                                "description": "Returns a person's batched timeline for one specific event type.",
+                                "pathParameters": [
+                                    {
+                                        "id": "PERSON_ID",
+                                        "name": "Person ID",
+                                        "description": "Unique, identifier of Person Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "METRIC_ID",
+                                        "name": "Metric ID",
+                                        "description": "Get Metric ID from Listing metrics",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "since",
+                                        "name": "Since",
+                                        "description": "Either a Unix timestamp (UTC) to use as starting datetime, OR a UUID obtained from the next attribute of a prior API call. Defaults to current time."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "string, 'asc' or 'desc', defaults to 'desc'Sort order to apply to timeline."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "listsapi",
+                        "name": "Lists API V2",
+                        "endpoints": [
+                            {
+                                "id": "list_accounts",
+                                "url": "v2/lists",
+                                "name": "Lists : Get Lists",
+                                "doesNotSupportPaging": true,
+                                "headers": {
+                                    "Accept": "application/json"
+                                },
+                                "description": "Get a listing of all of the lists in an account."
+                            },
+                            {
+                                "id": "list_information",
+                                "url": "v2/list/:_LIST_ID",
+                                "name": "Lists : Get List Details",
+                                "doesNotSupportPaging": true,
+                                "headers": {
+                                    "Accept": "application/json"
+                                },
+                                "description": "Get information about a list.",
+                                "pathParameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "name": "List ID",
+                                        "description": "Get List ID from Get Lists",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_subscriptions",
+                                "url": "v2/list/:_LIST_ID/subscribe",
+                                "name": "List Subscriptions : Check List Subscriptions",
+                                "doesNotSupportPaging": true,
+                                "headers": {
+                                    "Accept": "application/json"
+                                },
+                                "description": "Check if profiles are on a list and not suppressed.",
+                                "pathParameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "name": "List ID",
+                                        "description": "Get List ID from Get Lists",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "emails",
+                                        "required": true,
+                                        "name": "Emails",
+                                        "type": "array",
+                                        "description": "list of emails\n The emails corresponding to the profiles that you would like to check."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_members",
+                                "url": "v2/list/:_LIST_ID/members",
+                                "name": "List Memberships : Check List Membership",
+                                "doesNotSupportPaging": true,
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "description": "Check if one or more people are already members of the specified list, based on their e-mail addresses. No distinction is made between a person not being subscribed to the list, and not being present in Klaviyo at all.",
+                                "pathParameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "name": "List ID",
+                                        "description": "Get List ID from Get Lists",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "emails",
+                                        "required": true,
+                                        "name": "Emails",
+                                        "type": "array",
+                                        "description": "list of emails\n The emails corresponding to the profiles that you would like to check."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_exclusion",
+                                "url": "v2/list/:_LIST_ID/exclusions/all",
+                                "name": "List Exclusions : Get All Exclusions on a List",
+                                "headers": {
+                                    "Accept": "application/json"
+                                },
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "resourcePath": "records",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "marker",
+                                    "pageArgument": "marker"
+                                },
+                                "description": "Get all of the emails that have been excluded from a list along with the exclusion reason and exclusion time. This endpoint uses batching to return the records, so for a large list multiple calls will need to be made to get all of the records.",
+                                "pathParameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "name": "List ID",
+                                        "description": "Get List ID from Get Lists",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_groupemail",
+                                "url": "v2/group/:_LIST_ID/members/all",
+                                "name": "Group Memberships : Get Group Member Emails",
+                                "headers": {
+                                    "Accept": "application/json"
+                                },
+                                "resourcePath": "records",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "marker",
+                                    "pageArgument": "marker"
+                                },
+                                "description": "Get all of the emails in a given list or segment. This endpoint uses batching to return the records, so for a large list or segment multiple calls will need to be made to get all of the records.",
+                                "pathParameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "name": "List ID",
+                                        "description": "Get List ID from Get Lists",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "campaignsapi",
+                        "name": "Campaigns API",
+                        "endpoints": [
+                            {
+                                "id": "list_campaigns",
+                                "url": "v1/campaigns",
+                                "name": "Campaigns in Account",
+                                "resourcePath": "data",
+                                "description": "Returns a list of all the campaigns you've created. The campaigns are returned in reverse sorted order by the time they were created."
+                            },
+                            {
+                                "id": "get_campaign",
+                                "url": "v1/campaign/:_CAMPAIGN_ID",
+                                "name": "Campaign Information",
+                                "doesNotSupportPaging": true,
+                                "description": "Summary information for the campaign specified that includes the name, ID, list, subject, from email address, from name, status and date created.",
+                                "pathParameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "name": "Campaign ID",
+                                        "description": "Get Campaign ID from Campaigns in Account",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_campaignreceipt",
+                                "url": "v1/campaign/:_CAMPAIGN_ID/recipients",
+                                "name": "Campaign Recipient Information",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "next_offset",
+                                    "pageArgument": "offset"
+                                },
+                                "description": "Summary information about email recipients for the campaign specified that includes each recipients email, customer ID, and status.",
+                                "pathParameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "name": "Campaign ID",
+                                        "description": "Get Campaign ID from Campaigns in Account",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "Order results chronologically, in ascending or descending order. The possible values are asc or desc. Defaults to asc."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "templateapi",
+                        "name": "Templates API",
+                        "endpoints": [
+                            {
+                                "id": "list_templates",
+                                "url": "v1/email-templates",
+                                "name": "List all templates",
+                                "resourcePath": "data",
+                                "description": "Returns a list of all the email templates you've created. The templates are returned in sorted order by name."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "exclusions",
+                        "name": "Lists API : Exclusions",
+                        "endpoints": [
+                            {
+                                "id": "list_exclusions_or_unsubscribes",
+                                "url": "v1/people/exclusions",
+                                "name": "List Exclusions or Unsubscribes",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "reason",
+                                        "name": "Reason",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "unsubscribed",
+                                            "bounced",
+                                            "invalid_email",
+                                            "reported_spam",
+                                            "manually_excluded"
+                                        ],
+                                        "description": "Filter results based on the reason for someone being excluded. The possible values are unsubscribed, bounced, invalid_email, reported_spam and manually_excluded. Only a single value be specified at a time."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "Order results chronologically, in ascending or descending order. The possible values are asc or desc. Defaults to asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ],
+                                "description": "Get global exclusions or unsubscribes. Global exclusions are distinct from list exclusions in that these email addresses will not receive any emails from any list. Typically, when someone unsubscribes from a campaign, they are only unsubscribed from that list and are not globally unsubscribed."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "profieapi",
+                        "name": "Profiles API",
+                        "sampleData": {
+                            "object": "person",
+                            "id": "dqQnNW",
+                            "$email": "george.washington@example.com",
+                            "$first_name": "George",
+                            "$last_name": "Washington",
+                            "$organization": "U.S. Government",
+                            "$title": "President",
+                            "$city": "Mount Vernon",
+                            "$region": "Virginia",
+                            "$zip": "22121",
+                            "$country": "United States",
+                            "$timezone": "US/Eastern",
+                            "$phone_number": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_list",
+                                "url": "v1/person/:_PERSON_ID",
+                                "name": "Adding or Updating a Person's Attributes",
+                                "method": "PUT",
+                                "body": "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",{{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "PERSON_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "listsapi",
+                        "name": "Lists API V2",
+                        "operations": [
+                            {
+                                "id": "create_list",
+                                "url": "v2/lists",
+                                "name": "Lists : Create a List",
+                                "body": "{ \"api_key\":\"{{{connection.rest.encrypted.apiKey}}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "method": "POST",
+                                "sampleData": {
+                                    "list_name": "My New List"
+                                },
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_list",
+                                "url": "v2/list/:_LIST_ID",
+                                "name": "Lists : Update a List",
+                                "method": "PUT",
+                                "body": "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",{{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "sampleData": {
+                                    "list_name": "My New List"
+                                },
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_list",
+                                "url": [
+                                    "v2/list/:_LIST_ID",
+                                    "v2/lists"
+                                ],
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "sampleData": {
+                                    "list_name": "My New List"
+                                },
+                                "body": [
+                                    "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",{{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                    "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",{{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }"
+                                ],
+                                "name": "Lists : Create or Update a List",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_list",
+                                "url": "v2/list/:_LIST_ID",
+                                "name": "Lists : Delete a List",
+                                "method": "DELETE",
+                                "body": "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",{{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "sampleData": {
+                                    "list_name": "My New List"
+                                },
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "subscribe_list",
+                                "url": "v2/list/:_LIST_ID/subscribe",
+                                "name": "List Subscriptions : Subscribe to List",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "body": "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",\"profiles\":[{ {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }] }",
+                                "sampleData": {
+                                    "$longitude": "",
+                                    "email": "thomas.jefferson@example.com",
+                                    "object": "person",
+                                    "$latitude": "",
+                                    "$address1": "",
+                                    "$address2": "",
+                                    "$title": "intern",
+                                    "$timezone": "",
+                                    "$organization": "celigo",
+                                    "$region": "",
+                                    "$id": "",
+                                    "$last_name": "jefferson",
+                                    "$phone_number": "9456123789",
+                                    "$country": "",
+                                    "$zip": "",
+                                    "$first_name": "Thomas",
+                                    "$city": ""
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "unsubscribe_list",
+                                "url": "v2/list/:_LIST_ID/subscribe",
+                                "name": "List Subscriptions : Unsubscribe from List",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "body": "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",{{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "sampleData": {
+                                    "emails": [
+                                        "george.washington@example.com",
+                                        "john.adams@example.com"
+                                    ]
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_to_list",
+                                "url": "v2/list/:_LIST_ID/members",
+                                "name": "List Memberships : Add to List",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "body": "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",\"profiles\":[{ {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }] }",
+                                "sampleData": {
+                                    "$longitude": "",
+                                    "email": "thomas.jefferson@example.com",
+                                    "object": "person",
+                                    "$latitude": "",
+                                    "$address1": "",
+                                    "$address2": "",
+                                    "$title": "intern",
+                                    "$timezone": "",
+                                    "$organization": "celigo",
+                                    "$region": "",
+                                    "$id": "",
+                                    "$last_name": "jefferson",
+                                    "$phone_number": "9456123789",
+                                    "$country": "",
+                                    "$zip": "",
+                                    "$first_name": "Thomas",
+                                    "$city": ""
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "name": "List ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "email"
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "headers": {
+                                            "Content-Type": "application/json",
+                                            "Accept": "application/json"
+                                        },
+                                        "id": "list_members",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "remove_from_list",
+                                "url": "v2/list/:_LIST_ID/members",
+                                "name": "List Memberships : Remove from List",
+                                "method": "DELETE",
+                                "body": "{\"api_key\": \"{{{connection.rest.encrypted.apiKey}}}\",{{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "headers": {
+                                    "Content-Type": "application/json",
+                                    "Accept": "application/json"
+                                },
+                                "sampleData": {
+                                    "emails": [
+                                        "george.washington@example.com",
+                                        "john.adams@example.com"
+                                    ]
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "LIST_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "exclusions",
+                        "name": "Lists API : Exclusions",
+                        "operations": [
+                            {
+                                "id": "exclude_or_unsubscribe_someone_from_all_email",
+                                "url": "v1/people/exclusions",
+                                "name": "Exclude or Unsubscribe Someone from All Email",
+                                "body": "{ \"api_key\":\"{{{connection.rest.encrypted.apiKey}}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "method": "POST",
+                                "sampleData": {
+                                    "email": "My New List",
+                                    "timestamp": ""
+                                },
+                                "requiredMappings": [
+                                    "email"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "campaignsapi",
+                        "name": "Campaigns API",
+                        "sampleData": {
+                            "list_id": "george.washington@example.com",
+                            "template_id": "George",
+                            "from_email": "U.S. Government",
+                            "from_name": "Ex-president",
+                            "subject": "Mount Vernon",
+                            "name": "Virginia",
+                            "use_smart_sending": "22121",
+                            "add_google_analytics": "United States"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_campaign",
+                                "url": "v1/campaigns?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Creating a Campaign",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_campaign",
+                                "url": "v1/campaign/:_CAMPAIGN_ID?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Updating a Campaign",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_list",
+                                "url": [
+                                    "v1/campaign/:_CAMPAIGN_ID?api_key={{connection.rest.encrypted.apiKey}}",
+                                    "v1/campaigns?api_key={{connection.rest.encrypted.apiKey}}"
+                                ],
+                                "name": "Create or Update a Campaign",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "send_campaign",
+                                "url": "v1/campaign/:_CAMPAIGN_ID/send?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Send a Campaign Immediately",
+                                "method": "POST",
+                                "sampleData": {},
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "clone_campaign",
+                                "url": "v1/campaign/:_CAMPAIGN_ID/clone?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Clone a Campaign",
+                                "method": "POST",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "schedule_campaign",
+                                "url": "v1/campaign/:_CAMPAIGN_ID/schedule?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Schedule a Campaign",
+                                "method": "POST",
+                                "sampleData": {
+                                    "send_time": ""
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_campaign",
+                                "url": "v1/campaign/:_CAMPAIGN_ID/cancel?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Cancel a Campaign",
+                                "method": "POST",
+                                "sampleData": {},
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "CAMPAIGN_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "templateapi",
+                        "name": "Templates API",
+                        "sampleData": {
+                            "name": "george.washington@example.com",
+                            "html": "George"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_template",
+                                "url": "v1/email-templates?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Creating a template",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_email_template",
+                                "url": "v1/email-template/:_TEMPLATE_ID?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Updating an email template",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "TEMPLATE_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_template",
+                                "url": [
+                                    "v1/email-template/:_TEMPLATE_ID?api_key={{connection.rest.encrypted.apiKey}}",
+                                    "v1/email-templates?api_key={{connection.rest.encrypted.apiKey}}"
+                                ],
+                                "name": "Create or Update a Template",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "TEMPLATE_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_email_template",
+                                "url": "v1/email-template/:_TEMPLATE_ID?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Deleting template",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "TEMPLATE_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "clone_email_template",
+                                "url": "v1/email-template/:_TEMPLATE_ID/clone?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Clone template",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "TEMPLATE_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "render_template",
+                                "url": "v1/email-template/:_TEMPLATE_ID/render?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Render template",
+                                "description": "Renders the specified template with the provided data and return HTML and text versions of the email.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "context": {
+                                        "name": "",
+                                        "notifcation_count": ""
+                                    }
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "TEMPLATE_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "render_template_sendemail",
+                                "url": "v1/email-template/:_TEMPLATE_ID/send?api_key={{connection.rest.encrypted.apiKey}}",
+                                "name": "Render template and send email",
+                                "method": "POST",
+                                "sampleData": {
+                                    "from_email": "",
+                                    "from_name": "",
+                                    "subject": "",
+                                    "to": [
+                                        {
+                                            "email": "",
+                                            "name": ""
+                                        }
+                                    ],
+                                    "context": {
+                                        "name": "",
+                                        "notifcation_count": ""
+                                    }
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "TEMPLATE_ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

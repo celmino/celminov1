@@ -1,0 +1,2785 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "availability_groups",
+                        "name": "Availability Groups",
+                        "endpoints": [
+                            {
+                                "id": "availabilitygroupList_load_query",
+                                "name": "AvailabilityGroupList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function is used to query one or more availability groups from miva. It follows the same structure as other List Load Functions in Miva.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "AvailabilityGroupList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "categories",
+                        "name": "Categories",
+                        "endpoints": [
+                            {
+                                "id": "categorylist_load_query",
+                                "name": "CategoryList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to query one or more categories from Miva.",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "resourcePath": "data.data",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CategoryList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property",
+                                        "defaultValue": "[\r\n  {\r\n    \"name\": \"ondemandcolumns\",\r\n    \"value\": [\r\n      \"CustomField_Values:*\"\r\n    ]\r\n  }\r\n]"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "categoryproductlist_load_query",
+                                "name": "CategoryProductList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load a list of products assigned to a specific category.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CategoryProductList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property",
+                                        "defaultValue": "[\r\n  {\r\n    \"name\": \"ondemandcolumns\",\r\n    \"value\": [\r\n      \"descrip\",\r\n      \"catcount\",\r\n      \"attributes\",\r\n      \"productimagedata\",\r\n      \"categories\",\r\n      \"productshippingrules\",\r\n      \"relatedproducts\",\r\n      \"uris\",\r\n      \"productinventorysettings\",\r\n      \"CustomField_Values:*\"\r\n    ]\r\n  }\r\n]"
+                                    },
+                                    {
+                                        "id": "Category_ID",
+                                        "name": "Category ID",
+                                        "description": "Category ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Category_Code",
+                                        "name": "Category Code",
+                                        "description": "Category Code.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "Edit_Category",
+                                        "name": "Edit Category",
+                                        "description": "Edit Category - Same as Category Code",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Assigned",
+                                        "name": "Assigned",
+                                        "description": "Assigned. Defaults to true if omitted.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "Unassigned",
+                                        "name": "Unassigned",
+                                        "description": "Unassigned. Defaults to false if omitted.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "categorylist_load_parent",
+                                "name": "CategoryList_Load_Parent",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you load all sub-categories of a specific category. You pass in the category id and it will return all categories which have that id as its parent.",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "resourcePath": "data.data",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CategoryList_Load_Parent",
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "bodyParameters": [
+                                    {
+                                        "id": "Parent_ID",
+                                        "name": "Parent ID",
+                                        "description": "Category Id to find the direct sub-categories of.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "coupons",
+                        "name": "Coupons",
+                        "endpoints": [
+                            {
+                                "id": "couponlist_load_query",
+                                "name": "CouponList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load one or more coupons from Miva.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CouponList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "couponpricegrouplist_load_query",
+                                "name": "CouponPriceGroupList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load a list of price groups assigned (or unassigned) to a coupon. Request Parameters",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CouponPriceGroupList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "coupon_code",
+                                        "name": "Coupon Code",
+                                        "description": "Coupon Code",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "coupon_id",
+                                        "name": "Coupon ID",
+                                        "description": "Coupon ID",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "assigned",
+                                        "name": "Assigned",
+                                        "description": "Defaults to true if omitted.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "unassigned",
+                                        "name": "Unassigned",
+                                        "description": "Defaults to false if omitted.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "endpoints": [
+                            {
+                                "id": "customerlist_load_query",
+                                "name": "CustomerList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load a list of customer records from Miva.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CustomerList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "defaultValue": "[\r\n  {\r\n    \"name\": \"ondemandcolumns\",\r\n    \"value\": [\r\n      \"CustomField_Values:*\"\r\n    ]\r\n  }\r\n]",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "customerpricegrouplist_load_query",
+                                "name": "CustomerPriceGroupList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load a list of price groups assigned (or not assigned) to a customer.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CustomerPriceGroupList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Customer_Login",
+                                        "name": "Customer Login",
+                                        "description": "Customer Login.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "Customer_ID",
+                                        "name": "Customer ID",
+                                        "description": "Customer ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Edit_Customer",
+                                        "name": "Edit Customer",
+                                        "description": "Same value as Customer Login.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Assigned",
+                                        "name": "Assigned",
+                                        "description": "Assigned",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "Unassigned",
+                                        "name": "Unassigned",
+                                        "description": "Unassigned",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "customeraddresslist_load_query",
+                                "name": "CustomerAddressList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load a list of addresses associated with a customer account.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CustomerAddressList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Customer_ID",
+                                        "name": "Customer ID",
+                                        "description": "Customer ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Edit_Customer",
+                                        "name": "Edit Customer",
+                                        "description": "Same value as Customer Login.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Customer_Login",
+                                        "name": "Customer Login",
+                                        "description": "Customer Login.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notes",
+                        "name": "Notes",
+                        "endpoints": [
+                            {
+                                "id": "notelist_load_query",
+                                "name": "NoteList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you load one or more notes associated with a customer, order or business account.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "NoteList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "order_queues",
+                        "name": "Order Queues",
+                        "endpoints": [
+                            {
+                                "id": "queueorderlist_load_query",
+                                "name": "QueueOrderList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function is used to pull orders from a queue in Miva. The response and request parameters work identical to OrderList_Load_Query. Reference that function for request/response parameter definitions. However, because it is a module level function it needs additional parameters passed in the request. See definition below.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "Module",
+                                    "Module_Code": "orderworkflow",
+                                    "Module_Function": "QueueOrderList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Queue_Code",
+                                        "name": "Queue Code",
+                                        "description": "Code of Queue to pull orders from.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property",
+                                        "defaultValue": "[\r\n  {\r\n    \"name\": \"ondemandcolumns\",\r\n    \"value\": [\r\n      \"payment_module\",\r\n      \"cust_pw_email\",\r\n      \"cust_login\",\r\n      \"ship_method\",\r\n      \"customer\",\r\n      \"items\",\r\n      \"charges\",\r\n      \"coupons\",\r\n      \"discounts\",\r\n      \"payments\",\r\n      \"notes\",\r\n      \"CustomField_Values:customfields:*\",\r\n      \"payment_data\"\r\n    ]\r\n  }\r\n]"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "endpoints": [
+                            {
+                                "id": "orderlist_load_query",
+                                "name": "OrderList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function is used to query one or more orders from Miva.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "OrderList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property",
+                                        "defaultValue": "[\r\n  {\r\n    \"name\": \"ondemandcolumns\",\r\n    \"value\": [\r\n      \"payment_module\",\r\n      \"cust_pw_email\",\r\n      \"cust_login\",\r\n      \"ship_method\",\r\n      \"customer\",\r\n      \"items\",\r\n      \"charges\",\r\n      \"coupons\",\r\n      \"discounts\",\r\n      \"payments\",\r\n      \"payment_data\",\r\n      \"notes\",\r\n      \"CustomField_Values:customfields:*\",\r\n      \"parts\",\r\n      \"business_title\"\r\n    ]\r\n  }\r\n]"
+                                    },
+                                    {
+                                        "id": "Passphrase",
+                                        "name": "Passphrase",
+                                        "description": "Single decryption passphrase for payment data (if requested in ondemandcolumns)",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ordercustomfieldlist_load",
+                                "name": "OrderCustomFieldList_Load",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load a list of all custom order fields and the module being used. (orderworkflow, customfields, etc).",
+                                "resourcePath": "data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "OrderCustomFieldList_Load",
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "endpoints": [
+                            {
+                                "id": "productlist_load_query",
+                                "description": "This function is used to query one or more products from Miva.",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "name": "ProductList_Load_Query",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "ProductList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property",
+                                        "defaultValue": "[\r\n  {\r\n    \"name\": \"ondemandcolumns\",\r\n    \"value\": [\r\n      \"descrip\",\r\n      \"catcount\",\r\n      \"attributes\",\r\n      \"productimagedata\",\r\n      \"categories\",\r\n      \"productshippingrules\",\r\n      \"relatedproducts\",\r\n      \"uris\",\r\n      \"productinventorysettings\",\r\n      \"CustomField_Values:*\"\r\n    ]\r\n  }\r\n]"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "productvariantlist_load_product",
+                                "name": "ProductVariantList_Load_Product",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load variant products and their parts.",
+                                "resourcePath": "data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "ProductVariantList_Load_Product",
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}",
+                                    "Limits": {},
+                                    "Exclusions": {}
+                                },
+                                "bodyParameters": [
+                                    {
+                                        "id": "Limits.attr_id",
+                                        "name": "Limits Attribute ID",
+                                        "description": "Attribute ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Limits.attmpat_id",
+                                        "name": "Limits Attribute Template Id",
+                                        "description": "Limits Attribute Template Id.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Limits.option_id",
+                                        "name": "Limits Option ID",
+                                        "description": "Limits Option ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Exclusions.attr_id",
+                                        "name": "Exclusions Attribute ID",
+                                        "description": "Exclusions Attribute ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Exclusions.attmpat_id",
+                                        "name": "Exclusions Attribute Template Id",
+                                        "description": "Exclusions Attribute Template Id.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Exclusions.option_id",
+                                        "name": "Exclusions Option ID",
+                                        "description": "Exclusions Option ID.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "price_groups",
+                        "name": "Price Groups",
+                        "endpoints": [
+                            {
+                                "id": "pricegrouplist_load_query",
+                                "name": "PriceGroupList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function is used to query one or more price groups from miva. It follows the same structure as other List Load Functions in Miva.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "PriceGroupList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "pricegroupproductlist_load_query",
+                                "name": "PriceGroupProductList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to look up products assigned to a specific price group. It follows the same structure as other List Load Functions in Miva.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "PriceGroupProductList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property",
+                                        "defaultValue": "[\r\n  {\r\n    \"name\": \"ondemandcolumns\",\r\n    \"value\": [\r\n      \"descrip\",\r\n      \"catcount\",\r\n      \"attributes\",\r\n      \"productimagedata\",\r\n      \"categories\",\r\n      \"productshippingrules\",\r\n      \"relatedproducts\",\r\n      \"uris\",\r\n      \"productinventorysettings\",\r\n      \"CustomField_Values:*\"\r\n    ]\r\n  }\r\n]"
+                                    },
+                                    {
+                                        "id": "Assigned",
+                                        "name": "Assigned",
+                                        "description": "True/False to return assigned or unassigned products.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "fasle"
+                                        ]
+                                    },
+                                    {
+                                        "id": "Unassigned",
+                                        "name": "Unassigned",
+                                        "description": "True/False to return assigned or unassigned products.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "fasle"
+                                        ]
+                                    },
+                                    {
+                                        "id": "PriceGroup_ID",
+                                        "name": "PriceGroup ID",
+                                        "description": "PriceGroup ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "PriceGroup_Name",
+                                        "name": "PriceGroup Name",
+                                        "description": "PriceGroup Name.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "payments",
+                        "name": "Payments",
+                        "endpoints": [
+                            {
+                                "id": "paymentmethodlist_load",
+                                "name": "PaymentMethodList_Load",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to load a list of payment methods available for a given Order. Typically this would be use with an Order_Authorize call to do a new transaction against an order.",
+                                "resourcePath": "data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "PaymentMethodList_Load",
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "bodyParameters": [
+                                    {
+                                        "id": "Order_ID",
+                                        "name": "Order ID",
+                                        "description": "The order you wish to load available payment methods for. This fucntion is equivalent of clicking the \"Authorize\" button in Miva for an order and having a list of payment methods display.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "customerpaymentcardlist_load_query",
+                                "name": "CustomerPaymentCardList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to load a list of saved credit cards (payment cards) for a specific customer. Requires MivaPay to be enabled on the store.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_Code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "CustomerPaymentCardList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "customer_login",
+                                        "name": "Customer Login",
+                                        "description": "Customer Login.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "edit_customer",
+                                        "name": "Edit Customer",
+                                        "description": "Login of customer to edit",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "customer_id",
+                                        "name": "Customer ID",
+                                        "description": "Customer ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "quotes",
+                        "name": "Quotes",
+                        "endpoints": [
+                            {
+                                "id": "quoteindex_load_id",
+                                "name": "QuoteIndex_Load_Id",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "Starting at zero, this function loads the index position of a quote within a list of quotes.",
+                                "resourcePath": "data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "Module",
+                                    "Module_Code": "quote",
+                                    "Module_Function": "QuoteIndex_Load_ID",
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "bodyParameters": [
+                                    {
+                                        "id": "Quote_ID",
+                                        "name": "Quote ID",
+                                        "description": "id number of the quote",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "quote_load_id",
+                                "name": "Quote_Load_ID",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function loads the meta details of a quote.",
+                                "resourcePath": "data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "Module",
+                                    "Module_Code": "quote",
+                                    "Module_Function": "Quote_Load_ID",
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "bodyParameters": [
+                                    {
+                                        "id": "Quote_ID",
+                                        "name": "Quote ID",
+                                        "description": "id number of the quote",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "quoteitemlist_load",
+                                "name": "QuoteItemList_Load",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function loads a list of items from a Quote",
+                                "resourcePath": "data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "Module",
+                                    "Module_Code": "quote",
+                                    "Module_Function": "QuoteItemList_Load",
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Quote_ID",
+                                        "name": "Quote ID",
+                                        "description": "id number of the quote",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "quotenotelist_load_query",
+                                "name": "QuoteNoteList_Load_Query",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function queries and loads a list of notes from a Quote.",
+                                "resourcePath": "data.data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "Store_code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "Module",
+                                    "Module_Code": "quote",
+                                    "Module_Function": "QuoteNoteList_Load_Query",
+                                    "Count": 1,
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": {
+                                        "offset": "{{add pageIndex 0}}"
+                                    }
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "Quote_ID",
+                                        "name": "Quote ID",
+                                        "description": "id number of the quote",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "Sort",
+                                        "name": "Sort",
+                                        "description": "Column name to sort the results, may be preceded by \"-\" for a descending sort.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "Filter",
+                                        "name": "Filter",
+                                        "type": "array",
+                                        "fieldType": "input",
+                                        "description": "Filter is an array of filter structures. The required fields for a filter structure depend on its 'name' property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "quotecustomfieldandvaluelist_load_quote",
+                                "name": "QuoteCustomFieldAndValueList_Load_Quote",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function loads custom field values from a Quote",
+                                "resourcePath": "data",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "postBody": {
+                                    "Store_code": "{{connection.rest.unencrypted.Store_Code}}",
+                                    "Function": "Module",
+                                    "Module_Code": "quote",
+                                    "Module_Function": "QuoteCustomFieldAndValueList_Load_Quote",
+                                    "Miva_Request_Timestamp": "{{dateFormat 'X'}}"
+                                },
+                                "bodyParameters": [
+                                    {
+                                        "id": "Quote_ID",
+                                        "name": "Quote ID",
+                                        "description": "id number of the quote",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "availability_groups",
+                        "name": "Availability Groups",
+                        "operations": [
+                            {
+                                "id": "availabilitygroupbusinessaccount_update_assigned",
+                                "name": "AvailabilityGroupBusinessAccount_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to assign or unassign a business account from an availability group.",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\",\"Function\": \"AvailabilityGroupBusinessAccount_Update_Assigned\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "sampleData": {
+                                    "AvailabilityGroup_Name": "wholesale",
+                                    "BusinessAccount_Title": "miva",
+                                    "Assigned": true,
+                                    "AvailabilityGroup_ID": "",
+                                    "Edit_AvailabilityGroup": "",
+                                    "BusinessAccount_ID": "",
+                                    "Edit_BusinessAccount": ""
+                                },
+                                "requiredMappings": [
+                                    "AvailabilityGroup_Name",
+                                    "BusinessAccount_Title",
+                                    "Assigned"
+                                ]
+                            },
+                            {
+                                "id": "availabilitygroupcustomer_update_assigned",
+                                "name": "AvailabilityGroupCustomer_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to assign or unassign a customer from an availability group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"AvailabilityGroupCustomer_Update_Assigned\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "AvailabilityGroup_Name": "test",
+                                    "Customer_Login": "testing1234",
+                                    "Assigned": true,
+                                    "AvailabilityGroup_ID": "",
+                                    "Edit_AvailabilityGroup": "",
+                                    "Customer_ID": "",
+                                    "Edit_Customer": ""
+                                },
+                                "requiredMappings": [
+                                    "AvailabilityGroup_Name",
+                                    "Customer_Login",
+                                    "Assigned"
+                                ]
+                            },
+                            {
+                                "id": "availabilitygrouppaymentmethod_update_assigned",
+                                "name": "AvailabilityGroupPaymentMethod_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to assign or unassign a payment method from an availability group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"AvailabilityGroupPaymentMethod_Update_Assigned\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "AvailabilityGroup_Name": "test",
+                                    "Module_Code": "Customer Credit",
+                                    "Method_Code": "Apply Credit Balance",
+                                    "Assigned": true,
+                                    "AvailabilityGroup_ID": "",
+                                    "Edit_AvailabilityGroup": ""
+                                },
+                                "requiredMappings": [
+                                    "AvailabilityGroup_Name",
+                                    "Module_Code",
+                                    "Method_Code",
+                                    "Assigned"
+                                ]
+                            },
+                            {
+                                "id": "availabilitygroupproduct_update_assigned",
+                                "name": "AvailabilityGroupProduct_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to assign or unassign a product from an availability group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"AvailabilityGroupProduct_Update_Assigned\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "AvailabilityGroup_Name": "wholesale",
+                                    "Product_Code": "shirt",
+                                    "Assigned": true,
+                                    "AvailabilityGroup_ID": "",
+                                    "Edit_AvailabilityGroup": "",
+                                    "Product_ID": "",
+                                    "Edit_Product": "",
+                                    "Product_SKU": ""
+                                },
+                                "requiredMappings": [
+                                    "AvailabilityGroup_Name",
+                                    "Product_Code",
+                                    "Assigned"
+                                ]
+                            },
+                            {
+                                "id": "availabilitygroupshippingmethod_update_assigned",
+                                "name": "AvailabilityGroupShippingMethod_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to assign or unassign a shipping method from an availability group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"AvailabilityGroupShippingMethod_Update_Assigned\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "AvailabilityGroup_Name": "test",
+                                    "Module_Code": "Customer Credit",
+                                    "Method_Code": "Apply Credit Balance",
+                                    "Assigned": true,
+                                    "AvailabilityGroup_ID": "",
+                                    "Edit_AvailabilityGroup": ""
+                                },
+                                "requiredMappings": [
+                                    "AvailabilityGroup_Name",
+                                    "Module_Code",
+                                    "Method_Code",
+                                    "Assigned"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "categories",
+                        "name": "Categories",
+                        "operations": [
+                            {
+                                "id": "category_insert",
+                                "name": "Category_Insert",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to insert a category.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Category_Insert\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Category_Code": "sample",
+                                    "Category_Name": "Sample Category",
+                                    "Category_Active": true,
+                                    "Category_Page_Title": "Sample Category Page Title",
+                                    "Category_Parent_Category": "",
+                                    "Category_Alternate_Display_Page": "",
+                                    "CustomField_Values": {
+                                        "customfields": {
+                                            "cat_banner": "/path/to/image.jpg"
+                                        }
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "Category_Code",
+                                    "Category_Name"
+                                ]
+                            },
+                            {
+                                "id": "category_update",
+                                "name": "Category_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to update a category.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Category_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Category_ID": "",
+                                    "Category_Code": "sample",
+                                    "Category_Name": "Sample Category",
+                                    "Category_Active": true,
+                                    "Edit_Category": "",
+                                    "Category_Page_Title": "Sample Category Page Title",
+                                    "Category_Parent_Category": "",
+                                    "Category_Alternate_Display_Page": "",
+                                    "CustomField_Values": {
+                                        "customfields": {
+                                            "cat_banner": "/path/to/image.jpg"
+                                        }
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "Category_Code"
+                                ]
+                            },
+                            {
+                                "id": "category_delete",
+                                "name": "Category_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to delete a category.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Category_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Category_ID": "",
+                                    "Category_Code": "sample",
+                                    "Edit_Category": ""
+                                },
+                                "requiredMappings": [
+                                    "Category_Code"
+                                ]
+                            },
+                            {
+                                "id": "categoryproduct_update_assigned",
+                                "name": "CategoryProduct_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to assign or unassign a product from a category.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"CategoryProduct_Update_Assigned\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Category_Code": "demo",
+                                    "Product_Code": "demo",
+                                    "Assigned": true,
+                                    "Product_ID": "",
+                                    "Product_SKU": "",
+                                    "Edit_Product": "",
+                                    "Category_ID": "",
+                                    "Edit_Category": ""
+                                },
+                                "requiredMappings": [
+                                    "Category_Code",
+                                    "Product_Code",
+                                    "Assigned"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "coupons",
+                        "name": "Coupons",
+                        "operations": [
+                            {
+                                "id": "coupon_insert",
+                                "name": "Coupon_Insert",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to insert a coupon and assign it to a price Group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Coupon_Insert\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Code": "20OFF",
+                                    "Description": "20 Percent Off",
+                                    "CustomerScope": "A",
+                                    "DateTime_Start": 0,
+                                    "DateTime_End": 0,
+                                    "Max_Use": 0,
+                                    "Max_Per": 0,
+                                    "Active": true,
+                                    "PriceGroup_ID": 2
+                                },
+                                "requiredMappings": [
+                                    "Code"
+                                ]
+                            },
+                            {
+                                "id": "coupon_update",
+                                "name": "Coupon_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to insert a coupon and assign it to a price Group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Coupon_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Edit_Coupon": "20OFF",
+                                    "Code": "20OFF",
+                                    "Description": "20 Percent Off",
+                                    "CustomerScope": "A",
+                                    "DateTime_Start": 0,
+                                    "DateTime_End": 0,
+                                    "Max_Use": 0,
+                                    "Max_Per": 0,
+                                    "Active": false,
+                                    "Coupon_ID": "",
+                                    "Coupon_Code": ""
+                                },
+                                "requiredMappings": [
+                                    "Edit_Coupon"
+                                ]
+                            },
+                            {
+                                "id": "couponlist_delete",
+                                "name": "CouponList_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to delete one or more coupons.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"CouponList_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Coupon_Ids": [
+                                        1,
+                                        2,
+                                        3
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Coupon_Ids"
+                                ]
+                            },
+                            {
+                                "id": "couponpricegroup_update_assigned",
+                                "name": "CouponPriceGroup_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to assign or unassign a coupon to a price group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"CouponPriceGroup_Update_Assigned\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Coupon_Code": "demiL612EFD0",
+                                    "PriceGroup_Name": "demo",
+                                    "Assigned": true,
+                                    "Coupon_Id": "",
+                                    "PriceGroup_ID": ""
+                                },
+                                "requiredMappings": [
+                                    "Coupon_Code",
+                                    "PriceGroup_Name",
+                                    "Assigned"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "operations": [
+                            {
+                                "id": "customer_insert",
+                                "name": "Customer_Insert",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to insert a new customer.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Customer_Insert\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Customer_Login": "bheyde1234",
+                                    "Customer_PasswordEmail": "bheyde@miva.com",
+                                    "Customer_Password": "miva@123",
+                                    "Customer_ShipResidential": 1,
+                                    "Customer_ShipFirstName": "Brennan",
+                                    "Customer_ShipLastName": "Heyde",
+                                    "Customer_ShipEmail": "bheyde@miva.com",
+                                    "Customer_ShipCompany": "Miva, Inc",
+                                    "Customer_ShipPhone": "555-555-5555",
+                                    "Customer_ShipFax": "555-555-5555",
+                                    "Customer_ShipAddress1": "123 abc",
+                                    "Customer_ShipAddress2": "apt 123",
+                                    "Customer_ShipCity": "San Diego",
+                                    "Customer_ShipState": "CA",
+                                    "Customer_ShipZip": "92127",
+                                    "Customer_ShipCountry": "US",
+                                    "Customer_BillFirstName": "Brennan",
+                                    "Customer_BillLastName": "Heyde",
+                                    "Customer_BillEmail": "bheyde@miva.com",
+                                    "Customer_BillCompany": "Miva, Inc",
+                                    "Customer_BillPhone": "555-555-5555",
+                                    "Customer_BillFax": "555-555-5555",
+                                    "Customer_BillAddress1": "123 abc",
+                                    "Customer_BillAddress2": "apt 123",
+                                    "Customer_BillCity": "San Diego",
+                                    "Customer_BillState": "CA",
+                                    "Customer_BillZip": "92127",
+                                    "Customer_BillCountry": "US",
+                                    "Customer_Tax_Exempt": "1",
+                                    "Customer_BusinessAccount": "",
+                                    "CustomField_Values": {
+                                        "customfields": {}
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "Customer_Login",
+                                    "Customer_PasswordEmail",
+                                    "Customer_Password"
+                                ]
+                            },
+                            {
+                                "id": "customer_update",
+                                "name": "Customer_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to update an existing customer record.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Customer_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Edit_Customer": "",
+                                    "Customer_ID": "",
+                                    "Customer_Login": "bheyde1234",
+                                    "Customer_PasswordEmail": "bheyde@miva.com",
+                                    "Customer_Password": "miva@123",
+                                    "Customer_ShipResidential": 1,
+                                    "Customer_ShipFirstName": "Brennan",
+                                    "Customer_ShipLastName": "Heyde",
+                                    "Customer_ShipEmail": "bheyde@miva.com",
+                                    "Customer_ShipCompany": "Miva, Inc",
+                                    "Customer_ShipPhone": "555-555-5555",
+                                    "Customer_ShipFax": "555-555-5555",
+                                    "Customer_ShipAddress1": "123 abc",
+                                    "Customer_ShipAddress2": "apt 123",
+                                    "Customer_ShipCity": "San Diego",
+                                    "Customer_ShipState": "CA",
+                                    "Customer_ShipZip": "92127",
+                                    "Customer_ShipCountry": "US",
+                                    "Customer_BillFirstName": "Brennan",
+                                    "Customer_BillLastName": "Heyde",
+                                    "Customer_BillEmail": "bheyde@miva.com",
+                                    "Customer_BillCompany": "Miva, Inc",
+                                    "Customer_BillPhone": "555-555-5555",
+                                    "Customer_BillFax": "555-555-5555",
+                                    "Customer_BillAddress1": "123 abc",
+                                    "Customer_BillAddress2": "apt 123",
+                                    "Customer_BillCity": "San Diego",
+                                    "Customer_BillState": "CA",
+                                    "Customer_BillZip": "92127",
+                                    "Customer_BillCountry": "US",
+                                    "Customer_Tax_Exempt": "1",
+                                    "Customer_BusinessAccount": "",
+                                    "CustomField_Values": {
+                                        "customfields": {}
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "Customer_Login"
+                                ]
+                            },
+                            {
+                                "id": "customer_delete",
+                                "name": "Customer_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to delete a customer.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Customer_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Edit_Customer": "bheyde12345",
+                                    "Customer_ID": "",
+                                    "Customer_Login": ""
+                                },
+                                "requiredMappings": [
+                                    "Customer_ID"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notes",
+                        "name": "Notes",
+                        "operations": [
+                            {
+                                "id": "note_insert",
+                                "name": "Note_Insert",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to insert a note for a customer, business account or order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Note_Insert\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "NoteText": "This is a custom note for an order",
+                                    "Customer_ID": 1,
+                                    "Order_ID": "",
+                                    "Account_ID": ""
+                                }
+                            },
+                            {
+                                "id": "note_update",
+                                "name": "Note_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to update a note for a customer, business account or order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Note_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "NoteText": "This is a custom note for an order",
+                                    "Note_ID": 1
+                                },
+                                "requiredMappings": [
+                                    "Note_ID"
+                                ]
+                            },
+                            {
+                                "id": "note_delete",
+                                "name": "Note_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to delete a note.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Note_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Note_ID": 1
+                                },
+                                "requiredMappings": [
+                                    "Note_ID"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "order_queues",
+                        "name": "Order Queues",
+                        "operations": [
+                            {
+                                "id": "orderlist_acknowledge",
+                                "name": "OrderList_Acknowledge",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function is used in conjunction with an order workflow to manually mark an order as recieved. Because this is a module level function you'll need to use the following format to whitelist the funciton:",
+                                "resourcePath": "data.data",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", \"Module_Code\": \"orderworkflow\", \"Module_Function\": \"OrderList_Acknowledge\" {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_Ids": [
+                                        200075,
+                                        200076
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Order_Ids"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "operations": [
+                            {
+                                "id": "order_create",
+                                "name": "Order_Create",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to create a new order. This function takes input parameters for both items and products. Items allows you to add any item to an order. It does not need to match any existing product in the catalog. When using the products object, Miva will validate that product code exists and load data from that product such as price, weight, name and cost.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Order_Create\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Customer_Login": "bheyde",
+                                    "ShipFirstName": "John",
+                                    "ShipLastName": "Smith",
+                                    "ShipEmail": "bheyde@miva.com",
+                                    "ShipPhone": "8585551234",
+                                    "ShipFax": "8585554321",
+                                    "ShipCompany": "Miva, Inc.",
+                                    "ShipAddress1": "16745 West Bernardo Road",
+                                    "ShipAddress2": "Suite 400",
+                                    "ShipCity": "San Diego",
+                                    "ShipState": "CA",
+                                    "ShipZip": "92127",
+                                    "ShipCountry": "US",
+                                    "ShipResidential": false,
+                                    "BillFirstName": "John",
+                                    "BillLastName": "Smith",
+                                    "BillEmail": "bheyde@miva.com",
+                                    "BillPhone": "8585555678",
+                                    "BillFax": "8585558765",
+                                    "BillCompany": "Miva2, Inc.",
+                                    "BillAddress1": "26745 West Bernardo Road",
+                                    "BillAddress2": "Suite 410",
+                                    "BillCity": "Stan Diego",
+                                    "BillState": "CA",
+                                    "BillZip": "92027",
+                                    "BillCountry": "US",
+                                    "Items": [
+                                        {
+                                            "status": 0,
+                                            "code": "aaaaa",
+                                            "name": "Item 3",
+                                            "sku": "SKUITEM3",
+                                            "price": 1.97,
+                                            "weight": 0.08,
+                                            "quantity": 2,
+                                            "taxable": true,
+                                            "upsold": false,
+                                            "options": [
+                                                {
+                                                    "attr_code": "color",
+                                                    "opt_code": "green",
+                                                    "price": 0.28,
+                                                    "weight": 0.01
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "Products": [
+                                        {
+                                            "status": 0,
+                                            "code": "shirt",
+                                            "quantity": 2,
+                                            "attributes": [
+                                                {
+                                                    "code": "color",
+                                                    "template_code": "",
+                                                    "value": "red"
+                                                },
+                                                {
+                                                    "code": "size",
+                                                    "template_code": "",
+                                                    "value": "small"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "Charges": [
+                                        {
+                                            "type": "COUPON",
+                                            "descrip": "Coupon: 20% Off",
+                                            "amount": -0.25,
+                                            "display_amount": -0.26,
+                                            "tax_exempt": true
+                                        },
+                                        {
+                                            "type": "TAX",
+                                            "descrip": "Sales Tax",
+                                            "amount": 1.25,
+                                            "display_amount": 1.25,
+                                            "tax_exempt": true
+                                        }
+                                    ],
+                                    "CustomField_Values": {
+                                        "CustomFields": []
+                                    },
+                                    "Shipping_Module_Code": "flatrate",
+                                    "Shipping_Module_Data": "Free Shipping",
+                                    "CalculateCharges": true,
+                                    "TriggerFulfillmentModules": false
+                                }
+                            },
+                            {
+                                "id": "order_create_fromorder",
+                                "name": "Order_Create_FromOrder",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to create a new order, using a previous order id as a reference. This function takes the reference order as request parameter and will return the new order in the response. This function behaves identical to clicking the \"New Order\" button on the order detail screen in the admin. It copies the following data: Customer Assignment, Bill To, Ship To and saved card (if using MivaPay). Item, shipping, Tax and Discount data is not copied.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Order_Create_FromOrder\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_ID": ""
+                                },
+                                "requiredMappings": [
+                                    "Order_ID"
+                                ]
+                            },
+                            {
+                                "id": "order_delete",
+                                "name": "Order_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to delete an order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Order_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_ID": ""
+                                },
+                                "requiredMappings": [
+                                    "Order_ID"
+                                ]
+                            },
+                            {
+                                "id": "Order_Update_Customer_Information",
+                                "name": "Order_Update_Customer_Information",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to update the Bill To & Ship To information attached to an order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Order_Update_Customer_Information\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_ID": 200100,
+                                    "Customer_ID": 1,
+                                    "Ship_Residential": 0,
+                                    "Ship_FirstName": "ShpFirstName",
+                                    "Ship_LastName": "ShpLastName",
+                                    "Ship_Email": "ShpEmail",
+                                    "Ship_Phone": "ShpPhone",
+                                    "Ship_Fax": "ShpFax",
+                                    "Ship_Company": "ShpCompany",
+                                    "Ship_Address1": "ShpAddr1",
+                                    "Ship_Address2": "ShpAddr2",
+                                    "Ship_City": "ShpCity",
+                                    "Ship_State": "ShpState",
+                                    "Ship_Zip": "ShpZip",
+                                    "Ship_Country": "ShpCountry",
+                                    "Bill_FirstName": "BillFName",
+                                    "Bill_LastName": "BillLName",
+                                    "Bill_Email": "BillEmail",
+                                    "Bill_Phone": "BillPhone",
+                                    "Bill_Fax": "BillFax",
+                                    "Bill_Company": "BillCompany",
+                                    "Bill_Address1": "BillAddr1",
+                                    "Bill_Address2": "BillAddr2",
+                                    "Bill_City": "BillCity",
+                                    "Bill_State": "BillState",
+                                    "Bill_Zip": "BillZip",
+                                    "Bill_Country": "BillCountry"
+                                },
+                                "requiredMappings": [
+                                    "Order_ID"
+                                ]
+                            },
+                            {
+                                "id": "orderitem_add",
+                                "name": "OrderItem_Add",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to add an item (product) to an order",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderItem_Add\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_ID": 200101,
+                                    "Code": "shirt",
+                                    "Name": "Custom T-Shrt",
+                                    "SKU": "shirt-red-small",
+                                    "Quantity": 3,
+                                    "Price": 10.58,
+                                    "Weight": 1,
+                                    "Taxable": true,
+                                    "Attributes": [
+                                        {
+                                            "attr_code": "size",
+                                            "opt_code_or_data": "small",
+                                            "price": 0,
+                                            "weight": 0
+                                        },
+                                        {
+                                            "attr_code": "color",
+                                            "opt_code_or_data": "red",
+                                            "price": 0,
+                                            "weight": 0
+                                        }
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Order_ID",
+                                    "Code",
+                                    "Name",
+                                    "Quantity"
+                                ]
+                            },
+                            {
+                                "id": "orderitem_update",
+                                "name": "OrderItem_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to update an item (product) which is part of an order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderItem_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "line_id": 154,
+                                    "Order_ID": 200101,
+                                    "Code": "shirt",
+                                    "Name": "Custom T-Shrt",
+                                    "SKU": "shirt-red-small",
+                                    "Quantity": 3,
+                                    "Price": 10.58,
+                                    "Weight": 1,
+                                    "Taxable": true,
+                                    "Attributes": [
+                                        {
+                                            "attr_code": "size",
+                                            "opt_code_or_data": "small",
+                                            "price": 0,
+                                            "weight": 0
+                                        },
+                                        {
+                                            "attr_code": "color",
+                                            "opt_code_or_data": "red",
+                                            "price": 0,
+                                            "weight": 0
+                                        }
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "line_id",
+                                    "Order_ID",
+                                    "Code",
+                                    "Name",
+                                    "Quantity"
+                                ]
+                            },
+                            {
+                                "id": "orderitemlist_cancel",
+                                "name": "OrderItemList_Cancel",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to cancel one or more items (products) on an order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderItemList_Cancel\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_Id": "200100",
+                                    "Reason": "Customer called to remove items",
+                                    "line_ids": [
+                                        153,
+                                        165
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Order_ID",
+                                    "line_ids"
+                                ]
+                            },
+                            {
+                                "id": "orderitemlist_delete",
+                                "name": "OrderItemList_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to delete one or more items (products) from an order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderItemList_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_Id": "200100",
+                                    "line_ids": [
+                                        153,
+                                        165
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Order_ID",
+                                    "line_ids"
+                                ]
+                            },
+                            {
+                                "id": "orderitemlist_backorder",
+                                "name": "OrderItemList_BackOrder",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to backorder one or more items (products) from an order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderItemList_BackOrder\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_Id": "200100",
+                                    "Date_InStock": "",
+                                    "line_ids": [
+                                        153,
+                                        165
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Order_ID",
+                                    "line_ids"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "operations": [
+                            {
+                                "id": "orderitemlist_createshipment",
+                                "name": "OrderItemList_CreateShipment",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "his funciton is used to create a shipment out of a list of line items in an order. Marking an order as shipped is a two step process. First you create a shipment with the items containted in the shipment then you mark shipment as shipped using OrderShipmentList_Update.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderItemList_CreateShipment\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_Id": 200103,
+                                    "line_ids": [
+                                        178,
+                                        181
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Order_Id",
+                                    "line_ids"
+                                ]
+                            },
+                            {
+                                "id": "ordershipmentlist_update",
+                                "name": "OrderShipmentList_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderShipmentList_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Shipment_Updates": [
+                                        {
+                                            "shpmnt_id": 114,
+                                            "mark_shipped": true,
+                                            "tracknum": "12345",
+                                            "tracktype": "UPS",
+                                            "cost": "5.00"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "operations": [
+                            {
+                                "id": "product_insert",
+                                "name": "Product_Insert",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to insert a product.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Product_Insert\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Product_Code": "new-product123",
+                                    "Product_SKU": "555182",
+                                    "Product_Name": "Hello WOrld!!",
+                                    "Product_Description": "ddddd",
+                                    "product_canonical_category_code": "",
+                                    "Product_Alternate_Display_Page": "",
+                                    "Product_Page_Title": "eeeee",
+                                    "Product_Thumbnail": "graphics/00000001/someimage_thumbnail.jpg",
+                                    "Product_Image": "graphics/00000001/someimage.jpg",
+                                    "Product_Price": 5.29,
+                                    "Product_Cost": 1.27,
+                                    "Product_Weight": 3.58,
+                                    "Product_Inventory": 26,
+                                    "Product_Taxable": true,
+                                    "Product_Active": true,
+                                    "CustomField_Values": {
+                                        "customfields": {}
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "Product_Code",
+                                    "Product_Name"
+                                ]
+                            },
+                            {
+                                "id": "product_update",
+                                "name": "Product_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to update a product in Miva. All parameters are optional. The product to be updated may be specified using Product_ID, Product_Code, Edit_Product or Product_SKU.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Product_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Edit_Product": "Test",
+                                    "Product_Code": "new_product_code",
+                                    "Product_SKU": "555182",
+                                    "Product_Name": "Hello WOrld",
+                                    "Product_Description": "ddddd",
+                                    "Product_Alternate_Display_Page": "ABUS",
+                                    "Product_Page_Title": "eeeee",
+                                    "Product_Thumbnail": "graphics/en-US/someimage_thumbnail.jpg",
+                                    "Product_Image": "graphics/en-US/someimage.jpg",
+                                    "Product_Price": 5.29,
+                                    "Product_Cost": 1.27,
+                                    "Product_Weight": 3.58,
+                                    "Product_Inventory": 26,
+                                    "Product_Taxable": true,
+                                    "Product_Active": true,
+                                    "CustomField_Values": {
+                                        "customfields": {}
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "Product_Code"
+                                ]
+                            },
+                            {
+                                "id": "product_delete",
+                                "name": "Product_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to delete a product.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Product_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Product_Code": "test",
+                                    "Edit_ID": "",
+                                    "Edit_Product": "",
+                                    "Product_SKU": ""
+                                },
+                                "requiredMappings": [
+                                    "Product_Code"
+                                ]
+                            },
+                            {
+                                "id": "productlist_adjust_inventory",
+                                "name": "ProductList_Adjust_Inventory",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you sent an inventory adjustment (up or down) for products. It accepts product_id, product_code or product_sku. Only one product identifier is required.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"ProductList_Adjust_Inventory\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Inventory_Adjustments": [
+                                        {
+                                            "product_code": "shirt",
+                                            "product_id": 1,
+                                            "product_sku": "shirt-red-blue",
+                                            "adjustment": 9
+                                        }
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Inventory_Adjustments[*].product_code"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "price_groups",
+                        "name": "Price Groups",
+                        "operations": [
+                            {
+                                "id": "pricegroupproduct_update_assigned",
+                                "name": "PriceGroupProduct_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to assign or unassign a product from a price group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"PriceGroupProduct_Update_Assigned\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "PriceGroup_Name": "Volume Pricing",
+                                    "Product_Code": "test",
+                                    "Assigned": true,
+                                    "PriceGroup_ID": "",
+                                    "Edit_Product": "",
+                                    "Product_ID": "",
+                                    "Product_SKU": ""
+                                },
+                                "requiredMappings": [
+                                    "PriceGroup_Name",
+                                    "Product_Code",
+                                    "Assigned"
+                                ]
+                            },
+                            {
+                                "id": "pricegroupcustomer_update_assigned",
+                                "name": "PriceGroupCustomer_Update_Assigned",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This funciton is used to assign or unassign a customer from a price group.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"PriceGroupCustomer_Update_Assigned\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "PriceGroup_Name": "demo",
+                                    "Customer_login": "bheyde",
+                                    "Assigned": true,
+                                    "PriceGroup_ID": "",
+                                    "Edit_Customer": "",
+                                    "Customer_ID": ""
+                                },
+                                "requiredMappings": [
+                                    "PriceGroup_Name",
+                                    "Customer_login",
+                                    "Assigned"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "payments",
+                        "name": "Payments",
+                        "operations": [
+                            {
+                                "id": "OrderPayment_Capture",
+                                "name": "OrderPayment_Capture",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to capture funds against an existing authorization.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderPayment_Capture\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "OrderPayment_ID": 8,
+                                    "Amount": 8
+                                },
+                                "requiredMappings": [
+                                    "OrderPayment_ID",
+                                    "Amount"
+                                ]
+                            },
+                            {
+                                "id": "orderpayment_refund",
+                                "name": "OrderPayment_Refund",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to issue a refund against an existing captured payment record.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderPayment_Refund\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "OrderPayment_ID": 5,
+                                    "Amount": 10
+                                },
+                                "requiredMappings": [
+                                    "OrderPayment_ID",
+                                    "Amount"
+                                ]
+                            },
+                            {
+                                "id": "orderpayment_void",
+                                "name": "OrderPayment_VOID",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to void an order payment once an authorization has been made.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"OrderPayment_VOID\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "OrderPayment_ID": 5,
+                                    "Amount": 10
+                                },
+                                "requiredMappings": [
+                                    "OrderPayment_ID",
+                                    "Amount"
+                                ]
+                            },
+                            {
+                                "id": "order_authorize",
+                                "name": "Order_Authorize",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function allows you to authorize (or authorize+capture depenidng on gateway settings) a new transaction for an order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Order_Authorize\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Order_ID": 200102,
+                                    "Module_ID": 0,
+                                    "Amount": 10,
+                                    "Module_Data": "paymentcard:1"
+                                },
+                                "requiredMappings": [
+                                    "Order_ID",
+                                    "Module_ID",
+                                    "Amount"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "quotes",
+                        "name": "Quotes",
+                        "operations": [
+                            {
+                                "id": "quote_convert",
+                                "name": "Quote_Convert",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function converts a quote to an order.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"Quote_Convert\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003,
+                                    "Customer_ID": 0,
+                                    "Customer_Copy": false
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID"
+                                ]
+                            },
+                            {
+                                "id": "quote_copy",
+                                "name": "Quote_Copy",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function copies a quote into a new quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"Quote_Copy\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID"
+                                ]
+                            },
+                            {
+                                "id": "quote_delete",
+                                "name": "Quote_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function deletes a quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"Quote_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID"
+                                ]
+                            },
+                            {
+                                "id": "quote_update_customer_id",
+                                "name": "Quote_Update_Customer_ID",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function updates the customer assigned to a quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"Quote_Update_Customer_ID\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003,
+                                    "Customer_ID": 2
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID"
+                                ]
+                            },
+                            {
+                                "id": "quoteitem_add",
+                                "name": "QuoteItem_Add",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function adds an item to a quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"QuoteItem_Add\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1008,
+                                    "Code": "bulk-01",
+                                    "Name": "Bulk Rock Coffee",
+                                    "SKU": "817715",
+                                    "Quantity": 2,
+                                    "Price": 1247.5,
+                                    "Weight": 100,
+                                    "Taxable": 1,
+                                    "Attributes": [
+                                        {
+                                            "attr_id": 1,
+                                            "attmpat_id": 0,
+                                            "attr_code": "roast",
+                                            "opt_code_or_data": "toasted",
+                                            "price": 0,
+                                            "weight": 0
+                                        }
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID",
+                                    "Code",
+                                    "Name",
+                                    "Quantity"
+                                ]
+                            },
+                            {
+                                "id": "quoteitem_update",
+                                "name": "QuoteItem_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function updates an item in a quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"QuoteItem_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1008,
+                                    "Line_ID": 17,
+                                    "Code": "coffee01",
+                                    "Name": "Colombian Rock - Organic",
+                                    "SKU": "6120615",
+                                    "Quantity": 3,
+                                    "Price": 24.95,
+                                    "Weight": 1.05,
+                                    "Taxable": 1,
+                                    "Attributes": [
+                                        {
+                                            "attr_id": 3,
+                                            "attmpat_id": 0,
+                                            "attr_code": "roast",
+                                            "opt_code_or_data": "toasted",
+                                            "price": 0,
+                                            "weight": 0
+                                        }
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID",
+                                    "Line_ID"
+                                ]
+                            },
+                            {
+                                "id": "quoteitemlist_delete",
+                                "name": "QuoteItemList_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function deletes a line item from a quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"QuoteItemList_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003,
+                                    "Line_IDs": "7"
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID",
+                                    "Line_IDs"
+                                ]
+                            },
+                            {
+                                "id": "quotenote_insert",
+                                "name": "QuoteNote_Insert",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function inserts a new note into a quote",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"QuoteNote_Insert\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1006,
+                                    "Content": "This is text inserted into a new note on quote_id 1008."
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID",
+                                    "Content"
+                                ]
+                            },
+                            {
+                                "id": "quotenote_update",
+                                "name": "QuoteNote_Update",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function updates a note from a quote",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"QuoteNote_Update\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1006,
+                                    "Note_ID": 6,
+                                    "Content": "This is text inserted into a new note on quote_id 1008."
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID",
+                                    "Content",
+                                    "Note_ID"
+                                ]
+                            },
+                            {
+                                "id": "quotenote_update_public",
+                                "name": "QuoteNote_Update_Public",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function changes the public status of a note. Public indicates a note can be seen by the customer in their account.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"QuoteNote_Update_Public\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1006,
+                                    "Note_ID": 6,
+                                    "Public": true
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID",
+                                    "Note_ID"
+                                ]
+                            },
+                            {
+                                "id": "quotenoteList_delete",
+                                "name": "QuoteNoteList_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function deletes a note from a quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"QuoteNoteList_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1006,
+                                    "Note_IDs": 6
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID",
+                                    "Note_IDs"
+                                ]
+                            },
+                            {
+                                "id": "Quote_Create_Empty",
+                                "name": "Quote_Create_Empty",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function creates a new quote with no items or customer info.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"Quote_Create_Empty\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {},
+                                "requiredMappings": []
+                            },
+                            {
+                                "id": "quote_send",
+                                "name": "Quote_Send",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function emails a quote to the customer associated with the quote",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"Quote_Send\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID"
+                                ]
+                            },
+                            {
+                                "id": "quote_update_expiry",
+                                "name": "Quote_Update_Expiry",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function updates the expiration date of a quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"Quote_Update_Expiry\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003,
+                                    "Quote_Expires": 1621488721
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID",
+                                    "Quote_Expires"
+                                ]
+                            },
+                            {
+                                "id": "quote_update_requester_information",
+                                "name": "Quote_Update_Requester_Information",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function updates the Requester Information in a quote.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"Quote_Update_Requester_Information\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003,
+                                    "Customer_ID": 0,
+                                    "Requester_FirstName": "Kofi",
+                                    "Requester_LastName": "Pot",
+                                    "Requester_Phone": "801-123-7895",
+                                    "Requester_Zip": "10021",
+                                    "Requester_Country": "US",
+                                    "Requester_Email": "kofipot@email.com",
+                                    "Requester_Comment": "Kofi has an affinity for Pots",
+                                    "Requester_Terms": ""
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID"
+                                ]
+                            },
+                            {
+                                "id": "quotecustomfieldvalues_update_quote",
+                                "name": "QuoteCustomFieldValues_Update_Quote",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function updates a custom field in from a quote",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Module\",\"Module_Code\": \"quote\",\"Module_Function\": \"QuoteCustomFieldValues_Update_Quote\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Quote_ID": 1003,
+                                    "Quote_CustomFields": [
+                                        {
+                                            "code": "spec_instructions",
+                                            "value": "please make the coffee very very special"
+                                        }
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "Quote_ID"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "attributes&_attribute_templates",
+                        "name": "Attributes & Attribute Templates",
+                        "operations": [
+                            {
+                                "id": "attributetemplate_delete",
+                                "name": "AttributeTemplate_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function deletes an attribute template",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"AttributeTemplate_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "AttributeTemplate_ID": 3
+                                },
+                                "requiredMappings": [
+                                    "AttributeTemplate_ID"
+                                ]
+                            },
+                            {
+                                "id": "attributetemplateattribute_delete",
+                                "name": "AttributeTemplateAttribute_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function deletes an attribute from an attribute template.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"AttributeTemplateAttribute_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "AttributeTemplateAttribute_ID": 4
+                                },
+                                "requiredMappings": [
+                                    "AttributeTemplateAttribute_ID"
+                                ]
+                            },
+                            {
+                                "id": "attributetemplateoption_set_default",
+                                "name": "AttributeTemplateOption_Set_Default",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function sets the default attribute option within an attribute template",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"AttributeTemplateOption_Set_Default\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "AttributeTemplateOption_ID": 1,
+                                    "AttributeTemplateOption_Default": 1
+                                },
+                                "requiredMappings": [
+                                    "AttributeTemplateOption_ID",
+                                    "AttributeTemplateOption_Default"
+                                ]
+                            },
+                            {
+                                "id": "attributetemplateoption_delete",
+                                "name": "AttributeTemplateOption_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function deletes an option from an attribute in an attribute template.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"AttributeTemplateOption_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "AttributeTemplateOption_ID": 1
+                                },
+                                "requiredMappings": [
+                                    "AttributeTemplateOption_ID"
+                                ]
+                            },
+                            {
+                                "id": "attribute_delete",
+                                "name": "Attribute_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function deletes an attribute from a product",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Attribute_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Attribute_ID": 3
+                                },
+                                "requiredMappings": [
+                                    "Attribute_ID"
+                                ]
+                            },
+                            {
+                                "id": "option_delete",
+                                "name": "Option_Delete",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function deletes an option from a product attribute",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Option_Delete\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Option_ID": 3
+                                },
+                                "requiredMappings": [
+                                    "Option_ID"
+                                ]
+                            },
+                            {
+                                "id": "option_set_default",
+                                "name": "Option_Set_Default",
+                                "url": "/json.mvc",
+                                "method": "POST",
+                                "description": "This function sets a default option for a product attribute.",
+                                "body": "{ \"Store_Code\":\"{{connection.rest.unencrypted.Store_Code}}\",\"Function\": \"Option_Set_Default\",\"Miva_Request_Timestamp\": \"{{dateFormat 'X'}}\", {{#each data}}{{#if @index}},{{/if}}\"{{@key}}\": {{{jsonSerialize this}}} {{/each}} }",
+                                "successPath": "success",
+                                "successValues": "1",
+                                "sampleData": {
+                                    "Option_ID": 1,
+                                    "Option_Default": 1
+                                },
+                                "requiredMappings": [
+                                    "Option_ID",
+                                    "Option_Default"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

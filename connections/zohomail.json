@@ -1,0 +1,2968 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "paging": {
+                    "pagingMethod": "skipargument",
+                    "skipArgument": "start"
+                },
+                "resources": [
+                    {
+                        "id": "organizations",
+                        "name": "Organizations",
+                        "endpoints": [
+                            {
+                                "id": "list_all_organizations",
+                                "url": "/organization/:_orgid",
+                                "doesNotSupportPaging": true,
+                                "name": "Organization Details",
+                                "resourcePath": "data",
+                                "description": "The API retrieves the Organization details, along with the Organization ID, based on the Administrator or SuperAdministrator details, used in the Authtoken. The OrgId parameter in this particular method is optional. ",
+                                "pathParameters": [
+                                    {
+                                        "id": "orgid",
+                                        "name": "Organization Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "organization_subscription_details",
+                                "url": "/organization/:_zoid/storage",
+                                "name": "Subscription Details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "The API retrieves the Subscription details along with the storage information, with allotted and available storage details for the given organization. The details are available for all users along with their individual allotted storage details.",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "user_storage_details",
+                                "url": "/organization/:_zoid/storage/:_zuid",
+                                "name": "User Storage",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "The API retrieves the details of the available and allotted storage information for the particular user in the given Organization. The details are available for all users along with their individual allotted storage details.",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "zuid",
+                                        "name": "zuid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho User Identifier for the user",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "spam_listing_info",
+                                "url": "/organization/:_zoid/spamInfo",
+                                "name": "Spam Listing Info",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "fieldType": "input",
+                                        "description": "Used to get the Spam listing details of organization in batches,Specify the number of items to be retrieved in each batch."
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "Start",
+                                        "fieldType": "input",
+                                        "description": "Used to get the Spam listing details of organization in batches.Specify the order number from which the data retrieval should start. Works better when used with limit parameter."
+                                    },
+                                    {
+                                        "id": "spamCategory",
+                                        "name": "Spam Category",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "blackListDomain",
+                                            "blackListEmail",
+                                            "whiteListDomain",
+                                            "whiteListEmail",
+                                            "allowDomain",
+                                            "allowEmail"
+                                        ],
+                                        "description": "Used to specify the Spam Category of Spam Listing to be retrieved. ",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "domains",
+                        "name": "Domains",
+                        "endpoints": [
+                            {
+                                "id": "all_domaindetails",
+                                "url": "/organization/:_zoid/domains",
+                                "doesNotSupportPaging": true,
+                                "name": "All Domain Details",
+                                "resourcePath": "data",
+                                "description": "Get the details of all the domains in the organization. ",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "Organization Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_domaindetails",
+                                "url": "/organization/:_zoid/domains/:_domainname",
+                                "name": "Single Domain Details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": " Get the details of a single domain in the organization.",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "name": "Domain Name",
+                                        "fieldType": "input",
+                                        "description": "The name of the domain to get information.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groups",
+                        "name": "Groups",
+                        "endpoints": [
+                            {
+                                "id": "all_group_details",
+                                "url": "/organization/:_zoid/groups",
+                                "name": "All groups details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data.groups",
+                                "description": "Get the details of all the groups in the organization",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "searchKey",
+                                        "name": "Search Key",
+                                        "fieldType": "input",
+                                        "description": "To get the details of group, which matches a specific SearchKey, specify the searchKey String in this parameter."
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input",
+                                        "description": "By default all fields will be retrieved. To get only specific fields, specify the field names, separated by comma in this parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_group_details",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Single Group Details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "The API retrieves the details of a particular group based on the GroupId details provided in the request.",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_emailsformoderation",
+                                "url": "/organization/:_zoid/groups/:_groupid/messages",
+                                "name": "Get emails for moderation",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "The API retrieves all the emails that are held for moderation in that particular group. ",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "groupid",
+                                        "fieldType": "input",
+                                        "description": "The identifier to uniquely identify the particular group.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_moderationemailcontent",
+                                "url": "/organization/:_zoid/groups/:_groupid/messages/messageid",
+                                "name": "Get moderation email content",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "The API retrieves the content of the email that is held for moderation, based on the Mesaage ID.",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageid",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The specific messageId of the email held for moderation, to whose content should be retrieved.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "all_orgusers_details",
+                                "url": "/organization/:_zoid/accounts",
+                                "name": "User Account Details",
+                                "resourcePath": "data",
+                                "description": "The API retrieves all the user's details for the specified Organization Id when requested by the admin of the organization. ",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_user_details",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Single User Details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "The API retrieves all the user details for the specified zoid, when requested by the admin of the organization. ",
+                                "pathParameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The Account Identifier for the specific account of the particular user",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "zuid",
+                                        "name": "zuid",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho User Identifier for the user in the organization",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "endpoints": [
+                            {
+                                "id": "user_account_details",
+                                "url": "/accounts",
+                                "name": "User account details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the account details of the user currently authenticated "
+                            }
+                        ]
+                    },
+                    {
+                        "id": "folders",
+                        "name": "Folders",
+                        "endpoints": [
+                            {
+                                "id": "get_allfolder_details",
+                                "url": "/accounts/:_accountid/folders",
+                                "name": "Folder Details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "The API retrieves all the folders details for the specified account based on the account ID provided in the Request.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific account of an user. ",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_detailsofasinglefolder",
+                                "url": "/accounts/:_accountid/folders/:_folderid",
+                                "name": "Single Folder Details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the details of a particular folder, based on the Folder Id provided. ",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific account of an user. ",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific folder in the user account.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "labels",
+                        "name": "Labels",
+                        "endpoints": [
+                            {
+                                "id": "get_alllabel_details",
+                                "url": "/accounts/:_accountid/labels",
+                                "name": "Label Details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the details of the labels in the account, along with the Label Id details.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific account of an user. ",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_singlelabel_details ",
+                                "url": "/accounts/:_accountid/labels/:_labelid",
+                                "name": "Single Label Details ",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the details of a particular folder, based on the Folder Id provided. ",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific account of an user. ",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "labelid",
+                                        "name": "Label Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific label in the user account.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "email",
+                        "name": "Email",
+                        "endpoints": [
+                            {
+                                "id": "get_allemails_inafolder",
+                                "url": "/accounts/:_accountid/messages/view",
+                                "name": "List of emails in a folder",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the details of all or specific set of emails in a folder based on view options.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific account of an user. ",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "folderId",
+                                        "name": "Folder Id",
+                                        "fieldType": "input",
+                                        "description": "Folder Id of the folder for which the emails need to be retrieved."
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "input",
+                                        "description": "To retrieve emails by status. to retrieve only read emails or unread emails. "
+                                    },
+                                    {
+                                        "id": "flagid",
+                                        "name": "Flag Id",
+                                        "fieldType": "input",
+                                        "description": "To retrieve emails based on a specific flag. "
+                                    },
+                                    {
+                                        "id": "labelid",
+                                        "name": "Label Id",
+                                        "fieldType": "input",
+                                        "description": "To retrieve emails based on a specific label."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "The list of emails can be sort by date, messageid or size. The default sort order is date."
+                                    },
+                                    {
+                                        "id": "sortorder",
+                                        "name": "Sort Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "The sort order of the retrieved list, whether ascending or descending need to be specified here. The allowed values are truefor ascending and false for descending."
+                                    },
+                                    {
+                                        "id": "includeto",
+                                        "name": "Include To",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Whether the To details need to be included or not."
+                                    },
+                                    {
+                                        "id": "includearchive",
+                                        "name": "Include Archive",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Whether the Archived emails need to be included or not on the list of emails retrieved."
+                                    },
+                                    {
+                                        "id": "includesent",
+                                        "name": "Include Sent",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Whether Sent emails need to be included or not on the list of emails retrieved."
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input",
+                                        "description": "The list of fields that need to included in the retrieved list or not. "
+                                    },
+                                    {
+                                        "id": "attachedMails",
+                                        "name": "Attached Mails",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "To retrieve only the emails with attachments."
+                                    },
+                                    {
+                                        "id": "inlinedMails",
+                                        "name": "Inlined Mails",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "To retrieve only the emails with inlines."
+                                    },
+                                    {
+                                        "id": "flaggedMails",
+                                        "name": "Flagged Mails",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "To retrieve only flagged emails. "
+                                    },
+                                    {
+                                        "id": "respondedMails",
+                                        "name": "Responded Mails",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "To retrieve only replied emails."
+                                    },
+                                    {
+                                        "id": "threadedMails",
+                                        "name": "Threaded Mails",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "To retrieve emails that are a part of conversations."
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "Start",
+                                        "fieldType": "input",
+                                        "description": "The start sequence number of the emails to be retrieved, to retrieve a specific set of emails. The default value is 1."
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "fieldType": "input",
+                                        "description": "The number of emails to be retrieved from the start value mentioned. The default value is 10. "
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_emailsbasedonsearchconditions",
+                                "url": "/accounts/:_accountid/messages/search",
+                                "name": "List Search Results",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the list of emails, from the account based on custom search conditions.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Identifier for a specific account of an user. ",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "The list of emails can be sort by date, messageid or size. The default sort order is date."
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input",
+                                        "description": "The list of fields that need to included in the retrieved list or not. "
+                                    },
+                                    {
+                                        "id": "includeto",
+                                        "name": "Include To",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Whether the To details need to be included or not."
+                                    },
+                                    {
+                                        "id": "receivedTime",
+                                        "name": "Received Time",
+                                        "fieldType": "input",
+                                        "description": "By default, the value is before 2 minutes. "
+                                    },
+                                    {
+                                        "id": "searchKey",
+                                        "name": "Search Key",
+                                        "fieldType": "input",
+                                        "description": "To search for new emails, provide the searchKey as newMails.The custom Search Key built using the Search Syntax defined in this help page. "
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "Start",
+                                        "fieldType": "input",
+                                        "description": "The start sequence number of the emails to be retrieved, to retrieve a specific set of emails. The default value is 1."
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "fieldType": "input",
+                                        "description": "The number of emails to be retrieved from the start value mentioned. The default value is 10. "
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_metadataofaparticularemail",
+                                "url": "/accounts/:_accountid/folders/:_folderid/messages/:_messageid/details",
+                                "name": "Get email meta data",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the meta data details of a particular email message in the account, based on the message id.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Account number associated with the particular account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "fieldType": "input",
+                                        "description": "The unique identification number associated with the folder.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageid",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Message ID associated with the particular email.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_attachmentinfo",
+                                "url": "/accounts/:_accountid/folders/:_folderid/messages/:_messageid/attachmentinfo",
+                                "name": "Email Attachment Info",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the attachment information of a particular email message in the account, based on the message id.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Account number associated with the particular account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "fieldType": "input",
+                                        "description": "The unique identification number associated with the folder.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageid",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Message ID associated with the particular email.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "email_attachmentcontent",
+                                "url": "/accounts/:_accountid/folders/:_folderid/messages/:_messageid/attachments/:_attachid",
+                                "name": "Get Email Attachment content",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "The API is used to get the content stream of the attachments in an email. In case there are multiple attachments, the user needs to use the api for each attachment with respective details.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Account number associated with the particular account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "fieldType": "input",
+                                        "description": "The unique identification number associated with the folder.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageid",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Message ID associated with the particular email.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "attachid",
+                                        "name": "Attachment Id",
+                                        "fieldType": "input",
+                                        "description": "The attachment id of the particular attachment.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_emailcontent",
+                                "url": "/accounts/:_accountid/folders/:_folderid/messages/:_messageid/content",
+                                "name": "Get email content",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the content of a particular email message, based on the message id.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Account number associated with the particular account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "fieldType": "input",
+                                        "description": "The unique identification number associated with the folder.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageid",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Message ID associated with the particular email.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_emailheaders",
+                                "url": "/accounts/:_accountid/folders/:_folderid/messages/:_messageid/header",
+                                "name": "Email headers",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "description": "To get the email headers of a particular email message, based on the message id.",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Zoho Account number associated with the particular account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "fieldType": "input",
+                                        "description": "The unique identification number associated with the folder.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageid",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The unique Message ID associated with the particular email.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "organizations",
+                        "name": "Organizations",
+                        "sampleData": {
+                            "mode": "updateBaseStorage",
+                            "planType": "standard_10gb",
+                            "addonType": [
+                                "10gb:1",
+                                "1gb:2"
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "update_storageofauser",
+                                "url": "/organization/:_zoid/storage/:_zuid",
+                                "name": "Update User Storage",
+                                "method": "PUT",
+                                "description": "Modify the base storage/ addon storage for a particular user.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "zuid",
+                                        "name": "zuid",
+                                        "in": "path",
+                                        "description": "The unique Zoho User Identifier for the user",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_organizationspamprocessingtype",
+                                "url": "/organization/:_zoid/spamInfo",
+                                "name": "Update Org Spam Process",
+                                "method": "PUT",
+                                "description": "Modify the Spam Process Type of the organization, to enable or disable the Spam Processing. ",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zoid": 12345,
+                                    "mode": "updateSpamProcessType",
+                                    "spamVO": {
+                                        "spamProcessType": "sender_header"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "add_organization_spamlisting",
+                                "url": "/organization/:_zoid/addSpamInfo",
+                                "name": "Add Spam Listing",
+                                "method": "PUT",
+                                "description": "To add whitelist/ blacklist domains and email addresses to the organization spam lists.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zoid": 556335,
+                                    "mode": "addSpamCategory",
+                                    "spamVO": {
+                                        "spamCategory": "whiteListEmail",
+                                        "whiteListEmail": [
+                                            "contact1@clientdomain.com",
+                                            "contact2@myclient.com"
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "id": "remove_organizationspamlisting",
+                                "url": "/organization/:_zoid/addSpamInfo",
+                                "name": "Remove Spam Listing",
+                                "method": "PUT",
+                                "description": "To remove  whitelist/ blacklist domains and email addresses to the organization spam lists.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zoid": 556335,
+                                    "mode": "removeSpamCategory",
+                                    "spamVO": {
+                                        "spamCategory": "whiteListDomain",
+                                        "whiteListDomain": [
+                                            "someolddomain.com",
+                                            "wrongdomain.com"
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "domains",
+                        "name": "Domains",
+                        "sampleData": {
+                            "mode": "enableMailHosting",
+                            "domainName": "zylker.com"
+                        },
+                        "operations": [
+                            {
+                                "id": "add_domaintoanorganization",
+                                "url": "/organization/:_zoid/domains",
+                                "name": "Add Domain to an Organization",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Add a domain to the organization.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "name": "Domain Name",
+                                        "in": "path",
+                                        "description": "Name of the domain which has to be verified.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "domainname": "zylkernew.com"
+                                }
+                            },
+                            {
+                                "id": "verify_adomainintheorganization",
+                                "url": "/organization/:_zoid/domains/:_domainname",
+                                "name": "Verify Domain",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Verify the domain by one of the verification methods.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "name": "Domain Name",
+                                        "in": "path",
+                                        "description": "Name of the domain which has to be verified.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "verifyDomainByCNAME",
+                                    "domainName": "zylkernew.org"
+                                }
+                            },
+                            {
+                                "id": "make_adomainasprimary",
+                                "url": "/organization/:_zoid/domains/:_domainname",
+                                "name": "Make Primary Domain",
+                                "method": "PUT",
+                                "description": "Make the domain as Primary domain in the Organization.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "name": "Domain Name",
+                                        "in": "path",
+                                        "description": "Name of the domain which has to be verified.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "enable_emailhostingforadomain",
+                                "url": "/organization/:_zoid/domains/:_domainname",
+                                "name": "Enable Email Hosting",
+                                "method": "PUT",
+                                "description": "Enable Email Hosting for the specific domain",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "name": "Domain Name",
+                                        "in": "path",
+                                        "description": "Name of the domain which has to be verified.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "disable_emailhostingforadomain",
+                                "url": "/organization/:_zoid/domains/:_domainname",
+                                "name": "Disable Email Hosting",
+                                "method": "PUT",
+                                "description": "Disable Email Hosting for the specific domain.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "name": "Domain Name",
+                                        "in": "path",
+                                        "description": "Name of the domain which has to be verified.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "make_adomainasanaliasdomain",
+                                "url": "/organization/:_zoid/domains/:_domainname",
+                                "name": "Make Alias Domain",
+                                "method": "PUT",
+                                "description": "Make the domain as an alias to the other domain.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "name": "Domain Name",
+                                        "in": "path",
+                                        "description": "Name of the domain which has to be verified.",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "makeDomainAsAlias",
+                                    "domainAlias": "zylkernew.com",
+                                    "domainName": "zylker.com"
+                                }
+                            },
+                            {
+                                "id": "remove_adomainfromdomainalias",
+                                "url": "/organization/:_zoid/domains/:_domainname",
+                                "name": "Remove Alias Domain",
+                                "method": "PUT",
+                                "description": "Remove the alias marking between the domains.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "name": "Domain Name",
+                                        "in": "path",
+                                        "description": "Name of the domain which has to be verified.",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "removeDomainAlias",
+                                    "domainAlias": "zylkernew.com",
+                                    "domainName": "zylker.com"
+                                }
+                            },
+                            {
+                                "id": "delete_adomainfromtheorganization",
+                                "url": "/organization/:_zoid/domains/:_domainname",
+                                "name": "Delete Domain",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete the domain from the Organization.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "domainname",
+                                        "in": "path",
+                                        "description": "Name of the domain which has to be verified.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "domainname": "zylkernew.com"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groups",
+                        "name": "Groups",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "to_createanewgroup",
+                                "url": "/organization/:_zoid/groups",
+                                "name": "Add group",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Create a new group with the specified settings",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "emailId": "support@zylkernew.com",
+                                    "name": "Customer Support",
+                                    "stremsEnabled": true,
+                                    "accessType": "Public",
+                                    "mailGroupMemberList": [
+                                        {
+                                            "memberEmailId": "mark@zylkernew.com"
+                                        },
+                                        {
+                                            "memberEmailId": "tina@zylkernew.com"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "to_enablestreamsforanewgroup",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Enable Streams group",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Enable Streams for a specific group",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "enableStreams"
+                                }
+                            },
+                            {
+                                "id": "to_addmailgroupmembers",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Add group members",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Add group members and define the respective roles",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mailGroupMemberList": [
+                                        {
+                                            "zuid": 123456,
+                                            "memberEmailId": "mark.francis@zylkernew.com",
+                                            "role": "moderator"
+                                        },
+                                        {
+                                            "memberEmailId": "tina.francis@zylkerother.com",
+                                            "role": "member"
+                                        }
+                                    ],
+                                    "mode": "addMailGroupMember"
+                                }
+                            },
+                            {
+                                "id": "to_changestatusofmembers",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Change member status",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Enable Email Hosting for the specific domain",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mailGroupMemberList": [
+                                        {
+                                            "status": "active",
+                                            "memberEmailId": "memName1@orgdomain.com"
+                                        }
+                                    ],
+                                    "mode": "updateMemberStatus"
+                                }
+                            },
+                            {
+                                "id": "to_changememberroles",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Change member role",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Change the role of a member in a  group",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mailGroupMemberList": [
+                                        {
+                                            "zuid": 1542753,
+                                            "role": "moderator"
+                                        }
+                                    ],
+                                    "mode": "changeMemberRole"
+                                }
+                            },
+                            {
+                                "id": "to_changememberdetails",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Change member setting",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Change the details of a member in a group",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mailGroupMemberList": [
+                                        {
+                                            "memberEmailId": "randerson@zylker.com",
+                                            "ackStatus": true,
+                                            "postApproval": "accept",
+                                            "status": "active",
+                                            "role": "member"
+                                        }
+                                    ],
+                                    "mode": "updateGroupMemberDetails"
+                                }
+                            },
+                            {
+                                "id": "to_updategroupname",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Change group name",
+                                "method": "PUT",
+                                "description": "Update the name of the group",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "updateGroupName",
+                                    "name": "Designers and WebDevelopers"
+                                }
+                            },
+                            {
+                                "id": "to_changegeneralandtextsettings",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Change group text settings",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Update the general and text settings of the group",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "groupGeneralSettings": {
+                                        "bounceThreshold": 11,
+                                        "replyTo": "marketing@zylkernew.com",
+                                        "mailboxId": 1000000009001,
+                                        "notifSubscription": 1,
+                                        "subjectPrefix": "abc"
+                                    },
+                                    "groupTextSettings": {
+                                        "bounceText": "Your email to the marketing@zylkernew.com cannot be delivered due to the Group rules",
+                                        "adminNonMemberApprovalText": "Your email to the group marketing@zylkernew.com has been approved and delivered to the group.",
+                                        "ackStatusText": "Your email to the group marketing@zylkernew.com has been held for review by the moderator and is in moderation queue",
+                                        "adminMemberApprovalText": "Your email to the group marketing@zylkernew.com has been approved and delivered to the group.",
+                                        "subscriptionText": "You have been added as a member of the group and you will receive emails sent to marketing@zylkernew.com",
+                                        "unSubscriptionText": "You have been un-subscribed from the group marketing@zylkernew.com and you will no longer receive emails sent to the group.",
+                                        "mailboxId": 1000000009001,
+                                        "rejectText": "Your email sent to the group marketing@zylkernew.com was considered inappropriate to the group and was rejected by the moderator.",
+                                        "autoResponseText": "Thanks for your email to marketing@zylkernew.com.",
+                                        "memberApprovalText": "Your email sent to the group marketing@zylkernew.com was approved by the moderator and sent to the group.",
+                                        "spamApprovalText": "An email suspected as spam has been approved and delivered to the group",
+                                        "isNotToOrCcText": "An email was rejected as the group email address was not in To/ Cc and the group cannot accept bcc emails. "
+                                    },
+                                    "mode": "updateMailGroupOptions"
+                                }
+                            },
+                            {
+                                "id": "to_changeadminsettings",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Change advanced admin settings",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Change the administrator settings of the group",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "groupAdminSettings": {
+                                        "authorNotify": true,
+                                        "holdOrBounce": "hold",
+                                        "mailboxSendRights": true,
+                                        "postApprovedNotify": true,
+                                        "spamMarkPermission": true,
+                                        "suppressMailOnMemAdd": true,
+                                        "mailboxId": 1000000009001,
+                                        "spamApproval": true,
+                                        "adminNotify": true,
+                                        "isNotToCc": true
+                                    },
+                                    "accessType": "Public",
+                                    "mode": "updateMailGroupAdvOptions"
+                                }
+                            },
+                            {
+                                "id": "to_moderatemail",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Moderate group email",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Moderate the email",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "messageList": [
+                                        19000000002003
+                                    ],
+                                    "status": "accept"
+                                }
+                            },
+                            {
+                                "id": "to_addemailalias",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Add group email alias",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Add the group email alias",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "addGroupAlias",
+                                    "aliasList": [
+                                        "test@hello.com"
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "to_removeemailalias",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "Remove group email alias",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Remove the group email alias",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "deleteGroupAlias",
+                                    "aliasList": [
+                                        "marketing-temp@zylker.com"
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "to_deleteagroup",
+                                "url": "/organization/:_zoid/groups/:_groupid",
+                                "name": "To delete a group",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete a group",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "groupid",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "The unique Identifier for a specific group in the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "zuid": 1502252,
+                            "mode": "resetPassword"
+                        },
+                        "operations": [
+                            {
+                                "id": "add_useraccounttoanorg",
+                                "url": "/organization/:_zoid/accounts",
+                                "name": "Add User to Organization",
+                                "method": "POST",
+                                "description": "Add an user account to the organization.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "role": "member",
+                                    "emailAddress": "newuser1@mybizemail.com",
+                                    "primaryEmailAddress": "newuser1@mybizemail.com",
+                                    "timeZone": "Asia/Kolkata",
+                                    "language": "En",
+                                    "displayName": "New User 1",
+                                    "password": "Abc@123",
+                                    "userExist": false,
+                                    "country": "in"
+                                }
+                            },
+                            {
+                                "id": "change_theroleofauser",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Change User role",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Change the role of a user as administrator and vice versa.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "changeRole",
+                                    "role": "user"
+                                }
+                            },
+                            {
+                                "id": "reset_thepasswordofauser",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Reset User Password",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Reset the password of a user in the organization.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": 1502252,
+                                    "password": "Jan1$gra",
+                                    "adminPassword": "testtest",
+                                    "mode": "resetPassword"
+                                }
+                            },
+                            {
+                                "id": "add_anemailaliastotheuseraccount",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Add Email Alias",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Add an email alias to a users mail account.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "addEmailAlias",
+                                    "emailAlias": [
+                                        "philip@myotherdomain.com"
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "delete_anemailaliasfromtheuseraccount",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Remove Email Alias",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Remove an email alias associated with the user account.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "deleteEmailAlias",
+                                    "emailAlias": [
+                                        "philip@myotherdomain.com"
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "enable_theusersmailaccount",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Enable User Account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Enable the email account of a particular user.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "disable_theusersmailaccount",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Disable User Account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Disable the email account of a particular user and prevent login.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "change_incomingstatus",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Change Incoming Status",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To change the incoming status of a user from enabled to disabled or vice-versa.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "663450023",
+                                    "mode": "updateIncomingStatus",
+                                    "incomingBlocked": "true"
+                                }
+                            },
+                            {
+                                "id": "change_outgoingstatus",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Change Outgoing status",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To change the outgoing status of a user from enabled to disabled or vice-versa.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "663450023",
+                                    "mode": "updateOutgoingStatus",
+                                    "outgoingBlocked": "true"
+                                }
+                            },
+                            {
+                                "id": "change_imapstatus",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Change IMAP Status",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To change the IMAP status of a user from enabled to disabled or vice-versa. ",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "updateIMAPStatus",
+                                    "imapAccessEnabled": "true",
+                                    "popAccessEnabled": "true"
+                                }
+                            },
+                            {
+                                "id": "change_popstatus",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Change POP Status",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To change the POP status of a user from enabled to disabled or vice-versa. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "updateIMAPStatus",
+                                    "imapAccessEnabled": "true",
+                                    "popAccessEnabled": "true"
+                                }
+                            },
+                            {
+                                "id": "change_activesyncstatus",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Change ActiveSync Status",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To change the ActiveSync status of a user from enabled to disabled or vice-versa.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "663450023",
+                                    "mode": "updateMobileSyncStatus",
+                                    "activeSyncEnabled": "true"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "add_sendmaildetails",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Add Send Mail Details",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To add send mail details such as the Display name and the Email Address of the user. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "addsendmaildetails",
+                                    "sendMailDetails": [
+                                        {
+                                            "fromAddress": "austin@zylker.com",
+                                            "displayName": "Austin Keyes",
+                                            "mode": "alias",
+                                            "serverPort": "9225",
+                                            "serverName": "mail-ubuntu2.csez.zohocorpin.com",
+                                            "userName": "austinkeyes",
+                                            "password": "Kan1$gra",
+                                            "smtpConnection": "plain"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "update_displayname",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Update Display Name",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To Update the Display name of the user. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "updateDisplayName",
+                                    "displayName": "Rebecca Anderson"
+                                }
+                            },
+                            {
+                                "id": "update_mailaccount",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Update Mail Account Sequence",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To update the sequence of Mail Accounts added to the user's account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "mailaccountorderupdate",
+                                    "accList": "5111110000000008001,5111110000000009001"
+                                }
+                            },
+                            {
+                                "id": "update_emailaddress",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Update Email Address",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To update the Email Address of the user. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "emailupdate",
+                                    "emailAddress": "rebecca@zylker.com"
+                                }
+                            },
+                            {
+                                "id": "update_displayname/emailaddress",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Update Display Name/ Email Address",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To Update the Display name and the Email Address of the user. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "displaynameemailupdate",
+                                    "emailAddress": "rebecca@zylker.com",
+                                    "displayName": "Rebecca Anderson"
+                                }
+                            },
+                            {
+                                "id": "update_replytoaddress",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Update Reply To Address",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To update the Reply-To Address of the account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "updateReplyToStatus",
+                                    "replyTo": "marketing@zylker.com"
+                                }
+                            },
+                            {
+                                "id": "resend_verificationreplytoaddress",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Resend Verification - Reply-To address",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To resend the verification email for confirming the Reply-To address associated with the account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "resendVerificationMailForReplyTo"
+                                }
+                            },
+                            {
+                                "id": "add_emailforwarding",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Add Email Forwarding",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To add Email Forwarding for a user account to a particular email address. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "addMailForward",
+                                    "mailForward": [
+                                        {
+                                            "mailForwardTo": "paula@zylker.com",
+                                            "type": "user"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "verify_emailforwarding",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Verify Email Forwarding",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To verify the Email Forwarding for a user account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mailForward": [
+                                        {
+                                            "mailForwardTo": "backupaccount@myotherdomain.com"
+                                        }
+                                    ],
+                                    "mode": "verifyMailForward"
+                                }
+                            },
+                            {
+                                "id": "resend_verificationemailforemailforwarding",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Resend Verification email for Email Forwarding",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To resend the verification email for confirming the Email Forwarding to the account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mailForward": [
+                                        {
+                                            "mailForwardTo": "backupaccount@myotherdomain.com"
+                                        }
+                                    ],
+                                    "mode": "resendMailForwardVerficationMail"
+                                }
+                            },
+                            {
+                                "id": "enable_emailforwarding",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Enable Email Forwarding",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To enable the Email Forwarding for a user account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "enableMailForward",
+                                    "mailForward": [
+                                        {
+                                            "mailForwardTo": "paula@zylker.com"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "disable_emailforwarding",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Disable Email Forwarding",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To disable the Email Forwarding configured for the account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mailForward": [
+                                        {
+                                            "mailForwardTo": "backup@mydomain.com",
+                                            "reason": "Account to be deleted"
+                                        }
+                                    ],
+                                    "mode": "disableMailForward"
+                                }
+                            },
+                            {
+                                "id": "delete_copyduringemailforwarding",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Delete copy during Email Forwarding",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To delete the Zoho Mail copy of email after forwarding the email. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "deleteCopy": "false",
+                                    "mode": "deleteZohoMailCopy"
+                                }
+                            },
+                            {
+                                "id": "delete_emailforwarding",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Delete Email Forwarding",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To delete email forwarding configured for an email address. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mailForward": [
+                                        {
+                                            "type": "user",
+                                            "mailForwardTo": "backup@mydomain.com"
+                                        }
+                                    ],
+                                    "mode": "deleteMailForward"
+                                }
+                            },
+                            {
+                                "id": "add_vacationreply",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Add Vacation Reply",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To add Vacation Reply to the account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "addVacationReply",
+                                    "vacationResponse": {
+                                        "subject": "Away on Vacation!",
+                                        "content": "Will not be available from 13-01-18 to 19-01-18 as I'm away on vacation. Contact me on my personal number in case of emergencies.",
+                                        "fromDate": "13-01-18",
+                                        "toDate": "19-01-18",
+                                        "forAllAccts": "true",
+                                        "sendingInt": "3",
+                                        "sendTo": "all"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_vacationreply",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Update Vacation Reply",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To update the Vacation Reply configured for the account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "updateVacationReply",
+                                    "vacationResponse": {
+                                        "subject": "Away on Vacation!",
+                                        "content": "Will not be available from 13-01-18 to 19-01-18 as I'm away on vacation. Contact me on my personal number in case of emergencies.",
+                                        "fromDate": "13-01-18",
+                                        "toDate": "19-01-18",
+                                        "forAllAccts": "true",
+                                        "sendingInt": "3",
+                                        "sendTo": "all"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_vacationreply",
+                                "url": "/organization/:_zoid/accounts/:_accountid",
+                                "name": "Delete Vacation Reply",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To delete the Vacation Reply added to the account. This can be done by the Admin for a user or by the user for himself.",
+                                "parameters": [
+                                    {
+                                        "id": "zoid",
+                                        "name": "zoid",
+                                        "in": "path",
+                                        "description": "The unique Zoho Organization Identified for the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "zuid": "1111111",
+                                    "mode": "deleteVacationReply"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "folders",
+                        "name": "Folders",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "create_newfolder",
+                                "url": "/accounts/:_accountid/folders",
+                                "name": "Create new Folder",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "It adds the specified folder to the particular account.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "The Folder ID of the specific folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "parentFolderId": 9000000009001,
+                                    "folderName": "newCustomFolder"
+                                }
+                            },
+                            {
+                                "id": "mark_folderasread",
+                                "url": "/accounts/:_accountid/folders/:_folderid",
+                                "name": "Mark Folder as Read ",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "It helps to mark the specified folder as read.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "The Folder ID of the specific folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "markAsRead"
+                                }
+                            },
+                            {
+                                "id": "move_folder",
+                                "url": "/accounts/:_accountid/folders/:_folderid",
+                                "name": "Move Folder",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Moves the particular folder under a different parent folder.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "The Folder ID of the specific folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "move",
+                                    "ParentFolderID": "900000012345"
+                                }
+                            },
+                            {
+                                "id": "rename_folder",
+                                "url": "/accounts/:_accountid/folders/:_folderid",
+                                "name": "Rename Folder",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Renames the particular folder with the given name.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "The Folder ID of the specific folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "rename",
+                                    "FolderName": "NewName"
+                                }
+                            },
+                            {
+                                "id": "enable_imapviewforafolder",
+                                "url": "/accounts/:_accountid/folders/:_folderid",
+                                "name": "Enable IMAP View for a Folder",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To enable the folder to be viewable and accessible via IMAP.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "The Folder ID of the specific folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "setViewableInIMAP"
+                                }
+                            },
+                            {
+                                "id": "disable_imapviewforafolder",
+                                "url": "/accounts/:_accountid/folders/:_folderid",
+                                "name": "Disable IMAP View for a Folder",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To disable the folder from being viewable and makes the folder not accessible via IMAP. ",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "The Folder ID of the specific folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "setViewableInIMAP"
+                                }
+                            },
+                            {
+                                "id": "empty_folder",
+                                "url": "/accounts/:_accountid/folders/:_folderid",
+                                "name": "Empty Folder",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "To delete all the emails in the specified folder.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "The Folder ID of the specific folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "mode": "setViewableInIMAP"
+                                }
+                            },
+                            {
+                                "id": "delete_folder",
+                                "url": "/accounts/:_accountid/folders/:_folderid",
+                                "name": "Delete Folder",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete the domain from the Organization.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "folderid",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "The Folder ID of the specific folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "labels",
+                        "name": "Labels",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "create_newlabel",
+                                "url": "/accounts/:_accountid/labels",
+                                "name": "Create a new Label",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new Label in the specified account.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "labelid",
+                                        "name": "Label Id",
+                                        "in": "path",
+                                        "description": "The Label ID of the specific label.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "color": "#FFFFFF",
+                                    "displayName": "Campaigns"
+                                }
+                            },
+                            {
+                                "id": "update_label",
+                                "url": "/accounts/:_accountid/labels/:_labelid",
+                                "name": "Update Label",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates the particular Label with the given display name, color, and the sequence.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "labelid",
+                                        "name": "Label Id",
+                                        "in": "path",
+                                        "description": "The Label ID of the specific label.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "displayName": "MyNewName",
+                                    "color": "#FFFFF"
+                                }
+                            },
+                            {
+                                "id": "delete_label",
+                                "url": "/accounts/:_accountid/labels/:_labelid",
+                                "name": "Delete Label",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "deletes the Label and remove the Label from all the associated messages.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "labelid",
+                                        "name": "Label Id",
+                                        "in": "path",
+                                        "description": "The Label ID of the specific label.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "email",
+                        "name": "Email",
+                        "sampleData": {
+                            "fromAddress": "my@mydomain.com",
+                            "toAddress": "family@mydomain.com",
+                            "ccAddress": "colleagues@mywork.com",
+                            "bccAddress": "restadmin1@restapi.com",
+                            "subject": "Email - Always and Forever"
+                        },
+                        "operations": [
+                            {
+                                "id": "send_anemail",
+                                "url": "/accounts/:_accountid/messages",
+                                "name": "Send an Email",
+                                "method": "POST",
+                                "description": "It is used to Send an Email.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "fromAddress": "my@mydomain.com",
+                                    "toAddress": "family@mydomain.com",
+                                    "ccAddress": "colleagues@mywork.com",
+                                    "bccAddress": "restadmin1@restapi.com",
+                                    "subject": "Email - Always and Forever",
+                                    "content": "Email can never be dead. The most neutral and effective way, that can be used for one to many and two way communication."
+                                }
+                            },
+                            {
+                                "id": "send_anemailwithattachments",
+                                "url": "/accounts/:_accountid/messages",
+                                "name": "Send an Email with Attachments",
+                                "method": "POST",
+                                "description": "To Send an Email with attachments.",
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account Id",
+                                        "in": "path",
+                                        "description": "Account Id of the user",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "fromAddress": "my@mydomain.com",
+                                    "toAddress": "family@mydomain.com",
+                                    "ccAddress": "colleagues@mywork.com",
+                                    "bccAddress": "restadmin1@restapi.com",
+                                    "subject": "abc",
+                                    "content": "Email can never be dead. The most neutral and effective way, that can be used for one to many and two way communication.",
+                                    "attachments": [
+                                        {
+                                            "storeName": "NN2:-167775813820412438",
+                                            "attachmentPath": "/1425407266885_ourholidays",
+                                            "attachmentName": "ourholidays.jpg"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

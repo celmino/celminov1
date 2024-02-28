@@ -1,0 +1,3417 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "skipargument",
+            "skipArgument": "start"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "config.address",
+                        "name": "Config.Address",
+                        "endpoints": [
+                            {
+                                "id": "config.address.get",
+                                "url": "/config/address/get.json",
+                                "name": "get",
+                                "description": "Get address.",
+                                "method": "POST",
+                                "successPath": "record",
+                                "resourcePath": "record",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Id of the address",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "config.address.fetch",
+                                "url": "/config/address/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch customer addresses by address_id or customer_id.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "address_id",
+                                        "name": "address_id",
+                                        "description": "array of Address Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "customer_id",
+                                        "name": "customer_id",
+                                        "description": "Id of the customer."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.attribute",
+                        "name": "Config.Attribute",
+                        "endpoints": [
+                            {
+                                "id": "config.attribute.fetch",
+                                "url": "/config/attribute/fetch.json",
+                                "name": "fetch",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Id's of the attributes (array of: integer)"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Search for atributes by name. Defaults to all if no ID is provided"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active"
+                                    },
+                                    {
+                                        "id": "with_inactive",
+                                        "name": "with_inactive",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Include inactive attributes"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.brand",
+                        "name": "Config.Brand",
+                        "endpoints": [
+                            {
+                                "id": "config.brand.get",
+                                "url": "/config/brand/get.json",
+                                "name": "get",
+                                "description": "Get a brand.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Id of the brand",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "config.brand.list",
+                                "url": "/config/brand/list.json",
+                                "name": "list",
+                                "description": "List brands.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Search for brands by name. Defaults to all brands."
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active."
+                                    },
+                                    {
+                                        "id": "with_extra",
+                                        "name": "with_extra",
+                                        "description": "Returns description and status if set."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.channel",
+                        "name": "Config.Channel",
+                        "endpoints": [
+                            {
+                                "id": "config.channel.fetch",
+                                "url": "/config/channel/fetch.json",
+                                "name": "fetch",
+                                "description": "List order channels. Returns all active channels by default",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "definition_id",
+                                        "name": "definition_id",
+                                        "description": "Id of the definition",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Search for channels by name. Defaults to all channels."
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Accepts active,inactive. Default active."
+                                    },
+                                    {
+                                        "id": "with_subchannels ",
+                                        "name": "with_subchannels ",
+                                        "description": "Returns description and status if set."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.facility",
+                        "name": "Config.Facility",
+                        "endpoints": [
+                            {
+                                "id": "config.facility.fetch",
+                                "url": "/config/facility/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch a list of facilities.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Id of the facility",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Search for facilities by name. Defaults to all facilities."
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Accepts active,inactive. Default active."
+                                    },
+                                    {
+                                        "id": "query",
+                                        "name": "query",
+                                        "description": "query to fetch the required details"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.fulfillment.actor",
+                        "name": "Config.Fulfillment.Actor",
+                        "endpoints": [
+                            {
+                                "id": "config.fulfillment.actor.fetch",
+                                "url": "/config/fulfillment/actor/fetch.json",
+                                "name": "fetch",
+                                "description": "Fulfillment actors are parties to a fulfillment action. A fulfillment actor may be either a sender or a recipient in a given scenario. A fulfillment actor a type, which may be either a facility, or a vendor.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "flags",
+                                        "name": "flags",
+                                        "description": "Id of the facility"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Search for Fulfillment actors by name. Defaults to all Fulfillment actors."
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "facility",
+                                            "vendor"
+                                        ],
+                                        "description": "Type of Actor"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.inventory.adjustmentreason",
+                        "name": "Config.Inventory.AdjustmentReason",
+                        "endpoints": [
+                            {
+                                "id": "config.inventory.adjustmentreason.fetch",
+                                "url": "/config/inventory/adjustmentreason/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch Adjustment Reasons.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "Type of Adjustment Reasons"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.order.cancelreason",
+                        "name": "Config.Order.CancelReason",
+                        "endpoints": [
+                            {
+                                "id": "config.order.cancelreason.fetch",
+                                "url": "/config/order/cancelreason/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch Cancel Reason",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.order.discountreason",
+                        "name": "Config.Order.DiscountReason",
+                        "endpoints": [
+                            {
+                                "id": "config.order.discountreason.fetch",
+                                "url": "/config/order/discountreason/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch discount reasons.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.order.itemoption",
+                        "name": "Config.Order.ItemOption",
+                        "endpoints": [
+                            {
+                                "id": "config.order.itemoption.fetch",
+                                "url": "/config/order/itemoption/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch Order Item Options",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.returnitemreason",
+                        "name": "Config.ReturnItemReason",
+                        "endpoints": [
+                            {
+                                "id": "config.returnitemreason.fetch",
+                                "url": "/config/returnitemreason/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch Adjustment Reason",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.subchannel",
+                        "name": "Config.Subchannel",
+                        "endpoints": [
+                            {
+                                "id": "config.subchannel.fetch",
+                                "url": "/config/subchannel/fetch.json",
+                                "name": "fetch",
+                                "description": "List subchannels",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "channel_id",
+                                        "name": "channel_id",
+                                        "description": "Id of the channel.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "name of the subchannel."
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ],
+                                        "description": "Accepts active,inactive. Default active"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.user",
+                        "name": "Config.User",
+                        "endpoints": [
+                            {
+                                "id": "config.user.read",
+                                "url": "/config/user/read.json",
+                                "name": "read",
+                                "description": "Fetch a list of Users.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "with_inactive",
+                                        "name": "with_inactive",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Shows only active users by default",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.vendor",
+                        "name": "Config.Vendor",
+                        "endpoints": [
+                            {
+                                "id": "config.vendor.fetch",
+                                "url": "/config/vendor/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch a list of vendors.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "allrecords",
+                                        "name": "allrecords",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": ""
+                                    },
+                                    {
+                                        "id": "definition_id",
+                                        "name": "definition_id",
+                                        "description": "Id of the definition"
+                                    },
+                                    {
+                                        "id": "query",
+                                        "name": "query",
+                                        "description": "Substring search"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "constant.appversion",
+                        "name": "Constant.AppVersion",
+                        "endpoints": [
+                            {
+                                "id": "constant.appversion.fetch",
+                                "url": "/constant/appversion/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch a list of available application versions.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {}
+                            }
+                        ]
+                    },
+                    {
+                        "id": "constant.country",
+                        "name": "Constant.Country",
+                        "endpoints": [
+                            {
+                                "id": "constant.country.fetch",
+                                "url": "/constant/country/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch a list of countries.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "query",
+                                        "description": "Substring search"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "constant.payment.terms",
+                        "name": "Constant.Payment.Terms",
+                        "endpoints": [
+                            {
+                                "id": "constant.payment.terms.fetch",
+                                "url": "/constant/payment/terms/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch a list of payment terms.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "query",
+                                        "description": "Substring search"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "constant.ship.carrier",
+                        "name": "Constant.Ship.Carrier",
+                        "endpoints": [
+                            {
+                                "id": "constant.ship.carrier.fetch",
+                                "url": "/constant/ship/carrier/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch Ship Carriers.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Id of the ship carrier"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Name of the Ship Carriers"
+                                    },
+                                    {
+                                        "id": "with_account",
+                                        "name": "with_account",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "constant.ship.carrierclass",
+                        "name": "Constant.Ship.CarrierClass",
+                        "endpoints": [
+                            {
+                                "id": "constant.ship.carrierclass.fetch",
+                                "url": "/constant/ship/carrierclass/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch ship carrier classes.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "all",
+                                        "name": "all",
+                                        "description": "display all carriers. Defaults to mapped carriers"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Id of the shiping carrier classes"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Name of the shipping carrier classes"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "constant.ship.packagingtype",
+                        "name": "Constant.Ship.PackagingType",
+                        "endpoints": [
+                            {
+                                "id": "constant.ship.packagingtype.fetch",
+                                "url": "/constant/ship/packagingtype/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch ship package types.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "ship_class_id",
+                                        "name": "ship_class_id",
+                                        "description": "Ship Class Id"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "constant.ship.speed",
+                        "name": "Constant.Ship.Speed",
+                        "endpoints": [
+                            {
+                                "id": "constant.ship.speed.fetch",
+                                "url": "/constant/ship/speed/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch ship package speeds.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {}
+                            }
+                        ]
+                    },
+                    {
+                        "id": "constant.state",
+                        "name": "Constant.State",
+                        "endpoints": [
+                            {
+                                "id": "constant.state.fetch",
+                                "url": "/constant/state/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch a list of States/Provinces.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "country_id",
+                                        "name": "country_id",
+                                        "description": "Id of the country"
+                                    },
+                                    {
+                                        "id": "query",
+                                        "name": "query",
+                                        "description": "Substring search"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer",
+                        "name": "Customer",
+                        "endpoints": [
+                            {
+                                "id": "customer.fetch",
+                                "url": "/customer/fetch.json",
+                                "name": "fetch",
+                                "description": "Retrieve data for one or more customers.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "name": "customer_id",
+                                        "description": "Id of the customer",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "with_storecredit",
+                                        "name": "with_storecredit",
+                                        "description": "Include storecredit"
+                                    },
+                                    {
+                                        "id": "with_tags",
+                                        "name": "with_tags",
+                                        "description": "Include tags"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.address",
+                        "name": "Customer.Address",
+                        "endpoints": [
+                            {
+                                "id": "customer.address.fetch",
+                                "url": "/customer/address/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch customer addresses by address_id or customer_id.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "name": "customer_id",
+                                        "description": "Id of the customer"
+                                    },
+                                    {
+                                        "id": "address_id",
+                                        "name": "address_id",
+                                        "description": "Id of the address"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "customer.address.get",
+                                "url": "/customer/address/get.json",
+                                "name": "get",
+                                "description": "Fetch customer addresses.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Id of the address"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.order",
+                        "name": "Customer.Order",
+                        "endpoints": [
+                            {
+                                "id": "customer.order.fetch",
+                                "url": "/customer/order/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch customer addresses by address_id or customer_id.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "channel_id",
+                                        "name": "channel_id",
+                                        "description": "The ID of the originating channel"
+                                    },
+                                    {
+                                        "id": "channel_refnum",
+                                        "name": "channel_refnum",
+                                        "description": "Order number, or reference number from originating channel. Requires channel_id be specified"
+                                    },
+                                    {
+                                        "id": "customer_id",
+                                        "name": "customer_id",
+                                        "description": "RetailOps customer id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "order_id",
+                                        "name": "order_id",
+                                        "description": "RetailOps order id"
+                                    },
+                                    {
+                                        "id": "with_quantities",
+                                        "name": "with_quantities",
+                                        "description": "Include quantity summary with cancelability estimate for each order"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.order.item",
+                        "name": "Customer.Order.Item",
+                        "endpoints": [
+                            {
+                                "id": "customer.order.item.list",
+                                "url": "/customer/order/item/list.json",
+                                "name": "list",
+                                "description": "List line items for a given customer order.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "order_id",
+                                        "name": "order_id",
+                                        "description": "The ID of the originating channel",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "with_options",
+                                        "name": "with_options",
+                                        "description": "Include options"
+                                    },
+                                    {
+                                        "id": "with_returns",
+                                        "name": "with_returns",
+                                        "description": "Include returns",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.rma",
+                        "name": "Customer.RMA",
+                        "endpoints": [
+                            {
+                                "id": "customer.rma.fetch",
+                                "url": "/customer/rma/fetch.json",
+                                "name": "fetch",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "rma_id",
+                                        "name": "rma_id",
+                                        "description": "The ID of the RMA",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.rma.item",
+                        "name": "Customer.RMA.Item",
+                        "endpoints": [
+                            {
+                                "id": "customer.rma.item.fetch",
+                                "url": "/customer/rma/item/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch a list of existing RMA items",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "rma_id",
+                                        "name": "rma_id",
+                                        "description": "The ID of the RMA",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "with_all_oitems",
+                                        "name": "with_all_oitems",
+                                        "description": "Include all order items which may be returned"
+                                    },
+                                    {
+                                        "id": "with_component",
+                                        "name": "with_component",
+                                        "description": "Include a list of assembly/bundle component sub items"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.storecredit.transaction",
+                        "name": "Customer.StoreCredit.Transaction",
+                        "endpoints": [
+                            {
+                                "id": "customer.storecredit.transaction.list",
+                                "url": "/customer/storecredit/transaction/list.json",
+                                "name": "list",
+                                "description": "List store credit transaction history for a given customer_id",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "name": "customer_id",
+                                        "description": "The ID of the customer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillment.asn",
+                        "name": "Fulfillment.ASN",
+                        "endpoints": [
+                            {
+                                "id": "fulfillment.asn.fetch",
+                                "url": "/fulfillment/asn/fetch.json",
+                                "name": "fetch",
+                                "description": "Retrieve Advance Shipment Notifications.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "RetailOps ASN ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Pending acknowledged"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "Type of ASN"
+                                    },
+                                    {
+                                        "id": "vendor_id",
+                                        "name": "vendor_id",
+                                        "description": "ID of the Vendor"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillment.package",
+                        "name": "Fulfillment.Package",
+                        "endpoints": [
+                            {
+                                "id": "fulfillment.package.fetch",
+                                "url": "/fulfillment/package/fetch.json",
+                                "name": "fetch",
+                                "description": "Retrieve package.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "package_id",
+                                        "name": "package_id",
+                                        "description": "Id of the package",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "shipment_id",
+                                        "name": "shipment_id",
+                                        "description": "Id of the shipment"
+                                    },
+                                    {
+                                        "id": "with_order",
+                                        "name": "with_order",
+                                        "description": "Include order information"
+                                    },
+                                    {
+                                        "id": "with_package_items",
+                                        "name": "with_package_items",
+                                        "description": "Include shipment items in the response data"
+                                    },
+                                    {
+                                        "id": "with_product",
+                                        "name": "with_product",
+                                        "description": "Include product information"
+                                    },
+                                    {
+                                        "id": "with_ship_address",
+                                        "name": "with_ship_address",
+                                        "description": "Include ship address information"
+                                    },
+                                    {
+                                        "id": "with_ship_service",
+                                        "name": "with_ship_service",
+                                        "description": "Include ship service information"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillment.shipment",
+                        "name": "Fulfillment.Shipment",
+                        "endpoints": [
+                            {
+                                "id": "fulfillment.shipment.fetch",
+                                "url": "/fulfillment/shipment/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch shipments by order_id, by wave_id, or screen shipments for a wave",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "facility_id",
+                                        "name": "facility_id",
+                                        "description": "Id of the facility(status is required parameter if we are giving facility)"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "limit",
+                                        "description": "Number of items to be included in results. defaults to 100. Max 1000"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "RetailOps Shipment ID"
+                                    },
+                                    {
+                                        "id": "order_id",
+                                        "name": "order_id",
+                                        "description": "RetailOps Order ID"
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "start",
+                                        "description": "Offset of first item to be included. Defaults to 0"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "pending ready transmitted processing packed shipped canceled"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "values are jit,dropship,3pl,local,mixed"
+                                    },
+                                    {
+                                        "id": "vendor_id",
+                                        "name": "vendor_id",
+                                        "description": "RetailOps Vendor ID"
+                                    },
+                                    {
+                                        "id": "wave_id",
+                                        "name": "wave_id",
+                                        "description": "RetailOps Wave ID"
+                                    },
+                                    {
+                                        "id": "with_order",
+                                        "name": "with_order",
+                                        "description": "Include order information"
+                                    },
+                                    {
+                                        "id": "with_packages",
+                                        "name": "with_packages",
+                                        "description": "Include package information"
+                                    },
+                                    {
+                                        "id": "with_po_nums",
+                                        "name": "with_po_nums",
+                                        "description": "Include purchase order numbers, if applicable"
+                                    },
+                                    {
+                                        "id": "with_product",
+                                        "name": "with_product",
+                                        "description": "Include product information"
+                                    },
+                                    {
+                                        "id": "with_ref_numbers",
+                                        "name": "with_ref_numbers",
+                                        "description": "Include shipment reference numbers. Advanced use cases"
+                                    },
+                                    {
+                                        "id": "with_ship_address",
+                                        "name": "with_ship_address",
+                                        "description": "Include ship address information"
+                                    },
+                                    {
+                                        "id": "with_ship_service",
+                                        "name": "with_ship_service",
+                                        "description": "Include ship service information"
+                                    },
+                                    {
+                                        "id": "with_ship_service",
+                                        "name": "with_ship_service",
+                                        "description": "Include shipment items in the response data"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillment.ship.session",
+                        "name": "Fulfillment.Ship.Session",
+                        "endpoints": [
+                            {
+                                "id": "fulfillment.ship.session.fetch",
+                                "url": "/fulfillment/ship/session/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch shipment sessions. By default, returns all open sessions, and those closed within the past 30 days",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "facility_id",
+                                        "name": "facility_id",
+                                        "description": "Id of the package",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "index.exportfield",
+                        "name": "Index.ExportField",
+                        "endpoints": [
+                            {
+                                "id": "index.exportfield.fetch",
+                                "url": "/index/exportfield/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch a handles of export fields",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {}
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory.container",
+                        "name": "Inventory.Container",
+                        "endpoints": [
+                            {
+                                "id": "inventory.container.search",
+                                "url": "/inventory/container/search.json",
+                                "name": "search",
+                                "description": "Search for an inventory container by name. By default, this performs a 'starts with' partial match, so multiple results may be returned.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "container",
+                                        "name": "container",
+                                        "description": "Search for an inventory container by name. By default, this performs a 'starts with' partial match, so multiple results may be returned.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory.externallot",
+                        "name": "Inventory.ExternalLot",
+                        "endpoints": [
+                            {
+                                "id": "inventory.externallot.fetch",
+                                "url": "/inventory/externallot/fetch.json",
+                                "name": "fetch",
+                                "description": "Retrieve External Lots.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "RetailOps External Lot ID."
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "limit",
+                                        "description": "Number of items to be included in results. defaults to 100. Max 1000"
+                                    },
+                                    {
+                                        "id": "sku",
+                                        "name": "sku",
+                                        "description": "RetailOps SKU"
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "start",
+                                        "description": "Offset of first item to be included. Defaults to 0."
+                                    },
+                                    {
+                                        "id": "vendor_id",
+                                        "name": "vendor_id",
+                                        "description": "RetailOps Vendor ID."
+                                    },
+                                    {
+                                        "id": "vpc",
+                                        "name": "vpc",
+                                        "description": "Vendor product code."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory.lot",
+                        "name": "Inventory.Lot",
+                        "endpoints": [
+                            {
+                                "id": "inventory.lot.search",
+                                "url": "/inventory/lot/search.json",
+                                "name": "search",
+                                "description": "Search for inventory lots",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "family_id",
+                                        "name": "family_id",
+                                        "description": "Id of the family"
+                                    },
+                                    {
+                                        "id": "has_inventory",
+                                        "name": "has_inventory",
+                                        "description": ""
+                                    },
+                                    {
+                                        "id": "ident_string",
+                                        "name": "ident_string",
+                                        "description": "search string"
+                                    },
+                                    {
+                                        "id": "lot_id",
+                                        "name": "lot_id",
+                                        "description": "Id of the LOT",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "po_num",
+                                        "name": "po_num",
+                                        "description": "Purchase Order Number"
+                                    },
+                                    {
+                                        "id": "sku_num",
+                                        "name": "sku_num",
+                                        "description": "Number of SKU"
+                                    },
+                                    {
+                                        "id": "with_external_lots",
+                                        "name": "with_external_lots",
+                                        "description": "Include external lots"
+                                    },
+                                    {
+                                        "id": "with_manifest",
+                                        "name": "with_manifest",
+                                        "description": "Include manifest and PO IDs"
+                                    },
+                                    {
+                                        "id": "with_sku",
+                                        "name": "with_sku",
+                                        "description": "Include sku information"
+                                    },
+                                    {
+                                        "id": "with_sku_attr_view",
+                                        "name": "with_sku_attr_view",
+                                        "description": "Include SKU attributes view."
+                                    },
+                                    {
+                                        "id": "with_sku_attrs",
+                                        "name": "with_sku_attrs",
+                                        "description": "Include SKU attributes"
+                                    },
+                                    {
+                                        "id": "with_sku_attrs_merged",
+                                        "name": "with_sku_attrs_merged",
+                                        "description": "Include sku Attributes merged."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory.quantity",
+                        "name": "Inventory.Quantity",
+                        "endpoints": [
+                            {
+                                "id": "inventory.quantity.search",
+                                "url": "/inventory/quantity/search.json",
+                                "name": "search",
+                                "description": "Search for a quantity of inventory, and return a list.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "lot_id",
+                                        "name": "lot_id",
+                                        "description": "RetailOps Lot ID.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "container",
+                                        "name": "container",
+                                        "description": "Search for aquantity of inventory container by name."
+                                    },
+                                    {
+                                        "id": "container_id",
+                                        "name": "container_id",
+                                        "description": "Id of the container."
+                                    },
+                                    {
+                                        "id": "container_tree",
+                                        "name": "container_tree",
+                                        "description": "Set this to true to enable a heirarchical response"
+                                    },
+                                    {
+                                        "id": "facility_id",
+                                        "name": "facility_id",
+                                        "description": "ID of the facility"
+                                    },
+                                    {
+                                        "id": "ident_string",
+                                        "name": "ident_string",
+                                        "description": "search string"
+                                    },
+                                    {
+                                        "id": "include_zero",
+                                        "name": "include_zero",
+                                        "description": "Include Zero"
+                                    },
+                                    {
+                                        "id": "lot_unit_weight",
+                                        "name": "lot_unit_weight",
+                                        "description": "Unit weight of Lot"
+                                    },
+                                    {
+                                        "id": "po_num",
+                                        "name": "po_num",
+                                        "description": "Purchase order number"
+                                    },
+                                    {
+                                        "id": "sku_id",
+                                        "name": "sku_id",
+                                        "description": "Id of the sku"
+                                    },
+                                    {
+                                        "id": "sku_string",
+                                        "name": "sku_string",
+                                        "description": "Sku string"
+                                    },
+                                    {
+                                        "id": "vendor_id",
+                                        "name": "vendor_id",
+                                        "description": "Id of the vendor"
+                                    },
+                                    {
+                                        "id": "with_container",
+                                        "name": "with_container",
+                                        "description": "Include Container"
+                                    },
+                                    {
+                                        "id": "with_facility_zone",
+                                        "name": "with_facility_zone",
+                                        "description": "Include facilty zone"
+                                    },
+                                    {
+                                        "id": "with_product",
+                                        "name": "with_product",
+                                        "description": "Include product"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory.quantity.adjustment",
+                        "name": "Inventory.Quantity.Adjustment",
+                        "endpoints": [
+                            {
+                                "id": "inventory.quantity.adjustment.fetch",
+                                "url": "/inventory/quantity/adjustment/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch lot quantity adjustment history",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "lot_id",
+                                        "name": "lot_id",
+                                        "description": "Id of the LOT",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "media.map",
+                        "name": "Media.Map",
+                        "endpoints": [
+                            {
+                                "id": "media.map.fetch",
+                                "url": "/media/map/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch media mappings",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "work_id",
+                                        "name": "work_id",
+                                        "description": "Work Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "default representative and exclusive"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "media.work",
+                        "name": "Media.Work",
+                        "endpoints": [
+                            {
+                                "id": "media.work.fetch",
+                                "url": "/media/work/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch media.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "family_id",
+                                        "name": "family_id",
+                                        "description": "Family Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "sku_id",
+                                        "name": "sku_id",
+                                        "description": "Id of the Sku"
+                                    },
+                                    {
+                                        "id": "with_inactive",
+                                        "name": "with_inactive",
+                                        "description": "Include inactive work."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "media.work.get",
+                                "url": "/media/work/get.json",
+                                "name": "get",
+                                "description": "Retrieve data for a single media work.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "work_id",
+                                        "name": "work_id",
+                                        "description": "Work Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "attr_class",
+                                        "name": "attr_class",
+                                        "description": "Attribute class"
+                                    },
+                                    {
+                                        "id": "raw_attrvals",
+                                        "name": "raw_attrvals",
+                                        "description": ""
+                                    },
+                                    {
+                                        "id": "with_attrs",
+                                        "name": "with_attrs",
+                                        "description": "Include Attributes"
+                                    },
+                                    {
+                                        "id": "with_attrvals",
+                                        "name": "with_attrvals",
+                                        "description": ""
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "product.family",
+                        "name": "Product.Family",
+                        "endpoints": [
+                            {
+                                "id": "product.family.get",
+                                "url": "/product/family/get.json",
+                                "name": "get",
+                                "description": "Retrieve data for a single product family.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "family_id",
+                                        "name": "family_id",
+                                        "description": "Family Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "attr_class",
+                                        "name": "attr_class",
+                                        "description": "Optional. Specifies what class of attributes to include. Accepts basic, extended and private"
+                                    },
+                                    {
+                                        "id": "raw_attrvals",
+                                        "name": "raw_attrvals",
+                                        "description": "Display the raw attribute value, rather than the human readable value"
+                                    },
+                                    {
+                                        "id": "with_attrs",
+                                        "name": "with_attrs",
+                                        "description": "Include attribute fields"
+                                    },
+                                    {
+                                        "id": "with_attrvals",
+                                        "name": "with_attrvals",
+                                        "description": "Include a list of possible values for each attribute"
+                                    },
+                                    {
+                                        "id": "with_price",
+                                        "name": "with_price",
+                                        "description": "Include price"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "product.sku",
+                        "name": "Product.Sku",
+                        "endpoints": [
+                            {
+                                "id": "product.sku.search",
+                                "url": "/product/sku/search.json",
+                                "name": "search",
+                                "description": "Retrieve product sku records.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "family_id",
+                                        "name": "family_id",
+                                        "description": "Family Id"
+                                    },
+                                    {
+                                        "id": "barcode",
+                                        "name": "barcode",
+                                        "description": "barcode data associated with the sku"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "SKU record id"
+                                    },
+                                    {
+                                        "id": "with_attr_class",
+                                        "name": "with_attr_class",
+                                        "description": "Optional. Specifies what class of attributes to include. Accepts basic, extended and private"
+                                    },
+                                    {
+                                        "id": "ident_string",
+                                        "name": "ident_string",
+                                        "description": "Style/Part Number associed to one or more skus within a family"
+                                    },
+                                    {
+                                        "id": "sku_string",
+                                        "name": "sku_string",
+                                        "description": "Formal SKU number"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "status of the sku"
+                                    },
+                                    {
+                                        "id": "with_attr_options",
+                                        "name": "with_attr_options",
+                                        "description": "Include a list of possible values for each attribute"
+                                    },
+                                    {
+                                        "id": "with_attr_summary",
+                                        "name": "with_attr_summary",
+                                        "description": "Include a list of attributes included in the result records"
+                                    },
+                                    {
+                                        "id": "with_attr_view",
+                                        "name": "with_attr_view",
+                                        "description": "Optional. Specifies what view of attributes to include"
+                                    },
+                                    {
+                                        "id": "with_attrs",
+                                        "name": "with_attrs",
+                                        "description": "Include attribute fields"
+                                    },
+                                    {
+                                        "id": "with_attrs_merged",
+                                        "name": "with_attrs_merged",
+                                        "description": "Include attribute fields with product family attributes merged in. Note, Saving these is probably not safe"
+                                    },
+                                    {
+                                        "id": "with_ident",
+                                        "name": "with_ident",
+                                        "description": "Include product ident_string in results"
+                                    },
+                                    {
+                                        "id": "with_inventory",
+                                        "name": "with_inventory",
+                                        "description": "Include inventory on hand for each sku"
+                                    },
+                                    {
+                                        "id": "with_price",
+                                        "name": "with_price",
+                                        "description": "Include price"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "product.sku.barcode",
+                        "name": "Product.Sku.Barcode",
+                        "endpoints": [
+                            {
+                                "id": "product.sku.barcode.fetch",
+                                "url": "/product/sku/barcode/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch sku barcode data.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "family_id",
+                                        "name": "family_id",
+                                        "description": "Family Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "sku_string",
+                                        "name": "sku_string",
+                                        "description": "Formal SKU number"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "product.sku.mediautil",
+                        "name": "Product.Sku.MediaUtil",
+                        "endpoints": [
+                            {
+                                "id": "product.sku.mediautil.getrepskus",
+                                "url": "/product/sku/mediautil/getRepSkus.json",
+                                "name": "getRepSkus",
+                                "description": "Returns a list of skus who's media should be usable as a representative sample for the sku_num given.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "sku_num",
+                                        "name": "sku_num",
+                                        "description": "SKU number",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "receive.piece",
+                        "name": "Receive.Piece",
+                        "endpoints": [
+                            {
+                                "id": "receive.piece.fetch",
+                                "url": "/receive/piece/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch Receive Piece(s).",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "The piece ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "pending",
+                                        "name": "pending",
+                                        "description": ""
+                                    },
+                                    {
+                                        "id": "shipment_id",
+                                        "name": "shipment_id",
+                                        "description": "The shipment ID"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "receive.shipment",
+                        "name": "Receive.Shipment",
+                        "endpoints": [
+                            {
+                                "id": "receive.shipment.fetch",
+                                "url": "/receive/shipment/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch shipments.",
+                                "method": "POST",
+                                "successPath": "records",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "The shipment ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "pending",
+                                        "name": "pending",
+                                        "description": ""
+                                    },
+                                    {
+                                        "id": "age_hours",
+                                        "name": "age_hours",
+                                        "description": ""
+                                    },
+                                    {
+                                        "id": "piece",
+                                        "name": "piece",
+                                        "description": ""
+                                    },
+                                    {
+                                        "id": "po",
+                                        "name": "po",
+                                        "description": "Purchase order"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "utility.eventlog",
+                        "name": "Utility.EventLog",
+                        "endpoints": [
+                            {
+                                "id": "utility.eventlog.fetch",
+                                "url": "/utility/eventlog/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetch eventlogs for a given record. Multiple event types can be aggregated using params_list.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "concept",
+                                        "name": "concept",
+                                        "description": "The type of record. If the record id is provided, the concept must also be provided."
+                                    },
+                                    {
+                                        "id": "event_def_id",
+                                        "name": "event_def_id",
+                                        "description": "Match a type of unresolved event. If the record id is not provided, the event_def must be provided.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "max_age",
+                                        "name": "max_age",
+                                        "description": "Maximum age, in seconds, of events to return."
+                                    },
+                                    {
+                                        "id": "needs_review",
+                                        "name": "needs_review",
+                                        "description": "Return events with that value. If passed a boolean value, then it defaults to events that have 1 or 2 as their value"
+                                    },
+                                    {
+                                        "id": "record_id",
+                                        "name": "record_id",
+                                        "description": "The id of the record in question. If provided, all events for this record will be pulled. Otherwise, all events for the concept provided will be pulled."
+                                    },
+                                    {
+                                        "id": "reverse_order",
+                                        "name": "reverse_order",
+                                        "description": "Return newest events first."
+                                    },
+                                    {
+                                        "id": "with_mappings",
+                                        "name": "with_mappings",
+                                        "description": "Retrieve record and concept mappings and retryable data for events."
+                                    },
+                                    {
+                                        "id": "with_params",
+                                        "name": "with_params",
+                                        "description": "Include params json for related event definition"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "utility.eventlogsummary",
+                        "name": "Utility.EventLogSummary",
+                        "endpoints": [
+                            {
+                                "id": "utility.eventlogsummary.fetch",
+                                "url": "/utility/eventlogsummary/fetch.json",
+                                "name": "fetch",
+                                "description": "Fetches the number of events that fall within a specific event type.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "doesNotSupportPaging": true,
+                                "postBody": {}
+                            }
+                        ]
+                    },
+                    {
+                        "id": "utility.tag",
+                        "name": "Utility.Tag",
+                        "endpoints": [
+                            {
+                                "id": "utility.tag.search",
+                                "url": "/utility/tag/search.json",
+                                "name": "search",
+                                "description": "Find tags currently in use.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "doesNotSupportPaging": true,
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "query",
+                                        "description": "Search by substring"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "vendor.po",
+                        "name": "Vendor.PO",
+                        "endpoints": [
+                            {
+                                "id": "vendor.po.fetch",
+                                "url": "/vendor/po/fetch.json",
+                                "name": "fetch",
+                                "description": "Search for purchase orders",
+                                "method": "POST",
+                                "successPath": "success",
+                                "resourcePath": "records",
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "brand_id",
+                                        "name": "brand_id",
+                                        "description": "Find POs with items that have this brand"
+                                    },
+                                    {
+                                        "id": "buyer_user_id",
+                                        "name": "buyer_user_id",
+                                        "description": "Find POs with this user listed as buyer."
+                                    },
+                                    {
+                                        "id": "creator_user_id",
+                                        "name": "creator_user_id",
+                                        "description": "Find POs created by this user."
+                                    },
+                                    {
+                                        "id": "mpn",
+                                        "name": "mpn",
+                                        "description": "Find POs with items that have this MPN."
+                                    },
+                                    {
+                                        "id": "po",
+                                        "name": "po",
+                                        "description": "Purchase order number."
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "incomplete,open,review,ready,submitted,receiving."
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "inline, closeout, bulkstock, jit, dropship."
+                                    },
+                                    {
+                                        "id": "vendor_id",
+                                        "name": "vendor_id",
+                                        "description": "Find POs for this vendor"
+                                    },
+                                    {
+                                        "id": "with_items",
+                                        "name": "with_items",
+                                        "description": "Include item details in results."
+                                    },
+                                    {
+                                        "id": "with_ositems",
+                                        "name": "with_ositems",
+                                        "description": "Include details of linked orders in results."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "config.brand",
+                        "name": "Config.Brand",
+                        "operations": [
+                            {
+                                "id": "config.brand.create",
+                                "url": "/config/brand/create.json",
+                                "name": "create",
+                                "description": "Create a brand.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "name": "AmericanTourister",
+                                            "status": "inactive",
+                                            "description": "Quality of almost unbelievably majestic beauty."
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "config.brand.update",
+                                "url": "/config/brand/update.json",
+                                "name": "update",
+                                "description": "Apply changes to a brand. Documentation is unfinished.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "name": "AmericanTourister",
+                                            "status": "inactive",
+                                            "id": "1",
+                                            "description": "Quality of almost unbelievably majestic beauty."
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.inventory.adjustmentReason",
+                        "name": "Config.Inventory.AdjustmentReason",
+                        "operations": [
+                            {
+                                "id": "config.inventory.adjustmentreason.update",
+                                "url": "/config/inventory/adjustmentreason/update.json",
+                                "name": "update",
+                                "description": "Change properties for one or more Reasons.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "name": "AmericanTourister",
+                                            "status": "active",
+                                            "id": "1",
+                                            "type": "Quality of almost unbelievably majestic beauty.",
+                                            "code": "1234",
+                                            "sortval": "145"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.order.cancelreason",
+                        "name": "Config.Order.CancelReason",
+                        "operations": [
+                            {
+                                "id": "config.order.cancelreason.update",
+                                "url": "/config/order/cancelreason/update.json",
+                                "name": "update",
+                                "description": "Change properties for one or more Reasons.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "name": "AmericanTourister",
+                                            "status": "active",
+                                            "id": "1",
+                                            "code": "1234",
+                                            "sortval": "145"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.order.discountreason",
+                        "name": "Config.Order.DiscountReason",
+                        "operations": [
+                            {
+                                "id": "config.order.discountreason.update",
+                                "url": "/config/order/discountreason/update.json",
+                                "name": "update",
+                                "description": "Change properties for one or more Reasons.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "name": "AmericanTourister",
+                                            "status": "active",
+                                            "id": "1",
+                                            "code": "1234",
+                                            "sortval": "145"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.returnitemreason",
+                        "name": "Config.ReturnItemReason",
+                        "operations": [
+                            {
+                                "id": "config.returnitemreason.update",
+                                "url": "/config/returnitemreason/update.json",
+                                "name": "update",
+                                "description": "Change properties for one or more Reasons.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "name": "AmericanTourister",
+                                            "status": "active",
+                                            "id": "1",
+                                            "code": "1234",
+                                            "sortval": "145",
+                                            "do_refund": "true",
+                                            "do_restock": "true",
+                                            "do_shipping": "true"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "config.vendor",
+                        "name": "Config.Vendor",
+                        "operations": [
+                            {
+                                "id": "config.vendor.create",
+                                "url": "/config/vendor/create.json",
+                                "name": "create",
+                                "description": "Create vendors.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "jit_actor_ids": [
+                                                1,
+                                                2
+                                            ],
+                                            "status": "active",
+                                            "jit_facility_id": "1",
+                                            "default_routing_guide_id": "null",
+                                            "default_terms": "Deposit / Net 30 (50/50)",
+                                            "billing_address_id": "1",
+                                            "extra": {},
+                                            "restock_actor_id": "1",
+                                            "id": "1",
+                                            "default_terms_id": "30",
+                                            "default_routing_guide": "null",
+                                            "name": "Apple",
+                                            "default_payment_method": "",
+                                            "isftp": "1",
+                                            "type": "Standard",
+                                            "default_discount_pct": "1"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "config.vendor.update",
+                                "url": "/config/vendor/update.json",
+                                "name": "update",
+                                "description": "Apply changes to vendors",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "isjit": "0",
+                                            "jit_actor_ids": [
+                                                1,
+                                                2
+                                            ],
+                                            "status": "active",
+                                            "jit_facility_id": "1",
+                                            "default_terms": "Deposit / Net 30 (50/50)",
+                                            "billing_address_id": "1",
+                                            "extra": {},
+                                            "restock_actor_id": "1",
+                                            "id": "1",
+                                            "default_terms_id": "30",
+                                            "default_routing_guide": "null",
+                                            "name": "Apple",
+                                            "default_payment_method": "",
+                                            "isftp": "1",
+                                            "type": "Standard",
+                                            "default_discount_pct": "1"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer",
+                        "name": "Customer",
+                        "operations": [
+                            {
+                                "id": "customer.create",
+                                "url": "/customer/create.json",
+                                "name": "create",
+                                "description": "Create one or more customers.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "email_address": "snigdha@gmail.com",
+                                            "status": "unverified",
+                                            "phone_number": "8569231478",
+                                            "name": "snigdha",
+                                            "tags": "1"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "customer.update",
+                                "url": "/customer/update.json",
+                                "name": "update",
+                                "description": "Change properties for one or more customers",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "email_address": "snigdha@gmail.com",
+                                            "status": "unverified",
+                                            "phone_number": "8569231478",
+                                            "name": "snigdha",
+                                            "id": "2",
+                                            "tags": [
+                                                1
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.address",
+                        "name": "Customer.Address",
+                        "operations": [
+                            {
+                                "id": "customer.address.retire",
+                                "url": "/customer/address/retire.json",
+                                "name": "retire",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "id": "1"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.order",
+                        "name": "Customer.Order",
+                        "operations": [
+                            {
+                                "id": "customer.order.update",
+                                "url": "/customer/order/update.json",
+                                "name": "update",
+                                "description": "update one or more customers order.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "customer_id": "1",
+                                    "records": [
+                                        {
+                                            "attr_values": [
+                                                {
+                                                    "attribute_id": "1",
+                                                    "v": [
+                                                        {
+                                                            "id": "1",
+                                                            "val": "78"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "bill_addr_id": "null",
+                                            "cancel_date": "",
+                                            "customer_email": "1@gmail.com",
+                                            "discount_amt": "1.00",
+                                            "discount_pct": "",
+                                            "discount_reason_id": "null",
+                                            "tax_nexus_id": "null",
+                                            "ship_addr_id": "null",
+                                            "tax_amt": "1.00",
+                                            "payment_series_id": "1",
+                                            "paid_amt": "",
+                                            "default_cancel_date": "null",
+                                            "id": "1",
+                                            "subchannel_name": "",
+                                            "success": "1",
+                                            "ship_service_id": "null",
+                                            "tax_total": "1.00",
+                                            "channel_name": "Customer Service",
+                                            "ship_service_name": "null",
+                                            "channel_refnum": "null",
+                                            "type": "ecommerce",
+                                            "amazon_sfp": "null",
+                                            "discount_reason": "null",
+                                            "channel_date_created": "",
+                                            "status": "incomplete",
+                                            "date_created": "2018-09-10T21:53:33+00:00",
+                                            "channel": "ROPCS_57B5",
+                                            "shipping_total": "",
+                                            "channel_def": "ROPCS",
+                                            "product_total": "5.00",
+                                            "shipping_amt": "",
+                                            "calc_mode": "both",
+                                            "tax_pct": "",
+                                            "facility_name": "null",
+                                            "tags": [],
+                                            "facility_zone_name": "null"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "customer.order.submit",
+                                "url": "/customer/order/submit.json",
+                                "name": "submit",
+                                "description": "Simple order submission..",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "channel_id": "r",
+                                    "orders": [
+                                        {
+                                            "attributes": [
+                                                {
+                                                    "text_module_order_foo": "string"
+                                                }
+                                            ],
+                                            "bill_addr": [
+                                                {
+                                                    "address1": "string",
+                                                    "address2": "string",
+                                                    "addressee": "1",
+                                                    "city": "string",
+                                                    "company": "string",
+                                                    "country_match": "string",
+                                                    "first_name": "string",
+                                                    "last_name": "string",
+                                                    "phone_number": "string",
+                                                    "postal_code": "string",
+                                                    "state_match": "string"
+                                                }
+                                            ],
+                                            "calc_mode": "string",
+                                            "cancel": "string",
+                                            "channel_date_created": "string",
+                                            "channel_refnum": "string",
+                                            "currency_exchange_id": "integer",
+                                            "customer": [
+                                                {
+                                                    "email_address": "string",
+                                                    "first_name": "string",
+                                                    "last_name": "string",
+                                                    "name": "string",
+                                                    "phone_number": "string"
+                                                }
+                                            ],
+                                            "discount_amt": "number",
+                                            "discount_pct": "number",
+                                            "facility_zone_id": "integer",
+                                            "gift_message": "string",
+                                            "ip_address": "string",
+                                            "items": [
+                                                {
+                                                    "channel_refnum": "string",
+                                                    "discount_amt": "number",
+                                                    "discount_pct": "number",
+                                                    "expected_ship_date": "string",
+                                                    "misc_values": [
+                                                        {
+                                                            "field": "string"
+                                                        }
+                                                    ],
+                                                    "options": [
+                                                        {
+                                                            "code": "string",
+                                                            "name": "string",
+                                                            "type": "string",
+                                                            "value": "string"
+                                                        }
+                                                    ],
+                                                    "parent_item_id": "integer",
+                                                    "quantity": "integer",
+                                                    "recycling_amt": "number",
+                                                    "ship_amt": "number",
+                                                    "shiptax_amt": "number",
+                                                    "sku": "string",
+                                                    "sku_title": "string",
+                                                    "subchannel": "string",
+                                                    "subchannel_refnum": "string",
+                                                    "type": "string",
+                                                    "unit_price": "number",
+                                                    "unit_tax": "number",
+                                                    "unit_tax_pct": "number",
+                                                    "vat_pct": "number"
+                                                }
+                                            ],
+                                            "misc_values": [
+                                                {
+                                                    "field": "string"
+                                                }
+                                            ],
+                                            "payment": [
+                                                {
+                                                    "amount": "number",
+                                                    "module": "string",
+                                                    "params": "string",
+                                                    "reason": "string",
+                                                    "type": "string"
+                                                }
+                                            ],
+                                            "ship_addr": [
+                                                {
+                                                    "address1": "string",
+                                                    "address2": "string",
+                                                    "addressee": "string",
+                                                    "city": "string",
+                                                    "company": "string",
+                                                    "country_match": "string",
+                                                    "first_name": "string",
+                                                    "last_name": "string",
+                                                    "phone_number": "string",
+                                                    "postal_code": "string",
+                                                    "state_match": "string"
+                                                }
+                                            ],
+                                            "shipcode": "string",
+                                            "shipping_amt": "number",
+                                            "starting_status": "string",
+                                            "tags": "string",
+                                            "tax_amt": "number",
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "customer.order.cancel",
+                                "url": "/customer/order/cancel.json",
+                                "name": "cancel",
+                                "description": "Attempt to cancel a customer order",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "order_id ": "r",
+                                    "reason_id ": "r"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.order.return",
+                        "name": "Customer.Order.Return",
+                        "operations": [
+                            {
+                                "id": "customer.order.return.submit",
+                                "url": "/customer/order/return/submit.json",
+                                "name": "submit",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "action_item_text": "1",
+                                            "items": [
+                                                {
+                                                    "order_item_id": "string",
+                                                    "quantity": "number",
+                                                    "sku": "number",
+                                                    "vpc": "string"
+                                                }
+                                            ],
+                                            "order_id": "string",
+                                            "rma_id": "number",
+                                            "vendor_id": "number"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.rma",
+                        "name": "Customer.RMA",
+                        "operations": [
+                            {
+                                "id": "customer.rma.create",
+                                "url": "/customer/rma/create.json",
+                                "name": "create",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "success",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "notes": "1",
+                                            "order_id": "number",
+                                            "refund_action": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "customer.rma.update",
+                                "url": "/customer/rma/update.json",
+                                "name": "update",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "notes": "1",
+                                            "id": "number",
+                                            "refund_action": "string",
+                                            "status": "1"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.rma.item",
+                        "name": "Customer.RMA.Item",
+                        "operations": [
+                            {
+                                "id": "customer.rma.item.update",
+                                "url": "/customer/rma/item/update.json",
+                                "name": "update",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "order_id": "1",
+                                    "records": [
+                                        {
+                                            "do_refund": "1",
+                                            "do_restock": "number",
+                                            "do_shipping": "string",
+                                            "give_shipping_amt": "1",
+                                            "quantity": "1",
+                                            "id": "number",
+                                            "reason_id": "string",
+                                            "restock_actor_id": "1",
+                                            "restocking_fee": "1"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer.storecredit",
+                        "name": "Customer.StoreCredit",
+                        "operations": [
+                            {
+                                "id": "customer.storecredit.adjust",
+                                "url": "/customer/storecredit/adjust.json",
+                                "name": "adjust",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "amount": "1",
+                                    "customer_id": "1",
+                                    "reason": "1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillment.package",
+                        "name": "Fulfillment.Package",
+                        "operations": [
+                            {
+                                "id": "fulfillment.package.update",
+                                "url": "/fulfillment/package/update.json",
+                                "name": "update",
+                                "description": "",
+                                "successPath": "success",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "carrier_account_id": "1",
+                                            "cost": "number",
+                                            "height_cm": "string",
+                                            "id": "1",
+                                            "length_cm": "1",
+                                            "ship_class_id": "number",
+                                            "ship_session_id": "string",
+                                            "tracking_number": "1",
+                                            "weight_kg": "1",
+                                            "width_cm": "1"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillment.shipment",
+                        "name": "Fulfillment.Shipment",
+                        "operations": [
+                            {
+                                "id": "fulfillment.shipment.marktransmitted",
+                                "url": "/fulfillment/shipment/marktransmitted.json",
+                                "name": "MarkTransmitted",
+                                "description": "",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "estimated_ship_date": "1",
+                                            "id": "number",
+                                            "latest_ship_date": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillment.wave",
+                        "name": "Fulfillment.Wave",
+                        "operations": [
+                            {
+                                "id": "fulfillment.wave.create",
+                                "url": "/fulfillment/wave/create.json",
+                                "name": "create",
+                                "description": "",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "successPath": "success",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "facility_id": "1",
+                                    "shipment_ids": "number",
+                                    "to_cont": "string"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory.externallot",
+                        "name": "Inventory.ExternalLot",
+                        "operations": [
+                            {
+                                "id": "inventory.externallot.create",
+                                "url": "/inventory/externallot/create.json",
+                                "name": "create",
+                                "description": "Create external lots. An External Lot is a recording by a third party logistics provider of the receipt of a specific quantity of an External SKU at a specific time. ",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "successPath": "success",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "vendor_id": "",
+                                    "records": [
+                                        {
+                                            "asn_item_id": "1",
+                                            "date_created": "number",
+                                            "po": "string",
+                                            "received_quantity": "1",
+                                            "sku": "number",
+                                            "vpc": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "inventory.externallot.update",
+                                "url": "/inventory/externallot/update.json",
+                                "name": "update",
+                                "description": "Update external lots Up to 500 External Lots may be created per each call",
+                                "successPath": "success",
+                                "method": "POST",
+                                "sampleData": {
+                                    "id": "1",
+                                    "status": "number",
+                                    "unit_cost": "string"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory.lot",
+                        "name": "Inventory.Lot",
+                        "operations": [
+                            {
+                                "id": "inventory.lot.create",
+                                "url": "/inventory/lot/create.json",
+                                "name": "create",
+                                "description": "Directly create a lot against a sku, bypassing the receive process. Please note, this action requires a valid terminal token unless no_label flag is set",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "successPath": "success",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "container": "1",
+                                    "no_label": "number",
+                                    "quantity": "string",
+                                    "sku": "1",
+                                    "weight": "number"
+                                }
+                            },
+                            {
+                                "id": "inventory.lot.update",
+                                "url": "/inventory/lot/update.json",
+                                "name": "update",
+                                "description": "Update inventory lots",
+                                "successPath": "success",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "expiry_date": "1",
+                                            "id": "number",
+                                            "unit_cost": "string",
+                                            "serial_num": "1",
+                                            "unit_weight": "number"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "inventory.lot.reprint",
+                                "url": "/inventory/lot/reprint.json",
+                                "name": "reprint",
+                                "description": "Reprint a lot label",
+                                "successPath": "success",
+                                "method": "POST",
+                                "sampleData": {
+                                    "lot_id": "1",
+                                    "quantity": "number",
+                                    "template": "string"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory.quantity",
+                        "name": "Inventory.Quantity",
+                        "operations": [
+                            {
+                                "id": "inventory.quantity.adjust",
+                                "url": "/inventory/quantity/adjust.json",
+                                "name": "adjust",
+                                "description": "Add, Subtract or Move physical inventory quantities.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "successPath": "success",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "actions": [
+                                        {
+                                            "action": "1",
+                                            "allornone": "number",
+                                            "autoselect": "string",
+                                            "container": "1",
+                                            "container_id": "number",
+                                            "lot_id": "1",
+                                            "quantity": "number",
+                                            "ref_number": "string",
+                                            "sku_id": "1",
+                                            "sku_string": "number",
+                                            "subaction": "string",
+                                            "to_container": "1",
+                                            "to_container_id": "number"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "media.map",
+                        "name": "Media.Map",
+                        "operations": [
+                            {
+                                "id": "media.map.update",
+                                "url": "/media/map/update.json",
+                                "name": "update",
+                                "description": "Update media mappings.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "id": "1",
+                                            "type": "number"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "media.work",
+                        "name": "Media.Work",
+                        "operations": [
+                            {
+                                "id": "media.work.update",
+                                "url": "/media/work/update.json",
+                                "name": "update",
+                                "description": "Update media.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "id": "1",
+                                            "composition": "number",
+                                            "status": "1",
+                                            "tags": "number"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notes",
+                        "name": "Notes",
+                        "operations": [
+                            {
+                                "id": "notes.create",
+                                "url": "/notes/create.json",
+                                "name": "create",
+                                "description": "Create a note against a specific record.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "successPath": "success",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "id": "1",
+                                            "composition": "number",
+                                            "status": "1",
+                                            "tags": "number"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "product.sku",
+                        "name": "Product.Sku",
+                        "operations": [
+                            {
+                                "id": "product.sku.reserve",
+                                "url": "/product/sku/reserve.json",
+                                "name": "reserve",
+                                "description": "Reserve a quantity of a specific sku You must provide a sku_num and quantity to reserve against a specific ref_number.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "id": "1",
+                                            "quantity": "number",
+                                            "ref_number": "1",
+                                            "sku_string": "number"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "product.sku.getattributedata",
+                                "url": "/product/sku/getAttributeData.json",
+                                "name": "getAttributeData",
+                                "description": "",
+                                "method": "POST",
+                                "sampleData": {
+                                    "sku_id": "10",
+                                    "sku_string": "2",
+                                    "queries": [
+                                        {
+                                            "attribute_names": "1",
+                                            "config_param": "number",
+                                            "include_all_meta_values": "1",
+                                            "include_full_path": "number",
+                                            "include_meta_values": "1",
+                                            "include_name": "number",
+                                            "include_value_name": "1",
+                                            "interface_view": "number"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "product.externalsku",
+                        "name": "Product.ExternalSku",
+                        "operations": [
+                            {
+                                "id": "product.externalsku.update",
+                                "url": "/product/externalsku/update.json",
+                                "name": "update",
+                                "description": "Update the present quantity, and other data for up to 5000 ExternalSkus at a time.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "with_detailed_response": "1",
+                                    "records": [
+                                        {
+                                            "id": "1",
+                                            "active": "number",
+                                            "est_ship_days": "1",
+                                            "max_ship_days": "number",
+                                            "quantity": "number",
+                                            "unit_cost": "1",
+                                            "vendor_id": "number",
+                                            "vendor_name": "number",
+                                            "vpc": "1",
+                                            "vpc_change": "number"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "receive.piece",
+                        "name": "Receive.Piece",
+                        "operations": [
+                            {
+                                "id": "receive.piece.create",
+                                "url": "/receive/piece/create.json",
+                                "name": "create",
+                                "description": "Create AND Print one or more Receive Pieces",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "successPath": "success",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "copies": "1",
+                                    "shipment_id": "1",
+                                    "records": [
+                                        {
+                                            "container": "1",
+                                            "type": "number"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "receive.piece.update",
+                                "url": "/receive/piece/update.json",
+                                "name": "update",
+                                "description": "Apply changes to a Receive Piece",
+                                "successPath": "success",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "status": "1",
+                                            "id": "number",
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "receive.piece.reprint",
+                                "url": "/receive/piece/reprint.json",
+                                "name": "reprint",
+                                "description": "Reprint a lot label",
+                                "successPath": "success",
+                                "method": "POST",
+                                "sampleData": {
+                                    "copies": "1",
+                                    "records": [
+                                        {
+                                            "id": "number"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "receive.piece.move",
+                                "url": "/receive/piece/move.json",
+                                "name": "move",
+                                "description": "Move a Piece into a new container. Requires id and to_container",
+                                "successPath": "success",
+                                "method": "POST",
+                                "sampleData": {
+                                    "container": "1",
+                                    "id": "number"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "receive.shipment",
+                        "name": "Receive.Shipment",
+                        "operations": [
+                            {
+                                "id": "receive.shipment.createandprint",
+                                "url": "/receive/shipment/createandprint.json",
+                                "name": "createandprint",
+                                "description": "Create one or more Receive Shipments",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "successPath": "success",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "carrier_account": "1",
+                                    "carrier_id": "1",
+                                    "carrier_name": "1",
+                                    "carrier_reference": "number",
+                                    "facility_id": "1",
+                                    "has_packinglist": "1",
+                                    "piece_count": "1",
+                                    "piece_type": "number",
+                                    "po_nums": "1",
+                                    "unit_count": "1",
+                                    "unit_count_type": "1"
+                                }
+                            },
+                            {
+                                "id": "receive.shipment.update",
+                                "url": "/receive/shipment/update.json",
+                                "name": "update",
+                                "description": "Apply changes to a Receive Shipment",
+                                "successPath": "success",
+                                "method": "POST",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "carrier_account": "1",
+                                            "id": "number",
+                                            "carrier_reference": "string",
+                                            "po_nums": "1",
+                                            "sequence": "number",
+                                            "status": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "user",
+                        "name": "User",
+                        "operations": [
+                            {
+                                "id": "user.updatesession",
+                                "url": "/user/updateSession.json",
+                                "name": "updateSession",
+                                "description": "This effectively extends the user's session.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "session": "1"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "utility.eventlogsummary",
+                        "name": "Utility.EventLogSummary",
+                        "operations": [
+                            {
+                                "id": "utility.eventlogsummary.resolve",
+                                "url": "/utility/eventlogsummary/resolve.json",
+                                "name": "resolve",
+                                "description": "Adds an event with concept Event Resolution for this record and marks the original event resolved.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "note": "1",
+                                    "retry": "2",
+                                    "events": [
+                                        {
+                                            "id": "1",
+                                            "retry": "2"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "vendor.po",
+                        "name": "Vendor.PO",
+                        "operations": [
+                            {
+                                "id": "vendor.po.updateestshipdate",
+                                "url": "/receive/piece/updateestshipdate.json",
+                                "name": "UpdateEstShipDate",
+                                "description": "Update estimated ship date for PO and associated shipments. You may specify up to 1000 POs at a time.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "estimated_ship_date": "1",
+                                            "items": [
+                                                {
+                                                    "estimated_ship_date": "1",
+                                                    "po_item_id": "1",
+                                                    "vpc": "1"
+                                                }
+                                            ],
+                                            "po": "1"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "vendor.po.marksubmitted",
+                                "url": "/receive/piece/marksubmitted.json",
+                                "name": "MarkSubmitted",
+                                "description": "Mark a Purchase Order as submitted. Optionally set estimated ship date on associated shipments (dropship only).",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "records": [
+                                        {
+                                            "estimated_ship_date": "1",
+                                            "items": [
+                                                {
+                                                    "estimated_ship_date": "1",
+                                                    "po_item_id": "1",
+                                                    "quantity": "1",
+                                                    "vpc": "1"
+                                                }
+                                            ],
+                                            "po": "1"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "vendor.po.markaccepted",
+                                "url": "/receive/piece/markaccepted.json",
+                                "name": "MarkAccepted",
+                                "description": "Marks a purchase order as 'accepted'. ",
+                                "method": "POST",
+                                "sampleData": {
+                                    "ack_all_items": "1",
+                                    "allow_short": "1",
+                                    "cancel_remainder": "1",
+                                    "records": [
+                                        {
+                                            "estimated_ship_date": "1",
+                                            "items": [
+                                                {
+                                                    "estimated_ship_date": "1",
+                                                    "po_item_id": "1",
+                                                    "quantity": "1",
+                                                    "vpc": "1"
+                                                }
+                                            ],
+                                            "po": "1"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "vendor.po.complete",
+                                "url": "/receive/piece/complete.json",
+                                "name": "Complete",
+                                "description": "Mark a PO as status complete, and cause the associated shipments to be updated accordingly.",
+                                "method": "POST",
+                                "successPath": "success",
+                                "sampleData": {
+                                    "ship_date": "1",
+                                    "estimated_arrival_date": "1",
+                                    "cancel_remainder": "1",
+                                    "po": "1",
+                                    "packages": [
+                                        {
+                                            "cost": "1",
+                                            "ship_class_id": "1",
+                                            "tracking_number": "1",
+                                            "unit_count": "1",
+                                            "weight": "1",
+                                            "items": [
+                                                {
+                                                    "sku": "1",
+                                                    "quantity": "1",
+                                                    "vpc": "1"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,154 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "successPath": "Success",
+                "successValues": true,
+                "resources": [
+                    {
+                        "id": "programs",
+                        "name": "Programs",
+                        "endpoints": [
+                            {
+                                "id": "list_programs",
+                                "url": "/programs",
+                                "name": "Get Programs",
+                                "description": "Get a list of available GRMS Risk Assessment Programs.",
+                                "resourcePath": "Programs",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "accountnumber",
+                                        "name": "accountNumber",
+                                        "description": "Retrieves the matching records with the specified value.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "riskratings",
+                        "name": "Risk Ratings",
+                        "endpoints": [
+                            {
+                                "id": "list_risk_ratings",
+                                "url": "/ratings",
+                                "name": "Get Risk Ratings",
+                                "resourcePath": "RiskRatings",
+                                "pathParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "risk_assessment",
+                        "name": "Risk Assessment",
+                        "endpoints": [
+                            {
+                                "id": "pull_risk_assessment",
+                                "url": "/assess/detail",
+                                "name": "Pull Supplier Risk Assessment",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Id",
+                                        "description": "Risk assessment request transaction ID.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "successPath": "Success",
+                "successValues": true,
+                "resources": [
+                    {
+                        "id": "risk_assessment",
+                        "name": "Risk Assessment",
+                        "operations": [
+                            {
+                                "id": "create_risk_assesments",
+                                "url": "/assess",
+                                "name": "Submit Supplier Risk Assessment",
+                                "method": "POST",
+                                "sampleData": {
+                                    "PartnerAccountNumber": "CLIENT001",
+                                    "PartnerName": "",
+                                    "PartnerSubDivision": "",
+                                    "SubClient1ID": "SUB-CLIENT-1234",
+                                    "SubClient1Name": "Name of Sub-Client",
+                                    "SubscriptionProgramCode": "PROGRAM-CODE-A",
+                                    "ClientEnrollmentCode": "CLIENT-ENROLLMENT-CODE",
+                                    "CallBackUrl": "http://domain.com/callback/riskAssessmentUpdate.aspx",
+                                    "SupplierRecordID": "CLIENT001-SUP001",
+                                    "ParentCompanyName": "XYZ, Co.",
+                                    "ParentCompanyTaxID": "11-889990",
+                                    "CompanyName": "Supplier, Inc.",
+                                    "CompanyDBA": "Supplier DBA",
+                                    "TaxID": "00-123456789",
+                                    "ContactFirstName": "John",
+                                    "ContactLastName": "Doe",
+                                    "ContactEmail": "john@amce.com",
+                                    "ContactPhone": "800-123-4567",
+                                    "AddressStreet1": "111 Main St",
+                                    "AddressStreet2": "",
+                                    "AddressCity": "Any City",
+                                    "AddressState": "XY",
+                                    "AddressPostalCode": "12345",
+                                    "AddressCountryCode": "US",
+                                    "ProductServiceType": "Product and Services",
+                                    "ProductsOrServicesDescription": "Enter Product/Service Description here...",
+                                    "UnlistedProductsOrServices": "Enter Unlisted Products/Services information here...",
+                                    "CustomQuestion1": "Enter any custom question here",
+                                    "CustomQuestion2": "Or enter another custom question here...",
+                                    "DiversitySelection": "Diversity Selection 1"
+                                },
+                                "description": "",
+                                "responseIdPath": ""
+                            },
+                            {
+                                "id": "update_risk_assesments",
+                                "url": "/assess/update",
+                                "name": "Update Risk Assessment",
+                                "method": "POST",
+                                "sampleData": {
+                                    "TransactionID": "1a56cc9a-0e8f-4bbf-a42c-9a87e48b3bd0",
+                                    "RiskComponents": [
+                                        {
+                                            "RiskComponentCode": "NEWQU",
+                                            "RiskAssessmentResult": "TEST",
+                                            "RatingCode": "12wr"
+                                        }
+                                    ]
+                                },
+                                "description": "",
+                                "responseIdPath": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

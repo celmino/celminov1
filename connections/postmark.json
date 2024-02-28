@@ -1,0 +1,2217 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "bounce",
+                        "name": "Bounce",
+                        "endpoints": [
+                            {
+                                "id": "get_deliverystats",
+                                "url": "deliverystats",
+                                "name": "Get delivery stats",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                }
+                            },
+                            {
+                                "id": "get_bounces",
+                                "url": "bounces",
+                                "name": "Get bounces",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of bounces to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of bounces to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "Filter by type of bounce",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "inactive",
+                                        "name": "inactive",
+                                        "description": "Filter by emails that were deactivated by Postmark due to the bounce. Set to true or false. If this isn’t specified it will return both active and inactive.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "emailFilter",
+                                        "name": "emailFilter",
+                                        "description": "Filter by email address",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "messageID",
+                                        "name": "messageID",
+                                        "description": "Filter by messageID",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter messages starting from the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter messages up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_bounce",
+                                "url": "bounces/:_bounceid",
+                                "name": "Get a single bounce",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "bounceid",
+                                        "name": "Bounce ID",
+                                        "description": "ID of bounce",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_bounce_dump",
+                                "url": "bounces/:_bounceid/dump",
+                                "name": "Get bounce dump",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "bounceid",
+                                        "name": "Bounce ID",
+                                        "description": "ID of bounce",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_bounce_tags",
+                                "url": "bounces/tags",
+                                "name": "Get bounced tags",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "templates",
+                        "name": "Templates",
+                        "endpoints": [
+                            {
+                                "id": "get_templates",
+                                "url": "templates",
+                                "name": "List templates",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of templates to return per request. Max 500.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of templates to skip.",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_template",
+                                "url": "templates/:_templateId",
+                                "name": "Get a template",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "templateId",
+                                        "name": "Template ID",
+                                        "description": "ID of template",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "server",
+                        "name": "Server",
+                        "endpoints": [
+                            {
+                                "id": "get_server",
+                                "url": "server",
+                                "name": "Get the server",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "servers",
+                        "name": "Servers",
+                        "endpoints": [
+                            {
+                                "id": "get_servers",
+                                "url": "servers",
+                                "name": "List servers",
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of servers to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of servers to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Filter by a specific server name.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_servers_id",
+                                "url": "servers/:_serverid",
+                                "name": "Get a server",
+                                "pathParameters": [
+                                    {
+                                        "id": "serverid",
+                                        "name": "Server ID",
+                                        "description": "ID of Server",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "messages",
+                        "name": "Messages",
+                        "endpoints": [
+                            {
+                                "id": "get_messages",
+                                "url": "messages/outbound",
+                                "name": "Outbound message search",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of messages to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of messages to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient",
+                                        "name": "recipient",
+                                        "description": "Filter by the user who was receiving the email. ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromemail",
+                                        "name": "fromemail",
+                                        "description": "Filter by the sender email address.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Filter by status",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "subject",
+                                        "name": "subject",
+                                        "description": "Filter by subject",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter messages starting from the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter messages up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_message_details",
+                                "url": "messages/outbound/:_MessageID/details",
+                                "name": "Outbound message details",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "MessageID",
+                                        "name": "Message ID",
+                                        "description": "ID of Message",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_campaign_performance",
+                                "url": "messages/outbound/:_MessageID/dump",
+                                "name": "Outbound message dump",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "MessageID",
+                                        "name": "Message ID",
+                                        "description": "ID of Message",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messages_inbound",
+                                "url": "messages/inbound",
+                                "name": "Inbound message search",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of messages to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of messages to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient",
+                                        "name": "recipient",
+                                        "description": "Filter by the user who was receiving the email. ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromemail",
+                                        "name": "fromemail",
+                                        "description": "Filter by the sender email address.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "mailboxhash",
+                                        "name": "mailboxhash",
+                                        "description": "Filter by mailboxhash",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Filter by status",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "subject",
+                                        "name": "subject",
+                                        "description": "Filter by subject",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter messages starting from the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter messages up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messages_inbound_details",
+                                "url": "messages/inbound/:_MessageID/details",
+                                "name": "Inbound message details",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "MessageID",
+                                        "name": "Message ID",
+                                        "description": "ID of Message",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messages_open",
+                                "url": "messages/outbound/opens",
+                                "name": "Message opens",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of messages to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of messages to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient",
+                                        "name": "recipient",
+                                        "description": "Filter by the user who was receiving the email. ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "client_name",
+                                        "name": "client_name",
+                                        "description": "Filter by client name, i.e. Outlook, Gmail",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "client_company",
+                                        "name": "client_company",
+                                        "description": "Filter by company, i.e. Microsoft, Apple, Google",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "client_family",
+                                        "name": "client_family",
+                                        "description": "Filter by client family, i.e. OS X, Chrome",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "os_name",
+                                        "name": "os_name",
+                                        "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "os_family",
+                                        "name": "os_family",
+                                        "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "os_company",
+                                        "name": "os_company",
+                                        "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "platform",
+                                        "name": "platform",
+                                        "description": "Filter by platform, i.e. webmail, desktop, mobile",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "country",
+                                        "name": "country",
+                                        "description": "Filter by country messages were opened in, i.e. Denmark, Russia",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "region",
+                                        "name": "region",
+                                        "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "city",
+                                        "name": "city",
+                                        "description": "Filter by full name of city messages were opened in, i.e. Minneapolis, Philadelphia",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messages_outbound_opens",
+                                "url": "messages/outbound/opens/:_MessageID",
+                                "name": "Opens for a single message",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "MessageID",
+                                        "name": "Message ID",
+                                        "description": "ID of Message",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of messages to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of messages to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messages_clicks",
+                                "url": "messages/outbound/clicks",
+                                "name": "Message clicks",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of messages to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of messages to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient",
+                                        "name": "recipient",
+                                        "description": "Filter by the user who was receiving the email. ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "client_name",
+                                        "name": "client_name",
+                                        "description": "Filter by client name, i.e. Outlook, Gmail",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "client_company",
+                                        "name": "client_company",
+                                        "description": "Filter by company, i.e. Microsoft, Apple, Google",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "client_family",
+                                        "name": "client_family",
+                                        "description": "Filter by client family, i.e. OS X, Chrome",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "os_name",
+                                        "name": "os_name",
+                                        "description": "Filter by full OS name and specific version, i.e. OS X 10.9 Mavericks, Windows 7",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "os_family",
+                                        "name": "os_family",
+                                        "description": "Filter by kind of OS used without specific version, i.e. OS X, Windows",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "os_company",
+                                        "name": "os_company",
+                                        "description": "Filter by company which produced the OS, i.e. Apple Computer, Inc., Microsoft Corporation",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "platform",
+                                        "name": "platform",
+                                        "description": "Filter by platform, i.e. webmail, desktop, mobile",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "country",
+                                        "name": "country",
+                                        "description": "Filter by country messages were opened in, i.e. Denmark, Russia",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "region",
+                                        "name": "region",
+                                        "description": "Filter by full name of region messages were opened in, i.e. Moscow, New York",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "city",
+                                        "name": "city",
+                                        "description": "Filter by full name of city messages were opened in, i.e. Minneapolis, Philadelphia",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messages_clicks",
+                                "url": "messages/outbound/clicks/:_MessageID",
+                                "name": "Clicks for a single message",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "MessageID",
+                                        "name": "Message ID",
+                                        "description": "ID of Message",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of messages to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of messages to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "domains",
+                        "name": "Domains",
+                        "endpoints": [
+                            {
+                                "id": "get_domains",
+                                "url": "domains",
+                                "name": "List domains",
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of domains to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of domains to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_domain",
+                                "url": "domains/:_domainid",
+                                "name": "Get a domain’s details",
+                                "pathParameters": [
+                                    {
+                                        "id": "domainid",
+                                        "name": "Domain ID",
+                                        "description": "ID of Domain",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sendersignatures",
+                        "name": "Sender signatures",
+                        "endpoints": [
+                            {
+                                "id": "get_senders",
+                                "url": "senders",
+                                "name": "List sender signatures",
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of sendersignatures to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of sendersignatures to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sender",
+                                "url": "senders/:_signatureid",
+                                "name": "Get a sender signature’s details",
+                                "pathParameters": [
+                                    {
+                                        "id": "signatureid",
+                                        "name": "Signature ID",
+                                        "description": "ID of Domain",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stats",
+                        "name": "Stats",
+                        "endpoints": [
+                            {
+                                "id": "get_stats",
+                                "url": "stats/outbound",
+                                "name": "Get outbound overview",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sent_counts",
+                                "url": "stats/outbound/sends",
+                                "name": "Get sent counts",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sent_bounces",
+                                "url": "stats/outbound/bounces",
+                                "name": "Get bounce counts",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_spam_complaints",
+                                "url": "stats/outbound/spam",
+                                "name": "Get spam complaints",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_outbound_tracked",
+                                "url": "stats/outbound/tracked",
+                                "name": "Get tracked email counts",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_email_counts",
+                                "url": "stats/outbound/opens",
+                                "name": "Get email open counts",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_email_counts_platforms",
+                                "url": "stats/outbound/opens/platforms",
+                                "name": "Get email platform usage",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_opens_emailclients",
+                                "url": "stats/outbound/opens/emailclients",
+                                "name": "Get email client usage",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_opens_readtimes",
+                                "url": "stats/outbound/opens/readtimes",
+                                "name": "Get email read times",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_opens_clicks",
+                                "url": "stats/outbound/clicks",
+                                "name": "Get click counts",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_outbound_clicks_browserfamilies",
+                                "url": "stats/outbound/clicks/browserfamilies",
+                                "name": "Get browser usage",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_outbound_clicks_browser",
+                                "url": "stats/outbound/clicks/platforms",
+                                "name": "Get browser platform usage",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_outbound_clicks_location",
+                                "url": "stats/outbound/clicks/location",
+                                "name": "Get click location",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "tag",
+                                        "name": "tag",
+                                        "description": "Filter by tag",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fromdate",
+                                        "name": "fromdate",
+                                        "description": "Filter stats starting from the date specified (inclusive). e.g. 2014-01-01",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "todate",
+                                        "name": "todate",
+                                        "description": "Filter stats up to the date specified (inclusive). e.g. 2014-02-01",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "triggerstags",
+                        "name": "Triggers:Tags",
+                        "endpoints": [
+                            {
+                                "id": "get_tags",
+                                "url": "triggers/tags",
+                                "name": "Search triggers",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of triggers to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of triggers to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "match_name",
+                                        "name": "match_name",
+                                        "description": "Filter by delivery tag.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tag",
+                                "url": "triggers/tags/:_triggerid",
+                                "name": "Get a single trigger",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "triggerid",
+                                        "name": "Trigger ID",
+                                        "description": "ID of Trigger",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "triggersinboundrules",
+                        "name": "Triggers:Inbound rules",
+                        "endpoints": [
+                            {
+                                "id": "get_inboundrules",
+                                "url": "triggers/inboundrules",
+                                "name": "List inbound rule triggers",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Number of inboundrules to return per request. Max 500.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of inboundrules to skip.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "email",
+                        "name": "Email",
+                        "sampleData": {
+                            "From": "sender@example.com",
+                            "To": "receiver@example.com",
+                            "Cc": "copied@example.com",
+                            "Bcc": "blind-copied@example.com",
+                            "Subject": "Test",
+                            "Tag": "Invitation",
+                            "HtmlBody": "<b>Hello</b> <img src=\"cid:image.jpg\"/>",
+                            "TextBody": "Hello",
+                            "ReplyTo": "reply@example.com",
+                            "Headers": [
+                                {
+                                    "Name": "CUSTOM-HEADER",
+                                    "Value": "value"
+                                }
+                            ],
+                            "TrackOpens": true,
+                            "TrackLinks": "None",
+                            "Attachments": [
+                                {
+                                    "Name": "readme.txt",
+                                    "Content": "dGVzdCBjb250ZW50",
+                                    "ContentType": "text/plain"
+                                },
+                                {
+                                    "Name": "report.pdf",
+                                    "Content": "dGVzdCBjb250ZW50",
+                                    "ContentType": "application/octet-stream"
+                                },
+                                {
+                                    "Name": "image.jpg",
+                                    "ContentID": "cid:image.jpg",
+                                    "Content": "dGVzdCBjb250ZW50",
+                                    "ContentType": "image/jpeg"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_email",
+                                "url": "email",
+                                "name": "Send a single email",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "bounce",
+                        "name": "Bounce",
+                        "sampleData": {
+                            "ID": 692560173,
+                            "Type": "HardBounce",
+                            "TypeCode": 1,
+                            "Name": "Hard bounce",
+                            "Tag": "Invitation",
+                            "MessageID": "2c1b63fe-43f2-4db5-91b0-8bdfa44a9316",
+                            "ServerID": 23,
+                            "Description": "The server was unable to deliver your message (ex: unknown user, mailbox not found).",
+                            "Details": "action: failed\r\n",
+                            "Email": "anything@blackhole.postmarkapp.com",
+                            "From": "sender@postmarkapp.com",
+                            "BouncedAt": "2014-01-15T16:09:19.6421112-05:00",
+                            "DumpAvailable": false,
+                            "Inactive": false,
+                            "CanActivate": true,
+                            "Subject": "SC API5 Test",
+                            "Content": "Return-Path: <>\r\nReceived: …"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_bounce",
+                                "url": "bounces/:_ID/activate",
+                                "name": "Activate a bounce",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_bounces",
+                                        "extract": "Bounces[0].ID"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "messages",
+                        "name": "Messages",
+                        "sampleData": {
+                            "Tag": "Invitation",
+                            "MessageID": "0ac29aee-e1cd-480d-b08d-4f48548ff48d",
+                            "To": [
+                                {
+                                    "Email": "john.doe@yahoo.com",
+                                    "Name": null
+                                }
+                            ],
+                            "Cc": [],
+                            "Bcc": [],
+                            "Recipients": [
+                                "john.doe@yahoo.com"
+                            ],
+                            "ReceivedAt": "2014-02-20T07:25:02.8782715-05:00",
+                            "From": "\"Joe\" <joe@domain.com>",
+                            "Subject": "staging",
+                            "Attachments": [],
+                            "Status": "Sent",
+                            "TrackOpens": true,
+                            "TrackLinks": "HtmlAndText"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_bypass",
+                                "url": "messages/inbound/:_MessageID/bypass",
+                                "name": "Bypass rules for a blocked inbound message",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "MessageID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_messages_inbound",
+                                        "extract": "InboundMessages[0].MessageID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_inbound",
+                                "url": "messages/inbound/:_MessageID/retry",
+                                "name": "Retry a failed inbound message for processing",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "MessageID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_messages_inbound",
+                                        "extract": "InboundMessages[0].MessageID"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "templates",
+                        "name": "Templates",
+                        "sampleData": {
+                            "Name": "Onboarding Email",
+                            "TemplateId": 1234,
+                            "Subject": "Hi there, {{Name}}",
+                            "HtmlBody": "Hello dear Postmark user. {{Name}}",
+                            "TextBody": "{{Name}} is a {{Occupation}}",
+                            "AssociatedServerId": 1,
+                            "Active": false,
+                            "Alias": "onboarding-v1"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_template",
+                                "url": "templates",
+                                "name": "Create a template",
+                                "method": "POST",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "TemplateId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "validate_template",
+                                "url": "templates/validate",
+                                "name": "Validate a template",
+                                "method": "POST",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "sampleData": {
+                                    "Subject": "{{#company}}{{name}}{{/company}} {{subjectHeadline}}",
+                                    "HtmlBody": "{{#company}}{{address}}{{/company}}{{#each person}} {{name}} {{/each}}",
+                                    "TextBody": "{{#company}}{{phone}}{{/company}}{{#each person}} {{name}} {{/each}}",
+                                    "TestRenderModel": {
+                                        "userName": "bobby joe"
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "TemplateId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "email_template",
+                                "url": "email/withTemplate",
+                                "name": "Send email with template",
+                                "method": "POST",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "sampleData": {
+                                    "TemplateId": 1234,
+                                    "TemplateModel": {
+                                        "user_name": "John Smith",
+                                        "company": {
+                                            "name": "ACME"
+                                        }
+                                    },
+                                    "InlineCss": true,
+                                    "From": "sender@example.com",
+                                    "To": "receiver@example.com",
+                                    "Cc": "copied@example.com",
+                                    "Bcc": "blank-copied@example.com",
+                                    "Tag": "Invitation",
+                                    "ReplyTo": "reply@example.com",
+                                    "Headers": [
+                                        {
+                                            "Name": "CUSTOM-HEADER",
+                                            "Value": "value"
+                                        }
+                                    ],
+                                    "TrackOpens": true,
+                                    "TrackLinks": "None",
+                                    "Attachments": [
+                                        {
+                                            "Name": "readme.txt",
+                                            "Content": "dGVzdCBjb250ZW50",
+                                            "ContentType": "text/plain"
+                                        },
+                                        {
+                                            "Name": "report.pdf",
+                                            "Content": "dGVzdCBjb250ZW50",
+                                            "ContentType": "application/octet-stream"
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "TemplateId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_template",
+                                "url": "templates/:_TemplateId",
+                                "name": "Edit a template",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "TemplateId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_template",
+                                "url": [
+                                    "/templates/:_TemplateId",
+                                    "/templates"
+                                ],
+                                "name": "Create or Update a specific template",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "TemplateId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_template",
+                                "url": "templates/:_TemplateId",
+                                "name": "Delete a template",
+                                "method": "DELETE",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "TemplateId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "server",
+                        "name": "Server",
+                        "sampleData": {
+                            "Name": "Production 2",
+                            "Color": "blue",
+                            "SmtpApiActivated": false,
+                            "RawEmailEnabled": false,
+                            "DeliveryHookUrl": "http://hooks.example.com/delivery",
+                            "InboundHookUrl": "http://hooks.example.com/inbound",
+                            "BounceHookUrl": "http://hooks.example.com/bounce",
+                            "IncludeBounceContentInHook": false,
+                            "OpenHookUrl": "http://hooks.example.com/open",
+                            "PostFirstOpenOnly": false,
+                            "TrackOpens": false,
+                            "TrackLinks": "None",
+                            "ClickHookUrl": "http://hooks.example.com/click",
+                            "InboundDomain": "",
+                            "InboundSpamThreshold": 10
+                        },
+                        "operations": [
+                            {
+                                "id": "edit_server",
+                                "url": "server",
+                                "name": "Edit the server",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "servers",
+                        "name": "Servers",
+                        "sampleData": {
+                            "Name": "Production 2",
+                            "Color": "blue",
+                            "SmtpApiActivated": false,
+                            "RawEmailEnabled": false,
+                            "DeliveryHookUrl": "http://hooks.example.com/delivery",
+                            "InboundHookUrl": "http://hooks.example.com/inbound",
+                            "BounceHookUrl": "http://hooks.example.com/bounce",
+                            "IncludeBounceContentInHook": true,
+                            "OpenHookUrl": "http://hooks.example.com/open",
+                            "PostFirstOpenOnly": false,
+                            "TrackOpens": false,
+                            "TrackLinks": "None",
+                            "ClickHookUrl": "http://hooks.example.com/click",
+                            "InboundDomain": "",
+                            "InboundSpamThreshold": 0,
+                            "EnableSmtpApiErrorHooks": false
+                        },
+                        "operations": [
+                            {
+                                "id": "create_servers",
+                                "url": "servers",
+                                "name": "Create a server",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_servers",
+                                        "extract": "Servers[0].ID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_servers",
+                                "url": "servers/:_ID",
+                                "name": "Edit a server",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_servers",
+                                        "extract": "Servers[0].ID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_servers",
+                                "url": [
+                                    "/servers/:_ID",
+                                    "/servers"
+                                ],
+                                "name": "Create or Update a specific server",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_servers",
+                                        "extract": "Servers[0].ID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_servers",
+                                "url": "servers/:_ID",
+                                "name": "Delete a server",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_servers",
+                                        "extract": "Servers[0].ID"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "domains",
+                        "name": "Domains",
+                        "sampleData": {
+                            "Name": "example.com",
+                            "SPFVerified": false,
+                            "SPFHost": "example.com",
+                            "SPFTextValue": "v=spf1 a mx include:spf.mtasv.net ~all",
+                            "DKIMVerified": false,
+                            "WeakDKIM": false,
+                            "DKIMHost": "20160921046319pm._domainkey.example.com",
+                            "DKIMTextValue": "k=rsa; p=MIGfMA0GDRrFQJc5dZEBAQUAA4GNADCBiQKBgQCFn...",
+                            "DKIMPendingHost": "20131031155228pm._domainkey.example.com",
+                            "DKIMPendingTextValue": "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCFn...",
+                            "DKIMRevokedHost": "",
+                            "DKIMRevokedTextValue": "",
+                            "SafeToRemoveRevokedKeyFromDNS": false,
+                            "DKIMUpdateStatus": "Pending",
+                            "ReturnPathDomain": "pmbounces.example.com",
+                            "ReturnPathDomainVerified": false,
+                            "ReturnPathDomainCNAMEValue": "pm.mtasv.net",
+                            "ID": 36736
+                        },
+                        "operations": [
+                            {
+                                "id": "create_domains",
+                                "url": "domains",
+                                "name": "Create a domain",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_domains",
+                                "url": "domains/:_ID",
+                                "name": "Edit a domain",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_domains_verifyDkim",
+                                "url": "domains/:_ID/verifyDkim",
+                                "name": "Verify DKIM Status",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "name": "Domain ID",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_domains_verifyReturnPath",
+                                "url": "domains/:_ID/verifyReturnPath",
+                                "name": "Verify Return-Path Status",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "name": "Domain ID",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_domains_rotatedkim",
+                                "url": "domains/:_ID/rotatedkim",
+                                "name": "Rotate DKIM keys",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_domain",
+                                "url": [
+                                    "/domains/:_ID",
+                                    "/domains"
+                                ],
+                                "name": "Create or Update a specific domain",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_domain",
+                                "url": "domains/:_ID",
+                                "name": "Delete a domain",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "triggerstags",
+                        "name": "Triggers:Tags",
+                        "sampleData": {
+                            "ID": 3,
+                            "MatchName": "welcome",
+                            "TrackOpens": true
+                        },
+                        "operations": [
+                            {
+                                "id": "create_trigger",
+                                "url": "triggers/tags",
+                                "name": "Create a trigger for a tag",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_tags",
+                                        "extract": "Tags[0].ID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_trigger",
+                                "url": "triggers/tags/:_ID",
+                                "name": "Edit a single trigger",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_tags",
+                                        "extract": "Tags[0].ID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_trigger",
+                                "url": [
+                                    "/triggers/tags/:_ID",
+                                    "/triggers/tags"
+                                ],
+                                "name": "Create or Update a specific trigger",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_tags",
+                                        "extract": "Tags[0].ID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_trigger",
+                                "url": "triggers/tags/:_ID",
+                                "name": "Delete a single trigger",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_tags",
+                                        "extract": "Tags[0].ID"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "triggersinboundrules",
+                        "name": "Triggers:Inbound rules",
+                        "sampleData": {
+                            "ID": 3,
+                            "Rule": "welcome"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_inboundrules",
+                                "url": "triggers/inboundrules",
+                                "name": "Create an inbound rule trigger",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_inboundrules",
+                                "url": "triggers/inboundrules/:_ID",
+                                "name": "Delete a single trigger",
+                                "headers": {
+                                    "X-Postmark-Server-Token": "{{{connection.rest.encrypted.serverToken}}}",
+                                    "X-Postmark-Account-Token": " "
+                                },
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sendersignatures",
+                        "name": "Sender signatures",
+                        "sampleData": {
+                            "Domain": "example.com",
+                            "EmailAddress": "john.doe@example.com",
+                            "ReplyToEmailAddress": "jane.doe@example.com",
+                            "Name": "Jane Doe",
+                            "Confirmed": false,
+                            "SPFVerified": false,
+                            "SPFHost": "crazydomain.com",
+                            "SPFTextValue": "v=spf1 a mx include:spf.mtasv.net ~all",
+                            "DKIMVerified": false,
+                            "WeakDKIM": false,
+                            "DKIMHost": "",
+                            "DKIMTextValue": "",
+                            "DKIMPendingHost": "20140220130148.pm._domainkey.crazydomain.com",
+                            "DKIMPendingTextValue": "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCQ35xZciGB0g...",
+                            "DKIMRevokedHost": "",
+                            "DKIMRevokedTextValue": "",
+                            "SafeToRemoveRevokedKeyFromDNS": false,
+                            "DKIMUpdateStatus": "Pending",
+                            "ReturnPathDomain": "pmbounces.example.com",
+                            "ReturnPathDomainVerified": true,
+                            "ReturnPathDomainCNAMEValue": "pm.mtasv.net",
+                            "ID": 1
+                        },
+                        "operations": [
+                            {
+                                "id": "create_senders",
+                                "url": "senders",
+                                "name": "Create a signature",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_senders",
+                                "url": "senders/:_ID",
+                                "name": "Edit a signature",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_senders_resend",
+                                "url": "senders/:_ID/resend",
+                                "name": "Resend a confirmation",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "name": "Signature ID",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_senders",
+                                "url": [
+                                    "/senders/:_ID",
+                                    "/senders"
+                                ],
+                                "name": "Create or Update a specific signature",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_sender",
+                                "url": "senders/:_ID",
+                                "name": "Delete a signature",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

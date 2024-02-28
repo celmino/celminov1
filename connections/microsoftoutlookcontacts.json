@@ -1,0 +1,2300 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "nextpageurl",
+            "nextPagePath": "[@odata.nextLink]"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "contact",
+                        "name": "Contact",
+                        "endpoints": [
+                            {
+                                "id": "list_usercontacts",
+                                "url": "/users/:_userId/contacts",
+                                "name": "List user's contacts",
+                                "description": "Retrieve a contact collection from the default contacts folder of the another user.",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_contacts",
+                                "url": "/me/contacts",
+                                "name": "List contacts",
+                                "description": "Retrieve a contact collection from the default contacts folder of a signed-in user.",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_usercontact",
+                                "url": "/users/:_userId/contacts/:_contact_id",
+                                "name": "Get user's contact",
+                                "description": "Retrieve contact from the default contact folder of the another user.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "name": "Contact Id",
+                                        "description": "Id of a contact",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_contact",
+                                "url": "/me/contacts/:_contact_id",
+                                "name": "Get contact",
+                                "description": "Retrieve contact from the default contact folder of a signed-in user.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "contact_id",
+                                        "name": "Contact Id",
+                                        "description": "Id of the contact",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_userchildfolder_contacts",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id/childFolders/:_child_folder_id/contacts",
+                                "name": "List user's child folder contacts",
+                                "description": "Retrieve child folder contacts in specific contact folder of the another user.",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of the contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "child_folder_id",
+                                        "name": "Child Folder Id",
+                                        "description": "Id of the child folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_childfolder_contacts",
+                                "url": "/me/contactFolders/:_contact_folder_id/childFolders/:_child_folder_id/contacts",
+                                "name": "List child folder contacts",
+                                "description": "Retrieve child folder contacts in specific contact folder of a signed-in user.",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of the contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "child_folder_id",
+                                        "name": "Child Folder Id",
+                                        "description": "Id of the child folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_userchildfolder_contact",
+                                "url": "/users/_userId/contactFolders/:_contact_folder_id/childFolders/:_child_folder_id/contacts/:_contact_id",
+                                "name": "Get user's child folder contact",
+                                "doesNotSupportPaging": true,
+                                "description": "Retrieve child folder contact in specific contact folder of the another user.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "child_folder_id",
+                                        "name": "Child Folder Id",
+                                        "description": "Id of a child folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "name": "Contact Id",
+                                        "description": "Id of the contact",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_childfolder_contact",
+                                "url": "/me/contactFolders/:_contact_folder_id/childFolders/:_child_folder_id/contacts/:_contact_id",
+                                "name": "Get child folder contact",
+                                "doesNotSupportPaging": true,
+                                "description": "Retrieves child folder contact in specific contact folder of the signed-in user.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "child_folder_id",
+                                        "name": "Child Folder Id",
+                                        "description": "Id of a child folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "name": "Contact Id",
+                                        "description": "Id of a contact.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contact_folder",
+                        "name": "Contact Folder",
+                        "endpoints": [
+                            {
+                                "id": "list_usercontactfolders",
+                                "url": "/users/:_userId/contactFolders",
+                                "name": "List user's contact folders",
+                                "resourcePath": "value",
+                                "description": "Get the contact folder collection in the default Contacts folder of the another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_contactfolders",
+                                "url": "/me/contactFolders",
+                                "name": "List contact folders",
+                                "resourcePath": "value",
+                                "description": "Get the contact folder collection in the default Contacts folder of the signed-in user.",
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_usercontactfolder",
+                                "url": "/users/:_userId/contactfolders/:_contact_folder_id",
+                                "name": "Get user's contact folder",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a contact folder by using the contact folder ID of the another user.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_contactfolder",
+                                "url": "/me/contactfolders/:_contact_folder_id",
+                                "name": "Get contact folder",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a contact folder by using the contact folder ID of the signed-in user.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_userchildfolder",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id/childFolders",
+                                "name": "List user's child folders",
+                                "resourcePath": "value",
+                                "description": "Get a collection of child folders under the specified contact folder of the another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_childfolder",
+                                "url": "/me/contactFolders/:_contact_folder_id/childFolders",
+                                "name": "List child folders",
+                                "description": "Get a collection of child folders under the specified contact folder of the signed-in user.",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_usercontactfolder_contacts",
+                                "url": "/users/:_userId/contactfolders/:_contact_folder_id/contacts",
+                                "name": "List user's contacts in folder",
+                                "resourcePath": "value",
+                                "description": "Get a contact collection from the default Contacts folder of the another user.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_contactfolder_contacts",
+                                "url": "/me/contactfolders/:_contact_folder_id/contacts",
+                                "name": "List contacts in folder",
+                                "description": "Get a contact collection from the default Contacts folder of the signed-in user.",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "categories",
+                        "name": "Categories",
+                        "endpoints": [
+                            {
+                                "id": "list_usercategories",
+                                "url": "/users/:_userId/outlook/masterCategories",
+                                "name": "List user's categories",
+                                "description": "Get all the categories that have been defined for the another user.",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_categories",
+                                "url": "/me/outlook/masterCategories",
+                                "name": "List categories",
+                                "description": "Get all the categories that have been defined for the signed-in user.",
+                                "resourcePath": "value",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_usercategory",
+                                "url": "/users/:_userId/outlook/masterCategories/:_category_id",
+                                "name": "Get user's category",
+                                "description": "Get the properties and relationships of the specified outlookCategory object for another user",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "category_id",
+                                        "name": "Category Id",
+                                        "description": "Id of the Category",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_category",
+                                "url": "/me/outlook/masterCategories/:_category_id",
+                                "name": "Get category",
+                                "description": "Get the properties and relationships of the specified outlookCategory object for signed-in user",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "category_id",
+                                        "name": "Category Id",
+                                        "description": "Id of the category",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$count",
+                                        "name": "Count",
+                                        "description": "Retrieves the total count of matching resources.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "$expand",
+                                        "name": "Expand",
+                                        "description": "Retrieves related resources.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "Retrieve just a subset of a collection.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$format",
+                                        "name": "Format",
+                                        "description": "Returns the results in the specified media format.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "description": "To specify the sort order of the items returned.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$search",
+                                        "name": "Search",
+                                        "description": "To restrict the results of a request to match a search criterion.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$select",
+                                        "name": "Select",
+                                        "description": "Returns a set of properties that are different than the default set for an individual resource or a collection of resources. With $select, you can specify a subset or a superset of the default properties.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "contact",
+                        "name": "Contact",
+                        "sampleData": {
+                            "assistantName": "string",
+                            "birthday": "String (timestamp)",
+                            "businessAddress": {
+                                "@odata.type": "microsoft.graph.physicalAddress"
+                            },
+                            "businessHomePage": "string",
+                            "businessPhones": [
+                                "string"
+                            ],
+                            "categories": [
+                                "string"
+                            ],
+                            "changeKey": "string",
+                            "children": [
+                                "string"
+                            ],
+                            "companyName": "string",
+                            "createdDateTime": "String (timestamp)",
+                            "department": "string",
+                            "displayName": "string",
+                            "emailAddresses": [
+                                {
+                                    "@odata.type": "microsoft.graph.emailAddress"
+                                }
+                            ],
+                            "fileAs": "string",
+                            "generation": "string",
+                            "givenName": "string",
+                            "homeAddress": {
+                                "@odata.type": "microsoft.graph.physicalAddress"
+                            },
+                            "homePhones": [
+                                "string"
+                            ],
+                            "id": "string (identifier)",
+                            "imAddresses": [
+                                "string"
+                            ],
+                            "initials": "string",
+                            "jobTitle": "string",
+                            "lastModifiedDateTime": "String (timestamp)",
+                            "manager": "string",
+                            "middleName": "string",
+                            "mobilePhone": "string",
+                            "nickName": "string",
+                            "officeLocation": "string",
+                            "otherAddress": {
+                                "@odata.type": "microsoft.graph.physicalAddress"
+                            },
+                            "parentFolderId": "string",
+                            "personalNotes": "string",
+                            "profession": "string",
+                            "spouseName": "string",
+                            "surname": "string",
+                            "title": "string",
+                            "yomiCompanyName": "string",
+                            "yomiGivenName": "string",
+                            "yomiSurname": "string",
+                            "photo": {
+                                "@odata.type": "microsoft.graph.profilePhoto"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_usercontact",
+                                "url": "/users/:_userId/contacts",
+                                "name": "Create user's contact",
+                                "description": "Add a contact to the root Contacts folder of the another user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_contact",
+                                "url": "/me/contacts",
+                                "name": "Create contact",
+                                "description": "Add a contact to the root Contacts folder of the signed-in user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_usercontact",
+                                "url": "/users/:_userId/contacts/:_contact_id",
+                                "name": "Update user's contact",
+                                "description": "Update the properties of a contact object of the another user.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_contact",
+                                "url": "/me/contacts/:_contact_id",
+                                "name": "Update contact",
+                                "description": "Update the properties of a contact object of the signed-in user.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_usercontactfolder_contact",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id/contacts/:_contact_id",
+                                "name": "Update user's contact folder contact",
+                                "description": "Update the properties of a contact object in specific contact folder of the another user.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontactfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_contactfolder_contact",
+                                "url": "/me/contactFolders/:_contact_folder_id/contacts/:_contact_id",
+                                "name": "Update contact folder contact",
+                                "description": "Update the properties of a contact object in specific contact folder of the signed-in user.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of the contact folder",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contactfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_userchildfolder_contact",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id/childFolders/:_child_folder_id/contacts/:_contact_id",
+                                "name": "Update user's child folder contact",
+                                "description": "Update the properties of a contact object in specific child folder of the another user.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "child_folder_id",
+                                        "name": "Child Folder Id",
+                                        "description": "Id of a child folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_userchildfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_childfolder_contact",
+                                "url": "/me/contactFolders/:_contact_folder_id/childFolders/:_child_folder_id/contacts/:_contact_id",
+                                "name": "Update child folder contact",
+                                "description": "Update the properties of a contact object in specific child folder of the signed-in user.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "child_folder_id",
+                                        "name": "Child Folder Id",
+                                        "description": "Id of a child folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_childfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_usercontact",
+                                "url": "/users/:_userId/contacts/:_contact_id",
+                                "name": "Delete user's contact",
+                                "description": "Delete a contact in default contact folder of the another user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_contact",
+                                "url": "/me/contacts/:_contact_id",
+                                "name": "Delete contact",
+                                "description": "Delete a contact in default contact folder of the signed-in user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_usercontactfolder_contact",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id/contacts/:_contact_id",
+                                "name": "Delete user's contact folder contact",
+                                "description": "Delete a contact in specific contact folder of the another user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontactfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_contactfolder_contact",
+                                "url": "/me/contactFolders/:_contact_folder_id/contacts/:_contact_id",
+                                "name": "Delete contact folder contact",
+                                "description": "Delete a contact in specific contact folder of the signed-in user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contactfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_userchildfolder_contact",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id/childFolders/:_child_folder_id/contacts/:_contact_id",
+                                "name": "Delete user's child folder contact",
+                                "description": "Delete a contact in specific child folder of the another user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "child_folder_id",
+                                        "name": "Child Folder Id",
+                                        "description": "Id of a child folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_userchildfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_childfolder_contact",
+                                "url": "/me/contactFolders/:_contact_folder_id/childFolders/:_child_folder_id/contacts/:_contact_id",
+                                "name": "Delete child folder contact",
+                                "description": "Delete a contact in specific child folder of the signed-in user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "child_folder_id",
+                                        "name": "Child Folder Id",
+                                        "description": "Id of a child folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_childfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contact_folder",
+                        "name": "Contact Folder",
+                        "sampleData": {
+                            "displayName": "string",
+                            "id": "string (identifier)",
+                            "parentFolderId": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_usercontactfolder",
+                                "url": "/users/:_userId/contactFolders",
+                                "name": "Create user's contact folder",
+                                "description": "Create a new contactFolder under the default contacts folder of the another user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontactfolders",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_contactfolder",
+                                "url": "/me/contactFolders",
+                                "name": "Create contact folder",
+                                "description": "Create a new contactFolder under the default contacts folder of the signed-in user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contactfolders",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_usercontactfolder",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id",
+                                "name": "Update user's contact folder",
+                                "description": "Update the properties of contactfolder object of the another user.",
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "parentFolderId": "parentFolderId-value",
+                                    "displayName": "displayName-value"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontactfolders",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_contactfolder",
+                                "url": "/me/contactFolders/:_contact_folder_id",
+                                "name": "Update contact folder",
+                                "description": "Update the properties of contactfolder object of the signed-in user.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "in": "path",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contactfolders",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_usercontactfolder",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id",
+                                "name": "Delete user's contact folder",
+                                "description": "Delete contactFolder other than the default contactFolder of the another user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontactfolders",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_contactfolder",
+                                "url": "/me/contactFolders/:_contact_folder_id",
+                                "name": "Delete contact folder",
+                                "description": "Delete contactFolder other than the default contactFolder of the signed-in user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "in": "path",
+                                        "description": "Id of a contact folder.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contactfolders",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_userchildfolder",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id/childFolders",
+                                "name": "Create user's child folder",
+                                "description": "Create a new contactFolder as a child of a specified folder of the another user.",
+                                "sampleData": {
+                                    "parentFolderId": "parentFolderId-value",
+                                    "displayName": "displayName-value"
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_userchildfolder",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_childfolder",
+                                "url": "/me/contactFolders/:_contact_folder_id/childFolders",
+                                "name": "Create child folder",
+                                "description": "Create a new contactFolder as a child of a specified folder of the signed-in user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_childfolder",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_usercontactfolder_contacts",
+                                "url": "/users/:_userId/contactFolders/:_contact_folder_id/contacts",
+                                "name": "Create user's contact in folder",
+                                "description": "Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder of the another user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercontactfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_contactfolder_contacts",
+                                "url": "/me/contactFolders/:_contact_folder_id/contacts",
+                                "name": "Create contact in folder",
+                                "description": "Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder of the signed-in user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_folder_id",
+                                        "name": "Contact Folder Id",
+                                        "description": "Id of a contact folder.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_contactfolder_contacts",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "categories",
+                        "name": "Categories",
+                        "sampleData": {
+                            "color": "String",
+                            "displayName": "String"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_usercategory",
+                                "url": "/users/:_userId/outlook/masterCategories",
+                                "name": "Create user's category",
+                                "description": "Create an outlookCategory object in the user's master list of categories for another user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercategories",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_category",
+                                "url": "/me/outlook/masterCategories",
+                                "name": "Create category",
+                                "description": "Create an outlookCategory object in the user's master list of categories for signed-in user.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_categories",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_usercategory",
+                                "url": "/users/:_userId/outlook/masterCategories/:_category_id",
+                                "name": "Update user's category",
+                                "description": "Update the writable property, color, of the specified outlookCategory object for another user. You cannot modify the displayName property once you have created the category.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "category_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercategories",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_category",
+                                "url": "/me/outlook/masterCategories/:_category_id",
+                                "name": "Update category",
+                                "description": "Update the writable property, color, of the specified outlookCategory object for signed-in user. You cannot modify the displayName property once you have created the category.",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "category_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_categories",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_usercategory",
+                                "url": "/users/:_userId/outlook/masterCategories/:_category_id",
+                                "name": "Delete user's category",
+                                "description": "Delete the specified outlookCategory object for another user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "in": "path",
+                                        "name": "User Principal Name",
+                                        "description": "To specify the user's Email Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "category_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_usercategories",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_category",
+                                "url": "/me/outlook/masterCategories/:_category_id",
+                                "name": "Delete category",
+                                "description": "Delete the specified outlookCategory object for signed-in user.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "category_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_categories",
+                                        "extract": "value[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

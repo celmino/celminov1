@@ -1,0 +1,2731 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "allowUndefinedResource": true,
+        "urlResolution": [],
+        "paging": {
+            "pagingMethod": "skipargument",
+            "skipArgument": "$skip"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "lists",
+                        "name": "Lists",
+                        "endpoints": [
+                            {
+                                "id": "list_guid",
+                                "url": "/_api/web/lists:_list_guid",
+                                "name": "Get a list by GUID",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_views",
+                                "url": "/_api/web/lists:_list_guid/views",
+                                "name": "Get all views for a list",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "recycle",
+                                "url": "/_api/web/lists:_list_guid/recycle",
+                                "name": "Moves the list to the Recycle Bin",
+                                "doesNotSupportPaging": true,
+                                "method": "POST",
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_title",
+                                "url": "/_api/web/lists/GetByTitle:_title",
+                                "name": "Get a list by title",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_permissions",
+                                "url": "/_api/web/lists:_list_guid/getusereffectivepermissions(@user)",
+                                "name": "Gets the effective permissions",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "@user",
+                                        "name": "User login name",
+                                        "required": true,
+                                        "description": "The login name of the user to get permissions for, passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_reservelistitemid",
+                                "url": "/_api/web/lists:_list_guid/reservelistitemid",
+                                "name": "Reserves a list item ID",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_resetroleinheritance",
+                                "url": "/_api/web/lists:_list_guid/resetroleinheritance",
+                                "name": "Resets the role inheritance",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_view",
+                                "url": "/_api/web/lists:_list_guid/getview:_view_id",
+                                "name": "Get a specific view",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "view_id",
+                                        "name": "View Id",
+                                        "required": true,
+                                        "description": "The unique identifier for the list view",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_add_view",
+                                "url": "/_api/web/lists:_list_guid/getview:_view_id/viewfields/addviewfield:_field_name",
+                                "name": "Adds the field with the specified field",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "view_id",
+                                        "name": "View Id",
+                                        "required": true,
+                                        "description": "The unique identifier for the list view",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "field_name",
+                                        "name": "Field Name",
+                                        "required": true,
+                                        "description": "The case-sensitive internal name or display name of the field to add",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_remove_view",
+                                "url": "/_api/web/lists:_list_guid/getview:_view_id/viewfields/removeviewfield:_field_name",
+                                "name": "Removes the field with the specified field",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "view_id",
+                                        "name": "View Id",
+                                        "required": true,
+                                        "description": "The unique identifier for the list view",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "field_name",
+                                        "name": "Field Name",
+                                        "required": true,
+                                        "description": "The case-sensitive internal name or display name of the field to add",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_remove_all",
+                                "url": "/_api/web/lists:_list_guid/getview:_view_id/viewfields/removeallviewfields",
+                                "name": "Removes all the fields from the collection.",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "view_id",
+                                        "name": "View Id",
+                                        "required": true,
+                                        "description": "The unique identifier for the list view",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_fields",
+                                "url": "/_api/web/lists:_list_guid/getrelatedfields",
+                                "name": "Get Related Fields",
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "user_profiles",
+                        "name": "User profiles",
+                        "endpoints": [
+                            {
+                                "id": "get_userprofiles",
+                                "url": "/_api/sp.userprofiles.peoplemanager",
+                                "name": "Get the current PeopleManager instance",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "list_property_name",
+                                "url": "/_api/sp.userprofiles.peoplemanager/:_property_name",
+                                "name": "Get a property",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "property_name",
+                                        "name": "Property Name",
+                                        "required": true,
+                                        "description": "name of the property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_follow",
+                                "url": "/_api/sp.userprofiles.peoplemanager/follow(@v)",
+                                "name": "Adds the specified user to the current user's list",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Account Name",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_followtag",
+                                "url": "/_api/sp.userprofiles.peoplemanager/followtag:_tag_id",
+                                "name": "Adds the specified user to the current user's list of followed tags",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "tag_id",
+                                        "name": "Tag Id",
+                                        "required": true,
+                                        "description": "The ID of the tag to start following.",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getfollowedtags",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getfollowedtags(:_count)",
+                                "name": "Gets tags that the user is following",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "Max Count",
+                                        "required": true,
+                                        "description": "The maximum number of tags to get"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getfollowersfor",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getfollowersfor(@v)",
+                                "name": "Gets the people who are following the specified user",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Account Name",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getpeoplefollowedby",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getpeoplefollowedby(@v)",
+                                "name": "Gets the people who the specified user is following",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Account Name",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getpropertiesfor",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getpropertiesfor(@v)",
+                                "name": "Gets user properties for the specified user",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Account Name",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "hide_suggestion",
+                                "url": "/_api/sp.userprofiles.peoplemanager/hidesuggestion(@v)",
+                                "name": "Removes the specified user from the user's list",
+                                "doesNotSupportPaging": true,
+                                "method": "POST",
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Account Name",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getuser_profileproperty",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getuserprofilepropertyfor(accountname=@v, propertyname=:_property_name)",
+                                "name": "Gets the specified user profile property for the specified user",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "property_name",
+                                        "name": "Property Name",
+                                        "required": true,
+                                        "description": "The case-sensitive name of the property to get"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Account Name",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "stop_following",
+                                "url": "/_api/sp.userprofiles.peoplemanager/stopfollowing(@v)",
+                                "name": "Remove the specified user from the current user's list",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Account Name",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getuser_profilepropertyfor",
+                                "url": "/_api/sp.userprofiles.peoplemanager.isfollowing(possiblefolloweraccountname=@v, possiblefolloweeaccountname=@y",
+                                "name": "Gets the specified user profile property for the specified user",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Account Name(@x)",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    },
+                                    {
+                                        "id": "@y",
+                                        "name": "Account Name(@y)",
+                                        "required": true,
+                                        "description": "The account name of the user, encoded and passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getmy_followers",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getmyfollowers",
+                                "name": "Gets the people who are following the current user",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "getmyproperties",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getmyproperties",
+                                "name": "Gets user properties for the current user",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "getmysuggestions",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getmysuggestions",
+                                "doesNotSupportPaging": true,
+                                "name": "Gets suggestions for who the current user"
+                            },
+                            {
+                                "id": "getpeoplefollowedbyme",
+                                "url": "/_api/sp.userprofiles.peoplemanager/getpeoplefollowedbyme",
+                                "doesNotSupportPaging": true,
+                                "name": "Gets suggestions for who the current user"
+                            },
+                            {
+                                "id": "gettrendingtags",
+                                "url": "/_api/sp.userprofiles.peoplemanager.gettrendingtags",
+                                "doesNotSupportPaging": true,
+                                "name": "Gets the most popular tags. Static method"
+                            },
+                            {
+                                "id": "stopfollowingtag",
+                                "url": "/_api/sp.userprofiles.peoplemanager/stopfollowingtag:_tag_id",
+                                "doesNotSupportPaging": true,
+                                "name": "Remove the specified tag from the current user's list",
+                                "method": "POST",
+                                "pathParameters": [
+                                    {
+                                        "id": "tag_id",
+                                        "name": "Tag Id",
+                                        "required": true,
+                                        "description": "The ID of the tag to start following.",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createpersonal_siteenque",
+                                "url": "/_api/sp.userprofiles.profileloader.getprofileloader/getuserprofile/createpersonalsiteenque(:_boolean)",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "name": "Enqueues creating a personal site for this user",
+                                "pathParameters": [
+                                    {
+                                        "id": "boolean",
+                                        "name": "createpersonalsiteenque",
+                                        "required": true,
+                                        "description": "true if this is an interactively (web) initiated request, or false if this is a non-interactively (client) initiated request."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "shareallsocialdata",
+                                "url": "/_api/sp.userprofiles.profileloader.getprofileloader/getuserprofile/shareallsocialdata(:_boolean)",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "name": "Sets the privacy settings for this profile.",
+                                "pathParameters": [
+                                    {
+                                        "id": "boolean",
+                                        "name": "shareallsocialdata",
+                                        "required": true,
+                                        "description": "true to make all social data public; false to make all social data private"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getowneruserprofile",
+                                "url": "/_api/sp.userprofiles.profileloader.getowneruserprofile",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "name": "Gets the user profile of the site owner"
+                            },
+                            {
+                                "id": "getprofileloader",
+                                "url": "/_api/sp.userprofiles.profileloader.getprofileloader",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "name": "Gets a ProfileLoader object from the context cache"
+                            },
+                            {
+                                "id": "getuserprofile",
+                                "url": "/_api/sp.userprofiles.profileloader.getprofileloader/getuserprofile",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "name": "Gets the user profile that corresponds to the current user"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "web",
+                        "name": "Web",
+                        "endpoints": [
+                            {
+                                "id": "list_site",
+                                "url": "/_api/web",
+                                "name": "Get a site",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "list_applytheme",
+                                "url": "/_api/web/applytheme(colorpaletteurl=':_color',fontschemeurl=':_font',backgroundimageurl=':_background', sharegenerated=:_share)",
+                                "name": "Applies the theme",
+                                "doesNotSupportPaging": true,
+                                "method": "POST",
+                                "pathParameters": [
+                                    {
+                                        "id": "color",
+                                        "name": "colorpaletteurl",
+                                        "required": true,
+                                        "description": "The server-relative URL of the color palette file"
+                                    },
+                                    {
+                                        "id": "font",
+                                        "name": "fontschemeurl",
+                                        "required": true,
+                                        "description": "The server-relative URL of the font scheme"
+                                    },
+                                    {
+                                        "id": "background",
+                                        "name": "backgroundimageurl",
+                                        "required": true,
+                                        "description": "The server-relative URL of the background image."
+                                    },
+                                    {
+                                        "id": "share",
+                                        "name": "sharegenerated",
+                                        "required": true,
+                                        "description": "True to store the generated theme files in the root site, or false to store them in this site"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_getsubwebsfilteredforcurrentuser",
+                                "url": "/_api/web/getsubwebsfilteredforcurrentuser(nwebtemplatefilter=:_nwebtemplatefilter, nconfigurationfilter=:_nconfigurationfilter)",
+                                "name": "Returns the collection of child sites of the current site",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "nwebtemplatefilter",
+                                        "name": "nwebtemplatefilter",
+                                        "required": true,
+                                        "description": "The ID of the template used in the site definition of the sites"
+                                    },
+                                    {
+                                        "id": "nconfigurationfilter",
+                                        "name": "nconfigurationfilter",
+                                        "required": true,
+                                        "description": "The ID of the site template used to provision the sites"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_breakroleinheritance",
+                                "url": "/_api/web/breakroleinheritance(copyroleassignments=:_copyrole, clearsubscopes=:_clearsubscopes)",
+                                "name": "Creates unique role assignments",
+                                "doesNotSupportPaging": true,
+                                "method": "POST",
+                                "pathParameters": [
+                                    {
+                                        "id": "copyrole",
+                                        "name": "copyroleassignments",
+                                        "required": true,
+                                        "description": "true to copy the role assignments from the parent securable object; false to remove the inherited role assignments except one that contains the current user"
+                                    },
+                                    {
+                                        "id": "clearsubscopes",
+                                        "name": "clearsubscopes",
+                                        "required": true,
+                                        "description": "true to make all child securable objects inherit role assignments from the current object; false (default) to leave role assignments unchanged for child securable objects that do not inherit role assignments from their parent object."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_registerpushnotificationsubscriber",
+                                "url": "/_api/web/registerpushnotificationsubscriber(deviceappinstanceid=:_deviceappinstanceid, servicetoken=:_servicetoken)",
+                                "name": "Registers the subscriber for push notifications over the site",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "deviceappinstanceid",
+                                        "name": "deviceappinstanceid",
+                                        "required": true,
+                                        "description": "The ID of the device app instance."
+                                    },
+                                    {
+                                        "id": "servicetoken",
+                                        "name": "servicetoken",
+                                        "required": true,
+                                        "description": "The token provided by the notification service to the device to receive notifications."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_resetroleinheritance",
+                                "url": "/_api/web/resetroleinheritance",
+                                "name": "Resets the role inheritance for the securable object",
+                                "method": "POST",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "list_doespushnotificationsubscriberexist",
+                                "url": "/_api/web/doespushnotificationsubscriberexist:_instance_id",
+                                "name": "Checks whether the push notification subscriber exist for the current user",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "instance_id",
+                                        "name": "Device App Instance Id",
+                                        "required": true,
+                                        "description": "The ID of the device app instance",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_unregisterpushnotificationsubscriber",
+                                "url": "/_api/web/unregisterpushnotificationsubscriber:_instance_id",
+                                "name": "Unregisters the subscriber for push notifications from the site.",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "instance_id",
+                                        "name": "Device App Instance Id",
+                                        "required": true,
+                                        "description": "The ID of the device app instance",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getuserbyid",
+                                "url": "/_api/web/getuserbyid(:_user_id)",
+                                "name": "Returns the user corresponding to the specified member identifier for the current site",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "description": "The ID of the user",
+                                        "required": true,
+                                        "name": "User Id"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_doesuserhavepermissions",
+                                "url": "/_api/web/doesuserhavepermissions(@v)",
+                                "doesNotSupportPaging": true,
+                                "name": "Returns whether the current user has the given set of permissions",
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Login Name",
+                                        "required": true,
+                                        "description": "The high and low permission range"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_getpushnotificationsubscribersbyuser",
+                                "url": "/_api/web/getpushnotificationsubscribersbyuser(@v)",
+                                "name": "Queries for the push notification subscribers over the site",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Login Name",
+                                        "required": true,
+                                        "description": "The login name of the user. See User for formats used to pass login names in the query string."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getusereffectivepermissions",
+                                "url": "/_api/web/getusereffectivepermissions(@v)",
+                                "name": "Gets the effective permissions that the specified user",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Login Name",
+                                        "required": true,
+                                        "description": "The login name of the user. See User for formats used to pass login names in the query string."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_getappbdccatalog",
+                                "url": "/_api/web/getappbdccatalog",
+                                "name": "Get AppBdc Catalog",
+                                "doesNotSupportPaging": true,
+                                "method": "POST"
+                            },
+                            {
+                                "id": "list_getappbdccatalogforappinstance",
+                                "url": "/_api/web/getappbdccatalogforappinstance:_instance_id",
+                                "name": "Get AppBdc Catalog For App Instance",
+                                "doesNotSupportPaging": true,
+                                "method": "POST",
+                                "pathParameters": [
+                                    {
+                                        "id": "instance_id",
+                                        "name": "App Instance Id",
+                                        "required": true,
+                                        "description": "The ID of the app instance.",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_getappinstancebyid",
+                                "url": "/_api/web/getappinstancebyid:_instance_id",
+                                "name": "Retrieves an AppInstance installed on this Site",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "instance_id",
+                                        "name": "App Instance Id",
+                                        "required": true,
+                                        "description": "The ID of the app instance.",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_getavailablewebtemplates",
+                                "url": "/_api/web/getavailablewebtemplates(lcid=:_lcid, doincludecrosslanguage=:_doincludecrosslanguage)",
+                                "name": "Returns a collection of site templates",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "lcid",
+                                        "name": "App Instance Id",
+                                        "required": true,
+                                        "description": "The LCID of the site templates to get"
+                                    },
+                                    {
+                                        "id": "doincludecrosslanguage",
+                                        "name": "doincludecrosslanguage",
+                                        "required": true,
+                                        "description": "true to include language-neutral site templates; otherwise false."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_getfilebyserverrelativeurl",
+                                "url": "/_api/web/getfilebyserverrelativeurl:_url",
+                                "name": "Returns the file object located at the specified server-relative URL.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "url",
+                                        "name": "Server Relative URL",
+                                        "required": true,
+                                        "description": "The server relative URL of the file",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_getfolderbyserverrelativeurl",
+                                "url": "/_api/web/getfolderbyserverrelativeurl:_url",
+                                "name": "Returns the folder object located at the specified server-relative URL",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "url",
+                                        "name": "Server Relative URL",
+                                        "required": true,
+                                        "description": "The server relative URL of the file",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_url",
+                                "url": "/_api/web/getlist:_list_url",
+                                "name": "Gets the list at the specified site-relative URL",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_url",
+                                        "name": "List URL",
+                                        "required": true,
+                                        "description": "The site-relative URL of the list.",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_subscribersbyargs",
+                                "url": "/_api/web/getpushnotificationsubscribersbyargs:_arguments",
+                                "name": "Queries for the push notification subscribers over the site",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "arguments",
+                                        "name": "Arguments",
+                                        "required": true,
+                                        "description": "Arguments to filter the results. Passed arguments are compared to the subscribers' custom arguments in the store. Pass null or empty arguments to return unfiltered results.",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_list_notification",
+                                "url": "/_api/web/getpushnotificationsubscriber:_instance_id",
+                                "name": "Gets the push notification subscriber over the site",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "instance_id",
+                                        "name": "Device App Instance Id",
+                                        "required": true,
+                                        "description": "The ID of the device app instance",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fields",
+                        "name": "Fields",
+                        "endpoints": [
+                            {
+                                "id": "list_field",
+                                "url": "/_api/web/lists:_list_guid/fields:_field_id",
+                                "name": "Get a field",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "field_id",
+                                        "name": "Field Id",
+                                        "required": true,
+                                        "description": "Field ID for the Lists",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_field_property",
+                                "url": "/_api/web/lists:_list_guid/fields:_field_id/:_property_name",
+                                "name": "Get a field property",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "field_id",
+                                        "name": "Field ID",
+                                        "required": true,
+                                        "description": "Field ID for the Lists",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "property_name",
+                                        "name": "Property Name",
+                                        "required": true,
+                                        "description": "Property Name for the Field"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_fields",
+                                "url": "/_api/web/lists:_list_guid/fields",
+                                "name": "Get all the fields in a list",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "description": "List GUID for the Lists",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "list_items",
+                        "name": "List Items",
+                        "endpoints": [
+                            {
+                                "id": "list_items",
+                                "url": "/_api/web/lists/GetByTitle:_title/items",
+                                "name": "Retrieve all list items",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "[odata.nextLink]"
+                                },
+                                "supportedExportTypes": [
+                                    "test",
+                                    "delta"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_item_permissions",
+                                "url": "/_api/web/lists/GetByTitle:_title/items:_item_id/getusereffectivepermissions(@user)",
+                                "name": "Gets the effective permissions",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "item_id",
+                                        "name": "Item Id",
+                                        "required": true,
+                                        "description": "Unique Identifier for the item",
+                                        "config": {
+                                            "prefix": "(",
+                                            "suffix": ")"
+                                        }
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "@user",
+                                        "name": "Login Name",
+                                        "required": true,
+                                        "description": "The login name of the user to get permissions for, passed as an alias in the query string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_guid_item_resetroleinheritance",
+                                "url": "/_api/web/lists/GetByTitle:_title/items:_item_id/resetroleinheritance",
+                                "name": "Resets the role inheritance",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "item_id",
+                                        "name": "Item Id",
+                                        "required": true,
+                                        "description": "Unique Identifier for the item",
+                                        "config": {
+                                            "prefix": "(",
+                                            "suffix": ")"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "recycle_item",
+                                "url": "/_api/web/lists/GetByTitle:_title/items:_item_id/recycle",
+                                "name": "Moves the list item to the Recycle Bin",
+                                "doesNotSupportPaging": true,
+                                "method": "POST",
+                                "pathParameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "item_id",
+                                        "name": "Item Id",
+                                        "required": true,
+                                        "description": "Unique Identifier for the item",
+                                        "config": {
+                                            "prefix": "(",
+                                            "suffix": ")"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_item",
+                                "url": "/_api/web/lists/GetByTitle:_title/items:_item_id",
+                                "name": "Retrieve specific list item",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "item_id",
+                                        "name": "Item Id",
+                                        "required": true,
+                                        "description": "Unique Identifier for the item",
+                                        "config": {
+                                            "prefix": "(",
+                                            "suffix": ")"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groups",
+                        "name": "Groups",
+                        "endpoints": [
+                            {
+                                "id": "get_group",
+                                "url": "/_api/web/sitegroups(:_group_id)",
+                                "name": "Get a group",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group Id",
+                                        "required": true,
+                                        "description": "Name of the group"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sitegroups",
+                                "url": "/_api/web/sitegroups",
+                                "name": "Get the groups at the root site",
+                                "resourcePath": "value"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "roles",
+                        "name": "Roles",
+                        "endpoints": [
+                            {
+                                "id": "get_roleassignments",
+                                "url": "/_api/web/roleassignments",
+                                "name": "get the roleassignments",
+                                "resourcePath": "value"
+                            },
+                            {
+                                "id": "get_addroleassignment",
+                                "url": "/_api/web/roleassignments/addroleassignment(principalid=:_principalid,roledefid=:_roledefid)",
+                                "name": "Adds a new role assignment",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "principalid",
+                                        "name": "Principal Id",
+                                        "required": true,
+                                        "description": "The ID of the user or group to assign permissions to."
+                                    },
+                                    {
+                                        "id": "roledefid",
+                                        "name": "Roledefid",
+                                        "required": true,
+                                        "description": "The ID of the role definition that defines the permissions to assign."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_removeroleassignment",
+                                "url": "/_api/web/roleassignments/removeroleassignment(principalid=:_principalid,roledefid=:_roledefid)",
+                                "name": "Removes the role assignment",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "principalid",
+                                        "name": "Principal Id",
+                                        "required": true,
+                                        "description": "The ID of the user or group to assign permissions to."
+                                    },
+                                    {
+                                        "id": "roledefid",
+                                        "name": "Roledefid",
+                                        "required": true,
+                                        "description": "The ID of the role definition that defines the permissions to assign."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_roleassignment_id",
+                                "url": "/_api/web/roleassignments(:_id)",
+                                "name": "Get a role assignment",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Role Assignment Id",
+                                        "required": true,
+                                        "description": "The unique identifier of the role assignment."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_roledefinitions",
+                                "url": "/_api/web/roledefinitions",
+                                "name": "get the roledefinitions",
+                                "resourcePath": "value"
+                            },
+                            {
+                                "id": "get_roledefinitions_id",
+                                "url": "/_api/web/roledefinitions(:_id)",
+                                "name": "Get a role definition",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Role Definition Id",
+                                        "required": true,
+                                        "description": "The unique identifier of the role definition."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "get_siteusers",
+                                "url": "/_api/Web/siteusers(@v)",
+                                "name": "Get a user from a site by login name",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "@v",
+                                        "name": "Login Name",
+                                        "required": true,
+                                        "description": "login name of the user",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_user_id",
+                                "url": "/_api/web/getuserbyid(:_uid)",
+                                "name": "Get a user from a site by id",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "uid",
+                                        "name": "Site User Id",
+                                        "required": true,
+                                        "description": "The unique identifier of the site users"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_usercustomactions",
+                                "url": "/_api/web/usercustomactions",
+                                "name": "Get all custom actions on a site",
+                                "resourcePath": "value"
+                            },
+                            {
+                                "id": "get_usercustomactions_id",
+                                "url": "/_api/web/usercustomactions:_id",
+                                "name": "Get a custom action",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "User Customaction Id",
+                                        "required": true,
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        },
+                                        "description": "The unique identifier of the usercustomaction."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "folders",
+                        "name": "Folders",
+                        "endpoints": [
+                            {
+                                "id": "get_folder",
+                                "url": "/_api/web/getfolderbyserverrelativeurl:_folder_name",
+                                "name": "Get a folder",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "folder_name",
+                                        "name": "Folder Name",
+                                        "required": true,
+                                        "description": "Name of the folder",
+                                        "config": {
+                                            "prefix": "('/",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_folder_files",
+                                "url": "/_api/web/getfolderbyserverrelativeurl:_folder_name/Files",
+                                "name": "Retrieve all of the files in a folder",
+                                "pathParameters": [
+                                    {
+                                        "id": "folder_name",
+                                        "name": "Folder Name",
+                                        "required": true,
+                                        "description": "Name of the folder",
+                                        "config": {
+                                            "prefix": "('/",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_folders",
+                                "url": "/_api/web/folders",
+                                "name": "Get the folders at the root site",
+                                "resourcePath": "value",
+                                "supportedExportTypes": [
+                                    "test",
+                                    "delta"
+                                ]
+                            },
+                            {
+                                "id": "get_folder",
+                                "url": "/_api/web/getfolderbyserverrelativeurl:_folder_name/Files:_file_name/$value",
+                                "name": "Retrieve all of the files in a folder",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "folder_name",
+                                        "name": "Folder Name",
+                                        "required": true,
+                                        "description": "Name of the folder",
+                                        "config": {
+                                            "prefix": "('/",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "file_name",
+                                        "name": "File Name",
+                                        "required": true,
+                                        "description": "Name of the file",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_folder_url",
+                                "url": "/_api/web/GetFileByServerRelativeUrl:_server_relative_url/$value",
+                                "name": "Retrieve a file by URL",
+                                "pathParameters": [
+                                    {
+                                        "id": "server_relative_url",
+                                        "name": "Server Relative URL",
+                                        "required": true,
+                                        "description": "URL of the folder",
+                                        "config": {
+                                            "prefix": "('/",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "lists",
+                        "name": "Lists",
+                        "sampleData": {
+                            "[odata.type]": "SP.List",
+                            "AllowContentTypes": true,
+                            "BaseTemplate": 100,
+                            "BaseType": 0,
+                            "ContentTypesEnabled": false,
+                            "CrawlNonDefaultViews": false,
+                            "CurrentChangeToken": {
+                                "StringValue": "1;3;2ce2c6b8-4499-4e97-b66d-2af42221fb6d;637800078818000000;302130869"
+                            },
+                            "DefaultContentApprovalWorkflowId": "00000000-0000-0000-0000-000000000000",
+                            "DefaultItemOpenUseListSetting": false,
+                            "Description": "test",
+                            "Direction": "none",
+                            "DisableCommenting": false,
+                            "DisableGridEditing": false,
+                            "DocumentTemplateUrl": null,
+                            "DraftVersionVisibility": 0,
+                            "EnableAttachments": true,
+                            "EnableFolderCreation": false,
+                            "EnableMinorVersions": false,
+                            "EnableModeration": false,
+                            "EnableRequestSignOff": true,
+                            "EnableVersioning": true,
+                            "EntityTypeName": "List1List",
+                            "ExemptFromBlockDownloadOfNonViewableFiles": false,
+                            "FileSavePostProcessingEnabled": false,
+                            "ForceCheckout": false,
+                            "HasExternalDataSource": false,
+                            "Hidden": false,
+                            "ImagePath": {
+                                "DecodedUrl": "/_layouts/15/images/itgen.png?rev=47"
+                            },
+                            "ImageUrl": "/_layouts/15/images/itgen.png?rev=47",
+                            "DefaultSensitivityLabelForLibrary": "",
+                            "IrmEnabled": false,
+                            "IrmExpire": false,
+                            "IrmReject": false,
+                            "IsApplicationList": false,
+                            "IsCatalog": false,
+                            "IsPrivate": false,
+                            "ItemCount": 5,
+                            "LastItemDeletedDate": "2022-02-08T14:54:09Z",
+                            "LastItemModifiedDate": "2022-02-09T03:13:36Z",
+                            "LastItemUserModifiedDate": "2022-02-08T14:54:09Z",
+                            "ListExperienceOptions": 0,
+                            "ListItemEntityTypeFullName": "SP.Data.List1ListItem",
+                            "MajorVersionLimit": 50,
+                            "MajorWithMinorVersionsLimit": 0,
+                            "MultipleDataList": false,
+                            "NoCrawl": false,
+                            "ParentWebPath": {
+                                "DecodedUrl": "/"
+                            },
+                            "ParentWebUrl": "/",
+                            "ParserDisabled": false,
+                            "ServerTemplateCanCreateFolders": true,
+                            "TemplateFeatureId": "00bfea71-de22-43b2-a848-c05709900100",
+                            "Title": "list1"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_list",
+                                "url": "/_api/web/lists",
+                                "name": "Create a list",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_list_moveto",
+                                "url": "/_api/web/lists:_list_guid/getview:_view_id/viewfields/moveviewfieldto",
+                                "name": "Moves the field with the specified field",
+                                "method": "POST",
+                                "sampleData": {
+                                    "field": "LinkTitle",
+                                    "index": 0
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "description": "The unique identifier for the list",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "view_id",
+                                        "in": "path",
+                                        "name": "View ID",
+                                        "description": "The unique identifier for the view field",
+                                        "required": true,
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_list_changes",
+                                "url": "/_api/web/lists:_list_guid/getchanges",
+                                "name": "Returns the collection of changes from the change log",
+                                "method": "POST",
+                                "sampleData": {
+                                    "query": {
+                                        "[odata.type]": "SP.ChangeQuery",
+                                        "Add": true,
+                                        "Item": true,
+                                        "Web": true
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "description": "The unique identifier for the list",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_list",
+                                "url": "/_api/web/lists:_list_guid",
+                                "name": "Change a list",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "MERGE"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        },
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_list",
+                                "url": [
+                                    "/_api/web/lists:_list_guid",
+                                    "/_api/web/lists"
+                                ],
+                                "headers": {
+                                    "If-Match": "{{#if data.RECORD_IDENTIFIER}}*{{else}}{{/if}}",
+                                    "X-HTTP-Method": "{{#if data.RECORD_IDENTIFIER}}MERGE{{else}}{{/if}}"
+                                },
+                                "name": "Create or Update a list",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        },
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_list",
+                                "url": "/_api/web/lists:_list_guid",
+                                "name": "Delete a list",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "DELETE"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        },
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fields",
+                        "name": "Fields",
+                        "sampleData": {
+                            "[odata.type]": "SP.Field",
+                            "AutoIndexed": false,
+                            "CanBeDeleted": false,
+                            "ClientSideComponentId": "00000000-0000-0000-0000-000000000000",
+                            "ClientSideComponentProperties": null,
+                            "ClientValidationFormula": null,
+                            "ClientValidationMessage": null,
+                            "CustomFormatter": null,
+                            "DefaultFormula": null,
+                            "DefaultValue": null,
+                            "Description": "",
+                            "Direction": "none",
+                            "EnforceUniqueValues": false,
+                            "EntityPropertyName": "FileLeafRef",
+                            "Filterable": true,
+                            "FromBaseType": true,
+                            "Group": "Custom Columns",
+                            "Hidden": true,
+                            "Indexed": false,
+                            "IndexStatus": 0,
+                            "InternalName": "FileLeafRef",
+                            "IsModern": false,
+                            "JSLink": "clienttemplates.js",
+                            "PinnedToFiltersPane": false,
+                            "ReadOnlyField": false,
+                            "Required": false,
+                            "SchemaXml": "<Field ID=\"{8553196d-ec8d-4564-9861-3dbe931050c8}\" Hidden=\"TRUE\" ShowInFileDlg=\"FALSE\" ShowInVersionHistory=\"FALSE\" Type=\"File\" Name=\"FileLeafRef\" DisplaceOnUpgrade=\"TRUE\" DisplayName=\"Name\" AuthoringInfo=\"(for use in forms)\" List=\"Docs\" FieldRef=\"ID\" ShowField=\"LeafName\" JoinColName=\"DoclibRowId\" JoinRowOrdinal=\"0\" JoinType=\"INNER\" NoCustomize=\"TRUE\" SourceID=\"http://schemas.microsoft.com/sharepoint/v3\" StaticName=\"FileLeafRef\" FromBaseType=\"TRUE\" />",
+                            "Scope": "/Lists/list1",
+                            "Sealed": false,
+                            "ShowInFiltersPane": 0,
+                            "Sortable": true,
+                            "StaticName": "FileLeafRef",
+                            "Title": "Name",
+                            "FieldTypeKind": 18,
+                            "TypeAsString": "File",
+                            "TypeDisplayName": "File",
+                            "TypeShortDescription": "File"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_list_inheritance",
+                                "url": "/_api/web/lists:_list_guid/fields",
+                                "name": "Create a field",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The unique identifier for the list",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_field",
+                                "url": "/_api/web/lists:_list_guid/fields:_field_id",
+                                "name": "Change a field",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "MERGE"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The unique identifier for the list",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "field_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_field",
+                                "url": [
+                                    "/_api/web/lists:_list_guid/fields:_field_id",
+                                    "/_api/web/lists:_list_guid/fields"
+                                ],
+                                "headers": {
+                                    "If-Match": "{{#if data.RECORD_IDENTIFIER}}*{{else}}{{/if}}",
+                                    "X-HTTP-Method": "{{#if data.RECORD_IDENTIFIER}}MERGE{{else}}{{/if}}"
+                                },
+                                "name": "Create or Update a field",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The unique identifier for the list",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "field_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_field",
+                                "url": "/_api/web/lists:_list_guid/fields:_field_id",
+                                "name": "Delete a field",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "DELETE"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "list_guid",
+                                        "name": "List GUID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The unique identifier for the list",
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "field_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "config": {
+                                            "prefix": "(guid'",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "web",
+                        "name": "Web",
+                        "sampleData": {
+                            "[odata.type]": "SP.Web",
+                            "AllowRssFeeds": true,
+                            "AlternateCssUrl": "",
+                            "AppInstanceId": "00000000-0000-0000-0000-000000000000",
+                            "Configuration": 0,
+                            "CurrentChangeToken": {
+                                "StringValue": "1;2;07eeaf8b-ab08-40d2-a059-791294bfa63d;636742441175730000;358703324"
+                            },
+                            "parameters": {
+                                "Title": "Team projects111",
+                                "Url": "TeamProjects111",
+                                "WebTemplate": "STS",
+                                "UseSamePermissionsAsParentSite": true
+                            },
+                            "CustomMasterUrl": "/_catalogs/masterpage/seattle.master",
+                            "Description": "All team projects",
+                            "DesignPackageId": "00000000-0000-0000-0000-000000000000",
+                            "DocumentLibraryCalloutOfficeWebAppPreviewersDisabled": false,
+                            "EnableMinimalDownload": false,
+                            "FooterEnabled": false,
+                            "HeaderEmphasis": 0,
+                            "HeaderLayout": 0,
+                            "HorizontalQuickLaunch": false,
+                            "IsMultilingual": false,
+                            "Language": 1033,
+                            "LastItemModifiedDate": "2018-10-04T07:09:46Z",
+                            "LastItemUserModifiedDate": "2018-09-19T16:31:14Z",
+                            "MasterUrl": "/_catalogs/masterpage/seattle.master",
+                            "MegaMenuEnabled": false,
+                            "NoCrawl": false,
+                            "ObjectCacheEnabled": false,
+                            "OverwriteTranslationsOnChange": false,
+                            "ResourcePath": {
+                                "DecodedUrl": "https://celigolabs.sharepoint.com"
+                            },
+                            "QuickLaunchEnabled": true,
+                            "RecycleBinEnabled": true,
+                            "ServerRelativeUrl": "/",
+                            "SiteLogoUrl": null,
+                            "SyndicationEnabled": true,
+                            "Title": "Celigo Team Site",
+                            "TreeViewEnabled": false,
+                            "UIVersion": 15,
+                            "UseSamePermissionsAsParentSite": false,
+                            "Url": "https://celigolabs.sharepoint.com",
+                            "WebTemplate": "STS",
+                            "WelcomePage": "SitePages/Home.aspx"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_site",
+                                "url": "/_api/web/webs/add",
+                                "name": "Create a site",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_site",
+                                "url": "/_api/web",
+                                "name": "Change a site",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "MERGE"
+                                }
+                            },
+                            {
+                                "id": "ensureuser",
+                                "url": "/_api/web/ensureuser",
+                                "name": "Checks specified login name belongs to a valid user in the site",
+                                "method": "POST",
+                                "sampleData": {
+                                    "logonName": "i:0#.f|membership|user@domain.onmicrosoft.com"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getchanges",
+                                "url": "/_api/web/getchanges",
+                                "name": "Returns the collection of all changes",
+                                "method": "POST",
+                                "sampleData": {
+                                    "query": {
+                                        "[odata.type]": "SP.ChangeQuery",
+                                        "Add": true,
+                                        "Item": true,
+                                        "Web": true
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "roles",
+                        "name": "Roles",
+                        "sampleData": {
+                            "[odata.type]": "SP.RoleDefinition",
+                            "BasePermissions": {
+                                "High": "2147483647",
+                                "Low": "4294967295"
+                            },
+                            "Description": "Has full control.",
+                            "Hidden": false,
+                            "Name": "Full Control",
+                            "Order": 1,
+                            "RoleTypeKind": 5
+                        },
+                        "operations": [
+                            {
+                                "id": "create_roledefinitions",
+                                "url": "/_api/web/roledefinitions",
+                                "name": "Create a role definition",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_roledefinitions",
+                                "url": "/_api/web/roledefinitions(:_role_id)",
+                                "name": "Change a role definition",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "MERGE"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "role_id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "replace_roledefinitions",
+                                "url": "/_api/web/roledefinitions(:_role_id)",
+                                "name": "Replace a role definition",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "PUT"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "role_id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_roledefinitions",
+                                "url": [
+                                    "/_api/web/roledefinitions(:_role_id)",
+                                    "/_api/web/roledefinitions"
+                                ],
+                                "headers": {
+                                    "If-Match": "{{#if data.RECORD_IDENTIFIER}}*{{else}}{{/if}}",
+                                    "X-HTTP-Method": "{{#if data.RECORD_IDENTIFIER}}MERGE{{else}}{{/if}}"
+                                },
+                                "name": "Create or Update a role definition",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "role_id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_role_definition",
+                                "url": "/_api/web/roledefinitions(:_role_id)",
+                                "name": "Delete a role definition",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "DELETE"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "role_id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_role_assignment",
+                                "url": "/_api/web/roleassignments(:_rid)",
+                                "name": "Delete a role assignment",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "DELETE"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "rid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "[odata.type]": "SP.User",
+                            "IsHiddenInUI": false,
+                            "LoginName": "i:0#.f|membership|sandeep.kumar@celigolabs.onmicrosoft.com",
+                            "Title": "Sandeep Kumar",
+                            "PrincipalType": 1,
+                            "Email": "sandeep.kumar@celigolabs.onmicrosoft.com",
+                            "IsEmailAuthenticationGuestUser": false,
+                            "IsShareByEmailGuestUser": false,
+                            "IsSiteAdmin": false,
+                            "UserId": {
+                                "NameId": "1003bffda8af1bdc",
+                                "NameIdIssuer": "urn:federation:microsoftonline"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_usercustomactions",
+                                "url": "/_api/web/usercustomactions",
+                                "name": "Create a custom action",
+                                "method": "POST",
+                                "sampleData": {
+                                    "[odata.type]": "SP.UserCustomAction",
+                                    "CommandUIExtension": null,
+                                    "Description": "Opens the Shared Documents page",
+                                    "Group": "SiteActions",
+                                    "ImageUrl": null,
+                                    "Location": "Microsoft.SharePoint.StandardMenu",
+                                    "Name": null,
+                                    "RegistrationId": null,
+                                    "RegistrationType": 0,
+                                    "Rights": {
+                                        "[odata.type]": "SP.BasePermissions",
+                                        "High": "0",
+                                        "Low": "0"
+                                    },
+                                    "ScriptBlock": null,
+                                    "ScriptSrc": null,
+                                    "Sequence": 101,
+                                    "Title": "Open Shared Docs",
+                                    "Url": "http://<site url>/Shared%20Documents/Forms/AllItems.aspx",
+                                    "VersionOfUserCustomAction": "15.0.1.0"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_custom_action",
+                                "url": "/_api/web/usercustomactions:_uid",
+                                "name": "Change a custom action",
+                                "method": "POST",
+                                "sampleData": {
+                                    "[odata.type]": "SP.UserCustomAction",
+                                    "CommandUIExtension": null,
+                                    "Description": "Opens the Shared Documents page",
+                                    "Group": "SiteActions",
+                                    "ImageUrl": null,
+                                    "Location": "Microsoft.SharePoint.StandardMenu",
+                                    "Name": null,
+                                    "RegistrationId": null,
+                                    "RegistrationType": 0,
+                                    "Rights": {
+                                        "[odata.type]": "SP.BasePermissions",
+                                        "High": "0",
+                                        "Low": "0"
+                                    },
+                                    "ScriptBlock": null,
+                                    "ScriptSrc": null,
+                                    "Sequence": 101,
+                                    "Title": "Open Shared Docs",
+                                    "Url": "http://<site url>/Shared%20Documents/Forms/AllItems.aspx",
+                                    "VersionOfUserCustomAction": "15.0.1.0"
+                                },
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "MERGE"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "uid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_sitegroups",
+                                "url": "/_api/web/sitegroups(:_gid)/users",
+                                "name": "Add a user to a group",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "gid",
+                                        "required": true,
+                                        "in": "path",
+                                        "name": "Group Id",
+                                        "description": "Unique identifier of the site group"
+                                    },
+                                    {
+                                        "id": "Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_usercustomactions",
+                                "url": "/_api/web/usercustomactions:_uid",
+                                "name": "Delete a custom action",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "DELETE"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "uid",
+                                        "in": "path",
+                                        "required": true,
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        },
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_user",
+                                "url": "/_api/web/sitegroups(:_gid)/users/getbyid(:_Id)",
+                                "name": "Remove a user from a group",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "DELETE"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "gid",
+                                        "required": true,
+                                        "in": "path",
+                                        "name": "Group ID",
+                                        "description": "Unique identifier of the site group"
+                                    },
+                                    {
+                                        "id": "Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groups",
+                        "name": "Groups",
+                        "sampleData": {
+                            "[odata.type]": "SP.Group",
+                            "IsHiddenInUI": false,
+                            "LoginName": "Excel Services Viewers",
+                            "Title": "Excel Services Viewers",
+                            "PrincipalType": 8,
+                            "AllowMembersEditMembership": false,
+                            "AllowRequestToJoinLeave": false,
+                            "AutoAcceptRequestToJoinLeave": false,
+                            "Description": "New description of Sp.group",
+                            "OnlyAllowMembersViewMembership": true,
+                            "OwnerTitle": "System Account",
+                            "RequestToJoinLeaveEmailSetting": null
+                        },
+                        "operations": [
+                            {
+                                "id": "create_sitegroups",
+                                "url": "/_api/web/sitegroups",
+                                "name": "Create a group",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_group",
+                                "url": "/_api/web/sitegroups(:_sid)",
+                                "name": "Change a group",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "MERGE"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "replace_group",
+                                "url": "/_api/web/sitegroups(:_sid)",
+                                "name": "Replace a group",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "PUT"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_group",
+                                "url": [
+                                    "/_api/web/sitegroups(:_sid)",
+                                    "/_api/web/sitegroups"
+                                ],
+                                "headers": {
+                                    "If-Match": "{{#if data.RECORD_IDENTIFIER}}*{{else}}{{/if}}",
+                                    "X-HTTP-Method": "{{#if data.RECORD_IDENTIFIER}}MERGE{{else}}{{/if}}"
+                                },
+                                "name": "Create or Update a group",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "list_item",
+                        "name": "List Item",
+                        "sampleData": {
+                            "[odata.type]": "SP.Data.OData__x005f_catalogs_x002f_masterpageItem",
+                            "FileSystemObjectType": 1,
+                            "ServerRedirectedEmbedUri": null,
+                            "ServerRedirectedEmbedUrl": "",
+                            "ContentTypeId": "0x012000DEAB6200D73D3E4BB6B917D2BBC90B4A",
+                            "ComplianceAssetId": null,
+                            "MasterPageDescription": null,
+                            "UIVersion": null,
+                            "DefaultCssFile": null,
+                            "DisplayTemplateJSTemplateHidden": null,
+                            "DisplayTemplateJSTargetControlType": null,
+                            "DisplayTemplateJSIconUrl": null,
+                            "DisplayTemplateJSTemplateType": null,
+                            "DisplayTemplateJSTargetScope": null,
+                            "DisplayTemplateJSTargetListTemplate": null,
+                            "Title": "df",
+                            "TemplateHidden": null,
+                            "TargetControlType": null,
+                            "CrawlerXSLFile": null,
+                            "Priority": "(1) High",
+                            "Status": "In Progress",
+                            "PercentComplete": 0.3,
+                            "DisplayTemplateLevel": null,
+                            "ManagedPropertyMapping": null,
+                            "CompatibleSearchDataTypes": null,
+                            "CompatibleManagedProperties": null,
+                            "AssignedToId": {
+                                "results": [
+                                    1
+                                ]
+                            },
+                            "DueDate": "2018-02-23T13:57:34Z",
+                            "AuthorId": 1073741823,
+                            "StartDate": "2018-02-23T13:57:34Z",
+                            "EditorId": 1073741823,
+                            "OData__CopySource": null,
+                            "CheckoutUserId": null,
+                            "PredecessorsId": {
+                                "results": [
+                                    4
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_list_item",
+                                "url": "/_api/web/lists/GetByTitle:_title/items",
+                                "name": "Create a list item",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_list_item_inheritance",
+                                "url": "/_api/web/lists/GetByTitle:_title/items(:_item_id)/breakroleinheritance:_copyrole,:_clearsubscopes",
+                                "name": "Creates unique role assignments",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "item_id",
+                                        "name": "Item ID",
+                                        "description": "Unique identifier of the item",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "copyrole",
+                                        "name": "copyroleassignments",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "(copyroleassignments="
+                                        },
+                                        "description": "Set true to copy the role assignments from the parent securable object; false to remove the inherited role assignments except one that contains the current user."
+                                    },
+                                    {
+                                        "id": "clearsubscopes",
+                                        "name": "clearsubscopes",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "clearsubscopes=",
+                                            "suffix": ")"
+                                        },
+                                        "description": "Set true to make all child securable objects inherit role assignments from the current object; false (default) to leave role assignments unchanged for child securable objects that do not inherit role assignments from their parent object."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_list_item",
+                                "url": "/_api/web/lists/GetByTitle:_title/items(:_item_id)",
+                                "name": "Change a list item",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "MERGE"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "item_id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_list_item",
+                                "url": [
+                                    "/_api/web/lists/GetByTitle:_title/items(:_item_id)",
+                                    "/_api/web/lists/GetByTitle:_title/items"
+                                ],
+                                "name": "Create or Update a list item",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "headers": {
+                                    "If-Match": "{{#if data.RECORD_IDENTIFIER}}*{{else}}{{/if}}",
+                                    "X-HTTP-Method": "{{#if data.RECORD_IDENTIFIER}}MERGE{{else}}{{/if}}"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "item_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_list_item",
+                                "url": "/_api/web/lists/GetByTitle:_title/items(:_item_id)",
+                                "name": "Delete a list item",
+                                "method": "DELETE",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "DELETE"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "title",
+                                        "name": "Title",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "Title of the list",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        }
+                                    },
+                                    {
+                                        "id": "item_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "folder",
+                        "name": "Folder",
+                        "sampleData": {
+                            "[odata.type]": "SP.Folder",
+                            "Name": "Shared Documents",
+                            "IsWOPIEnabled": false,
+                            "ProgID": null,
+                            "ServerRelativeUrl": "/Shared Documents",
+                            "WelcomePage": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_folders",
+                                "url": "/_api/web/folders",
+                                "name": "Create a folder",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_folder",
+                                "url": "/_api/web/GetFolderByServerRelativeUrl:_folder_name",
+                                "name": "Change a folder",
+                                "method": "POST",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "MERGE"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "folder_name",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        },
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_folder",
+                                "url": [
+                                    "/_api/web/GetFolderByServerRelativeUrl:_folder_name",
+                                    "/_api/web/folders"
+                                ],
+                                "name": "Create or Update a folder",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "headers": {
+                                    "If-Match": "{{#if data.RECORD_IDENTIFIER}}*{{else}}{{/if}}",
+                                    "X-HTTP-Method": "{{#if data.RECORD_IDENTIFIER}}MERGE{{else}}{{/if}}"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "folder_name",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        },
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_list_folder",
+                                "url": "/_api/web/GetFolderByServerRelativeUrl:_folder_name",
+                                "name": "Delete a folder",
+                                "method": "DELETE",
+                                "headers": {
+                                    "If-Match": "*",
+                                    "X-HTTP-Method": "DELETE"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "folder_name",
+                                        "required": true,
+                                        "in": "path",
+                                        "config": {
+                                            "prefix": "('",
+                                            "suffix": "')"
+                                        },
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

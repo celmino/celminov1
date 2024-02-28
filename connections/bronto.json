@@ -1,0 +1,967 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "orderservice",
+                        "name": "Order Service",
+                        "endpoints": [
+                            {
+                                "id": "search_orders",
+                                "url": "orders",
+                                "name": "Search For Orders",
+                                "description": "Search for orders using a customerOrderId.",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test",
+                                    "delta"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "customerOrderId",
+                                        "name": "Customer Order Id",
+                                        "required": true,
+                                        "description": "The customer’s ID that is associated with the order."
+                                    },
+                                    {
+                                        "id": "deliveryId",
+                                        "name": "Delivery Id",
+                                        "description": "The unique identifier for a single delivery of a message associated with the order. You can use readDeliveries to return deliveryId as part of the deliveryObject."
+                                    },
+                                    {
+                                        "id": "messageId",
+                                        "name": "Message Id",
+                                        "description": "The unique identifier for a single message associated with the order. You can use readMessages to return messageId as part of the messageObject."
+                                    },
+                                    {
+                                        "id": "contactId",
+                                        "name": "Contact Id",
+                                        "description": "The unique identifier for a contact associated with the order. You can use readContacts or readContactsWithLatestUnsubscribeDate to return contactId as part of the contactObject."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_order",
+                                "url": "orders/:_orderId",
+                                "name": "Get Order",
+                                "description": "Use an order ID to retrieve the details of an order. This request returns multiple representations of an order’s state via the “states” and “status” fields. The “status” field is currently deprecated and it is recommended that you use the “states” field going forward.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order Id",
+                                        "description": "The unique identifier for an order.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "deliveryId",
+                                        "name": "Delivery Id",
+                                        "description": "The unique identifier for a single delivery of a message associated with the order. You can use readDeliveries to return deliveryId as part of the deliveryObject."
+                                    },
+                                    {
+                                        "id": "messageId",
+                                        "name": "Message Id",
+                                        "description": "The unique identifier for a single message associated with the order. You can use readMessages to return messageId as part of the messageObject."
+                                    },
+                                    {
+                                        "id": "contactId",
+                                        "name": "Contact Id",
+                                        "description": "The unique identifier for a contact associated with the order. You can use readContacts or readContactsWithLatestUnsubscribeDate to return contactId as part of the contactObject."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_carts",
+                                "url": "carts/customerCartId/:_customerCartId",
+                                "name": "Search For Carts",
+                                "description": "Search for carts using a customerCartId.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test",
+                                    "delta"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "customerCartId",
+                                        "name": "Customer Cart Id",
+                                        "required": true,
+                                        "description": "The customer’s ID that is associated with the cart."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "deliveryId",
+                                        "name": "Delivery Id",
+                                        "description": "The unique identifier for a single delivery of a message associated with the order. You can use readDeliveries to return deliveryId as part of the deliveryObject."
+                                    },
+                                    {
+                                        "id": "messageId",
+                                        "name": "Message Id",
+                                        "description": "The unique identifier for a single message associated with the order. You can use readMessages to return messageId as part of the messageObject."
+                                    },
+                                    {
+                                        "id": "contactId",
+                                        "name": "Contact Id",
+                                        "description": "The unique identifier for a contact associated with the order. You can use readContacts or readContactsWithLatestUnsubscribeDate to return contactId as part of the contactObject."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_cart",
+                                "url": "carts/:_cartId",
+                                "name": "Get Cart",
+                                "description": "View the contents of a cart using a cart’s ID.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "cartId",
+                                        "name": "Cart Id",
+                                        "description": "The unique identifier of the cart.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "deliveryId",
+                                        "name": "Delivery Id",
+                                        "description": "The unique identifier for a single delivery of a message associated with the order. You can use readDeliveries to return deliveryId as part of the deliveryObject."
+                                    },
+                                    {
+                                        "id": "messageId",
+                                        "name": "Message Id",
+                                        "description": "The unique identifier for a single message associated with the order. You can use readMessages to return messageId as part of the messageObject."
+                                    },
+                                    {
+                                        "id": "contactId",
+                                        "name": "Contact Id",
+                                        "description": "The unique identifier for a contact associated with the order. You can use readContacts or readContactsWithLatestUnsubscribeDate to return contactId as part of the contactObject."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "productservice",
+                        "name": "Product Service",
+                        "endpoints": [
+                            {
+                                "id": "get_products",
+                                "url": "products/public/catalogs/:_catalogId/products",
+                                "name": "Get Products",
+                                "description": "This returns the complete set of data stored in Bronto for each product matching the given Product IDs in the call. If none of the listed products are found, a 404 is returned.",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "catalogId",
+                                        "name": "Catalog Id",
+                                        "description": "The ID for the Catalog.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "productIds",
+                                        "name": "Product Ids",
+                                        "required": true,
+                                        "description": "A list of the Product IDs you want to get data for Example: /products/public/products?productIds=X&productIds=X ."
+                                    },
+                                    {
+                                        "id": "fieldNames",
+                                        "name": "Field Names",
+                                        "description": "You can filter the data that is returned by specifying which product fields you want to get information about. The list of valid fields can be found on the Product Fields page in the BMP. If you do not include any fieldNames then all of the data for the product is returned."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_product",
+                                "url": "products/public/catalogs/:_catalogId/products/:_productId",
+                                "name": "Get Product",
+                                "description": "The products GET function where an individual product id is included returns the complete set of data stored in Bronto for the product matching the given product id in the function call. If it is not found, a 404 error code is returned..",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "catalogId",
+                                        "name": "Catalog Id",
+                                        "description": "The ID for the Catalog.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "productId",
+                                        "name": "Product Id",
+                                        "description": "The ID for the Product.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fieldNames",
+                                        "name": "Field Names",
+                                        "description": "You can filter the data that is returned by specifying which product fields you want to get information about. The list of valid fields can be found on the Product Fields page in the BMP. If you do not include any fieldNames then all of the data for the product is returned."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "campaignservice",
+                        "name": "Campaign Service",
+                        "endpoints": [
+                            {
+                                "id": "get_campaigns",
+                                "url": "campaigns",
+                                "name": "Get Campaigns",
+                                "description": "This returns a list of campaigns.",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test",
+                                    "delta"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "Sort results by field. Possible values: id,created,modified,type,name."
+                                    },
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "description": "The order that results will be displayed in, either ascending or descending.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search",
+                                        "name": "Search",
+                                        "description": "Search for a campaign by name. You must enter the entire campaign name.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "archived",
+                                        "name": "Archived",
+                                        "description": "Limit results to archived campaigns.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_campaign",
+                                "url": "campaigns/:_campaignId",
+                                "name": "Get Campaign",
+                                "description": "Use a campaign ID to retrieve the details of an individual campaign.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignId",
+                                        "name": "Campaign Id",
+                                        "description": "The ID for the campaign.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_campaigntypes",
+                                "url": "campaigns/type",
+                                "name": "Get Campaigns Types",
+                                "description": "This returns a list of all available campaign types.",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "orderservice",
+                        "name": "Order Service",
+                        "operations": [
+                            {
+                                "id": "create_order",
+                                "url": "orders",
+                                "name": "Add Order",
+                                "method": "POST",
+                                "sampleData": {
+                                    "status": "PENDING",
+                                    "discountAmount": 123,
+                                    "emailAddress": "abc@gmail.com",
+                                    "contactId": "123",
+                                    "grandTotal": 123,
+                                    "deliveryId": 1,
+                                    "lineItems": [
+                                        {
+                                            "name": "abc",
+                                            "description": "string",
+                                            "sku": "string",
+                                            "other": "string",
+                                            "imageUrl": "string",
+                                            "category": "string",
+                                            "productUrl": "string",
+                                            "quantity": "number",
+                                            "salePrice": "number",
+                                            "totalPrice": "number",
+                                            "unitPrice": "number"
+                                        }
+                                    ],
+                                    "originIp": "string",
+                                    "messageId": "string",
+                                    "originUserAgent": "string",
+                                    "shippingAmount": "number",
+                                    "shippingDate": "ISO-8601 datetime",
+                                    "shippingDetails": "string",
+                                    "shippingTrackingUrl": "string",
+                                    "subtotal": "number",
+                                    "taxAmount": "number",
+                                    "trackingCookieName": "string",
+                                    "trackingCookieValue": "string",
+                                    "tid": "string",
+                                    "cartId": "UUID",
+                                    "customerOrderId": "string",
+                                    "orderDate": "ISO-8601 datetime",
+                                    "currency": "ISO-4217 currency code",
+                                    "states": {
+                                        "processed": "boolean",
+                                        "shipped": "boolean"
+                                    }
+                                },
+                                "description": "Allows you to add a new order. This request accepts both representations of an order’s state via the “states” and “status” fields. Updates to either field will be reflected in the other. The “status” field is currently deprecated and it is recommended that you use the “states” field going forward. If both “status” and “states” are both specified, the data supplied in “status” will be used.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_order",
+                                "url": "orders/:_orderId",
+                                "name": "Update Order",
+                                "sampleData": {
+                                    "status": "PENDING",
+                                    "discountAmount": 123,
+                                    "emailAddress": "abc@gmail.com",
+                                    "contactId": "123",
+                                    "grandTotal": 123,
+                                    "deliveryId": 1,
+                                    "lineItems": [
+                                        {
+                                            "name": "abc",
+                                            "description": "string",
+                                            "sku": "string",
+                                            "other": "string",
+                                            "imageUrl": "string",
+                                            "category": "string",
+                                            "productUrl": "string",
+                                            "quantity": "number",
+                                            "salePrice": "number",
+                                            "totalPrice": "number",
+                                            "unitPrice": "number"
+                                        }
+                                    ],
+                                    "originIp": "string",
+                                    "messageId": "string",
+                                    "originUserAgent": "string",
+                                    "shippingAmount": "number",
+                                    "shippingDate": "ISO-8601 datetime",
+                                    "shippingDetails": "string",
+                                    "shippingTrackingUrl": "string",
+                                    "subtotal": "number",
+                                    "taxAmount": "number",
+                                    "trackingCookieName": "string",
+                                    "trackingCookieValue": "string",
+                                    "tid": "string",
+                                    "cartId": "UUID",
+                                    "customerOrderId": "string",
+                                    "orderDate": "ISO-8601 datetime",
+                                    "currency": "ISO-4217 currency code",
+                                    "states": {
+                                        "processed": "boolean",
+                                        "shipped": "boolean"
+                                    }
+                                },
+                                "method": "POST",
+                                "description": "Update an existing order using the Bronto-generated order ID. If you want to update an order using the order ID generated by your system, use Update Order By Customer Order Id. Properties that are not included in the request body will remain unchanged on the existing order. No properties are required in the update.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_order",
+                                "url": [
+                                    "orders/:_orderId",
+                                    "orders"
+                                ],
+                                "name": "Create or Update Order",
+                                "sampleData": {
+                                    "status": "PENDING",
+                                    "discountAmount": 123,
+                                    "emailAddress": "abc@gmail.com",
+                                    "contactId": "123",
+                                    "grandTotal": 123,
+                                    "deliveryId": 1,
+                                    "lineItems": [
+                                        {
+                                            "name": "abc",
+                                            "description": "string",
+                                            "sku": "string",
+                                            "other": "string",
+                                            "imageUrl": "string",
+                                            "category": "string",
+                                            "productUrl": "string",
+                                            "quantity": "number",
+                                            "salePrice": "number",
+                                            "totalPrice": "number",
+                                            "unitPrice": "number"
+                                        }
+                                    ],
+                                    "originIp": "string",
+                                    "messageId": "string",
+                                    "originUserAgent": "string",
+                                    "shippingAmount": "number",
+                                    "shippingDate": "ISO-8601 datetime",
+                                    "shippingDetails": "string",
+                                    "shippingTrackingUrl": "string",
+                                    "subtotal": "number",
+                                    "taxAmount": "number",
+                                    "trackingCookieName": "string",
+                                    "trackingCookieValue": "string",
+                                    "tid": "string",
+                                    "cartId": "UUID",
+                                    "customerOrderId": "string",
+                                    "orderDate": "ISO-8601 datetime",
+                                    "currency": "ISO-4217 currency code",
+                                    "states": {
+                                        "processed": "boolean",
+                                        "shipped": "boolean"
+                                    }
+                                },
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "orderId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_orderbycustomerid",
+                                "url": "orders/customerOrderId/:_customerOrderId",
+                                "name": "Update Order By Customer Order Id",
+                                "method": "POST",
+                                "description": "Updates an existing order using the customerOrderID. The customerOrderID is an ID generated outside of Bronto, typically by your system. If you want to update an order using the Bronto-generated order ID, use Update Order instead.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "customerOrderId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_order",
+                                "url": "orders/:_orderId",
+                                "name": "Delete Order",
+                                "method": "DELETE",
+                                "description": "Delete an order with the given Bronto-generated order id. If you want to update an order using the order ID generated by your system, use Delete Order By Customer Order Id instead.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_orderbycustomerid",
+                                "url": "orders/customerOrderId/:_customerOrderId",
+                                "name": "Delete Order By Customer Order Id",
+                                "method": "DELETE",
+                                "description": "Delete an order with the given customerOrderID. The customerOrderID is an ID generated outside of Bronto, typically by your system. If you want to delete an order using the Bronto-generated order ID, use Delete Order instead.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "customerOrderId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_cart",
+                                "url": "carts",
+                                "name": "Add Cart",
+                                "method": "POST",
+                                "sampleData": {
+                                    "url": "string",
+                                    "customerCartId": "string",
+                                    "discountAmount": "number",
+                                    "emailAddress": "abc@gmail.com",
+                                    "contactId": "string",
+                                    "grandTotal": "number",
+                                    "deliveryId": "string",
+                                    "lineItems": [
+                                        {
+                                            "name": "string",
+                                            "description": "string",
+                                            "sku": "string",
+                                            "other": "string",
+                                            "imageUrl": "string",
+                                            "category": "string",
+                                            "productUrl": "string",
+                                            "quantity": "number",
+                                            "salePrice": "number",
+                                            "totalPrice": "number",
+                                            "unitPrice": "number"
+                                        }
+                                    ],
+                                    "originIp": "string",
+                                    "messageId": "string",
+                                    "originUserAgent": "string",
+                                    "shippingAmount": "number",
+                                    "shippingDate": "ISO-8601 datetime",
+                                    "shippingDetails": "string",
+                                    "shippingTrackingUrl": "string",
+                                    "subtotal": "number",
+                                    "taxAmount": "number",
+                                    "trackingCookieName": "string",
+                                    "trackingCookieValue": "string",
+                                    "tid": "string",
+                                    "phase": "ORDER_COMPLETE",
+                                    "currency": "ISO-4217 currency code"
+                                },
+                                "description": "This call can be used to create a new cart. Only the customerCartId field and the quantity and totalPrice fields of all, if any, lineItems are strictly required.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_cart",
+                                "url": "carts/:_cartId",
+                                "name": "Update Cart",
+                                "method": "POST",
+                                "description": "Make an update to an existing cart. Properties that are not included in the request body will remain unchanged on the existing cart. No properties are required in the update.",
+                                "sampleData": {
+                                    "url": "string",
+                                    "customerCartId": "string",
+                                    "discountAmount": "number",
+                                    "emailAddress": "abc@gmail.com",
+                                    "contactId": "string",
+                                    "grandTotal": "number",
+                                    "deliveryId": "string",
+                                    "lineItems": [
+                                        {
+                                            "name": "string",
+                                            "description": "string",
+                                            "sku": "string",
+                                            "other": "string",
+                                            "imageUrl": "string",
+                                            "category": "string",
+                                            "productUrl": "string",
+                                            "quantity": "number",
+                                            "salePrice": "number",
+                                            "totalPrice": "number",
+                                            "unitPrice": "number"
+                                        }
+                                    ],
+                                    "originIp": "string",
+                                    "messageId": "string",
+                                    "originUserAgent": "string",
+                                    "shippingAmount": "number",
+                                    "shippingDate": "ISO-8601 datetime",
+                                    "shippingDetails": "string",
+                                    "shippingTrackingUrl": "string",
+                                    "subtotal": "number",
+                                    "taxAmount": "number",
+                                    "trackingCookieName": "string",
+                                    "trackingCookieValue": "string",
+                                    "tid": "string",
+                                    "phase": "ORDER_COMPLETE",
+                                    "currency": "ISO-4217 currency code"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "cartId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_cart",
+                                "url": [
+                                    "carts/:_cartId",
+                                    "carts"
+                                ],
+                                "name": "Create or Update Cart",
+                                "sampleData": {
+                                    "url": "string",
+                                    "customerCartId": "string",
+                                    "discountAmount": "number",
+                                    "emailAddress": "abc@gmail.com",
+                                    "contactId": "string",
+                                    "grandTotal": "number",
+                                    "deliveryId": "string",
+                                    "lineItems": [
+                                        {
+                                            "name": "string",
+                                            "description": "string",
+                                            "sku": "string",
+                                            "other": "string",
+                                            "imageUrl": "string",
+                                            "category": "string",
+                                            "productUrl": "string",
+                                            "quantity": "number",
+                                            "salePrice": "number",
+                                            "totalPrice": "number",
+                                            "unitPrice": "number"
+                                        }
+                                    ],
+                                    "originIp": "string",
+                                    "messageId": "string",
+                                    "originUserAgent": "string",
+                                    "shippingAmount": "number",
+                                    "shippingDate": "ISO-8601 datetime",
+                                    "shippingDetails": "string",
+                                    "shippingTrackingUrl": "string",
+                                    "subtotal": "number",
+                                    "taxAmount": "number",
+                                    "trackingCookieName": "string",
+                                    "trackingCookieValue": "string",
+                                    "tid": "string",
+                                    "phase": "ORDER_COMPLETE",
+                                    "currency": "ISO-4217 currency code"
+                                },
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "cartId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "fiddle_cart",
+                                "url": "carts/:_cartId/fiddle",
+                                "name": "Fiddle Cart",
+                                "method": "PUT",
+                                "description": "Fiddle a cart with the given id. When a cart is fiddled, the Bronto Marketing Platform is notified that the customer’s cart is still ACTIVE and will reset the cart activity timer used by Bronto’s cart abandonment feature. If the cart had previously been abandoned and the customer returns to the website, the fiddle will reset the cart’s status to ACTIVE.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "cartId",
+                                        "name": "Cart Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "abandon_cart",
+                                "url": "carts/:_cartId/abandon",
+                                "name": "Abandon Cart",
+                                "method": "PUT",
+                                "description": "Abandon a cart with the given ID. The cart must not be in the COMPLETE or EXPIRED status. This sets the cart’s status to ABANDONED.",
+                                "parameters": [
+                                    {
+                                        "id": "cartId",
+                                        "name": "Cart Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "expire_cart",
+                                "url": "carts/:_cartId/expire",
+                                "name": "Expire Cart",
+                                "method": "POST",
+                                "description": "Expire a currently abandoned cart with the given ID. This sets the cart’s status to EXPIRED and will make the cart immutable. A cart can only be expired if its status is ABANDONED.",
+                                "parameters": [
+                                    {
+                                        "id": "cartId",
+                                        "name": "Cart Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "complete_cart",
+                                "url": "carts/:_cartId/complete",
+                                "name": "Complete Cart",
+                                "method": "POST",
+                                "description": "Complete a cart with the given id. This sets the cart’s status to COMPLETED and will make the cart immutable.",
+                                "parameters": [
+                                    {
+                                        "id": "cartId",
+                                        "name": "Cart Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "productservice",
+                        "name": "Product Service",
+                        "sampleData": [
+                            {
+                                "fields": {
+                                    "product_id": "product-0002",
+                                    "parent_product_id": "none",
+                                    "product_url": "http://mysite.com/products/0002",
+                                    "title": "Product 0002 title",
+                                    "description": "Product 0002 description",
+                                    "price": "27.00 USD",
+                                    "quantity": 25,
+                                    "image_url": "http://mysite.com/products/0002.png",
+                                    "additional_images": "none",
+                                    "rating": 3.9,
+                                    "inventory_threshold": 5,
+                                    "availability": "Available",
+                                    "availability_date": "",
+                                    "product_category": "Miscellaneous",
+                                    "sale price effective date": "2010-01-10T00:00-0100/2020-01-10T00:00-0100",
+                                    "tax": "US:1111:8.75, US:1111:7.75",
+                                    "gender": "Male",
+                                    "color": "Green",
+                                    "size": "M"
+                                }
+                            }
+                        ],
+                        "operations": [
+                            {
+                                "id": "update_products",
+                                "url": "products/public/catalogs/:_catalogId/products",
+                                "name": "Update Products",
+                                "method": "PUT",
+                                "sampleData": [
+                                    {
+                                        "fields": {
+                                            "product_id": "product-0002",
+                                            "parent_product_id": "None",
+                                            "product_url": "http://mysite.com/products/0002",
+                                            "title": "Product 0002 title",
+                                            "description": "Product 0002 description",
+                                            "price": "27.00 USD",
+                                            "quantity": 25,
+                                            "image_url": "http://mysite.com/products/0002.png",
+                                            "additional_images": "None",
+                                            "rating": 3.9,
+                                            "inventory_threshold": 5,
+                                            "availability": "Available",
+                                            "availability_date": "",
+                                            "product_category": "Miscellaneous",
+                                            "sale price effective date": "2010-01-10T00:00-0100/2020-01-10T00:00-0100",
+                                            "tax": "US:1111:8.75, US:1111:7.75",
+                                            "gender": "Male",
+                                            "color": "Green",
+                                            "size": "M"
+                                        }
+                                    },
+                                    {
+                                        "fields": {
+                                            "product_id": "product-0002",
+                                            "parent_product_id": "none",
+                                            "product_url": "http://mysite.com/products/0002",
+                                            "title": "Product 0002 title",
+                                            "description": "Product 0002 description",
+                                            "price": "27.00 USD",
+                                            "quantity": 25,
+                                            "image_url": "http://mysite.com/products/0002.png",
+                                            "additional_images": "none",
+                                            "rating": 3.9,
+                                            "inventory_threshold": 5,
+                                            "availability": "Available",
+                                            "availability_date": "",
+                                            "product_category": "Miscellaneous",
+                                            "sale price effective date": "2010-01-10T00:00-0100/2020-01-10T00:00-0100",
+                                            "tax": "US:1111:8.75, US:1111:7.75",
+                                            "gender": "Male",
+                                            "color": "Green",
+                                            "size": "M"
+                                        }
+                                    }
+                                ],
+                                "description": "Allows synchronous batch updates to the products in your catalog. Accepts an array of product update entities, which must contain all the fields (field name : field value) in the product. Normal validation of the product field values will be applied, and individual products updates will be rejected if they fail validation. An array of String errors will be returned for each product that is not updated.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "catalogId",
+                                        "name": "Catalog Id",
+                                        "description": "The ID for the Catalog.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "campaignservice",
+                        "name": "Campaign Service",
+                        "sampleData": {
+                            "id": 12,
+                            "campaignTypeId": 12,
+                            "name": "name",
+                            "description": "descending",
+                            "archived": false
+                        },
+                        "operations": [
+                            {
+                                "id": "create_campaign",
+                                "url": "campaigns",
+                                "name": "Create Campaign",
+                                "method": "POST",
+                                "sampleData": {
+                                    "campaignTypeId": 12,
+                                    "name": "name",
+                                    "description": "descending",
+                                    "archived": true
+                                },
+                                "description": "The campaigns POST function allows you to create a new campaign with the supplied fields.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_campaigns",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_campaign",
+                                "url": "campaigns/:_campaignId",
+                                "name": "Update Campaign",
+                                "method": "PUT",
+                                "description": "The campaigns PUT function allows you to update a campaign with the supplied fields.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "campaignId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_campaigns",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "createorupdate_campaign",
+                                "url": [
+                                    "campaigns/:_campaignId",
+                                    "campaigns"
+                                ],
+                                "name": "Create or Update Campaign",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "campaignId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "id": "get_campaigns",
+                                        "extract": "id"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

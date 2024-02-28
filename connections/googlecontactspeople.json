@@ -1,0 +1,1171 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "token",
+            "pageArgument": "pageToken",
+            "nextPagePath": "nextPageToken"
+        },
+        "allowUndefinedResource": true,
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "people.connections",
+                        "name": "People Connections",
+                        "endpoints": [
+                            {
+                                "id": "list all contacts",
+                                "url": "/people/me/connections",
+                                "name": "List Contacts",
+                                "resourcePath": "connections",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "sortOrder",
+                                        "name": "Sort Order",
+                                        "description": "Sorting order direction. Can be either ascending or descending.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "LAST_MODIFIED_ASCENDING",
+                                            "LAST_MODIFIED_DESCENDING",
+                                            "FIRST_NAME_ASCENDING",
+                                            "LAST_NAME_ASCENDING"
+                                        ]
+                                    },
+                                    {
+                                        "id": "requestSyncToken",
+                                        "name": "Request Sync Token",
+                                        "description": " Whether the response should return nextSyncToken on the last page of results. It can be used to get incremental changes since the last request by setting it on the request syncToken.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            true,
+                                            false
+                                        ]
+                                    },
+                                    {
+                                        "id": "personFields",
+                                        "name": "Person Fields",
+                                        "description": "A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "syncToken",
+                                        "name": "Sync Token",
+                                        "description": " A sync token, received from a previous response nextSyncToken Provide this to retrieve only the resources changed since the last request.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "Page Size",
+                                        "description": "The number of connections to include in the response. Valid values are between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "people",
+                        "name": "People",
+                        "endpoints": [
+                            {
+                                "id": "get a single contact",
+                                "url": "/people/:_personid",
+                                "name": "Get a Single Contact",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "personid",
+                                        "name": "Person ID",
+                                        "description": "ID of a Person",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "personFields",
+                                        "name": "Person Fields",
+                                        "description": "A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contactgroups",
+                        "name": "Contact Groups",
+                        "endpoints": [
+                            {
+                                "id": "list_contactgroups",
+                                "url": "/contactGroups",
+                                "name": "Retrieving all Contact Groups",
+                                "resourcePath": "contactGroups",
+                                "queryParameters": [
+                                    {
+                                        "id": "pageSize",
+                                        "name": "Page Size",
+                                        "description": "The number of connections to include in the response. Valid values are between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "syncToken",
+                                        "name": "Sync Token",
+                                        "description": " A sync token, received from a previous response nextSyncToken Provide this to retrieve only the resources changed since the last request.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "groupFields",
+                                        "name": "Group Fields",
+                                        "description": "A field mask to restrict which fields on the group are returned. Defaults to metadata, groupType, memberCount, and name if not set or set to empty.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "clientData",
+                                            "groupType",
+                                            "memberCount",
+                                            "metadata",
+                                            "name"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_contactgroup",
+                                "url": "/contactGroups/:_groupID",
+                                "name": "Retrieving a Single Contact Group",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "groupID",
+                                        "name": "groupID",
+                                        "description": "Id of the group.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "groupFields",
+                                        "name": "Group Fields",
+                                        "description": "A field mask to restrict which fields on the group are returned. Defaults to metadata, groupType, memberCount, and name if not set or set to empty.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "clientData",
+                                            "groupType",
+                                            "memberCount",
+                                            "metadata",
+                                            "name"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "people",
+                        "name": "People",
+                        "sampleData": {
+                            "resourceName": "string",
+                            "etag": "string",
+                            "metadata": {
+                                "sources": {
+                                    "type": "ACCOUNT",
+                                    "id": "string",
+                                    "etag": "string",
+                                    "updateTime": "string",
+                                    "profileMetadata": {
+                                        "objectType": "PERSON",
+                                        "userTypes": [
+                                            "GOOGLE_USER",
+                                            "GPLUS_USER"
+                                        ]
+                                    }
+                                },
+                                "previousResourceNames": [
+                                    "string"
+                                ],
+                                "linkedPeopleResourceNames": [
+                                    "string"
+                                ],
+                                "deleted": "boolean",
+                                "objectType": "PERSON"
+                            },
+                            "addresses": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "ACCOUNT",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "GOOGLE_USER",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "formattedValue": "string",
+                                    "type": "string",
+                                    "formattedType": "string",
+                                    "poBox": "string",
+                                    "streetAddress": "string",
+                                    "extendedAddress": "string",
+                                    "city": "string",
+                                    "region": "string",
+                                    "postalCode": "string",
+                                    "country": "string",
+                                    "countryCode": "string"
+                                }
+                            ],
+                            "biographies": [
+                                {
+                                    "value": "string",
+                                    "contentType": "TEXT_PLAIN",
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": [
+                                            {
+                                                "type": "string",
+                                                "id": "string",
+                                                "etag": "string",
+                                                "updateTime": "string",
+                                                "profileMetadata": {
+                                                    "objectType": "string",
+                                                    "userTypes": [
+                                                        "string"
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "birthdays": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "date": {
+                                        "year": "integer",
+                                        "month": "integer",
+                                        "day": "integer"
+                                    },
+                                    "text": "string"
+                                }
+                            ],
+                            "calendarUrls": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "url": "string",
+                                    "type": "string",
+                                    "formattedType": "string"
+                                }
+                            ],
+                            "clientData": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "key": "string",
+                                    "value": "string"
+                                }
+                            ],
+                            "coverPhotos": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "url": "string",
+                                    "default": "boolean"
+                                }
+                            ],
+                            "emailAddresses": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "type": "string",
+                                    "formattedType": "string",
+                                    "displayName": "string"
+                                }
+                            ],
+                            "events": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "date": {
+                                        "year": "integer",
+                                        "month": "integer",
+                                        "day": "integer"
+                                    },
+                                    "type": "string",
+                                    "formattedType": "string"
+                                }
+                            ],
+                            "externalIds": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "type": "string",
+                                    "formattedType": "string"
+                                }
+                            ],
+                            "fileAses": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string"
+                                }
+                            ],
+                            "genders": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "formattedValue": "string",
+                                    "addressMeAs": "string"
+                                }
+                            ],
+                            "imClients": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "username": "string",
+                                    "type": "string",
+                                    "formattedType": "string",
+                                    "protocol": "string",
+                                    "formattedProtocol": "string"
+                                }
+                            ],
+                            "interests": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string"
+                                }
+                            ],
+                            "locales": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string"
+                                }
+                            ],
+                            "locations": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "type": "string",
+                                    "current": "boolean",
+                                    "buildingId": "string",
+                                    "floor": "string",
+                                    "floorSection": "string",
+                                    "deskCode": "string"
+                                }
+                            ],
+                            "miscKeywords": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "type": "string",
+                                    "formattedType": "string"
+                                }
+                            ],
+                            "names": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "displayName": "string",
+                                    "displayNameLastFirst": "string",
+                                    "unstructuredName": "string",
+                                    "familyName": "string",
+                                    "givenName": "string",
+                                    "middleName": "string",
+                                    "honorificPrefix": "string",
+                                    "honorificSuffix": "string",
+                                    "phoneticFullName": "string",
+                                    "phoneticFamilyName": "string",
+                                    "phoneticGivenName": "string",
+                                    "phoneticMiddleName": "string",
+                                    "phoneticHonorificPrefix": "string",
+                                    "phoneticHonorificSuffix": "string"
+                                }
+                            ],
+                            "nicknames": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "type": "string"
+                                }
+                            ],
+                            "occupations": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "string",
+                                    "formattedType": "string",
+                                    "startDate": {
+                                        "year": "integer",
+                                        "month": "integer",
+                                        "day": "integer"
+                                    },
+                                    "endDate": {
+                                        "year": "integer",
+                                        "month": "integer",
+                                        "day": "integer"
+                                    },
+                                    "current": "boolean",
+                                    "name": "string",
+                                    "phoneticName": "string",
+                                    "department": "string",
+                                    "title": "string",
+                                    "jobDescription": "string",
+                                    "symbol": "string",
+                                    "domain": "string",
+                                    "location": "string",
+                                    "costCenter": "string",
+                                    "fullTimeEquivalentMillipercent": "integer"
+                                }
+                            ],
+                            "organizations": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "string",
+                                    "formattedType": "string",
+                                    "startDate": {
+                                        "year": "integer",
+                                        "month": "integer",
+                                        "day": "integer"
+                                    },
+                                    "endDate": {
+                                        "year": "integer",
+                                        "month": "integer",
+                                        "day": "integer"
+                                    },
+                                    "current": "boolean",
+                                    "name": "string",
+                                    "phoneticName": "string",
+                                    "department": "string",
+                                    "title": "string",
+                                    "jobDescription": "string",
+                                    "symbol": "string",
+                                    "domain": "string",
+                                    "location": "string",
+                                    "costCenter": "string",
+                                    "fullTimeEquivalentMillipercent": "integer"
+                                }
+                            ],
+                            "phoneNumbers": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "canonicalForm": "string",
+                                    "type": "string",
+                                    "formattedType": "string"
+                                }
+                            ],
+                            "photos": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "url": "string",
+                                    "default": "boolean"
+                                }
+                            ],
+                            "sipAddresses": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "type": "string",
+                                    "formattedType": "string"
+                                }
+                            ],
+                            "skills": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string"
+                                }
+                            ],
+                            "urls": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "type": "string",
+                                    "formattedType": "string"
+                                }
+                            ],
+                            "userDefined": [
+                                {
+                                    "metadata": {
+                                        "primary": "boolean",
+                                        "sourcePrimary": "boolean",
+                                        "verified": "boolean",
+                                        "source": {
+                                            "type": "string",
+                                            "id": "string",
+                                            "etag": "string",
+                                            "updateTime": "string",
+                                            "profileMetadata": {
+                                                "objectType": "PERSON",
+                                                "userTypes": [
+                                                    "USER_TYPE_UNKNOWN",
+                                                    "GPLUS_USER"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "value": "string",
+                                    "key": "string"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contact",
+                                "url": "/people:createContact",
+                                "name": "Create Contact",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "emailAddresses[*].value"
+                                ]
+                            },
+                            {
+                                "id": "update_contact",
+                                "url": "/people/:_personID:updateContact?updatePersonFields=:_updatePersonFields",
+                                "name": "Update Contact",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "personID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "updatePersonFields",
+                                        "required": true,
+                                        "name": "UpdatePersonFields",
+                                        "in": "path",
+                                        "description": "A field mask to restrict which fields on the person are updated."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "etag",
+                                    "emailAddresses[*].value"
+                                ]
+                            },
+                            {
+                                "id": "create_update_contact",
+                                "name": "Create or Update Contact",
+                                "url": [
+                                    "/people/:_personID:updateContact?updatePersonFields=:_updatePersonFields",
+                                    "/people:createContact"
+                                ],
+                                "method": [
+                                    "PATCH",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "personID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "updatePersonFields",
+                                        "required": true,
+                                        "name": "UpdatePersonFields",
+                                        "in": "path",
+                                        "description": "A field mask to restrict which fields on the person are updated."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_contact",
+                                "url": "/people/:_personID:deleteContact",
+                                "name": "Delete Contact",
+                                "method": "DELETE",
+                                "body": "{}",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "personID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contactgroups",
+                        "name": "Contact Groups",
+                        "sampleData": {
+                            "resourceName": "string",
+                            "etag": "string",
+                            "metadata": {
+                                "updateTime": "string",
+                                "deleted": "boolean"
+                            },
+                            "groupType": "USER_CONTACT_GROUP",
+                            "name": "string",
+                            "formattedName": "string",
+                            "memberResourceNames": [
+                                "string"
+                            ],
+                            "memberCount": "integer",
+                            "clientData": [
+                                {
+                                    "key": "string",
+                                    "value": "string"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contactgroup",
+                                "url": "/contactGroups",
+                                "sampleData": {
+                                    "contactGroup": {
+                                        "resourceName": "string",
+                                        "etag": "string",
+                                        "metadata": {
+                                            "updateTime": "string",
+                                            "deleted": "boolean"
+                                        },
+                                        "groupType": "USER_CONTACT_GROUP",
+                                        "name": "string",
+                                        "formattedName": "string",
+                                        "memberResourceNames": [
+                                            "string"
+                                        ],
+                                        "memberCount": "integer",
+                                        "clientData": [
+                                            {
+                                                "key": "string",
+                                                "value": "string"
+                                            }
+                                        ]
+                                    },
+                                    "readGroupFields": "string"
+                                },
+                                "name": "Create Contact Group",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "contactGroup.name"
+                                ]
+                            },
+                            {
+                                "id": "update_contactgroup",
+                                "url": "/contactGroups/:_resourceName",
+                                "name": "Update Contact Group",
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "contactGroup": {
+                                        "resourceName": "string",
+                                        "etag": "string",
+                                        "metadata": {
+                                            "updateTime": "string",
+                                            "deleted": "boolean"
+                                        },
+                                        "groupType": "USER_CONTACT_GROUP",
+                                        "name": "string",
+                                        "formattedName": "string",
+                                        "memberResourceNames": [
+                                            "string"
+                                        ],
+                                        "memberCount": "integer",
+                                        "clientData": [
+                                            {
+                                                "key": "string",
+                                                "value": "string"
+                                            }
+                                        ]
+                                    },
+                                    "updateGroupFields": "string",
+                                    "readGroupFields": "string"
+                                },
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "resourceName",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "contactGroup.name",
+                                    "contactGroup.etag"
+                                ]
+                            },
+                            {
+                                "id": "create_update_contactgroup",
+                                "url": [
+                                    "/contactGroups/:_resourceName",
+                                    "/contactGroups"
+                                ],
+                                "name": "Create or Update Contact Group",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "resourceName",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_contactgroup",
+                                "url": "/contactGroups/:_resourceName",
+                                "name": "Deleting Contact Group",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "body": "{}",
+                                "parameters": [
+                                    {
+                                        "id": "resourceName",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

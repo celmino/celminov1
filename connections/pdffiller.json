@@ -1,0 +1,2116 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "versions": [
+            {
+                "version": "v2",
+                "paging": {
+                    "pagingMethod": "pageargument",
+                    "pageArgument": "page"
+                },
+                "resources": [
+                    {
+                        "id": "templates",
+                        "name": "Templates",
+                        "endpoints": [
+                            {
+                                "id": "list_templates",
+                                "url": "/templates",
+                                "name": "Retrieves a list of uploaded templates",
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of uploaded documents.",
+                                "queryParameters": [
+                                    {
+                                        "id": "folder_id",
+                                        "name": "Folder ID",
+                                        "fieldType": "input",
+                                        "description": "Search templates by Folder ID"
+                                    },
+                                    {
+                                        "id": "date_from",
+                                        "name": "Date From",
+                                        "fieldType": "input",
+                                        "description": "Filter by date from."
+                                    },
+                                    {
+                                        "id": "date_to",
+                                        "name": "Date To",
+                                        "fieldType": "input",
+                                        "description": "Filter by date to."
+                                    },
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "previews_documenttemplate",
+                                "url": "/templates/:_template_id/previews",
+                                "name": "Previews Document Template",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Previews a document template.",
+                                "pathParameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template ID",
+                                        "fieldType": "input",
+                                        "description": "Id of a document template",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "scale",
+                                        "name": "Scale",
+                                        "fieldType": "input",
+                                        "description": "Scale of preview pages. Min value - 10, max value - 500."
+                                    },
+                                    {
+                                        "id": "max_width",
+                                        "name": "Max Width",
+                                        "fieldType": "input",
+                                        "description": "Max width of preview pages. Min value - 10, max value - 3000."
+                                    },
+                                    {
+                                        "id": "max_height",
+                                        "name": "Max Height",
+                                        "fieldType": "input",
+                                        "description": "Max height of preview pages. Min value - 10, max value - 3000."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "information_aboutcreatedtemplate",
+                                "url": "/templates/:_template_id",
+                                "name": "Information about created template",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieves information about a created document template.",
+                                "pathParameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template ID",
+                                        "fieldType": "input",
+                                        "description": "Id of a document template",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_templateroles",
+                                "url": "/templates/:_template_id/roles",
+                                "name": "List Template Roles",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of roles for a document template.",
+                                "pathParameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template ID",
+                                        "fieldType": "input",
+                                        "description": "Id of a document template",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "fillable_fieldsforselecteddocumenttemplatewithvalues",
+                                "url": "/templates/:_template_id/fields",
+                                "name": "Fillable fields for selected document template with values",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get values for a fillable form.",
+                                "pathParameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template ID",
+                                        "fieldType": "input",
+                                        "description": "Id of a document template",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "child_documentsforselecteddocumenttemplate",
+                                "url": "/templates/:_template_id/filled_documents",
+                                "name": "Child documents for selected document template",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Get values for a fillable form.",
+                                "pathParameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template ID",
+                                        "fieldType": "input",
+                                        "description": "Id of a document template",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_hash",
+                                "url": "/templates/:_template_id/constructor",
+                                "name": "List Hash",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of hash.",
+                                "pathParameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template ID",
+                                        "fieldType": "input",
+                                        "description": "Id of a document template",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fillable_forms",
+                        "name": "Fillable Forms",
+                        "endpoints": [
+                            {
+                                "id": "list_alldocumentfillrequests",
+                                "url": "/fillable_forms",
+                                "name": "List All Document Fill Requests",
+                                "resourcePath": "items",
+                                "description": "Returns a list of all document fill requests.",
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "fill_forminformation",
+                                "url": "/fillable_forms/:_fillable_form_id",
+                                "name": "Fill Form Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Information about a created fill request item.",
+                                "pathParameters": [
+                                    {
+                                        "id": "fillable_form_id",
+                                        "name": "Fillable Form Id",
+                                        "fieldType": "input",
+                                        "description": "Fill Fillable Form Id.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_filledformsforfillrequest",
+                                "url": "/fillable_forms/:_fillable_form_id/filled_forms",
+                                "name": "List Filled Forms for Fill Request",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Lists all filled forms for the given fill request.",
+                                "pathParameters": [
+                                    {
+                                        "id": "fillable_form_id",
+                                        "name": "Fillable Form Id",
+                                        "fieldType": "input",
+                                        "description": "Fill Fillable Form Id.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "filled_forminformation",
+                                "url": "/fillable_forms/:_fillable_form_id/filled_forms/:_filled_form_id",
+                                "name": "Filled Form Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Information about a specific filled form.",
+                                "pathParameters": [
+                                    {
+                                        "id": "fillable_form_id",
+                                        "name": "Fillable Form Id",
+                                        "fieldType": "input",
+                                        "description": "Fill Fillable Form Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "filled_form_id",
+                                        "name": "Filled Form Id",
+                                        "fieldType": "input",
+                                        "description": "Filled Form ID",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "exports_filledformdata",
+                                "url": "/fillable_forms/:_fillable_form_id/filled_forms/:_filled_form_id/export",
+                                "name": "Exports Filled Form Data",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get values for a fillable form.",
+                                "pathParameters": [
+                                    {
+                                        "id": "fillable_form_id",
+                                        "name": "Fillable Form Id",
+                                        "fieldType": "input",
+                                        "description": "Fill Fillable Form Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "filled_form_id",
+                                        "name": "Filled Form Id",
+                                        "fieldType": "input",
+                                        "description": "Filled Form ID",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_recipientsattachedadditionaldocuments",
+                                "url": "/fillable_forms/:_fillable_form_id/filled_forms/:_filled_form_id/additional_documents",
+                                "name": "List Recipient`s Attached Additional Documents",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Returns a list of a LinkToFill recipient`s attached additional documents.",
+                                "pathParameters": [
+                                    {
+                                        "id": "fillable_form_id",
+                                        "name": "Fillable Form Id",
+                                        "fieldType": "input",
+                                        "description": "Fill Fillable Form Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "filled_form_id",
+                                        "name": "Filled Form Id",
+                                        "fieldType": "input",
+                                        "description": "Filled Form ID",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_informationofrecipientsattachedadditionaldocument",
+                                "url": "/fillable_forms/:_fillable_form_id/filled_forms/:_filled_form_id/additional_documents/:_additional_documentsid",
+                                "name": "List Information of Recipient`s Attached Additional Document",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of hash.",
+                                "pathParameters": [
+                                    {
+                                        "id": "fillable_form_id",
+                                        "name": "Fillable Form Id",
+                                        "fieldType": "input",
+                                        "description": "Fill Fillable Form Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "filled_form_id",
+                                        "name": "Filled Form Id",
+                                        "fieldType": "input",
+                                        "description": "Filled Form ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "additional_documentsid",
+                                        "name": "Additional Documents Id",
+                                        "fieldType": "input",
+                                        "description": "Attached additional document ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tokens",
+                        "name": "Tokens",
+                        "endpoints": [
+                            {
+                                "id": "list_alltokens",
+                                "url": "/tokens",
+                                "name": "List All Tokens",
+                                "resourcePath": "items",
+                                "description": "Returns a list of all tokens.",
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "created_tokeninformation",
+                                "url": "/tokens/:_token_id",
+                                "name": "Created Token Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Information about a created token.",
+                                "pathParameters": [
+                                    {
+                                        "id": "token_id",
+                                        "name": "Token Id",
+                                        "fieldType": "input",
+                                        "description": "Token Id",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "organizations",
+                        "name": "Organizations",
+                        "endpoints": [
+                            {
+                                "id": "list_allorganizations",
+                                "url": "/organizations",
+                                "name": "List All Organizations",
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of organizations.",
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "organization_information",
+                                "url": "/organizations/:_organization_id",
+                                "name": "Organization Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieves information about created organization.",
+                                "pathParameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the organization",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_allusersinorganization",
+                                "url": "/organizations/:_organization_id/users",
+                                "name": "List All Users In Organization",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of users in current organization.",
+                                "pathParameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the organization",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "user_information",
+                                "url": "/organizations/:_organization_id/users/:_user_id",
+                                "name": "User Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieves information about created user in organization.",
+                                "pathParameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the organization",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the user.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "signature_requests",
+                        "name": "Signature Requests",
+                        "endpoints": [
+                            {
+                                "id": "list_alldocumentsignaturerequestsininboxfolder",
+                                "url": "/signature_requests/inbox",
+                                "name": "List All Document Signature Requests In Inbox Folder",
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of all document signature requests in the inbox folder.",
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "input",
+                                        "description": "Filter by Signature Requests status"
+                                    },
+                                    {
+                                        "id": "date_from",
+                                        "name": "Date From",
+                                        "fieldType": "input",
+                                        "description": "Filter by date from."
+                                    },
+                                    {
+                                        "id": "date_to",
+                                        "name": "Date To",
+                                        "fieldType": "input",
+                                        "description": "Filter by date to."
+                                    },
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_alldocumentsignaturerequests",
+                                "url": "/signature_requests",
+                                "name": "List All Document Signature Requests",
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of all document signature requests.",
+                                "queryParameters": [
+                                    {
+                                        "id": "date_from",
+                                        "name": "Date From",
+                                        "fieldType": "input",
+                                        "description": "Filter by date from."
+                                    },
+                                    {
+                                        "id": "date_to",
+                                        "name": "Date To",
+                                        "fieldType": "input",
+                                        "description": "Filter by date to."
+                                    },
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "signature_requestinformationbysignaturerequestid",
+                                "url": "/signature_requests/:_signature_request_id",
+                                "name": "Signature Request Information by Signature Request ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieves signature request information based on the signature request ID.",
+                                "pathParameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "name": "Signature Request Id",
+                                        "fieldType": "input",
+                                        "description": "Signature Request Id.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "recipient_andsignaturestatus",
+                                "url": "/signature_requests/:_signature_request_id/recipients",
+                                "name": "Recipient(s) and Signature Status",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Returns information about sendtosign recipients and signature status.",
+                                "pathParameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "name": "Signature Request Id",
+                                        "fieldType": "input",
+                                        "description": "Signature Request Id.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "recipient_andsignaturestatus",
+                                "url": "/signature_requests/:_signature_request_id/recipients/:_recipient_id",
+                                "name": "Recipient and Signature Status",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Returns information about a sendtosign recipient and signature status.",
+                                "pathParameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "name": "Signature Request Id",
+                                        "fieldType": "input",
+                                        "description": "Signature Request Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient_id",
+                                        "name": "Recipient Id",
+                                        "fieldType": "input",
+                                        "description": "Recipient Id.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "child_documentsforselecteddocumenttemplate",
+                                "url": "/signature_requests/:_signature_request_id/additional_documents",
+                                "name": "Child documents for selected document template",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Get values for a fillable form.",
+                                "pathParameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "name": "Signature Request Id",
+                                        "fieldType": "input",
+                                        "description": "Signature Request Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient_id",
+                                        "name": "Recipient Id",
+                                        "fieldType": "input",
+                                        "description": "Recipient Id.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "recipients_attachedadditionaldocument",
+                                "url": "/signature_requests/:_signature_request_id/additional_documents/:_additional_document_id",
+                                "name": "Recipient`s Attached Additional Document",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of hash.",
+                                "pathParameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "name": "Signature Request Id",
+                                        "fieldType": "input",
+                                        "description": "Signature Request Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient_id",
+                                        "name": "Recipient Id",
+                                        "fieldType": "input",
+                                        "description": "Recipient Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "additional_document_id",
+                                        "name": "Additional Document ID",
+                                        "fieldType": "input",
+                                        "description": "Attached additional document ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "applications",
+                        "name": "Applications",
+                        "endpoints": [
+                            {
+                                "id": "list_allapplications",
+                                "url": "/applications",
+                                "name": "List All Applications",
+                                "resourcePath": "items",
+                                "description": "Returns a list of all applications.",
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "created_applicationinformation",
+                                "url": "/applications/:_application_id",
+                                "name": "Created Application Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Lists information about the created application.",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "fieldType": "input",
+                                        "description": "Id of a document template",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "application_users",
+                                "url": "/applications/:_application_id/users",
+                                "name": "Application Users",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieves a list of users who authorized with the requested application",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "fieldType": "input",
+                                        "description": "Id of a document template",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "callbacks",
+                        "name": "Callbacks",
+                        "endpoints": [
+                            {
+                                "id": "list_callbackevents",
+                                "url": "/callbacks",
+                                "name": "List Callback Events",
+                                "resourcePath": "items",
+                                "description": "Returns a list of callback events.",
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "event_callbackinformation",
+                                "url": "/callbacks/:_event_callback_id",
+                                "name": "Event Callback Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Returns information about a specific callback by callback id.",
+                                "pathParameters": [
+                                    {
+                                        "id": "event_callback_id",
+                                        "name": "Event Callback ID",
+                                        "fieldType": "input",
+                                        "description": "Id of the Event callback",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "callbacks_global",
+                        "name": "Callbacks Global",
+                        "endpoints": [
+                            {
+                                "id": "global_callbackevent",
+                                "url": "/callbacks/global",
+                                "name": "Global Callback Event",
+                                "resourcePath": "",
+                                "description": "Returns a information about callback event."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "folders",
+                        "name": "Folders",
+                        "endpoints": [
+                            {
+                                "id": "list_folders",
+                                "url": "/folders",
+                                "name": "List All Folders",
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of folders.",
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "folder_information",
+                                "url": "/folders/:_folder_id",
+                                "name": "Folder Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieves information about a created folder.",
+                                "pathParameters": [
+                                    {
+                                        "id": "folder_id",
+                                        "name": "Folder ID",
+                                        "fieldType": "input",
+                                        "description": "Id of the Foldder",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "custom_logo",
+                        "name": "Custom Logos",
+                        "endpoints": [
+                            {
+                                "id": "list_custom_logo",
+                                "url": "/custom_branding/custom_logo",
+                                "name": "List Added Logos",
+                                "resourcePath": "items",
+                                "description": "Retrieves a list of added user logos.",
+                                "queryParameters": [
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "Sort Method"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Filter for sort by selected property"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "folder_information",
+                                "url": "/custom_branding/custom_logo/:_custom_logo_id",
+                                "name": "Folder Information",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Retrieves information about an added custom logo",
+                                "pathParameters": [
+                                    {
+                                        "id": "custom_logo_id",
+                                        "name": "Custom logo Id",
+                                        "fieldType": "input",
+                                        "description": "Id of the Custom logo",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "user_information",
+                                "url": "/users/me",
+                                "name": "User Information",
+                                "resourcePath": "",
+                                "description": "Returns user information.",
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "templates",
+                        "name": "Templates",
+                        "sampleData": {
+                            "folder_id": 0,
+                            "file": "https://www.iimk.ac.in/academics/epgp/archives/Previous%20Year%20EMAT%20Question%20Paper.pdf",
+                            "name": "name",
+                            "expire": 500,
+                            "custom_logo_id": 63747,
+                            "callback_url": "https://83858054.ngrok.io/connection/oauth2callback",
+                            "redirect_url": "http://www.domain.com"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_templates",
+                                "url": "/templates",
+                                "name": "Creates a new document template by uploading file via URL",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new document template. The filename must contain integers, English letters or special characters: ( ) _ . Also, the filename extension should be .ppt; .pptx; .doc; .docx; or .pdf. You can download document from multipart",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "folder_id": 0,
+                                    "file": "https://www.iimk.ac.in/academics/epgp/archives/Previous%20Year%20EMAT%20Question%20Paper.pdf",
+                                    "name": "name"
+                                }
+                            },
+                            {
+                                "id": "updates_templateinformation",
+                                "url": "/templates/:_template_id",
+                                "name": "Updates template information",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates the information for a document template.",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "folder_id": 0,
+                                    "name": "neww"
+                                }
+                            },
+                            {
+                                "id": "createorupdate_template",
+                                "url": [
+                                    "/templates/:_template_id",
+                                    "/templates"
+                                ],
+                                "name": "Create or Update Template",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new document template and Updates template information for existing template",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "in": "path",
+                                        "description": "Template ID",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "copy_documents",
+                                "url": "/templates/:_template_id",
+                                "name": "Copy Documents",
+                                "method": "POST",
+                                "description": "Copy any document: name the new document and select a destination folder.",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template Id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "folder_id": null,
+                                    "action": "copy",
+                                    "name": "name"
+                                }
+                            },
+                            {
+                                "id": "share_thedocumentvialink",
+                                "url": "/templates/:_template_id",
+                                "name": "Share The Document Via Link",
+                                "method": "POST",
+                                "description": "Share your document via URL",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template Id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "accessType": "1"
+                                }
+                            },
+                            {
+                                "id": "create_templateconstructorlink",
+                                "url": "/templates/:_template_id/constructor",
+                                "name": "Create Template Constructor Link",
+                                "method": "POST",
+                                "description": "Creates a new share link to a document,Callback notifications are unavailable for document authors saving edits via their Constructor link.",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template Id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "expire": 500,
+                                    "custom_logo_id": 63747,
+                                    "callback_url": "https://83858054.ngrok.io/connection/oauth2callback",
+                                    "redirect_url": "http://www.domain.com"
+                                }
+                            },
+                            {
+                                "id": "fills_afillableformtemplate",
+                                "url": "/templates/:_template_id",
+                                "name": "Fills a fillable form template",
+                                "method": "POST",
+                                "description": "Populates a fillable form template which was created with the PDFfiller editor.",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template Id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "folder_id": "498742",
+                                    "fillable_fields": {
+                                        "FIELD_NAME_1": "FIELD_VALUE_1",
+                                        "FIELD_NAME_2": "FIELD_VALUE_2",
+                                        "FIELD_NAME_N": "FIELD_VALUE_N"
+                                    },
+                                    "name": "new file document"
+                                }
+                            },
+                            {
+                                "id": "delete_template",
+                                "url": "/templates/:_template_id",
+                                "name": "Deletes document template item",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes a document template item.",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_allsharelinks",
+                                "url": "/templates/:_template_id/constructor",
+                                "name": "Delete All Share Links",
+                                "method": "DELETE",
+                                "description": "Deletes all share links to a document by id.",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template Id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_sharelink",
+                                "url": "/templates/:_template_id/constructor/:_hash",
+                                "name": "Delete Share Link (hash)",
+                                "method": "DELETE",
+                                "description": "Deletes one share link to a document by hash.",
+                                "parameters": [
+                                    {
+                                        "id": "template_id",
+                                        "name": "Template Id",
+                                        "in": "path",
+                                        "description": "Id of a template.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "hash",
+                                        "name": "Hash",
+                                        "in": "path",
+                                        "description": "Hash for shared link",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fillable_forms",
+                        "name": "Fillable Forms",
+                        "sampleData": {
+                            "document_id": 185530005,
+                            "folder_id": 498742,
+                            "access": "full",
+                            "status": "public",
+                            "sendernotifications": "true",
+                            "custom_logo_id": 63747,
+                            "welcome_screen": "true",
+                            "signaturestamp": "true",
+                            "additional_documents": [
+                                "new name"
+                            ],
+                            "notificationemails": [
+                                "snigdharani.panigrahy94@gmail.com"
+                            ],
+                            "fillablefields": {
+                                "Key_N": "key1"
+                            },
+                            "name": "new name....",
+                            "emailrequired": "true",
+                            "allowdownloads": "true",
+                            "redirect_url": "https://83858054.ngrok.io/connection/oauth2callback",
+                            "namerequired": "true",
+                            "custom_message": "message is for u",
+                            "notifications": "enabled",
+                            "re_usable": "true",
+                            "callback_url": "https://83858054.ngrok.io/connection/oauth2callback",
+                            "editor_type": "js",
+                            "user_tokens": [
+                                {
+                                    "org_id": 0,
+                                    "user_id": 0,
+                                    "token": "Wye9HXrbeuJXQJCVAr3i0gr3M9SXAOy",
+                                    "url": "https://pdf.ac/11AAA1?token=Wye9HXrbeuJXQJCVAr3i0gr3M9SXAOy"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "Create a standard LinkToFill Document",
+                                "url": "/fillable_forms",
+                                "name": "Create a standard LinkToFill Document",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new document and shares it via short url.",
+                                "parameters": [
+                                    {
+                                        "id": "fillable_form_id",
+                                        "in": "path",
+                                        "description": "Id of a fillable form.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updates_fillableform",
+                                "url": "/fillable_forms/:_link_to_fill_id",
+                                "name": "Updates Fillable Form",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates a fill request item.",
+                                "parameters": [
+                                    {
+                                        "id": "link_to_fill_id",
+                                        "in": "path",
+                                        "description": "Id of a fillable form.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "access": "full",
+                                    "status": "public",
+                                    "sendernotifications": "true",
+                                    "custom_logo_id": 63747,
+                                    "welcome_screen": "true",
+                                    "signaturestamp": "true",
+                                    "notificationemails": [
+                                        "snigdharani.panigrahy94@gmail.com"
+                                    ],
+                                    "emailrequired": "true",
+                                    "allowdownloads": "true",
+                                    "redirect_url": "https://83858054.ngrok.io/connection/oauth2callback",
+                                    "namerequired": "true",
+                                    "custom_message": "message is for u",
+                                    "notifications": "enabled",
+                                    "re_usable": "true"
+                                }
+                            },
+                            {
+                                "id": "createorupdate_fillableform",
+                                "url": [
+                                    "/fillable_forms/:_link_to_fill_id",
+                                    "/fillable_forms"
+                                ],
+                                "name": "Create or Update Fillable Form",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new fillable form and Update a existing fillable form",
+                                "parameters": [
+                                    {
+                                        "id": "link_to_fill_id",
+                                        "in": "path",
+                                        "description": "Id of a fillable form.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deletes_fillableformbyid",
+                                "url": "/fillable_forms/:_link_to_fill_id",
+                                "name": "Deletes Fillable Form by id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes a fill request item.",
+                                "parameters": [
+                                    {
+                                        "id": "link_to_fill_id",
+                                        "in": "path",
+                                        "description": "Id of a fillable form.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_filledformid",
+                                "url": "/fillable_forms/:_link_to_fill_id/filled_forms/:_filled_form_id",
+                                "name": "Deletes Filled Form",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes a filled form.",
+                                "parameters": [
+                                    {
+                                        "id": "link_to_fill_id",
+                                        "name": "Fillable Form Id",
+                                        "in": "path",
+                                        "description": "Id of a fillable form.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "filled_form_id",
+                                        "in": "path",
+                                        "description": "Filled Form ID",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tokens",
+                        "name": "Tokens",
+                        "sampleData": {
+                            "data": [
+                                {
+                                    "key_1": "Foo",
+                                    "key_2": "Bar",
+                                    "key_3": 7896
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "creates_newtoken",
+                                "url": "/tokens",
+                                "name": "Creates New Token",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new token.",
+                                "parameters": [
+                                    {
+                                        "id": "token_id",
+                                        "in": "path",
+                                        "description": "Token Id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_token",
+                                "url": "/tokens/:_token_id",
+                                "name": "Update Token",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates a token.",
+                                "parameters": [
+                                    {
+                                        "id": "token_id",
+                                        "in": "path",
+                                        "description": "Token Id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_token",
+                                "url": [
+                                    "/tokens/:_token_id",
+                                    "/tokens"
+                                ],
+                                "name": "Create or Update Token",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new Token and Updates an existing token",
+                                "parameters": [
+                                    {
+                                        "id": "token_id",
+                                        "in": "path",
+                                        "description": "Token Id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_token",
+                                "url": "/tokens/:_token_id",
+                                "name": "Delete Token",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes a token item.",
+                                "parameters": [
+                                    {
+                                        "id": "token_id",
+                                        "in": "path",
+                                        "description": "Token Id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "organizations",
+                        "name": "Organizations",
+                        "sampleData": {
+                            "name": "new"
+                        },
+                        "operations": [
+                            {
+                                "id": "creates_organizations",
+                                "url": "/organizations",
+                                "name": "Create A New Organization",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new organization. The organization name must contain integers, English letters or special characters: ( ) _ .",
+                                "parameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "in": "path",
+                                        "description": "Id of the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_organizations",
+                                "url": "/organizations/:_organization_id",
+                                "name": "Updates Organization Name",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates the organization's name.",
+                                "parameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "in": "path",
+                                        "description": "Id of the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_organizations",
+                                "url": [
+                                    "/organizations/:_organization_id",
+                                    "/organizations"
+                                ],
+                                "name": "Create or Update Token",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new Organization and Updates an existing Organization",
+                                "parameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "in": "path",
+                                        "description": "Id of the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_organization",
+                                "url": "/organizations/:_organization_id",
+                                "name": "Delete Organization",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes the organization item.",
+                                "parameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "in": "path",
+                                        "description": "Id of the organization.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "creates_newuserinorganization",
+                                "url": "/organizations/:_organization_id/users",
+                                "name": "Create A New User In Organization",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new user.",
+                                "parameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization Id",
+                                        "in": "path",
+                                        "description": "Id of the organization.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "description": "Id of the user.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "login": "my user",
+                                    "data": [
+                                        {
+                                            "key_1": "Foo",
+                                            "key_2": "Bar"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "update_usersdata",
+                                "url": "/organizations/:_organization_id/users/:_user_id",
+                                "name": "Updates User Data",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates the user's login and data.",
+                                "parameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization Id",
+                                        "in": "path",
+                                        "description": "Id of the organization.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "description": "Id of the user.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "login": "my user",
+                                    "data": [
+                                        {
+                                            "key_1": "Foo",
+                                            "key_2": "Bar"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "createorupdate_token",
+                                "url": [
+                                    "/organizations/:_organization_id/users/:_user_id",
+                                    "/organizations/:_organization_id/users"
+                                ],
+                                "name": "Create or Update User",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new user and Updates an existing user",
+                                "parameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization Id",
+                                        "in": "path",
+                                        "description": "Id of the organization.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "description": "Id of the user.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "login": "my user",
+                                    "data": [
+                                        {
+                                            "key_1": "Foo",
+                                            "key_2": "Bar"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "delete_orguser",
+                                "url": "/organizations/:_organization_id/users/:_user_id",
+                                "name": "Delete User",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes the user item.",
+                                "parameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization Id",
+                                        "in": "path",
+                                        "description": "Id of the organization.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "description": "Id of the user.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "signature_requests",
+                        "name": "Signature Requests",
+                        "sampleData": {
+                            "folder_id": 498742,
+                            "security_pin": "standard",
+                            "sendernotifications": "true",
+                            "signinorder": "true",
+                            "pin": "1234",
+                            "envelope_name": "envelope",
+                            "method": "sendtoeach",
+                            "name": "new method",
+                            "fillablefields": {
+                                "Key_N": "key1"
+                            },
+                            "file": "https://www.iimk.ac.in/academics/epgp/archives/Previous%20Year%20EMAT%20Question%20Paper.pdf",
+                            "recipients": [
+                                {
+                                    "email": "some-email@domain.com",
+                                    "name": "John Doe",
+                                    "requirephoto": "true",
+                                    "message_subject": "Digital signature request from API Testing Letter",
+                                    "message_text": "Please sign and return the linked document with PDFfiller`",
+                                    "access": "full",
+                                    "phoneauthenticate": "true",
+                                    "additionaldocuments": "new name"
+                                }
+                            ],
+                            "callback_url": "https://83858054.ngrok.io/connection/oauth2callback"
+                        },
+                        "operations": [
+                            {
+                                "id": "creates_signaturerequest",
+                                "url": "/signature_requests",
+                                "name": "New Signature Request - standard SendToSign document",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new Signature request. Two Signature methods supported: SendToEach and SendToGroup. The SendToGroup method requires envelope_name, sign_in_order and role parameters.",
+                                "parameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "in": "path",
+                                        "description": "Id of the signature request",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_recipents",
+                                "url": "/signature_requests/:_signature_request_id/recipients",
+                                "name": "Add Additional Recipient",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Adds an additional recipient to a sendtosign request.",
+                                "parameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "name": "Signature Request Id",
+                                        "in": "path",
+                                        "description": "Id of the signature request",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient_id",
+                                        "in": "path",
+                                        "description": "Id of the Recipient",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "recipients": [
+                                        {
+                                            "email": "some-email@domain.com",
+                                            "name": "John Doe",
+                                            "requirephoto": "true",
+                                            "message_subject": "Digital signature request from API Testing Letter",
+                                            "message_text": "Please sign and return the linked document with PDFfiller`",
+                                            "access": "full",
+                                            "phoneauthenticate": "true",
+                                            "additionaldocuments": "new name"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "remind_recipientaboutsendtosignrequest",
+                                "url": "/signature_requests/:_signature_request_id/recipients/:_recipient_id",
+                                "name": "Remind Recipient about SendToSign Request",
+                                "method": "PUT",
+                                "description": "Reminds a sendtosign recipient about the sendtosign request.",
+                                "parameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "name": "Signature Request Id",
+                                        "in": "path",
+                                        "description": "Id of the signature request",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recipient_id",
+                                        "name": "Recipient Id",
+                                        "in": "path",
+                                        "description": "Id of the Recipient",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_signaturerequest",
+                                "url": "/signature_requests/:_signature_request_id",
+                                "name": "Cancel Specified Signature Request",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Cancels a signature request for the specified SendToSign ID.",
+                                "parameters": [
+                                    {
+                                        "id": "signature_request_id",
+                                        "in": "path",
+                                        "description": "Id of the signature request",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "applications",
+                        "name": "Applications",
+                        "sampleData": {
+                            "name": "new"
+                        },
+                        "operations": [
+                            {
+                                "id": "creates_newapplication",
+                                "url": "/applications",
+                                "name": "Create New Application",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new application. Parameters for all-domains can be 0/1 or true/false.",
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "in": "path",
+                                        "description": "Id of an application.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_application",
+                                "url": "/applications/:_application_id",
+                                "name": "Application Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates application. Parameters for all-domains can be 0/1 or true/false.",
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "in": "path",
+                                        "description": "Id of an application.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_application",
+                                "url": [
+                                    "/applications/:_application_id",
+                                    "/applications"
+                                ],
+                                "name": "Create or Update Application",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new Application and Updates an existing Application",
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "in": "path",
+                                        "description": "Id of an application.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_application",
+                                "url": "/applications/:_application_id",
+                                "name": "Delete Application",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes application item.",
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "in": "path",
+                                        "description": "Id of an application.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "callbacks",
+                        "name": "Callbacks",
+                        "sampleData": {
+                            "document_id": 186848285,
+                            "callback_url": "http://api.pdffiller.com",
+                            "event_id": "signature_request.done"
+                        },
+                        "operations": [
+                            {
+                                "id": "creates_newcallbacks",
+                                "url": "/callbacks",
+                                "name": "Create New Callback",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new callback associated with a specific document event.",
+                                "parameters": [
+                                    {
+                                        "id": "event_callback_id",
+                                        "in": "path",
+                                        "description": "Id of the callback",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_callbacks",
+                                "url": "/callbacks/:_event_callback_id",
+                                "name": "Update Callback",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates a callback.",
+                                "parameters": [
+                                    {
+                                        "id": "event_callback_id",
+                                        "in": "path",
+                                        "description": "Id of the callback",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_callbacks",
+                                "url": [
+                                    "/callbacks/:_event_callback_id",
+                                    "/callbacks"
+                                ],
+                                "name": "Create or Update callback",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new callback and Updates an existing callback",
+                                "parameters": [
+                                    {
+                                        "id": "event_callback_id",
+                                        "in": "path",
+                                        "description": "Id of the callback",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_callbacks",
+                                "url": "/callbacks/:_event_callback_id",
+                                "name": "Delete Callback",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes a callback.",
+                                "parameters": [
+                                    {
+                                        "id": "event_callback_id",
+                                        "in": "path",
+                                        "description": "Id of the callback",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "callbacks_global",
+                        "name": "Callbacks Global",
+                        "sampleData": {
+                            "callback_url": "http://api.pdffiller.com"
+                        },
+                        "operations": [
+                            {
+                                "id": "update_globalcallbacks",
+                                "url": "/callbacks/global",
+                                "name": "Update Global Callback",
+                                "method": "PUT",
+                                "description": "Updates a callback."
+                            },
+                            {
+                                "id": "delete_globalcallbacks",
+                                "url": "/callbacks/global",
+                                "name": "Delete Global Callback",
+                                "method": "DELETE",
+                                "description": "Deletes a callback."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "folders",
+                        "name": "Folders",
+                        "sampleData": {
+                            "parent_id": 0,
+                            "name": "string with my name"
+                        },
+                        "operations": [
+                            {
+                                "id": "creates_newfolder",
+                                "url": "/folders",
+                                "name": "Create A New Folder",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Creates a new folder.",
+                                "parameters": [
+                                    {
+                                        "id": "folder_id",
+                                        "in": "path",
+                                        "description": "Id of a folder.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_folder",
+                                "url": "/folders/:_folder_id",
+                                "name": "Updates Folder Name",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Updates a folder's name.",
+                                "parameters": [
+                                    {
+                                        "id": "folder_id",
+                                        "in": "path",
+                                        "description": "Id of a folder.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_folder",
+                                "url": [
+                                    "/folders/:_folder_id",
+                                    "/folders"
+                                ],
+                                "name": "Create or Update Folder",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new folder and Updates an existing folder",
+                                "parameters": [
+                                    {
+                                        "id": "folder_id",
+                                        "in": "path",
+                                        "description": "Id of a folder.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_folder",
+                                "url": "/folders/:_folder_id",
+                                "name": "Delete Folder",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes a folder item.",
+                                "parameters": [
+                                    {
+                                        "id": "folder_id",
+                                        "in": "path",
+                                        "description": "Id of a folder.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "custom_logos",
+                        "name": "Custom Logos",
+                        "sampleData": {
+                            "file": "https://www.pdffiller.com/storage/s3-user-files/34332aa7888c061a.png"
+                        },
+                        "operations": [
+                            {
+                                "id": "creates_customlogo",
+                                "url": "/custom_branding/custom_logo",
+                                "name": "New Logo",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Adds a new custom logo from a url or multipart.",
+                                "parameters": [
+                                    {
+                                        "id": "custom_logo_id",
+                                        "in": "path",
+                                        "description": "Id of a Custom Logo.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_logo",
+                                "url": "/custom_branding/custom_logo/:_custom_logo_id",
+                                "name": "Delete Custom Logo",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Deletes user custom logo item.",
+                                "parameters": [
+                                    {
+                                        "id": "custom_logo_id",
+                                        "in": "path",
+                                        "description": "Id of a Custom Logo.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tools",
+                        "name": "Tools",
+                        "sampleData": {
+                            "folder_id": 0,
+                            "documents": [
+                                "185860943",
+                                "185834937"
+                            ],
+                            "name": "item"
+                        },
+                        "operations": [
+                            {
+                                "id": "merge_documents",
+                                "url": "/tools/merge",
+                                "name": "Merge documents",
+                                "method": "POST",
+                                "description": "Merge up to five docs into a single document."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

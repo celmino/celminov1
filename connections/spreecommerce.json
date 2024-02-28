@@ -1,0 +1,3047 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "product",
+                        "name": "PRODUCTS",
+                        "endpoints": [
+                            {
+                                "id": "list_product",
+                                "url": "/v1/products",
+                                "resourcePath": "products",
+                                "name": "Index",
+                                "queryParameters": [
+                                    {
+                                        "id": "show_deleted",
+                                        "name": "Show Deleted",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "boolean - true to show deleted products, false to hide them. Default: false. Only available to users with an admin role."
+                                    },
+                                    {
+                                        "id": "show_discontinued",
+                                        "name": "Show Discontinued",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "boolean - true to show discontinued products, false to hide them. Default: false. Only available to users with an admin role."
+                                    },
+                                    {
+                                        "id": "ids",
+                                        "name": "Id's",
+                                        "fieldType": "textArea",
+                                        "description": "A comma-separated list of products ids. Specifying this parameter will display the respective products."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_product",
+                                "url": "/v1/products/:_productID",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "productID",
+                                        "name": "Product ID",
+                                        "description": "Get Product ID by List products",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_product",
+                                "url": "/v1/products",
+                                "name": "Search",
+                                "resourcePath": "products",
+                                "queryParameters": [
+                                    {
+                                        "id": "q[name_cont]",
+                                        "name": "Q[name_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The name_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=shipping_category_name%20asc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "productproperties",
+                        "name": "PRODUCT PROPERTIES",
+                        "endpoints": [
+                            {
+                                "id": "list_productproperties",
+                                "url": "/v1/products/:_productID/product_properties",
+                                "resourcePath": "product_properties",
+                                "name": "Index",
+                                "pathParameters": [
+                                    {
+                                        "id": "productID",
+                                        "name": "Product ID",
+                                        "description": "Get Product ID by List products",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_productproperty",
+                                "url": "/v1/products/:_productID/product_properties/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "productID",
+                                        "name": "Product ID",
+                                        "description": "Get Product ID by List products",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Product Property ID",
+                                        "description": "Get Product Property ID by list of all product properties",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_productproperty",
+                                "url": "/v1/products/:_productID/product_properties",
+                                "name": "Search",
+                                "resourcePath": "products",
+                                "pathParameters": [
+                                    {
+                                        "id": "productID",
+                                        "name": "Product ID",
+                                        "description": "Get Product ID by List products",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "q[property_name_cont]",
+                                        "name": "Q[property_name_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The property_name_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=shipping_category_name%20asc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "varients",
+                        "name": "VARIANTS",
+                        "endpoints": [
+                            {
+                                "id": "list_varients",
+                                "url": "/v1/variants",
+                                "resourcePath": "variants ",
+                                "name": "Index",
+                                "queryParameters": [
+                                    {
+                                        "id": "show_deleted",
+                                        "name": "Show Deleted",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "boolean - true to show deleted products, false to hide them. Default: false. Only available to users with an admin role."
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "Product ID",
+                                        "description": "You can limit this to showing the variants for a particular product by passing through a product’s slug:"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_varients",
+                                "url": "/v1/variants/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Variant ID",
+                                        "description": "Get Variant ID by list of all variants",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "product_id",
+                                        "name": "Product ID",
+                                        "description": "You can limit this to showing the variants for a particular product by passing through a product’s slug:"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_variant",
+                                "url": "/v1/variant",
+                                "name": "Search",
+                                "resourcePath": "variants",
+                                "queryParameters": [
+                                    {
+                                        "id": "q[sku_cont]",
+                                        "name": "Q[sku_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The sku_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=shipping_category_name%20asc"
+                                    },
+                                    {
+                                        "id": "product_id",
+                                        "name": "Product ID",
+                                        "description": "You can limit this to showing the variants for a particular product by passing through a product’s slug:"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "optiontypes",
+                        "name": "OPTION TYPES",
+                        "endpoints": [
+                            {
+                                "id": "list_option_types",
+                                "url": "/v1/option_types",
+                                "name": "Index",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "ids",
+                                        "name": "ID's",
+                                        "description": "A comma-separated list of option type ids. Specifying this parameter will display the respective option types."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_optiontypes",
+                                "url": "/v1/option_types/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Option Type ID",
+                                        "description": "Get Option Type ID by list of option types",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_optiontypes",
+                                "url": "/v1/option_types",
+                                "name": "Search",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "q[name_cont]",
+                                        "name": "Q[name_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The name_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=name%20asc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "optionvalues",
+                        "name": "OPTION VALUES",
+                        "endpoints": [
+                            {
+                                "id": "list_option_values",
+                                "url": "/v1/option_values",
+                                "name": "Index",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "ids",
+                                        "name": "ID's",
+                                        "description": "A comma-separated list of option type ids. Specifying this parameter will display the respective option Values."
+                                    },
+                                    {
+                                        "id": "option_type_id",
+                                        "name": "Option Type ID",
+                                        "description": "Specifying this parameter will display option values of respective option type."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_option_values",
+                                "url": "/v1/option_values/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Option Value ID",
+                                        "description": "Get Option Value ID by list of option Values",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_option_values",
+                                "url": "/v1/option_values",
+                                "name": "Search",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "q[name_cont]",
+                                        "name": "Q[name_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The name_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=name%20asc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "ORDERS",
+                        "endpoints": [
+                            {
+                                "id": "list_orders",
+                                "url": "/v1/orders",
+                                "name": "Index",
+                                "resourcePath": "orders"
+                            },
+                            {
+                                "id": "get_order",
+                                "url": "/v1/orders/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Order Number",
+                                        "description": "Get Order Number by list of orders",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_order",
+                                "url": "/v1/orders",
+                                "resourcePath": "orders",
+                                "name": "Search",
+                                "queryParameters": [
+                                    {
+                                        "id": "q[email_cont]",
+                                        "name": "Q[email_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The email_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=name%20asc"
+                                    },
+                                    {
+                                        "id": "order_token",
+                                        "name": "Order Token",
+                                        "description": "Users may pass in the order’s token in order to be authorized to view an order"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "payments",
+                        "name": "PAYMENTS",
+                        "endpoints": [
+                            {
+                                "id": "list_payments",
+                                "url": "/v1/orders/:_orderID/payments",
+                                "name": "Index",
+                                "resourcePath": "payments",
+                                "pathParameters": [
+                                    {
+                                        "id": "orderID",
+                                        "name": "Order Number",
+                                        "description": "Get Order Number by list of orders",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_payment",
+                                "url": "/v1/orders/:_id/payments/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "orderID",
+                                        "name": "Order Number",
+                                        "description": "Get Order Number by list of orders",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Payment ID",
+                                        "description": "Get Payment ID by List all order’s payments",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_payment",
+                                "url": "/v1/orders/:_orderID/payments",
+                                "name": "Search",
+                                "resourcePath": "payments",
+                                "pathParameters": [
+                                    {
+                                        "id": "orderID",
+                                        "name": "Order Number",
+                                        "description": "Get Order Number by list of orders",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "q[response_code_cont]",
+                                        "name": "Q[response_code_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The response_code_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=state%20asc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "SHIPMENTS",
+                        "endpoints": [
+                            {
+                                "id": "list_shipments",
+                                "url": "/v1/shipments/mine",
+                                "name": "Index",
+                                "resourcePath": "shipments"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "returnauthorizations",
+                        "name": "RETURN AUTHORIZATIONS",
+                        "endpoints": [
+                            {
+                                "id": "list_returnauthorizations",
+                                "url": "/v1/orders/:_orderID/return_authorizations",
+                                "name": "Index",
+                                "resourcePath": "return_authorizations",
+                                "pathParameters": [
+                                    {
+                                        "id": "orderID",
+                                        "name": "Order Number",
+                                        "description": "Get Order Number by list of orders",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_returnauthorization",
+                                "url": "/v1/orders/:_orderID/return_authorizations/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "orderID",
+                                        "name": "Order Number",
+                                        "description": "Get Order Number by list of orders",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Return Authorization ID",
+                                        "description": "Get Return Authorization ID by list all return authorizations for an order",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_returnauthorizations",
+                                "url": "/v1/orders/:_orderID/return_authorizations",
+                                "name": "Search",
+                                "resourcePath": "return_authorizations",
+                                "queryParameters": [
+                                    {
+                                        "id": "q[memo_cont]",
+                                        "name": "Q[memo_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The memo_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=amount%20asc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "taxonomies",
+                        "name": "TAXONOMIES",
+                        "endpoints": [
+                            {
+                                "id": "list_taxonomies",
+                                "url": "/v1/taxonomies",
+                                "name": "Index",
+                                "resourcePath": "taxonomies",
+                                "queryParameters": [
+                                    {
+                                        "id": "set",
+                                        "name": "Set",
+                                        "description": "Displays the complete expanded taxonomy tree if set to nested"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_taxonomy",
+                                "url": "/v1/taxonomies/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Taxonomy ID",
+                                        "description": "Get Taxonomy ID by list of all the taxonomies",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_taxonomy",
+                                "url": "/v1/taxonomies",
+                                "name": "Search",
+                                "resourcePath": "taxonomies",
+                                "queryParameters": [
+                                    {
+                                        "id": "q[name_cont]",
+                                        "name": "Q[name_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The name_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=root_name%20asc"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_taxons",
+                                "url": "/v1/taxonomies/:_id/taxons",
+                                "name": "Taxon Index",
+                                "resourcePath": "taxons",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Taxonomy ID",
+                                        "description": "Get Taxonomy ID by list of all the taxonomies",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "without_children",
+                                        "name": "With Out children",
+                                        "description": "Displays only immediate children of taxons if set to true."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_taxon",
+                                "url": "/v1/taxonomies/:_id/taxons/:_taxonid",
+                                "name": "Taxon Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Taxonomy ID",
+                                        "description": "Get Taxonomy ID by list of all the taxonomies",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "taxonid",
+                                        "name": "Taxon ID",
+                                        "description": "Get Taxon ID by List taxons",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "addresses",
+                        "name": "ADDRESSES",
+                        "endpoints": [
+                            {
+                                "id": "list_addresses",
+                                "url": "/v1/orders/:_orderID/addresses/:_addid",
+                                "name": "Index",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "orderID",
+                                        "name": "Order ID",
+                                        "description": "Get Order ID by list of orders",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "addid",
+                                        "name": "Address ID",
+                                        "description": "unique Identifier Address ID",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "order_token",
+                                        "name": "Order Token",
+                                        "description": "Get details of address by passing order_token"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "countries",
+                        "name": "COUNTRIES",
+                        "endpoints": [
+                            {
+                                "id": "list_countries",
+                                "url": "/v1/countries",
+                                "name": "Index",
+                                "resourcePath": "countries"
+                            },
+                            {
+                                "id": "get_country",
+                                "url": "/v1/countries/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Country ID",
+                                        "description": "Get country ID by list of all countries",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_country",
+                                "url": "/v1/countries",
+                                "name": "Search",
+                                "resourcePath": "countries",
+                                "queryParameters": [
+                                    {
+                                        "id": "q[name_cont]",
+                                        "name": "Q[name_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The name_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=name%20asc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stock_locations",
+                        "name": "STOCK LOCATIONS",
+                        "endpoints": [
+                            {
+                                "id": "list_stock_locations",
+                                "url": "/v1/stock_locations",
+                                "name": "Index",
+                                "resourcePath": "stock_locations"
+                            },
+                            {
+                                "id": "get_stock_location",
+                                "url": "/v1/stock_locations/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Stock Location ID",
+                                        "description": "Get Stock Location ID by list of stock locations",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_stock_location",
+                                "url": "/v1/stock_locations",
+                                "name": "Search",
+                                "resourcePath": "stock_locations",
+                                "queryParameters": [
+                                    {
+                                        "id": "q[name_cont]",
+                                        "name": "Q[name_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The name_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stock_items",
+                        "name": "STOCK ITEMS",
+                        "endpoints": [
+                            {
+                                "id": "list_stock_items",
+                                "url": "/v1/stock_locations/:_id/stock_items",
+                                "name": "Index",
+                                "resourcePath": "stock_items",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Stock Location ID",
+                                        "description": "Get Stock Location ID by list of stock locations",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_stock_items",
+                                "url": "/v1/stock_locations/:_id/stock_items/:_stkitemid",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Stock Location ID",
+                                        "description": "Get Stock Location ID by list of stock locations",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "stkitemid",
+                                        "name": "Stock Item ID",
+                                        "description": "Get Stock Item ID by list of all stock items for a stock location",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_stock_items",
+                                "url": "/v1/stock_locations/:_id/stock_items",
+                                "name": "Search",
+                                "resourcePath": "stock_items",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Stock Location ID",
+                                        "description": "Get Stock Location ID by list of stock locations",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "q[variant_id_eq]",
+                                        "name": "Q[variant_id_eq]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The variant_id_eq here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stock_movements",
+                        "name": "STOCK MOVEMENTS",
+                        "endpoints": [
+                            {
+                                "id": "list_stock_movements",
+                                "url": "/v1/stock_locations/:_id/stock_movements",
+                                "name": "Index",
+                                "resourcePath": "stock_movements",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Stock Location ID",
+                                        "description": "Get Stock Location ID by list of stock locations",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_stock_movements",
+                                "url": "/v1/stock_locations/:_id/stock_movements/:_stkmovementsid",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Stock Location ID",
+                                        "description": "Get Stock Location ID by list of stock locations",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "stkmovementsid",
+                                        "name": "Stock Movement ID",
+                                        "description": "Get Stock Movement ID by list of all stock movements for a stock location",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_stock_movements",
+                                "url": "/v1/stock_locations/:_id/stock_movements",
+                                "name": "Search",
+                                "resourcePath": "stock_movements",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Stock Location ID",
+                                        "description": "Get Stock Location ID by list of stock locations",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "q[quantity_eq]",
+                                        "name": "Q[quantity_eq]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The quantity_eq here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "zones",
+                        "name": "ZONES",
+                        "endpoints": [
+                            {
+                                "id": "list_zones",
+                                "url": "/v1/zones",
+                                "name": "Index",
+                                "resourcePath": "zones"
+                            },
+                            {
+                                "id": "get_zones",
+                                "url": "/v1/zones/:_id",
+                                "name": "Show",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Zone ID",
+                                        "description": "Get Zone ID by list of zones",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_zones",
+                                "url": "/v1/zones",
+                                "name": "Search",
+                                "queryParameters": [
+                                    {
+                                        "id": "q[name_cont]",
+                                        "name": "Q[name_cont]",
+                                        "description": "The searching API is provided through the Ransack gem which Spree depends on. The name_cont here is called a predicate, and you can learn more about them by reading about Predicates on the Ransack wiki."
+                                    },
+                                    {
+                                        "id": "q[s]",
+                                        "name": "Q[s]",
+                                        "description": "Results can be returned in a specific order by specifying which field to sort by when making a request.Ex: q[s]=name%20asc"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "product",
+                        "name": "PRODUCTS",
+                        "sampleData": {
+                            "products": {
+                                "id": 9,
+                                "name": "Spree Jr. Spaghetti",
+                                "description": "Debitis rerum labore corrupti similique ut. Hic porro aliquid aut voluptatem. Neque fugit ex aut expedita non et.",
+                                "price": "19.99",
+                                "display_price": "$19.99",
+                                "available_on": "2018-07-06T11:19:05.956Z",
+                                "slug": "spree-jr-spaghetti",
+                                "meta_description": null,
+                                "meta_keywords": null,
+                                "shipping_category_id": 1,
+                                "taxon_ids": [
+                                    6,
+                                    10
+                                ],
+                                "total_on_hand": 10
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_product",
+                                "url": "/v1/products",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_product",
+                                        "extract": "products[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_product",
+                                "url": "/v1/products/:_productID",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_product",
+                                        "extract": "products[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_product",
+                                "url": [
+                                    "/v1/products/:_productID",
+                                    "/v1/products"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_product",
+                                        "extract": "products[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_product",
+                                "url": "/v1/products/:_productID",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_product",
+                                        "extract": "products[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "productproperties",
+                        "name": "PRODUCT PROPERTIES",
+                        "sampleData": {
+                            "product_property": {
+                                "property_name": 9,
+                                "value": "Spree Jr. Spaghetti"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_productproperty",
+                                "url": "/v1/products/:_productID/product_properties",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "description": "Unique Identifier Product ID",
+                                        "required": true,
+                                        "name": "Product ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_productproperty",
+                                        "extract": "product_properties[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_productproperty",
+                                "url": "/v1/products/:_productID/product_properties/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "description": "Unique Identifier Product ID",
+                                        "required": true,
+                                        "name": "Product ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_productproperty",
+                                        "extract": "product_properties[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_productproperty",
+                                "url": [
+                                    "/v1/products/:_productID/product_properties/:_id",
+                                    "/v1/products/:_productID/product_properties"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "description": "Unique Identifier Product ID",
+                                        "required": true,
+                                        "name": "Product ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_productproperty",
+                                        "extract": "product_properties[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_productproperty",
+                                "url": "/v1/products/:_productID/product_properties/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "description": "Unique Identifier Product ID",
+                                        "required": true,
+                                        "name": "Product ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_productproperty",
+                                        "extract": "product_properties[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "varients",
+                        "name": "VARIANTS",
+                        "sampleData": {
+                            "variant": {
+                                "name": "Ruby Baseball Jersey",
+                                "sku": "RUB-00001",
+                                "price": "19.99",
+                                "weight": "0.0",
+                                "height": null,
+                                "width": null,
+                                "depth": null,
+                                "is_master": true,
+                                "slug": "ruby-baseball-jersey",
+                                "description": "Deserunt modi ad error adipisci quis ipsum. Nesciunt molestias laboriosam dolores blanditiis qui enim nobis nostrum. Architecto ipsum quas culpa expedita. Delectus dolores architecto adipisci non tempora vel ut est.",
+                                "track_inventory": true
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_variant",
+                                "url": "/v1/products/:_productID/variants",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "description": "Unique Identifier Product ID",
+                                        "required": true,
+                                        "name": "Product ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_variant",
+                                        "extract": "variants[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_variant",
+                                "url": "/v1/products/:_productID/variants/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "description": "Unique Identifier Product ID",
+                                        "required": true,
+                                        "name": "Product ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_variant",
+                                        "extract": "variants[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_variant",
+                                "url": [
+                                    "/v1/products/:_productID/variants/:_id",
+                                    "/v1/products/:_productID/variants"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "description": "Unique Identifier Product ID",
+                                        "required": true,
+                                        "name": "Product ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_variant",
+                                        "extract": "variants[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_variant",
+                                "url": "/v1/products/:_productID/variants/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "productID",
+                                        "in": "path",
+                                        "description": "Unique Identifier Product ID",
+                                        "required": true,
+                                        "name": "Product ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_variant",
+                                        "extract": "variants[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "ORDERS",
+                        "sampleData": {
+                            "order": {
+                                "id": 5,
+                                "number": "R492375899",
+                                "item_total": "79.95",
+                                "total": "79.95",
+                                "ship_total": "0.0",
+                                "state": "cart",
+                                "adjustment_total": "0.0",
+                                "user_id": 1,
+                                "created_at": "2018-08-01T12:37:34.055Z",
+                                "updated_at": "2018-08-01T12:37:36.480Z",
+                                "completed_at": null,
+                                "payment_total": "0.0",
+                                "shipment_state": null,
+                                "payment_state": null,
+                                "email": "spree@example.com",
+                                "special_instructions": null,
+                                "channel": "spree",
+                                "included_tax_total": "0.0",
+                                "additional_tax_total": "0.0",
+                                "display_included_tax_total": "$0.00",
+                                "display_additional_tax_total": "$0.00",
+                                "tax_total": "0.0",
+                                "currency": "USD",
+                                "considered_risky": false,
+                                "canceler_id": null,
+                                "display_item_total": "$79.95",
+                                "total_quantity": 5,
+                                "display_total": "$79.95",
+                                "display_ship_total": "$0.00",
+                                "display_tax_total": "$0.00",
+                                "display_adjustment_total": "$0.00",
+                                "token": "XA4Rg7Uxbj4m21ydfjmYnA1533127054056",
+                                "checkout_steps": [
+                                    "address",
+                                    "delivery",
+                                    "payment",
+                                    "complete"
+                                ],
+                                "bill_address": {
+                                    "id": 7,
+                                    "firstname": "Muneswara",
+                                    "lastname": "Thotakura",
+                                    "full_name": "Muneswara Thotakura",
+                                    "address1": "address 1",
+                                    "address2": "",
+                                    "city": "Hyderabad",
+                                    "zipcode": "500009",
+                                    "phone": "9618619922",
+                                    "company": null,
+                                    "alternative_phone": null,
+                                    "country_id": 105,
+                                    "state_id": 1390,
+                                    "state_name": null,
+                                    "state_text": "AP",
+                                    "country": {
+                                        "id": 105,
+                                        "iso_name": "INDIA",
+                                        "iso": "IN",
+                                        "iso3": "IND",
+                                        "name": "India",
+                                        "numcode": 356
+                                    },
+                                    "state": {
+                                        "id": 1390,
+                                        "name": "Andhra Pradesh",
+                                        "abbr": "AP",
+                                        "country_id": 105
+                                    }
+                                },
+                                "ship_address": {
+                                    "id": 8,
+                                    "firstname": "Muneswara",
+                                    "lastname": "Thotakura",
+                                    "full_name": "Muneswara Thotakura",
+                                    "address1": "address 1",
+                                    "address2": "",
+                                    "city": "Hyderabad",
+                                    "zipcode": "500009",
+                                    "phone": "9618619922",
+                                    "company": null,
+                                    "alternative_phone": null,
+                                    "country_id": 105,
+                                    "state_id": 1390,
+                                    "state_name": null,
+                                    "state_text": "AP",
+                                    "country": {
+                                        "id": 105,
+                                        "iso_name": "INDIA",
+                                        "iso": "IN",
+                                        "iso3": "IND",
+                                        "name": "India",
+                                        "numcode": 356
+                                    },
+                                    "state": {
+                                        "id": 1390,
+                                        "name": "Andhra Pradesh",
+                                        "abbr": "AP",
+                                        "country_id": 105
+                                    }
+                                },
+                                "line_items": [
+                                    {
+                                        "id": 6,
+                                        "quantity": 5,
+                                        "price": "15.99",
+                                        "variant_id": 1,
+                                        "variant": {
+                                            "product_id": 1,
+                                            "id": 1,
+                                            "name": "Ruby on Rails Tote",
+                                            "sku": "ROR-00011",
+                                            "price": "15.99",
+                                            "weight": "0.0",
+                                            "height": null,
+                                            "width": null,
+                                            "depth": null,
+                                            "is_master": true,
+                                            "slug": "ruby-on-rails-tote",
+                                            "description": "Quisquam ratione consequatur facere doloribus tempora sit. Ex et ut illum sed maxime ea amet sed. Magni ipsum explicabo dolorum aut commodi.",
+                                            "track_inventory": true,
+                                            "cost_price": "17.0",
+                                            "option_values": [],
+                                            "images": [
+                                                {
+                                                    "id": 21,
+                                                    "position": 1,
+                                                    "attachment_content_type": null,
+                                                    "attachment_file_name": null,
+                                                    "type": "Spree::Image",
+                                                    "attachment_updated_at": null,
+                                                    "attachment_width": null,
+                                                    "attachment_height": null,
+                                                    "alt": null,
+                                                    "viewable_type": "Spree::Variant",
+                                                    "viewable_id": 1,
+                                                    "mini_url": "http://localhost:3000/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8cc404a7b5758d543a60d0253a2067e3a3f75311/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f11494d5e13c11b73177c588019a5b129950e63e/ror_tote.jpeg",
+                                                    "small_url": "http://localhost:3000/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8cc404a7b5758d543a60d0253a2067e3a3f75311/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--d4f8f19e230e2d53138220a6c78254fb08d018e8/ror_tote.jpeg",
+                                                    "product_url": "http://localhost:3000/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8cc404a7b5758d543a60d0253a2067e3a3f75311/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--ff20e510ce9992885b39259b7e18d6b3a6c4dff7/ror_tote.jpeg",
+                                                    "large_url": "http://localhost:3000/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8cc404a7b5758d543a60d0253a2067e3a3f75311/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--ab8ab96f37691eba3255d656963175188bc82636/ror_tote.jpeg"
+                                                },
+                                                {
+                                                    "id": 22,
+                                                    "position": 2,
+                                                    "attachment_content_type": null,
+                                                    "attachment_file_name": null,
+                                                    "type": "Spree::Image",
+                                                    "attachment_updated_at": null,
+                                                    "attachment_width": null,
+                                                    "attachment_height": null,
+                                                    "alt": null,
+                                                    "viewable_type": "Spree::Variant",
+                                                    "viewable_id": 1,
+                                                    "mini_url": "http://localhost:3000/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7af14a4ed71826663254ba3da199b320f23e438/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f11494d5e13c11b73177c588019a5b129950e63e/ror_tote_back.jpeg",
+                                                    "small_url": "http://localhost:3000/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7af14a4ed71826663254ba3da199b320f23e438/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--d4f8f19e230e2d53138220a6c78254fb08d018e8/ror_tote_back.jpeg",
+                                                    "product_url": "http://localhost:3000/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7af14a4ed71826663254ba3da199b320f23e438/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--ff20e510ce9992885b39259b7e18d6b3a6c4dff7/ror_tote_back.jpeg",
+                                                    "large_url": "http://localhost:3000/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7af14a4ed71826663254ba3da199b320f23e438/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--ab8ab96f37691eba3255d656963175188bc82636/ror_tote_back.jpeg"
+                                                }
+                                            ],
+                                            "display_price": "$15.99",
+                                            "options_text": "",
+                                            "in_stock": true,
+                                            "is_backorderable": true,
+                                            "is_orderable": true,
+                                            "total_on_hand": 10,
+                                            "is_destroyed": false
+                                        },
+                                        "adjustments": [],
+                                        "single_display_amount": "$15.99",
+                                        "display_amount": "$79.95",
+                                        "total": "79.95"
+                                    }
+                                ],
+                                "payments": [],
+                                "shipments": [
+                                    {
+                                        "id": 4,
+                                        "tracking": null,
+                                        "number": "H54263339648",
+                                        "cost": "0.0",
+                                        "shipped_at": null,
+                                        "state": "pending",
+                                        "shipping_rates": [],
+                                        "selected_shipping_rate": null,
+                                        "shipping_methods": [],
+                                        "manifest": [
+                                            {
+                                                "variant_id": 1,
+                                                "quantity": 5,
+                                                "states": {
+                                                    "on_hand": 5
+                                                }
+                                            }
+                                        ],
+                                        "adjustments": [],
+                                        "order_id": "R492375899",
+                                        "stock_location_name": "default"
+                                    }
+                                ],
+                                "adjustments": [],
+                                "credit_cards": [],
+                                "permissions": {
+                                    "can_update": true
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_order",
+                                "url": "/v1/orders",
+                                "name": "Create",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "empty_order",
+                                "url": "/v1/orders/:_orderid/empty",
+                                "name": "Empty",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "checkouts",
+                        "name": "CHECKOUTS",
+                        "operations": [
+                            {
+                                "id": "add_lineitem",
+                                "url": "/v1/orders/:_number/line_items.json",
+                                "name": "Add line items to an order",
+                                "sampleData": {
+                                    "line_item": {
+                                        "variant_id": 1,
+                                        "quantity": 5
+                                    }
+                                },
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updating_order",
+                                "url": "/v1/orders/:_number.json",
+                                "name": "Updating an order",
+                                "sampleData": {
+                                    "line_item": {
+                                        "variant_id": 1,
+                                        "quantity": 5
+                                    }
+                                },
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delivery_order",
+                                "url": "/v1/checkouts/:_number.json",
+                                "name": "Delivery",
+                                "sampleData": {
+                                    "order": {
+                                        "bill_address_attributes": {
+                                            "firstname": "John",
+                                            "lastname": "Doe",
+                                            "address1": "233 36th Ave Ne",
+                                            "city": "St Petersburg",
+                                            "phone": "3014445002",
+                                            "zipcode": "33704-1535",
+                                            "state_id": 3534,
+                                            "country_id": 232
+                                        },
+                                        "ship_address_attributes": {
+                                            "firstname": "John",
+                                            "lastname": "Doe",
+                                            "address1": "233 36th Ave Ne",
+                                            "city": "St Petersburg",
+                                            "phone": "3014445002",
+                                            "zipcode": "33704-1535",
+                                            "state_id": 3534,
+                                            "country_id": 232
+                                        }
+                                    }
+                                },
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Payment_order",
+                                "url": "/v1/checkouts/:_number/next",
+                                "name": "Payment",
+                                "sampleData": {
+                                    "order": {
+                                        "shipments_attributes": {
+                                            "0": {
+                                                "selected_shipping_rate_id": 1,
+                                                "id": 1
+                                            }
+                                        }
+                                    }
+                                },
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Confirm_order",
+                                "url": "/v1/checkouts/:_number.json",
+                                "name": "Confirm",
+                                "sampleData": {
+                                    "order": {
+                                        "payments_attributes": [
+                                            {
+                                                "payment_method_id": "1"
+                                            }
+                                        ]
+                                    },
+                                    "payment_source": {
+                                        "1": {
+                                            "number": "4111111111111111",
+                                            "month": "1",
+                                            "year": "2017",
+                                            "verification_value": "123",
+                                            "name": "John Smith"
+                                        }
+                                    }
+                                },
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Confirm_order",
+                                "url": "/v1/checkouts/:_number.json",
+                                "name": "Complete",
+                                "sampleData": {},
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "optiontypes",
+                        "name": "OPTION TYPES",
+                        "sampleData": {
+                            "option_type": {
+                                "name": "Ruby Baseball Jersey",
+                                "presentation": "RUB-00001",
+                                "position": "19.99"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_optiontype",
+                                "url": "/v1/option_types",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_optiontypes",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_optiontype",
+                                "url": "/v1/option_types/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_optiontypes",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_optiontype",
+                                "url": [
+                                    "/v1/option_types/:_id",
+                                    "/v1/option_types"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_optiontypes",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_type",
+                                "url": "/v1/option_types/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_optiontypes",
+                                        "extract": "id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "optionvalues",
+                        "name": "OPTION VALUES",
+                        "sampleData": {
+                            "option_value": {
+                                "name": "Ruby Baseball Jersey",
+                                "presentation": "RUB-00001",
+                                "option_type_name": "19.99",
+                                "option_type_id": "",
+                                "option_type_presentation": ""
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_option_value",
+                                "url": "/v1/option_values",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_option_values",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_option_value",
+                                "url": "/v1/option_values/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_option_values",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_option_value",
+                                "url": [
+                                    "/v1/option_values/:_id",
+                                    "/v1/option_values"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_option_values",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_option_value",
+                                "url": "/v1/option_values/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_option_values",
+                                        "extract": "id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "lineitems",
+                        "name": "LINE ITEMS",
+                        "sampleData": {
+                            "line_item": {
+                                "variant_id": "Ruby Baseball Jersey",
+                                "quantity": "RUB-00001"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_lineitem",
+                                "url": "/v1/orders/:_orderID/line_items",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_lineitem",
+                                "url": "/v1/orders/:_orderID/line_items/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_lineitem",
+                                "url": [
+                                    "/v1/orders/:_orderID/line_items/:_id",
+                                    "/v1/orders/:_orderID/line_items"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_lineitem",
+                                "url": "/v1/orders/:_orderID/line_items/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "payments",
+                        "name": "PAYMENTS",
+                        "sampleData": {
+                            "payment": {
+                                "source_type": "Ruby Baseball Jersey",
+                                "source_id": "RUB-00001",
+                                "amount": "",
+                                "display_amount": "",
+                                "payment_method_id": "",
+                                "state": "",
+                                "avs_response": "",
+                                "number": ""
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_payment",
+                                "url": "/v1/orders/:_orderID/payments",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "authorize_payment",
+                                "url": "/v1/orders/:_orderID/payments/:_id/authorize",
+                                "name": "Authorize",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "capture_variant",
+                                "url": "/v1/orders/:_orderID/payments/:_id/capture",
+                                "name": "Capture",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "capture_variant",
+                                "url": "/v1/orders/:_orderID/payments/:_id/purchase",
+                                "name": "Purchase",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "capture_variant",
+                                "url": "/v1/orders/:_orderID/payments/:_id/void",
+                                "name": "Void",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "capture_variant",
+                                "url": "/v1/orders/:_orderID/payments/:_id/credit",
+                                "name": "Credit",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "SHIPMENTS",
+                        "sampleData": {
+                            "order_id": "Ruby Baseball Jersey",
+                            "stock_location_id": "RUB-00001",
+                            "variant_id": "",
+                            "selected_shipping_rate_id": "",
+                            "tracking": "",
+                            "quantity": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_shipment",
+                                "url": "/v1/shipments",
+                                "name": "Create",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_shipment",
+                                "url": "/v1/shipments/:_id",
+                                "name": "Update",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_shipment",
+                                "url": [
+                                    "/v1/shipments/:_id",
+                                    "/v1/shipments"
+                                ],
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ready_shipment",
+                                "url": "/v1/shipments/:_id/ready",
+                                "name": "Ready",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ship_shipment",
+                                "url": "/v1/shipments/:_id/ship",
+                                "name": "Ship",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_varient",
+                                "url": "/v1/shipments/:_id/add",
+                                "name": "Add variant",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_varient",
+                                "url": "/v1/shipments/:_id/remove",
+                                "name": "Remove variant",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "returnauthorizations",
+                        "name": "RETURN AUTHORIZATIONS",
+                        "sampleData": {
+                            "return_authorization": {
+                                "stock_location_id": "Ruby Baseball Jersey",
+                                "return_authorization_reason_id": "RUB-00001",
+                                "memo": ""
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_authorization",
+                                "url": "/v1/orders/:_orderID/return_authorizations",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_authorization",
+                                "url": "/v1/orders/:_orderID/return_authorizations/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_authorization",
+                                "url": [
+                                    "/v1/orders/:_orderID/return_authorizations/:_id",
+                                    "/v1/orders/:_orderID/return_authorizations"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_authorization",
+                                "url": "/v1/orders/:_orderID/return_authorizations/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderID",
+                                        "in": "path",
+                                        "description": "Enter Order Number",
+                                        "required": true,
+                                        "name": "Order Number"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "taxonomies",
+                        "name": "TAXONOMIES",
+                        "sampleData": {
+                            "taxonomy": {
+                                "name": "Ruby Baseball Jersey"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_taxonomies",
+                                "url": "/v1/taxonomies",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_taxonomies",
+                                "url": "/v1/taxonomies/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_taxonomies",
+                                "url": [
+                                    "/v1/taxonomies/:_id",
+                                    "/v1/taxonomies"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_taxonomies",
+                                "url": "/v1/taxonomies/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_taxons",
+                                "url": "/v1/taxonomies/:_id/taxons",
+                                "name": "Taxon Create",
+                                "sampleData": {
+                                    "taxon": {
+                                        "name": ""
+                                    }
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "taxonomy ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_taxons",
+                                "url": "/v1/taxonomies/:_id/taxons/:_taxonid",
+                                "name": "Taxon Update",
+                                "sampleData": {
+                                    "taxon": {
+                                        "name": ""
+                                    }
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "taxonomy ID"
+                                    },
+                                    {
+                                        "id": "taxonid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_taxons",
+                                "url": [
+                                    "/v1/taxonomies/:_id/taxons/:_taxonid",
+                                    "/v1/taxonomies/:_id/taxons"
+                                ],
+                                "name": "Taxon Create or Update",
+                                "sampleData": {
+                                    "taxon": {
+                                        "name": ""
+                                    }
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "taxonomy ID"
+                                    },
+                                    {
+                                        "id": "taxonid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_taxons",
+                                "url": "/v1/taxonomies/:_id/taxons",
+                                "name": "Taxon Delete",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "taxon": {
+                                        "name": ""
+                                    }
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "taxonid",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "taxonomy ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stock_locations",
+                        "name": "STOCK LOCATIONS",
+                        "sampleData": {
+                            "stock_location": {
+                                "name": "Ruby Baseball Jersey",
+                                "address1": "7735 Old Georgetown Road",
+                                "address2": "Suite 510",
+                                "city": "Bethesda",
+                                "state_id": 1,
+                                "state_name": null,
+                                "country_id": 1,
+                                "zipcode": "20814",
+                                "phone": "",
+                                "active": true
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_stocklocation",
+                                "url": "/v1/stock_locations",
+                                "name": "Create",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_stock_location",
+                                        "extract": "stock_locations[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_stocklocation",
+                                "url": "/v1/stock_locations/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_stock_location",
+                                        "extract": "stock_locations[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_stocklocation",
+                                "url": [
+                                    "/v1/stock_locations/:_id",
+                                    "/v1/stock_locations"
+                                ],
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_stock_location",
+                                        "extract": "stock_locations[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_stocklocation",
+                                "url": "/v1/stock_locations/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_stock_location",
+                                        "extract": "stock_locations[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stock_items",
+                        "name": "STOCK ITEMS",
+                        "sampleData": {
+                            "stock_item": {
+                                "count_on_hand": "10",
+                                "variant_id": "1",
+                                "backorderable": "true",
+                                "force": "true"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_stockitem",
+                                "url": "/v1/stock_locations/:_stocklocationid/stock_items",
+                                "name": "Create",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "stocklocationid",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Stock Location ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_stockitem",
+                                "url": "/v1/stock_locations/:_stocklocationid/stock_items/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "stocklocationid",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Stock Location ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_stockitem",
+                                "url": [
+                                    "/v1/stock_locations/:_stocklocationid/stock_items/:_id",
+                                    "/v1/stock_locations/:_stocklocationid/stock_items"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "stocklocationid",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Stock Location ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_stockitem",
+                                "url": "/v1/stock_locations/:_stocklocationid/stock_items/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "stocklocationid",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Stock Location ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stock_movements",
+                        "name": "STOCK MOVEMENTS",
+                        "sampleData": {
+                            "stock_movement": {
+                                "quantity": "10",
+                                "stock_item_id": "1",
+                                "action": "received"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_stockmovement",
+                                "url": "/v1/stock_locations/:_stocklocationid/stock_movements",
+                                "name": "Create",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "stocklocationid",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Stock Location ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_stockmovement",
+                                "url": "/v1/stock_locations/:_stocklocationid/stock_movements/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "stocklocationid",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Stock Location ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_stockmovement",
+                                "url": [
+                                    "/v1/stock_locations/:_stocklocationid/stock_movements/:_id",
+                                    "/v1/stock_locations/:_stocklocationid/stock_movements"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "stocklocationid",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Stock Location ID"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "zones",
+                        "name": "ZONES",
+                        "sampleData": {
+                            "zone": {
+                                "name": "North Pole",
+                                "description": "The US",
+                                "zone_members": [
+                                    {
+                                        "zoneable_type": "Spree::Country",
+                                        "zoneable_id": 1
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_zone",
+                                "url": "/v1/zones",
+                                "name": "Create",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_zones",
+                                        "extract": "zones[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_zone",
+                                "url": "/v1/zones/:_zoneID",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "zoneID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_zones",
+                                        "extract": "zones[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_update_zone",
+                                "url": [
+                                    "/v1/products/:_productID",
+                                    "/v1/products"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "zoneID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_zones",
+                                        "extract": "zones[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_zone",
+                                "url": "/v1/zones/:_zoneID",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "zoneID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "search_zones",
+                                        "extract": "zones[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

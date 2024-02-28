@@ -1,0 +1,1389 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "nextpageurl",
+            "nextPagePath": "metadata.pagination.next"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "user",
+                        "name": "User",
+                        "endpoints": [
+                            {
+                                "id": "get_permissionrolessystem",
+                                "url": "/api/permission/system/",
+                                "name": "Permission Roles - System",
+                                "resourcePath": "data"
+                            },
+                            {
+                                "id": "get_permissionrolescustom",
+                                "url": "/api/permission/role/custom/",
+                                "name": "Permission Roles - Custom",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": "true",
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "limit",
+                                        "description": "Maximum number of records to return. (10 by default)."
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "Number of records to be skipped."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_loggedinuser",
+                                "url": "/api/user/",
+                                "name": "Get Logged-in User",
+                                "resourcePath": "data"
+                            },
+                            {
+                                "id": "get_allusers",
+                                "url": "/api/user/all/",
+                                "name": "Get All Users",
+                                "resourcePath": "data"
+                            },
+                            {
+                                "id": "get_activeusers",
+                                "url": "/api/user/active/",
+                                "name": "Get Active Users",
+                                "resourcePath": "data"
+                            },
+                            {
+                                "id": "get_inactiveusers",
+                                "url": "/api/user/inactive/",
+                                "name": "Get Inactive Users",
+                                "resourcePath": "data"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "locations",
+                        "name": "Locations",
+                        "endpoints": [
+                            {
+                                "id": "get_locations",
+                                "url": "/api/v2/locations/",
+                                "name": "Get Locations",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "active",
+                                        "name": "active",
+                                        "description": "Retrieves records based on the given value ie.,true/false.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "order_by",
+                                        "description": "Sort by (eg. name, -name)."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "departments",
+                        "name": "Departments",
+                        "endpoints": [
+                            {
+                                "id": "get_departments",
+                                "url": "/api/v2/department/",
+                                "name": "Get Departments",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "branch",
+                                        "name": "branch",
+                                        "description": "ID of locations."
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "order_by",
+                                        "description": "Sort by (eg. name, -name)."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountcodes",
+                        "name": "Account Codes",
+                        "endpoints": [
+                            {
+                                "id": "get_accountcodes",
+                                "url": "/api/v2/account_codes/",
+                                "name": "Get Account Codes",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "active",
+                                        "name": "active",
+                                        "description": "Retrieves records based on given value ie.,True / false.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    },
+                                    {
+                                        "id": "code",
+                                        "name": "code",
+                                        "description": "Retrieves records based on the given code value."
+                                    },
+                                    {
+                                        "id": "description",
+                                        "name": "description",
+                                        "description": "Retrieves the records based on the given description."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "endpoints": [
+                            {
+                                "id": "get_accounts",
+                                "url": "/api/v2/accounts/",
+                                "name": "Get Accounts",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "active",
+                                        "name": "active",
+                                        "description": "Retrieves records based on the given value ie.,True / false.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    },
+                                    {
+                                        "id": "account_code",
+                                        "name": "account_code",
+                                        "description": "ID of Account Code."
+                                    },
+                                    {
+                                        "id": "department",
+                                        "name": "department",
+                                        "description": "ID of Department."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "vendors",
+                        "name": "Vendors",
+                        "endpoints": [
+                            {
+                                "id": "get_activevendors",
+                                "url": "/api/v3/vendors/:_type_name",
+                                "name": "Get Active Vendors",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "type_name",
+                                        "name": "type_name",
+                                        "description": "Type_names are intended for filtering Vendors, separated by ENUMs as “type” field.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "currency",
+                        "name": "Currency",
+                        "endpoints": [
+                            {
+                                "id": "get_active_inactivecurrencies",
+                                "url": "/api/v2/currencies/",
+                                "name": "Get Active/Inactive Currencies",
+                                "resourcePath": "data",
+                                "querParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Currency name (eg. CAD, USD)."
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "active",
+                                        "description": "Active / inactive Currencies.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    },
+                                    {
+                                        "id": "base",
+                                        "name": "base",
+                                        "description": "Retrieve system Base Currency.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "catalog",
+                        "name": "Catalog",
+                        "endpoints": [
+                            {
+                                "id": "get_allcatalogitems",
+                                "url": "/api/v3/catalog-items/",
+                                "name": "Get All Catalog Items",
+                                "resourcePath": "data",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "get_allcatalogbundles",
+                                "url": "/api/v3/catalog-bundles/",
+                                "name": "Get All Catalog Bundles",
+                                "resourcePath": "data",
+                                "pathParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "endpoints": [
+                            {
+                                "id": "get_allorders",
+                                "url": "/api/v2/global/orders/",
+                                "name": "Get All Orders",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Retrieves the records based on the given status value ie., 0 (pending), 1 (approved), 2 (denied), 3 (full purchased), 4 (cancelled), 5 (full received).",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "0",
+                                            "1",
+                                            "3",
+                                            "4",
+                                            "5"
+                                        ]
+                                    },
+                                    {
+                                        "id": "date",
+                                        "name": "date",
+                                        "description": "Retrieves the records based on Created date."
+                                    },
+                                    {
+                                        "id": "dateRequired",
+                                        "name": "dateRequired",
+                                        "description": "Retrieves the records based on Required date."
+                                    },
+                                    {
+                                        "id": "dateModified",
+                                        "name": "dateModified",
+                                        "description": "Retrieves the records based on Last modified date."
+                                    },
+                                    {
+                                        "id": "totalPrice",
+                                        "name": "totalPrice",
+                                        "description": "Retrieves the records based on Total order price."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_allorderitems",
+                                "url": "/api/v2/global/order_items/",
+                                "name": "Get All Order Items",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Retrieves the records based on the given status value ie., pending_approval, approval_denied,pending_purchase, purchase_rejected, purchased,pending_receive, partial_received, full_received",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "pending_approval",
+                                            "approval_denied",
+                                            "pending_purchase",
+                                            "purchase_rejected",
+                                            "purchased",
+                                            "pending_receive",
+                                            "partial_received",
+                                            "full_received"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderNum",
+                                        "name": "orderNum",
+                                        "description": "ID of Order."
+                                    },
+                                    {
+                                        "id": "branch",
+                                        "name": "branch",
+                                        "description": "ID of Location."
+                                    },
+                                    {
+                                        "id": "department",
+                                        "name": "department",
+                                        "description": "ID of Department."
+                                    },
+                                    {
+                                        "id": "account",
+                                        "name": "account",
+                                        "description": "ID of Account."
+                                    },
+                                    {
+                                        "id": "pref_vendor",
+                                        "name": "pref_vendor",
+                                        "description": "ID of Vendor."
+                                    },
+                                    {
+                                        "id": "currency",
+                                        "name": "currency",
+                                        "description": "ID of Currency."
+                                    },
+                                    {
+                                        "id": "purchaser",
+                                        "name": "purchaser",
+                                        "description": "ID of User (purchaser)."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "purchaseorders",
+                        "name": "Purchase Orders",
+                        "endpoints": [
+                            {
+                                "id": "get_purchaseorders",
+                                "url": "/api/v2/purchase_orders/:_role/:_status/",
+                                "name": "Get Purchase Orders by Role & Status",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "role",
+                                        "name": "Role",
+                                        "description": "Purchase order type either purchased or receivable.",
+                                        "required": true,
+                                        "fieldtype": "select",
+                                        "options": [
+                                            "receivable",
+                                            "purchased"
+                                        ]
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Status of the Purchase Order.",
+                                        "required": true,
+                                        "fieldtype": "select",
+                                        "options": [
+                                            "all",
+                                            "open",
+                                            "partial",
+                                            "closed",
+                                            "cancelled",
+                                            "paid"
+                                        ]
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "counts",
+                                        "name": "counts",
+                                        "description": "Returns key “counts” in “metadata” with total count of all statuses.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "order_by",
+                                        "description": "Sort by field."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_purchaseorderbyid",
+                                "url": "/api/v2/purchase_orders/:_id/",
+                                "name": "Get Purchase Order by ID (with items)",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Purchase Order ID.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expensereports",
+                        "name": "Expense Reports",
+                        "endpoints": [
+                            {
+                                "id": "get_allexpensereports",
+                                "url": "/api/v2/global/expenses/",
+                                "name": "Get All Expense Reports",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Status of the expense report ex:draft, pending, approved, denied, paid.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "draft",
+                                            "pending",
+                                            "approved",
+                                            "denied",
+                                            "paid"
+                                        ]
+                                    },
+                                    {
+                                        "id": "branch",
+                                        "name": "branch",
+                                        "description": "ID of Location."
+                                    },
+                                    {
+                                        "id": "department",
+                                        "name": "department",
+                                        "description": "ID of Department."
+                                    },
+                                    {
+                                        "id": "user",
+                                        "name": "user",
+                                        "description": "ID of requesting User."
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "active",
+                                        "description": "The value can be true/false.",
+                                        "fieldtype": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    },
+                                    {
+                                        "id": "nextApprover",
+                                        "name": "nextApprover",
+                                        "description": "ID of next approving User."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_allexpenseitems",
+                                "url": "/api/v2/global/expense_items/",
+                                "name": "Get All Expense Items",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Status of the expense report ex:draft, pending, approved, denied, paid.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "draft",
+                                            "pending",
+                                            "approved",
+                                            "denied",
+                                            "paid"
+                                        ]
+                                    },
+                                    {
+                                        "id": "account",
+                                        "name": "account",
+                                        "description": "ID of Account (budget of Dept + Acct Code)."
+                                    },
+                                    {
+                                        "id": "merchant",
+                                        "name": "merchant",
+                                        "description": "Expense merchant."
+                                    },
+                                    {
+                                        "id": "reimburse",
+                                        "name": "reimburse",
+                                        "description": "Reimbursable toggle.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    },
+                                    {
+                                        "id": "expenseReport",
+                                        "name": "expenseReport",
+                                        "description": "ID of Expense Report."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "travel",
+                        "name": "Travel",
+                        "endpoints": [
+                            {
+                                "id": "get_alltravels",
+                                "url": "/api/v2/global/travels/",
+                                "name": "Get All Travels",
+                                "resourcePath": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ap",
+                        "name": "AP",
+                        "endpoints": [
+                            {
+                                "id": "get_ap_items",
+                                "url": "/api/v2/ap/items/",
+                                "name": "Get Unbilled/Billed Items",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "billed",
+                                        "name": "billed",
+                                        "description": "True, False.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    },
+                                    {
+                                        "id": "collection",
+                                        "name": "collection",
+                                        "description": "Choices on billable items (all, accrual, order,order-archived, expense, expense-archived).",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "all",
+                                            "accrual",
+                                            "order",
+                                            "order-archived",
+                                            "expense",
+                                            "expense-archived"
+                                        ]
+                                    },
+                                    {
+                                        "id": "vendor",
+                                        "name": "vendor",
+                                        "description": "ID of Vendor."
+                                    },
+                                    {
+                                        "id": "budget",
+                                        "name": "budget",
+                                        "description": "ID of Account."
+                                    },
+                                    {
+                                        "id": "received_on_0",
+                                        "name": "received_on_0",
+                                        "description": "Filters items received after this date,format is yyyy-mm-dd"
+                                    },
+                                    {
+                                        "id": "received_on_1",
+                                        "name": "received_on_1",
+                                        "description": "Filters items received before this date,format is yyyy-mm-dd"
+                                    },
+                                    {
+                                        "id": "requester",
+                                        "name": "requester",
+                                        "description": "ID of Expense or OrderItem requester."
+                                    },
+                                    {
+                                        "id": "location",
+                                        "name": "location",
+                                        "description": "ID of location of any cost allocation."
+                                    },
+                                    {
+                                        "id": "search",
+                                        "name": "search",
+                                        "description": "Search for items by vendor, sku, or description."
+                                    },
+                                    {
+                                        "id": "search_in",
+                                        "name": "search_in",
+                                        "description": "Search for items under specific fields."
+                                    },
+                                    {
+                                        "id": "counts",
+                                        "name": "counts",
+                                        "description": "Metadata for result counts.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "bills",
+                        "name": "Bills",
+                        "endpoints": [
+                            {
+                                "id": "get_bills",
+                                "url": "/api/v2/ap/bills/",
+                                "name": "Get Bills",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Status of the bill ex: All, draft, confirmed, approved, denied, withdrawn,paid, approved-paid, denied-withdrawn, archived,pending-approval.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "all",
+                                            "draft",
+                                            "confirmed",
+                                            "approved",
+                                            "denied",
+                                            "withdrawn",
+                                            "paid",
+                                            "approved-paid",
+                                            "denied-withdrawn",
+                                            "archived",
+                                            "pending-approval"
+                                        ]
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "Type of the bill ex: 0 (ORDER), 1 (EXPENSE).",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "0",
+                                            "1"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "user",
+                        "name": "User",
+                        "operations": [
+                            {
+                                "id": "create_user",
+                                "url": "/api/user/",
+                                "name": "Create New User",
+                                "method": "POST",
+                                "sampleData": {
+                                    "firstName": "Sample",
+                                    "lastName": "User",
+                                    "email": "andy.dev@test.com",
+                                    "phone": "6041231234",
+                                    "location": "3",
+                                    "department": "17",
+                                    "position": "admin",
+                                    "preset_password": "sample123"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_user",
+                                "url": "/api/user/:_user_id/",
+                                "name": "Update User",
+                                "sampleData": {
+                                    "address": "",
+                                    "firstName": "Sample",
+                                    "lastName": "User",
+                                    "email": "andy.dev@test.com",
+                                    "phone": "7788657010",
+                                    "location": "3",
+                                    "department": "17",
+                                    "position": "admin",
+                                    "is_active": true
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_user",
+                                "url": [
+                                    "/api/user/:_user_id/",
+                                    "/api/user/"
+                                ],
+                                "name": "Create or Update User",
+                                "sampleData": {
+                                    "address": "",
+                                    "firstName": "Sample",
+                                    "lastName": "User",
+                                    "email": "andy.dev@test.com",
+                                    "phone": "7788657010",
+                                    "location": "3",
+                                    "department": "17",
+                                    "position": "admin",
+                                    "is_active": true,
+                                    "preset_password": "sample123"
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_user",
+                                "url": "/api/user/:_user_id/",
+                                "name": "Deactivate User",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "locations",
+                        "name": "Locations",
+                        "operations": [
+                            {
+                                "id": "create_location",
+                                "url": "/api/v2/locations/",
+                                "name": "Create New Location",
+                                "method": "POST",
+                                "sampleData": {
+                                    "name": "Test Location4",
+                                    "currency": 2,
+                                    "language": 1,
+                                    "phoneOne": "123-456-7898",
+                                    "locationTimezone": "America/Toronto",
+                                    "primary_billing_address": {
+                                        "name": "Sample Address",
+                                        "addressLineOne": "111 Address street",
+                                        "city": "City",
+                                        "state_province": "BC",
+                                        "country": "Canada",
+                                        "postalCode": "C8K3K1"
+                                    },
+                                    "primary_shipping_address": {
+                                        "name": "Sample Address",
+                                        "addressLineOne": "333 Address street",
+                                        "city": "City",
+                                        "state_province": "BC",
+                                        "country": "Canada",
+                                        "postalCode": "C8K3K1"
+                                    },
+                                    "shipping_addresses": [
+                                        {
+                                            "name": "Sample Address A",
+                                            "addressLineOne": "AAA Address street",
+                                            "city": "City",
+                                            "state_province": "BC",
+                                            "country": "Canada",
+                                            "postalCode": "C8K3K1"
+                                        },
+                                        {
+                                            "name": "Sample Address B",
+                                            "addressLineOne": "BBB Address street",
+                                            "city": "City",
+                                            "state_province": "BC",
+                                            "country": "Canada",
+                                            "postalCode": "C8K3K1"
+                                        }
+                                    ],
+                                    "url": "www.location.com",
+                                    "email": "sample@company.com",
+                                    "fax": "123-456-7898"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "departments",
+                        "name": "Departments",
+                        "operations": [
+                            {
+                                "id": "create_department",
+                                "url": "/api/v3/departments/",
+                                "name": "Create New Department",
+                                "method": "POST",
+                                "sampleData": {
+                                    "branch": 1,
+                                    "name": "test department",
+                                    "external_id": 2
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_department",
+                                "url": "/api/v3/departments/:_department_id/",
+                                "name": "Update Department",
+                                "sampleData": {
+                                    "branch": 1,
+                                    "name": "test department",
+                                    "external_id": 2
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "department_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_department",
+                                "url": [
+                                    "/api/v3/departments/:_department_id/",
+                                    "/api/v3/departments/"
+                                ],
+                                "name": "Create or Update Department",
+                                "sampleData": {
+                                    "branch": 1,
+                                    "name": "test department",
+                                    "external_id": 2
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "department_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accountcodes",
+                        "name": "Account Codes",
+                        "operations": [
+                            {
+                                "id": "create_accountcodes",
+                                "url": "/api/account-code/",
+                                "name": "Create Account Codes",
+                                "method": "POST",
+                                "sampleData": {
+                                    "12000": {
+                                        "account_type": "2",
+                                        "code": "12000",
+                                        "description": "Supplies General",
+                                        "original_code": "12000",
+                                        "parent": null,
+                                        "department": {
+                                            "80": {}
+                                        }
+                                    },
+                                    "12001": {
+                                        "account_type": "2",
+                                        "code": "12001",
+                                        "description": "Supplies Code",
+                                        "original_code": "12001",
+                                        "parent": "12000",
+                                        "department": {
+                                            "80": {}
+                                        }
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_accountcodes",
+                                "url": "/api/v2/account-code/",
+                                "name": "Update Account Code",
+                                "sampleData": {
+                                    "5000": {
+                                        "account_type": "2",
+                                        "id": 30,
+                                        "applied_accounts_count": 189,
+                                        "code": "5001",
+                                        "description": "Supplies General",
+                                        "original_code": "5000",
+                                        "_fetchingAccounts": false,
+                                        "department": {
+                                            "1": {},
+                                            "2": {},
+                                            "3": {},
+                                            "189": {}
+                                        }
+                                    }
+                                },
+                                "method": "PUT",
+                                "parameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "vendors",
+                        "name": "Vendors",
+                        "operations": [
+                            {
+                                "id": "create_vendor",
+                                "url": "/api/v3/vendors/",
+                                "name": "Create Vendor",
+                                "method": "POST",
+                                "sampleData": {
+                                    "email": [],
+                                    "name": "Sample Vendor",
+                                    "addressLineOne": "1234 Street",
+                                    "city": "City",
+                                    "state_province": "State",
+                                    "postalCode": "Postal-Code",
+                                    "country": "USA",
+                                    "payment_term_ref": "124",
+                                    "shipping_method_ref": "4",
+                                    "shipping_term_ref": "42",
+                                    "payment_methods": [],
+                                    "type": 3
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_vendorpaymentmethod",
+                                "url": "/api/v2/ap/vendor_payment_methods/",
+                                "name": "Create Vendor Payment Method",
+                                "method": "POST",
+                                "sampleData": {
+                                    "name": "Vendor - Check",
+                                    "type": "1",
+                                    "currency": "1",
+                                    "data": {
+                                        "payable_to": "Sample Vendor"
+                                    },
+                                    "vendor": 4709
+                                }
+                            },
+                            {
+                                "id": "update_vendor",
+                                "url": "/api/v3/vendors/:_id/",
+                                "name": "Partial Update Vendor",
+                                "sampleData": {
+                                    "id": 6,
+                                    "email": [],
+                                    "name": "Sample Vendor",
+                                    "addressLineOne": "1234 Street",
+                                    "addressLineTwo": "",
+                                    "city": "City",
+                                    "state_province": "State",
+                                    "postalCode": "Postal-Code",
+                                    "country": "USA",
+                                    "phoneOne": "123456789",
+                                    "comments": "New vendor: needs payment plan.",
+                                    "contact": "Person to Contact",
+                                    "url": "www.test.com",
+                                    "external_id": "5000",
+                                    "is_1099_eligible": false
+                                },
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "bills",
+                        "name": "Bills",
+                        "operations": [
+                            {
+                                "id": "create_draftbill",
+                                "url": "/api/v2/ap/bills/",
+                                "name": "Create New Draft Bill",
+                                "method": "POST",
+                                "sampleData": {}
+                            },
+                            {
+                                "id": "update_draftbill",
+                                "url": "/api/v2/ap/bills/:_draft_bill_id/",
+                                "name": "Update / Submit Draft Bills",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "$metadata": {
+                                        "vendor": {
+                                            "id": 38,
+                                            "name": "12 Hour Awards",
+                                            "addressLineOne": "1363 Cassat Avenue",
+                                            "addressLineTwo": "",
+                                            "postalCode": "32205",
+                                            "city": "Jacksonville",
+                                            "state_province": "FL",
+                                            "country": "USA",
+                                            "phoneOne": "n/a",
+                                            "phoneTwo": "",
+                                            "fax": "",
+                                            "email": [
+                                                ""
+                                            ],
+                                            "comments": "",
+                                            "contact": "",
+                                            "url": "",
+                                            "external_id": "",
+                                            "dateModified": "2016-06-13T20:31:41Z",
+                                            "currency": null,
+                                            "payment_term_ref": null,
+                                            "shipping_term_ref": null,
+                                            "payment_method_ref": null,
+                                            "shipping_method_ref": null,
+                                            "payment_methods": [
+                                                {
+                                                    "id": 2,
+                                                    "name": "check-cad",
+                                                    "type": 1,
+                                                    "data": {
+                                                        "payable_to": "test"
+                                                    },
+                                                    "currency": {
+                                                        "id": 1,
+                                                        "name": "CAD",
+                                                        "description": "",
+                                                        "rate": "0.500000",
+                                                        "base": false,
+                                                        "active": true
+                                                    }
+                                                }
+                                            ],
+                                            "type": 3,
+                                            "default_payment_method": 2,
+                                            "text": "12 Hour Awards",
+                                            "subtext": [
+                                                "1363 Cassat Avenue",
+                                                "Jacksonville, FL 32205"
+                                            ]
+                                        }
+                                    },
+                                    "costs": [
+                                        {
+                                            "id": 61,
+                                            "cost_allocation": null,
+                                            "name": "test",
+                                            "amount": "10.00000000",
+                                            "bill": 121,
+                                            "cost": 7,
+                                            "currency": 1
+                                        }
+                                    ],
+                                    "invoice_attachments": [],
+                                    "invoice_date": "2016-06-24",
+                                    "due_date": "2016-06-24",
+                                    "id": 121,
+                                    "uuid": "153c7028deb54ebd99a70e6726a4ac96",
+                                    "user": {
+                                        "id": 1,
+                                        "department": {
+                                            "id": 1,
+                                            "branch": {
+                                                "id": 1,
+                                                "name": "HQ"
+                                            },
+                                            "name": "Self Approved Dept",
+                                            "active": true
+                                        },
+                                        "firstName": "Test",
+                                        "lastName": "Administrator",
+                                        "email": "test@test.com",
+                                        "position": "",
+                                        "phone": "43243424",
+                                        "address": "",
+                                        "notifications": true,
+                                        "is_active": true,
+                                        "mobile": false,
+                                        "profile_image": "admin_8e31e63c_images.jpeg",
+                                        "Procurify_user_id": "",
+                                        "user": 1,
+                                        "permission": 1
+                                    },
+                                    "vendor": 38,
+                                    "approval_chain": 1,
+                                    "approver": 58,
+                                    "items": [
+                                        {
+                                            "id": 227,
+                                            "orderitem": null,
+                                            "expense": null,
+                                            "bill": 121,
+                                            "vendor": {
+                                                "id": 38,
+                                                "name": "12 Hour Awards",
+                                                "addressLineOne": "1363 Cassat Avenue",
+                                                "addressLineTwo": "",
+                                                "postalCode": "32205",
+                                                "city": "Jacksonville",
+                                                "state_province": "FL",
+                                                "country": "USA",
+                                                "phoneOne": "n/a",
+                                                "phoneTwo": "",
+                                                "fax": "",
+                                                "email": "[u'']",
+                                                "comments": "",
+                                                "contact": "",
+                                                "url": "",
+                                                "external_id": "",
+                                                "payment_terms": "",
+                                                "shipping_terms": "",
+                                                "ship_via": "",
+                                                "type": 3,
+                                                "dateModified": "2016-06-13T20:31:41Z",
+                                                "active": true,
+                                                "currency": null,
+                                                "default_payment_method": 2,
+                                                "payment_term_ref": null,
+                                                "shipping_term_ref": null,
+                                                "payment_method_ref": null,
+                                                "shipping_method_ref": null,
+                                                "employee_user": null
+                                            },
+                                            "sku": "test",
+                                            "description": "887459",
+                                            "unit_cost": "12.00000000",
+                                            "unit": "887459",
+                                            "quantity": "1.00000000",
+                                            "currency": {
+                                                "id": 1,
+                                                "name": "CAD",
+                                                "description": "",
+                                                "rate": "0.500000",
+                                                "base": false,
+                                                "active": true
+                                            },
+                                            "total_cost": 12,
+                                            "received_on": "2016-04-06T18:53:25Z",
+                                            "packing_slips": [],
+                                            "cost_allocations": [
+                                                {
+                                                    "id": 340,
+                                                    "budget": {
+                                                        "id": 622,
+                                                        "account_code": {
+                                                            "id": 25,
+                                                            "code": "9034",
+                                                            "code_length": 4,
+                                                            "description": "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus etmagnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.",
+                                                            "account_type": 2,
+                                                            "active": true,
+                                                            "parent": null
+                                                        },
+                                                        "department": {
+                                                            "id": 15,
+                                                            "branch": {
+                                                                "id": 4,
+                                                                "name": "Vancouver Location"
+                                                            },
+                                                            "name": "OverBudget Dept",
+                                                            "active": true
+                                                        },
+                                                        "start_datetime": "2016-01-01T00:00:00Z",
+                                                        "end_datetime": "2018-12-31T00:00:00Z",
+                                                        "budget": "2.00",
+                                                        "budget_used_approved": "0.00",
+                                                        "budget_used_purchased": "0.00",
+                                                        "balance_approved": "0.00",
+                                                        "balance_purchased": "0.00",
+                                                        "active": true
+                                                    },
+                                                    "object_id": 227,
+                                                    "amount": "12.00000000",
+                                                    "currency": {
+                                                        "id": 1,
+                                                        "name": "CAD",
+                                                        "description": "",
+                                                        "rate": "0.500000",
+                                                        "base": false,
+                                                        "active": true
+                                                    },
+                                                    "created_on": "2016-04-06T18:53:25Z"
+                                                }
+                                            ],
+                                            "archived": false,
+                                            "po": {},
+                                            "same_unit_cost": null,
+                                            "href": "/po/history/undefined/",
+                                            "account_label": "9034 - Vestibulum",
+                                            "department_label": "OverBudget Dept"
+                                        }
+                                    ],
+                                    "bill_statuses": [],
+                                    "currency": 1,
+                                    "comments": [],
+                                    "version_choices": [],
+                                    "total_cost": 22,
+                                    "converted_total_cost": 11,
+                                    "next_approver_choices": null,
+                                    "locked": false,
+                                    "bill_payment": null,
+                                    "vendor_name": "12 Hour Awards",
+                                    "vendor_contact": "",
+                                    "vendor_address_one": "1363 Cassat Avenue",
+                                    "vendor_address_two": "",
+                                    "vendor_postal_code": "32205",
+                                    "vendor_city": "Jacksonville",
+                                    "vendor_state_province": "FL",
+                                    "vendor_country": "USA",
+                                    "last_modified_datetime": "2016-06-24T21:49:54Z",
+                                    "submitted_date": null,
+                                    "invoice_number": "",
+                                    "version": 1,
+                                    "status": 1,
+                                    "type": 0,
+                                    "active": true,
+                                    "group": null,
+                                    "payment_method": 2,
+                                    "approver_obj": {
+                                        "id": 58,
+                                        "user": {
+                                            "id": 93,
+                                            "firstName": "fname",
+                                            "lastName": "lname"
+                                        },
+                                        "amount_limit": "999.00",
+                                        "item_variance_amount_limit": null,
+                                        "item_variance_percentage_limit": null,
+                                        "approval_level": 54,
+                                        "bill_amount_limit": "999.00"
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "draft_bill_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_draftbill",
+                                "url": "/api/v2/ap/bills/:_draft_bill_id/",
+                                "name": "Delete Draft Bill",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "draft_bill_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,1661 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "1",
+                "paging": {
+                    "pagingMethod": "skipargument",
+                    "skipArgument": "offset"
+                },
+                "resources": [
+                    {
+                        "id": "account",
+                        "name": "Account",
+                        "endpoints": [
+                            {
+                                "id": "get_accountinformation",
+                                "url": "/api/1/account",
+                                "name": "Get account information",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets information about the account you are currently accessing, including CNAME, AccountID and account type."
+                            },
+                            {
+                                "id": "get_definedemailsenders",
+                                "url": "/api/1/account/senders",
+                                "doesNotSupportPaging": true,
+                                "name": "Get defined email senders",
+                                "resourcePath": "",
+                                "description": "Get a list of all defined email senders for the account."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fact",
+                        "name": "Fact",
+                        "endpoints": [
+                            {
+                                "id": "get_uploadcustomeventstatus",
+                                "url": "/api/1/customevents/:_id/status",
+                                "name": "Get upload custom event status",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get details of a contact",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Customevent ID",
+                                        "fieldType": "input",
+                                        "description": "ID returned by upload request.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "list",
+                        "name": "List",
+                        "endpoints": [
+                            {
+                                "id": "get_listingoflists",
+                                "url": "/api/1/list",
+                                "name": "Get listing of lists",
+                                "resourcePath": "result",
+                                "description": "Get a list of all defined email senders for the account.",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "download_alist",
+                                "url": "/api/1/list/:_listid",
+                                "name": "Download a list",
+                                "resourcePath": "data",
+                                "description": "Download the specified list from your account.",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "modafter": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "x"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List Id",
+                                        "fieldType": "input",
+                                        "description": "The id of list to be updated {listid} in path above.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "modbefore",
+                                        "name": "Modified Before",
+                                        "fieldType": "input",
+                                        "description": "Filter on date 'modified before timestamp.',Unix timestamp, in milliseconds"
+                                    },
+                                    {
+                                        "id": "modafter",
+                                        "name": "Modified After",
+                                        "fieldType": "input",
+                                        "description": "Filter on date 'modified after timestamp.',Unix timestamp, in milliseconds"
+                                    },
+                                    {
+                                        "id": "createdbefore",
+                                        "name": "Created Before",
+                                        "fieldType": "input",
+                                        "description": "Filter on date 'created before timestamp.',Unix timestamp, in milliseconds"
+                                    },
+                                    {
+                                        "id": "createdafter",
+                                        "name": "Created After",
+                                        "fieldType": "input",
+                                        "description": "Filter on date 'created after timestamp.'Unix timestamp, in milliseconds"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input",
+                                        "description": "A semicolon ( ; ) delimited list of fields to display in the returned list. Fields provided should be urlencoded. The '_contact_id_' field is always returned.This parameter is optional. If it is not provided, the whole list will be returned."
+                                    },
+                                    {
+                                        "id": "datequalifiers",
+                                        "name": "Date Qualifiers",
+                                        "fieldType": "input",
+                                        "description": "If specified as 'true', the returned list will include timestamps* for each row denoting the dates created and modified. These columns will be headed with the names '__created_date' and '__modified_date'."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_uploadcustomeventstatus",
+                                "url": "/api/1/list/:_jobid/status",
+                                "name": "Get list upload status",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Check on the status of a list upload.",
+                                "pathParameters": [
+                                    {
+                                        "id": "jobid",
+                                        "name": "Job Id",
+                                        "fieldType": "input",
+                                        "description": "The jobid of the list upload.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_rejectedrecordsfromanupload",
+                                "url": "/api/1/list/rejectedUploadRecords",
+                                "name": "Get rejected records from an upload",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Download CSV file containing rejected upload records.",
+                                "queryParameters": [
+                                    {
+                                        "id": "filename",
+                                        "name": "File Name",
+                                        "fieldType": "input",
+                                        "description": "The api call 'Get upload custom event status' can return a JSON parameter for 'rejectedRecordsUrl'. The corresponding value is a file name (i.e. something like api_upload_5_7_192.168.182.133_85017.dat_bad.csv). Enter that file name for this parameter.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_hardbouncelist",
+                                "url": "/api/1/list/hardbounce",
+                                "name": "Get hard bounce list",
+                                "resourcePath": "result",
+                                "description": "Get a list of hard bounces associated with the account.",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "createdafter": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "x"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "fieldType": "input",
+                                        "description": "Quantity of records to return in response, if no value given, it defaults to the maximum value of 1000."
+                                    },
+                                    {
+                                        "id": "createdbefore",
+                                        "name": "Created Before",
+                                        "fieldType": "input",
+                                        "description": "Epoch seconds date. Only records created before the supplied value will be returned."
+                                    },
+                                    {
+                                        "id": "createdafter",
+                                        "name": "Created After",
+                                        "fieldType": "input",
+                                        "description": "Epoch seconds date. Only records created after the supplied value will be returned."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_spamcomplaintlist",
+                                "url": "/api/1/list/spamcomplaint",
+                                "name": "Get spam complaint list",
+                                "resourcePath": "result",
+                                "description": "Get a list of spam complaints from your account.",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "createdafter": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "x"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "fieldType": "input",
+                                        "description": "Quantity of records to return in response, if no value given, it defaults to the maximum value of 1000."
+                                    },
+                                    {
+                                        "id": "createdbefore",
+                                        "name": "Created Before",
+                                        "fieldType": "input",
+                                        "description": "Epoch seconds date. Only records created before the supplied value will be returned."
+                                    },
+                                    {
+                                        "id": "createdafter",
+                                        "name": "Created After",
+                                        "fieldType": "input",
+                                        "description": "Epoch seconds date. Only records created after the supplied value will be returned."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_optoutlist",
+                                "url": "/api/1/list/optout",
+                                "name": "Get optout list",
+                                "resourcePath": "result",
+                                "description": "Get a list of optouts associated with the account.",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "createdafter": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "x"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "fieldType": "input",
+                                        "description": "Quantity of records to return in response, if no value given, it defaults to the maximum value of 1000."
+                                    },
+                                    {
+                                        "id": "createdbefore",
+                                        "name": "Created Before",
+                                        "fieldType": "input",
+                                        "description": "Epoch seconds date. Only records created before the supplied value will be returned."
+                                    },
+                                    {
+                                        "id": "createdafter",
+                                        "name": "Created After",
+                                        "fieldType": "input",
+                                        "description": "Epoch seconds date. Only records created after the supplied value will be returned."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_subscriptionoptoutsbycategory",
+                                "url": "/api/1/subscription/optout",
+                                "name": "Get subscription opt-outs by category",
+                                "resourcePath": "result",
+                                "description": "Download list of records specifically opted out of a specific category",
+                                "queryParameters": [
+                                    {
+                                        "id": "category",
+                                        "name": "Category",
+                                        "fieldType": "input",
+                                        "description": "The subscription category (by name) you would like to obtain an itemized list of opted-out records. ",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "fieldType": "input",
+                                        "description": "Quantity of records to return in response, if no value given, it defaults to the maximum value of 1000."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "content",
+                        "name": "Content",
+                        "endpoints": [
+                            {
+                                "id": "get_logolist",
+                                "url": "/api/1/logo",
+                                "name": "Get logo list",
+                                "resourcePath": "result",
+                                "description": "Get a list of the logos in the account."
+                            },
+                            {
+                                "id": "get_alogo",
+                                "url": "/api/1/logo/:_id",
+                                "name": "Get a logo",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Check on the status of a list upload.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Logo Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the logo.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_headerlist",
+                                "url": "/api/1/header",
+                                "name": "Get header list",
+                                "resourcePath": "result",
+                                "description": "Get a list of headers in the account."
+                            },
+                            {
+                                "id": "get_aheader",
+                                "url": "/api/1/header/:_id",
+                                "name": "Get a header",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get the specified header from your account.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Header Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the header you want to get.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_footerlist",
+                                "url": "/api/1/footer",
+                                "name": "Get footer list",
+                                "resourcePath": "result",
+                                "description": "Get a list of footer in the account."
+                            },
+                            {
+                                "id": "get_afooter",
+                                "url": "/api/1/footer/:_id",
+                                "name": "Get a footer",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get the specified footer from your account.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Footer Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the footer you want to get.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_image_list",
+                                "url": "/api/1/image",
+                                "name": "Get image list",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a list of the images in your account.",
+                                "queryParameters": [
+                                    {
+                                        "id": "foldernames",
+                                        "name": "foldernames",
+                                        "fieldType": "input",
+                                        "description": "Semicolon delimited list of folder names to get the images from. If not included then all images in all folder names are retrieved."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_animage",
+                                "url": "/api/1/image/:_id",
+                                "name": "Get an image",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get the image, specified by Act-On id, from the account. To obtain a list of all images in the account the associated ids, use Get image list.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Image Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the image you want to get.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_medialist",
+                                "url": "/api/1/media",
+                                "name": "Get media list",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a listing of media objects stored in your account."
+                            },
+                            {
+                                "id": "get_mediafile",
+                                "url": "/api/1/media/:_id",
+                                "name": "Get media file",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets a path to the specified media file that was previously added to your account.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Media Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the media file you want to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_formlist",
+                                "url": "/api/1/form",
+                                "name": "Get form list",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a list of the forms in your Forms repository."
+                            },
+                            {
+                                "id": "get_promotionalformurls",
+                                "url": "/api/1/form/:_id/urls",
+                                "name": "Get promotional form URLs",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get the promotional URLs associated with the specified form, by form ID. To get a listing of forms in an account with their associated IDs, use the Get Forms List API.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Form Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the form for which you are requesting URLs.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_page",
+                                "url": "/api/1/page/:_id",
+                                "name": "Get page",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get data for the specified page.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Page Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the page to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_promotionalpageurls",
+                                "url": "/api/1/page/:_id/urls",
+                                "name": "Get promotional page URLs",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get the URLs for the specified promotional page.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Page Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the page you're requesting a URL for.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_listofprograms",
+                                "url": "/api/1/program",
+                                "name": "Get list of programs",
+                                "resourcePath": "folders",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a list of all programs of a specified type.",
+                                "queryParameters": [
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "TRACK",
+                                            "EVENT",
+                                            "LIST_MAINT"
+                                        ],
+                                        "description": "Program type to return. Valid values are TRACK, EVENT and LIST_MAINT.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reporting",
+                        "name": "Reporting",
+                        "endpoints": [
+                            {
+                                "id": "get_messagereport",
+                                "url": "/api/1/message/:_id/report",
+                                "name": "Get message report",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a report on the specified message.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the message on which you want a report.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messagereportdrilldown",
+                                "url": "/api/1/message/:_id/report/:_drilldown",
+                                "name": "Get message report drilldown",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "result",
+                                "description": "Get a drilldown report for a specific email message.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the message to get a report about",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "drilldown",
+                                        "name": "Drilldown",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "SENT",
+                                            "SUPPRESSED",
+                                            "OPENED",
+                                            "CLICKED",
+                                            "BOUNCED",
+                                            "OPT_OUT",
+                                            "SPAM"
+                                        ],
+                                        "description": "Drilldown",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "fieldType": "input",
+                                        "description": "Number of records to download."
+                                    },
+                                    {
+                                        "id": "responseformat",
+                                        "name": "Response Format",
+                                        "fieldType": "input",
+                                        "description": "Desired response format. Valid values are JSON and CSV with JSON being the default value. If CSV is specified then the first row will be the headers and following rows will be double quoted comma separated values. While JSON is limited to 1,000 per API call, CSV can return all even if it is large."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messagereportbytimeperiod",
+                                "url": "/api/1/message/report",
+                                "name": "Get message report by time period",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Fetch the message rollup report from your account",
+                                "queryParameters": [
+                                    {
+                                        "id": "period",
+                                        "name": "Period",
+                                        "fieldType": "input",
+                                        "description": "The time period for which you are requesting a report.String (Format: yyMM, so January, 2014 == '1401')"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_mediareport",
+                                "url": "/api/1/media/:_id/report",
+                                "name": "Get media report",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get a report on the specified media from your account.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Media Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the media object on which you want a report.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_mediamessagereport",
+                                "url": "/api/1/media/:_id/report/messages",
+                                "name": "Get media message report",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a media message report from your account.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Media Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the media object on which you want a report.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_amediaviewreport",
+                                "url": "/api/1/media/:_id/report/views",
+                                "name": "Get a media view report",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get a media view report from your account.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Media Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the media object you want a views report on.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_amediatimelinereport",
+                                "url": "/api/1/media/:_id/report/timeline",
+                                "name": "Get a media timeline report",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a timeline report for specified media.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Media Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the media object you want a timeline report for.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_formreport",
+                                "url": "/api/1/form/:_id/report",
+                                "name": "Get form report",
+                                "resourcePath": "result",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets a path to the specified media file that was previously added to your account.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Form Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the media file you want to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_pagereport",
+                                "url": "/api/1/page/:_id/report",
+                                "name": "Get page report",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a list of the pages listed in the account.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Page Id",
+                                        "fieldType": "input",
+                                        "description": "The Act-On id of the page for which you want a report.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_spamcomplaintlist",
+                                "url": "/api/1/list/spamcomplaint",
+                                "name": "Get spam complaint list",
+                                "resourcePath": "result",
+                                "description": "Get the current spam complaint information."
+                            },
+                            {
+                                "id": "get_hardbouncelist",
+                                "url": "/api/1/list/hardbounce",
+                                "name": "Get hard bounce list",
+                                "resourcePath": "result",
+                                "description": "Download a list of hard bounces."
+                            }
+                        ]
+                    },
+                    {
+                        "id": "emailcampaign",
+                        "name": "Email Campaign",
+                        "endpoints": [
+                            {
+                                "id": "get_messagelist",
+                                "url": "/api/1/message",
+                                "name": "Get message list",
+                                "resourcePath": "msgresult",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "description": "Use to retrieve a listing of emails by type."
+                            },
+                            {
+                                "id": "get_areportonthespecifiedmessage.",
+                                "url": "/api/1/message/:_id/report",
+                                "name": "Get message report",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get a report on the specified message.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the message to get a report about",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "drilldown",
+                                        "name": "Drilldown",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "SENT",
+                                            "SUPPRESSED",
+                                            "OPENED",
+                                            "CLICKED",
+                                            "BOUNCED",
+                                            "OPT_OUT",
+                                            "SPAM"
+                                        ],
+                                        "description": "Drilldown",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "fieldType": "input",
+                                        "description": "Number of records to download."
+                                    },
+                                    {
+                                        "id": "responseformat",
+                                        "name": "Response Format",
+                                        "fieldType": "input",
+                                        "description": "Desired response format. Valid values are JSON and CSV with JSON being the default value. If CSV is specified then the first row will be the headers and following rows will be double quoted comma separated values. While JSON is limited to 1,000 per API call, CSV can return all even if it is large."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messagereportdrilldown",
+                                "url": "/api/1/message/:_id/report/:_drilldown",
+                                "name": "Get message report drilldown",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get a drilldown report for a specific email message.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Message Id",
+                                        "fieldType": "input",
+                                        "description": "The id of the message to get a report about",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "drilldown",
+                                        "name": "Drilldown",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "SENT",
+                                            "SUPPRESSED",
+                                            "OPENED",
+                                            "CLICKED",
+                                            "BOUNCED",
+                                            "OPT_OUT",
+                                            "SPAM"
+                                        ],
+                                        "description": "Drilldown",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "fieldType": "input",
+                                        "description": "Number of records to download."
+                                    },
+                                    {
+                                        "id": "responseformat",
+                                        "name": "Response Format",
+                                        "fieldType": "input",
+                                        "description": "Desired response format. Valid values are JSON and CSV with JSON being the default value. If CSV is specified then the first row will be the headers and following rows will be double quoted comma separated values. While JSON is limited to 1,000 per API call, CSV can return all even if it is large."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messagereportbytimeperiod",
+                                "url": "/api/1/message/report",
+                                "name": "Get message report by time period",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Fetch the message rollup report from your account",
+                                "queryParameters": [
+                                    {
+                                        "id": "period",
+                                        "name": "Period",
+                                        "fieldType": "input",
+                                        "description": "The time period for which you are requesting a report.String (Format: yyMM, so January, 2014 == '1401')"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_messagehtmlcontents",
+                                "url": "/api/1/message/:_msgid/:_recid",
+                                "name": "Get message HTML contents",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "description": "Get the HTML content of a Sent, Draft or Message Template",
+                                "pathParameters": [
+                                    {
+                                        "id": "msgid",
+                                        "name": "MsgID",
+                                        "fieldType": "input",
+                                        "description": "The msg ID of the Sent, Draft or Message Template",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recid",
+                                        "name": "RecID",
+                                        "fieldType": "input",
+                                        "description": "An optional argument to flatten personalization variables in the message for a specific recipient ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contact",
+                        "name": "Contact",
+                        "endpoints": [
+                            {
+                                "id": "get_contactfromlistbasedonemail",
+                                "url": "/api/1/list/lookup/:_listid",
+                                "name": "Get contact from list based on cookie ID or e-mail",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets a contact record from a list based on a cookie ID and/or email address.",
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List Id",
+                                        "fieldType": "input",
+                                        "description": "The listid of the list.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "fieldType": "input",
+                                        "description": "If provided, the contact is searched for by cookieid first. If not found then email is used, if provided. Request must include either cookieid or email and can contain both.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_contactfactandcoredata",
+                                "url": "/api/1/list/:_listid/record/:_recordid/facts",
+                                "name": "Get contact fact and score data",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a contact record's activity facts and scores.",
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List Id",
+                                        "fieldType": "input",
+                                        "description": "The listid of the list.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recordid",
+                                        "name": "Record Id",
+                                        "fieldType": "input",
+                                        "description": "The recordid of the contact.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_subscriptioncategories.",
+                                "url": "/api/1/subscription/category",
+                                "name": "Get subscription categories",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a list of subscriptions listed by category."
+                            },
+                            {
+                                "id": "get_subscriptioncategoryoptinsbyemail",
+                                "url": "/api/1/subscription/category",
+                                "name": "Get subscription category opt-ins by email",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a list of categories that an email address has explicitly opted into.",
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "fieldType": "input",
+                                        "description": "Email address of the record to retrieve explicit opt-ins"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "seo",
+                        "name": "SEO",
+                        "endpoints": [
+                            {
+                                "id": "get_seokeywords",
+                                "url": "/api/1/seokeywords",
+                                "name": "Get SEO keywords",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "description": "Fetch the set of SEO keywords from the account.",
+                                "queryParameters": [
+                                    {
+                                        "id": "url",
+                                        "name": "URL",
+                                        "fieldType": "input",
+                                        "description": "The URL-encoded URL string on which to generate a report."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "versions": [
+            {
+                "version": "1",
+                "resources": [
+                    {
+                        "id": "account",
+                        "name": "Account",
+                        "sampleData": [
+                            {
+                                "email": "name3@domain.com"
+                            },
+                            {
+                                "email": "name4@domain.com"
+                            }
+                        ],
+                        "operations": [
+                            {
+                                "id": "delete_accountusers",
+                                "url": "/api/1/user/delete",
+                                "name": "Delete account users",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "description": "Delete one or more users from an account."
+                            },
+                            {
+                                "id": "delete_accountuser",
+                                "url": "/api/1/user/:_email",
+                                "name": "Delete account user",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Type": "multipart/form-data"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete one user from an account.",
+                                "parameters": [
+                                    {
+                                        "id": "email",
+                                        "in": "path",
+                                        "description": "Email address for the user to delete from the account.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "list",
+                        "name": "List",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "delete_recordsfromalist",
+                                "url": "/api/1/list/:_listid/record",
+                                "name": "Delete records from a list",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Type": "multipart/form-data"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete multiple records from the specified list.",
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "in": "path",
+                                        "description": "The id {listid} of list to be deleted",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "content",
+                        "name": "Content",
+                        "sampleData": {
+                            "title": "alternate-header",
+                            "html": "%22%3Cp%3E%3Cspan+style%3D%5C%22font-size%3A+14pt%3B%5C%22%3ETest+Header%3C%2Fspan%3E%3C%2Fp%3E%5C%5C%5Cn%3Cp%3E%3Ca+href%3D%5C%22http%3A%2F%2Fci51.actonsoftware.com%2Facton%2Frif%2F%7B%7BEnv.AccountId%7D%7D%2F%7B%7BEnv.MsgId%7D%7D%2F-%2F%7B%7BEnv.RecId%7D%7D%2F%7B%7BEnv.SrcId%7D%7D%2Fzout%5C%22+target%3D%5C%22_blank%5C%22%3EClick+here+to+opt+out%3C%2Fa%3E%3C%2Fp%3E%22",
+                            "text": "%22Test+Header%5C%5C%5Cn%5C%5C%5Cn+Click+here+to+opt+out%5C%5C%5Cnhttp%3A%2F%2Fci51.actonsoftware.com%2Facton%2Frif%2F%7B%7BEnv.AccountId%7D%7D%2F%7B%7BEnv.MsgId%7D%7D%2F-%2F%7B%7BEnv.RecId%7D%7D%2F%7B%7BEnv.SrcId%7D%7D%2Fzout%5C%5C%5Cn%5C%5C%5Cn%22"
+                        },
+                        "operations": [
+                            {
+                                "id": "delete_alogo",
+                                "url": "/api/1/logo/:_id",
+                                "name": "Delete a logo",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete the specified logo from your account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The ID of the logo you want to delete.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_aheader",
+                                "url": "/api/1/header",
+                                "name": "Add a header",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Add a new header to your account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the header you want to ignore.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_aheader",
+                                "url": "/api/1/header/:_id",
+                                "name": "Update a header",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Update the specified header.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the header you want to update.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_header",
+                                "url": [
+                                    "/api/1/header/:_id",
+                                    "/api/1/header"
+                                ],
+                                "name": "Create or Update Header",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new header and Update an existing header",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the header",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_aheader",
+                                "url": "/api/1/header/:_id",
+                                "name": "Delete a header",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete the specified header from your account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The ID of the header you want to delete.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_afooter",
+                                "url": "/api/1/footer",
+                                "name": "Add a new footer",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Add a new footer to your account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the footer you want to ignore.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_afooter",
+                                "url": "/api/1/footer/:_id",
+                                "name": "Update a footer",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Update an existing footer in the account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "ID of the footer you want to update.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_footer",
+                                "url": [
+                                    "/api/1/footer/:_id",
+                                    "/api/1/footer"
+                                ],
+                                "name": "Create or Update footer",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new footer and Update an existing footer",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the footer",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_afooter",
+                                "url": "/api/1/footer/:_id",
+                                "name": "Delete a footer",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete an existing footer from the account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The ID of the footer you want to delete.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_animage",
+                                "url": "/api/1/image/:_id",
+                                "name": "Delete an image",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete an image (by id) from your account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the image you want to delete.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_amedialink",
+                                "url": "/api/1/medialink",
+                                "name": "Add a media link",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Add a new URL as a trackable link in your media library.",
+                                "sampleData": {
+                                    "url": "http%3A%2F%2Fact-on.net",
+                                    "name": "anything",
+                                    "foldername": "new"
+                                }
+                            },
+                            {
+                                "id": "delete_amediaobject",
+                                "url": "/api/1/media/:_id",
+                                "name": "Delete a media object",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete a media file from your account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the media object you want to delete.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_page",
+                                "url": "/api/1/page/:_id",
+                                "name": "Delete page.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete a page.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "Id of the page to delete.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "email_campaign",
+                        "name": "Email Campaign",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "resend_amessage",
+                                "url": "/api/1/message/:_id/send",
+                                "name": "Resend a message",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Update/resend the specified message.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "ID of the email message you want to resend.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "sendtoids": "l-1725&amp",
+                                    "when": "1426803739000",
+                                    "issuppressduplicates": "N",
+                                    "suppressids": "1,2,3",
+                                    "sendtorecids": "123"
+                                }
+                            },
+                            {
+                                "id": "add_newtemplateordraftmessage",
+                                "url": "/api/1/message",
+                                "name": "Add new template or draft message",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "description": "Add a draft message or template message to your account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "ID of the draft message",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "type": "draft&amp",
+                                    "subject": "A+Good+Subject&amp",
+                                    "title": "Your+Title&amp",
+                                    "htmlbody": "Your+copy+in+HTML&amp",
+                                    "textbody": "Your+copy+in+text",
+                                    "foldername": " ",
+                                    "sendername": " ",
+                                    "senderemail": " ",
+                                    "headerid": " ",
+                                    "footerid": " ",
+                                    "logoid": " "
+                                }
+                            },
+                            {
+                                "id": "update_templateordraftmessage",
+                                "url": "/api/1/message/:_id",
+                                "name": "Update template or draft message",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "description": "Update an existing draft message or template in your account.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the draft message or template to be modified.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "subject": "A+Good+Subject&amp",
+                                    "title": "Your+Title&amp",
+                                    "htmlbody": "Your+copy+in+HTML&amp",
+                                    "textbody": "Your+copy+in+text"
+                                }
+                            },
+                            {
+                                "id": "createorupdate_templateordraftmessage",
+                                "url": [
+                                    "/api/1/message/:_id",
+                                    "/api/1/message"
+                                ],
+                                "name": "Create or Update template or draft message",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Creates a new template or draft message and Update an existing template or draft message",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the draft message or template to be modified.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "type": "draft&amp",
+                                    "subject": "A+Good+Subject&amp",
+                                    "title": "Your+Title&amp",
+                                    "htmlbody": "Your+copy+in+HTML&amp",
+                                    "textbody": "Your+copy+in+text",
+                                    "foldername": " ",
+                                    "sendername": " ",
+                                    "senderemail": " ",
+                                    "headerid": " ",
+                                    "footerid": " ",
+                                    "logoid": " "
+                                }
+                            },
+                            {
+                                "id": "delete_amessage",
+                                "url": "/api/1/message/:_id",
+                                "name": "Delete a message",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "description": "Delete a specified message or template.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "description": "The id of the draft message or template to be modified.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contact",
+                        "name": "Contact",
+                        "sampleData": {
+                            "E-mail Address": "name@domain.com",
+                            "First Name": "John",
+                            "Last Name": "Smith",
+                            "Company": "new",
+                            "Middle Name": "",
+                            "Job Title": "",
+                            "Department": "",
+                            "Business Street": "",
+                            "Business City": "",
+                            "Business State": "",
+                            "Business Postal Code": "",
+                            "Business Country": "",
+                            "Home Street": "",
+                            "Home City": "",
+                            "Home State": "",
+                            "Home Postal Code": "",
+                            "Home Country": "",
+                            "Business Phone": "",
+                            "Business Fax": "",
+                            "Home Phone": "",
+                            "Home Fax": "",
+                            "Cell Phone": "",
+                            "Business Web Page": "",
+                            "Personal Web Page": "",
+                            "Salutation": "123",
+                            "Description": "563",
+                            "Industry": "new",
+                            "Annual Revenue": "12",
+                            "Number of Employees": "1",
+                            "Lead Source": "kkkkkkk",
+                            "Timezone": "-05:00"
+                        },
+                        "operations": [
+                            {
+                                "id": "add_acontact",
+                                "url": "/api/1/list/:_listid/record",
+                                "name": "Add a contact",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreExisting": true,
+                                "description": "Add a contact record to the specified list.",
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "in": "path",
+                                        "name": "List Id",
+                                        "description": "listid of the list.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recordid",
+                                        "in": "path",
+                                        "description": "The recordid",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_contactfromlistbasedonemail",
+                                        "extract": "contactID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "add_update_contact",
+                                "name": "Add or Update Contact",
+                                "url": [
+                                    "/api/1/list/:_listid/record/:_recordid",
+                                    "/api/1/list/:_listid/record"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "description": "Add a contact and update existing record to the specified list.",
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "in": "path",
+                                        "name": "List Id",
+                                        "description": "List Id of the list.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recordid",
+                                        "in": "path",
+                                        "description": "The Record Id",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_contactfromlistbasedonemail",
+                                        "extract": "contactID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_acontactbyrecordid",
+                                "url": "/api/1/list/:_listid/record/:_recordid",
+                                "name": "Update a contact by record ID",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "description": "Update the specified contact record in the specified list.",
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "in": "path",
+                                        "name": "List Id",
+                                        "description": "List Id of the list.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recordid",
+                                        "in": "path",
+                                        "description": "The Record Id, expressed as listid:recordid of the contact to update.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "get_contactfromlistbasedonemail",
+                                        "extract": "contactID"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "upsert_acontactrecordbyemail",
+                                "url": "/api/1/list/:_listid/record?email=:_email",
+                                "name": "Upsert a contact record by email",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "description": "Update an existing record or insert a new contact record using the email address",
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "in": "path",
+                                        "name": "List Id",
+                                        "description": "listid of the list.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "email",
+                                        "in": "path",
+                                        "name": "Email",
+                                        "description": "The email address of the contact to update.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_acontact",
+                                "url": "/api/1/list/:_listid/record/:_recordid",
+                                "name": "Delete a contact",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "description": "Remove the specified contact record from the specified list.",
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "in": "path",
+                                        "description": "listid of the list.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recordid",
+                                        "in": "path",
+                                        "description": "The recordid, expressed as listid:recordid of the contact to update.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "optin_optoutsubscriptioncategorybyemailaddress",
+                                "url": "/api/1/subscription/optout",
+                                "name": "Opt in/Opt out subscription category by email address",
+                                "method": "PUT",
+                                "description": "Add/remove individual records from a subscription category by email address.",
+                                "sampleData": {
+                                    "email": "email%40domain.com&amp",
+                                    "category": "Newsletter&amp",
+                                    "action": "optout"
+                                }
+                            },
+                            {
+                                "id": "optin_optoutmultiplesubscriptioncategorybyemailaddress",
+                                "url": "/api/1/subscription/setcategories",
+                                "name": "Opt in/Opt out multiple subscription categories by email address",
+                                "method": "PUT",
+                                "description": "Add/remove individual records from multiple subscription category by email address.",
+                                "sampleData": {
+                                    "email": "email%40domain.com&amp",
+                                    "category": "Newsletter&amp"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

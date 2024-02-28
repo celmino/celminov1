@@ -1,0 +1,1424 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "addresses",
+                        "name": "Addresses",
+                        "endpoints": [
+                            {
+                                "id": "get_address",
+                                "url": "/addresses/:_id",
+                                "name": "Retrieve a Address",
+                                "description": "An Address can be retrieved by its id.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Address ID",
+                                        "placeholder": "Unique, starts with \"adr_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "parcels",
+                        "name": "Parcels",
+                        "endpoints": [
+                            {
+                                "id": "get_parcel",
+                                "url": "/parcels/:_id",
+                                "name": "Retrieve a Parcel",
+                                "description": "Get a Parcel by its id. In general you should not need to use this in your automated solution. A Parcel's id can be inlined into the creation call to other objects. This allows you to only create one Parcel for each package you will be using.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Parcel ID",
+                                        "placeholder": "Unique, begins with \"prcl_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "insurances",
+                        "name": "Insurances",
+                        "endpoints": [
+                            {
+                                "id": "list_insurances",
+                                "url": "/insurances",
+                                "name": "Retrieve a list of Insurances",
+                                "description": "The Insurance List is a paginated list of all Insurance objects associated with the given API Key",
+                                "resourcePath": "insurances",
+                                "queryParameters": [
+                                    {
+                                        "id": "before_id",
+                                        "name": "Before ID",
+                                        "description": "Optional pagination parameter. Only records created before the given ID will be included. May not be used with after_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "after_id",
+                                        "name": "After ID",
+                                        "description": "Optional pagination parameter. Only records created after the given ID will be included. May not be used with before_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start_datetime",
+                                        "name": "Start Date Time",
+                                        "description": "Only return records created after this timestamp. Defaults to 1 month ago, or 1 month before a passed end_datetime",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_datetime",
+                                        "name": "End Date Time",
+                                        "description": "Only return records created before this timestamp. Defaults to end of the current day, or 1 month after a passed start_datetime",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page_size",
+                                        "name": "Page Size",
+                                        "description": "The number of records to return on each page. The maximum value is 100, and default is 20.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_insurance",
+                                "url": "/insurances/:_id",
+                                "name": "Retrieve an Insurance",
+                                "description": "Retrieve an Insurance by id.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Insurance ID",
+                                        "placeholder": "Unique, starts with \"ins_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "endpoints": [
+                            {
+                                "id": "list_shipments",
+                                "url": "/shipments",
+                                "name": "Retrieve a list of a Shipments",
+                                "description": "The Shipment List is a paginated list of all Shipment objects associated with the given API Key",
+                                "resourcePath": "shipments",
+                                "queryParameters": [
+                                    {
+                                        "id": "before_id",
+                                        "name": "Before ID",
+                                        "description": "Optional pagination parameter. Only records created before the given ID will be included. May not be used with after_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "after_id",
+                                        "name": "After ID",
+                                        "description": "Optional pagination parameter. Only records created after the given ID will be included. May not be used with before_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start_datetime",
+                                        "name": "Start Date Time",
+                                        "description": "Only return records created after this timestamp. Defaults to 1 month ago, or 1 month before a passed end_datetime",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_datetime",
+                                        "name": "End Date Time",
+                                        "description": "Only return records created before this timestamp. Defaults to end of the current day, or 1 month after a passed start_datetime",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "purchased",
+                                        "name": "Purchased",
+                                        "description": "Only include Shipments that have been purchased. Default is true",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "include_children",
+                                        "name": "Include Children",
+                                        "description": "Also include Shipments created by Child Users. Defaults to false",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "defaultValue": "false"
+                                    },
+                                    {
+                                        "id": "page_size",
+                                        "name": "Page Size",
+                                        "description": "The number of records to return on each page. The maximum value is 100, and default is 20.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_shipment",
+                                "url": "/shipments/:_id",
+                                "name": "Retrieve a Shipment",
+                                "description": "A Shipment can be retrieved by either its id or reference. However it is recommended to use EasyPost's provided identifiers because uniqueness on reference is not enforced.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "placeholder": "Unique, begins with \"shp_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_shipmentrefund",
+                                "url": "/shipments/:_id/refund",
+                                "name": "Refund a Shipment",
+                                "description": "Refunding a Shipment is available for many carriers supported by EasyPost. Once the refund has been submitted, refund_status attribute of the Shipment will be populated with one of the possible values: \"submitted\", \"refunded\", \"rejected\". ",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "placeholder": "Unique, begins with \"shp_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_shipmentrate",
+                                "url": "/shipments/:_id/rates",
+                                "description": "You can update the Rates of a Shipment at any time. This operation respects the carrier_accounts attribute",
+                                "name": "Regenerate Rates for a Shipment",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "placeholder": "Unique, begins with \"shp_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "trackers",
+                        "name": "Trackers",
+                        "endpoints": [
+                            {
+                                "id": "list_trackers",
+                                "url": "/trackers",
+                                "description": "The Tracker List is a paginated list of all Tracker objects associated with the given API Key",
+                                "name": "Retrieve a list of a Trackers",
+                                "resourcePath": "trackers",
+                                "queryParameters": [
+                                    {
+                                        "id": "before_id",
+                                        "name": "Before ID",
+                                        "description": "Optional pagination parameter. Only records created before the given ID will be included. May not be used with after_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "after_id",
+                                        "name": "After ID",
+                                        "description": "Optional pagination parameter. Only records created after the given ID will be included. May not be used with before_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start_datetime",
+                                        "name": "Start Date Time",
+                                        "description": "Only return records created after this timestamp. Defaults to 1 month ago, or 1 month before a passed end_datetime",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_datetime",
+                                        "name": "End Date Time",
+                                        "description": "Only return records created before this timestamp. Defaults to end of the current day, or 1 month after a passed start_datetime",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "tracking_code",
+                                        "name": "Tracking Code",
+                                        "description": "Only returns Trackers with the given tracking_code. Useful for retrieving an individual Tracker by tracking_code rather than by ID",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "carrier",
+                                        "name": "Carrier",
+                                        "description": "Only returns Trackers with the given carrier value",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page_size",
+                                        "name": "Page Size",
+                                        "description": "The number of records to return on each page. The maximum value is 100, and default is 20.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tracker",
+                                "url": "/trackers/:_id",
+                                "description": "Retrieve a Tracker by id.",
+                                "name": "Retrieve a Tracker",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Tracker ID",
+                                        "placeholder": "Unique, starts with \"trk_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "endpoints": [
+                            {
+                                "id": "get_order",
+                                "url": "/orders/:_id",
+                                "description": "An Order can be retrieved by either its id or reference. However it is recommended to use EasyPost's provided identifiers because uniqueness on reference is not enforced.",
+                                "name": "Retrieve an Order",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Order ID",
+                                        "placeholder": "Unique, begins with \"order_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pickup",
+                        "name": "Pickups",
+                        "endpoints": [
+                            {
+                                "id": "get_pickup",
+                                "url": "/pickups/:_id",
+                                "description": "A Pickup object can be retrieved by either an id or reference. However it is recommended to use EasyPost's provided identifiers because uniqueness on reference is not enforced.",
+                                "name": "Retrieve a Pickup",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Pickup ID",
+                                        "placeholder": "unique, begins with \"pickup_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reports",
+                        "name": "Reports",
+                        "endpoints": [
+                            {
+                                "id": "list_reports",
+                                "url": "/reports/:_type",
+                                "name": "Retrieve a list of a Reports",
+                                "description": "The Report List is a paginated list of all Report objects associated with the given API Key",
+                                "resourcePath": "reports",
+                                "pathParameters": [
+                                    {
+                                        "id": "type",
+                                        "name": "Report Type",
+                                        "required": true,
+                                        "placeholder": "payment_log or refund or shipment or tracker",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "before_id",
+                                        "name": "Before ID",
+                                        "description": "Optional pagination parameter. Only records created before the given ID will be included. May not be used with after_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "after_id",
+                                        "name": "After ID",
+                                        "description": "Optional pagination parameter. Only records created after the given ID will be included. May not be used with before_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start_datetime",
+                                        "name": "Start Date Time",
+                                        "description": "Only return records created after this timestamp. Defaults to 1 month ago, or 1 month before a passed end_datetime",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_datetime",
+                                        "name": "End Date Time",
+                                        "description": "Only return records created before this timestamp. Defaults to end of the current day, or 1 month after a passed start_datetime",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page_size",
+                                        "name": "Page Size",
+                                        "description": "The number of records to return on each page. The maximum value is 100, and default is 20.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_report",
+                                "url": "/reports/:_type/:_id",
+                                "description": "Retrieve a Report by id.",
+                                "name": "Retrieve a Report",
+                                "pathParameters": [
+                                    {
+                                        "id": "type",
+                                        "name": " Report Type",
+                                        "placeholder": "payment_log or refund or shipment or tracker",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Report ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "user",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "list_user",
+                                "url": "/users",
+                                "description": "Accessing the user of the given API key (This call will only work with your production API Key.)",
+                                "name": "List all Users"
+                            },
+                            {
+                                "id": "get_user",
+                                "url": "/users/:_id",
+                                "name": "Retrieve a User",
+                                "description": "Passing an ID (This call will only work with your production API Key.)",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "User ID",
+                                        "placeholder": "Unique, begins with \"user_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "carrier_types",
+                        "name": "CarrierTypes",
+                        "endpoints": [
+                            {
+                                "id": "get_carrier_types",
+                                "url": "/carrier_types",
+                                "description": "The CarrierType list is an unpaginated list of all carrier types available to the account of the given API key.(This call will only work with your production API Key.)",
+                                "name": "Retrieve available Carrier Types"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "carrier_accounts",
+                        "name": "CarrierAccounts",
+                        "endpoints": [
+                            {
+                                "id": "list_carrier_accounts",
+                                "url": "/carrier_accounts",
+                                "description": "Retrieve an unpaginated list of all CarrierAccounts available to the authenticated account. Only Production API keys may be used to retrieve this list, as there is no test mode equivalent.",
+                                "name": "List all Carrier Accounts"
+                            },
+                            {
+                                "id": "get_carrier_accounts",
+                                "url": "/carrier_accounts/:_id",
+                                "description": "Retrieve a CarrierAccount by either its id or reference. However it is recommended to use EasyPost's provided identifiers because we do not enforce a unique reference.",
+                                "name": "Retrieve a Carrier Account",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Carrier Account ID",
+                                        "placeholder": "Unique, begins with \"ca_\"",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "addresses",
+                        "name": "Addresses",
+                        "sampleData": {
+                            "address[street2]": "",
+                            "address[street1]": "",
+                            "address[zip]": "",
+                            "address[state]": "",
+                            "address[city]": "",
+                            "address[country]": "",
+                            "address[company]": "",
+                            "address[phone]": "",
+                            "address[name]": "",
+                            "address[email]": "",
+                            "address[residential]": false,
+                            "address[carrier_facility]": "",
+                            "address[federal_tax_id]": "",
+                            "address[state_tax_id]": "",
+                            "verify[]": "delivery",
+                            "verify_strict[]": "delivery"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_address",
+                                "url": "/addresses",
+                                "description": "Depending on your use case an Address can be used in many different ways. Certain carriers allow rating between two zip codes, but full addresses are required to purchase postage. It is recommended to provide as much information as possible during creation and to reuse these objects whenever possible.(Verifying an Address before you ship is a great way to reduce issues with delivery.)",
+                                "name": "Create and Verify Addresses",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "parcels",
+                        "name": "Parcels",
+                        "sampleData": {
+                            "parcel[length]": "",
+                            "parcel[width]": "",
+                            "parcel[height]": "",
+                            "parcel[weight]": "",
+                            "parcel[predefined_package]": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_parcel",
+                                "url": "/parcels",
+                                "name": "Create a Parcel",
+                                "description": "Include the weight, and either a predefined_package or length, width and height if applicable.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "insurances",
+                        "name": "Insurances",
+                        "sampleData": {
+                            "insurance": {
+                                "tracking_code": "",
+                                "reference": "insuranceRef1",
+                                "carrier": "pending",
+                                "amount": "100.00000",
+                                "provider_id": null,
+                                "to_address": {
+                                    "id": "adr_852af1666114454f9ab9748adff1b352",
+                                    "object": "Address",
+                                    "created_at": "2018-04-20T09:50:03Z",
+                                    "updated_at": "2018-04-20T09:50:03Z",
+                                    "name": "EasyPost",
+                                    "company": "easypost",
+                                    "street1": "417 Montgomery Street",
+                                    "street2": "5th Floor",
+                                    "city": "San Francisco",
+                                    "state": "CA",
+                                    "zip": "94104",
+                                    "country": "US",
+                                    "phone": "4154567890",
+                                    "email": null,
+                                    "mode": "test",
+                                    "carrier_facility": null,
+                                    "residential": null,
+                                    "federal_tax_id": null,
+                                    "state_tax_id": null
+                                },
+                                "from_address": {
+                                    "id": "adr_479eb28522fb41d39b148597511ffbf6",
+                                    "object": "Address",
+                                    "created_at": "2018-04-20T09:48:40Z",
+                                    "updated_at": "2018-04-20T09:48:40Z",
+                                    "name": "EasyPost",
+                                    "company": "easypost",
+                                    "street1": "417 Montgomery Street",
+                                    "street2": "5th Floor",
+                                    "city": "San Francisco",
+                                    "state": "CA",
+                                    "zip": "94104",
+                                    "country": "US",
+                                    "phone": "4154567890",
+                                    "email": null
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_insurance",
+                                "url": "/insurances",
+                                "name": "Create an Insurance",
+                                "description": "An Insurance created via this endpoint must belong to a shipment purchased outside of EasyPost. Insurance for Shipments created within EasyPost must be created via the Shipment Buy or Insure endpoints",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "sampleData": {
+                            "shipment": {
+                                "id": "shp_vN9h7XLn",
+                                "object": "Shipment",
+                                "reference": "",
+                                "mode": "test",
+                                "options": {
+                                    "additional_handling": "",
+                                    "address_validation_level": "",
+                                    "alcohol": true,
+                                    "bill_receiver_account": "",
+                                    "bill_receiver_postal_code": "",
+                                    "bill_third_party_account": "",
+                                    "bill_third_party_country": "",
+                                    "bill_third_party_postal_code": "",
+                                    "by_drone": "",
+                                    "carbon_neutral": true,
+                                    "cod_amount": "",
+                                    "cod_method": "",
+                                    "cod_address_id": "",
+                                    "currency": "",
+                                    "delivery_confirmation": "",
+                                    "dropoff_type": "",
+                                    "dry_ice": false,
+                                    "dry_ice_medical": "",
+                                    "dry_ice_weight": "",
+                                    "endorsement": "",
+                                    "freight_charge": "",
+                                    "handling_instructions": "",
+                                    "hazmat": "",
+                                    "hold_for_pickup": "",
+                                    "incoterm": "",
+                                    "invoice_number": "",
+                                    "label_date": "",
+                                    "machinable": "",
+                                    "print_custom_1": "",
+                                    "print_custom_1_barcode": "",
+                                    "saturday_delivery": "",
+                                    "special_rates_eligibility": "",
+                                    "smartpost_manifest": ""
+                                },
+                                "to_address": {
+                                    "id": "adr_zMlCRtmt",
+                                    "object": "Address",
+                                    "name": "Dr. Steve Brule",
+                                    "company": null,
+                                    "street1": "179 N Harbor Dr",
+                                    "street2": null,
+                                    "city": "Redondo Beach",
+                                    "state": "CA",
+                                    "zip": "90277",
+                                    "country": "US",
+                                    "phone": "4153334444",
+                                    "mode": "test",
+                                    "carrier_facility": null,
+                                    "residential": null,
+                                    "email": "dr_steve_brule@gmail.com",
+                                    "created_at": "2013-04-22T05:39:56Z",
+                                    "updated_at": "2013-04-22T05:39:56Z"
+                                },
+                                "from_address": {
+                                    "id": "adr_VgoLT6Ex",
+                                    "object": "Address",
+                                    "name": "EasyPost",
+                                    "company": null,
+                                    "street1": "417 Montgomery Street",
+                                    "street2": "5th Floor",
+                                    "city": "San Francisco",
+                                    "state": "CA",
+                                    "zip": "94104",
+                                    "country": "US",
+                                    "phone": "4153334444",
+                                    "email": "support@easypost.com",
+                                    "mode": "test",
+                                    "carrier_facility": null,
+                                    "residential": null,
+                                    "created_at": "2013-04-22T05:39:57Z",
+                                    "updated_at": "2013-04-22T05:39:57Z"
+                                },
+                                "parcel": {
+                                    "id": "prcl_SI55pjx8",
+                                    "object": "Parcel",
+                                    "length": 20.2,
+                                    "width": 10.9,
+                                    "height": 5,
+                                    "predefined_package": null,
+                                    "weight": 140.8,
+                                    "created_at": "2013-04-22T05:39:57Z",
+                                    "updated_at": "2013-04-22T05:39:57Z"
+                                },
+                                "customs_info": {
+                                    "id": "cstinfo_iNAizey5",
+                                    "object": "CustomsInfo",
+                                    "created_at": "2013-04-22T05:39:57Z",
+                                    "updated_at": "2013-04-22T05:39:57Z",
+                                    "contents_explanation": null,
+                                    "contents_type": "merchandise",
+                                    "customs_certify": false,
+                                    "customs_signer": null,
+                                    "eel_pfc": null,
+                                    "non_delivery_option": "return",
+                                    "restriction_comments": null,
+                                    "restriction_type": "none",
+                                    "customs_items": [
+                                        {
+                                            "id": "cstitem_9eDIbaDR",
+                                            "object": "CustomsItem",
+                                            "description": "Many, many EasyPost stickers.",
+                                            "hs_tariff_number": "123456",
+                                            "origin_country": "US",
+                                            "quantity": 1,
+                                            "value": 879,
+                                            "weight": 140,
+                                            "created_at": "2013-04-22T05:39:57Z",
+                                            "updated_at": "2013-04-22T05:39:57Z"
+                                        }
+                                    ]
+                                },
+                                "rates": [
+                                    {
+                                        "id": "rate_nyCb6ubX",
+                                        "object": "Rate",
+                                        "carrier_account_id": "ca_12345678",
+                                        "service": "FirstClassPackageInternationalService",
+                                        "rate": "9.50",
+                                        "carrier": "USPS",
+                                        "shipment_id": "shp_vN9h7XLn",
+                                        "delivery_days": 4,
+                                        "delivery_date": "2013-04-26T05:40:57Z",
+                                        "delivery_date_guaranteed": false,
+                                        "created_at": "2013-04-22T05:40:57Z",
+                                        "updated_at": "2013-04-22T05:40:57Z"
+                                    }
+                                ],
+                                "scan_form": {
+                                    "id": "sf_5fcd15deb9d84483835ed687a73fee7d",
+                                    "object": "ScanForm",
+                                    "created_at": "2017-01-20T22:59:03Z",
+                                    "updated_at": "2017-01-20T22:59:04Z",
+                                    "tracking_codes": [
+                                        "8888888888888888888888"
+                                    ],
+                                    "address": {
+                                        "id": "adr_d5415c4f055c44169cc159d2958d768f",
+                                        "object": "Address",
+                                        "created_at": "2016-10-04T19:08:20Z",
+                                        "updated_at": "2016-10-04T19:08:20Z",
+                                        "name": "EasyPost",
+                                        "company": null,
+                                        "street1": "417 Montgomery Street",
+                                        "street2": "5th Floor",
+                                        "city": "San Francisco",
+                                        "state": "CA",
+                                        "zip": "94104",
+                                        "country": "US",
+                                        "phone": "4153334445",
+                                        "email": "support@easypost.com",
+                                        "mode": "test",
+                                        "carrier_facility": null,
+                                        "residential": null,
+                                        "federal_tax_id": null,
+                                        "state_tax_id": null,
+                                        "verifications": {}
+                                    },
+                                    "status": "created",
+                                    "message": null,
+                                    "form_url": "https://easypost-files.s3-us-west-2.amazonaws.com/files/scan_form/20170120/27099fe01af34349821e4be06d0cdu7t.pdf",
+                                    "form_file_type": null,
+                                    "batch_id": "batch_6b145453b20740209ddaedef63a4a88k",
+                                    "confirmation": null
+                                },
+                                "selected_rate": null,
+                                "postage_label": null,
+                                "tracking_code": "null",
+                                "messages": [
+                                    {
+                                        "carrier": "",
+                                        "type": "",
+                                        "message": "",
+                                        "carrier_account_id": ""
+                                    }
+                                ],
+                                "tracker": {
+                                    "id": "trk_6078d3e8af6045428ce33d334b81c66e",
+                                    "object": "Tracker",
+                                    "mode": "test",
+                                    "tracking_code": "EZ1000000001",
+                                    "status": "pre_transit",
+                                    "status_detail": "status_update",
+                                    "created_at": "2018-04-20T09:27:02Z",
+                                    "updated_at": "2018-04-20T10:18:25Z",
+                                    "signed_by": null,
+                                    "weight": null,
+                                    "est_delivery_date": "2018-04-20T10:18:25Z",
+                                    "shipment_id": null,
+                                    "carrier": "USPS",
+                                    "tracking_details": [
+                                        {
+                                            "object": "TrackingDetail",
+                                            "message": "Pre-Shipment Info Sent to USPS",
+                                            "description": null,
+                                            "status": "pre_transit",
+                                            "status_detail": "status_update",
+                                            "datetime": "2018-03-20T10:18:25Z",
+                                            "source": "USPS",
+                                            "carrier_code": null,
+                                            "tracking_location": {
+                                                "object": "TrackingLocation",
+                                                "city": null,
+                                                "state": null,
+                                                "country": null,
+                                                "zip": null
+                                            }
+                                        },
+                                        {
+                                            "object": "TrackingDetail",
+                                            "message": "Shipping Label Created",
+                                            "description": null,
+                                            "status": "pre_transit",
+                                            "status_detail": "status_update",
+                                            "datetime": "2018-03-20T22:55:25Z",
+                                            "source": "USPS",
+                                            "carrier_code": null,
+                                            "tracking_location": {
+                                                "object": "TrackingLocation",
+                                                "city": "HOUSTON",
+                                                "state": "TX",
+                                                "country": null,
+                                                "zip": "77063"
+                                            }
+                                        }
+                                    ],
+                                    "carrier_detail": {
+                                        "object": "CarrierDetail",
+                                        "service": "First-Class Package Service",
+                                        "container_type": null,
+                                        "est_delivery_date_local": null,
+                                        "est_delivery_time_local": null,
+                                        "origin_location": "HOUSTON TX, 77001",
+                                        "origin_tracking_location": {
+                                            "object": "TrackingLocation",
+                                            "city": "HOUSTON",
+                                            "state": "TX",
+                                            "country": null,
+                                            "zip": "77063"
+                                        },
+                                        "destination_location": "CHARLESTON SC, 29401",
+                                        "destination_tracking_location": null,
+                                        "guaranteed_delivery_date": null,
+                                        "alternate_identifier": null,
+                                        "initial_delivery_attempt": null
+                                    },
+                                    "finalized": true,
+                                    "is_return": false,
+                                    "public_url": "https://track.easypost.com/djE6dHJrXzYwNzhkM2U4YWY2MDQ1NDI4Y2UzM2QzMzRiODFjNjZl",
+                                    "fees": [
+                                        {
+                                            "object": "Fee",
+                                            "type": "TrackerFee",
+                                            "amount": "0.00000",
+                                            "charged": false,
+                                            "refunded": false
+                                        }
+                                    ]
+                                },
+                                "fees": [
+                                    {
+                                        "type": "",
+                                        "amount": "",
+                                        "charged": true,
+                                        "refunded": true
+                                    }
+                                ],
+                                "batch_id": "",
+                                "is_return": true,
+                                "batch_status": "",
+                                "batch_message": "",
+                                "refund_status": null,
+                                "insurance": null,
+                                "created_at": "2013-04-22T05:40:57Z",
+                                "updated_at": "2013-04-22T05:40:57Z"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_shipment",
+                                "url": "/shipments",
+                                "name": "Create a Shipment",
+                                "method": "POST",
+                                "description": "A Shipment is almost exclusively a container for other objects, and thus a Shipment may reuse many of these objects. Additionally, all the objects contained within a Shipment may be created at the same time.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_shipment_option",
+                                "url": "/shipments",
+                                "name": "Create a Shipment with Options",
+                                "description": "Any number of options can be specified during Shipment creation.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "buy_shipment",
+                                "url": "/shipments/:_id/buy",
+                                "name": "Buy a Shipment",
+                                "description": "To purchase a Shipment you only need to specify the Rate to purchase. This operation populates the tracking_code and postage_label attributes. ",
+                                "method": "POST",
+                                "sampleData": {
+                                    "rate[id]": "",
+                                    "insurance": ""
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "insure_shipment",
+                                "url": "/shipments/:_id/insure",
+                                "name": "Insure a Shipment",
+                                "description": "Insuring your Shipment is as simple as sending us the value of the contents. We charge 1% of the value, with a $1 minimum, and handle all the claims. All our claims are paid out within 30 days.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "amount": ""
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "return_shipment",
+                                "url": "/shipments",
+                                "description": "You can easily create return labels. All you need to do is set the is_return parameter to \"true\", leave the addresses the same as the initial Shipment's creation request and we switch the To and From Addresses for the return Shipment.",
+                                "name": "Create Return for a Shipment",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "trackers",
+                        "name": "Trackers",
+                        "sampleData": {
+                            "tracker[tracking_code]": "",
+                            "tracker[carrier]": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_tracker",
+                                "url": "/trackers",
+                                "name": "Create a Tracker",
+                                "method": "POST",
+                                "description": "A Tracker can be created with only a tracking_code. Optionally, you can provide the carrier parameter, which indicates the carrier the package was shipped with. If no carrier is provided, EasyPost will attempt to determine the carrier based on the tracking_code provided. Providing a carrier parameter is recommended, since some tracking_codes are ambiguous and may match with more than one carrier. In addition, not having to auto-match the carrier will significantly speed up the response time.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_trackers",
+                                        "extract": "trackers[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customsinfo",
+                        "name": "CustomsInfos",
+                        "sampleData": {
+                            "customs_info[customs_certify]": true,
+                            "customs_info[customs_signer]": "Steve Brule",
+                            "customs_info[contents_type]": "merchandise",
+                            "customs_info[contents_explanation]": "",
+                            "customs_info[restriction_type]": "",
+                            "customs_info[eel_pfc]": "",
+                            "customs_info[customs_items][*][id]": "",
+                            "customs_info[customs_items][*][description]": "",
+                            "customs_info[customs_items][*][quantity]": "",
+                            "customs_info[customs_items][*][value]": "",
+                            "customs_info[customs_items][*][weight]": "",
+                            "customs_info[customs_items][*][hs_tariff_number]": "",
+                            "customs_info[customs_items][*][origin_country]": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customs_infos",
+                                "url": "/customs_infos",
+                                "name": "Create a CustomsInfo",
+                                "description": "A CustomsInfo object contains all administrative information for processing customs, as well as a list of CustomsItems. When creating a CustomsInfo, you may store the ID from the response for use later in shipment creation.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customsitem",
+                        "name": "CustomsItems",
+                        "sampleData": {
+                            "customs_item[description]": "",
+                            "customs_item[quantity]": 1,
+                            "customs_item[weight]": 10,
+                            "customs_item[value]": 5,
+                            "customs_item[hs_tariff_number]": "",
+                            "customs_item[origin_country]": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customs_items",
+                                "url": "/customs_items",
+                                "name": "Create a CustomsItem",
+                                "description": "A CustomsItem contains information relating to each product within the package. When creating a customs item, you may store the ID from the response for use later in CustomsInfo creation.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "sampleData": {
+                            "order[to_address][id]": "",
+                            "order[from_address][id]": "1",
+                            "order[shipments][*][parcel][predefined_package]": "10",
+                            "order[shipments][*][parcel][weight]": "5",
+                            "order[reference]": "",
+                            "order[carrier_accounts][*][id]": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_order",
+                                "url": "/orders",
+                                "name": "Create an Order",
+                                "description": "An Order is almost exclusively a container for other objects, and thus an Order may reuse many of these objects. Alternatively, all the objects contained within an Order may be created at the same time.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "buy_order",
+                                "url": "/orders/:_id/buy",
+                                "name": "Buy an Order",
+                                "description": "To purchase an Order you only need to specify the carrier and service to purchase. This operation populates the tracking_code and postage_label attributes of each Shipment.",
+                                "method": "POST",
+                                "sampleData": {
+                                    "carrier": "",
+                                    "service": ""
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pickups",
+                        "name": "Pickups",
+                        "sampleData": {
+                            "pickup[reference]": "",
+                            "pickup[min_datetime]": "1",
+                            "pickup[max_datetime]": "10",
+                            "pickup[shipment][id]": "5",
+                            "pickup[address][id]": "5",
+                            "pickup[batch][id]": "5",
+                            "pickup[carrier_accounts][*]": "5",
+                            "pickup[is_account_address]=": true,
+                            "pickup[instructions]": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_pickup",
+                                "url": "/pickups",
+                                "name": "Create a Pickup",
+                                "description": "Creating a Pickup will automatically fetch rates for the given time frame and location.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "buy_pickup",
+                                "url": "/pickups/:_id/buy",
+                                "description": "To purchase a Pickup a PickupRate must be specified by its carrier and service name, instead of its id. The client libraries will handle this automatically if a PickupRate is provided.",
+                                "name": "Buy a Pickup",
+                                "method": "POST",
+                                "sampleData": {
+                                    "carrier": "",
+                                    "service": ""
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_pickup",
+                                "url": "/pickups/:_id/cancel",
+                                "name": "Cancel a Pickup",
+                                "description": "You may cancel a Pickup anytime before it has been completed. It requires no additional parameters other than the id or reference. The status will change to \"canceled\" on success.",
+                                "method": "POST",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reports",
+                        "name": "Reports",
+                        "sampleData": {
+                            "start_date": "2016-10-01",
+                            "end_date": "2016-10-31",
+                            "send_email": true
+                        },
+                        "operations": [
+                            {
+                                "id": "create_report",
+                                "url": "/reports/:_type",
+                                "name": "Create a Report",
+                                "description": "To create a Report, provide a start_date and end_date that are less than 31 days apart along with any other optional parameter that you would like to specify",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "type",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "user[password]": "2016-10-01",
+                            "user[password_confirmation]": "2016-10-01",
+                            "user[current_password]": "2016-10-01",
+                            "user[name]": "2016-10-01",
+                            "user[email]": "2016-10-01",
+                            "user[phone_number]": "2016-10-01",
+                            "user[balance]": "2016-10-01",
+                            "user[recharge_amount]": "2016-10-01",
+                            "user[secondary_recharge_amount]": "2016-10-01",
+                            "user[recharge_threshold]": "2016-10-01",
+                            "user[children][recharge_threshold]": "2016-10-01",
+                            "user[children][password]": "2016-10-01",
+                            "user[children][password_confirmation]": "2016-10-01",
+                            "user[children][current_password]": "2016-10-01",
+                            "user[children][name]": "2016-10-01",
+                            "user[children][email]": "2016-10-01",
+                            "user[children][phone_number]": "2016-10-01",
+                            "user[children][balance]": "2016-10-01",
+                            "user[children][recharge_amount]": "2016-10-01",
+                            "user[children][secondary_recharge_amount]": "2016-10-01"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_user",
+                                "url": "/users",
+                                "name": "Create a User",
+                                "description": "",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "type",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_user",
+                                "url": "/users/:_id",
+                                "name": "Update a User",
+                                "description": "Just like retrieving a User they can be updated using the same patterns. Passing an id will allow the update of a child or the authenticated User. Passing no id will update the authenticated User.",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_childuser",
+                                "url": "/users",
+                                "name": "Create a Child User",
+                                "description": "Children use the billing information of the parent, and are not able to log in to the website. Any User creation attempt made with an authenticated request (via API key or cookie) is assumed to be the creation of a child of that User.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "carrieraccount",
+                        "name": "CarrierAccounts",
+                        "sampleData": {
+                            "carrier_account[type]": "2016-10-01",
+                            "carrier_account[description]": "",
+                            "carrier_account[readable]": "",
+                            "carrier_account[clone]": false,
+                            "carrier_account[credentials][account_number]": "",
+                            "carrier_account[credentials][user_id]": "",
+                            "carrier_account[credentials][password]": "",
+                            "carrier_account[credentials][access_license_number]": "",
+                            "carrier_account[Fields][credentials][key]": "",
+                            "carrier_account[Fields][credentials][visibility]": "",
+                            "carrier_account[Fields][credentials][label]": "",
+                            "carrier_account[Fields][credentials][value]": "",
+                            "carrier_account[test_credentials][credentials][key]": "",
+                            "carrier_account[test_credentials][credentials][visibility]": "",
+                            "carrier_account[test_credentials][credentials][label]": "",
+                            "carrier_account[test_credentials][credentials][value]": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_carrier_accounts",
+                                "url": "/carrier_accounts",
+                                "name": "Create a Carrier Account",
+                                "method": "POST",
+                                "description": "CarrierAccount objects may be managed through the EasyPost API using the Production mode API key only. Multiple accounts can be added for a single carrier.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_carrier_accounts",
+                                "url": "/carrier_accounts/:_id",
+                                "name": "Update a Carrier Account",
+                                "description": "he CarrierType of the CarrierAccount should be consulted before attempting to updating an existing CarrierAccount, as it will inform you of the field names expected by a certain carrier.",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_carrier_accounts",
+                                "url": [
+                                    "/carrier_accounts/:_id",
+                                    "/carrier_accounts"
+                                ],
+                                "name": "Create or Update Carrier Account",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_carrier_accounts",
+                                "url": "/carrier_accounts/:_id",
+                                "name": "Delete a Carrier Account",
+                                "description": "CarrierAccount objects may be removed from your account when they become out of date or no longer useful.",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "financeapi_transaction",
+                        "name": "Finance API: transaction",
+                        "endpoints": [
+                            {
+                                "id": "get_transactions",
+                                "url": "/sell/finances/v1/transaction",
+                                "name": "getTransactions",
+                                "description": "Retrieve one or monetary transactions from seller",
+                                "resourcePath": "transactions",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "description": "There are numerous input filters available for use, including filters to retrieve specific types of monetary transactions, to retrieve monetary transactions processed within a specific date range, or to retrieve monetary transactions in a specific state. e.g. transactionType:{SALE}"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_transaction_summary",
+                                "url": "/sell/finances/v1/transaction_summary",
+                                "name": "getTransactionSummary",
+                                "description": "Retrieve cumulative values for five types of monetary transactions (order sales, seller credits, buyer refunds, buyer-initiated payment disputes, eBay shipping label purchases, and transfers).",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "There are numerous input filters available for use, including filters to retrieve specific types of monetary transactions, to retrieve monetary transactions processed within a specific date range, or to retrieve monetary transactions in a specific state. e.g. transactionStatus:{PAYOUT}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "financeapi_seller_funds_summary",
+                        "name": "Finance API: seller_funds_summary",
+                        "endpoints": [
+                            {
+                                "id": "get_seller_funds_summary",
+                                "url": "/sell/finances/v1/seller_funds_summary",
+                                "name": "getSellerFundsSummary",
+                                "description": "Retrieve the details of one or more seller transfer",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

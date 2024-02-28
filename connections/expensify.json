@@ -1,0 +1,366 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "read",
+                        "name": "READ/GET",
+                        "endpoints": [
+                            {
+                                "id": "list_policygetter",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Policy List Getter",
+                                "description": "Lets you get a list of policies with some relevant information about them. Optionally, you may retrieve policies for another user on a domain you have been granted access to.",
+                                "resourcePath": "policyList",
+                                "successPath": "policyList",
+                                "method": "POST",
+                                "postBody": {
+                                    "type": "get",
+                                    "credentials": {
+                                        "partnerUserID": "{{connection.rest.unencrypted.partnerUserId}}",
+                                        "partnerUserSecret": "{{connection.rest.encrypted.partnerUserSecret}}"
+                                    },
+                                    "inputSettings": {
+                                        "type": "policyList"
+                                    }
+                                },
+                                "bodyParameters": [
+                                    {
+                                        "id": "inputSettings.adminOnly",
+                                        "name": "Admin Only",
+                                        "description": "Whether or not to only get policies for which the user is an admin for.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "inputSettings.userEmail",
+                                        "name": "UserEmail",
+                                        "description": "Specifies the user to gather the policy data for. You must have been granted third-party access by that user/company domain beforehand."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "policygetter",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Policy Getter",
+                                "method": "POST",
+                                "description": "Lets you get specific information about listed policies. At this time, only category, report field, tag, and tax information is supported.",
+                                "successPath": "policyInfo",
+                                "postBody": {
+                                    "type": "get",
+                                    "credentials": {
+                                        "partnerUserID": "{{connection.rest.unencrypted.partnerUserId}}",
+                                        "partnerUserSecret": "{{connection.rest.encrypted.partnerUserSecret}}"
+                                    },
+                                    "inputSettings": {
+                                        "type": "policy"
+                                    }
+                                },
+                                "bodyParameters": [
+                                    {
+                                        "id": "inputSettings.userEmail",
+                                        "name": "userEmail",
+                                        "description": "Specifies the user to gather the policy data for. You must have been granted third-party access by that user/company domain beforehand.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "inputSettings.fields",
+                                        "name": "Fields",
+                                        "description": "Specifies the fields of the policy to gather information for.",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "inputSettings.policyIDList",
+                                        "name": "PolicyID List",
+                                        "description": "The IDs of the policies to get information for.",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "type": "array"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "create",
+                        "name": "CREATE",
+                        "operations": [
+                            {
+                                "id": "create_report",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Report Creator",
+                                "description": "Lets you create a report, with transactions, in a user’s account.",
+                                "method": "POST",
+                                "successPath": "responseCode",
+                                "successValues": 200,
+                                "sampleData": {
+                                    "policyID": "B4A74F4B0AAAC3FA",
+                                    "report": {
+                                        "title": "Name of the report",
+                                        "fields": {
+                                            "reason_of_trip": "Business trip",
+                                            "employees": "3"
+                                        }
+                                    },
+                                    "employeeEmail": "muneswara.1803@gmail.com",
+                                    "expenses": [
+                                        {
+                                            "date": "2018-05-18",
+                                            "currency": "USD",
+                                            "merchant": "Name of merchant",
+                                            "amount": 1234
+                                        },
+                                        {
+                                            "date": "2018-06-18",
+                                            "currency": "CAD",
+                                            "merchant": "Name of merchant",
+                                            "amount": 2211
+                                        }
+                                    ]
+                                },
+                                "body": "{\"requestJobDescription\": \"{ \\\"type\\\": \\\"create\\\",\\\"credentials\\\": {\\\"partnerUserID\\\":\\\"{{{connection.rest.unencrypted.partnerUserId}}}\\\",\\\"partnerUserSecret\\\": \\\"{{{connection.rest.encrypted.partnerUserSecret}}}\\\"}, \\\"inputSettings\\\": { \\\"type\\\": \\\"report\\\", {{#each data}}{{#if @index}},{{/if}}\\\"{{@key}}\\\": {{{jsonEncode (jsonSerialize this)}}} {{/each}} }}\" }",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_expense",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Expense Creator",
+                                "description": "Allows you to create expenses in a user’s account.",
+                                "method": "POST",
+                                "successPath": "responseCode",
+                                "successValues": 200,
+                                "sampleData": {
+                                    "employeeEmail": "user@domain.com",
+                                    "transactionList": [
+                                        {
+                                            "created": "2016-01-21",
+                                            "currency": "EUR",
+                                            "merchant": "Name of merchant 2",
+                                            "amount": 2211,
+                                            "policyID": "E40D9B8DF456E233",
+                                            "externalID": "",
+                                            "category": "",
+                                            "tag": "",
+                                            "billable": true,
+                                            "reimbursable": false,
+                                            "comment": "",
+                                            "reportID": "",
+                                            "tax": {
+                                                "rateID": "id_TAX_OPTION_16",
+                                                "amount": ""
+                                            }
+                                        }
+                                    ]
+                                },
+                                "body": "{\"requestJobDescription\": \"{ \\\"type\\\": \\\"create\\\",\\\"credentials\\\": {\\\"partnerUserID\\\":\\\"{{{connection.rest.unencrypted.partnerUserId}}}\\\",\\\"partnerUserSecret\\\": \\\"{{{connection.rest.encrypted.partnerUserSecret}}}\\\"}, \\\"inputSettings\\\": { \\\"type\\\": \\\"expenses\\\", {{#each data}}{{#if @index}},{{/if}}\\\"{{@key}}\\\": {{{jsonEncode (jsonSerialize this)}}} {{/each}} }}\" }",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_policy",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Policy Creator",
+                                "description": "Lets you create a policy.",
+                                "method": "POST",
+                                "successPath": "responseCode",
+                                "successValues": 200,
+                                "sampleData": {
+                                    "policyName": "My New Policy",
+                                    "plan": ""
+                                },
+                                "body": "{\"requestJobDescription\": \"{ \\\"type\\\": \\\"create\\\",\\\"credentials\\\": {\\\"partnerUserID\\\":\\\"{{{connection.rest.unencrypted.partnerUserId}}}\\\",\\\"partnerUserSecret\\\": \\\"{{{connection.rest.encrypted.partnerUserSecret}}}\\\"}, \\\"inputSettings\\\": { \\\"type\\\": \\\"policy\\\", {{#each data}}{{#if @index}},{{/if}}\\\"{{@key}}\\\": {{{jsonEncode (jsonSerialize this)}}} {{/each}} }}\" }",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_expenserule",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Expense Rule Creator",
+                                "method": "POST",
+                                "description": "Lets you create expense rules for a given employee on a given policy.",
+                                "successPath": "responseCode",
+                                "successValues": 200,
+                                "sampleData": {
+                                    "policyID": "01767D021AE037",
+                                    "employeeEmail": "muneswara.1803@gmail.com",
+                                    "actions": {
+                                        "tag": "tag1"
+                                    }
+                                },
+                                "body": "{\"requestJobDescription\": \"{ \\\"type\\\": \\\"create\\\",\\\"credentials\\\": {\\\"partnerUserID\\\":\\\"{{{connection.rest.unencrypted.partnerUserId}}}\\\",\\\"partnerUserSecret\\\": \\\"{{{connection.rest.encrypted.partnerUserSecret}}}\\\"}, \\\"inputSettings\\\": { \\\"type\\\": \\\"expenseRules\\\", {{#each data}}{{#if @index}},{{/if}}\\\"{{@key}}\\\": {{{jsonEncode (jsonSerialize this)}}} {{/each}} }}\" }",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "update",
+                        "name": "UPDATE",
+                        "operations": [
+                            {
+                                "id": "update_policyupdater",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Policy Updater",
+                                "method": "POST",
+                                "description": "Lets you independently manage categories, tags and report fields on a policy.",
+                                "successPath": "responseCode",
+                                "successValues": 200,
+                                "sampleData": {
+                                    "inputSettings": {
+                                        "type": "policy",
+                                        "policyID": "0123456789ABCDEF",
+                                        "policyIDList": []
+                                    },
+                                    "categories": {
+                                        "action": "merge",
+                                        "data": [
+                                            {
+                                                "name": "Category 1",
+                                                "enabled": true,
+                                                "payrollCode": "Payroll Code 1",
+                                                "glCode": "GL Code 1",
+                                                "commentHint": "Comment hint 1",
+                                                "areCommentsRequired": true,
+                                                "maxExpenseAmount": 2500
+                                            },
+                                            {
+                                                "name": "Category 2",
+                                                "enabled": false
+                                            }
+                                        ]
+                                    },
+                                    "tags": {
+                                        "data": [
+                                            {
+                                                "name": "Tag Level 1",
+                                                "setRequired": true,
+                                                "tags": [
+                                                    {
+                                                        "name": "Tag 1",
+                                                        "glCode": "Tag 1 GL Code"
+                                                    },
+                                                    {
+                                                        "name": "Tag 2",
+                                                        "glCode": "Tag 2 GL Code"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "reportFields": {
+                                        "action": "merge",
+                                        "data": [
+                                            {
+                                                "name": "Report field 1",
+                                                "type": "dropdown",
+                                                "values": [
+                                                    {
+                                                        "value": "value 3",
+                                                        "externalID": "3",
+                                                        "enabled": true
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                "body": "{\"requestJobDescription\": \"{ \\\"type\\\": \\\"update\\\",\\\"credentials\\\": {\\\"partnerUserID\\\":\\\"{{{connection.rest.unencrypted.partnerUserId}}}\\\",\\\"partnerUserSecret\\\": \\\"{{{connection.rest.encrypted.partnerUserSecret}}}\\\"}, {{#each data}}{{#if @index}},{{/if}}\\\"{{@key}}\\\": {{{jsonEncode (jsonSerialize this)}}} {{/each}} }\" }"
+                            },
+                            {
+                                "id": "update_expenserules",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Expense Rules Updater",
+                                "method": "POST",
+                                "description": "Lets you update a preexisting expense rule for a given employee on a given policy.",
+                                "successPath": "responseCode",
+                                "successValues": 200,
+                                "sampleData": {
+                                    "policyID": "0123456789ABCDEF",
+                                    "employeeEmail": "employee@domain.com",
+                                    "ruleID": 0,
+                                    "actions": {
+                                        "tag": "Tag Name"
+                                    }
+                                },
+                                "body": "{\"requestJobDescription\": \"{ \\\"type\\\": \\\"update\\\",\\\"credentials\\\": {\\\"partnerUserID\\\":\\\"{{{connection.rest.unencrypted.partnerUserId}}}\\\",\\\"partnerUserSecret\\\": \\\"{{{connection.rest.encrypted.partnerUserSecret}}}\\\"}, \\\"inputSettings\\\": { \\\"type\\\": \\\"expenseRules\\\", {{#each data}}{{#if @index}},{{/if}}\\\"{{@key}}\\\": {{{jsonEncode (jsonSerialize this)}}} {{/each}} }}\" }"
+                            },
+                            {
+                                "id": "update_reportstatus",
+                                "url": "/ExpensifyIntegrations",
+                                "name": "Report Status Updater",
+                                "method": "POST",
+                                "description": "Lets you update the status of a report.\n Note: at the moment, the only supported action is to mark Approved reports as Reimbursed.",
+                                "successPath": "responseCode",
+                                "successValues": 200,
+                                "sampleData": {
+                                    "status": "REIMBURSED",
+                                    "filters": {
+                                        "reportIDList": "1234567,1234568,1234569",
+                                        "startDate": "",
+                                        "endDate": ""
+                                    }
+                                },
+                                "body": "{\"requestJobDescription\": \"{ \\\"type\\\": \\\"update\\\",\\\"credentials\\\": {\\\"partnerUserID\\\":\\\"{{{connection.rest.unencrypted.partnerUserId}}}\\\",\\\"partnerUserSecret\\\": \\\"{{{connection.rest.encrypted.partnerUserSecret}}}\\\"}, \\\"inputSettings\\\": { \\\"type\\\": \\\"reportStatus\\\", {{#each data}}{{#if @index}},{{/if}}\\\"{{@key}}\\\": {{{jsonEncode (jsonSerialize this)}}} {{/each}} }}\" }"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

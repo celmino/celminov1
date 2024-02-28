@@ -1,0 +1,276 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "remainingquotes",
+                        "name": "Remaining Quotes",
+                        "endpoints": [
+                            {
+                                "id": "get_remaining_quotes",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "url": "/v2/remaining_quotes.json",
+                                "name": "Get the number of quotes remaining"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "currencies",
+                        "name": "Currencies",
+                        "endpoints": [
+                            {
+                                "id": "get_currencies",
+                                "url": "/v2/currencies.json",
+                                "name": "Get a list of valid three-character currency codes",
+                                "resourcePath": "currencies",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "data_set",
+                                        "name": "data_set",
+                                        "description": "The data_set parameter is optional and determines which type of rates to retrieve currencies for",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "supportedforwards",
+                        "name": "Supported Forwards",
+                        "endpoints": [
+                            {
+                                "id": "get_supportedforwards",
+                                "url": "/v2/supported_forwards.json",
+                                "name": "Get the server",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "resourcePath": "supported_forwards",
+                                "queryParameters": [
+                                    {
+                                        "id": "base",
+                                        "name": "Base",
+                                        "description": "The base parameter is optional and can be specified multiple times to filter the supported list of forward rates based on base currency.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "quote",
+                                        "name": "Quote",
+                                        "description": "The quote parameter is optional and can be specified multiple times to filter the supported list of forward rates based on quote currency.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rates",
+                        "name": "Rates",
+                        "endpoints": [
+                            {
+                                "id": "get_spot",
+                                "url": "/v2/rates/spot.json",
+                                "name": "Retrieves the current exchange rates",
+                                "resourcePath": "quotes",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "base",
+                                        "name": "Base",
+                                        "description": "The base parameter is optional and can be specified multiple times to filter the supported list of forward rates based on base currency.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "quote",
+                                        "name": "Quote",
+                                        "description": "The quote parameter is optional and can be specified multiple times to filter the supported list of forward rates based on quote currency.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "date_time",
+                                        "name": "date_time",
+                                        "description": "All date-time parameters should be in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss±hh:mm) and before the current time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "data_set",
+                                        "name": "data_set",
+                                        "description": "The data_set parameter is optional and determines which type of rates to retrieve currencies for",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_candles",
+                                "url": "/v2/rates/candles.json",
+                                "name": "Retrieves all daily candles in the specified time range",
+                                "queryParameters": [
+                                    {
+                                        "id": "base",
+                                        "name": "Base",
+                                        "description": "The base parameter is optional and can be specified multiple times to filter the supported list of forward rates based on base currency.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "quote",
+                                        "name": "Quote",
+                                        "description": "The quote parameter is optional and can be specified multiple times to filter the supported list of forward rates based on quote currency.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start_time",
+                                        "name": "start_time",
+                                        "description": "All date-time parameters should be in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss±hh:mm) and before the current time",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "end_time",
+                                        "name": "end_time",
+                                        "description": "All date-time parameters should be in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss±hh:mm) and before the current time",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "data_set",
+                                        "name": "data_set",
+                                        "description": "The data_set parameter is optional and determines which type of rates to retrieve currencies for",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_aggregated",
+                                "url": "/v2/rates/aggregated.json",
+                                "name": "Retrieves one aggregated candle over the given time range for each specified currency pair",
+                                "queryParameters": [
+                                    {
+                                        "id": "base",
+                                        "name": "Base",
+                                        "description": "The base parameter is optional and can be specified multiple times to filter the supported list of forward rates based on base currency.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "quote",
+                                        "name": "Quote",
+                                        "description": "The quote parameter is optional and can be specified multiple times to filter the supported list of forward rates based on quote currency.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start_time",
+                                        "name": "start_time",
+                                        "description": "All date-time parameters should be in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss±hh:mm) and before the current time",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "end_time",
+                                        "name": "end_time",
+                                        "description": "All date-time parameters should be in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss±hh:mm) and before the current time",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "data_set",
+                                        "name": "data_set",
+                                        "description": "The data_set parameter is optional and determines which type of rates to retrieve currencies for",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_forward",
+                                "url": "/v2/rates/forward.json",
+                                "name": "Retrieves one forward curve over the given tenor set for the specified currency pair",
+                                "queryParameters": [
+                                    {
+                                        "id": "base",
+                                        "name": "Base",
+                                        "description": "The base parameter is optional and can be specified multiple times to filter the supported list of forward rates based on base currency.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "quote",
+                                        "name": "Quote",
+                                        "description": "The quote parameter is optional and can be specified multiple times to filter the supported list of forward rates based on quote currency.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tenor",
+                                        "name": "tenor",
+                                        "description": "Multiple tenors can be specified by repeating this parameter. If the tenor parameter is not found, all supported tenors for the currency pair in the request as defined in supported forwards endpoint will be used.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "data_set",
+                                        "name": "data_set",
+                                        "description": "The data_set parameter is optional and determines which type of rates to retrieve currencies for",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_candle",
+                                "url": "/v2/rates/candle.json",
+                                "name": "Retrieves one daily candle for each specified currency pair",
+                                "queryParameters": [
+                                    {
+                                        "id": "base",
+                                        "name": "Base",
+                                        "description": "The base parameter is optional and can be specified multiple times to filter the supported list of forward rates based on base currency.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "quote",
+                                        "name": "Quote",
+                                        "description": "The quote parameter is optional and can be specified multiple times to filter the supported list of forward rates based on quote currency.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "date_time",
+                                        "name": "date_time",
+                                        "description": "All date-time parameters should be in ISO 8601 format (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss±hh:mm) and before the current time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "data_set",
+                                        "name": "data_set",
+                                        "description": "The data_set parameter is optional and determines which type of rates to retrieve currencies for",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Allowed values are open, close, averages, highs, lows or all, and multiple values can be specified",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

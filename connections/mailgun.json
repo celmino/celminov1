@@ -1,0 +1,1470 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "nextpageurl",
+            "nextPagePath": "paging.next"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "domains",
+                        "name": "Domains",
+                        "endpoints": [
+                            {
+                                "id": "get_domains",
+                                "url": "/domains",
+                                "name": "List Domains",
+                                "resourcePath": "items"
+                            },
+                            {
+                                "id": "get_domainbyid",
+                                "url": "/domains/:_domain",
+                                "name": "Get a single domain",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_domaincredentials",
+                                "url": "/domains/:_domain/credentials",
+                                "name": "list SMTP credentials",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_domainconnection",
+                                "url": "/domains/:_domain/connection",
+                                "name": "Get delivery connection settings",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_domaintracking",
+                                "url": "/domains/:_domain/tracking",
+                                "name": "Get tracking settings",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ips",
+                        "name": "IPs",
+                        "endpoints": [
+                            {
+                                "id": "list_ips",
+                                "url": "/ips",
+                                "name": "List IPs",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "dedicated",
+                                        "name": "Dedicated",
+                                        "description": "Return only dedicated IPs if set to true. (all are returned by default).",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_singleip",
+                                "url": "/ips/:_ip",
+                                "name": "Get a specified IP",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "ip",
+                                        "name": "IP",
+                                        "description": "IP value.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_domainips",
+                                "url": "/domains/:_domain/ips",
+                                "name": "List IPs assigned to the specified domain",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "events",
+                        "name": "Events",
+                        "endpoints": [
+                            {
+                                "id": "get_events",
+                                "url": "/domains/:_domain/events",
+                                "name": "List Events",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "begin",
+                                        "name": "Begin",
+                                        "description": "The beginning of the search time range. It can be specified as a string (see Date Format) or linux epoch seconds. Refer to Time Range for details."
+                                    },
+                                    {
+                                        "id": "end",
+                                        "name": "End",
+                                        "description": "The end of the search time range. It can be specified as a string (see Date Format) or linux epoch seconds. Refer to Time Range for details."
+                                    },
+                                    {
+                                        "id": "ascending",
+                                        "name": "ascending",
+                                        "description": "Defines the direction of the search time range and must be provided if the range end time is not specified. Can be either yes or no. Refer to Time Range for details.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "yes",
+                                            "no"
+                                        ]
+                                    },
+                                    {
+                                        "id": "event",
+                                        "name": "event",
+                                        "description": "An event type."
+                                    },
+                                    {
+                                        "id": "recipient",
+                                        "name": "recipient",
+                                        "description": "An email address of a particular recipient. Even though a message may be addressed to several recipients, delivery is tracked on per recipient basis and every event pertains to only one recipient."
+                                    },
+                                    {
+                                        "id": "list",
+                                        "name": "list",
+                                        "description": "The email address of a mailing list the message was originally sent to."
+                                    },
+                                    {
+                                        "id": "message-id",
+                                        "name": "message-id",
+                                        "description": "A Mailgun message id returned by the messages API."
+                                    },
+                                    {
+                                        "id": "subject",
+                                        "name": "subject",
+                                        "description": "A subject line."
+                                    },
+                                    {
+                                        "id": "tags",
+                                        "name": "tags",
+                                        "description": "User defined tags."
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "from",
+                                        "description": "An email address mentioned in the from MIME header."
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "to",
+                                        "description": "An email address mentioned in the to MIME header."
+                                    },
+                                    {
+                                        "id": "size",
+                                        "name": "size",
+                                        "description": "Message size."
+                                    },
+                                    {
+                                        "id": "severity",
+                                        "name": "severity",
+                                        "description": "Temporary or Permanent. Used to filter events based on severity, if exists. (Currently failed events only).",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Temporary",
+                                            "Permanent"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stats",
+                        "name": "Stats",
+                        "endpoints": [
+                            {
+                                "id": "get_statstotal",
+                                "url": "/:_domain/stats/total",
+                                "name": "List total stats",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "event",
+                                        "name": "Event",
+                                        "description": "The type of the event."
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "Start",
+                                        "description": "The starting time. Should be in RFC 2822#page-14 or unix epoch format. Default: 7 days from the current time."
+                                    },
+                                    {
+                                        "id": "end",
+                                        "name": "End",
+                                        "description": "The ending date. Should be in RFC 2822#page-14 or unix epoch time in seconds. Default: current time."
+                                    },
+                                    {
+                                        "id": "resolution",
+                                        "name": "Resolution",
+                                        "description": "Can be either hour, day or month. Default: day",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "hour",
+                                            "day",
+                                            "month"
+                                        ]
+                                    },
+                                    {
+                                        "id": "duration",
+                                        "name": "Duration",
+                                        "description": "Period of time with resolution encoded. See Duration for more info. If provided, overwrites the start date and resolution."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_stats",
+                                "url": "/:_domain/stats",
+                                "name": "List event stats items",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "event",
+                                        "name": "event",
+                                        "description": "Name of the event to receive the stats for."
+                                    },
+                                    {
+                                        "id": "start-date",
+                                        "name": "start-date",
+                                        "description": "The date to receive the stats starting from. Should have ISO8601 format (YYYY-MM-DD)."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tags",
+                        "name": "Tags",
+                        "endpoints": [
+                            {
+                                "id": "get_tags",
+                                "url": "/:_domain/tags",
+                                "name": "List tags",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tagsbyid",
+                                "url": "/:_domain/tags/:_tag",
+                                "name": "Get a given tag",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "Tag",
+                                        "description": "Name of the tag.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tagstats",
+                                "url": "/:_domain/tags/:_tag/stats",
+                                "name": "Get statistics for a given tag",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "Tag",
+                                        "description": "Name of the tag.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "event",
+                                        "name": "Event",
+                                        "description": "The type of the event."
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "Start",
+                                        "description": "The starting time. Should be in RFC 2822#page-14 or unix epoch format. Default: 7 days from the current time."
+                                    },
+                                    {
+                                        "id": "end",
+                                        "name": "End",
+                                        "description": "The ending date. Should be in RFC 2822#page-14 or unix epoch time in seconds. Default: current time."
+                                    },
+                                    {
+                                        "id": "resolution",
+                                        "name": "Resolution",
+                                        "description": "Can be either hour, day or month. Default: day",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "hour",
+                                            "day",
+                                            "month"
+                                        ]
+                                    },
+                                    {
+                                        "id": "duration",
+                                        "name": "Duration",
+                                        "description": "Period of time with resolution encoded. See Duration for more info. If provided, overwrites the start date and resolution."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tagstats_countries",
+                                "url": "/:_domain/tags/:_tag/stats/aggregates/countries",
+                                "name": "List countries of origin for a given domain",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "Tag",
+                                        "description": "Name of the tag.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tagstats_provides",
+                                "url": "/:_domain/tags/:_tag/stats/aggregates/providers",
+                                "name": "List email providers for a given domain",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "Tag",
+                                        "description": "Name of the tag.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tagstats_devices",
+                                "url": "/:_domain/tags/:_tag/stats/aggregates/devices",
+                                "name": "List devices for a given domain",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "name": "Tag",
+                                        "description": "Name of the tag.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "suppressions",
+                        "name": "Suppressions",
+                        "endpoints": [
+                            {
+                                "id": "get_bounces",
+                                "url": "/:_domain/bounces",
+                                "name": "View all bounces",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_singlebounce",
+                                "url": "/:_domain/bounces/:_address",
+                                "name": "View a single bounce",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "name": "Address",
+                                        "description": "Valid email address.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_unsubscribes",
+                                "url": "/:_domain/unsubscribes",
+                                "name": "View all unsubscribes",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_singleunsubscribe",
+                                "url": "/:_domain/unsubscribes/:_address",
+                                "name": "View a single unsubscribe",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "name": "Address",
+                                        "description": "valid email address.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_complaints",
+                                "url": "/:_domain/complaints",
+                                "name": "View all complaints",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_singlecomplaint",
+                                "url": "/:_domain/complaints/:_address",
+                                "name": "View a single complaint",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "name": "Address",
+                                        "description": "Valid email address.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "routes",
+                        "name": "Routes",
+                        "endpoints": [
+                            {
+                                "id": "get_routes",
+                                "url": "/routes",
+                                "name": "list routes",
+                                "resourcePath": "items",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "get_singleroute",
+                                "url": "/routes/:_id",
+                                "name": "Get a single route object",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "ID of the route.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mailinglists",
+                        "name": "Mailing Lists",
+                        "endpoints": [
+                            {
+                                "id": "get_mailinglists",
+                                "url": "/lists/pages",
+                                "name": "list Mailinglists",
+                                "resourcePath": "items",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "get_singlemailinglist",
+                                "url": "/lists/:_address",
+                                "name": "Get a single mailing list",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "address",
+                                        "name": "address",
+                                        "description": "A valid email address for the mailing list.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_memberpages",
+                                "url": "/lists/:_address/members/pages",
+                                "name": "list members in the given mailing list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "address",
+                                        "name": "address",
+                                        "description": "A valid email address for the mailing list.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "subscribed",
+                                        "name": "subscribed",
+                                        "description": "yes to lists subscribed, no for unsubscribed, list all if not set.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "yes",
+                                            "no"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_singlemember",
+                                "url": "/lists/:_address/members/:_member_address",
+                                "name": "Get a mailing list member",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "address",
+                                        "name": "address",
+                                        "description": "A valid email address for the mailing list.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "member_address",
+                                        "name": "member_address",
+                                        "description": "A valid member address.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "messages",
+                        "name": "Messages",
+                        "operations": [
+                            {
+                                "id": "send_messages",
+                                "url": "/:_domain/messages",
+                                "name": "Send Message",
+                                "method": "POST",
+                                "sampleData": {
+                                    "from": "abc.com",
+                                    "to": "sfs.com",
+                                    "cc": "acs.com",
+                                    "bcc": "ads.com",
+                                    "subject": "afg",
+                                    "text": "body",
+                                    "html": "",
+                                    "inline": "",
+                                    "o:tag": "",
+                                    "o:dkim": "",
+                                    "o:deliverytime": "",
+                                    "o:testmode": "",
+                                    "o:tracking": "",
+                                    "o:tracking-clicks": "",
+                                    "o:tracking-opens": "",
+                                    "o:require-tls": "",
+                                    "o:skip-verification": "",
+                                    "v:my-var": ""
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "domains",
+                        "name": "Domains",
+                        "operations": [
+                            {
+                                "id": "verify_domain",
+                                "url": "/domains/:_domain/verify",
+                                "name": "Verify a single domain",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_domains",
+                                "url": "/domains",
+                                "name": "Create a new domain",
+                                "method": "POST",
+                                "sampleData": {
+                                    "created_at": "Wed, 10 Jul 2013 19:26:52 GMT",
+                                    "smtp_login": "postmaster@samples.mailgun.org",
+                                    "name": "samples.mailgun.org",
+                                    "smtp_password": "4rtqo4p6rrx9",
+                                    "wildcard": true,
+                                    "spam_action": "disabled",
+                                    "state": "active",
+                                    "force_dkim_authority": true
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_domain",
+                                "url": "/domains/:_domain",
+                                "name": "Delete a domain",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_domaincredentials",
+                                "url": "/domains/:_domain/credentials",
+                                "name": "Creates a new set of SMTP credentials",
+                                "method": "POST",
+                                "sampleData": {
+                                    "login": "postmaster@samples.mailgun.org",
+                                    "password": "4rtqo4p6rrx9"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_domaincredentials",
+                                "url": "/domains/:_domain/credentials/:_login",
+                                "name": "Updates the specified SMTP credentials",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "password": "4rtqo4p6rrx9"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "login",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_domaincredentials",
+                                "url": "/domains/:_domain/credentials/:_login",
+                                "name": "Deletes the defined SMTP credentials",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "login",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_domainconection",
+                                "url": "/domains/:_domain/connection",
+                                "name": "Update the specified delivery connection settings.",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "require_tls": true,
+                                    "skip_verification": true
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_tracking",
+                                "url": "/domains/:_domain/tracking/open",
+                                "name": "Updates the open tracking settings for a domain",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "active": "yes"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_trackingclick",
+                                "url": "/domains/:_domain/tracking/click",
+                                "name": "Update the click tracking settings for a domain",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "active": "yes"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_trackingunsubscribe",
+                                "url": "/domains/:_domain/tracking/unsubscribe",
+                                "name": "Update unsubscribe tracking settings for a domain",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "active": "yes",
+                                    "html_footer": "sfdg",
+                                    "text_footer": "abc"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_trackingdkim_authority",
+                                "url": "/domains/:_domain/dkim_authority",
+                                "name": "Change the DKIM authority for a domain",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "self": "yes"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tags",
+                        "name": "Tags",
+                        "operations": [
+                            {
+                                "id": "update_tag",
+                                "url": "/:_domain/tags/:_tag",
+                                "name": "Update a given tag",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "domain": "abc.com",
+                                    "tag": "name",
+                                    "description": "asfgg"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tag",
+                                "url": "/:_domain/tags/:_tag",
+                                "name": "Delete tag",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "suppressions",
+                        "name": "Suppressions",
+                        "operations": [
+                            {
+                                "id": "create_bounce",
+                                "url": "/:_domain/bounces",
+                                "name": "Add a single bounce",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "address": "abc.com",
+                                    "code": "name",
+                                    "error": "asfgg",
+                                    "created_at": "qa"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_bounce",
+                                "url": "/:_domain/bounces/:_address",
+                                "name": "Delete a single bounce",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_bouncelist",
+                                "url": "/:_domain/bounces",
+                                "name": "Delete an entire bounce list",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_unsubscribes",
+                                "url": "/:_domain/unsubscribes",
+                                "name": "Add a single unsubscribe",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "address": "abc.com",
+                                    "tag": "name",
+                                    "created_at": "qa"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_unsubscribe",
+                                "url": "/:_domain/unsubscribes/:_address",
+                                "name": "Delete a single unsubscribe",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_complaint",
+                                "url": "/:_domain/complaints",
+                                "name": "Add a single complaint",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "address": "abc.com",
+                                    "created_at": "qa"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_complaint",
+                                "url": "/:_domain/complaints/:_address",
+                                "name": "Delete a single complaint",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "domain",
+                                        "name": "Domain",
+                                        "description": "Name of the domain.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "routes",
+                        "name": "Routes",
+                        "operations": [
+                            {
+                                "id": "create_routes",
+                                "url": "/routes",
+                                "name": "Create a new route",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "priority": 12,
+                                    "description": "name",
+                                    "expression": "asfgg",
+                                    "action": "qa"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_routes",
+                                "url": "/routes/:_id",
+                                "name": "Update a given route",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "id": 12,
+                                    "priority": 1,
+                                    "description": "name",
+                                    "expression": "asfgg",
+                                    "action": "qa"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createupdate_routes",
+                                "url": [
+                                    "/routes/:_id",
+                                    "/routes"
+                                ],
+                                "name": "Create or Update a given route",
+                                "sampleData": {
+                                    "id": 12,
+                                    "priority": 1,
+                                    "description": "name",
+                                    "expression": "asfgg",
+                                    "action": "qa"
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_routes",
+                                "url": "/routes/:_id",
+                                "name": "Delete a route",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mailinglists",
+                        "name": "Mailing Lists",
+                        "operations": [
+                            {
+                                "id": "create_malinglists",
+                                "url": "/lists",
+                                "name": "Create a new mailing list",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "address": "ad.com",
+                                    "description": "name",
+                                    "name": "asfgg",
+                                    "access_level": "qa"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_lists",
+                                "url": "/lists/:_address",
+                                "name": "Update mailing list properties",
+                                "supportIgnoreMissing": true,
+                                "method": "PUT",
+                                "sampleData": {
+                                    "address": "gsg",
+                                    "name": "name",
+                                    "description": "name",
+                                    "access_level": "qa"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createupdate_mailinglist",
+                                "url": [
+                                    "/lists/:_address",
+                                    "/lists"
+                                ],
+                                "name": "Create or Update mailing list",
+                                "sampleData": {
+                                    "address": "gsg",
+                                    "name": "name",
+                                    "description": "name",
+                                    "access_level": "qa"
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "address",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_lists",
+                                "url": "/lists/:_address",
+                                "name": "Delete a mailing list",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_members",
+                                "url": "/lists/:_address/members",
+                                "name": "Add member to the mailing list",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "address": "alice@example.com",
+                                    "vars": "name",
+                                    "name": "asfgg",
+                                    "subscribed": "yes",
+                                    "upsert": "yes"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "address",
+                                        "name": "Address",
+                                        "description": "Valid email address specification.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "member_address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_member",
+                                "url": "/lists/:_address/members/:_member_address",
+                                "name": "Update mailing list member",
+                                "supportIgnoreMissing": true,
+                                "method": "PUT",
+                                "sampleData": {
+                                    "address": "gsg",
+                                    "name": "name",
+                                    "vars": "name",
+                                    "subscribed": "yes"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "address",
+                                        "name": "Address",
+                                        "description": "Valid email address specification.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "member_address",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createupdate_mailinglistmember",
+                                "url": [
+                                    "/lists/:_address/members/:_member_address",
+                                    "/lists/:_address/members"
+                                ],
+                                "name": "Create or Update mailing list member",
+                                "sampleData": {
+                                    "address": "alice@example.com",
+                                    "vars": "name",
+                                    "name": "asfgg",
+                                    "subscribed": "yes",
+                                    "upsert": "yes"
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "address",
+                                        "name": "Address",
+                                        "description": "Valid email address specification.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "member_address",
+                                        "description": "Valid member email address.",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_listmember",
+                                "url": "/lists/:_address/members/:_member_address",
+                                "name": "Delete mailing list member",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "address",
+                                        "name": "Address",
+                                        "description": "Valid email address specification.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "member_address",
+                                        "description": "Valid member email address.",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

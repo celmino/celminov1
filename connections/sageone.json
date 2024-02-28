@@ -1,0 +1,926 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "nextpageurl",
+            "nextPagePath": "$next"
+        },
+        "urlResolution": [
+            "contacts",
+            "contacts/:_id",
+            "products",
+            "products/:_id",
+            "sales_invoices",
+            "sales_invoices/:_id",
+            "purchase_invoices",
+            "purchase_invoices/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_contacts",
+                                "url": "contacts",
+                                "name": "List of All Contacts",
+                                "resourcePath": "$items",
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Search By Email",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search",
+                                        "name": "Search By Name",
+                                        "description": "Use this to filter by the contact name, company name or reference",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_or_created_since",
+                                        "name": "Search By Updated_or_Created_Since",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "deleted_since",
+                                        "name": "Search By Deleted_Since",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Search By Page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "items_per_page",
+                                        "name": "Search By Items_per_page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_type_id",
+                                        "name": "Search By Contact_Type_Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "nested_attributes",
+                                        "name": "Search By Nested_Attributes",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "show_legacy_id",
+                                        "name": "Search By Show_legacy_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "attributes",
+                                        "name": "Search By Attributes",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_specific_contact",
+                                "url": "contacts/:_id",
+                                "name": "Get a Specific Contact",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_products",
+                                "url": "products",
+                                "name": "List of All Products",
+                                "resourcePath": "$items",
+                                "queryParameters": [
+                                    {
+                                        "id": "search",
+                                        "name": "Search By Name",
+                                        "description": "Use this to filter by the item code or description",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_or_created_since",
+                                        "name": "Search By Updated_or_Created_Since",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "deleted_since",
+                                        "name": "Search By Deleted_Since",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Search By Page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "items_per_page",
+                                        "name": "Search By Items_per_page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Search By Active",
+                                        "description": "Use this to only return active or inactive items",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "show_legacy_id",
+                                        "name": "Search By Show_legacy_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "attributes",
+                                        "name": "Search By Attributes",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_specific_product",
+                                "url": "products/:_id",
+                                "name": "Get a Specific Product",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Product ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sales_invoices",
+                        "name": "Sales_invoices",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_sales_invoices",
+                                "url": "sales_invoices",
+                                "name": "List of All Sales_invoices",
+                                "resourcePath": "$items",
+                                "queryParameters": [
+                                    {
+                                        "id": "search",
+                                        "name": "Search By Name",
+                                        "description": "Use this to filter by the contact name, company name or reference",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_or_created_since",
+                                        "name": "Search By Updated_or_Created_Since",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "name": "Search By Contact_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "status_id",
+                                        "name": "Search By Status_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from_date",
+                                        "name": "Search By From_date",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Search By Page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "items_per_page",
+                                        "name": "Search By Items_per_page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to_date",
+                                        "name": "Search By To_date",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "show_legacy_id",
+                                        "name": "Search By Show_legacy_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "show_payments_allocations",
+                                        "name": "Search By Show_Payments_Allocations",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "attributes",
+                                        "name": "Search By Attributes",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_specific_sales_invoices",
+                                "url": "sales_invoices/:_id",
+                                "name": "Get a Specific Sales_invoices",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Sales_invoices ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "purchase_invoices",
+                        "name": "Purchase_invoices",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_purchase_invoices",
+                                "url": "purchase_invoices",
+                                "name": "List of All Purchase_invoices",
+                                "resourcePath": "$items",
+                                "queryParameters": [
+                                    {
+                                        "id": "search",
+                                        "name": "Search By Name",
+                                        "description": "Use this to filter by the contact name, company name or reference",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_or_created_since",
+                                        "name": "Search By Updated_or_Created_Since",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Search By Page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "items_per_page",
+                                        "name": "Search By Items_per_page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_id",
+                                        "name": "Search By Contact_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "status_id",
+                                        "name": "Search By Status_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from_date",
+                                        "name": "Search By From_date",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to_date",
+                                        "name": "Search By To_date",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "show_legacy_id",
+                                        "name": "Search By Show_legacy_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "show_payments_allocations",
+                                        "name": "Search By Show_Payments_Allocations",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "attributes",
+                                        "name": "Search By Attributes",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_specific_purchase_invoices",
+                                "url": "purchase_invoices/:_id",
+                                "name": "Get a Specific Purchase_invoices",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Purchase_invoices ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "contacts",
+            "contacts/:_id",
+            "products",
+            "products/:_id",
+            "sales_invoices",
+            "sales_invoices/:_id",
+            "purchase_invoices",
+            "purchase_invoices/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "sampleData": {
+                            "contact": {
+                                "contact_type_ids": [
+                                    "CUSTOMER"
+                                ],
+                                "name": "ACME plc",
+                                "reference": "ACME",
+                                "notes": "Some contact notes",
+                                "default_sales_ledger_account_id": "0b47c0cc60a88bd00b199158272d678",
+                                "default_sales_tax_rate_id": "0b47c0cc60a88bd00b199158272d789",
+                                "default_purchase_ledger_account_id": "",
+                                "product_sales_price_type_id": "0c47c0ppt188bd00b199158272d678",
+                                "tax_number": "123456789",
+                                "source_guid": "30b47c0cc60a88bd00b199158272d736",
+                                "credit_limit": 999.99,
+                                "credit_days": 45,
+                                "credit_terms_and_conditions": "Some custom terms and conditions for this contact",
+                                "currency_id": "USD",
+                                "main_address": {
+                                    "name": "Head Office",
+                                    "address_line_1": "A building",
+                                    "address_line_2": "A street",
+                                    "city": "A city",
+                                    "region": "CA",
+                                    "postal_code": "90210",
+                                    "country_id": "US",
+                                    "country_group_id": "US"
+                                },
+                                "delivery_address": {
+                                    "name": "Other Office",
+                                    "address_line_1": "A building",
+                                    "address_line_2": "A street",
+                                    "city": "A city",
+                                    "region": "CA",
+                                    "postal_code": "90210",
+                                    "country_id": "US",
+                                    "country_group_id": "US"
+                                },
+                                "main_contact_person": {
+                                    "name": "A person",
+                                    "job_title": "A job title",
+                                    "telephone": "A telephone number",
+                                    "mobile": "A mobile number",
+                                    "email": "An@emailaddress.com",
+                                    "fax": "A fax number"
+                                },
+                                "bank_account_details": {
+                                    "account_name": "Barclays Connect",
+                                    "account_number": "12345678",
+                                    "sort_code": "112233",
+                                    "bic": "MIDLGB22123",
+                                    "iban": "GB15 MIDL 4005 1512 3456 78"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contacts",
+                                "url": "contacts",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "contacts",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_contacts",
+                                "url": "contacts/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "contacts",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_contacts",
+                                "url": [
+                                    "contacts/:_id",
+                                    "contacts"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "contacts",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_contacts",
+                                "url": "contacts/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "contacts",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "sampleData": {
+                            "product": {
+                                "item_code": "PROD001",
+                                "description": "Product 1",
+                                "notes": "Some information about the product",
+                                "sales_ledger_account_id": "0b47c0cc60a88bd00b199158272d678",
+                                "sales_tax_rate_id": "0b47c0cc60a88bd00b199158272d789",
+                                "purchase_ledger_account_id": "0c47c0cc60a88bd00b199158272d678",
+                                "purchase_tax_rate_id": "0b47c0cc60a88bd00b199158272d789",
+                                "cost_price": 13.37,
+                                "sales_prices": [
+                                    {
+                                        "product_sales_price_type_id": "0c47c0ppt188bd00b199158272d678",
+                                        "price": 19.99,
+                                        "price_includes_tax": true
+                                    },
+                                    {
+                                        "product_sales_price_type_id": "0c47c0ppt288bd00b199158272d678",
+                                        "price": 29.99,
+                                        "price_includes_tax": true
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_products",
+                                "url": "products",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "products",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_products"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_products",
+                                "url": "products/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "products",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_products"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_products",
+                                "url": [
+                                    "products/:_id",
+                                    "products"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "products",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_products"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_products",
+                                "url": "products/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "products",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_products"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sales_invoices",
+                        "name": "Sales_invoices",
+                        "sampleData": {
+                            "sales_invoice": {
+                                "id": "0b47c0am60a88bd00b199158272cGBP",
+                                "contact_id": "0b47c0am60a88bd00b199158272cGBP",
+                                "date": "2016-01-01",
+                                "due_date": "2016-02-01",
+                                "reference": "INV0001",
+                                "main_address": {
+                                    "address_line_1": "A building",
+                                    "address_line_2": "A street",
+                                    "city": "A city",
+                                    "region": "CA",
+                                    "postal_code": "90210",
+                                    "country_id": "US",
+                                    "country_group_id": "US"
+                                },
+                                "delivery_address": {
+                                    "address_line_1": "A building",
+                                    "address_line_2": "A street",
+                                    "city": "A city",
+                                    "region": "CA",
+                                    "postal_code": "90210",
+                                    "country_id": "US",
+                                    "country_group_id": "US"
+                                },
+                                "tax_address_region_id": "CA-BC",
+                                "notes": "Some notes about the invoice",
+                                "terms_and_conditions": "The invoice terms and conditions",
+                                "shipping_net_amount": 10,
+                                "shipping_tax_rate_id": "0b47c0cc60a88bd00b199158272tr20",
+                                "exchange_rate": 0.5,
+                                "invoice_lines": [
+                                    {
+                                        "product_id": "0c47c0pr0188bd00b199158272d678",
+                                        "description": "Line 1",
+                                        "ledger_account_id": "0b47c0cc60a88bd00b199158272d678",
+                                        "quantity": 2,
+                                        "unit_price": 55,
+                                        "discount_amount": 10,
+                                        "tax_rate_id": "0b47c0cc60a88bd00b199158272tr20",
+                                        "tax_amount": 20
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_sales_invoices",
+                                "url": "sales_invoices",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "sales_invoices",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_sales_invoices"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_sales_invoices",
+                                "url": "sales_invoices/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "sales_invoices",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_sales_invoices"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_sales_invoices",
+                                "url": [
+                                    "sales_invoices/:_id",
+                                    "sales_invoices"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "sales_invoices",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_sales_invoices"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_sales_invoices",
+                                "url": "sales_invoices/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "sales_invoices",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_sales_invoices"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "purchase_invoices",
+                        "name": "Purchase_invoices",
+                        "sampleData": {
+                            "purchase_invoice": {
+                                "id": "0b47c0am60a88bd00b199158272cGBP",
+                                "contact_id": "0b47c0ba60a88bd00b199158272sGBP",
+                                "date": "2016-01-01",
+                                "due_date": "2016-02-01",
+                                "reference": "INV0001",
+                                "vendor_reference": "The Vendor Reference",
+                                "notes": "Some notes about the invoice",
+                                "exchange_rate": 0.5,
+                                "tax_address_region_id": "CA-BC",
+                                "invoice_lines": [
+                                    {
+                                        "product_id": "0c47c0pr0188bd00b199158272d678",
+                                        "description": "Line 1",
+                                        "ledger_account_id": "0c47c0cc60a88bd00b199158272d678",
+                                        "quantity": 2,
+                                        "unit_price": 50,
+                                        "tax_rate_id": "0b47c0cc60a88bd00b199158272tr20",
+                                        "tax_amount": 20
+                                    },
+                                    {
+                                        "product_id": "0c47c0pr0188bd00b199158272d678",
+                                        "description": "Line 2",
+                                        "ledger_account_id": "0c47c0cc60a88bd00b199158272d678",
+                                        "quantity": 2,
+                                        "unit_price": 50,
+                                        "tax_rate_id": "0b47c0cc60a88bd00b199158272tr20",
+                                        "tax_amount": 20
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_purchase_invoices",
+                                "url": "purchase_invoices",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "purchase_invoices",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_purchase_invoices"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_purchase_invoices",
+                                "url": "purchase_invoices/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "purchase_invoices",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_purchase_invoices"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_purchase_invoices",
+                                "url": [
+                                    "purchase_invoices/:_id",
+                                    "purchase_invoices"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "purchase_invoices",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_purchase_invoices"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_purchase_invoices",
+                                "url": "purchase_invoices/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "purchase_invoices",
+                                        "extract": "$items[0].id",
+                                        "id": "list_of_all_purchase_invoices"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
