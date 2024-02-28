@@ -1,0 +1,3037 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [
+            "/v3.2/subscribers/:_listid.json",
+            "/v3.2/subscribers/:_listid/history.json",
+            "/v3.2/campaigns/:_campaignid/summary.json",
+            "/v3.2/campaigns/:_campaignid/emailclientusage.json",
+            "/v3.2/campaigns/:_campaignid/listsandsegments.json",
+            "/v3.2/campaigns/:_campaignid/recipients.json",
+            "/v3.2/campaigns/:_campaignid/bounces.json",
+            "/v3.2/campaigns/:_campaignid/opens.json",
+            "/v3.2/campaigns/:_campaignid/clicks.json",
+            "/v3.2/campaigns/:_campaignid/unsubscribes.json",
+            "/v3.2/campaigns/:_campaignid/spam.json",
+            "/v3.2/clients.json",
+            "/v3.2/clients/:_clientid.json",
+            "/v3.2/clients/:_clientid/campaigns.json",
+            "/v3.2/clients/:_clientid/scheduled.json",
+            "/v3.2/clients/:_clientid/drafts.json",
+            "/v3.2/clients/:_clientid/lists.json",
+            "/v3.2/clients/:_clientid/listsforemail.json",
+            "/v3.2/clients/:_clientid/segments.json",
+            "/v3.2/clients/:_clientid/suppressionlist.json",
+            "/v3.2/clients/:_clientid/templates.json",
+            "/v3.2/clients/:_clientid/people.json",
+            "/v3.2/clients/:_clientID/people.json",
+            "/v3.2/clients/:_clientid/primarycontact.json",
+            "/v3.2/lists/:_listid.json",
+            "/v3.2/lists/:_listid/stats.json",
+            "/v3.2/lists/:_listid/customfields.json",
+            "/v3.2/lists/:_listid/segments.json",
+            "/v3.2/lists/:_listid/active.json",
+            "/v3.2/lists/:_listid/unconfirmed.json",
+            "/v3.2/lists/:_listid/unsubscribed.json",
+            "/v3.2/lists/:_listid/bounced.json",
+            "/v3.2/lists/:_listid/deleted.json",
+            "/v3.2/lists/:_listid/webhooks.json",
+            "/v3.2/lists/:_listid/webhooks/:_webhookid/test.json",
+            "/v3.2/segments/:_segmentid.json",
+            "/v3.2/segments/:_segmentid/active.json",
+            "/v3.2/templates/:_templateid.json",
+            "/v3.2/transactional/smartEmail",
+            "/v3.2/transactional/smartEmail/:_smartEmailID",
+            "/v3.2/transactional/classicEmail/groups",
+            "/v3.2/transactional/statistics",
+            "/v3.2/transactional/messages",
+            "/v3.2/transactional/messages/:_messageID",
+            "/v3.2/billingdetails.json",
+            "/v3.2/countries.json",
+            "/v3.2/timezones.json",
+            "/v3.2/systemdate.json",
+            "/v3.2/admins.json",
+            "/v3.2/primarycontact.json"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "subscribers",
+                        "name": "Subscribers",
+                        "endpoints": [
+                            {
+                                "id": "getting_a_subscribers_details",
+                                "url": "/v3.2/subscribers/:_listid.json",
+                                "name": "Getting a subscriber’s details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the subscriber list to which the subscriber belongs.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "The email address of the subscriber whose details should be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includetrackingpreference",
+                                        "name": "INCLUDETRACKINGPREFERENCE",
+                                        "description": "The email address of the subscriber whose details should be retrieved.",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_a_subscribers_history",
+                                "url": "/v3.2/subscribers/:_listid/history.json",
+                                "name": "Getting a subscriber’s history",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "required": true,
+                                        "description": "The ID of the subscriber list to which the subscriber belongs.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "required": true,
+                                        "description": "The email address of the subscriber whose details should be retrieved.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "campaigns",
+                        "name": "Campaigns",
+                        "endpoints": [
+                            {
+                                "id": "campaign_summary",
+                                "url": "/v3.2/campaigns/:_campaignid/summary.json",
+                                "name": "Campaign summary",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "campaign_email_client_usage",
+                                "url": "/v3.2/campaigns/:_campaignid/emailclientusage.json",
+                                "name": "Campaign email client usage",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "campaign_lists_and_segments",
+                                "url": "/v3.2/campaigns/:_campaignid/listsandsegments.json",
+                                "name": "Campaign lists and segments",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "campaign_recipients",
+                                "url": "/v3.2/campaigns/:_campaignid/recipients.json",
+                                "name": "Campaign recipients",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "campaign_bounces",
+                                "url": "/v3.2/campaigns/:_campaignid/bounces.json",
+                                "name": "Campaign bounces",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Bounces on or after the date value specified will be returned. Must be in the format YYYY-MM-DD HH:MM. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "campaign_opens",
+                                "url": "/v3.2/campaigns/:_campaignid/opens.json",
+                                "name": "Campaign opens",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "campaign_clicks",
+                                "url": "/v3.2/campaigns/:_campaignid/clicks.json",
+                                "name": "Campaign clicks",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "campaign_unsubscribes",
+                                "url": "/v3.2/campaigns/:_campaignid/unsubscribes.json",
+                                "name": "Campaign unsubscribes",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Bounces on or after the date value specified will be returned. Must be in the format YYYY-MM-DD HH:MM. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "campaign_spam_complaints",
+                                "url": "/v3.2/campaigns/:_campaignid/spam.json",
+                                "name": "Campaign spam complaints",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign you want data for. Get the ID by getting sent campaigns.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Bounces on or after the date value specified will be returned. Must be in the format YYYY-MM-DD HH:MM. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "clients",
+                        "name": "Clients",
+                        "endpoints": [
+                            {
+                                "id": "getting_a_clients_details",
+                                "url": "/v3.2/clients/:_clientid.json",
+                                "name": "Getting a client’s details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_sent_campaigns",
+                                "url": "/v3.2/clients/:_clientid/campaigns.json",
+                                "name": "Getting sent campaigns",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_scheduled_campaigns",
+                                "url": "/v3.2/clients/:_clientid/scheduled.json",
+                                "name": "Getting scheduled campaigns",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_draft_campaigns",
+                                "url": "/v3.2/clients/:_clientid/drafts.json",
+                                "name": "Getting draft campaigns",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_subscriber_lists",
+                                "url": "/v3.2/clients/:_clientid/lists.json",
+                                "name": "Getting subscriber lists",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_lists_for_an_email_address",
+                                "url": "/v3.2/clients/:_clientid/listsforemail.json",
+                                "name": "Getting lists for an email address",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "The email address for which lists should be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_segments",
+                                "url": "/v3.2/clients/:_clientid/segments.json",
+                                "name": "Getting segments",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_suppression_list",
+                                "url": "/v3.2/clients/:_clientid/suppressionlist.json",
+                                "name": "Getting suppression list",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_templates",
+                                "url": "/v3.2/clients/:_clientid/templates.json",
+                                "name": "Getting templates",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_people",
+                                "url": "/v3.2/clients/:_clientID/people.json",
+                                "name": "Getting people",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientID",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "person_details",
+                                "url": "/v3.2/clients/:_clientid/people.json",
+                                "name": "Person details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "The email address of the person whose information should be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_primary_contact_client",
+                                "url": "/v3.2/clients/:_clientid/primarycontact.json",
+                                "name": "Getting primary contact",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "lists",
+                        "name": "Lists",
+                        "endpoints": [
+                            {
+                                "id": "list_details",
+                                "url": "/v3.2/lists/:_listid.json",
+                                "name": "List details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_stats",
+                                "url": "/v3.2/lists/:_listid/stats.json",
+                                "name": "List stats",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_custom_fields",
+                                "url": "/v3.2/lists/:_listid/customfields.json",
+                                "name": "List custom fields",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_segments",
+                                "url": "/v3.2/lists/:_listid/segments.json",
+                                "name": "List segments",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "active_subscribers",
+                                "url": "/v3.2/lists/:_listid/active.json",
+                                "name": "Active subscribers",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Subscribers which became active after the Date value specified will be returned. Must be in the format YYYY-MM-DD. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "unconfirmed_subscribers",
+                                "url": "/v3.2/lists/:_listid/unconfirmed.json",
+                                "name": "Unconfirmed subscribers",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Subscribers which became active after the Date value specified will be returned. Must be in the format YYYY-MM-DD. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "unsubscribed_subscribers",
+                                "url": "/v3.2/lists/:_listid/unsubscribed.json",
+                                "name": "Unsubscribed subscribers",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Subscribers which became active after the Date value specified will be returned. Must be in the format YYYY-MM-DD. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "bounced_subscribers",
+                                "url": "/v3.2/lists/:_listid/bounced.json",
+                                "name": "Bounced subscribers",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Subscribers which became active after the Date value specified will be returned. Must be in the format YYYY-MM-DD. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleted_subscribers",
+                                "url": "/v3.2/lists/:_listid/deleted.json",
+                                "name": "Deleted subscribers",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Subscribers which became active after the Date value specified will be returned. Must be in the format YYYY-MM-DD. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_webhooks",
+                                "url": "/v3.2/lists/:_listid/webhooks.json",
+                                "name": "List webhooks",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "testing_a_webhook",
+                                "url": "/v3.2/lists/:_listid/webhooks/:_webhookid/test.json",
+                                "name": "Testing a webhook",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the list you want the details for.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "webhookid",
+                                        "name": "WebhookID",
+                                        "description": "The ID of the webhook for which the test should be sent.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "segments",
+                        "name": "Segments",
+                        "endpoints": [
+                            {
+                                "id": "getting_a_segments_details",
+                                "url": "/v3.2/segments/:_segmentid.json",
+                                "name": "Getting a segment’s details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "segmentid",
+                                        "name": "SegmentID",
+                                        "description": "The ID of the segment to which the rule will be added",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_active_subscribers",
+                                "url": "/v3.2/segments/:_segmentid/active.json",
+                                "name": "Getting active subscribers",
+                                "resourcePath": "Results",
+                                "pathParameters": [
+                                    {
+                                        "id": "segmentid",
+                                        "name": "SegmentID",
+                                        "description": "The ID of the segment to which the rule will be added",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "date",
+                                        "name": "Date",
+                                        "description": "Subscribers which became active after the Date value specified will be returned. Must be in the format YYYY-MM-DD. If not provided, results will not be filtered by date.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "orderfield",
+                                        "name": "Order Field",
+                                        "description": "The field which should be used to order the results",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "email",
+                                            "list"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderdirection",
+                                        "name": "Order Direction",
+                                        "description": "The direction in which results should be ordered. Default: asc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "templates",
+                        "name": "Templates",
+                        "endpoints": [
+                            {
+                                "id": "getting_a_template",
+                                "url": "/v3.2/templates/:_templateid.json",
+                                "name": "Getting a template",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "templateid",
+                                        "name": "TemplateID",
+                                        "description": "The ID of the template to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactional",
+                        "name": "Transactional",
+                        "endpoints": [
+                            {
+                                "id": "smart_email_listing",
+                                "url": "/v3.2/transactional/smartEmail",
+                                "name": "Smart email listing",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "all",
+                                            "draft",
+                                            "active"
+                                        ]
+                                    },
+                                    {
+                                        "id": "clientID",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "smart_email_details",
+                                "url": "/v3.2/transactional/smartEmail/:_smartEmailID",
+                                "name": "Smart email details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "smartEmailID",
+                                        "name": "SmartEmailID",
+                                        "description": "The ID of the smart email to send",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "classic_email_group_listing",
+                                "url": "/v3.2/transactional/classicEmail/groups",
+                                "name": "Classic email group listing",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "clientID",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "statistics",
+                                "url": "/v3.2/transactional/statistics",
+                                "name": "Statistics",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "group",
+                                        "name": "Group",
+                                        "description": "Filter results by Group by supplying a URL-encoded classic group name.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Iso-8601 date in the format YYYY-MM-DD",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "timezone",
+                                        "name": "Timezone",
+                                        "description": "Values can be utc or client. Default: client’s time zone. When requesting statistics for a specific period of time, you can choose to define that period using either your local time zone or UTC.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "clientID",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "smartEmailID",
+                                        "name": "SmartEmailID",
+                                        "description": "The ID of the smart email to send",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "top",
+                                        "name": "Top",
+                                        "description": "Iso-8601 date in the format YYYY-MM-DD",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "message_timeline",
+                                "url": "/v3.2/transactional/messages",
+                                "name": "Message timeline",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "delivered",
+                                            "bounced",
+                                            "spam",
+                                            "all"
+                                        ]
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "description": "Maximum number of results to return in a single request",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "group",
+                                        "name": "Group",
+                                        "description": "A url-encoded classic group name to filter by.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "clientID",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client to be retrieved.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "smartEmailID",
+                                        "name": "SmartEmailID",
+                                        "description": "The ID of the smart email to send",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sentBeforeID",
+                                        "name": "Sent Before ID",
+                                        "description": "A messageID used for pagination, returns emails sent before the specified message. Default: null.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sentAfterID",
+                                        "name": "SentAfterID",
+                                        "description": "A messageID used for pagination, returns emails sent after the specified message. Default: null.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "message_details",
+                                "url": "/v3.2/transactional/messages/:_messageID",
+                                "name": "Message details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "messageID",
+                                        "name": "MessageID",
+                                        "description": "ID of the message",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "statistics",
+                                        "name": "Statistics",
+                                        "description": "Whether to include detailed opens/clicks. Defaults to false.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "account",
+                        "name": "Account",
+                        "endpoints": [
+                            {
+                                "id": "getting_your_billing_details",
+                                "url": "/v3.2/billingdetails.json",
+                                "name": "Getting your billing details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "getting_valid_countries",
+                                "url": "/v3.2/countries.json",
+                                "name": "Getting valid countries",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "getting_your_clients",
+                                "url": "/v3.2/clients.json",
+                                "name": "Getting your clients",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "getting_valid_timezones",
+                                "url": "/v3.2/timezones.json",
+                                "name": "Getting valid timezones",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "getting_current_date",
+                                "url": "/v3.2/systemdate.json",
+                                "name": "Getting current date",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "getting_administrator_details",
+                                "url": "/v3.2/admins.json",
+                                "name": "Getting Administrator Details",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getting_primary_contact",
+                                "url": "/v3.2/primarycontact.json",
+                                "name": "Getting primary contact",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v3.2/subscribers/:_listid.json?email=:_emailID",
+            "/v3.2/subscribers/:_listid.json",
+            "/v3.2/subscribers/:_listid/import.json",
+            "/v3.2/subscribers/:_listid/unsubscribe.json",
+            "/v3.2/campaigns/:_campaignid.json",
+            "/v3.2/campaigns/:_clientid/fromtemplate.json",
+            "/v3.2/campaigns/:_campaignid/send.json",
+            "/v3.2/campaigns/:_campaignid/sendpreview.json",
+            "/v3.2/campaigns/:_campaignid/unschedule.json",
+            "/v3.2/clients.json",
+            "/v3.2/clients/:_clientid/unsuppress.json?email=:_emailID",
+            "/v3.2/clients/:_clientid/primarycontact.json?email=:_emailID",
+            "/v3.2/clients/:_clientid/suppress.json",
+            "/v3.2/clients/:_clientid/setbasics.json",
+            "/v3.2/clients/:_clientid.json",
+            "/v3.2/clients/:_clientid/setpaygbilling.json",
+            "/v3.2/clients/:_clientid/setmonthlybilling.json",
+            "/v3.2/clients/:_clientid/credits.json",
+            "/v3.2/clients/:_clientid/people.json?email=:_emailID",
+            "/v3.2/clients/:_clientid/people.json",
+            "/v3.2/lists/:_listid.json",
+            "/v3.2/lists/:_listid/customfields.json",
+            "/v3.2/lists/:_listid/customfields/:_customfieldkey.json",
+            "/v3.2/lists/:_listid/customfields/:_customfieldkey/options.json",
+            "/v3.2/lists/:_listid/webhooks.json",
+            "/v3.2/lists/:_listid/webhooks/:_webhookid.json",
+            "/v3.2/lists/:_listid/webhooks/:_webhookid/activate.json",
+            "/v3.2/lists/:_listid/webhooks/:_webhookid/deactivate.json",
+            "/v3.2/segments/:_segmentid.json",
+            "/v3.2/segments/:_segmentid/rules.json",
+            "/v3.2/templates/:_templateid.json",
+            "/v3.2/transactional/classicEmail/send?clientID=:_clientId",
+            "/v3.2/transactional/smartEmail/:_smartEmailID/send",
+            "/v3.2/transactional/messages/:_messageID/resend",
+            "/v3.2/admins.json?email=:_email",
+            "/v3.2/admins.json",
+            "/v3.2/primarycontact.json?email=:_email",
+            "/v3.2/events/custom/:_clientid/"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "subscribers",
+                        "name": "Subscribers",
+                        "sampleData": {
+                            "EmailAddress": "subscriber@example.com",
+                            "Name": "Subscriber One",
+                            "Date": "2010-10-25 10:28:00",
+                            "State": "Active",
+                            "CustomFields": [
+                                {
+                                    "Key": "website",
+                                    "Value": "http://example.com"
+                                },
+                                {
+                                    "Key": "age",
+                                    "Value": "24"
+                                },
+                                {
+                                    "Key": "subscription date",
+                                    "Value": "2010-03-09"
+                                }
+                            ],
+                            "ReadsEmailWith": "Gmail"
+                        },
+                        "operations": [
+                            {
+                                "id": "adding_a_subscriber",
+                                "url": "/v3.2/subscribers/:_listid.json",
+                                "name": "Adding a subscriber",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the subscriber list to which the subscriber should be added.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/subscribers/:_listid.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_a_subscribers_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "updating_a_subscriber",
+                                "url": "/v3.2/subscribers/:_listid.json?email=:_emailID",
+                                "name": "Updating a subscriber",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the subscriber list to which the subscriber should be added.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "emailID",
+                                        "description": "The email address of the subscriber whose details will be updated. This is regarded as the 'old' email address.",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/subscribers/:_listid.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_a_subscribers_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_a_subscriber",
+                                "url": [
+                                    "/v3.2/subscribers/:_listid.json?email=:_emailID",
+                                    "/v3.2/subscribers/:_listid.json"
+                                ],
+                                "name": "Create or Update a subscriber",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the subscriber list to which the subscriber should be added.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "emailID",
+                                        "description": "The email address of the subscriber whose details will be updated. This is regarded as the 'old' email address.",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/subscribers/:_listid.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_a_subscribers_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "deleting_a_subscriber",
+                                "url": "/v3.2/subscribers/:_listid.json?email=:_emailID",
+                                "name": "Deleting a subscriber",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the subscriber list to which the subscriber should be added.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "emailID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/subscribers/:_listid.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_a_subscribers_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "importing_many_subscribers",
+                                "url": "/v3.2/subscribers/:_listid/import.json",
+                                "name": "Importing many subscribers",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the subscriber list to which the subscriber should be added.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/subscribers/:_listid.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_a_subscribers_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "unsubscribing_a_subscriber",
+                                "url": "/v3.2/subscribers/:_listid/unsubscribe.json",
+                                "name": "Unsubscribing a subscriber",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "ListID",
+                                        "description": "The ID of the subscriber list to which the subscriber should be added.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/subscribers/:_listid.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_a_subscribers_details"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "campaigns",
+                        "name": "Campaigns",
+                        "sampleData": {
+                            "Name": "My Campaign Name",
+                            "Subject": "My Subject",
+                            "FromName": "My Name",
+                            "FromEmail": "myemail@mydomain.com",
+                            "ReplyTo": "myemail@mydomain.com",
+                            "HtmlUrl": "http://example.com/campaigncontent/index.html",
+                            "ListIDs": [
+                                "l1l1",
+                                "l2l2"
+                            ],
+                            "SegmentIDs": [
+                                "a1a1",
+                                "a2a2"
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "creating_a_draft_campaign",
+                                "url": "/v3.2/campaigns/:_clientid.json",
+                                "name": "Creating a draft campaign",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client for whom the campaign should be created. You can get this ID by getting your clients.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "creating_a_campaign_from_a_template",
+                                "url": "/v3.2/campaigns/:_clientid/fromtemplate.json",
+                                "name": "Creating a campaign from a template",
+                                "method": "POST",
+                                "sampleData": {
+                                    "Name": "My Campaign Name",
+                                    "Subject": "My Subject",
+                                    "FromName": "My Name",
+                                    "FromEmail": "myemail@mydomain.com",
+                                    "ReplyTo": "myemail@mydomain.com",
+                                    "ListIDs": [
+                                        "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+                                        "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+                                    ],
+                                    "SegmentIDs": [
+                                        "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1",
+                                        "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+                                    ],
+                                    "TemplateID": "89qw8du9q7y87yd8quw98udwqdqwd",
+                                    "TemplateContent": {
+                                        "Singlelines": [
+                                            {
+                                                "Content": "This is a heading",
+                                                "Href": "http://example.com/"
+                                            }
+                                        ],
+                                        "Multilines": [
+                                            {
+                                                "Content": "<p>This is example</p><p>multiline <a href='http://example.com'>content</a>...</p>"
+                                            }
+                                        ],
+                                        "Images": [
+                                            {
+                                                "Content": "http://example.com/image.png",
+                                                "Alt": "This is alt text for an image",
+                                                "Href": "http://example.com/"
+                                            }
+                                        ],
+                                        "Repeaters": [
+                                            {
+                                                "Items": [
+                                                    {
+                                                        "Layout": "My layout",
+                                                        "Singlelines": [
+                                                            {
+                                                                "Content": "This is a repeater heading",
+                                                                "Href": "http://example.com/"
+                                                            }
+                                                        ],
+                                                        "Multilines": [
+                                                            {
+                                                                "Content": "<p>This is example</p><p>multiline <a href='http://example.com'>content</a>...</p>"
+                                                            }
+                                                        ],
+                                                        "Images": [
+                                                            {
+                                                                "Content": "http://example.com/repeater-image.png",
+                                                                "Alt": "This is alt text for a repeater image",
+                                                                "Href": "http://example.com/"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client for whom the campaign should be created. You can get this ID by getting your clients.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "sending_a_draft_campaign",
+                                "url": "/v3.2/campaigns/:_campaignid/send.json",
+                                "name": "Sending a draft campaign",
+                                "method": "POST",
+                                "sampleData": {
+                                    "ConfirmationEmail": "confirmation@example.com, another@example.com",
+                                    "SendDate": "YYYY-MM-DD HH:MM"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign draft to be sent. You can get the ID as the result of creating a campaign, or by getting draft campaigns.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "sending_a_campaign_preview",
+                                "url": "/v3.2/campaigns/:_campaignid/sendpreview.json",
+                                "name": "Sending a campaign preview",
+                                "method": "POST",
+                                "sampleData": {
+                                    "PreviewRecipients": [
+                                        "test1@example.com",
+                                        "test2@example.com"
+                                    ],
+                                    "Personalize": "Random"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign draft to be sent. You can get the ID as the result of creating a campaign, or by getting draft campaigns.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleting_a_campaign",
+                                "url": "/v3.2/campaigns/:_campaignid.json",
+                                "name": "Deleting a campaign",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "unscheduling_a_campaign",
+                                "url": "/v3.2/campaigns/:_campaignid/unschedule.json",
+                                "name": "Unscheduling a campaign",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "campaignid",
+                                        "name": "CampaignID",
+                                        "description": "The ID of the campaign draft to be sent. You can get the ID as the result of creating a campaign, or by getting draft campaigns.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "clients",
+                        "name": "Clients",
+                        "sampleData": {
+                            "BasicDetails": {
+                                "ClientID": "",
+                                "CompanyName": "xyz",
+                                "ContactName": "",
+                                "EmailAddress": "",
+                                "Country": "India",
+                                "TimeZone": "(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi"
+                            },
+                            "BillingDetails": {
+                                "CanPurchaseCredits": false,
+                                "Credits": 0,
+                                "BaseDeliveryRate": 5,
+                                "BaseRatePerRecipient": 1,
+                                "BaseDesignSpamTestRate": 5,
+                                "MarkupOnDelivery": 0,
+                                "MarkupPerRecipient": 0,
+                                "MarkupOnDesignSpamTest": 0,
+                                "Currency": "USD",
+                                "ClientPays": false
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "creating_a_client",
+                                "url": "/v3.2/clients.json",
+                                "name": "Creating a client",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "setting_basic_details",
+                                "url": "/v3.2/clients/:_clientid/setbasics.json",
+                                "name": "Setting basic details",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_a_client",
+                                "url": [
+                                    "/v3.2/clients/:_clientid/setbasics.json",
+                                    "/v3.2/clients.json"
+                                ],
+                                "name": "Create or Update a client",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleting_a_client",
+                                "url": "/v3.2/clients/:_clientid.json",
+                                "name": "Deleting a client",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "suppress_email_addresses",
+                                "url": "/v3.2/clients/:_clientid/suppress.json",
+                                "name": "Suppress email addresses",
+                                "method": "POST",
+                                "sampleData": {
+                                    "EmailAddresses": [
+                                        "one@example.com",
+                                        "two@example.com"
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client whose suppression list will have the provided email addresses added to it.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/clients/:_clientid/suppressionlist.json",
+                                        "extract": "Results[0].EmailAddress",
+                                        "id": "getting_suppression_list"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "unsuppress_an_email_address",
+                                "url": "/v3.2/clients/:_clientid/unsuppress.json?email=:_emailID",
+                                "name": "Unsuppress an email address",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "EmailAddresses": [
+                                        "one@example.com",
+                                        "two@example.com"
+                                    ]
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "ClientID",
+                                        "description": "The ID of the client whose suppression list will have the provided email addresses added to it.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "emailID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "setting_payg_billing",
+                                "url": "/v3.2/clients/:_clientid/setpaygbilling.json",
+                                "name": "Setting PAYG billing",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "Currency": "AUD",
+                                    "CanPurchaseCredits": false,
+                                    "ClientPays": true,
+                                    "MarkupPercentage": 20,
+                                    "MarkupOnDelivery": 5,
+                                    "MarkupPerRecipient": 4,
+                                    "MarkupOnDesignSpamTest": 3
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "setting_monthly_billing",
+                                "url": "/v3.2/clients/:_clientid/setmonthlybilling.json",
+                                "name": "Setting monthly billing",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "Currency": "AUD",
+                                    "CanPurchaseCredits": false,
+                                    "ClientPays": true,
+                                    "MarkupPercentage": 20,
+                                    "MarkupOnDelivery": 5,
+                                    "MarkupPerRecipient": 4,
+                                    "MarkupOnDesignSpamTest": 3,
+                                    "MonthlyScheme": "Basic"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "transfer_credits",
+                                "url": "/v3.2/clients/:_clientid/credits.json",
+                                "name": "Transfer credits",
+                                "method": "POST",
+                                "sampleData": {
+                                    "Credits": 200,
+                                    "CanUseMyCreditsWhenTheyRunOut": false
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "adding_a_person",
+                                "url": "/v3.2/clients/:_clientid/people.json",
+                                "name": "Adding a person",
+                                "method": "POST",
+                                "sampleData": {
+                                    "EmailAddress": "p1@gmail.com",
+                                    "Name": "p1",
+                                    "AccessLevel": 8415,
+                                    "Status": "Waiting to Accept the Invitation"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/clients/:_clientid/people.json",
+                                        "extract": "EmailAddress",
+                                        "id": "person_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "updating_a_person",
+                                "url": "/v3.2/clients/:_clientid/people.json?email=:_emailID",
+                                "name": "Updating a person",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "EmailAddress": "p1@gmail.com",
+                                    "Name": "p1",
+                                    "AccessLevel": 8415,
+                                    "Status": "Waiting to Accept the Invitation"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "emailID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/clients/:_clientid/people.json",
+                                        "extract": "EmailAddress",
+                                        "id": "person_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_a_person",
+                                "url": [
+                                    "/v3.2/clients/:_clientid/people.json?email=:_emailID",
+                                    "/v3.2/clients/:_clientid/people.json"
+                                ],
+                                "name": "Create or Update a person",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "sampleData": {
+                                    "EmailAddress": "p1@gmail.com",
+                                    "Name": "p1",
+                                    "AccessLevel": 8415,
+                                    "Status": "Waiting to Accept the Invitation"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "emailID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/clients/:_clientid/people.json",
+                                        "extract": "EmailAddress",
+                                        "id": "person_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "deleting_a_person",
+                                "url": "/v3.2/clients/:_clientid/people.json?email=:_emailID",
+                                "name": "Deleting a person",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "EmailAddress": "p1@gmail.com",
+                                    "Name": "p1",
+                                    "AccessLevel": 8415,
+                                    "Status": "Waiting to Accept the Invitation"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "emailID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/clients/:_clientid/people.json",
+                                        "extract": "EmailAddress",
+                                        "id": "person_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "setting_primary_contact_client",
+                                "url": "/v3.2/clients/:_clientid/primarycontact.json?email=:_emailID",
+                                "name": "Setting primary contact",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientid",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "emailID",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "lists",
+                        "name": "Lists",
+                        "sampleData": {
+                            "Title": "Website Subscribers",
+                            "UnsubscribePage": "http://www.example.com/unsubscribed.html",
+                            "UnsubscribeSetting": "AllClientLists",
+                            "ConfirmedOptIn": false,
+                            "ConfirmationSuccessPage": "http://www.example.com/joined.html",
+                            "AddUnsubscribesToSuppList": true,
+                            "ScrubActiveWithSuppList": true
+                        },
+                        "operations": [
+                            {
+                                "id": "creating_a_list",
+                                "url": "/v3.2/lists/:_listid.json",
+                                "name": "Creating a list",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updating_a_list",
+                                "url": "/v3.2/lists/:_listid.json",
+                                "name": "Updating a list",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleting_a_list",
+                                "url": "/v3.2/lists/:_listid.json",
+                                "name": "Deleting a list",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "creating_a_custom_field",
+                                "url": "/v3.2/lists/:_listid/customfields.json",
+                                "name": "Creating a custom field",
+                                "method": "POST",
+                                "sampleData": {
+                                    "FieldName": "Newsletter Format",
+                                    "DataType": "MultiSelectOne",
+                                    "Options": [
+                                        "HTML",
+                                        "Text"
+                                    ],
+                                    "VisibleInPreferenceCenter": true
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updating_a_custom_field",
+                                "url": "/v3.2/lists/:_listid/customfields/:_customfieldkey.json",
+                                "name": "Updating a custom field",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "FieldName": "Newsletter Format",
+                                    "DataType": "MultiSelectOne",
+                                    "Options": [
+                                        "HTML",
+                                        "Text"
+                                    ],
+                                    "VisibleInPreferenceCenter": true
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "customfieldkey",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_a_custom_field",
+                                "url": [
+                                    "/v3.2/lists/:_listid/customfields/:_customfieldkey.json",
+                                    "/v3.2/lists/:_listid/customfields.json"
+                                ],
+                                "name": "Create or Update a custom field",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "sampleData": {
+                                    "FieldName": "Newsletter Format",
+                                    "DataType": "MultiSelectOne",
+                                    "Options": [
+                                        "HTML",
+                                        "Text"
+                                    ],
+                                    "VisibleInPreferenceCenter": true
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "customfieldkey",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleting_a_custom_field",
+                                "url": "/v3.2/lists/:_listid/customfields/:_customfieldkey.json",
+                                "name": "Deleting a custom field",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "FieldName": "Newsletter Format",
+                                    "DataType": "MultiSelectOne",
+                                    "Options": [
+                                        "HTML",
+                                        "Text"
+                                    ],
+                                    "VisibleInPreferenceCenter": true
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "customfieldkey",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updating_custom_field_options",
+                                "url": "/v3.2/lists/:_listid/customfields/:_customfieldkey/options.json",
+                                "name": "Updating custom field options",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "KeepExistingOptions": true,
+                                    "Options": [
+                                        "First Option",
+                                        "Second Option",
+                                        "Third Option"
+                                    ]
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "customfieldkey",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "creating_a_webhook",
+                                "url": "/v3.2/lists/:_listid/webhooks.json",
+                                "name": "Creating a webhook",
+                                "method": "POST",
+                                "sampleData": {
+                                    "Events": [
+                                        "Subscribe"
+                                    ],
+                                    "Url": "http://example.com/subscribe",
+                                    "PayloadFormat": "json"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleting_a_webhook",
+                                "url": "/v3.2/lists/:_listid/webhooks/:_webhookid.json",
+                                "name": "Deleting a webhook",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "Events": [
+                                        "Subscribe"
+                                    ],
+                                    "Url": "http://example.com/subscribe",
+                                    "PayloadFormat": "json"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "webhookid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "activating_a_webhook",
+                                "url": "/v3.2/lists/:_listid/webhooks/:_webhookid/activate.json",
+                                "name": "Activating a webhook",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "Events": [
+                                        "Subscribe"
+                                    ],
+                                    "Url": "http://example.com/subscribe",
+                                    "PayloadFormat": "json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "webhookid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deactivating_a_webhook",
+                                "url": "/v3.2/lists/:_listid/webhooks/:_webhookid/deactivate.json",
+                                "name": "Deactivating a webhook",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "Events": [
+                                        "Subscribe"
+                                    ],
+                                    "Url": "http://example.com/subscribe",
+                                    "PayloadFormat": "json"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "listid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "webhookid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "segments",
+                        "name": "Segments",
+                        "sampleData": {
+                            "Title": "My Segment",
+                            "RuleGroups": [
+                                {
+                                    "Rules": [
+                                        {
+                                            "RuleType": "EmailAddress",
+                                            "Clause": "CONTAINS @domain.com"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Rules": [
+                                        {
+                                            "RuleType": "DateSubscribed",
+                                            "Clause": "AFTER 2009-01-01"
+                                        },
+                                        {
+                                            "RuleType": "DateSubscribed",
+                                            "Clause": "EQUALS 2009-01-01"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "Rules": [
+                                        {
+                                            "RuleType": "DateSubscribed",
+                                            "Clause": "BEFORE 2010-01-01"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "creating_a_segment",
+                                "url": "/v3.2/segments/:_segmentid.json",
+                                "name": "Creating a segment",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "segmentid",
+                                        "name": "List ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updating_a_segment",
+                                "url": "/v3.2/segments/:_segmentid.json",
+                                "name": "Updating a segment",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "segmentid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleting_a_segment",
+                                "url": "/v3.2/segments/:_segmentid.json",
+                                "name": "Deleting a segment",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "segmentid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "adding_a_segment_rulegroup",
+                                "url": "/v3.2/segments/:_segmentid/rules.json",
+                                "name": "Adding a segment rulegroup",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "segmentid",
+                                        "name": "Segment ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleting_a_segments_rules",
+                                "url": "/v3.2/segments/:_segmentid/rules.json",
+                                "name": "Deleting a segment’s rules",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "segmentid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "templates",
+                        "name": "Templates",
+                        "sampleData": {
+                            "Name": "Template Two",
+                            "HtmlPageURL": "http://example.com/index.html",
+                            "ZipFileURL": "http://example.com/files.zip"
+                        },
+                        "operations": [
+                            {
+                                "id": "creating_a_template",
+                                "url": "/v3.2/templates/:_templateid.json",
+                                "name": "Creating a template",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "templateid",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updating_a_template",
+                                "url": "/v3.2/templates/:_templateid.json",
+                                "name": "Updating a template",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "templateid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deleting_a_template",
+                                "url": "/v3.2/templates/:_templateid.json",
+                                "name": "Deleting a template",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "templateid",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactional",
+                        "name": "Transactional",
+                        "operations": [
+                            {
+                                "id": "send_a_smart_email",
+                                "url": "/v3.2/transactional/smartEmail/:_smartEmailID/send",
+                                "name": "Send a smart email",
+                                "method": "POST",
+                                "sampleData": {
+                                    "To": [
+                                        "Joe Smith <joesmith@example.com>",
+                                        "jamesmith@example.com"
+                                    ],
+                                    "CC": null,
+                                    "BCC": [
+                                        "joesmith@example.com"
+                                    ],
+                                    "Attachments": [
+                                        {
+                                            "Content": "base64encoded",
+                                            "Name": "https://www.campaignmonitor.com/assets/uploads/https://www.campaignmonitor.com/assets/uploads/https://www.campaignmonitor.com/assets/uploads/Invoice.pdf",
+                                            "Type": "application/pdf"
+                                        }
+                                    ],
+                                    "Data": {
+                                        "new_password_url": "https://mywebapp.com/newpwd?uid=jguf45h74gf",
+                                        "username": "joesmith1"
+                                    },
+                                    "AddRecipientsToList": true
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "smartEmailID",
+                                        "name": "Smart Email ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/transactional/smartEmail",
+                                        "extract": "ID",
+                                        "id": "smart_email_listing"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "send_classic_email",
+                                "url": "/v3.2/transactional/classicEmail/send?clientID=:_clientId",
+                                "name": "Send classic email",
+                                "method": "POST",
+                                "sampleData": {
+                                    "Subject": "Thanks for signing up to web app 123",
+                                    "From": "Mike Smith <mike@webapp123.com>",
+                                    "ReplyTo": "support@webapp123.com",
+                                    "To": [
+                                        "Joe Smith <joesmith@example.com>",
+                                        "jamesmith@example.com"
+                                    ],
+                                    "CC": [
+                                        "Joe Smith <joesmith@example.com>"
+                                    ],
+                                    "BCC": null,
+                                    "Html": "",
+                                    "Text": "",
+                                    "Attachments": [
+                                        {
+                                            "Type": "application/pdf",
+                                            "Name": "https://www.campaignmonitor.com/assets/uploads/https://www.campaignmonitor.com/assets/uploads/https://www.campaignmonitor.com/assets/uploads/Invoice.pdf",
+                                            "Content": "base64encoded"
+                                        }
+                                    ],
+                                    "TrackOpens": true,
+                                    "TrackClicks": true,
+                                    "InlineCSS": true,
+                                    "Group": "Password Reset",
+                                    "AddRecipientsToListID": "62eaaa0338245ca68e5e93daa6f591e9"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "clientId",
+                                        "name": "Client ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "resend_message",
+                                "url": "/v3.2/transactional/messages/:_messageID/resend",
+                                "name": "Resend message",
+                                "method": "POST",
+                                "sampleData": {
+                                    "MessageID": "ddc697c7-0788-4df3-a71a-a7cb935f00bd",
+                                    "Status": "Delivered",
+                                    "SentAt": "2014-01-15T16:09:19-05:00",
+                                    "SmartEmailID": "c0da9c4c-e7e4-11e4-a74d-6c4008bc7468",
+                                    "CanBeResent": true,
+                                    "Recipient": "Joe Smith <joesmith@example.com>",
+                                    "Message": {
+                                        "From": "Team Webapp <team@webapp123.com>",
+                                        "Subject": "Thanks for signing up to web app 123",
+                                        "To": [
+                                            "Joe Smith <joesmith@example.com>",
+                                            "jamesmith@example.com"
+                                        ],
+                                        "CC": [
+                                            "Joe Smith <joesmith@example.com>"
+                                        ],
+                                        "BCC": "joesmith@example.com",
+                                        "ReplyTo": "support@webapp123.com",
+                                        "Attachments": [
+                                            {
+                                                "Name": "https://www.campaignmonitor.com/assets/uploads/https://www.campaignmonitor.com/assets/uploads/https://www.campaignmonitor.com/assets/uploads/Invoice.pdf",
+                                                "Type": "application/pdf"
+                                            }
+                                        ],
+                                        "Body": {
+                                            "Html": "...",
+                                            "Text": "..."
+                                        },
+                                        "Data": {
+                                            "new_password_url": "https://mywebapp.com/newpwd?uid=jguf45h74g"
+                                        }
+                                    },
+                                    "TotalOpens": 2,
+                                    "TotalClicks": 4,
+                                    "Opens": [
+                                        {
+                                            "EmailAddress": "jamesmith@example.com",
+                                            "Date": "2009-05-18 16:45:00",
+                                            "IPAddress": "192.168.0.1",
+                                            "Geolocation": {
+                                                "Latitude": -33.8683,
+                                                "Longitude": 151.2086,
+                                                "City": "Sydney",
+                                                "Region": "New South Wales",
+                                                "CountryCode": "AU",
+                                                "CountryName": "Australia"
+                                            },
+                                            "MailClient": {
+                                                "Name": "Apple Mail",
+                                                "Version": "Apple Mail 8"
+                                            }
+                                        }
+                                    ],
+                                    "Clicks": [
+                                        {
+                                            "EmailAddress": "jamesmith@example.com",
+                                            "Date": "2009-05-18 16:45:00",
+                                            "IPAddress": "192.168.0.1",
+                                            "URL": "http://www.myexammple.com/index.html",
+                                            "Geolocation": {
+                                                "Latitude": -33.8683,
+                                                "Longitude": 151.2086,
+                                                "City": "Sydney",
+                                                "Region": "New South Wales",
+                                                "CountryCode": "AU",
+                                                "CountryName": "Australia"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "messageID",
+                                        "name": "Message ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "account",
+                        "name": "Account",
+                        "operations": [
+                            {
+                                "id": "adding_an_administrator",
+                                "url": "/v3.2/admins.json",
+                                "name": "Adding an administrator",
+                                "method": "POST",
+                                "sampleData": {
+                                    "EmailAddress": "celigo-labs@celigo.com",
+                                    "Name": "Celigo Labs",
+                                    "Status": "Active"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/admins.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_administrator_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "updating_an_administrator",
+                                "url": "/v3.2/admins.json?email=:_email",
+                                "name": "Updating an administrator",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "EmailAddress": "sam@sparrow.com",
+                                    "Name": "Sam Sparrow"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "email",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/admins.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_administrator_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_an_administrator",
+                                "url": [
+                                    "/v3.2/admins.json?email=:_email",
+                                    "/v3.2/admins.json"
+                                ],
+                                "name": "Create or Update an administrator",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "email",
+                                        "required": true,
+                                        "name": "Email Id",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v3.2/admins.json",
+                                        "extract": "EmailAddress",
+                                        "id": "getting_administrator_details"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "deleting_an_administrator",
+                                "url": "/v3.2/admins.json?email=:_email",
+                                "name": "Deleting an administrator",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "email",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "setting_primary_contact",
+                                "url": "/v3.2/primarycontact.json?email=:_email",
+                                "name": "Setting primary contact",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "email",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

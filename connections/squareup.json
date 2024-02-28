@@ -1,0 +1,2864 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "token",
+            "pageArgument": "cursor",
+            "nextPagePath": "cursor"
+        },
+        "allowUndefinedResource": true,
+        "urlResolution": [
+            "/v2/locations",
+            "/v2/customers",
+            "/v2/customers/:_customer_id",
+            "/v2/catalog/list",
+            "/v2/catalog/info",
+            "/v2/catalog/object/:_object_id",
+            "/v2/catalog/search",
+            "/v2/locations/:_location_id/transactions",
+            "/v2/locations/:_location_id/transactions/:_transaction_id",
+            "/v2/locations/:_location_id/refunds"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "locations",
+                        "name": "Locations",
+                        "endpoints": [
+                            {
+                                "url": "/v2/locations",
+                                "name": "List Locations",
+                                "resourcePath": "locations",
+                                "doesNotSupportPaging": true,
+                                "id": "listlocations"
+                            },
+                            {
+                                "id": "retrievelocation",
+                                "url": "/v2/locations/:_location_id",
+                                "name": "Retrieve location",
+                                "resourcePath": "location",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "location_id",
+                                        "name": "location_id ",
+                                        "description": "The ID of the location to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "endpoints": [
+                            {
+                                "url": "/v2/customers",
+                                "name": "ListCustomers",
+                                "resourcePath": "customers",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "sort_field",
+                                        "name": "sort_field",
+                                        "description": "Indicates how Customers should be sorted. Default: DEFAULT.",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "sort_order",
+                                        "name": "sort_order",
+                                        "description": "Indicates whether Customers should be sorted in ascending (ASC) or descending (DESC) order. Default:  ASC.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "DESC",
+                                            "ASC"
+                                        ]
+                                    }
+                                ],
+                                "id": "listcustomers"
+                            },
+                            {
+                                "url": "/v2/customers/:_customer_id",
+                                "name": "RetrieveCustomer",
+                                "resourcePath": "customer",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "name": "customer_id ",
+                                        "description": "The ID of the customer to retrieve.",
+                                        "required": true
+                                    }
+                                ],
+                                "id": "retrievecustomer"
+                            },
+                            {
+                                "id": "search_customers",
+                                "name": "Search Customers",
+                                "url": "/v2/customers/search",
+                                "method": "POST",
+                                "resourcePath": "customers",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "query.filter.updated_at.start_at": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "postBody": {
+                                    "limit": 100
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": "{{#if data._PARENT.cursor}}\n {\n   {{#each export.rest.postBody}}\n   \"{{@key}}\": {{{jsonSerialize this}}},\n   {{/each}}\n \"cursor\":\"{{data._PARENT.cursor}}\"\n }\n {{/if}}\n"
+                                },
+                                "allowUndefinedResource": true,
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "query.filter.created_at.start_at",
+                                        "name": "created_at.start_at",
+                                        "description": "A datetime value in RFC-3339 format indicating when the time range starts.",
+                                        "type": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.created_at.end_​at",
+                                        "name": "created_at.end_​at",
+                                        "description": "A datetime value in RFC-3339 format indicating when the time range ends.",
+                                        "type": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.creation_source.rule",
+                                        "name": "creation_source.rule",
+                                        "description": "Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "INCLUDE",
+                                            "EXCLUDE"
+                                        ]
+                                    },
+                                    {
+                                        "id": "query.filter.creation_source.values",
+                                        "name": "creation_source.values",
+                                        "description": "The list of creation sources used as filtering criteria.",
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "query.filter.email_address.exact",
+                                        "name": "email_address.exact",
+                                        "description": "Use the exact filter to select customers whose attributes match exactly the specified query.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.email_address.fuzzy",
+                                        "name": "email_address.fuzzy",
+                                        "description": "Use the fuzzy filter to select customers whose attributes match the specified query in a fuzzy manner. When the fuzzy option is used, search queries are tokenized, and then each query token must be matched somewhere in the searched attribute. For single token queries, this is effectively the same behavior as a partial match operation.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.group_ids.all",
+                                        "name": "group_ids.all",
+                                        "description": "A list of terms that must be present on the field of the resource.",
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "query.filter.group_ids.any",
+                                        "name": "group_ids.any",
+                                        "description": "A list of terms where at least one of them must be present on the field of the resource.",
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "query.filter.group_ids.none",
+                                        "name": "group_ids.none",
+                                        "description": "A list of terms that must not be present on the field the resource",
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "query.filter.phone_number.exact",
+                                        "name": "phone_number.exact",
+                                        "description": "Use the exact filter to select customers whose attributes match exactly the specified query.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.phone_number.fuzzy",
+                                        "name": "phone_number.fuzzy",
+                                        "description": "Use the fuzzy filter to select customers whose attributes match the specified query in a fuzzy manner. When the fuzzy option is used, search queries are tokenized, and then each query token must be matched somewhere in the searched attribute. For single token queries, this is effectively the same behavior as a partial match operation.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.reference_id.exact",
+                                        "name": "reference_id.exact",
+                                        "description": "Use the exact filter to select customers whose attributes match exactly the specified query.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.reference_id.fuzzy",
+                                        "name": "reference_id.fuzzy",
+                                        "description": "Use the fuzzy filter to select customers whose attributes match the specified query in a fuzzy manner. When the fuzzy option is used, search queries are tokenized, and then each query token must be matched somewhere in the searched attribute. For single token queries, this is effectively the same behavior as a partial match operation.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.updated_at.start_at",
+                                        "name": "updated_at.start_at",
+                                        "description": "A datetime value in RFC-3339 format indicating when the time range starts.",
+                                        "type": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.updated_at.end_​at",
+                                        "name": "updated_at.end_​at",
+                                        "description": "A datetime value in RFC-3339 format indicating when the time range ends.",
+                                        "type": "input"
+                                    },
+                                    {
+                                        "id": "query.sort.sort_field",
+                                        "name": "sort_field",
+                                        "description": "Use one or more customer attributes as the sort key to sort searched customer profiles. For example, use creation date (created_at) of customers or default attributes as the sort key. Default: DEFAULT.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "DEFAULT",
+                                            "CREATED_AT"
+                                        ]
+                                    },
+                                    {
+                                        "id": "query.sort.sort_order",
+                                        "name": "sort_order",
+                                        "description": "Indicates the order in which results should be sorted based on the sort field value. Strings use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. Default: ASC.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ASC",
+                                            "DESC"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "cards",
+                        "name": "Cards",
+                        "endpoints": [
+                            {
+                                "url": "/v2/cards",
+                                "name": "ListCards",
+                                "resourcePath": "cards",
+                                "queryParameters": [
+                                    {
+                                        "id": "cursor",
+                                        "name": "cursor",
+                                        "description": "A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query."
+                                    },
+                                    {
+                                        "id": "customer_id",
+                                        "name": "customer_id",
+                                        "description": "The ID of the customer to retrieve."
+                                    },
+                                    {
+                                        "id": "include_disabled",
+                                        "name": "include_disabled",
+                                        "description": "Includes disabled cards. By default, all enabled cards owned by the merchant are returned.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "reference_id",
+                                        "name": "reference_id",
+                                        "description": "Limit results to cards associated with the reference_id supplied."
+                                    },
+                                    {
+                                        "id": "sort_order",
+                                        "name": "sort_order",
+                                        "description": "Sorts the returned list by when the card was created with the specified order. This field defaults to ASC.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ASC",
+                                            "DESC"
+                                        ]
+                                    }
+                                ],
+                                "id": "listcards"
+                            },
+                            {
+                                "url": "/v2/cards/:_card_id",
+                                "name": "RetrieveCard",
+                                "resourcePath": "card",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "card_id",
+                                        "name": "Card ID",
+                                        "description": "Unique ID for the desired Card.",
+                                        "required": true
+                                    }
+                                ],
+                                "id": "retrievecard"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "catalog",
+                        "name": "Catalog",
+                        "endpoints": [
+                            {
+                                "url": "/v2/catalog/list",
+                                "name": "ListCatalog",
+                                "resourcePath": "objects",
+                                "queryParameters": [
+                                    {
+                                        "id": "types",
+                                        "name": "Types",
+                                        "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example ITEM,ITEM_VARIATION,CATEGORY etc.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ITEM",
+                                            "CATEGORY",
+                                            "ITEM_VARIATION",
+                                            "TAX",
+                                            "DISCOUNT",
+                                            "MODIFIER_LIST",
+                                            "MODIFIER"
+                                        ]
+                                    }
+                                ],
+                                "id": "listcatalog"
+                            },
+                            {
+                                "url": "/v2/catalog/info",
+                                "name": "CatalogInfo",
+                                "resourcePath": "limits",
+                                "doesNotSupportPaging": true,
+                                "id": "cataloginfo"
+                            },
+                            {
+                                "url": "/v2/catalog/object/:_object_id",
+                                "name": "RetrieveCatalogObject",
+                                "resourcePath": "object",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "object_id",
+                                        "name": "object_id",
+                                        "description": "The object ID of any type of CatalogObjects to be retrieved.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include_related_objects",
+                                        "name": "include_related_objects",
+                                        "description": "If true, the response will include additional objects that are related to the requested object,Default value: false.",
+                                        "fieldType": "select",
+                                        "type": "boolean",
+                                        "options": [
+                                            true,
+                                            false
+                                        ]
+                                    }
+                                ],
+                                "id": "retrievecatalogobject"
+                            },
+                            {
+                                "name": "SearchCatalogObjects",
+                                "url": "/v2/catalog/search",
+                                "method": "POST",
+                                "resourcePath": "objects",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "begin_time": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "postBody": {
+                                    "limit": 100
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": "{{#if data._PARENT.cursor}}\n {\n   {{#each export.rest.postBody}}\n   \"{{@key}}\": {{{jsonSerialize this}}},\n   {{/each}}\n \"cursor\":\"{{data._PARENT.cursor}}\"\n }\n {{/if}}\n"
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "query.prefix_query.attribute_name",
+                                        "name": "Attribute Name",
+                                        "description": "The name of the attribute to be searched.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "query.prefix_query.attribute_prefix",
+                                        "name": "Attribute Prefix",
+                                        "description": "The desired prefix of the search attribute value.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "begin_time",
+                                        "name": "begin_time",
+                                        "description": "Return objects modified after this timestamp, in RFC 3339 format."
+                                    },
+                                    {
+                                        "id": "include_deleted_objects",
+                                        "name": "include_deleted_objects",
+                                        "description": "If true, deleted objects will be included in the results. Deleted objects will have their is_deleted field set to  true",
+                                        "fieldType": "select",
+                                        "type": "boolean",
+                                        "options": [
+                                            true,
+                                            false
+                                        ]
+                                    },
+                                    {
+                                        "id": "include_related_objects",
+                                        "name": "include_related_objects",
+                                        "description": "If true, the response will include additional objects that are related to the requested object, Default value: false.",
+                                        "fieldType": "select",
+                                        "type": "boolean",
+                                        "options": [
+                                            true,
+                                            false
+                                        ]
+                                    },
+                                    {
+                                        "id": "object_types",
+                                        "name": "object_types",
+                                        "description": "An optional case-insensitive, comma-separated list of object types to retrieve, for example ITEM,ITEM_VARIATION,CATEGORY etc.",
+                                        "fieldType": "multiselect",
+                                        "required": true,
+                                        "type": "array",
+                                        "options": [
+                                            "ITEM",
+                                            "ITEM_VARIATION",
+                                            "CATEGORY",
+                                            "DISCOUNT",
+                                            "TAX",
+                                            "MODIFIER",
+                                            "MODIFIER_LIST"
+                                        ]
+                                    }
+                                ],
+                                "id": "searchcatalogobjects"
+                            },
+                            {
+                                "id": "batchretrievecatalogobjects",
+                                "name": "BatchRetrieveCatalogObjects",
+                                "url": "/v2/catalog/batch-retrieve",
+                                "method": "POST",
+                                "resourcePath": "objects",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "postBody": {},
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": "{{#if data._PARENT.cursor}}\n {\n   {{#each export.rest.postBody}}\n   \"{{@key}}\": {{{jsonSerialize this}}},\n   {{/each}}\n \"cursor\":\"{{data._PARENT.cursor}}\"\n }\n {{/if}}\n"
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "object_ids",
+                                        "name": "object_ids",
+                                        "description": "The IDs of the CatalogObjects to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "include_related_objects",
+                                        "name": "include_related_objects",
+                                        "description": "If true, the response will include additional objects that are related to the requested object, Default value: false.",
+                                        "fieldType": "select",
+                                        "type": "boolean",
+                                        "options": [
+                                            true,
+                                            false
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "endpoints": [
+                            {
+                                "id": "batchretrieveinventorychanges",
+                                "name": "BatchRetrieveInventoryChanges",
+                                "url": "/v2/inventory/batch-retrieve-changes",
+                                "method": "POST",
+                                "resourcePath": "changes",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "postBody": {},
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": "{{#if data._PARENT.cursor}}\n {\n   {{#each export.rest.postBody}}\n   \"{{@key}}\": {{{jsonSerialize this}}},\n   {{/each}}\n \"cursor\":\"{{data._PARENT.cursor}}\"\n }\n {{/if}}\n"
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "catalog_object_ids",
+                                        "name": "catalog_object_ids",
+                                        "description": "Filters results by CatalogObject ID. Only applied when set. Default: unset.",
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "location_ids",
+                                        "name": "location_ids",
+                                        "description": "Filters results by Location ID. Only applied when set. Default: unset.",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "types",
+                                        "name": "types",
+                                        "description": "Filters results by InventoryChangeType. Default: [PHYSICAL_COUNT, ADJUSTMENT]. TRANSFER is not supported as a filter. See InventoryChangeType for possible values",
+                                        "fieldType": "multiselect",
+                                        "required": false,
+                                        "options": [
+                                            "PHYSICAL_COUNT",
+                                            "ADJUSTMENT"
+                                        ]
+                                    },
+                                    {
+                                        "id": "states",
+                                        "name": "states",
+                                        "description": "Filters ADJUSTMENT query results by InventoryState. Only applied when set. Default: unset. See InventoryState for possible values.",
+                                        "fieldType": "multiselect",
+                                        "required": false,
+                                        "options": [
+                                            "IN_STOCK",
+                                            "SOLD",
+                                            "RETURNED_BY_CUSTOMER",
+                                            "RESERVED_FOR_SALE",
+                                            "SOLD_ONLINE",
+                                            "ORDERED_FROM_VENDOR",
+                                            "RECEIVED_FROM_VENDOR",
+                                            "IN_TRANSIT_TO",
+                                            "NONE",
+                                            "WASTE",
+                                            "UNLINKED_RETURN"
+                                        ]
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "updated_after",
+                                        "description": "Provided as an RFC 3339 timestamp. Returns results whose created_at or calculated_at value is after the given time. Default: UNIX epoch (1970-01-01T00:00:00Z).",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "updated_before",
+                                        "description": "Provided as an RFC 3339 timestamp. Returns results whose created_at or calculated_at value is strictly before the given time. Default: UNIX epoch (1970-01-01T00:00:00Z).",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "batchretrieveinventorycounts",
+                                "name": "BatchRetrieveInventoryCounts",
+                                "url": "/v2/inventory/batch-retrieve-counts",
+                                "method": "POST",
+                                "resourcePath": "counts",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "postBody": {},
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": "{{#if data._PARENT.cursor}}\n {\n   {{#each export.rest.postBody}}\n   \"{{@key}}\": {{{jsonSerialize this}}},\n   {{/each}}\n \"cursor\":\"{{data._PARENT.cursor}}\"\n }\n {{/if}}\n"
+                                },
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "catalog_object_ids",
+                                        "name": "catalog_object_ids",
+                                        "description": "Filters results by CatalogObject ID. Only applied when set. Default: unset.",
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "location_ids",
+                                        "name": "location_ids",
+                                        "description": "Filters results by Location ID. Only applied when set. Default: unset.",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "updated_after",
+                                        "description": "Provided as an RFC 3339 timestamp. Returns results whose created_at or calculated_at value is after the given time. Default: UNIX epoch (1970-01-01T00:00:00Z).",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieveinventoryadjustment",
+                                "name": "RetrieveInventoryAdjustment",
+                                "url": "/v2/inventory/adjustment/:_adjustment_id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "adjustment",
+                                "pathParameters": [
+                                    {
+                                        "id": "adjustment_id",
+                                        "name": "adjustment_id",
+                                        "required": true,
+                                        "description": "ID of the InventoryAdjustment to retrieve."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieveinventorychange",
+                                "name": "RetrieveInventoryChanges",
+                                "url": "/v2/inventory/:_catalog_object_id/changes",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "changes",
+                                "pathParameters": [
+                                    {
+                                        "id": "catalog_object_id",
+                                        "name": "catalog_object_id",
+                                        "required": true,
+                                        "description": "ID of the CatalogObject to retrieve."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieveinventorycount",
+                                "name": "RetrieveInventoryCount",
+                                "url": "/v2/inventory/:_catalog_object_id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "counts",
+                                "pathParameters": [
+                                    {
+                                        "id": "catalog_object_id",
+                                        "name": "catalog_object_id",
+                                        "required": true,
+                                        "description": "ID of the CatalogObject to retrieve."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieveinventoryphysicalcount",
+                                "name": "RetrieveInventoryPhysicalCount",
+                                "url": "/v2/inventory/physical-count/:_physical_count_id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "count",
+                                "pathParameters": [
+                                    {
+                                        "id": "physical_count_id",
+                                        "name": "physical_count_id",
+                                        "required": true,
+                                        "description": "ID of the InventoryPhysicalCount to retrieve."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "labor",
+                        "name": "Labor",
+                        "endpoints": [
+                            {
+                                "id": "getbreaktype",
+                                "name": "GetBreakType",
+                                "url": "/v2/labor/break-types/:_id",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "UUID for the BreakType being retrieved.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getshift",
+                                "name": "GetShift",
+                                "url": "/v2/labor/shifts/:_id",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "UUID for the Shift being retrieved.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "listbreaktypes",
+                                "name": "ListBreakTypes",
+                                "url": "/v2/labor/break-types",
+                                "resourcePath": "break_types",
+                                "queryParameters": [
+                                    {
+                                        "id": "location_id",
+                                        "name": "location_id",
+                                        "description": "Filter Break Types returned to only those that are associated with the specified location."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "listworkweekconfigs",
+                                "name": "ListWorkweekConfigs",
+                                "url": "/v2/labor/workweek-configs",
+                                "resourcePath": "workweek_configs"
+                            },
+                            {
+                                "name": "SearchShifts",
+                                "id": "searchshifts",
+                                "url": "/v2/labor/shifts/search",
+                                "method": "POST",
+                                "resourcePath": "shifts",
+                                "postBody": {
+                                    "limit": 100
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": "{{#if data._PARENT.cursor}}\n{\n \"cursor\":\"{{data._PARENT.cursor}}\",\n \"limit\":100\n}\n{{/if}}"
+                                },
+                                "mergePostBodyToPagingPostBody": true
+                            },
+                            {
+                                "id": "list_team_member_wages",
+                                "name": "List team member wages",
+                                "url": "/v2/labor/team-member-wages",
+                                "resourcePath": "team_member_wages",
+                                "queryParameters": [
+                                    {
+                                        "id": "team_member_id",
+                                        "name": "team_member_id",
+                                        "description": "Filter wages returned to only those that are associated with the specified team member."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_team_member_wage",
+                                "name": "Get team member wage",
+                                "url": "/v2/labor/team-member-wages/:_team_member_wage_id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "team_member_wage",
+                                "pathParameters": [
+                                    {
+                                        "id": "team_member_wage_id",
+                                        "name": "Team member wage ID",
+                                        "description": "UUID for the TeamMemberWage being retrieved."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "endpoints": [
+                            {
+                                "url": "/v2/locations/:_loactionid/orders/batch-retrieve",
+                                "name": "BatchRetrieveOrders",
+                                "method": "POST",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "loactionid",
+                                        "name": "Location ID",
+                                        "required": true
+                                    }
+                                ],
+                                "bodyParameters": [
+                                    {
+                                        "id": "order_ids",
+                                        "name": "Order IDS",
+                                        "required": true,
+                                        "description": "The IDs of the orders to retrieve. A maximum of 100 orders can be retrieved per request.",
+                                        "type": "array"
+                                    }
+                                ],
+                                "id": "batchorders"
+                            },
+                            {
+                                "id": "retrieveOrder",
+                                "name": "RetrieveOrder",
+                                "url": "/v2/orders/:_order_id",
+                                "resourcePath": "order",
+                                "pathParameters": [
+                                    {
+                                        "id": "order_id",
+                                        "name": "Order ID",
+                                        "description": "The ID of the order to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "SearchOrders",
+                                "name": "SearchOrders",
+                                "url": "/v2/orders/search",
+                                "method": "POST",
+                                "resourcePath": "orders",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "query.filter.date_time_filter.updated_at.start_at": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "postBody": {
+                                    "limit": 100
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": "{{#if data._PARENT.cursor}}\n {\n   {{#each export.rest.postBody}}\n   \"{{@key}}\": {{{jsonSerialize this}}},\n   {{/each}}\n \"cursor\":\"{{data._PARENT.cursor}}\"\n }\n {{/if}}\n"
+                                },
+                                "allowUndefinedResource": true,
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "location_ids",
+                                        "name": "location_ids",
+                                        "description": "The location IDs for the orders to query. All locations must belong to the same merchant.Min: 1 location IDs.Max: 10 location IDs. Enter the value in the following format: [\"80P38AEWQ\"]",
+                                        "fieldType": "input",
+                                        "type": "array",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "query.sort.sort_field",
+                                        "name": "sort_field",
+                                        "description": "The field to sort by.",
+                                        "fieldType": "input",
+                                        "defaultValue": "UPDATED_AT"
+                                    },
+                                    {
+                                        "id": "query.sort.sort_order",
+                                        "name": "sort_order",
+                                        "description": "The chronological order in which results are returned. Defaults to DESC. See SortOrder for possible values.",
+                                        "fieldType": "input",
+                                        "defaultValue": "DESC"
+                                    },
+                                    {
+                                        "id": "query.filter.state_filter.states",
+                                        "name": "states",
+                                        "description": "States to filter for. See OrderState (OPEN, COMPLETED, CANCELED) for possible values. Enter the value in the following format: [\"COMPLETED\"]",
+                                        "type": "array",
+                                        "defaultValue": "[\"COMPLETED\"]"
+                                    },
+                                    {
+                                        "id": "query.filter.date_time_filter.updated_at.start_at",
+                                        "name": "updated_at.start_at",
+                                        "description": "A datetime value in RFC-3339 format indicating when the time range starts.",
+                                        "type": "input"
+                                    },
+                                    {
+                                        "id": "query.filter.date_time_filter.updated_at.end_​at",
+                                        "name": "updated_at.end_​at",
+                                        "description": "A datetime value in RFC-3339 format indicating when the time range ends.",
+                                        "type": "input"
+                                    },
+                                    {
+                                        "id": "return_entries",
+                                        "name": "return_entries",
+                                        "description": "Boolean that controls the format of the search results. If true, SearchOrders will return OrderEntry objects. If false, SearchOrders will return complete Order objects. Default: false.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "bank_accounts",
+                        "name": "Bank Accounts",
+                        "endpoints": [
+                            {
+                                "id": "listbankaccounts",
+                                "url": "/v2/bank-accounts",
+                                "name": "List bank accounts",
+                                "resourcePath": "bank_accounts",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "location_ids",
+                                        "name": "location_ids",
+                                        "description": "Location ID. You can specify this optional filter to retrieve only the linked bank accounts belonging to a specific location.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getbankaccount",
+                                "url": "/v2/bank-accounts/:_bank_account_id",
+                                "name": "Get bank account",
+                                "resourcePath": "bank_account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "bank_account_id",
+                                        "name": "bank_account_id ",
+                                        "description": "Square-issued ID of the desired BankAccount.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getbankaccountbyv1id",
+                                "url": "/v2/bank-accounts/by-v1-id/:_v1_bank_account_id",
+                                "name": "Get bank account by v1 id",
+                                "resourcePath": "bank_account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "v1_bank_account_id",
+                                        "name": "v1_bank_account_id ",
+                                        "description": "Connect V1 ID of the desired BankAccount.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "merchants",
+                        "name": "Merchants",
+                        "endpoints": [
+                            {
+                                "id": "listmerchants",
+                                "url": "/v2/merchants",
+                                "name": "List merchants",
+                                "resourcePath": "merchant",
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "retrievemerchant",
+                                "url": "/v2/merchants/:_merchant_id",
+                                "name": "Retrieve merchant",
+                                "resourcePath": "merchant",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchant_id",
+                                        "name": "merchant_id ",
+                                        "description": "The ID of the merchant to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "payments",
+                        "name": "Payments",
+                        "endpoints": [
+                            {
+                                "id": "listpayments",
+                                "url": "/v2/payments",
+                                "name": "List payments",
+                                "resourcePath": "payments",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "begin_time": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "begin_time",
+                                        "name": "begin_time",
+                                        "description": "Ex: 2016-01-15T00:00:00Z The beginning of the requested reporting period, in RFC 3339 format,Default value: The current time minus one year.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_time",
+                                        "name": "end_time",
+                                        "description": "Ex: 2016-01-15T00:00:00Z  The end of the requested reporting period, in RFC 3339 format,Default value: The current time.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sort_order",
+                                        "name": "sort_order",
+                                        "description": "The order in which results are listed in the response (ASC for oldest first, DESC for newest first),Default value: DESC",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "DESC",
+                                            "ASC"
+                                        ]
+                                    },
+                                    {
+                                        "id": "location_id",
+                                        "name": "location_id",
+                                        "description": "Limit results to the location supplied. By default, results are returned for all locations associated with the merchant.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "total",
+                                        "name": "total",
+                                        "description": "The exact amount in the total_money for a Payment.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "last_4",
+                                        "name": "last_4",
+                                        "description": "The last 4 digits of Payment card.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "card_brand",
+                                        "name": "card_brand",
+                                        "description": "The brand of Payment card. For example, VISA",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getpayment",
+                                "url": "/v2/payments/:_payment_id",
+                                "name": "Get payment",
+                                "resourcePath": "payment",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "payment_id",
+                                        "name": "payment_id ",
+                                        "description": "Unique ID for the desired Payment.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "cash_drawers",
+                        "name": "Cash Drawers",
+                        "endpoints": [
+                            {
+                                "id": "listcashdrawershifts",
+                                "url": "/v2/cash-drawers/shifts",
+                                "name": "List cash drawer shifts",
+                                "resourcePath": "items",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "begin_time",
+                                        "name": "begin_time",
+                                        "description": "Ex: 2016-01-15T00:00:00Z The beginning of the requested reporting period, in RFC 3339 format,Default value: The current time minus one year.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "end_time",
+                                        "name": "end_time",
+                                        "description": "Ex: 2016-01-15T00:00:00Z  The end of the requested reporting period, in RFC 3339 format,Default value: The current time.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "sort_order",
+                                        "name": "sort_order",
+                                        "description": "The order in which results are listed in the response (ASC for oldest first, DESC for newest first),Default value: DESC",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "DESC",
+                                            "ASC"
+                                        ]
+                                    },
+                                    {
+                                        "id": "location_id",
+                                        "name": "location_id",
+                                        "description": "Limit results to the location supplied. By default, results are returned for all locations associated with the merchant.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrievecashdrawershift",
+                                "url": "/v2/cash-drawers/shifts/:_shift_id",
+                                "name": "Retrieve cash drawer shift",
+                                "resourcePath": "cash_drawer_shift",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "location_id",
+                                        "name": "location_id",
+                                        "description": "Limit results to the location supplied. By default, results are returned for all locations associated with the merchant.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "shift_id",
+                                        "name": "shift_id ",
+                                        "description": "The shift ID.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "listcashdrawershiftevents",
+                                "url": "/v2/cash-drawers/shifts/:_shift_id/events",
+                                "name": "List cash drawer shift events",
+                                "resourcePath": "events",
+                                "queryParameters": [
+                                    {
+                                        "id": "location_id",
+                                        "name": "location_id",
+                                        "description": "Limit results to the location supplied. By default, results are returned for all locations associated with the merchant.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "shift_id",
+                                        "name": "shift_id ",
+                                        "description": "The shift ID.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "team",
+                        "name": "Team",
+                        "endpoints": [
+                            {
+                                "id": "searchteammembers",
+                                "name": "Search team members",
+                                "url": "/v2/team-members/search",
+                                "method": "POST",
+                                "resourcePath": "team_members",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "postBody": {
+                                    "limit": 10
+                                },
+                                "paging": {
+                                    "pagingMethod": "postbody",
+                                    "pagingPostBody": "{{#if data._PARENT.cursor}}\n {\n   {{#each export.rest.postBody}}\n   \"{{@key}}\": {{{jsonSerialize this}}},\n   {{/each}}\n \"cursor\":\"{{data._PARENT.cursor}}\"\n }\n {{/if}}\n"
+                                },
+                                "allowUndefinedResource": true,
+                                "mergePostBodyToPagingPostBody": true,
+                                "bodyParameters": [
+                                    {
+                                        "id": "query.filter.location_ids",
+                                        "name": "location_ids",
+                                        "description": "When present, filter by team members assigned to the specified locations. When empty, include team members assigned to any location.",
+                                        "fieldType": "input",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "query.filter.status",
+                                        "name": "status",
+                                        "description": "When present, filter by team members who match the given status. When empty, include team members of all statuses.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ACTIVE",
+                                            "INACTIVE"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieveteammember",
+                                "url": "/v2/team-members/:_team_member_id",
+                                "name": "Retrieve team member",
+                                "resourcePath": "team_member",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "team_member_id",
+                                        "name": "team_member_id ",
+                                        "description": "The ID of the team member to retrieve.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrievewagesetting",
+                                "url": "/v2/team-members/:_team_member_id/wage-setting",
+                                "name": "Retrieve wage setting",
+                                "resourcePath": "wage_setting",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "team_member_id",
+                                        "name": "team_member_id ",
+                                        "description": "The ID of the team member to retrieve wage setting for.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer_groups",
+                        "name": "Customer Groups",
+                        "endpoints": [
+                            {
+                                "id": "list_customer_groups",
+                                "url": "/v2/customers/groups",
+                                "name": "List customer groups",
+                                "resourcePath": "groups",
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "retrieve_customer_group",
+                                "url": "/v2/customers/groups/:_group_id",
+                                "name": "Retrieve customer group",
+                                "resourcePath": "group",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "group_id",
+                                        "name": "Customer Group ID ",
+                                        "description": "The customer group ID.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer_segments",
+                        "name": "Customer Segments",
+                        "endpoints": [
+                            {
+                                "id": "list_customer_segments",
+                                "url": "/v2/customers/segments",
+                                "name": "List customer segments",
+                                "resourcePath": "segments",
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "retrieve_customer_segment",
+                                "url": "/v2/customers/segments/:_segment_id",
+                                "name": "Retrieve customer segment",
+                                "resourcePath": "segment",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "segment_id",
+                                        "name": "Customer Segment ID ",
+                                        "description": "The customer segment ID.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "refunds",
+                        "name": "Refunds",
+                        "endpoints": [
+                            {
+                                "id": "list_payment_refunds",
+                                "url": "/v2/refunds",
+                                "name": "List payment refunds",
+                                "resourcePath": "refunds",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "begin_time": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "allowUndefinedResource": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "begin_time",
+                                        "name": "begin_time",
+                                        "description": "Return objects modified after this timestamp, in RFC 3339 format."
+                                    },
+                                    {
+                                        "id": "end_time",
+                                        "name": "end_time",
+                                        "description": "Return objects modified before this timestamp, in RFC 3339 format."
+                                    },
+                                    {
+                                        "id": "sort_order",
+                                        "name": "sort_order",
+                                        "description": "The order in which results are listed: ascending (ASC) or descending (DESC) order. Default: DESC.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "DESC",
+                                            "ASC"
+                                        ]
+                                    },
+                                    {
+                                        "id": "source_type",
+                                        "name": "source_type",
+                                        "description": "If provided, only refunds with the given source type are returned. CARD - List refunds only for payments where CARD was specified as the payment source. If omitted, refunds are returned regardless of the source type.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "If provided, only refunds with the given status are returned. If omitted, refunds are returned regardless of their status.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "PENDING",
+                                            "COMPLETED",
+                                            "REJECTED",
+                                            "FAILED"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_payment_refund",
+                                "url": "/v2/refunds/:_refund_id",
+                                "name": "Get payment refund",
+                                "resourcePath": "refund",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "refund_id",
+                                        "name": "Refund ID ",
+                                        "description": "The unique ID for the desired PaymentRefund.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v2/customers",
+            "/v2/customers/:_customer_id",
+            "/v2/locations/:_location_id/checkouts",
+            "/v2/locations/:_location_id/transactions",
+            "/v2/locations/:_location_id/transactions/:_transaction_id/refund",
+            "/v2/locations/:_location_id/transactions/:_transaction_id/capture",
+            "/v2/locations/:_location_id/transactions/:_transaction_id/void",
+            "/v2/apple-pay/domains",
+            "/v2/locations/:_location_id/orders",
+            "/v2/catalog/object",
+            "/v2/catalog/object/:_object_id"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "sampleData": {
+                            "idempotency_key": "",
+                            "given_name": "Amelia",
+                            "family_name": "Earhart",
+                            "nickname": "",
+                            "company_name": "",
+                            "email_address": "Amelia.Earhart@example.com",
+                            "address": {
+                                "address_line_1": "500 Electric Ave",
+                                "address_line_2": "Suite 600",
+                                "locality": "New York",
+                                "administrative_district_level_1": "NY",
+                                "postal_code": "10003",
+                                "country": "US"
+                            },
+                            "phone_number": "1-212-555-4240",
+                            "version": "1",
+                            "reference_id": "YOUR_REFERENCE_ID",
+                            "note": "a customer",
+                            "creation_source": "THIRD_PARTY",
+                            "birthday": "",
+                            "tax_ids": "IE3426675K"
+                        },
+                        "operations": [
+                            {
+                                "name": "CreateCustomer",
+                                "url": "/v2/customers",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "id": "createcustomer",
+                                "requiredMappings": [
+                                    "email_address"
+                                ]
+                            },
+                            {
+                                "name": "UpdateCustomer",
+                                "url": "/v2/customers/:_customer_id",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "isIdentifier": true,
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "id": "updatecustomer"
+                            },
+                            {
+                                "name": "Create Or Update Customer",
+                                "url": [
+                                    "/v2/customers/:_customer_id",
+                                    "/v2/customers"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "id": "createorupdatecustomer",
+                                "requiredMappings": [
+                                    "email_address"
+                                ]
+                            },
+                            {
+                                "name": "DeleteCustomer",
+                                "url": "/v2/customers/:_customer_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "id": "deletecustomer"
+                            },
+                            {
+                                "id": "add_group_to_customer",
+                                "name": "Add group to customer",
+                                "url": "/v2/customers/:_customer_id/groups/:_group_id",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "name": "Customer ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Customer Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "Remove_group_from_customer",
+                                "name": "Remove group from customer",
+                                "url": "/v2/customers/:_customer_id/groups/:_group_id",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "name": "Customer ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Customer Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "checkout",
+                        "name": "Checkout",
+                        "sampleData": {
+                            "idempotency_key": "86ae1696-b1e3-4328-af6d-f1e04d947ad6",
+                            "order": {
+                                "reference_id": "reference_id",
+                                "line_items": [
+                                    {
+                                        "name": "Printed T Shirt",
+                                        "quantity": "2",
+                                        "base_price_money": {
+                                            "amount": 1500,
+                                            "currency": "USD"
+                                        },
+                                        "discounts": [
+                                            {
+                                                "name": "$3 off Customer Discount",
+                                                "percentage": "7",
+                                                "amount_money": {
+                                                    "amount": 300,
+                                                    "currency": "USD"
+                                                }
+                                            }
+                                        ],
+                                        "taxes": [
+                                            {
+                                                "name": "Fair Trade Tax",
+                                                "percentage": "5"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "discounts": [
+                                    {
+                                        "name": "Father's day 12% OFF",
+                                        "percentage": "12"
+                                    },
+                                    {
+                                        "name": "Global Sales $55 OFF",
+                                        "amount_money": {
+                                            "amount": 5500,
+                                            "currency": "USD"
+                                        }
+                                    }
+                                ],
+                                "taxes": [
+                                    {
+                                        "name": "Sales Tax",
+                                        "percentage": "8.5"
+                                    }
+                                ]
+                            },
+                            "additional_recipients": [
+                                {
+                                    "location_id": "057P5VYJ4A5X1",
+                                    "description": "Application fees",
+                                    "amount_money": {
+                                        "amount": 60,
+                                        "currency": "USD"
+                                    }
+                                }
+                            ],
+                            "ask_for_shipping_address": true,
+                            "merchant_support_email": "merchant+support@website.com",
+                            "pre_populate_buyer_email": "example@email.com",
+                            "pre_populate_shipping_address": {
+                                "address_line_1": "1455 Market St.",
+                                "address_line_2": "Suite 600",
+                                "locality": "San Francisco",
+                                "administrative_district_level_1": "CA",
+                                "postal_code": "94103",
+                                "country": "US",
+                                "first_name": "Jane",
+                                "last_name": "Doe"
+                            },
+                            "redirect_url": "https://merchant.website.com/order-confirm"
+                        },
+                        "operations": [
+                            {
+                                "name": "CreateCheckout",
+                                "url": "/v2/locations/:_location_id/checkouts",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "location_id",
+                                        "name": "Location Id",
+                                        "description": "The ID of the business location to associate the checkout with.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "id": "createcheckout"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "catalog",
+                        "name": "Catalog",
+                        "operations": [
+                            {
+                                "id": "upsert_catalogobject",
+                                "name": "UpsertCatalogObject",
+                                "url": "/v2/catalog/object",
+                                "method": "POST",
+                                "description": "Creates or updates the target CatalogObject.",
+                                "supportIgnoreExisting": true,
+                                "requiredMappings": [
+                                    "idempotency_key",
+                                    "object.type",
+                                    "object.id",
+                                    "object.item_data.name"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "idempotency_key": "af3d1adc-7212-4201-b413-0bfc5314a5ae",
+                                    "object": {
+                                        "type": "ITEM",
+                                        "id": "#nt",
+                                        "updated_at": "2018-06-29T08:08:28.131Z",
+                                        "version": 1530259708131,
+                                        "is_deleted": false,
+                                        "present_at_all_locations": true,
+                                        "item_data": {
+                                            "name": "Cocoa",
+                                            "description": "Hot chocolate",
+                                            "abbreviation": "Ch",
+                                            "visibility": "PRIVATE",
+                                            "variations": [
+                                                {
+                                                    "type": "ITEM_VARIATION",
+                                                    "id": "#Nishi 10",
+                                                    "item_variation_data": {
+                                                        "name": "Nishitha",
+                                                        "pricing_type": "FIXED_PRICING",
+                                                        "price_money": {
+                                                            "amount": 1000000,
+                                                            "currency": "USD"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "item_modifier": {
+                                            "name": "Almond Milk",
+                                            "price_money": {
+                                                "amount": 250,
+                                                "currency": "USD"
+                                            }
+                                        },
+                                        "modifier_list_data": {
+                                            "name": "Milk Type",
+                                            "selection_type": "SINGLE",
+                                            "modifiers": [
+                                                {
+                                                    "type": "MODIFIER",
+                                                    "present_at_all_locations": true,
+                                                    "item_modifier": {
+                                                        "name": "Whole Milk",
+                                                        "price_money": {
+                                                            "amount": 0,
+                                                            "currency": "USD"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "MODIFIER",
+                                                    "present_at_all_locations": true,
+                                                    "item_modifier": {
+                                                        "name": "Almond Milk",
+                                                        "price_money": {
+                                                            "amount": 250,
+                                                            "currency": "USD"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "MODIFIER",
+                                                    "present_at_all_locations": true,
+                                                    "item_modifier": {
+                                                        "name": "Soy Milk",
+                                                        "price_money": {
+                                                            "amount": 250,
+                                                            "currency": "USD"
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "category_data": {
+                                            "name": "Beverages"
+                                        },
+                                        "discount_data": {
+                                            "name": "Welcome to the Dark(Roast) Side!",
+                                            "discount_type": "FIXED_PERCENTAGE",
+                                            "percentage": "5.4",
+                                            "pin_required": false,
+                                            "label_color": "red"
+                                        },
+                                        "tax_data": {
+                                            "name": "Sales Tax",
+                                            "calculation_phase": "TAX_SUBTOTAL_PHASE",
+                                            "inclusion_type": "ADDITIVE",
+                                            "percentage": "5.0",
+                                            "fee_applies_to_custom_amounts": true,
+                                            "enabled": true
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "name": "DeleteCatalogObject",
+                                "url": "/v2/catalog/object/:_object_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "id": "deletecatalogobject"
+                            },
+                            {
+                                "id": "updateitemmodifierlists",
+                                "name": "UpdateItemModifierLists",
+                                "url": "/v2/catalog/update-item-modifier-lists",
+                                "method": "POST",
+                                "sampleData": {
+                                    "item_ids": [
+                                        "H42BRLUJ5KTZTTMPVSLFAACQ",
+                                        "2JXOBJIHCWBQ4NZ3RIXQGJA6"
+                                    ],
+                                    "modifier_lists_to_enable": [
+                                        "H42BRLUJ5KTZTTMPVSLFAACQ",
+                                        "2JXOBJIHCWBQ4NZ3RIXQGJA6"
+                                    ],
+                                    "modifier_lists_to_disable": [
+                                        "7WRC16CJZDVLSNDQ35PP6YAD"
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "item_ids"
+                                ]
+                            },
+                            {
+                                "id": "updateitemtaxes",
+                                "name": "UpdateItemTaxes",
+                                "url": "/v2/catalog/update-item-taxes",
+                                "method": "POST",
+                                "sampleData": {
+                                    "item_ids": [
+                                        "H42BRLUJ5KTZTTMPVSLFAACQ",
+                                        "2JXOBJIHCWBQ4NZ3RIXQGJA6"
+                                    ],
+                                    "taxes_to_enable": [
+                                        "4WRCNHCJZDVLSNDQ35PP6YAD"
+                                    ],
+                                    "taxes_to_disable": [
+                                        "AQCEGCEBBQONINDOHRGZISEX"
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "item_ids"
+                                ]
+                            },
+                            {
+                                "id": "batchdeletecatalogobjects",
+                                "name": "Batchdeletecatalogobjects",
+                                "url": "/v2/catalog/batch-delete",
+                                "method": "POST",
+                                "sampleData": {
+                                    "object_ids": [
+                                        "W62UWFY35CWMYGVWK6TWJDNI",
+                                        "AA27W3M2GGTF3H6AVPNB77CK"
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "object_ids"
+                                ]
+                            },
+                            {
+                                "id": "batch_upsert_catalogobjects",
+                                "name": "BatchUpsertCatalogObjects",
+                                "url": "/v2/catalog/batch-upsert",
+                                "method": "POST",
+                                "sampleData": {
+                                    "idempotency_key": "789ff020-f723-43a9-b4b5-43b5dc1fa3dc",
+                                    "batches": [
+                                        {
+                                            "objects": [
+                                                {
+                                                    "type": "ITEM",
+                                                    "id": "#Tea",
+                                                    "present_at_all_locations": true,
+                                                    "item_data": {
+                                                        "name": "Tea",
+                                                        "description": "Hot Leaf Juice",
+                                                        "category_id": "#Beverages",
+                                                        "tax_ids": [
+                                                            "#SalesTax"
+                                                        ],
+                                                        "variations": [
+                                                            {
+                                                                "type": "ITEM_VARIATION",
+                                                                "id": "#Tea_Mug",
+                                                                "present_at_all_locations": true,
+                                                                "item_variation_data": {
+                                                                    "item_id": "#Tea",
+                                                                    "name": "Mug",
+                                                                    "pricing_type": "FIXED_PRICING",
+                                                                    "price_money": {
+                                                                        "amount": 150,
+                                                                        "currency": "USD"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "ITEM",
+                                                    "id": "#Coffee",
+                                                    "present_at_all_locations": true,
+                                                    "item_data": {
+                                                        "name": "Coffee",
+                                                        "description": "Hot Bean Juice",
+                                                        "category_id": "#Beverages",
+                                                        "tax_ids": [
+                                                            "#SalesTax"
+                                                        ],
+                                                        "variations": [
+                                                            {
+                                                                "type": "ITEM_VARIATION",
+                                                                "id": "#Coffee_Regular",
+                                                                "present_at_all_locations": true,
+                                                                "item_variation_data": {
+                                                                    "item_id": "#Coffee",
+                                                                    "name": "Regular",
+                                                                    "pricing_type": "FIXED_PRICING",
+                                                                    "price_money": {
+                                                                        "amount": 250,
+                                                                        "currency": "USD"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "ITEM_VARIATION",
+                                                                "id": "#Coffee_Large",
+                                                                "present_at_all_locations": true,
+                                                                "item_variation_data": {
+                                                                    "item_id": "#Coffee",
+                                                                    "name": "Large",
+                                                                    "pricing_type": "FIXED_PRICING",
+                                                                    "price_money": {
+                                                                        "amount": 350,
+                                                                        "currency": "USD"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "CATEGORY",
+                                                    "id": "#Beverages",
+                                                    "present_at_all_locations": true,
+                                                    "category_data": {
+                                                        "name": "Beverages"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "TAX",
+                                                    "id": "#SalesTax",
+                                                    "present_at_all_locations": true,
+                                                    "tax_data": {
+                                                        "name": "Sales Tax",
+                                                        "calculation_phase": "TAX_SUBTOTAL_PHASE",
+                                                        "inclusion_type": "ADDITIVE",
+                                                        "percentage": "5.0",
+                                                        "applies_to_custom_amounts": true,
+                                                        "enabled": true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "requiredMappings": [
+                                    "idempotency_key",
+                                    "batches[*].objects[*].id",
+                                    "batches[*].objects[*].type"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "applepay",
+                        "name": "ApplePay",
+                        "sampleData": {
+                            "domain_name": "example.com"
+                        },
+                        "operations": [
+                            {
+                                "name": "RegisterDomain",
+                                "url": "/v2/apple-pay/domains",
+                                "method": "POST",
+                                "id": "registerdomain",
+                                "requiredMappings": [
+                                    "domain_name"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "operations": [
+                            {
+                                "name": "CreateOrder",
+                                "url": "/v2/locations/:_location_id/orders",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "idempotency_key": "8193148c-9586-11e6-99f9-28cfe92138cf",
+                                    "order": {
+                                        "reference_id": "my-order-001",
+                                        "line_items": [
+                                            {
+                                                "name": "New York Strip Steak",
+                                                "quantity": "1",
+                                                "base_price_money": {
+                                                    "amount": 1599,
+                                                    "currency": "USD"
+                                                }
+                                            },
+                                            {
+                                                "quantity": "2",
+                                                "catalog_object_id": "BEMYCSMIJL46OCDV4KYIKXIB",
+                                                "modifiers": [
+                                                    {
+                                                        "catalog_object_id": "CHQX7Y4KY6N5KINJKZCFURPZ"
+                                                    }
+                                                ],
+                                                "discounts": [
+                                                    {
+                                                        "name": "Sale - $1.00 off",
+                                                        "amount_money": {
+                                                            "amount": 100,
+                                                            "currency": "USD"
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "taxes": [
+                                            {
+                                                "name": "State Sales Tax",
+                                                "percentage": "9"
+                                            }
+                                        ],
+                                        "discounts": [
+                                            {
+                                                "name": "Labor Day Sale",
+                                                "percentage": "5"
+                                            },
+                                            {
+                                                "catalog_object_id": "DB7L55ZH2BGWI4H23ULIWOQ7"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "location_id",
+                                        "name": "Location Id",
+                                        "description": "The ID of the business location to associate the order with.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "id": "createorder",
+                                "requiredMappings": [
+                                    "idempotency_key"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "inventory",
+                        "name": "Inventory",
+                        "operations": [
+                            {
+                                "id": "batchchangeinventory",
+                                "name": "BatchChangeInventory",
+                                "url": "/v2/inventory/batch-change",
+                                "method": "POST",
+                                "sampleData": {
+                                    "idempotency_key": "8fc6a5b0-9fe8-4b46-b46b-2ef95793abbe",
+                                    "changes": [
+                                        {
+                                            "type": "PHYSICAL_COUNT",
+                                            "physical_count": {
+                                                "reference_id": "1536bfbf-efed-48bf-b17d-a197141b2a92",
+                                                "catalog_object_id": "W62UWFY35CWMYGVWK6TWJDNI",
+                                                "state": "IN_STOCK",
+                                                "location_id": "C6W5YS5QM06F5",
+                                                "quantity": "53",
+                                                "employee_id": "LRK57NSQ5X7PUD05",
+                                                "occurred_at": "2016-11-16T22:25:24.878Z"
+                                            }
+                                        }
+                                    ],
+                                    "ignore_unchanged_counts": true
+                                },
+                                "requiredMappings": [
+                                    "idempotency_key",
+                                    "changes[*].type",
+                                    "changes[*].physical_count.catalog_object_id",
+                                    "changes[*].physical_count.state",
+                                    "changes[*].physical_count.location_id",
+                                    "changes[*].physical_count.quantity",
+                                    "changes[*].physical_count.occurred_at"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "labor",
+                        "name": "Labor",
+                        "operations": [
+                            {
+                                "id": "createbreaktype",
+                                "name": "CreateBreakType",
+                                "url": "/v2/labor/break-types",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "sampleData": {
+                                    "idempotency_key": "PAD3NG5KSN2GL",
+                                    "break_type": {
+                                        "location_id": "CGJN03P1D08GF",
+                                        "break_name": "Lunch Break",
+                                        "expected_duration": "PT30M",
+                                        "is_paid": true
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "break_type.location_id",
+                                    "break_type.break_name",
+                                    "break_type.expected_duration",
+                                    "break_type.is_paid"
+                                ]
+                            },
+                            {
+                                "id": "deletebreaktype",
+                                "name": "DeleteBreakType",
+                                "url": "/v2/labor/break-types/:_id",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "UUID for the BreakType being deleted.",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updatebreaktype",
+                                "name": "UpdateBreakType",
+                                "url": "/v2/labor/break-types/:_id",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "sampleData": {
+                                    "break_type": {
+                                        "location_id": "CGJN03P1D08GF",
+                                        "break_name": "Lunch Break",
+                                        "expected_duration": "PT30M",
+                                        "is_paid": true,
+                                        "version": 1
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "break_type.location_id",
+                                    "break_type.break_name",
+                                    "break_type.expected_duration",
+                                    "break_type.is_paid"
+                                ]
+                            },
+                            {
+                                "id": "create_or_updatebreaktype",
+                                "name": "Create or Update BreakType",
+                                "url": [
+                                    "/v2/labor/break-types/:_id",
+                                    "/v2/labor/break-types"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "sampleData": {
+                                    "idempotency_key": "PAD3NG5KSN2GL",
+                                    "break_type": {
+                                        "location_id": "CGJN03P1D08GF",
+                                        "break_name": "Lunch Break",
+                                        "expected_duration": "PT30M",
+                                        "is_paid": true,
+                                        "version": 1
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "break_type.location_id",
+                                    "break_type.break_name",
+                                    "break_type.expected_duration",
+                                    "break_type.is_paid"
+                                ]
+                            },
+                            {
+                                "id": "createshift",
+                                "name": "CreateShift",
+                                "url": "/v2/labor/shifts",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "sampleData": {
+                                    "idempotency_key": "HIDSNG5KS478L",
+                                    "shift": {
+                                        "employee_id": "ormj0jJJZ5OZIzxrZYJI",
+                                        "location_id": "PAA1RJZZKXBFG",
+                                        "start_at": "2019-01-25T03:11:00-05:00",
+                                        "end_at": "2019-01-25T13:11:00-05:00",
+                                        "wage": {
+                                            "title": "Barista",
+                                            "hourly_rate": {
+                                                "amount": 1100,
+                                                "currency": "USD"
+                                            }
+                                        },
+                                        "breaks": [
+                                            {
+                                                "start_at": "2019-01-25T06:11:00-05:00",
+                                                "end_at": "2019-01-25T06:16:00-05:00",
+                                                "break_type_id": "REGS1EQR1TPZ5",
+                                                "name": "Tea Break",
+                                                "expected_duration": "PT5M",
+                                                "is_paid": true
+                                            }
+                                        ]
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "shift.employee_id",
+                                    "shift.location_id",
+                                    "shift.start_at"
+                                ]
+                            },
+                            {
+                                "id": "deleteshift",
+                                "name": "DeleteShift",
+                                "url": "/v2/labor/shifts/:_id",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "UUID for the Shift being deleted.",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updateshift",
+                                "name": "UpdateShift",
+                                "url": "/v2/labor/shifts/:_id",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "shift": {
+                                        "employee_id": "ormj0jJJZ5OZIzxrZYJI",
+                                        "location_id": "PAA1RJZZKXBFG",
+                                        "start_at": "2019-01-25T03:11:00-05:00",
+                                        "end_at": "2019-01-25T13:11:00-05:00",
+                                        "wage": {
+                                            "title": "Barista",
+                                            "hourly_rate": {
+                                                "amount": 1100,
+                                                "currency": "USD"
+                                            }
+                                        },
+                                        "breaks": [
+                                            {
+                                                "start_at": "2019-01-25T06:11:00-05:00",
+                                                "end_at": "2019-01-25T06:16:00-05:00",
+                                                "break_type_id": "REGS1EQR1TPZ5",
+                                                "name": "Tea Break",
+                                                "expected_duration": "PT5M",
+                                                "is_paid": true
+                                            }
+                                        ],
+                                        "version": 1
+                                    }
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "shift.employee_id",
+                                    "shift.location_id",
+                                    "shift.start_at",
+                                    "shift.wage.title",
+                                    "shift.wage.hourly_rate.amount",
+                                    "shift.wage.hourly_rate.currency"
+                                ]
+                            },
+                            {
+                                "id": "create_or_updateshift",
+                                "name": "Create or Update Shift",
+                                "url": [
+                                    "/v2/labor/shifts/:_id",
+                                    "/v2/labor/shifts"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "sampleData": {
+                                    "idempotency_key": "HIDSNG5KS478L",
+                                    "shift": {
+                                        "employee_id": "ormj0jJJZ5OZIzxrZYJI",
+                                        "location_id": "PAA1RJZZKXBFG",
+                                        "start_at": "2019-01-25T03:11:00-05:00",
+                                        "end_at": "2019-01-25T13:11:00-05:00",
+                                        "wage": {
+                                            "title": "Barista",
+                                            "hourly_rate": {
+                                                "amount": 1100,
+                                                "currency": "USD"
+                                            }
+                                        },
+                                        "breaks": [
+                                            {
+                                                "start_at": "2019-01-25T06:11:00-05:00",
+                                                "end_at": "2019-01-25T06:16:00-05:00",
+                                                "break_type_id": "REGS1EQR1TPZ5",
+                                                "name": "Tea Break",
+                                                "expected_duration": "PT5M",
+                                                "is_paid": true
+                                            }
+                                        ],
+                                        "version": 1
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "shift.employee_id",
+                                    "shift.location_id",
+                                    "shift.start_at",
+                                    "shift.wage.title",
+                                    "shift.wage.hourly_rate.amount",
+                                    "shift.wage.hourly_rate.currency"
+                                ]
+                            },
+                            {
+                                "id": "updateworkweekconfig",
+                                "name": "UpdateWorkweekConfig",
+                                "url": "/v2/labor/shifts/:_id",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "workweek_config": {
+                                        "start_of_week": "MON",
+                                        "start_of_day_local_time": "10:00",
+                                        "version": 10
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "UUID for the WorkweekConfig object being updated.",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "workweek_config.start_of_week",
+                                    "workweek_config.start_of_day_local_time"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "locations",
+                        "name": "Locations",
+                        "sampleData": {
+                            "location": {
+                                "business_email": "demo1@test.com",
+                                "description": "Test location",
+                                "name": "Demo location 1",
+                                "address": {
+                                    "address_line_1": "test",
+                                    "address_line_2": "test",
+                                    "country": "US",
+                                    "locality": "Austin",
+                                    "postal_code": "73301",
+                                    "address_line_3": "test",
+                                    "administrative_district_level_1": "test",
+                                    "administrative_district_level_2": "test",
+                                    "administrative_district_level_3": "test",
+                                    "first_name": "test",
+                                    "last_name": "test",
+                                    "organization": "test",
+                                    "sublocality": "test",
+                                    "sublocality_2": "test",
+                                    "sublocality_3": "test"
+                                },
+                                "business_hours": {
+                                    "periods": [
+                                        {
+                                            "day_of_week": "SUN",
+                                            "end_local_time": "2020-01-13T06:43:28.172Z",
+                                            "start_local_time": "2020-01-13T06:43:28.172Z"
+                                        }
+                                    ]
+                                },
+                                "business_name": "test",
+                                "coordinates": {
+                                    "latitude": 35.0118,
+                                    "longitude": -81.9571
+                                },
+                                "facebook_url": "www",
+                                "instagram_username": "www",
+                                "phone_number": "1234567890",
+                                "status": "ACTIVE",
+                                "timezone": "IST",
+                                "language_code": "en-US",
+                                "twitter_username": "test",
+                                "type": "PHYSICAL",
+                                "website_url": "www"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_location",
+                                "url": "/v2/locations",
+                                "name": "Create location",
+                                "supportIgnoreExisting": true,
+                                "method": "POST",
+                                "description": "Creates a location",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "location.name"
+                                ]
+                            },
+                            {
+                                "id": "update_location",
+                                "url": "/v2/locations/:_location_id",
+                                "name": "Update location",
+                                "supportIgnoreMissing": true,
+                                "method": "PUT",
+                                "description": "Updates a location",
+                                "parameters": [
+                                    {
+                                        "id": "location_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdatelocation",
+                                "name": "Create Or Update Location",
+                                "url": [
+                                    "/v2/locations/:_location_id",
+                                    "/v2/locations"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "location_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "location.name"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "payments",
+                        "name": "Payments",
+                        "sampleData": {
+                            "idempotency_key": "4935a656-a929-4792-b97c-8848be85c27c",
+                            "amount_money": {
+                                "amount": 200,
+                                "currency": "USD"
+                            },
+                            "source_id": "ccof:uIbfJXhXETSP197M3GB",
+                            "autocomplete": true,
+                            "customer_id": "VDKXEEKPJN48QDG3BGGFAK05P8",
+                            "location_id": "XK3DBG77NJBFX",
+                            "reference_id": "123456",
+                            "note": "Brief description",
+                            "app_fee_money": {
+                                "amount": 10,
+                                "currency": "USD"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_payment",
+                                "url": "/v2/payments",
+                                "name": "Create payment",
+                                "supportIgnoreExisting": true,
+                                "method": "POST",
+                                "description": "Charges a payment source, for example, a card represented by customer's card on file or a card nonce.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "idempotency_key",
+                                    "amount_money.amount",
+                                    "amount_money.currency",
+                                    "source_id"
+                                ]
+                            },
+                            {
+                                "id": "cancel_payment",
+                                "url": "/v2/payments/:_payment_id/cancel",
+                                "name": "Cancel payment",
+                                "supportIgnoreMissing": true,
+                                "method": "POST",
+                                "description": "Cancels (voids) a payment.",
+                                "parameters": [
+                                    {
+                                        "id": "payment_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_a_payment_by_idempotency_key",
+                                "url": "/v2/payments/cancel",
+                                "name": "Cancel payment by idempotency key",
+                                "method": "POST",
+                                "sampleData": {
+                                    "idempotency_key": "a7e36d40-d24b-11e8-b568-0800200c9a66"
+                                },
+                                "description": "Cancels (voids) a payment identified by the idempotency key that is specified in the request.",
+                                "requiredMappings": [
+                                    "idempotency_key"
+                                ]
+                            },
+                            {
+                                "id": "complete_payment",
+                                "url": "/v2/payments/:_payment_id/complete",
+                                "name": "Complete payment",
+                                "supportIgnoreMissing": true,
+                                "method": "POST",
+                                "description": "Completes (captures) a payment.",
+                                "parameters": [
+                                    {
+                                        "id": "payment_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "team",
+                        "name": "Team",
+                        "sampleData": {
+                            "team_member": {
+                                "id": "1yJlHapkseYnNPETIU1B",
+                                "reference_id": "reference_id_1",
+                                "is_owner": false,
+                                "status": "ACTIVE",
+                                "given_name": "Joe",
+                                "family_name": "Doe",
+                                "email_address": "joe_doe@gmail.com",
+                                "phone_number": "+14159283333",
+                                "created_at": "2020-06-11T22:55:45.867Z",
+                                "assigned_locations": {
+                                    "assignment_type": "EXPLICIT_LOCATIONS",
+                                    "location_ids": [
+                                        "GA2Y9HSJ8KRYT",
+                                        "YSGH2WBKG94QZ"
+                                    ]
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_team_member",
+                                "url": "/v2/team-members",
+                                "name": "Create team member",
+                                "supportIgnoreExisting": true,
+                                "method": "POST",
+                                "description": "The TeamMember will be returned on successful creates. You must provide the following values in your request to this endpoint: given_name, family_name",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "team_member.given_name",
+                                    "team_member.family_name"
+                                ]
+                            },
+                            {
+                                "id": "update_team_member",
+                                "url": "/v2/team-members/:_team_member_id",
+                                "name": "Update team member",
+                                "supportIgnoreMissing": true,
+                                "method": "PUT",
+                                "description": "The TeamMember will be returned on successful updates.",
+                                "parameters": [
+                                    {
+                                        "id": "team_member_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_team_member",
+                                "name": "Create Or Update team member",
+                                "url": [
+                                    "/v2/team-members/:_team_member_id",
+                                    "/v2/team-members"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "team_member_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_wage_setting",
+                                "url": "/v2/team-members/:_team_member_id/wage-setting",
+                                "name": "Update wage setting",
+                                "supportIgnoreMissing": true,
+                                "method": "PUT",
+                                "sampleData": {
+                                    "wage_setting": {
+                                        "team_member_id": "-3oZQKPKVk6gUXU_V5Qa",
+                                        "job_assignments": [
+                                            {
+                                                "job_title": "Manager",
+                                                "pay_type": "SALARY",
+                                                "hourly_rate": {
+                                                    "amount": 1443,
+                                                    "currency": "USD"
+                                                },
+                                                "annual_rate": {
+                                                    "amount": 3000000,
+                                                    "currency": "USD"
+                                                },
+                                                "weekly_hours": 40
+                                            }
+                                        ],
+                                        "is_overtime_exempt": true,
+                                        "version": 1
+                                    }
+                                },
+                                "description": "Creates or updates a WageSetting object.",
+                                "parameters": [
+                                    {
+                                        "id": "team_member_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customer_groups",
+                        "name": "Customer Groups",
+                        "sampleData": {
+                            "group": {
+                                "name": "Loyal Customers"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customer_group",
+                                "url": "/v2/customers/groups",
+                                "name": "Create customer group",
+                                "supportIgnoreExisting": true,
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "group.name"
+                                ]
+                            },
+                            {
+                                "id": "update_customer_group",
+                                "url": "/v2/customers/groups/:_customer_group_id",
+                                "name": "Update customer group",
+                                "supportIgnoreMissing": true,
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "customer_group_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "group.name"
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_customer_group",
+                                "name": "Create Or Update customer group",
+                                "url": [
+                                    "/v2/customers/groups/:_customer_group_id",
+                                    "/v2/customers/groups"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "customer_group_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "group.name"
+                                ]
+                            },
+                            {
+                                "id": "delete_customer_group",
+                                "name": "Delete customer group",
+                                "url": "/v2/customers/groups/:_customer_group_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_group_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "refunds",
+                        "name": "Refunds",
+                        "sampleData": {
+                            "idempotency_key": "a7e36d40-d24b-11e8-b568-0800200c9a66",
+                            "payment_id": "UNOE3kv2BZwqHlJ830RCt5YCuaB",
+                            "amount_money": {
+                                "amount": 100,
+                                "currency": "USD",
+                                "team_member_id": ""
+                            },
+                            "reason": "test"
+                        },
+                        "operations": [
+                            {
+                                "id": "refund_payment",
+                                "url": "/v2/refunds",
+                                "name": "Refund payment",
+                                "supportIgnoreExisting": true,
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "idempotency_key",
+                                    "payment_id",
+                                    "amount_money.amount",
+                                    "amount_money.currency"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

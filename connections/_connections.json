@@ -1,0 +1,1698 @@
+{
+    "rest": {
+        "applications": [
+            {
+                "_id": "3dcart",
+                "name": "Shift4Shop",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039181552-Set-up-a-connection-to-3dCart"
+            },
+            {
+                "_id": "certify",
+                "name": "Certify",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038899631-Set-up-a-connection-to-Certify"
+            },
+            {
+                "_id": "chargify",
+                "name": "Chargify",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038588792-Set-up-a-connection-to-Chargify"
+            },
+            {
+                "_id": "docusign",
+                "name": "DocuSign",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038983051-Set-up-a-connection-to-DocuSign"
+            },
+            {
+                "_id": "jira",
+                "name": "Jira Cloud platform",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038906451-Set-up-a-connection-to-Jira-Cloud-platform"
+            },
+            {
+                "_id": "jobvite",
+                "name": "Jobvite",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038521432-Set-up-a-connection-to-Jobvite"
+            },
+            {
+                "_id": "magento",
+                "name": "Magento 2",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038907131-Set-up-a-connection-to-Magento-2"
+            },
+            {
+                "_id": "namely",
+                "name": "Namely",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038912551-Set-up-a-connection-to-Namely"
+            },
+            {
+                "_id": "servicenow",
+                "name": "ServiceNow",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007387592-ServiceNow"
+            },
+            {
+                "_id": "squareup",
+                "name": "Square",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038937771-Set-up-a-connection-to-Square"
+            },
+            {
+                "_id": "stripe",
+                "name": "Stripe",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039007511-Set-up-a-connection-to-Stripe"
+            },
+            {
+                "_id": "twilio",
+                "name": "Twilio",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038939991-Set-up-a-connection-to-Twilio"
+            },
+            {
+                "_id": "woocommerce",
+                "name": "WooCommerce",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038940911-Set-up-a-connection-to-WooCommerce"
+            },
+            {
+                "_id": "zendesk",
+                "name": "Zendesk Support",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007387992-Zendesk"
+            },
+            {
+                "_id": "liquidplanner",
+                "name": "LiquidPlanner",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038995331-Set-up-a-connection-to-LiquidPlanner"
+            },
+            {
+                "_id": "shipstation",
+                "name": "ShipStation",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038937051-Set-up-a-connection-to-ShipStation"
+            },
+            {
+                "_id": "shipwire",
+                "name": "Shipwire",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039005811-Set-up-a-connection-to-Shipwire"
+            },
+            {
+                "_id": "asana",
+                "name": "Asana",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038898551-Set-up-a-connection-to-Asana"
+            },
+            {
+                "_id": "shopify",
+                "name": "Shopify",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007479071-Shopify"
+            },
+            {
+                "_id": "slack",
+                "name": "Slack",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007387632-Slack"
+            },
+            {
+                "_id": "eventbrite",
+                "name": "Eventbrite",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038589432-Set-up-a-connection-to-Eventbrite"
+            },
+            {
+                "_id": "smartsheet",
+                "name": "Smartsheet",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038614912-Set-up-a-connection-to-SmartSheet"
+            },
+            {
+                "_id": "campaignmonitor",
+                "name": "Campaign Monitor",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039855891-Set-up-a-connection-to-Campaign-Monitor"
+            },
+            {
+                "_id": "mailchimp",
+                "name": "Mailchimp",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038995871-Set-up-a-connection-to-Mailchimp"
+            },
+            {
+                "_id": "chargebee",
+                "name": "Chargebee",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039062672-Set-up-a-connection-to-Chargebee"
+            },
+            {
+                "_id": "googlesheets",
+                "name": "Google Sheets",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360057234491-Set-up-a-connection-to-Google-Sheets"
+            },
+            {
+                "_id": "googlemail",
+                "name": "Google Mail",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360048463751-Set-up-a-connection-to-Google-Mail"
+            },
+            {
+                "_id": "hubspot",
+                "name": "HubSpot",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007385652-HubSpot"
+            },
+            {
+                "_id": "freshdesk",
+                "name": "Freshdesk",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038903031-Set-up-a-connection-to-Freshdesk"
+            },
+            {
+                "_id": "harvest",
+                "name": "Harvest",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038905511-Set-up-a-connection-to-Harvest"
+            },
+            {
+                "_id": "integratorio",
+                "name": "integrator.io",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038520652-Set-up-a-connection-to-integrator-io"
+            },
+            {
+                "_id": "bigcommerce",
+                "name": "BigCommerce",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007385252-BigCommerce"
+            },
+            {
+                "_id": "github",
+                "name": "GitHub",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038518292-Set-up-a-connection-to-GitHub"
+            },
+            {
+                "_id": "shiphawk",
+                "name": "ShipHawk",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039005391-Set-up-a-connection-to-ShipHawk"
+            },
+            {
+                "_id": "atera",
+                "name": "Atera",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360041668031-Set-up-a-connection-to-Atera"
+            },
+            {
+                "_id": "freshbooks",
+                "name": "FreshBooks",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038517772-Set-up-a-connection-to-FreshBooks"
+            },
+            {
+                "_id": "pulseway",
+                "name": "Pulseway",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039000251-Set-up-a-connection-to-Pulseway"
+            },
+            {
+                "_id": "newrelic",
+                "name": "New Relic",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038912731-Set-up-a-connection-to-New-Relic"
+            },
+            {
+                "_id": "tableau",
+                "name": "Tableau",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038938811-Set-up-a-connection-to-Tableau"
+            },
+            {
+                "_id": "googleanalytics",
+                "name": "Google Analytics",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038903511-Set-up-a-connection-to-Google-Analytics"
+            },
+            {
+                "_id": "lightspeed",
+                "name": "Lightspeed",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038994811-Set-up-a-connection-to-Lightspeed"
+            },
+            {
+                "_id": "tesco",
+                "name": "Tesco",
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038552552-Set-up-a-connection-to-Tesco"
+            },
+            {
+                "_id": "accelo",
+                "name": "Accelo",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039957971-Set-up-a-connection-to-Accelo"
+            },
+            {
+                "_id": "fieldaware",
+                "name": "FieldAware",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038517672-Set-up-a-connection-to-FieldAware"
+            },
+            {
+                "_id": "avalara",
+                "name": "Avalara",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038977711-Set-up-a-connection-to-Avalara"
+            },
+            {
+                "_id": "googleshopping",
+                "name": "Google Shopping",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038904131-Set-up-a-connection-to-Google-Shopping"
+            },
+            {
+                "_id": "taxjar",
+                "name": "TaxJar",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038552192-Set-up-a-connection-to-TaxJar"
+            },
+            {
+                "_id": "zuora",
+                "name": "Zuora",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038556292-Set-up-a-connection-to-Zuora"
+            },
+            {
+                "_id": "snapfulfil",
+                "name": "Snapfulfil",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038937331-Set-up-a-connection-to-Snapfulfil"
+            },
+            {
+                "_id": "coupa",
+                "name": "Coupa",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360042902112-Set-up-a-connection-to-Coupa"
+            },
+            {
+                "_id": "microsoftdynamics365",
+                "name": "Microsoft Dynamics 365 CRM",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038908651-Set-up-a-connection-to-Microsoft-Dynamics-365"
+            },
+            {
+                "_id": "zohodesk",
+                "name": "Zoho Desk",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038618052-Set-up-a-connection-to-Zoho-Desk"
+            },
+            {
+                "_id": "quip",
+                "name": "Quip",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038610452-Set-up-a-connection-to-Quip"
+            },
+            {
+                "_id": "greenhouse",
+                "name": "Greenhouse",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038985811-Set-up-a-connection-to-Greenhouse"
+            },
+            {
+                "_id": "zohocrm",
+                "name": "Zoho CRM",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038617852-Set-up-a-connection-to-Zoho-CRM"
+            },
+            {
+                "_id": "shippo",
+                "name": "Shippo",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038937031-Set-up-a-connection-to-Shippo"
+            },
+            {
+                "_id": "easypost",
+                "name": "EasyPost",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038516992-Set-up-a-connection-to-EasyPost"
+            },
+            {
+                "_id": "microsoftbusinesscentral",
+                "name": "Microsoft Dynamics 365 Business Central",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038524992-Set-up-a-connection-to-Microsoft-Dynamics-365-Business-Central"
+            },
+            {
+                "_id": "microsoftoutlookcalendar",
+                "name": "Microsoft Outlook Calendar",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038911451-Set-up-a-connection-to-Microsoft-Outlook-Calendar"
+            },
+            {
+                "_id": "microsoftoutlookmail",
+                "name": "Microsoft Outlook Mail",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4410505742875-Set-up-a-connection-to-Microsoft-Outlook-Mail"
+            },
+            {
+                "_id": "microsoftoutlookcontacts",
+                "name": "Microsoft Outlook Contacts",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038526512-Set-up-a-connection-to-Microsoft-Outlook-Contacts"
+            },
+            {
+                "_id": "microsoftonenote",
+                "name": "Microsoft OneNote",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038911131-Set-up-a-connection-to-Microsoft-OneNote"
+            },
+            {
+                "_id": "zohobooks",
+                "name": "Zoho Books",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038942991-Set-up-a-connection-to-Zoho-Books"
+            },
+            {
+                "_id": "pitneybowes",
+                "name": "Pitney Bowes",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038997351-Set-up-a-connection-to-Pitney-Bowes"
+            },
+            {
+                "_id": "insightly",
+                "name": "Insightly",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038520512-Set-up-a-connection-to-Insightly"
+            },
+            {
+                "_id": "pdffiller",
+                "name": "PDFfiller",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038606732-Set-up-a-connection-to-PDFfiller"
+            },
+            {
+                "_id": "ebay",
+                "name": "eBay",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038902231-Set-up-a-connection-to-eBay"
+            },
+            {
+                "_id": "expensify",
+                "name": "Expensify",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038980271-Set-up-a-connection-to-Expensify"
+            },
+            {
+                "_id": "exacterp",
+                "name": "Exact ERP",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038979871-Set-up-a-connection-to-Exact-ERP"
+            },
+            {
+                "_id": "acumatica",
+                "name": "Acumatica",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007476331-Acumatica"
+            },
+            {
+                "_id": "myobessentials",
+                "name": "MYOB Essentials",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038912371-Set-up-a-connection-to-MYOB-Essentials"
+            },
+            {
+                "_id": "zohomail",
+                "name": "Zoho Mail",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038943411-Set-up-a-connection-to-Zoho-Mail"
+            },
+            {
+                "_id": "bronto",
+                "name": "Bronto",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038978311-Set-up-a-connection-to-Bronto"
+            },
+            {
+                "_id": "returnly",
+                "name": "Returnly",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038550352-Set-up-a-connection-to-Returnly"
+            },
+            {
+                "_id": "klaviyo",
+                "name": "Klaviyo",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038603512-Set-up-a-connection-to-Klaviyo"
+            },
+            {
+                "_id": "postmark",
+                "name": "Postmark",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038608972-Set-up-a-connection-to-Postmark"
+            },
+            {
+                "_id": "procurify",
+                "name": "Procurify",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038936091-Set-up-a-connection-to-Procurify"
+            },
+            {
+                "_id": "mailgun",
+                "name": "Mailgun",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038907231-Set-up-a-connection-to-Mailgun"
+            },
+            {
+                "_id": "aptrinsic",
+                "name": "Gainsight PX",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038895231-Set-up-a-connection-to-Gainsight-PX"
+            },
+            {
+                "_id": "acton",
+                "name": "Act-On",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038763171-Set-up-a-connection-to-Act-On"
+            },
+            {
+                "_id": "oandav20fxtrade",
+                "name": "OANDA v20 fxTrade",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038935271-Set-up-a-connection-to-OANDA-v20-fx-Trade"
+            },
+            {
+                "_id": "tophatter",
+                "name": "Tophatter",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039007751-Set-up-a-connection-to-Tophatter"
+            },
+            {
+                "_id": "spreecommerce",
+                "name": "Spree Commerce",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038937731-Set-up-a-connection-to-Spree-Commerce"
+            },
+            {
+                "_id": "powerbi",
+                "name": "Power BI",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038935931-Set-up-a-connection-to-PowerBI"
+            },
+            {
+                "_id": "sugarcrm",
+                "name": "SugarCRM",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038552072-Set-up-a-connection-to-SugarCRM"
+            },
+            {
+                "_id": "oandaexchangerates",
+                "name": "OANDA Exchange Rates",
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038548412-Set-up-a-connection-to-OANDA-Exchange-Rates"
+            },
+            {
+                "_id": "marketo",
+                "name": "Marketo",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038522452-Set-up-a-connection-to-Marketo"
+            },
+            {
+                "_id": "parseur",
+                "name": "Parseur",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038606312-Set-up-a-connection-to-Parseur"
+            },
+            {
+                "_id": "grms",
+                "name": "GRMS",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038603392-Set-up-a-connection-to-GRMS"
+            },
+            {
+                "_id": "sharepoint",
+                "name": "SharePoint",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038613812-Set-up-a-connection-to-SharePoint"
+            },
+            {
+                "_id": "retailops",
+                "name": "RetailOps",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038611212-Set-up-a-connection-to-RetailOps"
+            },
+            {
+                "_id": "dunandbradstreet",
+                "name": "Dun & Bradstreet",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038984291-Set-up-a-connection-to-Dun-Bradstreet"
+            },
+            {
+                "_id": "miva",
+                "name": "Miva",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360051364971-Set-up-a-connection-to-Miva"
+            },
+            {
+                "_id": "sageone",
+                "name": "Sage One",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039002371-Set-up-a-connection-to-Sage-One"
+            },
+            {
+                "_id": "ebayfinance",
+                "name": "eBay",
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038902231-Set-up-a-connection-to-eBay"
+            },
+            {
+                "_id": "googlecontactspeople",
+                "name": "Google Contacts",
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4409981616539-Set-up-a-connection-to-Google-Contacts"
+            }
+        ]
+    },
+    "http": {
+        "applications": [
+            {
+                "_id": "openair",
+                "name": "OpenAir",
+                "type": "http",
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038373832-Set-up-a-connection-to-OpenAir"
+            },
+            {
+                "_id": "recurly",
+                "name": "Recurly",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038610892-Set-up-a-connection-to-Recurly"
+            },
+            {
+                "_id": "amazonmws",
+                "name": "Amazon Seller Central",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360040180292-Set-up-a-connection-to-Amazon-MWS"
+            },
+            {
+                "_id": "trinet",
+                "name": "TriNet",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038616912-Set-up-a-connection-to-TriNet"
+            },
+            {
+                "_id": "pacejet",
+                "name": "Pacejet",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038549152-Set-up-a-connection-to-Pacejet"
+            },
+            {
+                "_id": "solidcommerce",
+                "name": "Solid Commerce",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038615152-Set-up-a-connection-to-Solid-Commerce"
+            },
+            {
+                "_id": "bamboohr",
+                "name": "BambooHR",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038587812-Set-up-a-connection-to-BambooHR"
+            },
+            {
+                "_id": "okta",
+                "name": "Okta",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038935591-Set-up-a-connection-to-Okta"
+            },
+            {
+                "_id": "onelogin",
+                "name": "OneLogin",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4403315006875-Set-up-a-connection-to-OneLogin"
+            },
+            {
+                "_id": "practicepanther",
+                "name": "PracticePanther",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4412947489179-Set-up-a-connection-to-PracticePanther"
+            },
+            {
+                "_id": "easyship",
+                "name": "Easyship",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360050858812-Set-up-a-connection-to-Easyship"
+            },
+            {
+                "_id": "azureactivedirectory",
+                "name": "Azure Active Directory",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038618172-Set-up-a-connection-to-Azure-Active-Directory"
+            },
+            {
+                "_id": "myobaccountright",
+                "name": "MYOB AccountRight",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038912011-Set-up-a-connection-to-MYOB-AccountRight"
+            },
+            {
+                "_id": "recharge",
+                "name": "ReCharge",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4403487075597-Set-up-a-connection-to-ReCharge"
+            },
+            {
+                "_id": "adp",
+                "name": "ADP Workforce Now",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038433932-Set-up-a-connection-to-ADP-using-SSL"
+            },
+            {
+                "_id": "activecampaign",
+                "name": "ActiveCampaign",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038851691-Set-up-a-connection-to-ActiveCampaign"
+            },
+            {
+                "_id": "autopilot",
+                "name": "Autopilot",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4409064179739-Set-up-a-connection-to-Autopilot"
+            },
+            {
+                "_id": "outreach",
+                "name": "Outreach",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4409996457627-Set-up-a-connection-to-Outreach"
+            },
+            {
+                "_id": "messagemedia",
+                "name": "MessageMedia",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4409943575579-Set-up-a-connection-to-MessageMedia"
+            },
+            {
+                "_id": "ware2go",
+                "name": "Ware2Go",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/4409406728987-Ware2Go"
+            },
+            {
+                "_id": "faire",
+                "name": "Faire",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360051207972-Set-up-a-connection-to-Faire"
+            },
+            {
+                "_id": "cartrover",
+                "name": "CartRover",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360043324072-Set-up-a-connection-to-CartRover"
+            },
+            {
+                "_id": "drift",
+                "name": "Drift",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4446207717915-Set-up-a-connection-to-Drift"
+            },
+            {
+                "_id": "concurexpense",
+                "name": "Concur Expense",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360046531851-Set-up-a-connection-to-Concur-Expense"
+            },
+            {
+                "_id": "concurinvoice",
+                "name": "Concur Invoice",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360046096152-Set-up-a-connection-to-Concur-Invoice"
+            },
+            {
+                "_id": "wrike",
+                "name": "Wrike",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039009231-Set-up-a-connection-to-Wrike"
+            },
+            {
+                "_id": "propack",
+                "name": "Propack",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4412755570203-Set-up-a-connection-to-Propack-P3PL"
+            },
+            {
+                "_id": "vend",
+                "name": "Vend",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4403558147469-Set-up-a-connection-to-Vend"
+            },
+            {
+                "_id": "paypal",
+                "name": "PayPal",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039930052-Set-up-a-connection-to-PayPal"
+            },
+            {
+                "_id": "shipbob",
+                "name": "ShipBob",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360040164632-Set-up-a-connection-to-ShipBob"
+            },
+            {
+                "_id": "4castplus",
+                "name": "4CastPlus",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360040467711-Set-up-a-connection-to-4castplus"
+            },
+            {
+                "_id": "3plcentral",
+                "name": "3PL Central",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360041605512-Set-up-a-connection-to-3PL-Central"
+            },
+            {
+                "_id": "loopreturns",
+                "name": "Loop Returns",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360042069971-Set-up-a-connection-to-Loop-Returns"
+            },
+            {
+                "_id": "saplitmos",
+                "name": "SAP Litmos",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360041583572-Set-up-a-connection-to-SAP-Litmos"
+            },
+            {
+                "_id": "vroozi",
+                "name": "Vroozi",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360041787332-Set-up-a-connection-to-Vroozi"
+            },
+            {
+                "_id": "zendesksell",
+                "name": "Zendesk Sell",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360043197931-Set-up-a-connection-to-Zendesk-Sell"
+            },
+            {
+                "_id": "bigquery",
+                "name": "Google BigQuery (REST API)",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360042825892-Set-up-a-connection-to-Google-BigQuery"
+            },
+            {
+                "_id": "redshift",
+                "name": "Amazon Redshift (REST API)",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360042875872-Set-up-a-connection-to-Amazon-Redshift"
+            },
+            {
+                "_id": "newegg",
+                "name": "Newegg",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038548332-Set-up-a-connection-to-Newegg"
+            },
+            {
+                "_id": "paycor",
+                "name": "Paycor",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360043426451-Set-up-a-connection-to-Paycor"
+            },
+            {
+                "_id": "zoom",
+                "name": "Zoom",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360047243552-Set-up-a-connection-to-Zoom"
+            },
+            {
+                "_id": "zimbra",
+                "name": "Zimbra",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4410387089307-Set-up-a-connection-to-Zimbra"
+            },
+            {
+                "_id": "ebay-xml",
+                "name": "eBay(XML)",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360055886392-Set-up-a-connection-to-eBay-XML-"
+            },
+            {
+                "_id": "anaplan",
+                "name": "Anaplan",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007476391-Anaplan"
+            },
+            {
+                "_id": "inspectorio",
+                "name": "Inspectorio",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360045130111-Set-up-a-connection-to-Inspectorio"
+            },
+            {
+                "_id": "orderful",
+                "name": "Orderful",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360045125731-Set-up-a-connection-to-Orderful"
+            },
+            {
+                "_id": "logisense",
+                "name": "LogiSense",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360044926491-Set-up-a-connection-to-LogiSense"
+            },
+            {
+                "_id": "gorgias",
+                "name": "Gorgias",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360044684232-Set-up-a-connection-to-Gorgias"
+            },
+            {
+                "_id": "walmart",
+                "name": "Walmart US",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360061620931-Set-up-a-connection-to-Walmart-US"
+            },
+            {
+                "_id": "surveymonkey",
+                "name": "SurveyMonkey",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360041460932-Set-up-a-connection-to-SurveyMonkey"
+            },
+            {
+                "_id": "tsheets",
+                "name": "TSheets",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038552632-Set-up-a-connection-to-TSheets"
+            },
+            {
+                "_id": "joor",
+                "name": "JOOR",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360047226132-Set-up-a-connection-to-JOOR"
+            },
+            {
+                "_id": "constantcontactv2",
+                "name": "Constant Contact V2",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038589232-Set-up-a-connection-to-Constant-Contact"
+            },
+            {
+                "_id": "constantcontactv3",
+                "name": "Constant Contact V3",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038589232-Set-up-a-connection-to-Constant-Contact"
+            },
+            {
+                "_id": "g2",
+                "name": "G2",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360048478612-Set-up-a-connection-to-G2"
+            },
+            {
+                "_id": "myobadvanced",
+                "name": "MYOB Advanced",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360007478351-MYOB"
+            },
+            {
+                "_id": "microsoftdynamics365financeandoperation",
+                "name": "Microsoft Dynamics 365 Supply Chain Management",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360049504412-Set-up-a-connection-to-Microsoft-Dynamics-365-Supply-Chain-Management"
+            },
+            {
+                "_id": "precisely",
+                "name": "Precisely",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360048864752-Set-up-a-connection-to-Precisely"
+            },
+            {
+                "_id": "shipengine",
+                "name": "ShipEngine",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360050206452-Set-up-a-connection-to-ShipEngine"
+            },
+            {
+                "_id": "jiraserver",
+                "name": "Jira Server platform",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360050948032-Set-up-a-connection-to-Jira-Server-platform"
+            },
+            {
+                "_id": "channelape",
+                "name": "ChannelApe",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360051798932-Set-up-a-connection-to-ChannelApe"
+            },
+            {
+                "_id": "gainsight",
+                "name": "Gainsight CS",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360051262092-Set-up-a-connection-to-Gainsight-CS"
+            },
+            {
+                "_id": "dotdigital",
+                "name": "dotdigital",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360051238652-Set-up-a-connection-to-dotdigital"
+            },
+            {
+                "_id": "intercom",
+                "name": "Intercom",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360055598951-Set-up-a-connection-to-Intercom"
+            },
+            {
+                "_id": "lexbizz",
+                "name": "lexbizz",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360010159752-lexbizz"
+            },
+            {
+                "_id": "clover",
+                "name": "Clover",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360055266752-Set-up-a-connection-to-Clover"
+            },
+            {
+                "_id": "pricefx",
+                "name": "Pricefx",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360056159291-Set-up-a-connection-to-Pricefx"
+            },
+            {
+                "_id": "pipedrive",
+                "name": "Pipedrive",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/360012596952-Pipedrive"
+            },
+            {
+                "_id": "microsoftteams",
+                "name": "Microsoft Teams",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360057833071-Set-up-a-connection-to-Microsoft-Teams"
+            },
+            {
+                "_id": "prestashop",
+                "name": "PrestaShop",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360057797272-Set-up-a-connection-to-PrestaShop"
+            },
+            {
+                "_id": "adobesign",
+                "name": "Adobe Sign",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360057608471-Set-up-a-connection-to-Adobe-Sign"
+            },
+            {
+                "_id": "freshworks",
+                "name": "Freshworks CRM",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360058252431-Set-up-a-connection-to-Freshworks-CRM"
+            },
+            {
+                "_id": "authorize.net",
+                "name": "Authorize.net",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360057778912-Set-up-a-connection-to-Authorize-Net"
+            },
+            {
+                "_id": "yotpo",
+                "name": "Yotpo",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360060046751-Set-up-a-connection-to-Yotpo"
+            },
+            {
+                "_id": "fulfilment.com",
+                "name": "Fulfillment.com",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360059485471-Set-up-a-connection-to-Fulfillment-com"
+            },
+            {
+                "_id": "mavenlink",
+                "name": "Mavenlink",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360061144691-Set-up-a-connection-to-Mavenlink"
+            },
+            {
+                "_id": "googleads",
+                "name": "Google Ads",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360060770192-Set-up-a-connection-to-Google-Ads"
+            },
+            {
+                "_id": "walmartmexico",
+                "name": "Walmart Mexico",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360060899492-Set-up-a-connection-to-Walmart-Mexico"
+            },
+            {
+                "_id": "walmartcanada",
+                "name": "Walmart Canada",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360061297871-Set-up-a-connection-to-Walmart-Canada"
+            },
+            {
+                "_id": "paylocity",
+                "name": "Paylocity",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/4404942591259-Set-up-a-connection-to-Paylocity"
+            },
+            {
+                "_id": "freshservice",
+                "name": "Freshservice",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/4404378945179-Set-up-a-connection-to-Freshservice"
+            },
+            {
+                "_id": "looker",
+                "name": "Looker",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4404602239259-Set-up-a-connection-to-Looker"
+            },
+            {
+                "_id": "pagerduty",
+                "name": "PagerDuty",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/4404969586075-PagerDuty"
+            },
+            {
+                "_id": "pandadoc",
+                "name": "PandaDoc",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/4404624545563-PandaDoc"
+            },
+            {
+                "_id": "sapsuccessfactors",
+                "name": "SAP SuccessFactors",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4405049601179-Set-up-a-connection-to-SAP-SuccessFactors"
+            },
+            {
+                "_id": "quickbase",
+                "name": "Quickbase",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4405467219483-Set-up-a-connection-to-Quickbase"
+            },
+            {
+                "_id": "omnisend",
+                "name": "Omnisend",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4404620597915-Set-up-a-connection-to-Omnisend"
+            },
+            {
+                "_id": "pagerdutyevents",
+                "name": "PagerDuty Events",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4405147471899-Set-up-a-connection-to-PagerDuty-Events"
+            },
+            {
+                "_id": "orangehrm",
+                "name": "OrangeHRM",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4404609033627-Set-up-a-connection-to-OrangeHRM"
+            },
+            {
+                "_id": "zenefits",
+                "name": "Zenefits",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4404257438107-Set-up-a-connection-to-Zenefits"
+            },
+            {
+                "_id": "braintree",
+                "name": "Braintree",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4406076959899-Set-up-a-connection-to-Braintree"
+            },
+            {
+                "_id": "sapbydesign",
+                "name": "SAP Business ByDesign",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4404740648091-Set-up-a-connection-to-SAP-Business-ByDesign"
+            },
+            {
+                "_id": "saphana",
+                "name": "SAP S/4HANA Cloud",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/4407961860635-SAP-S-4HANA-Cloud"
+            },
+            {
+                "_id": "mixpanel",
+                "name": "Mixpanel",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/4407696362651-Mixpanel"
+            },
+            {
+                "_id": "sapbusinessone",
+                "name": "SAP Business One",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4413370548123-Set-up-a-connection-to-SAP-Business-One"
+            },
+            {
+                "_id": "bartender",
+                "name": "BarTender",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4411467461531-Set-up-a-connection-to-BarTender"
+            },
+            {
+                "_id": "15five",
+                "name": "15Five",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4411468706203-Set-up-a-connection-to-15Five"
+            },
+            {
+                "_id": "copper",
+                "name": "Copper",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4411716416411-Set-up-a-connection-to-Copper"
+            },
+            {
+                "_id": "breezyhr",
+                "name": "Breezy HR",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4411528978971-Set-up-a-connection-to-Breezy-HR"
+            },
+            {
+                "_id": "docebo",
+                "name": "Docebo",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4412284578331-Set-up-a-connection-to-Docebo"
+            },
+            {
+                "_id": "confluencecloud",
+                "name": "Confluence Cloud",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4411688866715-Set-up-a-connection-to-Confluence-Cloud"
+            },
+            {
+                "_id": "zohoexpense",
+                "name": "Zoho Expense",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4412216619163-Set-up-a-connection-to-Zoho-Expense"
+            },
+            {
+                "_id": "jazzhr",
+                "name": "JazzHR",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": false,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/4414634479131-JazzHR"
+            },
+            {
+                "_id": "mercadolibre",
+                "name": "MercadoLibre",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4415308754331-Set-up-a-Mercado-Libre-connection"
+            },
+            {
+                "_id": "segment",
+                "name": "Segment",
+                "type": "http",
+                "showAssistant": true,
+                "export": false,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/4416467384475-Set-up-a-connection-to-Segment"
+            },
+            {
+                "_id": "microsoftpowerautomate",
+                "name": "Microsoft Power Automate",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/5187663171739-Microsoft-Power-Automate"
+            },
+            {
+                "_id": "microsoftdynamics365finance",
+                "name": "Microsoft Dynamics 365 Finance",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/5217884935835-Set-up-a-connection-to-Microsoft-Dynamics-365-Finance"
+            },
+            {
+                "_id": "brex",
+                "name": "Brex",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/5050798695067-Set-up-a-connection-to-Brex"
+            },
+            {
+                "_id": "happyreturns",
+                "name": "Happy Returns",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/5025984284059-Set-up-a-connection-to-Happy-Returns"
+            },
+            {
+                "_id": "skubana",
+                "name": "Skubana",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360038937191-Set-up-a-connection-to-Skubana"
+            },
+            {
+                "_id": "bundleb2b",
+                "name": "BundleB2B",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/sections/7638809203867-Bundle-B2B"
+            },
+            {
+                "_id": "quickbooks",
+                "name": "QuickBooks",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/360039000791-Set-up-a-connection-to-QuickBooks"
+            },
+            {
+                "_id": "amazonvendorcentral",
+                "name": "Amazon Vendor Central",
+                "type": "http",
+                "showAssistant": true,
+                "export": true,
+                "import": true,
+                "helpURL": "https://docs.celigo.com/hc/en-us/articles/13497353678747"
+            }
+        ]
+    }
+}

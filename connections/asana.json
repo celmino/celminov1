@@ -1,0 +1,2077 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "nextpageurl",
+            "nextPagePath": "next_page.uri"
+        },
+        "urlResolution": [
+            "/1.0/users",
+            "/1.0/users/:_user_id",
+            "/1.0/workspaces/:_workspace_id/users",
+            "/1.0/workspaces",
+            "/1.0/workspaces/:_workspace_id",
+            "/1.0/workspaces/:_workspace_id/typeahead",
+            "/1.0/projects",
+            "/1.0/projects/:_project_id",
+            "/1.0/workspaces/:_workspace_id/projects",
+            "/1.0/teams/:_team_id/projects",
+            "/1.0/projects/:_project_id/sections",
+            "/1.0/tasks",
+            "/1.0/tasks/:_task_id",
+            "/1.0/tags/:_tag_id/tasks",
+            "/1.0/projects/:_project_id/tasks",
+            "/1.0/tasks/:_task_id/projects",
+            "/1.0/tasks/:_task_id/tags",
+            "/1.0/tasks/:_task_id/subtasks",
+            "/1.0/tags",
+            "/1.0/tags/:_tag_id",
+            "/1.0/workspaces/:_workspace_id/tags",
+            "/1.0/teams/:_team_id",
+            "/1.0/organizations/:_organization_id/teams",
+            "/1.0/teams/:_team_id/users",
+            "/1.0/tasks/:_task_id/stories",
+            "/1.0/stories/:_story_id",
+            "/1.0/events",
+            "/1.0/tasks/:_task_id/attachments",
+            "/1.0/attachments/:_attachment_id",
+            "/1.0/projects/:_project_id/sections",
+            "/1.0/sections/:_section_id"
+        ],
+        "versions": [
+            {
+                "version": "latest",
+                "resources": [
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "get_all_users_in_all_workspaces_and_organizations",
+                                "url": "/1.0/users",
+                                "name": "Get multiple users",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,email,photo,workspaces",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "workspace",
+                                        "name": "Workspace Id",
+                                        "description": "Need to specify a Workspace ID to paginate!",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_user_record_by_user_id",
+                                "url": "/1.0/users/:_user_id",
+                                "name": "Get a user",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_users_in_specified_workspace_or_organization",
+                                "url": "/1.0/workspaces/:_workspace_id/users",
+                                "name": "Get users in a workspace or organization",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,email,photo,workspaces",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "workspaces",
+                        "name": "Workspaces",
+                        "endpoints": [
+                            {
+                                "id": "get_all_workspaces",
+                                "url": "/1.0/workspaces",
+                                "name": "Get multiple workspaces",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: is_organization,name,email_domains",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_workspace",
+                                "url": "/1.0/workspaces/:_workspace_id",
+                                "name": "Get a workspace",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: is_organization,name,,email_domains",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "typeahead_search",
+                                "url": "/1.0/workspaces/:_workspace_id/typeahead",
+                                "name": "Get objects via typeahead",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "description": "Must be one of {project, tag, task, user}",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "query",
+                                        "name": "Search Term",
+                                        "description": "The string that will be used to search for relevant objects. If an empty string is passed in, the API will currently return an empty result set.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "description": "The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "workspace_memberships",
+                        "name": "Workspace Memberships",
+                        "endpoints": [
+                            {
+                                "id": "get_workspace_memberships_for_a_user",
+                                "url": "/1.0/users/:_user_id/workspace_memberships",
+                                "name": "Get workspace memberships for a user",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: is_organization,name,email_domains",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_workspace_membership",
+                                "url": "/1.0/workspace_memberships/:_workspace_membership_id",
+                                "name": "Get a workspace membership",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "workspace_membership_id",
+                                        "name": "Workspace Membership Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: is_organization,name,,email_domains",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_workspace_memberships_for_a_workspace",
+                                "url": "/1.0/workspaces/:_workspaces_id/workspace_memberships",
+                                "name": "Get the workspace memberships for a workspace",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "workspaces_id",
+                                        "name": "Workspace Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: is_organization,name,email_domains",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "user",
+                                        "name": "User Id",
+                                        "description": "A string identifying a user. This can either be the string 'me', an email, or the gid of a user.",
+                                        "fieldType": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs",
+                        "endpoints": [
+                            {
+                                "id": "get_a_job_by_id",
+                                "url": "/1.0/jobs/:_job_id",
+                                "name": "Get a job by id",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: is_organization,name,email_domains",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "time_periods",
+                        "name": "Time Periods",
+                        "endpoints": [
+                            {
+                                "id": "get_time_periods",
+                                "url": "/1.0/time_periods",
+                                "name": "Get time periods",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: is_organization,name,email_domains",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "workspace",
+                                        "name": "Workspace Id",
+                                        "required": true,
+                                        "description": "Need to specify a Workspace ID to paginate!",
+                                        "fieldType": "text"
+                                    },
+                                    {
+                                        "id": "start_on",
+                                        "name": "start_on",
+                                        "required": true,
+                                        "description": "ISO 8601 date string",
+                                        "fieldType": "text"
+                                    },
+                                    {
+                                        "id": "end_on",
+                                        "name": "end_on",
+                                        "required": true,
+                                        "description": "ISO 8601 date string",
+                                        "fieldType": "text"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_time_period",
+                                "url": "/1.0/time_periods/:_time_period_id",
+                                "name": "Get a time period",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "time_period_id",
+                                        "name": "Time Period Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: is_organization,name,email_domains",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "endpoints": [
+                            {
+                                "id": "get_all_projects",
+                                "url": "/1.0/projects",
+                                "name": "Get multiple projects",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "workspace",
+                                        "name": "Workspace Id",
+                                        "description": "Need to specify a Workspace ID to paginate!",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_project",
+                                "url": "/1.0/projects/:_project_id",
+                                "name": "Get a project",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_projects_in_the_workspace",
+                                "url": "/1.0/workspaces/:_workspace_id/projects",
+                                "name": "Get all projects in a workspace",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "archived",
+                                        "name": "Archived",
+                                        "description": "True if the project is archived, false if not. Archived projects do not show in the UI by default and may be treated differently for queries.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_projects_in_the_team",
+                                "url": "/1.0/teams/:_team_id/projects",
+                                "name": "Get a team's projects",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "team_id",
+                                        "name": "Team Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "archived",
+                                        "name": "Archived",
+                                        "description": "True if the project is archived, false if not. Archived projects do not show in the UI by default and may be treated differently for queries.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_task_count_of_project",
+                                "url": "/1.0/projects/:_project_id/task_counts",
+                                "name": "Get task count of a project",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_sections_in_the_specified_project",
+                                "url": "/1.0/projects/:_project_id/sections",
+                                "name": "Get sections in a project",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "endpoints": [
+                            {
+                                "id": "get_tasks_with_filters",
+                                "url": "/1.0/tasks",
+                                "name": "Get multiple tasks",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "assignee",
+                                        "name": "Assignee Name",
+                                        "description": "The assignee to filter tasks on. Ex: 14641, me, or sashimi@asana.com\nNote: If you specify assignee, you must also specify the workspace to filter on.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "project",
+                                        "name": "Project Id",
+                                        "description": "The project to filter tasks on.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "workspace",
+                                        "name": "Workspace Id",
+                                        "description": "The workspace or organization to filter tasks on.\nIf you specify workspace, you must also specify the assignee to filter on.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "completed_since",
+                                        "name": "completed_since",
+                                        "description": "Only return tasks that are either incomplete or that have been completed since this time. Ex: 2012-02-22T02:06:58.158Z or now",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "modified_since",
+                                        "name": "modified_since",
+                                        "description": "Only return tasks that have been modified since the given time.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_task",
+                                "url": "/1.0/tasks/:_task_id",
+                                "name": "Get a task",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_dependecies_from_atask",
+                                "url": "/1.0/tasks/:_task_id/dependencies",
+                                "name": "Get dependencies from a task",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_dependents_from_atask",
+                                "url": "/1.0/tasks/:_task_id/dependents",
+                                "name": "Get dependents from a task",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_tasks_with_given_tag",
+                                "url": "/1.0/tags/:_tag_id/tasks",
+                                "name": "Get tasks from a tag",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "tag_id",
+                                        "name": "Tag Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_tasks_with_given_projectid",
+                                "url": "/1.0/projects/:_project_id/tasks",
+                                "name": "Get tasks from a project",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_of_the_projects_the_task_is_in",
+                                "url": "/1.0/tasks/:_task_id/projects",
+                                "name": "Get projects a task is in",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_of_the_tags_the_task_has",
+                                "url": "/1.0/tasks/:_task_id/tags",
+                                "name": "Get a task's tags",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_subtasks_of_a_task",
+                                "url": "/1.0/tasks/:_task_id/subtasks",
+                                "name": "Get subtasks from a task",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: assignee,assignee_status,created_at,completed,completed_at,due_on,due_at,external,followers,hearted,hearts,modified_at,name,notes,num_hearts,projects,parent,workspace,memberships",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tags",
+                        "name": "Tags",
+                        "endpoints": [
+                            {
+                                "id": "get_all_tags",
+                                "url": "/1.0/tags",
+                                "name": "Get multiple tags",
+                                "resourcePath": "data",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: created_at,followers,name,color,notes,workspace",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "Team",
+                                        "name": "Team Id",
+                                        "description": "The team to filter tags on.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "archived",
+                                        "name": "Archived",
+                                        "description": "Only return tags whose archived field takes on the value of this parameter.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "workspace",
+                                        "name": "Workspace Id",
+                                        "description": "Need to specify a Workspace ID to paginate!",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_tag_record",
+                                "url": "/1.0/tags/:_tag_id",
+                                "name": "Get a tag",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "tag_id",
+                                        "name": "Tag Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: created_at,followers,name,color,notes,workspace",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_tags_in_the_workspace",
+                                "url": "/1.0/workspaces/:_workspace_id/tags",
+                                "name": "Get tags in a workspace",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: created_at,followers,name,color,notes,workspace",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "teams",
+                        "name": "Teams",
+                        "endpoints": [
+                            {
+                                "id": "get_full_record_for_a_single_team",
+                                "url": "/1.0/teams/:_team_id",
+                                "name": "Get a team",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "team_id",
+                                        "name": "Team Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: id, name",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_teams_in_the_organization",
+                                "url": "/1.0/organizations/:_organization_id/teams",
+                                "name": "Get all teams in the organization",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization(WORKSPACE) Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: created_at,followers,name,color,notes,workspace",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_users_in_the_team",
+                                "url": "/1.0/teams/:_team_id/users",
+                                "name": "Get all users in the team",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "team_id",
+                                        "name": "Team Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: created_at,followers,name,color,notes,workspace",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stories",
+                        "name": "Stories",
+                        "endpoints": [
+                            {
+                                "id": "get_all_stories_on_the_task",
+                                "url": "/1.0/tasks/:_task_id/stories",
+                                "name": "Get stories from a task",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: id,created_at,created_by,hearted,hearts,num_hearts,text,html_text,target,source,type",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_single_story",
+                                "url": "/1.0/stories/:_story_id",
+                                "name": "Get a story",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "story_id",
+                                        "name": "Story Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: id,created_at,created_by,hearted,hearts,num_hearts,text,html_text,target,source,type",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "events",
+                        "name": "Events",
+                        "endpoints": [
+                            {
+                                "id": "get_all_events_since_the_sync_token_was_created",
+                                "url": "/1.0/events",
+                                "name": "Get events on a resource",
+                                "resourcePath": "data",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "resource",
+                                        "name": "Resource",
+                                        "description": "Required: A resource ID to subscribe to. The resource can be a task or project.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "sync",
+                                        "name": "Sync Token",
+                                        "description": "Example: de4774f6915eae04714ca93bb2f5ee81\n A sync token received from the last request, or none on first sync. Events will be returned from the point in time that the sync token was generated. Note: On your first request, omit the sync token. The response will be the same as for an expired sync token, and will include a new valid sync token.If the sync token is too old (which may happen from time to time) the API will return a 412 Precondition Failed error, and include a fresh sync token in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: user,resource,type,action,parent,created_at",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "attachments",
+                        "name": "Attachments",
+                        "endpoints": [
+                            {
+                                "id": "get_all_attachments_on_the_task",
+                                "url": "/1.0/tasks/:_task_id/attachments",
+                                "name": "Get all attachments on the task",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: id,created_at,download_url,host,name,parent,view_url",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_attachment_record",
+                                "url": "/1.0/attachments/:_attachment_id",
+                                "name": "Get an attachment",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "attachment_id",
+                                        "name": "Attachment Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: id,created_at,download_url,host,name,parent,view_url",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sections",
+                        "name": "Sections",
+                        "endpoints": [
+                            {
+                                "id": "get_all_sections_on_the_project",
+                                "url": "/1.0/projects/:_project_id/sections",
+                                "name": "Get sections in a project",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: id,created_at,created_by,hearted,hearts,num_hearts,text,html_text,target,source,type",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_single_section",
+                                "url": "/1.0/sections/:_section_id",
+                                "name": "Get a section",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "section_id",
+                                        "name": "Section Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: id,created_at,created_by,hearted,hearts,num_hearts,text,html_text,target,source,type",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "project_memberships",
+                        "name": "Project Memberships",
+                        "endpoints": [
+                            {
+                                "id": "get_a_project_membership",
+                                "url": "/1.0/project_memberships/:_project_membership_id",
+                                "name": "Get a project membership",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_membership_id",
+                                        "name": "Project Membership Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "geta_membershipfrom_project",
+                                "url": "/1.0/projects/:_project_id/project_memberships",
+                                "name": "Get memberships from a project",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "user",
+                                        "name": "User Id",
+                                        "description": "A string identifying a user. This can either be the string 'me', an email, or the gid of a user.",
+                                        "fieldType": "text"
+                                    },
+                                    {
+                                        "id": "limits",
+                                        "name": "limits",
+                                        "description": "Results per page.",
+                                        "fieldType": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "project_templates",
+                        "name": "Project Templates",
+                        "endpoints": [
+                            {
+                                "id": "get_a_project_template",
+                                "url": "/1.0//project_templates/:_project_template_id",
+                                "name": "Get a project template",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_template_id",
+                                        "name": "Project Template Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_multiple_project_templates",
+                                "url": "/1.0//project_templates",
+                                "name": "Get multiple project templates",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_template_id",
+                                        "name": "Project Template Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "workspace",
+                                        "name": "Workspace Id",
+                                        "description": "Need to specify a Workspace ID to paginate!",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "Team",
+                                        "name": "Team Id",
+                                        "description": "The team to filter tags on.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_ateams_project_templates",
+                                "url": "/1.0//teams/:_team_id/project_templates",
+                                "name": "Get a team's project templates",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "team_id",
+                                        "name": "Team Id",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "opt_fields",
+                                        "name": "Include Fields",
+                                        "description": "Some requests return compact representations of objects, to conserve resources and complete the request more efficiently. Other times requests return more information than you may need. This option allows you to list the exact set of fields that the API should be sure to return for the objects. The field names should be provided as paths, These paths sould be given comma separated. Ex: name,owner,current_status,due_date,created_at,modified_at,archived,public,members,followers,color,notes,workspace,team",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "operation": "Operation"
+        },
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "urlResolution": [
+            "/1.0/workspaces/:_workspace_id",
+            "/1.0/workspaces/:_workspace_id/addUser",
+            "/1.0/workspaces/:_workspace_id/removeUser",
+            "/1.0/teams/:_team_id/addUser",
+            "/1.0/teams/:_team_id/removeUser",
+            "/1.0/tasks",
+            "/1.0/workspaces/:_workspace_id/tasks",
+            "/1.0/tasks/:_task_id",
+            "/1.0/tasks/:_task_id/addFollowers",
+            "/1.0/tasks/:_task_id/removeFollowers",
+            "/1.0/tasks/:_task_id/addProject",
+            "/1.0/tasks/:_task_id/removeProject",
+            "/1.0/tasks/:_task_id/addTag",
+            "/1.0/tasks/:_task_id/removeTag",
+            "/1.0/tasks/:_task_id/subtasks",
+            "/1.0/tasks/:_task_id/setParent",
+            "/1.0/tasks/:_task_id/stories",
+            "/1.0/projects",
+            "/1.0/workspaces/:_workspace_id/projects",
+            "/1.0/workspaces/:_team_id/projects",
+            "/1.0/projects/:_project_id",
+            "/1.0/tags",
+            "/1.0/workspaces/:_workspace_id/tags",
+            "/1.0/tags/:_tag_id",
+            "/1.0/projects/:_project_id/sections/insert",
+            "/1.0/projects/:_project_id/sections",
+            "/1.0/sections/:_section_id"
+        ],
+        "versions": [
+            {
+                "version": "latest",
+                "resources": [
+                    {
+                        "id": "workspaces",
+                        "name": "Workspaces",
+                        "operations": [
+                            {
+                                "id": "update_workspace",
+                                "url": "/1.0/workspaces/:_workspace_id",
+                                "name": "Update a workspace",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "adduser_workspaces",
+                                "url": "/1.0/workspaces/:_workspace_id/addUser",
+                                "name": "Add a user to a workspace or organization",
+                                "method": "POST",
+                                "sampleData": {
+                                    "user": 11176355741487
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/1.0/workspaces/:_workspace_id/typeahead",
+                                        "extract": "data[0].id",
+                                        "id": "typeahead_search"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "removeuser_workspaces",
+                                "name": "Remove a user from a workspace or organization",
+                                "url": "/1.0/workspaces/:_workspace_id/removeUser",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "user": 11176355741487
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/1.0/workspaces/:_workspace_id/typeahead",
+                                        "extract": "data[0].id",
+                                        "id": "typeahead_search"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "teams",
+                        "name": "Teams",
+                        "sampleData": {
+                            "user": 11176355741487
+                        },
+                        "operations": [
+                            {
+                                "id": "adduser_teams",
+                                "url": "/1.0/teams/:_team_id/addUser",
+                                "name": "Add a user to a team",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "team_id",
+                                        "name": "Team Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "removeuser_teams",
+                                "url": "/1.0/teams/:_team_id/removeUser",
+                                "name": "Remove a user from a team",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "team_id",
+                                        "name": "Team Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "sampleData": {
+                            "id": 316172975382476,
+                            "assignee": "42392125896374",
+                            "assignee_status": "inbox",
+                            "completed": false,
+                            "completed_at": null,
+                            "created_at": "2017-04-11T13:49:03.390Z",
+                            "due_at": null,
+                            "due_on": "2017-04-20",
+                            "followers": "304100976049212",
+                            "hearted": false,
+                            "hearts": "",
+                            "memberships": "",
+                            "modified_at": "2017-04-12T10:02:01.726Z",
+                            "name": "dada",
+                            "notes": "dsdsdadada dsds",
+                            "num_hearts": 0,
+                            "parent": null,
+                            "projects": "316177384537882",
+                            "workspace": "11"
+                        },
+                        "operations": [
+                            {
+                                "id": "creating_a_new_task",
+                                "url": "/1.0/tasks",
+                                "name": "Create a task",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "creating_a_new_task_with_workspace_id",
+                                "url": "/1.0/workspaces/:_workspace_id/tasks",
+                                "name": "Creating a new task with Workspace Id",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_a_task",
+                                "url": "/1.0/tasks/:_task_id",
+                                "name": "Update a task",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_a_task",
+                                "url": [
+                                    "/1.0/tasks/:_task_id",
+                                    "/1.0/tasks"
+                                ],
+                                "name": "Create or Update a task",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_task",
+                                "url": "/1.0/tasks/:_task_id",
+                                "name": "Delete a task",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_followers",
+                                "url": "/1.0/tasks/:_task_id/addFollowers",
+                                "name": "Add followers to a task",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_followers",
+                                "url": "/1.0/tasks/:_task_id/removeFollowers",
+                                "name": "Remove followers from a task",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_project",
+                                "url": "/1.0/tasks/:_task_id/addProject",
+                                "name": "Add a project to a task",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_project",
+                                "url": "/1.0/tasks/:_task_id/removeProject",
+                                "name": "Remove a project from a task",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_tag",
+                                "url": "/1.0/tasks/:_task_id/addTag",
+                                "name": "Add a tag to a task",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_tag",
+                                "url": "/1.0/tasks/:_task_id/removeTag",
+                                "name": "Remove a tag from a task",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_new_subtask",
+                                "url": "/1.0/tasks/:_task_id/subtasks",
+                                "name": "Create a subtask",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "set_parent_changes_the_parent_of_a_task",
+                                "url": "/1.0/tasks/:_task_id/setParent",
+                                "name": "Set the parent of a task",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stories",
+                        "name": "Stories",
+                        "sampleData": {
+                            "id": 316172975382478,
+                            "created_at": "2017-04-11T13:49:13.440Z",
+                            "created_by": {
+                                "id": 304100976049212,
+                                "name": "Celigo Labs"
+                            },
+                            "hearted": false,
+                            "hearts": [],
+                            "num_hearts": 0,
+                            "source": "web",
+                            "target": {
+                                "id": 316172975382476,
+                                "name": "dada"
+                            },
+                            "text": "dsdsd\n\n",
+                            "type": "comment"
+                        },
+                        "operations": [
+                            {
+                                "id": "adds_a_comment_to_a_task",
+                                "url": "/1.0/tasks/:_task_id/stories",
+                                "name": "Adds a comment to a task",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "task Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "sampleData": {
+                            "id": 316160048729583,
+                            "archived": false,
+                            "color": null,
+                            "current_status": null,
+                            "due_date": null,
+                            "followers": 304100976049212,
+                            "members": 304100976049212,
+                            "modified_at": "2017-04-11T13:48:30.119Z",
+                            "name": "Assistance",
+                            "notes": "Test",
+                            "owner": 304100976049212,
+                            "public": true,
+                            "team": 304100987854120,
+                            "workspace": 10018867588589
+                        },
+                        "operations": [
+                            {
+                                "id": "create_project",
+                                "url": "/1.0/projects",
+                                "name": "Create a project",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "requiredMappings": [
+                                    "workspace"
+                                ],
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "creating_a_project_with_workspace_id",
+                                "url": "/1.0/workspaces/:_workspace_id/projects",
+                                "name": "Create a project in a workspace",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_project_shared_with_the_given_team",
+                                "url": "/1.0/workspaces/:_team_id/projects",
+                                "name": "Create a project shared with the given team",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "team_id",
+                                        "name": "Team ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_a_project",
+                                "url": "/1.0/projects/:_project_id",
+                                "name": "Update a project",
+                                "method": "PUT",
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_project",
+                                "url": [
+                                    "/1.0/projects/:_project_id",
+                                    "/1.0/projects"
+                                ],
+                                "name": "Create or Update a project",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "requiredMappings": [
+                                    "workspace"
+                                ],
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_project",
+                                "url": "/1.0/projects/:_project_id",
+                                "name": "Delete a project",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tags",
+                        "name": "Tags",
+                        "sampleData": {
+                            "id": 317404832819302,
+                            "color": null,
+                            "created_at": "2017-04-12T10:01:29.278Z",
+                            "followers": "",
+                            "name": "celigo,",
+                            "notes": "",
+                            "workspace": "10018867588589"
+                        },
+                        "operations": [
+                            {
+                                "id": "creating_a_tag",
+                                "url": "/1.0/tags",
+                                "name": "Create a tag",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Tag Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "creating_a_tag_with_workspace_id",
+                                "url": "/1.0/workspaces/:_workspace_id/tags",
+                                "name": "Create a tag in a workspace",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "workspace_id",
+                                        "name": "Workspace Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_a_tag",
+                                "url": "/1.0/tags/:_tag_id",
+                                "name": "Update a tag",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "tag_id",
+                                        "name": "Tag Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_a_tag",
+                                "url": [
+                                    "/1.0/tags/:_tag_id",
+                                    "/1.0/tags"
+                                ],
+                                "name": "Create or Update a tag",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "tag_id",
+                                        "name": "Tag Id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_tag",
+                                "url": "/1.0/tags/:_tag_id",
+                                "name": "Delete a tag",
+                                "method": "DELETE",
+                                "headers": {
+                                    "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "tag_id",
+                                        "name": "Tag Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sections",
+                        "name": "Sections",
+                        "sampleData": {
+                            "name": "Priority:",
+                            "section": 481000603272916,
+                            "before_section": 480107498325029,
+                            "project": "12423423"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_section",
+                                "url": "/1.0/projects/:_project_id/sections",
+                                "name": "Create a section in a project",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "move_a_section",
+                                "url": "/1.0/projects/:_project_id/sections/insert",
+                                "name": "Move or Insert sections",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_a_section",
+                                "url": "/1.0/sections/:_section_id",
+                                "name": "Update a section",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "section_id",
+                                        "name": "Section Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_section",
+                                "url": "/1.0/sections/:_section_id",
+                                "name": "Delete a section",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "section_id",
+                                        "name": "Section ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "project_templates",
+                        "name": "Project Templates",
+                        "sampleData": {
+                            "data": {
+                                "is_strict": true,
+                                "name": "New Project Name",
+                                "public": true,
+                                "requested_dates": [
+                                    {
+                                        "gid": "1",
+                                        "value": "2022-01-01"
+                                    }
+                                ],
+                                "team": "12345",
+                                "workspace": "12345"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "instantiate_aproject_from_aproject_template",
+                                "url": "/1.0/project_templates/:_project_template_id/instantiateProject",
+                                "name": "Instantiate a project from a project template",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_template_id",
+                                        "name": "Project Template Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

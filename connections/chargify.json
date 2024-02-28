@@ -1,0 +1,841 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "customers.json",
+            "customers/:_id.json",
+            "customers/lookup.json",
+            "customers.json",
+            "customers/:_id/subscriptions.json",
+            "subscriptions.json",
+            "subscriptions/:_id.json",
+            "product_families/:_productFamilyId/products.json",
+            "products/handle/:_id.json",
+            "products/:_id.json"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "paging": {
+                    "pagingMethod": "pageargument",
+                    "pageArgument": "page"
+                },
+                "resources": [
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "endpoints": [
+                            {
+                                "id": "list_customers_for_a_site",
+                                "url": "customers.json",
+                                "name": "List Customers for a Site",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "read_the_customer_by_chargify_id",
+                                "url": "customers/:_id.json",
+                                "name": "Read the Customer by Chargify ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Chargify Id",
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "read_the_customer_by_reference_value",
+                                "url": "customers/lookup.json",
+                                "name": "Read the Customer by Reference Value",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "reference",
+                                        "name": "Reference Id",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_subscriptions_for_the_customer",
+                                "url": "customers/:_id/subscriptions.json",
+                                "name": "List Subscriptions for the Customer",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Customer Id",
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "search_for_customer",
+                                "url": "customers.json",
+                                "name": "Search for Customer",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "q",
+                                        "name": "Query",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "subscriptions",
+                        "name": "Subscriptions",
+                        "endpoints": [
+                            {
+                                "id": "list_subscriptions",
+                                "url": "subscriptions.json",
+                                "name": "List Subscriptions",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per Page",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "State",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "product",
+                                        "name": "Product",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "product_revision_number",
+                                        "name": "Product Revision Number",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "coupon",
+                                        "name": "Coupon",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "date_field",
+                                        "name": "Date Field",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start_date",
+                                        "name": "Start Date",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_date",
+                                        "name": "End Date",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "read_a_subscription",
+                                "url": "subscriptions/:_id.json",
+                                "name": "Read a Subscription",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Subscription Id",
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "endpoints": [
+                            {
+                                "id": "list_products_for_a_product_family",
+                                "url": "product_families/:_productFamilyId/products.json",
+                                "name": "List Products for a Product Family",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Product Family Id",
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "read_product_via_api_handle",
+                                "url": "products/handle/:_id.json",
+                                "name": "Read Product via API Handle",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Product Handle",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "read_the_product_via_chargify_id",
+                                "url": "products/:_id.json",
+                                "name": "Read the Product via Chargify ID",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Chargify Id",
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "customers.json",
+            "customers/:_id.json",
+            "/product_families/:_productFamilyId/products.json",
+            "products/:_id",
+            "subscriptions.json",
+            "subscriptions/:_id.json",
+            "subscriptions/:_id/reactivate.json",
+            "subscriptions/:_id/retry.json",
+            "subscriptions/:_id/reset_balance.json",
+            "subscriptions/:_id/hold.json",
+            "subscriptions/:_id/resume.json",
+            "subscriptions/:_id/delayed_cancel.json"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "sampleData": {
+                            "first_name": "Test",
+                            "last_name": "Customer 1",
+                            "email": "test_customer1@gmail.com",
+                            "cc_emails": "",
+                            "organization": "",
+                            "reference": null,
+                            "id": 30741045,
+                            "created_at": "2019-11-07T02:44:49-05:00",
+                            "updated_at": "2019-11-07T02:44:49-05:00",
+                            "address": "",
+                            "address_2": "",
+                            "city": "",
+                            "state": "CA",
+                            "zip": "",
+                            "country": "US",
+                            "phone": "",
+                            "verified": false,
+                            "portal_customer_created_at": null,
+                            "portal_invite_last_sent_at": null,
+                            "portal_invite_last_accepted_at": null,
+                            "tax_exempt": false,
+                            "vat_number": "",
+                            "parent_id": null,
+                            "locale": null
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customers",
+                                "name": "Create",
+                                "url": "customers.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "customers.json",
+                                        "extract": "customer.id",
+                                        "id": "search_for_customer"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_customers",
+                                "name": "Update",
+                                "url": "customers/:_id.json",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "customers.json",
+                                        "extract": "customer.id",
+                                        "id": "search_for_customer"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_customers",
+                                "name": "Create or Update",
+                                "url": [
+                                    "customers/:_id.json",
+                                    "customers.json"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "customers.json",
+                                        "extract": "customer.id",
+                                        "id": "search_for_customer"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_customers",
+                                "name": "Delete",
+                                "url": "customers/:_id.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "customers.json",
+                                        "extract": "customer.id",
+                                        "id": "search_for_customer"
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "sampleData": {
+                            "id": 5086274,
+                            "name": "Test Product ",
+                            "handle": null,
+                            "description": "test",
+                            "accounting_code": "",
+                            "request_credit_card": true,
+                            "expiration_interval": null,
+                            "expiration_interval_unit": "never",
+                            "created_at": "2019-11-07T04:40:43-05:00",
+                            "updated_at": "2019-11-07T04:40:43-05:00",
+                            "price_in_cents": 1000,
+                            "interval": 4,
+                            "interval_unit": "month",
+                            "initial_charge_in_cents": null,
+                            "trial_price_in_cents": null,
+                            "trial_interval": null,
+                            "trial_interval_unit": "month",
+                            "archived_at": null,
+                            "require_credit_card": true,
+                            "return_params": "",
+                            "taxable": false,
+                            "update_return_url": "",
+                            "tax_code": "",
+                            "initial_charge_after_trial": false,
+                            "version_number": 1,
+                            "update_return_params": "",
+                            "default_product_price_point_id": 759954,
+                            "product_price_point_id": 759954,
+                            "product_price_point_handle": "uuid:97785c90-e370-0137-e0cd-0a88bc79fc16",
+                            "product_family": {
+                                "id": 1415728,
+                                "name": "Billing Plans",
+                                "description": null,
+                                "handle": "celigo-billing-plans",
+                                "accounting_code": null
+                            },
+                            "public_signup_pages": [
+                                {
+                                    "id": 401410,
+                                    "return_url": null,
+                                    "return_params": "",
+                                    "url": "https://celigo2.chargifypay.com/subscribe/qv8jrxykv5mk"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_products",
+                                "name": "Create",
+                                "url": "/product_families/:_productFamilyId/products.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "productFamilyId",
+                                        "in": "path",
+                                        "name": "Product Family Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true
+                            },
+                            {
+                                "id": "update_products",
+                                "name": "Update",
+                                "url": "products/:_id",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "product": {
+                                        "id": 4515288,
+                                        "name": "Test3",
+                                        "handle": "test3",
+                                        "description": "",
+                                        "accounting_code": "",
+                                        "request_credit_card": true,
+                                        "expiration_interval": null,
+                                        "expiration_interval_unit": "never",
+                                        "created_at": "2017-07-23T06:42:02-04:00",
+                                        "updated_at": "2017-07-23T06:42:02-04:00",
+                                        "price_in_cents": 0,
+                                        "interval": 1,
+                                        "interval_unit": "month",
+                                        "initial_charge_in_cents": null,
+                                        "trial_price_in_cents": null,
+                                        "trial_interval": null,
+                                        "trial_interval_unit": "month",
+                                        "archived_at": null,
+                                        "require_credit_card": false,
+                                        "return_params": "",
+                                        "taxable": false,
+                                        "update_return_url": "",
+                                        "tax_code": "",
+                                        "initial_charge_after_trial": false,
+                                        "version_number": 1,
+                                        "update_return_params": "",
+                                        "product_family": {
+                                            "id": 1014780,
+                                            "name": "Billing Plans",
+                                            "description": null,
+                                            "handle": "freelancer-billing-plans",
+                                            "accounting_code": null
+                                        },
+                                        "public_signup_pages": [
+                                            {
+                                                "id": 325807,
+                                                "return_url": null,
+                                                "return_params": "",
+                                                "url": "https://freelancer.chargify.com/subscribe/q5xhsrtpc2ws/test3"
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_products",
+                                "name": "Create or Update",
+                                "url": [
+                                    "products/:_id",
+                                    "/product_families/:_productFamilyId/products.json"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "subscriptions",
+                        "name": "Subscriptions",
+                        "operations": [
+                            {
+                                "id": "create_subscriptions",
+                                "name": "Create",
+                                "url": "subscriptions.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "subscription": {
+                                        "product_handle": "gold",
+                                        "customer_id": "customer_id",
+                                        "customer_attributes": {
+                                            "first_name": "Allison",
+                                            "last_name": "Test",
+                                            "email": "allison@example.com"
+                                        },
+                                        "calendar_billing": {
+                                            "snap_day": 1,
+                                            "calendar_billing_first_charge": "immediate"
+                                        },
+                                        "credit_card_attributes": {
+                                            "full_number": "1",
+                                            "expiration_month": "10",
+                                            "expiration_year": "2020"
+                                        }
+                                    }
+                                },
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_subscriptions",
+                                "name": "Update",
+                                "url": "subscriptions/:_id.json",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "subscription": {
+                                        "product_handle": "gold",
+                                        "customer_id": "customer_id",
+                                        "customer_attributes": {
+                                            "first_name": "Allison",
+                                            "last_name": "Test",
+                                            "email": "allison@example.com"
+                                        },
+                                        "calendar_billing": {
+                                            "snap_day": 1,
+                                            "calendar_billing_first_charge": "immediate"
+                                        },
+                                        "credit_card_attributes": {
+                                            "full_number": "1",
+                                            "expiration_month": "10",
+                                            "expiration_year": "2020"
+                                        }
+                                    }
+                                },
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_subscriptions",
+                                "name": "Create or Update",
+                                "url": [
+                                    "subscriptions/:_id.json",
+                                    "subscriptions.json"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "subscription": {
+                                        "product_handle": "gold",
+                                        "customer_id": "customer_id",
+                                        "customer_attributes": {
+                                            "first_name": "Allison",
+                                            "last_name": "Test",
+                                            "email": "allison@example.com"
+                                        },
+                                        "calendar_billing": {
+                                            "snap_day": 1,
+                                            "calendar_billing_first_charge": "immediate"
+                                        },
+                                        "credit_card_attributes": {
+                                            "full_number": "1",
+                                            "expiration_month": "10",
+                                            "expiration_year": "2020"
+                                        }
+                                    }
+                                },
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_subscriptions",
+                                "name": "Delete",
+                                "url": "subscriptions/:_id.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscriptions.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "reactivate",
+                                "name": "Reactivate",
+                                "url": "subscriptions/:_id/reactivate.json",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "retry",
+                                "name": "Retry",
+                                "url": "subscriptions/:_id/retry.json",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "reset_balance",
+                                "name": "Reset Balance",
+                                "url": "subscriptions/:_id/reset_balance.json",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "pause",
+                                "name": "Pause",
+                                "url": "subscriptions/:_id/hold.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "resume",
+                                "name": "Resume",
+                                "url": "subscriptions/:_id/resume.json",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delayed_cancel",
+                                "name": "Delayed Cancel",
+                                "url": "subscriptions/:_id/delayed_cancel.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "remove_delayed_cancel",
+                                "name": "Remove Delayed Cancel",
+                                "url": "subscriptions/:_id/delayed_cancel.json",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "subscriptions.json",
+                                        "extract": "subscription.id",
+                                        "id": "list_subscriptions"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

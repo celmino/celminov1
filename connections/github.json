@@ -1,0 +1,1170 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "headers": {
+            "User-Agent": "*",
+            "Accept": "application/vnd.github.inertia-preview+json"
+        },
+        "urlResolution": [
+            "/user",
+            "/users",
+            "/users/:_username",
+            "/user/emails",
+            "/user/public_emails",
+            "/users/:_username/followers",
+            "/user/followers",
+            "/users/:_username/following",
+            "/user/following",
+            "/user/following/:_username",
+            "/users/:_username/following/:_target_user",
+            "/user/orgs",
+            "/organizations",
+            "/orgs/:_org",
+            "/orgs/:_org/members",
+            "/orgs/:_org/members/:_username",
+            "/orgs/:_org/public_members/:_username",
+            "/orgs/:_org/invitations",
+            "/user/memberships/orgs",
+            "/user/memberships/orgs/:_org",
+            "/orgs/:_org/teams",
+            "/user/teams",
+            "/repos/:_owner/:_repo/projects",
+            "/orgs/:_org/projects",
+            "/projects/:_id",
+            "/projects/columns/:_column_id/cards",
+            "/projects/columns/cards/:_id",
+            "/projects/:_project_id/columns",
+            "/projects/columns/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "get_the_authenticated_user",
+                                "url": "/user",
+                                "name": "Get the authenticated user",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_all_users",
+                                "url": "/users",
+                                "name": "Get all users",
+                                "paging": {
+                                    "pagingMethod": "skipargument",
+                                    "skipArgument": "since"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "since",
+                                        "name": "Since",
+                                        "fieldType": "input",
+                                        "description": "The integer ID of the last Organization that you've seen."
+                                    }
+                                ],
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_a_single_user",
+                                "url": "/users/:_username",
+                                "name": "Get a single user",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "username",
+                                        "name": "Username",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_email_addresses_for_a_user",
+                                "url": "/user/emails",
+                                "name": "List email addresses for a user",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "list_public_email_addresses_for_a_user",
+                                "url": "/user/public_emails",
+                                "name": "List public email addresses for a user",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "list_a_users_followers",
+                                "url": "/users/:_username/followers",
+                                "name": "List a user's followers",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "username",
+                                        "name": "Username",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_the_authenticated_users_followers",
+                                "url": "/user/followers",
+                                "name": "List the authenticated user's followers",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "list_who_a_user_is_following",
+                                "url": "/users/:_username/following",
+                                "name": "List who a user is following",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "username",
+                                        "name": "Username",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_who_the_authenticated_user_is_following",
+                                "url": "/user/following",
+                                "name": "List who the authenticated user is following",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "check_if_you_are_following_a_user",
+                                "url": "/user/following/:_username",
+                                "name": "Check if you are following a user",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "username",
+                                        "name": "Username",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "check_if_one_user_follows_another",
+                                "url": "/users/:_username/following/:_target_user",
+                                "name": "Check if one user follows another",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "username",
+                                        "name": "Username",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "target_user",
+                                        "name": "Target User",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_users",
+                                "url": "/search/users",
+                                "name": "Search Users",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "q",
+                                        "name": "Query",
+                                        "fieldType": "input",
+                                        "description": "The search terms."
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "followers",
+                                            "repositories",
+                                            "joined"
+                                        ],
+                                        "description": "The sort field. Can be followers, repositories, or joined. Default: results are sorted by best match."
+                                    },
+                                    {
+                                        "id": "order",
+                                        "name": "Order",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "description": "The sort order if sort parameter is provided. One of asc or desc. Default: desc"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "organizations",
+                        "name": "Organizations",
+                        "endpoints": [
+                            {
+                                "id": "list_your_organizations",
+                                "url": "/user/orgs",
+                                "name": "List organizations for the authenticated user",
+                                "paging": {
+                                    "pagingMethod": "linkheader",
+                                    "linkHeaderRelation": "next"
+                                },
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "list_all_organizations",
+                                "url": "/organizations",
+                                "name": "List organizations",
+                                "paging": {
+                                    "pagingMethod": "linkheader",
+                                    "linkHeaderRelation": "next"
+                                },
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_an_organization",
+                                "url": "/orgs/:_org",
+                                "name": "Get an organization",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "members_list",
+                                "url": "/orgs/:_org/members",
+                                "name": "List organization members",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "check_membership",
+                                "url": "/orgs/:_org/members/:_username",
+                                "name": "Check organization membership for a user",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "username",
+                                        "name": "Username",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_pending_organization_invitations",
+                                "url": "/orgs/:_org/invitations",
+                                "name": "List pending organization invitations",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_your_organization_memberships",
+                                "url": "/user/memberships/orgs",
+                                "name": "List organization memberships for the authenticated user",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "state",
+                                        "name": "State",
+                                        "fieldType": "input",
+                                        "description": "Indicates the state of the memberships to return. Can be either active or pending. If not specified, the API returns both active and pending memberships."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_your_organization_membership",
+                                "url": "/user/memberships/orgs/:_org",
+                                "name": "Get an organization membership for the authenticated user",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_teams",
+                                "url": "/orgs/:_org/teams",
+                                "name": "List teams",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_team_by_name",
+                                "url": "/orgs/:_ordid/teams/:_teamname",
+                                "name": "Get a team by name",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "ordid",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "description": "The organization name. The name is not case sensitive."
+                                    },
+                                    {
+                                        "id": "teamname",
+                                        "name": "Team Slug",
+                                        "required": true,
+                                        "description": "The slug of the team name."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_child_teamss",
+                                "url": "/orgs/:_ordid/teams/:_teamname/teams",
+                                "name": "List child teams",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "ordid",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "description": "The organization name. The name is not case sensitive."
+                                    },
+                                    {
+                                        "id": "teamname",
+                                        "name": "Team Slug",
+                                        "required": true,
+                                        "description": "The slug of the team name."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per Page",
+                                        "description": "The number of results per page (max 100)",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "fieldType": "input",
+                                        "description": "Page number of the results to fetch."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_team_memberss",
+                                "url": "/orgs/:_ordid/teams/:_teamname/members",
+                                "name": "List team members",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "ordid",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "description": "The organization name. The name is not case sensitive."
+                                    },
+                                    {
+                                        "id": "teamname",
+                                        "name": "Team Slug",
+                                        "required": true,
+                                        "description": "The slug of the team name."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per Page",
+                                        "description": "The number of results per page (max 100)",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "page",
+                                        "fieldType": "input",
+                                        "description": "Page number of the results to fetch."
+                                    },
+                                    {
+                                        "id": "role",
+                                        "name": "Role",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "member",
+                                            "maintainer",
+                                            "all"
+                                        ],
+                                        "description": "Filters members returned by their role in the team."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_team_membership_for_a_user",
+                                "url": "/orgs/:_ordid/teams/:_teamname/memberships/:_username",
+                                "name": "Get team membership for a user",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "ordid",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "description": "The organization name. The name is not case sensitive."
+                                    },
+                                    {
+                                        "id": "teamname",
+                                        "name": "Team Slug",
+                                        "required": true,
+                                        "description": "The slug of the team name."
+                                    },
+                                    {
+                                        "id": "username",
+                                        "name": "Username",
+                                        "required": true,
+                                        "description": "The handle for the GitHub user account."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_team_repositories",
+                                "url": "/orgs/:_ordid/teams/:_teamname/repos",
+                                "name": "List team repositories",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "ordid",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "description": "The organization name. The name is not case sensitive."
+                                    },
+                                    {
+                                        "id": "teamname",
+                                        "name": "Team Slug",
+                                        "required": true,
+                                        "description": "The slug of the team name."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per Page",
+                                        "description": "The number of results per page (max 100)",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "page",
+                                        "fieldType": "input",
+                                        "description": "Page number of the results to fetch."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_user_teams",
+                                "url": "/user/teams",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "name": "List teams for the authenticated user",
+                                "resourcePath": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "endpoints": [
+                            {
+                                "id": "list_repository_projects",
+                                "url": "/repos/:_owner/:_repo/projects",
+                                "name": "List repository projects",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "owner",
+                                        "name": "Owner Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "repo",
+                                        "name": "Repository Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_organization_projects",
+                                "url": "/orgs/:_org/projects",
+                                "name": "List organization projects",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_project",
+                                "url": "/projects/:_id",
+                                "name": "Get a project",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Project ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_project_cards",
+                                "url": "/projects/columns/:_column_id/cards",
+                                "name": "List project cards",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "column_id",
+                                        "name": "Column ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_project_card",
+                                "url": "/projects/columns/cards/:_id",
+                                "name": "Get a project card",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Card ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_project_columns",
+                                "url": "/projects/:_project_id/columns",
+                                "name": "List project columns",
+                                "resourcePath": "",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_project_column",
+                                "url": "/projects/columns/:_id",
+                                "name": "Get a project column",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Column ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "headers": {
+            "User-Agent": "*",
+            "Accept": "application/vnd.github.inertia-preview+json"
+        },
+        "urlResolution": [
+            "/user/emails",
+            "/user/following/:_username",
+            "/user/memberships/orgs/:_org",
+            "/user",
+            "/orgs/:_org/members/:_username",
+            "/orgs/:_org/public_members/:_username",
+            "/orgs/:_org/teams",
+            "/orgs/:_org",
+            "/repos/:_owner/:_repo/projects",
+            "/orgs/:_org/projects",
+            "/projects/:_id",
+            "/projects/columns/:_column_id/cards",
+            "/projects/columns/cards/:_id",
+            "/projects/:project_id/columns",
+            "/projects/columns/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "name": "snigdha",
+                            "email": "octocat@github.com",
+                            "blog": "https://github.com/blog",
+                            "company": "GitHub",
+                            "location": "San Francisco"
+                        },
+                        "operations": [
+                            {
+                                "id": "follow_a_user",
+                                "url": "/user/following/:_username",
+                                "name": "Follow a user",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "username",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_the_authenticated_user",
+                                "url": "/user",
+                                "name": "Update the authenticated user",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "monalisa octocat",
+                                    "email": "octocat@github.com",
+                                    "blog": "https://github.com/blog",
+                                    "company": "GitHub",
+                                    "location": "San Francisco",
+                                    "hireable": true,
+                                    "bio": "There once..."
+                                }
+                            },
+                            {
+                                "id": "unfollow_a_user",
+                                "url": "/user/following/:_username",
+                                "name": "Unfollow a user",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "username",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "organizations",
+                        "name": "Organizations",
+                        "sampleData": {
+                            "satate": "active",
+                            "location": "San Francisco",
+                            "name": "github",
+                            "description": "GitHub, the company.",
+                            "company": "GitHub",
+                            "email": "support@github.com"
+                        },
+                        "operations": [
+                            {
+                                "id": "delete_a_member",
+                                "url": "/orgs/:_org/members/:_username",
+                                "name": "Remove an organization member",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "resource": "users",
+                                        "id": "search_users",
+                                        "extract": "items[0].login"
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization name",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "username",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_public_membership",
+                                "url": "/orgs/:_org/public_members/:_username",
+                                "name": "Set public organization membership for the authenticated user",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization name",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "username",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_organization_membership",
+                                "url": "/user/memberships/orgs/:_org",
+                                "name": "Update an organization membership for the authenticated user",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "org",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "state": "active"
+                                }
+                            },
+                            {
+                                "id": "delete_membership",
+                                "url": "/orgs/:_org/public_members/:_username",
+                                "name": "Remove public organization membership for the authenticated user",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization name",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "username",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_team",
+                                "url": "/orgs/:_org/teams",
+                                "name": "Create a team",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization name",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "team3",
+                                    "description": "my team",
+                                    "privacy": "closed",
+                                    "permission": "admin",
+                                    "repo_name": "snigdha"
+                                }
+                            },
+                            {
+                                "id": "update_a_team",
+                                "url": "/orgs/:_ordid/teams/:_id",
+                                "name": "Update a team",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ordid",
+                                        "name": "Organization Name",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The organization name. The name is not case sensitive."
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "Justice League",
+                                    "slug": "justice-league",
+                                    "description": "A great team.",
+                                    "privacy": "closed",
+                                    "permission": "admin",
+                                    "parent_team_id": 1
+                                }
+                            },
+                            {
+                                "id": "create_organization_invitation",
+                                "url": "/orgs/:_org/invitations",
+                                "name": "Create an organization invitation",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization name",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "invitee_id": 1,
+                                    "email": "support@github.com",
+                                    "role": "admin",
+                                    "team_ids": [
+                                        1,
+                                        2,
+                                        3
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "sampleData": {
+                            "name": "Projects Documentation",
+                            "body": "Developer documentation project for the developer site.",
+                            "note": "Projects Documentation"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_repo_project",
+                                "url": "/repos/:_owner/:_repo/projects",
+                                "name": "Create Repo Project",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "owner",
+                                        "name": "Owner name",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "repo",
+                                        "name": "Reprositary Name",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "Projects Documentation",
+                                    "body": "Developer documentation project for the developer site."
+                                }
+                            },
+                            {
+                                "id": "create_organizations_project",
+                                "url": "/orgs/:_org/projects",
+                                "name": "Create Organizations Project",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "org",
+                                        "name": "Organization name",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "Projects Documentation",
+                                    "body": "Developer documentation project for the developer site."
+                                }
+                            },
+                            {
+                                "id": "update_project",
+                                "url": "/projects/:_id",
+                                "name": "Update Project",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "Projects Documentation",
+                                    "body": "Developer documentation project for the developer site."
+                                }
+                            },
+                            {
+                                "id": "delete_a_project",
+                                "url": "/projects/:_id",
+                                "name": "Delete a Project",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_project_card",
+                                "url": "/projects/columns/:_column_id/cards",
+                                "name": "Create a Project Card",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "column_id",
+                                        "name": "Column ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "note": "goood one"
+                                }
+                            },
+                            {
+                                "id": "update_a_project_card",
+                                "url": "/projects/columns/cards/:_id",
+                                "name": "Update a project card",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "note": "Projects Documentation"
+                                }
+                            },
+                            {
+                                "id": "delete_a_project_card",
+                                "url": "/projects/columns/cards/:_id",
+                                "name": "Delete a Project Card",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_project_column",
+                                "url": "/projects/:project_id/columns",
+                                "name": "Create a Project Column",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "Projects Documentation"
+                                }
+                            },
+                            {
+                                "id": "update_a_project_column",
+                                "url": "/projects/columns/:_id",
+                                "name": "Update a project column",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "Projects Documentation"
+                                }
+                            },
+                            {
+                                "id": "delete_a_project_column",
+                                "url": "/projects/columns/:_id",
+                                "name": "Delete a project column",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

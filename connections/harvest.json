@@ -1,0 +1,1588 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [
+            "clients",
+            "clients/:_id",
+            "tasks",
+            "tasks/:_id",
+            "projects",
+            "projects/:_id",
+            "users",
+            "users/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "clients",
+                        "name": "Clients",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_clients",
+                                "url": "clients",
+                                "name": "Retrive all clients",
+                                "resourcePath": "clients",
+                                "queryParameters": [
+                                    {
+                                        "id": "updated_since",
+                                        "name": "Updated Since",
+                                        "description": "Only return contacts that have been updated since the given date and time.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retreive the next page of the list. (Default: 1)",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per page",
+                                        "description": "The number of records to return per page. Can range between 1 and 100. (Default: 100)",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_client_based_on_id",
+                                "url": "clients/:_id",
+                                "name": "Single Client based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "client ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "roles",
+                        "name": "Roles",
+                        "endpoints": [
+                            {
+                                "id": "list_all_roles",
+                                "url": "roles",
+                                "name": "List all roles",
+                                "resourcePath": "roles",
+                                "queryParameters": [
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retreive the next page of the list. (Default: 1)",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per page",
+                                        "description": "The number of records to return per page. Can range between 1 and 100. (Default: 100)",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_a_role",
+                                "url": "roles/:_id",
+                                "name": "Retrieve a Role",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Role ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoices",
+                        "name": "Invoices",
+                        "endpoints": [
+                            {
+                                "id": "list_all_invoices",
+                                "url": "invoices",
+                                "name": "List all Invoices",
+                                "resourcePath": "invoices",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_since": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.sss[Z]"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "updated_since",
+                                        "name": "Updated Since",
+                                        "description": "Only return invoices that have been updated since the given date and time.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "client_id",
+                                        "name": "Client Id",
+                                        "description": "Only return invoices belonging to the client with the given ID.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Only return invoices with an issue_date on or before the given date.",
+                                        "fieldType": "date"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "State",
+                                        "description": "Only return invoices with a state matching the value provided.",
+                                        "fieldType": "string",
+                                        "options": [
+                                            "draft",
+                                            "paid",
+                                            "closed",
+                                            "open"
+                                        ]
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Only return invoices with an issue_date on or after the given date.",
+                                        "fieldType": "date"
+                                    },
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "description": "Only return invoices associated with the project with the given ID",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retreive the next page of the list. (Default: 1)",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per page",
+                                        "description": "The number of records to return per page. Can range between 1 and 100. (Default: 100)",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_an_invoice",
+                                "url": "invoices/:_id",
+                                "name": "Retrieve an invoice",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_tasks",
+                                "url": "tasks",
+                                "name": "Retrive all Tasks",
+                                "resourcePath": "tasks",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_since": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.sss[Z]"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "is_active",
+                                        "name": "Is Active",
+                                        "description": "Pass true to only return active tasks and false to return inactive tasks.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            true,
+                                            false
+                                        ]
+                                    },
+                                    {
+                                        "id": "updated_since",
+                                        "name": "Updated Since",
+                                        "description": "Only return contacts that have been updated since the given date and time.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retreive the next page of the list. (Default: 1)",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per page",
+                                        "description": "The number of records to return per page. Can range between 1 and 100. (Default: 100)",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_task_based_on_id",
+                                "url": "tasks/:_id",
+                                "name": "Single Task based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Task ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_projects",
+                                "url": "projects",
+                                "name": "Retrive all Projects",
+                                "resourcePath": "projects",
+                                "queryParameters": [
+                                    {
+                                        "id": "updated_since",
+                                        "name": "Updated Since",
+                                        "description": "Only return contacts that have been updated since the given date and time.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retreive the next page of the list. (Default: 1)",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per page",
+                                        "description": "The number of records to return per page. Can range between 1 and 100. (Default: 100)",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_project_based_on_id",
+                                "url": "projects/:_id",
+                                "name": "Single Project based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Project ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "estimates",
+                        "name": "Estimates",
+                        "endpoints": [
+                            {
+                                "id": "list_all_estimates",
+                                "url": "estimates",
+                                "name": "List all estimates",
+                                "resourcePath": "estimates",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_since": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.sss[Z]"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "updated_since",
+                                        "name": "Updated Since",
+                                        "description": "Only return estimates that have been updated since the given date and time.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "client_id",
+                                        "name": "Client Id",
+                                        "description": "Only return estimates belonging to the client with the given ID.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Only return estimates with an issue_date on or before the given date.",
+                                        "fieldType": "date"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "State",
+                                        "description": "Only return estimates with a state matching the value provided.",
+                                        "fieldType": "string",
+                                        "options": [
+                                            "draft",
+                                            "sent",
+                                            "accepted",
+                                            "declined"
+                                        ]
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Only return estimates with an issue_date on or after the given date.",
+                                        "fieldType": "date"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retreive the next page of the list. (Default: 1)",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per page",
+                                        "description": "The number of records to return per page. Can range between 1 and 100. (Default: 100)",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_an_estimate",
+                                "url": "estimates/:_id",
+                                "name": "Retrieve an estimate",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Estimate ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expenses",
+                        "name": "Expenses",
+                        "endpoints": [
+                            {
+                                "id": "list_all_expenses",
+                                "url": "expenses",
+                                "name": "List all Expenses",
+                                "resourcePath": "expenses",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_since": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.sss[Z]"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "updated_since",
+                                        "name": "Updated Since",
+                                        "description": "Only return expenses that have been updated since the given date and time.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "is_billed",
+                                        "name": "Is Billed",
+                                        "description": "Pass true to only return expenses that have been invoiced and false to return expenses that have not been invoiced.",
+                                        "fieldType": "select",
+                                        "type": "boolean",
+                                        "options": [
+                                            true,
+                                            false
+                                        ]
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "description": "Only return expenses belonging to the user with the given ID.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "description": "Only return expenses belonging to the project with the given ID.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "client_id",
+                                        "name": "Client Id",
+                                        "description": "Only return expenses belonging to the client with the given ID.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Only return expenses with an issue_date on or before the given date.",
+                                        "fieldType": "date"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "State",
+                                        "description": "Only return expenses with a state matching the value provided.",
+                                        "fieldType": "string",
+                                        "options": [
+                                            "draft",
+                                            "sent",
+                                            "accepted",
+                                            "declined"
+                                        ]
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Only return expenses with an issue_date on or after the given date.",
+                                        "fieldType": "date"
+                                    },
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project Id",
+                                        "description": "Only return expenses associated with the project with the given ID",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retreive the next page of the list. (Default: 1)",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per page",
+                                        "description": "The number of records to return per page. Can range between 1 and 100. (Default: 100)",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_an_expense",
+                                "url": "expenses/:_id",
+                                "name": "Retrieve an expense",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Expense ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_users",
+                                "url": "users",
+                                "name": "Retrive all Users",
+                                "resourcePath": "users",
+                                "queryParameters": [
+                                    {
+                                        "id": "updated_since",
+                                        "name": "Updated Since",
+                                        "description": "Only return contacts that have been updated since the given date and time.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "The page number to use in pagination. For instance, if you make a list request and receive 100 records, your subsequent call can include page=2 to retreive the next page of the list. (Default: 1)",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "per_page",
+                                        "name": "Per page",
+                                        "description": "The number of records to return per page. Can range between 1 and 100. (Default: 100)",
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_user_based_on_id",
+                                "url": "users/:_id",
+                                "name": "Single user based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "User ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "clients",
+            "clients/:_id",
+            "tasks",
+            "tasks/:_id",
+            "projects",
+            "projects/:_id",
+            "users",
+            "users/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "clients",
+                        "name": "Clients",
+                        "sampleData": {
+                            "id": 5986468,
+                            "name": "google",
+                            "is_active": true,
+                            "address": null,
+                            "created_at": "2017-09-14T06:55:49Z",
+                            "updated_at": "2017-09-28T05:37:01Z",
+                            "currency": "INR"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_clients",
+                                "url": "clients",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_clients",
+                                "url": "clients/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_clients",
+                                "url": [
+                                    "clients/:_id",
+                                    "clients"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_clients",
+                                "url": "clients/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "roles",
+                        "name": "Roles",
+                        "sampleData": {
+                            "id": 617670,
+                            "name": "Marketing",
+                            "created_at": "2020-04-16T18:18:30Z",
+                            "updated_at": "2020-04-16T18:18:30Z",
+                            "user_ids": [
+                                3122374,
+                                3122373,
+                                2084359
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_role",
+                                "url": "roles",
+                                "name": "Create a role",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            },
+                            {
+                                "id": "update_a_role",
+                                "url": "roles/:_id",
+                                "name": "Update a role",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_a_roles",
+                                "url": [
+                                    "roles/:_id",
+                                    "roles"
+                                ],
+                                "name": "Create or Update a role",
+                                "method": [
+                                    "PATCH",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            },
+                            {
+                                "id": "delete_a_roles",
+                                "url": "roles/:_id",
+                                "name": "Delete a role",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "sampleData": {
+                            "id": 8570625,
+                            "name": "celigo",
+                            "billable_by_default": false,
+                            "default_hourly_rate": null,
+                            "is_default": true,
+                            "is_active": true,
+                            "created_at": "2017-10-03T10:46:18Z",
+                            "updated_at": "2017-10-03T10:46:18Z"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_tasks",
+                                "url": "tasks",
+                                "name": "Create a task",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_tasks",
+                                "url": "tasks/:_id",
+                                "name": "Update a task",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_tasks",
+                                "url": [
+                                    "tasks/:_id",
+                                    "tasks"
+                                ],
+                                "name": "Create or Update a task",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tasks",
+                                "url": "tasks/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "sampleData": {
+                            "id": 15230024,
+                            "name": "Project 1",
+                            "code": "12345",
+                            "is_active": true,
+                            "is_billable": true,
+                            "is_fixed_fee": false,
+                            "bill_by": "none",
+                            "budget": null,
+                            "budget_by": "project",
+                            "notify_when_over_budget": false,
+                            "over_budget_notification_percentage": 80,
+                            "show_budget_to_all": false,
+                            "created_at": "2017-10-06T07:06:12Z",
+                            "updated_at": "2017-10-06T07:06:12Z",
+                            "starts_on": null,
+                            "ends_on": null,
+                            "over_budget_notification_date": null,
+                            "notes": "",
+                            "cost_budget": null,
+                            "cost_budget_include_expenses": false,
+                            "hourly_rate": null,
+                            "fee": null,
+                            "client_id": 6056110,
+                            "client_name": "muneswara",
+                            "client_currency": "INR"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_projects",
+                                "url": "projects",
+                                "name": "Create a project",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_projects",
+                                "url": "projects/:_id",
+                                "name": "Update a project",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_projects",
+                                "url": [
+                                    "projects/:_id",
+                                    "projects"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_projects",
+                                "url": "projects/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoices",
+                        "name": "Invoices",
+                        "operations": [
+                            {
+                                "id": "create_invoices",
+                                "url": "invoices",
+                                "name": "Create an invoice",
+                                "method": "POST",
+                                "sampleData": {
+                                    "client_id": "",
+                                    "retainer_id": "",
+                                    "estimate_id": "",
+                                    "number": "",
+                                    "purchase_order": "",
+                                    "tax": "",
+                                    "tax2": "",
+                                    "discount": "",
+                                    "subject": "",
+                                    "notes": "",
+                                    "currency": "",
+                                    "issue_date": "",
+                                    "due_date": "",
+                                    "payment_term": "",
+                                    "line_items": [
+                                        {
+                                            "project_id": "",
+                                            "kind": "",
+                                            "description": "",
+                                            "quantity": "",
+                                            "unit_price": "",
+                                            "taxed": "",
+                                            "taxed2": ""
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "client_id",
+                                    "line_items[*].kind",
+                                    "line_items[*].unit_price"
+                                ]
+                            },
+                            {
+                                "id": "create_an_invoice_based_on_tracked_time_and_expenses",
+                                "url": "invoices",
+                                "name": "Create an invoice based on tracked time and expenses",
+                                "method": "POST",
+                                "sampleData": {
+                                    "client_id": "",
+                                    "retainer_id": "",
+                                    "estimate_id": "",
+                                    "number": "",
+                                    "purchase_order": "",
+                                    "tax": "",
+                                    "tax2": "",
+                                    "discount": "",
+                                    "subject": "",
+                                    "notes": "",
+                                    "currency": "",
+                                    "issue_date": "",
+                                    "due_date": "",
+                                    "payment_term": "",
+                                    "line_items_import": {
+                                        "project_ids": [],
+                                        "time": {
+                                            "summary_type": "",
+                                            "from": "",
+                                            "to": ""
+                                        },
+                                        "expenses": {
+                                            "summary_type": "",
+                                            "from": "",
+                                            "to": "",
+                                            "attach_receipts": ""
+                                        }
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "client_id",
+                                    "line_items_import.project_ids",
+                                    "line_items_import.time.summary_type",
+                                    "line_items_import.expenses.summary_type"
+                                ]
+                            },
+                            {
+                                "id": "update_an_invoice",
+                                "url": "invoices/:_id",
+                                "name": "Update an invoice",
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "client_id": "",
+                                    "retainer_id": "",
+                                    "estimate_id": "",
+                                    "number": "",
+                                    "purchase_order": "",
+                                    "tax": "",
+                                    "tax2": "",
+                                    "discount": "",
+                                    "subject": "",
+                                    "notes": "",
+                                    "currency": "",
+                                    "issue_date": "",
+                                    "due_date": "",
+                                    "payment_term": "",
+                                    "line_items": {
+                                        "id": "",
+                                        "project_id": "",
+                                        "kind": "",
+                                        "description": "",
+                                        "quantity": "",
+                                        "unit_price": "",
+                                        "taxed": "",
+                                        "taxed2": ""
+                                    }
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_invoices",
+                                "url": [
+                                    "invoices/:_id",
+                                    "invoices"
+                                ],
+                                "name": "Create or Update an invoice",
+                                "method": [
+                                    "PATCH",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "client_id",
+                                    "line_items[*].kind",
+                                    "line_items[*].unit_price"
+                                ]
+                            },
+                            {
+                                "id": "create_an_invoice_line_item",
+                                "url": "invoices/:_id",
+                                "name": "Create an invoice line item",
+                                "method": "POST",
+                                "sampleData": {
+                                    "line_items": [
+                                        {
+                                            "id": 53341928,
+                                            "kind": "Service",
+                                            "description": "ABC Project",
+                                            "quantity": 1,
+                                            "unit_price": 5000,
+                                            "amount": 0,
+                                            "taxed": false,
+                                            "taxed2": false,
+                                            "project": null
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_an_invoice_line_item",
+                                "url": "invoices/:_id",
+                                "name": "Update an invoice line item",
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "line_items": [
+                                        {
+                                            "id": 53341928,
+                                            "kind": "Service",
+                                            "description": "ABC Project",
+                                            "quantity": 1,
+                                            "unit_price": 5000,
+                                            "amount": 0,
+                                            "taxed": false,
+                                            "taxed2": false,
+                                            "project": null
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_invoice_line_item",
+                                "url": "invoices/:_id",
+                                "name": "Delete an invoice line item",
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "line_items": [
+                                        {
+                                            "id": 53341928,
+                                            "_destroy": true
+                                        }
+                                    ]
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_invoice",
+                                "url": "invoices/:_id",
+                                "name": "Delete an invoice",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "estimates",
+                        "name": "Estimates",
+                        "operations": [
+                            {
+                                "id": "create_an_estimate",
+                                "url": "estimates",
+                                "name": "Create an estimate",
+                                "method": "POST",
+                                "sampleData": {
+                                    "client_id": "",
+                                    "number": "",
+                                    "purchase_order": "",
+                                    "tax": "",
+                                    "tax2": "",
+                                    "discount": "",
+                                    "subject": "",
+                                    "notes": "",
+                                    "currency": "",
+                                    "issue_date": "",
+                                    "line_items": {
+                                        "kind": "",
+                                        "description": "",
+                                        "quantity": "",
+                                        "unit_price": "",
+                                        "taxed": "",
+                                        "taxed2": ""
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "client_id"
+                                ]
+                            },
+                            {
+                                "id": "update_an_estimates",
+                                "url": "estimates/:_id",
+                                "name": "Update an estimates",
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "client_id": "",
+                                    "number": "",
+                                    "purchase_order": "",
+                                    "tax": "",
+                                    "tax2": "",
+                                    "discount": "",
+                                    "subject": "",
+                                    "notes": "",
+                                    "currency": "",
+                                    "issue_date": "",
+                                    "line_items": {
+                                        "kind": "",
+                                        "description": "",
+                                        "quantity": "",
+                                        "unit_price": "",
+                                        "taxed": "",
+                                        "taxed2": ""
+                                    }
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_an_estimate_line_item",
+                                "url": "estimates/:_id",
+                                "name": "Creates an estimate line item",
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "line_items": [
+                                        {
+                                            "kind": "Service",
+                                            "description": "Another Project",
+                                            "unit_price": 1000
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_an_estimate_line_item",
+                                "url": "estimates/:_id",
+                                "name": "Update an estimate line item",
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "line_items": [
+                                        {
+                                            "id": 53339199,
+                                            "description": "Project Phase 2",
+                                            "unit_price": 5000
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_estimates",
+                                "url": [
+                                    "estimates/:_id",
+                                    "estimates"
+                                ],
+                                "name": "Create or Update an estimate",
+                                "method": [
+                                    "PATCH",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_estimate_line_item",
+                                "url": "estimates/:_id",
+                                "name": "Delete an estimate line item",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "line_items": [
+                                        {
+                                            "id": 53339199,
+                                            "_destroy": true
+                                        }
+                                    ]
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_estimates",
+                                "url": "estimates/:_id",
+                                "name": "Delete an estimate",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expenses",
+                        "name": "Expenses",
+                        "operations": [
+                            {
+                                "id": "create_expenses",
+                                "url": "expenses",
+                                "name": "Create an expense",
+                                "method": "POST",
+                                "sampleData": {
+                                    "user_id": "",
+                                    "project_id": "",
+                                    "expense_category_id": "",
+                                    "spent_date": "",
+                                    "units": "",
+                                    "total_cost": "",
+                                    "notes": "",
+                                    "billable": "",
+                                    "receipt": ""
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "project_id",
+                                    "spent_date",
+                                    "expense_category_id"
+                                ]
+                            },
+                            {
+                                "id": "update_an_expenses",
+                                "url": "expenses/:_id",
+                                "name": "Update an expense",
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "delete_receipt": "",
+                                    "project_id": "",
+                                    "expense_category_id": "",
+                                    "spent_date": "",
+                                    "units": "",
+                                    "total_cost": "",
+                                    "notes": "",
+                                    "billable": "",
+                                    "receipt": ""
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_expenses",
+                                "url": [
+                                    "expenses/:_id",
+                                    "expenses"
+                                ],
+                                "name": "Create or Update an expense ",
+                                "method": [
+                                    "PATCH",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_expenses",
+                                "url": "expenses/:_id",
+                                "name": "Delete an expense",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "id": 1871310,
+                            "first_name": "George",
+                            "last_name": "Frank",
+                            "email": "george@example.com",
+                            "telephone": "",
+                            "timezone": "Eastern Time (US & Canada)",
+                            "has_access_to_all_future_projects": false,
+                            "is_contractor": false,
+                            "is_admin": false,
+                            "is_project_manager": false,
+                            "can_see_rates": false,
+                            "can_create_projects": false,
+                            "can_create_invoices": false,
+                            "is_active": true,
+                            "created_at": "2017-10-06T09:32:46Z",
+                            "updated_at": "2017-10-06T09:32:46Z",
+                            "default_hourly_rate": null,
+                            "cost_rate": null,
+                            "avatar_url": "https://cache.harvestapp.com/assets/profile_images/abraj_albait_towers.png?1507282366"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_users",
+                                "url": "users",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_users",
+                                "url": "users/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_users",
+                                "url": [
+                                    "users/:_id",
+                                    "users"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_users",
+                                "url": "users/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

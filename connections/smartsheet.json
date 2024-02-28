@@ -1,0 +1,1480 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [
+            "/2.0/sheets/:_sheetId/version",
+            "/2.0/sheets/:_sheetId",
+            "/2.0/users/sheets",
+            "/2.0/sheets",
+            "/2.0/sheets/:_sheetId/publish",
+            "/2.0/search",
+            "/2.0/search/sheets/:_sheetId",
+            "/2.0/sheets/:_sheetId/shares/:_shareId",
+            "/2.0/sheets/:_sheetId/shares",
+            "/2.0/sheets/:_sheetId/columns/:_columnId",
+            "/2.0/sheets/:_sheetId/columns",
+            "/2.0/sheets/:_sheetId/rows/:_rowId"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "sheets",
+                        "name": "Sheets",
+                        "endpoints": [
+                            {
+                                "id": "get_sheet_version",
+                                "url": "/2.0/sheets/:_sheetId/version",
+                                "name": "Get Sheet Version",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sheet",
+                                "url": "/2.0/sheets/:_sheetId",
+                                "name": "Get Sheet",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "exclude ",
+                                        "name": "Exclude ",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "rowIds",
+                                        "name": "Row IDs",
+                                        "description": "Comma-separated list of Row Ids",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "rowNumbers",
+                                        "name": "Row Numbers",
+                                        "description": "Comma-separated list of Row numbers.Non-existent row numbers are ignored",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "columnIds",
+                                        "name": "Column IDs",
+                                        "description": "Comma-separated list of Column Ids",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "Page Size",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_organization_sheets",
+                                "url": "/2.0/users/sheets",
+                                "name": "List Organization Sheets",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "numericDates",
+                                        "name": "Numeric Dates",
+                                        "description": "Parsing of dates in numeric format",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true"
+                                        ]
+                                    },
+                                    {
+                                        "id": "modifiedSince",
+                                        "name": "Modified Since",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "Page Size",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includeAll",
+                                        "name": "Include All",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_sheets",
+                                "url": "/2.0/sheets",
+                                "name": "List Sheets",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "numericDates",
+                                        "name": "Numeric Dates",
+                                        "description": "Parsing of dates in numeric format",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true"
+                                        ]
+                                    },
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "modifiedSince",
+                                        "name": "Modified Since",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "Page Size",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includeAll",
+                                        "name": "Include All",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "url": "/2.0/sheets/:_sheetId/publish",
+                                "id": "publish_sheet",
+                                "name": "Publish Sheet",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "url": "/2.0/search",
+                                "id": "search_everything",
+                                "name": "Search Everything",
+                                "resourcePath": "results",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "Text Query",
+                                        "required": true,
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "url": "/2.0/search/sheets/:_sheetId",
+                                "id": "search_sheet",
+                                "name": "Search Sheet",
+                                "resourcePath": "results",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "Query",
+                                        "required": true,
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shares",
+                        "name": "Sheet Sharing",
+                        "endpoints": [
+                            {
+                                "id": "get_sheet_share",
+                                "url": "/2.0/sheets/:_sheetId/shares/:_shareId",
+                                "name": "Get Sheet Share",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "shareId",
+                                        "name": "Share ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_sheet_shares",
+                                "url": "/2.0/sheets/:_sheetId/shares",
+                                "name": "List Sheet Shares",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "Page Size",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includeAll",
+                                        "name": "Include All",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rows",
+                        "name": "Rows",
+                        "endpoints": [
+                            {
+                                "id": "get_row",
+                                "url": "/2.0/sheets/:_sheetId/rows/:_rowId",
+                                "name": "Get Row",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "rowId",
+                                        "name": "Row ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "exclude ",
+                                        "name": "Exclude ",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "columns",
+                        "name": "Columns",
+                        "endpoints": [
+                            {
+                                "id": "get_column",
+                                "url": "/2.0/sheets/:_sheetId/columns/:_columnId",
+                                "name": "Get Column",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "columnId",
+                                        "name": "Column ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_columns",
+                                "url": "/2.0/sheets/:_sheetId/columns",
+                                "name": "List Columns",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "Page Size",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includeAll",
+                                        "name": "Include All",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/2.0/sheets",
+            "/2.0/sheets/:_id",
+            "/2.0/sheets/:_sheetId/copy",
+            "/2.0/folders/:_folderId/sheets",
+            "/2.0/workspaces/:_workspaceId/sheets",
+            "/2.0/sheets/:_sheetId/move",
+            "/2.0/sheets/:_sheetId/publish",
+            "/2.0/sheets/:_sheetId/emails",
+            "/2.0/sheets/:_sheetId/updaterequests",
+            "/2.0/sheets/:_sheetId/shares",
+            "/2.0/sheets/:_sheetId/shares/:_shareId",
+            "/2.0/sheets/:_sheetId/columns",
+            "/2.0/sheets/:_sheetId/columns/:_columnId",
+            "/2.0/sheets/:_sheetId/rows",
+            "/2.0/sheets/:_sheetId/rows/copy",
+            "/2.0/sheets/:_sheetId/rows/move",
+            "/2.0/sheets/:_sheetId/rows/emails",
+            "/2.0/sheets/:_sheetId/rows/:_rowId"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "sheets",
+                        "name": "Sheets",
+                        "sampleData": {
+                            "id": 2331373580117892,
+                            "name": "newsheet",
+                            "permalink": "https://app.smartsheet.com/b/home?lx=0HHzeGnfHik-N13ZT8pU7g",
+                            "columns": [
+                                {
+                                    "id": 796087311431012,
+                                    "index": 0,
+                                    "title": "Favorite",
+                                    "type": "CHECKBOX",
+                                    "symbol": "STAR"
+                                },
+                                {
+                                    "id": 642523719853956,
+                                    "index": 1,
+                                    "title": "Primary Column",
+                                    "primary": true,
+                                    "type": "TEXT_NUMBER"
+                                }
+                            ],
+                            "userSettings": {
+                                "criticalPathEnabled": true
+                            },
+                            "projectSettings": {
+                                "workingDays": [
+                                    "MONDAY",
+                                    "TUESDAY",
+                                    "WEDNESDAY"
+                                ],
+                                "nonWorkingDays": [
+                                    "2018-01-01"
+                                ],
+                                "lengthOfDay": 6
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_sheet",
+                                "url": "/2.0/sheets",
+                                "name": "Create Sheet",
+                                "method": "POST",
+                                "sampleDate": {
+                                    "id": 2331373580117892,
+                                    "name": "newsheet",
+                                    "permalink": "https://app.smartsheet.com/b/home?lx=0HHzeGnfHik-N13ZT8pU7g",
+                                    "columns": [
+                                        {
+                                            "id": 7960873114331012,
+                                            "index": 0,
+                                            "title": "Favorite",
+                                            "type": "CHECKBOX",
+                                            "symbol": "STAR"
+                                        },
+                                        {
+                                            "id": 642523719853956,
+                                            "index": 1,
+                                            "title": "Primary Column",
+                                            "primary": true,
+                                            "type": "TEXT_NUMBER"
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_sheet",
+                                "url": "/2.0/sheets/:_id",
+                                "name": "Update Sheet",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "id": 2331373580117892,
+                                    "name": "newsheet",
+                                    "permalink": "https://app.smartsheet.com/b/home?lx=0HHzeGnfHik-N13ZT8pU7g",
+                                    "columns": [
+                                        {
+                                            "id": 7960873114331012,
+                                            "index": 0,
+                                            "title": "Favorite",
+                                            "type": "CHECKBOX",
+                                            "symbol": "STAR"
+                                        },
+                                        {
+                                            "id": 642523719853956,
+                                            "index": 1,
+                                            "title": "Primary Column",
+                                            "primary": true,
+                                            "type": "TEXT_NUMBER"
+                                        }
+                                    ],
+                                    "userSettings": {
+                                        "criticalPathEnabled": true
+                                    },
+                                    "projectSettings": {
+                                        "workingDays": [
+                                            "MONDAY",
+                                            "TUESDAY",
+                                            "WEDNESDAY"
+                                        ],
+                                        "nonWorkingDays": [
+                                            "2018-01-01"
+                                        ],
+                                        "lengthOfDay": 6
+                                    }
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_sheet",
+                                "url": [
+                                    "/2.0/sheets/:_id",
+                                    "/2.0/sheets"
+                                ],
+                                "name": "Create or Update Sheet",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "sampleData": {
+                                    "id": 2331373580117892,
+                                    "name": "newsheet",
+                                    "permalink": "https://app.smartsheet.com/b/home?lx=0HHzeGnfHik-N13ZT8pU7g",
+                                    "columns": [
+                                        {
+                                            "id": 7960873114331012,
+                                            "index": 0,
+                                            "title": "Favorite",
+                                            "type": "CHECKBOX",
+                                            "symbol": "STAR"
+                                        },
+                                        {
+                                            "id": 642523719853956,
+                                            "index": 1,
+                                            "title": "Primary Column",
+                                            "primary": true,
+                                            "type": "TEXT_NUMBER"
+                                        }
+                                    ],
+                                    "userSettings": {
+                                        "criticalPathEnabled": true
+                                    },
+                                    "projectSettings": {
+                                        "workingDays": [
+                                            "MONDAY",
+                                            "TUESDAY",
+                                            "WEDNESDAY"
+                                        ],
+                                        "nonWorkingDays": [
+                                            "2018-01-01"
+                                        ],
+                                        "lengthOfDay": 6
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_sheet",
+                                "url": "/2.0/sheets/:_id",
+                                "name": "Delete Sheet",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "copy_sheet",
+                                "url": "/2.0/sheets/:_sheetId/copy",
+                                "name": "Copy Sheet",
+                                "method": "POST",
+                                "sampleData": {
+                                    "destinationType": "folder",
+                                    "destinationId": 7960873114331012,
+                                    "newName": "newSheetName"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_sheet_in_folder",
+                                "url": "/2.0/folders/:_folderId/sheets",
+                                "name": "Create Sheet in Folder",
+                                "method": "POST",
+                                "sampleData": {
+                                    "id": 2331373580117892,
+                                    "name": "newsheet",
+                                    "permalink": "https://app.smartsheet.com/b/home?lx=0HHzeGnfHik-N13ZT8pU7g",
+                                    "columns": [
+                                        {
+                                            "id": 7960873114331012,
+                                            "version": 0,
+                                            "index": 0,
+                                            "symbol": "STAR",
+                                            "title": "Favorite",
+                                            "type": "CHECKBOX",
+                                            "validation": false,
+                                            "width": 150
+                                        },
+                                        {
+                                            "id": 642523719853956,
+                                            "index": 1,
+                                            "title": "Primary Column",
+                                            "primary": true,
+                                            "type": "TEXT_NUMBER"
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "folderId",
+                                        "name": "Folder ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_sheet_in_workspace",
+                                "url": "/2.0/workspaces/:_workspaceId/sheets",
+                                "name": "Create sheet in Workspace",
+                                "method": "POST",
+                                "sampleData": {
+                                    "id": 2331373580117892,
+                                    "name": "newsheet",
+                                    "permalink": "https://app.smartsheet.com/b/home?lx=0HHzeGnfHik-N13ZT8pU7g",
+                                    "columns": [
+                                        {
+                                            "id": 7960873114331012,
+                                            "version": 0,
+                                            "index": 0,
+                                            "symbol": "STAR",
+                                            "title": "Favorite",
+                                            "type": "CHECKBOX",
+                                            "validation": false,
+                                            "width": 150
+                                        },
+                                        {
+                                            "id": 642523719853956,
+                                            "index": 1,
+                                            "title": "Primary Column",
+                                            "primary": true,
+                                            "type": "TEXT_NUMBER"
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "workspaceId",
+                                        "name": "Workspace ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "move_sheet",
+                                "url": "/2.0/sheets/:_sheetId/move",
+                                "name": "Move Sheet",
+                                "method": "POST",
+                                "sampleData": {
+                                    "destinationType": "folder",
+                                    "destinationId": 7960873114331012
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "set_sheet_publish_status",
+                                "url": "/2.0/sheets/:_sheetId/publish",
+                                "name": "Set Sheet Publish Status",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "readOnlyLiteEnabled": true,
+                                    "readOnlyFullEnabled": false,
+                                    "readWriteEnabled": false,
+                                    "icalEnabled": false
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "send_sheet_via_email",
+                                "url": "/2.0/sheets/:_sheetId/emails",
+                                "name": "Send Sheet via Email",
+                                "method": "POST",
+                                "sampleData": {
+                                    "sendTo": [
+                                        {
+                                            "email": "john.doe@smartsheet.com"
+                                        },
+                                        {
+                                            "groupId": 2258118617917316
+                                        }
+                                    ],
+                                    "subject": "Check these rows out!",
+                                    "message": "Here is the Sheet I mentioned in our meeting.",
+                                    "ccMe": false,
+                                    "format": "PDF",
+                                    "formatDetails": {
+                                        "paperSize": "A4"
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "send_update_request",
+                                "url": "/2.0/sheets/:_sheetId/updaterequests",
+                                "name": "Send Update Request",
+                                "method": "POST",
+                                "sampleData": {
+                                    "sendTo": [
+                                        {
+                                            "email": "recipient1@smartsheet.com"
+                                        },
+                                        {
+                                            "email": "recipient2@smartsheet.com"
+                                        }
+                                    ],
+                                    "subject": "Sample Monthly Update Request",
+                                    "message": "Please update my online sheet.",
+                                    "ccMe": false,
+                                    "rowIds": [
+                                        4508292249610116,
+                                        2256492435924868
+                                    ],
+                                    "columnIds": [
+                                        4508284196546436,
+                                        2256484382861188
+                                    ],
+                                    "includeAttachments": false,
+                                    "includeDiscussions": false
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2.0/search",
+                                        "extract": "results[0].objectId",
+                                        "id": "search_everything"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shares",
+                        "name": "Sheet Sharing",
+                        "sampleData": {
+                            "id": "AQAISF82FOeE",
+                            "type": "GROUP",
+                            "groupId": 2331373580117892,
+                            "userId": "",
+                            "name": "Group 1",
+                            "ccMe": "",
+                            "email": "",
+                            "message": "",
+                            "subject": "",
+                            "accessLevel": "ADMIN",
+                            "scope": "ITEM",
+                            "createdAt": "2016-02-17T22:24:09Z",
+                            "modifiedAt": "2016-02-17T22:24:09Z"
+                        },
+                        "operations": [
+                            {
+                                "id": "share_sheet",
+                                "url": "/2.0/sheets/:_sheetId/shares",
+                                "name": "Share Sheet",
+                                "method": "POST",
+                                "sampleData": {
+                                    "id": "AQAISF82FOeE",
+                                    "type": "GROUP",
+                                    "groupId": 2331373580117892,
+                                    "userId": "",
+                                    "name": "Group 1",
+                                    "ccMe": "",
+                                    "email": "",
+                                    "message": "",
+                                    "subject": "",
+                                    "accessLevel": "ADMIN",
+                                    "scope": "ITEM",
+                                    "createdAt": "2016-02-17T22:24:09Z",
+                                    "modifiedAt": "2016-02-17T22:24:09Z"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_sheet_share",
+                                "url": "/2.0/sheets/:_sheetId/shares/:_shareId",
+                                "name": "Update Sheet Share",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "id": "AQAISF82FOeE",
+                                    "type": "GROUP",
+                                    "groupId": 2331373580117892,
+                                    "userId": "",
+                                    "name": "Group 1",
+                                    "ccMe": "",
+                                    "email": "",
+                                    "message": "",
+                                    "subject": "",
+                                    "accessLevel": "ADMIN",
+                                    "scope": "ITEM",
+                                    "createdAt": "2016-02-17T22:24:09Z",
+                                    "modifiedAt": "2016-02-17T22:24:09Z"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "shareId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_sheet_share",
+                                "url": [
+                                    "/2.0/sheets/:_sheetId/shares/:_shareId",
+                                    "/2.0/sheets/:_sheetId/shares"
+                                ],
+                                "name": "Create or Update Sheet Share",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "sampleData": {
+                                    "id": "AQAISF82FOeE",
+                                    "type": "GROUP",
+                                    "groupId": 2331373580117892,
+                                    "userId": "",
+                                    "name": "Group 1",
+                                    "ccMe": "",
+                                    "email": "",
+                                    "message": "",
+                                    "subject": "",
+                                    "accessLevel": "ADMIN",
+                                    "scope": "ITEM",
+                                    "createdAt": "2016-02-17T22:24:09Z",
+                                    "modifiedAt": "2016-02-17T22:24:09Z"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "shareId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_sheet_share",
+                                "url": "/2.0/sheets/:_sheetId/shares/:_shareId",
+                                "name": "Delete Sheet Share",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "shareId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rows",
+                        "name": "Rows",
+                        "sampleData": {
+                            "id": 6572427401553796,
+                            "rowNumber": 3,
+                            "parentRowNumber": 1,
+                            "parentId": 4624744004773764,
+                            "expanded": true,
+                            "createdAt": "2015-01-09T11:41:55-08:00",
+                            "modifiedAt": "2015-02-23T15:36:07-08:00",
+                            "toTop": true,
+                            "cells": [
+                                {
+                                    "columnId": 7518312134403972,
+                                    "value": "new value"
+                                },
+                                {
+                                    "columnId": 1888812600190852,
+                                    "value": "A"
+                                },
+                                {
+                                    "columnId": 6392412227561348,
+                                    "value": 1
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "add_rows",
+                                "url": "/2.0/sheets/:_sheetId/rows",
+                                "name": "Add Rows",
+                                "method": "POST",
+                                "sampleData": {
+                                    "id": 6572427401553796,
+                                    "rowNumber": 3,
+                                    "parentRowNumber": 1,
+                                    "parentId": 4624744004773764,
+                                    "expanded": true,
+                                    "createdAt": "2015-01-09T11:41:55-08:00",
+                                    "modifiedAt": "2015-02-23T15:36:07-08:00",
+                                    "toTop": true,
+                                    "cells": [
+                                        {
+                                            "columnId": 7518312134403972,
+                                            "value": "new value"
+                                        },
+                                        {
+                                            "columnId": 1888812600190852,
+                                            "value": "A"
+                                        },
+                                        {
+                                            "columnId": 6392412227561348,
+                                            "value": 1
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_rows",
+                                "url": "/2.0/sheets/:_sheetId/rows",
+                                "name": "Update Rows",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "id": 6572427401553796,
+                                    "rowNumber": 3,
+                                    "parentRowNumber": 1,
+                                    "parentId": 4624744004773764,
+                                    "expanded": true,
+                                    "createdAt": "2015-01-09T11:41:55-08:00",
+                                    "modifiedAt": "2015-02-23T15:36:07-08:00",
+                                    "cells": [
+                                        {
+                                            "columnId": 7518312134403972,
+                                            "value": "new value"
+                                        },
+                                        {
+                                            "columnId": 1888812600190852,
+                                            "value": "A"
+                                        },
+                                        {
+                                            "columnId": 6392412227561348,
+                                            "value": 1
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_rows",
+                                "url": "/2.0/sheets/:_sheetId/rows/:_rowId",
+                                "name": "Delete Rows",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "rowId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "copy_rows_to_another_sheet",
+                                "url": "/2.0/sheets/:_sheetId/rows/copy",
+                                "name": "Copy Rows to Another Sheet",
+                                "method": "POST",
+                                "sampleData": {
+                                    "rowIds": [
+                                        145417762563972,
+                                        8026717110462340
+                                    ],
+                                    "to": {
+                                        "sheetId": 2258256056870788
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "move_rows_to_another_sheet",
+                                "url": "/2.0/sheets/:_sheetId/rows/move",
+                                "name": "Move Rows to Another Sheet",
+                                "method": "POST",
+                                "sampleData": {
+                                    "rowIds": [
+                                        145417762563972,
+                                        8026717110462340
+                                    ],
+                                    "to": {
+                                        "sheetId": 2258256056870788
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "send_rows_via_email",
+                                "url": "/2.0/sheets/:_sheetId/rows/emails",
+                                "name": "Send Rows via Email",
+                                "method": "POST",
+                                "sampleData": {
+                                    "sendTo": [
+                                        {
+                                            "email": "recipient@smartsheet.com"
+                                        }
+                                    ],
+                                    "subject": "Check these rows out!",
+                                    "message": "Here are the rows I mentioned in our meeting",
+                                    "ccMe": false,
+                                    "rowIds": [
+                                        6327127650920324,
+                                        3404239197235076
+                                    ],
+                                    "columnIds": [
+                                        5190835902932868,
+                                        3791509922310020
+                                    ],
+                                    "includeAttachments": false,
+                                    "includeDiscussions": false
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "columns",
+                        "name": "Columns",
+                        "sampleData": {
+                            "title": "New Picklist Column 1",
+                            "type": "PICKLIST",
+                            "options": [
+                                "First",
+                                "Second",
+                                "Third"
+                            ],
+                            "index": 4,
+                            "validation": "true"
+                        },
+                        "operations": [
+                            {
+                                "id": "add_columns",
+                                "url": "/2.0/sheets/:_sheetId/columns",
+                                "name": "Add Columns",
+                                "method": "POST",
+                                "sampleData": {
+                                    "title": "New Picklist Column 1",
+                                    "type": "PICKLIST",
+                                    "options": [
+                                        "First",
+                                        "Second",
+                                        "Third"
+                                    ],
+                                    "index": 4,
+                                    "validation": "true"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_column",
+                                "url": "/2.0/sheets/:_sheetId/columns/:_columnId",
+                                "name": "Update Column",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "title": "New Picklist Column 1",
+                                    "type": "PICKLIST",
+                                    "options": [
+                                        "First",
+                                        "Second",
+                                        "Third"
+                                    ],
+                                    "index": 4,
+                                    "validation": "true"
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "columnId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_or_update_columns",
+                                "url": [
+                                    "/2.0/sheets/:_sheetId/columns/:_columnId",
+                                    "/2.0/sheets/:_sheetId/columns"
+                                ],
+                                "name": "Add or Update Columns",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "sampleData": {
+                                    "title": "New Picklist Column 1",
+                                    "type": "PICKLIST",
+                                    "options": [
+                                        "First",
+                                        "Second",
+                                        "Third"
+                                    ],
+                                    "index": 4,
+                                    "validation": "true"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "columnId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_column",
+                                "url": "/2.0/sheets/:_sheetId/columns/:_columnId",
+                                "name": "Delete Column",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "sheetId",
+                                        "name": "Sheet ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "columnId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

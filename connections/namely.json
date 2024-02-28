@@ -1,0 +1,1340 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "api/v1/companies/info",
+            "api/v1/countries",
+            "api/v1/countries/:_id",
+            "api/v1/events",
+            "api/v1/events/:_id",
+            "api/v1/events/:_id/comments",
+            "api/v1/folders",
+            "api/v1/folders/:_id/resources",
+            "api/v1/group_types",
+            "api/v1/group_types/:_id",
+            "api/v1/group_types/:_id/groups",
+            "api/v1/groups",
+            "api/v1/groups/:_id",
+            "api/v1/job_tiers",
+            "api/v1/job_tiers/:_id",
+            "api/v1/job_titles",
+            "api/v1/job_titles/:_id",
+            "api/v1/notifications",
+            "api/v1/profiles",
+            "api/v1/profiles/:_id",
+            "api/v1/reports/:_id",
+            "api/v1/resources",
+            "api/v1/resources/:_id",
+            "api/v1/teams",
+            "api/v1/teams/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "paging": {
+                    "pagingMethod": "pageargument",
+                    "pageArgument": "page"
+                },
+                "resources": [
+                    {
+                        "id": "company",
+                        "name": "Company",
+                        "endpoints": [
+                            {
+                                "id": "company_info",
+                                "url": "api/v1/companies/info",
+                                "name": "Company Info",
+                                "description": "Get company related information.",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_all_folders",
+                                "url": "api/v1/folders",
+                                "name": "Get all Folders",
+                                "resourcePath": "folders",
+                                "description": "This endpoint returns a list of folders and their information.",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_resources_not_in_a_folder",
+                                "url": "api/v1/resources",
+                                "name": "Get Resources not in a Folder",
+                                "resourcePath": "resources",
+                                "description": "Get Resources not in a Folder",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_resources_in_a_folder",
+                                "url": "api/v1/folders/:_id/resources",
+                                "name": "Get Resources in a Folder",
+                                "resourcePath": "resources",
+                                "doesNotSupportPaging": true,
+                                "description": "This method returns an array of resources, whose format and content will be the same as the show resource endpoint.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Folder Id",
+                                        "fieldType": "string",
+                                        "description": "Use the folder id to pull the resources you want to see.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_resource",
+                                "url": "api/v1/resources/:_id",
+                                "name": "Get a Resource",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "resources",
+                                "description": "Specify the id of the resource to get a complete description.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Resource Id",
+                                        "fieldType": "string",
+                                        "description": "The resource's id.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groupsandteams",
+                        "name": "Groups & Teams",
+                        "endpoints": [
+                            {
+                                "id": "get_all_group_types",
+                                "url": "api/v1/group_types",
+                                "name": "Get all Group Types",
+                                "resourcePath": "group_types",
+                                "description": "Returns an array of all group types. Although not present in this endpoint, every group must belong to one and only one group type.",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_a_group_type",
+                                "url": "api/v1/group_types/:_id",
+                                "name": "Get a Group Type",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "group_types",
+                                "description": "Returns same information about the group as in the  endpoint, as well as linked any profiles associated with that group type (zero to many).",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Type Id",
+                                        "fieldType": "string",
+                                        "description": "ID of the group_type",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_groups",
+                                "url": "api/v1/groups",
+                                "name": "Get all Groups",
+                                "resourcePath": "groups",
+                                "description": "Returns an array of all groups.",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_a_group",
+                                "url": "api/v1/groups/:_id",
+                                "name": "Get a Group",
+                                "doesNotSupportPaging": true,
+                                "description": "Returns same information about the group as in the  endpoint, as well as linked any profiles associated with that group (zero to many).",
+                                "resourcePath": "groups",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Id",
+                                        "fieldType": "string",
+                                        "description": "ID of the group",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_groups_from_group_type",
+                                "url": "api/v1/group_types/:_id/groups",
+                                "name": "Get Groups from Group Type",
+                                "resourcePath": "groups",
+                                "description": "Returns an array of all groups associated with the id of the group_type.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Type Id",
+                                        "fieldType": "string",
+                                        "description": "ID of the group_type",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_teams",
+                                "url": "api/v1/teams",
+                                "name": "Get all Teams",
+                                "resourcePath": "teams",
+                                "description": "Returns an array of all teams as well as linked, a list of team categories.",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_a_team",
+                                "url": "api/v1/teams/:_id",
+                                "name": "Get a Team",
+                                "doesNotSupportPaging": true,
+                                "description": "Get a Team",
+                                "resourcePath": "teams",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Team Id",
+                                        "fieldType": "string",
+                                        "description": "ID of the team",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "homefeed",
+                        "name": "Home Feed",
+                        "endpoints": [
+                            {
+                                "id": "get_all_events",
+                                "url": "api/v1/events",
+                                "name": "Get all Events",
+                                "resourcePath": "events",
+                                "description": "Returns all events, paginated. Linked to the event is an array of any profiles that commented on the event. Only events associated with the profiles of active employees are eligible to appear.",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "limit",
+                                        "description": "Limit of records to be retrieved; default is 30 and the limit is 50.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "after",
+                                        "name": "after",
+                                        "description": "Id of the first record BEFORE the events you want to retrieve",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "The type of event you want to retrieve; examples include birthday, announcement, recent_arrival or anniversary",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profile_id",
+                                        "name": "profile_id",
+                                        "description": "Id of the profile that you wish to pull all associated events from",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_an_event",
+                                "url": "api/v1/events/:_id",
+                                "name": "Get an Event",
+                                "doesNotSupportPaging": true,
+                                "description": "Returns information about a single event.",
+                                "resourcePath": "events",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "string",
+                                        "description": "id of event.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_an_events_comments",
+                                "url": "api/v1/events/:_id/comments",
+                                "name": "Get an Event's Comments",
+                                "resourcePath": "comments",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "description": "Returns all comments associated with a particular event.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "string",
+                                        "description": "id of event.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobsinfo",
+                        "name": "Jobs Info",
+                        "endpoints": [
+                            {
+                                "id": "get_all_job_tiers",
+                                "url": "api/v1/job_tiers",
+                                "name": "Get all Job Tiers",
+                                "resourcePath": "job_tiers",
+                                "description": "Returns an array of all job tiers. Each job tier can have zero to many linked job titles (while each job title must have one and only one linked job tier).",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_a_job_tier",
+                                "url": "api/v1/job_tiers/:_id",
+                                "name": "Get a Job Tier",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "job_tiers",
+                                "description": "Returns information about a single job tier.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job Tier Id",
+                                        "fieldType": "string",
+                                        "description": "id of the job tier you want to view",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_job_titles",
+                                "url": "api/v1/job_titles",
+                                "name": "Get all Job Titles",
+                                "resourcePath": "job_titles",
+                                "description": "Returns all job titles. Each job title must have one and only one linked job tier (and each job tier can have zero to many linked job titles).",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_a_job_title",
+                                "url": "job_titles/:_id",
+                                "name": "Get a Job Title",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "job_titles",
+                                "description": "Returns information about a single Job Title.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job Title Id",
+                                        "fieldType": "string",
+                                        "description": "id of the job title you want to view",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notifications",
+                        "name": "Notifications",
+                        "endpoints": [
+                            {
+                                "id": "get_all_notifications",
+                                "url": "api/v1/notifications",
+                                "name": "Get all Notifications",
+                                "resourcePath": "notifications",
+                                "description": "Returns all notifications for the current API user/token bearer.",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "get_aprofilesnotifications",
+                                "url": "api/v1/profiles/:_id/notifications",
+                                "name": "Get a Profile's Notifications",
+                                "description": "Returns notifications for a profile in a paginated form.",
+                                "resourcePath": "notifications",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Profile Id",
+                                        "fieldType": "string",
+                                        "description": "id of the profile whose notifications you want to view",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "profiles",
+                        "name": "Profiles",
+                        "endpoints": [
+                            {
+                                "id": "get_all_profiles",
+                                "url": "api/v1/profiles",
+                                "name": "Get all Profiles",
+                                "resourcePath": "profiles",
+                                "description": "Returns all profiles (active and inactive).",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "per_page",
+                                        "name": "per_page",
+                                        "description": "The number of employees to retrieve when using pagination; default is 30 and the limit is 50.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "sort",
+                                        "description": "Sort order of profiles; valid values - first_name, last_name; prepend with a - (minus) sign to reverse the order. default: create_at",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "filter[user_status]",
+                                        "name": "filter[user_status]",
+                                        "description": "Returns only profiles with the defined user_status; both active and inactive are supported (inactive also returns pending profiles)",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "active",
+                                            "inactive"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter[first_name]",
+                                        "name": "filter[first_name]",
+                                        "description": "Returns only profiles with the defined first name",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "filter[last_name]",
+                                        "name": "filter[last_name]",
+                                        "description": "Returns only profiles with the defined last name",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "filter[email]",
+                                        "name": "filter[email]",
+                                        "description": "Returns only profiles with the defined (company) email",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "filter[personal_email]",
+                                        "name": "filter[personal_email]",
+                                        "description": "Returns only profiles with the defined personal email",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "filter[reports_to]",
+                                        "name": "filter[reports_to]",
+                                        "description": "Id of the profile for whose direct reports you to view; returns only those profiles",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "filter[job_title]",
+                                        "name": "filter[job_title]",
+                                        "description": "Returns only profiles with the defined job title; must be the job_title's title",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "after",
+                                        "name": "after",
+                                        "description": "Id of the first profile before the profiles you want to retrieve; after definition affected by sort order",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profile_format",
+                                        "name": "profile_format",
+                                        "description": "Format of the profile object; only short is supported - returns a truncated version of the profile object",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "short"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_profile",
+                                "url": "api/v1/profiles/:_id",
+                                "name": "Get a Profile",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "profiles",
+                                "description": "Returns same information about the profile as in the  endpoint but isolated.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Profile Id",
+                                        "fieldType": "string",
+                                        "description": "id of the profile you want to view",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_currentusersprofile",
+                                "url": "api/v1/profiles/me",
+                                "name": "Get Current User's Profile",
+                                "resourcePath": "profiles",
+                                "description": "Returns about the current user only (the profile that owns the access token used to access the API).",
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reports",
+                        "name": "Reports",
+                        "endpoints": [
+                            {
+                                "id": "get_a_report",
+                                "url": "api/v1/reports/:_id",
+                                "name": "Get a Report",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "reports",
+                                "description": "This endpoint returns a JSON format version of a report created in Namely.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Report Id",
+                                        "fieldType": "string",
+                                        "description": "ID of the report from Namely; can be found at the end of the URL of the report on the web",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "systeminfo",
+                        "name": "System Info",
+                        "endpoints": [
+                            {
+                                "id": "get_all_countries",
+                                "url": "api/v1/countries",
+                                "name": "Get all Countries",
+                                "resourcePath": "countries",
+                                "description": "Returns all valid countries in Namely. A country is universal and may not be modified."
+                            },
+                            {
+                                "id": "get_a_country",
+                                "url": "api/v1/countries/:_id",
+                                "name": "Get a Country",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "countries",
+                                "description": "Returns one country, as well as a list of a country’s subdivisions (e.g. a list of its states or provinces).",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Country Id",
+                                        "fieldType": "string",
+                                        "description": "id of the country (an abbreviation of the country's name) you want to view",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "profile_fields",
+                        "name": "Profile Fields",
+                        "endpoints": [
+                            {
+                                "id": "get_allprofilefields",
+                                "url": "api/v1/profiles/fields",
+                                "name": "Get all Profile Fields",
+                                "resourcePath": "fields",
+                                "description": "Returns all profiles fields as configured at your company with instructions on valid format for passing through the API.",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_aprofilefields",
+                                "url": "api/v1/profiles/fields/:_id",
+                                "name": "Get a Profile Field",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "fields",
+                                "description": "Returns information about a single Profile Field.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Profile Field Id",
+                                        "fieldType": "input",
+                                        "description": "id of the profile field you want to view",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_allprofilefieldssections",
+                                "url": "api/v1/profiles/fields/sections",
+                                "name": "Get all Profile Field Sections",
+                                "resourcePath": "sections",
+                                "description": "Returns all profiles field sections as configured at your company.",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get_aprofilefieldssections",
+                                "url": "api/v1/profiles/fields/sections/:_id",
+                                "name": "Get a Profile Field Section",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "sections",
+                                "description": "Returns information about a single Profile Field Section.",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Section Id",
+                                        "fieldType": "input",
+                                        "description": "id of the profile field section you want to view",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version",
+            "operation": "Operation"
+        },
+        "urlResolution": [
+            "api/v1/profiles",
+            "api/v1/profiles/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "profiles",
+                        "name": "Profiles",
+                        "sampleData": {
+                            "profiles": [
+                                {
+                                    "first_name": "",
+                                    "last_name": "",
+                                    "email": "",
+                                    "user_status": "",
+                                    "start_date": "",
+                                    "personal_email": "",
+                                    "reports_to": "",
+                                    "job_title": ""
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_profile",
+                                "name": "Create a Profile",
+                                "url": "api/v1/profiles",
+                                "method": "POST",
+                                "description": "Creates a profile.",
+                                "requiredMappings": [
+                                    "profiles[*].first_name",
+                                    "profiles[*].last_name",
+                                    "profiles[*].email",
+                                    "profiles[*].user_status",
+                                    "profiles[*].start_date"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Profile Id",
+                                        "in": "path",
+                                        "description": "ID of the Profile",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/v1/profiles",
+                                        "sampleDataWrapper": "profiles[*]",
+                                        "id": "get_all_profiles"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_profile",
+                                "name": "Update a Profile",
+                                "url": "api/v1/profiles/:_id",
+                                "method": "PUT",
+                                "description": "Updates an existing profile.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Profile Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "ID of the Profile",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/v1/profiles",
+                                        "sampleDataWrapper": "profiles[*]",
+                                        "id": "get_all_profiles"
+                                    }
+                                },
+                                "sampleData": {}
+                            },
+                            {
+                                "id": "createorupdate_profile",
+                                "name": "Create or Update a Profile",
+                                "url": [
+                                    "api/v1/profiles/:_id",
+                                    "api/v1/profiles"
+                                ],
+                                "requiredMappings": [
+                                    "profiles[*].first_name",
+                                    "profiles[*].last_name",
+                                    "profiles[*].email",
+                                    "profiles[*].user_status",
+                                    "profiles[*].start_date"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Create a new and update the existing Profile",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Profile Id",
+                                        "in": "path",
+                                        "description": "ID of the profile",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/v1/profiles",
+                                        "sampleDataWrapper": "profiles[*]",
+                                        "id": "get_all_profiles"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "company_resources",
+                        "name": "Company Resources",
+                        "sampleData": {
+                            "folders": [
+                                {
+                                    "title": "string (required)"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_folder",
+                                "url": "api/v1/folders",
+                                "name": "Create Folder",
+                                "method": "POST",
+                                "description": "To create a folder, a title is required. An array of folders will be returned upon success, similar to folders index endpoint.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "unique identifier of the folder",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_folder",
+                                "url": "api/v1/folders/:_id",
+                                "name": "Update Folder",
+                                "method": "PUT",
+                                "description": "Updates the name of a folder.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "unique identifier of the folder",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_folder",
+                                "name": "Create or Update Folder",
+                                "url": [
+                                    "api/v1/folders/:_id",
+                                    "api/v1/folders"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Create a new and update the existing one",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Folder Id",
+                                        "in": "path",
+                                        "description": "unique identifier of the folder",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_folder",
+                                "url": "api/v1/folders/:_id",
+                                "name": "Delete Folder",
+                                "method": "DELETE",
+                                "description": "You must pass in the folder id to delete a specific folder.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "unique identifier of the folder",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_resource",
+                                "url": "api/v1/folders/:_id/resources",
+                                "name": "Delete Resource",
+                                "method": "DELETE",
+                                "description": "This endpoint deletes a specified resource.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "unique identifier of the folder",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groups_andteams",
+                        "name": "Groups & Teams",
+                        "sampleData": {
+                            "groups": [
+                                {
+                                    "title": "string (required)",
+                                    "group_type": "string (required)",
+                                    "address": {
+                                        "address1": "string (optional)",
+                                        "address2": "string (optional)",
+                                        "city": "string (optional)",
+                                        "state_id": "string (optional)",
+                                        "zip": "string (optional)",
+                                        "state": "string (optional)",
+                                        "country": "string (optional)",
+                                        "country_id": "string (optional)",
+                                        "phone": "string (optional)"
+                                    }
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_group",
+                                "url": "api/v1/groups",
+                                "name": "Create a Group",
+                                "method": "POST",
+                                "description": "This endpoint creates a new group.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "id of the group you want to ignore",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_group",
+                                "url": "api/v1/groups/:_id",
+                                "name": "Update a Group",
+                                "method": "PUT",
+                                "description": "Updates the label/name of a group.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "id of the group you want to update",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_group",
+                                "name": "Create or Update Group",
+                                "url": [
+                                    "api/v1/groups/:_id",
+                                    "api/v1/groups"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Create a new group and Updates the label/name of a group.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Id",
+                                        "in": "path",
+                                        "description": "id of the group you want to update",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_group",
+                                "url": "api/v1/groups/:_id",
+                                "name": "Delete a Group",
+                                "method": "DELETE",
+                                "description": "You must pass in the group id to delete a specific group.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "id of the group",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_grouptype",
+                                "url": "api/v1/group_types",
+                                "name": "Create a Group Type",
+                                "method": "POST",
+                                "description": "This endpoint creates a new group type.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Type Id",
+                                        "in": "path",
+                                        "description": "Unique identifier of the group type",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "group_types": [
+                                        {
+                                            "title": "string (required)",
+                                            "x_groups_as_teams": false
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "update_grouptype",
+                                "url": "api/v1/group_types/:_id",
+                                "name": "Update a Group Type",
+                                "method": "PUT",
+                                "description": "You can update a Group Type with the viable parameters.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Type Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "Unique identifier of the group type",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "group_types": [
+                                        {
+                                            "title": "string (required)",
+                                            "x_groups_as_teams": false
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "createorupdate_group",
+                                "name": "Create or Update Group Type",
+                                "url": [
+                                    "api/v1/group_types/:_id",
+                                    "api/v1/group_types"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "description": "Create a new and update a existing Group Type.",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group Type Id",
+                                        "in": "path",
+                                        "description": "Unique identifier of the group type",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "group_types": [
+                                        {
+                                            "title": "string (required)",
+                                            "x_groups_as_teams": false
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "delete_grouptype",
+                                "url": "api/v1/group_types/:_id",
+                                "name": "Delete a Group Type",
+                                "method": "DELETE",
+                                "description": "You must pass in the group_type id to delete a specific group_type.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "Unique identifier of the group type",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "home_feed",
+                        "name": "Home Feed",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "create_events",
+                                "url": "api/v1/events",
+                                "name": "Create an Announcement",
+                                "method": "POST",
+                                "description": "Creates an announcement. Other event types are auto-generated and cannot be manually created.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "in": "path",
+                                        "description": "id of event.",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "events": [
+                                        {
+                                            "content": "string (required)",
+                                            "is_appreciation": false,
+                                            "file_id": "string (optional)",
+                                            "email_all": false
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "create_eventscomment",
+                                "url": "api/v1/events/:_eventid/comments",
+                                "name": "Create an Event's Comment",
+                                "method": "POST",
+                                "description": "Creates a comment on a particular event.",
+                                "parameters": [
+                                    {
+                                        "id": "eventid",
+                                        "name": "Event Id",
+                                        "in": "path",
+                                        "description": "id of event.",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "comments": [
+                                        {
+                                            "content": "string (required)"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "delete_event",
+                                "url": "api/v1/events/:_eventid",
+                                "name": "Delete an Announcement",
+                                "method": "DELETE",
+                                "description": "Delete a particular event.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "eventid",
+                                        "in": "path",
+                                        "description": "id of event.",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_eventscomment",
+                                "url": "api/v1/events/:_eventid/comments/:_commentid",
+                                "name": "Delete an Event's Comment",
+                                "method": "DELETE",
+                                "description": "Delete a particular comment on an event.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "eventid",
+                                        "name": "Event Id",
+                                        "in": "path",
+                                        "description": "id of event.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "commentid",
+                                        "in": "path",
+                                        "description": "id of the comment",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs_info",
+                        "name": "Jobs Info",
+                        "operations": [
+                            {
+                                "id": "create_job_tier",
+                                "url": "api/v1/job_tiers",
+                                "name": "Create a Job Tier",
+                                "method": "POST",
+                                "description": "Creates a job tier.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job Tier Id",
+                                        "in": "path",
+                                        "description": "id of the job tier",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "job_tiers": [
+                                        {
+                                            "title": "string (required)"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "create_job_title",
+                                "url": "api/v1/job_titles",
+                                "name": "Create a Job Title",
+                                "method": "POST",
+                                "description": "Creates a job title.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job Title Id",
+                                        "in": "path",
+                                        "description": "id of the job titles",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "job_titles": [
+                                        {
+                                            "title": "string (required)",
+                                            "parent": "string (required)"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "update_job_title",
+                                "url": "api/v1/job_titles/:_id",
+                                "name": "Update a Job Title",
+                                "method": "PUT",
+                                "description": "Updates the label and/or parent (job tier) of a job title.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job Title Id",
+                                        "in": "path",
+                                        "description": "id of the job titles",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "job_titles": [
+                                        {
+                                            "title": "string (required)",
+                                            "parent": "string (required)"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "update_job_tier",
+                                "url": "api/v1/job_tiers/:_id",
+                                "name": "Update a Job Tier",
+                                "method": "PUT",
+                                "description": "Updates the label of a job tier.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job Tier Id",
+                                        "in": "path",
+                                        "description": "id of the job tier",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "job_tiers": [
+                                        {
+                                            "title": "string (required)"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "profile_fields",
+                        "name": "Profile Fields",
+                        "sampleData": {
+                            "fields": [
+                                {
+                                    "label": "label1",
+                                    "section": "b40b5fd1-75f1-476f-a8e5-bcd6b068459c",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_profile_field",
+                                "url": "api/v1/profiles/fields",
+                                "name": "Create a Profile Field",
+                                "method": "POST",
+                                "description": "Creates a profile field within a profile field section.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "profile field Id",
+                                        "in": "path",
+                                        "description": "id of the profile field",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_profilefield",
+                                "url": "api/v1/profiles/fields/:_id",
+                                "name": "Update a Profile Field",
+                                "method": "PUT",
+                                "description": "Updates a profile field within a profile field section. Supports changing the label and the profile field section in which it sits.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "profile field Id",
+                                        "in": "path",
+                                        "description": "id of the profile field",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_profilefieldsection",
+                                "url": [
+                                    "api/v1/profiles/fields/:_id",
+                                    "api/v1/profiles/fields"
+                                ],
+                                "name": "Create or Update Profile Field",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "profile field Id",
+                                        "in": "path",
+                                        "description": "id of the profile field",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_profilefieldsection",
+                                "url": "api/v1/profiles/fields/sections/:_id",
+                                "name": "Update a Profile Field Section",
+                                "method": "PUT",
+                                "description": "Updates the name/label of a profile field section.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "profile field Id",
+                                        "in": "path",
+                                        "description": "id of the profile field",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "sections": [
+                                        {
+                                            "title": "new"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

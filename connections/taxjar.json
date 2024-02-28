@@ -1,0 +1,438 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [
+            "/v2/categories",
+            "/v2/rates/:_zip",
+            "/v2/transactions/orders",
+            "/v2/transactions/orders/:_transaction_id",
+            "/v2/transactions/refunds",
+            "/v2/transactions/refunds/:_transaction_id",
+            "/v2/nexus/regions",
+            "/v2/validation",
+            "/v2/summary_rates"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "categories",
+                        "name": "Categories",
+                        "endpoints": [
+                            {
+                                "id": "list_tax_categories",
+                                "url": "/v2/categories",
+                                "name": "List tax categories",
+                                "resourcePath": "categories"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rates",
+                        "name": "Rates",
+                        "endpoints": [
+                            {
+                                "id": "get_tax_rates_for_a_location",
+                                "url": "/v2/rates/:_zip",
+                                "name": "Get tax rates for a location",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "rate",
+                                "pathParameters": [
+                                    {
+                                        "id": "zip",
+                                        "name": "Zip Code",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "country",
+                                        "name": "Country",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "state",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "city",
+                                        "name": "City",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "street",
+                                        "name": "Street",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactions",
+                        "name": "Transactions",
+                        "endpoints": [
+                            {
+                                "id": "list_order_transactions",
+                                "url": "/v2/transactions/orders",
+                                "name": "List order transactions",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "from_transaction_date",
+                                        "name": "From Transaction Date",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "to_transaction_date",
+                                        "name": "To Transaction Date",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_an_order_transaction",
+                                "url": "/v2/transactions/orders/:_transaction_id",
+                                "name": "Get an order transaction",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "order",
+                                "pathParameters": [
+                                    {
+                                        "id": "transaction_id",
+                                        "name": "Transaction ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_refund_transactions",
+                                "url": "/v2/transactions/refunds",
+                                "name": "List refund transactions",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "from_transaction_date",
+                                        "name": "From Transaction Date",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "to_transaction_date",
+                                        "name": "To Transaction Date",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_refund_transaction",
+                                "url": "/v2/transactions/refunds/:_transaction_id",
+                                "name": "Get a refund transaction",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "refund",
+                                "pathParameters": [
+                                    {
+                                        "id": "transaction_id",
+                                        "name": "Transaction ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "nexus",
+                        "name": "Nexus",
+                        "endpoints": [
+                            {
+                                "id": "list_nexus_regions",
+                                "url": "/v2/nexus/regions",
+                                "name": "List nexus regions",
+                                "resourcePath": "regions"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "validations",
+                        "name": "Validations",
+                        "endpoints": [
+                            {
+                                "id": "validate_a_vat_number",
+                                "url": "/v2/validation",
+                                "name": "Validate a VAT number",
+                                "resourcePath": "validation",
+                                "queryParameters": [
+                                    {
+                                        "id": "vat",
+                                        "name": "VAT",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "summary_rates",
+                        "name": "Summarized Rates",
+                        "endpoints": [
+                            {
+                                "id": "summarize_tax_rates_for_all_regions",
+                                "url": "/v2/summary_rates",
+                                "name": "Summarize tax rates for all regions",
+                                "resourcePath": "summary_rates"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v2/taxes",
+            "/v2/transactions/orders",
+            "/v2/transactions/orders/:_transaction_id",
+            "/v2/transactions/refunds",
+            "/v2/transactions/refunds/:_transaction_id"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "taxes",
+                        "name": "Taxes",
+                        "sampleData": {
+                            "from_country": "US",
+                            "from_zip": "92093",
+                            "from_state": "CA",
+                            "from_city": "La Jolla",
+                            "from_street": "9500 Gilman Drive",
+                            "to_country": "US",
+                            "to_zip": "90002",
+                            "to_state": "CA",
+                            "to_city": "Los Angeles",
+                            "to_street": "1335 E 103rd St",
+                            "amount": 15,
+                            "shipping": 1.5,
+                            "nexus_addresses": [
+                                {
+                                    "id": "Main Location",
+                                    "country": "US",
+                                    "zip": "92093",
+                                    "state": "CA",
+                                    "city": "La Jolla",
+                                    "street": "9500 Gilman Drive"
+                                }
+                            ],
+                            "line_items": [
+                                {
+                                    "id": "1",
+                                    "quantity": 1,
+                                    "product_tax_code": "20010",
+                                    "unit_price": 15,
+                                    "discount": 0
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "calculate_sales_tax_for_an_order",
+                                "url": "/v2/taxes",
+                                "name": "Calculate sales tax for an order",
+                                "method": "POST",
+                                "supportIgnoreExisting": false,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactions",
+                        "name": "Transactions",
+                        "sampleData": {
+                            "transaction_id": "123",
+                            "transaction_date": "2015/05/14",
+                            "to_street": "123 Palm Grove Ln",
+                            "to_city": "Los Angeles",
+                            "to_state": "CA",
+                            "to_zip": "90002",
+                            "to_country": "US",
+                            "from_city": "Delmar",
+                            "from_state": "NY",
+                            "from_zip": "12054",
+                            "from_country": "US",
+                            "amount": 16.5,
+                            "shipping": 1.5,
+                            "sales_tax": 0.95,
+                            "line_items": [
+                                {
+                                    "quantity": 1,
+                                    "product_identifier": "12-34234-9",
+                                    "description": "Fuzzy Widget",
+                                    "unit_price": 15,
+                                    "sales_tax": 0.95
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_an_order_transaction",
+                                "url": "/v2/transactions/orders",
+                                "name": "Create an order transaction",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "To do composite operations we have to take a extra custom field like 'transaction_identifier' and select that field in the 'records have specific field populated'.and map the orginal transaction_id field.",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_an_order_transaction",
+                                "url": "/v2/transactions/orders/:_transaction_id",
+                                "name": "Update an order transaction",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "transaction_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "To do composite operations we have to take a extra custom field like 'transaction_identifier' and select that field in the 'records have specific field populated'.and map the orginal transaction_id field.",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_order",
+                                "url": [
+                                    "/v2/transactions/orders/:_transaction_id",
+                                    "/v2/transactions/orders"
+                                ],
+                                "name": "Create or Update Order",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "transaction_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_order_transaction",
+                                "url": "/v2/transactions/orders/:_transaction_id",
+                                "name": "Delete an order transaction",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "transaction_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_refund_transaction",
+                                "url": "/v2/transactions/refunds",
+                                "name": "Create a refund transaction",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_a_refund_transaction",
+                                "url": "/v2/transactions/refunds/:_transaction_id",
+                                "name": "Update a refund transaction",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "transaction_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_refund",
+                                "url": [
+                                    "/v2/transactions/refunds/:_transaction_id",
+                                    "/v2/transactions/refunds"
+                                ],
+                                "name": "Create or Update Refund",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "transaction_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_refund_transaction",
+                                "url": "/v2/transactions/refunds/:_transaction_id",
+                                "name": "Delete a refund transaction",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "transaction_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,1300 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "skipargument",
+            "skipArgument": "$skip"
+        },
+        "urlResolution": [
+            "v2/companies",
+            "v2/companies/:_id",
+            "v2/companies/:_id/configuration",
+            "v2/companies/:_id/filingstatus",
+            "v2/contacts",
+            "v2/companies/:_companyId/contacts/:_id",
+            "v2/companies/:_companyId/contacts",
+            "v2/companies/:_companyId/customers",
+            "v2/companies/:_companyId/customers/:_customerCode",
+            "v2/companies/:_companyId/customers/:_customerCode/certificates",
+            "v2/companies/:_companyId/customers/:_customerCode/certificates/:_country/:_region",
+            "v2/items",
+            "v2/companies/:_companyId/items/:_id",
+            "v2/companies/:_companyId/items",
+            "v2/companies/:_companyCode/transactions/:_transactionCode",
+            "v2/companies/:_companyCode/transactions/:_transactionCode/types/:_documentType",
+            "v2/transactions/:_id",
+            "v2/companies/:_companyCode/transactions"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "companies",
+                        "name": "Companies",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_companies",
+                                "url": "v2/companies",
+                                "name": "List of all companies",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter By",
+                                        "description": "example for filter is $filter=region eq CA ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderBy",
+                                        "name": "OrderBy",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_company_based_on_id",
+                                "url": "v2/companies/:_id",
+                                "name": "Single Company Based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_configuration_settings_for_this_company",
+                                "url": "v2/companies/:_id/configuration",
+                                "name": "Get Configuration Settings For This Company",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_this_company's_filing_status",
+                                "url": "v2/companies/:_id/filingstatus",
+                                "name": "Get This Company's Filing Status",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_contacts",
+                                "url": "v2/contacts",
+                                "name": "List of all contacts",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter By",
+                                        "description": "example for filter is $filter=region eq CA ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderBy",
+                                        "name": "OrderBy",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_contact_based_on_id",
+                                "url": "v2/companies/:_companyId/contacts/:_id",
+                                "name": "Single Contact Based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_contacts_for_this_company",
+                                "url": "v2/companies/:_companyId/contacts",
+                                "name": "Retrieve Contacts For This Company",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_customers",
+                                "url": "v2/companies/:_companyId/customers",
+                                "name": "List of all customers",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter By",
+                                        "description": "example for filter is $filter=region eq CA ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderBy",
+                                        "name": "OrderBy",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_customer_based_on_customercode",
+                                "url": "v2/companies/:_companyId/customers/:_customerCode",
+                                "name": "Single Customer Based on Customercode",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "customerCode",
+                                        "name": "Customercode",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_certificates_linked_to_a_customer",
+                                "url": "v2/companies/:_companyId/customers/:_customerCode/certificates",
+                                "name": "List Certificates Linked to a Customer",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "customerCode",
+                                        "name": "Customercode",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_active_certificates_for_a_location",
+                                "url": "v2/companies/:_companyId/customers/:_customerCode/certificates/:_country/:_region",
+                                "name": "List Active Certificates For a Location",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "customerCode",
+                                        "name": "Customercode",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "items",
+                        "name": "Items",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_items",
+                                "url": "v2/items",
+                                "name": "List of All Items",
+                                "resourcePath": "value",
+                                "queryParameters": [
+                                    {
+                                        "id": "$include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter By",
+                                        "description": "example for filter is $filter=region eq CA ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderBy",
+                                        "name": "OrderBy",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_contact_based_on_id",
+                                "url": "v2/companies/:_companyId/items/:_id",
+                                "name": "Single Contact Based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Item ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_items_for_this_company",
+                                "url": "v2/companies/:_companyId/items",
+                                "name": "Retrieve items for this company",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactions",
+                        "name": "transactions",
+                        "endpoints": [
+                            {
+                                "id": "retrieve_a_single_transaction_by_code",
+                                "url": "v2/companies/:_companyCode/transactions/:_transactionCode",
+                                "name": "Retrieve a Single Transaction by Code",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyCode",
+                                        "name": "CompanyCode",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "transactionCode",
+                                        "name": "TransactionCode",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_a_single_transaction_by_documenttype",
+                                "url": "v2/companies/:_companyCode/transactions/:_transactionCode/types/:_documentType",
+                                "name": "Retrieve a Single Transaction by DocumentType",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyCode",
+                                        "name": "CompanyCode",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "transactionCode",
+                                        "name": "TransactionCode",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "documentType",
+                                        "name": "DocumentType",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_a_single_transaction_by_id",
+                                "url": "v2/transactions/:_id",
+                                "name": "Retrieve a Single Transaction by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": " Transaction ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_all_transactions",
+                                "url": "v2/companies/:_companyCode/transactions",
+                                "name": "Retrieve all transactions",
+                                "resourcePath": "value",
+                                "pathParameters": [
+                                    {
+                                        "id": "companyCode",
+                                        "name": "CompanyCode",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter By",
+                                        "description": "example for filter is $filter=region eq CA ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderBy",
+                                        "name": "OrderBy",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "v2/companies/initialize",
+            "v2/companies",
+            "v2/companies/:_companyId/configuration",
+            "v2/companies/:_id",
+            "v2/companies/:_companyId/contacts/:_id",
+            "v2/companies/:_companyId/contacts",
+            "v2/companies/:_companyId/customers",
+            "v2/companies/:_companyId/customers/:_customerCode",
+            "v2/companies/:_companyId/customers/:_customerCode/certificates/link",
+            "v2/companies/:_companyId/customers/:_customerCode/certificates/unlink",
+            "v2/companies/:_companyId/items",
+            "v2/companies/:_companyId/items/:_id",
+            "v2/transactions/create",
+            "v2/companies/:_companyCode/transactions/:_transactionCode/adjust",
+            "v2/transactions/createoradjust",
+            "v2/companies/:_companyCode/transactions/:_transactionCode/settle",
+            "v2/companies/transactions/lines/delete"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "companies",
+                        "name": "Companies",
+                        "sampleData": {
+                            "id": 802901,
+                            "accountId": 2000255522,
+                            "sstPid": "",
+                            "companyCode": "DEFAULT",
+                            "name": "celigo1",
+                            "isDefault": true,
+                            "defaultLocationId": 0,
+                            "isActive": true,
+                            "taxpayerIdNumber": "123456798",
+                            "hasProfile": true,
+                            "value": "true",
+                            "line1": "2000 Main Street",
+                            "city": "Irvine",
+                            "region": "CA",
+                            "postalCode": "92614",
+                            "country": "US",
+                            "firstName": "Bob",
+                            "lastName": "Example",
+                            "title": "Owner",
+                            "email": "bob@example.org",
+                            "phoneNumber": "714 555-2121",
+                            "mobileNumber": "714 555-1212",
+                            "category": "AvaCertServiceConfig",
+                            "isReportingEntity": true,
+                            "defaultCountry": "US",
+                            "baseCurrencyCode": "USD",
+                            "roundingLevelId": "Line",
+                            "warningsEnabled": false,
+                            "isTest": false,
+                            "requestedStatus": "FirstFiling",
+                            "taxDependencyLevelId": "Document",
+                            "inProgress": false,
+                            "createdDate": "2017-10-24T06:59:00.487",
+                            "createdUserId": 7097,
+                            "modifiedDate": "2017-10-24T07:58:04.667",
+                            "modifiedUserId": 304639
+                        },
+                        "operations": [
+                            {
+                                "id": "create_companies",
+                                "url": "v2/companies",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies",
+                                        "extract": "value[0].id",
+                                        "id": "list_of_all_companies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_companies",
+                                "url": "v2/companies/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies",
+                                        "extract": "value[0].id",
+                                        "id": "list_of_all_companies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_companies",
+                                "url": [
+                                    "v2/companies/:_id",
+                                    "v2/companies"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies",
+                                        "extract": "value[0].id",
+                                        "id": "list_of_all_companies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "quick_setup_for_a_company_with_a_single_physical_address",
+                                "url": "v2/companies/initialize",
+                                "name": "Quick setup for a company with a single physical address",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies",
+                                        "extract": "value[0].id",
+                                        "id": "list_of_all_companies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "change_configuration_settings_for_this_account",
+                                "url": "v2/companies/:_companyId/configuration",
+                                "name": "Change configuration settings for this account",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_companies",
+                                "name": "Delete",
+                                "url": "v2/companies/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies",
+                                        "extract": "value[0].id",
+                                        "id": "list_of_all_companies"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "sampleData": {
+                            "id": 168757,
+                            "companyId": 802916,
+                            "contactCode": "Default",
+                            "firstName": "mounika",
+                            "middleName": "",
+                            "lastName": "aetukuri",
+                            "line1": "pragathinagar",
+                            "city": "hyderbad",
+                            "region": "TG",
+                            "postalCode": "507169",
+                            "country": "IN",
+                            "email": "atukuri.mounika@celigo.com",
+                            "phone": "555-555-5555",
+                            "createdDate": "2017-10-24T09:13:23.037",
+                            "createdUserId": 304639,
+                            "modifiedDate": "2017-10-24T09:13:23.037",
+                            "modifiedUserId": 304639
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contacts",
+                                "url": "v2/companies/:_companyId/contacts",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies/:_companyId/contacts",
+                                        "extract": "value[0].id",
+                                        "id": "retrieve_contacts_for_this_company"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_contacts",
+                                "url": "v2/companies/:_companyId/contacts/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies/:_companyId/contacts",
+                                        "extract": "value[0].id",
+                                        "id": "retrieve_contacts_for_this_company"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_contacts",
+                                "url": [
+                                    "v2/companies/:_companyId/contacts/:_id",
+                                    "v2/companies/:_companyId/contacts"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies/:_companyId/contacts",
+                                        "extract": "value[0].id",
+                                        "id": "retrieve_contacts_for_this_company"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_contacts",
+                                "name": "Delete",
+                                "url": "v2/companies/:_companyId/contacts/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v2/companies/:_companyId/contacts",
+                                        "extract": "value[0].id",
+                                        "id": "retrieve_contacts_for_this_company"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "sampleData": {
+                            "id": 1,
+                            "companyId": 802916,
+                            "customerCode": "123456789",
+                            "alternateId": "987654321",
+                            "name": "Dr. Bob Example",
+                            "attnName": "Attn: Receiving",
+                            "line1": "645 Main Street",
+                            "city": "Irvine",
+                            "certificates": [
+                                1,
+                                5
+                            ],
+                            "postalCode": "92614",
+                            "phoneNumber": "(949) 555-1212",
+                            "faxNumber": "949.555.1213",
+                            "emailAddress": "dr.bob.example@example.org",
+                            "contactName": "Alice Smith",
+                            "lastTransaction": "2008-10-08T00:00:00",
+                            "createdDate": "2017-10-24T09:38:40",
+                            "modifiedDate": "2017-10-24T09:39:41.097331",
+                            "country": "US",
+                            "region": "CA",
+                            "isBill": false,
+                            "isShip": false
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customers",
+                                "url": "v2/companies/:_companyId/customers",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_customers",
+                                "url": "v2/companies/:_companyId/customers/:_customerCode",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "customerCode",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_customers",
+                                "url": [
+                                    "v2/companies/:_companyId/customers/:_customerCode",
+                                    "v2/companies/:_companyId/customers"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "customerCode",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "link_certificates_to_a_customer",
+                                "url": "v2/companies/:_companyId/customers/:_customerCode/certificates/link",
+                                "name": "Link certificates to a customer",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "customerCode",
+                                        "name": "Customer Code",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "unlink_certificates_from_a_customer",
+                                "url": "v2/companies/:_companyId/customers/:_customerCode/certificates/unlink",
+                                "name": "Unlink certificates from a customer",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "customerCode",
+                                        "name": "Customer Code",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_customers",
+                                "name": "Delete",
+                                "url": "v2/companies/:_companyId/customers/:_customerCode",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "customerCode",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "items",
+                        "name": "Items",
+                        "sampleData": {
+                            "id": 61849261,
+                            "companyId": 802916,
+                            "itemCode": "item2",
+                            "customerCode": "123456789",
+                            "taxCodeId": 8662,
+                            "taxCode": "SE050200",
+                            "description": "second item",
+                            "createdDate": "2017-10-24T09:28:06.883",
+                            "createdUserId": 304639,
+                            "modifiedDate": "2017-10-24T09:28:06.883",
+                            "modifiedUserId": 304639
+                        },
+                        "operations": [
+                            {
+                                "id": "create_items",
+                                "url": "v2/companies/:_companyId/items",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_items",
+                                "url": "v2/companies/:_companyId/items/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_items",
+                                "url": [
+                                    "v2/companies/:_companyId/items/:_id",
+                                    "v2/companies/:_companyId/items"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_items",
+                                "name": "Delete",
+                                "url": "v2/companies/:_companyId/items/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyId",
+                                        "name": "Company Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactions",
+                        "name": "Transactions",
+                        "sampleData": {
+                            "id": 365679320,
+                            "code": "52ad8bcd-7bf1-41e6-8c16-37b8677381f3",
+                            "companyId": 802901,
+                            "date": "2017-10-24",
+                            "paymentDate": "1900-01-01",
+                            "status": "Saved",
+                            "type": "SalesInvoice",
+                            "batchCode": "",
+                            "currencyCode": "USD",
+                            "customerUsageType": "",
+                            "customerVendorCode": "ABC",
+                            "exemptNo": "",
+                            "reconciled": false,
+                            "purchaseOrderNo": "",
+                            "referenceCode": "",
+                            "salespersonCode": "",
+                            "taxOverrideType": "None",
+                            "taxOverrideAmount": 0,
+                            "taxOverrideReason": "",
+                            "totalAmount": 100,
+                            "totalExempt": 100,
+                            "totalTax": 0,
+                            "totalTaxable": 0,
+                            "totalTaxCalculated": 0,
+                            "adjustmentReason": "NotAdjusted",
+                            "adjustmentDescription": "",
+                            "locked": false,
+                            "region": "TG",
+                            "country": "IN",
+                            "version": 1,
+                            "softwareVersion": "17.10.2.3",
+                            "originAddressId": 906504194,
+                            "destinationAddressId": 906504195,
+                            "exchangeRateEffectiveDate": "2017-10-24",
+                            "exchangeRate": 1,
+                            "isSellerImporterOfRecord": false,
+                            "businessIdentificationNo": "",
+                            "modifiedDate": "2017-10-26T07:19:48.93",
+                            "modifiedUserId": 304639,
+                            "taxDate": "2017-10-24T00:00:00",
+                            "lines": [
+                                {
+                                    "number": "1",
+                                    "quantity": 1,
+                                    "amount": 100,
+                                    "addresses": {
+                                        "pointOfOrderOrigin": {
+                                            "line1": "jntu",
+                                            "city": "hyderabad",
+                                            "region": "TG",
+                                            "country": "IN",
+                                            "postalCode": "500085"
+                                        },
+                                        "pointOfOrderAcceptance": {
+                                            "line1": "madhapur",
+                                            "city": "hyderabad",
+                                            "region": "TG",
+                                            "country": "IN",
+                                            "postalCode": "500018"
+                                        }
+                                    },
+                                    "taxCode": "PS081282",
+                                    "itemCode": "item4",
+                                    "description": "Yarn"
+                                }
+                            ],
+                            "companyCode": "DEFAULT",
+                            "customerCode": "ABC"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_transactions",
+                                "url": "v2/transactions/create",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "correct_a_previously_created_transaction",
+                                "url": "v2/companies/:_companyCode/transactions/:_transactionCode/adjust",
+                                "name": "Correct a previously created transaction",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyCode",
+                                        "name": "Company Code",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "transactionCode",
+                                        "name": "Transaction Code",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_adjust_a_transaction",
+                                "url": "v2/transactions/createoradjust",
+                                "name": "Create or adjust a transaction",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "perform_multiple_actions_on_a_transaction",
+                                "url": "v2/companies/:_companyCode/transactions/:_transactionCode/settle",
+                                "name": "Perform multiple actions on a transaction",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "companyCode",
+                                        "name": "Company Code",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "transactionCode",
+                                        "name": "Transaction Code",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_lines_from_an_existing_unlocked_transaction",
+                                "url": "v2/companies/transactions/lines/delete",
+                                "name": "Remove lines from an existing unlocked transaction",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

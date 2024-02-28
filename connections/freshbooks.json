@@ -1,0 +1,2557 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [
+            "auth/api/v1/users/me",
+            "accounting/account/:_accountid/users/clients/:_id",
+            "accounting/account/:_accountid/users/clients",
+            "accounting/account/:_accountid/expenses/expenses/:_id",
+            "accounting/account/:_accountid/expenses/expenses",
+            "accounting/account/:_accountid/items/items/:_id",
+            "accounting/account/:_accountid/items/items",
+            "projects/business/:_business_id/projects/:_id",
+            "projects/business/:_business_id/projects",
+            "accounting/account/:_accountid/invoices/invoices/:_id",
+            "accounting/account/:_accountid/invoices/invoices",
+            "accounting/account/:_accountid/estimates/estimates/:_estimateid",
+            "accounting/account/:_accountid/estimates/estimates",
+            "accounting/account/:_accountid/expenses/categories/:_id",
+            "accounting/account/:_accountid/expenses/categories",
+            "accounting/account/:_accountid/payments/payments/:_id",
+            "accounting/account/:_accountid/payments/payments",
+            "accounting/account/:_accountid/users/staffs/:_id",
+            "accounting/account/:_accountid/users/staffs",
+            "accounting/account/:_account_id/projects/tasks/:_id",
+            "accounting/account/:_account_id/taxes/taxes/:_id",
+            "accounting/account/:_account_id/taxes/taxes",
+            "timetracking/business/:_business_id/time_entries/:_time_entry_id",
+            "timetracking/business/:_business_id/time_entries"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "get_user_details",
+                                "url": "auth/api/v1/users/me",
+                                "name": "Get User Details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response",
+                                "pathParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "clients",
+                        "name": "Clients",
+                        "endpoints": [
+                            {
+                                "id": "all_clients",
+                                "url": "accounting/account/:_accountid/users/clients",
+                                "name": "All clients",
+                                "resourcePath": "response.result.clients",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[email_like]",
+                                        "name": "Email",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[username]",
+                                        "name": "Username",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[organization_like]",
+                                        "name": "Organisation",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[fname_like]",
+                                        "name": "First name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[lname_like]",
+                                        "name": "Last name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[address_like]",
+                                        "name": "Address",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[has_credit]",
+                                        "name": "Credit",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[has_draft]",
+                                        "name": "Draft",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[has_outstanding]",
+                                        "name": "Outstanding",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[has_overdue]",
+                                        "name": "Overdue",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[fname_like]",
+                                        "name": "Firstname",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[user_like]",
+                                        "name": "User",
+                                        "description": "matches fname, lname, or organization containing the parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "include[]",
+                                        "name": "Include",
+                                        "description": "we can include any one of the following fields ie,outstanding_balance,credit_balance,draft_balance,overdue_balance,grand_total_balance,last_activity,late_reminders,late_fee",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_client_based_on_id",
+                                "url": "accounting/account/:_accountid/users/clients/:_id",
+                                "name": "Single client based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.client",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Client id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expenses",
+                        "name": "Expenses",
+                        "endpoints": [
+                            {
+                                "id": "expense_by_id",
+                                "url": "accounting/account/:_accountid/expenses/expenses/:_id",
+                                "name": "Expense by id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.expense",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Expense ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_expenses",
+                                "url": "accounting/account/:_accountid/expenses/expenses",
+                                "name": "List all expenses",
+                                "resourcePath": "response.result.expenses",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[vendor]",
+                                        "name": "Vendor",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[has_receipt]",
+                                        "name": "Reciept",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[amount_min]",
+                                        "name": "Minimum amount",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[amount_max]",
+                                        "name": "Maximum amount",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[date_min]",
+                                        "name": "Minimum date",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[date_max]",
+                                        "name": "Maximum date",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[notes]",
+                                        "name": "Notes",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[category _name]",
+                                        "name": "category",
+                                        "description": "category containing the parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[account _name]",
+                                        "name": "Account Name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[is_cogs]",
+                                        "name": "Cost of goods sold",
+                                        "description": "Search by true/false cost of goods sold",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "include[]",
+                                        "name": "Include ",
+                                        "description": "we can include any one of the following fields ie,category,expense_profile,project,account",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "expense_categories_by_id",
+                                "url": "accounting/account/:_accountid/expenses/categories/:_id",
+                                "name": "Expense Categories by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.category",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Category ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "all_expense_categories",
+                                "url": "accounting/account/:_accountid/expenses/categories",
+                                "name": "All Expense Categories",
+                                "resourcePath": "response.result.categories",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[name]",
+                                        "name": "Name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[is_cogs]",
+                                        "name": "Cost of goods sold",
+                                        "description": "Search by true/false cost of goods sold",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[is_editable]",
+                                        "name": "Editable or Non Editable",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[parentid]",
+                                        "name": "Parent id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "include[]",
+                                        "name": "Include",
+                                        "description": "we can include any one of the following fields ie,expense_usage_all_time,expense_usage_this_year",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "items",
+                        "name": "Items",
+                        "endpoints": [
+                            {
+                                "id": "items_by_id",
+                                "url": "accounting/account/:_accountid/items/items/:_id",
+                                "name": "Items by id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.item",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Item ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "all_items",
+                                "url": "accounting/account/:_accountid/items/items",
+                                "name": "All Items",
+                                "resourcePath": "response.result.items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[description]",
+                                        "name": "Description",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[name]",
+                                        "name": "Name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[unit_cost_min]",
+                                        "name": "Minimum unit cost",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[unit_cost_max]",
+                                        "name": "Maximum unit cost",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[inventory_min]",
+                                        "name": "Minimum inventory",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[inventory _max]",
+                                        "name": "Maximum inventory",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[qty_min]",
+                                        "name": "Minimum quantity",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[qty_max]",
+                                        "name": "Maximum quantity",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "endpoints": [
+                            {
+                                "id": "projetcs_by_id",
+                                "url": "projects/business/:_business_id/projects/:_id",
+                                "name": "projects by id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "project",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_id",
+                                        "name": "Business ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Project ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_projects",
+                                "url": "projects/business/:_business_id/projects",
+                                "name": "List all projects",
+                                "resourcePath": "projects",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_id",
+                                        "name": "Business ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[active]",
+                                        "name": "Status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[complete]",
+                                        "name": "Complete",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[updated_since]",
+                                        "name": "Updated time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[skip_group]",
+                                        "name": "Skip group",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[include_logged_duration]",
+                                        "name": "Include Logged Duration",
+                                        "description": "true returns the time logged for a project (in seconds)",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoices",
+                        "name": "Invoices",
+                        "endpoints": [
+                            {
+                                "id": "invoices_by_id",
+                                "url": "accounting/account/:_accountid/invoices/invoices/:_id",
+                                "name": "invoices by id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.invoice",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "invoice ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_invoices",
+                                "url": "accounting/account/:_accountid/invoices/invoices",
+                                "name": "List all invoices",
+                                "resourcePath": "response.result.invoices",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[active]",
+                                        "name": "Status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[invoice _number _like]",
+                                        "name": "Invoice number ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[invoice _number]",
+                                        "name": "Exact invoice number",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[notes]",
+                                        "name": "Notes",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[statusid]",
+                                        "name": "Status id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[currency_code]",
+                                        "name": "Currency code",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[date_min]",
+                                        "name": "Minimum date ",
+                                        "description": "Search by date greater than or equal",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[date_max]",
+                                        "name": "Maximum date",
+                                        "description": "Search by date less than or equal",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[has_credit]",
+                                        "name": "Credit",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[total_min]",
+                                        "name": "Minimum amount",
+                                        "description": "Search by amount greater than parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[total_max]",
+                                        "name": "Maximum amount",
+                                        "description": "Search by amount greater than parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[po_number]",
+                                        "name": "PO number",
+                                        "description": "Search by Po number containing parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[customerid]",
+                                        "name": "Customer id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[parentid]",
+                                        "name": "Parent id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[paid]",
+                                        "name": "Paid or unpaid",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[outstanding]",
+                                        "name": "Outstanding",
+                                        "description": "Search by outstanding or not outstanding invoices",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[v3_status]",
+                                        "name": "V3 status",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[updated_min]",
+                                        "name": "Minimum updated date",
+                                        "description": "Search by updated date greater than or equal to parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[updated_max]",
+                                        "name": "Maximum updated date",
+                                        "description": "Search by updated date less than parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[item_name]",
+                                        "name": "Item name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[item _description]",
+                                        "name": "Item description",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[projectid]",
+                                        "name": "Project id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[outstanding _min]",
+                                        "name": "Minimum Oustanding amount",
+                                        "description": "Search with an outstanding amount greater than input",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "include[]",
+                                        "name": "Include",
+                                        "description": "we can include any one of the following fields ie,audit_logs,client_audits,comments,contacts,direct_links,lines,latest_journal_entry,allowed_gateways,late_fee,presentation,late_reminders,owner,system",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "estimates",
+                        "name": "Estimates",
+                        "endpoints": [
+                            {
+                                "id": "estimates_by_id",
+                                "url": "accounting/account/:_accountid/estimates/estimates/:_estimateid",
+                                "name": "Estimates by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.estimate",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "estimateid",
+                                        "name": "Estimate ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "all_estimates",
+                                "url": "accounting/account/:_accountid/estimates/estimates",
+                                "name": "All Estimates",
+                                "resourcePath": "response.result.estimates",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[estimate _number]",
+                                        "name": "Estimate number",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[notes]",
+                                        "name": "Notes",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[statusid]",
+                                        "name": "Status id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[currency_code]",
+                                        "name": "Currency code",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[date_min]",
+                                        "name": "Minimum date ",
+                                        "description": "Search by date greater than or equal",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[date_max]",
+                                        "name": "Maximum date ",
+                                        "description": "Search by date less than or equal",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[amount_min]",
+                                        "name": "Minimum amount",
+                                        "description": "Search by amount greater than parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[amount_max]",
+                                        "name": "Maximum amount",
+                                        "description": "Search by amount less than parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[po_number]",
+                                        "name": "PO number",
+                                        "description": "Search by Po number containing parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[clientid]",
+                                        "name": "Clientid",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[item_name]",
+                                        "name": "Item name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[item _description]",
+                                        "name": "Item description",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "include[]",
+                                        "name": "Include",
+                                        "description": "we can include any one of the following fields ie,audit_logs,,comments,contacts,direct_links,lines,presentation,invoices,projects,owner,system",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "payments",
+                        "name": "Payments",
+                        "endpoints": [
+                            {
+                                "id": "payments_by_id",
+                                "url": "accounting/account/:_accountid/payments/payments/:_id",
+                                "name": "Payments by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.payment",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Payment ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "all_payments",
+                                "url": "accounting/account/:_accountid/payments/payments",
+                                "name": "All Payments",
+                                "resourcePath": "response.result.payments",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[logid]",
+                                        "name": "Log id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[type]",
+                                        "name": "Type",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[notes]",
+                                        "name": "Notes",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[customerid]",
+                                        "name": "Customer id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[clientid]",
+                                        "name": "Client id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[currencycode]",
+                                        "name": "Currency code",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[date_min]",
+                                        "name": "Minimum date",
+                                        "description": "Search by date greater than or equal ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[date_max]",
+                                        "name": "Maximum",
+                                        "description": "Search by date less than parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[amount_min]",
+                                        "name": "Minimum",
+                                        "description": "Search by amount greater than parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[amount_max]",
+                                        "name": "Maximum amount",
+                                        "description": "Search by amount less than parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[from_credit]",
+                                        "name": "Credit",
+                                        "description": "Search payment converted from credit or not",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[client_name]",
+                                        "name": "Client fname or lname",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[number]",
+                                        "name": "Credit number ",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[payment_or _credit]",
+                                        "name": "Payment or Credit",
+                                        "description": "invoice returns payments, credit returns credits",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "invoice",
+                                            "credit"
+                                        ]
+                                    },
+                                    {
+                                        "id": "include[]",
+                                        "name": "Include",
+                                        "description": "we can include any one of the following fields ie,client,invoice,credit_note,order,gateway",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "staff",
+                        "name": "Staff",
+                        "endpoints": [
+                            {
+                                "id": "get_staff_by_id",
+                                "url": "accounting/account/:_accountid/users/staffs/:_id",
+                                "name": "Get Staff by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.staff",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Staff ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_staff",
+                                "url": "accounting/account/:_accountid/users/staffs",
+                                "name": "List Staff",
+                                "resourcePath": "response.result.staff",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[userid]",
+                                        "name": "User id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[user_levels]",
+                                        "name": "Type of user",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "admin",
+                                            "staff"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[user_like]",
+                                        "name": "User details",
+                                        "description": "searches staff with lname, fname, or organization containing parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[note_like]",
+                                        "name": "Note",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[phone_like]",
+                                        "name": "Phone number",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[email_like]",
+                                        "name": "Email",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "include[]",
+                                        "name": "Include",
+                                        "description": "we can include projectids",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "endpoints": [
+                            {
+                                "id": "get_tasks_by_id",
+                                "url": "accounting/account/:_account_id/projects/tasks/:_id",
+                                "name": "Get Tasks by id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.task",
+                                "pathParameters": [
+                                    {
+                                        "id": "account_id",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Task ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "taxes",
+                        "name": "Taxes",
+                        "endpoints": [
+                            {
+                                "id": "get_taxes_by_id",
+                                "url": "accounting/account/:_accountid/taxes/taxes/:_id",
+                                "name": "Get Taxes by id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.result.tax",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Tax ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_taxes",
+                                "url": "accounting/account/:_account_id/taxes/taxes",
+                                "name": "List Taxes",
+                                "resourcePath": "response.result.taxes",
+                                "pathParameters": [
+                                    {
+                                        "id": "account_id",
+                                        "name": "Account id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[taxid]",
+                                        "name": "Tax id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[compound]",
+                                        "name": "Type of user",
+                                        "description": "true returns compound taxes, false returns non-compound taxes",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[number]",
+                                        "name": "Number",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[name]",
+                                        "name": "Name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[updated_min]",
+                                        "name": "Minimum updated date",
+                                        "description": "Search by updated date greater than or equal to parameter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[updated_max]",
+                                        "name": "Maximum updated date",
+                                        "description": "Search by updated date less than parameter",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "time_entries",
+                        "name": "Time entries",
+                        "endpoints": [
+                            {
+                                "id": "get_time_entries",
+                                "url": "/timetracking/business/:_business_id/time_entries",
+                                "name": "Get Time entries",
+                                "resourcePath": "response.result.time_entries",
+                                "pathParameters": [
+                                    {
+                                        "id": "business_id",
+                                        "name": "Business ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "search[billed]",
+                                        "name": "Billed",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[billable]",
+                                        "name": "Billabe",
+                                        "description": "true returns entries that can be automatically added to an invoice",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "search[client_id]",
+                                        "name": "Client Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "search[updated_since]",
+                                        "name": "Updated Since",
+                                        "description": "matches entries that have been updated at or after the specified utc date/time",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "accounting/account/:_accountid/users/clients",
+            "accounting/account/:_accountid/users/clients/:_id",
+            "accounting/account/:_accountid/expenses/expenses",
+            "accounting/account/:_accountid/expenses/expenses/:_id",
+            "accounting/account/:_accountid/items/items",
+            "accounting/account/:_accountid/items/items/:_id",
+            "projects/business/:_business_id/projects",
+            "projects/business/:_business_id/projects/:_id",
+            "accounting/account/:_accountid/estimates/estimates/:_id",
+            "accounting/account/:_accountid/estimates/estimates",
+            "accounting/account/:_accountid/invoices/invoices/:_id",
+            "accounting/account/:_accountid/invoices/invoices",
+            "accounting/account/:_accountid/payments/payments/:_id",
+            "accounting/account/:_accountid/payments/payments",
+            "accounting/account/:_accountid/users/staffs/:_id",
+            "accounting/account/:_accountid/users/staffs",
+            "accounting/account/:_account_id/projects/tasks/:_task_id",
+            "accounting/account/:_account_id/projects/tasks",
+            "accounting/account/:_account_id/taxes/taxes/:_id",
+            "accounting/account/:_account_id/taxes/taxes",
+            "timetracking/business/:_business_id/time_entries/:_time_entry_id",
+            "timetracking/business/:_business_id/time_entries"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "clients",
+                        "name": "Clients",
+                        "sampleData": {
+                            "client": {
+                                "allow_late_notifications": true,
+                                "updated": "2017-10-16 07:50:01",
+                                "last_activity": null,
+                                "s_code": "",
+                                "vat_number": null,
+                                "pref_email": true,
+                                "id": 125530,
+                                "direct_link_token": null,
+                                "s_province": "",
+                                "lname": "",
+                                "s_country": "",
+                                "s_street2": "",
+                                "statement_token": null,
+                                "note": null,
+                                "mob_phone": "",
+                                "role": "client",
+                                "home_phone": null,
+                                "last_login": null,
+                                "company_industry": null,
+                                "subdomain": null,
+                                "email": "user1t@abcorp.com",
+                                "username": "user1",
+                                "fax": "",
+                                "fname": "",
+                                "vat_name": null,
+                                "p_city": "",
+                                "p_code": "",
+                                "allow_late_fees": true,
+                                "s_street": "",
+                                "p_country": "",
+                                "company_size": null,
+                                "accounting_systemid": "AzAeo",
+                                "bus_phone": "",
+                                "p_province": "",
+                                "signup_date": "2017-10-16 11:50:01",
+                                "language": "en",
+                                "level": 0,
+                                "notified": false,
+                                "userid": 125530,
+                                "p_street2": "",
+                                "pref_gmail": false,
+                                "vis_state": 0,
+                                "s_city": "",
+                                "num_logins": 0,
+                                "organization": "user1t@abcorp.com",
+                                "p_street": "",
+                                "currency_code": "INR"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_clients",
+                                "url": "accounting/account/:_accountid/users/clients",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/users/clients",
+                                        "extract": "response.result.clients[0].id",
+                                        "id": "all_clients"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_clients",
+                                "url": "accounting/account/:_accountid/users/clients/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/users/clients",
+                                        "extract": "response.result.clients[0].id",
+                                        "id": "all_clients"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_clients",
+                                "url": [
+                                    "accounting/account/:_accountid/users/clients/:_id",
+                                    "accounting/account/:_accountid/users/clients"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/users/clients",
+                                        "extract": "response.result.clients[0].id",
+                                        "id": "all_clients"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expenses",
+                        "name": "Expenses",
+                        "sampleData": {
+                            "expense": {
+                                "categoryid": 121374834,
+                                "markup_percent": "0",
+                                "projectid": 0,
+                                "clientid": 0,
+                                "taxPercent1": "100",
+                                "taxName2": null,
+                                "taxName1": "HST",
+                                "isduplicate": false,
+                                "profileid": null,
+                                "taxPercent2": null,
+                                "account_name": null,
+                                "transactionid": null,
+                                "invoiceid": null,
+                                "id": 1569533,
+                                "taxAmount2": null,
+                                "taxAmount1": {
+                                    "amount": "1.30",
+                                    "code": "CAD"
+                                },
+                                "vis_state": 0,
+                                "status": 0,
+                                "bank_name": null,
+                                "updated": "2016-09-27 21:09:13",
+                                "vendor": "Ice Cream",
+                                "ext_systemid": 0,
+                                "staffid": 1,
+                                "date": "2016-09-19",
+                                "has_receipt": false,
+                                "accounting_systemid": "KAG77",
+                                "background_jobid": null,
+                                "notes": "Rocky Road",
+                                "ext_invoiceid": 0,
+                                "amount": {
+                                    "amount": "10.00",
+                                    "code": "CAD"
+                                },
+                                "expenseid": 1569533,
+                                "compounded_tax": false,
+                                "accountid": null
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_expenses",
+                                "url": "accounting/account/:_accountid/expenses/expenses",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/expenses/expenses",
+                                        "extract": "response.result.expenses[0].id",
+                                        "id": "list_all_expenses"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_expenses",
+                                "url": "accounting/account/:_accountid/expenses/expenses/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/expenses/expenses",
+                                        "extract": "response.result.expenses[0].id",
+                                        "id": "list_all_expenses"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_expenses",
+                                "url": [
+                                    "accounting/account/:_accountid/expenses/expenses/:_id",
+                                    "accounting/account/:_accountid/expenses/expenses"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/expenses/expenses",
+                                        "extract": "response.result.expenses[0].id",
+                                        "id": "list_all_expenses"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "items",
+                        "name": "Items",
+                        "sampleData": {
+                            "item": {
+                                "itemid": 131791,
+                                "accounting_systemid": "AzAeo",
+                                "updated": "2017-10-17 07:06:11",
+                                "name": "itemnew",
+                                "qty": "1",
+                                "inventory": null,
+                                "unit_cost": {
+                                    "amount": "0.00",
+                                    "code": "INR"
+                                },
+                                "tax1": 0,
+                                "vis_state": 0,
+                                "tax2": 0,
+                                "id": 131791,
+                                "description": "des1"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_items",
+                                "url": "accounting/account/:_accountid/items/items",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/items/items",
+                                        "extract": "response.result.items[0].id",
+                                        "id": "all_items"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_items",
+                                "url": "accounting/account/:_accountid/items/items/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/items/items",
+                                        "extract": "response.result.items[0].id",
+                                        "id": "all_items"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_items",
+                                "url": [
+                                    "accounting/account/:_accountid/items/items/:_id",
+                                    "accounting/account/:_accountid/items/items"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/items/items",
+                                        "extract": "response.result.items[0].id",
+                                        "id": "all_items"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "sampleData": {
+                            "project": {
+                                "due_date": "2017-10-18",
+                                "logged_duration": null,
+                                "fixed_price": "3456.00",
+                                "group": {
+                                    "pending_invitations": [],
+                                    "id": 1380056,
+                                    "members": [
+                                        {
+                                            "first_name": "sukeerthi",
+                                            "last_name": "sriram",
+                                            "role": "owner",
+                                            "identity_id": 541700,
+                                            "active": true,
+                                            "company": "celigo",
+                                            "id": 2192100,
+                                            "email": "sukeerthi.sriram@celigo.com"
+                                        }
+                                    ]
+                                },
+                                "description": null,
+                                "complete": false,
+                                "title": "project1",
+                                "project_type": "fixed_price",
+                                "budget": 82800,
+                                "updated_at": "2017-10-12T10:51:02",
+                                "sample": false,
+                                "services": [
+                                    {
+                                        "business_id": 493550,
+                                        "name": "IT Support",
+                                        "id": 1075403
+                                    },
+                                    {
+                                        "business_id": 493550,
+                                        "name": "Software Development",
+                                        "id": 1075404
+                                    }
+                                ],
+                                "rate": null,
+                                "internal": false,
+                                "client_id": 119843,
+                                "active": true,
+                                "created_at": "2017-10-12T10:51:02",
+                                "id": 883852,
+                                "billing_method": "project_rate"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_projects",
+                                "url": "projects/business/:_business_id/projects",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_id",
+                                        "in": "path",
+                                        "name": "Business id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "projects/business/:_business_id/projects",
+                                        "extract": "projects[0].id",
+                                        "id": "list_all_projects"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_projects",
+                                "url": "projects/business/:_business_id/projects/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_id",
+                                        "in": "path",
+                                        "name": "Business id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "projects/business/:_business_id/projects",
+                                        "extract": "projects[0].id",
+                                        "id": "list_all_projects"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_projects",
+                                "url": [
+                                    "projects/business/:_business_id/projects/:_id",
+                                    "projects/business/:_business_id/projects"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "business_id",
+                                        "in": "path",
+                                        "name": "Business id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "projects/business/:_business_id/projects",
+                                        "extract": "projects[0].id",
+                                        "id": "list_all_projects"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_projects",
+                                "url": "/projects/business/:_business_id/projects/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_id",
+                                        "in": "path",
+                                        "name": "Business id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "estimates",
+                        "name": "Estimates",
+                        "sampleData": {
+                            "estimate": {
+                                "email": "test@example.com",
+                                "customerid": 338441,
+                                "create_date": "2016-04-04",
+                                "lines": [
+                                    {
+                                        "type": 0,
+                                        "description": "",
+                                        "taxName1": "",
+                                        "taxAmount1": 0,
+                                        "name": "Paperwork",
+                                        "qty": 1,
+                                        "taxName2": "",
+                                        "taxAmount2": 0,
+                                        "unit_cost": {
+                                            "amount": "5000.00",
+                                            "code": "USD"
+                                        }
+                                    },
+                                    {
+                                        "type": 1,
+                                        "description": "",
+                                        "expenseid": 1918390,
+                                        "taxName1": "",
+                                        "taxAmount1": 0,
+                                        "name": "TV Ads",
+                                        "qty": 1,
+                                        "taxName2": "",
+                                        "taxAmount2": 0,
+                                        "unit_cost": {
+                                            "amount": "3000.00",
+                                            "code": "USD"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_estimates",
+                                "url": "accounting/account/:_accountid/estimates/estimates",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/estimates/estimates",
+                                        "extract": "estimates[0].id",
+                                        "id": "all_estimates"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_estimates",
+                                "url": "accounting/account/:_accountid/estimates/estimates/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/estimates/estimates",
+                                        "extract": "estimates[0].id",
+                                        "id": "all_estimates"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_estimates",
+                                "url": [
+                                    "accounting/account/:_accountid/estimates/estimates/:_id",
+                                    "accounting/account/:_accountid/estimates/estimates"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/estimates/estimates",
+                                        "extract": "estimates[0].id",
+                                        "id": "all_estimates"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoices",
+                        "name": "Invoices",
+                        "sampleData": {
+                            "invoice": {
+                                "email": "test@example.com",
+                                "customerid": 338441,
+                                "create_date": "2016-04-04",
+                                "lines": [
+                                    {
+                                        "type": 0,
+                                        "description": "",
+                                        "taxName1": "",
+                                        "taxAmount1": 0,
+                                        "name": "Paperwork",
+                                        "qty": 1,
+                                        "taxName2": "",
+                                        "taxAmount2": 0,
+                                        "unit_cost": {
+                                            "amount": "5000.00",
+                                            "code": "USD"
+                                        }
+                                    },
+                                    {
+                                        "type": 1,
+                                        "description": "",
+                                        "expenseid": 1918390,
+                                        "taxName1": "",
+                                        "taxAmount1": 0,
+                                        "name": "TV Ads",
+                                        "qty": 1,
+                                        "taxName2": "",
+                                        "taxAmount2": 0,
+                                        "unit_cost": {
+                                            "amount": "3000.00",
+                                            "code": "USD"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_invoices",
+                                "url": "accounting/account/:_accountid/invoices/invoices",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/invoices/invoices",
+                                        "extract": "invoices[0].id",
+                                        "id": "list_all_invoices"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_invoices",
+                                "url": "accounting/account/:_accountid/invoices/invoices/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/invoices/invoices",
+                                        "extract": "invoices[0].id",
+                                        "id": "list_all_invoices"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_invoices",
+                                "url": [
+                                    "accounting/account/:_accountid/invoices/invoices/:_id",
+                                    "accounting/account/:_accountid/invoices/invoices"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/invoices/invoices",
+                                        "extract": "invoices[0].id",
+                                        "id": "list_all_invoices"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "payments",
+                        "name": "Payments",
+                        "sampleData": {
+                            "payment": {
+                                "invoiceid": 2214249,
+                                "amount": {
+                                    "amount": "10.00"
+                                },
+                                "date": "2013-12-10",
+                                "type": "Check"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_payments",
+                                "url": "accounting/account/:_accountid/payments/payments",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/payments/payments",
+                                        "extract": "payments[0].id",
+                                        "id": "all_payments"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_payments",
+                                "url": "accounting/account/:_accountid/payments/payments/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/payments/payments",
+                                        "extract": "payments[0].id",
+                                        "id": "all_payments"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_payments",
+                                "url": [
+                                    "accounting/account/:_accountid/payments/payments/:_id",
+                                    "accounting/account/:_accountid/payments/payments"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/payments/payments",
+                                        "extract": "payments[0].id",
+                                        "id": "all_payments"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "staff",
+                        "name": "Staff",
+                        "sampleData": {
+                            "staff": {
+                                "email": "john.doe@abcorp.com",
+                                "fname": "John",
+                                "lname": "Doe"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_staff",
+                                "url": "accounting/account/:_accountid/users/staffs",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/users/staffs",
+                                        "extract": "staff[0].id",
+                                        "id": "list_staff"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_staff",
+                                "url": "accounting/account/:_accountid/users/staffs/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/users/staffs",
+                                        "extract": "staff[0].id",
+                                        "id": "list_staff"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_staff",
+                                "url": [
+                                    "accounting/account/:_accountid/users/staffs/:_id",
+                                    "accounting/account/:_accountid/users/staffs"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_accountid/users/staffs",
+                                        "extract": "staff[0].id",
+                                        "id": "list_staff"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "sampleData": {
+                            "task": {
+                                "name": "Walking Dogs",
+                                "rate": {
+                                    "amount": "25.47",
+                                    "code": "CAD"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_tasks",
+                                "url": "accounting/account/:_account_id/projects/tasks",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_tasks",
+                                "url": "accounting/account/:_account_id/projects/tasks/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_tasks",
+                                "url": [
+                                    "accounting/account/:_account_id/projects/tasks/:_id",
+                                    "accounting/account/:_account_id/projects/tasks"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "taxes",
+                        "name": "Taxes",
+                        "sampleData": {
+                            "tax": {
+                                "name": "some tax"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_taxes",
+                                "url": "accounting/account/:_account_id/taxes/taxes",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_account_id/taxes/taxes",
+                                        "extract": "taxes[0].id",
+                                        "id": "list_taxes"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_taxes",
+                                "url": "accounting/account/:_account_id/taxes/taxes/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_account_id/taxes/taxes",
+                                        "extract": "taxes[0].id",
+                                        "id": "list_taxes"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_taxes",
+                                "url": [
+                                    "accounting/account/:_account_id/taxes/taxes/:_id",
+                                    "accounting/account/:_account_id/taxes/taxes"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "account_id",
+                                        "in": "path",
+                                        "name": "Account id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "accounting/account/:_account_id/taxes/taxes",
+                                        "extract": "taxes[0].id",
+                                        "id": "list_taxes"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "time_entries",
+                        "name": "Time_entries",
+                        "sampleData": {
+                            "time_entry": {
+                                "is_logged": true,
+                                "duration": 600,
+                                "note": "Updated Note",
+                                "started_at": "2016-08-16T18:03:28.000Z",
+                                "timer": {
+                                    "id": "2936"
+                                },
+                                "client_id": "2227125",
+                                "project_id": "153125"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_time_entries",
+                                "url": "timetracking/business/:_business_id/time_entries",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_id",
+                                        "in": "path",
+                                        "name": "Business id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_time_entries",
+                                "url": "timetracking/business/:_business_id/time_entries/:_time_entry_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_id",
+                                        "in": "path",
+                                        "name": "Business id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "time_entry_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_time_entries",
+                                "url": [
+                                    "timetracking/business/:_business_id/time_entries/:_time_entry_id",
+                                    "timetracking/business/:_business_id/time_entries"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "business_id",
+                                        "in": "path",
+                                        "name": "Business id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "time_entry_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_time_entries",
+                                "url": "timetracking/business/:_business_id/time_entries/:_time_entry_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "business_id",
+                                        "in": "path",
+                                        "name": "Business id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "time_entry_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

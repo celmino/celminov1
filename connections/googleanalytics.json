@@ -1,0 +1,1979 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "nextpageurl",
+            "nextPagePath": "nextLink"
+        },
+        "urlResolution": [
+            "/v3/management/accountSummaries",
+            "/v3/management/accounts/:_accountId/entityUserLinks",
+            "/v3/management/accounts",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/entityAdWordsLinks",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/entityAdWordsLinks/:_webPropertyAdWordsLinkId",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customDataSources",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customDimensions",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customDimensions/:_customDimensionId",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customMetrics",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customMetrics/:_customMetricId",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/goals",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/goals/:_goalId",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/profileFilterLinks",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/profileFilterLinks/:_linkId",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles",
+            "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "managementapi_accountsummaries",
+                        "name": "Management API : Account Summaries",
+                        "endpoints": [
+                            {
+                                "id": "list_accountsummaries",
+                                "url": "/v3/management/accountSummaries",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of account summaries to include in this response, where the largest acceptable value is 1000."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_accountuserlinks",
+                        "name": "Management API : Account User Links",
+                        "endpoints": [
+                            {
+                                "id": "list_accountserlinks",
+                                "url": "/v3/management/accounts/:_accountId/entityUserLinks",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve the user links for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of account-user links to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first account-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_accounts",
+                        "name": "Management API : Accounts",
+                        "endpoints": [
+                            {
+                                "id": "list_accounts",
+                                "url": "/v3/management/accounts",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of accounts to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_adwordslinks",
+                        "name": "Management API : AdWords Links",
+                        "endpoints": [
+                            {
+                                "id": "list_adwordslinks",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/entityAdWordsLinks",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "ID of the account which the given web property belongs to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve the Google Ads links for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of webProperty-Google Ads links to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first webProperty-Google Ads link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_adwordslinks",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/entityAdWordsLinks/:_webPropertyAdWordsLinkId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "ID of the account which the given web property belongs to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve the Google Ads links for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyAdWordsLinkId",
+                                        "name": "webPropertyAdWordsLinkId",
+                                        "description": "Web property-Google Ads link ID.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_customdatasources",
+                        "name": "Management API : Custom Data Sources",
+                        "endpoints": [
+                            {
+                                "id": "list_customdatasources",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customDataSources",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account Id for the custom data sources to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property Id for the custom data sources to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of custom data sources to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "A 1-based index of the first custom data source to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_customdimensions",
+                        "name": "Management API : Custom Dimensions",
+                        "endpoints": [
+                            {
+                                "id": "list_customdimensions",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customDimensions",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID for the custom dimensions to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID for the custom dimensions to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of custom dimensions to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_customdimension",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customDimensions/:_customDimensionId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID for the custom dimension to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID for the custom dimension to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "customDimensionId",
+                                        "name": "customDimensionId",
+                                        "description": "The ID of the custom dimension to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_custommetrics",
+                        "name": "Management API : Custom Metrics",
+                        "endpoints": [
+                            {
+                                "id": "list_custommetrics",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customMetrics",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID for the custom metrics to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID for the custom metrics to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of custom metrics to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_custommetrics",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customMetrics/:_customMetricId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID for the custom metric to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID for the custom metric to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "customMetricId",
+                                        "name": "customMetricId",
+                                        "description": "The ID of the custom metric to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_experiments",
+                        "name": "Management API : Experiments",
+                        "endpoints": [
+                            {
+                                "id": "list_experiments",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/experiments",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve experiments for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve experiments for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "View (Profile) ID to retrieve experiments for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of experiments to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first experiment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_experiments",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/experiments/:_experimentId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve the experiment for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve the experiment for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "View (Profile) ID to retrieve the experiment for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "experimentId",
+                                        "name": "experimentId",
+                                        "description": "Experiment ID to retrieve the experiment for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_filters",
+                        "name": "Management API : Filters",
+                        "endpoints": [
+                            {
+                                "id": "list_filters",
+                                "url": "/v3/management/accounts/:_accountId/filters",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve filters for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of filters to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_filter",
+                                "url": "/v3/management/accounts/:_accountId/filters/:_filterId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve filters for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "filterId",
+                                        "name": "filterId",
+                                        "description": "Filter ID to retrieve filters for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_goals",
+                        "name": "Management API : Goals",
+                        "endpoints": [
+                            {
+                                "id": "list_goals",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/goals",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve goals for. Can either be a specific account ID or '~all', which refers to all the accounts that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve goals for. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "View (Profile) ID to retrieve goals for. Can either be a specific view (profile) ID or '~all', which refers to all the views (profiles) that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of goals to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_goal",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/goals/:_goalId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve the goal for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve the goal for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "View (Profile) ID to retrieve the goal for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "goalId",
+                                        "name": "goalId",
+                                        "description": "Goal ID to retrieve the goal for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_profilefilterlinks",
+                        "name": "Management API : Profile Filter Links",
+                        "endpoints": [
+                            {
+                                "id": "list_profilefilterlinks",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/profileFilterLinks",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve profile filter links for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property Id for profile filter links for. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "Profile ID to retrieve filter links for. Can either be a specific profile ID or '~all', which refers to all the profiles that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_profilefilterlinks",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/profileFilterLinks/:_linkId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve profile filter link for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property Id to retrieve profile filter link for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "Profile ID to retrieve filter link for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "linkId",
+                                        "name": "linkId",
+                                        "description": "ID of the profile filter link.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_profileuserlinks",
+                        "name": "Management API : Profile User Links",
+                        "endpoints": [
+                            {
+                                "id": "list_profileuserlinks",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/entityUserLinks",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID which the given view (profile) belongs to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web Property ID which the given view (profile) belongs to. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "View (Profile) ID to retrieve the profile-user links for. Can either be a specific profile ID or '~all', which refers to all the profiles that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of profile-user links to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first profile-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_remarketingaAudiences",
+                        "name": "Management API : Remarketing Audiences",
+                        "endpoints": [
+                            {
+                                "id": "list_remarketingaAudiences",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/remarketingAudiences",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "The account ID of the remarketing audiences to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "The web property ID of the remarketing audiences to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of remarketing audiences to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": ""
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_remarketingaAudiences",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/remarketingAudiences/:_remarketingAudienceId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "The account ID of the remarketing audience to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "The web property ID of the remarketing audience to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "remarketingAudienceId",
+                                        "name": "remarketingAudienceId",
+                                        "description": "The ID of the remarketing audience to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_segments",
+                        "name": "Management API : Segments",
+                        "endpoints": [
+                            {
+                                "id": "list_segments",
+                                "url": "/v3/management/segments",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of segments to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first segment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_unsampledreports",
+                        "name": "Management API : Unsampled Reports",
+                        "endpoints": [
+                            {
+                                "id": "list_unsampledreports",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/unsampledReports",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve unsampled reports for. Must be a specific account ID, ~all is not supported.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve unsampled reports for. Must be a specific web property ID, ~all is not supported.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "View (Profile) ID to retrieve unsampled reports for. Must be a specific view (profile) ID, ~all is not supported.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of unsampled reports to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first unsampled report to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_unsampledreports",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId/unsampledReports/:_unsampledReportId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve unsampled report for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve unsampled reports for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "View (Profile) ID to retrieve unsampled report for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "unsampledReportId",
+                                        "name": "unsampledReportId",
+                                        "description": "ID of the unsampled report to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_uploads",
+                        "name": "Management API : Uploads",
+                        "endpoints": [
+                            {
+                                "id": "list_uploads",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customDataSources/:_customDataSourceId/uploads",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account Id for the uploads to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property Id for the uploads to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "customDataSourceId",
+                                        "name": "customDataSourceId",
+                                        "description": "Web property Id for the uploads to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of uploads to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "A 1-based index of the first upload to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_uploads",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/customDataSources/:_customDataSourceId/uploads/:_uploadId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account Id for the upload to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property Id for the upload to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "customDataSourceId",
+                                        "name": "customDataSourceId",
+                                        "description": "Web property Id for the uploads to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "uploadId",
+                                        "name": "uploadId",
+                                        "description": "Upload Id to retrieve.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_profiles",
+                        "name": "Management API : Views (Profiles)",
+                        "endpoints": [
+                            {
+                                "id": "list_profiles",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID for the view (profiles) to retrieve. Can either be a specific account ID or '~all', which refers to all the accounts to which the user has access.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID for the views (profiles) to retrieve. Can either be a specific web property ID or '~all', which refers to all the web properties to which the user has access.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of views (profiles) to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_profile",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve the view (profile) for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to retrieve the view (profile) for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "name": "profileId",
+                                        "description": "View (Profile) ID to retrieve the view (profile) for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_webproperties",
+                        "name": "Management API : Web Properties",
+                        "endpoints": [
+                            {
+                                "id": "list_webproperties",
+                                "url": "/v3/management/accounts/:_accountId/webproperties",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve web properties for. Can either be a specific account ID or '~all', which refers to all the accounts that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of web properties to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_webproperties",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to retrieve the web property for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "ID to retrieve the web property for.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_webpropertyuserlinks",
+                        "name": "Management API : Webproperty User Links",
+                        "endpoints": [
+                            {
+                                "id": "list_webpropertyuserlinks",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/entityUserLinks",
+                                "name": "list",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID which the given web property belongs to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web Property ID for the webProperty-user links to retrieve. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of webProperty-user Links to include in this response."
+                                    },
+                                    {
+                                        "id": "start-index",
+                                        "name": "start-index",
+                                        "description": "An index of the first webProperty-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "realtimereportingapi_realtimedata",
+                        "name": "Real Time Reporting API : Real Time Data",
+                        "endpoints": [
+                            {
+                                "id": "get_realtimedata",
+                                "url": "/v3/data/realtime",
+                                "name": "get",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "ids",
+                                        "name": "ids",
+                                        "description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "metrics",
+                                        "name": "metrics",
+                                        "description": "A comma-separated list of Analytics metrics. E.g., 'rt:activeUsers'. At least one metric must be specified.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "dimensions",
+                                        "name": "dimensions",
+                                        "description": "A comma-separated list of real-time dimensions. E.g., 'rt:medium,rt:city'.",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "filters",
+                                        "name": "filters",
+                                        "description": "A comma-separated list of dimension or metric filters to be applied to real-time data.",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "max-results",
+                                        "name": "max-results",
+                                        "description": "The maximum number of entries to include in this feed.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "sort",
+                                        "description": "A comma-separated list of dimensions or metrics that determine the sort order for real-time data.",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "managementapi_accountuserlinks",
+                        "name": "Management API : Account User Links",
+                        "operations": [
+                            {
+                                "id": "create_accountuserlinks",
+                                "url": "/v3/management/accounts/:_accountId/entityUserLinks",
+                                "name": "insert",
+                                "method": "POST",
+                                "sampleData": {
+                                    "id": "127655857:103269251708805623911",
+                                    "kind": "analytics#entityUserLink",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/entityUserLinks/127655857:103269251708805623911",
+                                    "entity": {
+                                        "accountRef": {
+                                            "id": "127655857",
+                                            "kind": "analytics#accountRef",
+                                            "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857",
+                                            "name": "Celigo Labs"
+                                        }
+                                    },
+                                    "userRef": {
+                                        "kind": "analytics#userRef",
+                                        "id": "103269251708805623911",
+                                        "email": "33m2cynbpc317oryhu3i@gmail.com"
+                                    },
+                                    "permissions": {
+                                        "effective": [
+                                            "COLLABORATE",
+                                            "EDIT",
+                                            "MANAGE_USERS",
+                                            "READ_AND_ANALYZE"
+                                        ],
+                                        "local": [
+                                            "EDIT",
+                                            "MANAGE_USERS"
+                                        ]
+                                    }
+                                },
+                                "description": "Adds a new user to the given account if the user has fewer than 100 accounts.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to create the user link for.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_accountuserlinks",
+                                "url": "/v3/management/accounts/:_accountId/entityUserLinks/:_linkId",
+                                "name": "update",
+                                "sampleData": {
+                                    "id": "127655857:103269251708805623911",
+                                    "kind": "analytics#entityUserLink",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/entityUserLinks/127655857:103269251708805623911",
+                                    "entity": {
+                                        "accountRef": {
+                                            "id": "127655857",
+                                            "kind": "analytics#accountRef",
+                                            "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857",
+                                            "name": "Celigo Labs"
+                                        }
+                                    },
+                                    "userRef": {
+                                        "kind": "analytics#userRef",
+                                        "id": "103269251708805623911",
+                                        "email": "33m2cynbpc317oryhu3i@gmail.com"
+                                    },
+                                    "permissions": {
+                                        "effective": [
+                                            "COLLABORATE",
+                                            "EDIT",
+                                            "MANAGE_USERS",
+                                            "READ_AND_ANALYZE"
+                                        ],
+                                        "local": [
+                                            "EDIT",
+                                            "MANAGE_USERS"
+                                        ]
+                                    }
+                                },
+                                "method": "PUT",
+                                "description": "Updates permissions for an existing user on the given account.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to update the account-user link for.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "linkId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_accountuserlinks",
+                                "url": [
+                                    "/v3/management/accounts/:_accountId/entityUserLinks/:_linkId",
+                                    "/v3/management/accounts/:_accountId/entityUserLinks"
+                                ],
+                                "name": "insert or update",
+                                "sampleData": {
+                                    "id": "127655857:103269251708805623911",
+                                    "kind": "analytics#entityUserLink",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/entityUserLinks/127655857:103269251708805623911",
+                                    "entity": {
+                                        "accountRef": {
+                                            "id": "127655857",
+                                            "kind": "analytics#accountRef",
+                                            "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857",
+                                            "name": "Celigo Labs"
+                                        }
+                                    },
+                                    "userRef": {
+                                        "kind": "analytics#userRef",
+                                        "id": "103269251708805623911",
+                                        "email": "33m2cynbpc317oryhu3i@gmail.com"
+                                    },
+                                    "permissions": {
+                                        "effective": [
+                                            "COLLABORATE",
+                                            "EDIT",
+                                            "MANAGE_USERS",
+                                            "READ_AND_ANALYZE"
+                                        ],
+                                        "local": [
+                                            "EDIT",
+                                            "MANAGE_USERS"
+                                        ]
+                                    }
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to update the account-user link for.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "linkId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_accountuserlinks",
+                                "url": "/v3/management/accounts/:_accountId/entityUserLinks/:_linkId",
+                                "name": "delete",
+                                "method": "DELETE",
+                                "description": "Removes a user from the given account.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to delete the user link for.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "linkId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_filters",
+                        "name": "Management API : Filters",
+                        "operations": [
+                            {
+                                "id": "create_filter",
+                                "url": "/v3/management/accounts/:_accountId/filters",
+                                "name": "insert",
+                                "method": "POST",
+                                "sampleData": {
+                                    "id": "62823473",
+                                    "kind": "analytics#filter",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/filters/62823473",
+                                    "accountId": "127655857",
+                                    "name": "asd",
+                                    "type": "INCLUDE",
+                                    "created": "2018-12-23T16:04:09.400Z",
+                                    "updated": "2018-12-23T16:04:09.400Z",
+                                    "parentLink": {
+                                        "type": "analytics#account",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857"
+                                    },
+                                    "includeDetails": {
+                                        "kind": "analytics#filterExpression",
+                                        "field": "PAGE_TITLE",
+                                        "matchType": "MATCHES",
+                                        "expressionValue": "adcov",
+                                        "caseSensitive": false
+                                    }
+                                },
+                                "description": "Create a new filter.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to create filter for.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_filter",
+                                "url": "/v3/management/accounts/:_accountId/filters/:_filterId",
+                                "name": "update",
+                                "sampleData": {
+                                    "id": "62823473",
+                                    "kind": "analytics#filter",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/filters/62823473",
+                                    "accountId": "127655857",
+                                    "name": "asd",
+                                    "type": "INCLUDE",
+                                    "created": "2018-12-23T16:04:09.400Z",
+                                    "updated": "2018-12-23T16:04:09.400Z",
+                                    "parentLink": {
+                                        "type": "analytics#account",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857"
+                                    },
+                                    "includeDetails": {
+                                        "kind": "analytics#filterExpression",
+                                        "field": "PAGE_TITLE",
+                                        "matchType": "MATCHES",
+                                        "expressionValue": "adcov",
+                                        "caseSensitive": false
+                                    }
+                                },
+                                "method": "PUT",
+                                "description": "Updates an existing filter.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to which the filter belongs.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "filterId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_filter",
+                                "url": [
+                                    "/v3/management/accounts/:_accountId/filters/:_filterId",
+                                    "/v3/management/accounts/:_accountId/filters"
+                                ],
+                                "name": "insert or update",
+                                "sampleData": {
+                                    "id": "62823473",
+                                    "kind": "analytics#filter",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/filters/62823473",
+                                    "accountId": "127655857",
+                                    "name": "asd",
+                                    "type": "INCLUDE",
+                                    "created": "2018-12-23T16:04:09.400Z",
+                                    "updated": "2018-12-23T16:04:09.400Z",
+                                    "parentLink": {
+                                        "type": "analytics#account",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857"
+                                    },
+                                    "includeDetails": {
+                                        "kind": "analytics#filterExpression",
+                                        "field": "PAGE_TITLE",
+                                        "matchType": "MATCHES",
+                                        "expressionValue": "adcov",
+                                        "caseSensitive": false
+                                    }
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to which the filter belongs.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "filterId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_filter",
+                                "url": "/v3/management/accounts/:_accountId/filters/:_filterId",
+                                "name": "delete",
+                                "method": "DELETE",
+                                "description": "Delete a filter.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to delete the filter for.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "filterId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "managementapi_profiles",
+                        "name": "Management API : Views (Profiles)",
+                        "operations": [
+                            {
+                                "id": "create_profiles",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles",
+                                "name": "insert",
+                                "method": "POST",
+                                "sampleData": {
+                                    "id": "183554132",
+                                    "kind": "analytics#profile",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1/profiles/183554132",
+                                    "accountId": "127655857",
+                                    "webPropertyId": "UA-127655857-1",
+                                    "internalWebPropertyId": "186600481",
+                                    "name": "All Web Site Data",
+                                    "currency": "USD",
+                                    "timezone": "Asia/Calcutta",
+                                    "websiteUrl": "http://www.freelancer.com",
+                                    "type": "WEB",
+                                    "permissions": {
+                                        "effective": [
+                                            "COLLABORATE",
+                                            "EDIT",
+                                            "MANAGE_USERS",
+                                            "READ_AND_ANALYZE"
+                                        ]
+                                    },
+                                    "created": "2018-10-17T13:21:49.317Z",
+                                    "updated": "2018-10-17T13:21:49.317Z",
+                                    "eCommerceTracking": false,
+                                    "parentLink": {
+                                        "type": "analytics#webproperty",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1"
+                                    },
+                                    "childLink": {
+                                        "type": "analytics#goals",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1/profiles/183554132/goals"
+                                    }
+                                },
+                                "description": "Create a new view (profile).",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to create the view (profile) for.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to create the view (profile) for.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_profiles",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId",
+                                "name": "update",
+                                "sampleData": {
+                                    "id": "183554132",
+                                    "kind": "analytics#profile",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1/profiles/183554132",
+                                    "accountId": "127655857",
+                                    "webPropertyId": "UA-127655857-1",
+                                    "internalWebPropertyId": "186600481",
+                                    "name": "All Web Site Data",
+                                    "currency": "USD",
+                                    "timezone": "Asia/Calcutta",
+                                    "websiteUrl": "http://www.freelancer.com",
+                                    "type": "WEB",
+                                    "permissions": {
+                                        "effective": [
+                                            "COLLABORATE",
+                                            "EDIT",
+                                            "MANAGE_USERS",
+                                            "READ_AND_ANALYZE"
+                                        ]
+                                    },
+                                    "created": "2018-10-17T13:21:49.317Z",
+                                    "updated": "2018-10-17T13:21:49.317Z",
+                                    "eCommerceTracking": false,
+                                    "parentLink": {
+                                        "type": "analytics#webproperty",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1"
+                                    },
+                                    "childLink": {
+                                        "type": "analytics#goals",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1/profiles/183554132/goals"
+                                    }
+                                },
+                                "method": "PUT",
+                                "description": "Updates an existing view (profile).",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to which the view (profile) belongs",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to which the view (profile) belongs.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_profile",
+                                "url": [
+                                    "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId",
+                                    "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles"
+                                ],
+                                "name": "insert or update",
+                                "sampleData": {
+                                    "id": "183554132",
+                                    "kind": "analytics#profile",
+                                    "selfLink": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1/profiles/183554132",
+                                    "accountId": "127655857",
+                                    "webPropertyId": "UA-127655857-1",
+                                    "internalWebPropertyId": "186600481",
+                                    "name": "All Web Site Data",
+                                    "currency": "USD",
+                                    "timezone": "Asia/Calcutta",
+                                    "websiteUrl": "http://www.freelancer.com",
+                                    "type": "WEB",
+                                    "permissions": {
+                                        "effective": [
+                                            "COLLABORATE",
+                                            "EDIT",
+                                            "MANAGE_USERS",
+                                            "READ_AND_ANALYZE"
+                                        ]
+                                    },
+                                    "created": "2018-10-17T13:21:49.317Z",
+                                    "updated": "2018-10-17T13:21:49.317Z",
+                                    "eCommerceTracking": false,
+                                    "parentLink": {
+                                        "type": "analytics#webproperty",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1"
+                                    },
+                                    "childLink": {
+                                        "type": "analytics#goals",
+                                        "href": "https://www.googleapis.com/analytics/v3/management/accounts/127655857/webproperties/UA-127655857-1/profiles/183554132/goals"
+                                    }
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to which the view (profile) belongs",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to which the view (profile) belongs.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_profile",
+                                "url": "/v3/management/accounts/:_accountId/webproperties/:_webPropertyId/profiles/:_profileId",
+                                "name": "delete",
+                                "method": "DELETE",
+                                "description": "Deletes a view (profile).",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountId",
+                                        "name": "accountId",
+                                        "description": "Account ID to which the view (profile) belongs",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "webPropertyId",
+                                        "name": "webPropertyId",
+                                        "description": "Web property ID to which the view (profile) belongs.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "profileId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,840 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "_page"
+        },
+        "urlResolution": [
+            "/api/v0/companies",
+            "/api/v0/companies/:_id",
+            "/api/v0/companies/recent",
+            "/api/v0/companies/:_id/status",
+            "/api/v0/companies/:_id/contacts",
+            "/api/v0/companies/:_id/managers",
+            "/api/v0/companies/:_id/addresses",
+            "/api/v0/contacts",
+            "/api/v0/contacts/:_id",
+            "/api/v0/contacts/recent",
+            "/api/v0/contacts/:_id/status",
+            "/api/v0/contacts/:_id/addresses",
+            "/api/v0/jobs",
+            "/api/v0/jobs/:_id",
+            "/api/v0/jobs/types",
+            "/api/v0/expenses",
+            "/api/v0/expenses/:_id",
+            "/api/v0/expenses/types"
+        ],
+        "versions": [
+            {
+                "version": "v0",
+                "resources": [
+                    {
+                        "id": "companies",
+                        "name": "Companies",
+                        "endpoints": [
+                            {
+                                "id": "all_companies",
+                                "url": "/api/v0/companies",
+                                "name": "All companies",
+                                "resourcePath": "response",
+                                "queryParameters": [
+                                    {
+                                        "id": "_search",
+                                        "name": "Search",
+                                        "description": "Search by firstname,lastname,email,mobile number",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_filter",
+                                        "name": "Filter",
+                                        "description": "Filter by contact_number,postal_address,manager_id,staff_id,date_created,date_modified",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "company_by_id",
+                                "url": "/api/v0/companies/:_id",
+                                "name": "Company by ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "recent_companies",
+                                "url": "/api/v0/companies/recent",
+                                "name": "Recent Companies",
+                                "resourcePath": "response",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "status_of_a_company",
+                                "url": "/api/v0/companies/:_id/status",
+                                "name": "Status of a company",
+                                "resourcePath": "response",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "contact_associated_with_the_company",
+                                "url": "/api/v0/companies/:_id/contacts",
+                                "name": "Contact associated with the Company",
+                                "resourcePath": "response",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "managers_of_the_company",
+                                "url": "/api/v0/companies/:_id/managers",
+                                "name": "Managers of the Company",
+                                "resourcePath": "response",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "addresses_of_company",
+                                "url": "/api/v0/companies/:_id/addresses",
+                                "name": "addresses of Company",
+                                "resourcePath": "response.addresses",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "endpoints": [
+                            {
+                                "id": "all_contacts",
+                                "url": "/api/v0/contacts",
+                                "name": "All contacts",
+                                "resourcePath": "response",
+                                "queryParameters": [
+                                    {
+                                        "id": "_search",
+                                        "name": "Search",
+                                        "description": "Search by firstname,surname,email,mobile number",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_filter",
+                                        "name": "Filter",
+                                        "description": "Filter by phone,staff_id,date_created",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "contact_by_id",
+                                "url": "/api/v0/contacts/:_id",
+                                "name": "Contact by ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact Id",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "recent_contacts",
+                                "url": "/api/v0/contacts/recent",
+                                "name": "Recent Contacts",
+                                "resourcePath": "response",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "contact_status",
+                                "url": "/api/v0/contacts/:_id/status",
+                                "name": "Contact Status",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact Id",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "contact_address",
+                                "url": "/api/v0/contacts/:_id/addresses",
+                                "name": "Contact address",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response.addresses",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact Id",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs/Projects",
+                        "endpoints": [
+                            {
+                                "id": "all_projects",
+                                "url": "/api/v0/jobs",
+                                "name": "All projects",
+                                "resourcePath": "response",
+                                "queryParameters": [
+                                    {
+                                        "id": "_search",
+                                        "name": "Search",
+                                        "description": "Search by Title,lastname,email,mobile number",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_filter",
+                                        "name": "Filter",
+                                        "description": "Filter by phone,staff_id,date_created",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "project_by_id",
+                                "url": "/api/v0/jobs/:_id",
+                                "name": "Project by ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Project Id",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "recent_project",
+                                "url": "/api/v0/jobs/recent",
+                                "name": "Recent project",
+                                "resourcePath": "response",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "project_types",
+                                "url": "/api/v0/jobs/types",
+                                "name": "Project types",
+                                "resourcePath": "response",
+                                "pathParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expenses",
+                        "name": "Expenses",
+                        "endpoints": [
+                            {
+                                "id": "all_expenses",
+                                "url": "/api/v0/expenses",
+                                "name": "All expenses",
+                                "resourcePath": "response",
+                                "queryParameters": [
+                                    {
+                                        "id": "_search",
+                                        "name": "Search",
+                                        "description": "Search by title,lastname,email,mobile number",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_filter",
+                                        "name": "Filter",
+                                        "description": "Filter by phone,staff_id,date_created",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "expenses_by_id",
+                                "url": "/api/v0/expenses/:_id",
+                                "name": "Expenses by ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "response",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Expenses Id",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "expenses_types",
+                                "url": "/api/v0/expenses/types",
+                                "name": "Expenses types",
+                                "resourcePath": "response",
+                                "pathParameters": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/api/v0/companies",
+            "/api/v0/companies/:_id",
+            "/api/v0/companies/:_id/managers/add",
+            "/api/v0/companies/:_id/managers/delete",
+            "/api/v0/companies/:_id/addresses",
+            "/api/v0/contacts",
+            "/api/v0/contacts/:_id",
+            "/api/v0/jobs",
+            "/api/v0/jobs/:_id",
+            "/api/v0/expenses",
+            "/api/v0/expenses/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v0",
+                "resources": [
+                    {
+                        "id": "companies",
+                        "name": "Companies",
+                        "sampleData": {
+                            "date_modified": "1495671183",
+                            "phone": "61448824724",
+                            "status": "3",
+                            "name": "A Fresh New Company",
+                            "id": "45",
+                            "date_last_interacted": "1495675655",
+                            "comments": "This is a fresh new company",
+                            "date_created": "1495669367",
+                            "staff_bookmarked": "0",
+                            "standing": "active",
+                            "default_affiliation": "12",
+                            "postal_address": "31",
+                            "fax": null,
+                            "website": "www.example.com"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_company",
+                                "url": "/api/v0/companies",
+                                "name": "Create company",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/companies",
+                                        "extract": "response[0].id",
+                                        "id": "all_companies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_company",
+                                "url": "/api/v0/companies/:_id",
+                                "name": "Update company",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/companies",
+                                        "extract": "response[0].id",
+                                        "id": "all_companies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_company",
+                                "url": [
+                                    "/api/v0/companies/:_id",
+                                    "/api/v0/companies"
+                                ],
+                                "name": "Create or Update Company",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/companies",
+                                        "extract": "response[0].id",
+                                        "id": "all_companies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_companies",
+                                "url": "/api/v0/companies/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_manager",
+                                "url": "/api/v0/companies/:_id/managers/add",
+                                "name": "Add Manager",
+                                "method": "POST",
+                                "sampleData": {
+                                    "surname": "Hughes",
+                                    "id": "14",
+                                    "relationship_id": "28",
+                                    "firstname": "Matthew",
+                                    "manager_id": "1"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "name": "company id",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_manager",
+                                "url": "/api/v0/companies/:_id/managers/delete",
+                                "name": "Delete manager",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_address",
+                                "url": "/api/v0/companies/:_id/addresses",
+                                "name": "Add address",
+                                "method": "POST",
+                                "sampleData": {
+                                    "postal": "yes",
+                                    "short": "hyd",
+                                    "zipcode": "500090",
+                                    "title": "hyd headquaters",
+                                    "full": "jntu hyd",
+                                    "id": "17",
+                                    "city": "hyd",
+                                    "state": "15",
+                                    "country": "2",
+                                    "physical": "yes",
+                                    "street1": "880 Harrison St.",
+                                    "street2": "Suite 302"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "name": "company id",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "sampleData": {
+                            "surname": "new",
+                            "mobile": "8989898989",
+                            "firstname": "Contact1",
+                            "company_id": 2,
+                            "email": "contact1@ExampleClient.com"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contacts",
+                                "url": "/api/v0/contacts",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/contacts",
+                                        "extract": "response[0].id",
+                                        "id": "all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_contacts",
+                                "url": "/api/v0/contacts/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/contacts",
+                                        "extract": "response[0].id",
+                                        "id": "all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_contacts",
+                                "url": [
+                                    "/api/v0/contacts/:_id",
+                                    "/api/v0/contacts"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/contacts",
+                                        "extract": "response[0].id",
+                                        "id": "all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_contacts",
+                                "url": "/api/v0/contacts/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs/Projects",
+                        "sampleData": {
+                            "date_modified": "1495681796",
+                            "modified_by": "22",
+                            "type_id": "1",
+                            "job_type": "Default",
+                            "against": "company1",
+                            "date_completed": null,
+                            "against_id": "3",
+                            "against_type": "company",
+                            "date_due": "1495245600",
+                            "rate": "3",
+                            "date_created": "1495238402",
+                            "standing": "active",
+                            "date_started": "1495245600",
+                            "title": "New Logo Design",
+                            "paused": "0",
+                            "date_last_interacted": "1495686301",
+                            "manager_id": "2",
+                            "rate_charged": "125.00",
+                            "link_type_id": "2",
+                            "engagement_id": "3",
+                            "engagement_table": "company",
+                            "status_id": "15"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_jobs",
+                                "url": "/api/v0/jobs",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/jobs",
+                                        "extract": "response[0].id",
+                                        "id": "all_projects"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_jobs",
+                                "url": "/api/v0/jobs/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/jobs",
+                                        "extract": "response[0].id",
+                                        "id": "all_projects"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_jobs",
+                                "url": [
+                                    "/api/v0/jobs/:_id",
+                                    "/api/v0/jobs"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/jobs",
+                                        "extract": "response[0].id",
+                                        "id": "all_projects"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expenses",
+                        "name": "Expenses",
+                        "sampleData": {
+                            "reimbursable": "no",
+                            "resource": "3",
+                            "type": "2",
+                            "quantity": "1.0000",
+                            "activity_id": "5",
+                            "against_type": "job",
+                            "against_id": "5",
+                            "id": "5",
+                            "standing": "submitted",
+                            "approver_id": "22",
+                            "title": "Lunch meeting",
+                            "submitter": "14",
+                            "billable": "no",
+                            "price": "78.0000",
+                            "unit_cost": "78.0000",
+                            "date_incurred": "1495634400",
+                            "approver": "22",
+                            "activity": "5",
+                            "type_id": "5"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_expenses",
+                                "url": "/api/v0/expenses",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/expenses",
+                                        "extract": "response[0].id",
+                                        "id": "all_expenses"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_expenses",
+                                "url": "/api/v0/expenses/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/expenses",
+                                        "extract": "response[0].id",
+                                        "id": "all_expenses"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_expenses",
+                                "url": [
+                                    "/api/v0/expenses/:_id",
+                                    "/api/v0/expenses"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v0/expenses",
+                                        "extract": "response[0].id",
+                                        "id": "all_expenses"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_expenses",
+                                "url": "/api/v0/expenses/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

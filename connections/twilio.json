@@ -1,0 +1,2853 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [
+            "/2010-04-01/Accounts/:_accountSid.json",
+            "/2010-04-01/Accounts.json",
+            "/2010-04-01/Accounts/:_accountSid/Addresses/:_addressSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Addresses.json",
+            "/2010-04-01/Accounts/:_accountSid/Addresses/:_addressSid/DependentPhoneNumbers.json",
+            "/2010-04-01/Accounts/:_accountSid/Keys/:_api_KeySid.json",
+            "/2010-04-01/Accounts/:_accountSid/Keys.json",
+            "/2010-04-01/Accounts/:_accountSid/Applications/:_applicationSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Applications.json",
+            "/2010-04-01/Accounts/:_accountSid/AvailablePhoneNumbers/:_isoCountryCode/Local.json",
+            "/2010-04-01/Accounts/:_accountSid/AvailablePhoneNumbers/:_isoCountryCode/TollFree.json",
+            "/2010-04-01/Accounts/:_accountSid/AvailablePhoneNumbers/:_isoCountryCode/Mobile.json",
+            "/2010-04-01/Accounts/:_accountSid/AvailablePhoneNumbers.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls/FeedbackSummary/:_feedbackSummarySid.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid/Feedback.json",
+            "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Conferences.json",
+            "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid/Participants/:_callSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid/Participants.json",
+            "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers/:_incomingPhoneNumberSid.json",
+            "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers.json",
+            "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Messages.json",
+            "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid/Media.json",
+            "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds/:_outgoingCallerIdSid.json",
+            "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds.json",
+            "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Queues.json",
+            "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid/Members/:_callSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid/Members.json",
+            "/2010-04-01/Accounts/:_accountSid/Recordings/:_recordingSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Recordings.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid/Recordings.json",
+            "/2010-04-01/Accounts/:_accountSid/SMS/ShortCodes/:_shortCodeSid.json",
+            "/2010-04-01/Accounts/:_accountSid/SMS/ShortCodes.json",
+            "/2010-04-01/Accounts/:_accountSid/Transcriptions/:_transcriptionSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Transcriptions.json",
+            "/2010-04-01/Accounts/:_accountSid/Recordings/:_recordingSid/Transcriptions.json",
+            "/2010-04-01/Accounts/:_accountSid/Usage/Records.json"
+        ],
+        "versions": [
+            {
+                "version": "latest",
+                "resources": [
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "endpoints": [
+                            {
+                                "id": "get_account_details",
+                                "url": "/2010-04-01/Accounts/:_accountSid.json",
+                                "name": "Get Account Details",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_accounts",
+                                "url": "/2010-04-01/Accounts.json",
+                                "name": "List All Accounts",
+                                "queryParametersLabel": "Configure Query Parameters",
+                                "resourcePath": "accounts",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "FriendlyName",
+                                        "name": "FriendlyName",
+                                        "description": "Accounts with friendly names that exactly match this name will be returned."
+                                    },
+                                    {
+                                        "id": "Status",
+                                        "name": "Status",
+                                        "fieldType": "select",
+                                        "description": "Account Status.",
+                                        "options": [
+                                            "closed",
+                                            "suspended",
+                                            "active"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "addresses",
+                        "name": "Addresses",
+                        "endpoints": [
+                            {
+                                "id": "get_address_details",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Addresses/:_addressSid.json",
+                                "name": "Get Address Details",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "addressSid",
+                                        "name": "Address Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_addresses",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Addresses.json",
+                                "name": "List All Addresses",
+                                "resourcePath": "addresses",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "CustomerName",
+                                        "name": "CustomerName",
+                                        "description": "Only return the Address resources with customer names that exactly match this name."
+                                    },
+                                    {
+                                        "id": "FriendlyName",
+                                        "name": "FriendlyName",
+                                        "description": "Only return the Address resources with friendly names that exactly match this name."
+                                    },
+                                    {
+                                        "id": "IsoCountry",
+                                        "name": "IsoCountry",
+                                        "description": "Only return the Address resources in this country."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_dependent_phone_numbers",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Addresses/:_addressSid/DependentPhoneNumbers.json",
+                                "name": "Get Dependent Phone Numbers",
+                                "resourcePath": "dependent_phone_numbers",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "addressSid",
+                                        "name": "Address Sid",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "apiKeys",
+                        "name": "API Keys",
+                        "endpoints": [
+                            {
+                                "id": "get_api_key_details",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Keys/:_api_KeySid.json",
+                                "name": "Get API Key Details",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "api_KeySid",
+                                        "name": "API Key Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_api_keys",
+                                "url": "2010-04-01/Accounts/:_accountSid/Keys.json",
+                                "name": "Get All API Keys",
+                                "resourcePath": "keys",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "applications",
+                        "name": "Applications(TwiML)",
+                        "endpoints": [
+                            {
+                                "id": "get_an_application_instance_resource",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Applications/:_applicationSid.json",
+                                "name": "Get an Application Instance Resource",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "applicationSid",
+                                        "name": "Application Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_application_resource_representations",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Applications.json",
+                                "name": "List All Application Resource Representations",
+                                "resourcePath": "applications",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "FriendlyName",
+                                        "name": "FriendlyName",
+                                        "description": "Only return the Application resources with friendly names that exactly match this name."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "availablePhoneNumbers",
+                        "name": "Available Phone Numbers",
+                        "endpoints": [
+                            {
+                                "id": "find_available_local_phone_numbers",
+                                "url": "/2010-04-01/Accounts/:_accountSid/AvailablePhoneNumbers/:_isoCountryCode/Local.json",
+                                "name": "Find Available Local Phone Numbers",
+                                "resourcePath": "available_phone_numbers",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "isoCountryCode",
+                                        "name": "IsoCountryCode",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "AreaCode",
+                                        "name": "AreaCode",
+                                        "description": "Find phone numbers in the specified area code. (US and Canada only)."
+                                    },
+                                    {
+                                        "id": "Contains",
+                                        "name": "Contains",
+                                        "description": "A pattern to match phone numbers on. Valid characters are '*' and [0-9a-zA-Z].The '*' character will match any single digit. "
+                                    },
+                                    {
+                                        "id": "SmsEnabled",
+                                        "name": "SmsEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive textmessages. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "MmsEnabled",
+                                        "name": "MmsEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive MMS messages. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "VoiceEnabled",
+                                        "name": "VoiceEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive calls. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "FaxEnabled",
+                                        "name": "FaxEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive faxes. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "ExcludeAllAddressRequired",
+                                        "name": "ExcludeAllAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require any Address. Possible values are true or false. If not specified, the default is false, and results  could include phone numbers with an Address required."
+                                    },
+                                    {
+                                        "id": "ExcludeLocalAddressRequired",
+                                        "name": "ExcludeLocalAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require a local Address. Possible values are true or false. If not specified, the default is false, and results could include phone numbers with a local Address required."
+                                    },
+                                    {
+                                        "id": "ExcludeForeignAddressRequired",
+                                        "name": "ExcludeForeignAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require a foreign Address. Possible values are true or false. If not specified, the default is false, and results could include phone numbers with a foreign Address required."
+                                    },
+                                    {
+                                        "id": "Beta",
+                                        "name": "Beta",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Include phone numbers new to the Twilio platform. Possible values are either true or false. Default is true."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "find_any_toll-free_number",
+                                "url": "/2010-04-01/Accounts/:_accountSid/AvailablePhoneNumbers/:_isoCountryCode/TollFree.json",
+                                "name": "Find Any Toll-Free Number",
+                                "resourcePath": "available_phone_numbers",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "isoCountryCode",
+                                        "name": "IsoCountryCode",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "AreaCode",
+                                        "name": "AreaCode",
+                                        "description": "Find phone numbers in the specified area code."
+                                    },
+                                    {
+                                        "id": "Contains",
+                                        "name": "Contains",
+                                        "description": "A pattern to match phone numbers on. Valid charactersare '*' and [0-9a-zA-Z]. The '*' character will match any single digit."
+                                    },
+                                    {
+                                        "id": "SmsEnabled",
+                                        "name": "SmsEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive text messages. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "MmsEnabled",
+                                        "name": "MmsEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive MMS messages. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "VoiceEnabled",
+                                        "name": "VoiceEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive calls. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "ExcludeAllAddressRequired",
+                                        "name": "ExcludeAllAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require any Address. Possible values are true or false. If not specified, the default is false, and results could include phone numbers with an Address required."
+                                    },
+                                    {
+                                        "id": "ExcludeLocalAddressRequired",
+                                        "name": "ExcludeLocalAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require a local Address. Possible values are true or false. If not specified, the default is false, and results could include phone numbers with a local Address required."
+                                    },
+                                    {
+                                        "id": "ExcludeForeignAddressRequired",
+                                        "name": "ExcludeForeignAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require a foreign Address. Possible values are true or false. If not specified, the default is false, and results could include phone numbers with a foreign Address required."
+                                    },
+                                    {
+                                        "id": "Beta",
+                                        "name": "Beta",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Include phone numbers new to the Twilio platform. Possible values are either true or false. Default is true."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "find_available_mobile_phone_numbers",
+                                "url": "/2010-04-01/Accounts/:_accountSid/AvailablePhoneNumbers/:_isoCountryCode/Mobile.json",
+                                "name": "Find Available Mobile Phone Numbers",
+                                "resourcePath": "available_phone_numbers",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "AccountSid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "isoCountryCode",
+                                        "name": "IsoCountryCode",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "Contains",
+                                        "name": "Contains",
+                                        "description": "A pattern to match phone numbers on. Valid charactersare '*' and [0-9a-zA-Z]. The '*' character will match any single digit."
+                                    },
+                                    {
+                                        "id": "SmsEnabled",
+                                        "name": "SmsEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive text messages. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "MmsEnabled",
+                                        "name": "MmsEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive MMS messages. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "VoiceEnabled",
+                                        "name": "VoiceEnabled",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "This indicates whether the phone numbers can receive calls. Possible values are true or false."
+                                    },
+                                    {
+                                        "id": "ExcludeAllAddressRequired",
+                                        "name": "ExcludeAllAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require any Address. Possible values are true or false. If not specified, the default is false, and results could include phone numbers with an Address required."
+                                    },
+                                    {
+                                        "id": "ExcludeLocalAddressRequired",
+                                        "name": "ExcludeLocalAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require a local Address. Possible values are true or false. If not specified, the default is false, and results could include phone numbers with a local Address required."
+                                    },
+                                    {
+                                        "id": "ExcludeForeignAddressRequired",
+                                        "name": "ExcludeForeignAddressRequired",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Indicates whether the response includes phone numbers which require a foreign Address. Possible values are true or false. If not specified, the default is false, and results could include phone numbers with a foreign Address required."
+                                    },
+                                    {
+                                        "id": "Beta",
+                                        "name": "Beta",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "Include phone numbers new to the Twilio platform. Possible values are either true or false. Default is true."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "find_all_available_mobile_phone_numbers",
+                                "url": "/2010-04-01/Accounts/:_accountSid/AvailablePhoneNumbers.json",
+                                "name": "Find All Available Mobile Phone Numbers",
+                                "resourcePath": "available_phone_numbers",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "AccountSid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "Beta",
+                                        "name": "Beta",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "description": "If true, only include countries where phone numbers new to the Twilio platform are available. If false, do not include new inventory."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "calls",
+                        "name": "Calls",
+                        "endpoints": [
+                            {
+                                "id": "retrieve_call_by_id",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid.json",
+                                "name": "Retrieve Call By Id",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "CallSid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_calls",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls.json",
+                                "name": "List All Calls",
+                                "resourcePath": "calls",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "To",
+                                        "name": "To",
+                                        "description": "Only show calls to this phone number or Client identifier."
+                                    },
+                                    {
+                                        "id": "From",
+                                        "name": "From",
+                                        "description": "Only show calls from this phone number or Client identifier."
+                                    },
+                                    {
+                                        "id": "Status",
+                                        "name": "Status",
+                                        "fieldType": "select",
+                                        "description": "Only show calls currently in this status.",
+                                        "options": [
+                                            "queued",
+                                            "ringing",
+                                            "in-progress",
+                                            "canceled",
+                                            "completed",
+                                            "failed",
+                                            "busy",
+                                            "no-answer"
+                                        ]
+                                    },
+                                    {
+                                        "id": "StartTime",
+                                        "name": "StartTime",
+                                        "description": "Only show calls that started on this date, given as YYYY-MM-DD. Also supports inequalities, such as StartTime<=YYYY-MM-DD for calls that started at or before midnight on a date, and StartTime>=YYYY-MM-DD for calls that started at or after midnight on a date."
+                                    },
+                                    {
+                                        "id": "ParentCallSid",
+                                        "name": "ParentCallSid",
+                                        "description": "Only show calls spawned by the call with this Sid."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "callFeedback",
+                        "name": "Call Feedback",
+                        "endpoints": [
+                            {
+                                "id": "retrieve_feedback_for_a_call",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid/Feedback.json",
+                                "name": "Retrieve Feedback For a Call",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_feedback_summary",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls/FeedbackSummary/:_feedbackSummarySid.json",
+                                "name": "Retrieve Feedback Summary",
+                                "pathParameters": [
+                                    {
+                                        "id": "feedbackSummarySid",
+                                        "name": "FeedbackSummarySid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "conferences",
+                        "name": "Conferences",
+                        "endpoints": [
+                            {
+                                "id": "retrieve_conference_by_id",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid.json",
+                                "name": "Retrieve Conference By Id",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "conferenceSid",
+                                        "name": "Conference Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_conferences",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Conferences.json",
+                                "name": "List All Conferences",
+                                "resourcePath": "conferences",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "FriendlyName",
+                                        "name": "FriendlyName",
+                                        "description": "List conferences whose FriendlyName exactly matches this string."
+                                    },
+                                    {
+                                        "id": "Status",
+                                        "name": "Status",
+                                        "fieldType": "select",
+                                        "description": "Only show conferences currently in with this status.",
+                                        "options": [
+                                            "completed",
+                                            "in-progress"
+                                        ]
+                                    },
+                                    {
+                                        "id": "DateCreated",
+                                        "name": "DateCreated",
+                                        "description": "Only show conferences that started on this date, given as YYYY-MM-DD. You can also specify inequality, such as DateCreated<=YYYY-MM-DD for conferences that started at or before midnight on a date, and DateCreated>=YYYY-MM-DD for conferences that started at or after midnight on a date."
+                                    },
+                                    {
+                                        "id": "DateUpdated",
+                                        "name": "DateUpdated",
+                                        "description": "Only show conferences that were last updated on this date, given as YYYY-MM-DD. You can also specify inequality, such as DateUpdated<=YYYY-MM-DD for conferences that were last updated at or before midnight on a date, and DateUpdated>=YYYY-MM-DD for conferences that were updated at or after midnight on a date."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "participants",
+                        "name": "Conferences - Participants",
+                        "endpoints": [
+                            {
+                                "id": "retrieve_a_participant",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid/Participants/:_callSid.json",
+                                "name": "Retrieve a Participant",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "conferenceSid",
+                                        "name": "Conference Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_all_participants",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid/Participants.json",
+                                "name": "Retrieve All Participants",
+                                "resourcePath": "participants",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "conferenceSid",
+                                        "name": "Conference Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "Muted",
+                                        "name": "Muted",
+                                        "description": "Only show participants that are muted or unmuted. Either true or false.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false",
+                                            "active"
+                                        ]
+                                    },
+                                    {
+                                        "id": "Hold",
+                                        "name": "Hold",
+                                        "description": "Only show participants that are held or unheld. Either true or false.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false",
+                                            "active"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "incomingPhoneNumbers",
+                        "name": "Incoming Phone Numbers",
+                        "endpoints": [
+                            {
+                                "id": "get_an_incoming_phone_number",
+                                "url": "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers/:_incomingPhoneNumberSid.json",
+                                "name": "Get an Incoming Phone Number",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "incomingPhoneNumberSid",
+                                        "name": "Incoming Phone Number Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_incomingphonenumbers_of_your_account",
+                                "url": "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers.json",
+                                "name": "List all IncomingPhoneNumbers of your Account",
+                                "resourcePath": "incoming_phone_numbers",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "PhoneNumber",
+                                        "name": "Phone Number",
+                                        "description": "Only show the incoming phone number resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit."
+                                    },
+                                    {
+                                        "id": "FriendlyName",
+                                        "name": "FriendlyName",
+                                        "description": "Only show the incoming phone number resources with friendly names that exactly match this name."
+                                    },
+                                    {
+                                        "id": "Beta",
+                                        "name": "Beta",
+                                        "description": "Include phone numbers new to the Twilio platform. Possible values are either true or false. Default is true"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "messages",
+                        "name": "Messages",
+                        "endpoints": [
+                            {
+                                "id": "get_a_message",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid.json",
+                                "name": "Get a Message",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageSid",
+                                        "name": "Message Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_messages",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Messages.json",
+                                "name": "List all Messages",
+                                "resourcePath": "messages",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "To",
+                                        "name": "To",
+                                        "description": "Only show messages to this phone number."
+                                    },
+                                    {
+                                        "id": "From",
+                                        "name": "From",
+                                        "description": "Only show messages from this phone number or alphanumeric sender ID."
+                                    },
+                                    {
+                                        "id": "DateSent",
+                                        "name": "DateSent",
+                                        "description": "Only show messages sent on this date (in GMT format), given as YYYY-MM-DD. Example: DateSent=2009-07-06. You can also specify inequality, such as DateSent<=YYYY-MM-DD for messages that were sent on or before midnight on a date, and DateSent>=YYYY-MM-DD for messages sent on or after midnight on a date."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "media",
+                        "name": "Messages - Media",
+                        "endpoints": [
+                            {
+                                "id": "get_a_media",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid/Media.json",
+                                "name": "Get a Media",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageSid",
+                                        "name": "Message Sid",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "outgoingCallerIds",
+                        "name": "Outgoing Caller IDs",
+                        "endpoints": [
+                            {
+                                "id": "get_outgoing_caller_id_details",
+                                "url": "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds/:_outgoingCallerIdSid.json",
+                                "name": "Get outgoing caller ID details",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "outgoingCallerIdSid",
+                                        "name": "Outgoing Caller Id Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_an_account's_outgoing_caller_ids",
+                                "url": "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds.json",
+                                "name": "List an Account's Outgoing Caller IDs",
+                                "resourcePath": "outgoing_caller_ids",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "PhoneNumber",
+                                        "name": "PhoneNumber",
+                                        "description": "Only show the caller id resource that exactly matches this phone number."
+                                    },
+                                    {
+                                        "id": "FriendlyName",
+                                        "name": "FriendlyName",
+                                        "description": "Only show the caller id resource that exactly matches this name."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "queues",
+                        "name": "Queues",
+                        "endpoints": [
+                            {
+                                "id": "get_a_queue",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid.json",
+                                "name": "Get a Queue",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "AccountS id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "queueSid",
+                                        "name": "Queue Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_queues",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Queues.json",
+                                "name": "List all Queues",
+                                "resourcePath": "queues",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "AccountSid",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "members",
+                        "name": "Queues - Members",
+                        "endpoints": [
+                            {
+                                "id": "get_a_member_resource",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid/Members/:_callSid.json",
+                                "name": "Get a Member Resource",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "queueSid",
+                                        "name": "Queue Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_members_from_a_queue",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid/Members.json",
+                                "name": "List all Members from a Queue",
+                                "resourcePath": "queue_members",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "queueSid",
+                                        "name": "Queue Sid",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "recordings",
+                        "name": "Recordings",
+                        "endpoints": [
+                            {
+                                "id": "get_recording",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Recordings/:_recordingSid.json",
+                                "name": "Get Recording",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recordingSid",
+                                        "name": "Recording Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_recordings_for_an_account",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Recordings.json",
+                                "name": "Get All Recordings for An Account",
+                                "resourcePath": "recordings",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "AccountSid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParametersLabel": "Configure Query Parameters",
+                                "queryParameters": [
+                                    {
+                                        "id": "CallSid",
+                                        "name": "CallSid",
+                                        "description": "Show only recordings made during the call given by this sid."
+                                    },
+                                    {
+                                        "id": "DateCreated",
+                                        "name": "DateCreated",
+                                        "description": "Only show recordings created on the given date. Should be formatted as YYYY-MM-DD. You can also specify inequality, such as DateCreated<=YYYY-MM-DD for recordings generated at or before midnight on a date, and DateCreated>=YYYY-MM-DD for recordings generated at or after midnight on a date."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_recordings_for_a_given_call",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid/Recordings.json",
+                                "name": "Get All Recordings for a Given Call",
+                                "resourcePath": "recordings",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "AccountSid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "CallSid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParametersLabel": "Configure Query Parameters",
+                                "queryParameters": [
+                                    {
+                                        "id": "DateCreated",
+                                        "name": "DateCreated",
+                                        "description": "Only show recordings created on the given date. Should be formatted as YYYY-MM-DD. You can also specify inequality, such as DateCreated<=YYYY-MM-DD for recordings generated at or before midnight on a date, and DateCreated>=YYYY-MM-DD for recordings generated at or after midnight on a date."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shortCodes",
+                        "name": "Short Codes",
+                        "endpoints": [
+                            {
+                                "id": "get_a_shortcode",
+                                "url": "/2010-04-01/Accounts/:_accountSid/SMS/ShortCodes/:_shortCodeSid.json",
+                                "name": "Get a ShortCode",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "AccountSid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "shortCodeSid",
+                                        "name": "ShortCodeSid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_shortcodes",
+                                "url": "/2010-04-01/Accounts/:_accountSid/SMS/ShortCodes.json",
+                                "name": "List All ShortCodes",
+                                "resourcePath": "short_codes",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ShortCode",
+                                        "name": "ShortCode",
+                                        "description": "Only show the ShortCode resources that match this pattern. You can specify partial numbers and use '*' as a wildcard for any digit."
+                                    },
+                                    {
+                                        "id": "FriendlyName",
+                                        "name": "FriendlyName",
+                                        "description": "Only show the ShortCode resources with friendly names that exactly match this name."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transcriptions",
+                        "name": "Transcriptions",
+                        "endpoints": [
+                            {
+                                "id": "get_a_transcription",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Transcriptions/:_transcriptionSid.json",
+                                "name": "Get a Transcription",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "transcriptionSid",
+                                        "name": "Transcription Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_transcriptions_for_an_account",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Transcriptions.json",
+                                "name": "List All Transcriptions for an Account",
+                                "resourcePath": "transcriptions",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_transcriptions_for_a_recording",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Recordings/:_recordingSid/Transcriptions.json",
+                                "name": "List All Transcriptions for a Recording",
+                                "resourcePath": "transcriptions",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "usageRecords",
+                        "name": "Usage Records",
+                        "endpoints": [
+                            {
+                                "id": "get_all_records",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Usage/Records.json",
+                                "name": "Get all records",
+                                "pathParameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    }
+                                ],
+                                "resourcePath": "usage_records",
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "next_page_uri"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "Category",
+                                        "name": "Category",
+                                        "description": "Only include usage of this usage category."
+                                    },
+                                    {
+                                        "id": "StartDate",
+                                        "name": "StartDate",
+                                        "description": "Only include usage that has occurred on or after this date. Format is YYYY-MM-DD. All dates are in GMT. As a convenience, you can also specify offsets to today. For example, StartDate=-30days will make StartDate be 30 days before today."
+                                    },
+                                    {
+                                        "id": "EndDate",
+                                        "name": "EndDate",
+                                        "description": "Only include usage that has occurred on or before this date. Format is YYYY-MM-DD. All dates are in GMT. As a convenience, you can also specify offsets to today. For example, EndDate=+30days will make EndDate be 30 days from today."
+                                    },
+                                    {
+                                        "id": "IncludeSubaccounts",
+                                        "name": "IncludeSubaccounts",
+                                        "description": "true to include usage from the master account and all subaccounts. false to only retrieve usage from the specified account. IncludeSubaccounts is true by default."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "operation": "Operation"
+        },
+        "urlResolution": [
+            "/2010-04-01/Accounts.json",
+            "/2010-04-01/Accounts/:_accountSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Addresses.json",
+            "/2010-04-01/Accounts/:_accountSid/Addresses/:_addressSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Keys.json",
+            "/2010-04-01/Accounts/:_accountSid/Keys/:_api_KeySid.json",
+            "/2010-04-01/Accounts/:_accountSid/Applications.json",
+            "/2010-04-01/Accounts/:_accountSid/Applications/:_applicationSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls/FeedbackSummary.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls/FeedbackSummary/:_feedbackSummarySid.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid/Feedback.json",
+            "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid/Participants/:_callSid.json",
+            "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers.json",
+            "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers/:_incomingPhoneNumberSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Messages.json",
+            "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid/Media/:_mediaSid.json",
+            "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds.json",
+            "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds/:_outgoingCallerIdSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Queues.json",
+            "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid/Members/:_callSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Recordings/:_recordingSid.json",
+            "/2010-04-01/Accounts/:_accountSid/Tokens.json",
+            "/2010-04-01/Accounts/:_accountSid/Transcriptions/:_transcriptionSid"
+        ],
+        "versions": [
+            {
+                "version": "latest",
+                "resources": [
+                    {
+                        "id": "accounts",
+                        "name": "Sub Accounts",
+                        "sampleData": {
+                            "Sid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "FriendlyName": "Do you like my friendly name?",
+                            "Type": "Full",
+                            "Status": "active",
+                            "DateCreated": "Wed, 04 Aug 2010 21:37:41 +0000",
+                            "DateUpdated": "Fri, 06 Aug 2010 01:15:02 +0000",
+                            "AuthToken": "redacted",
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json",
+                            "SubresourceUris": {
+                                "available_phone_numbers": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AvailablePhoneNumbers.json",
+                                "calls": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls.json",
+                                "conferences": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Conferences.json",
+                                "incoming_phone_numbers": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IncomingPhoneNumbers.json",
+                                "notifications": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Notifications.json",
+                                "outgoing_caller_ids": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OutgoingCallerIds.json",
+                                "recordings": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Recordings.json",
+                                "sandbox": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Sandbox.json",
+                                "sms_messages": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/SMS/Messages.json",
+                                "transcriptions": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Transcriptions.json"
+                            },
+                            "OwnerAccountSid": "123"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_accounts",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts.json",
+                                        "extract": "accounts[0].sid",
+                                        "id": "list_all_accounts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_accounts",
+                                "name": "Update",
+                                "url": "/2010-04-01/Accounts/:_accountSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts.json",
+                                        "extract": "accounts[0].sid",
+                                        "id": "list_all_accounts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_accounts",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/2010-04-01/Accounts/:_accountSid.json",
+                                    "/2010-04-01/Accounts.json"
+                                ],
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts.json",
+                                        "extract": "accounts[0].sid",
+                                        "id": "list_all_accounts"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "addresses",
+                        "name": "Addresses",
+                        "sampleData": {
+                            "Sid": "AD2a0747eba6abf96b7e3c3ff0b4530f6e",
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "FriendlyName": "Billing - Customer 123",
+                            "CustomerName": "Customer 123",
+                            "Street": "1 Hasselhoff Lane",
+                            "City": "Berlin",
+                            "Region": "Berlin",
+                            "PostalCode": "10785",
+                            "IsoCountry": "DE",
+                            "Uri": "Uri",
+                            "EmergencyEnabled": "EmergencyEnabled",
+                            "Validated": "Validated"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_addresses",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Addresses.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "addressSid",
+                                        "name": "Address Sid",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Addresses.json",
+                                        "extract": "addresses[0].sid",
+                                        "id": "list_all_addresses"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_addresses",
+                                "name": "Update",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Addresses/:_addressSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "addressSid",
+                                        "name": "Address Sid",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Addresses.json",
+                                        "extract": "addresses[0].sid",
+                                        "id": "list_all_addresses"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_addresses",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/2010-04-01/Accounts/:_accountSid/Addresses/:_addressSid.json",
+                                    "/2010-04-01/Accounts/:_accountSid/Addresses.json"
+                                ],
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "addressSid",
+                                        "name": "Address Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Addresses.json",
+                                        "extract": "addresses[0].sid",
+                                        "id": "list_all_addresses"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_addresses",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Addresses/:_addressSid.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "addressSid",
+                                        "name": "Address Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "apiKeys",
+                        "name": "API Keys",
+                        "sampleData": {
+                            "Sid": "Sid",
+                            "FriendlyName": "FriendlyName",
+                            "Secret": "Secret",
+                            "DateCreated": "DateCreated",
+                            "DateUpdated": "DateUpdated"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_apikeys",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Keys.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Keys.json",
+                                        "extract": "keys[0].sid"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_apikeys",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Keys/:_apiKeySid.json",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "apiKeySid",
+                                        "name": "API Key Sid",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "applications",
+                        "name": "Applications(TwiML)",
+                        "sampleData": {
+                            "Sid": "AP2a0747eba6abf96b7e3c3ff0b4530f6e",
+                            "DateCreated": "Mon, 16 Aug 2010 23:00:23 +0000",
+                            "DateUpdated": "Mon, 16 Aug 2010 23:00:23 +0000",
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "FriendlyName": "Phone Me",
+                            "ApiVersion": "2010-04-01",
+                            "VoiceUrl": "http://demo.twilio.com/docs/voice.xml",
+                            "VoiceMethod": "POST",
+                            "VoiceFallbackUrl": null,
+                            "VoiceFallbackMethod": "POST",
+                            "StatusCallback": null,
+                            "StatusCallbackMethod": null,
+                            "VoiceCallerIdLookup": null,
+                            "SmsUrl": null,
+                            "SmsMethod": "POST",
+                            "SmsFallbackUrl": null,
+                            "SmsFallbackMethod": "GET",
+                            "SmsStatusCallback": null,
+                            "MessageStatusCallback": "MessageStatusCallback",
+                            "uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Applications/AP2a0747eba6abf96b7e3c3ff0b4530f6e.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_applications",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Applications.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "applicationSid",
+                                        "name": "Application Sid",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "ignoreExisitngLabel": "Ignore Exisiting Records",
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Applications.json",
+                                        "extract": "applications[0].sid",
+                                        "id": "list_all_application_resource_representations"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_applications",
+                                "name": "Update",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Applications/:_applicationSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "applicationSid",
+                                        "name": "Application Sid",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "ignoreMissingLabel": "Ignore Missing Records",
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Applications.json",
+                                        "extract": "applications[0].sid",
+                                        "id": "list_all_application_resource_representations"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_applications",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/2010-04-01/Accounts/:_accountSid/Applications/:_applicationSid.json",
+                                    "/2010-04-01/Accounts/:_accountSid/Applications.json"
+                                ],
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Applications.json",
+                                        "extract": "applications[0].sid",
+                                        "id": "list_all_application_resource_representations"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_applications",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Applications/:_applicationSid.json",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "applicationSid",
+                                        "name": "Application Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "calls",
+                        "name": "Calls",
+                        "sampleData": {
+                            "Sid": "CAe1644a7eed5088b159577c5802d8be38",
+                            "DateCreated": "Tue, 10 Aug 2010 08:02:17 +0000",
+                            "DateUpdated": "Tue, 10 Aug 2010 08:02:47 +0000",
+                            "ParentCallSid": null,
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "To": "+14153855708",
+                            "From": "+14158141819",
+                            "PhoneNumberSid": null,
+                            "Status": "completed",
+                            "StartTime": "Tue, 10 Aug 2010 08:02:31 +0000",
+                            "EndTime": "Tue, 10 Aug 2010 08:02:47 +0000",
+                            "Duration": "16",
+                            "Price": "-0.03000",
+                            "PriceUnit": "PriceUnit",
+                            "Direction": "outbound-api",
+                            "AnsweredBy": null,
+                            "ApiVersion": "2008-08-01",
+                            "ToFormatted": "ToFormatted",
+                            "FromFormatted": "FromFormatted",
+                            "ForwardedFrom": null,
+                            "CallerName": null,
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAe1644a7eed5088b159577c5802d8be38.json",
+                            "SubresourceUris": {
+                                "notifications": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAe1644a7eed5088b159577c5802d8be38/Notifications.json",
+                                "recordings": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Calls/CAe1644a7eed5088b159577c5802d8be38/Recordings.json"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_calls",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls.json",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call Sid",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_calls",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "callFeedback",
+                        "name": "Call Feedback",
+                        "sampleData": {
+                            "Sid": "CAe03b7cd806070d1f32bdb7f1046a41c0",
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "QualityScore": 3,
+                            "Issue": [
+                                "123"
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_call_feedback",
+                                "name": "Create Call Feedback",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls/:_callSid/Feedback.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call Sid",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_call_feedback_summary",
+                                "name": "Create Call Feedback Summary",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Calls/FeedbackSummary.json",
+                                "method": "POST",
+                                "sampleData": {
+                                    "Sid": "FSa346467ca321c71dbd5e12f627deb854",
+                                    "StartDate": "2014-06-01",
+                                    "EndDate": "2014-06-30",
+                                    "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                                    "IncludeSubaccounts": true,
+                                    "Status": "in-progress",
+                                    "Issue": [
+                                        "123"
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "conferences",
+                        "name": "Conferences",
+                        "sampleData": {
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "DateCreated": "Wed, 18 Aug 2010 20:20:06 +0000",
+                            "DateUpdated": "Wed, 18 Aug 2010 20:24:32 +0000",
+                            "FriendlyName": "Party Line",
+                            "Sid": "CFbbe46ff1274e283f7e3ac1df0072ab39",
+                            "Status": "completed",
+                            "SubresourceUris": {
+                                "participants": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Conferences/CFbbe46ff1274e283f7e3ac1df0072ab39/Participants.json"
+                            },
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Conferences/CFbbe46ff1274e283f7e3ac1df0072ab39.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "update_conferences",
+                                "name": "Update",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "conferenceSid",
+                                        "name": "Conference Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Conferences.json",
+                                        "extract": "conferences[0].sid",
+                                        "id": "list_all_conferences"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "participants",
+                        "name": "Conferences - Participants",
+                        "sampleData": {
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "CallSid": "CA386025c9bf5d6052a1d1ea42b4d16662",
+                            "ConferenceSid": "CFbbe46ff1274e283f7e3ac1df0072ab39",
+                            "DateCreated": "Wed, 18 Aug 2010 20:20:10 +0000",
+                            "DateUpdated": "Wed, 18 Aug 2010 20:20:10 +0000",
+                            "EndConferenceOnExit": true,
+                            "Muted": false,
+                            "Hold": false,
+                            "StartConferenceOnEnter": true,
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Conferences/CFbbe46ff1274e283f7e3ac1df0072ab39/Participants/CA386025c9bf5d6052a1d1ea42b4d16662.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "update_a_participant",
+                                "name": "Update a Participant",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid/Participants/:_callSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "conferenceSid",
+                                        "name": "Conference Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid/Participants.json",
+                                        "extract": "participants[0].call_sid",
+                                        "id": "retrieve_all_participants"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_participants",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Conferences/:_conferenceSid/Participants/:_callSid.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "conferenceSid",
+                                        "name": "Conference Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "incomingPhoneNumbers",
+                        "name": "Incoming Phone Numbers",
+                        "sampleData": {
+                            "Sid": "PN2a0747eba6abf96b7e3c3ff0b4530f6e",
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "FriendlyName": "My Company Line",
+                            "PhoneNumber": "+15105647903",
+                            "VoiceUrl": "http://demo.twilio.com/docs/voice.xml",
+                            "VoiceMethod": "POST",
+                            "VoiceFallbackUrl": null,
+                            "VoiceFallbackMethod": "POST",
+                            "StatusCallback": null,
+                            "StatusCallbackMethod": null,
+                            "VoiceCallerIdLookup": null,
+                            "VoiceApplicationSid": null,
+                            "DateCreated": "Mon, 16 Aug 2010 23:00:23 +0000",
+                            "DateUpdated": "Mon, 16 Aug 2010 23:00:23 +0000",
+                            "SmsUrl": null,
+                            "SmsMethod": "POST",
+                            "SmsFallbackUrl": null,
+                            "SmsFallbackMethod": "GET",
+                            "SmsApplicationSid": "AP9b2e38d8c592488c397fc871a82a74ec",
+                            "Capabilities": {
+                                "Voice": true,
+                                "SMS": true,
+                                "MMS": false
+                            },
+                            "AddressRequirements": "AddressRequirements",
+                            "beta": false,
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IncomingPhoneNumbers/PN2a0747eba6abf96b7e3c3ff0b4530f6e.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_incomingphonenumbers",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "incomingPhoneNumberSid",
+                                        "name": "Incoming PhoneNumber Sid",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers.json",
+                                        "extract": "incoming_phone_numbers[0].sid",
+                                        "id": "list_all_incomingphonenumbers_of_your_account"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_incomingphonenumbers",
+                                "name": "Update",
+                                "url": "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers/:_incomingPhoneNumberSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "incomingPhoneNumberSid",
+                                        "name": "incoming PhoneNumber Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers.json",
+                                        "extract": "incoming_phone_numbers[0].sid",
+                                        "id": "list_all_incomingphonenumbers_of_your_account"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_incomingphonenumbers",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers/:_incomingPhoneNumberSid.json",
+                                    "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers.json"
+                                ],
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "incomingPhoneNumberSid",
+                                        "name": "Incoming PhoneNumber Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers.json",
+                                        "extract": "incoming_phone_numbers[0].sid",
+                                        "id": "list_all_incomingphonenumbers_of_your_account"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_incomingphonenumbers",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/IncomingPhoneNumbers/:_incomingPhoneNumberSid.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "incomingPhoneNumberSid",
+                                        "name": "Incoming PhoneNumber Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "messages",
+                        "name": "Messages",
+                        "sampleData": {
+                            "Sid": "MMc781610ec0b3400c9e0cab8e757da937",
+                            "DateCreated": "Mon, 19 Oct 2015 07:07:03 +0000",
+                            "DateUpdated": "Mon, 19 Oct 2015 07:07:03 +0000",
+                            "DateSent": null,
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "To": "+15558675309",
+                            "From": "+15017250604",
+                            "Body": "This is the ship that made the Kessel Run in fourteen parsecs?",
+                            "Status": "queued",
+                            "NumSegments": "1",
+                            "NumMedia": "1",
+                            "Direction": "outbound-api",
+                            "Price": null,
+                            "PriceUnit": "USD",
+                            "ErrorCode": null,
+                            "ErrorMessage": null,
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages/MMc781610ec0b3400c9e0cab8e757da937.json",
+                            "SubresourceUris": {
+                                "media": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages/MMc781610ec0b3400c9e0cab8e757da937/Media.json"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_messages",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Messages.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageSid",
+                                        "name": "Message Sid",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Messages.json",
+                                        "extract": "messages[0].sid",
+                                        "id": "list_all_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_messages",
+                                "name": "Update",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageSid",
+                                        "name": "Message Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Messages.json",
+                                        "extract": "messages[0].sid",
+                                        "id": "list_all_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_messages",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid.json",
+                                    "/2010-04-01/Accounts/:_accountSid/Messages.json"
+                                ],
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageSid",
+                                        "name": "Message Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Messages.json",
+                                        "extract": "messages[0].sid",
+                                        "id": "list_all_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_messages",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageSid",
+                                        "name": "Message Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "feedback",
+                        "name": "Messages - Feedback",
+                        "sampleData": {
+                            "Outcome": "confirmed"
+                        },
+                        "operations": [
+                            {
+                                "id": "update_a_message",
+                                "name": "Update a Message",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageSid",
+                                        "name": "Message Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "media",
+                        "name": "Messages - Media",
+                        "operations": [
+                            {
+                                "id": "delete_a_media",
+                                "name": "Delete a Media",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Messages/:_messageSid/Media/:_mediaSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "messageSid",
+                                        "name": "Message Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "mediaSid",
+                                        "name": "Media Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "askForHowToGetIdentifier": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "outgoingCallerIds",
+                        "name": "Outgoing Caller IDs",
+                        "sampleData": {
+                            "Sid": "PNe905d7e6b410746a0fb08c57e5a186f3",
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "FriendlyName": "(510) 555-5555",
+                            "PhoneNumber": "+15105555555",
+                            "DateCreated": "Tue, 27 Jul 2010 20:21:11 +0000",
+                            "DateUpdated": "Tue, 27 Jul 2010 20:21:11 +0000",
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/OutgoingCallerIds/PNe905d7e6b410746a0fb08c57e5a186f3.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_outgoingcallerids",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "outgoingCallerIdSid",
+                                        "name": "Outgoing Caller ID Sid",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds.json",
+                                        "extract": "outgoing_caller_ids[0].sid",
+                                        "id": "list_an_account's_outgoing_caller_ids"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_outgoingcallerids",
+                                "name": "Update",
+                                "url": "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds/:_outgoingCallerIdSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "outgoingCallerIdSid",
+                                        "name": "Outgoing Caller ID Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true
+                            },
+                            {
+                                "id": "create_or_update_outgoingcallerids",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds/:_outgoingCallerIdSid.json",
+                                    "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds.json"
+                                ],
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "outgoingCallerIdSid",
+                                        "name": "Outgoing Caller ID Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_outgoingcallerids",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/OutgoingCallerIds/:_outgoingCallerIdSid.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "outgoingCallerIdSid",
+                                        "name": "outgoing Caller ID Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "queues",
+                        "name": "Queues",
+                        "sampleData": {
+                            "Sid": "QUxxxxxxxxx",
+                            "FriendlyName": "persistent_queue1",
+                            "CurrentSize": 0,
+                            "AverageWaitTime": 0,
+                            "MaxSize": 10,
+                            "DateCreated": "Mon, 26 Mar 2012 22:00:14 +0000",
+                            "DateUpdated": "Mon, 26 Mar 2012 22:00:14 +0000",
+                            "Uri": "/2010-04-01/Accounts/AC5ef87.../Queues/QUxxxxxxxxx.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_queues",
+                                "name": "Create",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Queues.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "queueSid",
+                                        "name": "Queue Sid",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Queues.json",
+                                        "extract": "queues[0].sid",
+                                        "id": "list_all_queues"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_queues",
+                                "name": "Update",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "queueSid",
+                                        "name": "Queue Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Queues.json",
+                                        "extract": "queues[0].sid",
+                                        "id": "list_all_queues"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_queues",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid.json",
+                                    "/2010-04-01/Accounts/:_accountSid/Queues.json"
+                                ],
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "queueSid",
+                                        "name": "Queue Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/2010-04-01/Accounts/:_accountSid/Queues.json",
+                                        "extract": "queues[0].sid",
+                                        "id": "list_all_queues"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "members",
+                        "name": "Queues - Members",
+                        "sampleData": {
+                            "CallSid": "CA386025c9bf5d6052a1d1ea42b4d16662",
+                            "DateEnqueued": "Mon, 4 Feb 2012 15:44:15 +0000",
+                            "WaitTime": 30,
+                            "Position": 1,
+                            "Uri": "/2010-04-01/Accounts/AC5ef87.../Queues/QUxxxxxxxxx/Members/CA386025c9bf5d6052a1d1ea42b4d16662.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "dequeue_a_member",
+                                "name": "Dequeue a Member",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Queues/:_queueSid/Members/:_callSid.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "queueSid",
+                                        "name": "Queue sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "callSid",
+                                        "name": "Call sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "recordings",
+                        "name": "Recordings",
+                        "sampleData": {
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "ApiVersion": "2010-04-01",
+                            "CallSid": "CA8dfedb55c129dd4d6bd1f59af9d11080",
+                            "Channels": 2,
+                            "DateCreated": "Tue, 18 Oct 2016 21:55:38 +0000",
+                            "DateUpdated": "Tue, 18 Oct 2016 21:56:34 +0000",
+                            "Duration": "53",
+                            "Price": "-0.00250",
+                            "PriceUnit": "USD",
+                            "Sid": "RE557ce644e5ab84fa21cc21112e22c485",
+                            "Source": "DialVerb",
+                            "Status": "completed",
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Recordings/RE557ce644e5ab84fa21cc21112e22c485.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "delete_recordings",
+                                "name": "Delete",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Recordings/:_recordingSid.json",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "recordingSid",
+                                        "name": "Recording Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tokens",
+                        "name": "Tokens(NAT Traversal)",
+                        "sampleData": {
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "DateCreated": "Mon, 17 Nov 2014 23:55:19 +0000",
+                            "DateUpdated": "Mon, 17 Nov 2014 23:55:19 +0000",
+                            "IceServers": [
+                                {
+                                    "url": "stun:global.stun.twilio.com:3478?transport=udp"
+                                },
+                                {
+                                    "credential": "M87Dd74GbNfyrAydvEKiDR43go52fo6ldoJBHB6gim0=",
+                                    "url": "turn:global.turn.twilio.com:3478?transport=udp",
+                                    "username": "b759d275ddc641cd379f329882abe3c0618c8afdfc5e24be1b4d59482244240f"
+                                }
+                            ],
+                            "Password": "M87Dd74GbNfyrAydvEKiDR43go52fo6ldoJBHB6gim0=",
+                            "Ttl": "86400",
+                            "Username": "b759d275ddc641cd379f329882abe3c0618c8afdfc5e24be1b4d59482244240f"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_token_resource",
+                                "name": "Create a Token Resource",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Tokens.json",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transcriptions",
+                        "name": "Transcriptions",
+                        "sampleData": {
+                            "AccountSid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                            "DateCreated": "Mon, 26 Jul 2010 00:09:58 +0000",
+                            "DateUpdated": "Mon, 26 Jul 2010 00:10:25 +0000",
+                            "Duration": "6",
+                            "Price": "-0.05000",
+                            "RecordingSid": "REca11f06dc31b5515a2dfb1f5134361f2",
+                            "Sid": "TR8c61027b709ffb038236612dc5af8723",
+                            "Status": "completed",
+                            "TranscriptionText": "Tommy? Tommy is that you? I told you never to call me again.",
+                            "Uri": "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Transcriptions/TR8c61027b709ffb038236612dc5af8723.json"
+                        },
+                        "operations": [
+                            {
+                                "id": "delete_a_transcription",
+                                "name": "Delete a Transcription",
+                                "url": "/2010-04-01/Accounts/:_accountSid/Transcriptions/:_transcriptionSid",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountSid",
+                                        "name": "Account Sid",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "transcriptionSid",
+                                        "name": "Transcription Sid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,1026 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "nextpageurl",
+            "nextPagePath": "next"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v5",
+                "resources": [
+                    {
+                        "id": "addresses",
+                        "name": "Addresses",
+                        "endpoints": [
+                            {
+                                "id": "getall_addresses",
+                                "url": "/addresses/",
+                                "name": "List all addresses",
+                                "description": "List all addresses.",
+                                "resourcePath": "results"
+                            },
+                            {
+                                "id": "address_id",
+                                "url": "/addresses/:_id",
+                                "name": "Retrieve an address",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing address by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Address Object ID",
+                                        "description": "The unique identifier for this Address",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "address_validate",
+                                "url": "/addresses/:_id/validate/",
+                                "name": "Validate an address",
+                                "description": "Validate an existing address by object id.",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Address Object ID",
+                                        "description": "The unique identifier for this Address",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "parcels",
+                        "name": "Parcels",
+                        "endpoints": [
+                            {
+                                "id": "getall_parcels",
+                                "url": "/parcels/",
+                                "name": "List all parcels",
+                                "description": "List all parcel objects.",
+                                "resourcePath": "results"
+                            },
+                            {
+                                "id": "parcel_id",
+                                "url": "/parcels/:_id",
+                                "description": "Retrieve an existing parcel by object id.",
+                                "name": "Retrieve a parcel",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Parcel Object ID",
+                                        "description": "The unique identifier for this Parcel",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "endpoints": [
+                            {
+                                "id": "getall_shipments",
+                                "url": "/shipments/",
+                                "name": "List all shipments",
+                                "description": "List all shipment objects.",
+                                "resourcePath": "results",
+                                "queryParameters": [
+                                    {
+                                        "id": "object_created_gt",
+                                        "name": "object_created_gt",
+                                        "description": "object(s) created greater than a provided date time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "object_created_gte",
+                                        "name": "object_created_gte",
+                                        "description": "object(s) created greater than or equal to a provided date time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "object_created_lt",
+                                        "name": "object_created_lt",
+                                        "description": "object(s) created less than a provided date time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "object_created_lte",
+                                        "name": "object_created_lte",
+                                        "description": "object(s) created less than or equal to a provided date time",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "shipment_id",
+                                "url": "/shipments/:_id",
+                                "name": "Retrieve a shipment",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing shipment by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment Object ID",
+                                        "description": "The unique identifier for this Shipment",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rates",
+                        "name": "Rates",
+                        "endpoints": [
+                            {
+                                "id": "getshipping_rates",
+                                "url": "/shipments/:_id/rates/:_currencycode",
+                                "name": "Get rates for a shipment",
+                                "description": "Each valid shipment object will automatically trigger the calculation of all available rates.",
+                                "resourcePath": "results",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment Object ID",
+                                        "description": "The unique identifier for this Shipment",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "currencycode",
+                                        "name": "Currency Code",
+                                        "description": "Currency Code",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "rate_id",
+                                "url": "/rates/:_id",
+                                "name": "Retrieve a rate",
+                                "description": "Retrieve an existing rate by object id.",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Rate Object ID",
+                                        "description": "The unique identifier for this Rate",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactions",
+                        "name": "Transactions",
+                        "endpoints": [
+                            {
+                                "id": "getall_transactions",
+                                "url": "/transactions",
+                                "name": "List all shipping labels",
+                                "description": "List all transaction objects.",
+                                "resourcePath": "results",
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "transaction_id",
+                                "url": "/transactions/:_id",
+                                "name": "Retrieve a shipping label",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing transaction by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Transaction Object ID",
+                                        "description": "The unique identifier for this Transaction",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customs_items",
+                        "name": "Customs Items",
+                        "endpoints": [
+                            {
+                                "id": "getall_customs_items",
+                                "url": "/customs/items",
+                                "description": "List all custom-items objects.",
+                                "name": "List all Customs Items",
+                                "resourcePath": "results"
+                            },
+                            {
+                                "id": "custom_item_id",
+                                "url": "/customs/items/:_id",
+                                "name": "Retrieve a customs item",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing Customs Item by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Customs Item Object ID",
+                                        "description": "The unique identifier for this customs item",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customs_declarations",
+                        "name": "Customs Declarations",
+                        "endpoints": [
+                            {
+                                "id": "getall_customs_declarations",
+                                "url": "/customs/declarations",
+                                "description": "List all customs-declaration objects.",
+                                "name": "List all customs declarations",
+                                "resourcePath": "results"
+                            },
+                            {
+                                "id": "customs_declaration_id",
+                                "url": "/customs/declarations/:_id",
+                                "name": "Retrieve a customs declaration",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing customs-declaration by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Customs Declaration Object ID",
+                                        "description": "The unique identifier for this Customs Declaration",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "refunds",
+                        "name": "Refunds",
+                        "endpoints": [
+                            {
+                                "id": "getall_refunds",
+                                "url": "/refunds",
+                                "name": "List all refunds",
+                                "description": "Retrieve an existing refund by object id.",
+                                "resourcePath": "results"
+                            },
+                            {
+                                "id": "refund_id",
+                                "url": "/refunds/:_id",
+                                "name": "Retrieve a refund",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing refund by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Refund Object ID",
+                                        "description": "The unique identifier for this Refund",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "manifests",
+                        "name": "Manifests",
+                        "endpoints": [
+                            {
+                                "id": "getall_manifests",
+                                "url": "/manifests",
+                                "name": "List all manifest",
+                                "description": "List all Manifest objects.",
+                                "resourcePath": "results"
+                            },
+                            {
+                                "id": "manifest_id",
+                                "url": "/manifests/:_id",
+                                "name": "Retrieve a manifest",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing manifest by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Manifest Object ID",
+                                        "description": "The unique identifier for this Manifest",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "carrier_accounts",
+                        "name": "Carrier Accounts",
+                        "endpoints": [
+                            {
+                                "id": "getall_carrier_accounts",
+                                "url": "/carrier_accounts",
+                                "description": "List all carrier accounts.",
+                                "name": "List all carrier accounts",
+                                "resourcePath": "results",
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "carrier_account_id",
+                                "url": "/carrier_accounts/:_id",
+                                "name": "Retrieve a carrier account",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing carrier account by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Carrier Account Object ID",
+                                        "description": "The unique identifier for thisCarrier Account",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tracking_status",
+                        "name": "Tracking Status",
+                        "endpoints": [
+                            {
+                                "id": "Gettracking_update",
+                                "url": "/tracks/:_carrier/:_trackingnumber",
+                                "name": "Get a tracking status",
+                                "description": "Request the tracking status of a shipment by sending a GET request.",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "carrier",
+                                        "name": "Carrier",
+                                        "description": "Carrier Name",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "trackingnumber",
+                                        "name": "Tracking Number",
+                                        "description": "Tracking Number",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders(beta)",
+                        "endpoints": [
+                            {
+                                "id": "getall_orders",
+                                "url": "/orders",
+                                "name": "List all orders",
+                                "description": "List all order objects.",
+                                "resourcePath": "results"
+                            },
+                            {
+                                "id": "order_id",
+                                "url": "/orders/:_id",
+                                "name": "Retrieve an order",
+                                "resourcePath": "",
+                                "description": "Retrieve an existing order by object id.",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Order Object ID",
+                                        "description": "The unique identifier for this Order",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v5",
+                "resources": [
+                    {
+                        "id": "address",
+                        "name": "Addresses",
+                        "sampleData": {
+                            "name": "Shawn Ippotle",
+                            "company": "Shippo",
+                            "street1": "215 Clayton St.",
+                            "street2": "",
+                            "city": "San Francisco",
+                            "state": "CA",
+                            "zip": "94117",
+                            "country": "US",
+                            "phone": "15553419393",
+                            "email": "shippotle@goshippo.com",
+                            "is_residential": true,
+                            "metadata": "Customer ID 123456"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_address",
+                                "url": "/addresses/",
+                                "name": "Create a new address",
+                                "method": "POST",
+                                "description": "Creates a new address object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "parcels",
+                        "name": "Parcels",
+                        "sampleData": {
+                            "template": null,
+                            "length": "5",
+                            "width": "5",
+                            "height": "5",
+                            "distance_unit": "cm",
+                            "weight": "2",
+                            "mass_unit": "lb",
+                            "metadata": "Customer ID 123456",
+                            "test": true,
+                            "extra": {
+                                "reference_1": "",
+                                "reference_2": ""
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_parcel",
+                                "url": "/parcels/",
+                                "name": "Create a new parcel",
+                                "method": "POST",
+                                "description": "Creates a new parcel object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders(beta)",
+                        "sampleData": {
+                            "to_address": {
+                                "city": "San Francisco",
+                                "company": "Shippo",
+                                "country": "US",
+                                "email": "shippotle@goshippo.com",
+                                "name": "Mr Hippo",
+                                "phone": "15553419393",
+                                "state": "CA",
+                                "street1": "215 Clayton St.",
+                                "zip": "94117"
+                            },
+                            "line_items": [
+                                {
+                                    "quantity": 1,
+                                    "sku": "HM-123",
+                                    "title": "Hippo Magazines",
+                                    "total_price": "12.10",
+                                    "currency": "USD",
+                                    "weight": "0.40",
+                                    "weight_unit": "lb"
+                                }
+                            ],
+                            "placed_at": "2016-09-23T01:28:12Z",
+                            "order_number": "#1068",
+                            "order_status": "PAID",
+                            "shipping_cost": "12.83",
+                            "shipping_cost_currency": "USD",
+                            "shipping_method": "USPS First Class Package",
+                            "subtotal_price": "12.10",
+                            "total_price": "24.93",
+                            "total_tax": "0.00",
+                            "currency": "USD",
+                            "weight": "0.40",
+                            "weight_unit": "lb"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_order",
+                                "url": "/orders/",
+                                "name": "Create a new order",
+                                "method": "POST",
+                                "description": "Creates a new order object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "sampleData": {
+                            "address_to": {
+                                "name": "Mr Hippo",
+                                "street1": "965 Mission St #572",
+                                "city": "San Francisco",
+                                "state": "CA",
+                                "zip": "94103",
+                                "country": "US",
+                                "phone": "4151234567",
+                                "email": "mrhippo@goshippo.com"
+                            },
+                            "address_from": {
+                                "name": "Mrs Hippo",
+                                "street1": "1092 Indian Summer Ct",
+                                "city": "San Jose",
+                                "state": "CA",
+                                "zip": "95122",
+                                "country": "US",
+                                "phone": "4159876543",
+                                "email": "mrshippo@goshippo.com"
+                            },
+                            "parcels": [
+                                {
+                                    "length": "10",
+                                    "width": "15",
+                                    "height": "10",
+                                    "distance_unit": "in",
+                                    "weight": "1",
+                                    "mass_unit": "lb"
+                                }
+                            ],
+                            "async": false
+                        },
+                        "operations": [
+                            {
+                                "id": "create_shipment",
+                                "url": "/shipments/",
+                                "name": "Create a new shipment",
+                                "method": "POST",
+                                "description": "Creates a new shipment object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "getall_shipments",
+                                        "extract": "results[0].object_id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactions",
+                        "name": "Transactions",
+                        "sampleData": {
+                            "test": true,
+                            "rate": "ee81fab0372e419ab52245c8952ccaeb",
+                            "tracking_number": "",
+                            "tracking_status": "UNKNOWN",
+                            "tracking_url_provider": "",
+                            "eta": "",
+                            "label_url": "",
+                            "commercial_invoice_url": "",
+                            "messages": [],
+                            "metadata": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_transaction_shippinglabel",
+                                "url": "/transactions",
+                                "name": "Create a shipping label (rate)",
+                                "method": "POST",
+                                "description": "Creates a new transaction object and purchases the shipping label for the provided rate.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_transaction_shippinglabel_instant",
+                                "url": "/transactions",
+                                "name": "Create a shipping label (instant)",
+                                "method": "POST",
+                                "description": "Creates a new transaction object and purchases the shipping label with one API call.",
+                                "sampleData": {
+                                    "shipment": {
+                                        "address_to": {
+                                            "name": "Mr Hippo",
+                                            "street1": "965 Mission St #572",
+                                            "city": "San Francisco",
+                                            "state": "CA",
+                                            "zip": "94103",
+                                            "country": "US",
+                                            "phone": "4151234567",
+                                            "email": "mrhippo@goshippo.com"
+                                        },
+                                        "address_from": {
+                                            "name": "Mrs Hippo",
+                                            "street1": "1092 Indian Summer Ct",
+                                            "city": "San Jose",
+                                            "state": "CA",
+                                            "zip": "95122",
+                                            "country": "US",
+                                            "phone": "4159876543",
+                                            "email": "mrshippo@goshippo.com"
+                                        },
+                                        "parcels": [
+                                            {
+                                                "length": "10",
+                                                "width": "15",
+                                                "height": "10",
+                                                "distance_unit": "in",
+                                                "weight": "1",
+                                                "mass_unit": "lb"
+                                            }
+                                        ]
+                                    },
+                                    "carrier_account": "b741b99f95e841639b54272834bc478c",
+                                    "servicelevel_token": "usps_priority"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customs_tems",
+                        "name": "Customs Items",
+                        "sampleData": {
+                            "description": "T-Shirt",
+                            "quantity": 2,
+                            "net_weight": "400",
+                            "mass_unit": "g",
+                            "value_amount": "20",
+                            "value_currency": "USD",
+                            "origin_country": "US",
+                            "tariff_number": "",
+                            "metadata": "Order ID '123123'",
+                            "test": true
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customs_item",
+                                "url": "/customs/items/",
+                                "name": "Create a new customs item",
+                                "method": "POST",
+                                "description": "Creates a new Customs Item object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customs_declarations",
+                        "name": "Customs Declarations",
+                        "sampleData": {
+                            "contents_type": "MERCHANDISE",
+                            "non_delivery_option": "RETURN",
+                            "certify": true,
+                            "certify_signer": "Simon Kreuz",
+                            "incoterm": "DDU",
+                            "items": [
+                                {
+                                    "description": "T-shirt",
+                                    "quantity": 20,
+                                    "net_weight": "5",
+                                    "mass_unit": "lb",
+                                    "value_amount": "200",
+                                    "value_currency": "USD",
+                                    "tariff_number": "",
+                                    "origin_country": "US"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customs_declaration",
+                                "url": "/customs/declarations/",
+                                "name": "Create a new Customs Declaration",
+                                "method": "POST",
+                                "description": "Creates a new Customs Declaration object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "refunds",
+                        "name": "Refunds",
+                        "sampleData": {
+                            "transaction": "8b7f25f33d2a4bb58060df94cb152434",
+                            "test": true
+                        },
+                        "operations": [
+                            {
+                                "id": "create_refunds",
+                                "url": "/refunds/",
+                                "name": "Create a refund",
+                                "method": "POST",
+                                "description": "Creates a new refund object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "manifests",
+                        "name": "Manifests",
+                        "sampleData": {
+                            "carrier_account": "b741b99f95e841639b54272834bc478c",
+                            "shipment_date": "2014-05-16T23:59:59Z",
+                            "address_from": "d799c2679e644279b59fe661ac8fa488",
+                            "transactions": [
+                                "64bba01845ef40d29374032599f22588",
+                                "c169aa586a844cc49da00d0272b590e1"
+                            ],
+                            "documents": [
+                                "https://shippo-delivery.s3.amazonaws.com/0fadebf6f60c4aca95fa01bcc59c79ae.pdf?Signature=tlQU3RECwdHUQJQadwqg5bAzGFQ%3D&Expires=1402803835&AWSAccessKeyId=AKIAJTHP3LLFMYAWALIA"
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_manifest",
+                                "url": "/manifests/",
+                                "name": "Create a new manifest",
+                                "method": "POST",
+                                "description": "Creates a new manifest object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tracking_status",
+                        "name": "Tracking Status",
+                        "sampleData": {
+                            "carrier": "usps",
+                            "tracking_number": "9205590164917312751089",
+                            "address_from": {
+                                "city": "Las Vegas",
+                                "state": "NV",
+                                "zip": "89101",
+                                "country": "US"
+                            },
+                            "address_to": {
+                                "city": "Spotsylvania",
+                                "state": "VA",
+                                "zip": "22551",
+                                "country": "US"
+                            },
+                            "transaction": "1275c67d754f45bf9d6e4d7a3e205314",
+                            "original_eta": "2016-07-23T00:00:00Z",
+                            "eta": "2016-07-23T00:00:00Z",
+                            "servicelevel": {
+                                "token": "usps_priority",
+                                "name": "Priority Mail"
+                            },
+                            "metadata": null,
+                            "tracking_status": {
+                                "object_created": "2016-07-23T20:35:26.129Z",
+                                "object_updated": "2016-07-23T20:35:26.129Z",
+                                "object_id": "ce48ff3d52a34e91b77aa98370182624",
+                                "status": "DELIVERED",
+                                "status_details": "Your shipment has been delivered at the destination mailbox.",
+                                "status_date": "2016-07-23T13:03:00Z",
+                                "location": {
+                                    "city": "Spotsylvania",
+                                    "state": "VA",
+                                    "zip": "22551",
+                                    "country": "US"
+                                }
+                            },
+                            "tracking_history": [
+                                {
+                                    "object_created": "2016-07-22T14:36:50.943Z",
+                                    "object_id": "265c7a7c23354da5b87b2bf52656c625",
+                                    "status": "TRANSIT",
+                                    "status_details": "Your shipment has been accepted.",
+                                    "status_date": "2016-07-21T15:33:00Z",
+                                    "location": {
+                                        "city": "Las Vegas",
+                                        "state": "NV",
+                                        "zip": "89101",
+                                        "country": "US"
+                                    }
+                                },
+                                {
+                                    "object_created": "2016-07-23T20:35:26.129Z",
+                                    "object_id": "aab1d7c0559d43ccbba4ff8603089e56",
+                                    "status": "DELIVERED",
+                                    "status_details": "Your shipment has been delivered at the destination mailbox.",
+                                    "status_date": "2016-07-23T13:03:00Z",
+                                    "location": {
+                                        "city": "Spotsylvania",
+                                        "state": "VA",
+                                        "zip": "22551",
+                                        "country": "US"
+                                    }
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_tracking_status",
+                                "url": "/tracks/",
+                                "name": "Register a tracking webhook",
+                                "method": "POST",
+                                "description": "You can register your webhook(s) for a Shipment (and request the current status at the same time) by POSTing to the tracking endpoint",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "carrier_accounts",
+                        "name": "Carrier Accounts",
+                        "sampleData": {
+                            "object_id": "b741b99f95e841639b54272834bc478c",
+                            "object_owner": "shippotle@goshippo.com",
+                            "carrier": "fedex",
+                            "account_id": "******",
+                            "parameters": {
+                                "meter": "******"
+                            },
+                            "test": false,
+                            "active": true
+                        },
+                        "operations": [
+                            {
+                                "id": "create_carrier_account",
+                                "url": "/carrier_accounts/",
+                                "name": "Create a new carrier account",
+                                "method": "POST",
+                                "description": "Creates a new carrier account object.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_carrier_account",
+                                "url": "/carrier_accounts/:_object_id",
+                                "name": "Update a carrier account",
+                                "method": "PUT",
+                                "description": "PUT request to update an existing carrier account object.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_update_carrier_account",
+                                "name": "Create or Update a carrier account",
+                                "description": "Create a new or Update an existing carrier account",
+                                "url": [
+                                    "/carrier_accounts/:_object_id",
+                                    "/carrier_accounts/"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "object_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

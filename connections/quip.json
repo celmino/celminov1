@@ -1,0 +1,324 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "1",
+                "resources": [
+                    {
+                        "id": "threads",
+                        "name": "Threads",
+                        "endpoints": [
+                            {
+                                "id": "get_all",
+                                "url": "/1/threads/",
+                                "name": "Get Threads",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "ids",
+                                        "name": "Thread IDs",
+                                        "description": "A comma-separated list of  IDs",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_id",
+                                "url": "/1/threads/:_id",
+                                "name": "Get a Thread",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Thread ID",
+                                        "description": "Thread ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_recent_thread",
+                                "url": "/1/threads/recent",
+                                "name": "Get Recent Threads",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_blob",
+                                "url": "/1/blob/:_thread_id/:_blob_id",
+                                "name": "Get a Blob",
+                                "resourcePath": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": "messages",
+                        "name": "Messages",
+                        "endpoints": [
+                            {
+                                "id": "get_messages",
+                                "url": "/1/messages/:_thread_id",
+                                "name": "Get Recent Messages",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "thread_id",
+                                        "name": "Thread ID",
+                                        "description": "Thread ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "folders",
+                        "name": "Folders",
+                        "endpoints": [
+                            {
+                                "id": "get_folders",
+                                "url": "/1/folders/",
+                                "name": "Get Folders",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "ids",
+                                        "name": "folder IDs",
+                                        "description": "A comma-separated list of folder IDs",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_folderid",
+                                "url": "/1/folders/:_id",
+                                "name": "Get a Folder",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Folder ID",
+                                        "description": "Folder ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "get_users",
+                                "url": "/1/users/",
+                                "name": "Get Users",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "ids",
+                                        "name": "user IDs",
+                                        "description": "A comma-separated list of  user IDs",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_userid",
+                                "url": "/1/users/:_id",
+                                "name": "Get an User",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "User ID",
+                                        "description": "User ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_authenticated",
+                                "url": "/1/users/current",
+                                "name": "Get Authenticated Users",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_contacts",
+                                "url": "/1/users/contacts",
+                                "name": "Get Contacts",
+                                "resourcePath": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "1",
+                "resources": [
+                    {
+                        "id": "threads",
+                        "name": "Threads",
+                        "operations": [
+                            {
+                                "id": "create_document",
+                                "url": "/1/threads/new-document",
+                                "name": "Create a Document or Spreadsheet",
+                                "sampleData": {
+                                    "content": "",
+                                    "type": "",
+                                    "format": "",
+                                    "title": "",
+                                    "member_ids": ""
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "thread_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_document",
+                                "url": "/1/threads/edit-document",
+                                "name": "Edit a Document",
+                                "method": "POST",
+                                "sampleData": {
+                                    "thread_id": "",
+                                    "content": "",
+                                    "section_id": "",
+                                    "location": ""
+                                }
+                            },
+                            {
+                                "id": "add_people",
+                                "url": "/1/threads/add-members",
+                                "name": "Add People or Folders",
+                                "sampleData": {
+                                    "thread_id": "",
+                                    "member_ids": ""
+                                },
+                                "method": "POST"
+                            },
+                            {
+                                "id": "remove_people",
+                                "url": "/1/threads/remove-members",
+                                "name": "Remove People or Folders",
+                                "sampleData": {
+                                    "thread_id": "",
+                                    "member_ids": ""
+                                },
+                                "method": "POST"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "messages",
+                        "name": "Messages",
+                        "operations": [
+                            {
+                                "id": "send_message",
+                                "url": "/1/messages/new",
+                                "name": "Add a Message",
+                                "sampleData": {
+                                    "thread_id": "",
+                                    "frame": "",
+                                    "content": "",
+                                    "parts": "",
+                                    "attachments": "",
+                                    "silent": "",
+                                    "annotation_id": "",
+                                    "section_id": ""
+                                },
+                                "method": "POST"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "folders",
+                        "name": "Folders",
+                        "operations": [
+                            {
+                                "id": "create_folder",
+                                "url": "/1/folders/new",
+                                "name": "Create a Folder",
+                                "sampleData": {
+                                    "title": "",
+                                    "parent_id": "",
+                                    "color": "",
+                                    "member_ids": "",
+                                    "folder_id": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "folder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true
+                            },
+                            {
+                                "id": "update_folder",
+                                "url": "/1/folders/update",
+                                "name": "Change a Folder",
+                                "method": "POST",
+                                "sampleData": {
+                                    "folder_id": "",
+                                    "title": "",
+                                    "color": ""
+                                }
+                            },
+                            {
+                                "id": "add_members",
+                                "url": "/1/folders/add-members",
+                                "name": "Add People or Folders",
+                                "sampleData": {
+                                    "folder_id": "",
+                                    "member_ids": ""
+                                },
+                                "method": "POST"
+                            },
+                            {
+                                "id": "remove_members",
+                                "url": "/1/folders/remove-members",
+                                "name": "Remove People or Folders",
+                                "sampleData": {
+                                    "folder_id": "",
+                                    "member_ids": ""
+                                },
+                                "method": "POST"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,2960 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "allowUndefinedResource": true,
+        "paging": {
+            "pagingMethod": "token",
+            "nextPagePath": "nextPageToken",
+            "pageArgument": "pageToken"
+        },
+        "versions": [
+            {
+                "version": "v2.1",
+                "resources": [
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "endpoints": [
+                            {
+                                "id": "authinfo",
+                                "name": "Auth Info",
+                                "url": "/content/v2.1/accounts/authinfo",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "get",
+                                "url": "/content/v2.1/:_merchantId/accounts/:_accountId",
+                                "name": "Get",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account."
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "description": "The ID of the account."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "listlinks",
+                                "name": "List Links",
+                                "url": "/content/v2.1/:_merchantId/accounts/:_accountId/listlinks",
+                                "resourcePath": "links",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account."
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "description": "The ID of the account for which to list links/content/v2.1/{merchantId}/accounts/{accountId}/listlinks."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "account_statuses",
+                        "name": "Account Statuses",
+                        "endpoints": [
+                            {
+                                "id": "get_single_account_status",
+                                "url": "/content/v2.1/:_merchantId/accountstatuses/:_accountId",
+                                "name": "Get",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account."
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "description": "The ID of the account."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "destinations",
+                                        "name": "Destinations",
+                                        "description": "If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination."
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "account_tax",
+                        "name": "Account Tax",
+                        "endpoints": [
+                            {
+                                "id": "get_single_account_tax",
+                                "url": "/content/v2.1/:_merchantId/accounttax/:_accountId",
+                                "name": "Get",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account."
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "description": "The ID of the account for which to get/update account tax settings."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "datafeeds",
+                        "name": "Datafeeds",
+                        "endpoints": [
+                            {
+                                "id": "list_datafeeds",
+                                "url": "/content/v2.1/:_merchantId/datafeeds",
+                                "name": "List",
+                                "resourcePath": "resources",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the datafeeds. This account cannot be a multi-client account.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_datafeeds",
+                                "url": "/content/v2.1/:_merchantId/datafeeds/:_datafeedId",
+                                "name": "Get",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account that manages the datafeed. This account cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "datafeedId",
+                                        "name": "Datafeed ID",
+                                        "required": true,
+                                        "description": "The ID of the datafeed."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "datafeedstatuses",
+                        "name": "Datafeeds Statuses",
+                        "endpoints": [
+                            {
+                                "id": "list_datafeeds_status",
+                                "url": "/content/v2.1/:_merchantId/datafeedstatuses",
+                                "name": "List",
+                                "resourcePath": "resources",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the datafeeds. This account cannot be a multi-client account.",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_datafeed_status",
+                                "url": "/content/v2.1/:_merchantId/datafeedstatuses/:_datafeedId",
+                                "name": "Get",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account that manages the datafeed. This account cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "datafeedId",
+                                        "name": "Datafeed ID",
+                                        "required": true,
+                                        "description": "The ID of the datafeed."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    },
+                                    {
+                                        "id": "country",
+                                        "name": "Country",
+                                        "description": "The country for which to get the datafeed status. If this parameter is provided then language must also be provided. Note that this parameter is required for feeds targeting multiple countries and languages, since a feed may have a different status for each target."
+                                    },
+                                    {
+                                        "id": "language",
+                                        "name": "Language",
+                                        "description": "The language for which to get the datafeed status. If this parameter is provided then country must also be provided. Note that this parameter is required for feeds targeting multiple countries and languages, since a feed may have a different status for each target."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "lia_settings",
+                        "name": "LIA Settings",
+                        "endpoints": [
+                            {
+                                "id": "get_single_lia_settings",
+                                "name": "Get",
+                                "url": "/content/v2.1/:_merchantId/liasettings/:_accountId",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account."
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "description": "The ID of the account for which to get or update LIA settings."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_accessible_gmb_accounts",
+                                "name": "Get Accessible GMB Accounts",
+                                "url": "/content/v2.1/:_merchantId/liasettings/:_accountId/accessiblegmbaccounts",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account."
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "required": true,
+                                        "description": "The ID of the account for which to retrieve accessible Google My Business accounts."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "listposdataproviders",
+                                "name": "List POS Data Providers",
+                                "url": "/content/v2.1/liasettings/posdataproviders",
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "endpoints": [
+                            {
+                                "id": "list_products",
+                                "url": "/content/v2.1/:_merchantId/products",
+                                "name": "List products",
+                                "resourcePath": "resources",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that contains the products. This account cannot be a multi-client account.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_product",
+                                "url": "/content/v2.1/:_merchantId/products/:_productId",
+                                "name": "Get a product",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "productId",
+                                        "name": "Product ID",
+                                        "required": true,
+                                        "description": "The REST ID of the product."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "product_statuses",
+                        "name": "Product Statuses",
+                        "endpoints": [
+                            {
+                                "id": "list_product_status",
+                                "url": "/content/v2.1/:_merchantId/productstatuses",
+                                "name": "List",
+                                "resourcePath": "resources",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    },
+                                    {
+                                        "id": "destinations",
+                                        "name": "Destinations",
+                                        "description": "If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_product_status",
+                                "url": "/content/v2.1/:_merchantId/productstatuses/:_productId",
+                                "name": "Get",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "productId",
+                                        "name": "Product ID",
+                                        "required": true,
+                                        "description": "The REST ID of the product."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    },
+                                    {
+                                        "id": "destinations",
+                                        "name": "Destinations",
+                                        "description": "If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pubsubnotificationsettings",
+                        "name": "Pubsub Notification Settings",
+                        "endpoints": [
+                            {
+                                "id": "get_pubsubnotificationsettings",
+                                "name": "Get",
+                                "url": "/v2.1/:_merchantId/pubsubnotificationsettings",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account for which to get pubsub notification settings."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shippingsettings",
+                        "name": "Shipping Settings",
+                        "endpoints": [
+                            {
+                                "id": "get_shippingsettings",
+                                "name": "Get",
+                                "url": "/v2.1/:_merchantId/shippingsettings/:_accountId",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account."
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account Id",
+                                        "required": true,
+                                        "description": "The ID of the account for which to get/update shipping settings."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getsupportedcarriers",
+                                "name": "Get Supported Carriers",
+                                "url": "/v2.1/:_merchantId/supportedCarriers",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "carriers",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account for which to retrieve the supported carriers."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getsupportedholidays",
+                                "name": "Get Supported Holidays",
+                                "url": "/v2.1/:_merchantId/supportedHolidays",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "holidays",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account for which to retrieve the supported holidays."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getsupportedpickupservices",
+                                "name": "Get Supported Pickup Services",
+                                "url": "/v2.1/:_merchantId/supportedPickupServices",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "pickupServices",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account for which to retrieve the supported pickup services."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orderreturns",
+                        "name": "Order Returns",
+                        "endpoints": [
+                            {
+                                "id": "list_orderreturns",
+                                "name": "list",
+                                "url": "/content/v2.1/:_merchantId/orderreturns",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "resourcePath": "resources",
+                                "delta": {
+                                    "defaults": {
+                                        "createdStartDate": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    },
+                                    {
+                                        "id": "orderBy",
+                                        "name": "Order By",
+                                        "description": "Return the results in the specified order.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "RETURN_CREATION_TIME_DESC",
+                                            "RETURN_CREATION_TIME_ASC"
+                                        ]
+                                    },
+                                    {
+                                        "id": "createdStartDate",
+                                        "name": "Created Start Date",
+                                        "description": "Obtains order returns created after this date (inclusively), in ISO 8601 format."
+                                    },
+                                    {
+                                        "id": "createdEndDate",
+                                        "name": "Created End Date",
+                                        "description": "Obtains order returns created after this date (inclusively), in ISO 8601 format."
+                                    },
+                                    {
+                                        "id": "shipmentStatus",
+                                        "name": "Shipment Status",
+                                        "description": "Obtains order returns that match any shipment status provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment statuses.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "NEW",
+                                            "IN_PROGRESS",
+                                            "PROCESSED"
+                                        ]
+                                    },
+                                    {
+                                        "id": "shipmentTypes",
+                                        "name": "Shipment Types",
+                                        "description": "Obtains order returns that match any shipment type provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment types.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "BY_MAIL",
+                                            "RETURNLESS",
+                                            "CONTACT_CUSTOMER_SUPPORT"
+                                        ]
+                                    },
+                                    {
+                                        "id": "shipmentStates",
+                                        "name": "Shipment States",
+                                        "description": "Obtains order returns that match any shipment state provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment states.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "NEW",
+                                            "SHIPPED",
+                                            "COMPLETED",
+                                            "UNDELIVERABLE"
+                                        ]
+                                    },
+                                    {
+                                        "id": "acknowledged",
+                                        "name": "Acknowledged",
+                                        "description": "Obtains order returns that match the acknowledgement status. When set to true, obtains order returns that have been acknowledged. When false, obtains order returns that have not been acknowledged. When not provided, obtains order returns regardless of their acknowledgement status. We recommend using this filter set to false, in conjunction with the acknowledge call, such that only un-acknowledged order returns are returned."
+                                    },
+                                    {
+                                        "id": "googleOrderIds",
+                                        "name": "Google Order Ids",
+                                        "description": "Obtains order returns with the specified order ids. If this parameter is provided, createdStartDate, createdEndDate, shipmentType, shipmentStatus, shipmentState and acknowledged parameters must be not set. Note: if googleOrderId and shipmentTrackingNumber parameters are provided, the obtained results will include all order returns that either match the specified order id or the specified tracking number."
+                                    },
+                                    {
+                                        "id": "shipmentTrackingNumbers",
+                                        "name": "Shipment Tracking Numbers",
+                                        "description": "Obtains order returns with the specified tracking numbers. If this parameter is provided, createdStartDate, createdEndDate, shipmentType, shipmentStatus, shipmentState and acknowledged parameters must be not set. Note: if googleOrderId and shipmentTrackingNumber parameters are provided, the obtained results will include all order returns that either match the specified order id or the specified tracking number."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_test_orderreturns",
+                                "name": "list for Test Order Return",
+                                "url": "/content/v2.1sandbox/:_merchantId/orderreturns",
+                                "resourcePath": "resources",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "createdStartDate": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    },
+                                    {
+                                        "id": "orderBy",
+                                        "name": "Order By",
+                                        "description": "Return the results in the specified order.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "RETURN_CREATION_TIME_DESC",
+                                            "RETURN_CREATION_TIME_ASC"
+                                        ]
+                                    },
+                                    {
+                                        "id": "createdStartDate",
+                                        "name": "Created Start Date",
+                                        "description": "Obtains order returns created after this date (inclusively), in ISO 8601 format."
+                                    },
+                                    {
+                                        "id": "createdEndDate",
+                                        "name": "Created End Date",
+                                        "description": "Obtains order returns created after this date (inclusively), in ISO 8601 format."
+                                    },
+                                    {
+                                        "id": "shipmentStatus",
+                                        "name": "Shipment Status",
+                                        "description": "Obtains order returns that match any shipment status provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment statuses.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "NEW",
+                                            "IN_PROGRESS",
+                                            "PROCESSED"
+                                        ]
+                                    },
+                                    {
+                                        "id": "shipmentTypes",
+                                        "name": "Shipment Types",
+                                        "description": "Obtains order returns that match any shipment type provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment types.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "BY_MAIL",
+                                            "RETURNLESS",
+                                            "CONTACT_CUSTOMER_SUPPORT"
+                                        ]
+                                    },
+                                    {
+                                        "id": "shipmentStates",
+                                        "name": "Shipment States",
+                                        "description": "Obtains order returns that match any shipment state provided in this parameter. When this parameter is not provided, order returns are obtained regardless of their shipment states.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "NEW",
+                                            "SHIPPED",
+                                            "COMPLETED",
+                                            "UNDELIVERABLE"
+                                        ]
+                                    },
+                                    {
+                                        "id": "acknowledged",
+                                        "name": "Acknowledged",
+                                        "description": "Obtains order returns that match the acknowledgement status. When set to true, obtains order returns that have been acknowledged. When false, obtains order returns that have not been acknowledged. When not provided, obtains order returns regardless of their acknowledgement status. We recommend using this filter set to false, in conjunction with the acknowledge call, such that only un-acknowledged order returns are returned."
+                                    },
+                                    {
+                                        "id": "googleOrderIds",
+                                        "name": "Google Order Ids",
+                                        "description": "Obtains order returns with the specified order ids. If this parameter is provided, createdStartDate, createdEndDate, shipmentType, shipmentStatus, shipmentState and acknowledged parameters must be not set. Note: if googleOrderId and shipmentTrackingNumber parameters are provided, the obtained results will include all order returns that either match the specified order id or the specified tracking number."
+                                    },
+                                    {
+                                        "id": "shipmentTrackingNumbers",
+                                        "name": "Shipment Tracking Numbers",
+                                        "description": "Obtains order returns with the specified tracking numbers. If this parameter is provided, createdStartDate, createdEndDate, shipmentType, shipmentStatus, shipmentState and acknowledged parameters must be not set. Note: if googleOrderId and shipmentTrackingNumber parameters are provided, the obtained results will include all order returns that either match the specified order id or the specified tracking number."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_orderreturns",
+                                "name": "Get",
+                                "url": "/content/v2.1/:_merchantId/orderreturns/:_returnId",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "returnId",
+                                        "name": "Return Id",
+                                        "description": "Merchant order return ID generated by Google.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_test_orderreturns",
+                                "name": "Get a single Test Order Return",
+                                "url": "/content/v2.1sandbox/:_merchantId/orderreturns/:_returnId",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "returnId",
+                                        "name": "Return Id",
+                                        "description": "Merchant order return ID generated by Google.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "endpoints": [
+                            {
+                                "id": "list_orders",
+                                "url": "/content/v2.1/:_merchantId/orders",
+                                "name": "List",
+                                "resourcePath": "resources",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "placedDateStart": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    },
+                                    {
+                                        "id": "acknowledged",
+                                        "name": "Acknowledged",
+                                        "description": "Obtains orders that match the acknowledgement status. When set to true, obtains orders that have been acknowledged. When false, obtains orders that have not been acknowledged. We recommend using this filter set to false, in conjunction with the acknowledge call, such that only un-acknowledged orders are returned.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderBy",
+                                        "name": "Order By",
+                                        "description": "Order results by placement date in descending or ascending order.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "placedDateAsc",
+                                            "placedDateDesc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "placedDateEnd",
+                                        "name": "Placed Date End",
+                                        "description": "Obtains orders placed before this date (exclusively), in ISO 8601 format.",
+                                        "fieldType": "date"
+                                    },
+                                    {
+                                        "id": "placedDateStart",
+                                        "name": "Placed Date Start",
+                                        "fieldType": "date",
+                                        "description": "Obtains orders placed before this date (inclusively), in ISO 8601 format."
+                                    },
+                                    {
+                                        "id": "statuses",
+                                        "name": "statuses",
+                                        "description": "Obtains orders that match any of the specified statuses. Multiple values can be specified with comma separation. Additionally, please note that active is a shortcut for pendingShipment and partiallyShipped, and completed is a shortcut for shipped , partiallyDelivered, delivered, partiallyReturned, returned, and canceled.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ACTIVE",
+                                            "COMPLETED",
+                                            "CANCELED",
+                                            "IN_PROGRESS",
+                                            "PENDING_SHIPMENT",
+                                            "PARTIALLY_SHIPPED",
+                                            "SHIPPED",
+                                            "PARTIALLY_DELIVERED",
+                                            "DELIVERED",
+                                            "PARTIALLY_RETURNED",
+                                            "RETURNED"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_test_orders",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders",
+                                "name": "List Test Orders",
+                                "resourcePath": "resources",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "placedDateStart": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    },
+                                    {
+                                        "id": "acknowledged",
+                                        "name": "Acknowledged",
+                                        "description": "Obtains orders that match the acknowledgement status. When set to true, obtains orders that have been acknowledged. When false, obtains orders that have not been acknowledged. We recommend using this filter set to false, in conjunction with the acknowledge call, such that only un-acknowledged orders are returned.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "orderBy",
+                                        "name": "Order By",
+                                        "description": "Order results by placement date in descending or ascending order.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "placedDateAsc",
+                                            "placedDateDesc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "placedDateEnd",
+                                        "name": "Placed Date End",
+                                        "description": "Obtains orders placed before this date (exclusively), in ISO 8601 format.",
+                                        "fieldType": "date"
+                                    },
+                                    {
+                                        "id": "placedDateStart",
+                                        "name": "Placed Date Start",
+                                        "fieldType": "date",
+                                        "description": "Obtains orders placed before this date (inclusively), in ISO 8601 format."
+                                    },
+                                    {
+                                        "id": "statuses",
+                                        "name": "statuses",
+                                        "description": "Obtains orders that match any of the specified statuses. Multiple values can be specified with comma separation. Additionally, please note that active is a shortcut for pendingShipment and partiallyShipped, and completed is a shortcut for shipped , partiallyDelivered, delivered, partiallyReturned, returned, and canceled.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ACTIVE",
+                                            "COMPLETED",
+                                            "CANCELED",
+                                            "IN_PROGRESS",
+                                            "PENDING_SHIPMENT",
+                                            "PARTIALLY_SHIPPED",
+                                            "SHIPPED",
+                                            "PARTIALLY_DELIVERED",
+                                            "DELIVERED",
+                                            "PARTIALLY_RETURNED",
+                                            "RETURNED"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_order",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId",
+                                "name": "Get",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_test_single_order",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId",
+                                "name": "Get a single Test Order",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_by_merchant_orderid",
+                                "url": "/content/v2.1/:_merchantId/ordersbymerchantid/:_merchantOrderId",
+                                "name": "Get by Merchant Order Id",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "merchantOrderId",
+                                        "name": "Merchant Order Id",
+                                        "description": "The merchant order ID to be looked for.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_by_merchant_orderid_test_order",
+                                "url": "/content/v2.1sandbox/:_merchantId/ordersbymerchantid/:_merchantOrderId",
+                                "name": "Get by Merchant Order Id for Test Order",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "merchantOrderId",
+                                        "name": "Merchant Order Id",
+                                        "description": "The merchant order ID to be looked for.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "gettestordertemplate",
+                                "url": "/content/v2.1sandbox/:_merchantId/testordertemplates/:_templateName",
+                                "name": "Get Test Order Template",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that should manage the order. This cannot be a multi-client account.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "templateName",
+                                        "name": "Template Name",
+                                        "description": "The name of the template to retrieve.",
+                                        "fieldType": "options",
+                                        "options": [
+                                            "TEMPLATE1",
+                                            "TEMPLATE2",
+                                            "TEMPLATE1B",
+                                            "TEMPLATE1A",
+                                            "TEMPLATE3"
+                                        ],
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "collections",
+                        "name": "Collections",
+                        "endpoints": [
+                            {
+                                "id": "list_collections",
+                                "url": "/content/v2.1/:_merchantId/collections",
+                                "name": "List collections",
+                                "resourcePath": "resources",
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that contains the products. This account cannot be a multi-client account.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "pageSize",
+                                        "name": "Page size",
+                                        "description": "The maximum number of collections to return in the response, used for paging. Defaults to 50; values above 1000 will be coerced to 1000."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_collection",
+                                "url": "/content/v2.1/:_merchantId/collections/:_collectionId",
+                                "name": "Get a single collection",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "collectionId",
+                                        "name": "Collection ID",
+                                        "required": true,
+                                        "description": "The REST ID of the collection."
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "description": "Selector specifying a subset of fields to include in the response."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/content/v2/:_merchantId/accounts",
+            "/content/v2/:_merchantId/accounts/:_accountId",
+            "/content/v2/:_merchantId/datafeeds",
+            "/content/v2/:_merchantId/datafeeds/:_datafeedId",
+            "/content/v2/:_merchantId/products",
+            "/content/v2/:_merchantId/products/:_productId"
+        ],
+        "versions": [
+            {
+                "version": "v2.1",
+                "resources": [
+                    {
+                        "id": "account_tax",
+                        "name": "Account Tax",
+                        "operations": [
+                            {
+                                "id": "update_account_tax",
+                                "url": "/content/v2.1/:_merchantId/accounttax/:_accountId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "accountId": 126579608,
+                                    "rules": [
+                                        {
+                                            "country": "US",
+                                            "locationId": 21133,
+                                            "useGlobalRate": true,
+                                            "shippingTaxed": true,
+                                            "ratePercent": ""
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account Id",
+                                        "description": "The ID of the account for which to get/update account tax settings.",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "accountId"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "datafeeds",
+                        "name": "Datafeeds",
+                        "sampleData": {
+                            "contentType": "",
+                            "fileName": "",
+                            "name": "",
+                            "attributeLanguage": "",
+                            "fetchSchedule": {
+                                "dayOfMonth": 0,
+                                "fetchUrl": "",
+                                "hour": 0,
+                                "minuteOfHour": 0,
+                                "password": "",
+                                "paused": false,
+                                "timeZone": "",
+                                "username": "",
+                                "weekday": ""
+                            },
+                            "format": {
+                                "columnDelimiter": "",
+                                "fileEncoding": "",
+                                "quotingMode": ""
+                            },
+                            "id": 0,
+                            "kind": "content#datafeed",
+                            "targets": [
+                                {
+                                    "country": "",
+                                    "excludedDestinations": [],
+                                    "includedDestinations": [],
+                                    "language": ""
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_datafeeds",
+                                "url": "/content/v2.1/:_merchantId/datafeeds",
+                                "name": "Insert",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the datafeed. This account cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "contentType",
+                                    "fileName",
+                                    "name"
+                                ]
+                            },
+                            {
+                                "id": "update_datafeeds",
+                                "url": "/content/v2.1/:_merchantId/datafeeds/:_datafeedId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the datafeed. This account cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "datafeedId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "contentType",
+                                    "fileName",
+                                    "name",
+                                    "id"
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_datafeeds",
+                                "url": [
+                                    "/content/v2.1/:_merchantId/datafeeds/:_datafeedId",
+                                    "/content/v2.1/:_merchantId/datafeeds"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "description": "The ID of the account that manages the datafeed. This account cannot be a multi-client account.",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "datafeedId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "contentType",
+                                    "fileName",
+                                    "name",
+                                    "id"
+                                ]
+                            },
+                            {
+                                "id": "delete_datafeeds",
+                                "url": "/content/v2.1/:_merchantId/datafeeds/:_datafeedId",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the datafeed. This account cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "datafeedId",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "lia_settings",
+                        "name": "LIA Settings",
+                        "operations": [
+                            {
+                                "id": "update_lia_settings",
+                                "url": "/content/v2.1/:_merchantId/liasettings/:_accountId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "accountId": 126579608,
+                                    "countrySettings": [
+                                        {
+                                            "country": "In",
+                                            "inventory": {
+                                                "status": "inactive",
+                                                "inventoryVerificationContactName": "",
+                                                "inventoryVerificationContactEmail": "",
+                                                "inventoryVerificationContactStatus": ""
+                                            },
+                                            "about": {
+                                                "status": "",
+                                                "url": ""
+                                            },
+                                            "hostedLocalStorefrontActive": false,
+                                            "onDisplayToOrder": {
+                                                "shippingCostPolicyUrl": "",
+                                                "status": ""
+                                            },
+                                            "posDataProvider": {
+                                                "posDataProviderId": 0,
+                                                "posExternalAccountId": ""
+                                            },
+                                            "storePickupActive": false
+                                        }
+                                    ],
+                                    "kind": "content#liaSettings"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account Id",
+                                        "description": "The ID of the account for which to get or update LIA settings.",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "accountId"
+                                ]
+                            },
+                            {
+                                "id": "requestgmbaccess",
+                                "url": "/content/v2.1/:_merchantId/liasettings/:_accountId/requestgmbaccess?gmbEmail=:_gmbEmail",
+                                "name": "Request GMB Access",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account Id",
+                                        "description": "The ID of the account for which GMB access is requested.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "gmbEmail",
+                                        "name": "GMB Email",
+                                        "description": "The email of the Google My Business account.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "sampleData": {
+                            "channel": "",
+                            "contentLanguage": "",
+                            "offerId": "",
+                            "targetCountry": "",
+                            "additionalImageLinks": [],
+                            "adsGrouping": "",
+                            "adsLabels": [],
+                            "adsRedirect": "",
+                            "adult": false,
+                            "ageGroup": "",
+                            "availability": "",
+                            "availabilityDate": "",
+                            "brand": "",
+                            "color": "",
+                            "condition": "",
+                            "costOfGoodsSold": {
+                                "currency": "",
+                                "value": ""
+                            },
+                            "customAttributes": [
+                                {
+                                    "name": "",
+                                    "value": ""
+                                }
+                            ],
+                            "customLabel0": "",
+                            "customLabel1": "",
+                            "customLabel2": "",
+                            "customLabel3": "",
+                            "customLabel4": "",
+                            "description": "",
+                            "displayAdsId": "",
+                            "displayAdsLink": "",
+                            "displayAdsSimilarIds": [],
+                            "displayAdsTitle": "",
+                            "displayAdsValue": 0,
+                            "energyEfficiencyClass": "",
+                            "excludedDestinations": [],
+                            "expirationDate": "",
+                            "gender": "",
+                            "googleProductCategory": "",
+                            "gtin": "",
+                            "id": "",
+                            "identifierExists": false,
+                            "imageLink": "",
+                            "includedDestinations": [],
+                            "installment": {
+                                "amount": {
+                                    "currency": "",
+                                    "value": ""
+                                },
+                                "months": 0
+                            },
+                            "isBundle": false,
+                            "itemGroupId": "",
+                            "kind": "content#product",
+                            "link": "",
+                            "loyaltyPoints": {
+                                "name": "",
+                                "pointsValue": 0,
+                                "ratio": 0
+                            },
+                            "material": "",
+                            "maxEnergyEfficiencyClass": "",
+                            "maxHandlingTime": 0,
+                            "minEnergyEfficiencyClass": "",
+                            "minHandlingTime": 0,
+                            "mobileLink": "",
+                            "mpn": "",
+                            "multipack": 0,
+                            "pattern": "",
+                            "price": {
+                                "currency": "",
+                                "value": ""
+                            },
+                            "productTypes": [],
+                            "promotionIds": [],
+                            "salePrice": {
+                                "currency": "",
+                                "value": ""
+                            },
+                            "salePriceEffectiveDate": "",
+                            "sellOnGoogleQuantity": 0,
+                            "shipping": [
+                                {
+                                    "country": "",
+                                    "locationGroupName": "",
+                                    "locationId": 0,
+                                    "postalCode": "",
+                                    "price": {
+                                        "currency": "",
+                                        "value": ""
+                                    },
+                                    "region": "",
+                                    "service": ""
+                                }
+                            ],
+                            "shippingHeight": {
+                                "unit": "",
+                                "value": 0
+                            },
+                            "shippingLabel": "",
+                            "shippingLength": {
+                                "value": 0,
+                                "unit": ""
+                            },
+                            "shippingWeight": {
+                                "unit": "",
+                                "value": 0
+                            },
+                            "shippingWidth": {
+                                "unit": "",
+                                "value": 0
+                            },
+                            "sizeSystem": "",
+                            "sizeType": "",
+                            "sizes": [],
+                            "source": "",
+                            "taxCategory": "",
+                            "taxes": [
+                                {
+                                    "country": "",
+                                    "locationId": 0,
+                                    "postalCode": "",
+                                    "rate": 0,
+                                    "region": "",
+                                    "taxShip": false
+                                }
+                            ],
+                            "title": "",
+                            "transitTimeLabel": "",
+                            "unitPricingBaseMeasure": {
+                                "unit": "",
+                                "value": 0
+                            },
+                            "unitPricingMeasure": {
+                                "unit": "",
+                                "value": 0
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "insert_product",
+                                "url": "/content/v2.1/:_merchantId/products",
+                                "name": "Insert product",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "channel",
+                                    "contentLanguage",
+                                    "offerId",
+                                    "targetCountry"
+                                ]
+                            },
+                            {
+                                "id": "delete_products",
+                                "url": "/content/v2.1/:_merchantId/products/:_productId",
+                                "name": "Delete product",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "productId",
+                                        "required": true,
+                                        "in": "path",
+                                        "name": "Product Id",
+                                        "description": "The REST ID of the product."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_products",
+                                "url": "/content/v2.1/:_merchantId/products/:_productId",
+                                "name": "Update product",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "productId",
+                                        "required": true,
+                                        "in": "path",
+                                        "name": "Product Id",
+                                        "isIdentifier": true,
+                                        "description": "The REST ID of the product."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "insert_product_custombatch",
+                                "url": "/content/v2.1/products/batch",
+                                "name": "Insert product custom batch",
+                                "method": "POST",
+                                "sampleData": {
+                                    "entries": [
+                                        {
+                                            "batchId": 1,
+                                            "merchantId": 123,
+                                            "method": "",
+                                            "kind": "string",
+                                            "product": {
+                                                "channel": "",
+                                                "contentLanguage": "",
+                                                "offerId": "",
+                                                "targetCountry": "",
+                                                "additionalImageLinks": [],
+                                                "adsGrouping": "",
+                                                "adsLabels": [],
+                                                "adsRedirect": "",
+                                                "adult": false,
+                                                "ageGroup": "",
+                                                "availability": "",
+                                                "availabilityDate": "",
+                                                "brand": "",
+                                                "color": "",
+                                                "condition": "",
+                                                "costOfGoodsSold": {
+                                                    "currency": "",
+                                                    "value": ""
+                                                },
+                                                "customAttributes": [
+                                                    {
+                                                        "name": "",
+                                                        "value": ""
+                                                    }
+                                                ],
+                                                "customLabel0": "",
+                                                "customLabel1": "",
+                                                "customLabel2": "",
+                                                "customLabel3": "",
+                                                "customLabel4": "",
+                                                "description": "",
+                                                "displayAdsId": "",
+                                                "displayAdsLink": "",
+                                                "displayAdsSimilarIds": [],
+                                                "displayAdsTitle": "",
+                                                "displayAdsValue": 0,
+                                                "energyEfficiencyClass": "",
+                                                "excludedDestinations": [],
+                                                "expirationDate": "",
+                                                "gender": "",
+                                                "googleProductCategory": "",
+                                                "gtin": "",
+                                                "id": "",
+                                                "identifierExists": false,
+                                                "imageLink": "",
+                                                "includedDestinations": [],
+                                                "installment": {
+                                                    "amount": {
+                                                        "currency": "",
+                                                        "value": ""
+                                                    },
+                                                    "months": 0
+                                                },
+                                                "isBundle": false,
+                                                "itemGroupId": "",
+                                                "kind": "content#product",
+                                                "link": "",
+                                                "loyaltyPoints": {
+                                                    "name": "",
+                                                    "pointsValue": 0,
+                                                    "ratio": 0
+                                                },
+                                                "material": "",
+                                                "maxEnergyEfficiencyClass": "",
+                                                "maxHandlingTime": 0,
+                                                "minEnergyEfficiencyClass": "",
+                                                "minHandlingTime": 0,
+                                                "mobileLink": "",
+                                                "mpn": "",
+                                                "multipack": 0,
+                                                "pattern": "",
+                                                "price": {
+                                                    "currency": "",
+                                                    "value": ""
+                                                },
+                                                "productTypes": [],
+                                                "promotionIds": [],
+                                                "salePrice": {
+                                                    "currency": "",
+                                                    "value": ""
+                                                },
+                                                "salePriceEffectiveDate": "",
+                                                "sellOnGoogleQuantity": 0,
+                                                "shipping": [
+                                                    {
+                                                        "country": "",
+                                                        "locationGroupName": "",
+                                                        "locationId": 0,
+                                                        "postalCode": "",
+                                                        "price": {
+                                                            "currency": "",
+                                                            "value": ""
+                                                        },
+                                                        "region": "",
+                                                        "service": ""
+                                                    }
+                                                ],
+                                                "shippingHeight": {
+                                                    "unit": "",
+                                                    "value": 0
+                                                },
+                                                "shippingLabel": "",
+                                                "shippingLength": {
+                                                    "value": 0,
+                                                    "unit": ""
+                                                },
+                                                "shippingWeight": {
+                                                    "unit": "",
+                                                    "value": 0
+                                                },
+                                                "shippingWidth": {
+                                                    "unit": "",
+                                                    "value": 0
+                                                },
+                                                "sizeSystem": "",
+                                                "sizeType": "",
+                                                "sizes": [],
+                                                "source": "",
+                                                "taxCategory": "",
+                                                "taxes": [
+                                                    {
+                                                        "country": "",
+                                                        "locationId": 0,
+                                                        "postalCode": "",
+                                                        "rate": 0,
+                                                        "region": "",
+                                                        "taxShip": false
+                                                    }
+                                                ],
+                                                "title": "",
+                                                "transitTimeLabel": "",
+                                                "unitPricingBaseMeasure": {
+                                                    "unit": "",
+                                                    "value": 0
+                                                },
+                                                "unitPricingMeasure": {
+                                                    "unit": "",
+                                                    "value": 0
+                                                }
+                                            },
+                                            "errors": {
+                                                "errors": [
+                                                    {
+                                                        "domain": "string",
+                                                        "reason": "string",
+                                                        "message": "string"
+                                                    }
+                                                ],
+                                                "code": 1,
+                                                "message": "string"
+                                            }
+                                        }
+                                    ],
+                                    "kind": "string"
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [],
+                                "requiredMappings": [
+                                    "entries[*].batchId",
+                                    "entries[*].merchantId",
+                                    "entries[*].method",
+                                    "entries[*].product.channel",
+                                    "entries[*].product.offerId",
+                                    "entries[*].product.contentLanguage",
+                                    "entries[*].product.targetCountry"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pubsubnotificationsettings",
+                        "name": "Pubsub Notification Settings",
+                        "sampleData": {
+                            "cloudTopicName": "Test",
+                            "registeredEvents": [],
+                            "kind": "content#pubsubNotificationSettings"
+                        },
+                        "operations": [
+                            {
+                                "id": "update_pubsubnotificationsettings",
+                                "url": "/content/v2.1/:_merchantId/pubsubnotificationsettings",
+                                "name": "Update",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "cloudTopicName"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "operations": [
+                            {
+                                "id": "acknowlegde_an_order",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/acknowledge",
+                                "name": "Acknowledge",
+                                "sampleData": {
+                                    "operationId": "string"
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "acknowlegde_an_test_order",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/acknowledge",
+                                "name": "Acknowledge Test Order",
+                                "sampleData": {
+                                    "operationId": "string"
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the Test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "advance_an_test_order",
+                                "url": "/content/v2.1sandbox/:_merchantId/testorders/:_orderId/advance",
+                                "name": "Advance Test Order",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the Test order to modify."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_an_order",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/cancel",
+                                "name": "Cancel",
+                                "sampleData": {
+                                    "operationId": "string",
+                                    "reason": "string",
+                                    "reasonText": "string"
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order to cancel."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "cancel_test_order_by_customer",
+                                "url": "/content/v2.1sandbox/:_merchantId/testorders/:_orderId/cancelByCustomer",
+                                "name": "Cancel Test Order by Customer",
+                                "sampleData": {
+                                    "reason": "string"
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order to cancel."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "reason"
+                                ]
+                            },
+                            {
+                                "id": "cancel_line_item",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/cancelLineItem",
+                                "name": "Cancel Line Item",
+                                "sampleData": {
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "productId": "",
+                                    "quantity": 0,
+                                    "reason": "",
+                                    "reasonText": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId",
+                                    "quantity",
+                                    "reason"
+                                ]
+                            },
+                            {
+                                "id": "cancel_line_item_test_order",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/cancelLineItem",
+                                "name": "Cancel Line Item for Test Order",
+                                "sampleData": {
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "productId": "",
+                                    "quantity": 0,
+                                    "reason": "",
+                                    "reasonText": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId",
+                                    "quantity",
+                                    "reason"
+                                ]
+                            },
+                            {
+                                "id": "create_test_order",
+                                "url": "/content/v2.1sandbox/:_merchantId/testorders",
+                                "name": "Create Test Order",
+                                "method": "POST",
+                                "sampleData": {
+                                    "country": "",
+                                    "templateName": ""
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that should manage the order. This cannot be a multi-client account."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "templateName"
+                                ]
+                            },
+                            {
+                                "id": "create_test_return",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/testreturn",
+                                "name": "Create test return",
+                                "sampleData": {
+                                    "items": [
+                                        {
+                                            "lineItemId": "string",
+                                            "quantity": "unsigned integer"
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "items[*].lineItemId",
+                                    "items[*].quantity"
+                                ]
+                            },
+                            {
+                                "id": "reject_return_lineitem",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/rejectReturnLineItem",
+                                "name": "Reject Return Line Item",
+                                "sampleData": {
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "productId": "",
+                                    "quantity": 0,
+                                    "reason": "",
+                                    "reasonText": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId",
+                                    "quantity",
+                                    "reason"
+                                ]
+                            },
+                            {
+                                "id": "reject_test_order_return_lineitem",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/rejectReturnLineItem",
+                                "name": "Reject Return Line Item for Test Order",
+                                "sampleData": {
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "productId": "",
+                                    "quantity": 0,
+                                    "reason": "",
+                                    "reasonText": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId",
+                                    "quantity",
+                                    "reason"
+                                ]
+                            },
+                            {
+                                "id": "refund_return_line_item",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/returnRefundLineItem",
+                                "name": "Return Refund LineItem",
+                                "sampleData": {
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "priceAmount": {
+                                        "currency": "",
+                                        "value": ""
+                                    },
+                                    "productId": "",
+                                    "quantity": 0,
+                                    "reason": "",
+                                    "reasonText": "",
+                                    "taxAmount": {
+                                        "currency": "",
+                                        "value": ""
+                                    }
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId",
+                                    "quantity",
+                                    "reason"
+                                ]
+                            },
+                            {
+                                "id": "refund__test_order_return_line_item",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/returnRefundLineItem",
+                                "name": "Return Refund LineItem for Test Order",
+                                "sampleData": {
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "priceAmount": {
+                                        "currency": "",
+                                        "value": ""
+                                    },
+                                    "productId": "",
+                                    "quantity": 0,
+                                    "reason": "",
+                                    "reasonText": "",
+                                    "taxAmount": {
+                                        "currency": "",
+                                        "value": ""
+                                    }
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId",
+                                    "quantity",
+                                    "reason"
+                                ]
+                            },
+                            {
+                                "id": "set_lineitem_metadata",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/setLineItemMetadata",
+                                "name": "Set Line Item Metadata",
+                                "sampleData": {
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "annotations": [
+                                        {
+                                            "key": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "productId": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId",
+                                    "annotations[*].key",
+                                    "annotations[*].value"
+                                ]
+                            },
+                            {
+                                "id": "set_test_order_lineitem_metadata",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/setLineItemMetadata",
+                                "name": "Set Line Item Metadata for Test Order",
+                                "sampleData": {
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "annotations": [
+                                        {
+                                            "key": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "productId": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId",
+                                    "annotations[*].key",
+                                    "annotations[*].value"
+                                ]
+                            },
+                            {
+                                "id": "ship_lineitem",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/shipLineItems",
+                                "name": "Ship Line Items",
+                                "sampleData": {
+                                    "lineItems": [
+                                        {
+                                            "lineItemId": "",
+                                            "productId": "",
+                                            "quantity": 0
+                                        }
+                                    ],
+                                    "operationId": "",
+                                    "shipmentGroupId": "",
+                                    "shipmentInfos": [
+                                        {
+                                            "shipmentId": "",
+                                            "carrier": "",
+                                            "trackingId": ""
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItems[*].lineItemId",
+                                    "lineItems[*].quantity",
+                                    "operationId",
+                                    "shipmentInfos[*].shipmentId",
+                                    "shipmentInfos[*].carrier",
+                                    "shipmentInfos[*].trackingId"
+                                ]
+                            },
+                            {
+                                "id": "ship_lineitem_test_order",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/shipLineItems",
+                                "name": "Ship Line Items for Test Orders",
+                                "sampleData": {
+                                    "lineItems": [
+                                        {
+                                            "lineItemId": "",
+                                            "productId": "",
+                                            "quantity": 0
+                                        }
+                                    ],
+                                    "operationId": "",
+                                    "shipmentGroupId": "",
+                                    "shipmentInfos": [
+                                        {
+                                            "shipmentId": "",
+                                            "carrier": "",
+                                            "trackingId": ""
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItems[*].lineItemId",
+                                    "lineItems[*].quantity",
+                                    "operationId",
+                                    "shipmentInfos[*].shipmentId",
+                                    "shipmentInfos[*].carrier",
+                                    "shipmentInfos[*].trackingId"
+                                ]
+                            },
+                            {
+                                "id": "udate_lineitem_shipping_details",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/updateLineItemShippingDetails",
+                                "name": "Update Line Item Shipping Details",
+                                "sampleData": {
+                                    "deliverByDate": "",
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "productId": "",
+                                    "shipByDate": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "udate_lineitem_shipping_details_test_orders",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/updateLineItemShippingDetails",
+                                "name": "Update Line Item Shipping Details for Test Order",
+                                "sampleData": {
+                                    "deliverByDate": "",
+                                    "lineItemId": "",
+                                    "operationId": "",
+                                    "productId": "",
+                                    "shipByDate": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "lineItemId",
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "update_merchantorder_id",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/updateMerchantOrderId",
+                                "name": "Update Merchant Order Id",
+                                "sampleData": {
+                                    "merchantOrderId": "",
+                                    "operationId": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "merchantOrderId",
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "update_merchantorder_id_test_order",
+                                "url": "/content/v2.1sandbox/:_merchantId/orders/:_orderId/updateMerchantOrderId",
+                                "name": "Update Merchant Order Id for test order",
+                                "sampleData": {
+                                    "merchantOrderId": "",
+                                    "operationId": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "merchantOrderId",
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "update_shipment",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/updateShipment",
+                                "name": "Update Shipment",
+                                "sampleData": {
+                                    "carrier": "",
+                                    "deliveryDate": "",
+                                    "operationId": "",
+                                    "shipmentId": "",
+                                    "status": "",
+                                    "trackingId": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId",
+                                    "shipmentId",
+                                    "status"
+                                ]
+                            },
+                            {
+                                "id": "update_shipment_test_order",
+                                "url": "/content/v2.1/:_merchantId/orders/:_orderId/updateShipment",
+                                "name": "Update Shipment for Test Order",
+                                "sampleData": {
+                                    "carrier": "",
+                                    "deliveryDate": "",
+                                    "operationId": "",
+                                    "shipmentId": "",
+                                    "status": "",
+                                    "trackingId": ""
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "Order ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the test order."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId",
+                                    "shipmentId",
+                                    "status"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orderreturns",
+                        "name": "Order Returns",
+                        "operations": [
+                            {
+                                "id": "acknowledge_orderreturns",
+                                "name": "Acknowledge",
+                                "url": "/content/v2.1/:_merchantId/orderreturns/:_returnId/acknowledge",
+                                "method": "POST",
+                                "sampleData": {
+                                    "operationId": ""
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "returnId",
+                                        "name": "Return ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the return."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "acknowledge_test_orderreturns",
+                                "name": "Acknowledge for Test Order Return",
+                                "url": "/content/v2.1sandbox/:_merchantId/orderreturns/:_returnId/acknowledge",
+                                "method": "POST",
+                                "sampleData": {
+                                    "operationId": ""
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "returnId",
+                                        "name": "Return ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the return."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId"
+                                ]
+                            },
+                            {
+                                "id": "process_orderreturns",
+                                "name": "Process",
+                                "url": "/content/v2.1/:_merchantId/orderreturns/:_returnId/process",
+                                "method": "POST",
+                                "sampleData": {
+                                    "fullChargeReturnShippingCost": false,
+                                    "operationId": "",
+                                    "refundShippingFee": {
+                                        "fullRefund": false,
+                                        "partialRefund": {
+                                            "priceAmount": {
+                                                "currency": "",
+                                                "value": ""
+                                            },
+                                            "taxAmount": {
+                                                "currency": "",
+                                                "value": ""
+                                            }
+                                        },
+                                        "reasonText": "",
+                                        "returnRefundReason": ""
+                                    },
+                                    "returnItems": [
+                                        {
+                                            "refund": {
+                                                "fullRefund": false,
+                                                "partialRefund": {
+                                                    "priceAmount": {
+                                                        "currency": "",
+                                                        "value": ""
+                                                    },
+                                                    "taxAmount": {
+                                                        "currency": "",
+                                                        "value": ""
+                                                    }
+                                                },
+                                                "reasonText": "",
+                                                "returnRefundReason": ""
+                                            },
+                                            "reject": {
+                                                "reason": "",
+                                                "reasonText": ""
+                                            },
+                                            "returnItemId": ""
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "returnId",
+                                        "name": "Return ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the return."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId",
+                                    "fullChargeReturnShippingCost",
+                                    "returnItems[*].returnItemId"
+                                ]
+                            },
+                            {
+                                "id": "process_test_orderreturns",
+                                "name": "Process for Test Order Return",
+                                "url": "/content/v2.1sandbox/:_merchantId/orderreturns/:_returnId/process",
+                                "method": "POST",
+                                "sampleData": {
+                                    "fullChargeReturnShippingCost": false,
+                                    "operationId": "",
+                                    "refundShippingFee": {
+                                        "fullRefund": false,
+                                        "partialRefund": {
+                                            "priceAmount": {
+                                                "currency": "",
+                                                "value": ""
+                                            },
+                                            "taxAmount": {
+                                                "currency": "",
+                                                "value": ""
+                                            }
+                                        },
+                                        "reasonText": "",
+                                        "returnRefundReason": ""
+                                    },
+                                    "returnItems": [
+                                        {
+                                            "refund": {
+                                                "fullRefund": false,
+                                                "partialRefund": {
+                                                    "priceAmount": {
+                                                        "currency": "",
+                                                        "value": ""
+                                                    },
+                                                    "taxAmount": {
+                                                        "currency": "",
+                                                        "value": ""
+                                                    }
+                                                },
+                                                "reasonText": "",
+                                                "returnRefundReason": ""
+                                            },
+                                            "reject": {
+                                                "reason": "",
+                                                "reasonText": ""
+                                            },
+                                            "returnItemId": ""
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that manages the order. This cannot be a multi-client account."
+                                    },
+                                    {
+                                        "id": "returnId",
+                                        "name": "Return ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "description": "The ID of the return."
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "operationId",
+                                    "fullChargeReturnShippingCost",
+                                    "returnItems[*].returnItemId"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "collections",
+                        "name": "Collections",
+                        "sampleData": {
+                            "id": "string",
+                            "language": "string",
+                            "productCountry": "string",
+                            "imageLink": [
+                                "string"
+                            ],
+                            "featuredProduct": [
+                                {
+                                    "offerId": "string",
+                                    "x": 1,
+                                    "y": 2
+                                }
+                            ],
+                            "link": "string",
+                            "mobileLink": "string",
+                            "headline": [
+                                "string"
+                            ],
+                            "customLabel0": "string",
+                            "customLabel1": "string",
+                            "customLabel2": "string",
+                            "customLabel3": "string",
+                            "customLabel4": "string"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_collections",
+                                "url": "/content/v2.1/:_merchantId/collections",
+                                "name": "Create collections",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_collections",
+                                "url": "/content/v2.1/:_merchantId/collections/:_collectionId",
+                                "name": "Delete collections",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "merchantId",
+                                        "name": "Merchant ID",
+                                        "description": "The ID of the account that contains the product. This account cannot be a multi-client account.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "collectionId",
+                                        "required": true,
+                                        "in": "path",
+                                        "name": "Collection ID",
+                                        "isIdentifier": true,
+                                        "description": "The REST ID of the collection."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

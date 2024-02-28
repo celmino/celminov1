@@ -1,0 +1,2563 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [
+            "/v2/applications",
+            "/v2/applications/:_id",
+            "/v2/applications/:_application_id/metrics",
+            "/v2/applications/:_application_id/metrics/data",
+            "/v2/applications/:_application_id/hosts",
+            "/v2/applications/:_application_id/hosts/:_id",
+            "/v2/applications/:_application_id/hosts/:_host_id/metrics",
+            "/v2/applications/:_application_id/hosts/:_host_id/metrics/data",
+            "/v2/applications/:_application_id/instances",
+            "/v2/applications/:_application_id/instances/:_id",
+            "/v2/applications/:_application_id/instances/:_instance_id/metrics",
+            "/v2/applications/:_application_id/instances/:_instance_id/metrics/data",
+            "/v2/applications/:_application_id/deployments",
+            "/v2/browser_applications",
+            "/v2/mobile_applications",
+            "/v2/mobile_applications/:_id",
+            "/v2/mobile_applications/:_mobile_application_id/metrics",
+            "/v2/mobile_applications/:_mobile_application_id/metrics/data",
+            "/v2/servers",
+            "/v2/servers/:_id",
+            "/v2/servers/:_server_id/metrics",
+            "/v2/servers/:_server_id/metrics/data",
+            "/v2/key_transactions",
+            "/v2/key_transactions/:_id",
+            "/v2/alert_policies",
+            "/v2/alert_policies/:_id",
+            "/v2/alerts_policies",
+            "/v2/alerts_conditions",
+            "/v2/alerts_plugins_conditions",
+            "/v2/alerts_external_service_conditions",
+            "/v2/alerts_synthetics_conditions",
+            "/v2/alerts_nrql_conditions",
+            "/v2/alerts_channels",
+            "/v2/notification_channels",
+            "/v2/notification_channels/:_id",
+            "/v2/alerts_violations",
+            "/v2/alerts_events",
+            "/v2/alerts_incidents",
+            "/v2/alerts_entity_conditions/:_entity_id",
+            "/v2/users",
+            "/v2/users/:_id",
+            "/v2/labels",
+            "/v2/plugins",
+            "/v2/plugins/:_id",
+            "/v2/components",
+            "/v2/components/:_id",
+            "/v2/components/:_component_id/metrics",
+            "/v2/components/:_component_id/metrics/data"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "applications",
+                        "name": "Applications",
+                        "endpoints": [
+                            {
+                                "id": "list_of_applications",
+                                "url": "/v2/applications",
+                                "name": "List of Applications",
+                                "resourcePath": "applications",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[name]",
+                                        "name": "Name",
+                                        "description": "Filter by application name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[host]",
+                                        "name": "Host",
+                                        "description": "Filter by application host",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "ID",
+                                        "description": "Separate multiple List entries with a comma.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[language]",
+                                        "name": "Application language",
+                                        "description": "Filter by application language",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sort[health_status]",
+                                        "name": "Health Status",
+                                        "description": "Sort by health_status",
+                                        "fieldType": "boolean"
+                                    },
+                                    {
+                                        "id": "sort[token]",
+                                        "name": "Token",
+                                        "description": "Optional token to ensure correct sorted pagination",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_application_based_on_id",
+                                "url": "/v2/applications/:_id",
+                                "name": "Single Application based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "application",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "application_metric_names",
+                                "url": "/v2/applications/:_application_id/metrics",
+                                "name": "Application Metric Names",
+                                "resourcePath": "metrics",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Metrics by Name",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "application_metric_data",
+                                "url": "/v2/applications/:_application_id/metrics/data",
+                                "name": "Application Metric Data",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "metric_data",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "names[]",
+                                        "name": "Name",
+                                        "description": "Metrics by Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "values[]",
+                                        "name": "value",
+                                        "description": "Retrieve specific metric values",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "period",
+                                        "name": "Period",
+                                        "description": "Period of timeslices in seconds",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_application_hosts",
+                                "url": "/v2/applications/:_application_id/hosts",
+                                "name": "List of application Hosts",
+                                "resourcePath": "application_hosts",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[hostname]",
+                                        "name": "Host Name",
+                                        "description": "Filter by server hostname",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "Host ID",
+                                        "description": "Filter by application host ids",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_application_host",
+                                "url": "/v2/applications/:_application_id/hosts/:_id",
+                                "name": "single application host",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "application_host",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Host ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "application_hosts_metric_names",
+                                "url": "/v2/applications/:_application_id/hosts/:_host_id/metrics",
+                                "name": "Application Hosts Metric names",
+                                "resourcePath": "metrics",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "host_id",
+                                        "name": "Host ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Filter metrics by name",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "application_hosts_metric_data",
+                                "url": "/v2/applications/:_application_id/hosts/:_host_id/metrics/data",
+                                "name": "Application Hosts Metric Data",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "metric_data",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "host_id",
+                                        "name": "HostID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "names[]",
+                                        "name": "Name",
+                                        "description": "Metrics by Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "values[]",
+                                        "name": "value",
+                                        "description": "Retrieve specific metric values",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "period",
+                                        "name": "Period",
+                                        "description": "Period of timeslices in seconds",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_application_instances",
+                                "url": "/v2/applications/:_application_id/instances",
+                                "name": "List of application Instances",
+                                "resourcePath": "application_instances",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[hostname]",
+                                        "name": "Host Name",
+                                        "description": "Filter by server hostname",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "ID",
+                                        "description": "Application instance ids",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_application_instance_id",
+                                "url": "/v2/applications/:_application_id/instances/:_id",
+                                "name": "single application Instance id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "application_instance",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Instance ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "application_instance_metric_names",
+                                "url": "/v2/applications/:_application_id/instances/:_instance_id/metrics",
+                                "name": "Application Instance metric names",
+                                "resourcePath": "metrics",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "instance_id",
+                                        "name": "Instance ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "metrics by name",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "application_instance_metric_data",
+                                "url": "/v2/applications/:_application_id/instances/:_instance_id/metrics/data",
+                                "name": "Application Instance metric data",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "metric_data",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "instance_id",
+                                        "name": "Instance ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "names[]",
+                                        "name": "Name",
+                                        "description": "Metrics by Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "values[]",
+                                        "name": "value",
+                                        "description": "Retrieve specific metric values",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "period",
+                                        "name": "Period",
+                                        "description": "Period of timeslices in seconds",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_application_deployments",
+                                "url": "/v2/applications/:_application_id/deployments",
+                                "name": "List of application Deployments",
+                                "resourcePath": "deployments",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "browser_applications",
+                        "name": "Browser Applications",
+                        "endpoints": [
+                            {
+                                "id": "list_of_browserapplications",
+                                "url": "/v2/browser_applications",
+                                "name": "List of BrowserApplications",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "browser_applications",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[name]",
+                                        "name": "Name",
+                                        "description": "Filter by application name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "Ids",
+                                        "description": "Filter by application host",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mobile_applications",
+                        "name": "Mobile Applications",
+                        "endpoints": [
+                            {
+                                "id": "list_of_mobile_applications",
+                                "url": "/v2/mobile_applications",
+                                "name": "List Of Mobile Applications",
+                                "resourcePath": "applications",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "single_mobile_application_based_on_id",
+                                "url": "/v2/mobile_applications/:_id",
+                                "name": "Single Mobile Application based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "mobile_application_metric_names",
+                                "url": "/v2/mobile_applications/:_mobile_application_id/metrics",
+                                "name": "Mobile Application Metric Names",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "mobile_application_id",
+                                        "name": "Mobile Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Metrics by Name",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "mobile_application_metric_data",
+                                "url": "/v2/mobile_applications/:_mobile_application_id/metrics/data",
+                                "name": "Mobile Application metric data",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "metric_data",
+                                "pathParameters": [
+                                    {
+                                        "id": "mobile_application_id",
+                                        "name": "Mobile Application ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "names[]",
+                                        "name": "Name",
+                                        "description": "Metrics by Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "values[]",
+                                        "name": "value",
+                                        "description": "Retrieve specific metric values",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "period",
+                                        "name": "Period",
+                                        "description": "Period of timeslices in seconds",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "servers",
+                        "name": "Servers",
+                        "endpoints": [
+                            {
+                                "id": "list_of_servers",
+                                "url": "/v2/servers",
+                                "name": "List of Servers",
+                                "resourcePath": "servers",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[name]",
+                                        "name": "Name",
+                                        "description": "Filter by application name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[host]",
+                                        "name": "Host",
+                                        "description": "Filter by application host",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "ID",
+                                        "description": "Separate multiple List entries with a comma.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[labels]",
+                                        "name": "Labels",
+                                        "description": "Filter by server labels (beta)",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[reported]",
+                                        "name": "Reported",
+                                        "description": "Filter by reported in last 10 hours",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_server_based_on_id",
+                                "url": "/v2/servers/:_id",
+                                "name": "Single Server based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "server",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Server ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "server_metric_names",
+                                "url": "/v2/servers/:_server_id/metrics",
+                                "name": "Server Metric Names",
+                                "resourcePath": "metrics",
+                                "pathParameters": [
+                                    {
+                                        "id": "server_id",
+                                        "name": "Server ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Filter Metrics by Name",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "server_metric_data",
+                                "url": "/v2/servers/:_server_id/metrics/data",
+                                "name": "Server Metric Data",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "metric_data",
+                                "pathParameters": [
+                                    {
+                                        "id": "server_id",
+                                        "name": "Server ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "names[]",
+                                        "name": "Name",
+                                        "description": "Filter Metrics by Name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "values[]",
+                                        "name": "value",
+                                        "description": "Retrieve specific metric values",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "period",
+                                        "name": "Period",
+                                        "description": "Period of timeslices in seconds",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "key_transactions",
+                        "name": "Key Transactions",
+                        "endpoints": [
+                            {
+                                "id": "list_of_key_transactions",
+                                "url": "/v2/key_transactions",
+                                "name": "List Of Key Transactions",
+                                "resourcePath": "key_transactions",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[name]",
+                                        "name": "Name",
+                                        "description": "Metrics by Name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "IDs",
+                                        "description": "Filter by policy IDs",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_key_transaction_based_on_id",
+                                "url": "/v2/key_transactions/:_id",
+                                "name": "Single Key Transaction based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Key Transaction ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alert_policies",
+                        "name": "Legacy Alert policies",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_legacy_alert_policies",
+                                "url": "/v2/alert_policies",
+                                "name": "List of all Legacy Alert Policies",
+                                "resourcePath": "alert_policies",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[name]",
+                                        "name": "Name",
+                                        "description": "Filter by name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[type]",
+                                        "name": "Type",
+                                        "description": "Filter by Policy Types",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "ID's",
+                                        "description": "Separate multiple List entries with a comma.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[enabled]",
+                                        "name": "Enabled/Disabled",
+                                        "description": "Select only enabled/disabled policies (default: both)",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_alert_policy_based_on_id",
+                                "url": "/v2/alert_policies/:_id",
+                                "name": "Single alert_policy based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "alert_policy",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "alert_policy ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_policies",
+                        "name": "Alerts policies",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_policies",
+                                "url": "/v2/alerts_policies",
+                                "name": "List of all Alerts policies",
+                                "resourcePath": "policies",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[name]",
+                                        "name": "Name",
+                                        "description": "Filter by name",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_conditions",
+                        "name": "Alerts conditions",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_conditions",
+                                "url": "/v2/alerts_conditions",
+                                "name": "List of all Alerts Conditions",
+                                "resourcePath": "conditions",
+                                "queryParameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "description": "Filter by ID",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_plugins_conditions",
+                        "name": "Alerts Plugin conditions",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_plugin_conditions",
+                                "url": "/v2/alerts_plugins_conditions",
+                                "name": "List of all Alerts Plugin Conditions",
+                                "resourcePath": "plugins_conditions",
+                                "queryParameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "description": "Filter by ID",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_external_service_conditions",
+                        "name": "Alerts external_service conditions",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_external_service_conditions",
+                                "url": "/v2/alerts_external_service_conditions",
+                                "name": "List of all Alerts external_service Conditions",
+                                "resourcePath": "external_service_conditions",
+                                "queryParameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "description": "Filter by ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_synthetics_conditions",
+                        "name": "Alerts synthetics conditions",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_synthetics_conditions",
+                                "url": "/v2/alerts_synthetics_conditions",
+                                "name": "List of all Alerts synthetics conditions",
+                                "resourcePath": "synthetics_conditions",
+                                "queryParameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "description": "Filter by ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_nrql_conditions",
+                        "name": "Alerts nrql conditions",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_nrql_conditions",
+                                "url": "/v2/alerts_nrql_conditions",
+                                "name": "List of all Alerts nrql conditions",
+                                "resourcePath": "nrql_conditions",
+                                "queryParameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "description": "Filter by ID",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_channels",
+                        "name": "Alerts channels",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_channels",
+                                "url": "/v2/alerts_channels",
+                                "name": "List of all Alerts channels",
+                                "resourcePath": "channels"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notification_channels",
+                        "name": "Notification channels",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_notification_channels",
+                                "url": "/v2/notification_channels",
+                                "name": "List of all Notification channels",
+                                "resourcePath": "notification_channels",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[type]",
+                                        "name": "Type",
+                                        "description": "notification channel types",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "ID's",
+                                        "description": "Filter by notification channel IDs",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_notification_channel_based_on_id",
+                                "url": "/v2/notification_channels/:_id",
+                                "name": "Single Notification channel based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "notification_channel",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "NotificationChannel ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_violations",
+                        "name": "Alerts violations",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_violations",
+                                "url": "/v2/alerts_violations",
+                                "name": "List of all Alerts violations",
+                                "resourcePath": "violations",
+                                "queryParameters": [
+                                    {
+                                        "id": "start_date",
+                                        "name": "Start Date",
+                                        "description": "Filter by timezone",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_date",
+                                        "name": "End Date",
+                                        "description": "Filter by timezone",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "only_open",
+                                        "name": "Only Open",
+                                        "description": "Filter by open violations",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_events",
+                        "name": "Alerts events",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_events",
+                                "url": "/v2/alerts_events",
+                                "name": "List of all Alerts events",
+                                "resourcePath": "events",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[product]",
+                                        "name": "product",
+                                        "description": "Filter by New Relic product",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "APM",
+                                            "BROWSER",
+                                            "MOBILE",
+                                            "SERVERS",
+                                            "PLUGINS",
+                                            "SYNTHETICS",
+                                            "ALERTS"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter[entity_type]",
+                                        "name": "Entity Type",
+                                        "description": "Filter by entity_type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Application",
+                                            "Server",
+                                            "KeyTransaction",
+                                            "Plugin",
+                                            "MobileApplication",
+                                            "BrowserApplication",
+                                            "Monitor"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter[entity_group_id]",
+                                        "name": "Entity group id",
+                                        "description": "Filter by entity_group_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[entity_id]",
+                                        "name": "Entity id",
+                                        "description": "Filter by entity id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[event_type]",
+                                        "name": "Event Type",
+                                        "description": "Filter by Event Type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "NOTIFICATION",
+                                            "DEPLOYMENT",
+                                            "VIOLATION_OPEN",
+                                            "VIOLATION_CLOSE",
+                                            "VIOLATION",
+                                            "INSTRUMENTATION"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter[incident_id]",
+                                        "name": "Incident id",
+                                        "description": "Filter by Incident id",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_incidents",
+                        "name": "Alerts Incidents",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_alerts_incidents",
+                                "url": "/v2/alerts_incidents",
+                                "name": "List of all Alerts Incidents",
+                                "resourcePath": "incidents"
+                            }
+                        ],
+                        "queryParameters": [
+                            {
+                                "id": "only_open",
+                                "name": "Only Open",
+                                "description": "Filter by open incidents",
+                                "fieldType": "select",
+                                "options": [
+                                    "True",
+                                    "False"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_entity_conditions",
+                        "name": "Alerts Entity Conditions",
+                        "endpoints": [
+                            {
+                                "id": "list_of_alerts_entity_conditions",
+                                "url": "/v2/alerts_entity_conditions/:_entity_id",
+                                "name": "List of Alerts Entity Conditions",
+                                "resourcePath": "conditions",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "entity_id",
+                                        "name": "Entity ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "entity_type",
+                                        "name": "Entity Type",
+                                        "required": true,
+                                        "description": "Entity Type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "BrowserApplication",
+                                            "Application",
+                                            "MobileApplication",
+                                            "Server",
+                                            "KeyTransaction",
+                                            "Plugin"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "list_of_users",
+                                "url": "/v2/users",
+                                "name": "List Of Users",
+                                "resourcePath": "users",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "ID",
+                                        "description": "Separate multiple List entries with a comma.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[email]",
+                                        "name": "Email",
+                                        "description": "Filter by user email",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_user",
+                                "url": "/v2/users/:_id",
+                                "name": "Single User",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "User ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "labels",
+                        "name": "Labels",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_labels",
+                                "url": "/v2/labels",
+                                "name": "Retrive all labels",
+                                "resourcePath": "labels"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "plugins",
+                        "name": "Plugins",
+                        "endpoints": [
+                            {
+                                "id": "list_of_plugins",
+                                "url": "/v2/plugins",
+                                "name": "List Of Plugins",
+                                "resourcePath": "plugins",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[guid]",
+                                        "name": "guid",
+                                        "description": "Filter plugin by guid",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[ids]",
+                                        "name": "IDs",
+                                        "description": "Filter plugin by ids",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "detailed",
+                                        "name": "Detailed",
+                                        "description": "Include all data about a plugin",
+                                        "fieldType": "boolean"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_plugin",
+                                "url": "/v2/plugins/:_id",
+                                "name": "Single Plugin",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "PluginID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "components",
+                        "name": "Components",
+                        "endpoints": [
+                            {
+                                "id": "list_of_components",
+                                "url": "/v2/components",
+                                "name": "List of Components",
+                                "resourcePath": "components",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter[name]",
+                                        "name": "Name",
+                                        "description": "Filter components by name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter[plugin_id]",
+                                        "name": "PluginID",
+                                        "description": "Filter components by the plugin",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "health_status",
+                                        "name": "Health Status",
+                                        "description": "Include component health status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "True",
+                                            "False"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_components_based_on_id",
+                                "url": "/v2/components/:_id",
+                                "name": "Single Components based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "component",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Component ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "components_metric_names",
+                                "url": "/v2/components/:_component_id/metrics",
+                                "name": "components Metric Names",
+                                "resourcePath": "metrics",
+                                "pathParameters": [
+                                    {
+                                        "id": "component_id",
+                                        "name": "Component ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Filter metrics by name",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "component_metric_data",
+                                "url": "/v2/components/:_component_id/metrics/data",
+                                "name": "Component Metric Data",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "metric_data",
+                                "pathParameters": [
+                                    {
+                                        "id": "component_id",
+                                        "name": "Component ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "names[]",
+                                        "name": "Name",
+                                        "description": "Retrieve specific metrics by name",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "values[]",
+                                        "name": "value",
+                                        "description": "Retrieve specific metric values",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "to",
+                                        "name": "To",
+                                        "description": "Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "period",
+                                        "name": "Period",
+                                        "description": "Period of timeslices in seconds",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v2/applications/:_id",
+            "/v2/applications/:_application_id/deployments",
+            "/v2/applications/:_application_id/deployments/:_id",
+            "/v2/browser_applications",
+            "/v2/servers/:_id",
+            "/v2/alert_policies/:_id",
+            "/v2/alerts_policies",
+            "/v2/alerts_policies/:_id",
+            "/v2/alerts_conditions/policies/:_policy_id",
+            "/v2/alerts_conditions/:_id",
+            "/v2/alerts_conditions/:_condition_id",
+            "/v2/alerts_plugins_conditions/policies/:_policy_id",
+            "/v2/alerts_plugins_conditions/:_id",
+            "/v2/alerts_plugins_conditions/:_condition_id",
+            "/v2/alerts_external_service_conditions/policies/:_policy_id",
+            "/v2/alerts_external_service_conditions/:_id",
+            "/v2/alerts_external_service_conditions/:_condition_id",
+            "/v2/alerts_synthetics_conditions/policies/:_policy_id",
+            "/v2/alerts_synthetics_conditions/:_id",
+            "/v2/alerts_synthetics_conditions/:_condition_id",
+            "/v2/alerts_nrql_conditions/policies/:_policy_id",
+            "/v2/alerts_nrql_conditions/:_id",
+            "/v2/alerts_nrql_conditions/:_condition_id",
+            "/v2/alerts_channels",
+            "/v2/alerts_channels/:_channel_id",
+            "/v2/alerts_policy_channels?policy_id=:_policy_id&channel_ids=:_channel_ids",
+            "/v2/alerts_entity_conditions/:_entity_id?entity_type=:_entity_type&condition_id=:_condition_id",
+            "/v2/users/:_id/reset_password",
+            "/v2/labels",
+            "/v2/labels/:_key"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "applications",
+                        "name": "Applications",
+                        "sampleData": {
+                            "application": {
+                                "id": 87406798,
+                                "name": "string",
+                                "settings": {
+                                    "app_apdex_threshold": "float",
+                                    "end_user_apdex_threshold": "float",
+                                    "enable_real_user_monitoring": "boolean"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "update_an_application",
+                                "url": "/v2/applications/:_id",
+                                "name": "Update an application",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v2/applications",
+                                        "extract": "applications[0].id",
+                                        "id": "list_of_applications"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_an_application",
+                                "url": "/v2/applications/:_id",
+                                "name": "Delete an Application",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v2/applications",
+                                        "extract": "applications[0].id",
+                                        "id": "list_of_applications"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_an_application_deployments",
+                                "url": "/v2/applications/:_application_id/deployments",
+                                "name": "Create an Application Deployments",
+                                "method": "POST",
+                                "sampleData": {
+                                    "deployment": {
+                                        "id": 54113091,
+                                        "revision": "string",
+                                        "changelog": "string",
+                                        "description": "string",
+                                        "user": "string"
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_application_deployment",
+                                "url": "/v2/applications/:_application_id/deployments/:_id",
+                                "name": "Delete an Application Deployment",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "deployments": {
+                                        "id": 54113091,
+                                        "revision": "121121",
+                                        "changelog": "Fixed the bugs for real this time",
+                                        "description": "null",
+                                        "user": "thotakura.muneswara@celigo.com",
+                                        "timestamp": "2017-10-18T06:20:04+00:00",
+                                        "links": {
+                                            "application": 87406798
+                                        }
+                                    }
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "browser_applications",
+                        "name": "Browser Applications",
+                        "sampleData": {
+                            "browser_application": {
+                                "id": "123",
+                                "name": "string"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_browser_applications",
+                                "url": "/v2/browser_applications",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "servers",
+                        "name": "Servers",
+                        "sampleData": {
+                            "server": {
+                                "name": "string"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "update_an_server",
+                                "url": "/v2/servers/:_id",
+                                "name": "Update an server",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_server",
+                                "url": "/v2/servers/:_id",
+                                "name": "Delete an server",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alert_policies",
+                        "name": "Legacy Alert policies",
+                        "sampleData": {
+                            "name": "string",
+                            "enabled": "boolean",
+                            "conditions": {
+                                "id": "integer",
+                                "threshold": "float",
+                                "trigger_minutes": "integer",
+                                "enabled": "boolean"
+                            },
+                            "links": {
+                                "notification_channels": "integer",
+                                "applications": "integer",
+                                "key_transactions": "integer",
+                                "servers": "integer"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "update_alert_policies",
+                                "url": "/v2/alert_policies/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v2/alert_policies",
+                                        "extract": "alert_policies[0].id",
+                                        "id": "list_of_all_legacy_alert_policies"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_policies",
+                        "name": "Alerts Policies",
+                        "sampleData": {
+                            "policy": {
+                                "incident_preference": "string",
+                                "name": "string"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_alerts_policies",
+                                "url": "/v2/alerts_policies",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v2/alerts_policies",
+                                        "extract": "policies[0].id",
+                                        "id": "list_of_all_alerts_policies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_alerts_policies",
+                                "url": "/v2/alerts_policies/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v2/alerts_policies",
+                                        "extract": "policies[0].id",
+                                        "id": "list_of_all_alerts_policies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_alerts_policies",
+                                "url": [
+                                    "/v2/alerts_policies/:_id",
+                                    "/v2/alerts_policies"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v2/alerts_policies",
+                                        "extract": "policies[0].id",
+                                        "id": "list_of_all_alerts_policies"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_alerts_policies",
+                                "url": "/v2/alerts_policies/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v2/alerts_policies",
+                                        "extract": "policies[0].id",
+                                        "id": "list_of_all_alerts_policies"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_conditions",
+                        "name": "Alerts Conditions",
+                        "sampleData": {
+                            "condition": {
+                                "type": "string",
+                                "name": "string",
+                                "enabled": "boolean",
+                                "entities": "integer",
+                                "metric": "string",
+                                "gc_metric": "string",
+                                "condition_scope": "string",
+                                "violation_close_timer": "integer",
+                                "terms": {
+                                    "duration": "string",
+                                    "operator": "string",
+                                    "priority": "string",
+                                    "threshold": "string",
+                                    "time_function": "string"
+                                },
+                                "user_defined": {
+                                    "metric": "string",
+                                    "value_function": "string"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_alerts_conditions",
+                                "url": "/v2/alerts_conditions/policies/:_policy_id",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_alerts_conditions",
+                                "url": "/v2/alerts_conditions/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_alerts_conditions",
+                                "url": [
+                                    "/v2/alerts_conditions/:_id",
+                                    "/v2/alerts_conditions/policies/:_policy_id"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_alerts_conditions",
+                                "url": "/v2/alerts_conditions/:_condition_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "condition_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_plugins_conditions",
+                        "name": "Alerts Plugin conditions",
+                        "sampleData": {
+                            "plugins_condition": {
+                                "name": "string",
+                                "enabled": "boolean",
+                                "entities": "integer",
+                                "metric_description": "string",
+                                "metric": "string",
+                                "value_function": "string",
+                                "runbook_url": "string",
+                                "terms": [
+                                    {
+                                        "duration": "string",
+                                        "operator": "string",
+                                        "priority": "string",
+                                        "threshold": "string",
+                                        "time_function": "string"
+                                    }
+                                ],
+                                "plugin": {
+                                    "id": "string",
+                                    "guid": "string"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_alerts_plugins_conditions",
+                                "url": "/v2/alerts_plugins_conditions/policies/:_policy_id",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_alerts_plugins_conditions",
+                                "url": "/v2/alerts_plugins_conditions/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_alerts_plugins_conditions",
+                                "url": [
+                                    "/v2/alerts_plugins_conditions/:_id",
+                                    "/v2/alerts_plugins_conditions/policies/:_policy_id"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_alerts_plugins_conditions",
+                                "url": "/v2/alerts_plugins_conditions/:_condition_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "condition_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_external_service_conditions",
+                        "name": "Alerts External Service conditions",
+                        "sampleData": {
+                            "external_service_condition": {
+                                "type": "string",
+                                "name": "string",
+                                "enabled": "boolean",
+                                "entities": "integer",
+                                "external_service_url": "string",
+                                "metric": "string",
+                                "runbook_url": "string",
+                                "terms": [
+                                    {
+                                        "duration": "string",
+                                        "operator": "string",
+                                        "priority": "string",
+                                        "threshold": "string",
+                                        "time_function": "string"
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_alerts_external_service_conditions",
+                                "url": "/v2/alerts_external_service_conditions/policies/:_policy_id",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_alerts_external_service_conditions",
+                                "url": "/v2/alerts_external_service_conditions/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_alerts_external_service_conditions",
+                                "url": [
+                                    "/v2/alerts_external_service_conditions/:_id",
+                                    "/v2/alerts_external_service_conditions/policies/:_policy_id"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_alerts_external_service_conditions",
+                                "url": "/v2/alerts_external_service_conditions/:_condition_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "condition_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_synthetics_conditions",
+                        "name": "Alerts Synthesis conditions",
+                        "sampleData": {
+                            "synthetics_condition": {
+                                "name": "string",
+                                "monitor_id": "string",
+                                "runbook_url": "string",
+                                "enabled": "boolean"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_alerts_synthetics_conditions",
+                                "url": "/v2/alerts_synthetics_conditions/policies/:_policy_id",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_alerts_synthetics_conditions",
+                                "url": "/v2/alerts_synthetics_conditions/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_alerts_synthetics_conditions",
+                                "url": [
+                                    "/v2/alerts_synthetics_conditions/:_id",
+                                    "/v2/alerts_synthetics_conditions/policies/:_policy_id"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_alerts_synthetics_conditions",
+                                "url": "/v2/alerts_synthetics_conditions/:_condition_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "condition_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_nrql_conditions",
+                        "name": "Alerts nrql conditions",
+                        "sampleData": {
+                            "nrql_condition": {
+                                "name": "string",
+                                "runbook_url": "string",
+                                "enabled": "boolean",
+                                "terms": [
+                                    {
+                                        "duration": "string",
+                                        "operator": "string",
+                                        "priority": "string",
+                                        "threshold": "string",
+                                        "time_function": "string"
+                                    }
+                                ],
+                                "value_function": "string",
+                                "nrql": {
+                                    "query": "string",
+                                    "since_value": "string"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_alerts_nrql_conditions",
+                                "url": "/v2/alerts_nrql_conditions/policies/:_policy_id",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_alerts_nrql_conditions",
+                                "url": "/v2/alerts_nrql_conditions/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_alerts_nrql_conditions",
+                                "url": [
+                                    "/v2/alerts_nrql_conditions/:_id",
+                                    "/v2/alerts_nrql_conditions/policies/:_policy_id"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "name": "Policy ID",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_alerts_nrql_conditions",
+                                "url": "/v2/alerts_nrql_conditions/:_condition_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "condition_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_channels",
+                        "name": "Alerts channels",
+                        "sampleData": {
+                            "channel": {
+                                "name": "channel",
+                                "type": "Email",
+                                "configuration": {
+                                    "recipients": "me@me.com",
+                                    "include_json_attachment": true,
+                                    "auth_token": "abc123",
+                                    "room_id": "google.com",
+                                    "api_key": "abc123",
+                                    "teams": "team1",
+                                    "tags": "tag1",
+                                    "url": "http://test.com",
+                                    "channel": "channel1",
+                                    "subdomain": "mysubdomain",
+                                    "token": "123abc",
+                                    "room": "room1",
+                                    "key": "mykey",
+                                    "route_key": "theroute",
+                                    "service_key": "myservicekey"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_alerts_channels",
+                                "url": "/v2/alerts_channels",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "channel_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_alerts_channels",
+                                "url": "/v2/alerts_channels/:_channel_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "channel_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_policy_channels",
+                        "name": "Alerts Policy channels",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "update_alerts_policy_channels",
+                                "url": "/v2/alerts_policy_channels?policy_id=:_policy_id&channel_ids=:_channel_ids",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "channel_ids",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_alerts_policy_channels",
+                                "url": "/v2/alerts_policy_channels?policy_id=:_policy_id&channel_ids=:_channel_ids",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "policy_id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "channel_ids",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "alerts_entity_conditions",
+                        "name": "Alerts Entity Conditions",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "add_alert_entity_condition",
+                                "url": "/v2/alerts_entity_conditions/:_entity_id?entity_type=:_entity_type&condition_id=:_condition_id",
+                                "name": "ADD Alert entity condition",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "entity_id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "entity_type",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "condition_id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_alerts_entity_conditions",
+                                "url": "/v2/alerts_entity_conditions/:_entity_id?entity_type=:_entity_type&condition_id=:_condition_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "entity_id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "entity_type",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "condition_id",
+                                        "isIdentifier": true,
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "user": {
+                                "id": "integer",
+                                "first_name": "string",
+                                "last_name": "string",
+                                "email": "string",
+                                "role": "string"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "reset_password",
+                                "url": "/v2/users/:_id/reset_password",
+                                "name": "Reset Password",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v2/users",
+                                        "extract": "users[0].id",
+                                        "id": "list_of_users"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "labels",
+                        "name": "Labels",
+                        "sampleData": {
+                            "label": {
+                                "category": "Java",
+                                "name": "Staging:Test1",
+                                "links": {
+                                    "applications": [
+                                        "java"
+                                    ],
+                                    "servers": [
+                                        "tomcat"
+                                    ]
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_labels",
+                                "url": "/v2/labels",
+                                "name": "Create",
+                                "method": "PUT",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_labels",
+                                "url": "/v2/labels/:_key",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "key",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

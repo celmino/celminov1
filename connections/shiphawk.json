@@ -1,0 +1,572 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [
+            "/v4/orders",
+            "/v4/orders/:_id",
+            "/v4/shipments",
+            "/v4/shipments/:_id",
+            "/v4/shipments/:_id/tracking",
+            "/v4/shipments/:_id/address_labels",
+            "/v4/shipments/:_id/bol",
+            "/v4/shipments/:_id/commercial_invoice",
+            "/v4/skus",
+            "/v4/skus/:_sku"
+        ],
+        "versions": [
+            {
+                "version": "v4",
+                "resources": [
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_orders",
+                                "url": "/v4/orders",
+                                "name": "Retrive all Orders",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "single_order_based_on_id",
+                                "url": "/v4/orders/:_id",
+                                "name": "Single order based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Order ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_shipments",
+                                "url": "/v4/shipments",
+                                "name": "Retrive all Shipments",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "single_shipment_based_on_id",
+                                "url": "/v4/shipments/:_id",
+                                "name": "Single Shipment based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "track_shipment",
+                                "url": "/v4/shipments/:_id/tracking",
+                                "name": "Track shipment",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_the_url_of_an_address_label_pdf_file",
+                                "url": "/v4/shipments/:_id/address_labels",
+                                "name": "Retrieve the URL of an Address Label PDF File",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "regen_pdf",
+                                        "name": "Regenerate the address_labels",
+                                        "description": "Indicates whether the API should regenerate the address label PDF (regen_pdf=true) oruse the previously generated PDF (regen_pdf=false, default)",
+                                        "fieldType": "boolean"
+                                    },
+                                    {
+                                        "id": "carrier_code",
+                                        "name": "Carrier_Code",
+                                        "description": "Code specifying the carrier handling this BOL. Only required if regen_pdf is set to true or the address label has not been generated yet.",
+                                        "fieldType": "boolean"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_the_url_of_a_bol_pdf_file",
+                                "url": "/v4/shipments/:_id/bol",
+                                "name": "Retrieve the URL of a BOL PDF File",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "regen_pdf",
+                                        "name": "Regenerate the address_labels",
+                                        "description": "Indicates whether the API should regenerate the address label PDF (regen_pdf=true) oruse the previously generated PDF (regen_pdf=false, default)",
+                                        "fieldType": "boolean"
+                                    },
+                                    {
+                                        "id": "carrier_code",
+                                        "name": "Carrier_Code",
+                                        "description": "Code specifying the carrier handling this BOL. Only required if regen_pdf is set to true or the address label has not been generated yet.",
+                                        "fieldType": "boolean"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_the_url_of_a_commercial_invoice_pdf_file",
+                                "url": "/v4/shipments/:_id/commercial_invoice",
+                                "name": "Retrieve the URL of a Commercial Invoice PDF file",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "regen_pdf",
+                                        "name": "Regenerate the address_labels",
+                                        "description": "Indicates whether the API should regenerate the address label PDF (regen_pdf=true) oruse the previously generated PDF (regen_pdf=false, default)",
+                                        "fieldType": "boolean"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "skus",
+                        "name": "Product SKUS",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_skus",
+                                "url": "/v4/skus",
+                                "name": "Retrive all SKUs",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_details_on_a_particular_product_sku",
+                                "url": "/v4/skus/:_sku",
+                                "name": "Get details on a particular product SKU",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "sku",
+                                        "name": "product SKU",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v4/orders",
+            "/v4/orders/:_id",
+            "/v4/external_shipments",
+            "/v4/shipments/:_id",
+            "/v4/shipments/:_id/tracking",
+            "/v4/rates"
+        ],
+        "versions": [
+            {
+                "version": "v4",
+                "resources": [
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "sampleData": {
+                            "id": "ord_N6eEHCsz",
+                            "order_number": "ORD10100111",
+                            "source_system": "ShipHawk eComm",
+                            "source_system_id": "SH123",
+                            "source": "Proprietary",
+                            "source_system_processed_at": "2016-03-01",
+                            "origin_address": {
+                                "name": "Mike Richardson",
+                                "company": "ShipHawk",
+                                "street1": "1234 Main St.",
+                                "city": "Virginia Beach",
+                                "country": "US",
+                                "state": "VA",
+                                "zip": "23454",
+                                "phone_number": "805-335-2432",
+                                "email": "mikel@shiphawk.com"
+                            },
+                            "destination_address": {
+                                "name": "George Chapman",
+                                "company": "Hawk Apps",
+                                "street1": "1234 Main St.",
+                                "city": "Ventura",
+                                "state": "California",
+                                "country": "US",
+                                "zip": "93001",
+                                "phone_number": "805-770-1642",
+                                "email": "george@shiphawk.com"
+                            },
+                            "order_line_items": [
+                                {
+                                    "source_system_id": "SH123",
+                                    "name": "",
+                                    "sku": "1234",
+                                    "quantity": 1,
+                                    "value": 251,
+                                    "length": 11,
+                                    "width": 11,
+                                    "height": 11,
+                                    "weight": 15,
+                                    "item_type": "parcel"
+                                }
+                            ],
+                            "reference_numbers": [
+                                {
+                                    "code": "reference_id",
+                                    "name": "Shipper's Order #",
+                                    "value": "787878"
+                                },
+                                {
+                                    "code": "purchase_id",
+                                    "name": "Purchase Order #",
+                                    "value": "191919"
+                                }
+                            ],
+                            "total_price": 1000,
+                            "shipping_price": 800,
+                            "tax_price": 50,
+                            "items_price": 150,
+                            "status": "new",
+                            "requested_shipping_details": "USPS",
+                            "requested_rate_id": "rate_6Bb34k7q2n2MX6dR3HY37V8C"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_an_order",
+                                "url": "/v4/orders",
+                                "name": "Create an Order",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_an_order_cancel_an_order",
+                                "url": "/v4/orders/:_id",
+                                "name": "Update an Order/Cancel an Order",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_orders",
+                                "url": [
+                                    "/v4/orders/:_id",
+                                    "/v4/orders"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "external_shipments",
+                        "name": "Shipments",
+                        "sampleData": {
+                            "id": "shp_j2AM5v2K",
+                            "status": "ordered",
+                            "origin_address": {
+                                "id": "badr_GhC9xnHN",
+                                "name": "Parcel Origin",
+                                "company": "Parcel Origin Company",
+                                "street1": "123 Small Parcel Circle",
+                                "street2": "Apt 5",
+                                "city": "Chicago",
+                                "state": "IL",
+                                "zip": "93101",
+                                "country": "US",
+                                "phone_number": "5555551212",
+                                "email": "parcel_origin@test.com",
+                                "is_residential": false,
+                                "address_type": "commercial",
+                                "validated": null,
+                                "code": null
+                            },
+                            "destination_address": {
+                                "id": "badr_Azc9KtGc",
+                                "name": "Parcel Destination",
+                                "company": "Parcel Destination Company",
+                                "street1": "555 Small Parcel Delivered",
+                                "street2": "Suite 8",
+                                "city": "Santa Barbara",
+                                "state": "CA",
+                                "zip": "60060",
+                                "country": "US",
+                                "phone_number": "8055557777",
+                                "email": "parcel_destination@email.com",
+                                "is_residential": false,
+                                "address_type": "commercial",
+                                "validated": null,
+                                "code": null
+                            },
+                            "carrier": "FedEx",
+                            "service_level": "Ground",
+                            "total_price": 17.53,
+                            "tracking_number": null,
+                            "documents": null,
+                            "price_details": {
+                                "shipping": 17.53,
+                                "packing": 0,
+                                "insurance": 0,
+                                "pickup": 0,
+                                "delivery": 0,
+                                "accessorials": 0,
+                                "duty": null,
+                                "taxes": null
+                            },
+                            "dispatch": null,
+                            "final_mile": null,
+                            "packages": [
+                                {
+                                    "id": "pkg_HdREBS6Y",
+                                    "tracking_number": null,
+                                    "tracking_url": null,
+                                    "freight_class": "500",
+                                    "packing_type": null,
+                                    "package_items": [
+                                        {
+                                            "id": "pkgi_yV1JnyZM",
+                                            "product_sku": null,
+                                            "product_sku_packing_code": null,
+                                            "item_name": "Small Parcel",
+                                            "dimensions": {
+                                                "length": 10,
+                                                "width": 10,
+                                                "height": 11,
+                                                "weight": 0.625,
+                                                "volume": 0.636574074074074,
+                                                "density": 0.98
+                                            },
+                                            "freight_class": "500",
+                                            "nmfc": null,
+                                            "hs_code": null,
+                                            "country_of_origin": null,
+                                            "xid": null,
+                                            "value": 300,
+                                            "description": null
+                                        }
+                                    ],
+                                    "materials": null,
+                                    "labors": null,
+                                    "length": 10,
+                                    "width": 10,
+                                    "height": 11,
+                                    "weight": 0.625,
+                                    "volume": null
+                                }
+                            ],
+                            "assignee_id": null,
+                            "origin_network_location_id": null,
+                            "destination_network_location_id": null,
+                            "reference_numbers": [
+                                {
+                                    "id": "shpr_0b2TEY0J",
+                                    "code": "invoice_id",
+                                    "value": "first_value",
+                                    "name": null
+                                },
+                                {
+                                    "id": "shpr_qcmxWAMm",
+                                    "code": "other_id",
+                                    "value": "second_value",
+                                    "name": "if code ZZ"
+                                }
+                            ],
+                            "origin_instructions": "Look for Patty Mayonaise she has the goods",
+                            "destination_instructions": "The secret knock is the Funky Town Beat",
+                            "shiphawk_managed": true
+                        },
+                        "operations": [
+                            {
+                                "id": "create_an_external_shipment",
+                                "url": "/v4/external_shipments",
+                                "name": "Create an External_shipment",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_an_shipment_cancel_an_shipment",
+                                "url": "/v4/shipments/:_id",
+                                "name": "Update an Shipment/Cancel an Shipment",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_external_shipments",
+                                "url": [
+                                    "/v4/shipments/:_id",
+                                    "/v4/external_shipments"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "track_shipment_subscription",
+                                "url": "/v4/shipments/:_id/tracking",
+                                "name": "Track Shipment Subscription",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rates",
+                        "name": "Rates",
+                        "sampleData": {
+                            "items": [
+                                {
+                                    "item_type": "parcel",
+                                    "length": "10",
+                                    "width": "10",
+                                    "height": "11",
+                                    "weight": "10",
+                                    "value": 100
+                                }
+                            ],
+                            "origin_address": {
+                                "zip": "93101"
+                            },
+                            "destination_address": {
+                                "zip": "60060"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_new_rate_request",
+                                "url": "/v4/rates",
+                                "name": "Create a New Rate request",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

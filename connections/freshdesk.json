@@ -1,0 +1,2512 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [
+            "/api/v2/contacts",
+            "/api/v2/contacts/:_id",
+            "/api/v2/tickets",
+            "/api/v2/tickets/:_id",
+            "/api/v2/search/tickets",
+            "/api/v2/tickets/:_id/conversations",
+            "/api/v2/tickets/:_id/time_entries",
+            "/api/v2/tickets/:_id/satisfaction_ratings",
+            "/api/v2/companies",
+            "/api/v2/companies/:_id",
+            "/api/v2/agents",
+            "/api/v2/agents/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "paging": {
+                    "pagingMethod": "pageargument",
+                    "pageArgument": "page"
+                },
+                "resources": [
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "endpoints": [
+                            {
+                                "id": "view_a_single_contact_",
+                                "url": "/api/v2/contacts/:_id",
+                                "name": "View a Single Contact ",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "description": "Contact ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_contacts",
+                                "url": "/api/v2/contacts",
+                                "name": "List of all Contacts",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "_updated_since": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ssZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "Primary email address of the contact",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "mobile",
+                                        "name": "Mobile Number",
+                                        "description": "Mobile number of the contact",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "phone",
+                                        "name": "phone Number",
+                                        "description": "A short description of the contact",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "company_id",
+                                        "name": "Company_id",
+                                        "description": "ID of the primary company to which this contact belongs",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "state",
+                                        "description": "state of the contacts(blocked/deleted/unverified/verified)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "_updated_since",
+                                        "name": "updated since",
+                                        "description": "Date (YYYY-MM-DD) when the contact was last updated",
+                                        "fieldType": "datetime"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_contact_fields",
+                                "url": "/api/v2/contact_fields",
+                                "name": "List  all Contact Fields",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "contact_export_id",
+                                "url": "api/v2/contacts/export/:_id",
+                                "name": "Contact Export ID ",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "description": "Contact ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_contact_imports",
+                                "url": "/api/v2/contacts/imports",
+                                "name": "List Contact Imports",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "status of the contacts import [in_progress/completed/cancelled/failed]",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "view_a_contact_import",
+                                "url": "/api/v2/contacts/imports/:_id",
+                                "name": "View A Contact Import",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact Import ID",
+                                        "description": "Contact Import ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sections",
+                        "name": "Sections",
+                        "endpoints": [
+                            {
+                                "id": "list_all_sections_for_a_ticket_field",
+                                "url": "/api/v2/admin/ticket_fields/:_id/sections",
+                                "name": "List All Sections for a Ticket Field",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket field ID",
+                                        "description": "Ticket Field ID associated with the section",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_a_specific_section_details",
+                                "url": "/api/v2/admin/ticket_fields/:_ticket_id/sections/:_section_id",
+                                "name": "List a specific Section details",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "ticket_id",
+                                        "name": "Ticket Field ID",
+                                        "description": "Ticket Field ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "section_id",
+                                        "name": "Section ID",
+                                        "description": "Section ID of a ticket field",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "watchers",
+                        "name": "Watchers",
+                        "endpoints": [
+                            {
+                                "id": "list_all_watchers",
+                                "url": "/api/v2/tickets/:_id/watchers",
+                                "name": "List all watchers",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "resourcePath": "watcher_ids",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "description": "ID of the Ticket",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tickets",
+                        "name": "Tickets",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_tickets",
+                                "url": "/api/v2/tickets",
+                                "name": "List of all tickets",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_since": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ssZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "requester_id",
+                                        "name": "Requester_id",
+                                        "description": "ID of the requester's",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "Primary email address of the contact",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "company_id",
+                                        "name": "Company ID",
+                                        "description": "ID of the primary company to which this contact belongs",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "updated_since",
+                                        "name": "updated_since",
+                                        "description": "Date (YYYY-MM-DD) when the ticket was last updated",
+                                        "fieldType": "datetime"
+                                    },
+                                    {
+                                        "id": "order_by",
+                                        "name": "order by",
+                                        "description": "Sort by created_at, due_by, updated_at, status. Default sort order is created_at",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "created_at",
+                                            "due_by",
+                                            "updated_at",
+                                            "status"
+                                        ]
+                                    },
+                                    {
+                                        "id": "order_type",
+                                        "name": "order type",
+                                        "description": "Sort by asc, desc. Default sort order type is desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "view__a_single_ticket",
+                                "url": "/api/v2/tickets/:_id",
+                                "name": "View a Single Ticket",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "description": "IO of the Ticket",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "filter_tickets",
+                                "url": "/api/v2/search/tickets",
+                                "name": "Filter Tickets",
+                                "resourcePath": "results",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "query": "\"updated_at:'{{{encodeURI lastExportDateTime}}}'\""
+                                    },
+                                    "dateFormat": "YYYY-MM-DD"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "Query",
+                                        "description": "Name of the reference field to sort the export results",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_conversations_of_a_ticket",
+                                "url": "/api/v2/tickets/:_id/conversations",
+                                "name": "List All Conversations of a Ticket",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "description": "IO of the Ticket",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_associated_tickets",
+                                "url": "/api/v2/tickets/:_id/associated_tickets",
+                                "name": "Get Associated Tickets",
+                                "resourcePath": "tickets",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "description": "ID of the Ticket",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_time_entries_of_a_ticket",
+                                "url": "/api/v2/tickets/:_id/time_entries",
+                                "name": "List All Time Entries of a Ticket",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "description": "IO of the Ticket",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_satisfaction_ratings_of_a_ticket",
+                                "url": "/api/v2/tickets/:_id/satisfaction_ratings",
+                                "name": "List All Satisfaction Ratings of a Ticket",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "description": "IO of the Ticket",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_ticket_fields",
+                                "url": "/api/v2/ticket_fields",
+                                "name": "List All Ticket Fields",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "For custom ticket fields, type of value associated with the field will be given",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "view_a_ticket_field",
+                                "url": "/api/v2/admin/ticket_fields/:_id",
+                                "name": "View a Ticket Field",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket Field ID",
+                                        "description": "Unique Ticket field",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "view_summary",
+                                "name": "View Summary",
+                                "url": "/api/v2/tickets/:_id/summary",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "description": "Ticket ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "agents",
+                        "name": "Agents",
+                        "endpoints": [
+                            {
+                                "id": "view_an_agent",
+                                "url": "/api/v2/agents/:_id",
+                                "name": "View an Agent",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Agent ID",
+                                        "description": "Agent ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_agents",
+                                "url": "/api/v2/agents",
+                                "name": "List of all Agents",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "Primary email address of the agent",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "mobile",
+                                        "name": "Mobile Number",
+                                        "description": "Mobile number of the agent",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "phone",
+                                        "name": "phone Number",
+                                        "description": "phone number of the agent",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "state",
+                                        "description": "state of the agent(fulltime/occasional)",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "currently_authenticated_agent",
+                                "url": "/api/v2/agents/me",
+                                "name": "Currently Authenticated Agent",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "resourcePath": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": "companies",
+                        "name": "Companies",
+                        "endpoints": [
+                            {
+                                "id": "list_of_all_companies",
+                                "url": "/api/v2/companies",
+                                "name": "List of all Companies",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "view_a_single_company",
+                                "url": "/api/v2/companies/:_id",
+                                "name": "View a Single Company",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company ID",
+                                        "description": "ID of the primary company",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_companies",
+                                "url": "/api/v2/companies/autocomplete",
+                                "name": "Search Companies",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "required": true,
+                                        "description": "Search for a company using its name.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_company_fields",
+                                "url": "/api/v2/company_fields",
+                                "name": "List All Company Fields",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "get_company_export_by_id",
+                                "url": "/api/v2/companies/export/:_id",
+                                "name": "Company Export ID",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Export ID",
+                                        "description": "Unique Export ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_company_imports",
+                                "url": "/api/v2/companies/imports",
+                                "name": "List Company Imports",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "status of the company import [in_progress/completed/cancelled/failed]",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "view_a_company_import",
+                                "url": "/api/v2/companies/imports/:_id",
+                                "name": "View A Company Import",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Company Import ID",
+                                        "description": "Company Import ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "account",
+                        "name": "Account",
+                        "endpoints": [
+                            {
+                                "id": "view_account",
+                                "name": "View Account",
+                                "url": "/api/v2/account",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs",
+                        "endpoints": [
+                            {
+                                "id": "view_a_job",
+                                "name": "View a Job",
+                                "url": "/api/v2/jobs/:_id",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job ID",
+                                        "description": "Job ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "skills",
+                        "name": "Skills",
+                        "endpoints": [
+                            {
+                                "id": "view_a_skill",
+                                "name": "View a Skill",
+                                "url": "/api/v2/skills/:_id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Skill ID",
+                                        "description": "Skill ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_skills",
+                                "url": "/api/v2/skills",
+                                "name": "List all Skills",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test",
+                                    "delta"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "roles",
+                        "name": "Roles",
+                        "endpoints": [
+                            {
+                                "id": "view_a_role",
+                                "name": "View a Role",
+                                "url": "/api/v2/roles/:_id",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Role ID",
+                                        "description": "Role ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_roles",
+                                "name": "List All Roles",
+                                "url": "/api/v2/roles",
+                                "supportedExportTypes": [
+                                    "test",
+                                    "delta"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groups",
+                        "name": "Groups",
+                        "endpoints": [
+                            {
+                                "id": "list_all_groups",
+                                "name": "List All Groups",
+                                "url": "/api/v2/groups",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "view_a_group",
+                                "name": "View a Group",
+                                "url": "/api/v2/groups/:_id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Group ID",
+                                        "description": "Group ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "surveys",
+                        "name": "Surveys",
+                        "endpoints": [
+                            {
+                                "id": "list_all_surveys",
+                                "name": "List all Surveys",
+                                "url": "/api/v2/surveys",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "state",
+                                        "name": "state",
+                                        "description": "state of the survey [active]",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/api/v2/contacts",
+            "/api/v2/contacts/:_id",
+            "/api/v2/tickets",
+            "/api/v2/tickets/:_id",
+            "/api/v2/companies",
+            "/api/v2/companies/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "watchers",
+                        "name": "Watchers",
+                        "sampleData": {
+                            "user_id": 35010088657
+                        },
+                        "operations": [
+                            {
+                                "id": "add_watcher",
+                                "url": "/api/v2/tickets/:_ticket_id/watchers",
+                                "name": "Add watcher",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticket_id",
+                                        "required": true,
+                                        "name": "Ticket ID",
+                                        "description": "Enter the Ticket ID.",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_watcher",
+                                "url": "/api/v2/tickets/:_id/unwatch",
+                                "name": "Remove watcher",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_watcher_to_multiple_tickets",
+                                "url": "/api/v2/tickets/bulk_watch",
+                                "name": "Add watcher to multiple tickets",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "ids": [
+                                        560,
+                                        561
+                                    ],
+                                    "user_id": 35014948467
+                                },
+                                "requiredMappings": [
+                                    "ids"
+                                ]
+                            },
+                            {
+                                "id": "remove_watcher_from_multiple_tickets",
+                                "url": "/api/v2/tickets/bulk_unwatch",
+                                "name": "Remove watcher from multiple tickets",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "ids": [
+                                        560,
+                                        561
+                                    ],
+                                    "user_id": 35014948467
+                                },
+                                "requiredMappings": [
+                                    "ids"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "conversations",
+                        "name": "Conversations",
+                        "sampleData": {
+                            "body_text": "We are working on this issue. Will keep you posted.",
+                            "body": "We are working on this issue. Will keep you posted.",
+                            "id": 4,
+                            "user_id": 1,
+                            "from_email": "support@yourcompany.com",
+                            "cc_emails": [],
+                            "bcc_emails": [],
+                            "ticket_id": 141,
+                            "replied_to": [
+                                "sample@yourcustomer.com"
+                            ],
+                            "attachments": [],
+                            "created_at": "2015-08-24T13:36:42Z",
+                            "updated_at": "2015-08-24T13:36:42Z"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_reply",
+                                "url": "/api/v2/tickets/:_ticket_id/reply",
+                                "name": "Create a Reply",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticket_id",
+                                        "name": "Ticket Id",
+                                        "descriptiopn": "Enter the Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_note",
+                                "url": "/api/v2/tickets/:_ticket_id/notes",
+                                "name": "Create a Note",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticket_id",
+                                        "name": "Ticket Id",
+                                        "descriptiopn": "Enter the Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_a_conversation",
+                                "url": "/api/v2/conversations/:_id",
+                                "name": "Update a conversation",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_conversation",
+                                "url": "/api/v2/conversations/:_id",
+                                "name": "Delete a conversation",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "reply_to_forward",
+                                "url": "/api/v2/tickets/:_ticket_id/reply_to_forward",
+                                "name": "Reply to Forward",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "body": "Hi tom, Still Angry",
+                                    "to_emails": [
+                                        "user@company.com"
+                                    ]
+                                },
+                                "requiredMappings": [
+                                    "body",
+                                    "to_emails"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "ticket_id",
+                                        "name": "Ticket Id",
+                                        "description": "Enter the Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sections",
+                        "name": "Sections",
+                        "sampleData": {
+                            "label": "Environment Type (Web)",
+                            "choice_ids": [
+                                120
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_section",
+                                "url": "/api/v2/admin/ticket_fields/:_ticket_field_id/sections",
+                                "name": "Create a Section",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticket_field_id",
+                                        "name": "Ticket Field ID",
+                                        "description": "Enter the Ticket Field ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_a_section",
+                                "url": "/api/v2/admin/ticket_fields/:_id/sections/:_section_id",
+                                "name": "Update a Section",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "Enter the Ticket Field Id",
+                                        "name": "Ticket field ID",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "section_id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_sections",
+                                "url": [
+                                    "/api/v2/admin/ticket_fields/:_id/sections/:_section_id",
+                                    "/api/v2/admin/ticket_fields/:_id/sections"
+                                ],
+                                "name": "Create or Update a Section",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "name": "Ticket field ID",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "section_id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_section",
+                                "url": "/api/v2/admin/ticket_fields/:_id/sections/:_section_id",
+                                "name": "Delete a Section",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "name": "Ticket field ID",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "section_id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "sampleData": {
+                            "active": false,
+                            "address": null,
+                            "company_id": null,
+                            "description": null,
+                            "email": "fresh@gmail.com",
+                            "id": 35000068092,
+                            "job_title": null,
+                            "language": "en",
+                            "mobile": null,
+                            "name": "Fresh",
+                            "phone": null,
+                            "time_zone": "Eastern Time (US & Canada)",
+                            "twitter_id": null,
+                            "custom_fields": {},
+                            "created_at": "2017-09-13T15:19:10Z",
+                            "updated_at": "2017-09-13T15:19:10Z"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contacts",
+                                "url": "/api/v2/contacts",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/contacts",
+                                        "extract": "id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_contacts",
+                                "url": "/api/v2/contacts/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/contacts",
+                                        "extract": "id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_contacts",
+                                "url": [
+                                    "/api/v2/contacts/:_id",
+                                    "/api/v2/contacts"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/contacts",
+                                        "extract": "id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "restore_a_contact",
+                                "url": "api/v2/contacts/:_id/restore",
+                                "name": "Restore a Contact",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "required": true,
+                                        "description": "Enter the Contact ID.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_contacts",
+                                "url": "/api/v2/contacts/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/contacts",
+                                        "extract": "id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "permanently_delete_a_contact",
+                                "url": "/api/v2/contacts/:_id/hard_delete",
+                                "name": "Permanently Delete a Contact",
+                                "sampleData": {
+                                    "active": false,
+                                    "address": null,
+                                    "company_id": null,
+                                    "description": null,
+                                    "email": "fresh@gmail.com",
+                                    "id": 35000068092,
+                                    "job_title": null,
+                                    "language": "en",
+                                    "mobile": null,
+                                    "name": "Fresh",
+                                    "phone": null,
+                                    "time_zone": "Eastern Time (US & Canada)",
+                                    "twitter_id": null,
+                                    "custom_fields": {},
+                                    "created_at": "2017-09-13T15:19:10Z",
+                                    "updated_at": "2017-09-13T15:19:10Z"
+                                },
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/contacts",
+                                        "extract": "id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "make_agent",
+                                "url": "/api/v2/contacts/:_id/make_agent",
+                                "name": "Make Agent",
+                                "sampleData": {
+                                    "active": false,
+                                    "address": null,
+                                    "company_id": null,
+                                    "description": null,
+                                    "email": "fresh@gmail.com",
+                                    "id": 35000068092,
+                                    "job_title": null,
+                                    "language": "en",
+                                    "mobile": null,
+                                    "name": "Fresh",
+                                    "phone": null,
+                                    "time_zone": "Eastern Time (US & Canada)",
+                                    "twitter_id": null,
+                                    "custom_fields": {},
+                                    "created_at": "2017-09-13T15:19:10Z",
+                                    "updated_at": "2017-09-13T15:19:10Z"
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_id",
+                                        "name": "Contact ID",
+                                        "description": "Unique contact Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/contacts",
+                                        "extract": "id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "send_invite_to_a_contact",
+                                "url": "/api/v2/contacts/:_contact_id/send_invite",
+                                "name": "Send Invite to a Contact",
+                                "sampleData": {
+                                    "active": false,
+                                    "address": null,
+                                    "company_id": null,
+                                    "description": null,
+                                    "email": "fresh@gmail.com",
+                                    "id": 35000068092,
+                                    "job_title": null,
+                                    "language": "en",
+                                    "mobile": null,
+                                    "name": "Fresh",
+                                    "phone": null,
+                                    "time_zone": "Eastern Time (US & Canada)",
+                                    "twitter_id": null,
+                                    "custom_fields": {},
+                                    "created_at": "2017-09-13T15:19:10Z",
+                                    "updated_at": "2017-09-13T15:19:10Z"
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_id",
+                                        "name": "Contact ID",
+                                        "description": "Unique contact Id.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/contacts",
+                                        "extract": "id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "merge_contacts",
+                                "url": "/api/v2/contacts/merge",
+                                "name": "Merge Contacts",
+                                "sampleData": {
+                                    "primary_contact_id": 132,
+                                    "secondary_contact_ids": [
+                                        133,
+                                        134,
+                                        135
+                                    ],
+                                    "contact": {
+                                        "email": "rachel@freshdesk.com",
+                                        "other_emails": [
+                                            "louis@freshdesk.com",
+                                            "jonathan.kent@freshdesk.com"
+                                        ],
+                                        "company_ids": [
+                                            1
+                                        ]
+                                    }
+                                },
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "primary_contact_id",
+                                    "secondary_contact_ids"
+                                ]
+                            },
+                            {
+                                "id": "contact_export",
+                                "url": "api/v2/contacts/export",
+                                "name": "Contact Export",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "fields": {
+                                        "default_fields": [
+                                            "name",
+                                            "email"
+                                        ],
+                                        "custom_fields": []
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "fields.default_fields"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/contacts",
+                                        "extract": "id",
+                                        "id": "list_of_all_contacts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "cancel_a_contact_import",
+                                "url": "/api/v2/contacts/imports/:_id/cancel",
+                                "name": "Cancel A Contact Import",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tickets",
+                        "name": "Tickets",
+                        "sampleData": {
+                            "cc_emails": [],
+                            "fwd_emails": [],
+                            "reply_cc_emails": [],
+                            "fr_escalated": true,
+                            "spam": false,
+                            "email_config_id": null,
+                            "group_id": null,
+                            "priority": 1,
+                            "requester_id": 35000068092,
+                            "responder_id": null,
+                            "source": 2,
+                            "company_id": null,
+                            "status": 2,
+                            "subject": "fresh",
+                            "to_emails": null,
+                            "product_id": null,
+                            "id": 18,
+                            "type": null,
+                            "due_by": "2017-10-03T21:00:00Z",
+                            "fr_due_by": "2017-09-29T21:00:00Z",
+                            "is_escalated": false,
+                            "description": "<div>Test3</div>",
+                            "description_text": "Test3",
+                            "custom_fields": {},
+                            "created_at": "2017-09-29T04:38:50Z",
+                            "updated_at": "2017-09-29T21:05:31Z"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_tickets",
+                                "url": "/api/v2/tickets",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_tickets",
+                                "url": "/api/v2/tickets/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_tickets",
+                                "url": [
+                                    "/api/v2/tickets/:_id",
+                                    "/api/v2/tickets"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tickets",
+                                "url": "/api/v2/tickets/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "forward_a_ticket",
+                                "url": "/api/v2/tickets/:_ticket_id/forward",
+                                "name": "Forward a ticket",
+                                "sampleData": {
+                                    "body": "Hi tom, Still Angry",
+                                    "body_text": "Hi tom, Still Angry",
+                                    "id": 35131396111,
+                                    "incoming": false,
+                                    "private": true,
+                                    "user_id": 35008297863,
+                                    "support_email": "support@domain.freshdesk.com",
+                                    "source": 8,
+                                    "category": 2,
+                                    "ticket_id": 3,
+                                    "to_emails": [
+                                        "user@company..com"
+                                    ],
+                                    "from_email": "\"Agent Bob\" <support@domain.freshdesk.com>",
+                                    "cc_emails": [],
+                                    "bcc_emails": [],
+                                    "email_failure_count": null,
+                                    "outgoing_failures": null,
+                                    "created_at": "2020-08-24T05:53:09Z",
+                                    "updated_at": "2020-08-24T05:53:09Z",
+                                    "attachments": [],
+                                    "deleted": false,
+                                    "last_edited_at": null,
+                                    "last_edited_user_id": null,
+                                    "cloud_files": [],
+                                    "has_quoted_text": true
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "ticket_id",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "description": "Enter the Ticket ID.",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_multiple_tickets",
+                                "url": "/api/v2/tickets/bulk_update",
+                                "name": "Update Multiple Tickets",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "bulk_action": {
+                                        "ids": [
+                                            20,
+                                            21,
+                                            22
+                                        ],
+                                        "properties": {
+                                            "from_email": "support@freshdesk.com",
+                                            "status": 2,
+                                            "group_id": 1234,
+                                            "type": "Question",
+                                            "priority": 4
+                                        },
+                                        "reply": {
+                                            "body": "Please check this ticket"
+                                        }
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "bulk_action.ids"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "job_id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "ticket_merge_api",
+                                "url": "/api/v2/tickets/merge",
+                                "name": "Ticket Merge API",
+                                "sampleData": {
+                                    "primary_id": 20,
+                                    "ticket_ids": [
+                                        20,
+                                        21,
+                                        22
+                                    ],
+                                    "convert_recipients_to_cc": true,
+                                    "note_in_primary": {
+                                        "body": "Sample note",
+                                        "private": true
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "primary_id",
+                                    "ticket_ids"
+                                ],
+                                "method": "PUT"
+                            },
+                            {
+                                "id": "delete_multiple_tickets",
+                                "url": "/api/v2/tickets/bulk_delete",
+                                "name": "Delete Multiple Tickets",
+                                "method": "POST",
+                                "sampleData": {
+                                    "bulk_action": {
+                                        "ids": [
+                                            20,
+                                            21,
+                                            22
+                                        ]
+                                    }
+                                },
+                                "requiredMappings": [
+                                    "bulk_action.ids"
+                                ]
+                            },
+                            {
+                                "id": "restore_a_ticket",
+                                "url": "/api/v2/tickets/:_id/restore",
+                                "name": "Restore a Ticket",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "name": "Ticket ID",
+                                        "description": "ID of the ticket",
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_ticket_field",
+                                "url": "/api/v2/admin/ticket_fields",
+                                "name": "Create a Ticket Field",
+                                "sampleData": {
+                                    "customers_can_edit": true,
+                                    "label_for_customers": "Issue Type",
+                                    "displayed_to_customers": true,
+                                    "required_for_closure": false,
+                                    "required_for_agents": false,
+                                    "required_for_customers": false,
+                                    "label": "Issue Type",
+                                    "position": 1,
+                                    "type": "custom_dropdown",
+                                    "choices": [
+                                        {
+                                            "value": "Refund",
+                                            "position": 1
+                                        },
+                                        {
+                                            "value": "Faulty Product",
+                                            "position": 2
+                                        },
+                                        {
+                                            "value": "Item Not Delivered",
+                                            "position": 3
+                                        }
+                                    ],
+                                    "section_mappings": [
+                                        {
+                                            "section_id": 1,
+                                            "position": 3
+                                        }
+                                    ]
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "label_for_customers",
+                                    "label",
+                                    "type"
+                                ]
+                            },
+                            {
+                                "id": "update_a_ticket_field",
+                                "url": "/api/v2/admin/ticket_fields/:_id",
+                                "name": "Update a Ticket Field",
+                                "sampleData": {
+                                    "customers_can_edit": true,
+                                    "label_for_customers": "Issue Type",
+                                    "displayed_to_customers": true,
+                                    "required_for_closure": false,
+                                    "required_for_agents": false,
+                                    "required_for_customers": false,
+                                    "label": "Issue Type",
+                                    "position": 1,
+                                    "type": "custom_dropdown",
+                                    "choices": [
+                                        {
+                                            "value": "Refund",
+                                            "id": 23,
+                                            "position": 1
+                                        },
+                                        {
+                                            "value": "Faulty Product",
+                                            "id": 24,
+                                            "position": 2
+                                        },
+                                        {
+                                            "value": "Item Not Delivered",
+                                            "id": 25,
+                                            "position": 3
+                                        }
+                                    ],
+                                    "section_mappings": [
+                                        {
+                                            "section_id": 1,
+                                            "position": 3
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_ticket_field",
+                                "url": "/api/v2/admin/ticket_fields/:_id",
+                                "name": "Delete a Ticket Field",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_ticket_fields",
+                                "name": "Create or Update a Ticket Field",
+                                "url": [
+                                    "/api/v2/admin/ticket_fields/:_id",
+                                    "/api/v2/admin/ticket_fields"
+                                ],
+                                "sampleData": {
+                                    "customers_can_edit": true,
+                                    "label_for_customers": "Issue Type",
+                                    "displayed_to_customers": true,
+                                    "required_for_closure": false,
+                                    "required_for_agents": false,
+                                    "required_for_customers": false,
+                                    "label": "Issue Type",
+                                    "position": 1,
+                                    "type": "custom_dropdown",
+                                    "choices": [
+                                        {
+                                            "value": "Refund",
+                                            "position": 1
+                                        },
+                                        {
+                                            "value": "Faulty Product",
+                                            "position": 2
+                                        },
+                                        {
+                                            "value": "Item Not Delivered",
+                                            "position": 3
+                                        }
+                                    ],
+                                    "section_mappings": [
+                                        {
+                                            "section_id": 1,
+                                            "position": 3
+                                        }
+                                    ]
+                                },
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "label_for_customers",
+                                    "label",
+                                    "type"
+                                ]
+                            },
+                            {
+                                "id": "create_an_outbound_email",
+                                "url": "/api/v2/tickets/outbound_email",
+                                "name": "Create an Outbound Email",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "subject",
+                                    "description",
+                                    "status",
+                                    "priority",
+                                    "email",
+                                    "email_config_id"
+                                ]
+                            },
+                            {
+                                "id": "delete_an_attachment",
+                                "url": "/api/v2/attachments/:_id",
+                                "name": "Delete an attachment",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_summary",
+                                "name": "Delete Summary",
+                                "url": "/api/v2/tickets/:_id/summary",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "companies",
+                        "name": "Companies",
+                        "sampleData": {
+                            "id": 35000000884,
+                            "name": "celigo24",
+                            "description": "cyber pearl",
+                            "domains": [],
+                            "note": "celigo,celigoindia",
+                            "created_at": "2017-09-14T05:42:05Z",
+                            "updated_at": "2017-09-14T05:42:05Z",
+                            "custom_fields": {}
+                        },
+                        "operations": [
+                            {
+                                "id": "create_companies",
+                                "url": "/api/v2/companies",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_companies",
+                                "url": "/api/v2/companies/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_companies",
+                                "url": [
+                                    "/api/v2/companies/:_id",
+                                    "/api/v2/companies"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_companies",
+                                "url": "/api/v2/companies/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_company_export",
+                                "url": "/api/v2/companies/export",
+                                "sampleData": {
+                                    "fields": {
+                                        "default_fields": [
+                                            "name",
+                                            "domain"
+                                        ],
+                                        "custom_fields": []
+                                    }
+                                },
+                                "name": "Company Export",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "requiredMappings": [
+                                    "fields.default_fields"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_a_company_import",
+                                "url": "/api/v2/companies/imports/:_id/cancel",
+                                "name": "Cancel A Company Import",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "agents",
+                        "name": "Agents",
+                        "sampleData": {
+                            "email": "superman@freshdesk.com",
+                            "name": "Super man",
+                            "ticket_scope": 1,
+                            "occasional": true,
+                            "language": "en",
+                            "group_ids": [
+                                1
+                            ],
+                            "role_ids": [
+                                2
+                            ],
+                            "skill_ids": [
+                                3
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_agents",
+                                "url": "/api/v2/agents/",
+                                "name": "Create an Agent",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "requiredMappings": [
+                                    "ticket_scope",
+                                    "email"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/agents",
+                                        "extract": "id",
+                                        "id": "list_of_all_agents"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_agents",
+                                "url": "/api/v2/agents/:_id",
+                                "name": "Update an Agent",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/agents",
+                                        "extract": "id",
+                                        "id": "list_of_all_agents"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_agents",
+                                "url": [
+                                    "/api/v2/agents/:_id",
+                                    "/api/v2/agents/"
+                                ],
+                                "name": "Create or Update an Agent",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/agents",
+                                        "extract": "id",
+                                        "id": "list_of_all_agents"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_agents",
+                                "url": "/api/v2/agents/:_id",
+                                "name": "Delete an Agent",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/agents",
+                                        "extract": "id",
+                                        "id": "list_of_all_agents"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_multiple_agents",
+                                "url": "/api/v2/agents/bulk",
+                                "name": "Create Multiple Agents",
+                                "method": "POST",
+                                "sampleData": {
+                                    "agents": [
+                                        {
+                                            "email": "superman@gmail.com",
+                                            "name": "Super man",
+                                            "ticket_scope": 1,
+                                            "occasional": true,
+                                            "language": "en",
+                                            "group_ids": [
+                                                84000209803
+                                            ],
+                                            "role_ids": [
+                                                84000228259
+                                            ],
+                                            "skill_ids": [
+                                                84000000439
+                                            ]
+                                        },
+                                        {
+                                            "email": "supportagent@freshdesk.com",
+                                            "name": "Support agent",
+                                            "ticket_scope": 1,
+                                            "occasional": false,
+                                            "language": "de",
+                                            "group_ids": [
+                                                84
+                                            ],
+                                            "role_ids": [
+                                                45
+                                            ],
+                                            "skill_ids": [
+                                                840
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreExisting": true,
+                                "requiredMappings": [
+                                    "agents[*].ticket_scope",
+                                    "agents[*].email"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/agents",
+                                        "extract": "id",
+                                        "id": "list_of_all_agents"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "account",
+                        "name": "Account",
+                        "sampleData": {
+                            "date_range": {
+                                "start_date": "2020-04-21T13:03:00Z",
+                                "end_date": "2021-04-21T13:03:00Z"
+                            },
+                            "resources": [
+                                {
+                                    "name": "tickets",
+                                    "include": [
+                                        "notes",
+                                        "attachments",
+                                        "ticket_states"
+                                    ]
+                                },
+                                {
+                                    "name": "archive_tickets",
+                                    "include": [
+                                        "notes",
+                                        "attachments"
+                                    ]
+                                },
+                                {
+                                    "name": "contacts"
+                                },
+                                {
+                                    "name": "companies",
+                                    "include": [
+                                        "company_domains"
+                                    ]
+                                },
+                                {
+                                    "name": "groups",
+                                    "include": [
+                                        "agent_groups"
+                                    ]
+                                },
+                                {
+                                    "name": "forums",
+                                    "include": [
+                                        "posts"
+                                    ]
+                                },
+                                {
+                                    "name": "canned_responses",
+                                    "include": [
+                                        "all_canned_responses"
+                                    ]
+                                },
+                                {
+                                    "name": "surveys",
+                                    "include": [
+                                        "survey_handles",
+                                        "survey_results",
+                                        "survey_questions"
+                                    ]
+                                },
+                                {
+                                    "name": "solutions"
+                                }
+                            ],
+                            "output_format": "json"
+                        },
+                        "operations": [
+                            {
+                                "id": "export_account",
+                                "name": "Export Account",
+                                "url": "/api/v2/account/export",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "date_range.end_date",
+                                    "date_range.start_date",
+                                    "output_format"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "skills",
+                        "name": "Skills",
+                        "sampleData": {
+                            "name": "Indian travel experts",
+                            "agents": [
+                                {
+                                    "id": 84007322117
+                                }
+                            ],
+                            "match_type": "all",
+                            "conditions": [
+                                {
+                                    "resource_type": "ticket",
+                                    "field_name": "cf_issue_type",
+                                    "operator": "in",
+                                    "value": [
+                                        "Faulty Product"
+                                    ]
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_skill",
+                                "name": "Create a Skill",
+                                "url": "/api/v2/skills",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            },
+                            {
+                                "id": "update_a_skill",
+                                "name": "Update a Skill",
+                                "url": "/api/v2/skills/:_id",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_skill",
+                                "name": "Delete a Skill",
+                                "url": "/api/v2/skills/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_a_skill",
+                                "url": [
+                                    "/api/v2/skills/:_id",
+                                    "/api/v2/skills/"
+                                ],
+                                "name": "Create or Update a Skill",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "groups",
+                        "name": "Groups",
+                        "sampleData": {
+                            "name": "Entertainment",
+                            "description": "Singers and dancers",
+                            "unassigned_for": "30m",
+                            "agent_ids": [
+                                84007322117
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_group",
+                                "name": "Create a Group",
+                                "url": "/api/v2/groups",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            },
+                            {
+                                "id": "update_a_group",
+                                "name": "Update a Group",
+                                "url": "/api/v2/groups/:_id",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_group",
+                                "name": "Delete a Group",
+                                "url": "/api/v2/groups/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_a_group",
+                                "url": [
+                                    "/api/v2/groups/:_id",
+                                    "/api/v2/groups/"
+                                ],
+                                "name": "Create or Update a Group",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

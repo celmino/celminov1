@@ -1,0 +1,332 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "skipargument",
+            "skipArgument": "offset"
+        },
+        "urlResolution": [
+            "/v2/systems",
+            "/v2/systems/:_id",
+            "/v2/systems/:_id/notifications",
+            "/v2/notifications",
+            "/v2/notifications/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "systems",
+                        "name": "Systems",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_systems",
+                                "url": "/v2/systems",
+                                "name": "Get All Systems",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "maximum number of items to return, limited to 100",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "Offset",
+                                        "description": "starting position",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_system_based_on_id",
+                                "url": "/v2/systems/:_id",
+                                "name": "Get a Specific System",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "System ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "system_notification_by_id",
+                                "url": "/v2/systems/:_id/notifications",
+                                "name": "Get System Notifications",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "System ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_antivirus_status",
+                                "url": "/v2/systems/:_id/antivirus",
+                                "name": "Get Antivirus Status",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "System ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notifications",
+                        "name": "Notifications",
+                        "endpoints": [
+                            {
+                                "id": "retrive_all_notifications",
+                                "url": "/v2/notifications",
+                                "name": "Get All Notifications",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "maximum number of items to return, limited to 100",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "Offset",
+                                        "description": "starting position",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_notification_based_on_id",
+                                "url": "/v2/notifications/:_id",
+                                "name": "Get a Specific Notification",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Notification ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "assets",
+                        "name": "Assets",
+                        "endpoints": [
+                            {
+                                "id": "get_assets",
+                                "url": "/v2/assets",
+                                "name": "Get Assets",
+                                "resourcePath": "data",
+                                "paging": {
+                                    "pagingMethod": "skipargument",
+                                    "skipArgument": "offset",
+                                    "lastPageStatusCode": 403
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "maximum number of items to return, limited to 100",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "Offset",
+                                        "description": "starting position",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_asstes_for_a_specific_system",
+                                "url": "/v2/assets/:_id",
+                                "name": "Get Assets for a Specific System",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Asset ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "automation",
+                        "name": "Automation",
+                        "endpoints": [
+                            {
+                                "id": "get_task_execution",
+                                "url": "/v2/automation/executions/:_id",
+                                "name": "Get Task Execution",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Task execution ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_task_execution_systems",
+                                "url": "/v2/automation/executions/:_id/systems",
+                                "name": "Get Task Execution Systems",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Task execution ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v2/systems",
+            "/v2/notifications",
+            "/v2/notifications/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "systems",
+                        "name": "Systems",
+                        "sampleData": {
+                            "instance_id": "production_website_1",
+                            "name": "Production Web Site",
+                            "group": "celigo",
+                            "description": "Running on ip.91.71.60.196.us-west-2.compute.internal",
+                            "contents": [
+                                {
+                                    "name": "Status",
+                                    "contents": {
+                                        "icon": "error",
+                                        "type": "label",
+                                        "title": "Could not connect to the database.",
+                                        "subtitle": "Database Connection"
+                                    }
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_systems",
+                                "url": "/v2/systems",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notifications",
+                        "name": "Notifications",
+                        "sampleData": {
+                            "id": 57209773,
+                            "instance_id": "production_website_1",
+                            "title": "Runtime error",
+                            "message": "Cannot connect to the database.",
+                            "priority": "critical"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_notifications",
+                                "url": "/v2/notifications",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_notifications",
+                                "url": "/v2/notifications/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "automation",
+                        "name": "Automation",
+                        "operations": [
+                            {
+                                "id": "run_task",
+                                "url": "/v2/automation/tasks/:_task_id/executions",
+                                "name": "Run Task",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

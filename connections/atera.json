@@ -1,0 +1,612 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [
+            "/v3/customers",
+            "/v3/customers/:_customerId",
+            "/v3/contacts",
+            "/v3/contacts/:_contactId",
+            "/v3/tickets",
+            "/v3/tickets/:_ticketId",
+            "/v3/tickets/:_ticketId/comments",
+            "/v3/rates/products",
+            "/v3/rates/products/:_productId"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "endpoints": [
+                            {
+                                "id": "single_customer_based_on_id",
+                                "url": "/v3/customers/:_customerId",
+                                "name": "Single customer based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "customerId",
+                                        "name": "customer ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_customers",
+                                "url": "/v3/customers",
+                                "name": "List of all customers",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "itemsInPage",
+                                        "name": "Items In Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "endpoints": [
+                            {
+                                "id": "single_contact_based_on_id",
+                                "url": "/v3/contacts/:_contactId",
+                                "name": "Single contact based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "contactId",
+                                        "name": "Contact ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_contacts",
+                                "url": "/v3/contacts",
+                                "name": "List all contacts",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "itemsInPage",
+                                        "name": "Items In Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tickets",
+                        "name": "Tickets",
+                        "endpoints": [
+                            {
+                                "id": "single_ticket_based_on_id",
+                                "url": "/v3/tickets/:_ticketId",
+                                "name": "Single ticket based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "ticketId",
+                                        "name": "Ticket ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_tickets",
+                                "url": "/v3/tickets",
+                                "name": "List all tickets",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "itemsInPage",
+                                        "name": "Items In Page",
+                                        "description": "items",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "tickets_by_comments",
+                                "url": "/v3/tickets/:_ticketId/comments",
+                                "name": "Tickets by comments",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "ticketId",
+                                        "name": "Ticket ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "itemsInPage",
+                                        "name": "Items In Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rates",
+                        "name": "Rates",
+                        "endpoints": [
+                            {
+                                "id": "single_rate__based_on_product_id",
+                                "url": "/v3/rates/products/:_productId",
+                                "name": "Single rate  based on product id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "productId",
+                                        "name": "Product ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_rates",
+                                "url": "/v3/rates/products",
+                                "name": "List of all rates",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "page",
+                                        "name": "Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "itemsInPage",
+                                        "name": "Items In Page",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v3/customers",
+            "/v3/customers/:_customerId",
+            "/v3/contacts",
+            "/v3/contacts/:_contactId",
+            "/v3/tickets",
+            "/v3/tickets/:_ticketId",
+            "/v3/rates/products",
+            "/v3/rates/products/:_productId"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "sampleData": {
+                            "CustomerID": 144,
+                            "CustomerName": "cust1",
+                            "CreatedOn": "2017-10-09T10:57:39Z",
+                            "LastModified": "2017-10-09T10:57:39Z",
+                            "BusinessNumber": null,
+                            "Domain": null,
+                            "Address": null,
+                            "City": null,
+                            "State": null,
+                            "Country": null,
+                            "Phone": "9695965665",
+                            "Fax": null,
+                            "Notes": null,
+                            "Logo": null,
+                            "Links": null,
+                            "Longitude": 0,
+                            "Latitude": 0,
+                            "ZipCodeStr": null
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customers",
+                                "url": "/v3/customers",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "customerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_customers",
+                                "url": "/v3/customers/:_customerId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "customerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_customers",
+                                "url": [
+                                    "/v3/customers/:_customerId",
+                                    "/v3/customers"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "customerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_customers",
+                                "url": "/v3/customers/:_customerId",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "customerId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "sampleData": {
+                            "EndUserID": 8,
+                            "CustomerID": 2,
+                            "CustomerName": "cust1",
+                            "Firstname": null,
+                            "Lastname": null,
+                            "JobTitle": null,
+                            "Email": "cust1c@gmail.com",
+                            "Phone": null,
+                            "IsContactPerson": false,
+                            "InIgnoreMode": false,
+                            "CreatedOn": "2017-10-10T13:03:08Z",
+                            "LastModified": "2017-10-10T13:03:08Z"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contacts",
+                                "url": "/v3/contacts",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "contactId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_contacts",
+                                "url": "/v3/contacts/:_contactId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "contactId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_contacts",
+                                "url": [
+                                    "/v3/contacts/:_contactId",
+                                    "/v3/contacts"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "contactId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_contacts",
+                                "url": "/v3/contacts/:_contactId",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "contactId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tickets",
+                        "name": "Tickets",
+                        "sampleData": {
+                            "TicketID": 3,
+                            "Description": "des1",
+                            "TicketTitle": "bcd",
+                            "TicketNumber": "09042014_4178538261",
+                            "TicketPriority": "Low",
+                            "TicketImpact": "NoImpact",
+                            "TicketStatus": "Open",
+                            "TicketSource": "Phone",
+                            "TicketType": "Other",
+                            "EndUserID": 2,
+                            "EndUserEmail": "cust1@gmail.com",
+                            "EndUserFirstName": "cust",
+                            "EndUserLastName": "1",
+                            "EndUserPhone": "9695965665",
+                            "TicketResolvedDate": null,
+                            "TicketCreatedDate": "2017-10-10T06:32:43Z",
+                            "TechnicianFirstCommentDate": null,
+                            "FirstResponseDueDate": null,
+                            "ClosedTicketDueDate": null,
+                            "FirstComment": "Comment here...",
+                            "LastEndUserComment": "Comment here...",
+                            "LastEndUserCommentTimestamp": "2017-10-10T06:32:44Z",
+                            "LastTechnicianComment": null,
+                            "LastTechnicianCommentTimestamp": null,
+                            "OnSiteDurationSeconds": null,
+                            "OnSiteDurationMinutes": 0,
+                            "OffSiteDurationSeconds": null,
+                            "OffSiteDurationMinutes": 0,
+                            "OnSLADurationSeconds": null,
+                            "OnSLADurationMinutes": 0,
+                            "OffSLADurationSeconds": null,
+                            "OffSLADurationMinutes": 0,
+                            "TotalDurationSeconds": null,
+                            "TotalDurationMinutes": 0,
+                            "CustomerID": 2,
+                            "CustomerName": "cust1",
+                            "CustomerBusinessNumber": null,
+                            "TechnicianContactID": 1,
+                            "TechnicianFullName": "sukeerthi sukeerthi",
+                            "TechnicianEmail": null
+                        },
+                        "operations": [
+                            {
+                                "id": "create_tickets",
+                                "url": "/v3/tickets",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_tickets",
+                                "url": "/v3/tickets/:_ticketId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_tickets",
+                                "url": [
+                                    "/v3/tickets/:_ticketId",
+                                    "/v3/tickets"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "ticketId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tickets",
+                                "url": "/v3/tickets/:_ticketId",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rates",
+                        "name": "Rates",
+                        "sampleData": {
+                            "RateID": 3,
+                            "Amount": 500,
+                            "Description": "mobile",
+                            "SKU": "abc",
+                            "Category": "phones"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_rates",
+                                "url": "/v3/rates/products",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "productId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_rates",
+                                "url": "/v3/rates/products/:_productId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "productId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_rates",
+                                "url": [
+                                    "/v3/rates/products/:_productId",
+                                    "/v3/rates/products"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "productId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_rates",
+                                "url": "/v3/rates/products/:_productId",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "productId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

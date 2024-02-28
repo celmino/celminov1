@@ -1,0 +1,1723 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "page"
+        },
+        "urlResolution": [
+            "accounts/listtags",
+            "carriers",
+            "carriers/getcarrier",
+            "carriers/listpackages",
+            "carriers/listservices",
+            "customers",
+            "customers/:_customerId",
+            "fulfillments",
+            "orders",
+            "orders/listbytag",
+            "orders/:_orderId",
+            "products",
+            "products/:_productId",
+            "shipments",
+            "shipments/getrates",
+            "stores",
+            "stores/marketplaces",
+            "users",
+            "warehouses",
+            "warehouses/:_warehouseId",
+            "webhooks"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "endpoints": [
+                            {
+                                "id": "list_tags",
+                                "url": "accounts/listtags",
+                                "name": "List Tags",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "queryParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "carriers",
+                        "name": "Carriers",
+                        "endpoints": [
+                            {
+                                "id": "list_carriers",
+                                "url": "carriers",
+                                "name": "List Carriers",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "get_carrier",
+                                "url": "carriers/getcarrier",
+                                "name": "Get Carrier",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "carrierCode",
+                                        "name": "carrierCode",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "The code for the carrier account to retrieve. Example: stamps_com"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_packages",
+                                "url": "carriers/listpackages",
+                                "name": "List Packages",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "carrierCode",
+                                        "name": "carrierCode",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "The carrier's code"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_services",
+                                "url": "carriers/listservices",
+                                "name": "List Services",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "carrierCode",
+                                        "name": "carrierCode",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "The carrier's code"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customers",
+                        "name": "Customers",
+                        "endpoints": [
+                            {
+                                "id": "list_customers",
+                                "url": "customers",
+                                "resourcePath": "customers",
+                                "name": "List Customers",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "stateCode",
+                                        "name": "stateCode",
+                                        "fieldType": "input",
+                                        "description": "Returns customers that reside in the specified stateCode."
+                                    },
+                                    {
+                                        "id": "countryCode",
+                                        "name": "countryCode",
+                                        "fieldType": "input",
+                                        "description": "Returns customers that reside in the specified countryCode."
+                                    },
+                                    {
+                                        "id": "marketplaceId",
+                                        "name": "marketplaceId",
+                                        "fieldType": "integer",
+                                        "description": "Returns customers that purchased items from the specified marketplaceId."
+                                    },
+                                    {
+                                        "id": "tagId",
+                                        "name": "tagId",
+                                        "fieldType": "integer",
+                                        "description": "Returns customers that have been tagged with the specified tagId."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "sortBy",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Name",
+                                            "ModifyDate",
+                                            "CreateDate"
+                                        ],
+                                        "description": "Sorts the order of the response based off the specified value."
+                                    },
+                                    {
+                                        "id": "sortDir",
+                                        "name": "sortDir",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ASC",
+                                            "DESC"
+                                        ],
+                                        "description": "Sets the direction of the sort order."
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "pageSize",
+                                        "fieldType": "integer",
+                                        "description": "Requested page size. Max value is 500. Default: 100."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_customer",
+                                "url": "customers/:_customerId",
+                                "name": "Get Customer",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "customerId",
+                                        "name": "customerId",
+                                        "fieldType": "integer",
+                                        "description": "The system generated identifier for the Customer. Example: 12345678."
+                                    }
+                                ],
+                                "queryParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "fulfillments",
+                        "name": "Fulfillments",
+                        "endpoints": [
+                            {
+                                "id": "list_fulfillments",
+                                "url": "fulfillments",
+                                "resourcePath": "fulfillments",
+                                "name": "List Fulfillments",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "createDateStart": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ssZ"
+                                },
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "fulfillmentId",
+                                        "name": "fulfillmentId",
+                                        "fieldType": "integer",
+                                        "description": "Returns the fulfillment with the specified fulfillment ID."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "orderId",
+                                        "fieldType": "integer",
+                                        "description": "Returns fulfillments whose orders have the specified order ID."
+                                    },
+                                    {
+                                        "id": "orderNumber",
+                                        "name": "orderNumber",
+                                        "fieldType": "input",
+                                        "description": "Returns fulfillments whose orders have the specified order number."
+                                    },
+                                    {
+                                        "id": "trackingNumber",
+                                        "name": "trackingNumber",
+                                        "fieldType": "input",
+                                        "description": "Returns fulfillments with the specified tracking number."
+                                    },
+                                    {
+                                        "id": "recipientName",
+                                        "name": "recipientName",
+                                        "fieldType": "input",
+                                        "description": "Returns fulfillments shipped to the specified recipient name."
+                                    },
+                                    {
+                                        "id": "createDateStart",
+                                        "name": "createDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns fulfillments created on or after the specified createDate Example: 2015-01-01 00:00:00."
+                                    },
+                                    {
+                                        "id": "createDateEnd",
+                                        "name": "createDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns fulfillments created on or before the specified createDate Example: 2015-01-01 00:00:00."
+                                    },
+                                    {
+                                        "id": "shipDateStart",
+                                        "name": "shipDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns fulfillments with the shipDate on or after the specified date Example: 2015-01-01."
+                                    },
+                                    {
+                                        "id": "shipDateEnd",
+                                        "name": "shipDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns fulfillments with the shipDate on or before the specified date Example: 2015-01-08."
+                                    },
+                                    {
+                                        "id": "recipientName",
+                                        "name": "recipientName",
+                                        "fieldType": "input",
+                                        "description": "Returns fulfillments shipped to the specified recipient name."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "sortBy",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ShipDate",
+                                            "CreateDate"
+                                        ],
+                                        "description": "Sort the responses by a set value. The response will be sorted based off the ascending dates (oldest to most current.) If left empty, the response will be sorted by ascending createDate. Example: ShipDate."
+                                    },
+                                    {
+                                        "id": "sortDir",
+                                        "name": "sortDir",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ASC",
+                                            "DESC"
+                                        ],
+                                        "description": "Sets the direction of the sort order."
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "pageSize",
+                                        "fieldType": "integer",
+                                        "description": "Requested page size. Max value is 500. Default: 100."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "endpoints": [
+                            {
+                                "id": "list_orders",
+                                "url": "orders",
+                                "resourcePath": "orders",
+                                "name": "List Orders",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "modifyDateStart": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ssZ"
+                                },
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "customerName",
+                                        "name": "customerName",
+                                        "fieldType": "input",
+                                        "description": "Returns orders that match the specified name. Example: Smith."
+                                    },
+                                    {
+                                        "id": "itemKeyword",
+                                        "name": "itemKeyword",
+                                        "fieldType": "input",
+                                        "description": "Returns orders that contain items that match the specified keyword. Fields searched are Sku, Description, and Options Example: ABC123."
+                                    },
+                                    {
+                                        "id": "createDateStart",
+                                        "name": "createDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns orders that were created in ShipStation after the specified date Example: 2015-01-01 00:00:00."
+                                    },
+                                    {
+                                        "id": "createDateEnd",
+                                        "name": "createDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns orders that were created in ShipStation before the specified date Example: 2015-01-08 00:00:00."
+                                    },
+                                    {
+                                        "id": "modifyDateStart",
+                                        "name": "modifyDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns orders that were modified after the specified date Example: 2015-01-01 00:00:00."
+                                    },
+                                    {
+                                        "id": "modifyDateEnd",
+                                        "name": "modifyDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns orders that were modified before the specified date Example: 2015-01-08 00:00:00."
+                                    },
+                                    {
+                                        "id": "orderDateStart",
+                                        "name": "orderDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns orders greater than the specified date Example: 2015-01-01 00:00:00."
+                                    },
+                                    {
+                                        "id": "orderDateEnd",
+                                        "name": "orderDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns orders less than or equal to the specified date Example: 2015-01-08 00:00:00."
+                                    },
+                                    {
+                                        "id": "orderNumber",
+                                        "name": "orderNumber",
+                                        "fieldType": "input",
+                                        "description": "Returns fulfillments whose orders have the specified order number."
+                                    },
+                                    {
+                                        "id": "orderStatus",
+                                        "name": "orderStatus",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "awaiting_payment",
+                                            "awaiting_shipment",
+                                            "pending_fulfillment",
+                                            "shipped",
+                                            "on_hold",
+                                            "cancelled"
+                                        ],
+                                        "description": "Filter by order status. If left empty, orders of all statuses are returned. Example: awaiting_shipment."
+                                    },
+                                    {
+                                        "id": "paymentDateStart",
+                                        "name": "paymentDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns orders that were paid after the specified date Example: 2015-01-01."
+                                    },
+                                    {
+                                        "id": "paymentDateEnd",
+                                        "name": "paymentDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns orders that were paid before the specified date Example: 2015-01-08."
+                                    },
+                                    {
+                                        "id": "storeId",
+                                        "name": "storeId",
+                                        "fieldType": "integer",
+                                        "description": "Filters orders to a single store. Call List Stores to obtain a list of store Ids. Example: 123456."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "sortBy",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "OrderDate",
+                                            "ModifyDate",
+                                            "CreateDate"
+                                        ],
+                                        "description": "Sort the responses by a set value. The response will be sorted based off the ascending dates (oldest to most current.) If left empty, the response will be sorted by ascending orderId. Example: OrderDate."
+                                    },
+                                    {
+                                        "id": "sortDir",
+                                        "name": "sortDir",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ASC",
+                                            "DESC"
+                                        ],
+                                        "description": "Sets the direction of the sort order."
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "pageSize",
+                                        "fieldType": "integer",
+                                        "description": "Requested page size. Max value is 500. Default: 100."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_orders_by_tag",
+                                "url": "orders/listbytag",
+                                "resourcePath": "orders",
+                                "name": "List Orders by Tag",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "orderStatus",
+                                        "name": "orderStatus",
+                                        "fieldType": "select",
+                                        "required": true,
+                                        "options": [
+                                            "awaiting_payment",
+                                            "awaiting_shipment",
+                                            "pending_fulfillment",
+                                            "shipped",
+                                            "on_hold",
+                                            "cancelled"
+                                        ],
+                                        "description": "The order's status."
+                                    },
+                                    {
+                                        "id": "tagId",
+                                        "name": "tagId",
+                                        "fieldType": "integer",
+                                        "required": true,
+                                        "description": "ID of the tag. Call Accounts/ListTags to obtain a list of tags for this account."
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "pageSize",
+                                        "fieldType": "integer",
+                                        "description": "Requested page size. Max value is 500. Default: 100."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_order",
+                                "url": "orders/:_orderId",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "name": "Get Order",
+                                "pathParameters": [
+                                    {
+                                        "id": "orderId",
+                                        "name": "orderId",
+                                        "fieldType": "integer",
+                                        "description": "The system generated identifier for the order. Example: 12345678."
+                                    }
+                                ],
+                                "queryParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "endpoints": [
+                            {
+                                "id": "list_products",
+                                "url": "products",
+                                "resourcePath": "products",
+                                "name": "List Products",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "sku",
+                                        "name": "sku",
+                                        "fieldType": "input",
+                                        "description": "Returns products that match the specified SKU."
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "fieldType": "input",
+                                        "description": "Returns products that match the specified product name."
+                                    },
+                                    {
+                                        "id": "productCategoryId",
+                                        "name": "productCategoryId",
+                                        "fieldType": "input",
+                                        "description": "Returns products that match the specified productCategoryId."
+                                    },
+                                    {
+                                        "id": "productTypeId",
+                                        "name": "productTypeId",
+                                        "fieldType": "input",
+                                        "description": "Returns products that match the specified productTypeId."
+                                    },
+                                    {
+                                        "id": "tagId",
+                                        "name": "tagId",
+                                        "fieldType": "input",
+                                        "description": "Returns products that match the specified tagId."
+                                    },
+                                    {
+                                        "id": "startDate",
+                                        "name": "startDate",
+                                        "fieldType": "date",
+                                        "description": "Returns products that were created after the specified date."
+                                    },
+                                    {
+                                        "id": "endDate",
+                                        "name": "endDate",
+                                        "fieldType": "date",
+                                        "description": "Returns products that were created before the specified date."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "sortBy",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "SKU",
+                                            "ModifyDate",
+                                            "CreateDate"
+                                        ],
+                                        "description": "Sorts the order of the response based off the specified value."
+                                    },
+                                    {
+                                        "id": "sortDir",
+                                        "name": "sortDir",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ASC",
+                                            "DESC"
+                                        ],
+                                        "description": "Sets the direction of the sort order."
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "pageSize",
+                                        "fieldType": "integer",
+                                        "description": "Requested page size. Max value is 500. Default: 100."
+                                    },
+                                    {
+                                        "id": "showInactive",
+                                        "name": "showInactive",
+                                        "fieldType": "input",
+                                        "description": "Specifies whether the list should include inactive products. Default: false."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_product",
+                                "url": "products/:_productId",
+                                "name": "Get Product",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "productId",
+                                        "name": "productId",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "endpoints": [
+                            {
+                                "id": "list_shipments",
+                                "url": "shipments",
+                                "resourcePath": "shipments",
+                                "name": "List Shipments",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "createDateStart": "{{{encodeURI lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ssZ"
+                                },
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "recipientName",
+                                        "name": "recipientName",
+                                        "fieldType": "input",
+                                        "description": "Returns shipments shipped to the specified recipient name."
+                                    },
+                                    {
+                                        "id": "recipientCountryCode",
+                                        "name": "recipientCountryCode",
+                                        "fieldType": "input",
+                                        "description": "Returns shipments shipped to the specified country code."
+                                    },
+                                    {
+                                        "id": "orderNumber",
+                                        "name": "orderNumber",
+                                        "fieldType": "input",
+                                        "description": "Returns shipments whose orders have the specified order number."
+                                    },
+                                    {
+                                        "id": "orderId",
+                                        "name": "orderId",
+                                        "fieldType": "integer",
+                                        "description": "Returns shipments whose orders have the specified order ID."
+                                    },
+                                    {
+                                        "id": "carrierCode",
+                                        "name": "carrierCode",
+                                        "fieldType": "input",
+                                        "description": "Returns shipments shipped with the specified carrier."
+                                    },
+                                    {
+                                        "id": "serviceCode",
+                                        "name": "serviceCode",
+                                        "fieldType": "input",
+                                        "description": "Returns shipments shipped with the specified shipping service."
+                                    },
+                                    {
+                                        "id": "trackingNumber",
+                                        "name": "trackingNumber",
+                                        "fieldType": "input",
+                                        "description": "Returns shipments with the specified tracking number."
+                                    },
+                                    {
+                                        "id": "createDateStart",
+                                        "name": "createDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns shipments created on or after the specified createDate Example: 2015-01-01 00:00:00."
+                                    },
+                                    {
+                                        "id": "createDateEnd",
+                                        "name": "createDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns shipments created on or before the specified createDate Example: 2015-01-08 00:00:00."
+                                    },
+                                    {
+                                        "id": "shipDateStart",
+                                        "name": "shipDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns shipments with the shipDate on or after the specified date Example: 2015-01-01."
+                                    },
+                                    {
+                                        "id": "shipDateEnd",
+                                        "name": "shipDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns shipments with the shipDate on or before the specified date Example: 2015-01-08."
+                                    },
+                                    {
+                                        "id": "voidDateStart",
+                                        "name": "voidDateStart",
+                                        "fieldType": "date",
+                                        "description": "Returns shipments voided on or after the specified date Example: 2015-01-01 00:00:00."
+                                    },
+                                    {
+                                        "id": "voidDateEnd",
+                                        "name": "voidDateEnd",
+                                        "fieldType": "date",
+                                        "description": "Returns shipments voided on or before the specified date Example: 2015-01-08 00:00:00."
+                                    },
+                                    {
+                                        "id": "includeShipmentItems",
+                                        "name": "includeShipmentItems",
+                                        "fieldType": "checkbox",
+                                        "description": "Specifies whether to include shipment items with results Default value: false. Example: false."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "sortBy",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ShipDate",
+                                            "CreateDate"
+                                        ],
+                                        "description": "Sort the responses by a set value. The response will be sorted based off the ascending dates (oldest to most current.) If left empty, the response will be sorted by ascending createDate. Example: ShipDate."
+                                    },
+                                    {
+                                        "id": "sortDir",
+                                        "name": "sortDir",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ASC",
+                                            "DESC"
+                                        ],
+                                        "description": "Sets the direction of the sort order."
+                                    },
+                                    {
+                                        "id": "pageSize",
+                                        "name": "pageSize",
+                                        "fieldType": "integer",
+                                        "description": "Requested page size. Max value is 500. Default: 100."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_rates",
+                                "url": "shipments/getrates",
+                                "resourcePath": "",
+                                "name": "Get Rates",
+                                "doesNotSupportPaging": true,
+                                "method": "POST",
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "carrierCode",
+                                        "name": "carrierCode",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "Returns rates for the specified carrier."
+                                    },
+                                    {
+                                        "id": "serviceCode",
+                                        "name": "serviceCode",
+                                        "fieldType": "input",
+                                        "description": "Returns rates for the specified shipping service."
+                                    },
+                                    {
+                                        "id": "packageCode",
+                                        "name": "packageCode",
+                                        "fieldType": "input",
+                                        "description": "Returns rates for the specified package type."
+                                    },
+                                    {
+                                        "id": "fromPostalCode",
+                                        "name": "fromPostalCode",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "Originating postal code."
+                                    },
+                                    {
+                                        "id": "toState",
+                                        "name": "toState",
+                                        "fieldType": "input",
+                                        "description": "Destination State/Province. Please use two-character state/province abbreviation. Note this field is required for the following carriers: UPS"
+                                    },
+                                    {
+                                        "id": "toCountry",
+                                        "name": "toCountry",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "Destination Country. Please use the two-character ISO country code."
+                                    },
+                                    {
+                                        "id": "toPostalCode",
+                                        "name": "toPostalCode",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "Destination Postal Code."
+                                    },
+                                    {
+                                        "id": "toCity",
+                                        "name": "toCity",
+                                        "fieldType": "input",
+                                        "description": "Destination City."
+                                    },
+                                    {
+                                        "id": "weight.value",
+                                        "name": "weight value",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "Shipment's weight. Use Weight object."
+                                    },
+                                    {
+                                        "id": "weight.units",
+                                        "name": "weight units",
+                                        "fieldType": "input",
+                                        "required": true,
+                                        "description": "Shipment's weight. Use Weight object."
+                                    },
+                                    {
+                                        "id": "dimensions",
+                                        "name": "dimensions",
+                                        "fieldType": "input",
+                                        "description": "Shipment's dimensions. Use Dimensions object."
+                                    },
+                                    {
+                                        "id": "confirmation",
+                                        "name": "confirmation",
+                                        "fieldType": "input",
+                                        "description": "Returns rates that account for the specified delivery confirmation type."
+                                    },
+                                    {
+                                        "id": "residential",
+                                        "name": "residential",
+                                        "fieldType": "checkbox",
+                                        "description": "Returns rates that account for the specified delivery confirmation type. Default value: false"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stores",
+                        "name": "Stores",
+                        "endpoints": [
+                            {
+                                "id": "get_store_by_id",
+                                "url": "stores/:_storeId",
+                                "name": "Get Store by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "storeId",
+                                        "name": "storeId",
+                                        "fieldType": "integer",
+                                        "description": "A unique ID generated by ShipStation and assigned to each store. Example: 12345."
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_stores",
+                                "url": "stores",
+                                "resourcePath": "",
+                                "name": "List Stores",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "showInactive",
+                                        "name": "showInactive",
+                                        "fieldType": "checkbox",
+                                        "description": "Determines whether inactive stores will be returned in the list of stores. Example: false. Default: false."
+                                    },
+                                    {
+                                        "id": "marketplaceId",
+                                        "name": "marketplaceId",
+                                        "fieldType": "integer",
+                                        "description": "Returns stores of this marketplace type.."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_marketplaces",
+                                "url": "stores/marketplaces",
+                                "resourcePath": "",
+                                "name": "List Marketplaces",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [],
+                                "queryParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "list_users",
+                                "url": "users",
+                                "resourcePath": "",
+                                "name": "List Users",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "showInactive",
+                                        "name": "showInactive",
+                                        "fieldType": "checkbox",
+                                        "description": "Determines whether inactive users will be returned in the response. Example: false. Default: false."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "warehouses",
+                        "name": "Warehouses",
+                        "endpoints": [
+                            {
+                                "id": "list_warehouses",
+                                "url": "warehouses",
+                                "resourcePath": "",
+                                "name": "List Warehouses",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "get_warehouse_by_id",
+                                "url": "warehouses/:_warehouseId",
+                                "name": "Get Warehouse by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "warehouseId",
+                                        "name": "warehouseId",
+                                        "fieldType": "integer",
+                                        "description": "A unique ID generated by ShipStation and assigned to each Ship From Location (formerly known as warehouse). Example: 12345678."
+                                    }
+                                ],
+                                "queryParameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "webhooks",
+                        "name": "Webhooks",
+                        "endpoints": [
+                            {
+                                "id": "list_webhooks",
+                                "url": "webhooks",
+                                "resourcePath": "webhooks",
+                                "name": "List Webhooks",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [],
+                                "queryParameters": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "carriers/addfunds",
+            "orders/addtag",
+            "orders/assignuser",
+            "orders/createlabelfororder",
+            "orders/createorder",
+            "orders/holduntil",
+            "orders/markasshipped",
+            "orders/removetag",
+            "orders/restorefromhold",
+            "orders/unassignuser",
+            "orders/:_orderId",
+            "products/:_productId",
+            "shipments/createlabel",
+            "shipments/voidlabel",
+            "stores/:_storeId",
+            "stores/refreshstore",
+            "stores/deactivate",
+            "stores/reactivate",
+            "warehouses/createwarehouse",
+            "warehouses/:_warehouseId",
+            "webhooks/subscribe",
+            "webhooks/:_webhookId"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "carriers",
+                        "name": "Carriers",
+                        "operations": [
+                            {
+                                "id": "add_funds",
+                                "name": "Add Funds",
+                                "url": "carriers/addfunds",
+                                "method": "POST",
+                                "sampleData": {
+                                    "carrierCode": "123",
+                                    "amount": "456"
+                                },
+                                "parameters": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "orders",
+                        "name": "Orders",
+                        "operations": [
+                            {
+                                "id": "add_tag_to_order",
+                                "name": "Add Tag to Order",
+                                "url": "orders/addtag",
+                                "method": "POST",
+                                "sampleData": {
+                                    "orderId": "123",
+                                    "tagId": "456"
+                                },
+                                "parameters": []
+                            },
+                            {
+                                "id": "assign_user_to_order",
+                                "name": "Assign User to Order",
+                                "url": "orders/assignuser",
+                                "method": "POST",
+                                "sampleData": {
+                                    "orderIds": [
+                                        "123",
+                                        "234"
+                                    ],
+                                    "userId": "456"
+                                },
+                                "parameters": []
+                            },
+                            {
+                                "id": "create_label_for_order",
+                                "name": "Create Label for Order",
+                                "url": "orders/createlabelfororder",
+                                "method": "POST",
+                                "sampleData": {
+                                    "orderId": 93348442,
+                                    "carrierCode": "fedex",
+                                    "serviceCode": "fedex_2day",
+                                    "confirmation": null,
+                                    "shipDate": "2014-04-03",
+                                    "weight": {
+                                        "value": 2,
+                                        "units": "pounds"
+                                    },
+                                    "dimensions": null,
+                                    "insuranceOptions": null,
+                                    "internationalOptions": null,
+                                    "advancedOptions": null,
+                                    "testLabel": false
+                                },
+                                "parameters": []
+                            },
+                            {
+                                "id": "create_update_order",
+                                "name": "Create/Update Order",
+                                "url": "orders/createorder",
+                                "method": "POST",
+                                "parameters": [],
+                                "sampleData": {
+                                    "orderNumber": "TEST-ORDER-API-DOCS",
+                                    "orderKey": "0f6bec18-3e89-4881-83aa-f392d84f4c74",
+                                    "orderDate": "2015-06-29T08:46:27.0000000",
+                                    "paymentDate": "2015-06-29T08:46:27.0000000",
+                                    "shipByDate": "2015-07-05T00:00:00.0000000",
+                                    "orderStatus": "awaiting_shipment",
+                                    "customerId": 37701499,
+                                    "customerUsername": "headhoncho@whitehouse.gov",
+                                    "customerEmail": "headhoncho@whitehouse.gov",
+                                    "billTo": {
+                                        "name": "The President",
+                                        "company": null,
+                                        "street1": null,
+                                        "street2": null,
+                                        "street3": null,
+                                        "city": null,
+                                        "state": null,
+                                        "postalCode": null,
+                                        "country": null,
+                                        "phone": null,
+                                        "residential": null
+                                    },
+                                    "shipTo": {
+                                        "name": "The President",
+                                        "company": "US Govt",
+                                        "street1": "1600 Pennsylvania Ave",
+                                        "street2": "Oval Office",
+                                        "street3": null,
+                                        "city": "Washington",
+                                        "state": "DC",
+                                        "postalCode": "20500",
+                                        "country": "US",
+                                        "phone": "555-555-5555",
+                                        "residential": true
+                                    },
+                                    "items": [
+                                        {
+                                            "lineItemKey": "vd08-MSLbtx",
+                                            "sku": "ABC123",
+                                            "name": "Test item #1",
+                                            "imageUrl": null,
+                                            "weight": {
+                                                "value": 24,
+                                                "units": "ounces"
+                                            },
+                                            "quantity": 2,
+                                            "unitPrice": 99.99,
+                                            "taxAmount": 2.5,
+                                            "shippingAmount": 5,
+                                            "warehouseLocation": "Aisle 1, Bin 7",
+                                            "options": [
+                                                {
+                                                    "name": "Size",
+                                                    "value": "Large"
+                                                }
+                                            ],
+                                            "productId": 123456,
+                                            "fulfillmentSku": null,
+                                            "adjustment": false,
+                                            "upc": "32-65-98"
+                                        },
+                                        {
+                                            "lineItemKey": null,
+                                            "sku": "DISCOUNT CODE",
+                                            "name": "10% OFF",
+                                            "imageUrl": null,
+                                            "weight": {
+                                                "value": 0,
+                                                "units": "ounces"
+                                            },
+                                            "quantity": 1,
+                                            "unitPrice": -20.55,
+                                            "taxAmount": null,
+                                            "shippingAmount": null,
+                                            "warehouseLocation": null,
+                                            "options": [],
+                                            "productId": 123456,
+                                            "fulfillmentSku": "SKU-Discount",
+                                            "adjustment": true,
+                                            "upc": null
+                                        }
+                                    ],
+                                    "amountPaid": 218.73,
+                                    "taxAmount": 5,
+                                    "shippingAmount": 10,
+                                    "customerNotes": "Please ship as soon as possible!",
+                                    "internalNotes": "Customer called and would like to upgrade shipping",
+                                    "gift": true,
+                                    "giftMessage": "Thank you!",
+                                    "paymentMethod": "Credit Card",
+                                    "requestedShippingService": "Priority Mail",
+                                    "carrierCode": "fedex",
+                                    "serviceCode": "fedex_2day",
+                                    "packageCode": "package",
+                                    "confirmation": "delivery",
+                                    "shipDate": "2015-07-02",
+                                    "weight": {
+                                        "value": 25,
+                                        "units": "ounces"
+                                    },
+                                    "dimensions": {
+                                        "units": "inches",
+                                        "length": 7,
+                                        "width": 5,
+                                        "height": 6
+                                    },
+                                    "insuranceOptions": {
+                                        "provider": "carrier",
+                                        "insureShipment": true,
+                                        "insuredValue": 200
+                                    },
+                                    "internationalOptions": {
+                                        "contents": null,
+                                        "customsItems": null
+                                    },
+                                    "advancedOptions": {
+                                        "warehouseId": 98765,
+                                        "nonMachinable": false,
+                                        "saturdayDelivery": false,
+                                        "containsAlcohol": false,
+                                        "mergedOrSplit": false,
+                                        "mergedIds": [],
+                                        "parentId": null,
+                                        "storeId": 12345,
+                                        "customField1": "Custom data that you can add to an order. See Custom Field #2 & #3 for more info!",
+                                        "customField2": "Per UI settings, this information can appear on some carrier's shipping labels. See link below",
+                                        "customField3": "https://help.shipstation.com/hc/en-us/articles/206639957",
+                                        "source": "Webstore",
+                                        "billToParty": null,
+                                        "billToAccount": null,
+                                        "billToPostalCode": null,
+                                        "billToCountryCode": null
+                                    },
+                                    "tagIds": [
+                                        53974
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "hold_order_until",
+                                "name": "Hold Order Until",
+                                "url": "orders/holduntil",
+                                "method": "POST",
+                                "sampleData": {
+                                    "orderId": "123",
+                                    "holdUntilDate": "456"
+                                },
+                                "parameters": []
+                            },
+                            {
+                                "id": "mark_an_order_as_shipped",
+                                "name": "Mark an Order as Shipped",
+                                "url": "orders/markasshipped",
+                                "method": "POST",
+                                "sampleData": {
+                                    "orderId": 93348442,
+                                    "carrierCode": "usps",
+                                    "shipDate": "2014-04-01",
+                                    "trackingNumber": "913492493294329421",
+                                    "notifyCustomer": true,
+                                    "notifySalesChannel": true
+                                },
+                                "parameters": []
+                            },
+                            {
+                                "id": "remove_tag_to_order",
+                                "name": "Remove Tag to Order",
+                                "url": "orders/removetag",
+                                "method": "POST",
+                                "sampleData": {
+                                    "orderId": "123",
+                                    "tagId": "456"
+                                },
+                                "parameters": []
+                            },
+                            {
+                                "id": "restore_order_from_on_hold",
+                                "name": "Restore Order from On Hold",
+                                "url": "orders/restorefromhold",
+                                "method": "POST",
+                                "sampleData": {
+                                    "orderId": "123"
+                                },
+                                "parameters": []
+                            },
+                            {
+                                "id": "unassign_user_to_order",
+                                "name": "Unassign User to Order",
+                                "url": "orders/unassignuser",
+                                "method": "POST",
+                                "sampleData": {
+                                    "orderIds": [
+                                        "123",
+                                        "234"
+                                    ]
+                                },
+                                "parameters": []
+                            },
+                            {
+                                "id": "delete_order",
+                                "name": "Delete Order",
+                                "url": "orders/:_orderId",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "orderId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "sampleData": {
+                            "aliases": null,
+                            "productId": 123456789,
+                            "sku": "",
+                            "name": "Beautiful",
+                            "price": 0,
+                            "defaultCost": null,
+                            "length": null,
+                            "width": null,
+                            "height": null,
+                            "weightOz": null,
+                            "internalNotes": null,
+                            "fulfillmentSku": null,
+                            "active": true,
+                            "productCategory": null,
+                            "productType": null,
+                            "warehouseLocation": null,
+                            "defaultCarrierCode": null,
+                            "defaultServiceCode": null,
+                            "defaultPackageCode": null,
+                            "defaultIntlCarrierCode": null,
+                            "defaultIntlServiceCode": null,
+                            "defaultIntlPackageCode": null,
+                            "defaultConfirmation": null,
+                            "defaultIntlConfirmation": null,
+                            "customsDescription": null,
+                            "customsValue": null,
+                            "customsTariffNo": null,
+                            "customsCountryCode": null,
+                            "noCustoms": null,
+                            "tags": null
+                        },
+                        "operations": [
+                            {
+                                "id": "update_a_product",
+                                "name": "Update a Product",
+                                "url": "products/:_productId",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "productId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "products",
+                                        "extract": "products[0].productId",
+                                        "id": "list_products"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "shipments",
+                        "name": "Shipments",
+                        "operations": [
+                            {
+                                "id": "create_shipment_label",
+                                "name": "Create Shipment Label",
+                                "url": "shipments/createlabel",
+                                "sampleData": {
+                                    "carrierCode": "fedex",
+                                    "serviceCode": "fedex_ground",
+                                    "packageCode": "package",
+                                    "confirmation": "delivery",
+                                    "shipDate": "2014-04-03",
+                                    "weight": {
+                                        "value": 3,
+                                        "units": "ounces"
+                                    },
+                                    "dimensions": {
+                                        "units": "inches",
+                                        "length": 7,
+                                        "width": 5,
+                                        "height": 6
+                                    },
+                                    "shipFrom": {
+                                        "name": "Jason Hodges",
+                                        "company": "ShipStation",
+                                        "street1": "2815 Exposition Blvd",
+                                        "street2": "Ste 2353242",
+                                        "street3": null,
+                                        "city": "Austin",
+                                        "state": "TX",
+                                        "postalCode": "78703",
+                                        "country": "US",
+                                        "phone": null,
+                                        "residential": false
+                                    },
+                                    "shipTo": {
+                                        "name": "The President",
+                                        "company": "US Govt",
+                                        "street1": "1600 Pennsylvania Ave",
+                                        "street2": "Oval Office",
+                                        "street3": null,
+                                        "city": "Washington",
+                                        "state": "DC",
+                                        "postalCode": "20500",
+                                        "country": "US",
+                                        "phone": null,
+                                        "residential": false
+                                    },
+                                    "insuranceOptions": null,
+                                    "internationalOptions": null,
+                                    "advancedOptions": null,
+                                    "testLabel": false
+                                },
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "shipments",
+                                        "extract": "[0].shipmentId",
+                                        "id": "list_shipments"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "void_label",
+                                "name": "Void Label",
+                                "url": "shipments/voidlabel",
+                                "method": "POST",
+                                "parameters": [],
+                                "sampleData": {
+                                    "shipmentId": "123"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stores",
+                        "name": "Stores",
+                        "operations": [
+                            {
+                                "id": "update_store",
+                                "name": "Update Store",
+                                "url": "stores/:_storeId",
+                                "sampleData": {
+                                    "storeId": 12345,
+                                    "storeName": "WooCommerce Store",
+                                    "marketplaceId": 36,
+                                    "marketplaceName": "WooCommerce",
+                                    "accountName": null,
+                                    "email": null,
+                                    "integrationUrl": "http://shipstation-test.wpengine.com",
+                                    "active": true,
+                                    "companyName": "",
+                                    "phone": "",
+                                    "publicEmail": "",
+                                    "website": "",
+                                    "refreshDate": "2014-12-16T17:47:05.457",
+                                    "lastRefreshAttempt": "2014-12-16T09:47:05.457",
+                                    "createDate": "2014-11-06T15:21:13.223",
+                                    "modifyDate": "2014-11-10T08:02:19.117",
+                                    "autoRefresh": true,
+                                    "statusMappings": [
+                                        {
+                                            "orderStatus": "awaiting_payment",
+                                            "statusKey": "Pending"
+                                        },
+                                        {
+                                            "orderStatus": "awaiting_shipment",
+                                            "statusKey": "Processing"
+                                        },
+                                        {
+                                            "orderStatus": "shipped",
+                                            "statusKey": "Completed"
+                                        },
+                                        {
+                                            "orderStatus": "cancelled",
+                                            "statusKey": "Cancelled"
+                                        },
+                                        {
+                                            "orderStatus": "on_hold",
+                                            "statusKey": "On-hold"
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "storeId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "stores",
+                                        "extract": "[0].storeId",
+                                        "id": "list_stores"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "refresh_store",
+                                "name": "Refresh Store",
+                                "url": "stores/refreshstore",
+                                "method": "POST",
+                                "parameters": [],
+                                "sampleData": {
+                                    "storeId": 12345,
+                                    "refreshDate": "12-08-2014"
+                                }
+                            },
+                            {
+                                "id": "deactivate_store",
+                                "name": "Deactivate Store",
+                                "url": "stores/deactivate",
+                                "method": "POST",
+                                "sampleData": {
+                                    "storeId": "12345"
+                                }
+                            },
+                            {
+                                "id": "reactivate_store",
+                                "name": "Reactivate Store",
+                                "url": "stores/reactivate",
+                                "method": "POST",
+                                "sampleData": {
+                                    "storeId": "12345"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "warehouses",
+                        "name": "Warehouses",
+                        "operations": [
+                            {
+                                "id": "create_warehouse",
+                                "name": "Create Warehouse",
+                                "url": "warehouses/createwarehouse",
+                                "sampleData": {
+                                    "warehouseName": "New Ship From Location",
+                                    "originAddress": {
+                                        "name": "NM Warehouse",
+                                        "company": "White Sands Co.",
+                                        "street1": "4704 Arabela Dr.",
+                                        "street2": null,
+                                        "street3": null,
+                                        "city": "Las Cruces",
+                                        "state": "NM",
+                                        "postalCode": "80012",
+                                        "country": "US",
+                                        "phone": "512-111-2222",
+                                        "residential": true
+                                    },
+                                    "returnAddress": null,
+                                    "isDefault": false
+                                },
+                                "method": "POST",
+                                "parameters": [],
+                                "supportIgnoreExisting": true
+                            },
+                            {
+                                "id": "update_warehouse",
+                                "name": "Update Warehouse",
+                                "url": "warehouses/:_warehouseId",
+                                "sampleData": {
+                                    "warehouseId": 12345,
+                                    "warehouseName": "API Ship From Location",
+                                    "originAddress": {
+                                        "name": "API Warehouse",
+                                        "company": "ShipStation",
+                                        "street1": "2815 Exposition Blvd",
+                                        "street2": null,
+                                        "street3": null,
+                                        "city": "Austin",
+                                        "state": "TX",
+                                        "postalCode": "78703",
+                                        "country": "US",
+                                        "phone": "512-555-5555",
+                                        "residential": true,
+                                        "addressVerified": null
+                                    },
+                                    "returnAddress": {
+                                        "name": "API Ship From Location",
+                                        "company": "ShipStation",
+                                        "street1": "2815 Exposition Blvd",
+                                        "street2": null,
+                                        "street3": null,
+                                        "city": "Austin",
+                                        "state": "TX",
+                                        "postalCode": "78703",
+                                        "country": "US",
+                                        "phone": "512-555-5555",
+                                        "residential": null,
+                                        "addressVerified": null
+                                    },
+                                    "createDate": "2015-07-02T08:38:31.4870000",
+                                    "isDefault": true
+                                },
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "warehouseId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true
+                            },
+                            {
+                                "id": "create_or_update_warehouse",
+                                "name": "Create or Update Warehouse",
+                                "url": [
+                                    "warehouses/:_warehouseId",
+                                    "warehouses/createwarehouse"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "sampleData": {
+                                    "warehouseId": 12345,
+                                    "warehouseName": "API Ship From Location",
+                                    "originAddress": {
+                                        "name": "API Warehouse",
+                                        "company": "ShipStation",
+                                        "street1": "2815 Exposition Blvd",
+                                        "street2": null,
+                                        "street3": null,
+                                        "city": "Austin",
+                                        "state": "TX",
+                                        "postalCode": "78703",
+                                        "country": "US",
+                                        "phone": "512-555-5555",
+                                        "residential": true,
+                                        "addressVerified": null
+                                    },
+                                    "returnAddress": {
+                                        "name": "API Ship From Location",
+                                        "company": "ShipStation",
+                                        "street1": "2815 Exposition Blvd",
+                                        "street2": null,
+                                        "street3": null,
+                                        "city": "Austin",
+                                        "state": "TX",
+                                        "postalCode": "78703",
+                                        "country": "US",
+                                        "phone": "512-555-5555",
+                                        "residential": null,
+                                        "addressVerified": null
+                                    },
+                                    "createDate": "2015-07-02T08:38:31.4870000",
+                                    "isDefault": true
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "warehouseId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "webhooks",
+                        "name": "Webhooks",
+                        "operations": [
+                            {
+                                "id": "subscribe_to_webhook",
+                                "name": "Subscribe to Webhook",
+                                "url": "webhooks/subscribe",
+                                "method": "POST",
+                                "parameters": [],
+                                "sampleData": {
+                                    "target_url": "http://someexamplewebhookurl.com/neworder",
+                                    "event": "ORDER_NOTIFY",
+                                    "store_id": null,
+                                    "friendly_name": "My Webhook"
+                                }
+                            },
+                            {
+                                "id": "unsubscribe_to_webhook",
+                                "name": "Unsubscribe to Webhook",
+                                "url": "webhooks/:_webhookId",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "webhookId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "askForHowToGetIdentifier": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

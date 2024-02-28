@@ -1,0 +1,2479 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "pageSize",
+            "maxCountPath": "count"
+        },
+        "urlResolution": [
+            "/customer/:_customer_ref/location/:_location_ref",
+            "/customer/:_customer_ref/location/",
+            "/customer/:_customer_ref/contact/:_contact_ref",
+            "/customer/:_customer_ref/contact/",
+            "/customer/:_customer_ref",
+            "/customer/",
+            "/contact/:_contact_ref",
+            "/contact/",
+            "/location/:_location_ref",
+            "/location/",
+            "/item/:_item_ref",
+            "/item/",
+            "/user/:_user_ref",
+            "/user/",
+            "/job/?start=:_start_date&end=:_end_date",
+            "/job/:_job_ref",
+            "/task/:_task_ref",
+            "/task/",
+            "/asset/:_asset_ref",
+            "/asset/",
+            "/invoice/:_invoice_ref",
+            "/invoice/",
+            "/business",
+            "/webquote/:_webquote_ref",
+            "/webquote/",
+            "/fieldquote/?start=:_start_date&end=:_end_date",
+            "/fieldquote/:_fieldquote_ref",
+            "/jobtype/:_jobtype_ref/skill",
+            "/jobtype/:_jobtype_ref",
+            "/jobtype/",
+            "/skill/:_skill_ref",
+            "/skill/",
+            "/settings/tax/",
+            "/settings/customfields/:_declaration_ref",
+            "/settings/customfields/"
+        ],
+        "versions": [
+            {
+                "version": "1.1",
+                "resources": [
+                    {
+                        "id": "customer",
+                        "name": "Customer",
+                        "endpoints": [
+                            {
+                                "id": "list_customer",
+                                "url": "/customer/",
+                                "name": "List Customer",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: customerId, name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "email",
+                                        "name": "email",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "taxable",
+                                        "name": "taxable",
+                                        "description": "Boolean denoting filtering by taxable customer",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_customer",
+                                "url": "/customer/:_customer_ref",
+                                "name": "Get Single Customer",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_contacts_for_the_given_customer",
+                                "url": "/customer/:_customer_ref/contact/",
+                                "name": "List all contacts for the given customer",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_contact_for_given_customer",
+                                "url": "/customer/:_customer_ref/contact/:_contact_ref",
+                                "name": "Get Single Contact For Given Customer",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "contact_ref",
+                                        "name": "Contact Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_locations_for_the_given_customer",
+                                "url": "/customer/:_customer_ref/location/",
+                                "name": "List all locations for the given customer",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_location_for_given_customer",
+                                "url": "/customer/:_customer_ref/location/:_location_ref",
+                                "name": "Get Single Location For Given Customer",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "location_ref",
+                                        "name": "Location Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "endpoints": [
+                            {
+                                "id": "list_contacts",
+                                "url": "/contact/",
+                                "name": "List Contacts",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: firstName, lastName, email, phone, customer",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "firstName",
+                                        "name": "First Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "email",
+                                        "name": "email",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "lastName",
+                                        "name": "Last Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "phone",
+                                        "name": "Phone",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_single_contact",
+                                "url": "/contact/:_contact_ref",
+                                "name": "Get A Single Contact",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "contact_ref",
+                                        "name": "Contact Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "location",
+                        "name": "Location",
+                        "endpoints": [
+                            {
+                                "id": "get_all_locations",
+                                "url": "/location/",
+                                "name": "Get All Locations",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "name, streetName, locality, region, postcode, country, isBilling, type",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "streetName",
+                                        "name": "Street Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "locality",
+                                        "name": "Locality ",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "region",
+                                        "name": "Region",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "postcode",
+                                        "name": "Postcode",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "country",
+                                        "name": "Country",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_location",
+                                "url": "/location/:_location_ref",
+                                "name": "Get Single Location",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "location_ref",
+                                        "name": "Location Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "asset",
+                        "name": "Asset",
+                        "endpoints": [
+                            {
+                                "id": "list_assets",
+                                "url": "/asset/",
+                                "name": "List Assets",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: Name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "serialNumber ",
+                                        "name": "SerialNumber",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "manufacturer",
+                                        "name": "Manufacturer",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "make",
+                                        "name": "Make",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "model",
+                                        "name": "Model",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_single_asset",
+                                "url": "/asset/:_asset_ref",
+                                "name": "Get A Single Asset",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "asset_ref",
+                                        "name": "Asset Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoice",
+                        "name": "Invoice",
+                        "endpoints": [
+                            {
+                                "id": "list_invoices",
+                                "url": "/invoice/",
+                                "name": "List Invoices",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": " Available sorting criteria: invoiceNumber, createdOn, location, totalAmount",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "invoiceNumber ",
+                                        "name": "invoiceNumber ",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "createdOn",
+                                        "name": "Created On",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "location",
+                                        "name": "Location",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "Start",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end",
+                                        "name": "END",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_single_invoice",
+                                "url": "/invoice/:_invoice_ref",
+                                "name": "Get A Single Invoice",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "invoice_ref",
+                                        "name": "Invoice Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "business",
+                        "name": "Business",
+                        "endpoints": [
+                            {
+                                "id": "get_the_business",
+                                "url": "/business",
+                                "name": "Get The Business",
+                                "resourcePath": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": "quotes",
+                        "name": "Quotes",
+                        "endpoints": [
+                            {
+                                "id": "list_web_quotes",
+                                "url": "/webquote/",
+                                "name": "List Web Quotes",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: createdOn",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "State",
+                                        "description": "Available filtering criteria: pending, accepted, rejected",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "location ",
+                                        "name": "ocation ",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "start",
+                                        "name": "Start",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end",
+                                        "name": "END",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_web_quote",
+                                "url": "/webquote/:_webquote_ref",
+                                "name": "Get Single Web Quote",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "webquote_ref",
+                                        "name": "Web Quote Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_field_quotes",
+                                "url": "/fieldquote/?start=:_start_date&end=:_end_date",
+                                "name": "List Field Quotes",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "start_date",
+                                        "name": "Start Date",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_date",
+                                        "name": "End Date",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_field_quote",
+                                "url": "/fieldquote/:_fieldquote_ref",
+                                "name": "Get a Field Quote",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "fieldquote_ref",
+                                        "name": "Fieldquote Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item",
+                        "name": "Item",
+                        "endpoints": [
+                            {
+                                "id": "list_items",
+                                "url": "/item/",
+                                "name": "List Items",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: name, partNumber, taxable, glAccount",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "partNumber",
+                                        "name": "partNumber",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "taxable",
+                                        "name": "taxable",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_item",
+                                "url": "/item/:_item_ref",
+                                "name": "Get Single Item",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "item_ref",
+                                        "name": "Item Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "user",
+                        "name": "User",
+                        "endpoints": [
+                            {
+                                "id": "list_users",
+                                "url": "/user/",
+                                "name": "List Users",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "can be ordered by email",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "firstName",
+                                        "name": "First Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "lastName",
+                                        "name": "LastName",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "archived",
+                                        "name": "Archived",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_user",
+                                "url": "/user/:_user_ref",
+                                "name": "Get Single User",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "user_ref",
+                                        "name": "User Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "job",
+                        "name": "Jobs",
+                        "endpoints": [
+                            {
+                                "id": "list_job",
+                                "url": "/job/?start=:_start_date&end=:_end_date",
+                                "name": "List Job",
+                                "resourcePath": "items",
+                                "pathParameters": [
+                                    {
+                                        "id": "start_date",
+                                        "name": "Start Date",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "end_date",
+                                        "name": "End Date",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: scheduledOn, jobLead , location and state",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "location",
+                                        "name": "Location",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "jobLead",
+                                        "name": "JobLead",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "state",
+                                        "name": "State",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_job",
+                                "url": "/job/:_job_ref",
+                                "name": "Get Single Job",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "job_ref",
+                                        "name": "Job Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobtype",
+                        "name": "JobType",
+                        "endpoints": [
+                            {
+                                "id": "list_jobtypes",
+                                "url": "/jobtype/",
+                                "name": "List JobTypes",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_job_type",
+                                "url": "/jobtype/:_jobtype_ref",
+                                "name": "Get Single Job Type",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "jobtype_ref",
+                                        "name": "Job Type Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_skills_associated_to_a_jobtype",
+                                "url": "/jobtype/:_jobtype_ref/skill/",
+                                "name": "List Skills associated to a JobType",
+                                "resourcePath": "skills",
+                                "pathParameters": [
+                                    {
+                                        "id": "jobtype_ref",
+                                        "name": "Job Type Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "skill",
+                        "name": "Skill",
+                        "endpoints": [
+                            {
+                                "id": "list_skills",
+                                "url": "/skill/",
+                                "name": "List Skills",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_skill",
+                                "url": "/skill/:_skill_ref",
+                                "name": "Get Single Skill",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "skill_ref",
+                                        "name": "Skill Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "settings",
+                        "name": "Settings",
+                        "endpoints": [
+                            {
+                                "id": "list_taxes",
+                                "url": "/settings/tax/",
+                                "name": "List Taxes",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: rate, agency, group, name, glAccount",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "rate",
+                                        "name": "Rate",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "group ",
+                                        "name": "Group",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "agency",
+                                        "name": "Agency",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customfields",
+                        "name": "Custom Fields",
+                        "endpoints": [
+                            {
+                                "id": "list_custom_field",
+                                "url": "/settings/customfields/",
+                                "name": "List Custom Field",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": " Available sorting criteria: type, entityClass, key, name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "entityClass",
+                                        "name": "Entity Class",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "key",
+                                        "name": "Key",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_custom_field_declaration",
+                                "url": "/settings/customfields/:_declaration_ref",
+                                "name": "Get Custom Field Declaration",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "declaration_ref",
+                                        "name": "Declaration Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "task",
+                        "name": "Tasks",
+                        "endpoints": [
+                            {
+                                "id": "get_all_tasks",
+                                "url": "/task/",
+                                "name": "Get All Tasks",
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "sortedBy",
+                                        "name": "SortedBy",
+                                        "description": "Available sorting criteria: name",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "taxable",
+                                        "name": "taxable",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_task",
+                                "url": "/task/:_task_ref",
+                                "name": "Get Single task",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "task_ref",
+                                        "name": "Task Reference",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/customer/:_customer_ref/contact/:_contact_ref",
+            "/customer/:_customer_ref/contact/",
+            "/customer/:_customer_ref/location/:_location_ref",
+            "/customer/:_customer_ref/location/",
+            "/customer/:_customer_ref",
+            "/customer/",
+            "/item/:_item_ref",
+            "/item/",
+            "/user/:_user_ref",
+            "/user/",
+            "/task/:_task_ref",
+            "/task/",
+            "/job/:_job_ref",
+            "/job/",
+            "/contact/:_contact_ref",
+            "/contact/",
+            "/location/:_location_ref",
+            "/location/",
+            "/asset/:_asset_ref",
+            "/asset/",
+            "/invoice/:_invoice_ref",
+            "/webquote/:_webquote_ref",
+            "/webquote/",
+            "/fieldquote/:_fieldquote_ref",
+            "/fieldquote/",
+            "/jobtype/:_jobtype_ref/skill/",
+            "/jobtype/:_jobtype_ref",
+            "/jobtype/",
+            "/skill/:_skill_ref",
+            "/skill/",
+            "/settings/customfields/:_declaration_ref",
+            "/settings/customfields/"
+        ],
+        "versions": [
+            {
+                "version": "1.1",
+                "resources": [
+                    {
+                        "id": "customer",
+                        "name": "Customer",
+                        "sampleData": {
+                            "name": "ABC solicitors",
+                            "email": "office.manager@abcsolicitors.com",
+                            "phone": "1234567890",
+                            "fax": "1234567891",
+                            "notes": "",
+                            "website": "www.abcsolicitors.com",
+                            "account": "1234",
+                            "glAccount": "5678",
+                            "discount": 10,
+                            "taxable": true,
+                            "onHold": false,
+                            "location": {
+                                "name": "McKinney",
+                                "streetName": "1909 Clinton Dr",
+                                "locality": "McKinney",
+                                "lat": 33.1871,
+                                "lng": -96.7453,
+                                "region": "TX",
+                                "postcode": "75070",
+                                "country": "United States",
+                                "isBilling": true,
+                                "type": "headquarters",
+                                "tax": {
+                                    "name": "default tax",
+                                    "group": "Taxes"
+                                },
+                                "customFields": {
+                                    "access": "easy access"
+                                }
+                            },
+                            "customFields": {
+                                "fleet": "standard"
+                            },
+                            "billingLocation": {
+                                "uuid": "e14a3c9949ea4cbd98d73fa8046c7577"
+                            },
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "streetName": "1909 Clinton Dr",
+                            "locality": "McKinney",
+                            "lat": 33.1871,
+                            "lng": -96.7453,
+                            "region": "TX",
+                            "postcode": "75070",
+                            "country": "United States",
+                            "isBilling": true,
+                            "type": "headquarters",
+                            "tax": {
+                                "name": "default tax",
+                                "group": "Taxes"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customer",
+                                "url": "/customer/",
+                                "name": "Create Customer",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_contact_for_givan_customer",
+                                "url": "/customer/:_customer_ref/contact/",
+                                "name": "Create A Contact For Givan Customer",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Refference",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_a_location_for_given_customer",
+                                "url": "/customer/:_customer_ref/location/",
+                                "name": "Create A Location For Given Customer",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "name": "McKinney",
+                                    "streetName": "1909 Clinton Dr",
+                                    "locality": "McKinney",
+                                    "lat": 33.1871,
+                                    "lng": -96.7453,
+                                    "region": "TX",
+                                    "postcode": "75070",
+                                    "country": "United States",
+                                    "isBilling": true,
+                                    "type": "headquarters",
+                                    "tax": {
+                                        "name": "default tax",
+                                        "group": "Taxes"
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Refference",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_customer",
+                                "url": "/customer/:_customer_ref",
+                                "name": "Update Customer",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "customer_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_contact_for_given_customer",
+                                "url": "/customer/:_customer_ref/contact/:_contact_ref",
+                                "name": "Update Contact For Given Customer",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Refference",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_ref",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_location_for_given_customer",
+                                "url": "/customer/:_customer_ref/location/:_location_ref",
+                                "name": "Update Location For Given Customer",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Refference",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "location_ref",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_customer",
+                                "url": [
+                                    "/customer/:_customer_ref",
+                                    "/customer/"
+                                ],
+                                "name": "Create or Update Customer",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_contact_for_given_customer",
+                                "url": [
+                                    "/customer/:_customer_ref/contact/:_contact_ref",
+                                    "/customer/:_customer_ref/contact/"
+                                ],
+                                "name": "Create or Update Contact For Given Customer",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Refference",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_location_for_given_customer",
+                                "url": [
+                                    "/customer/:_customer_ref/location/:_location_ref",
+                                    "/customer/:_customer_ref/location/"
+                                ],
+                                "name": "Create or Update Location For Given Customer",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Refference",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "location_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_customer",
+                                "url": "/customer/:_customer_ref",
+                                "name": "Delete a Customer",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_contact_of_given_customer",
+                                "url": "/customer/:_customer_ref/contact/:_contact_ref",
+                                "name": "Delete a Contact Of Given Customer",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Refference",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "contact_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_locaton_of_given_customer",
+                                "url": "/customer/:_customer_ref/location/:_location_ref",
+                                "name": "Delete a Locaton Of Given Customer",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_ref",
+                                        "name": "Customer Refference",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "location_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contact",
+                        "name": "Contact",
+                        "sampleData": {
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "email": "john.smith@abcsolicitors.com",
+                            "phone": "012-345-678-901",
+                            "customFields": {
+                                "9fa34e4b724f4ef7894b0d2cb5de1a06": "Doctor"
+                            },
+                            "customer": {
+                                "uuid": "929022257f1c440089cebcbd510e2d2f"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contact",
+                                "url": "/contact/",
+                                "name": "Create Contact",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_contact",
+                                "url": "/contact/:_contact_ref",
+                                "name": "Update Contact",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_contact",
+                                "url": [
+                                    "/contact/:_contact_ref",
+                                    "/contact/"
+                                ],
+                                "name": "Create or Update Contact",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "contact_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_contact",
+                                "url": "/contact/:_contact_ref",
+                                "name": "Delete a Contact",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "contact_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "location",
+                        "name": "Location",
+                        "sampleData": {
+                            "name": "Narrow st House",
+                            "streetName": "10 Narrow Street",
+                            "locality": "Dublin",
+                            "lat": 12.98,
+                            "lng": 10.34,
+                            "region": "County Dublin",
+                            "postcode": "Dublin9",
+                            "country": "Ireland",
+                            "isBilling": false,
+                            "type": "branch",
+                            "tax": {
+                                "name": "TaxName2",
+                                "group": "TaxGroup1"
+                            },
+                            "customFields": {
+                                "uyt65ace45ae487eb78b48729a501111": "Is available?"
+                            },
+                            "customer": {
+                                "uuid": "beb65ace45ae487eb78b48729a502612"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_location",
+                                "url": "/location/",
+                                "name": "Create Location",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_location",
+                                "url": "/location/:_location_ref",
+                                "name": "Update Location",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "location_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_location",
+                                "url": [
+                                    "/location/:_location_ref",
+                                    "/location/"
+                                ],
+                                "name": "Create or Update Location",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "location_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_location",
+                                "url": "/location/:_location_ref",
+                                "name": "Delete a Location",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "location_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "asset",
+                        "name": "Asset",
+                        "sampleData": {
+                            "name": "Hammer",
+                            "location": {
+                                "uuid": "01f5c5260b664249b8821ed5d0ddfeeb"
+                            },
+                            "description": "Description of the asset",
+                            "serialNumber": "WS23",
+                            "make": "Maker001",
+                            "model": "Model-YT23",
+                            "manufacturer": "Bosh",
+                            "manufacturerNotes": "Havy duty drill",
+                            "maintenanceNotes": "Maintenance notes of the asset",
+                            "area": "2nd shelf, storage id U345",
+                            "arrivedOn": "2014-01-01",
+                            "contact": {
+                                "uuid": "01f5c5260b664249b8821ed5d0ddfxxv"
+                            },
+                            "customFields": {
+                                "09v5c5260b664249b8821ed5d0ddfcxv": "Checked?"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_asset",
+                                "url": "/asset/",
+                                "name": "Create Asset",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_asset",
+                                "url": "/asset/:_asset_ref",
+                                "name": "Update Asset",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "asset_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_asset",
+                                "url": [
+                                    "/asset/:_asset_ref",
+                                    "/asset/"
+                                ],
+                                "name": "Create or Update Asset",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "asset_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_asset",
+                                "url": "/asset/:_asset_ref",
+                                "name": "Delete an Asset",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "asset_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoice",
+                        "name": "Invoice",
+                        "sampleData": {
+                            "comment": "An Invoice",
+                            "contact": null,
+                            "currency": "USD",
+                            "customer": {
+                                "uuid": "5ef9484abd9d49189dd9e3c371cbfea9"
+                            },
+                            "jobs": [
+                                {
+                                    "uuid": "44d55f3c5fb44534ad7eef4f78dd4f20",
+                                    "lineItems": [
+                                        {
+                                            "cost": 18,
+                                            "description": null,
+                                            "note": null,
+                                            "glAccount": null,
+                                            "name": "Replace Sounder [Vantage Sounder]",
+                                            "price": 18,
+                                            "quantity": 1,
+                                            "taxes": [],
+                                            "itemType": "Product"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "totals": {
+                                "netAmount": 18,
+                                "netLaborAmount": 0,
+                                "totalAmount": 18,
+                                "totalTax": 0
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "update_invoice",
+                                "url": "/invoice/:_invoice_ref",
+                                "name": "Update Invoice",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "invoice_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_invoice",
+                                "url": "/invoice/:_invoice_ref",
+                                "name": "Delete a Invoice",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "invoice_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "item",
+                        "name": "Item",
+                        "sampleData": {
+                            "name": "Drill",
+                            "description": "Drill",
+                            "partNumber": "SB-009/23",
+                            "trackOnVan": false,
+                            "unitCost": 10.23,
+                            "unitPrice": 10.23,
+                            "markupType": "fixed",
+                            "markupValue": 20.34,
+                            "taxable": false,
+                            "glAccount": "acc 009",
+                            "tax1": {
+                                "group": "taxGr2",
+                                "name": "tax-004"
+                            },
+                            "tax2": {
+                                "group": "taxGr1",
+                                "name": "tax-003"
+                            },
+                            "customFields": {
+                                "85f118098f0c4a0d8d8615a8f709a705": true
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_item",
+                                "url": "/item/",
+                                "name": "Create Item",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_item",
+                                "url": "/item/:_item_ref",
+                                "name": "Update Item",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "item_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_item",
+                                "url": [
+                                    "/item/:_item_ref",
+                                    "/item/"
+                                ],
+                                "name": "Create or Update Item",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "item_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_item",
+                                "url": "/item/:_item_ref",
+                                "name": "Delete an Item",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "item_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "user",
+                        "name": "User",
+                        "sampleData": {
+                            "email": "john.smith@murphy.com",
+                            "password": "Ar!VwL4S$a",
+                            "firstName": "John",
+                            "lastName": "Smith",
+                            "phone": "1234567890",
+                            "locale": "en_US",
+                            "timezone": "US/Eastern",
+                            "platform": "android",
+                            "role": "Employee",
+                            "archived": false,
+                            "customFields": {}
+                        },
+                        "operations": [
+                            {
+                                "id": "create_user",
+                                "url": "/user/",
+                                "name": "Create User",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_user",
+                                "url": "/user/:_user_ref",
+                                "name": "Update User",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_user",
+                                "url": [
+                                    "/user/:_user_ref",
+                                    "/user/"
+                                ],
+                                "name": "Create or Update User",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "user_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_user",
+                                "url": "/user/:_user_ref",
+                                "name": "Delete a User",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "task",
+                        "name": "Task",
+                        "sampleData": {
+                            "name": "Test"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_task",
+                                "url": "/task/",
+                                "name": "Create Task",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_task",
+                                "url": "/task/:_task_ref",
+                                "name": "Update Task",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_task",
+                                "url": [
+                                    "/task/:_task_ref",
+                                    "/task/"
+                                ],
+                                "name": "Create or Update Task",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "task_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_task",
+                                "url": "/task/:_task_ref",
+                                "name": "Delete a Task",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "job",
+                        "name": "Job",
+                        "sampleData": {
+                            "link": {
+                                "url": "https://api.fieldaware.net/job/21cbeb8f0606469899cc22c96ddb778d",
+                                "rel": "detail"
+                            },
+                            "tasks": [],
+                            "revenue": 0,
+                            "jobId": "J2225",
+                            "invoice": null,
+                            "jobLead": null,
+                            "scheduledOn": "2014-09-27T00:00:00+00:00",
+                            "labor": [],
+                            "uuid": "f4e4341f7dc7416cadf64e7e99bb207f",
+                            "crew": [],
+                            "state": [
+                                "scheduled"
+                            ],
+                            "location": {
+                                "uuid": "f367809ccd224716ad97cd685aafe899",
+                                "locality": "Plano",
+                                "country": null,
+                                "region": "TX",
+                                "postcode": "75098",
+                                "streetName": "665544 Preston Road",
+                                "name": null
+                            },
+                            "completedOn": null,
+                            "customFields": {},
+                            "asset": null,
+                            "startedOn": null,
+                            "description": "",
+                            "estDuration": null,
+                            "pre_signature": null,
+                            "customer": {
+                                "uuid": "7b4d6ecf8a094937a1afae4479485d49",
+                                "name": "ABC Company",
+                                "customerId": 30
+                            },
+                            "createdOn": "2014-09-28T16:31:49+00:00",
+                            "contact": null,
+                            "signature": null
+                        },
+                        "operations": [
+                            {
+                                "id": "create_job",
+                                "url": "/job/",
+                                "name": "Create Job",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_job",
+                                "url": "/job/:_job_ref",
+                                "name": "Update Job",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "job_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_job",
+                                "url": [
+                                    "/job/:_job_ref",
+                                    "/job/"
+                                ],
+                                "name": "Create or Update Job",
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "job_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_job",
+                                "url": "/job/:_job_ref",
+                                "name": "Delete a Job",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "job_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "quote",
+                        "name": "Quote",
+                        "sampleData": {
+                            "name": "Drill",
+                            "description": "Drill",
+                            "partNumber": "SB-009/23",
+                            "trackOnVan": false,
+                            "unitCost": 10.23,
+                            "unitPrice": 10.23,
+                            "markupType": "fixed",
+                            "markupValue": 20.34,
+                            "taxable": false,
+                            "glAccount": "acc 009",
+                            "tax1": {
+                                "group": "taxGr2",
+                                "name": "tax-004"
+                            },
+                            "tax2": {
+                                "group": "taxGr1",
+                                "name": "tax-003"
+                            },
+                            "customFields": {
+                                "85f118098f0c4a0d8d8615a8f709a705": true
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_webquote",
+                                "url": "/webquote/",
+                                "name": "Create Webquote",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_webquote",
+                                "url": "/webquote/:_webquote_ref",
+                                "name": "Update Webquote",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "webquote_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_webquote",
+                                "url": [
+                                    "/webquote/:_webquote_ref",
+                                    "/webquote/"
+                                ],
+                                "name": "Create or Update Webquote",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "webquote_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_webquote",
+                                "url": "/webquote/:_webquote_ref",
+                                "name": "Delete an Webquote",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "webquote_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_fieldquote",
+                                "url": "/fieldquote/",
+                                "name": "Create Fieldquote",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_fieldquote",
+                                "url": "/fieldquote/:_fieldquote_ref",
+                                "name": "Update Fieldquote",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "fieldquote_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_fieldquote",
+                                "url": [
+                                    "/fieldquote/:_fieldquote_ref",
+                                    "/fieldquote/"
+                                ],
+                                "name": "Create or Update Fieldquote",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "fieldquote_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_an_fieldquote",
+                                "url": "/fieldquote/:_fieldquote_ref",
+                                "name": "Delete an Fieldquote",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "fieldquote_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobtype",
+                        "name": "JobType",
+                        "sampleData": {
+                            "name": "Test"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_jobtype",
+                                "url": "/jobtype/",
+                                "name": "Create JobType",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/jobtype/",
+                                        "extract": "items[0].name",
+                                        "id": "list_jobtypes"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_jobtype",
+                                "url": "/jobtype/:_jobtype_ref",
+                                "name": "Update JobType",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "jobtype_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/jobtype/",
+                                        "extract": "items[0].uuid",
+                                        "id": "list_jobtypes"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_jobtype",
+                                "url": [
+                                    "/jobtype/:_jobtype_ref",
+                                    "/jobtype/"
+                                ],
+                                "name": "Create or Update JobType",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "jobtype_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/jobtype/",
+                                        "extract": "items[0].uuid",
+                                        "id": "list_jobtypes"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_a_jobtype",
+                                "url": "/jobtype/:_jobtype_ref",
+                                "name": "Delete a JobType",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "jobtype_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_jobtype-skill_association",
+                                "url": "/jobtype/:_jobtype_ref/skill/",
+                                "name": "Create JobType-Skill Association",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "skills": [
+                                        {
+                                            "skill": {
+                                                "uuid": "00bd62a92a004faea233951510167cad"
+                                            },
+                                            "required": true
+                                        },
+                                        {
+                                            "skill": {
+                                                "uuid": "bd62a0092a0041510167cadfaea23395"
+                                            },
+                                            "required": false
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "jobtype_ref",
+                                        "name": "Job Type",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "skill",
+                        "name": "Skill",
+                        "sampleData": {
+                            "name": "Test"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_skill",
+                                "url": "/skill/",
+                                "name": "Create Skill",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/skill/",
+                                        "extract": "items[0].name",
+                                        "id": "list_skills"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_skill",
+                                "url": "/skill/:_skill_ref",
+                                "name": "Update Skill",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "skill_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/skill/",
+                                        "extract": "items[0].uuid",
+                                        "id": "list_skills"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_skill",
+                                "url": [
+                                    "/skill/:_skill_ref",
+                                    "/skill/"
+                                ],
+                                "name": "Create or Update Skill",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "skill_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/skill/",
+                                        "extract": "items[0].uuid",
+                                        "id": "list_skills"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_a_skill",
+                                "url": "/skill/:_skill_ref",
+                                "name": "Delete a Skill",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "skill_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customfields",
+                        "name": "Custom Fields",
+                        "sampleData": {
+                            "key": "my_custom_reference_key",
+                            "entityClass": "Customer",
+                            "name": "LO Card id",
+                            "type": "Text",
+                            "syncable": false,
+                            "position": 3,
+                            "defaultValue": false,
+                            "options": [
+                                "Bosh",
+                                "Makita",
+                                "JCB",
+                                "BlackDecker",
+                                "Polkita"
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_custom_field_declaration",
+                                "url": "/settings/customfields/",
+                                "name": "Create Custom Field Declaration",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "isIdentifier": true,
+                                        "required": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/settings/customfields/",
+                                        "extract": "items[0].name",
+                                        "id": "list_custom_field"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_custom_field_declaration",
+                                "url": "/settings/customfields/:_declaration_ref",
+                                "name": "Delete Custom Field Declaration",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "declaration_ref",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

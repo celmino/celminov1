@@ -1,0 +1,926 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "Resource",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [
+            "/v1/expensereports",
+            "/v1/expensereports/:_report_id",
+            "/v1/expensereports/:_report_id/expenses",
+            "/v1/expenses",
+            "/v1/expenses/:_expense_id",
+            "/v1/receipts"
+        ],
+        "versions": [
+            {
+                "version": "latest",
+                "resources": [
+                    {
+                        "id": "cpdlists",
+                        "name": "CPDLists",
+                        "endpoints": [
+                            {
+                                "id": "list_cpdlists",
+                                "url": "/v1/cpdlists",
+                                "name": "List custom per-diem lists",
+                                "resourcePath": "CPDLists",
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Name of custom per-diem list"
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "description": "The active status of the employee GLD (1 = active, 0 = inactive)"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_cpdlists",
+                                "url": "/v1/cpdlists/:_id",
+                                "name": "Get a custom per-diem list",
+                                "resourcePath": "CPDLists",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Custom per-diem list ID",
+                                        "description": "Unique ID of the custom per-diem list.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "departments",
+                        "name": "Departments",
+                        "endpoints": [
+                            {
+                                "id": "list_departments",
+                                "url": "/v1/departments",
+                                "name": "List departments",
+                                "resourcePath": "Departments",
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Name of department"
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "description": "The active status of the employee GLD (1 = active, 0 = inactive)"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "get_departments",
+                                "url": "/v1/departments/:_id",
+                                "name": "Get a department",
+                                "resourcePath": "Departments",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Department ID",
+                                        "description": "Unique ID of the department.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "empglds",
+                        "name": "EmpGLDs",
+                        "endpoints": [
+                            {
+                                "id": "list_empglds",
+                                "url": "/v1/empglds/:_index",
+                                "name": "List employee GLD records",
+                                "resourcePath": "EmpGLDs",
+                                "pathParameters": [
+                                    {
+                                        "id": "index",
+                                        "name": "Employee GLD index",
+                                        "description": "The index of the EmpGLD requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Employee GLD name."
+                                    },
+                                    {
+                                        "id": "code",
+                                        "name": "Employee GLD code",
+                                        "description": "The internal code used to identify the employee GLD in your organization."
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "description": "The active status of the employee GLD (1 = active, 0 = inactive)"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_empglds",
+                                "url": "/v1/empglds/:_index/:_id",
+                                "name": "Get an employee GLD record",
+                                "resourcePath": "EmpGLDs",
+                                "pathParameters": [
+                                    {
+                                        "id": "index",
+                                        "name": "Employee GLD index",
+                                        "description": "The index of the EmpGLD requested.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Employee GLD ID",
+                                        "description": "Unique ID of the employee GLD.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "exprptglds",
+                        "name": "ExpRptGLDs",
+                        "endpoints": [
+                            {
+                                "id": "list_exprptglds",
+                                "url": "/v1/exprptglds/:_index",
+                                "name": "List employee GLD records",
+                                "resourcePath": "ExpRptGLDs",
+                                "pathParameters": [
+                                    {
+                                        "id": "index",
+                                        "name": "Expense report GLD index",
+                                        "description": "The index of the ExpRptGLD requested.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Expense report GLD name."
+                                    },
+                                    {
+                                        "id": "code",
+                                        "name": "Employee GLD code",
+                                        "description": "The internal code used to identify the employee GLD in your organization."
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "description": "The active status of the employee GLD (1 = active, 0 = inactive)"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_exprptglds",
+                                "url": "/v1/exprptglds/:_index/:_id",
+                                "name": "Get an expense report GLD record",
+                                "resourcePath": "ExpRptGLDs",
+                                "pathParameters": [
+                                    {
+                                        "id": "index",
+                                        "name": "Expense report GLD index",
+                                        "description": "The index of the ExpRptGLD requested.",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Expense report GLD ID",
+                                        "description": "Unique ID of the employee GLD.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expensecategories",
+                        "name": "ExpenseCategories",
+                        "endpoints": [
+                            {
+                                "id": "list_expensecategories",
+                                "url": "/v1/expensecategories",
+                                "name": "List expensecategories",
+                                "resourcePath": "ExpenseCategories",
+                                "queryParameters": [
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "The expense category name."
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "description": "The active status of the expense category (1 = active, 0 = inactive)"
+                                    },
+                                    {
+                                        "id": "glcode",
+                                        "name": "Expense category GL code",
+                                        "description": "The general ledger code associated with this expense category."
+                                    },
+                                    {
+                                        "id": "expensetypeid",
+                                        "name": "ExpenseTypeID",
+                                        "description": "The expense type ID (1 = Cash Expense, 2 = Mileage, 3 = Lodging, 4 = Meals, 5 = Rentals, 6 = Travel, 7 = Per-Diem, 8 = Hourly, 9 = Invoice)"
+                                    },
+                                    {
+                                        "id": "departmentfilterid",
+                                        "name": "FilterDepartmentID",
+                                        "description": "The ID of the department associated with this expense category."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_expensecategories",
+                                "url": "/v1/expensecategories/:_id",
+                                "name": "Get an Expense Category",
+                                "resourcePath": "ExpenseCategories",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Expense category ID",
+                                        "description": "The unique ID of the expense category.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoices",
+                        "name": "Invoices",
+                        "endpoints": [
+                            {
+                                "id": "list_invoices",
+                                "url": "/v1/invoices",
+                                "name": "List invoices",
+                                "resourcePath": "Invoices",
+                                "queryParameters": [
+                                    {
+                                        "id": "approvalcode",
+                                        "name": "Approval Code",
+                                        "description": "Approval code of single invoice report",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "startdate",
+                                        "name": "Start Date",
+                                        "description": "Starting point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "enddate",
+                                        "name": "End Date",
+                                        "description": "Ending point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "get_invoices",
+                                "url": "/v1/invoices/:_id",
+                                "name": "Get an invoice",
+                                "resourcePath": "Invoices",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice ID",
+                                        "description": "The unique ID of the Invoice",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "invoicereports",
+                        "name": "InvoiceReports",
+                        "endpoints": [
+                            {
+                                "id": "list_invoicereports",
+                                "url": "/v1/invoicereports",
+                                "name": "List invoice reports",
+                                "resourcePath": "InvoiceReports",
+                                "queryParameters": [
+                                    {
+                                        "id": "reimbursed",
+                                        "name": "Reimbursed",
+                                        "description": "Expense report has been reimbursed."
+                                    },
+                                    {
+                                        "id": "reimbursedstartdate",
+                                        "name": "ReimbursedStartDate",
+                                        "description": "Starting point for the report reimbursement process."
+                                    },
+                                    {
+                                        "id": "approvalcode",
+                                        "name": "Approval Code",
+                                        "description": "Approval code of single invoice report",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "startdate",
+                                        "name": "Start Date",
+                                        "description": "Starting point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "enddate",
+                                        "name": "End Date",
+                                        "description": "Ending point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "reimbursedenddate",
+                                        "name": "ReimbursedEndDate",
+                                        "description": "Ending point for the report reimbursement process."
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "get_invoicereports_invoices",
+                                "url": "/v1/invoicereports/:_id/invoices",
+                                "name": "Get an invoices by invoice report id",
+                                "resourcePath": "InvoiceReports",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice Report/Invoice ID",
+                                        "description": "Unique ID of the invoice Report.",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "approvalcode",
+                                        "name": "Approval Code",
+                                        "description": "Approval code of single invoice report",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "startdate",
+                                        "name": "Start Date",
+                                        "description": "Starting point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "enddate",
+                                        "name": "End Date",
+                                        "description": "Ending point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_invoicereports",
+                                "url": "/v1/invoicereports/:_id",
+                                "name": "Get an invoice report",
+                                "resourcePath": "InvoiceReports",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice Report/Invoice ID",
+                                        "description": "Unique ID of the invoice Report.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expensereports",
+                        "name": "ExpenseReports",
+                        "endpoints": [
+                            {
+                                "id": "list_expense_reports",
+                                "url": "/v1/expensereports",
+                                "name": "List Expense Reports",
+                                "resourcePath": "ExpenseReports",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "enddate": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DD"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "approvalcode",
+                                        "name": "Approval Code",
+                                        "description": "Approval code of single expense report",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "startdate",
+                                        "name": "Start Date",
+                                        "description": "Starting point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "enddate",
+                                        "name": "End Date",
+                                        "description": "Ending point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_specific_expense_report",
+                                "url": "/v1/expensereports/:_report_id",
+                                "name": "List Specific Expense Report",
+                                "resourcePath": "ExpenseReports",
+                                "pathParameters": [
+                                    {
+                                        "id": "report_id",
+                                        "name": "Expense Report ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expenses",
+                        "name": "Expenses",
+                        "endpoints": [
+                            {
+                                "id": "list_expenses_reports",
+                                "url": "/v1/expensereports/:_report_id/expenses",
+                                "name": "List Expenses for Specific Report",
+                                "resourcePath": "Expenses",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "report_id",
+                                        "name": "Expense Report ID",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "approvalcode",
+                                        "name": "Approval Code",
+                                        "description": "Approval code of single expense report",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "startdate",
+                                        "name": "Start Date",
+                                        "description": "Starting point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "enddate",
+                                        "name": "End Date",
+                                        "description": "Ending point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_expenses",
+                                "url": "/v1/expenses",
+                                "name": "List Expenses",
+                                "resourcePath": "Expenses",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "approvalcode",
+                                        "name": "Approval Code",
+                                        "description": "Approval code of single expense report",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "startdate",
+                                        "name": "Start Date",
+                                        "description": "Starting point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "enddate",
+                                        "name": "End Date",
+                                        "description": "Ending point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_expenses",
+                                "url": "/v1/expenses/:_expense_id",
+                                "name": "List Specific Expense",
+                                "resourcePath": "Expenses",
+                                "pathParameters": [
+                                    {
+                                        "id": "expense_id",
+                                        "name": "Expense ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "list_users",
+                                "url": "/v1/users",
+                                "name": "List Users",
+                                "resourcePath": "Users",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "username",
+                                        "name": "User name",
+                                        "description": "Login name of the user",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "active",
+                                        "name": "Active",
+                                        "description": "The active status of the user (1 = active, 0 = inactive)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "role",
+                                        "name": "Role name",
+                                        "description": "User access role (‘Accountants’, ‘Employees’, ‘Executives’, ‘Guests’, ‘Managers’)",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_users",
+                                "url": "/v1/users/:_id",
+                                "name": "Get a User",
+                                "resourcePath": "Users",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "User ID",
+                                        "description": "Unique ID of the user.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "receipts",
+                        "name": "Receipts",
+                        "endpoints": [
+                            {
+                                "id": "list_receipts",
+                                "url": "/v1/receipts",
+                                "name": "List Receipts",
+                                "resourcePath": "Receipts",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "startdate",
+                                        "name": "Start Date",
+                                        "description": "Starting point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "enddate",
+                                        "name": "End Date",
+                                        "description": "Ending point for the processed date range. (YYYY-MM-DD)",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "expid",
+                                        "name": "Expense ID",
+                                        "description": "Filter receipts returned to a specific Expense ID",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "exprptid",
+                                        "name": "Expense Report ID",
+                                        "description": "Filter receipts returned to a specific Expense Report ID",
+                                        "fieldType": "string"
+                                    },
+                                    {
+                                        "id": "batchid",
+                                        "name": "Batch ID",
+                                        "description": "Filter receipts returned to a specific Batch ID",
+                                        "fieldType": "string"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_receipts",
+                                "url": "/v1/receipts/:_id",
+                                "name": "Get a Receipt",
+                                "resourcePath": "Receipts",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Receipt ID",
+                                        "description": "Unique ID of the receipt.",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "latest",
+                "resources": [
+                    {
+                        "id": "departments",
+                        "name": "Departments",
+                        "sampleData": {
+                            "ID": "49c6743a-2f4c-4bb4-8092-ab724c92baf2",
+                            "Name": "Test Department",
+                            "Code": "01",
+                            "Description": "Updated description 1",
+                            "ObtainSecondLevelApproval": 0,
+                            "UseStrictFiltering": 0,
+                            "HideDepartment": 0,
+                            "HideBillable": 0,
+                            "HideBillableDefaultValue": 0,
+                            "HideReimbursable": 1,
+                            "HideReimbursableDefaultValue": 1,
+                            "InitialPage": 1
+                        },
+                        "operations": [
+                            {
+                                "id": "create_departments",
+                                "url": "/v1/departments",
+                                "name": "Create a department",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_departments",
+                                "url": "/v1/departments",
+                                "name": "Update a department",
+                                "method": "POST",
+                                "successPath": "Status",
+                                "successValues": "Updated",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "expensecategories",
+                        "name": "ExpenseCategories",
+                        "sampleData": {
+                            "ID": "9f903b49-64dc-45c8-8216-2928ed2b6b2e",
+                            "Name": "Sales & Marketing:6032",
+                            "Description": "",
+                            "Data": "",
+                            "ExpenseTypeID": 1,
+                            "MaxAmount": 0,
+                            "MaxAmountCurrencyType": "USD",
+                            "GLCode": "6032",
+                            "FilterDepartmentID": "1a727dfe-4c9f-4108-ac0d-4fa5d512f83c",
+                            "PrepaidCode": "",
+                            "RequireReceiptOverride": 0,
+                            "RequireReceiptThresholdAmount": 0,
+                            "DetailedMealAttendees": 0,
+                            "PersonalExpenses": 0,
+                            "RequireReason": 0,
+                            "StrictFilteringException": 0,
+                            "SupressBillable": 0,
+                            "SupressBillableDefaultValue": 0,
+                            "DeductCommuteUnits": 0,
+                            "CashAdvances": 0,
+                            "DailyMealLimit": 0,
+                            "Active": 0,
+                            "UseNPI": 0,
+                            "RequireNPI": 0,
+                            "CPDBreakfast": 0,
+                            "CPDLunch": 0,
+                            "CPDDinner": 0,
+                            "CPDIncidentals": 0,
+                            "CPDLodging": 0,
+                            "CPDReimbursementMethodID": 0,
+                            "CPDListID": "",
+                            "UseGSA": 0,
+                            "GSABreakfast": 0,
+                            "GSALunch": 0,
+                            "GSADinner": 0,
+                            "GSAIncidentals": 0,
+                            "GSALodging": 0,
+                            "GSAReimbursementMethodID": 0
+                        },
+                        "operations": [
+                            {
+                                "id": "create_expensecategories",
+                                "url": "/v1/expensecategories",
+                                "name": "Create a expense category",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_expensecategories",
+                                "url": "/v1/expensecategories",
+                                "name": "Update a expense category",
+                                "method": "POST",
+                                "successPath": "Status",
+                                "successValues": "Updated",
+                                "parameters": [
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "empglds",
+                        "name": "EmpGLDs",
+                        "sampleData": {
+                            "Name": "Lasagna",
+                            "Code": "LSGN",
+                            "ID": "f4f76080-8003-4406-b4b4-f647bb40fa0d",
+                            "Description": "Meat or vegetarian",
+                            "Active": 1
+                        },
+                        "operations": [
+                            {
+                                "id": "create_empglds",
+                                "url": "/v1/empglds/:_index",
+                                "name": "Create a employee GLD",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "index",
+                                        "name": "Employee GLD index",
+                                        "description": "The index of the EmpGLD requested.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_empglds",
+                                "url": "/v1/empglds/:_index",
+                                "name": "Update a employee GLD",
+                                "method": "POST",
+                                "successPath": "Status",
+                                "successValues": "Updated",
+                                "parameters": [
+                                    {
+                                        "id": "index",
+                                        "name": "Employee GLD index",
+                                        "description": "The index of the EmpGLD requested.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "exprptglds",
+                        "name": "ExpRptGLDs",
+                        "sampleData": {
+                            "Name": "Lasagna",
+                            "Code": "LSGN",
+                            "ID": "f4f76080-8003-4406-b4b4-f647bb40fa0d",
+                            "Description": "Meat or vegetarian",
+                            "Active": 1
+                        },
+                        "operations": [
+                            {
+                                "id": "create_exprptglds",
+                                "url": "/v1/exprptglds/:_index",
+                                "name": "Create a expense report GLD",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "index",
+                                        "name": "Expense Report GLD index",
+                                        "description": "The index of the Expense report GLD requested.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_exprptglds",
+                                "url": "/v1/exprptglds/:_index",
+                                "name": "Update a expense report GLD",
+                                "method": "POST",
+                                "successPath": "Status",
+                                "successValues": "Updated",
+                                "parameters": [
+                                    {
+                                        "id": "index",
+                                        "name": "Expense Report GLD index",
+                                        "description": "The index of the Expense report GLD requested.",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

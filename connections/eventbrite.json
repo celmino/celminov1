@@ -1,0 +1,912 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "v3/events/search",
+            "v3/events/:_id",
+            "v3/events/:_id/ticket_classes",
+            "v3/events/:_id/ticket_classes/:_ticketClassId",
+            "v3/events/:_id/canned_questions",
+            "v3/events/:_id/questions",
+            "v3/events/:_id/questions/:_questionId",
+            "v3/events/:_id/attendees",
+            "v3/events/:_id/attendees/:_attendeeId",
+            "v3/events/:_id/orders",
+            "v3/events/:_id/discounts",
+            "v3/events/:_id/discounts/:_discountId",
+            "v3/events/:_id/public_discounts",
+            "v3/events/:_id/public_discounts/:_publicDiscountId",
+            "v3/events/:_id/access_codes",
+            "v3/events/:_id/access_codes/:_accessCodeId",
+            "v3/events/:_id/transfers",
+            "v3/events/:_id/teams",
+            "v3/events/:_id/teams/:_teamId",
+            "v3/events/:_id/teams/:_teamId/attendees"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "paging": {
+                    "pagingMethod": "pageargument",
+                    "pageArgument": "page",
+                    "lastPageStatusCode": 400
+                },
+                "resources": [
+                    {
+                        "id": "events",
+                        "name": "Events",
+                        "endpoints": [
+                            {
+                                "id": "list_all_events",
+                                "url": "v3/events/search",
+                                "name": "List all Events",
+                                "resourcePath": "events",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "q",
+                                        "name": "q",
+                                        "fieldType": "input",
+                                        "description": "Return events matching the given keywords. This parameter will accept any string as a keyword."
+                                    },
+                                    {
+                                        "id": "sort_by",
+                                        "name": "sort_by",
+                                        "fieldType": "input",
+                                        "description": "Parameter you want to sort by - options are “date”, “distance” and “best”. Prefix with a hyphen to reverse the order, e.g. “-date”."
+                                    },
+                                    {
+                                        "id": "location.address",
+                                        "name": "location.address",
+                                        "fieldType": "input",
+                                        "description": "The address of the location you want to search for events around."
+                                    },
+                                    {
+                                        "id": "location.within",
+                                        "name": "location.within",
+                                        "fieldType": "input",
+                                        "description": "The distance you want to search around the given location. This should be an integer followed by “mi” or “km”."
+                                    },
+                                    {
+                                        "id": "location.latitude",
+                                        "name": "location.latitude",
+                                        "fieldType": "input",
+                                        "description": "The latitude of of the location you want to search for events around."
+                                    },
+                                    {
+                                        "id": "location.longitude",
+                                        "name": "location.longitude",
+                                        "fieldType": "input",
+                                        "description": "The longitude of the location you want to search for events around."
+                                    },
+                                    {
+                                        "id": "location.viewport.northeast.latitude",
+                                        "name": "location.viewport.northeast.latitude",
+                                        "fieldType": "input",
+                                        "description": "The latitude of the northeast corner of a viewport."
+                                    },
+                                    {
+                                        "id": "location.viewport.northeast.longitude",
+                                        "name": "location.viewport.northeast.longitude",
+                                        "fieldType": "input",
+                                        "description": "The longitude of the northeast corner of a viewport."
+                                    },
+                                    {
+                                        "id": "location.viewport.southwest.latitude",
+                                        "name": "location.viewport.southwest.latitude",
+                                        "fieldType": "input",
+                                        "description": "The latitude of the southwest corner of a viewport."
+                                    },
+                                    {
+                                        "id": "location.viewport.southwest.longitude",
+                                        "name": "location.viewport.southwest.longitude",
+                                        "fieldType": "input",
+                                        "description": "The longitude of the southwest corner of a viewport."
+                                    },
+                                    {
+                                        "id": "organizer.id",
+                                        "name": "organizer.id",
+                                        "fieldType": "input",
+                                        "description": "Only return events organized by the given Organizer ID."
+                                    },
+                                    {
+                                        "id": "user.id",
+                                        "name": "user.id",
+                                        "fieldType": "input",
+                                        "description": "Only return events owned by the given User ID."
+                                    },
+                                    {
+                                        "id": "tracking_code",
+                                        "name": "tracking_code",
+                                        "fieldType": "input",
+                                        "description": "Append the given tracking_code to the event URLs returned."
+                                    },
+                                    {
+                                        "id": "categories",
+                                        "name": "categories",
+                                        "fieldType": "input",
+                                        "description": "Only return events under the given category IDs. This should be a comma delimited string of category IDs."
+                                    },
+                                    {
+                                        "id": "subcategories",
+                                        "name": "subcategories",
+                                        "fieldType": "input",
+                                        "description": "Only return events under the given subcategory IDs. This should be a comma delimited string of subcategory IDs."
+                                    },
+                                    {
+                                        "id": "formats",
+                                        "name": "formats",
+                                        "fieldType": "input",
+                                        "description": "Only return events with the given format IDs. This should be a comma delimited string of format IDs."
+                                    },
+                                    {
+                                        "id": "price",
+                                        "name": "price",
+                                        "fieldType": "input",
+                                        "description": "Only return events that are free or paid"
+                                    },
+                                    {
+                                        "id": "start_date.range_start",
+                                        "name": "start_date.range_start",
+                                        "fieldType": "input",
+                                        "description": "Only return events with start dates after the given date."
+                                    },
+                                    {
+                                        "id": "start_date.range_end",
+                                        "name": "start_date.range_end",
+                                        "fieldType": "input",
+                                        "description": "Only return events with start dates before the given date."
+                                    },
+                                    {
+                                        "id": "start_date.keyword",
+                                        "name": "start_date.keyword",
+                                        "fieldType": "input",
+                                        "description": "Only return events with start dates within the given keyword date range. Keyword options are “this_week”, “next_week”, “this_weekend”, “next_month”, “this_month”, “tomorrow”, “today”"
+                                    },
+                                    {
+                                        "id": "date_modified.range_start",
+                                        "name": "date_modified.range_start",
+                                        "fieldType": "input",
+                                        "description": "Only return events with modified dates after the given UTC date."
+                                    },
+                                    {
+                                        "id": "date_modified.range_end",
+                                        "name": "date_modified.range_end",
+                                        "fieldType": "input",
+                                        "description": "Only return events with modified dates before the given UTC date."
+                                    },
+                                    {
+                                        "id": "date_modified.keyword",
+                                        "name": "date_modified.keyword",
+                                        "fieldType": "input",
+                                        "description": "Only return events with modified dates within the given keyword date range. Keyword options are “this_week”, “next_week”, “this_weekend”, “next_month”, “this_month”, “tomorrow”, “today”"
+                                    },
+                                    {
+                                        "id": "search_type",
+                                        "name": "search_type",
+                                        "fieldType": "input",
+                                        "description": "Use the preconfigured settings for this type of search - Current option is “promoted”"
+                                    },
+                                    {
+                                        "id": "include_all_series_instances",
+                                        "name": "include_all_series_instances",
+                                        "fieldType": "input",
+                                        "description": "Boolean for whether or not you want to see all instances of repeating events in search results."
+                                    },
+                                    {
+                                        "id": "include_unavailable_events",
+                                        "name": "include_unavailable_events",
+                                        "fieldType": "input",
+                                        "description": "Boolean for whether or not you want to see events without tickets on sale."
+                                    },
+                                    {
+                                        "id": "incorporate_user_affinities",
+                                        "name": "incorporate_user_affinities",
+                                        "fieldType": "input",
+                                        "description": "Incorporate additional information from the user’s historic preferences."
+                                    },
+                                    {
+                                        "id": "high_affinity_categories",
+                                        "name": "high_affinity_categories",
+                                        "fieldType": "input",
+                                        "description": "Make search results prefer events in these categories. This should be a comma delimited string of category IDs."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_event_by_id",
+                                "url": "v3/events/:_id",
+                                "name": "List Event by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_ticket_classes_for_event",
+                                "url": "v3/events/:_id/ticket_classes",
+                                "name": "List ticket classes for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "ticket_classes",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_ticket_classes_for_event_by_id_ticket_class_id",
+                                "url": "v3/events/:_id/ticket_classes/:_ticketClassId",
+                                "name": "List ticket classes for Event by Id ticket class Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ticketClassId",
+                                        "name": "Ticket Class Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_canned_questions_for_event",
+                                "url": "v3/events/:_id/canned_questions",
+                                "name": "List canned questions for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "questions",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_questions_for_event",
+                                "url": "v3/events/:_id/questions",
+                                "name": "List questions for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "questions",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_question_for_event_by_question_id",
+                                "url": "v3/events/:_id/questions/:_questionId",
+                                "name": "List question for Event by question Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "questionId",
+                                        "name": "Question Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_attendees_for_event",
+                                "url": "v3/events/:_id/attendees",
+                                "name": "List attendees for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "attendees",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_attendees_for_event_by_attendee_id",
+                                "url": "v3/events/:_id/attendees/:_attendeeId",
+                                "name": "List attendees for Event by attendee Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "attendeeId",
+                                        "name": "Attendee Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_orders_for_event",
+                                "url": "v3/events/:_id/orders",
+                                "name": "List orders for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "orders",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_discounts_for_event",
+                                "url": "v3/events/:_id/discounts",
+                                "name": "List discounts for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "discounts",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_discounts_for_event_by_discount_id",
+                                "url": "v3/events/:_id/discounts/:_discountId",
+                                "name": "List discounts for Event by discount Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "discountId",
+                                        "name": "Discount Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_public_discounts_for_event",
+                                "url": "v3/events/:_id/public_discounts",
+                                "name": "List public discounts for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "public_discounts",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_public_discounts_for_event_by_public_discount_id",
+                                "url": "v3/events/:_id/public_discounts/:_publicDiscountId",
+                                "name": "List public discounts for Event by public discount Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "publicDiscountId",
+                                        "name": "Public Discount Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_access_codes_for_event",
+                                "url": "v3/events/:_id/access_codes",
+                                "name": "List access codes for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "access_codes",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_access_codes_for_event_by_access_code_id",
+                                "url": "v3/events/:_id/access_codes/:_accessCodeId",
+                                "name": "List access codes for Event by access code Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "accessCodeId",
+                                        "name": "Access Code Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_transfers_for_event",
+                                "url": "v3/events/:_id/transfers",
+                                "name": "List transfers for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "transfers",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_teams_for_event",
+                                "url": "v3/events/:_id/teams",
+                                "name": "List teams for Event",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "teams",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_team_for_event_by_team_id",
+                                "url": "v3/events/:_id/teams/:_teamId",
+                                "name": "List team for Event by team Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "teamId",
+                                        "name": "Team Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_team_attendees_for_event_by_team_id",
+                                "url": "v3/events/:_id/teams/:_teamId/attendees",
+                                "name": "List team attendees for Event by team Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "attendees",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Event Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "teamId",
+                                        "name": "Team Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": []
+                            },
+                            {
+                                "id": "list_events_by_organization",
+                                "url": "/v3/organizations/:_organization_id/events/",
+                                "name": "List Events by Organization",
+                                "description": "List Events by Organization ID.",
+                                "resourcePath": "events",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization ID",
+                                        "required": true,
+                                        "description": "ID of the Organization"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "attendee",
+                        "name": "Attendee",
+                        "endpoints": [
+                            {
+                                "id": "list_attendeesofanorganization",
+                                "url": "v3/organizations/:_organization_id/attendees",
+                                "name": "List Attendees by Organization",
+                                "description": "List Attendees of an Organization",
+                                "resourcePath": "attendees",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "organization_id",
+                                        "name": "Organization ID",
+                                        "required": true,
+                                        "description": "ID of the Organization"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "status",
+                                        "description": "Filter Attendees by status of either attending or not_attending."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "organization",
+                        "name": "Organization",
+                        "endpoints": [
+                            {
+                                "id": "list_organizations",
+                                "url": "v3/users/me/organizations/",
+                                "name": "List your Organizations",
+                                "doesNotSupportPaging": true,
+                                "description": "List the Organizations to which you are a Member.",
+                                "resourcePath": "organizations"
+                            },
+                            {
+                                "id": "list_attendeesofanorganization",
+                                "url": "v3/users/:_user_id/organizations/",
+                                "name": "List Organizations by User",
+                                "description": "List Organizations by User ID.",
+                                "resourcePath": "organizations",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "required": true,
+                                        "description": "ID of the User"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v3/events/",
+            "/v3/events/:_id/",
+            "/v3/events/:_id/publish/",
+            "/v3/events/:_id/unpublish/",
+            "/v3/events/:_id/cancel/"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "events",
+                        "name": "Events",
+                        "sampleData": {
+                            "event": {
+                                "name": {
+                                    "text": "",
+                                    "html": ""
+                                },
+                                "description": {
+                                    "text": "",
+                                    "html": ""
+                                },
+                                "id": "39249854371",
+                                "url": "",
+                                "start": {
+                                    "timezone": "Asia/Kolkata",
+                                    "local": "2017-10-25T19:00:00",
+                                    "utc": "2017-10-25T13:30:00Z"
+                                },
+                                "end": {
+                                    "timezone": "Asia/Kolkata",
+                                    "local": "2017-10-25T22:00:00",
+                                    "utc": "2017-10-25T16:30:00Z"
+                                },
+                                "created": "2017-10-25T11:31:04Z",
+                                "changed": "2017-10-25T11:31:06Z",
+                                "capacity": 2,
+                                "capacity_is_custom": false,
+                                "status": "live",
+                                "currency": "GBP",
+                                "listed": true,
+                                "shareable": true,
+                                "online_event": false,
+                                "tx_time_limit": 480,
+                                "hide_start_date": false,
+                                "hide_end_date": false,
+                                "locale": "en_GB",
+                                "is_locked": false,
+                                "privacy_setting": "unlocked",
+                                "is_series": false,
+                                "is_series_parent": false,
+                                "is_reserved_seating": false,
+                                "source": "create_2.0",
+                                "is_free": true,
+                                "version": "3.0.0",
+                                "logo_id": null,
+                                "organizer_id": "15552732340",
+                                "venue_id": "21796926",
+                                "category_id": "115",
+                                "subcategory_id": null,
+                                "format_id": "1",
+                                "resource_uri": "https://www.eventbriteapi.com/v3/events/39249854371/",
+                                "logo": null
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_events",
+                                "name": "Create",
+                                "url": "/v3/events/",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v3/events/search",
+                                        "extract": "events[0].id",
+                                        "sampleDataWrapper": "event",
+                                        "id": "list_all_events"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_events",
+                                "name": "Update",
+                                "url": "/v3/events/:_id/",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v3/events/search",
+                                        "extract": "events[0].id",
+                                        "sampleDataWrapper": "event",
+                                        "id": "list_all_events"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_events",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/v3/events/:_id/",
+                                    "/v3/events/"
+                                ],
+                                "method": [
+                                    "POST",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v3/events/search",
+                                        "extract": "events[0].id",
+                                        "sampleDataWrapper": "event",
+                                        "id": "list_all_events"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_events",
+                                "name": "Delete",
+                                "url": "/v3/events/:_id/",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v3/events/search",
+                                        "extract": "events[0].id",
+                                        "sampleDataWrapper": "event",
+                                        "id": "list_all_events"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "publish",
+                                "name": "Publish",
+                                "url": "/v3/events/:_id/publish/",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "text/plain"
+                                },
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v3/events/search",
+                                        "extract": "events[0].id",
+                                        "sampleDataWrapper": "event",
+                                        "id": "list_all_events"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "unpublish",
+                                "name": "Unpublish",
+                                "url": "/v3/events/:_id/unpublish/",
+                                "method": "POST",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v3/events/search",
+                                        "extract": "events[0].id",
+                                        "sampleDataWrapper": "event",
+                                        "id": "list_all_events"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "cancel",
+                                "name": "Cancel",
+                                "url": "/v3/events/:_id/cancel/",
+                                "method": "POST",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "v3/events/search",
+                                        "extract": "events[0].id",
+                                        "sampleDataWrapper": "event",
+                                        "id": "list_all_events"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+
+

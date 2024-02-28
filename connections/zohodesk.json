@@ -1,0 +1,2304 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "paging": {
+                    "pagingMethod": "skipargument",
+                    "skipArgument": "from"
+                },
+                "resources": [
+                    {
+                        "id": "organizations",
+                        "name": "Organizations",
+                        "endpoints": [
+                            {
+                                "id": "list_all_organizations",
+                                "url": "/v1/organizations",
+                                "name": "Get all Organizations",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true
+                            },
+                            {
+                                "id": "single_organization",
+                                "url": "/v1/organizations/:_id",
+                                "name": "Get an Organization",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Organisation ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tickets",
+                        "name": "Tickets",
+                        "endpoints": [
+                            {
+                                "id": "list_all_tickets",
+                                "url": "/v1/tickets",
+                                "name": "List all tickets",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department ID",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "assignee",
+                                        "name": "Assignee",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "receivedInDays",
+                                        "name": "Received In Days",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_ticket",
+                                "url": "/v1/tickets/:_id",
+                                "name": "Get a Ticket",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_ticket",
+                                "url": "/v1/tickets/search",
+                                "name": "Tickets Search API",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department ID",
+                                        "fieldType": "input",
+                                        "description": "ID of the department from which the entity must be fetched. if not passed then searches in permitted departments 'exact match'"
+                                    },
+                                    {
+                                        "id": "ticketNumber",
+                                        "name": "Ticket Number",
+                                        "fieldType": "input",
+                                        "description": "Serial number of the ticket in the help desk 'exact match'"
+                                    },
+                                    {
+                                        "id": "subject",
+                                        "name": "Subject",
+                                        "fieldType": "input",
+                                        "description": "subject of the ticket in the help desk 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "input",
+                                        "description": "Status of the ticket. Includes the custom statuses that exist in your help desk 'exact match'"
+                                    },
+                                    {
+                                        "id": "priority",
+                                        "name": "Priority",
+                                        "fieldType": "input",
+                                        "description": "Priority of the ticket 'exact match'"
+                                    },
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "fieldType": "input",
+                                        "description": "Email ID in the ticket 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "phone",
+                                        "name": "Phone",
+                                        "fieldType": "input",
+                                        "description": "Phone number in the ticket 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "fieldType": "input",
+                                        "description": "Channel through which the ticket was received 'exact match'"
+                                    },
+                                    {
+                                        "id": "assigneeId",
+                                        "name": "Assignee ID",
+                                        "fieldType": "input",
+                                        "description": "ID of the agent assigned to resolve the ticket 'exact match'"
+                                    },
+                                    {
+                                        "id": "contactId",
+                                        "name": "Contact ID",
+                                        "fieldType": "input",
+                                        "description": "ID of the contact who raised the ticket 'exact match'"
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "fieldType": "input",
+                                        "description": "ID of the account associated with the ticket 'exact match'"
+                                    },
+                                    {
+                                        "id": "contactName",
+                                        "name": "Contact Name",
+                                        "fieldType": "input",
+                                        "description": "Name of the contact who raised the ticket 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "accountName",
+                                        "name": "Account Name",
+                                        "fieldType": "input",
+                                        "description": "Name of the account associated with the ticket 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "customField1",
+                                        "name": "Custom Field 1",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the ticket 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "customField2",
+                                        "name": "Custom Field 2",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the ticket 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "customField3",
+                                        "name": "Custom Field 3",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the ticket 'wildcard search'"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "threads",
+                        "name": "Threads",
+                        "endpoints": [
+                            {
+                                "id": "list_all_threads",
+                                "url": "/v1/tickets/:_id/threads",
+                                "name": "List all threads",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_threads",
+                                "url": "/v1/tickets/:_id/threads/:_threadid",
+                                "name": "Get a thread",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "threadid",
+                                        "name": "Thread ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ticket_comments",
+                        "name": "Ticket Comments",
+                        "endpoints": [
+                            {
+                                "id": "list_commentonsingleticket",
+                                "url": "/v1/tickets/:_id/comments",
+                                "name": "List all ticket comments",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_comment_ticket",
+                                "url": "/v1/tickets/:_id/comments/:_commentid",
+                                "name": "Get a ticket comment",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "commentid",
+                                        "name": "comment ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ticket_attachments",
+                        "name": "Ticket Attachments",
+                        "endpoints": [
+                            {
+                                "id": "list_all_ticketattachments",
+                                "url": "/v1/tickets/:_id/attachments",
+                                "name": "List all attachments",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "isPublic",
+                                        "name": "Is Public",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks_attachments",
+                        "name": "Tasks Attachments",
+                        "endpoints": [
+                            {
+                                "id": "list_all_taskattachments",
+                                "url": "/v1/tasks/:_id/attachments",
+                                "name": "List all attachments",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Task ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts_attachments",
+                        "name": "Contacts Attachments",
+                        "endpoints": [
+                            {
+                                "id": "list_all_contactsattachments",
+                                "url": "/v1/contacts/:_id/attachments",
+                                "name": "List all attachments",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts_attachments",
+                        "name": "Accounts Attachments",
+                        "endpoints": [
+                            {
+                                "id": "list_all_accountsattachments",
+                                "url": "/v1/accounts/:_id/attachments",
+                                "name": "List all attachments",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ticket_timeEntry",
+                        "name": "Ticket TimeEntry",
+                        "endpoints": [
+                            {
+                                "id": "list_all_tickettimeentry",
+                                "url": "/v1/tickets/:_id/timeEntry",
+                                "name": "List Ticket Time Entries",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "orderBy",
+                                        "name": "Order By",
+                                        "fieldType": "input",
+                                        "description": "Either ASC or DESC, by default it will be in ASC order"
+                                    },
+                                    {
+                                        "id": "module",
+                                        "name": "Module",
+                                        "fieldType": "input",
+                                        "description": "Module Preference. It can be either tickets tasks"
+                                    },
+                                    {
+                                        "id": "isBillable",
+                                        "name": "Is Billable",
+                                        "fieldType": "input",
+                                        "description": "Billable Preference"
+                                    },
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input",
+                                        "description": "Allowed value is : owner"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_tickettimeentry",
+                                "url": "/v1/tickets/:_id/timeEntry/:_timeentryid",
+                                "name": "Get a Ticket Time Entry",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Ticket ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "timeentryid",
+                                        "name": "TimeEntry ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input",
+                                        "description": "Allowed value is : owner"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "endpoints": [
+                            {
+                                "id": "list_all_contacts",
+                                "url": "/v1/contacts",
+                                "name": "List all contacts",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Sort by a specific attribute: firstName, lastName, or createdTime.The default sorting order is ascending. A - prefix denotes descending order of sorting."
+                                    },
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input",
+                                        "description": "Allowed values is : accounts"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_contact",
+                                "url": "/v1/contacts/:_id",
+                                "name": "Get a Contact",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input",
+                                        "description": "Allowed values is : accounts"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_ticketincontact",
+                                "url": "/v1/contacts/:_id/tickets",
+                                "name": "List tickets by contact",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department Id",
+                                        "fieldType": "input",
+                                        "description": "Department from which the tickets need to be queried"
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Sort by a specific attribute: createdTime or modifiedTime. The default sorting order is ascending. A - prefix denotes descending order of sorting."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_contacts",
+                                "url": "/v1/contacts/search",
+                                "name": "Contact Search API",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Contact ID",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fullName",
+                                        "name": "Full Name",
+                                        "fieldType": "input",
+                                        "description": "Full name of the contact 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "firstName",
+                                        "name": "First Name",
+                                        "fieldType": "input",
+                                        "description": "First name of the contact 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "lastName",
+                                        "name": "Last Name",
+                                        "fieldType": "input",
+                                        "description": "Last name of the contact 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "fieldType": "input",
+                                        "description": "Email ID in the contact  'wildcard search'"
+                                    },
+                                    {
+                                        "id": "phone",
+                                        "name": "Phone",
+                                        "fieldType": "input",
+                                        "description": "Phone number in the contact  'wildcard search'"
+                                    },
+                                    {
+                                        "id": "mobile",
+                                        "name": "mobile",
+                                        "fieldType": "input",
+                                        "description": "Mobile number of the contact  'wildcard search'"
+                                    },
+                                    {
+                                        "id": "accountName",
+                                        "name": "Account Name",
+                                        "fieldType": "input",
+                                        "description": "Name of the account associated with the contact 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "customField1",
+                                        "name": "Custom Field 1",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the contact 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "customField2",
+                                        "name": "Custom Field 2",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the contact 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "customField3",
+                                        "name": "Custom Field 3",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the contact 'wildcard search'"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "endpoints": [
+                            {
+                                "id": "list_all_accounts",
+                                "url": "/v1/accounts",
+                                "name": "List all accounts",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "viewId",
+                                        "name": "View ID",
+                                        "description": "ID of the view to apply while fetching the resources"
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Sort by a specific attribute: accountName or createdTime. The default sorting order is ascending. A - prefix denotes descending order of sorting"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_account",
+                                "url": "/v1/accounts/:_id",
+                                "name": "Get an Account",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_all_ticketsbyaccount",
+                                "url": "/v1/accounts/:_id/tickets",
+                                "name": "List tickets by account",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department Id",
+                                        "fieldType": "input",
+                                        "description": "Department from which the tickets need to be queried"
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Sort by a specific attribute: createdTime or modifiedTime. The default sorting order is ascending. A - prefix denotes descending order of sorting."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "endpoints": [
+                            {
+                                "id": "list_all_tasks",
+                                "url": "/v1/tasks",
+                                "name": "List all tasks",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Sort by a specific attribute: dueDate or createdTime.The default sorting order is ascending. A - prefix denotes descending order of sorting"
+                                    },
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input",
+                                        "description": "Allowed value is : tickets"
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department ID",
+                                        "fieldType": "input",
+                                        "description": "Department from which the tasks need to be queried"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_task",
+                                "url": "/v1/tasks/:_id",
+                                "name": "Get a Task",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Task ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include",
+                                        "name": "Include",
+                                        "fieldType": "input",
+                                        "description": "Allowed value is : tickets"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_ticketsbytask",
+                                "url": "/v1/tasks/:_id/tickets",
+                                "name": "List tickets by tasks",
+                                "resourcePath": "data",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Task ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "isCompleted",
+                                        "name": "Is Completed",
+                                        "fieldType": "input",
+                                        "description": "Completion status of the task"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "search_tasks",
+                                "url": "/v1/tasks/search",
+                                "name": "Task Search API",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department ID",
+                                        "fieldType": "input",
+                                        "description": "ID of the department from which the entity must be fetched if not passed then searches in permitted departments 'exact match'"
+                                    },
+                                    {
+                                        "id": "ticketNumber",
+                                        "name": "Ticket Number",
+                                        "fieldType": "input",
+                                        "description": "ticket Number of the ticket that associated with the task 'exact match'"
+                                    },
+                                    {
+                                        "id": "subject",
+                                        "name": "Subject",
+                                        "fieldType": "input",
+                                        "description": "subject of the task  in the help desk 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "priority",
+                                        "name": "Priority",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "customField1",
+                                        "name": "Custom Field 1",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the ticket 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "customField2",
+                                        "name": "Custom Field 2",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the ticket 'wildcard search'"
+                                    },
+                                    {
+                                        "id": "customField3",
+                                        "name": "Custom Field 3",
+                                        "fieldType": "input",
+                                        "description": "Custom field in the ticket 'wildcard search'"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "agents",
+                        "name": "Agents",
+                        "endpoints": [
+                            {
+                                "id": "list_all_agents",
+                                "url": "/v1/agents",
+                                "name": "List all Agents",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "input",
+                                        "description": "Parameter that filters agents based on their activation status: ACTIVE or DISABLED"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_agent",
+                                "url": "/v1/agents/:_id",
+                                "name": "Get a Agent",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Agent ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "departments",
+                        "name": "Departments",
+                        "endpoints": [
+                            {
+                                "id": "list_all_departments",
+                                "url": "/v1/departments",
+                                "name": "List all Departments",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "isEnabled",
+                                        "name": "Is Enabled",
+                                        "fieldType": "input",
+                                        "description": "Parameter that filters departments based on their enabled status"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_department",
+                                "url": "/v1/departments/:_id",
+                                "name": "Get a Department",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Department ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contracts",
+                        "name": "Contracts",
+                        "endpoints": [
+                            {
+                                "id": "list_all_contracts",
+                                "url": "/v1/contracts",
+                                "name": "List all Contracts",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "viewId",
+                                        "name": "View ID",
+                                        "fieldType": "input",
+                                        "description": "ID of the view to apply while fetching the contracts"
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department ID",
+                                        "fieldType": "input",
+                                        "description": "ID of the department from which the contracts must be fetched"
+                                    },
+                                    {
+                                        "id": "accountId",
+                                        "name": "Account ID",
+                                        "fieldType": "input",
+                                        "description": "ID of the account associated with the contract"
+                                    },
+                                    {
+                                        "id": "ownerId",
+                                        "name": "Owner ID",
+                                        "fieldType": "input",
+                                        "description": "ID of contract owner"
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Parameter that sorts contracts by one of these attributes: %accountName,% %contractName,% %contractEndDate,% %contractStartDate,% %createdTime, or% %modifiedTime.% The default order of sorting is ascending. To sort in descending order, prefix a - with the parameter."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "single_contract",
+                                "url": "/v1/contracts/:_id",
+                                "name": "Get a Contract",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Contract ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "search",
+                        "name": "Search",
+                        "endpoints": [
+                            {
+                                "id": "search_entities",
+                                "url": "/v1/search",
+                                "name": "Search across entities",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "searchStr",
+                                        "name": "Search String",
+                                        "fieldType": "input",
+                                        "description": "Keyword or phrase to search"
+                                    },
+                                    {
+                                        "id": "module",
+                                        "name": "Module",
+                                        "fieldType": "input",
+                                        "description": "Module to search in: tickets, accounts, contacts or tasks. The default response includes all modules."
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department ID",
+                                        "fieldType": "input",
+                                        "description": "Department from which the entities need to be queried"
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Sort by a specific attribute: relevance or modifiedTime"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mailReplyAddress",
+                        "name": "MailReplyAddress",
+                        "endpoints": [
+                            {
+                                "id": "list_all_mailreplyaddress",
+                                "url": "/v1/mailReplyAddress",
+                                "name": "List All MailReplyAddress",
+                                "resourcePath": "data",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "isActive",
+                                        "name": "Is Active",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tickettags",
+                        "name": "Ticket Tags",
+                        "endpoints": [
+                            {
+                                "id": "list_all_tickettags",
+                                "url": "/v1/ticketTags",
+                                "name": "List ticket tags",
+                                "resourcePath": "data",
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "departmentId",
+                                        "name": "Department Id",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Key that sorts tags by a specific attribute: createdTime or count. The default sorting order is descending."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_ticketsbytag",
+                                "url": "/v1/tags/:_tag_id/tickets",
+                                "name": "List tickets by tag",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "_tag_id",
+                                        "name": "Tag ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "include",
+                                        "name": "include ",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "contacts",
+                                            "products",
+                                            "assignee"
+                                        ],
+                                        "description": "Secondary information related to the tickets. Values allowed are contacts, products, and assignee. All three values can be passed in the API request, with commas for separation."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Key that sorts tickets by a specific attribute: createdTime or modifiedTime. The default sorting order is ascending. A - prefix denotes descending order of sorting."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_ticketsbytag",
+                                "url": "/v1/tags/:_tag_id/tickets",
+                                "name": "List tickets by tag",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "_tag_id",
+                                        "name": "Tag ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "include",
+                                        "name": "include ",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "contacts",
+                                            "products",
+                                            "assignee"
+                                        ],
+                                        "description": "Secondary information related to the tickets. Values allowed are contacts, products, and assignee. All three values can be passed in the API request, with commas for separation."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Key that sorts tickets by a specific attribute: createdTime or modifiedTime. The default sorting order is ascending. A - prefix denotes descending order of sorting."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_tagsinaticket",
+                                "url": "/v1/tickets/:_ticket_id/tags",
+                                "name": "List tags in a ticket",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "_tag_id",
+                                        "name": "Tag ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_ticketsbytag",
+                                "url": "/v1/tags/:_tag_id/tickets",
+                                "name": "List tickets by tag",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "_tag_id",
+                                        "name": "Tag ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "from",
+                                        "name": "From",
+                                        "fieldType": "input",
+                                        "defaultValue": "1",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "id": "include",
+                                        "name": "include ",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "contacts",
+                                            "products",
+                                            "assignee"
+                                        ],
+                                        "description": "Secondary information related to the tickets. Values allowed are contacts, products, and assignee. All three values can be passed in the API request, with commas for separation."
+                                    },
+                                    {
+                                        "id": "sortBy",
+                                        "name": "Sort By",
+                                        "fieldType": "input",
+                                        "description": "Key that sorts tickets by a specific attribute: createdTime or modifiedTime. The default sorting order is ascending. A - prefix denotes descending order of sorting."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "tickets",
+                        "name": "Tickets",
+                        "sampleData": {
+                            "subCategory": null,
+                            "statusType": "Open",
+                            "subject": "Here's your first ticket.",
+                            "customFields": {
+                                "secondaryEmail": null,
+                                "ModelName": "F3 2017",
+                                "severityPercentage": "0.0",
+                                "phone": null,
+                                "numberOfItems": null,
+                                "dateofPurchase": null,
+                                "permanentAddress": null,
+                                "url": null
+                            },
+                            "dueDate": "2018-03-09T09:34:00.000Z",
+                            "departmentId": "260129000000006907",
+                            "channel": "Email",
+                            "description": "Hello<br><br>Welcome to Zoho Desks new Unified Ticket Screen. Here, you have complete context of the ticket. Now that you had received your first ticket, did you notice that it has been assigned to you? To respond to this ticket smartly, check out the Auto-Suggested Solutions in the pane to your left.<br><br>When you're done composing your response, you may send it and close the ticket.<br><br>Whatever action you perform, be rest assured that you can always track them under the ticket's history. With that, you're one step closer to delivering top-notch customer service!<br><br>Cheers,<br>Team Zoho Desk<br>1 888 900 9646",
+                            "resolution": null,
+                            "closedTime": null,
+                            "approvalCount": "0",
+                            "timeEntryCount": "0",
+                            "createdTime": "2018-03-07T09:34:00.000Z",
+                            "id": "260129000000080118",
+                            "email": "support@zohodesk.com",
+                            "customerResponseTime": "2018-03-07T09:34:00.000Z",
+                            "productId": null,
+                            "contactId": "260129000000080116",
+                            "threadCount": "1",
+                            "priority": null,
+                            "ticketNumber": "127",
+                            "classification": null,
+                            "assigneeId": "260129000000080005",
+                            "commentCount": "0",
+                            "taskCount": "0",
+                            "phone": "1 888 900 9646",
+                            "webUrl": "https://desk.zoho.com/support/snigu/ShowHomePage.do#Cases/dv/403290363c8bd65785c17b2bf25ad70284d8747181257b9f",
+                            "attachmentCount": "0",
+                            "category": null,
+                            "status": "Open"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_ticket",
+                                "url": "/v1/tickets",
+                                "name": "Create a ticket",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "id": "search_ticket",
+                                        "extract": "data[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_ticket",
+                                "url": "/v1/tickets/:_id",
+                                "name": "Update a ticket",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "id": "search_ticket",
+                                        "extract": "data[0].id"
+                                    }
+                                },
+                                "sampleData": {
+                                    "subCategory": null,
+                                    "statusType": "Open",
+                                    "subject": "Here's your first ticket.",
+                                    "customFields": {
+                                        "secondaryEmail": null,
+                                        "ModelName": "F3 2017",
+                                        "severityPercentage": "0.0",
+                                        "phone": null,
+                                        "numberOfItems": null,
+                                        "dateofPurchase": null,
+                                        "permanentAddress": null,
+                                        "url": null
+                                    },
+                                    "dueDate": "2018-03-09T09:34:00.000Z",
+                                    "channel": "Email",
+                                    "description": "Hello<br><br>Welcome to Zoho Desks new Unified Ticket Screen. Here, you have complete context of the ticket. Now that you had received your first ticket, did you notice that it has been assigned to you? To respond to this ticket smartly, check out the Auto-Suggested Solutions in the pane to your left.<br><br>When you're done composing your response, you may send it and close the ticket.<br><br>Whatever action you perform, be rest assured that you can always track them under the ticket's history. With that, you're one step closer to delivering top-notch customer service!<br><br>Cheers,<br>Team Zoho Desk<br>1 888 900 9646",
+                                    "resolution": null,
+                                    "closedTime": null,
+                                    "approvalCount": "0",
+                                    "timeEntryCount": "0",
+                                    "createdTime": "2018-03-07T09:34:00.000Z",
+                                    "id": "260129000000080118",
+                                    "email": "support@zohodesk.com",
+                                    "customerResponseTime": "2018-03-07T09:34:00.000Z",
+                                    "productId": null,
+                                    "contactId": "260129000000080116",
+                                    "threadCount": "1",
+                                    "priority": null,
+                                    "ticketNumber": "127",
+                                    "classification": null,
+                                    "assigneeId": "260129000000080005",
+                                    "commentCount": "0",
+                                    "taskCount": "0",
+                                    "phone": "1 888 900 9646",
+                                    "webUrl": "https://desk.zoho.com/support/snigu/ShowHomePage.do#Cases/dv/403290363c8bd65785c17b2bf25ad70284d8747181257b9f",
+                                    "attachmentCount": "0",
+                                    "category": null,
+                                    "status": "Open"
+                                }
+                            },
+                            {
+                                "id": "createorupdate_ticket",
+                                "url": [
+                                    "/v1/tickets/:_id",
+                                    "/v1/tickets"
+                                ],
+                                "name": "Create or Update ticket",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "id": "search_ticket",
+                                        "extract": "data[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "merge_tickets",
+                                "url": "/v1/tickets/:_id/merge",
+                                "name": "Merge two tickets",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Ticket ID"
+                                    }
+                                ],
+                                "sampleData": [
+                                    {
+                                        "ids": [
+                                            "260129000000080118"
+                                        ],
+                                        "source": {
+                                            "contactId": "260129000000080118",
+                                            "subject": "260129000000080118",
+                                            "priority": "260129000000080118",
+                                            "status": "260129000000080118"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "split_ticket",
+                                "url": "/v1/tickets/:_id/threads/:_threadId/split",
+                                "name": "Split tickets",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Ticket ID"
+                                    },
+                                    {
+                                        "id": "threadId",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Thread ID"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_many",
+                                "url": "/v1/tickets/updateMany",
+                                "name": "Update many tickets",
+                                "method": "POST",
+                                "sampleData": [
+                                    {
+                                        "fieldName": "subject",
+                                        "isCustomField": false,
+                                        "ids": [
+                                            "1892000000093303",
+                                            "1892000000085009",
+                                            "1892000000050003"
+                                        ],
+                                        "fieldValue": "Ticket for support"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "mark_spam",
+                                "url": "/v1/tickets/markSpam",
+                                "name": "Mark Spam",
+                                "method": "POST",
+                                "sampleData": [
+                                    {
+                                        "ids": [
+                                            1892000001021097
+                                        ],
+                                        "isSpam": "true"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tickets_comments",
+                        "name": "Tickets Comments",
+                        "sampleData": {
+                            "isPublic": "true",
+                            "attachmentIds": [
+                                "4000000008892"
+                            ],
+                            "content": "zsu[@user:11550965]zsu Please fix this ASAP"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_ticketcomment",
+                                "url": "/v1/tickets/:_ticketid/comments",
+                                "name": "Create a ticket comment",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": [
+                                    {
+                                        "isPublic": "true",
+                                        "attachmentIds": [
+                                            "4000000008892"
+                                        ],
+                                        "content": "zsu[@user:11550965]zsu Please fix this ASAP"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_ticketcomment",
+                                "url": "/v1/tickets/:_ticketid/comments/:_id",
+                                "name": "Update a ticket comment",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": [
+                                    {
+                                        "attachmentIds": [
+                                            "4000000008994"
+                                        ],
+                                        "content": "Edited comment."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_ticketcomment",
+                                "url": "/v1/tickets/:_ticketid/comments/:_id",
+                                "name": "Delete a ticket comment",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "threads",
+                        "name": "Threads",
+                        "sampleData": {
+                            "channel": "EMAIL",
+                            "attachmentIds": [
+                                "260129000000101283"
+                            ],
+                            "to": "cust1@gmail.com",
+                            "fromEmailAddress": "support@snigu.zohodesk.com",
+                            "contentType": "plainText",
+                            "content": "We have identified the root cause and fixed it.",
+                            "isForward": "true"
+                        },
+                        "operations": [
+                            {
+                                "id": "send_emailreply",
+                                "url": "/v1/tickets/:_ticketid/sendReply",
+                                "name": "Send Email Reply",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "draft_emailreply",
+                                "url": "/v1/tickets/:_ticketid/draftReply",
+                                "name": "Draft Email Reply",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_draft",
+                                "url": "/v1/tickets/:_ticketid/draftReply/:_id",
+                                "name": "Update Draft",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_attachment",
+                                "url": "/v1/tickets/:_ticketid/draftReply/:_draftReplyid/attachments/:_id",
+                                "name": "Delete an Attachment",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "draftReplyid",
+                                        "name": "Draft Reply ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ticket_attachments",
+                        "name": "Ticket Attachments",
+                        "sampleData": [
+                            {
+                                "isPublic": true
+                            }
+                        ],
+                        "operations": [
+                            {
+                                "id": "update_ticketattachments",
+                                "url": "/v1/tickets/:_ticketid/attachments/:_id",
+                                "name": "Update an attachment",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_ticketattachments",
+                                "url": "/v1/tickets/:_ticketid/attachments/:_id",
+                                "name": "Delete an attachment",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks_attachments",
+                        "name": "Tasks Attachments",
+                        "sampleData": [],
+                        "operations": [
+                            {
+                                "id": "delete_taskattachments",
+                                "url": "/v1/tasks/:_taskid/attachments/:_id",
+                                "name": "Delete an attachment",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "taskid",
+                                        "name": "Task ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts_attachments",
+                        "name": "Contacts Attachments",
+                        "sampleData": [],
+                        "operations": [
+                            {
+                                "id": "delete_contactsattachments",
+                                "url": "/v1/contacts/:_contactid/attachments/:_id",
+                                "name": "Delete an attachment",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "contactid",
+                                        "name": "Contact ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts_attachments",
+                        "name": "Accounts Attachments",
+                        "sampleData": [],
+                        "operations": [
+                            {
+                                "id": "delete_accountattachments",
+                                "url": "/v1/accounts/:_accountid/attachments/:_id",
+                                "name": "Delete an attachment",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "accountid",
+                                        "name": "Account ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ticket_timeEntry",
+                        "name": "Ticket TimeEntry",
+                        "sampleData": [
+                            {
+                                "secondsSpent": "21",
+                                "executedTime": "2016-06-22T20:30:00.000Z",
+                                "customFields": {
+                                    "timeEntryName": "time2"
+                                },
+                                "minutesSpent": "23",
+                                "agentCostPerHour": "3.0",
+                                "description": "Time Entry description",
+                                "hoursSpent": "3",
+                                "requestChargeType": "Customer Service",
+                                "additionalCost": "10.0",
+                                "totalCost": "20.17"
+                            }
+                        ],
+                        "operations": [
+                            {
+                                "id": "create_tickettimeentry",
+                                "url": "/v1/tickets/:_ticketid/timeEntry",
+                                "name": "Add a Ticket Time Entry",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_tickettimeEntry",
+                                "url": "/v1/tickets/:_ticketid/timeEntry/:_id",
+                                "name": "Update a Ticket Time Entry",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_tickettimeEntry",
+                                "url": [
+                                    "/v1/tickets/:_ticketid/timeEntry/:_id",
+                                    "/v1/tickets/:_ticketid/timeEntry"
+                                ],
+                                "name": "Add or Update Ticket Time Entry",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tickettimeEntry",
+                                "url": "/v1/tickets/:_ticketid/timeEntry/:_id",
+                                "name": "Delete a Ticket Time Entry",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "ticketid",
+                                        "name": "Ticket ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "contacts",
+                        "name": "Contacts",
+                        "sampleData": {
+                            "zip": "123902",
+                            "lastName": "Jack",
+                            "country": "USA",
+                            "secondaryEmail": "hughjack@zylker.com",
+                            "city": "Texas",
+                            "facebook": "hugh jacks",
+                            "mobile": "+10 2328829010",
+                            "description": "first priority contact",
+                            "ownerId": "1892000000056007",
+                            "type": "paidUser",
+                            "title": "The contact",
+                            "accountId": "1892000000052077",
+                            "firstName": "hugh",
+                            "twitter": "Hugh jack",
+                            "phone": "91020080878",
+                            "street": "North street",
+                            "state": "Austin",
+                            "email": "jack@zylker.com"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_contact",
+                                "url": "/v1/contacts",
+                                "name": "Create a contact",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "id": "search_contacts",
+                                        "extract": "data[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_contact",
+                                "url": "/v1/contacts/:_id",
+                                "name": "Update a contact",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "id": "search_contacts",
+                                        "extract": "data[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "createorupdate_contact",
+                                "url": [
+                                    "/v1/contacts/:_id",
+                                    "/v1/contacts"
+                                ],
+                                "name": "Create or Update contact",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "sampleData": {
+                            "country": null,
+                            "website": null,
+                            "code": null,
+                            "accountName": "Zylker",
+                            "city": null,
+                            "associatedSLAIds": [
+                                3263000000057,
+                                3000000057001
+                            ],
+                            "customFields": {
+                                "contactCount": null
+                            },
+                            "description": null,
+                            "industry": null,
+                            "ownerId": "3263000000057001",
+                            "phone": "98348229382",
+                            "street": null,
+                            "annualrevenue": null,
+                            "createdTime": "2015-02-16T16:57:44.000Z",
+                            "state": null,
+                            "id": "3263000000074571",
+                            "fax": null,
+                            "email": null
+                        },
+                        "operations": [
+                            {
+                                "id": "create_account",
+                                "url": "/v1/accounts",
+                                "name": "Create an account",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_contact",
+                                "url": "/v1/accounts/:_id",
+                                "name": "Update an account",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_account",
+                                "name": "Create or Update account",
+                                "url": [
+                                    "/v1/accounts/:_id",
+                                    "/v1/accounts"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "sampleData": {
+                            "subject": "Bug Fix #120",
+                            "departmentId": "3000000007043",
+                            "dueDate": "2016-07-21T16:16:16.000Z",
+                            "category": null,
+                            "priority": "High",
+                            "status": "In Progress"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_task",
+                                "url": "/v1/tasks",
+                                "name": "Create a task",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_task",
+                                "url": "/v1/tasks/:_id",
+                                "name": "Update a task",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "createorupdate_task",
+                                "url": [
+                                    "/v1/tasks/:_id",
+                                    "/v1/tasks"
+                                ],
+                                "name": "Create or Update task",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

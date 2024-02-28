@@ -1,0 +1,144 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "offset",
+            "maxCountPath": "uk.ghs.products.totals.all"
+        },
+        "urlResolution": [
+            "/product",
+            "/grocery/products",
+            "/locations/search"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "products",
+                        "name": "Products",
+                        "endpoints": [
+                            {
+                                "id": "get_product",
+                                "url": "/product",
+                                "name": "Get Product",
+                                "resourcePath": "products",
+                                "description": "Query field is mandatory",
+                                "queryParameters": [
+                                    {
+                                        "id": "gtin",
+                                        "name": "gtin",
+                                        "description": "Global Trade Identification Number e.g. an EAN 13: 4548736003446",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "tpnb",
+                                        "name": "tpnb",
+                                        "description": "Tesco Product Number - Base Product (UK Identifier) e.g. 079121963",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "tpnc",
+                                        "name": "tpnc",
+                                        "description": "Tesco Product Number - Consumer Unit (UK Identifier) e.g. 255245446",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "catid",
+                                        "name": "catid",
+                                        "description": "Tesco Catalogue Number",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "grocery",
+                        "name": "Grocery Search",
+                        "endpoints": [
+                            {
+                                "id": "get_grocery_product",
+                                "url": "/grocery/products",
+                                "name": "Get Grocery Product",
+                                "resourcePath": "uk.ghs.products.results",
+                                "doesNotSupportPaging": true,
+                                "description": "Query field is mandatory",
+                                "queryParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "Query",
+                                        "description": "The search term to query by.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "offset",
+                                        "name": "Offset",
+                                        "description": "For use to add pagination for search results e.g. 10 to start with the 11th result. Default is 0.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The number of results to return. Default is 10.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "store",
+                        "name": "Store Location",
+                        "endpoints": [
+                            {
+                                "id": "get_store_location",
+                                "url": "/locations/search",
+                                "name": "Get Store Location",
+                                "resourcePath": "results",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "offset",
+                                        "name": "offset",
+                                        "description": "For use to add pagination for search results.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The number of results to return.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "The search term to query by.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "To filter by a single condition use {propertyName}:{propertyValue},To combine conditions that all must be met sepatate by AND - {propertyName1}:{propertyValue1} AND {propertyName2}:{propertyValue2} AND {propertyName3}:{propertyValue3}",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "like",
+                                        "name": "Like",
+                                        "description": " matches based on a partial value,e.g. stores whose name includes the keyword 'Baldock'.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

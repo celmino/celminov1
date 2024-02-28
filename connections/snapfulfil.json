@@ -1,0 +1,3678 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [
+            "api/CustomerReturns/:_id",
+            "api/CustomerReturns",
+            "api/Customers/:_id",
+            "api/Customers",
+            "api/DespatchStock/:_id",
+            "api/DespatchStock",
+            "api/kits/:_id/:_unit",
+            "api/Kits/:_id",
+            "api/productAlternates/:_alternateid/:_line",
+            "api/productAlternates/:_SkuId",
+            "api/productAlternates",
+            "api/Products/:_SKUId",
+            "api/Products",
+            "api/PurchaseOrders/:_id",
+            "api/PurchaseOrders",
+            "api/Receipts/:_id",
+            "api/Receipts",
+            "api/Replenishments/:_id",
+            "api/Replenishments/:_site/:_sku/:_unit/:_owner/:_level/:_area",
+            "api/Replenishments",
+            "api/SalesOrders/:_id",
+            "api/SalesOrders",
+            "api/SerialsReceipt/:_id",
+            "api/SerialsShipment/:_id",
+            "api/Shipments/:_id",
+            "api/Shipments",
+            "api/ShipmentStatus/:_id",
+            "api/SnapLookups/:_keyword",
+            "api/SnapLookups",
+            "api/SnapOutbound/:_XdocId",
+            "api/SnapOutbound",
+            "api/SnapOutbound/next",
+            "api/SpecialConditionLines/:_id",
+            "api/SpecialConditionLines",
+            "api/SpecialConditions/:_id",
+            "api/SpecialConditions",
+            "api/StockConsignment/:_id",
+            "api/StockConsignment",
+            "api/StockMovements/:_id",
+            "api/StockMovements/:_site/:_type/:_move/:_line",
+            "api/StockMovements/:_site/:_type/:_move",
+            "api/StockMovements",
+            "api/StockTotals/:_id",
+            "api/StockTotals",
+            "api/Suppliers/:_id",
+            "api/Suppliers",
+            "api/TasksReceipt",
+            "api/Tasksshipment"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "CustomerReturns",
+                        "name": "Customer Returns",
+                        "endpoints": [
+                            {
+                                "id": "single_customer_returns_based_on_id",
+                                "url": "api/CustomerReturns/:_id",
+                                "name": "Single Customer Returns based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Customer Returns Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_customer_returns",
+                                "url": "api/CustomerReturns",
+                                "name": "List Customer Returns",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is SupplierId eq '123' and in import is SupplierId eq '{{{SupplierId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Customers",
+                        "name": "Customers",
+                        "endpoints": [
+                            {
+                                "id": "customer_by_id",
+                                "url": "api/Customers/:_id",
+                                "name": "Customer by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Customer ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_customers",
+                                "url": "api/Customers",
+                                "name": "List of all customers",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is CustomerId eq '1456' and in import is CustomerId eq '{{{CustomerId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "DespatchStock",
+                        "name": "Despatch Stock",
+                        "endpoints": [
+                            {
+                                "id": "despatch_stock_based_on_id",
+                                "url": "api/DespatchStock/:_id",
+                                "name": "Despatch Stock based on id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Despatch Stock Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_despatch_stock",
+                                "url": "api/DespatchStock",
+                                "name": "List Despatch Stock",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is ConsignmentId eq '314869-2256' and in import is ConsignmentId eq '{{{ConsignmentId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Kits",
+                        "name": "Kits",
+                        "endpoints": [
+                            {
+                                "id": "kits_by_unit",
+                                "url": "api/Kits/:_id/:_unit",
+                                "name": "Kits by Unit",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Sku Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "unit",
+                                        "name": "Unit value",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "kits_by_queryparameter",
+                                "url": "api/Kits/:_id",
+                                "name": "Kits by queryParameter",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "unit",
+                                        "name": "Unit value",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "productAlternates",
+                        "name": "Product Alternates",
+                        "endpoints": [
+                            {
+                                "id": "productalternates_by_sku_id",
+                                "url": "api/productAlternates/:_SkuId",
+                                "name": "ProductAlternates by Sku Id",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "SkuId",
+                                        "name": "Sku Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is AlternateSKUId eq '12' and in import is AlternateSKUId eq '{{{AlternateSKUId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "productalternates_by_line_id",
+                                "url": "api/productAlternates/:_alternateid/:_line",
+                                "name": "ProductAlternates by line id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "alternateid",
+                                        "name": "alternate Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "line",
+                                        "name": "line Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Sku Id",
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_product_alternates_by_query_parameters",
+                                "url": "api/productAlternates",
+                                "name": "List Product Alternates by query Parameters",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "alternateid",
+                                        "name": "alternate Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "line",
+                                        "name": "Line value",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Products",
+                        "name": "Products",
+                        "endpoints": [
+                            {
+                                "id": "single_product_based_on_sku_id",
+                                "url": "api/Products/:_SKUId",
+                                "name": "Single product based on SKU Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "SKUId",
+                                        "name": "SKU Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_products",
+                                "url": "api/Products",
+                                "name": "List of all Products",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is SKUId eq '1234' and in import is SKUId eq '{{{SKUId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "PurchaseOrders",
+                        "name": "Purchase Orders",
+                        "endpoints": [
+                            {
+                                "id": "single_purchase_orders_based_on_id",
+                                "url": "api/PurchaseOrders/:_id",
+                                "name": "Single Purchase Orders based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Purchase Orders ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_purchase_orders",
+                                "url": "api/PurchaseOrders",
+                                "name": "List of all Purchase Orders",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is PurchaseOrderId eq '123' and in import is PurchaseOrderId eq '{{{PurchaseOrderId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Receipts",
+                        "name": "Receipts",
+                        "endpoints": [
+                            {
+                                "id": "single_receipt_based_on_id",
+                                "url": "api/Receipts/:_id",
+                                "name": "Single Receipt based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Receipt ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_receipts",
+                                "url": "api/Receipts",
+                                "name": "List of all Receipts",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is ReceiptId eq '1' and in import is ReceiptId eq '{{{ReceiptId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Replenishments",
+                        "name": "Replenishments",
+                        "endpoints": [
+                            {
+                                "id": "replenishment_by_skuid",
+                                "url": "api/Replenishments/:_id",
+                                "name": "Replenishment by SkuId",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "SkuId",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "replenishments_by_area",
+                                "url": "api/Replenishments/:_site/:_sku/:_unit/:_owner/:_level/:_area",
+                                "name": "Replenishments by Area",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "site",
+                                        "name": "Site Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sku",
+                                        "name": "Sku value",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "unit",
+                                        "name": "Unit",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "owner",
+                                        "name": "Owner",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "level",
+                                        "name": "Level",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "area",
+                                        "name": "Area",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Sku Id",
+                                        "required": true,
+                                        "description": "",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_replenishments_by_queryparameters",
+                                "url": "api/Replenishments",
+                                "name": "List Replenishments by queryParameters",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "site",
+                                        "name": "Site Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sku",
+                                        "name": "Sku value",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "unit",
+                                        "name": "Unit",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "owner",
+                                        "name": "Owner",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "level",
+                                        "name": "Level",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "area",
+                                        "name": "Area",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SalesOrders",
+                        "name": "Sales Orders",
+                        "endpoints": [
+                            {
+                                "id": "salesorders_based_on_id",
+                                "url": "api/SalesOrders/:_id",
+                                "name": "SalesOrders based on id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Sales Orders Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_salesorders",
+                                "url": "api/SalesOrders",
+                                "name": "List SalesOrders",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is OrderId eq '10' and in import is OrderId eq '{{{OrderId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SerialsReceipt",
+                        "name": "Serials Receipt",
+                        "endpoints": [
+                            {
+                                "id": "serials_receipt_by_id",
+                                "url": "api/SerialsReceipt/:_id",
+                                "name": "Serials Receipt by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Receipt Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SerialsShipment",
+                        "name": "Serials Shipment",
+                        "endpoints": [
+                            {
+                                "id": "serials_shipment_by_id",
+                                "url": "api/SerialsShipment/:_id",
+                                "name": "Serials Shipment by ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Shipments",
+                        "name": "Shipments",
+                        "endpoints": [
+                            {
+                                "id": "shipment_by_id",
+                                "url": "api/Shipments/:_id",
+                                "name": "Shipment by ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_of_all_shipments",
+                                "url": "api/Shipments",
+                                "name": "List of all Shipments",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is ShipmentId eq '31469255' and in import is ShipmentId eq '{{{ShipmentId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ShipmentStatus",
+                        "name": "ShipmentStatus",
+                        "endpoints": [
+                            {
+                                "id": "get_shipmentstatus_by_id",
+                                "url": "api/ShipmentStatus/:_ShipmentId",
+                                "name": "Get ShipmentStatus by Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "ShipmentId",
+                                        "name": "Shipment ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SnapLookups",
+                        "name": "SnapLookups",
+                        "endpoints": [
+                            {
+                                "id": "snaplookups_based_on_keyword_value",
+                                "url": "api/SnapLookups/:_Keyword",
+                                "name": "SnapLookups based on Keyword value",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "Keyword",
+                                        "name": "Keyword value",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_snaplookups",
+                                "url": "api/SnapLookups",
+                                "name": "List SnapLookups",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format is Keyword eq 'RECCLASS'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SnapOutbound",
+                        "name": "SnapOutbound",
+                        "endpoints": [
+                            {
+                                "id": "get_next_unacknowledged_message",
+                                "url": "api/SnapOutbound/next",
+                                "name": "Get Next Unacknowledged message",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "snapoutbound_based_on_xdoc_id",
+                                "url": "api/SnapOutbound/:_XdocId",
+                                "name": "SnapOutbound based on XDoc Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "XdocId",
+                                        "name": "XDoc Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_snapoutbound",
+                                "url": "api/SnapOutbound",
+                                "name": "List SnapOutbound",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is XDoc eq 'OUA0000164' and in import is XDoc eq '{{{XDoc}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SpecialConditionLines",
+                        "name": "Special Condition Lines",
+                        "endpoints": [
+                            {
+                                "id": "special_condition_lines_based_on_id",
+                                "url": "api/SpecialConditionLines/:_id",
+                                "name": "Special Condition Lines based on Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Special Condition Lines Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SpecialConditions",
+                        "name": "Special Conditions",
+                        "endpoints": [
+                            {
+                                "id": "specialconditions_by_shipment_id",
+                                "url": "api/SpecialConditions/:_id",
+                                "name": "SpecialConditions by Shipment Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Shipment ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "table",
+                                        "name": "table",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "specialconditions_by_line_id",
+                                "url": "api/SpecialConditions",
+                                "name": "SpecialConditions by Line Id",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "table",
+                                        "name": "table",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "key",
+                                        "name": "key",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "keyline",
+                                        "name": "key Line",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "line",
+                                        "name": "Line Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "StockConsignment",
+                        "name": "Stock Consignment",
+                        "endpoints": [
+                            {
+                                "id": "single_stock_consignment_based_on_id",
+                                "url": "api/StockConsignment/:_id",
+                                "name": "Single Stock Consignment based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Stock Consignment Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_stock_consignment",
+                                "url": "api/StockConsignment",
+                                "name": "List Stock Consignment",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is ConsignmentId eq '314869' and in import is ConsignmentId eq '{{{ConsignmentId}}}')",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "StockMovements",
+                        "name": "Stock Movements",
+                        "endpoints": [
+                            {
+                                "id": "stock_movement_based_on_id",
+                                "url": "api/StockMovements/:_id",
+                                "name": "Stock Movement based on ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Move ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "stockmovements_by_move_line_id",
+                                "url": "api/StockMovements/:_site/:_type/:_move/:_line",
+                                "name": "Stockmovements by Move Line Id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "site",
+                                        "name": "Site ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "move",
+                                        "name": "Move",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "line",
+                                        "name": "Line",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "stockmovements_by_move_id",
+                                "url": "api/StockMovements/:_site/:_type/:_move",
+                                "name": "Stockmovements by Move Id",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "site",
+                                        "name": "Site ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "move",
+                                        "name": "Move Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Move id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_stock_movements_by_queryparameters",
+                                "url": "api/StockMovements",
+                                "name": "List stock movements by queryParameters",
+                                "resourcePath": "",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "site",
+                                        "name": "Site ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "move",
+                                        "name": "Move",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "line",
+                                        "name": "Line",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "StockTotals",
+                        "name": "Stock Totals",
+                        "endpoints": [
+                            {
+                                "id": "stocktotals_based_on_skuid",
+                                "url": "api/StockTotals/:_id",
+                                "name": "StockTotals based on SKUid",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "StockTotals SKUId",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_stocktotals",
+                                "url": "api/StockTotals",
+                                "name": "List StockTotals",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format is SKUId eq '123'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Suppliers",
+                        "name": "Suppliers",
+                        "endpoints": [
+                            {
+                                "id": "suppliers_based_on_id",
+                                "url": "api/Suppliers/:_id",
+                                "name": "Suppliers based on id",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Supplier Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_suppliers",
+                                "url": "api/Suppliers",
+                                "name": "List Suppliers",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format in export is SupplierId eq '123' and in import is SupplierId eq '{{{SupplierId}}}'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Tasks",
+                        "name": "Tasks Interface",
+                        "endpoints": [
+                            {
+                                "id": "list_tasks_by_receipt",
+                                "url": "api/TasksReceipt",
+                                "name": "List Tasks by Receipt",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "ReceiptId",
+                                        "name": "Receipt Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "TaskType",
+                                        "name": "Task Type",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "TaskId",
+                                        "name": "TaskId",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format is TaskId eq '456'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_tasks_by_shipments",
+                                "url": "api/Tasksshipment",
+                                "name": "List Tasks by Shipments",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "ShipmentId",
+                                        "name": "Shipment Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "TaskType",
+                                        "name": "Task Type",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "TaskId",
+                                        "name": "TaskId",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$top",
+                                        "name": "Top",
+                                        "description": "Returns no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$skip",
+                                        "name": "Skip",
+                                        "description": "Skips the no of records specified",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$filter",
+                                        "name": "Filter",
+                                        "description": "The expected format is TaskId eq '123'",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "$orderby",
+                                        "name": "Orderby",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "api/CustomerReturns/:_id",
+            "api/CustomerReturns",
+            "api/Customers/:_id",
+            "api/Customers",
+            "api/Kits/:_sku/:_unit",
+            "api/Kits",
+            "api/productAlternates/:_alternateid/:_line",
+            "api/productAlternates",
+            "api/Products/:_id",
+            "api/Products",
+            "api/PurchaseOrders/:_id",
+            "api/PurchaseOrders",
+            "api/Receipts/:_id",
+            "api/Receipts",
+            "api/Replenishments/:_site/:_sku/:_unit/:_owner/:_level/:_area",
+            "api/Replenishments",
+            "api/SalesOrders/:_id",
+            "api/SalesOrders",
+            "api/Shipments/:_id",
+            "api/Shipments",
+            "api/SnapOutbound/:_XdocId",
+            "api/SpecialConditionLines/:_table/:_ShipmentId/:_ShipmentLineId/:_LineId",
+            "api/SpecialConditionLines",
+            "api/SpecialConditions/:_table/:_ShipmentId/:_ShipmentLineId/:_LineId",
+            "api/SpecialConditions",
+            "api/StockConsignment",
+            "api/Suppliers/:_id",
+            "api/Suppliers"
+        ],
+        "versions": [
+            {
+                "version": "v3",
+                "resources": [
+                    {
+                        "id": "CustomerReturns",
+                        "name": "Customer Returns",
+                        "sampleData": {
+                            "ReceiptId": "sample string 1",
+                            "BizId": "sample string 2",
+                            "BizPurchaseOrder": "sample string 3",
+                            "Status": "sample string 4",
+                            "OrderType": "sample string 5",
+                            "OrderClass": "sample string 6",
+                            "SupplierId": "sample string 7",
+                            "BizSupplierId": "sample string 8",
+                            "SupplierGroup": "sample string 9",
+                            "SupplierName": "sample string 10",
+                            "ShippingAddressId": "sample string 11",
+                            "InvoiceAddressId": "sample string 12",
+                            "Site": "sample string 13",
+                            "Warehouse": "sample string 14",
+                            "OwnerId": "sample string 15",
+                            "StockStatus": "sample string 16",
+                            "PurchaseOrder": "sample string 17",
+                            "Prime": "sample string 18",
+                            "Priority": "sample string 19",
+                            "SupplierRef": "sample string 20",
+                            "ConsignmentId": "sample string 21",
+                            "ASNumber": "sample string 22",
+                            "GRNNumber": "sample string 23",
+                            "ManifestNumber": "sample string 24",
+                            "POC": "sample string 25",
+                            "ShippingMethod": "sample string 26",
+                            "Region": "sample string 27",
+                            "CarrierId": "sample string 28",
+                            "CarrierTrackingNumber": "sample string 29",
+                            "Route": "sample string 30",
+                            "LoadId": "sample string 31",
+                            "LoadSequence": 1,
+                            "ReceiptLane": "sample string 32",
+                            "ReturnReason": "sample string 33",
+                            "QA": "sample string 34",
+                            "Lines": 1,
+                            "LineQty": 1,
+                            "StUQty": 1,
+                            "Volume": 1,
+                            "Weight": 1,
+                            "ActualWeight": 1,
+                            "TaskCountNew": 1,
+                            "TaskCountCurrent": 1,
+                            "TaskCountActioned": 1,
+                            "TimeToUnload": 1,
+                            "TimeToInspect": 1,
+                            "TimeToPutaway": 1,
+                            "TimeOther": 1,
+                            "TimeToCollect": 1,
+                            "AccepanceCode": "sample string 35",
+                            "Variance": "sample string 36",
+                            "Supervisor": "sample string 37",
+                            "Reason": "sample string 38",
+                            "DateCreated": "2017-12-12T02:00:25.1468414-05:00",
+                            "DateSuspended": "2017-12-12T02:00:25.1468414-05:00",
+                            "DateClosed": "2017-12-12T02:00:25.1468414-05:00",
+                            "DateCollected": "2017-12-12T02:00:25.1468414-05:00",
+                            "DateDueIn": "2017-12-12T02:00:25.1468414-05:00",
+                            "DateArrival": "2017-12-12T02:00:25.1468414-05:00",
+                            "DateReceipt": "2017-12-12T02:00:25.1468414-05:00",
+                            "ASNInd": "sample string 39",
+                            "PaperworkInd": "sample string 40",
+                            "OverdueInd": "sample string 41",
+                            "Stage": "sample string 42",
+                            "MaintInd": "sample string 43",
+                            "ReceiptLines": [
+                                {
+                                    "ReceiptId": "sample string 1",
+                                    "Line": "sample string 2",
+                                    "Level": "sample string 3",
+                                    "SKUId": "sample string 4",
+                                    "BizSKUId": "sample string 5",
+                                    "UnitOfMeasure": "sample string 6",
+                                    "LineOwner": "sample string 7",
+                                    "LineStockStatus": "sample string 8",
+                                    "QtyOrdered": 1,
+                                    "QtyAdvised": 1,
+                                    "QtyReceived": 1,
+                                    "QtyRejected": 1,
+                                    "QtyDueIn": 1,
+                                    "POLineId": 1,
+                                    "ReturnReason": "sample string 9",
+                                    "QA": "sample string 10",
+                                    "Acceptance": "sample string 11",
+                                    "Variance": "sample string 12",
+                                    "BOInd": "sample string 13",
+                                    "ConsignmentId": "sample string 14",
+                                    "SiteId": "sample string 15",
+                                    "Warehouse": "sample string 16",
+                                    "BizId": "sample string 17",
+                                    "OwnerId": "sample string 18",
+                                    "StockStatus": "sample string 19",
+                                    "DateReceipt": "2017-12-12T02:00:25.1468414-05:00",
+                                    "AttachmentInd": "sample string 20",
+                                    "SpecialConditionInd": "sample string 21",
+                                    "Stage": "sample string 22"
+                                },
+                                {
+                                    "ReceiptId": "sample string 1",
+                                    "Line": "sample string 2",
+                                    "Level": "sample string 3",
+                                    "SKUId": "sample string 4",
+                                    "BizSKUId": "sample string 5",
+                                    "UnitOfMeasure": "sample string 6",
+                                    "LineOwner": "sample string 7",
+                                    "LineStockStatus": "sample string 8",
+                                    "QtyOrdered": 1,
+                                    "QtyAdvised": 1,
+                                    "QtyReceived": 1,
+                                    "QtyRejected": 1,
+                                    "QtyDueIn": 1,
+                                    "POLineId": 1,
+                                    "ReturnReason": "sample string 9",
+                                    "QA": "sample string 10",
+                                    "Acceptance": "sample string 11",
+                                    "Variance": "sample string 12",
+                                    "BOInd": "sample string 13",
+                                    "ConsignmentId": "sample string 14",
+                                    "SiteId": "sample string 15",
+                                    "Warehouse": "sample string 16",
+                                    "BizId": "sample string 17",
+                                    "OwnerId": "sample string 18",
+                                    "StockStatus": "sample string 19",
+                                    "DateReceipt": "2017-12-12T02:00:25.1468414-05:00",
+                                    "AttachmentInd": "sample string 20",
+                                    "SpecialConditionInd": "sample string 21",
+                                    "Stage": "sample string 22"
+                                }
+                            ],
+                            "ReceiptAddresses": [
+                                {
+                                    "Table": "sample string 1",
+                                    "ReceiptId": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                },
+                                {
+                                    "Table": "sample string 1",
+                                    "ReceiptId": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customerreturns",
+                                "url": "api/CustomerReturns",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/CustomerReturns",
+                                        "extract": "SKUId",
+                                        "id": "list_customer_returns"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_customerreturns",
+                                "url": "api/CustomerReturns/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/CustomerReturns",
+                                        "extract": "SKUId",
+                                        "id": "list_customer_returns"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_customerreturns",
+                                "url": [
+                                    "api/CustomerReturns/:_id",
+                                    "api/CustomerReturns"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/CustomerReturns",
+                                        "extract": "SKUId",
+                                        "id": "list_customer_returns"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_customerreturns",
+                                "url": "api/CustomerReturns/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Customers",
+                        "name": "Customers",
+                        "sampleData": {
+                            "CustomerId": "sample string 1",
+                            "Status": "sample string 2",
+                            "BizId": "sample string 3",
+                            "Name": "sample string 4",
+                            "GroupId": "sample string 5",
+                            "Label": "sample string 6",
+                            "Substitute": "sample string 7",
+                            "Stage": "sample string 8",
+                            "MaintInd": "sample string 9",
+                            "CustomerAddresses": [
+                                {
+                                    "Table": "sample string 1",
+                                    "CustomerId": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                },
+                                {
+                                    "Table": "sample string 1",
+                                    "CustomerId": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customers",
+                                "url": "api/Customers",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Customers",
+                                        "extract": "CustomerId",
+                                        "id": "list_of_all_customers"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_customers",
+                                "url": "api/Customers/:_customer_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Customers",
+                                        "extract": "CustomerId",
+                                        "id": "list_of_all_customers"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_customers",
+                                "url": [
+                                    "api/Customers/:_customer_id",
+                                    "api/Customers"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Customers",
+                                        "extract": "CustomerId",
+                                        "id": "list_of_all_customers"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_customers",
+                                "url": "api/Customers/:_customer_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "customer_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Kits",
+                        "name": "Kits",
+                        "sampleData": {
+                            "ProductKitId": "sample string 1",
+                            "Unit": "sample string 2",
+                            "ComponentSKUID": "sample string 3",
+                            "Qty": 1,
+                            "ComponentSKUUnit": "sample string 4",
+                            "DateEffective": "2017-12-12T02:20:39.8607309-05:00",
+                            "DateClosed": "2017-12-12T02:20:39.8607309-05:00",
+                            "MaintInd": "sample string 5"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_kits",
+                                "url": "api/Kits",
+                                "name": "Create",
+                                "method": "POST"
+                            },
+                            {
+                                "id": "update_kits",
+                                "url": "api/Kits/:_sku/:_unit",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "sku",
+                                        "name": "Sku Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "unit",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_kits",
+                                "url": "api/Kits/:_sku/:_unit",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "sku",
+                                        "name": "Sku Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "unit",
+                                        "name": "unit",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "productAlternates",
+                        "name": "Product Alternates",
+                        "sampleData": {
+                            "AlternateSKUId": "12",
+                            "LineId": "1",
+                            "OriginalSKUId": "SKU1",
+                            "Type": "01",
+                            "Reference": "FANIMATION",
+                            "MaintInd": "W"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_productalternates",
+                                "url": "api/productAlternates",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_productalternates",
+                                "url": "api/productAlternates/:_alternateid/:_line",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "alternateid",
+                                        "name": "Alternate Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "line",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_productalternates",
+                                "url": "api/productAlternates/:_alternateid/:_line",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "alternateid",
+                                        "name": "Alternate Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "line",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Products",
+                        "name": "Products",
+                        "sampleData": {
+                            "SKUId": "sample string 1",
+                            "Status": "sample string 2",
+                            "BizId": "sample string 3",
+                            "Description": "sample string 4",
+                            "Text": "sample string 5",
+                            "Group1": "sample string 6",
+                            "Group2": "sample string 7",
+                            "Type": "sample string 8",
+                            "Class": "sample string 9",
+                            "Value": "sample string 10",
+                            "Life": 1,
+                            "BoxQty": 1,
+                            "BoxUnit": "sample string 11",
+                            "BoxPack": "sample string 12",
+                            "BoxHeight": 1,
+                            "BoxWidth": 1,
+                            "BoxDepth": 1,
+                            "BoxWeight": 1,
+                            "ItemUnit": "sample string 13",
+                            "ItemPack": "sample string 14",
+                            "ItemHeight": 1,
+                            "ItemWidth": 1,
+                            "ItemDepth": 1,
+                            "ItemWeight": 1,
+                            "ExpiryReqd": "sample string 15",
+                            "ProductionReqd": "sample string 16",
+                            "BatchReqd": "sample string 17",
+                            "SerialReqd": "sample string 18",
+                            "QA": "sample string 19",
+                            "QC": "sample string 20",
+                            "HazardCode": "sample string 21",
+                            "RotationMethod": "sample string 22",
+                            "Country": "sample string 23",
+                            "DateHeld": "2017-12-13T02:09:19.7611932-05:00",
+                            "Stage": "sample string 24",
+                            "MaintInd": "sample string 25"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_products",
+                                "url": "api/Products",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "product_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Products",
+                                        "extract": "SKUId",
+                                        "id": "list_of_all_products"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_products",
+                                "url": "api/Products/:_product_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "product_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Products",
+                                        "extract": "SKUId",
+                                        "id": "list_of_all_products"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_products",
+                                "url": [
+                                    "api/Products/:_product_id",
+                                    "api/Products"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "product_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Products",
+                                        "extract": "SKUId",
+                                        "id": "list_of_all_products"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_products",
+                                "url": "api/Products/:_product_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "product_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "PurchaseOrders",
+                        "name": "Purchase Orders",
+                        "sampleData": {
+                            "PurchaseOrderId": "sample string 1",
+                            "BizId": "sample string 2",
+                            "BizPurchaseOrder": "sample string 3",
+                            "Status": "sample string 4",
+                            "OrderType": "sample string 5",
+                            "OrderClass": "sample string 6",
+                            "SupplierId": "sample string 7",
+                            "BizSupplierId": "sample string 8",
+                            "SupplierGroup": "sample string 9",
+                            "SupplierName": "sample string 10",
+                            "ShippingAddressId": "sample string 11",
+                            "InvoiceAddressId": "sample string 12",
+                            "DateReceipt": "2017-12-13T02:32:41.331286-05:00",
+                            "Site": "sample string 13",
+                            "Warehouse": "sample string 14",
+                            "OwnerId": "sample string 15",
+                            "StockStatus": "sample string 16",
+                            "Priority": "sample string 17",
+                            "SupplierRef": "sample string 18",
+                            "ShippingMethod": "sample string 19",
+                            "Region": "sample string 20",
+                            "CarrierId": "sample string 21",
+                            "Route": "sample string 22",
+                            "ReturnReason": "sample string 23",
+                            "QA": "sample string 24",
+                            "Lines": 1,
+                            "LineQty": 1,
+                            "Volume": 1,
+                            "Weight": 1,
+                            "Acceptance": "sample string 25",
+                            "Variance": "sample string 26",
+                            "Supervisor": "sample string 27",
+                            "Reason": "sample string 28",
+                            "DateCreated": "2017-12-13T02:32:41.331286-05:00",
+                            "DateSuspended": "2017-12-13T02:32:41.331286-05:00",
+                            "DateClosed": "2017-12-13T02:32:41.331286-05:00",
+                            "Stage": "sample string 29",
+                            "MaintInd": "sample string 30",
+                            "POLines": [
+                                {
+                                    "PurchaseOrderId": "sample string 1",
+                                    "Line": "sample string 2",
+                                    "Level": "sample string 3",
+                                    "SKUId": "sample string 4",
+                                    "BizSKUId": "sample string 5",
+                                    "UnitOfMeasure": "sample string 6",
+                                    "LineSite": "sample string 7",
+                                    "LineWarehouse": "sample string 8",
+                                    "LineOwner": "sample string 9",
+                                    "LineStockStatus": "sample string 10",
+                                    "QtyOrdered": 1,
+                                    "QtyReceived": 1,
+                                    "QtyOrderIn": 1,
+                                    "QtyDueIn": 1,
+                                    "QtySpawn": 1,
+                                    "POLineId": 1,
+                                    "ReturnReason": "sample string 11",
+                                    "QA": "sample string 12",
+                                    "LineDateReceipt": "2017-12-13T02:32:41.331286-05:00",
+                                    "ShipAddress": "sample string 13",
+                                    "Acceptance": "sample string 14",
+                                    "Variance": "sample string 15",
+                                    "Site": "sample string 16",
+                                    "Warehouse": "sample string 17",
+                                    "BizId": "sample string 18",
+                                    "Owner": "sample string 19",
+                                    "StockStatus": "sample string 20",
+                                    "DateReceipt": "2017-12-13T02:32:41.331286-05:00",
+                                    "AttachmentInd": "sample string 21",
+                                    "SpecialConditionInd": "sample string 22",
+                                    "Stage": "sample string 23"
+                                },
+                                {
+                                    "PurchaseOrderId": "sample string 1",
+                                    "Line": "sample string 2",
+                                    "Level": "sample string 3",
+                                    "SKUId": "sample string 4",
+                                    "BizSKUId": "sample string 5",
+                                    "UnitOfMeasure": "sample string 6",
+                                    "LineSite": "sample string 7",
+                                    "LineWarehouse": "sample string 8",
+                                    "LineOwner": "sample string 9",
+                                    "LineStockStatus": "sample string 10",
+                                    "QtyOrdered": 1,
+                                    "QtyReceived": 1,
+                                    "QtyOrderIn": 1,
+                                    "QtyDueIn": 1,
+                                    "QtySpawn": 1,
+                                    "POLineId": 1,
+                                    "ReturnReason": "sample string 11",
+                                    "QA": "sample string 12",
+                                    "LineDateReceipt": "2017-12-13T02:32:41.331286-05:00",
+                                    "ShipAddress": "sample string 13",
+                                    "Acceptance": "sample string 14",
+                                    "Variance": "sample string 15",
+                                    "Site": "sample string 16",
+                                    "Warehouse": "sample string 17",
+                                    "BizId": "sample string 18",
+                                    "Owner": "sample string 19",
+                                    "StockStatus": "sample string 20",
+                                    "DateReceipt": "2017-12-13T02:32:41.331286-05:00",
+                                    "AttachmentInd": "sample string 21",
+                                    "SpecialConditionInd": "sample string 22",
+                                    "Stage": "sample string 23"
+                                }
+                            ],
+                            "Addresses": [
+                                {
+                                    "OrderId": "sample string 1",
+                                    "Table": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                },
+                                {
+                                    "OrderId": "sample string 1",
+                                    "Table": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_purchaseorders",
+                                "url": "api/PurchaseOrders",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "purchaseorder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/PurchaseOrders",
+                                        "extract": "PurchaseOrderId",
+                                        "id": "list_of_all_purchase_orders"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_purchaseorders",
+                                "url": "api/PurchaseOrders/:_purchaseorder_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "purchaseorder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/PurchaseOrders",
+                                        "extract": "PurchaseOrderId",
+                                        "id": "list_of_all_purchase_orders"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_purchaseorders",
+                                "url": [
+                                    "api/PurchaseOrders/:_purchaseorder_id",
+                                    "api/PurchaseOrders"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "purchaseorder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/PurchaseOrders",
+                                        "extract": "PurchaseOrderId",
+                                        "id": "list_of_all_purchase_orders"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_purchaseorders",
+                                "url": "api/PurchaseOrders/:_purchaseorder_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "purchaseorder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Receipts",
+                        "name": "Receipts",
+                        "sampleData": {
+                            "ReceiptId": "1",
+                            "BizId": "OWNER1",
+                            "BizPurchaseOrder": null,
+                            "Status": "00",
+                            "OrderType": "R01",
+                            "OrderClass": "STDREC",
+                            "SupplierId": "DIGITAL SUPPLY",
+                            "BizSupplierId": null,
+                            "SupplierGroup": "1",
+                            "SupplierName": "Digital Supply",
+                            "ShippingAddressId": "ADD1",
+                            "InvoiceAddressId": null,
+                            "Site": "0001",
+                            "Warehouse": "WAREHOUSE1",
+                            "OwnerId": "OWNER1",
+                            "StockStatus": "00",
+                            "PurchaseOrder": null,
+                            "Prime": "1",
+                            "Priority": "03",
+                            "SupplierRef": null,
+                            "ConsignmentId": "1",
+                            "ASNumber": null,
+                            "GRNNumber": null,
+                            "ManifestNumber": null,
+                            "POC": null,
+                            "ShippingMethod": null,
+                            "Region": null,
+                            "CarrierId": null,
+                            "CarrierTrackingNumber": null,
+                            "Route": null,
+                            "LoadId": null,
+                            "LoadSequence": 0,
+                            "ReceiptLane": "GI01",
+                            "ReturnReason": null,
+                            "QA": null,
+                            "Lines": 2,
+                            "LineQty": 1000,
+                            "StUQty": 0,
+                            "Volume": 0,
+                            "Weight": 1000,
+                            "ActualWeight": 0,
+                            "TaskCountNew": 0,
+                            "TaskCountCurrent": 0,
+                            "TaskCountActioned": 0,
+                            "TimeToUnload": 0,
+                            "TimeToInspect": 0,
+                            "TimeToPutaway": 0,
+                            "TimeOther": 0,
+                            "TimeToCollect": 0,
+                            "AccepanceCode": null,
+                            "Variance": null,
+                            "Supervisor": null,
+                            "Reason": null,
+                            "DateCreated": "2017-10-18T10:55:33",
+                            "DateSuspended": null,
+                            "DateClosed": "2017-10-19T04:25:04",
+                            "DateCollected": null,
+                            "DateDueIn": "2017-10-18T10:55:33",
+                            "DateArrival": null,
+                            "DateReceipt": "2017-10-18T10:55:33",
+                            "ASNInd": null,
+                            "PaperworkInd": "0",
+                            "OverdueInd": "0",
+                            "Stage": "91",
+                            "MaintInd": "W",
+                            "ReceiptLines": [
+                                {
+                                    "ReceiptId": "1",
+                                    "Line": "HG8MZGZ5KQ",
+                                    "Level": "00",
+                                    "SKUId": "AAA0001",
+                                    "BizSKUId": null,
+                                    "UnitOfMeasure": "EA",
+                                    "LineOwner": null,
+                                    "LineStockStatus": null,
+                                    "QtyOrdered": 1000,
+                                    "QtyAdvised": 1000,
+                                    "QtyReceived": 0,
+                                    "QtyRejected": 0,
+                                    "QtyDueIn": 0,
+                                    "POLineId": 1,
+                                    "ReturnReason": null,
+                                    "QA": null,
+                                    "Acceptance": null,
+                                    "Variance": null,
+                                    "BOInd": "0",
+                                    "ConsignmentId": "1",
+                                    "SiteId": "0001",
+                                    "Warehouse": "WAREHOUSE1",
+                                    "BizId": "OWNER1",
+                                    "OwnerId": "OWNER1",
+                                    "StockStatus": "00",
+                                    "DateReceipt": "2017-10-18T10:55:33",
+                                    "AttachmentInd": "0",
+                                    "SpecialConditionInd": "0",
+                                    "Stage": "91"
+                                }
+                            ],
+                            "ReceiptAddresses": [
+                                {
+                                    "Table": "REH",
+                                    "ReceiptId": "1",
+                                    "AddressId": "ADD1",
+                                    "Name": "Digital Supply",
+                                    "Line1": "florence street 123",
+                                    "Line2": null,
+                                    "Line3": null,
+                                    "City": "New York",
+                                    "State": "MS",
+                                    "Postcode": "1256U",
+                                    "Country": "US",
+                                    "Region": null,
+                                    "Latitude": null,
+                                    "Longitude": null
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_receipts",
+                                "url": "api/Receipts",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "receipt_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Receipts",
+                                        "extract": "ReceiptId",
+                                        "id": "list_of_all_receipts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_receipts",
+                                "url": "api/Receipts/:_receipt_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "receipt_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Receipts",
+                                        "extract": "ReceiptId",
+                                        "id": "list_of_all_receipts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_receipts",
+                                "url": [
+                                    "api/Receipts/:_receipt_id",
+                                    "api/Receipts"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "receipt_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Receipts",
+                                        "extract": "ReceiptId",
+                                        "id": "list_of_all_receipts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_receipts",
+                                "url": "api/Receipts/:_receipt_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "receipt_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Replenishments",
+                        "name": "Replenishments",
+                        "sampleData": {
+                            "SiteId": "0001",
+                            "SKUId": "1272591",
+                            "Unit": "EA",
+                            "OwnerId": "OWNER1",
+                            "Level": "ZONE",
+                            "Area": "PICK",
+                            "Status": "00",
+                            "MinQty": 3,
+                            "MaxQty": 50,
+                            "ReplenAction": "10",
+                            "ShortageInd": "0",
+                            "DateCreated": "2018-01-30T12:46:05",
+                            "DateUpdated": "2018-02-07T11:17:32"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_replenishments",
+                                "url": "api/Replenishments",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_replenishments",
+                                "url": "api/Replenishments/:_site/:_sku/:_unit/:_owner/:_level/:_area",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "site",
+                                        "name": "Site Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "sku",
+                                        "name": "Sku",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "unit",
+                                        "name": "Unit",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "owner",
+                                        "name": "Owner Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "level",
+                                        "name": "Level",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "area",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_replenishments",
+                                "url": "api/Replenishments/:_site/:_sku/:_unit/:_owner/:_level/:_area",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "site",
+                                        "name": "Site Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "sku",
+                                        "name": "Sku",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "unit",
+                                        "name": "Unit",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "owner",
+                                        "name": "Owner Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "level",
+                                        "name": "Level",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "area",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SalesOrders",
+                        "name": "Sales Orders",
+                        "sampleData": {
+                            "OrderId": "sample string 1",
+                            "BizId": "sample string 2",
+                            "BizSalesOrder": "sample string 3",
+                            "Status": "sample string 4",
+                            "OrderType": "sample string 5",
+                            "OrderClass": "sample string 6",
+                            "CustomerId": "sample string 7",
+                            "BizCustomerId": "sample string 8",
+                            "CustomerGroup": "sample string 9",
+                            "CustomerName": "sample string 10",
+                            "ShippingAddressId": "sample string 11",
+                            "InvoiceAddressId": "sample string 12",
+                            "DateDelivery": "2017-12-15T02:22:39.1678366-05:00",
+                            "Site": "sample string 13",
+                            "Warehouse": "sample string 14",
+                            "OwnerId": "sample string 15",
+                            "StkStatus": "sample string 16",
+                            "PriorityAllocation": "sample string 17",
+                            "PriorityDespatch": "sample string 18",
+                            "CustomerRef": "sample string 19",
+                            "InvoiceNumber": "sample string 20",
+                            "ShippingMethod": "sample string 21",
+                            "Region": "sample string 22",
+                            "Carrier": "sample string 23",
+                            "Route": "sample string 24",
+                            "ReturnReason": "sample string 25",
+                            "QC": "sample string 26",
+                            "Lines": 1,
+                            "LineQty": 1,
+                            "Volume": 1,
+                            "Weight": 1,
+                            "InvoiceInd": "sample string 27",
+                            "Currency": "sample string 28",
+                            "LineValue": 1,
+                            "Discount": 1,
+                            "Packing": 1,
+                            "Freight": 1,
+                            "Insurance": 1,
+                            "Charges": 1,
+                            "Allowances": 1,
+                            "Tax": 1,
+                            "InvoiceValue": 1,
+                            "ShortageCode": "sample string 29",
+                            "Variance": "sample string 30",
+                            "Supervisor": "sample string 31",
+                            "Reason": "sample string 32",
+                            "DateCreated": "2017-12-15T02:22:39.1678366-05:00",
+                            "DateSuspended": "2017-12-15T02:22:39.1678366-05:00",
+                            "DateClosed": "2017-12-15T02:22:39.1678366-05:00",
+                            "DateInvoice": "2017-12-15T02:22:39.1678366-05:00",
+                            "Stage": "sample string 33",
+                            "MaintInd": "sample string 34",
+                            "SOLines": [
+                                {
+                                    "OrderId": "sample string 1",
+                                    "Line": "sample string 2",
+                                    "Level": "sample string 3",
+                                    "SKUId": "sample string 4",
+                                    "BizSKU": "sample string 5",
+                                    "UnitOfMeasure": "sample string 6",
+                                    "LineSite": "sample string 7",
+                                    "LineWarehouse": "sample string 8",
+                                    "LineOwner": "sample string 9",
+                                    "LineStockStatus": "sample string 10",
+                                    "QtyOrdered": 1,
+                                    "QtyRequired": 1,
+                                    "QtyAllocated": 1,
+                                    "QtyShipped": 1,
+                                    "QtyDelivered": 1,
+                                    "QtyOrderOut": 1,
+                                    "QtyDueOut": 1,
+                                    "QtySpawn": 1,
+                                    "Price": 1,
+                                    "Discount": 1,
+                                    "TaxRate": 1,
+                                    "SOLineId": 1,
+                                    "ReturnReason": "sample string 11",
+                                    "QC": "sample string 12",
+                                    "LineDateDelivery": "2017-12-15T02:22:39.1678366-05:00",
+                                    "ShipAddress": "sample string 13",
+                                    "Shortage": "sample string 14",
+                                    "Variance": "sample string 15",
+                                    "SiteId": "sample string 16",
+                                    "Warehouse": "sample string 17",
+                                    "BizId": "sample string 18",
+                                    "OwnerId": "sample string 19",
+                                    "StockStatus": "sample string 20",
+                                    "DateDelivery": "2017-12-15T02:22:39.1834563-05:00",
+                                    "AttachmentInd": "sample string 21",
+                                    "SpecialConditionInd": "sample string 22",
+                                    "Stage": "sample string 23"
+                                },
+                                {
+                                    "OrderId": "sample string 1",
+                                    "Line": "sample string 2",
+                                    "Level": "sample string 3",
+                                    "SKUId": "sample string 4",
+                                    "BizSKU": "sample string 5",
+                                    "UnitOfMeasure": "sample string 6",
+                                    "LineSite": "sample string 7",
+                                    "LineWarehouse": "sample string 8",
+                                    "LineOwner": "sample string 9",
+                                    "LineStockStatus": "sample string 10",
+                                    "QtyOrdered": 1,
+                                    "QtyRequired": 1,
+                                    "QtyAllocated": 1,
+                                    "QtyShipped": 1,
+                                    "QtyDelivered": 1,
+                                    "QtyOrderOut": 1,
+                                    "QtyDueOut": 1,
+                                    "QtySpawn": 1,
+                                    "Price": 1,
+                                    "Discount": 1,
+                                    "TaxRate": 1,
+                                    "SOLineId": 1,
+                                    "ReturnReason": "sample string 11",
+                                    "QC": "sample string 12",
+                                    "LineDateDelivery": "2017-12-15T02:22:39.1678366-05:00",
+                                    "ShipAddress": "sample string 13",
+                                    "Shortage": "sample string 14",
+                                    "Variance": "sample string 15",
+                                    "SiteId": "sample string 16",
+                                    "Warehouse": "sample string 17",
+                                    "BizId": "sample string 18",
+                                    "OwnerId": "sample string 19",
+                                    "StockStatus": "sample string 20",
+                                    "DateDelivery": "2017-12-15T02:22:39.1834563-05:00",
+                                    "AttachmentInd": "sample string 21",
+                                    "SpecialConditionInd": "sample string 22",
+                                    "Stage": "sample string 23"
+                                }
+                            ],
+                            "Addresses": [
+                                {
+                                    "OrderId": "sample string 1",
+                                    "Table": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                },
+                                {
+                                    "OrderId": "sample string 1",
+                                    "Table": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_salesorders",
+                                "url": "api/SalesOrders",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "salesorder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/SalesOrders",
+                                        "extract": "OrderId",
+                                        "id": "list_salesorders"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_salesorders",
+                                "url": "api/SalesOrders/:_salesorder_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "salesorder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/SalesOrders",
+                                        "extract": "OrderId",
+                                        "id": "list_salesorders"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_salesorders",
+                                "url": [
+                                    "api/SalesOrders/:_salesorder_id",
+                                    "api/SalesOrders"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "salesorder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/SalesOrders",
+                                        "extract": "OrderId",
+                                        "id": "list_salesorders"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_salesorders",
+                                "url": "api/SalesOrders/:_salesorder_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "salesorder_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Shipments",
+                        "name": "Shipments",
+                        "sampleData": {
+                            "ShipmentId": "sample string 1",
+                            "BizId": "sample string 2",
+                            "BizSalesOrder": "sample string 3",
+                            "Status": "sample string 4",
+                            "OrderType": "sample string 5",
+                            "OrderClass": "sample string 6",
+                            "CustomerId": "sample string 7",
+                            "BizCustomerId": "sample string 8",
+                            "CustomerGroup": "sample string 9",
+                            "CustomerName": "sample string 10",
+                            "ShippingAddressId": "sample string 11",
+                            "InvoiceAddressId": "sample string 12",
+                            "Site": "sample string 13",
+                            "Warehouse": "sample string 14",
+                            "OwnerId": "sample string 15",
+                            "StockStatus": "sample string 16",
+                            "SalesOrder": "sample string 17",
+                            "Prime": "sample string 18",
+                            "PriorityAllocation": "sample string 19",
+                            "PriorityDespatch": "sample string 20",
+                            "CustomerRef": "sample string 21",
+                            "ConsigmentId": "sample string 22",
+                            "PickGroupId": "sample string 23",
+                            "ASNNumber": "sample string 24",
+                            "DNoteNumber": "sample string 25",
+                            "InvoiceNumber": "sample string 26",
+                            "ManifestNumber": "sample string 27",
+                            "POD": "sample string 28",
+                            "ShippingMethod": "sample string 29",
+                            "Region": "sample string 30",
+                            "CarrierId": "sample string 31",
+                            "CarrierTrackingNumber": "sample string 32",
+                            "Route": "sample string 33",
+                            "LoadId": "sample string 34",
+                            "LoadSequence": 1,
+                            "PackStation": "sample string 35",
+                            "ShippingLane": "sample string 36",
+                            "ReturnReason": "sample string 37",
+                            "QC": "sample string 38",
+                            "Lines": 1,
+                            "LineQty": 1,
+                            "StUQty": 1,
+                            "Volume": 1,
+                            "Weight": 1,
+                            "ActualWeight": 1,
+                            "TaskCountNew": 1,
+                            "TaskCountCurrent": 1,
+                            "TaskCountActioned": 1,
+                            "TimeToPick": 1,
+                            "TimeToPack": 1,
+                            "TimeToCheck": 1,
+                            "TimeToLoad": 1,
+                            "TimeOther": 1,
+                            "TimeToDeliver": 1,
+                            "InvoiceInd": "sample string 39",
+                            "Currency": "sample string 40",
+                            "LineValue": 1,
+                            "Discount": 1,
+                            "Packing": 1,
+                            "Freight": 1,
+                            "Insurance": 1,
+                            "Charges": 1,
+                            "Allowances": 1,
+                            "Tax": 1,
+                            "InvoiceValue": 1,
+                            "ShortageCode": "sample string 41",
+                            "Variance": "sample string 42",
+                            "CutOffInd": "sample string 43",
+                            "Supervisor": "sample string 44",
+                            "Reason": "sample string 45",
+                            "DateCreated": "2017-12-13T13:57:08.4713616-05:00",
+                            "DateSuspended": "2017-12-13T13:57:08.4713616-05:00",
+                            "DateClosed": "2017-12-13T13:57:08.4713616-05:00",
+                            "DateDueOut": "2017-12-13T13:57:08.4713616-05:00",
+                            "DateShipment": "2017-12-13T13:57:08.4713616-05:00",
+                            "DateDeliverd": "2017-12-13T13:57:08.4713616-05:00",
+                            "DateInvoice": "2017-12-13T13:57:08.4713616-05:00",
+                            "ASNInd": "sample string 46",
+                            "OverdueInd": "sample string 47",
+                            "Stage": "sample string 48",
+                            "MaintInd": "sample string 49",
+                            "ShipmentLines": [
+                                {
+                                    "ShipmentId": "sample string 1",
+                                    "Line": "sample string 2",
+                                    "Level": "sample string 3",
+                                    "SKUId": "sample string 4",
+                                    "BizSKU": "sample string 5",
+                                    "UnitOfMeasure": "sample string 6",
+                                    "LineOwner": "sample string 7",
+                                    "LineStockStatus": "sample string 8",
+                                    "QtyOrdered": 1,
+                                    "QtyRequired": 1,
+                                    "QtyAllocated": 1,
+                                    "QtyTasked": 1,
+                                    "QtyPicked": 1,
+                                    "QtyShipped": 1,
+                                    "QtyDelivered": 1,
+                                    "QtyDueOut": 1,
+                                    "Price": 1,
+                                    "Discount": 1,
+                                    "TaxRate": 1,
+                                    "SOLineId": 1,
+                                    "ReturnReason": "sample string 9",
+                                    "QC": "sample string 10",
+                                    "Shortage": "sample string 11",
+                                    "Variance": "sample string 12",
+                                    "BOInd": "sample string 13",
+                                    "ConsignmentId": "sample string 14",
+                                    "PickGroupId": "sample string 15",
+                                    "SiteId": "sample string 16",
+                                    "Warehouse": "sample string 17",
+                                    "BizId": "sample string 18",
+                                    "OwnerId": "sample string 19",
+                                    "StockStatus": "sample string 20",
+                                    "DateShipment": "2017-12-13T13:57:08.4713616-05:00",
+                                    "AttachmentInd": "sample string 21",
+                                    "SpecialConditionInd": "sample string 22",
+                                    "Stage": "sample string 23"
+                                },
+                                {
+                                    "ShipmentId": "sample string 1",
+                                    "Line": "sample string 2",
+                                    "Level": "sample string 3",
+                                    "SKUId": "sample string 4",
+                                    "BizSKU": "sample string 5",
+                                    "UnitOfMeasure": "sample string 6",
+                                    "LineOwner": "sample string 7",
+                                    "LineStockStatus": "sample string 8",
+                                    "QtyOrdered": 1,
+                                    "QtyRequired": 1,
+                                    "QtyAllocated": 1,
+                                    "QtyTasked": 1,
+                                    "QtyPicked": 1,
+                                    "QtyShipped": 1,
+                                    "QtyDelivered": 1,
+                                    "QtyDueOut": 1,
+                                    "Price": 1,
+                                    "Discount": 1,
+                                    "TaxRate": 1,
+                                    "SOLineId": 1,
+                                    "ReturnReason": "sample string 9",
+                                    "QC": "sample string 10",
+                                    "Shortage": "sample string 11",
+                                    "Variance": "sample string 12",
+                                    "BOInd": "sample string 13",
+                                    "ConsignmentId": "sample string 14",
+                                    "PickGroupId": "sample string 15",
+                                    "SiteId": "sample string 16",
+                                    "Warehouse": "sample string 17",
+                                    "BizId": "sample string 18",
+                                    "OwnerId": "sample string 19",
+                                    "StockStatus": "sample string 20",
+                                    "DateShipment": "2017-12-13T13:57:08.4713616-05:00",
+                                    "AttachmentInd": "sample string 21",
+                                    "SpecialConditionInd": "sample string 22",
+                                    "Stage": "sample string 23"
+                                }
+                            ],
+                            "ShipAddress": [
+                                {
+                                    "Table": "sample string 1",
+                                    "ShipmentId": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                }
+                            ],
+                            "ShipContacts": [
+                                {
+                                    "Table": "sample string 1",
+                                    "ShipmentId": "sample string 2",
+                                    "LineId": "sample string 3",
+                                    "Title": "sample string 4",
+                                    "FirstName": "sample string 5",
+                                    "LastName": "sample string 6",
+                                    "Salutation": "sample string 7",
+                                    "Position": "sample string 8",
+                                    "Email": "sample string 9",
+                                    "Fax": "sample string 10",
+                                    "Phone": "sample string 11",
+                                    "Mobile": "sample string 12",
+                                    "Pager": "sample string 13",
+                                    "Language": "sample string 14"
+                                }
+                            ],
+                            "ShipmentDespatch": [
+                                {
+                                    "ShipmentId": "sample string 1",
+                                    "Type": "sample string 2",
+                                    "Stu": "sample string 3",
+                                    "Carrier": "sample string 4",
+                                    "ShipMethod": "sample string 5",
+                                    "CarrierTrack": "sample string 6",
+                                    "CarrierRef1": "sample string 7",
+                                    "CarrierRef2": "sample string 8",
+                                    "CarrierRef3": "sample string 9",
+                                    "CarrierRef4": "sample string 10",
+                                    "Freight": 1,
+                                    "DateShipment": "2017-12-13T13:57:08.4713616-05:00",
+                                    "ManifestInd": "sample string 11"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_shipments",
+                                "url": "api/Shipments",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "shipment_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Shipments",
+                                        "extract": "ShipmentId",
+                                        "id": "list_of_all_shipments"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_shipments",
+                                "url": "api/Shipments/:_shipment_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "shipment_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Shipments",
+                                        "extract": "ShipmentId",
+                                        "id": "list_of_all_shipments"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_shipments",
+                                "url": [
+                                    "api/Shipments/:_shipment_id",
+                                    "api/Shipments"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "shipment_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Shipments",
+                                        "extract": "ShipmentId",
+                                        "id": "list_of_all_shipments"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_shipments",
+                                "url": "api/Shipments/:_shipment_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "shipment_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SnapOutbound",
+                        "name": "SnapOutbound",
+                        "sampleData": {
+                            "Host": "HOST_API",
+                            "XDoc": "OUA0000164",
+                            "Transaction": "DESPATCH",
+                            "Key": "Shipment=\"CSHIP1\" Stage=\"90\"",
+                            "Batch": null,
+                            "DateCreated": "2017-04-11T23:59:31",
+                            "DateProcessed": null,
+                            "Stage": "00"
+                        },
+                        "operations": [
+                            {
+                                "id": "update_snapoutbound",
+                                "url": "api/SnapOutbound/:_XdocId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "XdocId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/SnapOutbound",
+                                        "extract": "XDoc",
+                                        "id": "list_snapoutbound"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SpecialConditionLines",
+                        "name": "SpecialConditionLines",
+                        "sampleData": {
+                            "Table": "sample string 1",
+                            "ShipmentId": "sample string 2",
+                            "ShipmentLineId": "sample string 3",
+                            "Code": "sample string 4",
+                            "Logic": "sample string 5",
+                            "Value": "sample string 6",
+                            "GeneratedLineId": "sample string 7",
+                            "ShipmentLineSKUId": "sample string 8",
+                            "ShipmentSOLineId": 1,
+                            "ShipmentLineUnit": "sample string 9"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_specialconditionlines",
+                                "url": "api/SpecialConditionLines",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_specialconditionlines",
+                                "url": "api/SpecialConditionLines/:_table/:_ShipmentId/:_ShipmentLineId/:_LineId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "table",
+                                        "in": "path",
+                                        "name": "Table",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ShipmentId",
+                                        "in": "path",
+                                        "name": "Shipment Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ShipmentLineId",
+                                        "in": "path",
+                                        "name": "Shipment Line Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_specialconditionlines",
+                                "url": "api/SpecialConditionLines/:_table/:_ShipmentId/:_ShipmentLineId/:_LineId",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "table",
+                                        "in": "path",
+                                        "name": "Table",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ShipmentId",
+                                        "in": "path",
+                                        "name": "Shipment Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ShipmentLineId",
+                                        "in": "path",
+                                        "name": "Shipment Line Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "SpecialConditions",
+                        "name": "Special Conditions",
+                        "sampleData": {
+                            "Table": "sample string 1",
+                            "ShipmentId": "sample string 2",
+                            "ShipmentLineId": "sample string 3",
+                            "LineId": "sample string 4",
+                            "Code": "sample string 5",
+                            "Logic": "sample string 6",
+                            "Value": "sample string 7"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_specialconditions",
+                                "url": "api/SpecialConditions",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_specialconditions",
+                                "url": "api/SpecialConditions/:_table/:_ShipmentId/:_ShipmentLineId/:_LineId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "table",
+                                        "name": "Table",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ShipmentId",
+                                        "name": "ShipmentId",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ShipmentLineId",
+                                        "name": "ShipmentLineId",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "LineId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_specialconditions",
+                                "url": "api/SpecialConditions/:_table/:_ShipmentId/:_ShipmentLineId/:_LineId",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "table",
+                                        "name": "Table",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ShipmentId",
+                                        "name": "ShipmentId",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "ShipmentLineId",
+                                        "name": "ShipmentLineId",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "LineId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "StockConsignment",
+                        "name": "Stock Consignment",
+                        "sampleData": {
+                            "Type": "sample string 1",
+                            "ConsignmentId": "sample string 2",
+                            "StockId": "sample string 3",
+                            "BizId": "sample string 4",
+                            "OwnerId": "sample string 5",
+                            "SKUId": "sample string 6",
+                            "StU": "sample string 7",
+                            "StT": "sample string 8",
+                            "Qty": 1,
+                            "Unit": "sample string 9",
+                            "BoxQty": 1,
+                            "Status": "sample string 10",
+                            "DateProduction": "2017-12-12T02:24:08.7009712-05:00",
+                            "DateReceipt": "2017-12-12T02:24:08.7009712-05:00",
+                            "DateRelease": "2017-12-12T02:24:08.7009712-05:00",
+                            "DateExpiry": "2017-12-12T02:24:08.7009712-05:00",
+                            "Country": "sample string 11",
+                            "BatchId": "sample string 12",
+                            "Unused": "sample string 13",
+                            "AssignmentType": "sample string 14",
+                            "AssignmentRef": "sample string 15",
+                            "Consignment": "sample string 16",
+                            "LoadId": "sample string 17",
+                            "PairInd": "sample string 18",
+                            "PairStU": "sample string 19",
+                            "OriginStockId": "sample string 20",
+                            "LabelPrintedInd": "sample string 21",
+                            "PutawayInd": "sample string 22",
+                            "DateCreated": "2017-12-12T02:24:08.7009712-05:00",
+                            "DateClosed": "2017-12-12T02:24:08.7009712-05:00",
+                            "Stage": "sample string 23"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_stockconsignment",
+                                "url": "api/StockConsignment",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/StockConsignment",
+                                        "extract": "ConsignmentId",
+                                        "id": "list_stock_consignment"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "Suppliers",
+                        "name": "Suppliers",
+                        "sampleData": {
+                            "SupplierId": "sample string 1",
+                            "Status": "sample string 2",
+                            "BizId": "sample string 3",
+                            "Name": "sample string 4",
+                            "Group": "sample string 5",
+                            "Label": "sample string 6",
+                            "Stage": "sample string 7",
+                            "MaintInd": "sample string 8",
+                            "SupplierAddresses": [
+                                {
+                                    "Table": "sample string 1",
+                                    "SupplierId": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                },
+                                {
+                                    "Table": "sample string 1",
+                                    "SupplierId": "sample string 2",
+                                    "AddressId": "sample string 3",
+                                    "Name": "sample string 4",
+                                    "Line1": "sample string 5",
+                                    "Line2": "sample string 6",
+                                    "Line3": "sample string 7",
+                                    "City": "sample string 8",
+                                    "State": "sample string 9",
+                                    "Postcode": "sample string 10",
+                                    "Country": "sample string 11",
+                                    "Region": "sample string 12",
+                                    "Latitude": 1,
+                                    "Longitude": 1
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_suppliers",
+                                "url": "api/Suppliers",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "supplier_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Suppliers",
+                                        "extract": "SupplierId",
+                                        "id": "list_suppliers"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_suppliers",
+                                "url": "api/Suppliers/:_supplier_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "supplier_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Suppliers",
+                                        "extract": "SupplierId",
+                                        "id": "list_suppliers"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_suppliers",
+                                "url": [
+                                    "api/Suppliers/:_supplier_id",
+                                    "api/Suppliers"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "supplier_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "api/Suppliers",
+                                        "extract": "SupplierId",
+                                        "id": "list_suppliers"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_suppliers",
+                                "url": "api/Suppliers/:_supplier_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "supplier_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

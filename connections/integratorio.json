@@ -1,0 +1,1464 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "urlResolution": [
+            "/v1/connections",
+            "/v1/connections/:_id",
+            "/v1/integrations/:_integrationId/connections",
+            "/v1/integrations",
+            "/v1/integrations/:_id",
+            "/v1/exports",
+            "/v1/exports/:_id",
+            "/v1/integrations/:_integrationId/exports",
+            "/v1/flows",
+            "/v1/flows/:_id",
+            "/v1/integrations/:_integrationId/flows",
+            "/v1/imports",
+            "/v1/imports/:_id",
+            "/v1/integrations/:_integrationId/imports",
+            "/v1/jobs",
+            "/v1/jobs/:_id",
+            "/v1/jobs/:_id/joberrors"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "connections",
+                        "name": "Connections",
+                        "endpoints": [
+                            {
+                                "id": "get_all_connections",
+                                "url": "/v1/connections",
+                                "name": "Get All Connections",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_a_specific_connection",
+                                "url": "/v1/connections/:_id",
+                                "name": "Get a Specific Connection",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Connection ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_connections_by_integration_id",
+                                "url": "/v1/integrations/:_integrationId/connections",
+                                "name": "Get Connections By Integration ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "integrationId",
+                                        "name": "Integration ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "integrations",
+                        "name": "Integrations",
+                        "endpoints": [
+                            {
+                                "id": "get_all_integrations",
+                                "url": "/v1/integrations",
+                                "name": "Get All Integrations",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_a_specific_integration",
+                                "url": "/v1/integrations/:_id",
+                                "name": "Get a Specific Integration",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Integration ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "exports",
+                        "name": "Exports",
+                        "endpoints": [
+                            {
+                                "id": "get_all_exports",
+                                "url": "/v1/exports",
+                                "name": "Get All Exports",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_a_specific_export",
+                                "url": "/v1/exports/:_id",
+                                "name": "Get a Specific Export",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Export ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_exports_by_integration_id",
+                                "url": "/v1/integrations/:_integrationId/exports",
+                                "name": "Get Exports By Integration ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "integrationId",
+                                        "name": "Integration ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "flows",
+                        "name": "Flows",
+                        "endpoints": [
+                            {
+                                "id": "get_all_flows",
+                                "url": "/v1/flows",
+                                "name": "Get All Flows",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_a_specific_flow",
+                                "url": "/v1/flows/:_id",
+                                "name": "Get a Specific Flow",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Flow ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_flows_by_integration_id",
+                                "url": "/v1/integrations/:_integrationId/flows",
+                                "name": "Get Flows By Integration ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "integrationId",
+                                        "name": "Integration ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs",
+                        "endpoints": [
+                            {
+                                "id": "get_all_jobs",
+                                "url": "/v1/jobs",
+                                "name": "Get All Jobs",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_integrationId",
+                                        "name": "Integration Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_exportId",
+                                        "name": "Export Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_importId",
+                                        "name": "Import Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_flowId",
+                                        "name": "Flow Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_flowJobId",
+                                        "name": "Flow Job Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_bulkJobId",
+                                        "name": "Bulk Job Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "_flowId_in",
+                                        "name": "FlowId In Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "type_in",
+                                        "name": "Type In",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "createdAt_lte",
+                                        "name": "Created At_lte",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "numExport_gte",
+                                        "name": "Num Export_gte",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "numIgnore_lte",
+                                        "name": "Num Ignore_lte",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "numIgnore_gte",
+                                        "name": "Num Ignore_gte",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "numSuccess_gte",
+                                        "name": "Num Success_gte",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "numExport_lte",
+                                        "name": "Num Export_lte",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "retriable",
+                                        "name": "Retriable",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_specific_job",
+                                "url": "/v1/jobs/:_id",
+                                "name": "Get a Specific Job",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retrieve_the_errors",
+                                "url": "/v1/jobs/:_id/joberrors",
+                                "name": "Retrieve the Errors",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Job ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "imports",
+                        "name": "Imports",
+                        "endpoints": [
+                            {
+                                "id": "get_all_imports",
+                                "url": "/v1/imports",
+                                "name": "Get All Imports",
+                                "resourcePath": ""
+                            },
+                            {
+                                "id": "get_a_specific_import",
+                                "url": "/v1/imports/:_id",
+                                "name": "Get a Specific Import",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Import ID",
+                                        "required": true,
+                                        "fieldType": "integer"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_imports_by_integration_id",
+                                "url": "/v1/integrations/:_integrationId/imports",
+                                "name": "Get Imports By Integration ID",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "integrationId",
+                                        "name": "Integration ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "iclient",
+                        "name": "IClient",
+                        "endpoints": [
+                            {
+                                "id": "get_all_iclients",
+                                "url": "/v1/iclients",
+                                "name": "Get all iClients"
+                            },
+                            {
+                                "id": "get_a_specific_iclient",
+                                "url": "/v1/iclients/:_id",
+                                "name": "Get a Specific iClient",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "iClient ID",
+                                        "required": true,
+                                        "description": "Unique iClient ID."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "state",
+                        "name": "State",
+                        "endpoints": [
+                            {
+                                "id": "get_all_global_keys",
+                                "url": "/v1/state",
+                                "name": "Get all global keys"
+                            },
+                            {
+                                "id": "get_the_value_associated_with_the_key",
+                                "url": "/v1/state/:_key",
+                                "name": "Get the value associated with the key",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "key",
+                                        "name": "Key",
+                                        "required": true,
+                                        "description": "Unique Key."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_keys_stored_underneath_a_specific_resource",
+                                "url": "/v1/:_resource_type/:_id/state",
+                                "name": "Get all keys stored underneath a specific resource",
+                                "pathParameters": [
+                                    {
+                                        "id": "resource_type",
+                                        "name": "Resource type",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "exports",
+                                            "imports"
+                                        ],
+                                        "description": "Unique resource type like exports and imports."
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Id",
+                                        "required": true,
+                                        "description": "Unique Id of resource type."
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_the_resource_specific_value_associated_with_the_key",
+                                "url": "/v1/:_resource_type/:_id/state/:_key",
+                                "name": "Get the resource specific key and value",
+                                "pathParameters": [
+                                    {
+                                        "id": "resource_type",
+                                        "name": "Resource type",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "exports",
+                                            "imports"
+                                        ],
+                                        "description": "Unique resource type like exports and imports."
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Id",
+                                        "required": true,
+                                        "description": "Unique Id of resource type."
+                                    },
+                                    {
+                                        "id": "key",
+                                        "name": "Key",
+                                        "required": true,
+                                        "description": "Unique Key."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "errors",
+                        "name": "Errors",
+                        "endpoints": [
+                            {
+                                "id": "get_all_errors_for_an_export",
+                                "url": "/v1/flows/:_flowid/:_exportId/errors",
+                                "name": "Get all errors for an export",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "flowid",
+                                        "name": "FlowId",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "exportId",
+                                        "name": "ExportId",
+                                        "required": true
+                                    }
+                                ],
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "nextPageURL"
+                                },
+                                "delta": {
+                                    "defaults": {
+                                        "occurredAt_gte": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "occurredAt_gte",
+                                        "name": "occurredAt_gte",
+                                        "fieldType": "input",
+                                        "description": "Time value is UTC in ISO format"
+                                    },
+                                    {
+                                        "id": "occurredAt_lte",
+                                        "name": "occurredAt_lte",
+                                        "fieldType": "input",
+                                        "description": "Time value is UTC in ISO format"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_all_errors_for_an_import",
+                                "url": "/v1/flows/:_flowid/:_importId/errors",
+                                "name": "Get all errors for an import",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [
+                                    {
+                                        "id": "flowid",
+                                        "name": "FlowId",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "importId",
+                                        "name": "ImportId",
+                                        "required": true
+                                    }
+                                ],
+                                "paging": {
+                                    "pagingMethod": "nextpageurl",
+                                    "nextPagePath": "nextPageURL"
+                                },
+                                "delta": {
+                                    "defaults": {
+                                        "occurredAt_gte": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss[Z]"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "occurredAt_gte",
+                                        "name": "occurredAt_gte",
+                                        "fieldType": "input",
+                                        "description": "Time value is UTC in ISO format"
+                                    },
+                                    {
+                                        "id": "occurredAt_lte",
+                                        "name": "occurredAt_lte",
+                                        "fieldType": "input",
+                                        "description": "Time value is UTC in ISO format"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_error_retry_data_for_an_export",
+                                "url": "/v1/flows/:_flowid/:_exportId/:_retryDataKey/data",
+                                "name": "Get error retry data for an export",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "flowid",
+                                        "name": "Flow Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "exportId",
+                                        "name": "Export Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "retryDataKey",
+                                        "name": "Retry Data Key",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_error_retry_data_for_an_import",
+                                "url": "/v1/flows/:_flowid/:_importId/:_retryDataKey/data",
+                                "name": "Get error retry data for an import",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "flowid",
+                                        "name": "Flow Id",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "importId",
+                                        "name": "Import ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "retryDataKey",
+                                        "name": "Retry Data Key",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v1/connections",
+            "/v1/connections/:_id",
+            "/v1/connections/:_id/export",
+            "/v1/connections/:_id/import",
+            "/v1/integrations/:_id",
+            "/v1/integrations",
+            "/v1/exports",
+            "/v1/exports/:_id",
+            "/v1/imports",
+            "/v1/imports/:_id",
+            "/v1/flows",
+            "/v1/flows/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "connections",
+                        "name": "Connections",
+                        "sampleData": {
+                            "_id": "59bb7cc9fd3ef8458e345c09",
+                            "lastModified": "2017-10-06T09:52:51.739Z",
+                            "type": "rest",
+                            "name": "Pulseway connection",
+                            "rest": {
+                                "baseURI": "https://api.pulseway.com/v2/",
+                                "mediaType": "json",
+                                "authType": "basic",
+                                "headers": [],
+                                "encryptedFields": [],
+                                "unencryptedFields": [],
+                                "scope": [],
+                                "pingRelativeURI": "systems",
+                                "pingMethod": "GET",
+                                "basicAuth": {
+                                    "username": "muneswara",
+                                    "password": "Munna@1803"
+                                }
+                            },
+                            "ftp": {
+                                "type": "ftp",
+                                "hostURI": "celigo.brickftp.com",
+                                "username": "celigoc1",
+                                "password": "******",
+                                "port": 21,
+                                "usePassiveMode": true
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_connections",
+                                "url": "/v1/connections",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_connections",
+                                "url": "/v1/connections/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_connections",
+                                "url": [
+                                    "/v1/connections/:_id",
+                                    "/v1/connections"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_connections",
+                                "url": "/v1/connections/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "integrations",
+                        "name": "Integrations",
+                        "sampleData": {
+                            "_id": "59f815febf1c052d981c3bcc",
+                            "lastModified": "2017-10-31T06:19:42.003Z",
+                            "name": "new integration",
+                            "description": "integration one",
+                            "install": []
+                        },
+                        "operations": [
+                            {
+                                "id": "create_integrations",
+                                "url": "/v1/integrations",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_integrations",
+                                "url": "/v1/integrations/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_integrations",
+                                "url": [
+                                    "/v1/integrations/:_id",
+                                    "/v1/integrations"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_integrations",
+                                "url": "/v1/integrations/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "exports",
+                        "name": "Exports",
+                        "sampleData": {
+                            "_id": "59d76619f2b13662b91ddc5c",
+                            "lastModified": "2017-10-06T11:16:41.083Z",
+                            "name": "atera",
+                            "_connectionId": "59bf98c6fd3ef8458e3602a7",
+                            "apiIdentifier": "e9bdb1748a",
+                            "asynchronous": true,
+                            "sampleData": {
+                                "fr_escalated": true,
+                                "spam": false,
+                                "email_config_id": null,
+                                "group_id": null,
+                                "priority": 1,
+                                "requester_id": 35000283886,
+                                "responder_id": null,
+                                "source": 2,
+                                "company_id": null,
+                                "status": 2,
+                                "subject": "sub2",
+                                "to_emails": null,
+                                "product_id": null,
+                                "id": 14,
+                                "type": null,
+                                "due_by": "2017-09-22T21:00:00Z",
+                                "fr_due_by": "2017-09-20T21:00:00Z",
+                                "is_escalated": false,
+                                "description": "<div>test</div>",
+                                "description_text": "test",
+                                "created_at": "2017-09-20T08:08:47Z",
+                                "updated_at": "2017-09-20T21:06:05Z"
+                            },
+                            "rest": {
+                                "relativeURI": "/api/v2/tickets",
+                                "method": "GET",
+                                "pagingMethod": "pageargument",
+                                "pageArgument": "page"
+                            },
+                            "file": {
+                                "encoding": "utf8",
+                                "output": "records",
+                                "skipDelete": false,
+                                "type": "csv",
+                                "csv": {
+                                    "columnDelimiter": ",",
+                                    "rowDelimiter": " ",
+                                    "hasHeaderRow": true
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_exports",
+                                "url": "/v1/exports",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_exports",
+                                "url": "/v1/exports/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_exports",
+                                "url": [
+                                    "/v1/exports/:_id",
+                                    "/v1/exports"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_exports",
+                                "url": "/v1/exports/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "imports",
+                        "name": "Imports",
+                        "sampleData": {
+                            "_id": "59c490305cede62d2325c1c3",
+                            "lastModified": "2017-09-22T04:23:12.725Z",
+                            "name": "shopify import",
+                            "sampleData": {
+                                "project": {
+                                    "active": true,
+                                    "code": "",
+                                    "name": "mounika chowdary",
+                                    "client_id": 5986571,
+                                    "id": 15014468
+                                }
+                            },
+                            "responseTransform": {
+                                "version": "1"
+                            },
+                            "_connectionId": "59bff43e2561c707bd1e9ba7",
+                            "distributed": false,
+                            "apiIdentifier": "if9ad58f69",
+                            "ignoreMissing": true,
+                            "mapping": {
+                                "fields": [
+                                    {
+                                        "extract": "active",
+                                        "generate": "project.active"
+                                    },
+                                    {
+                                        "extract": "client_id",
+                                        "generate": "project.client_id"
+                                    },
+                                    {
+                                        "extract": "name",
+                                        "generate": "project.name"
+                                    }
+                                ]
+                            },
+                            "rest": {
+                                "relativeURI": [
+                                    "/projects/{{{id}}}.json"
+                                ],
+                                "method": [
+                                    "PUT"
+                                ],
+                                "body": [],
+                                "headers": [],
+                                "ignoreLookupName": null,
+                                "ignoreExtract": "id",
+                                "lookups": []
+                            },
+                            "file": {
+                                "skipAggregation": false,
+                                "type": "csv",
+                                "csv": {
+                                    "rowDelimiter": " ",
+                                    "columnDelimiter": ",",
+                                    "includeHeader": true,
+                                    "wrapWithQuotes": false,
+                                    "replaceTabWithSpace": false,
+                                    "replaceNewlineWithSpace": false
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_imports",
+                                "url": "/v1/imports",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_imports",
+                                "url": "/v1/imports/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_imports",
+                                "url": [
+                                    "/v1/imports/:_id",
+                                    "/v1/imports"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_imports",
+                                "url": "/v1/imports/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "flows",
+                        "name": "Flows",
+                        "sampleData": {
+                            "_id": "59c4d17fa7b5bf23c1db4297",
+                            "lastModified": "2017-09-22T09:01:51.895Z",
+                            "name": "bid create new",
+                            "disabled": false,
+                            "_exportId": "59c4d17fa7b5bf23c1db4296",
+                            "_importId": "59c4d17f5cede62d2325d439",
+                            "_integrationId": "59c2467954c3a975c53473e6",
+                            "skipRetries": false,
+                            "createdAt": "2017-09-22T09:01:51.875Z"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_flows",
+                                "url": "/v1/flows",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_flows",
+                                "url": "/v1/flows/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_flows",
+                                "url": [
+                                    "/v1/flows/:_id",
+                                    "/v1/flows"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_flows",
+                                "url": "/v1/flows/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "iclient",
+                        "name": "IClient",
+                        "sampleData": {
+                            "provider": "",
+                            "name": "",
+                            "oauth2": {
+                                "clientId": "",
+                                "clientSecret": "",
+                                "scope": "",
+                                "scopeDelimiter": "",
+                                "redirectUri": ""
+                            },
+                            "netsuite": {
+                                "consumerKey": "",
+                                "consumerSecret": ""
+                            },
+                            "salesforce": {
+                                "clientId": "",
+                                "clientSecret": "",
+                                "apiToken": "",
+                                "privateKey": "",
+                                "publicKey": ""
+                            },
+                            "amazonmws": {
+                                "accessKeyId": "",
+                                "secretKey": ""
+                            },
+                            "ebay": {
+                                "appId": "",
+                                "devId": "",
+                                "certId": "",
+                                "ruName": ""
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_iclients",
+                                "url": "/v1/iclients",
+                                "name": "Create",
+                                "method": "POST",
+                                "description": "Create a new iClient",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "provider"
+                                ]
+                            },
+                            {
+                                "id": "update_iclients",
+                                "url": "/v1/iclients/:_id",
+                                "name": "Update",
+                                "method": "PUT",
+                                "description": "Update a specific iClient",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "provider"
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_iclients",
+                                "url": [
+                                    "/v1/iclients/:_id",
+                                    "/v1/iclients"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "provider"
+                                ]
+                            },
+                            {
+                                "id": "delete_iclients",
+                                "url": "/v1/iclients/:_id",
+                                "name": "Delete",
+                                "method": "DELETE",
+                                "description": "Delete a specific iClient",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "isIdentifier": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "state",
+                        "name": "State",
+                        "operations": [
+                            {
+                                "id": "create_update_value_associated_with_the_key",
+                                "url": "/v1/state/:_key",
+                                "name": "Create or update the value associated with the key",
+                                "method": "PUT",
+                                "description": "Create or update the value associated with the key",
+                                "parameters": [
+                                    {
+                                        "id": "key",
+                                        "name": "Key",
+                                        "required": true,
+                                        "description": "Unique Key.",
+                                        "in": "path"
+                                    }
+                                ],
+                                "sampleData": {
+                                    "message": "Don't slip!",
+                                    "reply": "i didn't!"
+                                }
+                            },
+                            {
+                                "id": "delete_the_key_and_value",
+                                "url": "/v1/state/:_key",
+                                "name": "Delete the key and value",
+                                "method": "DELETE",
+                                "description": "Delete the key and value",
+                                "parameters": [
+                                    {
+                                        "id": "key",
+                                        "name": "Key",
+                                        "required": true,
+                                        "description": "Unique Key.",
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_all_global_keys_and_values",
+                                "url": "/v1/state",
+                                "name": "Delete all global keys and values",
+                                "method": "DELETE",
+                                "description": "Delete all global keys and values. Be careful with this API!"
+                            },
+                            {
+                                "id": "create_update_the_resource_specific_value_associated_with_the_key",
+                                "url": "/v1/:_resource_type/:_id/state/:_key",
+                                "name": "Create or update the resource specific key and value",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "resource_type",
+                                        "name": "Resource type",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "exports",
+                                            "imports"
+                                        ],
+                                        "description": "Unique resource type like exports or imports.",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Id",
+                                        "required": true,
+                                        "description": "Unique Id of resource type.",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "key",
+                                        "name": "Key",
+                                        "required": true,
+                                        "description": "Unique Key.",
+                                        "in": "path"
+                                    }
+                                ],
+                                "sampleData": {
+                                    "counter": 1
+                                }
+                            },
+                            {
+                                "id": "delete_the_resource_specific_value_and_key",
+                                "url": "/v1/:_resource_type/:_id/state/:_key",
+                                "name": "Delete the resource specific key and value",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "resource_type",
+                                        "name": "Resource type",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "exports",
+                                            "imports"
+                                        ],
+                                        "description": "Unique resource type like exports or imports.",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Id",
+                                        "required": true,
+                                        "description": "Unique Id of resource type.",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "key",
+                                        "name": "Key",
+                                        "required": true,
+                                        "description": "Unique Key.",
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_all_value_and_key_stored_underneath_the_resource",
+                                "url": "/v1/:_resource_type/:_id/state",
+                                "name": "Delete all keys and values stored underneath the resource",
+                                "method": "DELETE",
+                                "parameters": [
+                                    {
+                                        "id": "resource_type",
+                                        "name": "Resource type",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "exports",
+                                            "imports"
+                                        ],
+                                        "description": "Unique resource type like exports or imports.",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "Id",
+                                        "required": true,
+                                        "description": "Unique Id of resource type.",
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "errors",
+                        "name": "Errors",
+                        "operations": [
+                            {
+                                "id": "resolve_specified_errors_for_an_import",
+                                "url": "/v1/flows/:_flowid/:_importId/resolved",
+                                "name": "Resolve specified errors for an import",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "errors": [
+                                        "3243392344"
+                                    ]
+                                },
+                                "body": "{\"errors\": [\n {{#each record.errors}}\n  \"{{errorId}}\"{{#if @last}}{{else}},{{/if}}\n  {{/each}}]}",
+                                "parameters": [
+                                    {
+                                        "id": "flowid",
+                                        "name": "FlowId",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "importId",
+                                        "name": "ImportId",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "retry_specified_errors_for_an_import",
+                                "url": "/v1/flows/:_flowid/:_importId/retry",
+                                "name": "Retry specified errors for an import",
+                                "method": "POST",
+                                "sampleData": {
+                                    "retryDataKeys": [
+                                        "3243392344"
+                                    ]
+                                },
+                                "body": "{\"retryDataKeys\": [\n {{#each record.errors}}\n  \"{{retryDataKey}}\"{{#if @last}}{{else}},{{/if}}\n  {{/each}}]}",
+                                "parameters": [
+                                    {
+                                        "id": "flowid",
+                                        "name": "FlowId",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "importId",
+                                        "name": "ImportId",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

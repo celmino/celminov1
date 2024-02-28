@@ -1,0 +1,1734 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "token",
+            "nextPagePath": "nextPageToken",
+            "pageArgument": "pageToken"
+        },
+        "urlResolution": [
+            "/v1/users/:_userId/messages/:_messageId",
+            "/v1/users/:_userId/messages",
+            "/v1/users/:_userId/messages/:_messageId/attachments/:_id",
+            "/v1/users/:_userId/profile",
+            "/v1/users/:_userId/drafts/:_id",
+            "/v1/users/:_userId/drafts",
+            "/v1/users/:_userId/labels",
+            "/v1/users/:_userId/labels/:_id",
+            "/v1/users/:_userId/history",
+            "/v1/users/:_userId/threads",
+            "/v1/users/:_userId/threads/:_id",
+            "/v1/users/:_userId/settings/autoForwarding",
+            "/v1/users/:_userId/settings/imap",
+            "/v1/users/:_userId/settings/pop",
+            "/v1/users/:_userId/settings/vacation",
+            "/v1/users/:_userId/settings/forwardingAddresses",
+            "/v1/users/:_userId/settings/forwardingAddresses/:_forwardingEmail",
+            "/v1/users/:_userId/settings/filters",
+            "/v1/users/:_userId/settings/filters/:_id",
+            "/v1/users/:_userId/settings/sendAs",
+            "/v1/users/:_userId/settings/sendAs/:_sendAsEmail"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "messages",
+                        "name": "Users.messages",
+                        "endpoints": [
+                            {
+                                "id": "get_messages",
+                                "url": "/v1/users/:_userId/messages/:_messageId",
+                                "name": "get",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets the specified message.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "messageId",
+                                        "name": "id",
+                                        "description": "The ID of the message to retrieve.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "format",
+                                        "name": "format",
+                                        "description": "The format to return the message in.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "full",
+                                            "metadata",
+                                            "minimal",
+                                            "raw"
+                                        ]
+                                    },
+                                    {
+                                        "id": "metadataHeaders",
+                                        "name": "metadataHeaders",
+                                        "type": "array",
+                                        "description": "To specify comma seperated headers.For example:- Received,Date. When given and format is METADATA, only include headers specified.",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_messages",
+                                "url": "/v1/users/:_userId/messages",
+                                "name": "list",
+                                "resourcePath": "messages",
+                                "description": "Lists the messages in the user's mailbox.",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "includeSpamTrash",
+                                        "name": "includeSpamTrash",
+                                        "description": "Include messages from SPAM and TRASH in the results. (Default: false)",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "labelIds",
+                                        "name": "labelIds",
+                                        "fieldType": "input",
+                                        "description": "To specify comma seperated labelids. It will only return messages with labels that match all of the specified label IDs.For example:- UNREAD,DRAFT",
+                                        "type": "array"
+                                    },
+                                    {
+                                        "id": "q",
+                                        "name": "q",
+                                        "description": "Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example:-from:someuser@example.com",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "attachments",
+                        "name": "Users.messages.attachments",
+                        "endpoints": [
+                            {
+                                "id": "get_attachments",
+                                "url": "/v1/users/:_userId/messages/:_messageId/attachments/:_id",
+                                "name": "get",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets the specified message attachment.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "messageId",
+                                        "name": "messageId",
+                                        "description": "The ID of the message containing the attachment.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "The ID of the attachment.",
+                                        "required": true,
+                                        "fieldType": "textarea"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "getprofile",
+                                "url": "/v1/users/:_userId/profile",
+                                "name": "getProfile",
+                                "description": "Gets the current user's Gmail profile.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "drafts",
+                        "name": "Users.drafts",
+                        "endpoints": [
+                            {
+                                "id": "get_drafts",
+                                "url": "/v1/users/:_userId/drafts/:_id",
+                                "name": "get",
+                                "description": "Gets the specified draft.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "name": "userId",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "required": true,
+                                        "description": "The ID of the draft to retrieve.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "format",
+                                        "name": "format",
+                                        "fieldType": "select",
+                                        "description": "The format to return the draft in.",
+                                        "options": [
+                                            "full",
+                                            "metadata",
+                                            "minimal",
+                                            "raw"
+                                        ]
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_drafts",
+                                "url": "/v1/users/:_userId/drafts",
+                                "name": "list",
+                                "description": "Lists the drafts in the user's mailbox.",
+                                "resourcePath": "drafts",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "includeSpamTrash",
+                                        "name": "includeSpamTrash",
+                                        "description": "Include drafts from SPAM and TRASH in the results.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "q",
+                                        "name": "q",
+                                        "description": "Only return draft messages matching the specified query. Supports the same query format as the Gmail search box. For example:-from:someuser@example.com",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "labels",
+                        "name": "Users.labels",
+                        "endpoints": [
+                            {
+                                "id": "list_labels",
+                                "url": "/v1/users/:_userId/labels",
+                                "name": "list",
+                                "description": "Lists all labels in the user's mailbox.",
+                                "resourcePath": "labels",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_labels",
+                                "url": "/v1/users/:_userId/labels/:_id",
+                                "name": "get",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "The ID of the label to retrieve.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "history",
+                        "name": "Users.history",
+                        "endpoints": [
+                            {
+                                "id": "list_history",
+                                "url": "/v1/users/:_userId/history",
+                                "name": "list",
+                                "description": "Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing historyId).",
+                                "resourcePath": "history",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "historyTypes",
+                                        "name": "historyTypes",
+                                        "description": "History types to be returned by the function.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "labelAdded",
+                                            "labelRemoved",
+                                            "messageAdded",
+                                            "messageDeleted"
+                                        ]
+                                    },
+                                    {
+                                        "id": "labelId",
+                                        "name": "labelId",
+                                        "description": "Only return messages with a label matching the ID",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "startHistoryId",
+                                        "name": "startHistoryId",
+                                        "required": true,
+                                        "description": "Required. Returns history records after the specified startHistoryId. The supplied startHistoryId should be obtained from the historyId of a message, thread, or previous list response. History IDs increase chronologically but are not contiguous with random gaps in between valid IDs. Supplying an invalid or out of date startHistoryId typically returns an HTTP 404 error code. A historyId is typically valid for at least a week, but in some rare circumstances may be valid for only a few hours. If you receive an HTTP 404 error response, your application should perform a full sync. If you receive no nextPageToken in the response, there are no updates to retrieve and you can store the returned historyId for a future request.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "threads",
+                        "name": "Users.threads",
+                        "endpoints": [
+                            {
+                                "id": "list_threads",
+                                "url": "/v1/users/:_userId/threads",
+                                "name": "list",
+                                "description": "Lists the threads in the user's mailbox.",
+                                "resourcePath": "threads",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "includeSpamTrash",
+                                        "name": "includeSpamTrash",
+                                        "description": "Include threads from SPAM and TRASH in the results. (Default: false)",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "labelIds",
+                                        "name": "labelIds",
+                                        "description": "To specify comma seperated labelids. It will only return messages with labels that match all of the specified label IDs.For example:- UNREAD,DRAFT.",
+                                        "type": "array",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "q",
+                                        "name": "q",
+                                        "description": "Only return threads matching the specified query. Supports the same query format as the Gmail search box. For example:-from:someuser@example.com",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_threads",
+                                "url": "/v1/users/:_userId/threads/:_id",
+                                "name": "get",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets the specified thread.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "The ID of the thread to retrieve.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    },
+                                    {
+                                        "id": "format",
+                                        "name": "format",
+                                        "fieldType": "select",
+                                        "description": "The format to return the messages in.",
+                                        "options": [
+                                            "full",
+                                            "metadata",
+                                            "minimal"
+                                        ]
+                                    },
+                                    {
+                                        "id": "metadataHeaders",
+                                        "name": "metadataHeaders",
+                                        "description": "To specify comma seperated headers.For example:- Received,Date. When given and format is METADATA, only include headers specified.",
+                                        "type": "array",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "settings",
+                        "name": "Users.settings",
+                        "endpoints": [
+                            {
+                                "id": "getautoforwarding",
+                                "url": "/v1/users/:_userId/settings/autoForwarding",
+                                "name": "getAutoForwarding",
+                                "description": "Gets the auto-forwarding setting for the specified account.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getimap",
+                                "url": "/v1/users/:_userId/settings/imap",
+                                "name": "getImap",
+                                "description": "Gets IMAP settings.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getpop",
+                                "url": "/v1/users/:_userId/settings/pop",
+                                "name": "getPop",
+                                "description": "Gets POP settings.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "getvacation",
+                                "url": "/v1/users/:_userId/settings/vacation",
+                                "name": "getVacation",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets vacation responder settings.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "filters",
+                        "name": "Users.settings.filters",
+                        "endpoints": [
+                            {
+                                "id": "get_filters",
+                                "url": "/v1/users/:_userId/settings/filters/:_id",
+                                "name": "get",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets a filter.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "The ID of the filter to be fetched.",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_filters",
+                                "url": "/v1/users/:_userId/settings/filters",
+                                "name": "list",
+                                "description": "Lists the message filters of a Gmail user.",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "filter",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "forwardingAddresses",
+                        "name": "Users.settings.forwardingAddresses",
+                        "endpoints": [
+                            {
+                                "id": "list_forwardingAddresses",
+                                "url": "/v1/users/:_userId/settings/forwardingAddresses",
+                                "name": "list",
+                                "doesNotSupportPaging": true,
+                                "description": "Lists the forwarding addresses for the specified account.",
+                                "resourcePath": "forwardingAddresses",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_forwardingAddresses",
+                                "url": "/v1/users/:_userId/settings/forwardingAddresses/:_forwardingEmail",
+                                "name": "get",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets the specified forwarding address.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "forwardingEmail",
+                                        "name": "forwardingEmail",
+                                        "description": "The forwarding address to be retrieved.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sendAs",
+                        "name": "Users.settings.sendAs",
+                        "endpoints": [
+                            {
+                                "id": "list_sendAs",
+                                "url": "/v1/users/:_userId/settings/sendAs",
+                                "name": "list",
+                                "doesNotSupportPaging": true,
+                                "description": "Lists the send-as aliases for the specified account. The result includes the primary send-as address associated with the account as well as any custom \"from\" aliases.",
+                                "resourcePath": "sendAs",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_sendAs",
+                                "url": "/v1/users/:_userId/settings/sendAs/:_sendAsEmail",
+                                "name": "get",
+                                "doesNotSupportPaging": true,
+                                "description": "Gets the specified send-as alias.",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sendAsEmail",
+                                        "name": "sendAsEmail",
+                                        "description": "The send-as alias to be retrieved",
+                                        "required": true,
+                                        "fieldType": "string"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "fields",
+                                        "name": "fields",
+                                        "description": "Selector specifying a subset of fields to include in the response",
+                                        "fieldType": "textarea"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/v1/users/:_userId/messages",
+            "/v1/users/:_userId/messages/send",
+            "/v1/users/:_userId/messages/import",
+            "/v1/users/:_userId/messages/:_id",
+            "/v1/users/:_userId/messages/:_id/modify",
+            "/v1/users/:_userId/messages/:_messageId/trash",
+            "/v1/users/:_userId/messages/:_messageId/untrash",
+            "/v1/users/:_userId/drafts",
+            "/v1/users/:_userId/drafts/send",
+            "/v1/users/:_userId/drafts/:_id",
+            "/v1/users/:_userId/labels",
+            "/v1/users/:_userId/labels/:_id",
+            "/v1/users/:_userId/threads/:_id/modify",
+            "/v1/users/:_userId/threads/:_id",
+            "/v1/users/:_userId/threads/:_id/trash",
+            "/v1/users/:_userId/threads/:_id/untrash",
+            "/v1/users/:_userId/settings/imap",
+            "/v1/users/:_userId/settings/pop",
+            "/v1/users/:_userId/settings/autoForwarding",
+            "/v1/users/:_userId/settings/vacation",
+            "/v1/users/:_userId/settings/forwardingAddresses",
+            "/v1/users/:_userId/settings/forwardingAddresses/:_forwardingEmail",
+            "/v1/users/:_userId/settings/filters",
+            "/v1/users/:_userId/settings/filters/:_id"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "messages",
+                        "name": "Users.messages",
+                        "sampleData": {
+                            "id": "string",
+                            "threadId": "string",
+                            "labelIds": [
+                                "string"
+                            ],
+                            "snippet": "string",
+                            "raw": "bytes",
+                            "historyId": "unsigned long",
+                            "internalDate": "long",
+                            "payload": {
+                                "partId": "string",
+                                "mimeType": "string",
+                                "filename": "string",
+                                "headers": [
+                                    {
+                                        "name": "string",
+                                        "value": "string"
+                                    }
+                                ],
+                                "body": "users.messages.attachments Resource",
+                                "parts": [
+                                    "(MessagePart)"
+                                ]
+                            },
+                            "sizeEstimate": "integer"
+                        },
+                        "operations": [
+                            {
+                                "id": "insert_messages",
+                                "url": "/v1/users/:_userId/messages",
+                                "name": "insert",
+                                "method": "POST",
+                                "description": "Directly inserts a message into only this user's mailbox similar to IMAP APPEND, bypassing most scanning and classification. Does not send a message.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/messages",
+                                        "extract": "messages[0].id",
+                                        "id": "list_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "modify_messages",
+                                "url": "/v1/users/:_userId/messages/:_id/modify",
+                                "name": "modify",
+                                "method": "POST",
+                                "sampleData": {
+                                    "addLabelIds": [
+                                        "string"
+                                    ],
+                                    "removeLabelIds": [
+                                        "string"
+                                    ]
+                                },
+                                "description": "Modifies the labels on the specified message.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "The ID of the message to modify.",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/messages",
+                                        "extract": "messages[0].id",
+                                        "id": "list_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "send_messages",
+                                "url": "/v1/users/:_userId/messages/send",
+                                "name": "send",
+                                "method": "POST",
+                                "description": "Sends the specified message to the recipients in the To, Cc, and Bcc headers.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/messages",
+                                        "extract": "messages[0].id",
+                                        "id": "list_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_messages",
+                                "url": "/v1/users/:_userId/messages/:_id",
+                                "name": "delete",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "required": true,
+                                        "description": "The ID of the message to delete.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/messages",
+                                        "extract": "messages[0].id",
+                                        "id": "list_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "trash_messages",
+                                "url": "/v1/users/:_userId/messages/:_messageId/trash",
+                                "name": "trash",
+                                "method": "POST",
+                                "description": "Moves the specified message to the trash.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "messageId",
+                                        "name": "id",
+                                        "description": "The ID of the message to Trash.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/messages",
+                                        "extract": "messages[0].id",
+                                        "id": "list_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "untrash_messages",
+                                "url": "/v1/users/:_userId/messages/:_messageId/untrash",
+                                "name": "untrash",
+                                "method": "POST",
+                                "description": "Removes the specified message from the trash.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "messageId",
+                                        "name": "id",
+                                        "description": "The ID of the message to remove from Trash.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/messages",
+                                        "extract": "messages[0].id",
+                                        "id": "list_messages"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "import_messages",
+                                "url": "/v1/users/:_userId/messages/import",
+                                "name": "import",
+                                "method": "POST",
+                                "description": "Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. Does not send a message.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/messages",
+                                        "extract": "messages[0].id",
+                                        "id": "list_messages"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "drafts",
+                        "name": "Users.drafts",
+                        "sampleData": {
+                            "id": "",
+                            "message": {
+                                "id": "",
+                                "threadId": "",
+                                "labelIds": [
+                                    "DRAFT"
+                                ],
+                                "snippet": "",
+                                "raw": "",
+                                "historyId": "",
+                                "internalDate": "",
+                                "payload": {
+                                    "partId": "",
+                                    "mimeType": "",
+                                    "filename": "",
+                                    "headers": [
+                                        {
+                                            "name": "",
+                                            "value": ""
+                                        }
+                                    ],
+                                    "body": {
+                                        "size": 0
+                                    },
+                                    "parts": [
+                                        {
+                                            "partId": "0",
+                                            "mimeType": "text/plain",
+                                            "filename": "",
+                                            "headers": [
+                                                {
+                                                    "name": "Content-Type",
+                                                    "value": "text/plain; charset=\"UTF-8\""
+                                                }
+                                            ],
+                                            "body": {
+                                                "size": 153,
+                                                "data": ""
+                                            }
+                                        }
+                                    ]
+                                },
+                                "sizeEstimate": 2463
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_drafts",
+                                "url": "/v1/users/:_userId/drafts",
+                                "name": "create",
+                                "description": "Creates a new draft with the DRAFT label.",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/drafts",
+                                        "extract": "drafts[0].id",
+                                        "id": "list_drafts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_drafts",
+                                "url": "/v1/users/:_userId/drafts/:_id",
+                                "name": "update",
+                                "method": "PUT",
+                                "description": "Replaces a draft's content.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "required": true,
+                                        "description": "The ID of the draft to update.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/drafts",
+                                        "extract": "drafts[0].id",
+                                        "id": "list_drafts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_drafts",
+                                "url": [
+                                    "/v1/users/:_userId/drafts/:_id",
+                                    "/v1/users/:_userId/drafts"
+                                ],
+                                "name": "create or update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "required": true,
+                                        "description": "The ID of the draft to update.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/drafts",
+                                        "extract": "drafts[0].id",
+                                        "id": "list_drafts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_drafts",
+                                "url": "/v1/users/:_userId/drafts/:_id",
+                                "name": "delete",
+                                "method": "DELETE",
+                                "description": "Immediately and permanently deletes the specified draft. Does not simply trash it.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "The ID of the draft to delete.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/drafts",
+                                        "extract": "drafts[0].id",
+                                        "id": "list_drafts"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "send_drafts",
+                                "url": "/v1/users/:_userId/drafts/send",
+                                "name": "send",
+                                "method": "POST",
+                                "description": "Sends the specified, existing draft to the recipients in the To, Cc, and Bcc headers.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/drafts",
+                                        "extract": "drafts[0].id",
+                                        "id": "list_drafts"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "labels",
+                        "name": "Users.labels",
+                        "sampleData": {
+                            "id": "IMPORTANT",
+                            "name": "IMPORTANT",
+                            "messageListVisibility": "hide",
+                            "labelListVisibility": "labelHide",
+                            "type": "system",
+                            "messagesTotal": 162,
+                            "messagesUnread": 6,
+                            "threadsTotal": 79,
+                            "threadsUnread": 3
+                        },
+                        "operations": [
+                            {
+                                "id": "create_labels",
+                                "url": "/v1/users/:_userId/labels",
+                                "name": "create",
+                                "method": "POST",
+                                "description": "Creates a new label.",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_labels",
+                                "url": "/v1/users/:_userId/labels/:_id",
+                                "name": "update",
+                                "method": "PUT",
+                                "description": "Updates the specified label.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "The ID of the label to update.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_labels",
+                                "url": [
+                                    "/v1/users/:_userId/labels/:_id",
+                                    "/v1/users/:_userId/labels"
+                                ],
+                                "name": "create or update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "The ID of the label to update.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_labels",
+                                "url": "/v1/users/:_userId/labels/:_id",
+                                "name": "delete",
+                                "method": "DELETE",
+                                "description": "Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "The ID of the label to delete.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "threads",
+                        "name": "Users.threads",
+                        "operations": [
+                            {
+                                "id": "modify_threads",
+                                "url": "/v1/users/:_userId/threads/:_id/modify",
+                                "name": "modify",
+                                "method": "POST",
+                                "description": "Modifies the labels applied to the thread. This applies to all messages in the thread.",
+                                "sampleData": {
+                                    "addLabelIds": [
+                                        "string"
+                                    ],
+                                    "removeLabelIds": [
+                                        "string"
+                                    ]
+                                },
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "required": true,
+                                        "description": "The user's email address. The special value me can be used to indicate the authenticated user.",
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "The ID of the thread to modify.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/threads",
+                                        "extract": "threads[0].id",
+                                        "id": "list_threads"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_threads",
+                                "url": "/v1/users/:_userId/threads/:_id",
+                                "name": "delete",
+                                "method": "DELETE",
+                                "description": "Immediately and permanently deletes the specified thread. This operation cannot be undone.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "ID of the Thread to delete.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/threads",
+                                        "extract": "threads[0].id",
+                                        "id": "list_threads"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "trash_threads",
+                                "url": "/v1/users/:_userId/threads/:_id/trash",
+                                "name": "trash",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "The ID of the thread to Trash.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/threads",
+                                        "extract": "threads[0].id",
+                                        "id": "list_threads"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "untrash_threads",
+                                "url": "/v1/users/:_userId/threads/:_id/untrash",
+                                "name": "untrash",
+                                "method": "POST",
+                                "description": "Removes the specified thread from the trash.",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "The user's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "The ID of the thread to remove from Trash.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/v1/users/:_userId/threads",
+                                        "extract": "threads[0].id",
+                                        "id": "list_threads"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "settings",
+                        "name": "Users.settings",
+                        "operations": [
+                            {
+                                "id": "updateimap_settings",
+                                "url": "/v1/users/:_userId/settings/imap",
+                                "name": "updateImap",
+                                "description": "Updates IMAP settings.",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "enabled": false,
+                                    "autoExpunge": true,
+                                    "expungeBehavior": "archive",
+                                    "maxFolderSize": 0
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "required": true,
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updatepop_settings",
+                                "url": "/v1/users/:_userId/settings/pop",
+                                "name": "updatePop",
+                                "description": "Update POP settings",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "accessWindow": "allMail",
+                                    "disposition": "leaveInInbox"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "updatevacation_settings",
+                                "url": "/v1/users/:_userId/settings/vacation",
+                                "name": "updateVacation",
+                                "description": "Updates vacation responder settings.",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "enableAutoReply": "boolean",
+                                    "responseSubject": "string",
+                                    "responseBodyPlainText": "string",
+                                    "responseBodyHtml": "string",
+                                    "restrictToContacts": "boolean",
+                                    "restrictToDomain": "boolean",
+                                    "startTime": "long",
+                                    "endTime": "long"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "required": true,
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "in": "path"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "filters",
+                        "name": "Users.settings.filters",
+                        "operations": [
+                            {
+                                "id": "create_filters",
+                                "url": "/v1/users/:_userId/settings/filters",
+                                "name": "create",
+                                "method": "POST",
+                                "description": "Creates a filter.",
+                                "sampleData": {
+                                    "id": "string",
+                                    "criteria": {
+                                        "from": "string",
+                                        "to": "string",
+                                        "subject": "string",
+                                        "query": "string",
+                                        "negatedQuery": "string",
+                                        "hasAttachment": "boolean",
+                                        "excludeChats": "boolean",
+                                        "size": "integer",
+                                        "sizeComparison": "string"
+                                    },
+                                    "action": {
+                                        "addLabelIds": [
+                                            "string"
+                                        ],
+                                        "removeLabelIds": [
+                                            "string"
+                                        ],
+                                        "forward": "string"
+                                    }
+                                },
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_filters",
+                                "url": "/v1/users/:_userId/settings/filters/:_id",
+                                "name": "delete",
+                                "method": "DELETE",
+                                "description": "Deletes a filter.",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "userId",
+                                        "name": "userId",
+                                        "description": "User's email address. The special value \"me\" can be used to indicate the authenticated user.",
+                                        "required": true,
+                                        "in": "path"
+                                    },
+                                    {
+                                        "id": "id",
+                                        "required": true,
+                                        "description": "The ID of the filter to be deleted.",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

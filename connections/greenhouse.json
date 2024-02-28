@@ -1,0 +1,2844 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "linkheader",
+            "linkHeaderRelation": "next"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "activity_feed",
+                        "name": "Activity Feed",
+                        "endpoints": [
+                            {
+                                "id": "activity_feed",
+                                "url": "/candidates/:_candidate_id/activity_feed",
+                                "name": "Retrieve Activity Feed",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": ""
+                            }
+                        ]
+                    },
+                    {
+                        "id": "applications",
+                        "name": "Applications",
+                        "endpoints": [
+                            {
+                                "id": "list_applications",
+                                "url": "/applications",
+                                "name": "List Applications",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "created_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only applications that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only applications that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "last_activity_after",
+                                        "name": "Last Activity After",
+                                        "description": "Return only applications where ‘last_activity_at’ is at or after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "description": "Returns applications that involve this job",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "applications_id",
+                                "url": "/applications/:_application_id",
+                                "name": "Retrieve Application",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "approvals",
+                        "name": "Approvals",
+                        "endpoints": [
+                            {
+                                "id": "list_approval_flow",
+                                "url": "/jobs/:_job_id/approval_flow",
+                                "name": "List Approvals For Job",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "approval_flow_id",
+                                "url": "/approval_flows/:_approval_flow_id",
+                                "name": "Retrieve Approval Flow",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "approval_flow_id",
+                                        "name": "Approval Flow Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "pending_approvals",
+                                "url": "/users/:_user_id/pending_approvals",
+                                "name": "Pending Approvals For User",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "job",
+                                            "offer"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "candidates",
+                        "name": "Candidates",
+                        "endpoints": [
+                            {
+                                "id": "list_candidates",
+                                "url": "/candidates",
+                                "name": "List Candidates",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "created_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only candidates that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only candidates that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only candidates that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only candidates that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "description": "Returns candidates that have applied to this job",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "Returns candidates who have a matching e-mail address",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "candidate_ids",
+                                        "name": "Candidate Id's",
+                                        "description": "Returns only the candidates with the given ids,These are supplied as a comma separated string. e.g.: candidate_ids=123,456,789",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "candidates_id",
+                                "url": "/candidates/:_candidate_id",
+                                "name": "Retrieve Candidate",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "close_reasons",
+                        "name": "Close Reasons",
+                        "endpoints": [
+                            {
+                                "id": "list_closereasons",
+                                "url": "/close_reasons",
+                                "name": "List Close Reasons",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "custom_fields",
+                        "name": "Custom Fields",
+                        "endpoints": [
+                            {
+                                "id": "list_customfields",
+                                "url": "/custom_fields/:_field_type",
+                                "name": "List Custom Fields",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "field_type",
+                                        "name": "Field Type",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include_inactive",
+                                        "name": "Include Inactive",
+                                        "description": "When true, include inactive custom fields. Otherwise excludes inactive custom fields",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "customfields_id",
+                                "url": "/custom_field/:_custom_field_id",
+                                "name": "Retrieve Custom Field",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "custom_field_id",
+                                        "name": "Custom Field Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_customfield_options",
+                                "url": "/custom_field/:_custom_field_id/custom_field_options",
+                                "name": "List Custom Field Options",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "custom_field_id",
+                                        "name": "Custom Field Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "type",
+                                        "name": "Type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "all",
+                                            "active",
+                                            "inactive"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "departments",
+                        "name": "Departments",
+                        "endpoints": [
+                            {
+                                "id": "list_departments",
+                                "url": "/departments",
+                                "name": "List Departments",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "render_as",
+                                        "name": "Render As",
+                                        "description": "This parameter defines how to represent the list of departments",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "list",
+                                            "tree"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "departments_id",
+                                "url": "/departments/:_department_id",
+                                "name": "Retrieve Department",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "department_id",
+                                        "name": "Department Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "render_as",
+                                        "name": "Render As",
+                                        "description": "This parameter defines how to represent the list of departments",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "list",
+                                            "tree"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "eeoc",
+                        "name": "EEOC",
+                        "endpoints": [
+                            {
+                                "id": "list_eeoc",
+                                "url": "/eeoc",
+                                "name": "List EEOC",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "submitted_before",
+                                        "name": "Submitted Before",
+                                        "description": "Return only EEOC data submitted before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "submitted_after",
+                                        "name": "Submitted After",
+                                        "description": "Return only EEOC data submitted at or after this timestamp",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "eeoc_id",
+                                "url": "/applications/:_application_id/eeoc",
+                                "name": "Retrieve EEOC Data for Application",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "education",
+                        "name": "Education",
+                        "endpoints": [
+                            {
+                                "id": "list_degrees",
+                                "url": "/degrees",
+                                "name": "List Degrees",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "list_disciplines",
+                                "url": "/disciplines",
+                                "name": "List Disciplines",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "list_schools",
+                                "url": "/schools",
+                                "name": "List Schools",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "email_templates",
+                        "name": "Email Templates",
+                        "endpoints": [
+                            {
+                                "id": "list_emailtemplates",
+                                "url": "/email_templates",
+                                "name": "List Email Templates",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only Email Templates that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only Email Templates that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only Email Templates that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only Email Templates that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "emailtemplates_id",
+                                "url": "/email_templates/:_email_templates_id",
+                                "name": "Retrieve Email Template",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "email_templates_id",
+                                        "name": "Email Templates Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "job_openings",
+                        "name": "Job Openings",
+                        "endpoints": [
+                            {
+                                "id": "list_jobopenings",
+                                "url": "/jobs/:_job_id/openings",
+                                "name": "List Job Openings",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "status",
+                                        "name": "Status",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "opened",
+                                            "closed"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "jobopenings_id",
+                                "url": "/jobs/:_job_id/openings/:_opening_id",
+                                "name": "Retrieve the information for a single opening",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "opening_id",
+                                        "name": "Opening Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "job_posts",
+                        "name": "Job Posts",
+                        "endpoints": [
+                            {
+                                "id": "list_jobposts",
+                                "url": "/job_posts",
+                                "name": "List Job Posts",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only job posts that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only job posts that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only job posts that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only job posts that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "live",
+                                        "name": "Live",
+                                        "description": "If true, return only live job posts",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "jobposts_id",
+                                "url": "/jobs/:_job_id/job_posts",
+                                "name": "List Job Posts for Job",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "jobposts_jobid",
+                                "url": "/jobs/:_job_id/job_posts",
+                                "name": "Retrieve Job Post for Job",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "job_stages",
+                        "name": "Job Stages",
+                        "endpoints": [
+                            {
+                                "id": "list_jobstages",
+                                "url": "/job_stages",
+                                "name": "List Job Stages",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only Job Stages that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only Job Stages that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only Job Stages that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only Job Stages that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "jobstages_jobid",
+                                "url": "/jobs/:_job_id/stages",
+                                "name": "List Job Stages for Job",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only Job Stages that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only Job Stages that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only Job Stages that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only Job Stages that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "jobstages_jobstageid",
+                                "url": "/job_stages/:_job_stage_id",
+                                "name": "Retrieve Job Stage",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_stage_id",
+                                        "name": "Job Stage Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs",
+                        "endpoints": [
+                            {
+                                "id": "list_jobs",
+                                "url": "/jobs",
+                                "name": "List Jobs",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only Jobs that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only Jobs that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only Jobs that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only Jobs that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "requisition_id",
+                                        "name": "Requisition Id",
+                                        "description": "If included, will return only the jobs that match the given requisition_id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "opening_id",
+                                        "name": "Opening Id",
+                                        "description": "If included, will return only the jobs that contain at least one opening with the given opening_id",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "jobs_jobid",
+                                "url": "/jobs/:_job_id",
+                                "name": "Retrieve Job",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "offers",
+                        "name": "Offers",
+                        "endpoints": [
+                            {
+                                "id": "list_offers",
+                                "url": "/offers",
+                                "name": "List Offers",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only offers that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only offers that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only offers that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only offers that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "offers_applicationid",
+                                "url": "/applications/:_application_id/offers",
+                                "name": "List Offers for Application",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "offers_currentoffer",
+                                "url": "/applications/:_application_id/offers/current_offer",
+                                "name": "Get Current Offer for Application",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "offers_offerid",
+                                "url": "/offers/:_offer_id",
+                                "name": "Retrieve Offer",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "offer_id",
+                                        "name": "Offer Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "offices",
+                        "name": "Offices",
+                        "endpoints": [
+                            {
+                                "id": "list_offices",
+                                "url": "/offices",
+                                "name": "List Offices",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "render_as",
+                                        "name": "Render As",
+                                        "description": "This parameter defines how to represent the list of Offices",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "list",
+                                            "tree"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "offices_officeid",
+                                "url": "/offices/:_office_id",
+                                "name": "Retrieve Office",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "office_id",
+                                        "name": "Office Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "render_as",
+                                        "name": "Render As",
+                                        "description": "This parameter defines how to represent the list of Offices",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "list",
+                                            "tree"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "rejection_reasons",
+                        "name": "Rejection Reasons",
+                        "endpoints": [
+                            {
+                                "id": "list_rejectionreasons",
+                                "url": "/rejection_reasons",
+                                "name": "List Rejection Reasons",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "include_defaults",
+                                        "name": "Include Defaults",
+                                        "description": "When included and set to true, this will also return Greenhouse’s default rejection reasons which are included automatically in each account",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "scheduled_interviews",
+                        "name": "Scheduled Interviews",
+                        "endpoints": [
+                            {
+                                "id": "list_scheduledinterviews",
+                                "url": "/scheduled_interviews",
+                                "name": "List Interviews",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only scheduled interviews that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only scheduled interviews that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only scheduled interviews that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only scheduled interviews that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "starts_before",
+                                        "name": "Starts Before",
+                                        "description": "Return only scheduled interviews scheduled to start before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "starts_after",
+                                        "name": "Starts After",
+                                        "description": "Return only scheduled interviews scheduled to start After this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "ends_before",
+                                        "name": "Ends Before",
+                                        "description": "Return only scheduled interviews scheduled to end before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "ends_after",
+                                        "name": "Ends After",
+                                        "description": "Return only scheduled interviews scheduled to end after this timestamp",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "scheduledinterviews_applicationid",
+                                "url": "/applications/:_application_id/scheduled_interviews",
+                                "name": "List Interviews for Application",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only scheduled interviews that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only scheduled interviews that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only scheduled interviews that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only scheduled interviews that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "scheduledinterviews_id",
+                                "url": "/scheduled_interviews/:_scheduled_interview_id",
+                                "name": "Retrieve Interview",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "scheduled_interview_id",
+                                        "name": "Interview Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "scorecards",
+                        "name": "Scorecards",
+                        "endpoints": [
+                            {
+                                "id": "list_scorecards",
+                                "url": "/scorecards",
+                                "name": "List Scorecards",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only Scorecards that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only Scorecards that were created after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only Scorecards that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only Scorecards that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "scorecards_applicationid",
+                                "url": "/applications/:_application_id/scorecards",
+                                "name": "List scorecards for Application",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "scorecards_scorecardid",
+                                "url": "/scorecards/:_scorecard_id",
+                                "name": "Retrieve Scorecard",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "scorecard_id",
+                                        "name": "Scorecard Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "sources",
+                        "name": "Sources",
+                        "endpoints": [
+                            {
+                                "id": "list_sources",
+                                "url": "/sources",
+                                "name": "List Sources",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tags",
+                        "name": "Tags",
+                        "endpoints": [
+                            {
+                                "id": "list_tags",
+                                "url": "/tags/candidate",
+                                "name": "List Candidate Tags",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "tags_candidateid",
+                                "url": "/candidates/:_candidate_id/tags",
+                                "name": "List tags applied to candidate",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tracking_links",
+                        "name": "Tracking Links",
+                        "endpoints": [
+                            {
+                                "id": "trackinglink_token",
+                                "url": "/tracking_links/:_token",
+                                "name": "Retrieve Tracking Link Data for Token",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "token",
+                                        "name": "Token",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "list_users",
+                                "url": "/users",
+                                "name": "List Users",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "updated_after": "{{{lastExportDateTime}}}"
+                                    },
+                                    "dateFormat": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "created_before",
+                                        "name": "Created Before",
+                                        "description": "Return only users that were created before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "created_after",
+                                        "name": "Created After",
+                                        "description": "Return only users that were created at or after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_before",
+                                        "name": "Updated Before",
+                                        "description": "Return only users that were updated before this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "updated_after",
+                                        "name": "Updated After",
+                                        "description": "Return only users that were updated at or after this timestamp",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "employee_id",
+                                        "name": "Employee Id",
+                                        "description": "Return a single user that matches this employee id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "Return only the user who has this e-mail address as their primary e-mail or a secondary e-mail",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "user_userid",
+                                "url": "/users/:_user_id",
+                                "name": "Retrieve User",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "employee_id",
+                                        "name": "Employee Id",
+                                        "description": "The Employee ID of the user to retrieve",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "user_permissions",
+                        "name": "User Permissions",
+                        "endpoints": [
+                            {
+                                "id": "list_userpermissions",
+                                "url": "/users/:_user_id/permissions/jobs",
+                                "name": "List Job Permissions",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            },
+                            {
+                                "id": "userpermissions_futurejobs",
+                                "url": "/users/:_user_id/permissions/future_jobs",
+                                "name": "List Future Job Permissions",
+                                "resourcePath": "",
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "user_roles",
+                        "name": "User Roles",
+                        "endpoints": [
+                            {
+                                "id": "list_userroles",
+                                "url": "/user_roles",
+                                "name": "List User Roles",
+                                "resourcePath": "",
+                                "pathParameters": [],
+                                "supportedExportTypes": [
+                                    "test"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "applications",
+                        "name": "Applications",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "advance_applicationnextstage",
+                                "url": "/applications/:_application_id/advance",
+                                "name": "Advance Application",
+                                "method": "POST",
+                                "sampleData": {
+                                    "from_stage_id": 1
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "from_stage_id"
+                                ]
+                            },
+                            {
+                                "id": "move_applicationdifferentjob",
+                                "url": "/applications/:_application_id/transfer_to_job",
+                                "name": "Move Application (Different Job)",
+                                "method": "POST",
+                                "sampleData": {
+                                    "new_job_id": 123456,
+                                    "new_stage_id": 234567
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "new_job_id"
+                                ]
+                            },
+                            {
+                                "id": "move_applicationsamejob",
+                                "url": "/applications/:_application_id/move",
+                                "name": "Move Application (Same Job)",
+                                "method": "POST",
+                                "sampleData": {
+                                    "from_stage_id": 1,
+                                    "to_stage_id": 2
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "from_stage_id",
+                                    "to_stage_id"
+                                ]
+                            },
+                            {
+                                "id": "reject_application",
+                                "url": "/applications/:_application_id/reject",
+                                "name": "Reject Application",
+                                "method": "POST",
+                                "sampleData": {
+                                    "rejection_reason_id": 815,
+                                    "notes": "The prospect is not qualified for this position.",
+                                    "rejection_email": {
+                                        "send_email_at": "2014-03-26T20:11:39Z",
+                                        "email_template_id": 42
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "unreject_application",
+                                "url": "/applications/:_application_id/unreject",
+                                "name": "Unreject Application",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "name": "Application Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_application",
+                                "url": "/applications/:_application_id",
+                                "name": "Update Application",
+                                "supportIgnoreMissing": true,
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "source_id": 16,
+                                    "referrer": {
+                                        "type": "id",
+                                        "value": 123
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_application",
+                                "url": "/applications/:_application_id",
+                                "name": "Delete Application",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "sampleData": {},
+                                "parameters": [
+                                    {
+                                        "id": "application_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "approvals",
+                        "name": "Approvals",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "request_approvals",
+                                "url": "/approval_flows/:_approval_flows_id/request_approvals",
+                                "name": "Request Approvals",
+                                "method": "POST",
+                                "sampleData": {},
+                                "parameters": [
+                                    {
+                                        "id": "approval_flows_id",
+                                        "name": "Approval Flows Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "replace_approvers",
+                                "url": "/approver_groups/:_approver_group_id/replace_approvers",
+                                "name": "Replace an approver in an approver group",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "remove_user_id": 1443,
+                                    "add_user_id": 5432
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "approver_group_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "remove_user_id",
+                                    "add_user_id"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "candidates",
+                        "name": "Candidates",
+                        "sampleData": {
+                            "first_name": "John",
+                            "last_name": "Locke",
+                            "company": "The Tustin Box Company",
+                            "title": "Man of Mystery",
+                            "is_private": false,
+                            "phone_numbers": [
+                                {
+                                    "value": "555-1212",
+                                    "type": "mobile"
+                                }
+                            ],
+                            "addresses": [
+                                {
+                                    "value": "123 Fake St.",
+                                    "type": "home"
+                                }
+                            ],
+                            "email_addresses": [
+                                {
+                                    "value": "john.locke+work@example.com",
+                                    "type": "work"
+                                },
+                                {
+                                    "value": "john.locke@example.com",
+                                    "type": "personal"
+                                }
+                            ],
+                            "website_addresses": [
+                                {
+                                    "value": "johnlocke.example.com",
+                                    "type": "personal"
+                                }
+                            ],
+                            "social_media_addresses": [
+                                {
+                                    "value": "linkedin.example.com/john.locke"
+                                },
+                                {
+                                    "value": "@johnlocke"
+                                }
+                            ],
+                            "educations": [
+                                {
+                                    "school_id": 459,
+                                    "discipline_id": 940,
+                                    "degree_id": 1230,
+                                    "start_date": "2001-09-15T00:00:00.000Z",
+                                    "end_date": "2004-05-15T00:00:00.000Z"
+                                }
+                            ],
+                            "employments": [
+                                {
+                                    "id": 8485064,
+                                    "company_name": "Greenhouse",
+                                    "title": "Engineer",
+                                    "start_date": "2012-08-15T00:00:00.000Z",
+                                    "end_date": "2016-05-15T00:00:00.000Z"
+                                }
+                            ],
+                            "tags": [
+                                "Walkabout",
+                                "Orientation"
+                            ],
+                            "applications": [
+                                {
+                                    "job_id": 215725
+                                },
+                                {
+                                    "job_id": 185289
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_candidates",
+                                "url": "/candidates",
+                                "name": "Add Candidate",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "first_name",
+                                    "last_name",
+                                    "applications"
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_candidates",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_applicationforcandidates",
+                                "url": "/candidates/:_candidate_id/applications",
+                                "name": "Add Candidate Application",
+                                "method": "POST",
+                                "sampleData": {
+                                    "job_id": 266926,
+                                    "source_id": 7,
+                                    "initial_stage_id": 2708728,
+                                    "referrer": {
+                                        "type": "id",
+                                        "value": 770
+                                    },
+                                    "attachments": [
+                                        {
+                                            "filename": "resume.pdf",
+                                            "type": "resume",
+                                            "content": "MGQwMzFkODIyN2VhZmE2MWRjMzc1YTZjMmUwNjdlMjQ6...",
+                                            "content_type": "application/pdf"
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "job_id"
+                                ]
+                            },
+                            {
+                                "id": "add_note",
+                                "url": "/candidates/:_candidate_id/activity_feed/notes",
+                                "name": "Add Note",
+                                "method": "POST",
+                                "sampleData": {
+                                    "user_id": "158108",
+                                    "body": "John Locke was moved into Recruiter Phone Screen for Accounting Manager on 03/27/2014 by Boone Carlyle",
+                                    "visibility": "admin_only"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "user_id",
+                                    "body",
+                                    "visibility"
+                                ]
+                            },
+                            {
+                                "id": "create_educationrecord",
+                                "url": "/candidates/:_candidate_id/educations",
+                                "name": "Add Education",
+                                "method": "POST",
+                                "sampleData": {
+                                    "school_id": 459,
+                                    "discipline_id": 940,
+                                    "degree_id": 1230,
+                                    "start_date": "2001-09-15T00:00:00.000Z",
+                                    "end_date": "2004-05-15T00:00:00.000Z"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_employmentrecord",
+                                "url": "/candidates/:_candidate_id/employments",
+                                "name": "Add Employment",
+                                "method": "POST",
+                                "sampleData": {
+                                    "company_name": "Greenhouse",
+                                    "title": "Engineer",
+                                    "start_date": "2001-09-15T00:00:00.000Z",
+                                    "end_date": "2004-05-15T00:00:00.000Z"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "company_name",
+                                    "title",
+                                    "start_date"
+                                ]
+                            },
+                            {
+                                "id": "create_prospect",
+                                "url": "/prospects",
+                                "name": "Add Prospect",
+                                "method": "POST",
+                                "sampleData": {
+                                    "first_name": "John",
+                                    "last_name": "Locke",
+                                    "company": "The Tustin Box Company",
+                                    "title": "Man of Mystery",
+                                    "is_private": false,
+                                    "phone_numbers": [
+                                        {
+                                            "value": "555-1212",
+                                            "type": "mobile"
+                                        }
+                                    ],
+                                    "addresses": [
+                                        {
+                                            "value": "123 Fake St.",
+                                            "type": "home"
+                                        }
+                                    ],
+                                    "email_addresses": [
+                                        {
+                                            "value": "john.locke+work@example.com",
+                                            "type": "work"
+                                        },
+                                        {
+                                            "value": "john.locke@example.com",
+                                            "type": "personal"
+                                        }
+                                    ],
+                                    "website_addresses": [
+                                        {
+                                            "value": "johnlocke.example.com",
+                                            "type": "personal"
+                                        }
+                                    ],
+                                    "social_media_addresses": [
+                                        {
+                                            "value": "linkedin.example.com/john.locke"
+                                        },
+                                        {
+                                            "value": "@johnlocke"
+                                        }
+                                    ],
+                                    "educations": [
+                                        {
+                                            "school_id": 459,
+                                            "discipline_id": 940,
+                                            "degree_id": 1230,
+                                            "start_date": "2001-09-15T00:00:00.000Z",
+                                            "end_date": "2004-05-15T00:00:00.000Z"
+                                        }
+                                    ],
+                                    "employments": [
+                                        {
+                                            "id": 8485064,
+                                            "company_name": "Greenhouse",
+                                            "title": "Engineer",
+                                            "start_date": "2012-08-15T00:00:00.000Z",
+                                            "end_date": "2016-05-15T00:00:00.000Z"
+                                        }
+                                    ],
+                                    "tags": [
+                                        "Walkabout",
+                                        "Orientation"
+                                    ],
+                                    "application": {
+                                        "job_ids": [
+                                            123,
+                                            456,
+                                            789
+                                        ],
+                                        "source_id": 1234,
+                                        "referrer": {
+                                            "type": "id",
+                                            "value": 770
+                                        },
+                                        "custom_fields": [],
+                                        "attachments": []
+                                    }
+                                },
+                                "parameters": [],
+                                "requiredMappings": [
+                                    "first_name",
+                                    "last_name"
+                                ]
+                            },
+                            {
+                                "id": "update_candidates",
+                                "url": "/candidates/:_candidate_id",
+                                "name": "Edit Candidate",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "first_name": "New",
+                                    "last_name": "Name",
+                                    "company": "The Tustin Box Company",
+                                    "title": "Man of Mystery",
+                                    "is_private": true,
+                                    "phone_numbers": [
+                                        {
+                                            "value": "555-1212",
+                                            "type": "mobile"
+                                        }
+                                    ],
+                                    "addresses": [
+                                        {
+                                            "value": "123 Fake St.",
+                                            "type": "home"
+                                        }
+                                    ],
+                                    "email_addresses": [
+                                        {
+                                            "value": "john.locke+work@example.com",
+                                            "type": "work"
+                                        },
+                                        {
+                                            "value": "john.locke@example.com",
+                                            "type": "personal"
+                                        }
+                                    ],
+                                    "website_addresses": [
+                                        {
+                                            "value": "johnlocke.example.com",
+                                            "type": "personal"
+                                        }
+                                    ],
+                                    "social_media_addresses": [
+                                        {
+                                            "value": "linkedin.example.com/john.locke"
+                                        },
+                                        {
+                                            "value": "@johnlocke"
+                                        }
+                                    ],
+                                    "tags": [
+                                        "Walkabout",
+                                        "Orientation"
+                                    ],
+                                    "custom_fields": [
+                                        {
+                                            "id": 1234,
+                                            "value": "Some new value"
+                                        },
+                                        {
+                                            "name_key": "single_select_field_name",
+                                            "value": 12345
+                                        },
+                                        {
+                                            "id": 5678,
+                                            "delete_value": "true"
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_candidates",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_candidates",
+                                "url": "/candidates/:_candidate_id",
+                                "name": "Delete Candidate",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_educationrecord",
+                                "url": "/candidates/:_candidate_id/educations/:_education_id",
+                                "name": "Remove Education From Candidate",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "education_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_employmentrecord",
+                                "url": "/candidates/:_candidate_id/employments/:_employment_id",
+                                "name": "Remove Employment From Candidate",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "employment_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "merge_candidates",
+                                "url": "candidates/merge",
+                                "name": "Merge Candidates",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "primary_candidate_id": "72329440",
+                                    "duplicate_candidate_id": "72329550"
+                                },
+                                "parameters": [],
+                                "requiredMappings": [
+                                    "primary_candidate_id",
+                                    "duplicate_candidate_id"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "custom_fields",
+                        "name": "Custom Fields",
+                        "sampleData": {
+                            "options": [
+                                {
+                                    "name": "Option A",
+                                    "priority": 5
+                                },
+                                {
+                                    "name": "Option B",
+                                    "priority": 6
+                                },
+                                {
+                                    "name": "Option C",
+                                    "priority": 7
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customfieldoptions",
+                                "url": "/custom_field/:_custom_field_id/custom_field_options",
+                                "name": "Create Custom Field Options",
+                                "supportIgnoreExisting": true,
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "custom_field_id",
+                                        "name": "Custom Field Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "options",
+                                    "name",
+                                    "priority"
+                                ]
+                            },
+                            {
+                                "id": "update_customfieldoptions",
+                                "url": "/custom_field/:_custom_field_id/custom_field_options",
+                                "name": "Update Custom Field Options",
+                                "supportIgnoreMissing": true,
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "options": [
+                                        {
+                                            "id": 123,
+                                            "name": "Option A",
+                                            "priority": 5
+                                        },
+                                        {
+                                            "id": 234,
+                                            "name": "Option B",
+                                            "priority": 6
+                                        },
+                                        {
+                                            "id": 345,
+                                            "name": "Option C",
+                                            "priority": 7
+                                        }
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "custom_field_id",
+                                        "name": "Custom Field Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "options",
+                                    "id"
+                                ]
+                            },
+                            {
+                                "id": "delete_customfieldoptions",
+                                "url": "/custom_field/:_custom_field_id/custom_field_options",
+                                "name": "Remove Custom Field Options",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "option_ids": [
+                                        1,
+                                        2,
+                                        3,
+                                        4
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "custom_field_id",
+                                        "name": "Custom Field Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "option_ids"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "departments",
+                        "name": "Departments",
+                        "sampleData": {
+                            "id": 1,
+                            "name": "Technology",
+                            "parent_id": 5,
+                            "child_ids": [
+                                11,
+                                12
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_departments",
+                                "url": "/departments",
+                                "name": "Add Department",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "job_openings",
+                        "name": "Job Openings",
+                        "sampleData": {
+                            "openings": [
+                                {
+                                    "opening_id": "abc-123"
+                                },
+                                {
+                                    "opening_id": null
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_jobopenings",
+                                "url": "/jobs/:_job_id/openings",
+                                "name": "Create New Openings",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "openings",
+                                    "openings.opening_id"
+                                ]
+                            },
+                            {
+                                "id": "update_jobopenings",
+                                "url": "/jobs/:_job_id/openings/:_opening_id",
+                                "name": "Edit Openings",
+                                "supportIgnoreMissing": true,
+                                "method": "PATCH",
+                                "sampleData": {
+                                    "opening_id": "abc-123",
+                                    "status": "closed",
+                                    "close_reason_id": 1234
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "opening_id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_jobopenings",
+                                "url": "/jobs/:_job_id/openings",
+                                "name": "Destroy Openings",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "ids": [
+                                        123,
+                                        456,
+                                        789
+                                    ]
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "ids"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "job_posts",
+                        "name": "Job Posts",
+                        "sampleData": {
+                            "status": "live"
+                        },
+                        "operations": [
+                            {
+                                "id": "update_jobpost_status",
+                                "url": "/job_posts/:_job_posts_id",
+                                "name": "Update Job Post’s Status",
+                                "supportIgnoreMissing": true,
+                                "method": "PATCH",
+                                "parameters": [
+                                    {
+                                        "id": "job_posts_id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "status"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs",
+                        "sampleData": {
+                            "template_job_id": 12345,
+                            "number_of_openings": 2,
+                            "job_post_name": "External Name That Appears On Job Boards",
+                            "job_name": "Internal Name That Appears On Hiring Plans",
+                            "department_id": 123,
+                            "office_ids": [
+                                234,
+                                345
+                            ],
+                            "requisition_id": "abc-123",
+                            "opening_ids": [
+                                "abc-123-1",
+                                "abc-123-2"
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_job",
+                                "url": "/Jobs",
+                                "name": "Create Job",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "template_job_id",
+                                    "number_of_openings"
+                                ]
+                            },
+                            {
+                                "id": "update_job",
+                                "url": "/jobs/:_job_id",
+                                "name": "Update Job",
+                                "sampleData": {
+                                    "id": 144371,
+                                    "name": "New job name",
+                                    "requisition_id": "1",
+                                    "notes": "Here are some notes",
+                                    "team_and_responsibilities": "Info",
+                                    "how_to_sell_this_job": "the snacks",
+                                    "office_ids": [
+                                        1556
+                                    ],
+                                    "department_id": 74,
+                                    "custom_fields": [
+                                        {
+                                            "id": 1234,
+                                            "value": "Some new value"
+                                        },
+                                        {
+                                            "name_key": "salary_range",
+                                            "min_value": 100000,
+                                            "max_value": 150000,
+                                            "unit": "USD"
+                                        },
+                                        {
+                                            "id": 5678,
+                                            "delete_value": "true"
+                                        }
+                                    ]
+                                },
+                                "supportIgnoreMissing": true,
+                                "method": "PATCH",
+                                "parameters": [
+                                    {
+                                        "id": "job_id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "replace_hiringteam",
+                                "url": "/jobs/:_job_id/hiring_team",
+                                "name": "Replace Hiring Team",
+                                "sampleData": {
+                                    "hiring_managers": [
+                                        {
+                                            "user_id": 1234
+                                        },
+                                        {
+                                            "user_id": 2345
+                                        }
+                                    ],
+                                    "sourcers": [
+                                        {
+                                            "user_id": 3456
+                                        },
+                                        {
+                                            "user_id": 4567
+                                        }
+                                    ],
+                                    "recruiters": [
+                                        {
+                                            "user_id": 5678,
+                                            "responsible_for_future_candidates": true,
+                                            "responsible_for_active_candidates": true,
+                                            "responsible_for_inactive_candidates": true
+                                        },
+                                        {
+                                            "user_id": 6789,
+                                            "responsible_for_future_candidates": false,
+                                            "responsible_for_active_candidates": false,
+                                            "responsible_for_inactive_candidates": false
+                                        }
+                                    ],
+                                    "coordinators": [
+                                        {
+                                            "user_id": 7890,
+                                            "responsible_for_future_candidates": true,
+                                            "responsible_for_active_candidates": false,
+                                            "responsible_for_inactive_candidates": false
+                                        },
+                                        {
+                                            "user_id": 8901,
+                                            "responsible_for_future_candidates": false,
+                                            "responsible_for_active_candidates": false,
+                                            "responsible_for_inactive_candidates": false
+                                        }
+                                    ]
+                                },
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job Id",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "offices",
+                        "name": "Offices",
+                        "sampleData": {
+                            "name": "A New Office",
+                            "parent_id": 12345,
+                            "primary_contact_user_id": 234,
+                            "location": "New York, NY"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_office",
+                                "url": "/offices",
+                                "name": "Add Office",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tags",
+                        "name": "Tags",
+                        "sampleData": {
+                            "message": "Tag 365, 'Ruby', has been applied to candidate 29555013"
+                        },
+                        "operations": [
+                            {
+                                "id": "apply_tag",
+                                "url": "/candidates/:_candidate_id/tags/:_tag_id",
+                                "name": "Add a candidate tag",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_tag",
+                                "url": "/candidates/:_candidate_id/tags/:_tag_id",
+                                "name": "Remove tag from candidate",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "candidate_id",
+                                        "name": "Candidate Id",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "first_name": "Bob",
+                            "last_name": "Smith",
+                            "email": "bob@email.org",
+                            "send_email_invite": true,
+                            "employee_id": "ABC12345"
+                        },
+                        "operations": [
+                            {
+                                "id": "add_user",
+                                "url": "/users",
+                                "name": "Add User",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "first_name",
+                                    "last_name",
+                                    "email"
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_users",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "add_emailtouser",
+                                "url": "/users/:_user_id/email_addresses",
+                                "name": "Add E-mail Address To User",
+                                "method": "POST",
+                                "sampleData": {
+                                    "email": "bob@email.org",
+                                    "send_verification": true
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "email"
+                                ]
+                            },
+                            {
+                                "id": "edit_user",
+                                "url": "users/:_user_id",
+                                "name": "Edit User",
+                                "method": "PATCH",
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "first_name": "Bob",
+                                    "last_name": "Smith",
+                                    "employee_id": "ABC12345"
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "id": "list_users",
+                                        "extract": "id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "enable_user",
+                                "url": "users/:_user_id/enable",
+                                "name": "Enable User",
+                                "method": "PATCH",
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "disable_user",
+                                "url": "users/:_user_id/disable",
+                                "name": "Disable User",
+                                "method": "PATCH",
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "user_permissions",
+                        "name": "User Permissions",
+                        "sampleData": {
+                            "id": 271232,
+                            "job_id": 12891,
+                            "user_role_id": 1172
+                        },
+                        "operations": [
+                            {
+                                "id": "add_jobpermissions",
+                                "url": "/users/:_user_id/permissions/jobs",
+                                "name": "Add a Job Permission",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "job_id",
+                                    "user_role_id"
+                                ]
+                            },
+                            {
+                                "id": "add_futurejobpermissions",
+                                "url": "/users/:_user_id/permissions/future_jobs",
+                                "name": "Add a Future Job Permission",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "id": 9283,
+                                    "office_id": 281921,
+                                    "department_id": 61921,
+                                    "user_role_id": 91821
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "user_role_id"
+                                ]
+                            },
+                            {
+                                "id": "remove_jobpermissions",
+                                "url": "/users/:_user_id/permissions/jobs",
+                                "name": "Remove a Job Permission",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "job_permission_id": 123
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "job_permission_id"
+                                ]
+                            },
+                            {
+                                "id": "remove_futurejobpermissions",
+                                "url": "/users/:_user_id/permissions/future_jobs",
+                                "name": "Remove a Future Job Permission",
+                                "method": "DELETE",
+                                "sampleData": {
+                                    "future_job_permission_id": 123
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User Id",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "future_job_permission_id"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

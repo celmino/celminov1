@@ -1,0 +1,2149 @@
+{
+    "export": {
+        "labels": {
+            "resource": "API name (Resource)",
+            "operation": "API endpoint (Operation)"
+        },
+        "urlResolution": [
+            "channels.history",
+            "channels.info",
+            "channels.list",
+            "channels.replies",
+            "groups.history",
+            "groups.info",
+            "groups.list",
+            "groups.replies",
+            "conversations.history",
+            "conversations.info",
+            "conversations.members",
+            "conversations.list",
+            "conversations.replies",
+            "conversations.listConnectInvites",
+            "emoji.list",
+            "im.list",
+            "im.history",
+            "mpim.list",
+            "mpim.history",
+            "pins.list",
+            "reactions.list",
+            "reactions.get",
+            "reminders.list",
+            "reminders.info",
+            "dnd.info",
+            "dnd.teamInfo",
+            "dnd.endSnooze",
+            "dnd.endDnd",
+            "stars.list",
+            "search.all",
+            "search.messages",
+            "team.accessLogs",
+            "team.billableInfo",
+            "team.info",
+            "team.integrationLogs",
+            "team.profile.get",
+            "users.list",
+            "users.info",
+            "users.getPresence"
+        ],
+        "successPath": "ok",
+        "successValues": true,
+        "versions": [
+            {
+                "version": "latest",
+                "resources": [
+                    {
+                        "id": "bots",
+                        "name": "bots",
+                        "endpoints": [
+                            {
+                                "id": "get_botinfo",
+                                "url": "bots.info",
+                                "name": "bots.info",
+                                "resourcePath": "bot",
+                                "queryParameters": [
+                                    {
+                                        "id": "bot",
+                                        "name": "Bot",
+                                        "description": "Enter the bot user to get info on. e.g. B12345678"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "calls",
+                        "name": "calls",
+                        "endpoints": [
+                            {
+                                "url": "calls.info",
+                                "name": "calls.info",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Calls id",
+                                        "required": true,
+                                        "description": "Enter the ID that you expect to be returned by the calls.add method in the API endpoint.",
+                                        "defaultValue": 20
+                                    }
+                                ],
+                                "id": "calls_info"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "chat",
+                        "name": "chat",
+                        "endpoints": [
+                            {
+                                "url": "chat.getPermalink",
+                                "name": "chat.getPermalink",
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel id",
+                                        "required": true,
+                                        "description": "Enter the ID that you expect to be returned by the conversations.create method in the API endpoint."
+                                    },
+                                    {
+                                        "id": "message_ts",
+                                        "name": "Message timestamp id",
+                                        "required": true,
+                                        "description": "Enter the ID that you expect to be returned by the chat.postMessage method in the API endpoint."
+                                    }
+                                ],
+                                "id": "get_permalink"
+                            },
+                            {
+                                "url": "chat.scheduledMessages.list",
+                                "name": "chat.scheduledMessages.list",
+                                "method": "POST",
+                                "resourcePath": "scheduled_messages",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel id",
+                                        "required": false,
+                                        "description": "Enter the ID of the conversation or channel containing the message."
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The limit parameter sets a maximum number of results to return per call.\n Provide sensible limit values. We recommend Max 200 results at a time.",
+                                        "defaultValue": 20
+                                    },
+                                    {
+                                        "id": "latest",
+                                        "name": "Latest",
+                                        "description": "Enter the end of time range of messages to include in results. default=now.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "oldest",
+                                        "name": "Oldest",
+                                        "description": "Enter the start of time range of messages to include in results. default=0.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "team_id",
+                                        "name": "Team id",
+                                        "required": false,
+                                        "description": "The encoded team id to list channels in, It is required if org token is used."
+                                    }
+                                ],
+                                "id": "chat_scheduledMessages_list"
+                            },
+                            {
+                                "url": "chat.unfurl",
+                                "name": "chat.unfurl",
+                                "method": "POST",
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel id",
+                                        "required": true,
+                                        "fieldType": "input",
+                                        "description": "Channel ID of the message. Both channel and ts must be provided together, or unfurl_id and source must be provided together."
+                                    },
+                                    {
+                                        "id": "ts",
+                                        "name": "Timestamp",
+                                        "description": "Timestamp of the message to add unfurl behavior to.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "unfurls",
+                                        "name": "Unfurls",
+                                        "required": true,
+                                        "description": "URL-encoded JSON map with keys set to URLs featured in the the message, pointing to their unfurl blocks or message attachments.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "source",
+                                        "name": "Source",
+                                        "required": false,
+                                        "description": "The source of the link to unfurl. The source may either be composer, when the link is inside the message composer, or conversations_history, when the link has been posted to a conversation.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "unfurl_id",
+                                        "name": "unfurl id",
+                                        "required": false,
+                                        "description": "The encoded team id to list channels in, It is required if org token is used."
+                                    }
+                                ],
+                                "id": "chat_unfurl"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "conversations",
+                        "name": "conversations",
+                        "endpoints": [
+                            {
+                                "url": "conversations.history",
+                                "name": "conversations.history",
+                                "resourcePath": "messages",
+                                "successPath": "messages",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "oldest": "{{lastExportDateTime}}"
+                                    },
+                                    "dateFormat": "X"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The limit parameter sets a maximum number of results to return per call.\n Provide sensible limit values. We recommend Max 200 results at a time.",
+                                        "defaultValue": 20
+                                    },
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "description": "Enter the conversation ID to fetch history for.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "inclusive",
+                                        "name": "Inclusive",
+                                        "description": "Enter include messages with latest or oldest timestamp in results only when either timestamp is specified.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "latest",
+                                        "name": "Latest",
+                                        "description": "Enter end of time range of messages to include in results. default=now.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "oldest",
+                                        "name": "Oldest",
+                                        "description": "Enter start of time range of messages to include in results. default=0.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_conversations_history"
+                            },
+                            {
+                                "url": "conversations.info",
+                                "name": "conversations.info",
+                                "resourcePath": "channel",
+                                "successPath": "channel",
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "description": "Enter conversation ID to learn more about.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "include_locale",
+                                        "name": "Include locale",
+                                        "description": "Set this to true to receive the locale for this conversation. Defaults to false.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_conversations_info"
+                            },
+                            {
+                                "url": "conversations.members",
+                                "name": "conversations.members",
+                                "resourcePath": "members",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The limit parameter sets a maximum number of results to return per call.\n Provide sensible limit values. We recommend Max 200 results at a time.",
+                                        "defaultValue": 20
+                                    },
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel id",
+                                        "description": "Enter the ID that you expect to be returned by the conversations.create method in the API endpoint.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_conversations_members"
+                            },
+                            {
+                                "url": "conversations.list",
+                                "name": "conversations.list",
+                                "resourcePath": "channels",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "exclude_archived",
+                                        "name": "Exclude archived",
+                                        "description": "Select true if not return archived channels. default=false.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "defaultValue": "false"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The limit parameter sets a maximum number of results to return per call.\n Provide sensible limit values. We recommend Max 200 results at a time.",
+                                        "defaultValue": 20
+                                    },
+                                    {
+                                        "id": "types",
+                                        "name": "Types",
+                                        "description": "Enter mix and match channel types by providing a comma-separated list of any combination of public_channel, private_channel, mpim, im.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_conversations_list"
+                            },
+                            {
+                                "url": "conversations.open",
+                                "name": "conversations.open",
+                                "id": "conversations_open",
+                                "method": "POST",
+                                "postBody": {},
+                                "bodyParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "description": "Resume a conversation by supplying an im or mpim's ID. Or provide the users field instead."
+                                    },
+                                    {
+                                        "id": "return_im",
+                                        "name": "Return IM channel",
+                                        "description": "Select 'true' if you want the full IM channel definition in the response.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ]
+                                    },
+                                    {
+                                        "id": "users",
+                                        "name": "Users",
+                                        "description": "Enter comma separated lists of users. If only one user is included, this creates a 1:1 DM. The ordering of the users is preserved whenever a multi-person direct message is returned. Supply a channel when not supplying users."
+                                    }
+                                ]
+                            },
+                            {
+                                "url": "conversations.replies",
+                                "name": "conversations.replies",
+                                "resourcePath": "messages",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "ts": "{{lastExportDateTime}}"
+                                    },
+                                    "dateFormat": "X"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "Limit",
+                                        "name": "limit",
+                                        "description": "The limit parameter sets a maximum number of results to return per call.\n Provide sensible limit values. We recommend Max 200 results at a time.",
+                                        "defaultValue": 20
+                                    },
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "description": "Enter conversation ID to fetch thread from.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "ts",
+                                        "name": "Timestamp id",
+                                        "description": "Enter unique identifier of either a threads parent message or a message in the thread.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "inclusive",
+                                        "name": "Inclusive",
+                                        "description": "Enter include messages with latest or oldest timestamp in results only when either timestamp is specified.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "latest",
+                                        "name": "Latest",
+                                        "description": "Enter end of time range of messages to include in results. default=now.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "oldest",
+                                        "name": "Oldest",
+                                        "description": "Enter start of time range of messages to include in results. default=0.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_conversations_replies"
+                            },
+                            {
+                                "url": "conversations.listConnectInvites",
+                                "name": "conversations.listConnectInvites",
+                                "method": "POST",
+                                "resourcePath": "invites",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "description": "Enter number of items to return per page.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_listConnectInvites"
+                            },
+                            {
+                                "url": "conversations.inviteShared",
+                                "name": "conversations.inviteShared",
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "description": "Enter channel ID.",
+                                        "fieldType": "input",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "emails",
+                                        "name": "Emails",
+                                        "description": "email to receive this invite. Either emails or user_ids must be provided.",
+                                        "fieldType": "input",
+                                        "required": false
+                                    },
+                                    {
+                                        "id": "user_ids",
+                                        "name": "User ids",
+                                        "description": "user_id to receive this invite. Either emails or user_ids must be provided.",
+                                        "fieldType": "input",
+                                        "required": false
+                                    },
+                                    {
+                                        "id": "external_limited",
+                                        "name": "External limited",
+                                        "description": "boolean on whether invite is to a external limited member.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "defaultValue": "true",
+                                        "required": false
+                                    }
+                                ],
+                                "id": "conversations_inviteshared"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "emoji",
+                        "name": "emoji",
+                        "endpoints": [
+                            {
+                                "url": "emoji.list",
+                                "name": "emoji.list",
+                                "resourcePath": "emoji",
+                                "id": "list_emoji_list"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pins",
+                        "name": "pins",
+                        "endpoints": [
+                            {
+                                "url": "pins.list",
+                                "name": "pins.list",
+                                "resourcePath": "items",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "description": "Enter the ID of the Channel to get pinned items for.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "get_pins_list"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reactions",
+                        "name": "reactions ",
+                        "endpoints": [
+                            {
+                                "url": "reactions.list",
+                                "name": "reactions.list",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "resourcePath": "items",
+                                "queryParameters": [
+                                    {
+                                        "id": "full",
+                                        "name": "Full",
+                                        "description": "If true always return the complete reaction list.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "Enter show reactions made by this user. Defaults to the authed user.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_reactions_list"
+                            },
+                            {
+                                "url": "reactions.get",
+                                "name": "reactions.get",
+                                "resourcePath": "message",
+                                "successPath": "message",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "description": "Channel where the message to get reactions for was posted",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "file",
+                                        "name": "File",
+                                        "description": "File to get reactions for",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "file_comment",
+                                        "name": "File comment",
+                                        "description": "File comment to get reactions for",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "full",
+                                        "name": "Full",
+                                        "description": "If true always return the complete reaction list",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "timestamp",
+                                        "name": "Message timestamp",
+                                        "description": "Timestamp of the message to get reactions for",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "get_reactions_get"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reminders",
+                        "name": "reminders ",
+                        "endpoints": [
+                            {
+                                "url": "reminders.list",
+                                "name": "reminders.list",
+                                "resourcePath": "reminders",
+                                "id": "list_reminders_list"
+                            },
+                            {
+                                "url": "reminders.info",
+                                "name": "reminders.info",
+                                "successPath": "reminder",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "reminder",
+                                        "name": "Reminder",
+                                        "description": "Enter the ID of the reminder.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "get_reminders_info"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "dnd",
+                        "name": "dnd",
+                        "endpoints": [
+                            {
+                                "url": "dnd.info",
+                                "name": "dnd.info",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "Enter user to fetch status for (defaults to current user)",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "get_dnd_info"
+                            },
+                            {
+                                "url": "dnd.teamInfo",
+                                "name": "dnd.teamInfo",
+                                "resourcePath": "users",
+                                "successPath": "users",
+                                "queryParameters": [
+                                    {
+                                        "id": "users",
+                                        "name": "Users",
+                                        "description": "Enter comma-separated list of users to fetch Do Not Disturb status for",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_dnd_teaminfo"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stars",
+                        "name": "stars",
+                        "endpoints": [
+                            {
+                                "url": "stars.list",
+                                "name": "stars.list",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "resourcePath": "items",
+                                "id": "list_stars_list"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "search",
+                        "name": "search",
+                        "paging": {
+                            "pagingMethod": "pageargument",
+                            "pageArgument": "page"
+                        },
+                        "endpoints": [
+                            {
+                                "url": "search.all",
+                                "name": "search.all",
+                                "resourcePath": "",
+                                "queryParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "Query",
+                                        "description": "Search query. May contains booleans, etc.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "highlight",
+                                        "name": "Highlight",
+                                        "description": "Pass a value of true to enable query highlight markers (see below).",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "Return matches sorted by either score or timestamp.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "timestamp",
+                                            "score"
+                                        ],
+                                        "defaultValue": "score"
+                                    },
+                                    {
+                                        "id": "sort_dir",
+                                        "name": "Sort direction",
+                                        "description": "Change sort direction to ascending (asc) or descending (desc).",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "defaultValue": "desc"
+                                    }
+                                ],
+                                "id": "list_search_all"
+                            },
+                            {
+                                "url": "search.messages",
+                                "name": "search.messages",
+                                "resourcePath": "messages",
+                                "queryParameters": [
+                                    {
+                                        "id": "query",
+                                        "name": "Query",
+                                        "description": "Search query. May contains booleans, etc",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "count",
+                                        "name": "Count",
+                                        "description": "Enter number of items to return per page",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "highlight",
+                                        "name": "Highlight",
+                                        "description": "Pass a value of true to enable query highlight markers (see below)",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "Return matches sorted by either score or timestamp",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "timestamp",
+                                            "score"
+                                        ],
+                                        "defaultValue": "score"
+                                    },
+                                    {
+                                        "id": "sort_dir",
+                                        "name": "Sort direction",
+                                        "description": "Change sort direction to ascending (asc) or descending (desc).",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "asc",
+                                            "desc"
+                                        ],
+                                        "defaultValue": "desc"
+                                    }
+                                ],
+                                "id": "list_search_messages"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "team",
+                        "name": "team",
+                        "endpoints": [
+                            {
+                                "url": "team.billableInfo",
+                                "name": "team.billableInfo",
+                                "queryParameters": [
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "Enter a user to retrieve the billable information for. Defaults to all users.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_team_billableinfo"
+                            },
+                            {
+                                "url": "team.info",
+                                "name": "team.info",
+                                "id": "list_team_info"
+                            },
+                            {
+                                "url": "team.billing.info",
+                                "name": "team.billing.info",
+                                "id": "list_team_billing_info"
+                            },
+                            {
+                                "url": "team.preferences.list",
+                                "name": "team.preferences.list",
+                                "id": "list_team_preferenses"
+                            },
+                            {
+                                "url": "team.integrationLogs",
+                                "name": "team.integrationLogs",
+                                "resourcePath": "logs",
+                                "successPath": "logs",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "service_id",
+                                        "name": "Service id",
+                                        "description": "Filter logs to this service. Defaults to all logs.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "app_id",
+                                        "name": "App id",
+                                        "description": "Filter logs to this Slack app. Defaults to all logs.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "Filter logs generated by this user’s actions. Defaults to all logs."
+                                    },
+                                    {
+                                        "id": "change_type",
+                                        "name": "Change type",
+                                        "description": "Filter logs with this change type. Defaults to all logs.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_team_integrationlogs"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "files",
+                        "name": "files",
+                        "endpoints": [
+                            {
+                                "id": "list_files",
+                                "url": "files.list",
+                                "paging": {
+                                    "pagingMethod": "pageargument",
+                                    "pageArgument": "page"
+                                },
+                                "name": "files.list",
+                                "resourcePath": "files",
+                                "successPath": "files",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "delta": {
+                                    "defaults": {
+                                        "ts_from": "{{lastExportDateTime}}"
+                                    },
+                                    "dateFormat": "X"
+                                },
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "description": "Filter files appearing in a specific channel, indicated by its ID.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "ts_from",
+                                        "name": "Timestamp from",
+                                        "description": "Filter files created after this timestamp (inclusive).",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "ts_to",
+                                        "name": "Timestamp to",
+                                        "description": "Filter files created before this timestamp (inclusive).",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "types",
+                                        "name": "Types",
+                                        "description": "Enter values in the types argument, like types=spaces,snippets.The default value is all, which does not filter the list.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "Filter files created by a single user.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_file_info",
+                                "url": "files.info",
+                                "name": "files.info",
+                                "successPath": "file",
+                                "queryParameters": [
+                                    {
+                                        "id": "file",
+                                        "name": "File",
+                                        "description": "Specify a file by providing its ID.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "url": "files.remote.list",
+                                "name": "files.remote.list",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "channel",
+                                        "name": "Channel",
+                                        "required": false,
+                                        "description": "Enter the ID of the conversation or channel containing the message"
+                                    },
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The limit parameter sets a maximum number of results to return per call.\n Provide sensible limit values. We recommend Max 200 results at a time.",
+                                        "defaultValue": 20
+                                    },
+                                    {
+                                        "id": "ts_from",
+                                        "name": "Timestamp from",
+                                        "description": "Filter files created after this timestamp (inclusive).",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "ts_to",
+                                        "name": "Timestamp to",
+                                        "description": "Filter files created before this timestamp (inclusive).",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "files_remote_list"
+                            },
+                            {
+                                "url": "files.remote.info",
+                                "name": "files.remote.info",
+                                "doesNotSupportPaging": true,
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "external_id",
+                                        "name": "External id",
+                                        "required": false,
+                                        "description": "Enter the external id creator defined GUID for the file."
+                                    },
+                                    {
+                                        "id": "file",
+                                        "name": "File",
+                                        "description": "Specify a file by providing its ID.",
+                                        "defaultValue": 20
+                                    }
+                                ],
+                                "id": "files_remote_info"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "team.profile",
+                        "name": "team.profile",
+                        "endpoints": [
+                            {
+                                "url": "team.profile.get",
+                                "name": "team.profile.get",
+                                "resourcePath": "profile.fields",
+                                "queryParameters": [
+                                    {
+                                        "id": "visibility",
+                                        "name": "Visibility",
+                                        "description": "Filter by visibility.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "all",
+                                            "visible",
+                                            "hidden"
+                                        ],
+                                        "defaultValue": "all"
+                                    }
+                                ],
+                                "id": "list_team_profile_get"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "users",
+                        "endpoints": [
+                            {
+                                "url": "users.list",
+                                "name": "users.list",
+                                "resourcePath": "members",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "supportedExportTypes": [
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The limit parameter sets a maximum number of results to return per call.\n Provide sensible limit values. We recommend Max 200 results at a time.",
+                                        "defaultValue": 20
+                                    },
+                                    {
+                                        "id": "include_locale",
+                                        "name": "Include locale",
+                                        "description": "Set this to true to receive the locale for users. Defaults to false.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "defaultValue": "false"
+                                    },
+                                    {
+                                        "id": "presence",
+                                        "name": "Presence",
+                                        "description": "Whether to include presence data in the output. Setting this to false improves performance, especially with large teams.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_users_list"
+                            },
+                            {
+                                "url": "users.info",
+                                "name": "users.info",
+                                "resourcePath": "user",
+                                "queryParameters": [
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "Enter user to get info on.",
+                                        "required": true,
+                                        "feildType": "input"
+                                    },
+                                    {
+                                        "id": "include_locale",
+                                        "name": "Include locale",
+                                        "description": "Set this to true to receive the locale for this user. Defaults to false.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "defaultValue": "false"
+                                    }
+                                ],
+                                "id": "list_users_info"
+                            },
+                            {
+                                "url": "users.getPresence",
+                                "name": "users.getPresence",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "User to get presence info on. Defaults to the authed user.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "get_users_getpresence"
+                            },
+                            {
+                                "url": "users.lookupByEmail",
+                                "name": "users.lookupbyemail",
+                                "resourcePath": "user",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "email",
+                                        "name": "Email",
+                                        "description": "Enter an email address belonging to a user in the workspace.",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "get_users_lookupemail"
+                            },
+                            {
+                                "url": "users.identity",
+                                "name": "users.identity",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [],
+                                "id": "get_users_identity"
+                            },
+                            {
+                                "url": "users.conversations",
+                                "name": "users.conversations",
+                                "resourcePath": "channels",
+                                "paging": {
+                                    "pagingMethod": "token",
+                                    "nextPagePath": "response_metadata.next_cursor",
+                                    "pageArgument": "cursor"
+                                },
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "limit",
+                                        "name": "Limit",
+                                        "description": "The limit parameter sets a maximum number of results to return per call.\n Provide sensible limit values. We recommend Max 200 results at a time.",
+                                        "defaultValue": 20
+                                    },
+                                    {
+                                        "id": "exclude_archived",
+                                        "name": "Exclude archived",
+                                        "description": "Set to true to exclude archived channels from the list.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "defaultValue": "false"
+                                    },
+                                    {
+                                        "id": "types",
+                                        "name": "Types",
+                                        "description": "Enter mix and match channel types by providing a comma-separated list of any combination of public_channel, private_channel, mpim, im.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "Browse conversations by a specific user ID's membership. Non-public channels are restricted to those where the calling user shares membership."
+                                    }
+                                ],
+                                "id": "list_users_conversation"
+                            },
+                            {
+                                "url": "users.deletePhoto",
+                                "name": "users.deletePhoto",
+                                "resourcePath": "",
+                                "doesNotSupportPaging": true,
+                                "id": "delete_users_photo"
+                            },
+                            {
+                                "url": "users.setActive",
+                                "name": "users.setActive",
+                                "method": "POST",
+                                "id": "users_setactive"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users.profile",
+                        "name": "users.profile",
+                        "endpoints": [
+                            {
+                                "url": "users.profile.get",
+                                "name": "users.profile.get",
+                                "resourcePath": "profile",
+                                "queryParameters": [
+                                    {
+                                        "id": "include_labels",
+                                        "name": "Include labels",
+                                        "description": "Include labels for each ID in custom profile fields.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "true",
+                                            "false"
+                                        ],
+                                        "defaultValue": "false"
+                                    },
+                                    {
+                                        "id": "user",
+                                        "name": "User",
+                                        "description": "Enter user to retrieve profile info for.",
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "id": "list_users_profile_get"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "resource": "API name (Resource)",
+            "operation": "API endpoint (Operation)"
+        },
+        "successPath": "ok",
+        "successValues": true,
+        "urlResolution": [
+            "channels.rename",
+            "channels.create",
+            "channels.invite",
+            "channels.archive",
+            "channels.join",
+            "channels.kick",
+            "channels.leave",
+            "channels.setPurpose",
+            "channels.setTopic",
+            "channels.unarchive",
+            "chat.meMessage",
+            "chat.postMessage",
+            "chat.postEphemeral",
+            "chat.update",
+            "chat.delete",
+            "groups.create",
+            "groups.rename",
+            "groups.open",
+            "groups.invite",
+            "groups.createChild",
+            "groups.archive",
+            "groups.join",
+            "groups.kick",
+            "groups.leave",
+            "groups.setPurpose",
+            "groups.setTopic",
+            "groups.unarchive",
+            "conversations.create",
+            "conversations.rename",
+            "conversations.invite",
+            "conversations.close",
+            "conversations.archive",
+            "conversations.join",
+            "conversations.kick",
+            "conversations.leave",
+            "conversations.setPurpose",
+            "conversations.setTopic",
+            "conversations.unarchive",
+            "pins.add",
+            "pins.remove",
+            "reactions.add",
+            "reactions.remove",
+            "reminders.add",
+            "reminders.complete",
+            "reminders.remove",
+            "stars.add",
+            "stars.remove",
+            "im.open",
+            "im.close",
+            "im.mark",
+            "mpim.open",
+            "mpim.close",
+            "mpim.mark",
+            "dnd.setSnooze",
+            "users.setPresence"
+        ],
+        "versions": [
+            {
+                "version": "latest",
+                "resources": [
+                    {
+                        "id": "chat",
+                        "name": "chat",
+                        "operations": [
+                            {
+                                "url": "chat.meMessage",
+                                "name": "chat.meMessage",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "text"
+                                ],
+                                "sampleData": {
+                                    "channel": "",
+                                    "text": ""
+                                },
+                                "id": "chat_memessage"
+                            },
+                            {
+                                "name": "chat.postMessage",
+                                "url": "chat.postMessage",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "text"
+                                ],
+                                "sampleData": {
+                                    "parse": "full",
+                                    "link_names": true,
+                                    "attachments": "",
+                                    "blocks": [],
+                                    "unfurl_links": true,
+                                    "unfurl_media": false,
+                                    "username": "My Bot",
+                                    "as_user": true,
+                                    "icon_url": "",
+                                    "icon_emoji": "",
+                                    "thread_ts": "",
+                                    "reply_broadcast": true,
+                                    "channel": "",
+                                    "text": ""
+                                },
+                                "id": "chat_postmessage"
+                            },
+                            {
+                                "name": "chat.postEphemeral",
+                                "url": "chat.postEphemeral",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "text",
+                                    "user"
+                                ],
+                                "sampleData": {
+                                    "parse": "full",
+                                    "link_names": true,
+                                    "attachments": [
+                                        {
+                                            "pretext": "pre-hello",
+                                            "text": "text-world"
+                                        }
+                                    ],
+                                    "user": "My Bot",
+                                    "as_user": true,
+                                    "channel": "",
+                                    "text": ""
+                                },
+                                "id": "chat_postephemeral"
+                            },
+                            {
+                                "url": "chat.update",
+                                "name": "chat.update",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "text",
+                                    "ts"
+                                ],
+                                "sampleData": {
+                                    "link_names": true,
+                                    "attachments": [
+                                        {
+                                            "pretext": "pre-hello",
+                                            "text": "text-world"
+                                        }
+                                    ],
+                                    "as_user": true,
+                                    "parse": "",
+                                    "channel": "",
+                                    "text": "",
+                                    "ts": ""
+                                },
+                                "id": "chat_update"
+                            },
+                            {
+                                "url": "chat.delete",
+                                "name": "chat.delete",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "ts"
+                                ],
+                                "sampleData": {
+                                    "as_user": "",
+                                    "channel": "",
+                                    "ts": ""
+                                },
+                                "id": "chat_delete"
+                            },
+                            {
+                                "url": "chat.deleteScheduledMessage",
+                                "name": "chat.deleteScheduledMessage",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "scheduled_message_id"
+                                ],
+                                "sampleData": {
+                                    "channel": "",
+                                    "scheduled_message_id": "",
+                                    "as_user": ""
+                                },
+                                "id": "chat_deleteScheduledMessage"
+                            },
+                            {
+                                "url": "chat.scheduleMessage",
+                                "name": "chat.scheduleMessage",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "post_at",
+                                    "text"
+                                ],
+                                "sampleData": {
+                                    "channel": "C1H9RESGL",
+                                    "scheduled_message_id": "Q1298393284",
+                                    "post_at": "1562180400",
+                                    "message": {
+                                        "text": "Here's a message for you in the future",
+                                        "username": "ecto1",
+                                        "bot_id": "B19LU7CSY",
+                                        "attachments": [
+                                            {
+                                                "text": "This is an attachment",
+                                                "id": 1,
+                                                "fallback": "This is an attachment's fallback"
+                                            }
+                                        ],
+                                        "type": "delayed_message",
+                                        "subtype": "bot_message"
+                                    }
+                                },
+                                "id": "chat_scheduleMessage"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "calls",
+                        "name": "calls",
+                        "operations": [
+                            {
+                                "url": "calls.add",
+                                "name": "calls.add",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "external_unique_id",
+                                    "join_url"
+                                ],
+                                "sampleData": {
+                                    "date_start": 1562002086,
+                                    "external_unique_id": "025169F6-E37A-4E62-BB54-7F93A0FC4C1F",
+                                    "join_url": "https://callmebeepme.com/calls/0987654321",
+                                    "desktop_app_join_url": "callapp://join/0987654321",
+                                    "external_display_id": "705-292-868",
+                                    "title": "Kimpossible sync up",
+                                    "users": [
+                                        {
+                                            "slack_id": "U0MQG83FD"
+                                        },
+                                        {
+                                            "external_id": "54321678",
+                                            "display_name": "Kim Possible"
+                                        }
+                                    ]
+                                },
+                                "id": "calls_add"
+                            },
+                            {
+                                "url": "calls.update",
+                                "name": "calls.update",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "id"
+                                ],
+                                "sampleData": {
+                                    "id": "R0E69JAIF",
+                                    "join_url": "https://zoom.us/j/95179667083",
+                                    "desktop_app_join_url": "",
+                                    "title": ""
+                                },
+                                "id": "calls_update"
+                            },
+                            {
+                                "url": "calls.end",
+                                "name": "calls.end",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "id"
+                                ],
+                                "sampleData": {
+                                    "id": "R0E69JAIF",
+                                    "duration": ""
+                                },
+                                "id": "calls_end"
+                            },
+                            {
+                                "url": "calls.participants.add",
+                                "name": "calls.participants.add",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "id",
+                                    "users[*].slack_id"
+                                ],
+                                "sampleData": {
+                                    "id": "025169F6-E37A-4E62-BB54-7F93A0FC4C1F",
+                                    "users": [
+                                        {
+                                            "slack_id": "U0MQG83FD"
+                                        },
+                                        {
+                                            "external_id": "54321678",
+                                            "display_name": "Kim Possible"
+                                        }
+                                    ]
+                                },
+                                "id": "calls_participants_add"
+                            },
+                            {
+                                "url": "calls.participants.remove",
+                                "name": "calls.participants.remove",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "id",
+                                    "users[*].slack_id"
+                                ],
+                                "sampleData": {
+                                    "id": "025169F6-E37A-4E62-BB54-7F93A0FC4C1F",
+                                    "users": [
+                                        {
+                                            "slack_id": "U0MQG83FD"
+                                        },
+                                        {
+                                            "external_id": "54321678",
+                                            "display_name": "Kim Possible"
+                                        }
+                                    ]
+                                },
+                                "id": "calls_participants_remove"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "dialog",
+                        "name": "dialog",
+                        "operations": [
+                            {
+                                "url": "dialog.open",
+                                "name": "dialog.open",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "dialog",
+                                    "trigger_id"
+                                ],
+                                "sampleData": {
+                                    "dialog": "",
+                                    "trigger_id": ""
+                                },
+                                "id": "dialog.open"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "conversations",
+                        "name": "conversations",
+                        "operations": [
+                            {
+                                "url": "conversations.create",
+                                "name": "conversations.create",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "name"
+                                ],
+                                "sampleData": {
+                                    "is_private": "",
+                                    "name": "",
+                                    "user_ids": ""
+                                },
+                                "id": "conversations_create"
+                            },
+                            {
+                                "url": "conversations.rename",
+                                "name": "conversations.rename",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "name"
+                                ],
+                                "sampleData": {
+                                    "channel": "",
+                                    "name": ""
+                                },
+                                "id": "conversations_rename"
+                            },
+                            {
+                                "url": "conversations.invite",
+                                "name": "conversations.invite",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "users"
+                                ],
+                                "sampleData": {
+                                    "channel": "",
+                                    "users": ""
+                                },
+                                "id": "conversations_invite"
+                            },
+                            {
+                                "url": "conversations.close",
+                                "name": "conversations.close",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "sampleData": {
+                                    "channel": ""
+                                },
+                                "id": "conversations_close"
+                            },
+                            {
+                                "url": "conversations.archive",
+                                "name": "conversations.archive",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "sampleData": {
+                                    "channel": ""
+                                },
+                                "id": "conversations_archive"
+                            },
+                            {
+                                "url": "conversations.join",
+                                "name": "conversations.join",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "sampleData": {
+                                    "channel": ""
+                                },
+                                "id": "conversations_join"
+                            },
+                            {
+                                "url": "conversations.kick",
+                                "name": "conversations.kick",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "user"
+                                ],
+                                "sampleData": {
+                                    "channel": "",
+                                    "user": ""
+                                },
+                                "id": "conversations_kick"
+                            },
+                            {
+                                "url": "conversations.mark",
+                                "name": "conversations.mark",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "ts"
+                                ],
+                                "sampleData": {
+                                    "channel": "",
+                                    "ts": ""
+                                },
+                                "id": "conversations_mark"
+                            },
+                            {
+                                "url": "conversations.leave",
+                                "name": "conversations.leave",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "sampleData": {
+                                    "channel": ""
+                                },
+                                "id": "conversations_leave"
+                            },
+                            {
+                                "url": "conversations.setPurpose",
+                                "name": "conversations.setPurpose",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "purpose"
+                                ],
+                                "sampleData": {
+                                    "channel": "",
+                                    "purpose": ""
+                                },
+                                "id": "conversations_setpurpose"
+                            },
+                            {
+                                "url": "conversations.setTopic",
+                                "name": "conversations.setTopic",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel",
+                                    "topic"
+                                ],
+                                "sampleData": {
+                                    "channel": "",
+                                    "topic": ""
+                                },
+                                "id": "conversations_settopic"
+                            },
+                            {
+                                "url": "conversations.unarchive",
+                                "name": "conversations.unarchive",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "sampleData": {
+                                    "channel": ""
+                                },
+                                "id": "conver_unarchive"
+                            },
+                            {
+                                "url": "conversations.acceptSharedInvite",
+                                "name": "conversations.acceptSharedInvite",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel_name"
+                                ],
+                                "sampleData": {
+                                    "free_trial_accepted": true,
+                                    "implicit_approval": true,
+                                    "channel_id": "C0001111",
+                                    "invite_id": "I00043221",
+                                    "is_private": true,
+                                    "team_id": "T1234567890"
+                                },
+                                "id": "conver_acceptSharedInvite"
+                            },
+                            {
+                                "url": "conversations.approveSharedInvite",
+                                "name": "conversations.approveSharedInvite",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "invite_id"
+                                ],
+                                "sampleData": {
+                                    "invite_id": "I00043221",
+                                    "target_team": "T1234567890"
+                                },
+                                "id": "conver_approveSharedInvite"
+                            },
+                            {
+                                "url": "conversations.declineSharedInvite",
+                                "name": "conversations.declineSharedInvite",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "invite_id"
+                                ],
+                                "sampleData": {
+                                    "invite_id": "I00043221",
+                                    "target_team": "T1234567890"
+                                },
+                                "id": "conver_declineSharedInvite"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "pins",
+                        "name": "pins",
+                        "sampleData": {
+                            "file": "",
+                            "file_comment": "",
+                            "timestamp": "",
+                            "channel": ""
+                        },
+                        "operations": [
+                            {
+                                "url": "pins.add",
+                                "name": "pins.add",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "method": "POST",
+                                "id": "pins_add"
+                            },
+                            {
+                                "url": "pins.remove",
+                                "name": "pins.remove",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "id": "pins_remove"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reactions",
+                        "name": "reactions",
+                        "sampleData": {
+                            "file": "",
+                            "file_comment": "",
+                            "timestamp": "",
+                            "channel": "",
+                            "name": ""
+                        },
+                        "operations": [
+                            {
+                                "url": "reactions.add",
+                                "name": "reactions.add",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "id": "reactions_add"
+                            },
+                            {
+                                "url": "reactions.remove",
+                                "name": "reactions.remove",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "id": "reactions_remove"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "reminders",
+                        "name": "reminders",
+                        "operations": [
+                            {
+                                "url": "reminders.add",
+                                "name": "reminders.add",
+                                "method": "POST",
+                                "sampleData": {
+                                    "user": "",
+                                    "text": "",
+                                    "time": ""
+                                },
+                                "requiredMappings": [
+                                    "text",
+                                    "time"
+                                ],
+                                "id": "reminders_add"
+                            },
+                            {
+                                "url": "reminders.complete",
+                                "name": "reminders.complete",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "reminder"
+                                ],
+                                "sampleData": {
+                                    "reminder": ""
+                                },
+                                "id": "reminders_complete"
+                            },
+                            {
+                                "url": "reminders.delete",
+                                "name": "reminders.delete",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "reminder"
+                                ],
+                                "sampleData": {
+                                    "reminder": ""
+                                },
+                                "id": "reminders_delete"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "stars",
+                        "name": "stars",
+                        "sampleData": {
+                            "file": "",
+                            "file_comment": "",
+                            "timestamp": "",
+                            "channel": ""
+                        },
+                        "operations": [
+                            {
+                                "url": "stars.add",
+                                "name": "stars.add",
+                                "method": "POST",
+                                "id": "stars_add"
+                            },
+                            {
+                                "url": "stars.remove",
+                                "name": "stars.remove",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channel"
+                                ],
+                                "id": "stars_remove"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "dnd",
+                        "name": "dnd",
+                        "operations": [
+                            {
+                                "url": "dnd.setSnooze",
+                                "name": "dnd.setSnooze",
+                                "requiredMappings": [
+                                    "num_minutes"
+                                ],
+                                "sampleData": {
+                                    "num_minutes": ""
+                                },
+                                "method": "POST",
+                                "id": "dnd_setsnooze"
+                            },
+                            {
+                                "url": "dnd.endSnooze",
+                                "name": "dnd.endSnooze",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "num_minutes"
+                                ],
+                                "sampleData": {
+                                    "num_minutes": ""
+                                },
+                                "id": "dnd_endsnooze"
+                            },
+                            {
+                                "url": "dnd.endDnd",
+                                "name": "dnd.endDnd",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "num_minutes"
+                                ],
+                                "sampleData": {
+                                    "num_minutes": ""
+                                },
+                                "id": "dnd_enddnd"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "files.comments",
+                        "name": "files.comments",
+                        "operations": [
+                            {
+                                "url": "files.comments.delete",
+                                "name": "files.comments.delete",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "file",
+                                    "id"
+                                ],
+                                "sampleData": {
+                                    "file": "",
+                                    "id": ""
+                                },
+                                "id": "comment_delete"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "files",
+                        "name": "files",
+                        "operations": [
+                            {
+                                "url": "files.delete",
+                                "name": "files.delete",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "file"
+                                ],
+                                "sampleData": {
+                                    "file": ""
+                                },
+                                "id": "file_delete"
+                            },
+                            {
+                                "url": "files.sharedPublicURL",
+                                "name": "files.sharedPublicURL",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "file"
+                                ],
+                                "sampleData": {
+                                    "file": ""
+                                },
+                                "id": "files_shareurl"
+                            },
+                            {
+                                "url": "files.revokePublicURL",
+                                "name": "files.revokePublicURL",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "file"
+                                ],
+                                "sampleData": {
+                                    "file": ""
+                                },
+                                "id": "files_revokeurl"
+                            },
+                            {
+                                "url": "files.remote.add",
+                                "name": "files.remote.add",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "external_id",
+                                    "external_url",
+                                    "title"
+                                ],
+                                "sampleData": {
+                                    "title": "testing",
+                                    "filetype": "remote",
+                                    "external_id": "g2MGHYshCRIQMygBegUIARDCAQ",
+                                    "external_url": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fblog%2Fwp-content%2Fuploads%2Fsites%2F5%2F2014%2F11%2Fimg196.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fblog%2Fhow-to-turn-any-photograph-into-pixel-art-with-photoshop&tbnid=LpHUUcy9pOGTnM&vet=12ahUKEwiK3qvYi9L4AhW-g2MGHYshCRIQMygBegUIARDCAQ..i&docid=SXvbcWXL4x4V3M&w=750&h=500&q=any%20image&ved=2ahUKEwiK3qvYi9L4AhW-g2MGHYshCRIQMygBegUIARDCAQ"
+                                },
+                                "id": "files_remote_add"
+                            },
+                            {
+                                "url": "files.remote.remove",
+                                "name": "files.remote.remove",
+                                "method": "POST",
+                                "sampleData": {
+                                    "file": "remote",
+                                    "external_id": "g2MGHYshCRIQMygBegUIARDCAQ"
+                                },
+                                "id": "files_remote_remove"
+                            },
+                            {
+                                "url": "files.remote.update",
+                                "name": "files.remote.update",
+                                "method": "POST",
+                                "sampleData": {
+                                    "title": "testing",
+                                    "file": "",
+                                    "filetype": "remote",
+                                    "external_id": "g2MGHYshCRIQMygBegUIARDCAQ",
+                                    "external_url": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fblog%2Fwp-content%2Fuploads%2Fsites%2F5%2F2014%2F11%2Fimg196.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fblog%2Fhow-to-turn-any-photograph-into-pixel-art-with-photoshop&tbnid=LpHUUcy9pOGTnM&vet=12ahUKEwiK3qvYi9L4AhW-g2MGHYshCRIQMygBegUIARDCAQ..i&docid=SXvbcWXL4x4V3M&w=750&h=500&q=any%20image&ved=2ahUKEwiK3qvYi9L4AhW-g2MGHYshCRIQMygBegUIARDCAQ"
+                                },
+                                "id": "files_remote_update"
+                            },
+                            {
+                                "url": "files.remote.share",
+                                "name": "files.remote.share",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "channels"
+                                ],
+                                "sampleData": {
+                                    "file": "",
+                                    "external_id": "g2MGHYshCRIQMygBegUIARDCAQ"
+                                },
+                                "id": "files_remote_share"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "users",
+                        "operations": [
+                            {
+                                "url": "users.setPresence",
+                                "name": "users.setPresence",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "presence"
+                                ],
+                                "sampleData": {
+                                    "presence": ""
+                                },
+                                "id": "users_setpresence"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users.profile",
+                        "name": "users.profile",
+                        "sampleData": {
+                            "ok": true,
+                            "profile": {
+                                "title": "CELIGO",
+                                "phone": "",
+                                "skype": "",
+                                "real_name": "Celigo Labs",
+                                "real_name_normalized": "Celigo Labs",
+                                "display_name": "celigo-labs",
+                                "display_name_normalized": "celigo-labs",
+                                "fields": null,
+                                "status_text": "",
+                                "status_emoji": "",
+                                "status_expiration": 0,
+                                "avatar_hash": "g271c50e4961",
+                                "email": "celigo-labs@celigo.com",
+                                "first_name": "Celigo",
+                                "last_name": "Labs",
+                                "image_24": "https://secure.gravatar.com/avatar/271c50e4961b0610b237ed54ec1cdf21.jpg?s=24&d=https%3A%2F%2Fa.slack-edge.com%2F0180%2Fimg%2Favatars%2Fava_0004-24.png",
+                                "image_32": "https://secure.gravatar.com/avatar/271c50e4961b0610b237ed54ec1cdf21.jpg?s=32&d=https%3A%2F%2Fa.slack-edge.com%2F66f9%2Fimg%2Favatars%2Fava_0004-32.png",
+                                "image_48": "https://secure.gravatar.com/avatar/271c50e4961b0610b237ed54ec1cdf21.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2F66f9%2Fimg%2Favatars%2Fava_0004-48.png",
+                                "image_72": "https://secure.gravatar.com/avatar/271c50e4961b0610b237ed54ec1cdf21.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F66f9%2Fimg%2Favatars%2Fava_0004-72.png",
+                                "image_192": "https://secure.gravatar.com/avatar/271c50e4961b0610b237ed54ec1cdf21.jpg?s=192&d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0004-192.png",
+                                "image_512": "https://secure.gravatar.com/avatar/271c50e4961b0610b237ed54ec1cdf21.jpg?s=512&d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0004-512.png",
+                                "status_text_canonical": ""
+                            }
+                        },
+                        "operations": [
+                            {
+                                "url": "users.profile.set",
+                                "name": "users.profile.set",
+                                "method": "POST",
+                                "id": "users_profile_set",
+                                "sampleData": {
+                                    "name": "",
+                                    "profile": "",
+                                    "user": "",
+                                    "value": ""
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

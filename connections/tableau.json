@@ -1,0 +1,3237 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "resource": "API Name",
+            "endpoint": "Operation"
+        },
+        "paging": {
+            "pagingMethod": "pageargument",
+            "pageArgument": "pageSize",
+            "maxCountPath": "pagination.totalAvailable"
+        },
+        "urlResolution": [
+            "/groups/:_group_id/users",
+            "/users/:_user_id/workbooks",
+            "/users/:_user_id",
+            "/users",
+            "/groups",
+            "/subscriptions/:_subscription_id",
+            "/subscriptions",
+            "/projects",
+            "/projects/:_project_id/default-permissions/datasources",
+            "/projects/:_project_id/permissions",
+            "/views",
+            "/workbooks/:_workbook_id",
+            "/workbooks/:_workbook_id/permissions",
+            "/workbooks/:_workbook_id/revisions",
+            "/workbooks/:_workbook_id/views",
+            "/workbooks",
+            "/datasources/:_datasource_id/revisions",
+            "/datasources/:_datasource_id/permissions",
+            "/datasources/:_datasource_id",
+            "/datasources",
+            "/tasks/extractRefreshes",
+            "/tasks/extractRefreshes/:_task_id",
+            "/favorites/:_user_id",
+            "/fileUploads"
+        ],
+        "versions": [
+            {
+                "version": "2.7",
+                "resources": [
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "endpoints": [
+                            {
+                                "id": "get_users_in_group",
+                                "url": "/groups/:_group_id/users",
+                                "name": "Get Users in Group [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "users.user",
+                                "pathParameters": [
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_users_on_site",
+                                "url": "/users",
+                                "name": "Get Users on Site [This endpoint only works from 1.0 - 3.11]",
+                                "resourcePath": "users.user",
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "sort by putting asc or desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "name:asc",
+                                            "name:desc",
+                                            "siteRole:asc",
+                                            "siteRole:desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_user_on_site",
+                                "url": "/users/:_user_id",
+                                "name": "Query User On Site [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "user",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "grous",
+                        "name": "Groups",
+                        "endpoints": [
+                            {
+                                "id": "query_groups",
+                                "url": "/groups",
+                                "name": "Query Groups [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "groups.group",
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "sort by putting asc or desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "name:asc",
+                                            "name:desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_groups_for_a_user",
+                                "url": "/users/:_user_id/groups",
+                                "name": "Get Groups for a User [This endpoint only works from 3.7 - 3.11]",
+                                "resourcePath": "groups.group",
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "views",
+                        "name": "Views",
+                        "endpoints": [
+                            {
+                                "id": "query_views_for_site",
+                                "url": "/views",
+                                "name": "Query Views for Site [This endpoint only works from 2.2 - 3.11]",
+                                "resourcePath": "views.view",
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "sort by putting asc or desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "name:asc",
+                                            "name:desc",
+                                            "createdAt:asc",
+                                            "createdAt:desc",
+                                            "updatedAt:asc",
+                                            "updatedAt:desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "includeUsageStatistics",
+                                        "name": "IncludeUsageStatistics",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_view_permissions",
+                                "url": "/views/:_view_id/permissions",
+                                "name": "Query View Permissions[This endpoint only works from 3.2 - 3.11]",
+                                "resourcePath": "view",
+                                "pathParameters": [
+                                    {
+                                        "id": "view_id",
+                                        "name": "View ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_views_for_workbook",
+                                "url": "/workbooks/:_workbook_id/views",
+                                "name": "Query Views for Workbook [This endpoint only works from 1.0 - 3.11]",
+                                "resourcePath": "views.view",
+                                "pathParameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "includeUsageStatistics",
+                                        "name": "IncludeUsageStatistics",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "workbooks",
+                        "name": "Workbooks",
+                        "endpoints": [
+                            {
+                                "id": "query_workbook",
+                                "url": "/workbooks/:_workbook_id",
+                                "name": "Query Workbook [This endpoint only works from 1.0 - 3.11]",
+                                "resourcePath": "workbook",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_workbooks_for_site",
+                                "url": "/workbooks",
+                                "name": "Query Workbooks for Site [This endpoint only works from 2.3 - 3.11]",
+                                "resourcePath": "workbooks.workbook",
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "sort by putting asc or desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "name:asc",
+                                            "name:desc",
+                                            "createdAt:asc",
+                                            "createdAt:desc",
+                                            "updatedAt:asc",
+                                            "updatedAt:desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_workbooks_for_user",
+                                "url": "/users/:_user_id/workbooks",
+                                "name": "Query Workbooks for User [This endpoint only works from 1.0 - 3.11]",
+                                "resourcePath": "workbooks.workbook",
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "ownedBy",
+                                        "name": "Owned By",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "datasources",
+                        "name": "Data sources",
+                        "endpoints": [
+                            {
+                                "id": "query_datasources",
+                                "url": "/datasources",
+                                "name": "Query Datasources [This endpoint only works from 1.0 - 3.11]",
+                                "resourcePath": "datasources.datasource",
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "sort by putting asc or desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "name:asc",
+                                            "name:desc",
+                                            "type:asc",
+                                            "type:desc",
+                                            "createdAt:asc",
+                                            "createdAt:desc",
+                                            "updatedAt:asc",
+                                            "updatedAt:desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_datasource",
+                                "url": "/datasources/:_datasource_id",
+                                "name": "Query Datasource [This endpoint only works from 1.0 - 3.11]",
+                                "resourcePath": "datasource",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revisions",
+                        "name": "Revisions",
+                        "endpoints": [
+                            {
+                                "id": "get_datasource_revisions",
+                                "url": "/datasources/:_datasource_id/revisions",
+                                "name": "Get Datasource Revisions [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "revisions.revision",
+                                "pathParameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_workbook_revisions",
+                                "url": "/workbooks/:_workbook_id/revisions",
+                                "name": "Get Workbook Revisions [This endpoint only works from 2.3 - 3.11]",
+                                "resourcePath": "revisions.revision",
+                                "pathParameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "permissions",
+                        "name": "Permissions",
+                        "endpoints": [
+                            {
+                                "id": "query_datasources_permissions",
+                                "url": "/datasources/:_datasource_id/permissions",
+                                "name": "Query Datasources Permissions [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "permissions",
+                                "pathParameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_workbook_permissions",
+                                "url": "/workbooks/:_workbook_id/permissions",
+                                "name": "Query Workbook Permissions [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "permissions",
+                                "pathParameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_projects_permissions",
+                                "url": "/projects/:_project_id/permissions",
+                                "name": "Query Projects Permissions [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "permissions",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_default_permissions",
+                                "url": "/projects/:_project_id/default-permissions/datasources",
+                                "name": "Query Default Permissions [This endpoint only works from 2.1 - 3.11]",
+                                "resourcePath": "permissions",
+                                "pathParameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "endpoints": [
+                            {
+                                "id": "get_extract_refresh_tasks",
+                                "url": "/tasks/extractRefreshes",
+                                "name": "Get Extract Refresh Tasks [This endpoint only works from 2.6 - 3.11]",
+                                "resourcePath": "tasks.task",
+                                "pathParameters": []
+                            },
+                            {
+                                "id": "get_extract_refresh_task",
+                                "url": "/tasks/extractRefreshes/:_task_id",
+                                "name": "Get Extract Refresh Task [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "task",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "subscriptions",
+                        "name": "Subscriptions",
+                        "endpoints": [
+                            {
+                                "id": "query_subscriptions",
+                                "url": "/subscriptions",
+                                "name": "Query Subscriptions [This endpoint only works from 2.3 - 3.11]",
+                                "resourcePath": "subscriptions.subscription"
+                            },
+                            {
+                                "id": "query_subscription",
+                                "url": "/subscriptions/:_subscription_id",
+                                "name": "Query Subscription [This endpoint only works from 2.3 - 3.11]",
+                                "resourcePath": "subscription",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "subscription_id",
+                                        "name": "Subscription ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "favorites",
+                        "name": "Favorites",
+                        "endpoints": [
+                            {
+                                "id": "get_favorites_for_user",
+                                "url": "/favorites/:_user_id",
+                                "name": "Get Favorites for User[This endpoint only works from 2.5 - 3.11]",
+                                "resourcePath": "favorites.favorite",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "publishing",
+                        "name": "Publishing",
+                        "endpoints": [
+                            {
+                                "id": "initiate_file_upload",
+                                "url": "/fileUploads",
+                                "name": "Initiate File Upload [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "fileUpload",
+                                "method": "POST"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "endpoints": [
+                            {
+                                "id": "query_projects",
+                                "url": "/projects",
+                                "name": "Query Projects [This endpoint only works from 2.0 - 3.11]",
+                                "resourcePath": "projects.project",
+                                "doesNotSupportPaging": true,
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "sort by putting asc or desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "name:asc",
+                                            "name:desc",
+                                            "description:asc",
+                                            "description:desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "data-driven_alerts",
+                        "name": "Data-Driven Alerts",
+                        "endpoints": [
+                            {
+                                "id": "query_data-driven_alerts",
+                                "url": "/dataAlerts",
+                                "name": "Query Data-Driven Alerts [This endpoint only works from 3.2 - 3.11]",
+                                "resourcePath": "dataAlerts.dataAlert"
+                            },
+                            {
+                                "id": "query_data-driven_alert_details",
+                                "url": "/dataAlerts/:_data_alert_id",
+                                "name": "Query Data-Driven Alert Details [This endpoint only works from 3.2 - 3.11]",
+                                "resourcePath": "dataAlert",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "data_alert_id",
+                                        "name": "Data-Alert ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "quality_warning_trigger",
+                        "name": "Quality Warning Trigger",
+                        "endpoints": [
+                            {
+                                "id": "query_quality_warning_trigger",
+                                "url": "/dataQualityTriggers/:_trigger_id",
+                                "name": "Query Quality Warning Trigger [This endpoint only works from 3.11]",
+                                "resourcePath": "dataQualityTriggerList.dataQualityTrigger",
+                                "pathParameters": [
+                                    {
+                                        "id": "trigger_id",
+                                        "name": "Trigger ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_all_quality_warning_triggers_by_content",
+                                "url": "/dataQualityTriggers/:_content_type/:_content_luid",
+                                "name": "Query All Quality Warning Triggers by Content [This endpoint only works from 3.11]",
+                                "resourcePath": "dataQualityTriggerList.dataQualityTrigger",
+                                "pathParameters": [
+                                    {
+                                        "id": "content_type",
+                                        "name": "Content type",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "datasource",
+                                            "flow"
+                                        ]
+                                    },
+                                    {
+                                        "id": "content_luid",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "metrics",
+                        "name": "Metrics",
+                        "endpoints": [
+                            {
+                                "id": "get_metric",
+                                "url": "/metrics/:_metric_luid",
+                                "name": "Get Metric [This endpoint only works from 3.9 - 3.11]",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "metric",
+                                "pathParameters": [
+                                    {
+                                        "id": "metric_luid",
+                                        "name": "Metric luid",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "list_metrics_for_site",
+                                "url": "/metrics",
+                                "name": "List Metrics for Site [This endpoint only works from 3.9 - 3.11]",
+                                "resourcePath": "metrics.metric",
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "sort by putting asc or desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "name:asc",
+                                            "name:desc",
+                                            "siteRole:asc",
+                                            "siteRole:desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "fields",
+                                        "name": "Fields",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "databases",
+                        "name": "Databases",
+                        "endpoints": [
+                            {
+                                "id": "query_database",
+                                "url": "/databases/:_database_id",
+                                "name": "Query Database [This endpoint only works from 3.5 - 3.11]",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "database",
+                                "pathParameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_database_permissions",
+                                "url": "/databases/:_database_id/permissions",
+                                "name": "Query Database Permissions [This endpoint only works from 3.5 - 3.11]",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "database",
+                                "pathParameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_default_database_permissions",
+                                "url": "/databases/:_database_id/default-permissions/tables",
+                                "name": "Query Default Database Permissions [This endpoint only works from 3.5 - 3.11]",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "database",
+                                "pathParameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_databases",
+                                "url": "/databases",
+                                "name": "Query Databases [This endpoint only works from 3.5 - 3.11]",
+                                "resourcePath": "databases.database"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs",
+                        "endpoints": [
+                            {
+                                "id": "query_jobs",
+                                "url": "/jobs",
+                                "name": "Query Jobs [This endpoint only works from 3.1 - 3.11]",
+                                "resourcePath": "backgroundJobs.backgroundJob"
+                            },
+                            {
+                                "id": "query_job",
+                                "url": "/jobs/:_job_id",
+                                "name": "Query Job [This endpoint only works from 3.1 - 3.11]",
+                                "resourcePath": "job",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "job_id",
+                                        "name": "Job ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "flows",
+                        "name": "Flow",
+                        "endpoints": [
+                            {
+                                "id": "get_flow_run",
+                                "url": "/flows/runs/:_flow_run_id",
+                                "name": "Get Flow Run [This endpoint only works from 3.10 - 3.11]",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "flow",
+                                "pathParameters": [
+                                    {
+                                        "id": "flow_run_id",
+                                        "name": "Flow run ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_flow_runs",
+                                "url": "/flows/runs",
+                                "name": "Get Flow Runs [This endpoint only works from 3.10 - 3.11]",
+                                "resourcePath": "flowRuns.flow",
+                                "queryParameters": [
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_flow_run_task",
+                                "url": "/tasks/runFlow/:_task_id",
+                                "name": "Get Flow Run Task [This endpoint only works from 3.3 - 3.11]",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "task",
+                                "pathParameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_flow_run_tasks",
+                                "url": "/tasks/runFlow",
+                                "name": "Get Flow Run Tasks [This endpoint only works from 3.3 - 3.11]",
+                                "doesNotSupportPaging": true,
+                                "resourcePath": "tasks.task"
+                            },
+                            {
+                                "id": "query_flow",
+                                "url": "/flows/:_flow_id",
+                                "name": "Query Flow [This endpoint only works from 3.3 - 3.11]",
+                                "resourcePath": "flow",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "flow_id",
+                                        "name": "Flow ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_flows_for_a_site",
+                                "url": "/flows",
+                                "name": "Query Flows for a Site [This endpoint only works from 3.3 - 3.11]",
+                                "resourcePath": "flows.flow",
+                                "queryParameters": [
+                                    {
+                                        "id": "sort",
+                                        "name": "Sort",
+                                        "description": "sort by putting asc or desc",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "name:asc",
+                                            "name:desc",
+                                            "siteRole:asc",
+                                            "siteRole:desc"
+                                        ]
+                                    },
+                                    {
+                                        "id": "filter",
+                                        "name": "Filter",
+                                        "description": "e.g. name:eq:{{name}}.",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_flows_for_user",
+                                "url": "/users/:_user_id/flows",
+                                "name": "Query Flows for User [This endpoint only works from 3.3 - 3.11]",
+                                "resourcePath": "flows.flow"
+                            },
+                            {
+                                "id": "query_flow_connections",
+                                "url": "/flows/:_flow_id/connections",
+                                "name": "Query Flow Connections [This endpoint only works from 3.3 - 3.11]",
+                                "resourcePath": "connections.connection",
+                                "pathParameters": [
+                                    {
+                                        "id": "flow_id",
+                                        "name": "Flow ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "query_flow_permissions",
+                                "url": "/flows/:_flow_id/permissions",
+                                "name": "Query Flow Permissions [This endpoint only works from 3.3 - 3.11]",
+                                "resourcePath": "flow",
+                                "pathParameters": [
+                                    {
+                                        "id": "flow_id",
+                                        "name": "Flow ID",
+                                        "required": true,
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "/groups/:_group_id",
+            "/groups",
+            "/users/:_user_id",
+            "/users",
+            "/groups/:_group_id/users/:_user_id",
+            "/groups/:_group_id/users",
+            "/subscriptions/:_subscription_id",
+            "/subscriptions",
+            "/projects/:_project_id",
+            "/projects",
+            "/views/:_view_id/tags/:_tag_name",
+            "/views/:_view_id/tags",
+            "/workbooks/:_workbook_id/tags/:_tag_name",
+            "/workbooks/:_workbook_id/tags",
+            "/datasources/:_datasource_id/tags/:_tag_name",
+            "/datasources/:_datasource_id/tags",
+            "/workbooks/:_workbook_id",
+            "/datasources/:_datasource_id",
+            "/datasources/:_datasource_id/revisions/:_revision_number",
+            "/workbooks/:_workbook_id/revisions/:_revision_number",
+            "/workbooks/:_workbook_id/permissions",
+            "/datasources/:_datasource_id/permissions",
+            "/projects/:_project_id/permissions",
+            "/projects/:_project_id/default-permissions/workbooks",
+            "/projects/:_project_id/default-permissions/datasources",
+            "/workbooks/:_workbook_id/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+            "/datasources/:_datasource_id/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+            "/projects/:_project_id/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+            "/projects/:_project_id/default-permissions/workbooks/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+            "/projects/:_project_id/default-permissions/datasources/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+            "/favorites/:_user_id",
+            "/tasks/extractRefreshes/:_task_id/runNow"
+        ],
+        "versions": [
+            {
+                "version": "2.7",
+                "resources": [
+                    {
+                        "id": "groups",
+                        "name": "Groups",
+                        "sampleData": {
+                            "group": {
+                                "name": "group3",
+                                "id": "12345678"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_group",
+                                "url": "/groups",
+                                "name": "Create Group [This endpoint only works from 3.9 - 3.11]",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_group",
+                                "url": "/groups/:_group_id",
+                                "name": "Update Group [This endpoint only works from 3.9 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "group_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_group",
+                                "url": [
+                                    "/groups/:_group_id",
+                                    "/groups"
+                                ],
+                                "name": "Create or Update Group [This endpoint only works from 3.9 - 3.11]",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "group_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "users",
+                        "name": "Users",
+                        "sampleData": {
+                            "user": {
+                                "authSetting": "ServerDefault",
+                                "siteRole": "Publisher",
+                                "name": "smita@gmail.com"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_user_to_site",
+                                "url": "/users",
+                                "name": "Add User to Site [This endpoint only works from 1.0 - 3.11]",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/users",
+                                        "extract": "users.user[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "add_user_to_group",
+                                "url": "/groups/:_group_id/users",
+                                "name": "Add User to Group [This endpoint only works from 2.0 - 3.11]",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_user",
+                                "url": "/users/:_user_id",
+                                "name": "Update User [This endpoint only works from 1.0 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/users",
+                                        "extract": "users.user[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_user",
+                                "url": [
+                                    "/users/:_user_id",
+                                    "/users"
+                                ],
+                                "name": "Create or Update User [This endpoint only works from 1.0 - 3.11]",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/users",
+                                        "extract": "users.user[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "remove_user_from_site",
+                                "url": "/users/:_user_id",
+                                "name": "Remove User from Site [This endpoint only works from 1.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_user_from_group",
+                                "url": "/groups/:_group_id/users/:_user_id",
+                                "name": "Remove User from Group [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "view",
+                        "name": "Views",
+                        "sampleData": {
+                            "permissions": {
+                                "view": {
+                                    "owner": {
+                                        "id": "4d19ddc3-ea84-4778-86c2-26237cbd240d"
+                                    },
+                                    "id": "f38a7aa6-ae26-42d3-8603-037c621ed904",
+                                    "name": "Obesity"
+                                },
+                                "granteeCapabilities": [
+                                    {
+                                        "group": {
+                                            "id": "1798b1fd-64a6-4d46-8290-5dd43f10b746"
+                                        },
+                                        "capabilities": {
+                                            "capability": [
+                                                {
+                                                    "name": "ViewUnderlyingData",
+                                                    "mode": "Allow"
+                                                },
+                                                {
+                                                    "name": "Read",
+                                                    "mode": "Allow"
+                                                },
+                                                {
+                                                    "name": "ViewComments",
+                                                    "mode": "Allow"
+                                                },
+                                                {
+                                                    "name": "ExportData",
+                                                    "mode": "Allow"
+                                                },
+                                                {
+                                                    "name": "AddComment",
+                                                    "mode": "Allow"
+                                                },
+                                                {
+                                                    "name": "ExportImage",
+                                                    "mode": "Allow"
+                                                },
+                                                {
+                                                    "name": "Filter",
+                                                    "mode": "Allow"
+                                                },
+                                                {
+                                                    "name": "ShareView",
+                                                    "mode": "Allow"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_tags_to_view",
+                                "url": "/views/:_view_id/tags",
+                                "name": "Add Tags to View [This endpoint only works from 1.0 - 3.11]",
+                                "sampleData": {
+                                    "tags": {
+                                        "tag": [
+                                            {
+                                                "label": "tag2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "view_id",
+                                        "name": "View ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_view_permissions",
+                                "url": "/views/:_view_id/permissions",
+                                "name": "Add View Permissions[This endpoint only works from 3.2 - 3.11]",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "view_id",
+                                        "name": "View ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tag_from_view",
+                                "url": "/views/:_view_id/tags/:_tag_name",
+                                "name": "Delete Tag from View [This endpoint only works from 1.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "view_id",
+                                        "name": "View ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag_name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_view_permission",
+                                "url": "/views/:_view_id/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+                                "name": "Delete View Permission [This endpoint only works from 3.2 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "view_id",
+                                        "name": "View ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability name",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "AddComment",
+                                            "ChangePermissions",
+                                            "Delete",
+                                            "ExportData",
+                                            "ExportImage",
+                                            "ExportXml",
+                                            "Filter",
+                                            "Read",
+                                            "ShareView",
+                                            "ViewComments",
+                                            "ViewUnderlyingData",
+                                            "WebAuthoring",
+                                            "Write"
+                                        ]
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "name": "Capability mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Allow",
+                                            "Deny"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "workbooks",
+                        "name": "Workbooks",
+                        "sampleData": {
+                            "workbook": {
+                                "project": {
+                                    "id": "d2aabe33-a8ac-42c7-ace8-783ea3d6ed0c",
+                                    "name": "project2"
+                                },
+                                "owner": {
+                                    "id": "d3b19ff9-3727-48cb-8b87-8f1695be8439"
+                                },
+                                "tags": {
+                                    "tag": [
+                                        {
+                                            "label": "tag1"
+                                        },
+                                        {
+                                            "label": "tag2"
+                                        }
+                                    ]
+                                },
+                                "id": "33f92fde-44c9-4db8-9471-4964887f5a56",
+                                "name": "Google Analytics",
+                                "contentUrl": "GoogleAnalytics",
+                                "showTabs": "true",
+                                "size": "1",
+                                "createdAt": "2017-10-24T07:32:32Z",
+                                "updatedAt": "2017-11-03T05:57:11Z"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_tags_to_workbook",
+                                "url": "/workbooks/:_workbook_id/tags",
+                                "name": "Add Tags to Workbook [This endpoint only works from 1.0 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "tags": {
+                                        "tag": [
+                                            {
+                                                "label": "tag2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_workbook",
+                                "url": "/workbooks/:_workbook_id",
+                                "name": "Update Workbook [This endpoint only works from 2.0 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_workbook_now",
+                                "url": "/workbooks/:_workbook_id/refresh",
+                                "name": "Update Workbook Now [This endpoint only works from 2.8 - 3.11]",
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tag_from_workbook",
+                                "url": "/workbooks/:_workbook_id/tags/:_tag_name",
+                                "name": "Delete Tag from Workbook [This endpoint only works from 1.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag_name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_workbook",
+                                "url": "/workbooks/:_workbook_id",
+                                "name": "Delete Workbook [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "datasources",
+                        "name": "Data sources",
+                        "sampleData": {
+                            "workbook": {
+                                "project": {
+                                    "id": "d2aabe33-a8ac-42c7-ace8-783ea3d6ed0c",
+                                    "name": "project2"
+                                },
+                                "owner": {
+                                    "id": "d3b19ff9-3727-48cb-8b87-8f1695be8439"
+                                },
+                                "tags": {
+                                    "tag": [
+                                        {
+                                            "label": "tag1"
+                                        },
+                                        {
+                                            "label": "tag2"
+                                        }
+                                    ]
+                                },
+                                "id": "33f92fde-44c9-4db8-9471-4964887f5a56",
+                                "name": "Google Analytics",
+                                "contentUrl": "GoogleAnalytics",
+                                "showTabs": "true",
+                                "size": "1",
+                                "createdAt": "2017-10-24T07:32:32Z",
+                                "updatedAt": "2017-11-03T05:57:11Z"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_tags_to_datasource",
+                                "url": "/datasources/:_datasource_id/tags",
+                                "name": "Add Tags to Datasource [This endpoint only works from 1.0 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "tags": {
+                                        "tag": [
+                                            {
+                                                "label": "tag2"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_datasource",
+                                "url": "/datasources/:_datasource_id",
+                                "name": "Update Datasource [This endpoint only works from 2.0 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_datasource_now",
+                                "url": "/datasources/:_datasource_id/refresh",
+                                "name": "Update Data Source Now [This endpoint only works from 2.8 - 3.11]",
+                                "sampleData": {},
+                                "method": "POST",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tag_from_datasource",
+                                "url": "/datasources/:_datasource_id/tags/:_tag_name",
+                                "name": "Delete Tag from Datasource [This endpoint only works from 1.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag_name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_datasource",
+                                "url": "/datasources/:_datasource_id",
+                                "name": "Delete Datasource [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revisions",
+                        "name": "Revisions",
+                        "sampleData": {
+                            "revision": {
+                                "publisher": {
+                                    "id": "d3b19ff9-3727-48cb-8b87-8f1695be8439",
+                                    "name": "shiva.potlapelli@celigo.com"
+                                },
+                                "revisionNumber": "1",
+                                "publishedAt": "2017-10-24T07:32:57Z",
+                                "deleted": false,
+                                "current": true,
+                                "sizeInBytes": 1083343
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "remove_datasource_revision",
+                                "url": "/datasources/:_datasource_id/revisions/:_revision_number",
+                                "name": "Remove Datasource Revision [This endpoint only works from 2.3 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "revision_number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "remove_workbook_revision",
+                                "url": "/workbooks/:_workbook_id/revisions/:_revision_number",
+                                "name": "Remove Workbook Revision [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "revision_number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "permissions",
+                        "name": "Permissions",
+                        "operations": [
+                            {
+                                "id": "add_workbook_permissions",
+                                "url": "/workbooks/:_workbook_id/permissions",
+                                "name": "Add Workbook Permissions [This endpoint only works from 2.0 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "permissions": {
+                                        "workbook": {
+                                            "owner": {
+                                                "id": "d3b19ff9-3727-48cb-8b87-8f1695be8439"
+                                            },
+                                            "id": "33f92fde-44c9-4db8-9471-4964887f5a56",
+                                            "name": "Google Analytics"
+                                        },
+                                        "granteeCapabilities": [
+                                            {
+                                                "group": {
+                                                    "id": "520b879a-5480-4cb7-8d57-58ec2d8d0dfe"
+                                                },
+                                                "capabilities": {
+                                                    "capability": [
+                                                        {
+                                                            "name": "Read",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportData",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Filter",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportImage",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ShareView",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "AddComment",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Write",
+                                                            "mode": "Allow"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_datasources_permissions",
+                                "url": "/datasources/:_datasource_id/permissions",
+                                "name": "Add Datasources Permissions [This endpoint only works from 2.0 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "permissions": {
+                                        "datasource": {
+                                            "owner": {
+                                                "id": "d3b19ff9-3727-48cb-8b87-8f1695be8439"
+                                            },
+                                            "id": "33f92fde-44c9-4db8-9471-4964887f5a56",
+                                            "name": "Google Analytics"
+                                        },
+                                        "granteeCapabilities": [
+                                            {
+                                                "group": {
+                                                    "id": "520b879a-5480-4cb7-8d57-58ec2d8d0dfe"
+                                                },
+                                                "capabilities": {
+                                                    "capability": [
+                                                        {
+                                                            "name": "Read",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportData",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Filter",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportImage",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ShareView",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "AddComment",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Write",
+                                                            "mode": "Allow"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_default_permissions_for_workbooks",
+                                "url": "/projects/:_project_id/default-permissions/workbooks",
+                                "name": "Add Default Permissions for Workbooks [This endpoint only works from 2.1 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "permissions": {
+                                        "project": {
+                                            "owner": {
+                                                "id": "d3b19ff9-3727-48cb-8b87-8f1695be8439"
+                                            },
+                                            "id": "33f92fde-44c9-4db8-9471-4964887f5a56",
+                                            "name": "Google Analytics"
+                                        },
+                                        "granteeCapabilities": [
+                                            {
+                                                "group": {
+                                                    "id": "520b879a-5480-4cb7-8d57-58ec2d8d0dfe"
+                                                },
+                                                "capabilities": {
+                                                    "capability": [
+                                                        {
+                                                            "name": "Read",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportData",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Filter",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportImage",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ShareView",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "AddComment",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Write",
+                                                            "mode": "Allow"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_default_permissions_for_datasources",
+                                "url": "/projects/:_project_id/default-permissions/datasources",
+                                "name": "Add Default Permissions for Datasources [This endpoint only works from 2.0 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "permissions": {
+                                        "project": {
+                                            "owner": {
+                                                "id": "d3b19ff9-3727-48cb-8b87-8f1695be8439"
+                                            },
+                                            "id": "33f92fde-44c9-4db8-9471-4964887f5a56",
+                                            "name": "Google Analytics"
+                                        },
+                                        "granteeCapabilities": [
+                                            {
+                                                "group": {
+                                                    "id": "520b879a-5480-4cb7-8d57-58ec2d8d0dfe"
+                                                },
+                                                "capabilities": {
+                                                    "capability": [
+                                                        {
+                                                            "name": "Read",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportData",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Filter",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportImage",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ShareView",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "AddComment",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Write",
+                                                            "mode": "Allow"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_project_permissions",
+                                "url": "/projects/:_project_id/permissions",
+                                "name": "Add Project Permissions [This endpoint only works from 2.0 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "permissions": {
+                                        "project": {
+                                            "owner": {
+                                                "id": "d3b19ff9-3727-48cb-8b87-8f1695be8439"
+                                            },
+                                            "id": "33f92fde-44c9-4db8-9471-4964887f5a56",
+                                            "name": "Google Analytics"
+                                        },
+                                        "granteeCapabilities": [
+                                            {
+                                                "group": {
+                                                    "id": "520b879a-5480-4cb7-8d57-58ec2d8d0dfe"
+                                                },
+                                                "capabilities": {
+                                                    "capability": [
+                                                        {
+                                                            "name": "Read",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportData",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Filter",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ExportImage",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "ShareView",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "AddComment",
+                                                            "mode": "Allow"
+                                                        },
+                                                        {
+                                                            "name": "Write",
+                                                            "mode": "Allow"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_workbook_permission",
+                                "url": "/workbooks/:_workbook_id/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+                                "name": "Delete Workbook Permission [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability Name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Capability Mode"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_datasources_permission",
+                                "url": "/datasources/:_datasource_id/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+                                "name": "Delete Datasources Permission [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability Name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Capability Mode"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_default_permission_for_workbooks",
+                                "url": "/projects/:_project_id/default-permissions/workbooks/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+                                "name": "Delete Default Permission for Workbooks [This endpoint only works from 2.1 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability Name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Capability Mode"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_default_permission_for_datasources",
+                                "url": "/projects/:_project_id/default-permissions/datasources/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+                                "name": "Delete Default Permission for Datasources [This endpoint only works from 2.1 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability Name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Capability Mode"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_project_permission",
+                                "url": "/projects/:_project_id/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+                                "name": "Delete Project Permission [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability Name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "name": "Capability Mode"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "subscriptions",
+                        "name": "Subscriptions",
+                        "sampleData": {
+                            "subscription": {
+                                "content": {
+                                    "id": "f0649df4-203a-4887-b757-a72f6f83613a",
+                                    "type": "View"
+                                },
+                                "schedule": {
+                                    "id": "3c9ba982-ec6e-4244-8e9f-cb238f07b33a"
+                                },
+                                "user": {
+                                    "id": "354200b5-a215-4c0c-af67-e9df021db9a1"
+                                },
+                                "subject": "subscription-subject2"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_subscription",
+                                "url": "/subscriptions",
+                                "name": "Create Subscription [This endpoint only works from 2.3 - 3.11]",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_subscription",
+                                "url": "/subscriptions/:_subscription_id",
+                                "name": "Update Subscription [This endpoint only works from 2.3 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "subscription_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_subscription",
+                                "url": [
+                                    "/subscriptions/:_subscription_id",
+                                    "/subscriptions"
+                                ],
+                                "name": "Create or Update Subscription [This endpoint only works from 2.3 - 3.11]",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "subscription_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_subscription",
+                                "url": "/subscriptions/:_subscription_id",
+                                "name": "Delete Subscription [This endpoint only works from 2.3 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "subscription_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "favorites",
+                        "name": "Favorites",
+                        "operations": [
+                            {
+                                "id": "add_datasource_to_favorites",
+                                "url": "/favorites/:_user_id",
+                                "name": "Add Datasource to Favorites [This endpoint only works from 2.3 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "favorite": {
+                                        "datasource": {
+                                            "id": "62c7890b-c8e3-449c-b64e-c22137dcabad"
+                                        },
+                                        "label": "What If Forecast"
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_project_to_favorites",
+                                "url": "/favorites/:_user_id",
+                                "name": "Add Project to Favorites[This endpoint only works from 3.1 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "favorite": {
+                                        "datasource": {
+                                            "id": "62c7890b-c8e3-449c-b64e-c22137dcabad"
+                                        },
+                                        "label": "What If Forecast"
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_workbook_to_favorites",
+                                "url": "/favorites/:_user_id",
+                                "name": "Add Workbook to Favorites [This endpoint only works from 1.0 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "favorite": {
+                                        "workbook": {
+                                            "id": "62c7890b-c8e3-449c-b64e-c22137dcabad"
+                                        },
+                                        "label": "What If Forecast"
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_view_to_favorites",
+                                "url": "/favorites/:_user_id",
+                                "name": "Add View to Favorites [This endpoint only works from 1.0 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "favorite": {
+                                        "view": {
+                                            "id": "62c7890b-c8e3-449c-b64e-c22137dcabad"
+                                        },
+                                        "label": "What If Forecast"
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_datasource_from_favorites",
+                                "url": "/favorites/:_user_id/datasources/:_datasource_id",
+                                "name": "Delete Datasource from Favorites [This endpoint only works from 2.3 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "datasource_id",
+                                        "name": "Datasource ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_workbook_from_favorites",
+                                "url": "/favorites/:_user_id/workbooks/:_workbook_id",
+                                "name": "Delete Workbook from Favorites [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "workbook_id",
+                                        "name": "Workbook ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_project_from_favorites",
+                                "url": "/favorites/:_user_id/projects/:_project_id",
+                                "name": "Delete Project from Favorites[This endpoint only works from 3.1 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "project_id",
+                                        "name": "Project ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_view_from_favorites",
+                                "url": "/favorites/:_user_id/views/:_view_id",
+                                "name": "Delete View from Favorites [This endpoint only works from 2.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "view_id",
+                                        "name": "View ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "tasks",
+                        "name": "Tasks",
+                        "operations": [
+                            {
+                                "id": "run_extract_refresh_task",
+                                "url": "/tasks/extractRefreshes/:_task_id/runNow",
+                                "name": "Run Extract Refresh Task [This endpoint only works from 2.6 - 3.11]",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "task_id",
+                                        "name": "Task ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "projects",
+                        "name": "Projects",
+                        "sampleData": {
+                            "project": {
+                                "id": "72fc9291-95be-486e-8a1a-cffde0553449",
+                                "name": "default",
+                                "description": "The default project that was automatically created by Tableau.",
+                                "contentPermissions": "ManagedByOwner"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_project",
+                                "url": "/projects",
+                                "name": "Create Project [This endpoint only works from 1.0 - 3.11]",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/projects",
+                                        "extract": "projects.project[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_project",
+                                "url": "/projects/:_project_id",
+                                "name": "Update Project [This endpoint only works from 1.0 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/projects",
+                                        "extract": "projects.project[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_project",
+                                "url": [
+                                    "/projects/:_project_id",
+                                    "/projects"
+                                ],
+                                "name": "Create or Update Project [This endpoint only works from 1.0 - 3.11]",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/projects",
+                                        "extract": "projects.project[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_project",
+                                "url": "/projects/:_project_id",
+                                "name": "Delete Project [This endpoint only works from 1.0 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "project_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "data-driven_alerts",
+                        "name": "Data-Driven Alerts",
+                        "sampleData": {
+                            "dataAlert": {
+                                "subject": "data-alert-subject",
+                                "frequency": "data-alert-frequency",
+                                "public": "is-public-flag",
+                                "owner": {
+                                    "id": "f75e8bbe-c475-4a7b-8289-25e36ee4c956"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_user_to_data-driven_alerts",
+                                "url": "/dataAlerts/:_data_alert_id/users",
+                                "name": "Add User to Data-Driven Alert [This endpoint only works from 3.2 - 3.11]",
+                                "sampleData": {
+                                    "user": {
+                                        "id": "user-id"
+                                    }
+                                },
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "data_alert_id",
+                                        "name": "Data Alert ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_user_from_data-driven_alert",
+                                "url": "/dataAlerts/:_data_alert_id/users/:_user_id",
+                                "name": "Delete User from Data-Driven Alert [This endpoint only works from 3.2 - 3.11]",
+                                "method": "DELETE",
+                                "sampleData": {},
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "data_alert_id",
+                                        "name": "Data Alert ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_data-driven_alert",
+                                "url": "/dataAlerts/:_data_alert_id",
+                                "name": "Delete Data-Driven Alert [This endpoint only works from 3.2 - 3.11]",
+                                "method": "DELETE",
+                                "sampleData": {},
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "data_alert_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_data-driven_alert",
+                                "url": "/dataAlerts/:_data_alert_id",
+                                "name": "Update Data-Driven Alert [This endpoint only works from 3.2 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "data_alert_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/dataAlerts",
+                                        "extract": "dataAlerts.dataAlert[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "quality_warning_trigger",
+                        "name": "Quality Warning Trigger",
+                        "sampleData": {
+                            "dataQualityTrigger": {
+                                "type": "extract_refresh",
+                                "active": "status",
+                                "message": "message",
+                                "severe": "severity"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_or_update_quality_warning_trigger",
+                                "url": "/dataQualityTriggers/:_content_type/:_contentIds",
+                                "name": "Add or update quality warning trigger [This endpoint only works from 3.11]",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "content_type",
+                                        "name": "Content type",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "datasource",
+                                            "flow"
+                                        ]
+                                    },
+                                    {
+                                        "id": "contentIds",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_quality_warning_trigger",
+                                "url": "/dataQualityTriggers/:_trigger_id",
+                                "name": "Update Quality Warning Trigger [This endpoint only works from 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "trigger_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/dataQualityTriggers/content-type/content-luid",
+                                        "extract": "dataQualityTriggerList.dataQualityTrigger[0].id"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "delete_quality_warning_trigger",
+                                "url": "/dataQualityTriggers/:_trigger_id",
+                                "name": "Delete Quality Warning Trigger [This endpoint only works from 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "trigger_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "metrics",
+                        "name": "Metrics",
+                        "sampleData": {
+                            "metric": {
+                                "description": "updated-metric-description",
+                                "name": "updated-name",
+                                "suspended": "updated-suspended-flag",
+                                "project": {
+                                    "id": "updated-project-id"
+                                },
+                                "owner": {
+                                    "id": "updated-owner-id"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "update_metric",
+                                "url": "/metrics/:_metric_luid",
+                                "name": "Update Metric [This endpoint only works from 2.0 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "metric_luid",
+                                        "name": "Metric luid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_metric",
+                                "url": "/metrics/:_metric_luid",
+                                "name": "Delete Metric [This endpoint only works from 3.9 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "metric_luid",
+                                        "name": "Metric luid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "databases",
+                        "name": "Databases",
+                        "sampleData": {
+                            "database": {
+                                "isCertified": "certification-status",
+                                "certificationNote": "certification-note",
+                                "description": "new-description-value",
+                                "contact": {
+                                    "id": "new-contact-id"
+                                }
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_tags_to_database",
+                                "url": "/databases/:_database_id/tags",
+                                "name": "Add Tags to Database [This endpoint only works from 3.9 - 3.11]",
+                                "method": "PUT",
+                                "sampleData": {
+                                    "tags": {
+                                        "tag": {
+                                            "label": "tag-value1"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_database_permissions",
+                                "url": "/databases/:_database_id/permissions",
+                                "name": "Add Database Permissions [This endpoint only works from 3.5 - 3.11]",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_default_database_permissions",
+                                "url": "/databases/:_database_id/default-permissions/tables",
+                                "name": "Add Default Database Permissions [This endpoint only works from 3.5 - 3.11]",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_database",
+                                "url": "/databases/:_database_id",
+                                "name": "Update Database [This endpoint only works from 3.5 - 3.11]",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_tag_from_database",
+                                "url": "/databases/:_database_id/tags/:_tag_name",
+                                "name": "Delete Tag from Database [This endpoint only works from 3.9 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "tag_name",
+                                        "name": "Tag Name",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_database_permissions",
+                                "url": "/databases/:_database_id/permissions/users/:_user_id/:_capability_name/:_capability_mode",
+                                "name": "Delete Database Permissions [This endpoint only works from 3.5 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability name",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Read",
+                                            "Write",
+                                            "ChangePermissions"
+                                        ]
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "name": "Capability mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Allow",
+                                            "Deny"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_default_database_permissions",
+                                "url": "/databases/:_database_id/default-permissions/tables/users/:_user_id/:_capability_mode",
+                                "name": "Delete Default Database Permissions [This endpoint only works from 3.5 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "database_id",
+                                        "name": "Database ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "user_id",
+                                        "name": "User ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability name",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Read",
+                                            "Write",
+                                            "ChangePermissions"
+                                        ]
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "name": "Capability mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Allow",
+                                            "Deny"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "jobs",
+                        "name": "Jobs",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "cancel_job",
+                                "url": "/jobs/:_job_id",
+                                "name": "Cancel Job[This endpoint only works from 3.1 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "job_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/jobs",
+                                        "extract": "backgroundJobs.backgroundJob[0].id"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "flows",
+                        "name": "Flow",
+                        "sampleData": {
+                            "permissions": {
+                                "flow": {
+                                    "id": "f38a7aa6-ae26-42d3-8603-037c621ed904"
+                                },
+                                "granteeCapabilities": [
+                                    {
+                                        "user": {
+                                            "id": "4d19ddc3-ea84-4778-86c2-26237cbd240d"
+                                        },
+                                        "capabilities": {
+                                            "capability": {
+                                                "name": "ViewUnderlyingData",
+                                                "mode": "Allow"
+                                            },
+                                            "text": "... additional capabilities ..."
+                                        }
+                                    },
+                                    {
+                                        "group": {
+                                            "id": "1798b1fd-64a6-4d46-8290-5dd43f10b746"
+                                        },
+                                        "capabilities": {
+                                            "capability": {
+                                                "name": "ViewComments",
+                                                "mode": "Allow"
+                                            },
+                                            "text": "... additional capabilities ..."
+                                        }
+                                    }
+                                ],
+                                "text": "... additional grantee capability sets ..."
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_flow_permissions",
+                                "url": "/flows/:_flow_id/permissions",
+                                "name": "Add Flow Permissions [This endpoint only works from 3.3 - 3.11]",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "flow_id",
+                                        "name": "Flow ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "add_flow_task to_schedule",
+                                "url": "/schedules/:_schedule_id/flows",
+                                "name": "Add Flow Task to Schedule [This endpoint only works from 3.3 - 3.11]",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "schedule_id",
+                                        "name": "Schedule ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_flow",
+                                "url": "/flows/:_flow_id",
+                                "name": "Update Flow [This endpoint only works from 3.3 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "flow_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_flow_connection",
+                                "url": "/flows/:_flow_id/connections/:_connection_id",
+                                "name": "Update Flow Connection [This endpoint only works from 3.3 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "flow_id",
+                                        "name": "Flow ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "connection_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_flow_run",
+                                "url": "/flows/runs/:_flow_run_id",
+                                "name": "Cancel Flow Run [This endpoint only works from 3.10 - 3.11]",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "flow_run_id",
+                                        "name": "Flow run ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_flow",
+                                "url": "/flows/:_flow_id",
+                                "name": "Delete Flow [This endpoint only works from 3.3 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "flow_id",
+                                        "name": "Flow ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_flow_permission",
+                                "url": "/flows/:_flow_id/permissions/groups/:_group_id/:_capability_name/:_capability_mode",
+                                "name": "Delete Flow Permission [This endpoint only works from 3.3 - 3.11]",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "flow_id",
+                                        "name": "Flow ID",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    },
+                                    {
+                                        "id": "group_id",
+                                        "name": "Group ID",
+                                        "in": "path",
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "capability_name",
+                                        "name": "Capability name",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "ChangeHierarchy",
+                                            "ChangePermissions",
+                                            "Delete",
+                                            "Execute",
+                                            "ExportXml",
+                                            "Read",
+                                            "Write"
+                                        ]
+                                    },
+                                    {
+                                        "id": "capability_mode",
+                                        "name": "Capability mode",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Allow",
+                                            "Deny"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "data_quality_warnings",
+                        "name": "Data Quality Warning",
+                        "sampleData": {
+                            "dataQualityWarning": {
+                                "type": "WARNING",
+                                "isActive": "true",
+                                "message": "Delayed",
+                                "isSevere": "false"
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "add_data_quality_warning",
+                                "url": "/dataQualityWarnings/:_content_type/:_content_luid",
+                                "name": "Add Data Quality Warning [This endpoint only works from 3.5 - 3.11]",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "content_type",
+                                        "name": "Content Type",
+                                        "in": "path",
+                                        "required": true,
+                                        "fieldType": "select",
+                                        "options": [
+                                            "database",
+                                            "table",
+                                            "datasource",
+                                            "flow"
+                                        ]
+                                    },
+                                    {
+                                        "id": "content_luid",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_data_quality_warning",
+                                "url": "/dataQualityWarnings/:_dataqualitywarning_id",
+                                "name": "Update Data Quality Warning [This endpoint only works from 3.5 - 3.11]",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "dataqualitywarning_id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

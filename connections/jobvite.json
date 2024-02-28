@@ -1,0 +1,930 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version",
+            "endpoint": "Operation"
+        },
+        "queryParameters": [
+            {
+                "id": "api",
+                "name": "api",
+                "description": "API key issued by Jobvite",
+                "defaultValue": "{{connection.rest.unencrypted.api}}",
+                "readOnly": true
+            },
+            {
+                "id": "sc",
+                "name": "sc",
+                "description": "Secret key for this service, issued by Jobvite",
+                "defaultValue": "{{connection.rest.encrypted.secret}}",
+                "readOnly": true
+            }
+        ],
+        "previewParameters": [
+            {
+                "id": "count",
+                "value": "2"
+            }
+        ],
+        "urlResolution": [
+            "/api/v2/candidate",
+            "/api/v2/job",
+            "/api/v2/language",
+            "/api/v2/location",
+            "/api/v2/category",
+            "/api/v2/department",
+            "/api/v2/timezone",
+            "/api/v2/customfield"
+        ],
+        "versions": [
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "candidate",
+                        "name": "Candidates",
+                        "endpoints": [
+                            {
+                                "id": "get_candidates",
+                                "url": "/api/v2/candidate",
+                                "name": "Get Candidates",
+                                "resourcePath": "candidates",
+                                "supportedExportTypes": [
+                                    "delta",
+                                    "test"
+                                ],
+                                "pathParameters": [],
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Specifies a count of candidates to be returned. Defaults to '500' when no value provided.",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "wflowstate",
+                                        "name": "wflowstate",
+                                        "description": "Filters candidates by workflow state."
+                                    },
+                                    {
+                                        "id": "dateFormat",
+                                        "name": "dateFormat",
+                                        "description": "Pattern to parse date.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "MM/dd/yyyy",
+                                            "MM-dd-yyyy",
+                                            "MM-dd-yyyy'T'hh:mm:ssZ"
+                                        ]
+                                    },
+                                    {
+                                        "id": "datestart",
+                                        "name": "datestart",
+                                        "description": "Retrieve applications last modified after this date. Date supplied in a format that matches the dateFormat parameter formats."
+                                    },
+                                    {
+                                        "id": "dateend",
+                                        "name": "dateend",
+                                        "description": "Retrieve applications last modified before this date. Date supplied in a format that matches the dateFormat parameter formats."
+                                    },
+                                    {
+                                        "id": "candidateId",
+                                        "name": "candidateId",
+                                        "description": "Filters candidates by encrypted candidate ID."
+                                    },
+                                    {
+                                        "id": "candidateEmail",
+                                        "name": "candidateEmail",
+                                        "description": "Filters candidates by candidate email address."
+                                    },
+                                    {
+                                        "id": "action",
+                                        "name": "action",
+                                        "description": "",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "getCandidates",
+                                            "getNewHires"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "requisition",
+                        "name": "Requisition/Job Feed",
+                        "endpoints": [
+                            {
+                                "id": "get_requisition_job_feed",
+                                "url": "/api/v2/job",
+                                "name": "Get Requisition/Job Feed",
+                                "resourcePath": "requisitions",
+                                "queryParameters": [
+                                    {
+                                        "id": "count",
+                                        "name": "count",
+                                        "description": "Specifies a count of requisitions to be returned. Default value: 500 if nothing entered. Limit per API call: 1000",
+                                        "fieldType": "integer"
+                                    },
+                                    {
+                                        "id": "ids",
+                                        "name": "ids",
+                                        "description": "Filters requisitions by Jobvite encrypted eId. Separate multiple ids by comma (,). Only applicable if customer does NOT have Automatic numbering of requisitions enabled in Admin."
+                                    },
+                                    {
+                                        "id": "requisitionId",
+                                        "name": "requisitionId",
+                                        "description": "Filters requisitions by requisition id. Only applicable if customer has Automatic numbering of requisitions enabled in Jobvite Admin."
+                                    },
+                                    {
+                                        "id": "type",
+                                        "name": "type",
+                                        "description": "Filter requisitions by type.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Full-Time",
+                                            "Part-Time",
+                                            "Contractor",
+                                            "Intern"
+                                        ]
+                                    },
+                                    {
+                                        "id": "availableTo",
+                                        "name": "availableTo",
+                                        "description": "Filter requisitions by the posting type.",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Exteranl",
+                                            "Interanl",
+                                            "Limited Access"
+                                        ]
+                                    },
+                                    {
+                                        "id": "jobStatus",
+                                        "name": "jobStatus",
+                                        "description": "Filter requisitions by job status. Default value if no parameter is sent: Open",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Open",
+                                            "Closed",
+                                            "Filled",
+                                            "On Hold",
+                                            "Awaiting Approval",
+                                            "Approved",
+                                            "Rejected",
+                                            "Retracted",
+                                            "Pending",
+                                            "Draft"
+                                        ]
+                                    },
+                                    {
+                                        "id": "category",
+                                        "name": "category",
+                                        "description": "Filter requisitions by category."
+                                    },
+                                    {
+                                        "id": "locName",
+                                        "name": "locName",
+                                        "description": "Filter requisitions by name of location."
+                                    },
+                                    {
+                                        "id": "locCity",
+                                        "name": "locCity",
+                                        "description": "Filter requisitions by location city."
+                                    },
+                                    {
+                                        "id": "locState",
+                                        "name": "locState",
+                                        "description": "Filter requisitions by location state."
+                                    },
+                                    {
+                                        "id": "locCountry",
+                                        "name": "locCountry",
+                                        "description": "Filter requisitions by location country."
+                                    },
+                                    {
+                                        "id": "locPostalCode",
+                                        "name": "locPostalCode",
+                                        "description": "Filter requisitions by location postal code."
+                                    },
+                                    {
+                                        "id": "region",
+                                        "name": "region",
+                                        "description": "Filter requisitions by region."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "language",
+                        "name": "Language",
+                        "endpoints": [
+                            {
+                                "id": "get_languages",
+                                "name": "Get Languages",
+                                "url": "/api/v2/language",
+                                "resourcePath": "languages"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "timezone",
+                        "name": "Timezone",
+                        "endpoints": [
+                            {
+                                "id": "get_timezones",
+                                "name": "Get Timezones",
+                                "url": "/api/v2/timezone",
+                                "resourcePath": "timezones"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "location",
+                        "name": "Location",
+                        "endpoints": [
+                            {
+                                "id": "get_locations",
+                                "name": "Get Locations",
+                                "url": "/api/v2/location",
+                                "resourcePath": "locations",
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Identifies a specific location ID."
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "name",
+                                        "description": "Ability to retrieve locations based on name. Comma separate multiple locations. Ex. ?name=location1,location2,location3. Wild cards are not permitted"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "category",
+                        "name": "Category",
+                        "endpoints": [
+                            {
+                                "id": "get_categories",
+                                "name": "Get Categories",
+                                "url": "/api/v2/category",
+                                "resourcePath": "categories",
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Category eID. Each category is associated with an encrypted Identification."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "department",
+                        "name": "Department",
+                        "endpoints": [
+                            {
+                                "id": "get_departments",
+                                "name": "Get Departments",
+                                "url": "/api/v2/department",
+                                "resourcePath": "departments",
+                                "queryParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "id",
+                                        "description": "Department eID. Each department is associated with an encrypted Identification."
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customfield",
+                        "name": "Customfields",
+                        "endpoints": [
+                            {
+                                "id": "get_all_customfield",
+                                "url": "/api/v2/customfield",
+                                "name": "Get All Customfield",
+                                "resourcePath": "customFields",
+                                "queryParameters": [
+                                    {
+                                        "id": "objectType",
+                                        "name": "Object Type",
+                                        "description": "Filter customfield by type.,It is mandatory field",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "Candidate",
+                                            "Job"
+                                        ]
+                                    },
+                                    {
+                                        "id": "ids",
+                                        "name": "ids",
+                                        "description": "Custom field eId value"
+                                    },
+                                    {
+                                        "id": "name",
+                                        "name": "Name",
+                                        "description": "Filter requisitions by name."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version",
+            "operation": "Operation"
+        },
+        "queryParameters": [
+            {
+                "id": "api",
+                "name": "api",
+                "description": "API key issued by Jobvite",
+                "defaultValue": "{{connection.rest.unencrypted.api}}",
+                "readOnly": true
+            },
+            {
+                "id": "sc",
+                "name": "sc",
+                "description": "Secret key for this service, issued by Jobvite",
+                "defaultValue": "{{connection.rest.encrypted.secret}}",
+                "readOnly": true
+            },
+            {
+                "id": "companyId",
+                "name": "companyId",
+                "description": "companyId",
+                "defaultValue": "{{connection.rest.unencrypted.companyId}}",
+                "readOnly": true
+            }
+        ],
+        "urlResolution": [
+            "/v1/contacts",
+            "/v1/employee?format=json",
+            "/api/v2/candidate",
+            "/api/v2/job",
+            "/api/v2/category",
+            "/api/v2/category/:_eId",
+            "/api/v2/department",
+            "/api/v2/department/:_eId",
+            "/api/v2/location",
+            "/api/v2/location/:_eId",
+            "/api/v2/customfield/:_eId",
+            "/api/v2/customfield"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "resources": [
+                    {
+                        "id": "employee",
+                        "name": "Employee",
+                        "operations": [
+                            {
+                                "id": "sync_employees",
+                                "name": "Sync",
+                                "url": "/v1/employee?format=json",
+                                "method": "POST",
+                                "requiredMappings": [
+                                    "ImporterEmail",
+                                    "ReportEmail",
+                                    "Employees[*].FirstName",
+                                    "Employees[*].LastName",
+                                    "Employees[*].Name",
+                                    "CompanyId"
+                                ]
+                            }
+                        ],
+                        "sampleData": {
+                            "CompanyId": "",
+                            "ImporterEmail": "",
+                            "ReportEmail": "",
+                            "DoNotSyncOnWarnings": false,
+                            "OverwriteEmployeeNamesAndEmail": false,
+                            "PerformEmployeeRemovals": true,
+                            "DoNotSendInviteEmails": false,
+                            "DoNotSendRemoveEmails": false,
+                            "DoNotPerformEmployeeUpdates": true,
+                            "Employees": [
+                                {
+                                    "FirstName": "Mary995",
+                                    "LastName": "Doe",
+                                    "Name": "Mary995.Doe@JDInc.us",
+                                    "DepartmentName": "",
+                                    "LocationName": "Burlingame",
+                                    "RegionName": "",
+                                    "SubsidiaryName": "",
+                                    "Role": "Administrator",
+                                    "Title": "Architect",
+                                    "EmployeeId": "",
+                                    "Reports To": "",
+                                    "Address": "123 Central Park",
+                                    "Address2": "",
+                                    "City": "Latur",
+                                    "State": "MH",
+                                    "PostalCode": "413512",
+                                    "Country": "India",
+                                    "HomePhone": "023995252111",
+                                    "WorkPhone": "0999581995492",
+                                    "Mobile": "",
+                                    "CustomFields": [
+                                        {
+                                            "Key": "VP",
+                                            "Value": "joe@JDInc.us"
+                                        },
+                                        {
+                                            "Key": "Approver 1",
+                                            "Value": "Mose995.Doe@JDInc.us"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "contact",
+                        "name": "Contact",
+                        "operations": [
+                            {
+                                "id": "create_contact",
+                                "name": "Create",
+                                "url": "/v1/contacts",
+                                "method": "POST"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "version": "v2",
+                "resources": [
+                    {
+                        "id": "candidate",
+                        "name": "Candidates",
+                        "sampleData": {
+                            "address": "123 Add street",
+                            "address2": "",
+                            "application": {
+                                "comments": "",
+                                "consentStatus": "Not Requested",
+                                "customField": [],
+                                "disposition": "Not interviewed",
+                                "eId": "pxaKbjwq",
+                                "gender": "Undefined",
+                                "hasArtifacts": true,
+                                "job": {},
+                                "jobviteChannel": "Email",
+                                "lastUpdatedDate": 1551948492783,
+                                "personalDataProcessingStatus": "active",
+                                "race": "Undefined",
+                                "resume": {
+                                    "content": "sample",
+                                    "format": "Text",
+                                    "name": "ElegantOriginalTemplate.docx"
+                                },
+                                "sentDate": 1478122045190,
+                                "source": "john.smith@goceligo.net",
+                                "sourceType": "Email",
+                                "veteranStatus": "Undefined",
+                                "workflowState": "New",
+                                "workflowStateEId": "z2BVVfwd"
+                            },
+                            "city": "albany",
+                            "candidate.addressName": "na",
+                            "country": "USA",
+                            "countryCode": "USA",
+                            "countryName": "United States",
+                            "eId": "eR2X8iwL",
+                            "email": "john.smith@goceligo.net",
+                            "firstName": "John",
+                            "homePhone": "444-555-7777",
+                            "lastName": "kumar",
+                            "location": "albany, NY United States",
+                            "mobile": "111-222-3333",
+                            "postalCode": "12201",
+                            "state": "NY",
+                            "stateCode": "NY",
+                            "stateName": "New York",
+                            "title": "job searcher",
+                            "workPhone": "111-222-3333",
+                            "workStatus": "None"
+                        },
+                        "operations": [
+                            {
+                                "id": "update_candidate",
+                                "name": "Update",
+                                "url": "/api/v2/candidate",
+                                "method": "PUT"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "job",
+                        "name": "Requisition/Job",
+                        "sampleData": {
+                            "applyLink": "https://app.jobvite.com/CompanyJobs/Careers.aspx?k=Apply&j=ofj74fwt&c=qukaVfwD",
+                            "bonus": "",
+                            "briefDescription": "",
+                            "category": "Accounting",
+                            "companyId": "qukaVfwD",
+                            "createdBy": {
+                                "email": "kelly.izer@celigo.com",
+                                "firstName": "Kelly",
+                                "lastName": "Izer",
+                                "userId": "sNj0Ggwx"
+                            },
+                            "description": "test",
+                            "detailLink": "https://app.jobvite.com/CompanyJobs/Job.aspx?j=ofj74fwt",
+                            "distribution": true,
+                            "eId": "ofj74fwt",
+                            "eeoCategory": "Undefined",
+                            "internalOnly": false,
+                            "jobLocations": [
+                                {
+                                    "address": "1820 Gateway Dr #260",
+                                    "address2": "",
+                                    "applyUrl": "https://app.jobvite.com/CompanyJobs/Careers.aspx?k=Apply&j=ofj74fwt&c=qukaVfwD&l=CnNJVfwy",
+                                    "city": "San Mateo",
+                                    "country": "United States",
+                                    "eId": "CnNJVfwy",
+                                    "jobDetailsUrl": "https://app.jobvite.com/CompanyJobs/Job.aspx?j=ofj74fwt&l=CnNJVfwy",
+                                    "name": "San Mateo",
+                                    "postalCode": "94404",
+                                    "state": "California",
+                                    "zip": "94404"
+                                }
+                            ],
+                            "jobSource": "Manual",
+                            "jobState": "Open",
+                            "lastUpdatedDate": 1492415706367,
+                            "location": "San Mateo",
+                            "locationCity": "San Mateo",
+                            "locationCountry": "United States",
+                            "locationEId": "CnNJVfwy",
+                            "locationPostalCode": "94404",
+                            "locationState": "California",
+                            "openings": "0",
+                            "otherLocations": [],
+                            "postingType": "External",
+                            "private": false,
+                            "requisitionId": "",
+                            "sentDate": 1492415634570,
+                            "title": "Testing",
+                            "workflow": "General"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_job",
+                                "name": "Create",
+                                "url": "/api/v2/job",
+                                "method": "POST"
+                            },
+                            {
+                                "id": "update_job",
+                                "name": "Update",
+                                "url": "/api/v2/job",
+                                "method": "PUT"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "location",
+                        "name": "Location",
+                        "operations": [
+                            {
+                                "id": "create_location",
+                                "name": "Create",
+                                "url": "/api/v2/location",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/location",
+                                        "extract": "locations[0].eId",
+                                        "id": "get_locations"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_location",
+                                "name": "Update",
+                                "url": "/api/v2/location/:_eId",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "name": "Encrypted Location Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/location",
+                                        "extract": "locations[0].eId",
+                                        "id": "get_locations"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_location",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/api/v2/location/:_eId",
+                                    "/api/v2/location"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "name": "Encrypted Location Id",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/location",
+                                        "extract": "locations[0].eId",
+                                        "id": "get_locations"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "category",
+                        "name": "Category",
+                        "operations": [
+                            {
+                                "id": "create_category",
+                                "name": "Create",
+                                "url": "/api/v2/category",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "requiredMappings": [
+                                    "name"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "name": "Dog Butlers"
+                                }
+                            },
+                            {
+                                "id": "update_category",
+                                "name": "Update",
+                                "url": "/api/v2/category/:_eId",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "name": "Encrypted Category Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "requiredMappings": [
+                                    "name"
+                                ],
+                                "sampleData": {
+                                    "name": "Dog Butlers"
+                                }
+                            },
+                            {
+                                "id": "createorupdate_category",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/api/v2/category/:_eId",
+                                    "/api/v2/category"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "name": "Encrypted Category Id",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ],
+                                "sampleData": {
+                                    "name": "Dog Butlers"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "department",
+                        "name": "Department",
+                        "operations": [
+                            {
+                                "id": "create_department",
+                                "name": "Create",
+                                "url": "/api/v2/department",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "requiredMappings": [
+                                    "name"
+                                ],
+                                "sampleData": {
+                                    "name": "Customer Service"
+                                }
+                            },
+                            {
+                                "id": "update_department",
+                                "name": "Update",
+                                "url": "/api/v2/department/:_eId",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "name": "Encrypted Department Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "requiredMappings": [
+                                    "name"
+                                ],
+                                "sampleData": {
+                                    "name": "Customer Service"
+                                }
+                            },
+                            {
+                                "id": "createorupdate_department",
+                                "name": "Create or Update",
+                                "url": [
+                                    "/api/v2/department/:_eId",
+                                    "/api/v2/department"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "name": "Encrypted Department Id",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "requiredMappings": [
+                                    "name"
+                                ],
+                                "sampleData": {
+                                    "name": "Customer Service"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "customfield",
+                        "name": "Customfield",
+                        "sampleData": {
+                            "displayName": "snigdha",
+                            "eId": "yToOXfwM",
+                            "fieldCode": "abc",
+                            "fieldType": "Text",
+                            "inDataFeed": false,
+                            "isStandardField": false,
+                            "name": "snigdha panigrahy",
+                            "objectType": "Candidate",
+                            "pageType": "Apply",
+                            "required": false,
+                            "roles": {
+                                "name": "Administrator",
+                                "permissions": [
+                                    "Read",
+                                    "Write"
+                                ]
+                            }
+                        },
+                        "operations": [
+                            {
+                                "id": "create_customfield",
+                                "url": "/api/v2/customfield",
+                                "name": "Create",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/customfield",
+                                        "extract": "customFields[0].eId",
+                                        "id": "get_all_customfield"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "update_customfield",
+                                "url": "/api/v2/customfield/:_eId",
+                                "name": "Update",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "name": "customfield Id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentifier": {
+                                    "lookup": {
+                                        "url": "/api/v2/customfield",
+                                        "extract": "customFields[0].eId",
+                                        "id": "get_all_customfield"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_or_update_customfield",
+                                "url": [
+                                    "/api/v2/customfield/:_eId",
+                                    "/api/v2/customfield"
+                                ],
+                                "name": "Create or Update",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "eId",
+                                        "name": "customfield Id",
+                                        "in": "path",
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "howToFindIdentier": {
+                                    "lookup": {
+                                        "url": "/api/v2/customfield",
+                                        "extract": "customFields[0].eId",
+                                        "id": "get_all_customfield"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

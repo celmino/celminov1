@@ -1,0 +1,2157 @@
+{
+    "export": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "v1/accounting-periods",
+            "v1/accounting-periods/:_id",
+            "v1/accounts/:_id",
+            "v1/accounts/:_id/summary",
+            "v1/amendments/:_id",
+            "v1/amendments/subscriptions/:_id",
+            "v1/catalog/products",
+            "v1/charge-revenue-summaries/:_id",
+            "v1/charge-revenue-summaries/subscription-charges/:_id",
+            "v1/accounting-codes",
+            "v1/accounting-codes/:_id",
+            "v1/payment-methods/credit-cards/accounts/:_id",
+            "v1/subscriptions/accounts/:_id",
+            "v1/subscriptions/:_id",
+            "v1/attachments/:_id",
+            "v1/attachments/:_object-type/:_object_key",
+            "v1/custom-exchange-rates/:_currency",
+            "v1/settings/finance/revenue-automation-start-date",
+            "v1/hostedpages",
+            "v1/journal-runs/:_jr_number",
+            "v1/bulk/:_bulk_key",
+            "v1/notification-history/callout",
+            "v1/notification-history/email",
+            "v1/transactions/invoices/accounts/:_account_key",
+            "v1/transactions/payments/accounts/:_account_key",
+            "v1/usage/accounts/:_account_key",
+            "v1/revenue-events/:_event_number",
+            "v1/revenue-events/revenue-schedules/:_rs_number",
+            "v1/revenue-items/charge-revenue-summaries/:_crs_number",
+            "v1/revenue-items/revenue-events/:_event_number",
+            "v1/revenue-items/revenue-schedules/:_rs_number",
+            "v1/revenue-recognition-rules/subscription-charges/:_charge_key",
+            "v1/revenue-schedules/invoice-items/:_id",
+            "v1/revenue-schedules/invoice-item-adjustments/:_id",
+            "v1/revenue-schedules/:_rs_number",
+            "v1/revenue-schedules/subscription-charges/:_charge_key",
+            "v1/journal-entries/:_je_number",
+            "v1/journal-entries/journal-runs/:_jr_number"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "paging": {
+                    "pagingMethod": "pageargument",
+                    "pageArgument": "page"
+                },
+                "successPath": "success",
+                "resources": [
+                    {
+                        "id": "accountingperiods",
+                        "name": "Accounting Periods",
+                        "endpoints": [
+                            {
+                                "id": "get_all_accounting_periods",
+                                "url": "v1/accounting-periods",
+                                "name": "Get All Accounting Periods",
+                                "resourcePath": "accountingPeriods"
+                            },
+                            {
+                                "id": "get_a_accounting_period",
+                                "url": "v1/accounting-periods/:_id",
+                                "name": "Get a Accounting Period",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Accounting Period Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "endpoints": [
+                            {
+                                "id": "get_a_account",
+                                "url": "v1/accounts/:_id",
+                                "name": "Get a Account",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_account_summary_by_id",
+                                "url": "v1/accounts/:_id/summary",
+                                "name": "Get account summary by ID",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "amendments",
+                        "name": "Amendments",
+                        "endpoints": [
+                            {
+                                "id": "get_amendments_by_key",
+                                "url": "v1/amendments/:_id",
+                                "name": "Get Amendments By Key",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Amendment Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_amendments_by_subscription_id",
+                                "url": "v1/amendments/subscriptions/:_id",
+                                "name": "Get Amendments By Subscription Id",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Subscription Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "catalog",
+                        "name": "Catalog",
+                        "endpoints": [
+                            {
+                                "id": "get_catalog_for_products",
+                                "url": "v1/catalog/products",
+                                "name": "Get Catalog for products",
+                                "resourcePath": "products"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "chargerevenuesummaries",
+                        "name": "Charge Revenue Summaries",
+                        "endpoints": [
+                            {
+                                "id": "get_charge_summary_details_by_crs_number",
+                                "url": "v1/charge-revenue-summaries/:_id",
+                                "name": "Get Charge Summary Details by CRS number",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "CRS number",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_charge_revenue_summary_details_by_charge_id",
+                                "url": "v1/charge-revenue-summaries/subscription-charges/:_id",
+                                "name": "Get Charge Revenue Summary Details by Charge ID",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Charge Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "chartofaccounts",
+                        "name": "Chart of Accounts",
+                        "endpoints": [
+                            {
+                                "id": "get_all_accounting_codes",
+                                "url": "v1/accounting-codes",
+                                "name": "Get All Accounting Codes",
+                                "resourcePath": "accountingCodes"
+                            },
+                            {
+                                "id": "get_accounting_code_by_id",
+                                "url": "v1/accounting-codes/:_id",
+                                "name": "Get Accounting Code by id",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Accounting Code Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "paymentmethods",
+                        "name": "Payment Methods",
+                        "endpoints": [
+                            {
+                                "id": "get_payment_methods",
+                                "url": "v1/payment-methods/credit-cards/accounts/:_id",
+                                "name": "Get payment methods",
+                                "resourcePath": "creditCards",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "subscriptions",
+                        "name": "Subscriptions",
+                        "endpoints": [
+                            {
+                                "id": "get_subscriptions_by_account",
+                                "url": "v1/subscriptions/accounts/:_id",
+                                "name": "Get subscriptions by account",
+                                "resourcePath": "subscriptions",
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Account Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "charge-detail",
+                                        "name": "Charge Detail",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "last-segment",
+                                            "current-segment",
+                                            "all-segments",
+                                            "specific-segment&as-of-date=date"
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_subscription_by_key",
+                                "url": "v1/subscriptions/:_id",
+                                "name": "Get subscription by key",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Subscription Id",
+                                        "fieldType": "integer",
+                                        "required": true
+                                    }
+                                ],
+                                "queryParameters": [
+                                    {
+                                        "id": "charge-detail",
+                                        "name": "Charge Detail",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "last-segment",
+                                            "current-segment",
+                                            "all-segments",
+                                            "specific-segment&as-of-date=date"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "attachments",
+                        "name": "Attachments",
+                        "endpoints": [
+                            {
+                                "id": "get_attachment_list",
+                                "url": "v1/attachments/:_object-type/:_object_key",
+                                "name": "Get Attachment List",
+                                "resourcePath": "attachments",
+                                "pathParameters": [
+                                    {
+                                        "id": "object-type",
+                                        "name": "Object Type",
+                                        "fieldType": "select",
+                                        "options": [
+                                            "account",
+                                            "subscription",
+                                            "invoice"
+                                        ],
+                                        "required": true
+                                    },
+                                    {
+                                        "id": "object_key",
+                                        "name": "Object Key",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_single_attachment",
+                                "url": "v1/attachments/:_id",
+                                "name": "Get single Attachment",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Attachment ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "custom-exchange-rates",
+                        "name": "Custom Exchange Rates",
+                        "endpoints": [
+                            {
+                                "id": "get_custom_foreign_currency_exchange_rates",
+                                "url": "v1/custom-exchange-rates/:_currency",
+                                "name": "Get Custom Foreign Currency Exchange Rates",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "currency",
+                                        "name": "Currency",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "hostedpages",
+                        "name": "Hostedpages",
+                        "endpoints": [
+                            {
+                                "id": "get_hostedpages",
+                                "url": "v1/hostedpages",
+                                "name": "Get Hostedpages",
+                                "resourcePath": "hostedpages",
+                                "queryParameters": [
+                                    {
+                                        "id": "version",
+                                        "name": "Version",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "journal_run",
+                        "name": "Journal Run",
+                        "endpoints": [
+                            {
+                                "id": "get_a_journal_run",
+                                "url": "v1/journal-runs/:_jr_number",
+                                "name": "Get a Journal Run",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "jr_number",
+                                        "name": "Journal Number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mass_updater",
+                        "name": "Mass Updater",
+                        "endpoints": [
+                            {
+                                "id": "get_mass_action_result",
+                                "url": "v1/bulk/:_bulk_key",
+                                "name": "Get Mass Action Result",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "bulk_key",
+                                        "name": "Bulk Key",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "notification_history",
+                        "name": "Notification Histories",
+                        "endpoints": [
+                            {
+                                "id": "get_callout_notification_histories",
+                                "url": "v1/notification-history/callout",
+                                "name": "Get Callout Notification Histories",
+                                "resourcePath": "calloutHistories",
+                                "queryParameters": [
+                                    {
+                                        "id": "endTime",
+                                        "name": "End Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "startTime",
+                                        "name": "Start Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "objectId",
+                                        "name": "Object Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "failedOnly",
+                                        "name": "Failed Only",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "eventCategory",
+                                        "name": "Event Category",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_email_notification_histories",
+                                "url": "v1/notification-history/email",
+                                "name": "Get Email Notification Histories",
+                                "resourcePath": "emailHistories",
+                                "queryParameters": [
+                                    {
+                                        "id": "endTime",
+                                        "name": "End Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "startTime",
+                                        "name": "Start Time",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "objectId",
+                                        "name": "Object Id",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "failedOnly",
+                                        "name": "Failed Only",
+                                        "fieldType": "input"
+                                    },
+                                    {
+                                        "id": "eventCategory",
+                                        "name": "Event Category",
+                                        "fieldType": "input"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revenue automation start date",
+                        "name": "Revenue Automation Start Date",
+                        "endpoints": [
+                            {
+                                "id": "get_the_revenue_automation_start_date",
+                                "url": "v1/settings/finance/revenue-automation-start-date",
+                                "name": "Get the revenue automation start date",
+                                "doesNotSupportPaging": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revenue-events",
+                        "name": "Revenue Events",
+                        "endpoints": [
+                            {
+                                "id": "get_revenue_event_by_event_number",
+                                "url": "v1/revenue-events/:_event_number",
+                                "name": "Get Revenue Event by event number",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "event_number",
+                                        "name": "Event Number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_revenue_event_by_revenue_schedule_number",
+                                "url": "v1/revenue-events/revenue-schedules/:_rs_number",
+                                "name": "Get Revenue Event by revenue schedule number",
+                                "resourcePath": "revenueEventDetails",
+                                "pathParameters": [
+                                    {
+                                        "id": "rs_number",
+                                        "name": "Revenue Schedule Number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revenue-items",
+                        "name": "Revenue Items",
+                        "endpoints": [
+                            {
+                                "id": "get_revenue_items_by_charge_revenue_summary_number",
+                                "url": "v1/revenue-items/charge-revenue-summaries/:_crs_number",
+                                "name": "Get revenue items by charge revenue summary number",
+                                "resourcePath": "revenueItems",
+                                "pathParameters": [
+                                    {
+                                        "id": "crs_number",
+                                        "name": "Charge Revenue Summary number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_revenue_items_by_revenue_event_number",
+                                "url": "v1/revenue-items/revenue-events/:_event_number",
+                                "name": "Get revenue items by revenue event number",
+                                "resourcePath": "revenueItems",
+                                "pathParameters": [
+                                    {
+                                        "id": "event_number",
+                                        "name": "Revenue Event Number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_revenue_items_by_revenue_schedule",
+                                "url": "v1/revenue-items/revenue-schedules/:_rs_number",
+                                "name": "Get revenue items by revenue schedule",
+                                "resourcePath": "revenueItems",
+                                "pathParameters": [
+                                    {
+                                        "id": "rs_number",
+                                        "name": "Revenue Schedule Number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revenue_rules",
+                        "name": "Revenue Rules",
+                        "endpoints": [
+                            {
+                                "id": "get_the_rule_associated_with_a_charge",
+                                "url": "v1/revenue-recognition-rules/subscription-charges/:_charge_key",
+                                "name": "Get the rule associated with a charge",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "charge_key",
+                                        "name": "Charge Key",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revenue_schedules",
+                        "name": "Revenue Schedules",
+                        "endpoints": [
+                            {
+                                "id": "get_revenue_schedule_by_invoice_item",
+                                "url": "v1/revenue-schedules/invoice-items/:_id",
+                                "name": "Get revenue schedule by invoice item",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice Item ID",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_revenue_schedule_details",
+                                "url": "v1/revenue-schedules/:_rs_number",
+                                "name": "Get revenue schedule details",
+                                "resourcePath": "revenueItems",
+                                "pathParameters": [
+                                    {
+                                        "id": "rs_number",
+                                        "name": "Revenue Schedule Number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_revenue_schedule_details_of_a_subscription_charge",
+                                "url": "v1/revenue-schedules/subscription-charges/:_charge_key",
+                                "name": "Get a revenue schedule details of a subscription charge",
+                                "resourcePath": "revenueItems",
+                                "pathParameters": [
+                                    {
+                                        "id": "charge_key",
+                                        "name": "Charge key",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "summary_journal_entries",
+                        "name": "Summary Journal Entries",
+                        "endpoints": [
+                            {
+                                "id": "get_all_summary_journal_entries_in_a_journal_run",
+                                "url": "v1/journal-entries/journal-runs/:_jr_number",
+                                "name": "Get All Summary Journal Entries in a Journal Run",
+                                "pathParameters": [
+                                    {
+                                        "id": "jr_number",
+                                        "name": "Journal Runs Number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_a_summary_journal_entry",
+                                "url": "v1/journal-entries/:_je_number",
+                                "name": "Get a Summary Journal Entry",
+                                "resourcePath": "revenueItems",
+                                "doesNotSupportPaging": true,
+                                "pathParameters": [
+                                    {
+                                        "id": "je_number",
+                                        "name": "Journal Entry Number",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactions",
+                        "name": "Transactions",
+                        "endpoints": [
+                            {
+                                "id": "get_invoices",
+                                "url": "v1/transactions/invoices/accounts/:_account_key",
+                                "name": "Get invoices",
+                                "resourcePath": "invoices",
+                                "pathParameters": [
+                                    {
+                                        "id": "account_key",
+                                        "name": "Account Key",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "get_payments",
+                                "url": "v1/transactions/payments/accounts/:_account_key",
+                                "name": "Get payments",
+                                "resourcePath": "payments",
+                                "pathParameters": [
+                                    {
+                                        "id": "account_key",
+                                        "name": "Account key",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "usage",
+                        "name": "Usage",
+                        "endpoints": [
+                            {
+                                "id": "get_usages",
+                                "url": "v1/usage/accounts/:_account_key",
+                                "name": "Get usages",
+                                "resourcePath": "usage",
+                                "pathParameters": [
+                                    {
+                                        "id": "account_key",
+                                        "name": "Account Key",
+                                        "fieldType": "input",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "import": {
+        "labels": {
+            "version": "API Version"
+        },
+        "urlResolution": [
+            "v1/accounting-periods",
+            "v1/accounting-periods/:_id",
+            "v1/accounting-periods/:_id/close",
+            "v1/accounting-periods/:_id/reopen",
+            "v1/accounting-periods/:_id/run-trial-balance",
+            "v1/accounting-periods/:_id/pending-close",
+            "v1/accounts",
+            "v1/accounts/:_id",
+            "v1/accounting-codes",
+            "v1/accounting-codes/:_id",
+            "v1/accounting-codes/:_id/activate",
+            "v1/accounting-codes/:_id/deactivate",
+            "v1/payment-methods/credit-cards",
+            "v1/payment-methods/credit-cards/:_id",
+            "v1/subscriptions",
+            "v1/subscriptions/:_id",
+            "v1/subscriptions/preview",
+            "v1/subscriptions/:_id/renew",
+            "v1/subscriptions/:_id/cancel",
+            "v1/subscriptions/:_id/resume",
+            "v1/subscriptions/:_id/suspend",
+            "v1/attachments/:_id",
+            "v1/connections",
+            "v1/hmac-signatures",
+            "v1/journal-runs",
+            "v1/journal-runs/:_jr_number",
+            "v1/journal-runs/:_jr_number/cancel",
+            "v1/bulk/:_bulk_key/stop",
+            "v1/revenue-schedules/invoice-items/:_id",
+            "v1/revenue-schedules/invoice-items/:_id/distribute-revenue-with-date-range",
+            "v1/revenue-schedules/:_rs_number",
+            "v1/revenue-schedules/:_rs_number/distribute-revenue-on-specific-date",
+            "v1/revenue-schedules/:_rs_number/distribute-revenue-with-date-range",
+            "v1/revenue-schedules/:_rs_number/basic-information",
+            "v1/revenue-items/revenue-events/:_event_number",
+            "v1/revenue-items/revenue-schedules/:_rs_number",
+            "v1/journal-entries",
+            "v1/journal-entries/:_je_number",
+            "v1/journal-entries/:_je_number/basic-information",
+            "v1/journal-entries/:_je_number/cancel",
+            "v1/operations/invoice-collect"
+        ],
+        "versions": [
+            {
+                "version": "v1",
+                "successPath": "success",
+                "resources": [
+                    {
+                        "id": "accountingperiods",
+                        "name": "Accounting Periods",
+                        "sampleData": {
+                            "startDate": "2016-01-01",
+                            "endDate": "2016-01-31",
+                            "fiscalYear": 2016,
+                            "fiscalQuarter": null,
+                            "name": "January 2016",
+                            "notes": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_accounting_period",
+                                "name": "Create Accounting Period",
+                                "url": "v1/accounting-periods",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true
+                            },
+                            {
+                                "id": "update_accounting_period",
+                                "name": "Update Accounting Period",
+                                "url": "v1/accounting-periods/:_id",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true
+                            },
+                            {
+                                "id": "create_or_update_accounting_period",
+                                "name": "Create or Update Accounting Period",
+                                "url": [
+                                    "v1/accounting-periods/:_id",
+                                    "v1/accounting-periods"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "successPath": [
+                                    "success",
+                                    "success"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_accounting_period",
+                                "name": "Delete Accounting Period",
+                                "url": "v1/accounting-periods/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "close_accounting_period",
+                                "name": "Close Accounting Period",
+                                "url": "v1/accounting-periods/:_id/close",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "re-open_accounting_period",
+                                "name": "Re-Open Accounting Period",
+                                "url": "v1/accounting-periods/:_id/reopen",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "run_trial_balance",
+                                "name": "Run Trial Balance",
+                                "url": "v1/accounting-periods/:_id/run-trial-balance",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "set_accounting_period_to_pending_close",
+                                "name": "Set Accounting Period to Pending Close",
+                                "url": "v1/accounting-periods/:_id/pending-close",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "accounts",
+                        "name": "Accounts",
+                        "operations": [
+                            {
+                                "id": "create_account",
+                                "name": "Create account",
+                                "url": "v1/accounts",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "name": "Zuora Test Account",
+                                    "currency": "USD",
+                                    "notes": "This account is for demo purposes.",
+                                    "billCycleDay": 0,
+                                    "autoPay": false,
+                                    "paymentTerm": "Due Upon Receipt",
+                                    "billToContact": {
+                                        "address1": "1051 E Hillsdale Blvd",
+                                        "city": "Foster City",
+                                        "country": "United States",
+                                        "firstName": "John",
+                                        "lastName": "Smith",
+                                        "zipCode": "94404",
+                                        "state": "CA",
+                                        "workEmail": "john.smith@test.com"
+                                    },
+                                    "hpmCreditCardPaymentMethodId": "2c92c0f93cf64d94013cfe2d20db61a7",
+                                    "subscription": {
+                                        "termType": "TERMED",
+                                        "initialTerm": 12,
+                                        "renewalTerm": 12,
+                                        "autoRenew": true,
+                                        "notes": "This is a trial subscription for POST account demo.",
+                                        "subscribeToRatePlans": [
+                                            {
+                                                "productRatePlanId": "2c92c0f94ac8307f014ae5d3d1d469e2",
+                                                "chargeOverrides": [
+                                                    {
+                                                        "productRatePlanChargeId": "2c92c0f94ac8307f014ae5d4a5156b28",
+                                                        "price": 1000
+                                                    },
+                                                    {
+                                                        "productRatePlanChargeId": "2c92c0f94ac8307f014ae5dbe2947851",
+                                                        "price": 1000
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "productRatePlanId": "2c92c0f93cf64d94013d027681560341",
+                                                "chargeOverrides": [
+                                                    {
+                                                        "productRatePlanChargeId": "2c92c0f83cf64298013d027725a67b7b",
+                                                        "price": 1000
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "contractEffectiveDate": "2016-01-01"
+                                    },
+                                    "invoice": true,
+                                    "collect": false
+                                }
+                            },
+                            {
+                                "id": "update_account",
+                                "name": "Update account",
+                                "url": "v1/accounts/:_id",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "name": "Zuora Test Account",
+                                    "currency": "USD",
+                                    "notes": "This account is for demo purposes.",
+                                    "billCycleDay": 0,
+                                    "autoPay": false,
+                                    "paymentTerm": "Due Upon Receipt",
+                                    "billToContact": {
+                                        "address1": "1051 E Hillsdale Blvd",
+                                        "city": "Foster City",
+                                        "country": "United States",
+                                        "firstName": "John",
+                                        "lastName": "Smith",
+                                        "zipCode": "94404",
+                                        "state": "CA",
+                                        "workEmail": "john.smith@test.com"
+                                    },
+                                    "hpmCreditCardPaymentMethodId": "2c92c0f93cf64d94013cfe2d20db61a7",
+                                    "subscription": {
+                                        "termType": "TERMED",
+                                        "initialTerm": 12,
+                                        "renewalTerm": 12,
+                                        "autoRenew": true,
+                                        "notes": "This is a trial subscription for POST account demo.",
+                                        "subscribeToRatePlans": [
+                                            {
+                                                "productRatePlanId": "2c92c0f94ac8307f014ae5d3d1d469e2",
+                                                "chargeOverrides": [
+                                                    {
+                                                        "productRatePlanChargeId": "2c92c0f94ac8307f014ae5d4a5156b28",
+                                                        "price": 1000
+                                                    },
+                                                    {
+                                                        "productRatePlanChargeId": "2c92c0f94ac8307f014ae5dbe2947851",
+                                                        "price": 1000
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "productRatePlanId": "2c92c0f93cf64d94013d027681560341",
+                                                "chargeOverrides": [
+                                                    {
+                                                        "productRatePlanChargeId": "2c92c0f83cf64298013d027725a67b7b",
+                                                        "price": 1000
+                                                    }
+                                                ]
+                                            }
+                                        ],
+                                        "contractEffectiveDate": "2016-01-01"
+                                    },
+                                    "invoice": true,
+                                    "collect": false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "chartofaccounts",
+                        "name": "Chart of Accounts",
+                        "sampleData": {
+                            "name": "Accounts Receivable",
+                            "type": "AccountsReceivable",
+                            "glAccountName": "Accounts Receivable",
+                            "glAccountNumber": "1312",
+                            "notes": ""
+                        },
+                        "operations": [
+                            {
+                                "id": "create_accounting_code",
+                                "name": "Create Accounting Code",
+                                "url": "v1/accounting-codes",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true
+                            },
+                            {
+                                "id": "update_accounting_code",
+                                "name": "Update Accounting Code",
+                                "url": "v1/accounting-codes/:_id",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true
+                            },
+                            {
+                                "id": "create_or_update_accounting_code",
+                                "name": "Create or Update Accounting Code",
+                                "url": [
+                                    "v1/accounting-codes/:_id",
+                                    "v1/accounting-codes"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "successPath": [
+                                    "success",
+                                    "success"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_accounting_code",
+                                "name": "Delete Accounting Code",
+                                "url": "v1/accounting-codes/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "activate_accounting_code",
+                                "name": "Activate Accounting Code",
+                                "url": "v1/accounting-codes/:_id/activate",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "deactivate_accounting_code",
+                                "name": "Deactivate Accounting Code",
+                                "url": "v1/accounting-codes/:_id/deactivate",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "paymentmethods",
+                        "name": "Payment Methods",
+                        "operations": [
+                            {
+                                "id": "create_payment_method",
+                                "name": "Create payment method",
+                                "url": "v1/payment-methods/credit-cards",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "defaultPaymentMethod": false,
+                                    "cardHolderInfo": {
+                                        "addressLine1": "77 Fallon Glen",
+                                        "addressLine2": "",
+                                        "zipCode": "94020",
+                                        "state": "California",
+                                        "phone": "4155551234",
+                                        "country": "USA",
+                                        "cardHolderName": "Bill Thiebault",
+                                        "city": "Fremont",
+                                        "email": "bill@testaddress.com"
+                                    },
+                                    "expirationMonth": "10",
+                                    "accountKey": "A00001115",
+                                    "creditCardType": "Discover",
+                                    "expirationYear": "2015",
+                                    "creditCardNumber": "1111222233334444",
+                                    "securityCode": "123"
+                                }
+                            },
+                            {
+                                "id": "update_payment_method",
+                                "name": "Update payment method",
+                                "url": "v1/payment-methods/credit-cards/:_id",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "defaultPaymentMethod": false,
+                                    "cardHolderInfo": {
+                                        "addressLine1": "77 Fallon Glen",
+                                        "addressLine2": "",
+                                        "zipCode": "94020",
+                                        "state": "California",
+                                        "phone": "4155551234",
+                                        "country": "USA",
+                                        "cardHolderName": "Bill Thiebault",
+                                        "city": "Fremont",
+                                        "email": "bill@testaddress.com"
+                                    },
+                                    "expirationMonth": "10",
+                                    "accountKey": "A00001115",
+                                    "creditCardType": "Discover",
+                                    "expirationYear": "2015",
+                                    "creditCardNumber": "1111222233334444",
+                                    "securityCode": "123"
+                                }
+                            },
+                            {
+                                "id": "create_or_update_payment_method",
+                                "name": "Create or Update payment method",
+                                "url": [
+                                    "v1/payment-methods/credit-cards/:_id",
+                                    "v1/payment-methods/credit-cards"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "successPath": [
+                                    "success",
+                                    "success"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "defaultPaymentMethod": false,
+                                    "cardHolderInfo": {
+                                        "addressLine1": "77 Fallon Glen",
+                                        "addressLine2": "",
+                                        "zipCode": "94020",
+                                        "state": "California",
+                                        "phone": "4155551234",
+                                        "country": "USA",
+                                        "cardHolderName": "Bill Thiebault",
+                                        "city": "Fremont",
+                                        "email": "bill@testaddress.com"
+                                    },
+                                    "expirationMonth": "10",
+                                    "accountKey": "A00001115",
+                                    "creditCardType": "Discover",
+                                    "expirationYear": "2015",
+                                    "creditCardNumber": "1111222233334444",
+                                    "securityCode": "123"
+                                }
+                            },
+                            {
+                                "id": "delete_payment_method",
+                                "name": "Delete payment method",
+                                "url": "v1/payment-methods/credit-cards/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "subscriptions",
+                        "name": "Subscriptions",
+                        "operations": [
+                            {
+                                "id": "create_subscription",
+                                "name": "Create Subscription",
+                                "url": "v1/subscriptions",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreExisting": true,
+                                "sampleData": {
+                                    "renewalTerm": "3",
+                                    "renewalTermPeriodType": "Week",
+                                    "termType": "TERMED",
+                                    "autoRenew": true,
+                                    "invoiceTargetDate": "2015-12-31",
+                                    "accountKey": "A00001115",
+                                    "contractEffectiveDate": "2015-02-1",
+                                    "subscribeToRatePlans": [
+                                        {
+                                            "chargeOverrides": [
+                                                {
+                                                    "productRatePlanChargeId": "ff8080811ca15d19011cddad8c953b53",
+                                                    "price": 12.01,
+                                                    "number": "TestCharge",
+                                                    "description": "This is rate plan charge description",
+                                                    "triggerEvent": "SpecificDate",
+                                                    "triggerDate": "2015-09-01",
+                                                    "billingTiming": "IN_ARREARS",
+                                                    "billCycleType": "SpecificDayofMonth",
+                                                    "billCycleDay": "5",
+                                                    "billingPeriodAlignment": "AlignToCharge",
+                                                    "myCustomField__c": "test"
+                                                }
+                                            ],
+                                            "productRatePlanId": "ff8080811ca15d19011cdda9b0ad3b51"
+                                        }
+                                    ],
+                                    "invoice": true,
+                                    "collect": false,
+                                    "initialTerm": "12",
+                                    "initialTermPeriodType": "Week",
+                                    "notes": "Test POST subscription from z-ruby-sdk",
+                                    "myCustomField__c": "test"
+                                }
+                            },
+                            {
+                                "id": "update_subscription",
+                                "name": "Update Subscription",
+                                "url": "v1/subscriptions/:_id",
+                                "method": "PUT",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "supportIgnoreMissing": true,
+                                "sampleData": {
+                                    "renewalTerm": "3",
+                                    "renewalTermPeriodType": "Week",
+                                    "termType": "TERMED",
+                                    "autoRenew": true,
+                                    "invoiceTargetDate": "2015-12-31",
+                                    "accountKey": "A00001115",
+                                    "contractEffectiveDate": "2015-02-1",
+                                    "subscribeToRatePlans": [
+                                        {
+                                            "chargeOverrides": [
+                                                {
+                                                    "productRatePlanChargeId": "ff8080811ca15d19011cddad8c953b53",
+                                                    "price": 12.01,
+                                                    "number": "TestCharge",
+                                                    "description": "This is rate plan charge description",
+                                                    "triggerEvent": "SpecificDate",
+                                                    "triggerDate": "2015-09-01",
+                                                    "billingTiming": "IN_ARREARS",
+                                                    "billCycleType": "SpecificDayofMonth",
+                                                    "billCycleDay": "5",
+                                                    "billingPeriodAlignment": "AlignToCharge",
+                                                    "myCustomField__c": "test"
+                                                }
+                                            ],
+                                            "productRatePlanId": "ff8080811ca15d19011cdda9b0ad3b51"
+                                        }
+                                    ],
+                                    "invoice": true,
+                                    "collect": false,
+                                    "initialTerm": "12",
+                                    "initialTermPeriodType": "Week",
+                                    "notes": "Test POST subscription from z-ruby-sdk",
+                                    "myCustomField__c": "test"
+                                }
+                            },
+                            {
+                                "id": "create_or_update_subscription",
+                                "name": "Create or Update Subscription",
+                                "url": [
+                                    "v1/subscriptions/:_id",
+                                    "v1/subscriptions"
+                                ],
+                                "successPath": [
+                                    "success",
+                                    "success"
+                                ],
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "renewalTerm": "3",
+                                    "renewalTermPeriodType": "Week",
+                                    "termType": "TERMED",
+                                    "autoRenew": true,
+                                    "invoiceTargetDate": "2015-12-31",
+                                    "accountKey": "A00001115",
+                                    "contractEffectiveDate": "2015-02-1",
+                                    "subscribeToRatePlans": [
+                                        {
+                                            "chargeOverrides": [
+                                                {
+                                                    "productRatePlanChargeId": "ff8080811ca15d19011cddad8c953b53",
+                                                    "price": 12.01,
+                                                    "number": "TestCharge",
+                                                    "description": "This is rate plan charge description",
+                                                    "triggerEvent": "SpecificDate",
+                                                    "triggerDate": "2015-09-01",
+                                                    "billingTiming": "IN_ARREARS",
+                                                    "billCycleType": "SpecificDayofMonth",
+                                                    "billCycleDay": "5",
+                                                    "billingPeriodAlignment": "AlignToCharge",
+                                                    "myCustomField__c": "test"
+                                                }
+                                            ],
+                                            "productRatePlanId": "ff8080811ca15d19011cdda9b0ad3b51"
+                                        }
+                                    ],
+                                    "invoice": true,
+                                    "collect": false,
+                                    "initialTerm": "12",
+                                    "initialTermPeriodType": "Week",
+                                    "notes": "Test POST subscription from z-ruby-sdk",
+                                    "myCustomField__c": "test"
+                                }
+                            },
+                            {
+                                "id": "delete_subscription",
+                                "name": "Delete Subscription",
+                                "url": "v1/subscriptions/:_id",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "preview_subscription",
+                                "name": "Preview Subscription",
+                                "url": "v1/subscriptions/preview",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "termType": "TERMED",
+                                    "invoiceTargetDate": "2013-12-31",
+                                    "contractEffectiveDate": "2013-1-15",
+                                    "previewAccountInfo": {
+                                        "currency": "USD",
+                                        "billToContact": {
+                                            "zipCode": "94549",
+                                            "country": "United States",
+                                            "city": "Walnut Creek",
+                                            "county": "Contra Consta",
+                                            "state": "California"
+                                        },
+                                        "billCycleDay": 31
+                                    },
+                                    "subscribeToRatePlans": [
+                                        {
+                                            "chargeOverrides": [
+                                                {
+                                                    "productRatePlanChargeId": "ff8080811ca15d19011cddad8c953b53",
+                                                    "quantity": 100
+                                                }
+                                            ],
+                                            "productRatePlanId": "ff8080811ca15d19011cdda9b0ad3b51"
+                                        }
+                                    ],
+                                    "initialTerm": 12,
+                                    "initialTermPeriodType": "Week"
+                                }
+                            },
+                            {
+                                "id": "renew_subscription",
+                                "name": "Renew Subscription",
+                                "url": "v1/subscriptions/:_id/renew",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "invoice": true,
+                                    "collect": false
+                                }
+                            },
+                            {
+                                "id": "cancel_subscription",
+                                "name": "Cancel Subscription",
+                                "url": "v1/subscriptions/:_id/cancel",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "cancellationPolicy": "SpecificDate",
+                                    "cancellationEffectiveDate": "2019-05-31",
+                                    "invoice": true,
+                                    "collect": false
+                                }
+                            },
+                            {
+                                "id": "resume_subscription",
+                                "name": "Resume Subscription",
+                                "url": "v1/subscriptions/:_id/resume",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "contractEffectiveDate": "2019-02-01",
+                                    "resumePolicy": "SpecificDate",
+                                    "resumeSpecificDate": "2019-10-01",
+                                    "extendsTerm": true,
+                                    "invoice": true,
+                                    "collect": false
+                                }
+                            },
+                            {
+                                "id": "suspend_subscription",
+                                "name": "Suspend Subscription",
+                                "url": "v1/subscriptions/:_id/suspend",
+                                "method": "PUT",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "contractEffectiveDate": "2019-02-01",
+                                    "suspendPolicy": "FixedPeriodsFromToday",
+                                    "suspendPeriods": 10,
+                                    "suspendPeriodsType": "Day",
+                                    "resume": true,
+                                    "resumePolicy": "SpecificDate",
+                                    "resumeSpecificDate": "2019-06-01",
+                                    "extendsTerm": true,
+                                    "invoice": true,
+                                    "collect": false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "attachments",
+                        "name": "Attachment",
+                        "sampleData": {
+                            "fileName": "something",
+                            "description": "description"
+                        },
+                        "operations": [
+                            {
+                                "id": "edit_attachment",
+                                "url": "v1/attachments/:_id",
+                                "name": "Edit Attachment",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "connections",
+                        "name": "Connections",
+                        "operations": [
+                            {
+                                "id": "create_connections",
+                                "url": "v1/connections",
+                                "name": "Create Connections",
+                                "method": "POST",
+                                "sampleData": {}
+                            }
+                        ]
+                    },
+                    {
+                        "id": "hmac-signatures",
+                        "name": "HMAC Signatures",
+                        "sampleData": {
+                            "uri": "https://api.zuora.com/rest/v1/payment-methods/credit-cards",
+                            "method": "POST"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_hmac_signatures",
+                                "url": "v1/hmac-signatures",
+                                "name": "Create HMAC Signatures",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "journal-runs",
+                        "name": "Journal Runs",
+                        "sampleData": {
+                            "accountingPeriodName": "Mar-15",
+                            "journalEntryDate": "2014-01-30",
+                            "transactionTypes": [
+                                {
+                                    "type": "Invoice Item"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_journal_run",
+                                "url": "v1/journal-runs",
+                                "name": "Create Journal Run",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "jr_number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_journal_run",
+                                "url": "v1/journal-runs/:_jr_number/cancel",
+                                "name": "Cancel Journal Run",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "jr_number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_journal_run",
+                                "url": "v1/journal-runs/:_jr_number",
+                                "name": "Delete Journal Run",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "jr_number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mass_updater",
+                        "name": "Mass Updater",
+                        "sampleData": {},
+                        "operations": [
+                            {
+                                "id": "stop_mass_action",
+                                "url": "v1/bulk/:_bulk_key/stop",
+                                "name": "Stop Mass Action",
+                                "method": "PUT",
+                                "description": "Records that have already been processed when a mass action is stopped are not rolled back.",
+                                "parameters": [
+                                    {
+                                        "id": "bulk_key",
+                                        "name": "Bulk Key",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revenue_schedules",
+                        "name": "Revenue Schedules",
+                        "sampleData": {
+                            "distributionType": "Daily distribution",
+                            "recognitionStart": "2016-12-1",
+                            "recognitionEnd": "2016-12-31",
+                            "eventType": "Revenue Distributed",
+                            "eventTypeSystemId": "RevenueDistributed__z",
+                            "notes": "Manually distribute revenue by usage"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_a_revenue_schedule_for_an_invoice_item_(distribute_by_date_range)",
+                                "url": "v1/revenue-schedules/invoice-items/:_id/distribute-revenue-with-date-range",
+                                "name": "Create a revenue schedule for an Invoice Item (distribute by date range)",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice Item ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "distributionType": "Daily distribution",
+                                    "recognitionStart": "2016-12-1",
+                                    "recognitionEnd": "2016-12-31",
+                                    "notes": "Manually distribute revenue by usage",
+                                    "revenueEvent": {
+                                        "eventType": "Revenue Distributed",
+                                        "eventTypeSystemId": "RevenueDistributed__z",
+                                        "notes": "My notes"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "create_a_revenue_schedule_for_an_invoice_item_(manual_distribution)",
+                                "url": "v1/revenue-schedules/invoice-items/:_id",
+                                "name": "Create a revenue schedule for an Invoice Item (manual distribution)",
+                                "method": "POST",
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "name": "Invoice Item ID",
+                                        "in": "path",
+                                        "required": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "revenueDistributions": [
+                                        {
+                                            "accountingPeriodName": "Jan '16",
+                                            "newAmount": "20"
+                                        },
+                                        {
+                                            "accountingPeriodName": "Open-Ended",
+                                            "newAmount": "30"
+                                        }
+                                    ],
+                                    "revenueEvent": {
+                                        "eventType": "Revenue Distributed",
+                                        "eventTypeSystemId": "RevenueDistributed__z",
+                                        "notes": "My notes"
+                                    }
+                                }
+                            },
+                            {
+                                "id": "distribute_revenue_on_a_specific_date",
+                                "url": "v1/revenue-schedules/:_rs_number/distribute-revenue-on-specific-date",
+                                "name": "Distribute revenue on a specific date",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "rs_number",
+                                        "name": "Revenue Schedule Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "distributionType": "specific date (delta fixed amount)",
+                                    "eventType": "Revenue Distributed",
+                                    "eventTypeSystemId": "RevenueDistributed__z",
+                                    "distributeOn": "2016-02-03",
+                                    "amount": "1000.00",
+                                    "notes": "service delivered and accepted by customer"
+                                }
+                            },
+                            {
+                                "id": "distribute_revenue_by_recognition_start_and_end_dates",
+                                "url": "v1/revenue-schedules/:_rs_number/distribute-revenue-with-date-range",
+                                "name": "Distribute revenue by recognition start and end dates",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "rs_number",
+                                        "name": "Revenue Schedule Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "distributionType": "Daily distribution",
+                                    "recognitionStart": "2015-12-1",
+                                    "recognitionEnd": "2015-12-31",
+                                    "eventType": "Revenue Distributed",
+                                    "eventTypeSystemId": "RevenueDistributed__z",
+                                    "notes": "manual distribute revenue by usage"
+                                }
+                            },
+                            {
+                                "id": "update_revenue_schedule_basic_information",
+                                "url": "v1/revenue-schedules/:_rs_number/basic-information",
+                                "name": "Update revenue schedule basic information",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "rs_number",
+                                        "name": "Revenue Schedule Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "notes": "change recognition term",
+                                    "referenceId": "Reference ID"
+                                }
+                            },
+                            {
+                                "id": "delete_revenue_schedule",
+                                "url": "v1/revenue-schedules/:_rs_number",
+                                "name": "Delete revenue schedule",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "rs_number",
+                                        "name": "Revenue Schedule Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "revenue_items",
+                        "name": "Revenue Items",
+                        "operations": [
+                            {
+                                "id": "update_custom_fields_on_revenue_items_by_revenue_event_number",
+                                "url": "v1/revenue-items/revenue-events/:_event_number",
+                                "name": "Update custom fields on revenue items by revenue event number",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "event_number",
+                                        "name": "Revenue Event Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "revenueItems": [
+                                        {
+                                            "accountingPeriodName": "Jan 2015",
+                                            "event1__c": "snigu"
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "id": "update_custom_fields_on_revenue_items_by_the_revenue_schedule_number",
+                                "url": "v1/revenue-items/revenue-schedules/:_rs_number",
+                                "name": "Update custom fields on revenue items by the revenue schedule number",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "rs_number",
+                                        "name": "Revenue Schedule Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ],
+                                "sampleData": {
+                                    "revenueItems": [
+                                        {
+                                            "accountingPeriodName": "Feb 2016",
+                                            "scheduleitem1__c": "snigu"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "id": "summary_journal_entries",
+                        "name": "Summary Journal Entries",
+                        "sampleData": {
+                            "notes": "my account",
+                            "journalEntryDate": "2014-09-09",
+                            "accountingPeriodName": "Feb 2016",
+                            "transferredToAccounting": "No",
+                            "currency": "USD",
+                            "segments": [
+                                {
+                                    "segmentName": "billToCountry",
+                                    "segmentValue": "United States"
+                                },
+                                {
+                                    "segmentName": "billToState",
+                                    "segmentValue": "California"
+                                }
+                            ],
+                            "journalEntryItems": [
+                                {
+                                    "accountingCodeType": "AccountsReceivable",
+                                    "accountingCodeName": "Accounts Receivable",
+                                    "type": "Credit",
+                                    "amount": "801.8",
+                                    "homeCurrencyAmount": "801.8"
+                                },
+                                {
+                                    "accountingCodeType": "Cash",
+                                    "accountingCodeName": "Bank",
+                                    "type": "Debit",
+                                    "amount": "801.8",
+                                    "homeCurrencyAmount": "801.8"
+                                }
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "id": "create_summary_journal_entry",
+                                "url": "v1/journal-entries",
+                                "name": "Create Summary Journal Entry",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "update_basic_information_of_a_summary_journal_entry",
+                                "url": "v1/journal-entries/:_je_number/basic-information",
+                                "name": "Update Basic Information of a Summary Journal Entry",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "je_number",
+                                        "name": "Journal Entries Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "create_or_update_journal_entries",
+                                "url": [
+                                    "v1/journal-entries/:_je_number/basic-information",
+                                    "v1/journal-entries"
+                                ],
+                                "name": "Create or Update Journal Entries",
+                                "method": [
+                                    "PUT",
+                                    "POST"
+                                ],
+                                "successPath": [
+                                    "success",
+                                    "success"
+                                ],
+                                "parameters": [
+                                    {
+                                        "id": "je_number",
+                                        "name": "Journal Entries Number",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cancel_summary_journal_entry",
+                                "url": "v1/journal-entries/:_je_number/cancel",
+                                "name": "Cancel Summary Journal Entry",
+                                "method": "PUT",
+                                "supportIgnoreMissing": true,
+                                "parameters": [
+                                    {
+                                        "id": "je_number",
+                                        "name": "Journal Entries Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "delete_a_summary_journal_entry",
+                                "url": "v1/journal-entries/:_je_number",
+                                "name": "Delete a Summary Journal Entry",
+                                "method": "DELETE",
+                                "askForHowToGetIdentifier": true,
+                                "parameters": [
+                                    {
+                                        "id": "je_number",
+                                        "name": "Journal Entries Number",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "transactions",
+                        "name": "Transactions",
+                        "sampleData": {
+                            "accountKey": "9c688963d3c7765977f8d16977d4bf37"
+                        },
+                        "operations": [
+                            {
+                                "id": "create_invoice_and_collect",
+                                "url": "v1/operations/invoice-collect",
+                                "name": "Create Invoice and collect",
+                                "method": "POST",
+                                "supportIgnoreExisting": true,
+                                "parameters": [
+                                    {
+                                        "id": "id",
+                                        "in": "path",
+                                        "required": true,
+                                        "isIdentifier": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
