@@ -72,12 +72,11 @@ const FormTitle = (title: string) => {
                 Icon(Icons.Close).size(15).onClick(() => dialog.Hide())
             ).width('2rem').height('2rem')/* .background({ hover: 'gray' }) */.cornerRadius('50%').cursor('pointer')
                 .shadow({ focus: '0 0 0 0.2rem rgba(38, 143, 255, 0.5)' })
-        ).height(60)
+        )
+            .height(60)
             //.background('#F8FAFF')
             .fontSize('1rem')
-            .borderBottom('1px solid rgb(232, 234, 237)')
-
-            .padding()
+        //   .borderBottom('1px solid rgb(232, 234, 237)')
     )
 }
 
@@ -162,7 +161,7 @@ const CategoryFormLayout = (columnInfo: any, fieldMap: any) => {
     const cats = {};
     const views = [];
     const { containers } = columnInfo;
-    
+
     for (let key in fieldMap) {
         const field = fieldMap[key];
 
@@ -663,7 +662,7 @@ export class FormBuilder {
                                                         .value(beautify(formMeta, null, 2, 50))
                                                         .width('100%')
                                                         .height('100%') :
-                                                   
+
                                                     ScrollView({ axes: cVertical, alignment: cTopLeading })(
                                                         VStack({ alignment: cTopLeading })(
                                                             // Text(JSON.stringify(formController.GetFormData())),
