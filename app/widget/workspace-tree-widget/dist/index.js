@@ -237,6 +237,11 @@ var CustomAppletTreeModuleController = /** @class */ (function (_super) {
                         onClick: function () { return setIsEditing(true); }
                     },
                     {
+                        title: 'Collections',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                        onClick: function () { return navigate("/app/".concat(realm === null || realm === void 0 ? void 0 : realm.name, "-").concat(workspaceId, "/").concat(applet === null || applet === void 0 ? void 0 : applet.name, "-").concat(appletId, "/collections")); }
+                    },
+                    {
                         title: 'Applet settings',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
                         onClick: function () { return navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings")); }

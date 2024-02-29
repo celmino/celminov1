@@ -1,5 +1,5 @@
 import { useCreateCollection, Permission, Role, useCreateStringAttribute } from "@realmocean/sdk";
-import { Button, FormBuilder, Text, UIViewBuilder, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
+import { Button, FormBuilder, HStack, Text, UIViewBuilder, cHorizontal, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
 
 
 
@@ -20,10 +20,19 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
 
 
     return (
-        Button(
+        HStack(
             Text('Save Field')
         )
-            .loading(isLoading)
+            .padding(cHorizontal, 11)
+            .minWidth(28)
+            .minHeight(28)
+            .height()
+            .width()
+            .fontSize(14)
+            .foregroundColor('white')
+            .cornerRadius(6)
+            .background('rgb(64, 101, 221)')
+            // .loading(isLoading)
             .onClick(() => {
 
                 if (databaseId == null) {
@@ -71,12 +80,12 @@ export const AddTextFieldDialog = (workspaceId: string, databaseId: string, coll
             "value": collectionId
         },
         "name": {
-            "label": "Name",
+            "label": "NAME",
             "type": "text",
             "name": "name"
         },
         "description": {
-            "label": "Description",
+            "label": "DESCRIPTION (OPTIONAL)",
             "type": "text",
             "multiline": true,
             "name": "description"

@@ -1,10 +1,18 @@
 import { is } from "@tuval/core";
-import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, FormBuilder, DialogPosition } from "@tuval/forms";
+import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, DialogPosition } from "@tuval/forms";
 import { useState } from "react";
 import { Icons } from "./Icons";
-import { AddTextFieldDialog } from "./dialogs/AddTextAttributeDialog";
+import { AddTextFieldDialog, TextFieldsAttributesView } from "./dialogs/AddTextAttributeDialog";
 import { Text } from "@realmocean/vibe";
+import { FormBuilder } from "../../FormBuilder/FormBuilder";
+import { NumberFieldsAttributesView } from "./dialogs/AddNumberFieldDialog";
 
+
+const FieldTypes = {
+    'text': TextFieldsAttributesView,
+    'richtext': TextFieldsAttributesView,
+    'number': NumberFieldsAttributesView
+}
 export const NewFieldMenuView = (workspaceId: string, databaseId: string, collectionId: string) => (
     HStack({ alignment: cTrailing })(
         UIViewBuilder(() => {
@@ -24,7 +32,7 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
                     title: 'Rich Text',
                     icon: Icons.RichTextAttribute,
                     onClick: () => (
-                        alert()
+                        setSelectedType('richtext')
                         //  DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
                     )
                 },
@@ -32,7 +40,7 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
                     title: 'Number',
                     icon: Icons.NumberAttribute,
                     onClick: () => (
-                        alert() // DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
+                        setSelectedType('number')
                     )
                 },
                 {
@@ -151,14 +159,7 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
                             .border('1px solid #EFF0F1')
                             .cornerRadius(6)
                         :
-                        UIViewBuilder(() =>
-                            VStack(
-                                FormBuilder.render(AddTextFieldDialog(workspaceId, databaseId, collectionId)) as any
-                            )
-                                .padding(20)
-                                .width(380)
-                                .height(315)
-                        )
+                        FieldTypes[selectedType](workspaceId, databaseId, collectionId)
                 )
                     .hideHandle(hideHandle => _hideHandle = hideHandle)
                     .dialogPosition(DialogPosition.BOTTOM_END)

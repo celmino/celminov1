@@ -1,18 +1,19 @@
 import { useCreateStringAttribute } from "@realmocean/sdk";
-import { HStack, Text, UIViewBuilder, VStack, cHorizontal, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
+import {  HStack, Text, UIViewBuilder, VStack, cHorizontal, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
 import { FormBuilder } from "../../../FormBuilder/FormBuilder";
 
 
-export const TextFieldsAttributesView = (workspaceId, databaseId, collectionId) => (
+export const NumberFieldsAttributesView = (workspaceId, databaseId, collectionId) => (
     UIViewBuilder(() =>
         VStack(
-            FormBuilder.render(AddTextFieldDialog(workspaceId, databaseId, collectionId))
+            FormBuilder.render(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
         )
             .padding(20)
             .width(380)
             .height(315)
     )
 )
+
 
 export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const { label, successAction, successActions } = action;
@@ -64,8 +65,8 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
 
 
 
-export const AddTextFieldDialog = (workspaceId: string, databaseId: string, collectionId: string) => ({
-    "title": 'Add text field',
+export const AddNumberFieldDialog = (workspaceId: string, databaseId: string, collectionId: string) => ({
+    "title": 'Add number field',
     "actions": [
         {
             "label": "Save",

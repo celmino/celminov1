@@ -36,5 +36,5 @@ interface Props {
     vertical?: boolean;
 }
 export declare const TRASH_ID = "void";
-export declare function MultipleContainers({ adjustScale, itemCount, cancelDrop, columns, handle, items: initialItems, containerStyle, coordinateGetter, getItemStyles, wrapperStyle, minimal, modifiers, renderItem, template, containerLabelTemplate, placeholderTemplate, strategy, trashable, vertical, scrollable, }: Props): JSX.Element;
+export declare function MultipleContainers({ adjustScale, itemCount, cancelDrop, columns, handle, items: initialItems, containerStyle, coordinateGetter, getItemStyles, wrapperStyle, minimal, modifiers, renderItem, template, containerLabelTemplate, placeholderTemplate, strategy, trashable, vertical, scrollable, }: Props): React.JSX.Element;
 export {};

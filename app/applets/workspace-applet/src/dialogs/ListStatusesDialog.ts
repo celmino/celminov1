@@ -1,6 +1,5 @@
 
 
-import { useSessionService } from "@realmocean/services";
 import {
     WorkProtocol, getAppFullName
 } from "@tuval/forms";
