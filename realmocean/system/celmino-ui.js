@@ -8436,7 +8436,7 @@ var WorkspaceApplet = {
             "collections": [
                 {
                     "name": "Documents",
-                    "id": "com.celmino.collection.workspace-document",
+                    "id": "documents",
                     "attributes": [
                         {
                             "key": "name",

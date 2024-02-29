@@ -1,3 +1,3 @@
-docker buildx build --no-cache --platform linux/amd64,linux/arm64 -t realmocean/celmino:1.0.56 --push .
+docker buildx build --no-cache --platform linux/amd64,linux/arm64 -t realmocean/celmino:1.0.58 --push .
 
 # docker buildx create --use

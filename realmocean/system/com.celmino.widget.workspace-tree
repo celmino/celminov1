@@ -82,6 +82,13 @@ var CustomAppletTreeModuleController = /** @class */ (function (_super) {
         var isLoading = false;
         var items = (this.props.data || {}).items;
         var _b = this.props.config || {}, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
+        var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
+        var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
+            projectId: workspaceId,
+            databaseId: 'workspace',
+            collectionId: 'applets',
+            documentId: appletId
+        }).document;
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_4__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
         var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getListId)();
         /*     const { document: list, isLoading: isListLoading } = useGetDocument({
@@ -221,7 +228,7 @@ var CustomAppletTreeModuleController = /** @class */ (function (_super) {
                     ];
                 },
                 requestNavigation: function () {
-                    navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId));
+                    navigate("/app/".concat(realm === null || realm === void 0 ? void 0 : realm.name, "-").concat(workspaceId, "/").concat(applet === null || applet === void 0 ? void 0 : applet.name, "-").concat(appletId));
                 },
                 requestEditMenu: function () { return [
                     {

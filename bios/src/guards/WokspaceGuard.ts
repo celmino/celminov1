@@ -28,7 +28,7 @@ export const DefaultWorkspaceGuard = () => {
             isLoading ? Text('fdsfsdf') :
                 isRealmsLoading ? Wait() :
                     (realms?.length === 0) ? UINavigate(`/app/workspace/select`) :
-                        UINavigate(`/app/workspace/${realms[0].$id}`)
+                        UINavigate(`/app/${realms[0].name}-${realms[0].$id}`)
 
 
 

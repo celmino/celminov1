@@ -53,7 +53,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         .cornerRadius(6)
                                         .background({ hover: darken('#7FE8D4', 0.05) })
                                         .onClick(() => {
-                                            navigate(`/app/workspace/${realm.$id}`)
+                                            navigate(`/app/${realm.name}-${realm.$id}`)
                                         })
                                 )
                             ).padding(cHorizontal, 20).height().maxWidth('100%'),
@@ -115,7 +115,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
 
 
-                                        navigate(`/app/workspace/${workspace.$id}`)
+                                        navigate(`/app/${workspace.name}-${workspace.$id}`)
                                     })
                                 }),
 
