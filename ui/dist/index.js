@@ -13715,11 +13715,12 @@ var FormTitle = function (title) {
         .fontFamily('source sans pro semibold')
         .foregroundColor('#333D47')
         .lineHeight('24px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Spacer)(), dialog && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Icons.Close).size(15).onClick(function () { return dialog.Hide(); })).width('2rem').height('2rem') /* .background({ hover: 'gray' }) */.cornerRadius('50%').cursor('pointer')
-        .shadow({ focus: '0 0 0 0.2rem rgba(38, 143, 255, 0.5)' })).height(60)
+        .shadow({ focus: '0 0 0 0.2rem rgba(38, 143, 255, 0.5)' }))
+        .height(60)
         //.background('#F8FAFF')
         .fontSize('1rem')
-        .borderBottom('1px solid rgb(232, 234, 237)')
-        .padding());
+    //   .borderBottom('1px solid rgb(232, 234, 237)')
+    );
 };
 var EditorView = function (textData) {
     var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
@@ -14180,7 +14181,7 @@ var FormBuilder = /** @class */ (function () {
                         }
                     }
                     return (isFormLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Spinner)() :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })(title && FormTitle(title), 
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 24 })(title && FormTitle(title), 
                         //   Text(formMode).onClick(() => setFormMode(formMode === 'form' ? 'code' : 'form')),
                         formMode === 'code' ?
                             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.CodeEditor)()
@@ -14203,8 +14204,8 @@ var FormBuilder = /** @class */ (function () {
                                 return NextFormAction(formMeta, action)
                             } */
                         })).height()
-                            .padding()
-                            .borderTop('1px solid #D6E4ED')));
+                        //.borderTop('1px solid #D6E4ED')
+                        ));
                 }).render()));
             });
         }).config(config)
@@ -14559,12 +14560,14 @@ __webpack_require__.r(__webpack_exports__);
 var label = function (fieldInfo) {
     var label = fieldInfo.label, required = fieldInfo.required, helpText = fieldInfo.helpText;
     return (label ?
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label + (required ? '*' : '')).kerning('0.00938em')
-            .lineHeight('24px').foregroundColor('rgb(101, 111, 125)').fontSize(14)
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label + (required ? '*' : '')).kerning('.6px')
+            .lineHeight('1.25').foregroundColor('rgb(101, 111, 125)').fontSize(12)
             .fontWeight(required ? '600' : '400')
             // .fontFamily(required ? 'source sans pro semibold' :'source sans pro'),
             .fontFamily('-apple-system,BlinkMacSystemFont,Segoe UI,roboto,Helvetica Neue,helvetica,arial,sans-serif'), _tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.nullOrEmpty(helpText) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_helpIcon__WEBPACK_IMPORTED_MODULE_1__.helpIcon).size(24)).width().height().tooltip(helpText).tooltipPosition(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TooltipPositions.RIGHT)).height()
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_helpIcon__WEBPACK_IMPORTED_MODULE_1__.helpIcon).size(24)).width().height().tooltip(helpText).tooltipPosition(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TooltipPositions.RIGHT))
+            .paddingBottom('12px')
+            .height()
         : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)());
 };
 

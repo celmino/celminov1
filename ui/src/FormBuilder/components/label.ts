@@ -10,8 +10,8 @@ export const label = (fieldInfo: any) => {
     return (
         label ?
             HStack({ alignment: cLeading, spacing: 10 })(
-                Text(label + (required ? '*' : '')).kerning('0.00938em')
-                    .lineHeight('24px').foregroundColor('rgb(101, 111, 125)').fontSize(14)
+                Text(label + (required ? '*' : '')).kerning('.6px')
+                    .lineHeight('1.25').foregroundColor('rgb(101, 111, 125)').fontSize(12)
                     .fontWeight(required ? '600' : '400')
                     // .fontFamily(required ? 'source sans pro semibold' :'source sans pro'),
                     .fontFamily('-apple-system,BlinkMacSystemFont,Segoe UI,roboto,Helvetica Neue,helvetica,arial,sans-serif'),
@@ -19,7 +19,9 @@ export const label = (fieldInfo: any) => {
                     HStack(
                         Icon(helpIcon).size(24)
                     ).width().height().tooltip(helpText).tooltipPosition(TooltipPositions.RIGHT)
-            ).height()
+            )
+            .paddingBottom('12px')
+            .height()
             : Fragment()
     )
 }

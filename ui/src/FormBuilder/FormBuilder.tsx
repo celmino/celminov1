@@ -654,7 +654,7 @@ export class FormBuilder {
 
                                     return (
                                         isFormLoading ? Spinner() :
-                                            VStack({ alignment: cTopLeading })(
+                                            VStack({ alignment: cTopLeading, spacing:24 })(
                                                 title && FormTitle(title),
                                                 //   Text(formMode).onClick(() => setFormMode(formMode === 'form' ? 'code' : 'form')),
                                                 formMode === 'code' ?
@@ -692,8 +692,7 @@ export class FormBuilder {
 
                                                 )
                                                     .height()
-                                                    .padding()
-                                                    .borderTop('1px solid #D6E4ED')
+                                                    //.borderTop('1px solid #D6E4ED')
 
                                             )
 
