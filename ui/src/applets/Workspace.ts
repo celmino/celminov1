@@ -18,6 +18,56 @@ export const WorkspaceApplet = {
             "category": "app",
             "collections": [
                 {
+                    "name": "Collections",
+                    "id": "collections",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                },
+                 {
+                    "name": "Fields",
+                    "id": "fields",
+                    "attributes": [
+                        {
+                            "key": "key",
+                            "type": "string"
+                        },
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fieldInfo",
+                            "type": "string"
+                        },
+                        {
+                            "key": "collectionId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                }, 
+
+
+                {
                     "name": "Documents",
                     "id": "documents",
                     "attributes": [
@@ -62,7 +112,7 @@ export const WorkspaceApplet = {
                 },
                 {
                     "name": "Document Contents",
-                    "id": "com.celmino.collection.workspace-document-contents",
+                    "id": "documentContents",
                     "attributes": [
                         {
                             "key": "content",
@@ -70,8 +120,60 @@ export const WorkspaceApplet = {
                             "size": 932000
                         }
                     ],
-
                 },
+                {
+                    "name": "Table Views",
+                    "id": "tableViews",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+
+                        {
+                            "key": "icon_name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_category",
+                            "type": "string"
+                        },
+                        {
+                            "key": "color",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "Table Levels",
+                    "id": "tableViewLevels",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "tableViewId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "level",
+                            "type": "number"
+                        },
+                        {
+                            "key": "databaseId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "collectionId",
+                            "type": "string"
+                        }
+                    ]
+                }
             ]
         }
     ]

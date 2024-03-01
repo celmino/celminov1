@@ -19,7 +19,7 @@ export class RouteController extends UIController {
 
                         ),
                         UIRoute('collections', CollectionsController).children(
-                            UIRoute(':collectionId', CollectionController)
+                            UIRoute(':collectionId',   CollectionController )
                         ),
                         UIRoute('/settings', SettingsController).children(
                            

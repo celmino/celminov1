@@ -86,8 +86,8 @@ export class SelectAppletDialog extends DialogView {
             VStack({ alignment: cTopLeading })(
                 HStack(
                     HStack({ alignment: cLeading })(
-                        Text('applet').fontSize(20).fontWeight('700'),
-                        Text('library').fontSize(20).fontWeight('400')
+                        Text('applet').fontSize(20).fontWeight('700') as any,
+                        Text('library').fontSize(20).fontWeight('400') as any
                     ).width(),
                     HStack(
                         TextField()
@@ -112,7 +112,7 @@ export class SelectAppletDialog extends DialogView {
                             VStack({ alignment: cTopLeading })(
                                 Text(menu.category).fontWeight('500').fontSize('var(--font-size-h4)')
                                     .paddingLeft('12px')
-                                    .marginBottom('12px'),
+                                    .marginBottom('12px') as any,
                                 ...ForEach(menu.items)(item =>
                                     VStack({ alignment: cTopLeading })(
                                         Text(item.name).fontSize('var(--font-size-h5)')
@@ -120,7 +120,7 @@ export class SelectAppletDialog extends DialogView {
                                             .paddingLeft('12px')
                                             .cornerRadius('var(--border-radius-small)')
                                             .lineHeight('var(--font-line-height-h2)')
-                                            .foregroundColor('#323338')
+                                            .foregroundColor('#323338') as any
                                     ).height()
                                 )
                             ).height().marginBottom('var(--spacing-large)')
@@ -151,13 +151,13 @@ export class SelectAppletDialog extends DialogView {
                                         //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
                                         ,
                                         HStack({ alignment: cLeading })(
-                                            Text(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2)
+                                            Text(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2) as any
                                         )
                                             .minHeight('4rem')
                                             .height(),
-                                        Text('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879'),
+                                        Text('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879') as any,
                                         HStack({ alignment: cLeading })(
-                                            Text(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879')
+                                            Text(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879') as any
 
                                         ).height()
 
@@ -165,7 +165,7 @@ export class SelectAppletDialog extends DialogView {
                                         Spacer(),
                                         HStack({ alignment: cCenter })(
                                             Button(
-                                                Text('Add')
+                                                Text('Add') as any
                                             )
                                                 // .loading(isLoading && (opa.type === this.last_added_opa_type))
                                                 .disabled(!opa.enabled)

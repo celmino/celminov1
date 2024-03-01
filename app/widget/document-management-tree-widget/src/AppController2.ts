@@ -6,7 +6,7 @@ import {
     UIController, UIView, UIViewBuilder, UIWidget, VStack, cHorizontal, cLeading, cTopLeading, cTrailing, cVertical, useEffect, useNavigate, useState
 } from '@tuval/forms';
 
-import { Query, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
+import { Query, Services, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
 import { DynoDialog } from '@realmocean/ui';
 import { Text, TextField, Text as VibeText } from '@realmocean/vibe';
 import { AddFolderDialog } from './dialogs/AddFolderDialog';
@@ -114,7 +114,23 @@ export class AppController2 extends UIController {
                             title: 'Applet settings',
                             icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
                             onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${node.appletId}/settings/general`)
-                        }
+                        },
+                        
+                        {
+                            title: 'Applet settings',
+                            icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                            onClick: () => {
+                                Services.Databases.listCollections(workspaceId, appletId).then((collections) => {
+                                    alert(collections.collections)
+                                    for (let collection of collections.collections) {
+                                        Services.Databases.deleteAllDocument(workspaceId, appletId, collection.$id)
+                                    }
+                                });
+                                
+                            }
+                        },
+
+                        
                     ],
                     requestNavigation: () => {
                         //  alert(JSON.stringify(item));

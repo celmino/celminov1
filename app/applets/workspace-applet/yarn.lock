@@ -675,10 +675,10 @@
     style-loader "^3.3.3"
     to-string-loader "^1.2.0"
 
-"@realmocean/vibe@^2.82.45":
-  version "2.82.45"
-  resolved "https://registry.yarnpkg.com/@realmocean/vibe/-/vibe-2.82.45.tgz#232f00fad0c9667d97ade0fa0a1a94315918e63e"
-  integrity sha512-8QfB/GIN1m7sAa9+J8avcWlPMBJOV0wdAzL9U3sGIwPALmBRYFcZ4FiT3gRcd5oL65km6Mgiy36Dw3xJCT2zig==
+"@realmocean/vibe@2.82.48":
+  version "2.82.48"
+  resolved "https://registry.yarnpkg.com/@realmocean/vibe/-/vibe-2.82.48.tgz#8805460b4aa049b4319bef0e67858ab8d8b6b249"
+  integrity sha512-Iiw9LjmYcZz4WkTOJrXOtHFJ285Lioc07xqjHpSPvrwTHTz8OD1pSB+kQ7u/EYFN6jd6MW3eAUL6rY9JTy071g==
   dependencies:
     "@realmocean/data" "^0.0.3"
     "@realmocean/dropdowns" "^0.0.20"
@@ -750,10 +750,36 @@
   resolved "https://registry.yarnpkg.com/@tuval/core/-/core-0.0.103.tgz#747e0523ade37e125f784cb19a621a20c409aa31"
   integrity sha512-yE9X6hLavSknUZWiN5sfu1hbVdZ2taaL+wJAUbpRa2glfepBsBYDHGooe11oQ5EqYEq6NZnbmYJRW9eIjPi1Gg==
 
-"@tuval/forms@^1.0.109", "@tuval/forms@^1.0.132", "@tuval/forms@^1.0.159", "@tuval/forms@^1.0.166":
+"@tuval/forms@^1.0.109", "@tuval/forms@^1.0.132", "@tuval/forms@^1.0.159":
   version "1.0.166"
   resolved "https://registry.yarnpkg.com/@tuval/forms/-/forms-1.0.166.tgz#fd2dbe472e2fa72d8eae6d5a5211bdbfdafb8b63"
   integrity sha512-ZqkeN+98Y2GPjiu5/ALZrAW3FT58YYm6zHqTYY2CYYyVcv1gj9WF+FhgyrYGoa1ofeL+c4WpM06MWR8/tYlGtQ==
+  dependencies:
+    "@codemirror/lang-json" "^6.0.1"
+    "@dnd-kit/core" "^6.0.8"
+    "@dnd-kit/modifiers" "^6.0.1"
+    "@dnd-kit/sortable" "^7.0.2"
+    "@dnd-kit/utilities" "^3.2.1"
+    "@tanstack/react-query" "^4.35.7"
+    "@types/react" "^18.0.27"
+    dayjs "^1.11.9"
+    handlebars "^4.7.7"
+    history "^5.3.0"
+    http-server "^14.1.1"
+    json-beautify "^1.1.1"
+    monday-ui-react-core "^2.82.0"
+    nanoid "^4.0.2"
+    object-path "^0.11.8"
+    primereact "10.2.1"
+    react "^18.2.0"
+    react-dom "^18.2.0"
+    react-sortable-hoc "^2.0.0"
+    trackjs "^3.10.1"
+
+"@tuval/forms@^1.0.168":
+  version "1.0.168"
+  resolved "https://registry.yarnpkg.com/@tuval/forms/-/forms-1.0.168.tgz#97dfaffe4d9c565d1089466c86bd9e9b129d7db4"
+  integrity sha512-Qa3+zfXT06xrDoeZBKwpdG83rfA7eIX9Wu8apLuzjvt33bZvRP4wEnknhxl8Mw/MbHaOmsCA7WxDS/fcI+cjuQ==
   dependencies:
     "@codemirror/lang-json" "^6.0.1"
     "@dnd-kit/core" "^6.0.8"

@@ -1066,10 +1066,10 @@
   resolved "https://registry.npmjs.org/@realmocean/query-builder/-/query-builder-0.0.2.tgz"
   integrity sha512-/Ne5x4eWNWoBl+UD5QbK5gGXYywtHezfC+F7GCEECCpF03nwlyXPuQPE0xZ4KfNjNu3Vf6nSDdV+0m4e7COWbA==
 
-"@realmocean/sdk@^1.0.13":
-  version "1.0.13"
-  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.13.tgz"
-  integrity sha512-uMTTId8YF1u03eUFjgxccR69swGDQrRIwGeeuDustCffx8+B/rg1iHeC9NdE61WpqUlr7fZ+RI38t7eLjGkQYg==
+"@realmocean/sdk@1.0.80":
+  version "1.0.80"
+  resolved "https://registry.yarnpkg.com/@realmocean/sdk/-/sdk-1.0.80.tgz#1a4c9ae50e44cff02094a5ae44c5c932fbe67906"
+  integrity sha512-7r11djGm/j0LfnzIkjV1Fxci2eUaHNVhYvFGyRFlI7+JaFUHZj5oD1GRVfsNx6BL7gnm1PpzXeFBtROQgEnDeA==
   dependencies:
     "@editorjs/image" "^2.8.1"
     "@editorjs/inline-code" "^1.4.0"

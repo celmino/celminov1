@@ -1,6 +1,6 @@
 import {
-    Models, useCreateDocument, useDeleteAttribute, useGetCollection,
-    useGetDatabase, useListDocuments, useUpdateCollection
+    Models, Query, useCreateDocument, useDeleteAttribute, useGetCollection,
+    useGetDatabase, useListDocuments, useUpdateCollection, useUpdateDocument
 } from "@realmocean/sdk";
 import { ButtonRenderer, DatePickerRenderer, InputRenderer } from "@realmocean/antd";
 import { is } from "@tuval/core";
@@ -16,6 +16,7 @@ import {
     Input,
     MenuButton,
     PopupButton,
+    ScrollView,
     Text,
     Icons as TuvalIcons,
     UIDataTable,
@@ -23,6 +24,7 @@ import {
     UIViewBuilder,
     UIWidget,
     VStack,
+    cAll,
     cHorizontal,
     cLeading,
     cTopLeading,
@@ -35,6 +37,7 @@ import { Icons } from "../../../Icons";
 import { ColorItemView } from "./views/ColorItemView";
 import { AddTextFieldDialog } from "../../../dialogs/AddTextAttributeDialog";
 import { DynoDialog, FormBuilder, NewFieldMenuView } from "@celmino/ui";
+import { TextField } from "@realmocean/vibe";
 
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";
@@ -132,331 +135,413 @@ export class CollectionController extends UIFormController {
         const { workspaceId, appletId: databaseId, collectionId } = useParams();
 
 
-
-
         const { database } = useGetDatabase(workspaceId, databaseId);
         const { deleteAttribute } = useDeleteAttribute(workspaceId);
 
         const { updateCollection } = useUpdateCollection(workspaceId);
 
+        const { createDocument } = useCreateDocument(workspaceId, databaseId, collectionId);
+        const { updateDocument } = useUpdateDocument(workspaceId);
+
         //const { createDocument } = useCreateDocument(workspaceId);
-        const { documents } = useListDocuments(workspaceId, databaseId, collectionId);
+        const { documents: _documents, isLoading } = useListDocuments(workspaceId, databaseId, collectionId);
+        const { documents: fields } = useListDocuments(workspaceId, databaseId, 'fields', [
+            Query.equal('collectionId', collectionId)
+        ]);
 
         const { collection }: { collection: Models.Collection } = useGetCollection(workspaceId, databaseId, collectionId);
         const [collectionName, setCollectionName] = useState<string>(collection?.name ?? 'New Collection');
         const [showDialog, setShowDialog] = useState<boolean>(false);
-
+        let documents = [];
+        if (_documents != null) {
+            documents = [..._documents];
+            documents.push({
+                indexNo: _documents.length + 1,
+                type: 'addRow'
+            })
+        }
 
         let index = 1;
         return (
-            VStack({ alignment: cTopLeading })(
-                HStack({ alignment: cLeading })(
+            isLoading ? Fragment() :
+                VStack({ alignment: cTopLeading })(
                     HStack({ alignment: cLeading })(
-                        Geometry(({ x, y }) =>
-                            HStack({ alignment: cLeading, spacing: 5 })(
-                                showDialog ?
-                                    HStack({ alignment: cTopLeading })(
-                                        VStack({ alignment: cTopLeading, spacing: 10 })(
-                                            //Text(JSON.stringify(params))
-                                            Input()
-                                                .autoFocus(true)
-                                                .renderer(InputRenderer)
-                                                .value(collection?.name)
-                                                .fontSize(18)
-                                                .prefix(
-                                                    Icon(Icons.Collection)
-                                                )
-                                                .onChange((e: any) => setCollectionName(e.target.value))
-                                                .onBlur(value => {
-                                                    if (collectionName !== '' && collectionName !== collection?.name) {
-                                                        updateCollection({
-                                                            databaseId,
-                                                            collectionId,
-                                                            name: collectionName
-                                                        })
-                                                    }
+                        HStack({ alignment: cLeading })(
+                            Geometry(({ x, y }) =>
+                                HStack({ alignment: cLeading, spacing: 5 })(
+                                    showDialog ?
+                                        HStack({ alignment: cTopLeading })(
+                                            VStack({ alignment: cTopLeading, spacing: 10 })(
+                                                //Text(JSON.stringify(params))
+                                                Input()
+                                                    .autoFocus(true)
+                                                    .renderer(InputRenderer)
+                                                    .value(collection?.name)
+                                                    .fontSize(18)
+                                                    .prefix(
+                                                        Icon(Icons.Collection)
+                                                    )
+                                                    .onChange((e: any) => setCollectionName(e.target.value))
+                                                    .onBlur(value => {
+                                                        if (collectionName !== '' && collectionName !== collection?.name) {
+                                                            updateCollection({
+                                                                databaseId,
+                                                                collectionId,
+                                                                name: collectionName
+                                                            })
+                                                        }
 
-                                                }),
-                                            HStack({ alignment: cTopLeading, spacing: 2 })(
-                                                ...ForEach(colors)((color) => (
-                                                    ColorItemView(color)
-                                                )
-                                                )
-                                            ).wrap('wrap')
+                                                    }),
+                                                HStack({ alignment: cTopLeading, spacing: 2 })(
+                                                    ...ForEach(colors)((color) => (
+                                                        ColorItemView(color)
+                                                    )
+                                                    )
+                                                ).wrap('wrap')
+                                            )
                                         )
+                                            .onClickAway(() => {
+                                                if (collectionName !== '' && collectionName !== collection?.name) {
+                                                    updateCollection({
+                                                        databaseId,
+                                                        collectionId,
+                                                        name: collectionName
+                                                    })
+                                                }
+                                                setShowDialog(false);
+                                            })
+                                            .zIndex(10)
+                                            .transform(`translate3d(${x}px, ${y}px, 0px)`)
+                                            .position('fixed')
+                                            .inset('0px auto auto 0px')
+                                            .background('white')
+                                            .shadow('0 0 0 1px hsla(205,9%,47%,.1),0 12px 16px -4px hsla(205,9%,47%,.3)')
+                                            .width(330)
+                                            .height(200)
+                                            .cornerRadius(8)
+                                            .padding(12)
+                                        : Fragment(),
+                                    HStack(
+                                        Icon(Icons.Collection)
                                     )
-                                        .onClickAway(() => {
-                                            if (collectionName !== '' && collectionName !== collection?.name) {
-                                                updateCollection({
-                                                    databaseId,
-                                                    collectionId,
-                                                    name: collectionName
-                                                })
-                                            }
-                                            setShowDialog(false);
+                                        // .background('#FCE8E8')
+                                        .width(32)
+                                        .height(32)
+                                        .cornerRadius(5),
+                                    Text(collection?.name)
+                                        .fontSize(18)
+                                        .fontWeight('500')
+                                        .foregroundColor('#212526')
+                                        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
+                                        .onClick(() => {
+                                            setCollectionName(collection?.name);
+                                            setShowDialog(true);
                                         })
-                                        .zIndex(10)
-                                        .transform(`translate3d(${x}px, ${y}px, 0px)`)
-                                        .position('fixed')
-                                        .inset('0px auto auto 0px')
-                                        .background('white')
-                                        .shadow('0 0 0 1px hsla(205,9%,47%,.1),0 12px 16px -4px hsla(205,9%,47%,.3)')
-                                        .width(330)
-                                        .height(200)
-                                        .cornerRadius(8)
-                                        .padding(12)
-                                    : Fragment(),
-                                HStack(
-                                    Icon(Icons.Collection)
                                 )
-                                    // .background('#FCE8E8')
-                                    .width(32)
-                                    .height(32)
-                                    .cornerRadius(5),
-                                Text(collection?.name)
-                                    .fontSize(18)
-                                    .fontWeight('500')
-                                    .foregroundColor('#212526')
-                                    .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
-                                    .onClick(() => {
-                                        setCollectionName(collection?.name);
-                                        setShowDialog(true);
-                                    })
+                                    .width()
+
                             )
-                                .width()
+                        ).width(300),
 
+                        HStack({ alignment: cTopLeading })(
+
+                            UIWidget('com.tuvalsoft.widget.editorjs')
+                                .config({
+                                    scrollable: false
+                                })
                         )
-                    ).width(300),
 
-                    HStack({ alignment: cTopLeading })(
+                        ,
+                        NewFieldMenuView(workspaceId, databaseId, collectionId) as any,
 
-                        UIWidget('com.tuvalsoft.widget.editorjs')
-                            .config({
-                                scrollable: false
-                            })
+
                     )
 
-                    ,
-                    NewFieldMenuView(workspaceId, databaseId, collectionId) as any,
+                        .height()
+                        .background('#F9FAFB')
+                        .minHeight(60)
+                        .paddingLeft('10px')
+                        .paddingTop('12px')
+                        .paddingRight('24px')
+                        .paddingBottom('8px')
+                        .borderBottom('1px solid rgba(0,0,0,.05)'),
+                    HStack({ alignment: cTopLeading })(
+                        ScrollView({ axes: cAll, alignment: cTopLeading })(
+                            UIDataTable()
+                                .dataTablePT({
+                                    table: tableStyle,
+                                    bodyRow,
+                                    paginator
+
+
+                                })
+                                .columnPT({
+                                    headerCell,
+
+                                    bodyCell
+                                })
+                                .columns([{
+                                    field: 'indexNo',
+                                    width: '80px',
+                                    header: '',
+                                    align: 'right',
+                                    body: (row) => {
+                                        return (
+                                            HStack({ alignment: cTrailing })(
+                                                row['type'] === 'addRow' ?
+                                                    Icon(Icons.Plus) :
+                                                    Text(row['indexNo'])
+                                            )
+                                                .paddingRight('8px')
+                                                .height(38)
+                                        )
+                                    },
+                                    editor: (row) => {
+                                        return (
+                                            Text(row['indexNo'])
+                                        )
+                                    }
+                                }, ...(fields ?? []).map((column: any) => {
+                                    return {
+                                        field: column.key,
+                                        dataType: column.type,
+                                        width: '420px',
+                                        header: (data) => (
+                                            HStack({ alignment: cLeading, spacing: 5 })(
+                                                Icon(getAttributeIcon(column.type))
+                                                    .width(20)
+                                                    .height(20),
+                                                HStack({ alignment: cLeading })(
+                                                    Text(column.name)
+                                                        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
+                                                        .foregroundColor('rgb(109, 122, 131)')
+                                                        .fontSize(14)
+                                                ),
+                                                HStack({ alignment: cTrailing })(
+                                                    MenuButton()
+                                                        .model([
+                                                            {
+                                                                title: 'Edit',
+                                                                onClick: () => {
+                                                                    DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
+                                                                }
+                                                            },
+                                                            {
+                                                                title: 'Delete',
+                                                                onClick: () => {
+                                                                    deleteAttribute({
+                                                                        databaseId,
+                                                                        collectionId,
+                                                                        key: column.key
+                                                                    })
+                                                                    //  DynoDialog.Show(AddTextFieldDialog(databaseId, collectionId))
+                                                                }
+                                                            }
+                                                        ])
+                                                        .icon(TuvalIcons.Menu)
+                                                )
+                                                    .width()
+                                                    .opacity('var(--hoverOpacity)')
+                                            )
+                                                .padding(8)
+                                                .variable('--hoverOpacity', {
+                                                    default: '0',
+                                                    hover: '1'
+                                                })
+                                        ),
+                                        body: (row) => {
+                                            if (column.type === 'boolean') {
+                                                const values = row[column.key];
+                                                return (
+                                                    CheckBox().checked(row[column.key])
+                                                )
+                                            } else if (column.type === 'relationship') {
+                                                const values = row[column.key];
+
+                                                return (
+                                                    HStack({ alignment: cLeading })(
+                                                        ...ForEach(values)((value: any) => (
+                                                            HStack({ spacing: 5 })(
+                                                                HStack(
+                                                                    Icon(Icons.Relation)
+                                                                )
+                                                                    .width()
+                                                                    .height()
+                                                                    .foregroundColor('rgb(79, 175, 84)'),
+                                                                Text(value.Name),
+                                                                Icon(Icons.RightArrow)
+                                                            )
+                                                                .width()
+                                                                .height()
+                                                                .border('solid 1px #E9EBED')
+                                                                .cornerRadius(6)
+                                                                .padding(2)
+                                                        )
+                                                        )
+                                                    )
+                                                )
+                                            } else {
+                                                return (
+                                                    HStack({ alignment: cLeading })(
+                                                        UIViewBuilder(() => {
+                                                            const [editingCell, setEditingCell] = useState(null);
+                                                            const [editingRow, setEditingRow] = useState(null);
+
+                                                            if (row.type === 'addRow' && column.key === 'name') {
+                                                                return (
+                                                                    HStack({ alignment: cLeading })(
+                                                                        Text('To add a new row, press Shift+Enter')
+                                                                    ).onClick(() => {
+                                                                        createDocument({
+                                                                            data: {
+                                                                                name: ''
+                                                                            }
+                                                                        },(document)=> {
+                                                                            setEditingCell(column.$id);
+                                                                            setEditingRow(document.$id);
+                                                                        })
+
+                                                                    })
+                                                                )
+                                                            } else {
+                                                                return (
+                                                                    column.$id === editingCell && row.$id === editingRow ?
+                                                                        TextField()
+                                                                            .placeHolder(column.name)
+                                                                            .autoFocus(true)
+                                                                            .value(row[column.key])
+                                                                            .onBlur((e) => {
+                                                                                if (e.target.value !== row[column.key]) {
+                                                                                    //alert(e.target.value)
+                                                                                    updateDocument({
+                                                                                        databaseId,
+                                                                                        collectionId,
+                                                                                        documentId: row.$id,
+                                                                                        data: {
+                                                                                            [column.key]: e.target.value
+                                                                                        }
+                                                                                    }, () => {
+                                                                                        setEditingCell(null);
+                                                                                        setEditingRow(null);
+                                                                                    })
+                                                                                } else {
+                                                                                    setEditingCell(null);
+                                                                                    setEditingRow(null);
+                                                                                }
+                                                                            }) as any :
+                                                                        HStack({ alignment: cLeading })(
+                                                                            Text(row[column.key])
+                                                                        )
+
+                                                                            .onClick(() => {
+                                                                                setEditingCell(column.$id);
+                                                                                setEditingRow(row.$id);
+                                                                            })
+                                                                            .paddingLeft('8px')
+                                                                            .height(38))
+                                                            }
+                                                        })
+
+                                                    )
+
+                                                )
+
+
+                                            }
+                                        }
+
+                                    }
+                                })])
+                                .model(documents.map((document, index) => {
+
+                                    return {
+                                        indexNo: index + 1,
+                                        ...document
+                                    }
+                                }))
+                        )
+                    ),
+
+                   /*  Button()
+                        .label('Create Document')
+                        .renderer(ButtonRenderer)
+                        .onClick(() => {
+                            const _fields = {};
+
+                            for (let i = 0; i < fields?.length; i++) {
+                                const attribute: any = fields[i];
+                                if (attribute.type === 'text') {
+                                    _fields[attribute.key] = {
+                                        label: attribute.name,
+                                        type: 'text',
+                                        name: attribute.key
+                                    }
+                                } else if (attribute.type === 'number') {
+                                    _fields[attribute.key] = {
+                                        label: attribute.key,
+                                        type: 'number',
+                                        name: attribute.name
+                                    }
+                                } else if (attribute.type === 'boolean') {
+                                    _fields[attribute.key] = {
+                                        label: attribute.key,
+                                        type: 'checkbox',
+                                        name: attribute.name
+                                    }
+                                } else if (attribute.type === 'datetime') {
+                                    _fields[attribute.key] = {
+                                        label: attribute.key,
+                                        type: 'datepicker',
+                                        name: attribute.key,
+                                        value: new Date(),
+                                        renderer: DatePickerRenderer
+                                    }
+                                } else if (attribute.type === 'relationship') {
+                                    _fields[attribute.key] = {
+                                        label: attribute.key,
+                                        type: 'relation',
+                                        name: attribute.key,
+                                        relatedCollection: attribute.relatedCollection,
+                                        relationType: attribute.relationType,
+                                    }
+                                }
+                            }
+
+                            DynoDialog.Show({
+                                "title": `Create ${collection?.name}`,
+                                "actions": [
+                                    {
+                                        "label": "Save",
+                                        "type": "ca_SaveDocument"
+                                    }
+                                ],
+                                "fieldMap": {
+                                    "workspaceId": {
+                                        "name": "workspaceId",
+                                        "type": "virtual",
+                                        "value": workspaceId
+                                    },
+                                    "databaseId": {
+                                        "name": "databaseId",
+                                        "type": "virtual",
+                                        "value": databaseId
+                                    },
+                                    "collectionId": {
+                                        "name": "collectionId",
+                                        "type": "virtual",
+                                        "value": collectionId
+                                    },
+                                    ..._fields
+
+                                }
+                            }
+                            );
+
+                        }), */
+
 
 
                 )
-
-                    .height()
-                    .background('#F9FAFB')
-                    .minHeight(60)
-                    .paddingLeft('10px')
-                    .paddingTop('12px')
-                    .paddingRight('24px')
-                    .paddingBottom('8px')
-                    .borderBottom('1px solid rgba(0,0,0,.05)'),
-                UIDataTable()
-                    .dataTablePT({
-                        table: tableStyle,
-                        bodyRow,
-                        paginator
-
-
-                    })
-                    .columnPT({
-                        headerCell,
-
-                        bodyCell
-                    })
-                    .columns([{
-                        field: 'indexNo',
-                        width: '80px',
-                        header: '',
-                        align: 'right',
-                        body: (row) => {
-                            return (
-                                HStack({ alignment: cTrailing })(
-                                    Text(row['indexNo'])
-                                )
-                                    .paddingRight('8px')
-                                    .height(38)
-                            )
-                        }
-                    }, ...(collection?.attributes ?? []).map((column: any) => {
-                        return {
-                            field: column.key,
-                            dataType: "boolean",
-                            header: (data) => (
-                                HStack({ alignment: cLeading, spacing: 5 })(
-                                    Icon(getAttributeIcon(column.type))
-                                        .width(20)
-                                        .height(20),
-                                    Text(column.key)
-                                        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
-                                        .foregroundColor('rgb(109, 122, 131)')
-                                        .fontSize(14),
-                                    HStack({ alignment: cTrailing })(
-                                        MenuButton()
-                                            .model([
-                                                {
-                                                    title: 'Edit',
-                                                    onClick: () => {
-                                                        DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
-                                                    }
-                                                },
-                                                {
-                                                    title: 'Delete',
-                                                    onClick: () => {
-                                                        deleteAttribute({
-                                                            databaseId,
-                                                            collectionId,
-                                                            key: column.key
-                                                        })
-                                                        //  DynoDialog.Show(AddTextFieldDialog(databaseId, collectionId))
-                                                    }
-                                                }
-                                            ])
-                                            .icon(TuvalIcons.Menu)
-                                    )
-                                        .opacity('var(--hoverOpacity)')
-                                )
-                                    .padding(8)
-                                    .variable('--hoverOpacity', {
-                                        default: '0',
-                                        hover: '1'
-                                    })
-                            ),
-                            body: (row) => {
-                                if (column.type === 'boolean') {
-                                    const values = row[column.key];
-                                    return (
-                                        CheckBox().checked(row[column.key])
-                                    )
-                                } else if (column.type === 'relationship') {
-                                    const values = row[column.key];
-
-                                    return (
-                                        HStack({ alignment: cLeading })(
-                                            ...ForEach(values)((value: any) => (
-                                                HStack({ spacing: 5 })(
-                                                    HStack(
-                                                        Icon(Icons.Relation)
-                                                    )
-                                                        .width()
-                                                        .height()
-                                                        .foregroundColor('rgb(79, 175, 84)'),
-                                                    Text(value.Name),
-                                                    Icon(Icons.RightArrow)
-                                                )
-                                                    .width()
-                                                    .height()
-                                                    .border('solid 1px #E9EBED')
-                                                    .cornerRadius(6)
-                                                    .padding(2)
-                                            )
-                                            )
-                                        )
-                                    )
-                                } else {
-                                    return (
-                                        HStack({ alignment: cLeading })(
-                                            Text(row[column.key])
-                                        )
-                                            .paddingLeft('8px')
-                                            .height(38)
-                                    )
-                                }
-                            }
-
-                        }
-                    })])
-                    .model(documents?.map((document, index) => {
-                        return {
-                            indexNo: index + 1,
-                            ...document
-                        }
-                    })),
-
-                Button()
-                    .label('Create Document')
-                    .renderer(ButtonRenderer)
-                    .onClick(() => {
-                        const fields = {};
-
-                        for (let i = 0; i < collection?.attributes?.length; i++) {
-                            const anyAttribute: any = collection?.attributes[i];
-                            if (anyAttribute.type === 'string') {
-                                const stringAttribute: Models.AttributeString = anyAttribute;
-                                fields[stringAttribute.key] = {
-                                    label: stringAttribute.key,
-                                    type: 'text',
-                                    name: stringAttribute.key
-                                }
-                            } else if (anyAttribute.type === 'integer') {
-                                const integerAttribute: Models.AttributeInteger = anyAttribute;
-                                fields[integerAttribute.key] = {
-                                    label: integerAttribute.key,
-                                    type: 'number',
-                                    name: integerAttribute.key
-                                }
-                            } else if (anyAttribute.type === 'boolean') {
-                                const integerAttribute: Models.AttributeBoolean = anyAttribute;
-                                fields[integerAttribute.key] = {
-                                    label: integerAttribute.key,
-                                    type: 'checkbox',
-                                    name: integerAttribute.key
-                                }
-                            } else if (anyAttribute.type === 'datetime') {
-                                const integerAttribute: Models.AttributeDatetime = anyAttribute;
-                                fields[integerAttribute.key] = {
-                                    label: integerAttribute.key,
-                                    type: 'datepicker',
-                                    name: integerAttribute.key,
-                                    value: new Date(),
-                                    renderer: DatePickerRenderer
-                                }
-                            } else if (anyAttribute.type === 'relationship') {
-                                const relationAttribute: Models.AttributeRelationship = anyAttribute;
-                                fields[relationAttribute.key] = {
-                                    label: relationAttribute.key,
-                                    type: 'relation',
-                                    name: relationAttribute.key,
-                                    relatedCollection: relationAttribute.relatedCollection,
-                                    relationType: relationAttribute.relationType,
-                                }
-                            }
-                        }
-
-                        DynoDialog.Show({
-                            "title": `Create ${collection?.name}`,
-                            "actions": [
-                                {
-                                    "label": "Save",
-                                    "type": "ca_SaveDocument"
-                                }
-                            ],
-                            "fieldMap": {
-                                "workspaceId": {
-                                    "name": "workspaceId",
-                                    "type": "virtual",
-                                    "value": workspaceId
-                                },
-                                "databaseId": {
-                                    "name": "databaseId",
-                                    "type": "virtual",
-                                    "value": databaseId
-                                },
-                                "collectionId": {
-                                    "name": "collectionId",
-                                    "type": "virtual",
-                                    "value": collectionId
-                                },
-                                ...fields
-
-                            }
-                        }
-                        );
-
-                    }),
-
-
-
-            )
         )
     }
 }

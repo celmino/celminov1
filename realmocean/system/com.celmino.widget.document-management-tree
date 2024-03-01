@@ -3409,7 +3409,20 @@ var AppController2 = /** @class */ (function (_super) {
                     title: 'Applet settings',
                     icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
                     onClick: function () { return navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(node.appletId, "/settings/general")); }
-                }
+                },
+                {
+                    title: 'Applet settings',
+                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                    onClick: function () {
+                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listCollections(workspaceId, appletId).then(function (collections) {
+                            alert(collections.collections);
+                            for (var _i = 0, _a = collections.collections; _i < _a.length; _i++) {
+                                var collection = _a[_i];
+                                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.deleteAllDocument(workspaceId, appletId, collection.$id);
+                            }
+                        });
+                    }
+                },
             ]; },
             requestNavigation: function () {
                 //  alert(JSON.stringify(item));

@@ -2,7 +2,7 @@ import { is } from "@tuval/core";
 import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, DialogPosition } from "@tuval/forms";
 import { useState } from "react";
 import { Icons } from "./Icons";
-import { AddTextFieldDialog, TextFieldsAttributesView } from "./dialogs/AddTextAttributeDialog";
+import { AddTextFieldDialog, SaveTextFieldAction, TextFieldsAttributesView } from "./dialogs/AddTextAttributeDialog";
 import { Text } from "@realmocean/vibe";
 import { FormBuilder } from "../../FormBuilder/FormBuilder";
 import { NumberFieldsAttributesView } from "./dialogs/AddNumberFieldDialog";
@@ -16,7 +16,7 @@ const FieldTypes = {
 export const NewFieldMenuView = (workspaceId: string, databaseId: string, collectionId: string) => (
     HStack({ alignment: cTrailing })(
         UIViewBuilder(() => {
-            const [menuIsOpen, setMenuIsOpen] = useState(false);
+            const [menuIsOpen, setMenuIsOpen] = useState(true);
             const [selectedType, setSelectedType] = useState(null);
             let _hideHandle = null;
             const AttributesMenuItems = [
@@ -114,14 +114,14 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
                 }
             ]
             return (
-                PopupButton(
+                (PopupButton as any)(
                     HStack(
                         Icon(Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''),
                         Text('New Field')
                             .foregroundColor(menuIsOpen ? 'white' : '')
                             .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
                             .fontSize(14)
-                            .fontWeight('500')
+                            .fontWeight('500') as any
                     )
                         .width()
 
@@ -142,7 +142,7 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
                             ...ForEach(AttributesMenuItems)((item) =>
                                 HStack({ alignment: cLeading, spacing: 10 })(
                                     Icon(item.icon),
-                                    Text(item.title)
+                                    Text(item.title) as any
                                 )
                                     .background({ hover: 'rgba(81,97,108,.1)' })
                                     .padding()
@@ -161,6 +161,7 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
                         :
                         FieldTypes[selectedType](workspaceId, databaseId, collectionId)
                 )
+                    .open(menuIsOpen)
                     .hideHandle(hideHandle => _hideHandle = hideHandle)
                     .dialogPosition(DialogPosition.BOTTOM_END)
                     .onDidHide(() => {
@@ -174,3 +175,5 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
     ).width()
 
 )
+
+FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', SaveTextFieldAction)

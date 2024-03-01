@@ -15704,6 +15704,54 @@ var WorkspaceApplet = {
             "category": "app",
             "collections": [
                 {
+                    "name": "Collections",
+                    "id": "collections",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fields",
+                    "id": "fields",
+                    "attributes": [
+                        {
+                            "key": "key",
+                            "type": "string"
+                        },
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fieldInfo",
+                            "type": "string"
+                        },
+                        {
+                            "key": "collectionId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
                     "name": "Documents",
                     "id": "documents",
                     "attributes": [
@@ -15747,7 +15795,7 @@ var WorkspaceApplet = {
                 },
                 {
                     "name": "Document Contents",
-                    "id": "com.celmino.collection.workspace-document-contents",
+                    "id": "documentContents",
                     "attributes": [
                         {
                             "key": "content",
@@ -15756,6 +15804,58 @@ var WorkspaceApplet = {
                         }
                     ],
                 },
+                {
+                    "name": "Table Views",
+                    "id": "tableViews",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_category",
+                            "type": "string"
+                        },
+                        {
+                            "key": "color",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "Table Levels",
+                    "id": "tableViewLevels",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "tableViewId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "level",
+                            "type": "number"
+                        },
+                        {
+                            "key": "databaseId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "collectionId",
+                            "type": "string"
+                        }
+                    ]
+                }
             ]
         }
     ]
@@ -16239,6 +16339,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/utils.ts":
+/*!**********************!*\
+  !*** ./src/utils.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   replaceNonMatchingCharacters: () => (/* binding */ replaceNonMatchingCharacters)
+/* harmony export */ });
+function replaceNonMatchingCharacters(originalText) {
+    var replacementTable = {
+        'ı': 'i',
+        'ç': 'c',
+        ' ': '_'
+    };
+    originalText = originalText.toLocaleLowerCase();
+    // Replacement table'ı kullanarak metindeki kriterlere uymayan karakterleri değiştir
+    var replacedText = originalText.replace(/[^a-zA-Z0-9._-]/g, function (match) {
+        return replacementTable[match] || match; // Eğer replacement table'da varsa değiştir, yoksa aynı karakteri koru
+    });
+    return replacedText;
+}
+
+
+/***/ }),
+
 /***/ "./src/views/ColorSelect/ColorItemView.ts":
 /*!************************************************!*\
   !*** ./src/views/ColorSelect/ColorItemView.ts ***!
@@ -16456,7 +16584,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialogs/AddTextAttributeDialog */ "./src/views/NewFieldMenu/dialogs/AddTextAttributeDialog.ts");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialogs/AddNumberFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddNumberFieldDialog.ts");
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialogs/AddNumberFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddNumberFieldDialog.ts");
+
 
 
 
@@ -16467,10 +16597,10 @@ __webpack_require__.r(__webpack_exports__);
 var FieldTypes = {
     'text': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
     'richtext': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
-    'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_6__.NumberFieldsAttributesView
+    'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView
 };
 var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null), selectedType = _b[0], setSelectedType = _b[1];
     var _hideHandle = null;
     var AttributesMenuItems = [
@@ -16594,6 +16724,7 @@ var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return
             .cornerRadius(6)
         :
             FieldTypes[selectedType](workspaceId, databaseId, collectionId))
+        .open(menuIsOpen)
         .hideHandle(function (hideHandle) { return _hideHandle = hideHandle; })
         .dialogPosition(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogPosition.BOTTOM_END)
         .onDidHide(function () {
@@ -16601,6 +16732,7 @@ var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return
         setSelectedType(null);
     }));
 })).width()); };
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 
 
 /***/ }),
@@ -16726,6 +16858,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+
 
 
 
@@ -16743,6 +16877,7 @@ var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__
     var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
     var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId;
     var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
+    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields').createDocument;
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
         .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
         .minWidth(28)
@@ -16762,11 +16897,21 @@ var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__
         createStringAttribute({
             databaseId: databaseId,
             collectionId: collectionId,
-            key: name,
+            key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
             required: false,
             size: 255
-        }, function () {
-            dialog.Hide();
+        }, function (attribute) {
+            createDocument({
+                data: {
+                    key: attribute.key,
+                    name: name,
+                    type: 'text',
+                    fieldInfo: JSON.stringify({
+                        size: 255
+                    }),
+                    collectionId: collectionId
+                }
+            }, function () { return dialog.Hide(); });
         });
     }));
 }); };
@@ -16775,7 +16920,7 @@ var AddTextFieldDialog = function (workspaceId, databaseId, collectionId) { retu
     "actions": [
         {
             "label": "Save",
-            "type": "ca_saveTextField"
+            "type": "com.celmino-ui.actions.saveTextField"
         }
     ],
     "fieldMap": {

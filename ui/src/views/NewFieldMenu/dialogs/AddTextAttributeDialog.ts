@@ -1,6 +1,7 @@
-import { useCreateStringAttribute } from "@realmocean/sdk";
+import { useCreateDocument, useCreateStringAttribute } from "@realmocean/sdk";
 import { HStack, Text, UIViewBuilder, VStack, cHorizontal, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
 import { FormBuilder } from "../../../FormBuilder/FormBuilder";
+import { replaceNonMatchingCharacters } from "../../../utils";
 
 
 export const TextFieldsAttributesView = (workspaceId, databaseId, collectionId) => (
@@ -26,7 +27,7 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
 
     const { createStringAttribute, isLoading } = useCreateStringAttribute(workspaceId);
 
-
+    const { createDocument } = useCreateDocument(workspaceId, databaseId, 'fields')
 
     return (
         HStack(
@@ -52,11 +53,21 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
                 createStringAttribute({
                     databaseId,
                     collectionId,
-                    key: name,
+                    key: replaceNonMatchingCharacters(name),
                     required: false,
                     size: 255
-                }, () => {
-                    dialog.Hide();
+                }, (attribute) => {
+                    createDocument({
+                        data: {
+                            key: attribute.key,
+                            name: name,
+                            type: 'text',
+                            fieldInfo: JSON.stringify({
+                                size: 255
+                            }),
+                            collectionId: collectionId
+                        }
+                    }, () => dialog.Hide())
                 })
             })
     )
@@ -69,7 +80,7 @@ export const AddTextFieldDialog = (workspaceId: string, databaseId: string, coll
     "actions": [
         {
             "label": "Save",
-            "type": "ca_saveTextField"
+            "type": "com.celmino-ui.actions.saveTextField"
         }
     ],
     "fieldMap": {

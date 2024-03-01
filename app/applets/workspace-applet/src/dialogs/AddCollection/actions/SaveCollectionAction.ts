@@ -1,4 +1,4 @@
-import { Permission, Role, useCreateCollection } from "@realmocean/sdk";
+import { Permission, Role, Service, Services, useCreateCollection, useCreateDocument } from "@realmocean/sdk";
 import {
     Button,
     Text,
@@ -26,8 +26,10 @@ export const SaveCollectionAction = (formMeta, action) => UIViewBuilder(() => {
     const { protocol, resource, method } = formMeta as any;
 
     const { databaseId, name, workspaceId } = formController.GetFormData();
-    
+
     const { createCollection, isLoading } = useCreateCollection(workspaceId);
+    const { createDocument } = useCreateDocument(workspaceId, databaseId, 'collections');
+    const { createDocument: createField } = useCreateDocument(workspaceId, databaseId, 'fields');
 
 
 
@@ -37,7 +39,7 @@ export const SaveCollectionAction = (formMeta, action) => UIViewBuilder(() => {
         )
             .loading(isLoading)
             .onClick(() => {
-                
+
                 if (databaseId == null) {
                     alert('Collection is null');
                     return;
@@ -53,8 +55,51 @@ export const SaveCollectionAction = (formMeta, action) => UIViewBuilder(() => {
                         Permission.delete(Role.any()),
                     ],
                     enabled: true
-                }, () => {
-                    dialog.Hide();
+                }, (collection) => {
+
+                    Promise.all([
+                        Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'name', 255, false),
+                        Services.Databases.createStringAttribute(workspaceId, databaseId, collection.$id, 'description', 1255, false)
+                    ]).then(() => {
+                        createDocument({
+                            documentId: collection.$id,
+                            data: {
+                                name: collection.name,
+                                type: 'userCollection'
+                            }
+                        }, () => {
+
+                            createField({
+                                data: {
+                                    key: 'name',
+                                    name: 'Name',
+                                    type: 'text',
+                                    fieldInfo: JSON.stringify({
+                                        size: 255
+                                    }),
+                                    collectionId: collection.$id
+                                }
+                            }, () => {
+                                createField({
+                                    data: {
+                                        key: 'description',
+                                        name: 'Description',
+                                        type: 'text',
+                                        fieldInfo: JSON.stringify({
+                                            size: 1255
+                                        }),
+                                        collectionId: collection.$id
+                                    }
+                                }, () => {
+                                    dialog.Hide();
+                                })
+                            })
+
+                        })
+                    })
+
+
+
                 })
             })
     )

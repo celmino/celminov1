@@ -6,7 +6,7 @@ import {
     Text, TextField, UIController, UIView, UIViewBuilder, cLeading, cVertical, useNavigate, useState
 } from '@tuval/forms';
 
-import { Query, useGetDocument, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
+import { Query, Services, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
 import React from 'react';
 
@@ -25,6 +25,17 @@ export class WorkspaceTreeWidgetController extends UIController {
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         const navigate = useNavigate();
+
+        const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
+
+
+        const { document: applet } = useGetDocument({
+            projectId: workspaceId,
+            databaseId: 'workspace',
+            collectionId: 'applets',
+            documentId: appletId
+        });
+
 
         return (
             HStack({ alignment: cLeading, spacing: 2 })(
@@ -65,6 +76,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                             })
                     )
                         .height()
+                        .onClick((e) => e.stopPropagation())
 
 
                         .onClickAway(() => {
@@ -79,30 +91,61 @@ export class WorkspaceTreeWidgetController extends UIController {
                     :
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
-                            HDivider().background('#E4EAE2').height(1),
-                            Text(item?.name)
-                                .fontSize('1rem')
-                                .fontWeight('500')
-                                .foregroundColor('#222522AA')
-                                .textTransform('capitalize'),
-                            HDivider().background('#E4EAE2').height(1),
-                        ),
-                        MenuButton()
-                            .model([
-                                {
-                                    title: 'Rename',
-                                    icon: SvgIcon('svg-sprite-global__edit', '#151719', '18px', '18px'),
-                                    onClick: () => setIsEditing(true)
-                                },
-                                {
-                                    title: 'Applet settings',
-                                    icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    //onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${appletId}/settings`)
-                                }
-                            ])
-                            .icon(EditIcon)
+                            HStack(
+                                // HDivider().background('#E4EAE2').height(1),
+                                Text(item?.name)
+                                    .foregroundColor('white')
+                                    .fontSize('1rem')
+                                    .fontWeight('500')
+                                    .textTransform('uppercase'),
+                                // HDivider().background('#E4EAE2').height(1),
+                            )
+                                .width()
+                                .height(24)
+                                .padding('4px 8px 4px 5px')
+                                .cornerRadius(6)
+                                //  .background('rgb(16, 144, 224)')
+                                .background(applet?.themeColor ?? 'rgb(16, 144, 224)')
+                        )
+                        ,
+                        HStack(
+                            MenuButton()
+                                .model([
+                                    {
+                                        title: 'DIVIDER APPLET',
+                                        type: 'Title'
+                                    },
+                                    {
+                                        title: 'Rename',
+                                        icon: SvgIcon('svg-sprite-global__edit', '#151719', '18px', '18px'),
+                                        onClick: () => setIsEditing(true)
+                                    },
+                                    {
+                                        title: 'Applet settings',
+                                        icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                                        onClick: () => navigate(`/app/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}/settings/general`)
+                                    },
+                                    {
+                                        title: 'Delete Workspace Data',
+                                        icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                                        onClick: () => {
+                                            Services.Databases.listCollections(workspaceId, appletId).then((collections) => {
+                                                alert(collections.collections)
+                                                for (let collection of collections.collections) {
+                                                    Services.Databases.deleteAllDocument(workspaceId, appletId, collection.$id)
+                                                }
+                                            });
+                                            
+                                        }
+                                    }
+                                ])
+                                .icon(EditIcon)
+                        )
+                        .width().height()
+                        .onClick((e) => e.stopPropagation())
                     )
                         .height(30)
+
                         //.marginVertical(5)
                         //  .padding()
                         // .background('#E4EAE2')

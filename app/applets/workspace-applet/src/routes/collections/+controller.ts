@@ -1,4 +1,4 @@
-import { Models, useCreateCollection, useGetDatabase, useGetDocument, useGetRealm, useListCollections } from "@realmocean/sdk";
+import { Models, Query, useCreateCollection, useGetDatabase, useGetDocument, useGetRealm, useListCollections, useListDocuments } from "@realmocean/sdk";
 import {
     HStack,
     Text,
@@ -23,18 +23,21 @@ export class CollectionsController extends UIFormController {
         const { workspaceId, appletId } = useParams();
         const { database } = useGetDatabase(workspaceId, appletId);
         const { createCollection } = useCreateCollection(workspaceId);
-        const { collections } = useListCollections(workspaceId, appletId);
+
+        const { documents: collections } = useListDocuments(workspaceId, appletId, 'collections', [
+            Query.equal('type', 'userCollection')
+        ]);
 
         const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
-        const {document: applet} = useGetDocument({
+        const { document: applet } = useGetDocument({
             projectId: workspaceId,
             databaseId: 'workspace',
             collectionId: 'applets',
             documentId: appletId,
-        
+
         })
 
-        const [selectedCollection, setSelectedCollection] = useState<Models.Collection>(null);
+        const [selectedCollection, setSelectedCollection] = useState<Models.Document>(null);
 
         const navigate = useNavigate();
         return (
