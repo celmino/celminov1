@@ -487,12 +487,12 @@ export class CollectionController extends UIFormController {
                                                                                              [column.key]: e.target.value
                                                                                          }
                                                                                      }, () => {
-                                                                                         setEditingCell(null);
-                                                                                         setEditingRow(null);
+                                                                                         //setEditingCell(null);
+                                                                                         //setEditingRow(null);
                                                                                      })
                                                                                  } else {
-                                                                                     setEditingCell(null);
-                                                                                     setEditingRow(null);
+                                                                                     //setEditingCell(null);
+                                                                                     //setEditingRow(null);
                                                                                  } 
                                                                             }) as any :
                                                                         HStack({ alignment: cLeading })(

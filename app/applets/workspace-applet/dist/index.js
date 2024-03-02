@@ -6698,13 +6698,13 @@ var CollectionController = /** @class */ (function (_super) {
                                                         _a[column.key] = e.target.value,
                                                         _a)
                                                 }, function () {
-                                                    setEditingCell(null);
-                                                    setEditingRow(null);
+                                                    //setEditingCell(null);
+                                                    //setEditingRow(null);
                                                 });
                                             }
                                             else {
-                                                setEditingCell(null);
-                                                setEditingRow(null);
+                                                //setEditingCell(null);
+                                                //setEditingRow(null);
                                             }
                                         }) :
                                         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(row[column.key]))
