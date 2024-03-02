@@ -1,0 +1,1 @@
+export declare const TextFieldView: (workspaceId: any, databaseId: any, collectionId: any, fields: any, field: any, index: any, row: any, editingCell: any, editingRow: any, setEditingCell: any, setEditingRow: any) => import("@tuval/forms").UIViewBuilderClass;

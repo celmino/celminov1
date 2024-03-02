@@ -39,6 +39,7 @@ import { ColorItemView } from "./views/ColorItemView";
 import { AddTextFieldDialog } from "../../../dialogs/AddTextAttributeDialog";
 import { DynoDialog, FormBuilder, NewFieldMenuView } from "@celmino/ui";
 import { TextField } from "@realmocean/vibe";
+import { TextFieldView } from "./views/FieldViews/Text";
 
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";
@@ -316,7 +317,7 @@ export class CollectionController extends UIFormController {
                                                     .width(20)
                                                     .height(20),
                                                 HStack({ alignment: cLeading })(
-                                                    Text(column.$id)
+                                                    Text(column.name)
                                                         .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
                                                         .foregroundColor('rgb(109, 122, 131)')
                                                         .fontSize(14)
@@ -409,102 +410,8 @@ export class CollectionController extends UIFormController {
                                                                     })
                                                                 )
                                                             } else {
-                                                                return (
-                                                                    column.$id === editingCell && row.$id === editingRow ?
-                                                                        TextField()
-                                                                            .placeHolder(column.name)
-                                                                            .autoFocus(true)
-                                                                            .value(row[column.key])
-                                                                            .onKeyDown((e) => {
-                                                                                if (e.code === 'Enter' && row.nextRowId == null) {
-                                                                                    //setEditingCell(null);
-
-                                                                                    updateDocument({
-                                                                                        databaseId,
-                                                                                        collectionId,
-                                                                                        documentId: row.$id,
-                                                                                        data: {
-                                                                                            [column.key]: e.target.value
-                                                                                        }
-                                                                                    }, () => {
-                                                                                        setTimeout(() => {
-                                                                                            createDocument({
-                                                                                                documentId: nanoid(),
-                                                                                                data: {
-                                                                                                    name: ''
-                                                                                                }
-                                                                                            }, (document) => {
-                                                                                                setEditingRow(document.$id);
-                                                                                                setEditingCell(column.$id);
-                                                                                            })
-                                                                                        }, 1000)
-                                                                                    })
-
-
-
-
-                                                                                    e.preventDefault();
-                                                                                    e.stopPropagation();
-
-                                                                                } else if ((e.code === 'Enter' || e.code === 'ArrowDown') && row.nextRowId != null) {
-                                                                                    //setEditingCell(null);
-
-                                                                                    setEditingRow(row.nextRowId);
-                                                                                    setEditingCell(column.$id);
-                                                                                    e.preventDefault();
-                                                                                    e.stopPropagation();
-
-                                                                                } else if (e.code === 'ArrowUp' && row.prevRowId != null) {
-                                                                                    setEditingRow(row.prevRowId);
-                                                                                    setEditingCell(column.$id);
-                                                                                    e.preventDefault();
-                                                                                    e.stopPropagation();
-
-                                                                                } else if (e.code === 'ArrowLeft' && fields[index - 1]?.$id != null) {
-                                                                                    setEditingRow(row.$id);
-                                                                                    setEditingCell(fields[index - 1]?.$id);
-                                                                                    e.preventDefault();
-                                                                                    e.stopPropagation();
-
-                                                                                } else if (e.code === 'ArrowRight' && fields[index + 1]?.$id != null) {
-                                                                                    setEditingRow(row.$id);
-                                                                                    setEditingCell(fields[index + 1]?.$id);
-                                                                                    e.preventDefault();
-                                                                                    e.stopPropagation();
-
-                                                                                }
-
-
-                                                                            })
-                                                                            .onBlur((e) => {
-                                                                                  if (e.target.value !== row[column.key]) {
- 
-                                                                                     updateDocument({
-                                                                                         databaseId,
-                                                                                         collectionId,
-                                                                                         documentId: row.$id,
-                                                                                         data: {
-                                                                                             [column.key]: e.target.value
-                                                                                         }
-                                                                                     }, () => {
-                                                                                         //setEditingCell(null);
-                                                                                         //setEditingRow(null);
-                                                                                     })
-                                                                                 } else {
-                                                                                     //setEditingCell(null);
-                                                                                     //setEditingRow(null);
-                                                                                 } 
-                                                                            }) as any :
-                                                                        HStack({ alignment: cLeading })(
-                                                                            Text(row[column.key])
-                                                                        )
-
-                                                                            .onClick(() => {
-                                                                                setEditingCell(column.$id);
-                                                                                setEditingRow(row.$id);
-                                                                            })
-                                                                            .paddingLeft('8px')
-                                                                            .height(38))
+                                                                return TextFieldView(workspaceId, databaseId,
+                                                                    collectionId, fields, column, index, row, editingCell, editingRow, setEditingCell, setEditingRow);
                                                             }
                                                         })
 
