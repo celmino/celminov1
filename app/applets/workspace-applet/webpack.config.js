@@ -78,6 +78,7 @@ const umdConfig = {
         
 
         '@celmino/ui': 'celmino$ui',
+        '@realmocean/elasticui':'realmocean$elasticui',
 
         'react': 'tuval$react',
         'react-dom/client': 'tuval$react$dom',

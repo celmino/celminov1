@@ -2,12 +2,14 @@ import {
     Models, Query, useCreateDocument, useDeleteAttribute, useGetCollection,
     useGetDatabase, useListDocuments, useUpdateCollection, useUpdateDocument
 } from "@realmocean/sdk";
-import { ButtonRenderer, DatePickerRenderer, InputRenderer } from "@realmocean/antd";
+import { DatePickerRenderer, InputRenderer } from "@realmocean/antd";
+import { ButtonRenderer as TestRenderer } from "@realmocean/elasticui";
 import { is } from "@tuval/core";
 import {
     Button,
     CheckBox,
     DialogPosition,
+    DialogStack,
     ForEach,
     Fragment,
     Geometry,
@@ -16,6 +18,7 @@ import {
     Input,
     MenuButton,
     PopupButton,
+    ReactView,
     ScrollView,
     Text,
     Icons as TuvalIcons,
@@ -40,6 +43,8 @@ import { AddTextFieldDialog } from "../../../dialogs/AddTextAttributeDialog";
 import { DynoDialog, FormBuilder, NewFieldMenuView } from "@celmino/ui";
 import { TextField } from "@realmocean/vibe";
 import { TextFieldView } from "./views/FieldViews/Text";
+import { RichTextFieldView } from "./views/FieldViews/Richtext";
+import React from "react";
 
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";
@@ -169,6 +174,7 @@ export class CollectionController extends UIFormController {
         let index = 1;
         return (
             isLoading ? Fragment() :
+
                 VStack({ alignment: cTopLeading })(
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
@@ -355,7 +361,11 @@ export class CollectionController extends UIFormController {
                                                 })
                                         ),
                                         body: (row) => {
-                                            if (column.type === 'boolean') {
+                                            if (column.type === 'richtext') {
+                                                return RichTextFieldView(workspaceId, databaseId,
+                                                    collectionId, fields, column, index, row, editingCell, editingRow, setEditingCell, setEditingRow);
+
+                                            } else if (column.type === 'boolean') {
                                                 const values = row[column.key];
                                                 return (
                                                     CheckBox().checked(row[column.key])
@@ -439,7 +449,7 @@ export class CollectionController extends UIFormController {
 
                     Button()
                         .label('Create Document')
-                        .renderer(ButtonRenderer)
+                        .renderer(TestRenderer)
                         .onClick(() => {
                             const _fields = {};
 
@@ -518,5 +528,6 @@ export class CollectionController extends UIFormController {
 
                 )
         )
+                   
     }
 }

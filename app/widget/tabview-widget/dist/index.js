@@ -29,7 +29,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MyTestController": () => (/* binding */ MyTestController)
+/* harmony export */   MyTestController: () => (/* binding */ MyTestController)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -51,10 +51,14 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 
 
@@ -109,7 +113,7 @@ var MyTestController = /** @class */ (function (_super) {
                     action.onClick();
                 }
             });
-        }))).width()
+        }), false)).width()
             .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 20));
     };
     return MyTestController;
@@ -128,7 +132,7 @@ var MyTestController = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TabItem": () => (/* binding */ TabItem)
+/* harmony export */   TabItem: () => (/* binding */ TabItem)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -140,7 +144,7 @@ function TabItem(objectView, menu, index, selectedIndex, selectedColor, onClick)
         var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null), name = _b[0], setName = _b[1];
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null), newName = _c[0], setNewName = _c[1];
         var selectedColorRGB = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.hex2rgb)(selectedColor);
-        console.log("rgba(" + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b) + ",0.1)");
+        console.log("rgba(".concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r, ",").concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g, ",").concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b, ",0.1)"));
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(index === 0 ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width(1).height('60%').background('#E8EAED') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)((name || (objectView === null || objectView === void 0 ? void 0 : objectView.name) || ' ')[0])
             .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
             .foregroundColor('white')
@@ -165,7 +169,7 @@ function TabItem(objectView, menu, index, selectedIndex, selectedColor, onClick)
             .cornerRadius(5)
             .background({
             default: selectedIndex === index ?
-                "rgba(" + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b) + ",0.15)" : '', hover: "rgba(" + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b) + ",0.25)"
+                "rgba(".concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r, ",").concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g, ",").concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b, ",0.15)") : '', hover: "rgba(".concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r, ",").concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g, ",").concat(selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b, ",0.25)")
         }))
             .onClick(function () { return onClick(); }))
             .variable('--showMenu', { hover: 'block', default: 'none' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width(1).height('60%').background('#E8EAED'))
@@ -299,7 +303,7 @@ var __webpack_exports__ = {};
   \****************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RatingWidget": () => (/* binding */ RatingWidget)
+/* harmony export */   RatingWidget: () => (/* binding */ RatingWidget)
 /* harmony export */ });
 /* harmony import */ var _AppController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppController */ "./src/AppController.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {

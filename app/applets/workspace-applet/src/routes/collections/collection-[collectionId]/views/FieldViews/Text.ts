@@ -11,7 +11,6 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
     return (
         HStack({ alignment: cLeading })(
             UIViewBuilder(() => {
-
                 console.log(editingCell, field.$id, editingRow, row.$id)
                 if (row.type === 'addRow' && field.key === 'name') {
                     return (

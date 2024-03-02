@@ -6,11 +6,12 @@ import { AddTextFieldDialog, SaveTextFieldAction, TextFieldsAttributesView } fro
 import { Text } from "@realmocean/vibe";
 import { FormBuilder } from "../../FormBuilder/FormBuilder";
 import { NumberFieldsAttributesView } from "./dialogs/AddNumberFieldDialog";
+import { RichTextFieldsAttributesView, SaveRichTextFieldAction } from "./dialogs/AddRichtextFieldDialog";
 
 
 const FieldTypes = {
     'text': TextFieldsAttributesView,
-    'richtext': TextFieldsAttributesView,
+    'richtext': RichTextFieldsAttributesView,
     'number': NumberFieldsAttributesView
 }
 export const NewFieldMenuView = (workspaceId: string, databaseId: string, collectionId: string) => (
@@ -176,4 +177,5 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
 
 )
 
-FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', SaveTextFieldAction)
+FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', SaveTextFieldAction);
+FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', SaveRichTextFieldAction);

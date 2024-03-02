@@ -6112,11 +6112,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./+controller */ "./src/routes/+controller.ts");
-/* harmony import */ var _collections_collection_collectionId_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./collections/collection-[collectionId]/+controller */ "./src/routes/collections/collection-[collectionId]/+controller.ts");
+/* harmony import */ var _collections_collection_collectionId_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./collections/collection-[collectionId]/+controller */ "./src/routes/collections/collection-[collectionId]/+controller.tsx");
 /* harmony import */ var _settings_controller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./settings/+controller */ "./src/routes/settings/+controller.ts");
 /* harmony import */ var _AAA__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./* /AAA */ "./src/routes/*/AAA.tsx");
 /* harmony import */ var _settings_general_controller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./settings/general/+controller */ "./src/routes/settings/general/+controller.tsx");
-/* harmony import */ var _collections_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./collections/+controller */ "./src/routes/collections/+controller.ts");
+/* harmony import */ var _collections_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./collections/+controller */ "./src/routes/collections/+controller.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -6162,10 +6162,10 @@ var RouteController = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/routes/collections/+controller.ts":
-/*!***********************************************!*\
-  !*** ./src/routes/collections/+controller.ts ***!
-  \***********************************************/
+/***/ "./src/routes/collections/+controller.tsx":
+/*!************************************************!*\
+  !*** ./src/routes/collections/+controller.tsx ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6182,6 +6182,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -6197,6 +6199,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -6224,7 +6227,7 @@ var CollectionsController = /** @class */ (function (_super) {
         var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(null), selectedCollection = _b[0], setSelectedCollection = _b[1];
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)("com.tuvalsoft.widget.icons")
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)("com.tuvalsoft.widget.icons")
             .config({
             onChange: function (value) {
                 updateDocument({
@@ -6305,7 +6308,7 @@ var CollectionsController = /** @class */ (function (_super) {
             .borderBottom('1px solid rgba(0,0,0,.05)')
             .height(50), 
         //Text(JSON.stringify(collections)),
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRouteOutlet)().width('100%').height('100%')));
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRouteOutlet)().width('100%').height('100%')).render())));
     };
     return CollectionsController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
@@ -6314,10 +6317,10 @@ var CollectionsController = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/routes/collections/collection-[collectionId]/+controller.ts":
-/*!*************************************************************************!*\
-  !*** ./src/routes/collections/collection-[collectionId]/+controller.ts ***!
-  \*************************************************************************/
+/***/ "./src/routes/collections/collection-[collectionId]/+controller.tsx":
+/*!**************************************************************************!*\
+  !*** ./src/routes/collections/collection-[collectionId]/+controller.tsx ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6329,16 +6332,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Icons */ "./src/Icons.tsx");
-/* harmony import */ var _views_ColorItemView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/ColorItemView */ "./src/routes/collections/collection-[collectionId]/views/ColorItemView.ts");
-/* harmony import */ var _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../dialogs/AddTextAttributeDialog */ "./src/dialogs/AddTextAttributeDialog.ts");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _views_FieldViews_Text__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/FieldViews/Text */ "./src/routes/collections/collection-[collectionId]/views/FieldViews/Text.ts");
+/* harmony import */ var _realmocean_elasticui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/elasticui */ "@realmocean/elasticui");
+/* harmony import */ var _realmocean_elasticui__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_elasticui__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../Icons */ "./src/Icons.tsx");
+/* harmony import */ var _views_ColorItemView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/ColorItemView */ "./src/routes/collections/collection-[collectionId]/views/ColorItemView.ts");
+/* harmony import */ var _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../dialogs/AddTextAttributeDialog */ "./src/dialogs/AddTextAttributeDialog.ts");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _views_FieldViews_Text__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./views/FieldViews/Text */ "./src/routes/collections/collection-[collectionId]/views/FieldViews/Text.ts");
+/* harmony import */ var _views_FieldViews_Richtext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/FieldViews/Richtext */ "./src/routes/collections/collection-[collectionId]/views/FieldViews/Richtext.tsx");
 var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -6387,6 +6393,8 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
+
+
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";
 import { AddNumberFieldDialog } from "../dialogs/AddNumberFieldDialog";
@@ -6411,23 +6419,23 @@ var colors = [
     '#FC551F',
     '#B04E31'
 ];
-var tableStyle = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    border-spacing: 0px;\n    width: 100%;\n"], ["\n    border-spacing: 0px;\n    width: 100%;\n"])));
-var headerCell = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    font-family:\"Inter var\", sans-serif;\n    font-feature-settings: \"cv02\", \"cv03\", \"cv04\", \"cv11\";\n    text-align: left;\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n    font-weight: 700;\n    color: rgb(109, 122, 131);\n    background: #F9FAFB;\n    transition: box-shadow 0.2s;\n"], ["\n    font-family:\"Inter var\", sans-serif;\n    font-feature-settings: \"cv02\", \"cv03\", \"cv04\", \"cv11\";\n    text-align: left;\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n    font-weight: 700;\n    color: rgb(109, 122, 131);\n    background: #F9FAFB;\n    transition: box-shadow 0.2s;\n"])));
-var bodyRow = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    background: #ffffff;\n    color: #4b5563;\n    transition: box-shadow 0.2s;\n"], ["\n    background: #ffffff;\n    color: #4b5563;\n    transition: box-shadow 0.2s;\n"])));
-var bodyCell = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n"], ["\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n"])));
-var paginator = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n    border-width: 0 0 1px 0;\n    border-radius: 0;\n\n    & .p-paginator-first {\n        background-color: transparent;\n        border: 0 none;\n        color: #6b7280;\n        min-width: 3rem;\n        height: 3rem;\n        margin: 0.143rem;\n        transition: box-shadow 0.2s;\n        border-radius: 50%;\n    }\n\n"], ["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n    border-width: 0 0 1px 0;\n    border-radius: 0;\n\n    & .p-paginator-first {\n        background-color: transparent;\n        border: 0 none;\n        color: #6b7280;\n        min-width: 3rem;\n        height: 3rem;\n        margin: 0.143rem;\n        transition: box-shadow 0.2s;\n        border-radius: 50%;\n    }\n\n"])));
+var tableStyle = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    border-spacing: 0px;\n    width: 100%;\n"], ["\n    border-spacing: 0px;\n    width: 100%;\n"])));
+var headerCell = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n    font-family:\"Inter var\", sans-serif;\n    font-feature-settings: \"cv02\", \"cv03\", \"cv04\", \"cv11\";\n    text-align: left;\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n    font-weight: 700;\n    color: rgb(109, 122, 131);\n    background: #F9FAFB;\n    transition: box-shadow 0.2s;\n"], ["\n    font-family:\"Inter var\", sans-serif;\n    font-feature-settings: \"cv02\", \"cv03\", \"cv04\", \"cv11\";\n    text-align: left;\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n    font-weight: 700;\n    color: rgb(109, 122, 131);\n    background: #F9FAFB;\n    transition: box-shadow 0.2s;\n"])));
+var bodyRow = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n    background: #ffffff;\n    color: #4b5563;\n    transition: box-shadow 0.2s;\n"], ["\n    background: #ffffff;\n    color: #4b5563;\n    transition: box-shadow 0.2s;\n"])));
+var bodyCell = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n"], ["\n    box-shadow:rgba(193, 200, 205, 0.5) -1px 0px 0px 0px inset, rgba(193, 200, 205, 0.5) 0px -1px 0px 0px inset;\n"])));
+var paginator = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n    border-width: 0 0 1px 0;\n    border-radius: 0;\n\n    & .p-paginator-first {\n        background-color: transparent;\n        border: 0 none;\n        color: #6b7280;\n        min-width: 3rem;\n        height: 3rem;\n        margin: 0.143rem;\n        transition: box-shadow 0.2s;\n        border-radius: 50%;\n    }\n\n"], ["\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n    border-width: 0 0 1px 0;\n    border-radius: 0;\n\n    & .p-paginator-first {\n        background-color: transparent;\n        border: 0 none;\n        color: #6b7280;\n        min-width: 3rem;\n        height: 3rem;\n        margin: 0.143rem;\n        transition: box-shadow 0.2s;\n        border-radius: 50%;\n    }\n\n"])));
 function getAttributeIcon(type) {
     switch (type) {
         case 'text':
-            return _Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.TextAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.TextAttribute;
         case 'integer':
-            return _Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.NumberAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.NumberAttribute;
         case 'boolean':
-            return _Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.CheckboxAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.CheckboxAttribute;
         case 'datetime':
-            return _Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.DateAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.DateAttribute;
         default:
-            return _Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.TextAttribute;
+            return _Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.TextAttribute;
     }
 }
 var _hideHandle = null;
@@ -6438,7 +6446,7 @@ var CollectionController = /** @class */ (function (_super) {
     }
     CollectionController.prototype.LoadView = function () {
         var _a;
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)(), workspaceId = _b.workspaceId, databaseId = _b.appletId, collectionId = _b.collectionId;
+        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useParams)(), workspaceId = _b.workspaceId, databaseId = _b.appletId, collectionId = _b.collectionId;
         var database = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDatabase)(workspaceId, databaseId).database;
         var deleteAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useDeleteAttribute)(workspaceId).deleteAttribute;
         var updateCollection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateCollection)(workspaceId).updateCollection;
@@ -6450,8 +6458,8 @@ var CollectionController = /** @class */ (function (_super) {
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
         ]).documents;
         var collection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetCollection)(workspaceId, databaseId, collectionId).collection;
-        var _d = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)((_a = collection === null || collection === void 0 ? void 0 : collection.name) !== null && _a !== void 0 ? _a : 'New Collection'), collectionName = _d[0], setCollectionName = _d[1];
-        var _e = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(false), showDialog = _e[0], setShowDialog = _e[1];
+        var _d = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)((_a = collection === null || collection === void 0 ? void 0 : collection.name) !== null && _a !== void 0 ? _a : 'New Collection'), collectionName = _d[0], setCollectionName = _d[1];
+        var _e = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false), showDialog = _e[0], setShowDialog = _e[1];
         var documents = [];
         if (_documents != null) {
             documents = __spreadArray([], _documents, true);
@@ -6460,21 +6468,21 @@ var CollectionController = /** @class */ (function (_super) {
                 type: 'addRow'
             });
         }
-        var _f = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null), editingCell = _f[0], setEditingCell = _f[1];
-        var _g = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null), editingRow = _g[0], setEditingRow = _g[1];
+        var _f = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(null), editingCell = _f[0], setEditingCell = _f[1];
+        var _g = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(null), editingRow = _g[0], setEditingRow = _g[1];
         var index = 1;
-        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Geometry)(function (_a) {
+        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Geometry)(function (_a) {
                 var x = _a.x, y = _a.y;
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 5 })(showDialog ?
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })(
+                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading, spacing: 5 })(showDialog ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading, spacing: 10 })(
                     //Text(JSON.stringify(params))
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Input)()
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Input)()
                         .autoFocus(true)
                         .renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.InputRenderer)
                         .value(collection === null || collection === void 0 ? void 0 : collection.name)
                         .fontSize(18)
-                        .prefix((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.Collection))
+                        .prefix((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Collection))
                         .onChange(function (e) { return setCollectionName(e.target.value); })
                         .onBlur(function (value) {
                         if (collectionName !== '' && collectionName !== (collection === null || collection === void 0 ? void 0 : collection.name)) {
@@ -6484,7 +6492,7 @@ var CollectionController = /** @class */ (function (_super) {
                                 name: collectionName
                             });
                         }
-                    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 2 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(colors)(function (color) { return ((0,_views_ColorItemView__WEBPACK_IMPORTED_MODULE_5__.ColorItemView)(color)); })).wrap('wrap')))
+                    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading, spacing: 2 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ForEach)(colors)(function (color) { return ((0,_views_ColorItemView__WEBPACK_IMPORTED_MODULE_6__.ColorItemView)(color)); })).wrap('wrap')))
                         .onClickAway(function () {
                         if (collectionName !== '' && collectionName !== (collection === null || collection === void 0 ? void 0 : collection.name)) {
                             updateCollection({
@@ -6505,11 +6513,11 @@ var CollectionController = /** @class */ (function (_super) {
                         .height(200)
                         .cornerRadius(8)
                         .padding(12)
-                    : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.Collection))
+                    : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Collection))
                     // .background('#FCE8E8')
                     .width(32)
                     .height(32)
-                    .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(collection === null || collection === void 0 ? void 0 : collection.name)
+                    .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(collection === null || collection === void 0 ? void 0 : collection.name)
                     .fontSize(18)
                     .fontWeight('500')
                     .foregroundColor('#212526')
@@ -6519,10 +6527,10 @@ var CollectionController = /** @class */ (function (_super) {
                     setShowDialog(true);
                 }))
                     .width();
-            })).width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)('com.tuvalsoft.widget.editorjs')
+            })).width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)('com.tuvalsoft.widget.editorjs')
                 .config({
                 scrollable: false
-            })), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_7__.NewFieldMenuView)(workspaceId, databaseId, collectionId))
+            })), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.NewFieldMenuView)(workspaceId, databaseId, collectionId))
                 .height()
                 .background('#F9FAFB')
                 .minHeight(60)
@@ -6530,7 +6538,7 @@ var CollectionController = /** @class */ (function (_super) {
                 .paddingTop('12px')
                 .paddingRight('24px')
                 .paddingBottom('8px')
-                .borderBottom('1px solid rgba(0,0,0,.05)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cAll, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIDataTable)()
+                .borderBottom('1px solid rgba(0,0,0,.05)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cAll, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIDataTable)()
                 .dataTablePT({
                 table: tableStyle,
                 bodyRow: bodyRow,
@@ -6546,31 +6554,31 @@ var CollectionController = /** @class */ (function (_super) {
                     header: '',
                     align: 'right',
                     body: function (row) {
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTrailing })(row['type'] === 'addRow' ?
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.Plus) :
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(row['indexNo']))
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTrailing })(row['type'] === 'addRow' ?
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Plus) :
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(row['indexNo']))
                             .paddingRight('8px')
                             .height(38));
                     },
                     editor: function (row) {
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(row['indexNo']));
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(row['indexNo']));
                     }
                 }], (fields !== null && fields !== void 0 ? fields : []).map(function (column, index) {
                 return {
                     field: column.key,
                     dataType: column.type,
                     width: '420px',
-                    header: function (data) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(getAttributeIcon(column.type))
+                    header: function (data) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(getAttributeIcon(column.type))
                         .width(20)
-                        .height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(column.name)
+                        .height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(column.name)
                         .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
                         .foregroundColor('rgb(109, 122, 131)')
-                        .fontSize(14)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.MenuButton)()
+                        .fontSize(14)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.MenuButton)()
                         .model([
                         {
                             title: 'Edit',
                             onClick: function () {
-                                _celmino_ui__WEBPACK_IMPORTED_MODULE_7__.DynoDialog.Show((0,_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_6__.AddTextFieldDialog)(workspaceId, databaseId, collectionId));
+                                _celmino_ui__WEBPACK_IMPORTED_MODULE_8__.DynoDialog.Show((0,_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_7__.AddTextFieldDialog)(workspaceId, databaseId, collectionId));
                             }
                         },
                         {
@@ -6585,7 +6593,7 @@ var CollectionController = /** @class */ (function (_super) {
                             }
                         }
                     ])
-                        .icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icons.Menu))
+                        .icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icons.Menu))
                         .width()
                         .opacity('var(--hoverOpacity)'))
                         .padding(8)
@@ -6594,16 +6602,19 @@ var CollectionController = /** @class */ (function (_super) {
                         hover: '1'
                     })); },
                     body: function (row) {
-                        if (column.type === 'boolean') {
+                        if (column.type === 'richtext') {
+                            return (0,_views_FieldViews_Richtext__WEBPACK_IMPORTED_MODULE_10__.RichTextFieldView)(workspaceId, databaseId, collectionId, fields, column, index, row, editingCell, editingRow, setEditingCell, setEditingRow);
+                        }
+                        else if (column.type === 'boolean') {
                             var values = row[column.key];
-                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.CheckBox)().checked(row[column.key]));
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.CheckBox)().checked(row[column.key]));
                         }
                         else if (column.type === 'relationship') {
                             var values = row[column.key];
-                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(values)(function (value) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.Relation))
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ForEach)(values)(function (value) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Relation))
                                 .width()
                                 .height()
-                                .foregroundColor('rgb(79, 175, 84)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(value.Name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_4__.Icons.RightArrow))
+                                .foregroundColor('rgb(79, 175, 84)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(value.Name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.RightArrow))
                                 .width()
                                 .height()
                                 .border('solid 1px #E9EBED')
@@ -6611,12 +6622,12 @@ var CollectionController = /** @class */ (function (_super) {
                                 .padding(2)); })));
                         }
                         else {
-                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
                                 console.log(editingCell, column.$id, editingRow, row.$id);
                                 if (row.type === 'addRow' && column.key === 'name') {
-                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('To add a new row, press Shift+Enter')).onClick(function () {
+                                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('To add a new row, press Shift+Enter')).onClick(function () {
                                         createDocument({
-                                            documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.nanoid)(),
+                                            documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)(),
                                             data: {
                                                 name: ''
                                             }
@@ -6627,7 +6638,7 @@ var CollectionController = /** @class */ (function (_super) {
                                     }));
                                 }
                                 else {
-                                    return (0,_views_FieldViews_Text__WEBPACK_IMPORTED_MODULE_8__.TextFieldView)(workspaceId, databaseId, collectionId, fields, column, index, row, editingCell, editingRow, setEditingCell, setEditingRow);
+                                    return (0,_views_FieldViews_Text__WEBPACK_IMPORTED_MODULE_9__.TextFieldView)(workspaceId, databaseId, collectionId, fields, column, index, row, editingCell, editingRow, setEditingCell, setEditingRow);
                                 }
                             })));
                         }
@@ -6637,9 +6648,9 @@ var CollectionController = /** @class */ (function (_super) {
                 .model(documents.map(function (document, index) {
                 var _a, _b;
                 return __assign({ indexNo: index + 1, nextRowId: (_a = documents[index + 1]) === null || _a === void 0 ? void 0 : _a.$id, prevRowId: (_b = documents[index - 1]) === null || _b === void 0 ? void 0 : _b.$id }, document);
-            })))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)()
+            })))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Button)()
                 .label('Create Document')
-                .renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.ButtonRenderer)
+                .renderer(_realmocean_elasticui__WEBPACK_IMPORTED_MODULE_2__.ButtonRenderer)
                 .onClick(function () {
                 var _fields = {};
                 for (var i = 0; i < (fields === null || fields === void 0 ? void 0 : fields.length); i++) {
@@ -6684,7 +6695,7 @@ var CollectionController = /** @class */ (function (_super) {
                         };
                     }
                 }
-                _celmino_ui__WEBPACK_IMPORTED_MODULE_7__.DynoDialog.Show({
+                _celmino_ui__WEBPACK_IMPORTED_MODULE_8__.DynoDialog.Show({
                     "title": "Create ".concat(collection === null || collection === void 0 ? void 0 : collection.name),
                     "actions": [
                         {
@@ -6709,7 +6720,7 @@ var CollectionController = /** @class */ (function (_super) {
             })));
     };
     return CollectionController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIFormController));
 
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5;
 
@@ -6743,6 +6754,50 @@ var ColorItemView = function (color) {
         .cornerRadius(6)
         .background({ hover: 'rgba(109, 122, 131, 0.2)' }));
 };
+
+
+/***/ }),
+
+/***/ "./src/routes/collections/collection-[collectionId]/views/FieldViews/Richtext.tsx":
+/*!****************************************************************************************!*\
+  !*** ./src/routes/collections/collection-[collectionId]/views/FieldViews/Richtext.tsx ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RichTextFieldView: () => (/* binding */ RichTextFieldView)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+var DocumentIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_2___default().createElement("g", null,
+        react__WEBPACK_IMPORTED_MODULE_2___default().createElement("path", { d: "M6 4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4.286v-4.286c0-.789.64-1.428 1.428-1.428H16V12h-4v4l4-4V6a2 2 0 0 0-2-2H6Z" })))); };
+var RichTextFieldView = function (workspaceId, databaseId, collectionId, fields, field, index, row, editingCell, editingRow, setEditingCell, setEditingRow) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, collectionId).createDocument;
+    var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
+    var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialogStack)().openDialog;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+        console.log(editingCell, field.$id, editingRow, row.$id);
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(DocumentIcon));
+    }))
+        .onClick(function () {
+        openDialog({
+            title: field.name,
+            view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('asdasdasd'));
+            })
+        });
+    }));
+}); };
 
 
 /***/ }),
@@ -7510,6 +7565,17 @@ module.exports = celmino$ui;
 
 "use strict";
 module.exports = realmocean$antd;
+
+/***/ }),
+
+/***/ "@realmocean/elasticui":
+/*!***************************************!*\
+  !*** external "realmocean$elasticui" ***!
+  \***************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = realmocean$elasticui;
 
 /***/ }),
 

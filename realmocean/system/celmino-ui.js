@@ -16586,6 +16586,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
 /* harmony import */ var _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialogs/AddNumberFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddNumberFieldDialog.ts");
+/* harmony import */ var _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialogs/AddRichtextFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRichtextFieldDialog.ts");
+
 
 
 
@@ -16596,7 +16598,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var FieldTypes = {
     'text': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
-    'richtext': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
+    'richtext': _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.RichTextFieldsAttributesView,
     'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView
 };
 var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
@@ -16733,6 +16735,7 @@ var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return
     }));
 })).width()); };
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
 
 
 /***/ }),
@@ -16805,6 +16808,123 @@ var AddNumberFieldDialog = function (workspaceId, databaseId, collectionId) { re
         {
             "label": "Save",
             "type": "ca_saveTextField"
+        }
+    ],
+    "fieldMap": {
+        "workspaceId": {
+            "name": "workspaceId",
+            "type": "virtual",
+            "value": workspaceId
+        },
+        "databaseId": {
+            "name": "databaseId",
+            "type": "virtual",
+            "value": databaseId
+        },
+        "collectionId": {
+            "name": "collectionId",
+            "type": "virtual",
+            "value": collectionId
+        },
+        "name": {
+            "label": "NAME",
+            "type": "text",
+            "name": "name"
+        },
+        "description": {
+            "label": "DESCRIPTION (OPTIONAL)",
+            "type": "text",
+            "multiline": true,
+            "name": "description"
+        },
+    }
+}); };
+
+
+/***/ }),
+
+/***/ "./src/views/NewFieldMenu/dialogs/AddRichtextFieldDialog.ts":
+/*!******************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddRichtextFieldDialog.ts ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AddRichTextFieldDialog: () => (/* binding */ AddRichTextFieldDialog),
+/* harmony export */   RichTextFieldsAttributesView: () => (/* binding */ RichTextFieldsAttributesView),
+/* harmony export */   SaveRichTextFieldAction: () => (/* binding */ SaveRichTextFieldAction)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+
+
+
+
+var RichTextFieldsAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddRichTextFieldDialog(workspaceId, databaseId, collectionId)))
+        .padding(20)
+        .width(380)
+        .height(315);
+})); };
+var SaveRichTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    var label = action.label, successAction = action.successAction, successActions = action.successActions;
+    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId;
+    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
+    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields').createDocument;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
+        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
+        .minWidth(28)
+        .minHeight(28)
+        .height()
+        .width()
+        .fontSize(14)
+        .foregroundColor('white')
+        .cornerRadius(6)
+        .background('rgb(64, 101, 221)')
+        // .loading(isLoading)
+        .onClick(function () {
+        if (databaseId == null) {
+            alert('Collection is null');
+            return;
+        }
+        createStringAttribute({
+            databaseId: databaseId,
+            collectionId: collectionId,
+            key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
+            required: false,
+            size: 16255
+        }, function (attribute) {
+            createDocument({
+                data: {
+                    key: attribute.key,
+                    name: name,
+                    type: 'richtext',
+                    fieldInfo: JSON.stringify({
+                        size: 16255,
+                        width: '20px'
+                    }),
+                    collectionId: collectionId
+                }
+            }, function () { return dialog.Hide(); });
+        });
+    }));
+}); };
+var AddRichTextFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
+    "title": 'Add richtext field',
+    "actions": [
+        {
+            "label": "Save",
+            "type": "com.celmino-ui.actions.saveRichTextField"
         }
     ],
     "fieldMap": {
