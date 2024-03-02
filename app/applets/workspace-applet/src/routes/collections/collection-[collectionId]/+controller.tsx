@@ -4,7 +4,7 @@ import {
 } from "@realmocean/sdk";
 import { DatePickerRenderer, InputRenderer } from "@realmocean/antd";
 import { ButtonRenderer as TestRenderer } from "@realmocean/elasticui";
-import { is } from "@tuval/core";
+import { EventBus, is } from "@tuval/core";
 import {
     Button,
     CheckBox,
@@ -151,7 +151,9 @@ export class CollectionController extends UIFormController {
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         //const { createDocument } = useCreateDocument(workspaceId);
-        const { documents: _documents, isLoading } = useListDocuments(workspaceId, databaseId, collectionId);
+        const { documents: _documents, isLoading } = useListDocuments(workspaceId, databaseId, collectionId, [
+            Query.limit(1000)
+        ]);
         const { documents: fields } = useListDocuments(workspaceId, databaseId, 'fields', [
             Query.equal('collectionId', collectionId)
         ]);
@@ -168,8 +170,7 @@ export class CollectionController extends UIFormController {
             })
         }
 
-        const [editingCell, setEditingCell] = useState(null);
-        const [editingRow, setEditingRow] = useState(null);
+
 
         let index = 1;
         return (
@@ -362,8 +363,7 @@ export class CollectionController extends UIFormController {
                                         ),
                                         body: (row) => {
                                             if (column.type === 'richtext') {
-                                                return RichTextFieldView(workspaceId, databaseId,
-                                                    collectionId, fields, column, index, row, editingCell, editingRow, setEditingCell, setEditingRow);
+                                                return RichTextFieldView();
 
                                             } else if (column.type === 'boolean') {
                                                 const values = row[column.key];
@@ -400,7 +400,6 @@ export class CollectionController extends UIFormController {
                                                     HStack({ alignment: cLeading })(
                                                         UIViewBuilder(() => {
 
-                                                            console.log(editingCell, column.$id, editingRow, row.$id)
                                                             if (row.type === 'addRow' && column.key === 'name') {
                                                                 return (
                                                                     HStack({ alignment: cLeading })(
@@ -412,16 +411,16 @@ export class CollectionController extends UIFormController {
                                                                                 name: ''
                                                                             }
                                                                         }, (document) => {
-
-                                                                            setEditingCell(column.$id);
-                                                                            setEditingRow(document.$id);
+                                                                            EventBus.Default.fire('editCell', { editingCell: column.$id, editingRow: document.$id });
+                                                                            /* setEditingCell(column.$id);
+                                                                            setEditingRow(document.$id); */
                                                                         })
 
                                                                     })
                                                                 )
                                                             } else {
                                                                 return TextFieldView(workspaceId, databaseId,
-                                                                    collectionId, fields, column, index, row, editingCell, editingRow, setEditingCell, setEditingRow);
+                                                                    collectionId, fields, column, index, row);
                                                             }
                                                         })
 
@@ -528,6 +527,6 @@ export class CollectionController extends UIFormController {
 
                 )
         )
-                   
+
     }
 }

@@ -1,4 +1,4 @@
-import { useCreateDocument, useCreateStringAttribute } from "@realmocean/sdk";
+import { Query, useCreateDocument, useCreateStringAttribute } from "@realmocean/sdk";
 import { HStack, Text, UIViewBuilder, VStack, cHorizontal, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
 import { FormBuilder } from "../../../FormBuilder/FormBuilder";
 import { replaceNonMatchingCharacters } from "../../../utils";
@@ -27,7 +27,9 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
 
     const { createStringAttribute, isLoading } = useCreateStringAttribute(workspaceId);
 
-    const { createDocument } = useCreateDocument(workspaceId, databaseId, 'fields')
+    const { createDocument } = useCreateDocument(workspaceId, databaseId, 'fields', [
+        Query.equal('collectionId', collectionId)
+    ])
 
     return (
         HStack(

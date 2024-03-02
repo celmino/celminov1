@@ -1,17 +1,52 @@
 import { useCreateDocument, useUpdateCollection, useUpdateDocument } from "@realmocean/sdk";
-import { HStack, cLeading, UIViewBuilder, nanoid, Text } from "@tuval/forms";
+import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect, } from "@tuval/forms";
 import { TextField } from "@realmocean/vibe";
+import { useCallback } from 'react'
+import { EventBus } from "@tuval/core";
+
+export let lastEditCell = null;
+export let lastEditRow = null;
+
+export const TextFieldView = (workspaceId, databaseId, collectionId, fields, field, index, row) => UIViewBuilder(() => {
 
 
-export const TextFieldView = (workspaceId, databaseId, collectionId, fields, field, index, row, editingCell, editingRow, setEditingCell, setEditingRow) => UIViewBuilder(() => {
-
-    const { createDocument } = useCreateDocument(workspaceId, databaseId, collectionId);
-    const { updateDocument } = useUpdateDocument(workspaceId);
 
     return (
         HStack({ alignment: cLeading })(
             UIViewBuilder(() => {
-                console.log(editingCell, field.$id, editingRow, row.$id)
+                const { createDocument } = useCreateDocument(workspaceId, databaseId, collectionId);
+                const { updateDocument } = useUpdateDocument(workspaceId);
+
+                const [isEdit, setIsEdit] = useState(null);
+                const [value, setValue] = useState(row[field.key]);
+                //const [editingRow, setEditingRow] = useState(null);
+
+                const turnOnEditMode = useCallback(({ editingCell, editingRow }) => {
+                    //  alert(lastEditCell + ' : ' + lastEditRow)
+                    if (field.$id === editingCell && row.$id === editingRow) {
+                        EventBus.Default.fire('editCellOff', { editingCell: lastEditCell, editingRow: lastEditRow });
+                        lastEditCell = editingCell;
+                        lastEditRow = editingRow;
+                        setIsEdit(true);
+                    }
+                }, []);
+
+                const turnOffEditMode = useCallback(({ editingCell, editingRow }) => {
+                    //  alert(lastEditCell + ' : ' + lastEditRow)
+                    if (field.$id === editingCell && row.$id === editingRow) {
+                        setIsEdit(false);
+                    }
+                }, []);
+
+                useEffect(() => {
+                    EventBus.Default.on('editCell', turnOnEditMode);
+                    EventBus.Default.on('editCellOff', turnOffEditMode);
+                    return () => {
+                        EventBus.Default.off('editCell', turnOnEditMode);
+                        EventBus.Default.on('editCellOff', turnOffEditMode);
+                    }
+                }, []);
+
                 if (row.type === 'addRow' && field.key === 'name') {
                     return (
                         HStack({ alignment: cLeading })(
@@ -23,20 +58,19 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                                     name: ''
                                 }
                             }, (document) => {
+                                EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: document.$id });
 
-                                setEditingCell(field.$id);
-                                setEditingRow(document.$id);
                             })
 
                         })
                     )
                 } else {
                     return (
-                        field.$id === editingCell && row.$id === editingRow ?
+                        isEdit ?
                             TextField()
                                 .placeHolder(field.name)
                                 .autoFocus(true)
-                                .value(row[field.key])
+                                .value(value)
                                 .onKeyDown((e) => {
                                     if (e.code === 'Enter' && row.nextRowId == null) {
                                         //setEditingCell(null);
@@ -59,15 +93,13 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                                                 name: ''
                                             }
                                         }, (document) => {
-
+                                            EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: id });
                                         });
 
-                                        setEditingRow(id);
-                                        setEditingCell(field.$id);
-
-
-
-
+                                        setValue(e.target.value);
+                                     
+                                      
+                                        
                                         e.preventDefault();
                                         e.stopPropagation();
 
@@ -84,26 +116,27 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                                             });
                                         }
 
-                                        setEditingRow(row.nextRowId);
-                                        setEditingCell(field.$id);
+                                        EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.nextRowId });
+
+                                        setValue(e.target.value);
                                         e.preventDefault();
                                         e.stopPropagation();
 
                                     } else if (e.code === 'ArrowUp' && row.prevRowId != null) {
-                                        setEditingRow(row.prevRowId);
-                                        setEditingCell(field.$id);
+                                        EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.prevRowId });
+                                        setValue(e.target.value);
                                         e.preventDefault();
                                         e.stopPropagation();
 
                                     } else if (e.code === 'ArrowLeft' && fields[index - 1]?.$id != null) {
-                                        setEditingRow(row.$id);
-                                        setEditingCell(fields[index - 1]?.$id);
+                                        EventBus.Default.fire('editCell', { editingCell: fields[index - 1]?.$id, editingRow: row.$id });
+
                                         e.preventDefault();
                                         e.stopPropagation();
 
                                     } else if (e.code === 'ArrowRight' && fields[index + 1]?.$id != null) {
-                                        setEditingRow(row.$id);
-                                        setEditingCell(fields[index + 1]?.$id);
+                                        EventBus.Default.fire('editCell', { editingCell: fields[index + 1]?.$id, editingRow: row.$id });
+
                                         e.preventDefault();
                                         e.stopPropagation();
 
@@ -131,12 +164,13 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                                     }
                                 }) as any :
                             HStack({ alignment: cLeading })(
-                                Text(row[field.key])
+                                Text(value)
                             )
 
                                 .onClick(() => {
-                                    setEditingCell(field.$id);
-                                    setEditingRow(row.$id);
+
+                                    EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
+
                                 })
                                 .paddingLeft('8px')
                                 .height(38))

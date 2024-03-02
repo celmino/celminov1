@@ -626,10 +626,10 @@
   resolved "https://registry.yarnpkg.com/@realmocean/navigations/-/navigations-0.0.3.tgz#391dcb5642409d9420fdf25f6c723c8df4ff547d"
   integrity sha512-zsNno1NP0GIP53xaFy0m+DpqPiyGD0bOb8TFl5PjjiUd/ndlPbupoZdligDHvCAIJ2U7v+NnJ9LWO6OA8sChUQ==
 
-"@realmocean/sdk@^1.0.80":
-  version "1.0.80"
-  resolved "https://registry.yarnpkg.com/@realmocean/sdk/-/sdk-1.0.80.tgz#1a4c9ae50e44cff02094a5ae44c5c932fbe67906"
-  integrity sha512-7r11djGm/j0LfnzIkjV1Fxci2eUaHNVhYvFGyRFlI7+JaFUHZj5oD1GRVfsNx6BL7gnm1PpzXeFBtROQgEnDeA==
+"@realmocean/sdk@1.0.82":
+  version "1.0.82"
+  resolved "https://registry.yarnpkg.com/@realmocean/sdk/-/sdk-1.0.82.tgz#e40fe84eefee5ccb29b1f12a3bdd3526222fee23"
+  integrity sha512-4kl1bwMaEsoe+8Ieely2m32/ZdVBmiGV2uOaIgog71ogpIvIrA5eWiywx67x6nEP5/DtDFzgf5uvEA9AbeMQpQ==
   dependencies:
     "@editorjs/image" "^2.8.1"
     "@editorjs/inline-code" "^1.4.0"

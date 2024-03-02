@@ -10,16 +10,15 @@ const DocumentIcon = () => (
         </g>
     </svg>
 )
-export const RichTextFieldView = (workspaceId, databaseId, collectionId, fields, field, index, row, editingCell, editingRow, setEditingCell, setEditingRow) => UIViewBuilder(() => {
+export const RichTextFieldView = () => UIViewBuilder(() => {
 
-    const { createDocument } = useCreateDocument(workspaceId, databaseId, collectionId);
-    const { updateDocument } = useUpdateDocument(workspaceId);
+   /*  const { createDocument } = useCreateDocument(workspaceId, databaseId, collectionId);
+    const { updateDocument } = useUpdateDocument(workspaceId); */
     const { openDialog } = useDialogStack();
     return (
         HStack({ alignment: cLeading })(
             UIViewBuilder(() => {
-                console.log(editingCell, field.$id, editingRow, row.$id)
-                return (
+                 return (
                     Icon(DocumentIcon)
                 )
 
@@ -28,7 +27,7 @@ export const RichTextFieldView = (workspaceId, databaseId, collectionId, fields,
         )
         .onClick(()=> {
             openDialog({
-                title: field.name,
+                title: '',
                 view: UIViewBuilder(() => {
                     return (
                         Text('asdasdasd')

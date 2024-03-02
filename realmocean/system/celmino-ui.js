@@ -16997,7 +16997,9 @@ var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__
     var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
     var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId;
     var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
-    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields').createDocument;
+    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
+    ]).createDocument;
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
         .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
         .minWidth(28)
