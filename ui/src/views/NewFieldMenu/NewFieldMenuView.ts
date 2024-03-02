@@ -16,7 +16,7 @@ const FieldTypes = {
 export const NewFieldMenuView = (workspaceId: string, databaseId: string, collectionId: string) => (
     HStack({ alignment: cTrailing })(
         UIViewBuilder(() => {
-            const [menuIsOpen, setMenuIsOpen] = useState(true);
+            const [menuIsOpen, setMenuIsOpen] = useState(false);
             const [selectedType, setSelectedType] = useState(null);
             let _hideHandle = null;
             const AttributesMenuItems = [

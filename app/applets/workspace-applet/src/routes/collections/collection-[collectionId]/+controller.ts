@@ -30,6 +30,7 @@ import {
     cTopLeading,
     cTrailing,
     css,
+    nanoid,
     useParams
 } from "@tuval/forms";
 import { useState } from "react";
@@ -160,6 +161,9 @@ export class CollectionController extends UIFormController {
                 type: 'addRow'
             })
         }
+
+        const [editingCell, setEditingCell] = useState(null);
+        const [editingRow, setEditingRow] = useState(null);
 
         let index = 1;
         return (
@@ -301,7 +305,7 @@ export class CollectionController extends UIFormController {
                                             Text(row['indexNo'])
                                         )
                                     }
-                                }, ...(fields ?? []).map((column: any) => {
+                                }, ...(fields ?? []).map((column: any, index: number) => {
                                     return {
                                         field: column.key,
                                         dataType: column.type,
@@ -312,7 +316,7 @@ export class CollectionController extends UIFormController {
                                                     .width(20)
                                                     .height(20),
                                                 HStack({ alignment: cLeading })(
-                                                    Text(column.name)
+                                                    Text(column.$id)
                                                         .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
                                                         .foregroundColor('rgb(109, 122, 131)')
                                                         .fontSize(14)
@@ -384,19 +388,20 @@ export class CollectionController extends UIFormController {
                                                 return (
                                                     HStack({ alignment: cLeading })(
                                                         UIViewBuilder(() => {
-                                                            const [editingCell, setEditingCell] = useState(null);
-                                                            const [editingRow, setEditingRow] = useState(null);
 
+                                                            console.log(editingCell, column.$id, editingRow, row.$id)
                                                             if (row.type === 'addRow' && column.key === 'name') {
                                                                 return (
                                                                     HStack({ alignment: cLeading })(
                                                                         Text('To add a new row, press Shift+Enter')
                                                                     ).onClick(() => {
                                                                         createDocument({
+                                                                            documentId: nanoid(),
                                                                             data: {
                                                                                 name: ''
                                                                             }
-                                                                        },(document)=> {
+                                                                        }, (document) => {
+
                                                                             setEditingCell(column.$id);
                                                                             setEditingRow(document.$id);
                                                                         })
@@ -410,9 +415,10 @@ export class CollectionController extends UIFormController {
                                                                             .placeHolder(column.name)
                                                                             .autoFocus(true)
                                                                             .value(row[column.key])
-                                                                            .onBlur((e) => {
-                                                                                if (e.target.value !== row[column.key]) {
-                                                                                    //alert(e.target.value)
+                                                                            .onKeyDown((e) => {
+                                                                                if (e.code === 'Enter' && row.nextRowId == null) {
+                                                                                    //setEditingCell(null);
+
                                                                                     updateDocument({
                                                                                         databaseId,
                                                                                         collectionId,
@@ -421,13 +427,73 @@ export class CollectionController extends UIFormController {
                                                                                             [column.key]: e.target.value
                                                                                         }
                                                                                     }, () => {
-                                                                                        setEditingCell(null);
-                                                                                        setEditingRow(null);
+                                                                                        setTimeout(() => {
+                                                                                            createDocument({
+                                                                                                documentId: nanoid(),
+                                                                                                data: {
+                                                                                                    name: ''
+                                                                                                }
+                                                                                            }, (document) => {
+                                                                                                setEditingRow(document.$id);
+                                                                                                setEditingCell(column.$id);
+                                                                                            })
+                                                                                        }, 1000)
                                                                                     })
-                                                                                } else {
-                                                                                    setEditingCell(null);
-                                                                                    setEditingRow(null);
+
+
+
+
+                                                                                    e.preventDefault();
+                                                                                    e.stopPropagation();
+
+                                                                                } else if ((e.code === 'Enter' || e.code === 'ArrowDown') && row.nextRowId != null) {
+                                                                                    //setEditingCell(null);
+
+                                                                                    setEditingRow(row.nextRowId);
+                                                                                    setEditingCell(column.$id);
+                                                                                    e.preventDefault();
+                                                                                    e.stopPropagation();
+
+                                                                                } else if (e.code === 'ArrowUp' && row.prevRowId != null) {
+                                                                                    setEditingRow(row.prevRowId);
+                                                                                    setEditingCell(column.$id);
+                                                                                    e.preventDefault();
+                                                                                    e.stopPropagation();
+
+                                                                                } else if (e.code === 'ArrowLeft' && fields[index - 1]?.$id != null) {
+                                                                                    setEditingRow(row.$id);
+                                                                                    setEditingCell(fields[index - 1]?.$id);
+                                                                                    e.preventDefault();
+                                                                                    e.stopPropagation();
+
+                                                                                } else if (e.code === 'ArrowRight' && fields[index + 1]?.$id != null) {
+                                                                                    setEditingRow(row.$id);
+                                                                                    setEditingCell(fields[index + 1]?.$id);
+                                                                                    e.preventDefault();
+                                                                                    e.stopPropagation();
+
                                                                                 }
+
+
+                                                                            })
+                                                                            .onBlur((e) => {
+                                                                                  if (e.target.value !== row[column.key]) {
+ 
+                                                                                     updateDocument({
+                                                                                         databaseId,
+                                                                                         collectionId,
+                                                                                         documentId: row.$id,
+                                                                                         data: {
+                                                                                             [column.key]: e.target.value
+                                                                                         }
+                                                                                     }, () => {
+                                                                                         setEditingCell(null);
+                                                                                         setEditingRow(null);
+                                                                                     })
+                                                                                 } else {
+                                                                                     setEditingCell(null);
+                                                                                     setEditingRow(null);
+                                                                                 } 
                                                                             }) as any :
                                                                         HStack({ alignment: cLeading })(
                                                                             Text(row[column.key])
@@ -456,13 +522,15 @@ export class CollectionController extends UIFormController {
 
                                     return {
                                         indexNo: index + 1,
+                                        nextRowId: documents[index + 1]?.$id,
+                                        prevRowId: documents[index - 1]?.$id,
                                         ...document
                                     }
                                 }))
                         )
                     ),
 
-                   /*  Button()
+                    Button()
                         .label('Create Document')
                         .renderer(ButtonRenderer)
                         .onClick(() => {
@@ -537,7 +605,7 @@ export class CollectionController extends UIFormController {
                             }
                             );
 
-                        }), */
+                        }),
 
 
 

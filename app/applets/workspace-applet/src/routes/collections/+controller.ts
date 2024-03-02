@@ -1,4 +1,4 @@
-import { Models, Query, useCreateCollection, useGetDatabase, useGetDocument, useGetRealm, useListCollections, useListDocuments } from "@realmocean/sdk";
+import { Models, Query, useCreateCollection, useGetDatabase, useGetDocument, useGetRealm, useListCollections, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import {
     HStack,
     Text,
@@ -16,6 +16,7 @@ import {
 
 import { AddCollectionDialog } from "../../dialogs/AddCollection/AddCollectionDialog";
 import { DynoDialog } from "@celmino/ui";
+import { EventBus } from "@tuval/core";
 
 
 export class CollectionsController extends UIFormController {
@@ -38,15 +39,49 @@ export class CollectionsController extends UIFormController {
         })
 
         const [selectedCollection, setSelectedCollection] = useState<Models.Document>(null);
-
+        const { updateDocument } = useUpdateDocument(workspaceId);
         const navigate = useNavigate();
         return (
-            VStack({ alignment: cTopLeading })(
+            VStack({ alignment: cTopLeading, spacing: 10 })(
                 HStack(
+                    HStack(
+                        UIWidget("com.tuvalsoft.widget.icons")
+                            .config({
+                                onChange: (value) => {
+                                    updateDocument({
+                                        databaseId: 'workspace',
+                                        collectionId: 'applets',
+                                        documentId: appletId,
+                                        data: {
+                                            iconName: value.iconName,
+                                            iconCategory: value.iconCategory
+                                        }
+                                    }, () => {
+                                        updateDocument({
+                                            databaseId: 'workspace',
+                                            collectionId: 'ws_tree',
+                                            documentId: appletId,
+                                            data: {
+                                                iconName: value.iconName,
+                                                iconCategory: value.iconCategory
+                                            }
+                                        }, () => {
+                                            EventBus.Default.fire('applet.added', { treeItem: value })
+                                        })
+                                    })
+                                },
+                                selectedIcon: applet?.iconName,
+                                color: applet?.themeColor,
+                                selectedCategory: applet?.iconCategory,
+                                width: 40,
+                                height: 40
+                            })
+                    ).padding(5)
+                    .width(),
                     HStack({ alignment: cLeading })(
-                        Text(database?.name)
+                        Text(applet?.name)
                             .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol")
-                            .fontSize(18)
+                            .fontSize(24)
                             .fontWeight("500")
                     )
                         .padding('6px 12px 6px 6px')
@@ -63,6 +98,20 @@ export class CollectionsController extends UIFormController {
                         .config({
                             //  allViews: views,
                             views: collections ?? [],
+                            menu: [
+                                {
+                                    title: 'Edit',
+                                    onClick: () => {
+                                        //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
+                                    }
+                                },
+                                {
+                                    title: 'Delete',
+                                    onClick: () => {
+
+                                    }
+                                }
+                            ],
                             ////  isLoading: isTaskViewsLoading,
                             //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
                             onChange: (index) => {

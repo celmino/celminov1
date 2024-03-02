@@ -675,10 +675,10 @@
     style-loader "^3.3.3"
     to-string-loader "^1.2.0"
 
-"@realmocean/vibe@2.82.48":
-  version "2.82.48"
-  resolved "https://registry.yarnpkg.com/@realmocean/vibe/-/vibe-2.82.48.tgz#8805460b4aa049b4319bef0e67858ab8d8b6b249"
-  integrity sha512-Iiw9LjmYcZz4WkTOJrXOtHFJ285Lioc07xqjHpSPvrwTHTz8OD1pSB+kQ7u/EYFN6jd6MW3eAUL6rY9JTy071g==
+"@realmocean/vibe@2.82.49":
+  version "2.82.49"
+  resolved "https://registry.yarnpkg.com/@realmocean/vibe/-/vibe-2.82.49.tgz#56cacafb69e55dcb8cd0716e9ebff37c562d7b7c"
+  integrity sha512-oh97DgC81SOL23VjhQSca15/g/1863GoE+O4DGhNDQ03GjrwP+fgTeI3AyjAOFgGkdF9J2kLp7OE6VoN7ae1jA==
   dependencies:
     "@realmocean/data" "^0.0.3"
     "@realmocean/dropdowns" "^0.0.20"

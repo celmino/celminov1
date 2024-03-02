@@ -16600,7 +16600,7 @@ var FieldTypes = {
     'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView
 };
 var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null), selectedType = _b[0], setSelectedType = _b[1];
     var _hideHandle = null;
     var AttributesMenuItems = [

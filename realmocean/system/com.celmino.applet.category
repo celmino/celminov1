@@ -2298,7 +2298,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   TextFieldClass: () => (/* binding */ TextFieldClass)\n/* harmony export */ });\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ \"@tuval/forms\");\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _TextFieldRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TextFieldRenderer */ \"./src/TextField/TextFieldRenderer.tsx\");\nvar __extends = (undefined && undefined.__extends) || (function () {\n    var extendStatics = function (d, b) {\n        extendStatics = Object.setPrototypeOf ||\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };\n        return extendStatics(d, b);\n    };\n    return function (d, b) {\n        if (typeof b !== \"function\" && b !== null)\n            throw new TypeError(\"Class extends value \" + String(b) + \" is not a constructor or null\");\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\nvar __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {\n    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;\n    if (typeof Reflect === \"object\" && typeof Reflect.decorate === \"function\") r = Reflect.decorate(decorators, target, key, desc);\n    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;\n    return c > 3 && r && Object.defineProperty(target, key, r), r;\n};\n\n\n\nvar TextFieldClass = /** @class */ (function (_super) {\n    __extends(TextFieldClass, _super);\n    function TextFieldClass() {\n        return _super !== null && _super.apply(this, arguments) || this;\n    }\n    TextFieldClass.prototype.autoFocus = function (value) {\n        this.vp_AutoFocus = value;\n        return this;\n    };\n    TextFieldClass.prototype.placeHolder = function (value) {\n        this.vp_Placeholder = value;\n        return this;\n    };\n    TextFieldClass.prototype.title = function (value) {\n        this.vp_Title = value;\n        return this;\n    };\n    TextFieldClass.prototype.helperText = function (value) {\n        this.vp_HelperText = value;\n        return this;\n    };\n    TextFieldClass.prototype.value = function (value) {\n        this.vp_Value = value;\n        return this;\n    };\n    TextFieldClass.prototype.onChange = function (value) {\n        this.vp_OnChange = value;\n        return this;\n    };\n    TextFieldClass.prototype.onBlur = function (value) {\n        this.vp_OnBlur = value;\n        return this;\n    };\n    TextFieldClass.prototype.render = function () {\n        return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_TextFieldRenderer__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { control: this }));\n    };\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_AutoFocus\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_Placeholder\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_Title\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_HelperText\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_Value\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_OnChange\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_OnBlur\", void 0);\n    return TextFieldClass;\n}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));\n\n\n\n//# sourceURL=webpack://@realmocean/vibe/./src/TextField/TextFieldClass.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   TextFieldClass: () => (/* binding */ TextFieldClass)\n/* harmony export */ });\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ \"@tuval/forms\");\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _TextFieldRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TextFieldRenderer */ \"./src/TextField/TextFieldRenderer.tsx\");\nvar __extends = (undefined && undefined.__extends) || (function () {\n    var extendStatics = function (d, b) {\n        extendStatics = Object.setPrototypeOf ||\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };\n        return extendStatics(d, b);\n    };\n    return function (d, b) {\n        if (typeof b !== \"function\" && b !== null)\n            throw new TypeError(\"Class extends value \" + String(b) + \" is not a constructor or null\");\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\nvar __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {\n    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;\n    if (typeof Reflect === \"object\" && typeof Reflect.decorate === \"function\") r = Reflect.decorate(decorators, target, key, desc);\n    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;\n    return c > 3 && r && Object.defineProperty(target, key, r), r;\n};\n\n\n\nvar TextFieldClass = /** @class */ (function (_super) {\n    __extends(TextFieldClass, _super);\n    function TextFieldClass() {\n        return _super !== null && _super.apply(this, arguments) || this;\n    }\n    TextFieldClass.prototype.autoFocus = function (value) {\n        this.vp_AutoFocus = value;\n        return this;\n    };\n    TextFieldClass.prototype.placeHolder = function (value) {\n        this.vp_Placeholder = value;\n        return this;\n    };\n    TextFieldClass.prototype.title = function (value) {\n        this.vp_Title = value;\n        return this;\n    };\n    TextFieldClass.prototype.helperText = function (value) {\n        this.vp_HelperText = value;\n        return this;\n    };\n    TextFieldClass.prototype.value = function (value) {\n        this.vp_Value = value;\n        return this;\n    };\n    TextFieldClass.prototype.onChange = function (value) {\n        this.vp_OnChange = value;\n        return this;\n    };\n    TextFieldClass.prototype.onBlur = function (value) {\n        this.vp_OnBlur = value;\n        return this;\n    };\n    TextFieldClass.prototype.onKeyDown = function (value) {\n        this.vp_OnKeyDown = value;\n        return this;\n    };\n    TextFieldClass.prototype.render = function () {\n        return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_TextFieldRenderer__WEBPACK_IMPORTED_MODULE_2__[\"default\"], { control: this }));\n    };\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_AutoFocus\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_Placeholder\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_Title\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_HelperText\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_Value\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_OnChange\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_OnBlur\", void 0);\n    __decorate([\n        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()\n    ], TextFieldClass.prototype, \"vp_OnKeyDown\", void 0);\n    return TextFieldClass;\n}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));\n\n\n\n//# sourceURL=webpack://@realmocean/vibe/./src/TextField/TextFieldClass.tsx?");
 
 /***/ }),
 
@@ -2309,7 +2309,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var monday_ui_react_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! monday-ui-react-core */ \"./node_modules/monday-ui-react-core/dist/esm/src/components/TextField/TextField.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ \"@tuval/forms\");\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ \"@tuval/core\");\n/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);\nvar __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {\n    if (Object.defineProperty) { Object.defineProperty(cooked, \"raw\", { value: raw }); } else { cooked.raw = raw; }\n    return cooked;\n};\n\n\n\n\nfunction TextFieldRenderer(_a) {\n    var control = _a.control;\n    var className = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject([\"\\n    \", \"\\n\\n    \"], [\"\\n    \", \"\\n\\n    \"])), control.Appearance.ToString());\n    console.log(className);\n    var onChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (value, event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnChange)) {\n            control.vp_OnChange(value);\n        }\n    }, []);\n    var onBlur = function (event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnBlur)) {\n            control.vp_OnBlur(event);\n        }\n    };\n    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(monday_ui_react_core__WEBPACK_IMPORTED_MODULE_3__[\"default\"], { autoFocus: control.vp_AutoFocus, className: className, iconName: function noRefCheck() { }, placeholder: control.vp_Placeholder, \n        //showCharCount\n        title: control.vp_Title, value: control.vp_Value, onBlur: onBlur, onChange: onChange }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TextFieldRenderer);\nvar templateObject_1;\n\n\n//# sourceURL=webpack://@realmocean/vibe/./src/TextField/TextFieldRenderer.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var monday_ui_react_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! monday-ui-react-core */ \"./node_modules/monday-ui-react-core/dist/esm/src/components/TextField/TextField.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ \"@tuval/forms\");\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ \"@tuval/core\");\n/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);\nvar __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {\n    if (Object.defineProperty) { Object.defineProperty(cooked, \"raw\", { value: raw }); } else { cooked.raw = raw; }\n    return cooked;\n};\n\n\n\n\nfunction TextFieldRenderer(_a) {\n    var control = _a.control;\n    var className = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject([\"\\n    \", \"\\n\\n    \"], [\"\\n    \", \"\\n\\n    \"])), control.Appearance.ToString());\n    console.log(className);\n    var onKeyDown = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnKeyDown)) {\n            control.vp_OnKeyDown(event);\n        }\n    }, []);\n    var onChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (value, event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnChange)) {\n            control.vp_OnChange(value);\n        }\n    }, []);\n    var onBlur = function (event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnBlur)) {\n            control.vp_OnBlur(event);\n        }\n    };\n    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(monday_ui_react_core__WEBPACK_IMPORTED_MODULE_3__[\"default\"], { autoFocus: control.vp_AutoFocus, className: className, iconName: function noRefCheck() { }, placeholder: control.vp_Placeholder, \n        //showCharCount\n        title: control.vp_Title, value: control.vp_Value, onBlur: onBlur, onChange: onChange, onKeyDown: onKeyDown }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TextFieldRenderer);\nvar templateObject_1;\n\n\n//# sourceURL=webpack://@realmocean/vibe/./src/TextField/TextFieldRenderer.tsx?");
 
 /***/ }),
 
@@ -3210,7 +3210,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_2014931__(moduleId) {
+/******/ 	function __nested_webpack_require_2015477__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -3224,7 +3224,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2014931__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2015477__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -3234,11 +3234,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_2014931__.n = (module) => {
+/******/ 		__nested_webpack_require_2015477__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_2014931__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_2015477__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -3246,9 +3246,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_2014931__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_2015477__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_2014931__.o(definition, key) && !__nested_webpack_require_2014931__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_2015477__.o(definition, key) && !__nested_webpack_require_2015477__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -3257,13 +3257,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_2014931__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_2015477__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__nested_webpack_require_2014931__.r = (exports) => {
+/******/ 		__nested_webpack_require_2015477__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
@@ -3276,7 +3276,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __nested_webpack_exports__ = __nested_webpack_require_2014931__("./src/index.ts");
+/******/ 	var __nested_webpack_exports__ = __nested_webpack_require_2015477__("./src/index.ts");
 /******/ 	
 /******/ 	return __nested_webpack_exports__;
 /******/ })()
@@ -6180,6 +6180,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddCollection_AddCollectionDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../dialogs/AddCollection/AddCollectionDialog */ "./src/dialogs/AddCollection/AddCollectionDialog.ts");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -6195,6 +6197,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -6219,10 +6222,42 @@ var CollectionsController = /** @class */ (function (_super) {
             documentId: appletId,
         }).document;
         var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(null), selectedCollection = _b[0], setSelectedCollection = _b[1];
+        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(database === null || database === void 0 ? void 0 : database.name)
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)("com.tuvalsoft.widget.icons")
+            .config({
+            onChange: function (value) {
+                updateDocument({
+                    databaseId: 'workspace',
+                    collectionId: 'applets',
+                    documentId: appletId,
+                    data: {
+                        iconName: value.iconName,
+                        iconCategory: value.iconCategory
+                    }
+                }, function () {
+                    updateDocument({
+                        databaseId: 'workspace',
+                        collectionId: 'ws_tree',
+                        documentId: appletId,
+                        data: {
+                            iconName: value.iconName,
+                            iconCategory: value.iconCategory
+                        }
+                    }, function () {
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: value });
+                    });
+                });
+            },
+            selectedIcon: applet === null || applet === void 0 ? void 0 : applet.iconName,
+            color: applet === null || applet === void 0 ? void 0 : applet.themeColor,
+            selectedCategory: applet === null || applet === void 0 ? void 0 : applet.iconCategory,
+            width: 40,
+            height: 40
+        })).padding(5)
+            .width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(applet === null || applet === void 0 ? void 0 : applet.name)
             .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol")
-            .fontSize(18)
+            .fontSize(24)
             .fontWeight("500"))
             .padding('6px 12px 6px 6px'))
             .paddingTop('12px')
@@ -6233,6 +6268,19 @@ var CollectionsController = /** @class */ (function (_super) {
             .config({
             //  allViews: views,
             views: collections !== null && collections !== void 0 ? collections : [],
+            menu: [
+                {
+                    title: 'Edit',
+                    onClick: function () {
+                        //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
+                    }
+                },
+                {
+                    title: 'Delete',
+                    onClick: function () {
+                    }
+                }
+            ],
             ////  isLoading: isTaskViewsLoading,
             //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
             onChange: function (index) {
@@ -6413,6 +6461,8 @@ var CollectionController = /** @class */ (function (_super) {
                 type: 'addRow'
             });
         }
+        var _f = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null), editingCell = _f[0], setEditingCell = _f[1];
+        var _g = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null), editingRow = _g[0], setEditingRow = _g[1];
         var index = 1;
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Geometry)(function (_a) {
@@ -6506,14 +6556,14 @@ var CollectionController = /** @class */ (function (_super) {
                     editor: function (row) {
                         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(row['indexNo']));
                     }
-                }], (fields !== null && fields !== void 0 ? fields : []).map(function (column) {
+                }], (fields !== null && fields !== void 0 ? fields : []).map(function (column, index) {
                 return {
                     field: column.key,
                     dataType: column.type,
                     width: '420px',
                     header: function (data) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(getAttributeIcon(column.type))
                         .width(20)
-                        .height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(column.name)
+                        .height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(column.$id)
                         .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
                         .foregroundColor('rgb(109, 122, 131)')
                         .fontSize(14)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.MenuButton)()
@@ -6563,11 +6613,11 @@ var CollectionController = /** @class */ (function (_super) {
                         }
                         else {
                             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
-                                var _a = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null), editingCell = _a[0], setEditingCell = _a[1];
-                                var _b = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(null), editingRow = _b[0], setEditingRow = _b[1];
+                                console.log(editingCell, column.$id, editingRow, row.$id);
                                 if (row.type === 'addRow' && column.key === 'name') {
                                     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('To add a new row, press Shift+Enter')).onClick(function () {
                                         createDocument({
+                                            documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.nanoid)(),
                                             data: {
                                                 name: ''
                                             }
@@ -6583,10 +6633,63 @@ var CollectionController = /** @class */ (function (_super) {
                                             .placeHolder(column.name)
                                             .autoFocus(true)
                                             .value(row[column.key])
+                                            .onKeyDown(function (e) {
+                                            var _a;
+                                            var _b, _c, _d, _e;
+                                            if (e.code === 'Enter' && row.nextRowId == null) {
+                                                //setEditingCell(null);
+                                                updateDocument({
+                                                    databaseId: databaseId,
+                                                    collectionId: collectionId,
+                                                    documentId: row.$id,
+                                                    data: (_a = {},
+                                                        _a[column.key] = e.target.value,
+                                                        _a)
+                                                }, function () {
+                                                    setTimeout(function () {
+                                                        createDocument({
+                                                            documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.nanoid)(),
+                                                            data: {
+                                                                name: ''
+                                                            }
+                                                        }, function (document) {
+                                                            setEditingRow(document.$id);
+                                                            setEditingCell(column.$id);
+                                                        });
+                                                    }, 1000);
+                                                });
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                            else if ((e.code === 'Enter' || e.code === 'ArrowDown') && row.nextRowId != null) {
+                                                //setEditingCell(null);
+                                                setEditingRow(row.nextRowId);
+                                                setEditingCell(column.$id);
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                            else if (e.code === 'ArrowUp' && row.prevRowId != null) {
+                                                setEditingRow(row.prevRowId);
+                                                setEditingCell(column.$id);
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                            else if (e.code === 'ArrowLeft' && ((_b = fields[index - 1]) === null || _b === void 0 ? void 0 : _b.$id) != null) {
+                                                setEditingRow(row.$id);
+                                                setEditingCell((_c = fields[index - 1]) === null || _c === void 0 ? void 0 : _c.$id);
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                            else if (e.code === 'ArrowRight' && ((_d = fields[index + 1]) === null || _d === void 0 ? void 0 : _d.$id) != null) {
+                                                setEditingRow(row.$id);
+                                                setEditingCell((_e = fields[index + 1]) === null || _e === void 0 ? void 0 : _e.$id);
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        })
                                             .onBlur(function (e) {
                                             var _a;
                                             if (e.target.value !== row[column.key]) {
-                                                //alert(e.target.value)
                                                 updateDocument({
                                                     databaseId: databaseId,
                                                     collectionId: collectionId,
@@ -6618,8 +6721,78 @@ var CollectionController = /** @class */ (function (_super) {
                 };
             }), true))
                 .model(documents.map(function (document, index) {
-                return __assign({ indexNo: index + 1 }, document);
-            }))))));
+                var _a, _b;
+                return __assign({ indexNo: index + 1, nextRowId: (_a = documents[index + 1]) === null || _a === void 0 ? void 0 : _a.$id, prevRowId: (_b = documents[index - 1]) === null || _b === void 0 ? void 0 : _b.$id }, document);
+            })))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)()
+                .label('Create Document')
+                .renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.ButtonRenderer)
+                .onClick(function () {
+                var _fields = {};
+                for (var i = 0; i < (fields === null || fields === void 0 ? void 0 : fields.length); i++) {
+                    var attribute = fields[i];
+                    if (attribute.type === 'text') {
+                        _fields[attribute.key] = {
+                            label: attribute.name,
+                            type: 'text',
+                            name: attribute.key
+                        };
+                    }
+                    else if (attribute.type === 'number') {
+                        _fields[attribute.key] = {
+                            label: attribute.key,
+                            type: 'number',
+                            name: attribute.name
+                        };
+                    }
+                    else if (attribute.type === 'boolean') {
+                        _fields[attribute.key] = {
+                            label: attribute.key,
+                            type: 'checkbox',
+                            name: attribute.name
+                        };
+                    }
+                    else if (attribute.type === 'datetime') {
+                        _fields[attribute.key] = {
+                            label: attribute.key,
+                            type: 'datepicker',
+                            name: attribute.key,
+                            value: new Date(),
+                            renderer: _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.DatePickerRenderer
+                        };
+                    }
+                    else if (attribute.type === 'relationship') {
+                        _fields[attribute.key] = {
+                            label: attribute.key,
+                            type: 'relation',
+                            name: attribute.key,
+                            relatedCollection: attribute.relatedCollection,
+                            relationType: attribute.relationType,
+                        };
+                    }
+                }
+                _celmino_ui__WEBPACK_IMPORTED_MODULE_7__.DynoDialog.Show({
+                    "title": "Create ".concat(collection === null || collection === void 0 ? void 0 : collection.name),
+                    "actions": [
+                        {
+                            "label": "Save",
+                            "type": "ca_SaveDocument"
+                        }
+                    ],
+                    "fieldMap": __assign({ "workspaceId": {
+                            "name": "workspaceId",
+                            "type": "virtual",
+                            "value": workspaceId
+                        }, "databaseId": {
+                            "name": "databaseId",
+                            "type": "virtual",
+                            "value": databaseId
+                        }, "collectionId": {
+                            "name": "collectionId",
+                            "type": "virtual",
+                            "value": collectionId
+                        } }, _fields)
+                });
+            })));
     };
     return CollectionController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));

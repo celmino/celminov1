@@ -60,13 +60,35 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 var colors = [
+    '#9C2BAF',
+    '#673DB6',
+    '#3E53B4',
+    '#2978FB',
+    '#199EE3',
+    '#1FBED3',
+    '#159789',
+    '#4FAF54',
+    '#8EC351',
+    '#FBA32F',
+    '#FC551F',
+    '#B04E31',
+    '#8077F1',
+    '#6A85FF',
+    '#40A6E5',
+    '#3FB1B2',
+    '#64C6A2',
+    '#F9BE34',
+    '#E78845',
+    '#DC646A',
+    '#F17EAD',
+    '#C580E6',
+    '#BBA399',
+    '#595D66',
     '#4A4A4A',
     '#6A849B',
     '#BEC5CC',
     '#D40915',
-    '#E72065',
-    '#9C2BAF',
-    '#673DB6'
+    '#E72065'
 ];
 var MyTestController = /** @class */ (function (_super) {
     __extends(MyTestController, _super);
@@ -74,11 +96,11 @@ var MyTestController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyTestController.prototype.LoadView = function () {
-        var _a = this.props.config || {}, views = _a.views, view_id = _a.view_id, actions = _a.actions, _b = _a.selectedIndex, selectedIndex = _b === void 0 ? 0 : _b, _c = _a.onChange, onChange = _c === void 0 ? void 0 : _c, _d = _a.isLoading, isLoading = _d === void 0 ? false : _d;
-        var _e = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(selectedIndex), selectedIndexState = _e[0], setSelectedIndexState = _e[1];
+        var _a = this.props.config || {}, views = _a.views, view_id = _a.view_id, actions = _a.actions, _b = _a.selectedIndex, selectedIndex = _b === void 0 ? 0 : _b, _c = _a.onChange, onChange = _c === void 0 ? void 0 : _c, _d = _a.isLoading, isLoading = _d === void 0 ? false : _d, _e = _a.menu, menu = _e === void 0 ? [] : _e;
+        var _f = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(selectedIndex), selectedIndexState = _f[0], setSelectedIndexState = _f[1];
         //const selectedIndex = views?.findIndex(view => view.id === view_id);
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, __spreadArray([isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)()).height().padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 20) :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(views)(function (view, index) { var _a; return (0,_views_TabItem__WEBPACK_IMPORTED_MODULE_1__.TabItem)(view, index, selectedIndexState, (_a = colors[index]) !== null && _a !== void 0 ? _a : '#AAAAAA', function () { setSelectedIndexState(index); onChange === null || onChange === void 0 ? void 0 : onChange(index); }); })).width()], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(actions)(function (action, index) {
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(views)(function (view, index) { var _a; return (0,_views_TabItem__WEBPACK_IMPORTED_MODULE_1__.TabItem)(view, menu, index, selectedIndexState, (_a = colors[index]) !== null && _a !== void 0 ? _a : '#AAAAAA', function () { setSelectedIndexState(index); onChange === null || onChange === void 0 ? void 0 : onChange(index); }); })).width()], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(actions)(function (action, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Add).fontSize(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(action.title).lineHeight('1'))
                 .width().height().cursor('pointer').padding(5)
                 .background({ hover: '#fafbfc' })
@@ -111,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-function TabItem(objectView, index, selectedIndex, selectedColor, onClick) {
+function TabItem(objectView, menu, index, selectedIndex, selectedColor, onClick) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('readonly'), mode = _a[0], setMode = _a[1];
@@ -119,30 +141,38 @@ function TabItem(objectView, index, selectedIndex, selectedColor, onClick) {
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null), newName = _c[0], setNewName = _c[1];
         var selectedColorRGB = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.hex2rgb)(selectedColor);
         console.log("rgba(" + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b) + ",0.1)");
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(index === 0 ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width(1).height('60%').background('#E8EAED') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(index === 0 ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width(1).height('60%').background('#E8EAED') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)((name || (objectView === null || objectView === void 0 ? void 0 : objectView.name) || ' ')[0])
+            .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
+            .foregroundColor('white')
+            .fontSize(11)
+            .textTransform('uppercase')).allWidth(16).allHeight(16)
+            .cornerRadius(4)
+            .background(selectedColor)
+            .opacity(selectedIndex === index ? '.95' : '.25'), 
         //HStack().allWidth(18).allHeight(18),
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name || (objectView === null || objectView === void 0 ? void 0 : objectView.name)).whiteSpace('nowrap')
             // .fontFamily('source sans pro semibold')
             .fontWeight(selectedIndex === index ? '600' : '500')
+            .fontSize(14)
             .opacity(mode === 'readonly' ? '1' : '0')
-            .foregroundColor('var(--text-color)'))
+            .foregroundColor('var(--text-color)'), selectedIndex === index ?
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)()
+                .model(menu)
+                .icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Menu))
+                .width() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
             .allHeight(30)
             .padding(10)
             .cornerRadius(5)
-            .background({ hover: "rgba(" + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b) + ",0.1)" }))
+            .background({
+            default: selectedIndex === index ?
+                "rgba(" + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b) + ",0.15)" : '', hover: "rgba(" + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.r) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.g) + "," + (selectedColorRGB === null || selectedColorRGB === void 0 ? void 0 : selectedColorRGB.b) + ",0.25)"
+        }))
             .onClick(function () { return onClick(); }))
-            .variable('--showMenu', { hover: 'block', default: 'none' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width(1).height('60%').background('#E8EAED'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().position('absolute')
-            .width('100%')
-            .height(3)
-            .bottom('0px')
-            .cornerRadius('3px 3px 0 0')
-            .background(selectedColor)
-            .transition('opacity .1s cubic-bezier(.785,.135,.15,.86) 0s')
-            .opacity(selectedIndex === index ? '1' : '0'))
+            .variable('--showMenu', { hover: 'block', default: 'none' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width(1).height('60%').background('#E8EAED'))
             .allHeight(50)
             .cursor('pointer')
             .variable('--show-bar', { hover: '1', default: '0' })
-            .variable('--text-color', { default: selectedIndex === index ? selectedColor : '', hover: selectedColor }));
+            .variable('--text-color', { default: selectedIndex === index ? 'rgb(33, 37, 38)' : 'rgb(33, 37, 38)', hover: 'rgb(33, 37, 38)' }));
     }));
 }
 
