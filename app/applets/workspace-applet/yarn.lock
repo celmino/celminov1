@@ -851,10 +851,10 @@
     style-loader "^3.3.3"
     to-string-loader "^1.2.0"
 
-"@realmocean/vibe@2.82.49":
-  version "2.82.49"
-  resolved "https://registry.yarnpkg.com/@realmocean/vibe/-/vibe-2.82.49.tgz#56cacafb69e55dcb8cd0716e9ebff37c562d7b7c"
-  integrity sha512-oh97DgC81SOL23VjhQSca15/g/1863GoE+O4DGhNDQ03GjrwP+fgTeI3AyjAOFgGkdF9J2kLp7OE6VoN7ae1jA==
+"@realmocean/vibe@2.82.58":
+  version "2.82.58"
+  resolved "https://registry.yarnpkg.com/@realmocean/vibe/-/vibe-2.82.58.tgz#35713bae0698f7d7440110e0403af0f24cc78a86"
+  integrity sha512-ASQS9xZH/cHzM93q0i7JFRruj8yAwCbDvtaFBVZMX8GsVbRWPoKtw3LWvQzcL6HP441HHk2TpJTKb+cLdps8wQ==
   dependencies:
     "@realmocean/data" "^0.0.3"
     "@realmocean/dropdowns" "^0.0.20"

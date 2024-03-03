@@ -104,7 +104,7 @@
     "devDependencies": {},
     "dependencies": {
         "@realmocean/sdk": "1.0.82",
-        "@realmocean/vibe": "^2.82.45",
+        "@realmocean/vibe": "2.82.50",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.167",
         "dts-bundle": "^0.7.3",

@@ -73,6 +73,14 @@ const colors = [
     '#B04E31'
 ]
 
+const root = css`
+    height: 100%;
+`
+
+const wrapper = css`
+    height: 100%;
+`
+
 const tableStyle = css`
     border-spacing: 0px;
     width: 100%;
@@ -152,7 +160,7 @@ export class CollectionController extends UIFormController {
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         //const { createDocument } = useCreateDocument(workspaceId);
-        const { documents: _documents, isLoading } = useListDocuments(workspaceId, databaseId, collectionId, [
+        const { documents, isLoading } = useListDocuments(workspaceId, databaseId, collectionId, [
             Query.limit(1000)
         ]);
         const { documents: fields } = useListDocuments(workspaceId, databaseId, 'fields', [
@@ -162,14 +170,14 @@ export class CollectionController extends UIFormController {
         const { collection }: { collection: Models.Collection } = useGetCollection(workspaceId, databaseId, collectionId);
         const [collectionName, setCollectionName] = useState<string>(collection?.name ?? 'New Collection');
         const [showDialog, setShowDialog] = useState<boolean>(false);
-        let documents = [];
+        /* let documents = [];
         if (_documents != null) {
             documents = [..._documents];
             documents.push({
                 indexNo: _documents.length + 1,
                 type: 'addRow'
             })
-        }
+        } */
 
 
 
@@ -282,6 +290,8 @@ export class CollectionController extends UIFormController {
                         ScrollView({ axes: cAll, alignment: cTopLeading })(
                             UIDataTable()
                                 .dataTablePT({
+                                    root,
+                                    wrapper,
                                     table: tableStyle,
                                     bodyRow,
                                     paginator
@@ -325,7 +335,7 @@ export class CollectionController extends UIFormController {
                                                     .width(20)
                                                     .height(20),
                                                 HStack({ alignment: cLeading })(
-                                                    Text(column.name)
+                                                    Text(column.$id)
                                                         .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
                                                         .foregroundColor('rgb(109, 122, 131)')
                                                         .fontSize(14)
@@ -455,77 +465,86 @@ export class CollectionController extends UIFormController {
                         .label('Create Document')
                         .renderer(TestRenderer)
                         .onClick(() => {
-                            const _fields = {};
-
-                            for (let i = 0; i < fields?.length; i++) {
-                                const attribute: any = fields[i];
-                                if (attribute.type === 'text') {
-                                    _fields[attribute.key] = {
-                                        label: attribute.name,
-                                        type: 'text',
-                                        name: attribute.key
-                                    }
-                                } else if (attribute.type === 'number') {
-                                    _fields[attribute.key] = {
-                                        label: attribute.key,
-                                        type: 'number',
-                                        name: attribute.name
-                                    }
-                                } else if (attribute.type === 'boolean') {
-                                    _fields[attribute.key] = {
-                                        label: attribute.key,
-                                        type: 'checkbox',
-                                        name: attribute.name
-                                    }
-                                } else if (attribute.type === 'datetime') {
-                                    _fields[attribute.key] = {
-                                        label: attribute.key,
-                                        type: 'datepicker',
-                                        name: attribute.key,
-                                        value: new Date(),
-                                        renderer: DatePickerRenderer
-                                    }
-                                } else if (attribute.type === 'relationship') {
-                                    _fields[attribute.key] = {
-                                        label: attribute.key,
-                                        type: 'relation',
-                                        name: attribute.key,
-                                        relatedCollection: attribute.relatedCollection,
-                                        relationType: attribute.relationType,
-                                    }
+                            createDocument({
+                                documentId: nanoid(),
+                                data: {
+                                    name: ''
                                 }
-                            }
+                            }, (document) => {
+                                EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
 
-                            DynoDialog.Show({
-                                "title": `Create ${collection?.name}`,
-                                "actions": [
-                                    {
-                                        "label": "Save",
-                                        "type": "ca_SaveDocument"
-                                    }
-                                ],
-                                "fieldMap": {
-                                    "workspaceId": {
-                                        "name": "workspaceId",
-                                        "type": "virtual",
-                                        "value": workspaceId
-                                    },
-                                    "databaseId": {
-                                        "name": "databaseId",
-                                        "type": "virtual",
-                                        "value": databaseId
-                                    },
-                                    "collectionId": {
-                                        "name": "collectionId",
-                                        "type": "virtual",
-                                        "value": collectionId
-                                    },
-                                    ..._fields
+                            })
+                            /*  const _fields = {};
+ 
+                             for (let i = 0; i < fields?.length; i++) {
+                                 const attribute: any = fields[i];
+                                 if (attribute.type === 'text') {
+                                     _fields[attribute.key] = {
+                                         label: attribute.name,
+                                         type: 'text',
+                                         name: attribute.key
+                                     }
+                                 } else if (attribute.type === 'number') {
+                                     _fields[attribute.key] = {
+                                         label: attribute.key,
+                                         type: 'number',
+                                         name: attribute.name
+                                     }
+                                 } else if (attribute.type === 'boolean') {
+                                     _fields[attribute.key] = {
+                                         label: attribute.key,
+                                         type: 'checkbox',
+                                         name: attribute.name
+                                     }
+                                 } else if (attribute.type === 'datetime') {
+                                     _fields[attribute.key] = {
+                                         label: attribute.key,
+                                         type: 'datepicker',
+                                         name: attribute.key,
+                                         value: new Date(),
+                                         renderer: DatePickerRenderer
+                                     }
+                                 } else if (attribute.type === 'relationship') {
+                                     _fields[attribute.key] = {
+                                         label: attribute.key,
+                                         type: 'relation',
+                                         name: attribute.key,
+                                         relatedCollection: attribute.relatedCollection,
+                                         relationType: attribute.relationType,
+                                     }*/
+                            /*  }
+                         } */
 
-                                }
-                            }
-                            );
-
+                            /*  DynoDialog.Show({
+                                 "title": `Create ${collection?.name}`,
+                                 "actions": [
+                                     {
+                                         "label": "Save",
+                                         "type": "ca_SaveDocument"
+                                     }
+                                 ],
+                                 "fieldMap": {
+                                     "workspaceId": {
+                                         "name": "workspaceId",
+                                         "type": "virtual",
+                                         "value": workspaceId
+                                     },
+                                     "databaseId": {
+                                         "name": "databaseId",
+                                         "type": "virtual",
+                                         "value": databaseId
+                                     },
+                                     "collectionId": {
+                                         "name": "collectionId",
+                                         "type": "virtual",
+                                         "value": collectionId
+                                     },
+                                     ..._fields
+ 
+                                 } 
+                             }
+                             );
+ */
                         }),
 
 

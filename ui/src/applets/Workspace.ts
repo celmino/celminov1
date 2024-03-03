@@ -35,7 +35,7 @@ export const WorkspaceApplet = {
                         }
                     ]
                 },
-                 {
+                {
                     "name": "Fields",
                     "id": "fields",
                     "attributes": [
@@ -53,7 +53,8 @@ export const WorkspaceApplet = {
                         },
                         {
                             "key": "fieldInfo",
-                            "type": "string"
+                            "type": "string",
+                            "size": 18900
                         },
                         {
                             "key": "collectionId",
@@ -64,7 +65,7 @@ export const WorkspaceApplet = {
                             "type": "number"
                         }
                     ]
-                }, 
+                },
 
 
                 {

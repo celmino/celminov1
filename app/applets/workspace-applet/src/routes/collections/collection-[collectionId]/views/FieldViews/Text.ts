@@ -4,8 +4,12 @@ import { TextField } from "@realmocean/vibe";
 import { useCallback } from 'react'
 import { EventBus } from "@tuval/core";
 
-export let lastEditCell = null;
-export let lastEditRow = null;
+export const editInfo = {
+    lastEditCell: null,
+    lastEditRow: null
+}
+/* export let lastEditCell = null;
+export let lastEditRow = null; */
 
 export const TextFieldView = (workspaceId, databaseId, collectionId, fields, field, index, row) => UIViewBuilder(() => {
 
@@ -22,17 +26,18 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                 //const [editingRow, setEditingRow] = useState(null);
 
                 const turnOnEditMode = useCallback(({ editingCell, editingRow }) => {
-                    //  alert(lastEditCell + ' : ' + lastEditRow)
+                     //alert( 'fieldId : ' + field.$id + '----- rowId : ' + JSON.stringify(row)  + '-----' +   editingCell + ' : ' + editingRow)
                     if (field.$id === editingCell && row.$id === editingRow) {
-                        EventBus.Default.fire('editCellOff', { editingCell: lastEditCell, editingRow: lastEditRow });
-                        lastEditCell = editingCell;
-                        lastEditRow = editingRow;
+                        //alert(editingCell + ' : ' + editingRow +  '------' + 'girdi')
+                        EventBus.Default.fire('editCellOff', { editingCell: editInfo.lastEditCell, editingRow: editInfo.lastEditRow });
+                        editInfo.lastEditCell = editingCell;
+                        editInfo.lastEditRow = editingRow;
                         setIsEdit(true);
                     }
                 }, []);
 
                 const turnOffEditMode = useCallback(({ editingCell, editingRow }) => {
-                    //  alert(lastEditCell + ' : ' + lastEditRow)
+                    // alert(editingCell + ' : ' + editingRow)
                     if (field.$id === editingCell && row.$id === editingRow) {
                         setIsEdit(false);
                     }
@@ -97,6 +102,7 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                                         });
 
                                         setValue(e.target.value);
+                                       
                                      
                                       
                                         
@@ -164,11 +170,12 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                                     }
                                 }) as any :
                             HStack({ alignment: cLeading })(
-                                Text(value)
+                                Text(row[field.key])
                             )
 
                                 .onClick(() => {
-
+                                  //  alert(JSON.stringify(row))
+                                   // alert('click' + '----' + field.$id + '----' + row.$id)
                                     EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
 
                                 })

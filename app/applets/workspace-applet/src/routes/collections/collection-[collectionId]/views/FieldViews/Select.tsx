@@ -1,11 +1,11 @@
 import { useCreateDocument, useUpdateCollection, useUpdateDocument } from "@realmocean/sdk";
-import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect, } from "@tuval/forms";
+import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect } from "@tuval/forms";
 import { TextField } from "@realmocean/vibe";
 import { useCallback } from 'react'
 import { EventBus, is } from "@tuval/core";
+import { Dropdown } from "@realmocean/vibe";
+import { editInfo } from "./Text";
 
-export let lastEditCell = null;
-export let lastEditRow = null;
 
 export const SelectFieldView = (workspaceId, databaseId, collectionId, fields, field, index, row) => UIViewBuilder(() => {
     return (
@@ -17,24 +17,31 @@ export const SelectFieldView = (workspaceId, databaseId, collectionId, fields, f
                 const [isEdit, setIsEdit] = useState(null);
                 const [value, setValue] = useState(row[field.key]);
 
-                if (is.string(field.fieldInfo)){
-                    field.fieldInfo = JSON.parse(field.fieldInfo);
+                if (is.string(field.fieldInfo)) {
+                    field.fieldInfo = JSON.parse(field.fieldInfo) ?? {};
+                    field.fieldInfo.options = field.fieldInfo.options?.map((option) => {
+                        return {
+                            label: option.key,
+                            value: option.value
+                        }
+                    })
                 }
 
                 //const [editingRow, setEditingRow] = useState(null);
 
                 const turnOnEditMode = useCallback(({ editingCell, editingRow }) => {
-                    //  alert(lastEditCell + ' : ' + lastEditRow)
+                    // alert(field.name + '  --  ' + editInfo.lastEditCell + ' : ' + editInfo.lastEditRow)
                     if (field.$id === editingCell && row.$id === editingRow) {
-                        EventBus.Default.fire('editCellOff', { editingCell: lastEditCell, editingRow: lastEditRow });
-                        lastEditCell = editingCell;
-                        lastEditRow = editingRow;
+                        //  alert(editInfo.lastEditCell + ' : ' + editInfo.lastEditRow)
+                        EventBus.Default.fire('editCellOff', { editingCell: editInfo.lastEditCell, editingRow: editInfo.lastEditRow });
+                        editInfo.lastEditCell = editingCell;
+                        editInfo.lastEditRow = editingRow;
                         setIsEdit(true);
                     }
                 }, []);
 
                 const turnOffEditMode = useCallback(({ editingCell, editingRow }) => {
-                    //  alert(lastEditCell + ' : ' + lastEditRow)
+
                     if (field.$id === editingCell && row.$id === editingRow) {
                         setIsEdit(false);
                     }
@@ -69,14 +76,38 @@ export const SelectFieldView = (workspaceId, databaseId, collectionId, fields, f
                 } else {
                     return (
                         isEdit ?
-                            TextField()
+                            Dropdown().width('100%')
+                            .padding(0)
+                                .defaultValue(field.fieldInfo.options?.find((option) => option.value === row[field.key]))
+                                .options(field.fieldInfo.options ?? [])
+                                .onChange(({ label, value }) => {
+                                    if (value !== row[field.key]) {
+
+                                        updateDocument({
+                                            databaseId,
+                                            collectionId,
+                                            documentId: row.$id,
+                                            data: {
+                                                [field.key]: value
+                                            }
+                                        }, () => {
+                                            //setEditingCell(null);
+                                            //setEditingRow(null);
+                                        })
+
+                                        setIsEdit(false);
+                                    } else {
+                                        //setEditingCell(null);
+                                        //setEditingRow(null);
+                                    }
+                                }) as any
+                            /* TextField()
                                 .placeHolder(field.name)
                                 .autoFocus(true)
                                 .value(value)
                                 .onKeyDown((e) => {
                                     if (e.code === 'Enter' && row.nextRowId == null) {
-                                        //setEditingCell(null);
-
+                                     
                                         updateDocument({
                                             databaseId,
                                             collectionId,
@@ -164,13 +195,14 @@ export const SelectFieldView = (workspaceId, databaseId, collectionId, fields, f
                                         //setEditingCell(null);
                                         //setEditingRow(null);
                                     }
-                                }) as any :
+                                }) as any  */:
                             HStack({ alignment: cLeading })(
-                                Text(JSON.stringify(field.fieldInfo.options))
+                                Text(field.fieldInfo.options?.find((option) => option.value === row[field.key])?.label || '')
+
                             )
 
                                 .onClick(() => {
-
+                                    // alert(JSON.stringify(editInfo) + ' ----- ' + field.$id + ' : ' + row.$id);
                                     EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
 
                                 })
