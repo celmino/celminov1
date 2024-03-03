@@ -34,6 +34,7 @@ import { TreeSelectView } from "./views/treeselect";
 import { NumberView } from "./views/number";
 import { CheckBoxFormView } from "./views/checkbox";
 import { CustomAction } from "./actions/CustomAction";
+import { KeyValueView } from "./views/keyvalue";
 
 
 export const UIFormBuilderContext = createContext(null!);
@@ -316,110 +317,7 @@ const CollapseFormView = (columnInfo: any, fieldMap) => {
     )
 }
 
-const KeyValueView = (textData: any) => {
-    const formController = useFormController();
-    const { visibleWhen, required, multiline, name, description } = textData;
-    let canRender = false;
 
-    if (visibleWhen != null && !is.array(visibleWhen)) {
-        const field = visibleWhen.field;
-        const fieldValue = visibleWhen.is;
-        if (field != null) {
-            const fieldFormValue = formController.GetValue(field);
-            if (fieldValue == fieldFormValue) {
-                canRender = true;
-            }
-        }
-    } else if (visibleWhen != null && is.array(visibleWhen)) {
-        const fails = []
-        for (let i = 0; i < visibleWhen.length; i++) {
-            const field = visibleWhen[i].field;
-            const fieldValue = visibleWhen[i].is;
-            if (field != null) {
-                const fieldFormValue = formController.GetValue(field);
-                if (fieldValue == fieldFormValue) {
-
-                } else {
-                    fails.push(0)
-                }
-            }
-        }
-        if (fails.length === 0) {
-            canRender = true;
-        }
-
-    } else {
-        canRender = true;
-    }
-
-    const keyValuePairs: any[] = formController.GetValue(name) || [];
-    const rows = [...keyValuePairs, { key: '', value: '' }]
-    if (canRender) {
-        return (
-            VStack({ alignment: cTopLeading, spacing: 10 })(
-                Text(textData.label + (required ? '*' : '')).kerning('0.00938em')
-                    .lineHeight('24px').foregroundColor('#333D47').fontSize(14)
-                    .fontWeight(required ? '600' : '400'),
-                //  Text(JSON.stringify(rows)),
-                ...ForEach(rows)((keyValue, index) =>
-                    HStack({ alignment: cLeading, spacing: 10 })(
-                        TextField()
-                            .value(keyValuePairs[index] == null ? '' : keyValuePairs[index].key)
-                            .multiline(multiline)
-                            .height(multiline ? '' : '38px')
-                            .foregroundColor('rgb(51,61,71)')
-                            .cornerRadius(2)
-                            // .padding('0px 15px')
-                            //.formField(textData.name, [])
-                            .onChange(text => {
-                                if (text == '') {
-                                    if (is.nullOrEmpty(keyValuePairs[index].value)) {
-                                        keyValuePairs.splice(index, 1);
-                                    } else {
-                                        keyValuePairs[index] = { key: text, value: keyValue.value }
-
-                                    }
-                                    formController.SetValue(name, [...keyValuePairs])
-
-
-                                } else {
-                                    keyValuePairs[index] = { key: text, value: keyValue.value }
-                                    formController.SetValue(name, [...keyValuePairs])
-                                }
-                            })
-                            .border('1px solid #D6E4ED')
-                            .shadow({ focus: 'none' })
-                            .fontSize(15),
-                        TextField()
-                            .multiline(multiline)
-                            .height(multiline ? '' : '38px')
-                            .foregroundColor('rgb(51,61,71)')
-                            .cornerRadius(2)
-                            // .padding('0px 15px')
-                            //.formField(textData.name, [])
-                            .onChange(text => {
-                                keyValuePairs[index] = { key: keyValue.key, value: text }
-                                formController.SetValue(name, [...keyValuePairs])
-                            })
-                            .border('1px solid #D6E4ED')
-                            .shadow({ focus: 'none' })
-                            .fontSize(15)
-                    )
-
-                ),
-                description &&
-                Text(description).multilineTextAlignment(TextAlignment.leading)
-                    .foregroundColor('#95ABBC')
-                    .fontSize('12px')
-                    .fontFamily('"Roboto", "Helvetica", "Arial", sans-serif')
-                    .kerning('0.03333em')
-                    .lineHeight('20px')
-                    .marginTop('4px')
-
-            ).height().marginBottom('16px')
-        )
-    }
-}
 
 
 

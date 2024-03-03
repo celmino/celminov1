@@ -50,7 +50,7 @@ export class SelectAppletDialog extends DialogView {
     static Show(workspaceId: string, parent?: string): Promise<any>;
 }
 
-export const NewFieldMenuView: (workspaceId: string, databaseId: string, collectionId: string) => import("@tuval/forms").HStackClass;
+export const NewFieldMenuView: (workspaceId: string, databaseId: string, collectionId: string) => import("@tuval/forms").ReactViewClass;
 
 export const ColorSelect: ({ onSelect }: {
     onSelect: any;

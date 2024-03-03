@@ -13646,6 +13646,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_number__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./views/number */ "./src/FormBuilder/views/number.ts");
 /* harmony import */ var _views_checkbox__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./views/checkbox */ "./src/FormBuilder/views/checkbox.ts");
 /* harmony import */ var _actions_CustomAction__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./actions/CustomAction */ "./src/FormBuilder/actions/CustomAction.ts");
+/* harmony import */ var _views_keyvalue__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./views/keyvalue */ "./src/FormBuilder/views/keyvalue.ts");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -13666,6 +13667,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+
 
 
 
@@ -13894,96 +13896,6 @@ var CollapseFormView = function (columnInfo, fieldMap) {
             .border('solid 1px #D6E4ED').cornerRadius(5));
     }
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 20 }).apply(void 0, views));
-};
-var KeyValueView = function (textData) {
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
-    var visibleWhen = textData.visibleWhen, required = textData.required, multiline = textData.multiline, name = textData.name, description = textData.description;
-    var canRender = false;
-    if (visibleWhen != null && !_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
-        var field = visibleWhen.field;
-        var fieldValue = visibleWhen.is;
-        if (field != null) {
-            var fieldFormValue = formController.GetValue(field);
-            if (fieldValue == fieldFormValue) {
-                canRender = true;
-            }
-        }
-    }
-    else if (visibleWhen != null && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
-        var fails = [];
-        for (var i = 0; i < visibleWhen.length; i++) {
-            var field = visibleWhen[i].field;
-            var fieldValue = visibleWhen[i].is;
-            if (field != null) {
-                var fieldFormValue = formController.GetValue(field);
-                if (fieldValue == fieldFormValue) {
-                }
-                else {
-                    fails.push(0);
-                }
-            }
-        }
-        if (fails.length === 0) {
-            canRender = true;
-        }
-    }
-    else {
-        canRender = true;
-    }
-    var keyValuePairs = formController.GetValue(name) || [];
-    var rows = __spreadArray(__spreadArray([], keyValuePairs, true), [{ key: '', value: '' }], false);
-    if (canRender) {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 10 }).apply(void 0, __spreadArray(__spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(textData.label + (required ? '*' : '')).kerning('0.00938em')
-                .lineHeight('24px').foregroundColor('#333D47').fontSize(14)
-                .fontWeight(required ? '600' : '400')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(rows)(function (keyValue, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.TextField)()
-                .value(keyValuePairs[index] == null ? '' : keyValuePairs[index].key)
-                .multiline(multiline)
-                .height(multiline ? '' : '38px')
-                .foregroundColor('rgb(51,61,71)')
-                .cornerRadius(2)
-                // .padding('0px 15px')
-                //.formField(textData.name, [])
-                .onChange(function (text) {
-                if (text == '') {
-                    if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(keyValuePairs[index].value)) {
-                        keyValuePairs.splice(index, 1);
-                    }
-                    else {
-                        keyValuePairs[index] = { key: text, value: keyValue.value };
-                    }
-                    formController.SetValue(name, __spreadArray([], keyValuePairs, true));
-                }
-                else {
-                    keyValuePairs[index] = { key: text, value: keyValue.value };
-                    formController.SetValue(name, __spreadArray([], keyValuePairs, true));
-                }
-            })
-                .border('1px solid #D6E4ED')
-                .shadow({ focus: 'none' })
-                .fontSize(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.TextField)()
-                .multiline(multiline)
-                .height(multiline ? '' : '38px')
-                .foregroundColor('rgb(51,61,71)')
-                .cornerRadius(2)
-                // .padding('0px 15px')
-                //.formField(textData.name, [])
-                .onChange(function (text) {
-                keyValuePairs[index] = { key: keyValue.key, value: text };
-                formController.SetValue(name, __spreadArray([], keyValuePairs, true));
-            })
-                .border('1px solid #D6E4ED')
-                .shadow({ focus: 'none' })
-                .fontSize(15));
-        }), false), [description &&
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(description).multilineTextAlignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.TextAlignment.leading)
-                    .foregroundColor('#95ABBC')
-                    .fontSize('12px')
-                    .fontFamily('"Roboto", "Helvetica", "Arial", sans-serif')
-                    .kerning('0.03333em')
-                    .lineHeight('20px')
-                    .marginTop('4px')], false)).height().marginBottom('16px'));
-    }
 };
 var test_me_up = 0;
 var FormBuilder = /** @class */ (function () {
@@ -14247,7 +14159,7 @@ FormBuilder.injectView('checkbox', _views_checkbox__WEBPACK_IMPORTED_MODULE_27__
 FormBuilder.injectView('radiogroup', _views_radiogroup__WEBPACK_IMPORTED_MODULE_3__.RadioGroupoFormView);
 FormBuilder.injectView('select', _views_select__WEBPACK_IMPORTED_MODULE_5__.SelectFormView);
 FormBuilder.injectView('_select', _views_select__WEBPACK_IMPORTED_MODULE_20__.SelectView);
-FormBuilder.injectView('keyvalue', KeyValueView);
+FormBuilder.injectView('keyvalue', _views_keyvalue__WEBPACK_IMPORTED_MODULE_29__.KeyValueView);
 FormBuilder.injectLayout('column', ColumnFormView);
 FormBuilder.injectLayout('collapse', CollapseFormView);
 FormBuilder.injectLayout('category', CategoryFormLayout);
@@ -14922,6 +14834,117 @@ var DateTimePickerView = function (fieldInfo) {
             formController.SetValue(name, date.toDate());
             onChange === null || onChange === void 0 ? void 0 : onChange(formController, date.toDate());
         })), endAdornment && endAdornment && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(endAdornment).foregroundColor('#677A89').fontSize(17).fontFamily('source sans pro').lineHeight(22)).height()).height().marginBottom('16px'));
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/FormBuilder/views/keyvalue.ts":
+/*!*******************************************!*\
+  !*** ./src/FormBuilder/views/keyvalue.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   KeyValueView: () => (/* binding */ KeyValueView)
+/* harmony export */ });
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+
+
+var KeyValueView = function (textData) {
+    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    var visibleWhen = textData.visibleWhen, required = textData.required, multiline = textData.multiline, name = textData.name, description = textData.description;
+    var canRender = false;
+    if (visibleWhen != null && !_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
+        var field = visibleWhen.field;
+        var fieldValue = visibleWhen.is;
+        if (field != null) {
+            var fieldFormValue = formController.GetValue(field);
+            if (fieldValue == fieldFormValue) {
+                canRender = true;
+            }
+        }
+    }
+    else if (visibleWhen != null && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
+        var fails = [];
+        for (var i = 0; i < visibleWhen.length; i++) {
+            var field = visibleWhen[i].field;
+            var fieldValue = visibleWhen[i].is;
+            if (field != null) {
+                var fieldFormValue = formController.GetValue(field);
+                if (fieldValue == fieldFormValue) {
+                }
+                else {
+                    fails.push(0);
+                }
+            }
+        }
+        if (fails.length === 0) {
+            canRender = true;
+        }
+    }
+    else {
+        canRender = true;
+    }
+    var keyValuePairs = formController.GetValue(name) || [];
+    var rows = __spreadArray(__spreadArray([], keyValuePairs, true), [{ key: '', value: '' }], false);
+    if (canRender) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(rows)(function (keyValue, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)()
+                .value(keyValuePairs[index] == null ? '' : keyValuePairs[index].key)
+                .multiline(multiline)
+                .height(multiline ? '' : '38px')
+                .foregroundColor('rgb(51,61,71)')
+                .cornerRadius(2)
+                // .padding('0px 15px')
+                //.formField(textData.name, [])
+                .onChange(function (text) {
+                if (text == '') {
+                    if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(keyValuePairs[index].value)) {
+                        keyValuePairs.splice(index, 1);
+                    }
+                    else {
+                        keyValuePairs[index] = { key: text, value: keyValue.value };
+                    }
+                    formController.SetValue(name, __spreadArray([], keyValuePairs, true));
+                }
+                else {
+                    keyValuePairs[index] = { key: text, value: keyValue.value };
+                    formController.SetValue(name, __spreadArray([], keyValuePairs, true));
+                }
+            })
+                .border('1px solid #D6E4ED')
+                .shadow({ focus: 'none' })
+                .fontSize(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)()
+                .multiline(multiline)
+                .height(multiline ? '' : '38px')
+                .foregroundColor('rgb(51,61,71)')
+                .cornerRadius(2)
+                // .padding('0px 15px')
+                //.formField(textData.name, [])
+                .onChange(function (text) {
+                keyValuePairs[index] = { key: keyValue.key, value: text };
+                formController.SetValue(name, __spreadArray([], keyValuePairs, true));
+            })
+                .border('1px solid #D6E4ED')
+                .shadow({ focus: 'none' })
+                .fontSize(15));
+        })).height().marginBottom('16px'));
     }
 };
 
@@ -16563,10 +16586,10 @@ var Icons;
 
 /***/ }),
 
-/***/ "./src/views/NewFieldMenu/NewFieldMenuView.ts":
-/*!****************************************************!*\
-  !*** ./src/views/NewFieldMenu/NewFieldMenuView.ts ***!
-  \****************************************************/
+/***/ "./src/views/NewFieldMenu/NewFieldMenuView.tsx":
+/*!*****************************************************!*\
+  !*** ./src/views/NewFieldMenu/NewFieldMenuView.tsx ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -16587,6 +16610,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
 /* harmony import */ var _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialogs/AddNumberFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddNumberFieldDialog.ts");
 /* harmony import */ var _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialogs/AddRichtextFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRichtextFieldDialog.ts");
+/* harmony import */ var _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialogs/AddSelectFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddSelectFieldDialog.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
 
 
 
@@ -16599,143 +16640,157 @@ __webpack_require__.r(__webpack_exports__);
 var FieldTypes = {
     'text': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
     'richtext': _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.RichTextFieldsAttributesView,
-    'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView
+    'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView,
+    'select': _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SelectFieldsAttributesView
 };
-var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null), selectedType = _b[0], setSelectedType = _b[1];
-    var _hideHandle = null;
-    var AttributesMenuItems = [
-        {
-            title: 'Text',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.TextAttribute,
-            onClick: function () { return (setSelectedType('text')
-            //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
-            ); }
-        },
-        {
-            title: 'Rich Text',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RichTextAttribute,
-            onClick: function () { return (setSelectedType('richtext')
-            //  DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
-            ); }
-        },
-        {
-            title: 'Number',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.NumberAttribute,
-            onClick: function () { return (setSelectedType('number')); }
-        },
-        {
-            title: 'Single Select',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.SingleSelectAttribute
-        },
-        {
-            title: 'Multi Select',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.MultiSelectAttribute
-        },
-        {
-            title: 'Workflow',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.WorkflowAttribute
-        },
-        {
-            title: 'Assignments',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.AssignmentAttribute
-        },
-        {
-            title: 'Date',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.DateAttribute,
-            onClick: function () { return (alert() //DynoDialog.Show(AddDatetimeFieldDialog(workspaceId, databaseId, collectionId))
-            ); }
-        },
-        {
-            title: 'Checkbox',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.CheckboxAttribute,
-            onClick: function () { return (alert() // DynoDialog.Show(AddBooleanFieldDialog(workspaceId, databaseId, collectionId))
-            ); }
-        },
-        {
-            title: 'URL',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.URLAttribute
-        },
-        {
-            title: 'Email',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.EmailAttribute
-        },
-        {
-            title: 'Phone',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.PhoneAttribute
-        },
-        {
-            title: 'Location',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.LocationAttribute
-        },
-        {
-            title: 'Avatar',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.AvatarAttribute
-        },
-        {
-            title: 'Icon',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.IconAttribute
-        },
-        {
-            title: 'Files',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.FilesAttribute
-        },
-        {
-            title: 'Comments',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.CommentsAttribute
-        },
-        {
-            title: 'Relation to...',
-            icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RelationAttribute,
-            onClick: function () {
-                alert(); //DynoDialog.Show(AddRelationFieldDialog(workspaceId,databaseId, collectionId))
-            }
-        }
-    ];
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)('New Field')
-        .foregroundColor(menuIsOpen ? 'white' : '')
-        .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
-        .fontSize(14)
-        .fontWeight('500'))
-        .width()
-        .height(30)
-        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 12)
-        .foregroundColor('hsl(205, 9%, 47%)')
-        .background({ default: menuIsOpen ? '#6D7A83' : '', hover: menuIsOpen ? '#6D7A83' : 'rgba(109,122,131,0.15)' })
-        //.border({ hover: '1px solid rgba(255, 255, 255, 0)' })
-        .cornerRadius(6)
-        .transition('all .15s ease-out')
-        .cursor('pointer')
-        .onClick(function () {
-        setMenuIsOpen(!menuIsOpen);
-    }))(selectedType == null ?
-        _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(AttributesMenuItems)(function (item) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(item.title))
-                .background({ hover: 'rgba(81,97,108,.1)' })
-                .padding()
+var Controller = /** @class */ (function (_super) {
+    __extends(Controller, _super);
+    function Controller() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Controller.prototype.LoadView = function () {
+        var _a = this.props, workspaceId = _a.workspaceId, databaseId = _a.databaseId, collectionId = _a.collectionId;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+            var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
+            var _b = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null), selectedType = _b[0], setSelectedType = _b[1];
+            var _hideHandle = null;
+            var AttributesMenuItems = [
+                {
+                    title: 'Text',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.TextAttribute,
+                    onClick: function () { return (setSelectedType('text')
+                    //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
+                    ); }
+                },
+                {
+                    title: 'Rich Text',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RichTextAttribute,
+                    onClick: function () { return (setSelectedType('richtext')
+                    //  DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
+                    ); }
+                },
+                {
+                    title: 'Number',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.NumberAttribute,
+                    onClick: function () { return (setSelectedType('number')); }
+                },
+                {
+                    title: 'Single Select',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.SingleSelectAttribute,
+                    onClick: function () { return (setSelectedType('select')); }
+                },
+                {
+                    title: 'Multi Select',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.MultiSelectAttribute
+                },
+                {
+                    title: 'Workflow',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.WorkflowAttribute
+                },
+                {
+                    title: 'Assignments',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.AssignmentAttribute
+                },
+                {
+                    title: 'Date',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.DateAttribute,
+                    onClick: function () { return (alert() //DynoDialog.Show(AddDatetimeFieldDialog(workspaceId, databaseId, collectionId))
+                    ); }
+                },
+                {
+                    title: 'Checkbox',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.CheckboxAttribute,
+                    onClick: function () { return (alert() // DynoDialog.Show(AddBooleanFieldDialog(workspaceId, databaseId, collectionId))
+                    ); }
+                },
+                {
+                    title: 'URL',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.URLAttribute
+                },
+                {
+                    title: 'Email',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.EmailAttribute
+                },
+                {
+                    title: 'Phone',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.PhoneAttribute
+                },
+                {
+                    title: 'Location',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.LocationAttribute
+                },
+                {
+                    title: 'Avatar',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.AvatarAttribute
+                },
+                {
+                    title: 'Icon',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.IconAttribute
+                },
+                {
+                    title: 'Files',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.FilesAttribute
+                },
+                {
+                    title: 'Comments',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.CommentsAttribute
+                },
+                {
+                    title: 'Relation to...',
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RelationAttribute,
+                    onClick: function () {
+                        alert(); //DynoDialog.Show(AddRelationFieldDialog(workspaceId,databaseId, collectionId))
+                    }
+                }
+            ];
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)('New Field')
+                .foregroundColor(menuIsOpen ? 'white' : '')
+                .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
+                .fontSize(14)
+                .fontWeight('500'))
+                .width()
+                .height(30)
+                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 12)
+                .foregroundColor('hsl(205, 9%, 47%)')
+                .background({ default: menuIsOpen ? '#6D7A83' : '', hover: menuIsOpen ? '#6D7A83' : 'rgba(109,122,131,0.15)' })
+                //.border({ hover: '1px solid rgba(255, 255, 255, 0)' })
+                .cornerRadius(6)
+                .transition('all .15s ease-out')
                 .cursor('pointer')
-                .height(32)
                 .onClick(function () {
-                //_hideHandle();
-                _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(item.onClick) ? item.onClick() : void 0;
-            });
-        })).width(200)
-            .marginTop(8)
-            .border('1px solid #EFF0F1')
-            .cornerRadius(6)
-        :
-            FieldTypes[selectedType](workspaceId, databaseId, collectionId))
-        .open(menuIsOpen)
-        .hideHandle(function (hideHandle) { return _hideHandle = hideHandle; })
-        .dialogPosition(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogPosition.BOTTOM_END)
-        .onDidHide(function () {
-        setMenuIsOpen(false);
-        setSelectedType(null);
-    }));
-})).width()); };
+                setMenuIsOpen(!menuIsOpen);
+            }))(selectedType == null ?
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(AttributesMenuItems)(function (item) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(item.title))
+                        .background({ hover: 'rgba(81,97,108,.1)' })
+                        .padding()
+                        .cursor('pointer')
+                        .height(32)
+                        .onClick(function () {
+                        //_hideHandle();
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(item.onClick) ? item.onClick() : void 0;
+                    });
+                })).width(200)
+                    .marginTop(8)
+                    .border('1px solid #EFF0F1')
+                    .cornerRadius(6)
+                :
+                    FieldTypes[selectedType](workspaceId, databaseId, collectionId))
+                .open(menuIsOpen)
+                .hideHandle(function (hideHandle) { return _hideHandle = hideHandle; })
+                .dialogPosition(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogPosition.BOTTOM_END)
+                .onDidHide(function () {
+                setMenuIsOpen(false);
+                setSelectedType(null);
+            }));
+        })).width());
+    };
+    return Controller;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
+var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { workspaceId: workspaceId, databaseId: databaseId, collectionId: collectionId }))); };
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
 
 
 /***/ }),
@@ -16960,6 +17015,129 @@ var AddRichTextFieldDialog = function (workspaceId, databaseId, collectionId) { 
 
 /***/ }),
 
+/***/ "./src/views/NewFieldMenu/dialogs/AddSelectFieldDialog.ts":
+/*!****************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddSelectFieldDialog.ts ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AddSelectFieldDialog: () => (/* binding */ AddSelectFieldDialog),
+/* harmony export */   SaveSelectFieldAction: () => (/* binding */ SaveSelectFieldAction),
+/* harmony export */   SelectFieldsAttributesView: () => (/* binding */ SelectFieldsAttributesView)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+
+
+
+
+var SelectFieldsAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddSelectFieldDialog(workspaceId, databaseId, collectionId)))
+        .padding(20)
+        .width(380)
+        .height(515);
+})); };
+var SaveSelectFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    var label = action.label, successAction = action.successAction, successActions = action.successActions;
+    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId, options = _a.options;
+    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
+    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
+    ]).createDocument;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
+        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
+        .minWidth(28)
+        .minHeight(28)
+        .height()
+        .width()
+        .fontSize(14)
+        .foregroundColor('white')
+        .cornerRadius(6)
+        .background('rgb(64, 101, 221)')
+        // .loading(isLoading)
+        .onClick(function () {
+        if (databaseId == null) {
+            alert('Collection is null');
+            return;
+        }
+        createStringAttribute({
+            databaseId: databaseId,
+            collectionId: collectionId,
+            key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
+            required: false,
+            size: 255
+        }, function (attribute) {
+            createDocument({
+                data: {
+                    key: attribute.key,
+                    name: name,
+                    type: 'select',
+                    fieldInfo: JSON.stringify({
+                        options: options
+                    }),
+                    collectionId: collectionId
+                }
+            }, function () { return dialog.Hide(); });
+        });
+    }));
+}); };
+var AddSelectFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
+    "title": 'Add select field',
+    "actions": [
+        {
+            "label": "Save",
+            "type": "com.celmino-ui.actions.saveSelectField"
+        }
+    ],
+    "fieldMap": {
+        "workspaceId": {
+            "name": "workspaceId",
+            "type": "virtual",
+            "value": workspaceId
+        },
+        "databaseId": {
+            "name": "databaseId",
+            "type": "virtual",
+            "value": databaseId
+        },
+        "collectionId": {
+            "name": "collectionId",
+            "type": "virtual",
+            "value": collectionId
+        },
+        "name": {
+            "label": "NAME",
+            "type": "text",
+            "name": "name"
+        },
+        "description": {
+            "label": "DESCRIPTION (OPTIONAL)",
+            "type": "text",
+            "multiline": true,
+            "name": "description"
+        },
+        "options": {
+            "label": "OPTIONS",
+            "type": "keyvalue",
+            "name": "options"
+        },
+    }
+}); };
+
+
+/***/ }),
+
 /***/ "./src/views/NewFieldMenu/dialogs/AddTextAttributeDialog.ts":
 /*!******************************************************************!*\
   !*** ./src/views/NewFieldMenu/dialogs/AddTextAttributeDialog.ts ***!
@@ -17091,7 +17269,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView)
 /* harmony export */ });
 /* harmony import */ var _ColorSelect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorSelect */ "./src/views/ColorSelect/index.ts");
-/* harmony import */ var _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewFieldMenu/NewFieldMenuView */ "./src/views/NewFieldMenu/NewFieldMenuView.ts");
+/* harmony import */ var _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewFieldMenu/NewFieldMenuView */ "./src/views/NewFieldMenu/NewFieldMenuView.tsx");
 
 
 

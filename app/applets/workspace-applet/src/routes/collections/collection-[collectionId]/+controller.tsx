@@ -45,6 +45,7 @@ import { TextField } from "@realmocean/vibe";
 import { TextFieldView } from "./views/FieldViews/Text";
 import { RichTextFieldView } from "./views/FieldViews/Richtext";
 import React from "react";
+import { SelectFieldView } from "./views/FieldViews/Select";
 
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";
@@ -364,6 +365,10 @@ export class CollectionController extends UIFormController {
                                         body: (row) => {
                                             if (column.type === 'richtext') {
                                                 return RichTextFieldView();
+
+                                            } else if (column.type === 'select') {
+                                                return SelectFieldView(workspaceId, databaseId,
+                                                    collectionId, fields, column, index, row);
 
                                             } else if (column.type === 'boolean') {
                                                 const values = row[column.key];
