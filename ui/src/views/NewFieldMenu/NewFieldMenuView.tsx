@@ -9,13 +9,15 @@ import { NumberFieldsAttributesView } from "./dialogs/AddNumberFieldDialog";
 import { RichTextFieldsAttributesView, SaveRichTextFieldAction } from "./dialogs/AddRichtextFieldDialog";
 import { SaveSelectFieldAction, SelectFieldsAttributesView } from "./dialogs/AddSelectFieldDialog";
 import React from "react";
+import { MultiSelectFieldsAttributesView, SaveMultiSelectFieldAction } from "./dialogs/AddMultiSelectDialog";
 
 
 const FieldTypes = {
     'text': TextFieldsAttributesView,
     'richtext': RichTextFieldsAttributesView,
     'number': NumberFieldsAttributesView,
-    'select': SelectFieldsAttributesView
+    'select': SelectFieldsAttributesView,
+    'multiselect': MultiSelectFieldsAttributesView
 }
 
 class Controller extends UIFormController {
@@ -60,7 +62,10 @@ class Controller extends UIFormController {
                         },
                         {
                             title: 'Multi Select',
-                            icon: Icons.MultiSelectAttribute
+                            icon: Icons.MultiSelectAttribute,
+                            onClick: () => (
+                                setSelectedType('multiselect')
+                            )
                         },
                         {
                             title: 'Workflow',
@@ -203,3 +208,5 @@ export const NewFieldMenuView = (workspaceId: string, databaseId: string, collec
 FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', SaveTextFieldAction);
 FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', SaveRichTextFieldAction);
 FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', SaveSelectFieldAction);
+FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', SaveMultiSelectFieldAction);
+

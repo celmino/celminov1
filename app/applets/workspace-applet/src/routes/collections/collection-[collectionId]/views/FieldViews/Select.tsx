@@ -1,8 +1,8 @@
 import { useCreateDocument, useUpdateCollection, useUpdateDocument } from "@realmocean/sdk";
-import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect } from "@tuval/forms";
+import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect, PopupButton, DialogPosition, ForEach, VStack, cTopLeading } from "@tuval/forms";
 import { TextField } from "@realmocean/vibe";
 import { useCallback } from 'react'
-import { EventBus, is } from "@tuval/core";
+import { EventBus, TMath, is } from "@tuval/core";
 import { Dropdown } from "@realmocean/vibe";
 import { editInfo } from "./Text";
 
@@ -56,162 +56,91 @@ export const SelectFieldView = (workspaceId, databaseId, collectionId, fields, f
                     }
                 }, []);
 
-                if (row.type === 'addRow' && field.key === 'name') {
-                    return (
-                        HStack({ alignment: cLeading })(
-                            Text('To add a new row, press Shift+Enter')
-                        ).onClick(() => {
-                            createDocument({
-                                documentId: nanoid(),
-                                data: {
-                                    name: ''
-                                }
-                            }, (document) => {
-                                EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: document.$id });
+                let _hideHandle = null;
 
-                            })
+
+                return (
+
+                    HStack({ alignment: cLeading })(
+                        HStack({ alignment: cLeading })(
+                            PopupButton(
+                                HStack({ alignment: cLeading })(
+                                    row[field.key] == null ?
+                                    Text('Select ' + field.name) :
+                                    Text(field.fieldInfo.options?.find((option) => option.value === row[field.key])?.label || '')
+                                )
+                                    .width()
+                                    .cornerRadius(6)
+                                    .padding()
+                                    .border('1px solid #e0e0e0')
+                                    .height(30)
+                                
+                            )(
+                                VStack({ alignment: cTopLeading, spacing: 5 })(
+                                    ...ForEach(field.fieldInfo.options)((item: any) =>
+                                        HStack({ alignment: cLeading })(
+                                            Text(item.label)
+                                        )
+                                            .width()
+                                            .cornerRadius(6)
+                                            .padding()
+                                            .border('1px solid #e0e0e0')
+                                            .height(30)
+                                            .onClick(() => {
+                                                if (item.value !== row[field.key]) {
+
+                                                    updateDocument({
+                                                        databaseId,
+                                                        collectionId,
+                                                        documentId: row.$id,
+                                                        data: {
+                                                            [field.key]: item.value
+                                                        }
+                                                    }, () => {
+                                                        _hideHandle();
+                                                        setIsEdit(false);
+                                                    })
+                                                } else {
+                                                    _hideHandle();
+                                                    setIsEdit(false);
+                                                }
+                                            })
+                                    )
+
+                                ).width(200)
+                                    .height(TMath.max(field.fieldInfo.options.length * 40, 100))
+                                    .padding()
+                            )
+                            .hideHandle(hideHandle => _hideHandle = hideHandle)
+                                .dialogPosition(DialogPosition.BOTTOM_START)
+                        )
+
+
+
+                    )
+                        .cornerRadius(6)
+                        .border(isEdit ? '2px solid #e0e0e0' : '')
+                        .height(38)
+                        .onClick(() => {
+                            isEdit ? void 0 :
+                                EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
+                        })
+
+                    /* :
+                    HStack({ alignment: cLeading })(
+                        Text(field.fieldInfo.options?.find((option) => option.value === row[field.key])?.label || '')
+
+                    )
+
+                        .onClick(() => {
+                         
+                            EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
 
                         })
-                    )
-                } else {
-                    return (
-                        isEdit ?
-                            Dropdown().width('100%')
-                            .padding(0)
-                                .defaultValue(field.fieldInfo.options?.find((option) => option.value === row[field.key]))
-                                .options(field.fieldInfo.options ?? [])
-                                .onChange(({ label, value }) => {
-                                    
-                                    if (value !== row[field.key]) {
-
-                                        updateDocument({
-                                            databaseId,
-                                            collectionId,
-                                            documentId: row.$id,
-                                            data: {
-                                                [field.key]: value
-                                            }
-                                        }, () => {
-                                            //setEditingCell(null);
-                                            //setEditingRow(null);
-                                        })
-
-                                        setIsEdit(false);
-                                    } else {
-                                        //setEditingCell(null);
-                                        //setEditingRow(null);
-                                    }
-                                }) as any
-                            /* TextField()
-                                .placeHolder(field.name)
-                                .autoFocus(true)
-                                .value(value)
-                                .onKeyDown((e) => {
-                                    if (e.code === 'Enter' && row.nextRowId == null) {
-                                     
-                                        updateDocument({
-                                            databaseId,
-                                            collectionId,
-                                            documentId: row.$id,
-                                            data: {
-                                                [field.key]: e.target.value
-                                            }
-                                        }, () => {
-
-                                        });
-
-                                        const id = nanoid();
-                                        createDocument({
-                                            documentId: id,
-                                            data: {
-                                                name: ''
-                                            }
-                                        }, (document) => {
-                                            EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: id });
-                                        });
-
-                                        setValue(e.target.value);
-                                     
-                                      
-                                        
-                                        e.preventDefault();
-                                        e.stopPropagation();
-
-                                    } else if ((e.code === 'Enter' || e.code === 'ArrowDown') && row.nextRowId != null) {
-                                        //setEditingCell(null);
-                                        if (row[field.key] !== e.target.value) {
-                                            updateDocument({
-                                                databaseId,
-                                                collectionId,
-                                                documentId: row.$id,
-                                                data: {
-                                                    [field.key]: e.target.value
-                                                }
-                                            });
-                                        }
-
-                                        EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.nextRowId });
-
-                                        setValue(e.target.value);
-                                        e.preventDefault();
-                                        e.stopPropagation();
-
-                                    } else if (e.code === 'ArrowUp' && row.prevRowId != null) {
-                                        EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.prevRowId });
-                                        setValue(e.target.value);
-                                        e.preventDefault();
-                                        e.stopPropagation();
-
-                                    } else if (e.code === 'ArrowLeft' && fields[index - 1]?.$id != null) {
-                                        EventBus.Default.fire('editCell', { editingCell: fields[index - 1]?.$id, editingRow: row.$id });
-
-                                        e.preventDefault();
-                                        e.stopPropagation();
-
-                                    } else if (e.code === 'ArrowRight' && fields[index + 1]?.$id != null) {
-                                        EventBus.Default.fire('editCell', { editingCell: fields[index + 1]?.$id, editingRow: row.$id });
-
-                                        e.preventDefault();
-                                        e.stopPropagation();
-
-                                    }
-
-
-                                })
-                                .onBlur((e) => {
-                                    if (e.target.value !== row[field.key]) {
-
-                                        updateDocument({
-                                            databaseId,
-                                            collectionId,
-                                            documentId: row.$id,
-                                            data: {
-                                                [field.key]: e.target.value
-                                            }
-                                        }, () => {
-                                            //setEditingCell(null);
-                                            //setEditingRow(null);
-                                        })
-                                    } else {
-                                        //setEditingCell(null);
-                                        //setEditingRow(null);
-                                    }
-                                }) as any  */:
-                            HStack({ alignment: cLeading })(
-                                Text(field.fieldInfo.options?.find((option) => option.value === row[field.key])?.label || '')
-
-                            )
-
-                                .onClick(() => {
-                                    // alert(JSON.stringify(editInfo) + ' ----- ' + field.$id + ' : ' + row.$id);
-                                    EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
-
-                                })
-                                .paddingLeft('8px')
-                                .height(38))
-                }
+                        .paddingLeft('8px')
+                        .height(38)) */
+                )
             })
-
         )
     )
 })

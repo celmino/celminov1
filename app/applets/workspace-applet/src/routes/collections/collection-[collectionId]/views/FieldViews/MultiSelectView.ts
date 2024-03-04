@@ -1,5 +1,5 @@
 import { useCreateDocument, useUpdateCollection, useUpdateDocument } from "@realmocean/sdk";
-import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect } from "@tuval/forms";
+import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect, ForEach } from "@tuval/forms";
 import { TextField } from "@realmocean/vibe";
 import { useCallback } from 'react'
 import { EventBus, is } from "@tuval/core";
@@ -25,6 +25,9 @@ export const MultiSelectFieldView = (workspaceId, databaseId, collectionId, fiel
                         }
                     })
                 }
+
+
+
 
                 //const [editingRow, setEditingRow] = useState(null);
 
@@ -76,11 +79,12 @@ export const MultiSelectFieldView = (workspaceId, databaseId, collectionId, fiel
                     return (
                         isEdit ?
                             Dropdown().width('100%')
-                            .padding(0)
-                                .defaultValue(field.fieldInfo.options?.find((option) => option.value === row[field.key]))
+                                .padding(0)
+                                //.defaultValue(field.fieldInfo.options?.find((option) => option.value === row[field.key]))
                                 .options(field.fieldInfo.options ?? [])
-                                .onChange((values: {label: string, value: string}[]) => {
+                                .onChange((values: { label: string, value: string }[]) => {
                                     const valuesForSave = values.map((value) => value.value).join(',');
+
 
                                     if (valuesForSave !== row[field.key]) {
 
@@ -92,19 +96,29 @@ export const MultiSelectFieldView = (workspaceId, databaseId, collectionId, fiel
                                                 [field.key]: valuesForSave
                                             }
                                         }, () => {
-                                            //setEditingCell(null);
-                                            //setEditingRow(null);
+
                                         })
 
-                                        setIsEdit(false);
+                                        // setIsEdit(false);
                                     } else {
-                                        //setEditingCell(null);
-                                        //setEditingRow(null);
                                     }
                                 }) as any
                             :
                             HStack({ alignment: cLeading })(
-                                Text(field.fieldInfo.options?.find((option) => option.value === row[field.key])?.label || '')
+                                UIViewBuilder(() => {
+                                    let list = [];
+                                    if (row[field.key] !== null && is.string(row[field.key])) {
+                                        list = row[field.key].split(',');
+                                    }
+                                    return (
+                                        HStack({ alignment: cLeading })(
+                                            ...ForEach(list)((item) =>
+                                                Text(field.fieldInfo.options?.find((option) => option.value === item)?.label || '')
+                                            )
+                                        )
+                                    )
+
+                                })
 
                             )
 

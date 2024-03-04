@@ -75,7 +75,7 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                             TextField()
                                 .placeHolder(field.name)
                                 .autoFocus(true)
-                                .value(value)
+                                .value(row[field.key])
                                 .onKeyDown((e) => {
                                     if (e.code === 'Enter' && row.nextRowId == null) {
                                         //setEditingCell(null);
@@ -101,7 +101,7 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                                             EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: id });
                                         });
 
-                                        setValue(e.target.value);
+                                       // setValue(e.target.value);
 
 
 

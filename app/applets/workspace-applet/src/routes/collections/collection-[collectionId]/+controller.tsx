@@ -3,7 +3,7 @@ import {
     useGetDatabase, useListDocuments, useUpdateCollection, useUpdateDocument
 } from "@realmocean/sdk";
 import { DatePickerRenderer, InputRenderer } from "@realmocean/antd";
-import { ButtonRenderer as TestRenderer } from "@realmocean/elasticui";
+//import { ButtonRenderer as TestRenderer } from "@realmocean/elasticui";
 import { EventBus, is } from "@tuval/core";
 import {
     Button,
@@ -329,7 +329,7 @@ export class CollectionController extends UIFormController {
                                     return {
                                         field: column.key,
                                         dataType: column.type,
-                                        width: '420px',
+                                        width: '220px',
                                         header: (data) => (
                                             HStack({ alignment: cLeading, spacing: 5 })(
                                                 Icon(getAttributeIcon(column.type))
@@ -466,9 +466,11 @@ export class CollectionController extends UIFormController {
                         )
                     ),
 
-                    Button()
-                        .label('Create Document')
-                        .renderer(TestRenderer)
+                    Button(
+                        Text('Create Document')
+                    )
+                       
+                        //.renderer(TestRenderer)
                         .onClick(() => {
                             createDocument({
                                 documentId: nanoid(),

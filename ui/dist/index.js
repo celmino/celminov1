@@ -17645,6 +17645,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dialogs/AddNumberFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddNumberFieldDialog.ts");
 /* harmony import */ var _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialogs/AddRichtextFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRichtextFieldDialog.ts");
 /* harmony import */ var _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialogs/AddSelectFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddSelectFieldDialog.ts");
+/* harmony import */ var _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialogs/AddMultiSelectDialog */ "./src/views/NewFieldMenu/dialogs/AddMultiSelectDialog.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -17671,11 +17672,13 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var FieldTypes = {
     'text': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
     'richtext': _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.RichTextFieldsAttributesView,
     'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView,
-    'select': _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SelectFieldsAttributesView
+    'select': _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SelectFieldsAttributesView,
+    'multiselect': _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.MultiSelectFieldsAttributesView
 };
 var Controller = /** @class */ (function (_super) {
     __extends(Controller, _super);
@@ -17715,7 +17718,8 @@ var Controller = /** @class */ (function (_super) {
                 },
                 {
                     title: 'Multi Select',
-                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.MultiSelectAttribute
+                    icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.MultiSelectAttribute,
+                    onClick: function () { return (setSelectedType('multiselect')); }
                 },
                 {
                     title: 'Workflow',
@@ -17825,6 +17829,130 @@ var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.SaveMultiSelectFieldAction);
+
+
+/***/ }),
+
+/***/ "./src/views/NewFieldMenu/dialogs/AddMultiSelectDialog.ts":
+/*!****************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddMultiSelectDialog.ts ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AddMultiSelectFieldDialog: () => (/* binding */ AddMultiSelectFieldDialog),
+/* harmony export */   MultiSelectFieldsAttributesView: () => (/* binding */ MultiSelectFieldsAttributesView),
+/* harmony export */   SaveMultiSelectFieldAction: () => (/* binding */ SaveMultiSelectFieldAction)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+
+
+
+
+var MultiSelectFieldsAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddMultiSelectFieldDialog(workspaceId, databaseId, collectionId)))
+        .padding(20)
+        .width(380)
+        .height(515);
+})); };
+var SaveMultiSelectFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    var label = action.label, successAction = action.successAction, successActions = action.successActions;
+    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId, options = _a.options;
+    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
+    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
+    ]).createDocument;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
+        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
+        .minWidth(28)
+        .minHeight(28)
+        .height()
+        .width()
+        .fontSize(14)
+        .foregroundColor('white')
+        .cornerRadius(6)
+        .background('rgb(64, 101, 221)')
+        // .loading(isLoading)
+        .onClick(function () {
+        if (databaseId == null) {
+            alert('Collection is null');
+            return;
+        }
+        createStringAttribute({
+            databaseId: databaseId,
+            collectionId: collectionId,
+            key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
+            required: false,
+            size: 5255
+        }, function (attribute) {
+            createDocument({
+                data: {
+                    key: attribute.key,
+                    name: name,
+                    type: 'multiselect',
+                    fieldInfo: JSON.stringify({
+                        options: options
+                    }),
+                    collectionId: collectionId
+                }
+            }, function () { return dialog.Hide(); });
+        });
+    }));
+}); };
+var AddMultiSelectFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
+    "title": 'Add multi select field',
+    "actions": [
+        {
+            "label": "Save",
+            "type": "com.celmino-ui.actions.saveMultiSelectField"
+        }
+    ],
+    "fieldMap": {
+        "workspaceId": {
+            "name": "workspaceId",
+            "type": "virtual",
+            "value": workspaceId
+        },
+        "databaseId": {
+            "name": "databaseId",
+            "type": "virtual",
+            "value": databaseId
+        },
+        "collectionId": {
+            "name": "collectionId",
+            "type": "virtual",
+            "value": collectionId
+        },
+        "name": {
+            "label": "NAME",
+            "type": "text",
+            "name": "name"
+        },
+        "description": {
+            "label": "DESCRIPTION (OPTIONAL)",
+            "type": "text",
+            "multiline": true,
+            "name": "description"
+        },
+        "options": {
+            "label": "OPTIONS",
+            "type": "keyvalue",
+            "name": "options"
+        },
+    }
+}); };
 
 
 /***/ }),

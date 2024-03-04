@@ -851,7 +851,7 @@
     style-loader "^3.3.3"
     to-string-loader "^1.2.0"
 
-"@realmocean/vibe@2.82.61":
+"@realmocean/vibe@^2.82.61":
   version "2.82.61"
   resolved "https://registry.yarnpkg.com/@realmocean/vibe/-/vibe-2.82.61.tgz#132873695720bd7d97729cff0ed5072880cf5784"
   integrity sha512-pCtIGHY279KcOg8ZL7jvLhZ1W8eGydQ9ZdZUCfi4BMBBjTTCypoydwxVuo2Wp1O4IcUQ+kve8BZaLV4UBw+lQA==
