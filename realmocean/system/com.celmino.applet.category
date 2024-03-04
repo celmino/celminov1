@@ -2902,7 +2902,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var monday_ui_react_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! monday-ui-react-core */ \"./node_modules/monday-ui-react-core/dist/esm/src/components/Dropdown/Dropdown.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ \"@tuval/forms\");\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ \"@tuval/core\");\n/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);\nvar __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {\n    if (Object.defineProperty) { Object.defineProperty(cooked, \"raw\", { value: raw }); } else { cooked.raw = raw; }\n    return cooked;\n};\n\n\n\n\nfunction DropdownRenderer(_a) {\n    var control = _a.control;\n    var className = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject([\"\\n    \", \"\\n\\n    \"], [\"\\n    \", \"\\n\\n    \"])), control.Appearance.ToString());\n    console.log(className);\n    var onKeyDown = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnKeyDown)) {\n            control.vp_OnKeyDown(event);\n        }\n    }, []);\n    var onChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (value, event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnChange)) {\n            control.vp_OnChange(value);\n        }\n    }, []);\n    var onBlur = function (event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnBlur)) {\n            control.vp_OnBlur(event);\n        }\n    };\n    debugger;\n    console.log(control.vp_DefaultValue);\n    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(monday_ui_react_core__WEBPACK_IMPORTED_MODULE_3__[\"default\"], { className: className, autoFocus: true, openMenuOnFocus: true, defaultValue: control.vp_DefaultValue, onBlur: function noRefCheck() { }, onChange: onChange, onClear: function noRefCheck() { }, onFocus: function noRefCheck() { }, onInputChange: function noRefCheck() { }, onKeyDown: function noRefCheck() { }, onMenuClose: function noRefCheck() { }, onMenuOpen: function noRefCheck() { }, onOptionRemove: function noRefCheck() { }, onOptionSelect: function noRefCheck() { }, options: control.vp_Options, placeholder: \"Placeholder text here\" }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DropdownRenderer);\nvar templateObject_1;\n\n\n//# sourceURL=webpack://@realmocean/vibe/./src/Dropdown/DropdownRenderer.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var monday_ui_react_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! monday-ui-react-core */ \"./node_modules/monday-ui-react-core/dist/esm/src/components/Dropdown/Dropdown.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ \"@tuval/forms\");\n/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ \"@tuval/core\");\n/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);\nvar __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {\n    if (Object.defineProperty) { Object.defineProperty(cooked, \"raw\", { value: raw }); } else { cooked.raw = raw; }\n    return cooked;\n};\n\n\n\n\nfunction DropdownRenderer(_a) {\n    var control = _a.control;\n    var className = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject([\"\\n    \", \"\\n\\n    \"], [\"\\n    \", \"\\n\\n    \"])), control.Appearance.ToString());\n    console.log(className);\n    var onKeyDown = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnKeyDown)) {\n            control.vp_OnKeyDown(event);\n        }\n    }, []);\n    var onChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (value, event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnChange)) {\n            control.vp_OnChange(value);\n        }\n    }, []);\n    var onBlur = function (event) {\n        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_OnBlur)) {\n            control.vp_OnBlur(event);\n        }\n    };\n    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(monday_ui_react_core__WEBPACK_IMPORTED_MODULE_3__[\"default\"], { multi: true, className: className, autoFocus: true, openMenuOnFocus: true, defaultValue: control.vp_DefaultValue, onBlur: function noRefCheck() { }, onChange: onChange, onClear: function noRefCheck() { }, onFocus: function noRefCheck() { }, onInputChange: function noRefCheck() { }, onKeyDown: function noRefCheck() { }, onMenuClose: function noRefCheck() { }, onMenuOpen: function noRefCheck() { }, onOptionRemove: function noRefCheck() { }, onOptionSelect: function noRefCheck() { }, options: control.vp_Options, placeholder: \"Placeholder text here\" }));\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DropdownRenderer);\nvar templateObject_1;\n\n\n//# sourceURL=webpack://@realmocean/vibe/./src/Dropdown/DropdownRenderer.tsx?");
 
 /***/ }),
 
@@ -4243,7 +4243,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_2673949__(moduleId) {
+/******/ 	function __nested_webpack_require_2673904__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -4257,7 +4257,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2673949__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_2673904__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -4267,11 +4267,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_2673949__.n = (module) => {
+/******/ 		__nested_webpack_require_2673904__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_2673949__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_2673904__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -4279,9 +4279,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_2673949__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_2673904__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_2673949__.o(definition, key) && !__nested_webpack_require_2673949__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_2673904__.o(definition, key) && !__nested_webpack_require_2673904__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -4290,13 +4290,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_2673949__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_2673904__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__nested_webpack_require_2673949__.r = (exports) => {
+/******/ 		__nested_webpack_require_2673904__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
@@ -4309,7 +4309,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __nested_webpack_exports__ = __nested_webpack_require_2673949__("./src/index.ts");
+/******/ 	var __nested_webpack_exports__ = __nested_webpack_require_2673904__("./src/index.ts");
 /******/ 	
 /******/ 	return __nested_webpack_exports__;
 /******/ })()
@@ -7612,7 +7612,7 @@ var CollectionController = /** @class */ (function (_super) {
                     width: '420px',
                     header: function (data) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(getAttributeIcon(column.type))
                         .width(20)
-                        .height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)(column.$id)
+                        .height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Text)(column.name)
                         .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
                         .foregroundColor('rgb(109, 122, 131)')
                         .fontSize(14)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.MenuButton)()
@@ -7944,17 +7944,17 @@ var SelectFieldView = function (workspaceId, databaseId, collectionId, fields, f
                     .padding(0)
                     .defaultValue((_c = field.fieldInfo.options) === null || _c === void 0 ? void 0 : _c.find(function (option) { return option.value === row[field.key]; }))
                     .options((_d = field.fieldInfo.options) !== null && _d !== void 0 ? _d : [])
-                    .onChange(function (_a) {
-                    var _b;
-                    var label = _a.label, value = _a.value;
+                    .onChange(function (e) {
+                    var _a;
+                    console.log(e);
                     if (value !== row[field.key]) {
                         updateDocument({
                             databaseId: databaseId,
                             collectionId: collectionId,
                             documentId: row.$id,
-                            data: (_b = {},
-                                _b[field.key] = value,
-                                _b)
+                            data: (_a = {},
+                                _a[field.key] = value,
+                                _a)
                         }, function () {
                             //setEditingCell(null);
                             //setEditingRow(null);
@@ -8188,6 +8188,7 @@ var TextFieldView = function (workspaceId, databaseId, collectionId, fields, fie
                     }
                     else if ((e.code === 'Enter' || e.code === 'ArrowDown') && row.nextRowId != null) {
                         //setEditingCell(null);
+                        console.log(row[field.key], e.target.value);
                         if (row[field.key] !== e.target.value) {
                             updateDocument({
                                 databaseId: databaseId,

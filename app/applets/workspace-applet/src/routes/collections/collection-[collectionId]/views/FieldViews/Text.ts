@@ -26,7 +26,7 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                 //const [editingRow, setEditingRow] = useState(null);
 
                 const turnOnEditMode = useCallback(({ editingCell, editingRow }) => {
-                     //alert( 'fieldId : ' + field.$id + '----- rowId : ' + JSON.stringify(row)  + '-----' +   editingCell + ' : ' + editingRow)
+                    //alert( 'fieldId : ' + field.$id + '----- rowId : ' + JSON.stringify(row)  + '-----' +   editingCell + ' : ' + editingRow)
                     if (field.$id === editingCell && row.$id === editingRow) {
                         //alert(editingCell + ' : ' + editingRow +  '------' + 'girdi')
                         EventBus.Default.fire('editCellOff', { editingCell: editInfo.lastEditCell, editingRow: editInfo.lastEditRow });
@@ -102,15 +102,16 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                                         });
 
                                         setValue(e.target.value);
-                                       
-                                     
-                                      
-                                        
+
+
+
+
                                         e.preventDefault();
                                         e.stopPropagation();
 
                                     } else if ((e.code === 'Enter' || e.code === 'ArrowDown') && row.nextRowId != null) {
                                         //setEditingCell(null);
+                                        console.log(row[field.key], e.target.value)
                                         if (row[field.key] !== e.target.value) {
                                             updateDocument({
                                                 databaseId,
@@ -174,8 +175,8 @@ export const TextFieldView = (workspaceId, databaseId, collectionId, fields, fie
                             )
 
                                 .onClick(() => {
-                                  //  alert(JSON.stringify(row))
-                                   // alert('click' + '----' + field.$id + '----' + row.$id)
+                                    //  alert(JSON.stringify(row))
+                                    // alert('click' + '----' + field.$id + '----' + row.$id)
                                     EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
 
                                 })

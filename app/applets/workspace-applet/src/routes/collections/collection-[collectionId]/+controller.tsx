@@ -46,6 +46,7 @@ import { TextFieldView } from "./views/FieldViews/Text";
 import { RichTextFieldView } from "./views/FieldViews/Richtext";
 import React from "react";
 import { SelectFieldView } from "./views/FieldViews/Select";
+import { MultiSelectFieldView } from "./views/FieldViews/MultiSelectView";
 
 /* import { AddBooleanFieldDialog } from "../dialogs/AddBooleanFieldDialog";
 import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";
@@ -335,7 +336,7 @@ export class CollectionController extends UIFormController {
                                                     .width(20)
                                                     .height(20),
                                                 HStack({ alignment: cLeading })(
-                                                    Text(column.$id)
+                                                    Text(column.name)
                                                         .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important')
                                                         .foregroundColor('rgb(109, 122, 131)')
                                                         .fontSize(14)
@@ -378,6 +379,10 @@ export class CollectionController extends UIFormController {
 
                                             } else if (column.type === 'select') {
                                                 return SelectFieldView(workspaceId, databaseId,
+                                                    collectionId, fields, column, index, row);
+
+                                            } else if (column.type === 'multiselect') {
+                                                return MultiSelectFieldView(workspaceId, databaseId,
                                                     collectionId, fields, column, index, row);
 
                                             } else if (column.type === 'boolean') {

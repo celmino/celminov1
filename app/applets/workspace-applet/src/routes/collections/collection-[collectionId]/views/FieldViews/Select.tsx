@@ -81,6 +81,7 @@ export const SelectFieldView = (workspaceId, databaseId, collectionId, fields, f
                                 .defaultValue(field.fieldInfo.options?.find((option) => option.value === row[field.key]))
                                 .options(field.fieldInfo.options ?? [])
                                 .onChange(({ label, value }) => {
+                                    
                                     if (value !== row[field.key]) {
 
                                         updateDocument({
