@@ -7,6 +7,7 @@ import { EmailsApplet } from "./applets/Emails";
 import { InvestorsInTurkey } from "./applets/InvestorsInTurkey";
 import { WebsiteApplet } from "./applets/Website";
 import { WorldApplet } from "./applets/World";
+import { CommunityApplet } from "./applets/Community";
 
 
 export const Applets = [
@@ -4970,15 +4971,7 @@ export const Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
-    {
-        name: 'Community',
-        type: 'Applet',
-        tree_type: 'com.tuvalsoft.opa.task',
-        description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
-        icon: '\\d1e1',
-        iconBackColor: '#66B47C',
-        enabled: true
-    },
+    
     {
         name: 'Data Mining',
         type: 'Applet',
@@ -5036,6 +5029,7 @@ export const Applets = [
     AppletDivider,
     WebsiteApplet,
     EmailsApplet,
-    ActivitiesApplet
+    ActivitiesApplet,
+    CommunityApplet
 ];
 

@@ -1,9 +1,8 @@
-import { useCreateDocument, useUpdateCollection, useUpdateDocument } from "@realmocean/sdk";
-import { HStack, cLeading, UIViewBuilder, nanoid, Text, useState, useEffect, ForEach } from "@tuval/forms";
-import { TextField } from "@realmocean/vibe";
-import { useCallback } from 'react'
-import { EventBus, is } from "@tuval/core";
+import { useCreateDocument, useUpdateDocument } from "@realmocean/sdk";
 import { Dropdown } from "@realmocean/vibe";
+import { EventBus, is } from "@tuval/core";
+import { ForEach, HStack, Text, UIViewBuilder, cLeading, nanoid, useEffect, useState } from "@tuval/forms";
+import { useCallback } from 'react';
 import { editInfo } from "./Text";
 
 
@@ -117,11 +116,8 @@ export const MultiSelectFieldView = (workspaceId, databaseId, collectionId, fiel
                                             )
                                         )
                                     )
-
                                 })
-
                             )
-
                                 .onClick(() => {
                                     // alert(JSON.stringify(editInfo) + ' ----- ' + field.$id + ' : ' + row.$id);
                                     EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });

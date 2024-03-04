@@ -9624,6 +9624,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Divider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./applets/Divider */ "./src/applets/Divider.ts");
 /* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
 /* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
+/* harmony import */ var _applets_Community__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/Community */ "./src/applets/Community.ts");
+
 
 
 
@@ -14483,15 +14485,6 @@ var Applets = [
         enabled: true
     },
     {
-        name: 'Community',
-        type: 'Applet',
-        tree_type: 'com.tuvalsoft.opa.task',
-        description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
-        icon: '\\d1e1',
-        iconBackColor: '#66B47C',
-        enabled: true
-    },
-    {
         name: 'Data Mining',
         type: 'Applet',
         tree_type: 'com.tuvalsoft.opa.task',
@@ -14548,7 +14541,8 @@ var Applets = [
     _applets_Divider__WEBPACK_IMPORTED_MODULE_3__.AppletDivider,
     _applets_Website__WEBPACK_IMPORTED_MODULE_5__.WebsiteApplet,
     _applets_Emails__WEBPACK_IMPORTED_MODULE_4__.EmailsApplet,
-    _applets_Activities__WEBPACK_IMPORTED_MODULE_0__.ActivitiesApplet
+    _applets_Activities__WEBPACK_IMPORTED_MODULE_0__.ActivitiesApplet,
+    _applets_Community__WEBPACK_IMPORTED_MODULE_6__.CommunityApplet
 ];
 
 
@@ -16571,6 +16565,42 @@ var ActivitiesApplet = {
     iconCategory: 'Icons',
     iconName: 'bell',
     icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "World",
+            "id": "world",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Community.ts":
+/*!**********************************!*\
+  !*** ./src/applets/Community.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   CommunityApplet: () => (/* binding */ CommunityApplet)
+/* harmony export */ });
+var CommunityApplet = {
+    name: 'Community',
+    type: 'Data',
+    tree_type: 'com.celmino.widget.community-applet-tree',
+    applet_type: 'com.celmino.applet.community',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d1e1',
     iconBackColor: '#66B47C',
     enabled: true,
     databases: [
