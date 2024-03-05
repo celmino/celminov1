@@ -22,7 +22,7 @@ const FieldTypes = {
 
 class Controller extends UIFormController {
     public override LoadView() {
-        const { workspaceId, databaseId, collectionId, onNewFieldAdded } = this.props;
+        const { onNewFieldAdded } = this.props;
         return (
             HStack({ alignment: cTrailing })(
                 UIViewBuilder(() => {
@@ -193,10 +193,10 @@ class Controller extends UIFormController {
     }
 }
 
-export const NewFieldMenuView = (workspaceId: string, databaseId: string, collectionId: string, onNewFieldAdded?: Function) => (
+export const NewFieldMenuView = (onNewFieldAdded?: Function) => (
 
     ReactView(
-        <Controller workspaceId={workspaceId} databaseId={databaseId} collectionId={collectionId} onNewFieldAdded={onNewFieldAdded}></Controller>
+        <Controller onNewFieldAdded={onNewFieldAdded}></Controller>
     )
 
 
