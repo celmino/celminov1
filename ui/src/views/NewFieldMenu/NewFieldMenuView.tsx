@@ -175,7 +175,7 @@ class Controller extends UIFormController {
                                     .border('1px solid #EFF0F1')
                                     .cornerRadius(6)
                                 :
-                                FieldTypes[selectedType](workspaceId, databaseId, collectionId,onNewFieldAdded )
+                                FieldTypes[selectedType](onNewFieldAdded)
                         )
                             .open(menuIsOpen)
                             .hideHandle(hideHandle => _hideHandle = hideHandle)

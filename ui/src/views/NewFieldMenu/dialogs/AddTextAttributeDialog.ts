@@ -5,10 +5,10 @@ import { replaceNonMatchingCharacters } from "../../../utils";
 import { is } from "@tuval/core";
 
 
-export const TextFieldsAttributesView = (workspaceId, databaseId, collectionId, onNewFieldAdded) => (
+export const TextFieldsAttributesView = (onNewFieldAdded) => (
     UIViewBuilder(() =>
         VStack(
-            FormBuilder.render(AddTextFieldDialog(workspaceId, databaseId, collectionId, onNewFieldAdded))
+            FormBuilder.render(AddTextFieldDialog(onNewFieldAdded))
         )
             .padding(20)
             .width(380)
@@ -24,13 +24,8 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const formBuilder = useFormBuilder();
     const navigate = useNavigate();
 
-    const { databaseId, collectionId, name, workspaceId, onNewFieldAdded } = formController.GetFormData();
+    const { name, onNewFieldAdded } = formController.GetFormData();
 
-    const { createStringAttribute, isLoading } = useCreateStringAttribute(workspaceId);
-
-    const { createDocument } = useCreateDocument(workspaceId, databaseId, 'fields', [
-        Query.equal('collectionId', collectionId)
-    ])
 
     return (
         HStack(
@@ -55,65 +50,47 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
                         type: 'text',
                         fieldInfo: JSON.stringify({
                             size: 255
-                        }),
-                        collectionId: collectionId
+                        })
                     });
                 }
 
-                if (databaseId == null) {
-                    alert('Collection is null');
-                    return;
-                }
 
-                createStringAttribute({
-                    databaseId,
-                    collectionId,
-                    key: replaceNonMatchingCharacters(name),
-                    required: false,
-                    size: 255
-                }, (attribute) => {
-                    createDocument({
-                        data: {
-                            key: attribute.key,
-                            name: name,
-                            type: 'text',
-                            fieldInfo: JSON.stringify({
-                                size: 255
-                            }),
-                            collectionId: collectionId
-                        }
-                    }, () => dialog.Hide())
-                })
+
+                /*  createStringAttribute({
+                     databaseId,
+                     collectionId,
+                     key: replaceNonMatchingCharacters(name),
+                     required: false,
+                     size: 255
+                 }, (attribute) => {
+                     createDocument({
+                         data: {
+                             key: attribute.key,
+                             name: name,
+                             type: 'text',
+                             fieldInfo: JSON.stringify({
+                                 size: 255
+                             }),
+                             collectionId: collectionId
+                         }
+                     }, () => dialog.Hide())
+                 }) */
             })
     )
 })
 
 
 
-export const AddTextFieldDialog = (workspaceId: string, databaseId: string, collectionId: string, onNewFieldAdded: Function) => ({
+export const AddTextFieldDialog = (onNewFieldAdded: Function) => ({
     "title": 'Add text field',
     "actions": [
         {
-            "label": "Save",
+            "label": "custom",
             "type": "com.celmino-ui.actions.saveTextField"
         }
     ],
     "fieldMap": {
-        "workspaceId": {
-            "name": "workspaceId",
-            "type": "virtual",
-            "value": workspaceId
-        },
-        "databaseId": {
-            "name": "databaseId",
-            "type": "virtual",
-            "value": databaseId
-        },
-        "collectionId": {
-            "name": "collectionId",
-            "type": "virtual",
-            "value": collectionId
-        },
+       
         "onNewFieldAdded": {
             "name": "onNewFieldAdded",
             "type": "virtual",
