@@ -16,7 +16,7 @@ export class RouteController extends UIController {
             UIViewBuilder(() =>
                 VStack(
                     UIRoutes(
-                        UIRoute('/', MyTestController).children(
+                        UIRoute('/', ListController).children(
                             UIRoute('list/:listId', ListController).children(
                                 UIRoute('view/:viewId', class extends  ViewController {}),
                             ),

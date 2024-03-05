@@ -17709,11 +17709,36 @@ var ListAppletDatabase = [
                         "size": 16777216
                     },
                     {
-                        "key": "color",
+                        "key": "bgColor",
+                        "type": "string",
+                        "size": 50
+                    },
+                    {
+                        "key": "fgColor",
                         "type": "string",
                         "size": 50
                     }
                 ],
+                "documents": [
+                    {
+                        "name": "To Do",
+                        "description": "To Do",
+                        "bgColor": "#D3D3D3",
+                        "fgColor": "white"
+                    },
+                    {
+                        "name": "In Progress",
+                        "description": "In Progress",
+                        "bgColor": "#D3D3D3",
+                        "fgColor": "white"
+                    },
+                    {
+                        "name": "Done",
+                        "description": "Done",
+                        "bgColor": "#D3D3D3",
+                        "fgColor": "white"
+                    }
+                ]
             },
             {
                 "name": "Views",

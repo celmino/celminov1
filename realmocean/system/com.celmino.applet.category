@@ -7831,14 +7831,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _Text__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Text */ "./src/routes/collections/collection-[collectionId]/views/FieldViews/Text.ts");
 
 
@@ -7846,13 +7846,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var MultiSelectFieldView = function (workspaceId, databaseId, collectionId, fields, field, index, row) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+var MultiSelectFieldView = function (workspaceId, databaseId, collectionId, fields, field, index, row) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
         var _a, _b, _c;
         var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, collectionId).createDocument;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
-        var _d = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(null), isEdit = _d[0], setIsEdit = _d[1];
-        if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.string(field.fieldInfo)) {
+        var _d = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(null), isEdit = _d[0], setIsEdit = _d[1];
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(field.fieldInfo)) {
             field.fieldInfo = (_a = JSON.parse(field.fieldInfo)) !== null && _a !== void 0 ? _a : {};
             field.fieldInfo.options = (_b = field.fieldInfo.options) === null || _b === void 0 ? void 0 : _b.map(function (option) {
                 return {
@@ -7862,46 +7862,46 @@ var MultiSelectFieldView = function (workspaceId, databaseId, collectionId, fiel
             });
         }
         //const [editingRow, setEditingRow] = useState(null);
-        var turnOnEditMode = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function (_a) {
+        var turnOnEditMode = (0,react__WEBPACK_IMPORTED_MODULE_4__.useCallback)(function (_a) {
             var editingCell = _a.editingCell, editingRow = _a.editingRow;
             // alert(field.name + '  --  ' + editInfo.lastEditCell + ' : ' + editInfo.lastEditRow)
             if (field.$id === editingCell && row.$id === editingRow) {
                 //  alert(editInfo.lastEditCell + ' : ' + editInfo.lastEditRow)
-                _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('editCellOff', { editingCell: _Text__WEBPACK_IMPORTED_MODULE_5__.editInfo.lastEditCell, editingRow: _Text__WEBPACK_IMPORTED_MODULE_5__.editInfo.lastEditRow });
+                _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('editCellOff', { editingCell: _Text__WEBPACK_IMPORTED_MODULE_5__.editInfo.lastEditCell, editingRow: _Text__WEBPACK_IMPORTED_MODULE_5__.editInfo.lastEditRow });
                 _Text__WEBPACK_IMPORTED_MODULE_5__.editInfo.lastEditCell = editingCell;
                 _Text__WEBPACK_IMPORTED_MODULE_5__.editInfo.lastEditRow = editingRow;
                 setIsEdit(true);
             }
         }, []);
-        var turnOffEditMode = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)(function (_a) {
+        var turnOffEditMode = (0,react__WEBPACK_IMPORTED_MODULE_4__.useCallback)(function (_a) {
             var editingCell = _a.editingCell, editingRow = _a.editingRow;
             if (field.$id === editingCell && row.$id === editingRow) {
                 setIsEdit(false);
             }
         }, []);
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-            _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.on('editCell', turnOnEditMode);
-            _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.on('editCellOff', turnOffEditMode);
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
+            _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.on('editCell', turnOnEditMode);
+            _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.on('editCellOff', turnOffEditMode);
             return function () {
-                _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.off('editCell', turnOnEditMode);
-                _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.on('editCellOff', turnOffEditMode);
+                _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.off('editCell', turnOnEditMode);
+                _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.on('editCellOff', turnOffEditMode);
             };
         }, []);
         if (row.type === 'addRow' && field.key === 'name') {
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('To add a new row, press Shift+Enter')).onClick(function () {
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('To add a new row, press Shift+Enter')).onClick(function () {
                 createDocument({
-                    documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.nanoid)(),
+                    documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)(),
                     data: {
                         name: ''
                     }
                 }, function (document) {
-                    _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: document.$id });
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: document.$id });
                 });
             }));
         }
         else {
             return (isEdit ?
-                (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_4__.Dropdown)().width('100%')
+                (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Dropdown)().width('100%')
                     .padding(0)
                     //.defaultValue(field.fieldInfo.options?.find((option) => option.value === row[field.key]))
                     .options((_c = field.fieldInfo.options) !== null && _c !== void 0 ? _c : [])
@@ -7924,16 +7924,16 @@ var MultiSelectFieldView = function (workspaceId, databaseId, collectionId, fiel
                     }
                 })
                 :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
                         var list = [];
-                        if (row[field.key] !== null && _tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.string(row[field.key])) {
+                        if (row[field.key] !== null && _tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.string(row[field.key])) {
                             list = row[field.key].split(',');
                         }
-                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(list)(function (item) { var _a, _b; return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(((_b = (_a = field.fieldInfo.options) === null || _a === void 0 ? void 0 : _a.find(function (option) { return option.value === item; })) === null || _b === void 0 ? void 0 : _b.label) || ''); })));
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ForEach)(list)(function (item) { var _a, _b; return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(((_b = (_a = field.fieldInfo.options) === null || _a === void 0 ? void 0 : _a.find(function (option) { return option.value === item; })) === null || _b === void 0 ? void 0 : _b.label) || ''); })));
                     }))
                         .onClick(function () {
                         // alert(JSON.stringify(editInfo) + ' ----- ' + field.$id + ' : ' + row.$id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('editCell', { editingCell: field.$id, editingRow: row.$id });
                     })
                         .paddingLeft('8px')
                         .height(38));

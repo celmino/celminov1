@@ -37,7 +37,6 @@ const TuViewComponent = ({ shapes }) => {
 
     useEffect(() => {
         const tuView = new TuView();
-        //tuView.GridStyle = TuViewGridStyle.Dot;
         tuView.GridSnapDrag = TuViewSnapStyle.Jump;
         tuView.GridCellSize = new CGSize(10, 10)
 
@@ -139,62 +138,63 @@ export class MyTestController extends UIFormController {
 
 
 
-        const { attributes, items, groupBy, onItemClick } = this.props.config;
+        const { attributes, items, groupBy, onItemClick , groups} = this.props.config;
         const field = attributes.find((field) => field.key === groupBy);
-        let groups = [];
+        /* let groups = [];
 
         if (field?.type === 'dropdown') {
             const { options = [] } = JSON.parse(field.type_content ?? '{}');
             groups = options;
-        }
+        } */
 
         return (
 
             OptionsContext(() =>
                 ScrollView({ axes: cAll, alignment: cTopLeading })(
                     VStack({ alignment: cTopLeading })(
-                        ReactView(
-                            <TuViewComponent shapes={[
-                                {
-                                    type: 'editor',
-                                    x: 50,
-                                    y: 50,
-                                    width: 550,
-                                    height: 705,
-                                    config: {
-                                        color: 'white',
-                                        borderColor: 'black'
-                                    }
+                        TaskTable2(items, groups)
+                        /*    ReactView(
+                               <TuViewComponent shapes={[
+                                   {
+                                       type: 'editor',
+                                       x: 50,
+                                       y: 50,
+                                       width: 550,
+                                       height: 705,
+                                       config: {
+                                           color: 'white',
+                                           borderColor: 'black'
+                                       }
+   
+                                   },
+                                   {
+                                       type: 'editor',
+                                       x: 750,
+                                       y: 50,
+                                       width: 550,
+                                       height: 705,
+                                       config: {
+                                           color: 'white',
+                                           borderColor: 'black'
+                                       }
+                                   }
+                               ]}></TuViewComponent>
+                           ), */
 
-                                },
-                                {
-                                    type: 'editor',
-                                    x: 750,
-                                    y: 50,
-                                    width: 550,
-                                    height: 705,
-                                    config: {
-                                        color: 'white',
-                                        borderColor: 'black'
-                                    }
-                                }
-                            ]}></TuViewComponent>
-                        ),
+                        /* ScrollView({ axes: cVertical, alignment: cTopLeading })(
+                            VStack({ alignment: cTopLeading })(
+                                VStack({ alignment: cTopLeading })(
 
-                        /*  ScrollView({ axes: cVertical, alignment: cTopLeading })(
-                             VStack({ alignment: cTopLeading })(
-                                 VStack({ alignment: cTopLeading })(
-     
-                                     VStack({ alignment: cTopLeading })(
-                                         TaskTable2(items, groups)
-                                     )
-                                 )
-                             )
-                                 .cornerRadius(10)
-                                 .padding(20),
-     
-                             HStack().height(50)
-                         ) */
+                                    VStack({ alignment: cTopLeading })(
+                                        TaskTable2(items, groups)
+                                    )
+                                )
+                            )
+                                .cornerRadius(10)
+                                .padding(20),
+
+                            HStack().height(50)
+                        ) */
                     ).height()
                 )
             )

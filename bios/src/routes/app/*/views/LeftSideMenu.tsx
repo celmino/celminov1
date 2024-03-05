@@ -1,5 +1,7 @@
 
-import { Models, Query, Services, useCreateDatabase, useCreateRealm, useDeleteCache, useGetMe, useGetOrganization, useGetRealm, useGetTeam, useListDatabases, useListDocuments, useListRealms, useListTeams, useUpdateDocument, useUpdatePrefs } from "@realmocean/sdk";
+import { SelectAppletDialog } from "@celmino/ui";
+import { Models, Query, Services, useDeleteCache, useGetMe, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
+import { Text } from '@realmocean/vibe';
 import { EventBus, is } from "@tuval/core";
 import {
     DialogPosition,
@@ -7,39 +9,24 @@ import {
     Fragment,
     HDivider,
     HStack,
-    Heading,
-    HeadingSizes,
     Icon,
     Icons,
-    MenuButton,
     PopupButton,
-    ReactView,
     ScrollView,
-    SortableListView,
-    Spacer,
     SvgIcon,
-
-    TextField,
-    UIDomElement,
-    UIRouteLink, UIViewBuilder,
+    UIViewBuilder,
     UIWidget,
     VStack,
     cHorizontal,
     cLeading, cTopLeading,
     cTrailing,
     cVertical,
-    getAppFullName,
-    nanoid,
-    useNavigate, useParams, useQueryParams
+    useNavigate, useParams
 } from "@tuval/forms";
 import React, { useEffect, useState } from "react";
-import { DatabaseNameView } from "./DatabaseNameView";
-import { Text } from '@realmocean/vibe';
-import { DynoDialog } from '@realmocean/ui'
-import { AddAppletDialog } from "../../../../dialogs/AddAppletDialog";
 import { useGetCurrentOrganization } from "../../../../hooks/useGetCurrentOrganization";
-import { SelectAppletDialog } from "@celmino/ui";
 import { EmptyView } from "../../../../views/EmptyView";
+import { DatabaseNameView } from "./DatabaseNameView";
 
 
 const expandeds = {};
@@ -278,45 +265,6 @@ export const LeftSideMenuView = (selectedItem: string) => {
                     (isWorkspaceTreeLoading) ? Fragment() : (workspaceTreeITems == null) ? Text('null') :
                         VStack({ alignment: cTopLeading })(
                             VStack({ alignment: cTopLeading })(
-                                VStack({ alignment: cTopLeading })(
-
-                                    HDivider().height(1).background('#ECEDEE'),
-                                    VStack({ alignment: cTopLeading, spacing: 2 })(
-                                        ...ForEach(topMenu)(menuItem =>
-                                            HStack({ alignment: cLeading, spacing: 8 })(
-                                                Icon(menuItem.icon),
-                                                Text(menuItem.title)
-                                                    .foregroundColor('rgb(21, 23, 25)')
-                                                    .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
-                                            )
-                                                .height()
-                                                .padding('6px 10px')
-                                                .background({ hover: '#E8EAED' })
-                                                .cornerRadius(6)
-                                                .cursor('pointer')
-                                                .margin('0 8px')
-                                        )
-
-                                    ).paddingTop('6px')
-
-
-                                )
-                                    //.padding()
-                                    .height(),
-
-                                HDivider().height(1).background('#ECEDEE'),
-
-                                UIWidget('com.celmino.widget.organization-space-tree')
-                                    .config({
-                                        organizationId: domainTeam?.$id,
-                                        organizationName: domainTeam?.name
-
-                                    }),
-                                UIWidget('com.celmino.widget.myspace-tree')
-                                    .config({
-
-                                    }),
-                                HDivider().height(1).background('#ECEDEE'),
                                 HStack(
                                     PopupButton(
 
@@ -386,7 +334,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             Icon(SvgIcon('cu3-icon-settings')),
                                                             Text('Settings')
                                                         )
-                                                        .cursor('pointer')
+                                                            .cursor('pointer')
                                                             .padding(5)
                                                             .height()
                                                     ).padding(5),
@@ -396,7 +344,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             Icon(SvgIcon('cu3-icon-settings')),
                                                             Text('Change Realm')
                                                         )
-                                                        .cursor('pointer')
+                                                            .cursor('pointer')
                                                             .padding(5)
                                                             .height(),
                                                         ...ForEach(/* realms */[])(realm => (
@@ -435,17 +383,42 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                     .padding('8px 8px 8px 0px'),
 
                                 VStack({ alignment: cTopLeading })(
+
+                                    HDivider().height(1).background('#ECEDEE'),
+                                    VStack({ alignment: cTopLeading, spacing: 2 })(
+                                        ...ForEach(topMenu)(menuItem =>
+                                            HStack({ alignment: cLeading, spacing: 8 })(
+                                                Icon(menuItem.icon),
+                                                Text(menuItem.title)
+                                                    .foregroundColor('rgb(21, 23, 25)')
+                                                    .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
+                                            )
+                                                .height()
+                                                .padding('6px 10px')
+                                                .background({ hover: '#E8EAED' })
+                                                .cornerRadius(6)
+                                                .cursor('pointer')
+                                                .margin('0 8px')
+                                        )
+
+                                    ).paddingTop('6px')
+
+
+                                )
+                                    //.padding()
+                                    .height(),
+
+
+
+
+                                VStack({ alignment: cTopLeading })(
                                     /*  VStack({ alignment: cLeading })(
                                          Text('APPLETS')
                                              .fontSize(11)
                                              .fontWeight('700'),
          
                                      ).height(40).padding('1px 18px 0 20px'), */
-                                    ...ForEach(databases)(database =>
-                                        //    UIRouteLink(`/app/${getAppFullName()}/database/${database.$id}`)(
-                                        DatabaseNameView(database, false, () => { })
-                                        //    )
-                                    ),
+
                                     HStack({ alignment: cTrailing, spacing: 5 })(
                                         HStack(
                                             Icon(Icons.Add).fontSize(14)
@@ -464,7 +437,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         )
                                             .cornerRadius(6)
                                             .foregroundColor('#7c828d')
-                                            .background({ default: isEditable ? '#e4e4e4': '#e4e4e455', hover: '#e4e4e4' })
+                                            .background({ default: isEditable ? '#e4e4e4' : '#e4e4e455', hover: '#e4e4e4' })
 
                                             .allWidth(24).allHeight(24)
                                             .onClick(() => {

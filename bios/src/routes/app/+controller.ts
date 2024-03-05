@@ -1,4 +1,4 @@
-import { UIController, UIRouteOutlet, UIView } from "@tuval/forms";
+import { UIController, UIRouteOutlet, UIView, Text } from "@tuval/forms";
 import { CelminoController, Guard } from "../../CelminoController";
 import { LoginGuard } from "../../guards/LoginGuard";
 //import { LoginGuard } from "../../guards/LoginGuard";

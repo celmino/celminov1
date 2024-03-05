@@ -1,5 +1,5 @@
 import React from 'react';
-declare type BoardSectionProps = {
+type BoardSectionProps = {
     id: string;
     title: string;
     items: any[];

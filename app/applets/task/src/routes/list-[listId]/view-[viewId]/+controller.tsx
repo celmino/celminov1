@@ -22,6 +22,7 @@ export class OPA extends React.Component<IOPA, any> {
     }
     public render(): React.ReactNode {
         return (
+            //@ts-ignore
             <this.props.controller content={this.props.content} onSave={this.props.onSave}></this.props.controller>
         )
     }

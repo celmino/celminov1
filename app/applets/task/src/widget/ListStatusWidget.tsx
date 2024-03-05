@@ -1,12 +1,8 @@
 
-import { useSessionService } from "@realmocean/services";
-import { HStack, Spinner, UIDataTable, WorkProtocol, useDialog, useProtocol, Text, useNavigate, cLeading, SortableListView, VStack, ReactView, cHorizontal, Fragment } from "@tuval/forms";
-import BoardSectionList from "../views/components/BoardSectionList";
+import { Modifier } from "@dnd-kit/core/dist/modifiers";
+import { Fragment, HStack, ReactView, Text, VStack, cHorizontal, cLeading } from "@tuval/forms";
 import React from "react";
 import { MultipleContainers } from "../views/components/MultipleContainers";
-import { Handle } from "../views/components/Item/components/Handle";
-import { CancelDropArguments } from "@dnd-kit/core/dist/components/DndContext/DndContext";
-import { Modifier } from "@dnd-kit/core/dist/modifiers";
 
 
 export const restrictToHorizontalAxis: Modifier = ({ transform, over }) => {

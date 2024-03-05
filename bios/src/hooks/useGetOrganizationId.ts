@@ -1,6 +1,5 @@
 import { useGetDomainTeam, useGetMe } from "@realmocean/sdk";
 import { is } from "@tuval/core";
-import usePromise from 'react-use-promise';
 import { useGetSubdomain } from "./useGetSubdomain";
 
 

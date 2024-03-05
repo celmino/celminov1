@@ -1,7 +1,7 @@
-/// <reference types="react" />
+import React from "react";
 export declare namespace TaskIcons {
-    const Assignee: () => JSX.Element;
-    const Duedate: () => JSX.Element;
-    const Edit: () => JSX.Element;
-    const Tags: () => JSX.Element;
+    const Assignee: () => React.JSX.Element;
+    const Duedate: () => React.JSX.Element;
+    const Edit: () => React.JSX.Element;
+    const Tags: () => React.JSX.Element;
 }

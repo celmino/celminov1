@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { Task, TaskStatus } from './types';
 type BoardSectionProps = {
     id: string;
@@ -6,5 +6,5 @@ type BoardSectionProps = {
     tasks: Task[];
     status: TaskStatus;
 };
-declare const BoardSection: ({ id, title, tasks, status }: BoardSectionProps) => JSX.Element;
+declare const BoardSection: ({ id, title, tasks, status }: BoardSectionProps) => React.JSX.Element;
 export default BoardSection;

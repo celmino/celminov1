@@ -228,13 +228,13 @@ export class WorkspaceTreeWidgetController extends UIController {
         const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
 
         return (
-
+            isAppletLoading ? Fragment() :
             UIWidget('com.celmino.widget.applet-tree')
                 .config({
                     node: item,
                     workspaceId,
                     appletId,
-                    appletName: appletId,
+                    appletName: item.name,
                     iconName: item.iconName,
                     iconCategory: item.iconCategory,
                     isEditing: isEditing,
@@ -333,10 +333,11 @@ export class WorkspaceTreeWidgetController extends UIController {
 
                     },
                     requestNavigation: () => {
+                       
                         if (onItemSelected == null) {
                             switch (item.type) {
-                                case 'folder':
-                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/folder/${item.$id}`);
+                                case 'applet':
+                                    navigate(`/app/${process(realm?.name)}-${workspaceId}/${process(applet.name)}-${appletId}`);
                                     break;
                                 case 'list':
                                     navigate(`/app/${process(realm?.name)}-${workspaceId}/${process(applet)}-${appletId}/list/${item.$id}`);

@@ -17,7 +17,7 @@ export declare const OpaLoader: ({ view_qn, content, onSave }: {
     view_qn: any;
     content: any;
     onSave: any;
-}) => JSX.Element;
+}) => React.JSX.Element;
 export declare class ViewController extends UIFormController {
     LoadView(): UIView;
 }

@@ -1,3 +1,3 @@
-export declare type BoardSections = {
+export type BoardSections = {
     [name: string]: any[];
 };

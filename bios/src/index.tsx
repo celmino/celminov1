@@ -1,10 +1,8 @@
-import { EventBus, TextConsole, Umay } from '@tuval/core';
+import { EventBus } from '@tuval/core';
 import { StartBios } from '@tuval/forms';
 
-import { BiosMainController, MainController } from './NewBiosController';
+import { MainController } from './NewBiosController';
 import './css/global.scss';
-import { FormBuilder } from '@realmocean/ui';
-import { AddAppletAction } from './dialogs/AddAppletDialog';
 
 declare var gapi;
 
@@ -98,4 +96,4 @@ window.addEventListener("load", (event) => {
 
 //StartBios(BiosController)
 
-FormBuilder.injectAction('ca_AddApplet',AddAppletAction);
+//FormBuilder.injectAction('ca_AddApplet',AddAppletAction);

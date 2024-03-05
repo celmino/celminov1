@@ -1,35 +1,26 @@
 import {
     DialogStack,
-    Fragment,
     HStack,
     ReactView,
     ScrollView,
-    SvgIcon,
-    Text,
     UIFormController,
-    UINavigate,
     UIRouteOutlet,
     UIViewBuilder,
     UIWidget,
     VStack,
     cLeading, cTopLeading,
     cVertical,
-    getAppFullName,
     useDialogStack,
     useNavigate,
-    useParams
+    useParams, Text, Fragment
 } from "@tuval/forms";
 
-import { UIDocuments } from '@realmocean/ui';
 
-import { ID, Services, useCreateDocument, useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
-import { DynoDialog } from "../../dialogs/DynoDialog";
-import { ListStatusesDialog } from "../../dialogs/ListStatusesDialog";
-import { SelectViewDialog } from "../../dialogs/SelectViewDialog";
+import { ID, Query, Services, useCreateDocument, useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
+import { EventBus } from "@tuval/core";
+import React from "react";
 import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
-import React from "react";
-import { EventBus } from "@tuval/core";
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -50,40 +41,46 @@ export class ListController extends UIFormController {
     public LoadView() {
         const navigate = useNavigate();
 
-        const { workspaceId, appletId, listId, viewId } = useParams();
+        const { workspaceId, appletId, viewId } = useParams();
 
-        const { document: list } = useGetDocument({
+        const { document: applet } = useGetDocument({
             projectId: workspaceId,
-            databaseId: appletId,
-            collectionId: 'wm_lists',
-            documentId: listId
+            databaseId: 'workspace',
+            collectionId: 'applets',
+            documentId: appletId
         });
 
-        const { documents: views, isLoading: isViewsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_views');
-        const { documents: items, isLoading: isItemsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId);
+        /* const { documents: views, isLoading: isViewsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_views');
+       
 
-        const { documents: attributes, isLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_att');
+        
 
 
 
-        const { createDocument: createTask } = useCreateDocument(workspaceId, appletId, 'wm_list_' + listId);
+       
         const { createDocument: createView } = useCreateDocument(workspaceId, appletId, 'wm_list_' + listId + '_views');
-        const { updateDocument } = useUpdateDocument(workspaceId);
+        const { updateDocument } = useUpdateDocument(workspaceId); */
 
+        const { documents: items, isLoading: isItemsLoading } = useListDocuments(workspaceId, appletId, 'listItems');
+        const { documents: groups, isLoading: isStatusesLoading } = useListDocuments(workspaceId, appletId, 'listStatuses');
+        const { createDocument: createTask } = useCreateDocument(workspaceId, appletId, 'listItems' );
 
-
+        const { documents: attributes, isLoading } = useListDocuments(workspaceId, appletId, 'fields', [
+            Query.equal('collectionId', 'listItems')
+        ]);
 
         return (
 
-            (viewId == null && list?.defaultViewId != null) ? VStack({ alignment: cTopLeading })(
+            (isLoading || isStatusesLoading) ? Fragment() :
+            VStack({ alignment: cTopLeading })(
                 //ActionPanel(),
                 //ViewHeader('test'),
 
                 ScrollView({ axes: cVertical, alignment: cTopLeading })(
                     VStack({ alignment: cTopLeading })(
                         ActionPanel(),
-                        ViewHeader(list?.name, (e) => {
-                            updateDocument({
+                        ViewHeader(applet?.name, (e) => {
+                            /* updateDocument({
                                 databaseId: appletId,
                                 collectionId: 'wm_lists',
                                 documentId: listId,
@@ -101,21 +98,22 @@ export class ListController extends UIFormController {
                                 }, ()=> {
                                     EventBus.Default.fire('applet.added', { treeItem: list })
                                 })
-                            })
+                            }) */
                         }),
                         VStack({ alignment: cTopLeading })(
                             VStack({ alignment: cTopLeading })(
+                                
                                 UIViewBuilder(() => {
                                     const { openDialog } = useDialogStack();
                                     return (
                                         UIWidget('com.celmino.widget.list')
                                             .config({
                                                 workspaceId: workspaceId,
-                                                listId: listId,
-                                                attributes: attributes,
+                                                listId: appletId,
+                                                attributes:  attributes,
+                                                groups: groups,
                                                 groupBy: 'status',
                                                 onItemSave: (item) => {
-
                                                     return (
                                                         new Promise((resolve) => {
                                                             createTask({
@@ -123,7 +121,7 @@ export class ListController extends UIFormController {
                                                             }, () => {
                                                                 resolve(true);
                                                                 setTimeout(() =>
-                                                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${listId}/view/${viewId}`)
+                                                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}`)
                                                                     , 1000)
                                                             })
                                                         })
@@ -131,7 +129,7 @@ export class ListController extends UIFormController {
                                                 },
                                                 onNewFieldAddded: async (formData) => {
                                                     // alert(JSON.stringify(type))
-                                                    if (formData.type === 'text') {
+                                                   /*  if (formData.type === 'text') {
                                                         await Services.Databases.createStringAttribute(workspaceId, appletId, 'wm_list_' + listId, formData.key, 255, false);
                                                         await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
                                                             name: formData.name,
@@ -162,7 +160,7 @@ export class ListController extends UIFormController {
                                                     }
                                                     else {
                                                         alert('field type not found')
-                                                    }
+                                                    } */
 
 
                                                 },
@@ -228,191 +226,7 @@ export class ListController extends UIFormController {
                     ).background('#F9FAFB')
                 )
 
-            ) /* UINavigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${listId}/view/${list?.defaultViewId}`) */ :
-                ReactView(
-                    <DialogStack>
-                        {
-                            VStack({ alignment: cTopLeading })(
-                                ActionPanel(),
-                                ViewHeader(list?.name),
-                                HStack({ alignment: cLeading })(
-                                    /*  HStack(
-                                         UIWidget('com.celmino.widget.applet-name')
-                                             .config({
-                                                 title: list?.name,
-                                                 iconName: list?.icon_name,
-                                                 iconCategory: list?.icon_category,
-                                                 iconColor: 'gray',
-                                                 onChange: (value) => {
-                                                     updateDocument({
-                                                         databaseId: appletId,
-                                                         collectionId: 'wm_lists',
-                                                         documentId: listId,
-                                                         data: {
-                                                             ...(value.iconName ? { icon_name: value.iconName } : {}),
-                                                             ...(value.iconCategory ? { icon_category: value.iconCategory } : {})
-                                                         }
-                                                     })
-                                                     console.log(value);
-                                                 },
-                                                 menu: [
-                                                     {
-                                                         title: 'List Settings',
-                                                         type: 'Title'
-                                                     },
-                                                     {
-                                                         title: 'List statuses',
-                                                         icon: SvgIcon('svg-sprite-global__status'),
-         
-                                                         onClick: () => {
-                                                             DynoDialog.Show(ListStatusesDialog)
-                                                         }
-         
-                                                     },
-                                                     {
-                                                         title: 'Custom fields',
-                                                         icon: SvgIcon('svg-sprite-global__status'),
-                                                         items: [
-                                                             {
-                                                                 title: 'Dropdown',
-                                                                 icon: SvgIcon('svg-sprite-field-drop_down'),
-                                                             },
-                                                             {
-                                                                 title: 'Text',
-                                                                 icon: SvgIcon('svg-sprite-field-short_text'),
-                                                                 onClick: () => {
-         
-                                                                 }
-                                                             },
-                                                             {
-                                                                 title: 'Text area',
-                                                                 icon: SvgIcon('svg-sprite-field-text'),
-                                                             },
-                                                             {
-                                                                 title: 'Date',
-                                                                 icon: SvgIcon('svg-sprite-field-date'),
-                                                             },
-                                                             {
-                                                                 title: 'Progress',
-                                                                 icon: SvgIcon('svg-sprite-field-automatic_progress')
-                                                             },
-                                                             {
-                                                                 title: 'Number',
-                                                                 icon: SvgIcon('svg-sprite-field-number'),
-                                                                 onClick: () => {
-         
-                                                                 }
-                                                             },
-                                                             {
-                                                                 title: 'Checkbox',
-                                                                 icon: SvgIcon('svg-sprite-field-checkbox'),
-                                                             },
-                                                             {
-                                                                 title: "Email",
-                                                                 icon: SvgIcon('svg-sprite-field-email'),
-                                                             },
-                                                             {
-                                                                 title: "Files",
-                                                                 icon: SvgIcon('svg-sprite-field-attachment'),
-                                                             },
-                                                             {
-                                                                 title: "Formula",
-                                                                 icon: SvgIcon('svg-sprite-field-formula'),
-                                                             },
-                                                             {
-                                                                 title: "Labels",
-                                                                 icon: SvgIcon('svg-sprite-field-labels'),
-                                                             },
-                                                             {
-                                                                 title: "Location",
-                                                                 icon: SvgIcon('svg-sprite-field-location'),
-                                                             },
-                                                             {
-                                                                 title: "Money",
-                                                                 icon: SvgIcon('svg-sprite-field-currency'),
-                                                             },
-                                                             {
-                                                                 title: "People",
-                                                                 icon: SvgIcon('svg-sprite-field-users'),
-                                                             },
-                                                             {
-                                                                 title: "Phone",
-                                                                 icon: SvgIcon('svg-sprite-field-phone'),
-                                                             },
-                                                             {
-                                                                 title: "Progress (manuel)",
-                                                                 icon: SvgIcon('svg-sprite-field-manual_progress'),
-                                                             },
-                                                             {
-                                                                 title: "Rating",
-                                                                 icon: SvgIcon('svg-sprite-field-emoji')
-                                                             },
-                                                             {
-                                                                 title: "Relationship",
-                                                                 icon: SvgIcon('svg-sprite-field-list_relationship'),
-                                                             },
-                                                             {
-                                                                 title: "Rollup",
-                                                                 icon: SvgIcon('svg-sprite-rollup-column'),
-                                                             },
-                                                             {
-                                                                 title: "Website",
-                                                                 icon: SvgIcon('svg-sprite-field-url'),
-                                                             }
-                                                         ]
-         
-                                                     }
-                                                 ]
-                                             })
-                                     )
-                                         .overflow('hidden')
-                                         .width()
-                                         .allHeight(50), */
-
-                                    /* HStack({ alignment: cLeading })(
-                                        UIWidget('com.celmino.widget.tab-view')
-                                            .config({
-                                                views: views,
-                                                onChange: (index) => {
-                                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${listId}/view/${views[index]?.$id}`);
-
-                                                },
-                                                actions: [
-                                                    {
-                                                        title: 'New View',
-                                                        onClick: () => {
-                                                            SelectViewDialog.Show(workspaceId, listId).then((view) => {
-                                                                createView({
-                                                                    data: {
-                                                                        name: view.name,
-                                                                        type: view.type
-                                                                    }
-                                                                });
-                                                            });
-                                                        }
-                                                    }
-                                                ]
-                                            })
-                                    )
-                                        .background('white') */
-                                    // .borderTop('1px solid rgba(0,0,0,.05)')
-                                    //  .borderBottom('1px solid rgba(0,0,0,.05)')
-
-
-
-                                )
-                                    .height(50)
-                                    .background('white')
-                                    .borderBottom('solid 1px #E8EAED'),
-
-                                UIRouteOutlet().width('100%').height('100%')
-                            )
-                                .cornerRadius(10)
-                                .overflow('hidden')
-                                .render()
-                        }
-                    </DialogStack>
-                )
+            )
 
 
 
