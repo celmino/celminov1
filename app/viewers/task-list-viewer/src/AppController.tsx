@@ -86,6 +86,8 @@ export class MyTestController extends UIController {
                                                     )
                                                 },
                                                 onNewFieldAddded: async (formData) => {
+
+                                                    
                                                     // alert(JSON.stringify(type))
                                                     if (formData.type === 'text') {
                                                         await Services.Databases.createStringAttribute(workspaceId, appletId, 'wm_list_' + documentId, formData.key, 255, false);

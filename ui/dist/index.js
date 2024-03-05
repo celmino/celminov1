@@ -18074,7 +18074,7 @@ var Controller = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Controller.prototype.LoadView = function () {
-        var _a = this.props, workspaceId = _a.workspaceId, databaseId = _a.databaseId, collectionId = _a.collectionId, onNewFieldAdded = _a.onNewFieldAdded;
+        var onNewFieldAdded = this.props.onNewFieldAdded;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
             var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
             var _b = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null), selectedType = _b[0], setSelectedType = _b[1];
@@ -18213,7 +18213,7 @@ var Controller = /** @class */ (function (_super) {
     };
     return Controller;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
-var NewFieldMenuView = function (workspaceId, databaseId, collectionId, onNewFieldAdded) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { workspaceId: workspaceId, databaseId: databaseId, collectionId: collectionId, onNewFieldAdded: onNewFieldAdded }))); };
+var NewFieldMenuView = function (onNewFieldAdded) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded }))); };
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);

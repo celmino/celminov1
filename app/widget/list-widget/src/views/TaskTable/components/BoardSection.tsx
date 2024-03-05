@@ -8,8 +8,9 @@ import { EventBus } from '@tuval/core';
 import { Button, ForEach, Fragment, HStack, Icon, Icons, Spacer, Text, Fragment as UIFragment, UIViewBuilder, UIWidget, VStack, cLeading, useDialog, useEffect, useFormBuilder, useFormController, useNavigate, useOptions, useParams, useState } from '@tuval/forms';
 import React, { Fragment as ReactFragment } from 'react';
 import SortableTaskItem from './SortableTaskItem';
-import { DynoDialog } from "@realmocean/ui";
+import { DynoDialog } from "@celmino/ui";
 import { DatePickerRenderer } from '@realmocean/antd';
+import { NewFieldMenuView } from '@celmino/ui';
 
 
 
@@ -145,11 +146,16 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                                 .allWidth(100).height(30)
                         ), */
                         HStack(
-                            UIWidget('com.tuvalsoft.widget.custom-field-popup')
+                            NewFieldMenuView( (field) => {
+                                alert(onNewFieldAddded)
+                                //alert(JSON.stringify(field))
+                                onNewFieldAddded(field)
+                            })
+                           /*  UIWidget('com.tuvalsoft.widget.custom-field-popup')
                                 .config({
                                     label: '+',
                                     onAction: (data) => onNewFieldAddded(data)
-                                })
+                                }) */
                         ).width(),
                         HStack(
                             Text('+').fontSize(18).fontWeight('500').cursor('pointer')

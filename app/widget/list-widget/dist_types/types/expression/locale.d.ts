@@ -11,6 +11,6 @@ export declare const defaultLocale: {
     emptyExpression: string;
     invalidFunctionParameter: string;
 };
-export type Locale = typeof defaultLocale;
+export declare type Locale = typeof defaultLocale;
 export declare function getLocale(locale: null | undefined | Locale): Locale;
 export declare function replaceLocaleParameters(locale: string, ...parameters: (number | string)[]): string;

@@ -1,5 +1,5 @@
 import {
-    Models, Query, useCreateDocument, useDeleteAttribute, useGetCollection,
+    Models, Query, useCreateDocument, useCreateStringAttribute, useDeleteAttribute, useGetCollection,
     useGetDatabase, useListDocuments, useUpdateCollection, useUpdateDocument
 } from "@realmocean/sdk";
 import { DatePickerRenderer, InputRenderer } from "@realmocean/antd";
@@ -53,6 +53,22 @@ import { AddDatetimeFieldDialog } from "../dialogs/AddDatetimeField";
 import { AddNumberFieldDialog } from "../dialogs/AddNumberFieldDialog";
 import { AddRelationFieldDialog } from "../dialogs/AddRelationDialog";
 import { AddTextFieldDialog } from "../dialogs/AddTextFieldDialog"; */
+
+export function replaceNonMatchingCharacters(originalText: string) {
+    const replacementTable = {
+        'ı': 'i',
+        'ç': 'c',
+        ' ': '_'
+    };
+
+    originalText = originalText.toLocaleLowerCase();
+    // Replacement table'ı kullanarak metindeki kriterlere uymayan karakterleri değiştir
+    var replacedText = originalText.replace(/[^a-zA-Z0-9._-]/g, function (match) {
+        return replacementTable[match] || match; // Eğer replacement table'da varsa değiştir, yoksa aynı karakteri koru
+    });
+
+    return replacedText;
+}
 
 const colors = [
     '#4A4A4A',
@@ -168,6 +184,12 @@ export class CollectionController extends UIFormController {
             Query.equal('collectionId', collectionId)
         ]);
 
+        const { createStringAttribute } = useCreateStringAttribute(workspaceId);
+
+        const { createDocument: createField } = useCreateDocument(workspaceId, databaseId, 'fields', [
+            Query.equal('collectionId', collectionId)
+        ])
+
         const { collection }: { collection: Models.Collection } = useGetCollection(workspaceId, databaseId, collectionId);
         const [collectionName, setCollectionName] = useState<string>(collection?.name ?? 'New Collection');
         const [showDialog, setShowDialog] = useState<boolean>(false);
@@ -274,8 +296,24 @@ export class CollectionController extends UIFormController {
                         )
 
                         ,
-                        NewFieldMenuView(workspaceId, databaseId, collectionId) as any,
-
+                        NewFieldMenuView( (field) => {
+                            if (field.type === 'text') {
+                                createStringAttribute({
+                                    databaseId,
+                                    collectionId,
+                                    key: replaceNonMatchingCharacters(field.name),
+                                    required: false,
+                                    size: 255
+                                }, (attribute) => {
+                                    createField({
+                                        data: {
+                                            ...field,
+                                            collectionId
+                                        }
+                                    }, () => void 0)
+                                })
+                            }
+                        })
 
                     )
 
@@ -469,7 +507,7 @@ export class CollectionController extends UIFormController {
                     Button(
                         Text('Create Document')
                     )
-                       
+
                         //.renderer(TestRenderer)
                         .onClick(() => {
                             createDocument({
@@ -482,7 +520,7 @@ export class CollectionController extends UIFormController {
 
                             })
                             /*  const _fields = {};
- 
+             
                              for (let i = 0; i < fields?.length; i++) {
                                  const attribute: any = fields[i];
                                  if (attribute.type === 'text') {
@@ -547,11 +585,11 @@ export class CollectionController extends UIFormController {
                                          "value": collectionId
                                      },
                                      ..._fields
- 
+             
                                  } 
                              }
                              );
- */
+            */
                         }),
 
 

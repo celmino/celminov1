@@ -1,7 +1,7 @@
 /**
  * @public
  */
-export type Token = BooleanLiteral | EOFToken | Identifier | KeywordToken | NumericLiteral | PunctuatorToken | StringLiteral | NullLiteral;
+export declare type Token = BooleanLiteral | EOFToken | Identifier | KeywordToken | NumericLiteral | PunctuatorToken | StringLiteral | NullLiteral;
 /**
  * @public
  */
@@ -32,15 +32,15 @@ export interface PunctuatorToken extends Node {
 /**
  * @public
  */
-export type Expression = BinaryExpression | MemberExpression | Identifier | NumericLiteral | StringLiteral | ConditionalExpression | CallExpression | LogicalExpression | UnaryExpression | ThisExpression | BooleanLiteral | ArrayExpression | ObjectExpression | NullLiteral | ArrowFunctionExpression | FunctionParamsExpression;
+export declare type Expression = BinaryExpression | MemberExpression | Identifier | NumericLiteral | StringLiteral | ConditionalExpression | CallExpression | LogicalExpression | UnaryExpression | ThisExpression | BooleanLiteral | ArrayExpression | ObjectExpression | NullLiteral | ArrowFunctionExpression | FunctionParamsExpression;
 /**
  * @public
  */
-export type Expression2 = BinaryExpression2 | MemberExpression2 | Identifier2 | NumericLiteral2 | StringLiteral2 | ConditionalExpression2 | CallExpression2 | LogicalExpression2 | UnaryExpression2 | ThisExpression2 | BooleanLiteral2 | ArrayExpression2 | ObjectExpression2 | NullLiteral2 | ArrowFunctionExpression2 | FunctionParamsExpression2;
+export declare type Expression2 = BinaryExpression2 | MemberExpression2 | Identifier2 | NumericLiteral2 | StringLiteral2 | ConditionalExpression2 | CallExpression2 | LogicalExpression2 | UnaryExpression2 | ThisExpression2 | BooleanLiteral2 | ArrayExpression2 | ObjectExpression2 | NullLiteral2 | ArrowFunctionExpression2 | FunctionParamsExpression2;
 /**
  * @public
  */
-export type NumericLiteral = Node & NumericLiteral2;
+export declare type NumericLiteral = Node & NumericLiteral2;
 /**
  * @public
  */
@@ -51,7 +51,7 @@ export interface NumericLiteral2 {
 /**
  * @public
  */
-export type NullLiteral = Node & NullLiteral2;
+export declare type NullLiteral = Node & NullLiteral2;
 /**
  * @public
  */
@@ -61,7 +61,7 @@ export interface NullLiteral2 {
 /**
  * @public
  */
-export type ArrayExpression = Node & ArrayExpression2<Expression | SpreadElement>;
+export declare type ArrayExpression = Node & ArrayExpression2<Expression | SpreadElement>;
 /**
  * @public
  */
@@ -72,7 +72,7 @@ export interface ArrayExpression2<T = Expression2 | SpreadElement2> {
 /**
  * @public
  */
-export type ObjectExpression = Node & ObjectExpression2<Property | SpreadElement>;
+export declare type ObjectExpression = Node & ObjectExpression2<Property | SpreadElement>;
 /**
  * @public
  */
@@ -83,7 +83,7 @@ export interface ObjectExpression2<T = Property2 | SpreadElement2> {
 /**
  * @public
  */
-export type Property = Node & Property2<NumericLiteral | StringLiteral | Identifier>;
+export declare type Property = Node & Property2<NumericLiteral | StringLiteral | Identifier>;
 /**
  * @public
  */
@@ -96,7 +96,7 @@ export interface Property2<T = NumericLiteral2 | StringLiteral2 | Identifier2> {
 /**
  * @public
  */
-export type LogicalExpression = Node & LogicalExpression2<Expression>;
+export declare type LogicalExpression = Node & LogicalExpression2<Expression>;
 /**
  * @public
  */
@@ -109,11 +109,11 @@ export interface LogicalExpression2<T = Expression2> {
 /**
  * @public
  */
-export type LogicalOperator = '||' | '&&' | '??';
+export declare type LogicalOperator = '||' | '&&' | '??';
 /**
  * @public
  */
-export type CallExpression = Node & CallExpression2<Expression | SpreadElement, Expression>;
+export declare type CallExpression = Node & CallExpression2<Expression | SpreadElement, Expression>;
 /**
  * @public
  */
@@ -126,7 +126,7 @@ export interface CallExpression2<T = Expression2 | SpreadElement2, T2 = Expressi
 /**
  * @public
  */
-export type SpreadElement = Node & SpreadElement2<Expression>;
+export declare type SpreadElement = Node & SpreadElement2<Expression>;
 /**
  * @public
  */
@@ -137,7 +137,7 @@ export interface SpreadElement2<T = Expression> {
 /**
  * @public
  */
-export type ConditionalExpression = Node & ConditionalExpression2<Expression>;
+export declare type ConditionalExpression = Node & ConditionalExpression2<Expression>;
 /**
  * @public
  */
@@ -150,7 +150,7 @@ export interface ConditionalExpression2<T = Expression2> {
 /**
  * @public
  */
-export type StringLiteral = Node & StringLiteral2;
+export declare type StringLiteral = Node & StringLiteral2;
 /**
  * @public
  */
@@ -161,7 +161,7 @@ export interface StringLiteral2 {
 /**
  * @public
  */
-export type BooleanLiteral = Node & BooleanLiteral2;
+export declare type BooleanLiteral = Node & BooleanLiteral2;
 /**
  * @public
  */
@@ -172,7 +172,7 @@ export interface BooleanLiteral2 {
 /**
  * @public
  */
-export type Identifier = Node & Identifier2;
+export declare type Identifier = Node & Identifier2;
 /**
  * @public
  */
@@ -183,7 +183,7 @@ export interface Identifier2 {
 /**
  * @public
  */
-export type ThisExpression = Node & ThisExpression2;
+export declare type ThisExpression = Node & ThisExpression2;
 /**
  * @public
  */
@@ -193,7 +193,7 @@ export interface ThisExpression2 {
 /**
  * @public
  */
-export type MemberExpression = Node & MemberExpression2<Expression>;
+export declare type MemberExpression = Node & MemberExpression2<Expression>;
 /**
  * @public
  */
@@ -206,7 +206,7 @@ export interface MemberExpression2<T = Expression2> {
 /**
  * @public
  */
-export type UnaryExpression = Node & UnaryExpression2<Expression>;
+export declare type UnaryExpression = Node & UnaryExpression2<Expression>;
 /**
  * @public
  */
@@ -218,11 +218,11 @@ export interface UnaryExpression2<T = Expression2> {
 /**
  * @public
  */
-export type UnaryOperator = '+' | '-' | '!' | '~' | '%' | 'await';
+export declare type UnaryOperator = '+' | '-' | '!' | '~' | '%' | 'await';
 /**
  * @public
  */
-export type BinaryExpression = Node & BinaryExpression2<Expression>;
+export declare type BinaryExpression = Node & BinaryExpression2<Expression>;
 /**
  * @public
  */
@@ -235,7 +235,7 @@ export interface BinaryExpression2<T = Expression2> {
 /**
  * @public
  */
-export type ArrowFunctionExpression = Node & ArrowFunctionExpression2<Pattern, Expression>;
+export declare type ArrowFunctionExpression = Node & ArrowFunctionExpression2<Pattern, Expression>;
 /**
  * @public
  */
@@ -247,15 +247,15 @@ export interface ArrowFunctionExpression2<T = Pattern2, T2 = Expression2> {
 /**
  * @public
  */
-export type Pattern = Identifier | AssignmentPattern | RestElement;
+export declare type Pattern = Identifier | AssignmentPattern | RestElement;
 /**
  * @public
  */
-export type Pattern2 = Identifier2 | AssignmentPattern2 | RestElement2;
+export declare type Pattern2 = Identifier2 | AssignmentPattern2 | RestElement2;
 /**
  * @public
  */
-export type AssignmentPattern = Node & AssignmentPattern2<Identifier, Expression>;
+export declare type AssignmentPattern = Node & AssignmentPattern2<Identifier, Expression>;
 /**
  * @public
  */
@@ -267,7 +267,7 @@ export interface AssignmentPattern2<T = Identifier2, T2 = Expression> {
 /**
  * @public
  */
-export type RestElement = Node & RestElement2<Identifier>;
+export declare type RestElement = Node & RestElement2<Identifier>;
 /**
  * @public
  */
@@ -278,7 +278,7 @@ export interface RestElement2<T = Identifier2> {
 /**
  * @public
  */
-export type FunctionParamsExpression = Node & FunctionParamsExpression2<Pattern>;
+export declare type FunctionParamsExpression = Node & FunctionParamsExpression2<Pattern>;
 /**
  * @public
  */
@@ -289,4 +289,4 @@ export interface FunctionParamsExpression2<T = Pattern2> {
 /**
  * @public
  */
-export type BinaryOperator = '**' | '*' | '/' | '%' | '+' | '-' | '<<' | '>>' | '>>>' | '>' | '<' | '>=' | '<=' | '==' | '!=' | '===' | '!==' | '&' | '^' | '|' | '|>';
+export declare type BinaryOperator = '**' | '*' | '/' | '%' | '+' | '-' | '<<' | '>>' | '>>>' | '>' | '<' | '>=' | '<=' | '==' | '!=' | '===' | '!==' | '&' | '^' | '|' | '|>';

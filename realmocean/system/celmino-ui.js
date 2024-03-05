@@ -16743,8 +16743,8 @@ __webpack_require__.r(__webpack_exports__);
 var ListApplet = {
     name: 'List Applet',
     type: 'Applet',
-    tree_type: 'com.celmino.widget.workspace-tree',
-    applet_type: 'com.celmino.applet.workmanagement',
+    tree_type: 'com.celmino.tree-item.task-list',
+    applet_type: 'com.celmino.applet.task-list',
     description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
@@ -18074,7 +18074,7 @@ var Controller = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Controller.prototype.LoadView = function () {
-        var _a = this.props, workspaceId = _a.workspaceId, databaseId = _a.databaseId, collectionId = _a.collectionId;
+        var onNewFieldAdded = this.props.onNewFieldAdded;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
             var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
             var _b = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null), selectedType = _b[0], setSelectedType = _b[1];
@@ -18201,7 +18201,7 @@ var Controller = /** @class */ (function (_super) {
                     .border('1px solid #EFF0F1')
                     .cornerRadius(6)
                 :
-                    FieldTypes[selectedType](workspaceId, databaseId, collectionId))
+                    FieldTypes[selectedType](onNewFieldAdded))
                 .open(menuIsOpen)
                 .hideHandle(function (hideHandle) { return _hideHandle = hideHandle; })
                 .dialogPosition(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogPosition.BOTTOM_END)
@@ -18213,7 +18213,7 @@ var Controller = /** @class */ (function (_super) {
     };
     return Controller;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
-var NewFieldMenuView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { workspaceId: workspaceId, databaseId: databaseId, collectionId: collectionId }))); };
+var NewFieldMenuView = function (onNewFieldAdded) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded }))); };
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
@@ -18701,35 +18701,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SaveTextFieldAction: () => (/* binding */ SaveTextFieldAction),
 /* harmony export */   TextFieldsAttributesView: () => (/* binding */ TextFieldsAttributesView)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
 
-var TextFieldsAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddTextFieldDialog(workspaceId, databaseId, collectionId)))
+var TextFieldsAttributesView = function (onNewFieldAdded) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.render(AddTextFieldDialog(onNewFieldAdded)))
         .padding(20)
         .width(380)
         .height(315);
 })); };
-var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
     var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
-    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
-        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
-    ]).createDocument;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
-        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
+    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
+    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    var _a = formController.GetFormData(), name = _a.name, onNewFieldAdded = _a.onNewFieldAdded;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Save Field'))
+        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 11)
         .minWidth(28)
         .minHeight(28)
         .height()
@@ -18740,54 +18736,50 @@ var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__
         .background('rgb(64, 101, 221)')
         // .loading(isLoading)
         .onClick(function () {
-        if (databaseId == null) {
-            alert('Collection is null');
-            return;
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(onNewFieldAdded)) {
+            onNewFieldAdded({
+                key: (0,_utils__WEBPACK_IMPORTED_MODULE_2__.replaceNonMatchingCharacters)(name),
+                name: name,
+                type: 'text',
+                fieldInfo: JSON.stringify({
+                    size: 255
+                })
+            });
         }
-        createStringAttribute({
-            databaseId: databaseId,
-            collectionId: collectionId,
-            key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
-            required: false,
-            size: 255
-        }, function (attribute) {
-            createDocument({
-                data: {
-                    key: attribute.key,
-                    name: name,
-                    type: 'text',
-                    fieldInfo: JSON.stringify({
-                        size: 255
-                    }),
-                    collectionId: collectionId
-                }
-            }, function () { return dialog.Hide(); });
-        });
+        /*  createStringAttribute({
+             databaseId,
+             collectionId,
+             key: replaceNonMatchingCharacters(name),
+             required: false,
+             size: 255
+         }, (attribute) => {
+             createDocument({
+                 data: {
+                     key: attribute.key,
+                     name: name,
+                     type: 'text',
+                     fieldInfo: JSON.stringify({
+                         size: 255
+                     }),
+                     collectionId: collectionId
+                 }
+             }, () => dialog.Hide())
+         }) */
     }));
 }); };
-var AddTextFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
+var AddTextFieldDialog = function (onNewFieldAdded) { return ({
     "title": 'Add text field',
     "actions": [
         {
-            "label": "Save",
+            "label": "custom",
             "type": "com.celmino-ui.actions.saveTextField"
         }
     ],
     "fieldMap": {
-        "workspaceId": {
-            "name": "workspaceId",
+        "onNewFieldAdded": {
+            "name": "onNewFieldAdded",
             "type": "virtual",
-            "value": workspaceId
-        },
-        "databaseId": {
-            "name": "databaseId",
-            "type": "virtual",
-            "value": databaseId
-        },
-        "collectionId": {
-            "name": "collectionId",
-            "type": "virtual",
-            "value": collectionId
+            "value": onNewFieldAdded
         },
         "name": {
             "label": "NAME",
