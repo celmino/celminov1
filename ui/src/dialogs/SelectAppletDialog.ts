@@ -1,4 +1,4 @@
-import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack, Heading, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState, Fragment } from "@tuval/forms";
+import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack, Heading, Icon, Icons, ScrollView, Spacer, UIImage, UIView, VStack, ViewProperty, cCenter, cLeading, cTopLeading, cVertical, useParams, useState, Fragment, nanoid } from "@tuval/forms";
 
 import { useCreateDocument, Services, ID } from "@realmocean/sdk";
 import { Text } from "@realmocean/vibe";
@@ -17,25 +17,25 @@ const appletMenu = [
             { name: 'My applets', icon: 'User' }
         ]
     },
-   /*  {
-        category: 'Data',
-        items: [
-            { name: 'All', icon: 'Data' },
-            { name: 'Design', icon: 'Design' },
-            { name: 'Development', icon: 'Development' },
-            { name: 'Finance', icon: 'Finance' },
-            { name: 'Health', icon: 'Health' }
-        ]
-    },
-    {
-        category: 'Solutions',
-        items: [
-            { name: 'All', icon: 'Data' },
-            { name: 'Design', icon: 'Design' },
-            { name: 'Development', icon: 'Development' }
-        ]
-    }, */
-    
+    /*  {
+         category: 'Data',
+         items: [
+             { name: 'All', icon: 'Data' },
+             { name: 'Design', icon: 'Design' },
+             { name: 'Development', icon: 'Development' },
+             { name: 'Finance', icon: 'Finance' },
+             { name: 'Health', icon: 'Health' }
+         ]
+     },
+     {
+         category: 'Solutions',
+         items: [
+             { name: 'All', icon: 'Data' },
+             { name: 'Design', icon: 'Design' },
+             { name: 'Development', icon: 'Development' }
+         ]
+     }, */
+
 ]
 
 export class SelectAppletDialog extends DialogView {
@@ -67,7 +67,7 @@ export class SelectAppletDialog extends DialogView {
 
     public OnOK(applet) {
         this.ShowDialogAsyncResolve(applet);
-      //  this.Hide();
+        //  this.Hide();
     }
 
     public OnCancel() {
@@ -91,14 +91,14 @@ export class SelectAppletDialog extends DialogView {
                     ).width(),
                     HStack(
                         TextField()
-                        .value(searchText)
+                            .value(searchText)
                             .placeholder('Search applets').minWidth(300).maxWidth(700).height(40).padding()
                             .cornerRadius(6)
                             .border({ default: 'solid 1px #E4EAE2', focus: 'solid 1px #E4EAE2' })
                             .onChange((e) => {
                                 setSearchText(e);
                                 this.filtered_opas = Applets.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1);
-                               
+
                             }),
                     ),
                     Icon(Icons.Close).onClick(() => this.OnCancel())
@@ -133,151 +133,156 @@ export class SelectAppletDialog extends DialogView {
                         HStack({ alignment: cTopLeading })(
                             ...ForEach(this.filtered_opas)(opa =>
                                 !opa.enabled ? Fragment() :
-                                VStack(
-                                    VStack({ alignment: cTopLeading, spacing: 5 })(
-                                        HStack(
-                                            opa.image &&
-                                            UIImage(opa.image).width(50).height(50).cornerRadius('20%')
-                                                .filter(opa.type === 'Applet' ? 'grayscale(1)' : 'none'),
-                                            opa.icon &&
+                                    VStack(
+                                        VStack({ alignment: cTopLeading, spacing: 5 })(
                                             HStack(
-                                                Icon(opa.icon).fontSize(40).foregroundColor('rgb(109, 122, 131)')
-                                            ).width(50).height(50).cornerRadius('20%'),
+                                                opa.image &&
+                                                UIImage(opa.image).width(50).height(50).cornerRadius('20%')
+                                                    .filter(opa.type === 'Applet' ? 'grayscale(1)' : 'none'),
+                                                opa.icon &&
+                                                HStack(
+                                                    Icon(opa.icon).fontSize(40).foregroundColor('rgb(109, 122, 131)')
+                                                ).width(50).height(50).cornerRadius('20%'),
 
-                                            //.background(opa.iconBackColor || '#9A0707'),
-                                            Spacer(),
-                                            //Text(opa.type).fontSize('1.4rem').fontWeight('500').foregroundColor('hsl(205, 9%, 47%)')
-                                        ).height()
-                                        //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
-                                        ,
-                                        HStack({ alignment: cLeading })(
-                                            Text(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2) as any
-                                        )
-                                            .minHeight('4rem')
-                                            .height(),
-                                        Text('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879') as any,
-                                        HStack({ alignment: cLeading })(
-                                            Text(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879') as any
-
-                                        ).height()
-
-                                        ,
-                                        Spacer(),
-                                        HStack({ alignment: cCenter })(
-                                            Button(
-                                                Text('Add') as any
+                                                //.background(opa.iconBackColor || '#9A0707'),
+                                                Spacer(),
+                                                //Text(opa.type).fontSize('1.4rem').fontWeight('500').foregroundColor('hsl(205, 9%, 47%)')
+                                            ).height()
+                                            //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
+                                            ,
+                                            HStack({ alignment: cLeading })(
+                                                Text(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2) as any
                                             )
-                                                // .loading(isLoading && (opa.type === this.last_added_opa_type))
-                                                .disabled(!opa.enabled)
-                                                .kind(ButtonType.SECONDARY)
-                                                .size(ButtonSize.SMALL)
-                                                .loading(installingOpa === opa.type)
-                                                .width('100%')
-                                                .onClick(async () => {
-                                                    /*  this.SetValue('name', opa.name);
-                                                     this.SetValue('folder_id', this.folder_id);
-                                                     this.SetValue('space_id', this.space_id);
-                                                    this.SetValue('item_type', 'opa');
-                                                     this.SetValue('item_sub_type', opa.type);
-                                                     this.SetValue('app_id', 'com.tuvalsoft.app.workbench');
-                                                     this.SetValue('content', '')
-         
-                                                     this.last_added_opa_type = opa.type; */
+                                                .minHeight('4rem')
+                                                .height(),
+                                            Text('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879') as any,
+                                            HStack({ alignment: cLeading })(
+                                                Text(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879') as any
 
-                                                    /* fetch('./data.json')
-                                                    .then((response) => response.json())
-                                                    .then((json) => console.log(json)); */
+                                            ).height()
 
-                                                    createDocument({
-                                                        data: {
-                                                            name: opa.name,
-                                                            opa: opa.tree_type,
-                                                            type: opa.applet_type,
-                                                            iconName: opa.iconName,
-                                                            iconCategory: opa.iconCategory,
-                                                            parent: this.parent
-                                                        }
-                                                    }, async (applet) => {
+                                            ,
+                                            Spacer(),
+                                            HStack({ alignment: cCenter })(
+                                                Button(
+                                                    Text('Add') as any
+                                                )
+                                                    // .loading(isLoading && (opa.type === this.last_added_opa_type))
+                                                    .disabled(!opa.enabled)
+                                                    .kind(ButtonType.SECONDARY)
+                                                    .size(ButtonSize.SMALL)
+                                                    .loading(installingOpa === opa.type)
+                                                    .width('100%')
+                                                    .onClick(async () => {
+                                                        /*  this.SetValue('name', opa.name);
+                                                         this.SetValue('folder_id', this.folder_id);
+                                                         this.SetValue('space_id', this.space_id);
+                                                        this.SetValue('item_type', 'opa');
+                                                         this.SetValue('item_sub_type', opa.type);
+                                                         this.SetValue('app_id', 'com.tuvalsoft.app.workbench');
+                                                         this.SetValue('content', '')
+             
+                                                         this.last_added_opa_type = opa.type; */
 
-                                                        createWorkspaceTreeItem({
-                                                            documentId: applet.$id,
+                                                        /* fetch('./data.json')
+                                                        .then((response) => response.json())
+                                                        .then((json) => console.log(json)); */
+
+                                                        createDocument({
                                                             data: {
                                                                 name: opa.name,
-                                                                type: 'applet',
-                                                                tree_widget: opa.tree_type,
-                                                                appletId: applet.$id,
-                                                                parent: this.parent,
-                                                                path: (new Date()).getTime().toString(),
-                                                                iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
+                                                                opa: opa.tree_type,
+                                                                type: opa.applet_type,
+                                                                iconName: opa.iconName,
                                                                 iconCategory: opa.iconCategory,
+                                                                parent: this.parent
                                                             }
-                                                        }, (treeItem) => {
+                                                        }, async (applet) => {
 
-                                                            EventBus.Default.fire('applet.added', { treeItem })
-                                                        });
+                                                            createWorkspaceTreeItem({
+                                                                documentId: applet.$id,
+                                                                data: {
+                                                                    name: opa.name,
+                                                                    type: 'applet',
+                                                                    tree_widget: opa.tree_type,
+                                                                    appletId: applet.$id,
+                                                                    parent: this.parent,
+                                                                    path: (new Date()).getTime().toString(),
+                                                                    iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
+                                                                    iconCategory: opa.iconCategory,
+                                                                }
+                                                            }, (treeItem) => {
 
-                                                        if (opa.databases) {
-                                                            setInstallingOpa(opa.type);
-                                                            Services.Client.setProject(this.workspaceId);
+                                                                EventBus.Default.fire('applet.added', { treeItem })
+                                                            });
 
-                                                            for (let i = 0; i < opa.databases.length; i++) {
-                                                                const template = opa.databases[i];
-                                                                const { name, id, category, collections } = template;
-                                                                try {
-                                                                    const db = await Services.Databases.create(this.workspaceId, applet.$id, opa.name, category);
-                                                                    for (let j = 0; j < collections.length; j++) {
-                                                                        const collection = collections[j];
-                                                                        const { name, id, attributes, documents } = collection;
-                                                                        const col = await Services.Databases.createCollection(this.workspaceId, db.$id, id, name, [], false);
+                                                            if (opa.databases) {
+                                                                setInstallingOpa(opa.type);
+                                                                Services.Client.setProject(this.workspaceId);
 
-                                                                        for (let i = 0; i < attributes.length; i++) {
-                                                                            const { key, type, defaultValue = null, size = 255 } = attributes[i];
-                                                                            switch (type) {
-                                                                                case 'string':
-                                                                                    await Services.Databases.createStringAttribute(this.workspaceId, db.$id, col.$id, key, size, false, '', false);
-                                                                                    break;
-                                                                                case 'number':
-                                                                                    await Services.Databases.createIntegerAttribute(this.workspaceId, db.$id, col.$id, key, false);
-                                                                                    break;
-                                                                                case 'datetime':
-                                                                                    await Services.Databases.createDatetimeAttribute(this.workspaceId, db.$id, col.$id, key, false);
-                                                                                    break;
-                                                                                case 'boolean':
-                                                                                    await Services.Databases.createBooleanAttribute(this.workspaceId, db.$id, col.$id, key, false, defaultValue ?? false);
-                                                                                    break;
+                                                                for (let i = 0; i < opa.databases.length; i++) {
+                                                                    const template = opa.databases[i];
+                                                                    const { name, id, category, collections } = template;
+                                                                    try {
+                                                                        const db = await Services.Databases.create(this.workspaceId, applet.$id, opa.name, category);
+                                                                        for (let j = 0; j < collections.length; j++) {
+                                                                            const collection = collections[j];
+                                                                            const { name, id, attributes, documents } = collection;
+                                                                            const col = await Services.Databases.createCollection(this.workspaceId, db.$id, id, name, [], false);
+
+                                                                            for (let i = 0; i < attributes.length; i++) {
+                                                                                const { key, type, defaultValue = null, size = 255 } = attributes[i];
+                                                                                switch (type) {
+                                                                                    case 'string':
+                                                                                        await Services.Databases.createStringAttribute(this.workspaceId, db.$id, col.$id, key, size, false, '', false);
+                                                                                        break;
+                                                                                    case 'number':
+                                                                                        await Services.Databases.createIntegerAttribute(this.workspaceId, db.$id, col.$id, key, false);
+                                                                                        break;
+                                                                                    case 'datetime':
+                                                                                        await Services.Databases.createDatetimeAttribute(this.workspaceId, db.$id, col.$id, key, false);
+                                                                                        break;
+                                                                                    case 'boolean':
+                                                                                        await Services.Databases.createBooleanAttribute(this.workspaceId, db.$id, col.$id, key, false, defaultValue ?? false);
+                                                                                        break;
+                                                                                }
                                                                             }
+
+                                                                            setTimeout(() => {
+                                                                                documents?.forEach(async document => {
+                                                                                    let $id = nanoid();
+                                                                                    if (document.$id != null) {
+                                                                                        $id = document.$id;
+                                                                                        delete document.$id;
+                                                                                    }
+                                                                                    const doc = await Services.Databases.createDocument(this.workspaceId, db.$id, col.$id, $id, document);
+                                                                                    console.log(doc);
+                                                                                });
+                                                                            }, 3000);
                                                                         }
 
-                                                                        setTimeout(() => {
-                                                                            documents?.forEach(async document => {
-                                                                                const doc = await Services.Databases.createDocument(this.workspaceId, db.$id, col.$id, ID.unique(), document);
-                                                                                console.log(doc);
-                                                                            });
-                                                                        }, 3000);
+                                                                    } catch (error) {
+                                                                        console.log(error);
                                                                     }
-
-                                                                } catch (error) {
-                                                                    console.log(error);
                                                                 }
+                                                                setInstallingOpa('');
+                                                                this.OnOK(applet)
+                                                            } else {
+
+                                                                this.OnOK(applet)
                                                             }
-                                                            setInstallingOpa('');
-                                                            this.OnOK(applet)
-                                                        } else {
-
-                                                            this.OnOK(applet)
-                                                        }
-                                                    });
+                                                        });
 
 
 
-                                                })
-                                        ).height()
-                                    ).height(250).width(290)
-                                        .padding()
-                                        .shadow({ hover: 'var(--box-shadow-medium)' })
-                                        .cornerRadius('var(--border-radius-medium)')
-                                        .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })
-                                ).width().height().padding()
+                                                    })
+                                            ).height()
+                                        ).height(250).width(290)
+                                            .padding()
+                                            .shadow({ hover: 'var(--box-shadow-medium)' })
+                                            .cornerRadius('var(--border-radius-medium)')
+                                            .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })
+                                    ).width().height().padding()
                             )
                         ).wrap('wrap').height()
                     )

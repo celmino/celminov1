@@ -9625,6 +9625,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
 /* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
 /* harmony import */ var _applets_Community__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/Community */ "./src/applets/Community.ts");
+/* harmony import */ var _applets_ListApplet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./applets/ListApplet */ "./src/applets/ListApplet.ts");
+
 
 
 
@@ -14542,7 +14544,8 @@ var Applets = [
     _applets_Website__WEBPACK_IMPORTED_MODULE_5__.WebsiteApplet,
     _applets_Emails__WEBPACK_IMPORTED_MODULE_4__.EmailsApplet,
     _applets_Activities__WEBPACK_IMPORTED_MODULE_0__.ActivitiesApplet,
-    _applets_Community__WEBPACK_IMPORTED_MODULE_6__.CommunityApplet
+    _applets_Community__WEBPACK_IMPORTED_MODULE_6__.CommunityApplet,
+    _applets_ListApplet__WEBPACK_IMPORTED_MODULE_7__.ListApplet
 ];
 
 
@@ -16724,6 +16727,37 @@ var EmailsApplet = {
 
 /***/ }),
 
+/***/ "./src/applets/ListApplet.ts":
+/*!***********************************!*\
+  !*** ./src/applets/ListApplet.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListApplet: () => (/* binding */ ListApplet)
+/* harmony export */ });
+/* harmony import */ var _schemas_ListAppletDatabase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../schemas/ListAppletDatabase */ "./src/schemas/ListAppletDatabase.ts");
+
+var ListApplet = {
+    name: 'List Applet',
+    type: 'Applet',
+    tree_type: 'com.celmino.widget.workspace-tree',
+    applet_type: 'com.celmino.applet.workmanagement',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d320',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: _schemas_ListAppletDatabase__WEBPACK_IMPORTED_MODULE_0__.ListAppletDatabase
+};
+
+
+/***/ }),
+
 /***/ "./src/applets/Website.ts":
 /*!********************************!*\
   !*** ./src/applets/Website.ts ***!
@@ -17248,10 +17282,16 @@ var SelectAppletDialog = /** @class */ (function (_super) {
                                                                     case 12:
                                                                         setTimeout(function () {
                                                                             documents === null || documents === void 0 ? void 0 : documents.forEach(function (document) { return __awaiter(_this, void 0, void 0, function () {
-                                                                                var doc;
+                                                                                var $id, doc;
                                                                                 return __generator(this, function (_a) {
                                                                                     switch (_a.label) {
-                                                                                        case 0: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(this.workspaceId, db_1.$id, col.$id, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.ID.unique(), document)];
+                                                                                        case 0:
+                                                                                            $id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
+                                                                                            if (document.$id != null) {
+                                                                                                $id = document.$id;
+                                                                                                delete document.$id;
+                                                                                            }
+                                                                                            return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(this.workspaceId, db_1.$id, col.$id, $id, document)];
                                                                                         case 1:
                                                                                             doc = _a.sent();
                                                                                             console.log(doc);
@@ -17422,6 +17462,299 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+/***/ }),
+
+/***/ "./src/schemas/ListAppletDatabase.ts":
+/*!*******************************************!*\
+  !*** ./src/schemas/ListAppletDatabase.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListAppletDatabase: () => (/* binding */ ListAppletDatabase)
+/* harmony export */ });
+var ListAppletDatabase = [
+    {
+        "name": "List Applet",
+        "id": "world",
+        "category": "applet",
+        "collections": [
+            {
+                "name": "Collections",
+                "id": "collections",
+                "attributes": [
+                    {
+                        "key": "name",
+                        "type": "string"
+                    },
+                    {
+                        "key": "type",
+                        "type": "string"
+                    },
+                    {
+                        "key": "order",
+                        "type": "number"
+                    }
+                ],
+                "documents": [
+                    // ---------- List Items Collection --------------------
+                    {
+                        "$id": "listItems",
+                        "name": "List Items"
+                    },
+                    // ---------- List Status Collection --------------------
+                    {
+                        "$id": "listStatuses",
+                        "name": "List Statuses"
+                    },
+                    // ---------- Views Collection --------------------
+                    {
+                        "$id": "views",
+                        "name": "Views"
+                    },
+                    // ---------- View Contents Collection --------------------
+                    {
+                        "$id": "viewContents",
+                        "name": "View Contents"
+                    }
+                ]
+            },
+            {
+                "name": "Fields",
+                "id": "fields",
+                "attributes": [
+                    {
+                        "key": "key",
+                        "type": "string"
+                    },
+                    {
+                        "key": "name",
+                        "type": "string"
+                    },
+                    {
+                        "key": "type",
+                        "type": "string"
+                    },
+                    {
+                        "key": "fieldInfo",
+                        "type": "string",
+                        "size": 18900
+                    },
+                    {
+                        "key": "collectionId",
+                        "type": "string"
+                    },
+                    {
+                        "key": "order",
+                        "type": "number"
+                    }
+                ],
+                "documents": [
+                    // ---------- List Items Fields --------------------
+                    {
+                        "key": "name",
+                        "name": "Name",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 255,
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "description",
+                        "name": "Description",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 16777216,
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "mark",
+                        "name": "Mark",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 10,
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "status",
+                        "name": "Status",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 255,
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    // ---------- List Statuses Fields --------------------
+                    {
+                        "key": "name",
+                        "name": "Name",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 255,
+                        }),
+                        "collectionId": "listStatuses",
+                    },
+                    {
+                        "key": "description",
+                        "name": "Description",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 16777216,
+                        }),
+                        "collectionId": "listStatuses",
+                    },
+                    {
+                        "key": "color",
+                        "name": "Color",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 50,
+                        }),
+                        "collectionId": "listStatuses",
+                    },
+                    // ---------- Views Fields --------------------
+                    {
+                        "key": "name",
+                        "name": "Name",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 255,
+                        }),
+                        "collectionId": "views",
+                    },
+                    {
+                        "key": "description",
+                        "name": "Description",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 16777216,
+                        }),
+                        "collectionId": "views",
+                    },
+                    {
+                        "key": "type",
+                        "name": "Type",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 255,
+                        }),
+                        "collectionId": "views",
+                    },
+                    // ---------- View Contents Fields --------------------
+                    {
+                        "key": "viewId",
+                        "name": "View ID",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 255,
+                        }),
+                        "collectionId": "viewContents",
+                    },
+                    {
+                        "key": "content",
+                        "name": "Content",
+                        "type": "string",
+                        "fieldInfo": JSON.stringify({
+                            "size": 16777216,
+                        }),
+                        "collectionId": "viewContents",
+                    }
+                ]
+            },
+            {
+                "name": "List Items",
+                "id": "listItems",
+                "attributes": [
+                    {
+                        "key": "name",
+                        "type": "string",
+                        "size": 255
+                    },
+                    {
+                        "key": "description",
+                        "type": "string",
+                        "size": 16777216
+                    },
+                    {
+                        "key": "mark",
+                        "type": "string",
+                        "size": 10
+                    },
+                    {
+                        "key": "status",
+                        "type": "Status",
+                        "size": 255
+                    }
+                ]
+            },
+            {
+                "name": "List Statuses",
+                "id": "listStatuses",
+                "attributes": [
+                    {
+                        "key": "name",
+                        "type": "string",
+                        "size": 255
+                    },
+                    {
+                        "key": "description",
+                        "type": "string",
+                        "size": 16777216
+                    },
+                    {
+                        "key": "color",
+                        "type": "string",
+                        "size": 50
+                    }
+                ],
+            },
+            {
+                "name": "Views",
+                "id": "views",
+                "attributes": [
+                    {
+                        "key": "name",
+                        "type": "string",
+                        "size": 255
+                    },
+                    {
+                        "key": "description",
+                        "type": "string",
+                        "size": 16777216
+                    },
+                    {
+                        "key": "type",
+                        "type": "string",
+                        "size": 255
+                    }
+                ]
+            },
+            {
+                "name": "View Contents",
+                "id": "viewContents",
+                "attributes": [
+                    {
+                        "key": "viewId",
+                        "type": "string",
+                        "size": 255
+                    },
+                    {
+                        "key": "content",
+                        "type": "string",
+                        "size": 16777216
+                    }
+                ]
+            }
+        ]
+    }
+];
 
 
 /***/ }),

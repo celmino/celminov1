@@ -255,6 +255,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_12__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
         var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_12__.getListId)();
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(workspaceId).updateDocument;
+        var updateDatabase = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDatabase)(workspaceId).updateDatabase;
         var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useCreateDocument)(workspaceId, appletId, 'wm_tree').createDocument;
         var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
         var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }), applet = _d.document, isAppletLoading = _d.isLoading;
@@ -263,30 +264,35 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
             node: item,
             workspaceId: workspaceId,
             appletId: appletId,
-            appletName: item.name,
+            appletName: appletId,
             iconName: item.iconName,
             iconCategory: item.iconCategory,
             isEditing: isEditing,
             isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_12__.isAppletSettings)(appletId) || (0,_utils__WEBPACK_IMPORTED_MODULE_12__.isAppletOnly)(appletId),
             editingChanged: function (status) { return setIsEditing(status); },
             titleChanged: function (title) {
-                updateDocument({
-                    databaseId: 'workspace',
-                    collectionId: 'applets',
-                    documentId: appletId,
-                    data: {
-                        name: title
-                    }
+                updateDatabase({
+                    databaseId: appletId,
+                    name: title
                 }, function () {
                     updateDocument({
                         databaseId: 'workspace',
-                        collectionId: 'ws_tree',
-                        documentId: item.$id,
+                        collectionId: 'applets',
+                        documentId: appletId,
                         data: {
                             name: title
                         }
                     }, function () {
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: item });
+                        updateDocument({
+                            databaseId: 'workspace',
+                            collectionId: 'ws_tree',
+                            documentId: item.$id,
+                            data: {
+                                name: title
+                            }
+                        }, function () {
+                            _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: item });
+                        });
                     });
                 });
             },

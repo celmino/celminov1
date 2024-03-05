@@ -8,7 +8,7 @@ import {
 } from '@tuval/forms';
 
 import { SelectAppletDialog } from '@celmino/ui';
-import { Query, useCreateDocument, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
+import { Query, useCreateDocument, useGetDocument, useGetRealm, useListDocuments, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
 import { DynoDialog } from '@realmocean/ui';
 import { EventBus, is } from '@tuval/core';
 import { AddBoardDialog } from './dialogs/AddBoardDialog';
@@ -221,6 +221,7 @@ export class WorkspaceTreeWidgetController extends UIController {
         let listId = getListId();
 
         const { updateDocument } = useUpdateDocument(workspaceId);
+        const { updateDatabase } = useUpdateDatabase(workspaceId);
 
         const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'wm_tree');
         const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
@@ -233,32 +234,39 @@ export class WorkspaceTreeWidgetController extends UIController {
                     node: item,
                     workspaceId,
                     appletId,
-                    appletName: item.name,
+                    appletName: appletId,
                     iconName: item.iconName,
                     iconCategory: item.iconCategory,
                     isEditing: isEditing,
                     isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
                     editingChanged: (status) => setIsEditing(status),
                     titleChanged: (title) => {
-                        updateDocument({
-                            databaseId: 'workspace',
-                            collectionId: 'applets',
-                            documentId: appletId,
-                            data: {
-                                name: title
-                            }
+
+                        updateDatabase({
+                            databaseId: appletId,
+                            name: title
                         }, () => {
                             updateDocument({
                                 databaseId: 'workspace',
-                                collectionId: 'ws_tree',
-                                documentId: item.$id,
+                                collectionId: 'applets',
+                                documentId: appletId,
                                 data: {
                                     name: title
                                 }
                             }, () => {
-                                EventBus.Default.fire('applet.added', { treeItem: item })
+                                updateDocument({
+                                    databaseId: 'workspace',
+                                    collectionId: 'ws_tree',
+                                    documentId: item.$id,
+                                    data: {
+                                        name: title
+                                    }
+                                }, () => {
+                                    EventBus.Default.fire('applet.added', { treeItem: item })
+                                })
                             })
                         })
+
                     },
                     subNodes: (TreeNode, level, nodeType, parentId, workspaceId, appletId) => {
                         return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected)
