@@ -17448,6 +17448,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
 /* harmony export */   SelectAppletDialog: () => (/* reexport safe */ _dialogs__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog),
+/* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.SelectSiderDialog),
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
 /* harmony export */   compileFormula: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.compileFormula),
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder)
@@ -18797,6 +18798,412 @@ var AddTextFieldDialog = function (onNewFieldAdded) { return ({
 
 /***/ }),
 
+/***/ "./src/views/SelectSider/SelectSiderDialog.ts":
+/*!****************************************************!*\
+  !*** ./src/views/SelectSider/SelectSiderDialog.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SelectSiderDialog: () => (/* binding */ SelectSiderDialog)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Siders__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Siders */ "./src/views/SelectSider/Siders.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var findOpa = function (opas, type) {
+    return opas.find(function (opa) { return opa.type == type; });
+};
+var SelectSiderDialog = /** @class */ (function (_super) {
+    __extends(SelectSiderDialog, _super);
+    function SelectSiderDialog() {
+        var _this = _super.call(this) || this;
+        _this.Header = 'Select Sider';
+        _this.Width = '1300px';
+        _this.Height = '70vh';
+        return _this;
+    }
+    SelectSiderDialog.prototype.BindRouterParams = function (_a) {
+        var siders = _a.siders;
+        this.opas = siders;
+        this.filtered_opas = siders;
+    };
+    SelectSiderDialog.prototype.OnOK = function (applet) {
+        this.ShowDialogAsyncResolve(applet);
+        this.Hide();
+    };
+    SelectSiderDialog.prototype.OnCancel = function () {
+        this.Hide();
+    };
+    SelectSiderDialog.prototype.LoadView = function () {
+        var _this = this;
+        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+        /* const { createApplet } = useCreateApplet([
+            Query.equal('parentId', this.parentId),
+        ]); */
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.filtered_opas)(function (opa) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(opa.image &&
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(opa.image).width(50).height(50).cornerRadius('20%'), opa.icon &&
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(opa.icon).fontSize(40).foregroundColor('white')).width(50).height(50).cornerRadius('20%').background(opa.iconBackColor || '#9A0707')
+                    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'), 
+            // .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(opa.name).h4().ellipsis(true).ellipsisMaxLines(1).width(250), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(opa.description || '').maxLines(2), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add'))
+                .disabled(!opa.enabled)
+                .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
+                .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
+                .width('100%')
+                .onClick(function () {
+                var _opa = findOpa(_this.opas, opa.type);
+                _this.last_added_opa_type = opa.type;
+                /*   createApplet({
+                      name: opa.name,
+                      parentId: this.parentId,
+                      parentType: this.parentType,
+                      opa: opa.type,
+                      icon:'AAA',
+                      color:'#7B68EE',
+                      settings: _opa.settings
+                  }) */
+            })).height()).height(230).width(290)
+                .padding()
+                .shadow({ hover: 'var(--box-shadow-medium)' })
+                .cornerRadius('var(--border-radius-medium)')
+                .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding();
+        })).wrap('wrap').height()))
+        /* ).resource('space-folder-items')
+            .onSuccess((e) => {
+                // alert(JSON.stringify(e))
+                this.InvalidateQuerie('space-folder-items')
+                this.OnOK();
+                navigate(`/app/com.tuvalsoft.app.workbench/_opa/${this.last_added_opa_type}/${this.space_id}/${this.folder_id}/${e.id}/${e.id}`)
+
+            })
+    ) */
+        );
+    };
+    SelectSiderDialog.Show = function () {
+        var dialog = new SelectSiderDialog();
+        dialog.BindRouterParams({ siders: _Siders__WEBPACK_IMPORTED_MODULE_2__.siders });
+        return dialog.ShowDialogAsync();
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], SelectSiderDialog.prototype, "filtered_opas", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], SelectSiderDialog.prototype, "opas", void 0);
+    return SelectSiderDialog;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView));
+
+
+
+/***/ }),
+
+/***/ "./src/views/SelectSider/Siders.ts":
+/*!*****************************************!*\
+  !*** ./src/views/SelectSider/Siders.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   siders: () => (/* binding */ siders)
+/* harmony export */ });
+var siders = [
+    {
+        name: 'Figma Embedded',
+        type: 'com.celmino.applet.task',
+        broker: 'com.tuvalsoft.broker.realm',
+        defaultView: 'com.tuvalsoft.view.tasklist',
+        defaultViewTitle: 'Task List',
+        description: 'Add your Figma designs as a document in celmino!',
+        //icon:'\\d1e4',
+        //iconBackColor:'#66B47C',
+        //icon: SvgIcon('svg-sprite-cu2-list-ul'),
+        image: '/images/Figma_Embedded_-_Logo_Export.png',
+        enabled: true,
+        settings: {
+            stageSet: 'default'
+        }
+    },
+    {
+        name: 'HTML Embedded',
+        type: 'com.celmino.applet.task',
+        broker: 'com.tuvalsoft.broker.realm',
+        defaultView: 'com.tuvalsoft.view.tasklist',
+        defaultViewTitle: 'Task List',
+        description: 'Add your Figma designs as a document in celmino!',
+        //icon:'\\d1e4',
+        //iconBackColor:'#66B47C',
+        //icon: SvgIcon('svg-sprite-cu2-list-ul'),
+        image: '/images/Embedded_HTML_-_Icon.avif',
+        enabled: true,
+        settings: {
+            stageSet: 'default'
+        }
+    },
+    {
+        name: 'IFrame Embedded',
+        type: 'com.celmino.applet.task',
+        broker: 'com.tuvalsoft.broker.realm',
+        defaultView: 'com.tuvalsoft.view.tasklist',
+        defaultViewTitle: 'Task List',
+        description: 'Add your Figma designs as a document in celmino!',
+        //icon:'\\d1e4',
+        //iconBackColor:'#66B47C',
+        //icon: SvgIcon('svg-sprite-cu2-list-ul'),
+        image: '/images/iFrame_Embedded_-_Logo_Export.avif',
+        enabled: true,
+        settings: {
+            stageSet: 'default'
+        }
+    },
+    {
+        name: 'Decision Rules',
+        type: 'com.tuvalsoft.opa.task',
+        description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
+        icon: '\\d1e6',
+        iconBackColor: '#66B47C',
+        //image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
+        enabled: true
+    },
+    {
+        name: 'OKR',
+        type: 'com.tuvalsoft.applet.okr',
+        broker: 'com.tuvalsoft.broker.realm',
+        defaultView: 'com.okr.view.objectives',
+        defaultViewTitle: 'Objectives',
+        description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
+        icon: '\\d1e5',
+        iconBackColor: '#66B47C',
+        //icon: SvgIcon('svg-sprite-cu2-view-1'),
+        // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
+        enabled: true
+    },
+    {
+        name: 'Document',
+        type: 'com.tuvalsoft.applet.document',
+        broker: 'com.tuvalsoft.broker.document',
+        description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
+        icon: '\\d1e2',
+        iconBackColor: '#66B47C',
+        //image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
+        enabled: true
+    },
+    {
+        name: 'Meeting',
+        type: 'com.tuvalsoft.applet.meeting',
+        broker: 'com.tuvalsoft.broker.realm',
+        defaultView: 'com.meeting.view.meetings-view',
+        defaultViewTitle: 'Meetings',
+        description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
+        icon: '\\d25f',
+        iconBackColor: '#66B47C',
+        // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
+        enabled: true
+    },
+    /*  {
+         name: 'Risk Assessment',
+         type: 'com.tuvalsoft.opa.task',
+         description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
+         icon: '\\d3c9',
+         iconBackColor:'#66B47C',
+         enabled: true
+     }, */
+    {
+        name: 'Strategy',
+        type: 'com.tuvalsoft.opa.task',
+        description: 'Use Task List to organize your tasks in anyway imaginable – sort, filter, group, and customize columns.',
+        icon: '\\d1e1',
+        iconBackColor: '#66B47C',
+        enabled: true
+    }
+    /* ,
+    {
+        name: 'Calendar',
+        type: 'com.tuvalsoft.opa.calendar',
+        description: 'Plan your meetings or watch your due dates in your app with calendar.',
+        image: '/static/opa/images/com.tuvalsoft.opa.calendar/icon.png',
+    },
+    {
+        name: 'Timeline',
+        type: 'com.tuvalsoft.opa.timeline',
+        description: 'Plan your meetings or watch your due dates in your app with calendar.',
+        image: '/static/opa/images/com.tuvalsoft.opa.timeline/icon.png',
+    },
+    {
+        name: 'Gantt',
+        type: 'com.tuvalsoft.opa.gantt',
+        description: 'Create gantt chart with tasks, sub tasks and milestones. Draw links which shows the dependency between tasks.',
+        image: '/static/opa/images/com.tuvalsoft.opa.gantt/icon.png',
+        enabled: true
+    },
+    {
+        name: 'Team',
+        type: 'com.tuvalsoft.opa.team',
+        description: 'Plan your meetings or watch your due dates in your app with calendar.',
+        image: '/static/opa/images/com.tuvalsoft.opa.team/icon.png',
+    },
+    {
+        name: 'Board',
+        type: 'com.tuvalsoft.opa.board',
+        description: 'Create gantt chart with tasks, sub tasks and milestones. Draw links which shows the dependency between tasks.',
+        image: '/static/opa/images/com.tuvalsoft.opa.board/icon.png',
+    },
+    {
+        name: 'Whiteboard',
+        type: 'com.tuvalsoft.opa.whiteboard',
+        description: 'Create gantt chart with tasks, sub tasks and milestones. Draw links which shows the dependency between tasks.',
+        image: '/static/opa/images/com.tuvalsoft.opa.whiteboard/icon.png',
+    },
+    {
+        name: 'Table',
+        type: 'com.tuvalsoft.opa.table',
+        description: 'Create gantt chart with tasks, sub tasks and milestones. Draw links which shows the dependency between tasks.',
+        image: '/static/opa/images/com.tuvalsoft.opa.table/icon.png',
+    },
+    {
+        name: 'Activity',
+        type: 'com.tuvalsoft.opa.activity',
+        image: '/static/opa/images/com.tuvalsoft.opa.activity/icon.png',
+    },
+
+    {
+        name: 'Form',
+        type: 'com.tuvalsoft.opa.form',
+        image: '/static/opa/images/com.tuvalsoft.opa.form/icon.png',
+    },
+    {
+        name: 'Doc',
+        type: 'com.tuvalsoft.opa.doc',
+        image: '/static/opa/images/com.tuvalsoft.opa.doc/icon.png',
+    },
+    {
+        name: 'Chat',
+        type: 'com.tuvalsoft.opa.chat',
+        image: '/static/opa/images/com.tuvalsoft.opa.chat/icon.png',
+    },
+    {
+
+        name: 'Workload',
+        description: 'Spreadsheet is a opa for computation, organization, analysis and storage of data in tabular form.',
+        type: 'com.tuvalsoft.opa.workload',
+        image: '/static/opa/images/com.tuvalsoft.opa.workload/icon.png',
+    },
+    {
+
+        name: 'Spreadsheet',
+        description: 'Spreadsheet is a opa for computation, organization, analysis and storage of data in tabular form.',
+        type: 'com.tuvalsoft.opa.spreadsheet',
+        image: '/static/opa/images/com.tuvalsoft.opa.spreadsheet/icon.png',
+    },
+    {
+        name: 'Map',
+        type: 'com.tuvalsoft.opa.map',
+        image: '/static/opa/images/com.tuvalsoft.opa.map/icon.png',
+    },
+    {
+
+        name: 'Storage',
+        description: 'Add storage to upload files or use reference documents from within other apps.',
+        type: 'com.tuvalsoft.opa.spreadsheet',
+        image: '/static/opa/images/com.tuvalsoft.opa.storage/icon.png',
+    },
+    {
+        name: 'BPMN Model',
+        image: '/static/opa/images/com.tuvalsoft.opa.bpmn/icon.png'
+    },
+    {
+        name: 'Dashboard',
+        type: 'com.tuvalsoft.opa.dashboard',
+        image: '/static/opa/images/com.tuvalsoft.opa.dashboard/icon.png',
+    },
+    {
+        name: 'OKR',
+        type: 'com.tuvalsoft.opa.okr',
+        image: '/static/opa/images/com.tuvalsoft.opa.okr/icon.png',
+    },
+    {
+
+        name: 'Mind Map',
+        description: 'Add storage to upload files or use reference documents from within other apps.',
+        type: 'com.tuvalsoft.opa.mindmap',
+        image: '/static/opa/images/com.tuvalsoft.opa.mindmap/icon.png',
+    },
+    {
+
+        name: 'Fishbone Diagram',
+        description: 'Add storage to upload files or use reference documents from within other apps.',
+        type: 'com.tuvalsoft.opa.fishbone',
+        image: '/static/opa/images/com.tuvalsoft.opa.fishbone/icon.png',
+    },
+
+    {
+        name: 'Workflow',
+        type: 'com.tuvalsoft.opa.spreadsheet'
+    },
+    {
+        name: 'Google Sheets Embedder',
+        description: 'Google Calendar Embedded allows you to embed any public Google Calendar link to your apps.',
+        type: 'com.tuvalsoft.opa.spreadsheet',
+        image: '/static/opa/images/com.tuvalsoft.opa.google_sheet_embedded/icon.png'
+    },
+    {
+        name: 'Google Calendar Embedder',
+        description: 'Google Calendar Embedded allows you to embed any public Google Calendar link to your apps.',
+        type: 'com.tuvalsoft.opa.google_calendar_embedded',
+        image: '/static/opa/images/com.tuvalsoft.opa.google_calendar_embedded/icon.png'
+    } */
+];
+
+
+/***/ }),
+
+/***/ "./src/views/SelectSider/index.ts":
+/*!****************************************!*\
+  !*** ./src/views/SelectSider/index.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _SelectSiderDialog__WEBPACK_IMPORTED_MODULE_0__.SelectSiderDialog)
+/* harmony export */ });
+/* harmony import */ var _SelectSiderDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectSiderDialog */ "./src/views/SelectSider/SelectSiderDialog.ts");
+
+
+
+/***/ }),
+
 /***/ "./src/views/index.ts":
 /*!****************************!*\
   !*** ./src/views/index.ts ***!
@@ -18807,10 +19214,13 @@ var AddTextFieldDialog = function (onNewFieldAdded) { return ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _ColorSelect__WEBPACK_IMPORTED_MODULE_0__.ColorSelect),
-/* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView)
+/* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
+/* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _SelectSider__WEBPACK_IMPORTED_MODULE_2__.SelectSiderDialog)
 /* harmony export */ });
 /* harmony import */ var _ColorSelect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorSelect */ "./src/views/ColorSelect/index.ts");
 /* harmony import */ var _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewFieldMenu/NewFieldMenuView */ "./src/views/NewFieldMenu/NewFieldMenuView.tsx");
+/* harmony import */ var _SelectSider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectSider */ "./src/views/SelectSider/index.ts");
+
 
 
 

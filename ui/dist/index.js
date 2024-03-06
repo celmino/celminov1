@@ -17448,7 +17448,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   FormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
 /* harmony export */   SelectAppletDialog: () => (/* reexport safe */ _dialogs__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog),
-/* harmony export */   SelectOpaDialog: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.SelectOpaDialog),
+/* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.SelectSiderDialog),
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
 /* harmony export */   compileFormula: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.compileFormula),
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder)
@@ -18807,7 +18807,7 @@ var AddTextFieldDialog = function (onNewFieldAdded) { return ({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SelectOpaDialog: () => (/* binding */ SelectOpaDialog)
+/* harmony export */   SelectSiderDialog: () => (/* binding */ SelectSiderDialog)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -18841,30 +18841,28 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var findOpa = function (opas, type) {
     return opas.find(function (opa) { return opa.type == type; });
 };
-var SelectOpaDialog = /** @class */ (function (_super) {
-    __extends(SelectOpaDialog, _super);
-    function SelectOpaDialog() {
+var SelectSiderDialog = /** @class */ (function (_super) {
+    __extends(SelectSiderDialog, _super);
+    function SelectSiderDialog() {
         var _this = _super.call(this) || this;
-        _this.Header = 'Select Applet';
+        _this.Header = 'Select Sider';
         _this.Width = '1300px';
         _this.Height = '70vh';
         return _this;
     }
-    SelectOpaDialog.prototype.BindRouterParams = function (_a) {
-        var parentId = _a.parentId, parentType = _a.parentType, opas = _a.opas;
-        this.parentId = parentId;
-        this.parentType = parentType;
-        this.opas = opas;
-        this.filtered_opas = opas;
+    SelectSiderDialog.prototype.BindRouterParams = function (_a) {
+        var siders = _a.siders;
+        this.opas = siders;
+        this.filtered_opas = siders;
     };
-    SelectOpaDialog.prototype.OnOK = function (applet) {
+    SelectSiderDialog.prototype.OnOK = function (applet) {
         this.ShowDialogAsyncResolve(applet);
         this.Hide();
     };
-    SelectOpaDialog.prototype.OnCancel = function () {
+    SelectSiderDialog.prototype.OnCancel = function () {
         this.Hide();
     };
-    SelectOpaDialog.prototype.LoadView = function () {
+    SelectSiderDialog.prototype.LoadView = function () {
         var _this = this;
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
         /* const { createApplet } = useCreateApplet([
@@ -18910,25 +18908,18 @@ var SelectOpaDialog = /** @class */ (function (_super) {
     ) */
         );
     };
-    SelectOpaDialog.Show = function (parentId, parentType, opas) {
-        if (opas === void 0) { opas = _Siders__WEBPACK_IMPORTED_MODULE_2__.siders; }
-        var dialog = new SelectOpaDialog();
-        dialog.BindRouterParams({ parentId: parentId, parentType: parentType, opas: opas });
+    SelectSiderDialog.Show = function () {
+        var dialog = new SelectSiderDialog();
+        dialog.BindRouterParams({ siders: _Siders__WEBPACK_IMPORTED_MODULE_2__.siders });
         return dialog.ShowDialogAsync();
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectOpaDialog.prototype, "filtered_opas", void 0);
+    ], SelectSiderDialog.prototype, "filtered_opas", void 0);
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectOpaDialog.prototype, "parentId", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectOpaDialog.prototype, "parentType", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectOpaDialog.prototype, "opas", void 0);
-    return SelectOpaDialog;
+    ], SelectSiderDialog.prototype, "opas", void 0);
+    return SelectSiderDialog;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView));
 
 
@@ -19205,7 +19196,7 @@ var siders = [
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SelectOpaDialog: () => (/* reexport safe */ _SelectSiderDialog__WEBPACK_IMPORTED_MODULE_0__.SelectOpaDialog)
+/* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _SelectSiderDialog__WEBPACK_IMPORTED_MODULE_0__.SelectSiderDialog)
 /* harmony export */ });
 /* harmony import */ var _SelectSiderDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectSiderDialog */ "./src/views/SelectSider/SelectSiderDialog.ts");
 
@@ -19224,7 +19215,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _ColorSelect__WEBPACK_IMPORTED_MODULE_0__.ColorSelect),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
-/* harmony export */   SelectOpaDialog: () => (/* reexport safe */ _SelectSider__WEBPACK_IMPORTED_MODULE_2__.SelectOpaDialog)
+/* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _SelectSider__WEBPACK_IMPORTED_MODULE_2__.SelectSiderDialog)
 /* harmony export */ });
 /* harmony import */ var _ColorSelect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorSelect */ "./src/views/ColorSelect/index.ts");
 /* harmony import */ var _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewFieldMenu/NewFieldMenuView */ "./src/views/NewFieldMenu/NewFieldMenuView.tsx");
