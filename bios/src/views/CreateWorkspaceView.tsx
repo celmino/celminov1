@@ -1,5 +1,5 @@
 import { ButtonRenderer, InputRenderer } from "@realmocean/antd";
-import { Query, Services, useCreateRealm, useDeleteSession, useGetMe, useListRealms } from "@realmocean/sdk";
+import { Query, Services, useCreateRealm, useCreateTeam, useDeleteSession, useGetMe, useListRealms } from "@realmocean/sdk";
 
 import { Button, ForEach, HStack, Heading, Input, TextField, Text, UINavigate, UIViewBuilder, VStack, useNavigate, useState, Spacer, cLeading, cHorizontal, darken, Icon, Icons, HDivider } from "@tuval/forms";
 import { useGetCurrentOrganization } from "../hooks/useGetCurrentOrganization";
@@ -15,6 +15,8 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
     const { createRealm, isLoading } = useCreateRealm();
     const { deleteSession } = useDeleteSession('console');
+
+
 
     return (
         isOrganizationLoading ? Text('Loading...') : organization == null ? UINavigate('/app/organization/select') :
@@ -99,7 +101,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         const typeAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false);
                                         const iconName = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false);
                                         const iconCategory = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false);
-                                        const themeColor = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false,'-1');
+                                        const themeColor = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1');
 
                                         //Tree Collection Creating
                                         const treeCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree');

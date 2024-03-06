@@ -114,10 +114,10 @@
   resolved "https://registry.npmjs.org/@celmino/directoryprotocol/-/directoryprotocol-0.0.7.tgz"
   integrity sha512-yESCabHZ8eMKSfaeU8du4WhYjpwfscRmi0nyWf5JyIjEiQFx0O++KLRUlUS2xYB8zI+qt+ve3nzv4jxY+Cln7A==
 
-"@celmino/ui@^1.0.20":
-  version "1.0.20"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.20.tgz"
-  integrity sha512-2XfX3xcceHftWCuj7WYBQbFZRHjP7Lbn7JX0wXfpjT1eoAWFOAEtpS9pSHi2YC0GkbfmhtNLlwU5+/OCFwK27w==
+"@celmino/ui@^1.0.22":
+  version "1.0.22"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.22.tgz"
+  integrity sha512-31YMmTxqFdPMMZFb+a7AQqFPpkGw3LY3hiWaW0L4SXCgpJUndQ1KK4aBRsPxYr9+tTFOlzx6euJDVNQNBcbdyQ==
   dependencies:
     "@realmocean/sdk" "1.0.82"
     "@realmocean/vibe" "2.82.50"

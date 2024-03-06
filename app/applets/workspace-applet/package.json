@@ -101,7 +101,7 @@
         ]
     },
     "dependencies": {
-        "@celmino/ui": "^1.0.20",
+        "@celmino/ui": "^1.0.22",
         "@realmocean/antd": "^21.0.30",
         "@realmocean/elasticui": "21.0.37",
         "@realmocean/sdk": "1.0.81",

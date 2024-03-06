@@ -1,6 +1,6 @@
 
 import { SelectAppletDialog } from "@celmino/ui";
-import { Models, Query, Services, useDeleteCache, useGetMe, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
+import { Models, Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useGetMe, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
 import { Text } from '@realmocean/vibe';
 import { EventBus, is } from "@tuval/core";
 import {
@@ -241,8 +241,6 @@ export const LeftSideMenuView = (selectedItem: string) => {
                     Query.equal('category', 'applet')
                 ]);
 
-
-
                 const { documents: workspaceTreeITems, isLoading: isWorkspaceTreeLoading } = useListDocuments(workspaceId, 'workspace', 'ws_tree', [
                     // Query.equal('parent', '-1'),
                     Query.limit(250),
@@ -258,12 +256,19 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                 const [isEditable, setIsEditable] = useState(false);
 
+                const {createTeam} = useCreateTeam(workspaceId);
+                const {createTeamMembership} =useCreateTeamMembership(workspaceId)
 
                 let _hideHandle;
 
                 return (
                     (isWorkspaceTreeLoading) ? Fragment() : (workspaceTreeITems == null) ? Text('null') :
                         VStack({ alignment: cTopLeading })(
+                            HStack().width(200).height(100).background('yellow')
+                                .onClick(() => {
+                                   // createTeam({id:'admins', name:'admins'})
+                                   createTeamMembership({teamId:'admins',roles:[],url:'http://localhost:9501', email:'stanoncloud@gmail.com'})
+                                }),
                             VStack({ alignment: cTopLeading })(
                                 HStack(
                                     PopupButton(
