@@ -1,5 +1,5 @@
 import { is } from "@tuval/core";
-import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, DialogPosition, UIController, ReactView, UIFormController } from "@tuval/forms";
+import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, DialogPosition, UIController, ReactView, UIFormController, UIView } from "@tuval/forms";
 import { useState } from "react";
 import { Icons } from "./Icons";
 import { AddTextFieldDialog, SaveTextFieldAction, TextFieldsAttributesView } from "./dialogs/AddTextAttributeDialog";
@@ -132,12 +132,7 @@ class Controller extends UIFormController {
                     return (
                         (PopupButton as any)(
                             HStack(
-                                Icon(Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''),
-                                Text('New Field')
-                                    .foregroundColor(menuIsOpen ? 'white' : '')
-                                    .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
-                                    .fontSize(14)
-                                    .fontWeight('500') as any
+
                             )
                                 .width()
 
@@ -193,10 +188,10 @@ class Controller extends UIFormController {
     }
 }
 
-export const NewFieldMenuView = (onNewFieldAdded?: Function) => (
+export const NewFieldMenuView = (view: UIView, onNewFieldAdded?: Function) => (
 
     ReactView(
-        <Controller onNewFieldAdded={onNewFieldAdded}></Controller>
+        <Controller onNewFieldAdded={onNewFieldAdded} view={view}></Controller>
     )
 
 

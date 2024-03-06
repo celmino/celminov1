@@ -7,6 +7,7 @@ import React from "react";
 import { UIFormController } from "@tuval/forms";
 import { DialogView } from "@tuval/forms";
 import { DialogView, UIView } from "@tuval/forms";
+import { UIView } from "@tuval/forms";
 
 import './exports';
 
@@ -50,7 +51,7 @@ export class SelectAppletDialog extends DialogView {
     static Show(workspaceId: string, parent?: string): Promise<any>;
 }
 
-export const NewFieldMenuView: (onNewFieldAdded?: Function) => import("@tuval/forms").ReactViewClass;
+export const NewFieldMenuView: (view: UIView, onNewFieldAdded?: Function) => import("@tuval/forms").ReactViewClass;
 
 export const ColorSelect: ({ onSelect }: {
     onSelect: any;

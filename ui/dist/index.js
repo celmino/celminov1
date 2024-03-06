@@ -18169,11 +18169,7 @@ var Controller = /** @class */ (function (_super) {
                     }
                 }
             ];
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)('New Field')
-                .foregroundColor(menuIsOpen ? 'white' : '')
-                .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
-                .fontSize(14)
-                .fontWeight('500'))
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)()
                 .width()
                 .height(30)
                 .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 12)
@@ -18213,7 +18209,7 @@ var Controller = /** @class */ (function (_super) {
     };
     return Controller;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
-var NewFieldMenuView = function (onNewFieldAdded) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded }))); };
+var NewFieldMenuView = function (view, onNewFieldAdded) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded, view: view }))); };
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
