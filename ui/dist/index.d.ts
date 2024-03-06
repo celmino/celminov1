@@ -60,3 +60,16 @@ export const ColorSelect: ({ onSelect }: {
     onSelect: any;
 }) => import("@tuval/forms").HStackClass;
 
+export class SelectOpaDialog extends DialogView {
+    constructor();
+    BindRouterParams({ parentId, parentType, opas }: {
+        parentId: any;
+        parentType: any;
+        opas: any;
+    }): void;
+    OnOK(applet: any): void;
+    OnCancel(): void;
+    LoadView(): import("@tuval/forms").VStackClass;
+    static Show(parentId: string, parentType: string, opas?: any[]): Promise<any>;
+}
+

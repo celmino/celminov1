@@ -25,18 +25,13 @@ const findOpa = (opas, type) => {
     return opas.find(opa => opa.type == type)
 }
 
-export class SelectOpaDialog extends DialogView {
+export class SelectSiderDialog extends DialogView {
 
     private last_added_opa_type: string;
 
     @ViewProperty()
     private filtered_opas: any[];
 
-    @ViewProperty()
-    private parentId: string;
-
-    @ViewProperty()
-    private parentType: string;
 
 
 
@@ -45,19 +40,18 @@ export class SelectOpaDialog extends DialogView {
 
     public constructor() {
         super();
-        this.Header = 'Select Applet'
+        this.Header = 'Select Sider'
         this.Width = '1300px'
         this.Height = '70vh'
 
     }
 
 
-    public BindRouterParams({ parentId, parentType, opas }) {
-        this.parentId = parentId;
-        this.parentType = parentType;
-        this.opas = opas
+    public BindRouterParams({ siders }) {
+       
+        this.opas = siders
 
-        this.filtered_opas = opas;
+        this.filtered_opas = siders;
     }
 
     public OnOK(applet) {
@@ -148,10 +142,10 @@ export class SelectOpaDialog extends DialogView {
         )
     }
 
-    public static Show(parentId: string, parentType: string, opas: any[] = siders) {
+    public static Show( ) {
 
-        const dialog = new SelectOpaDialog();
-        dialog.BindRouterParams({ parentId, parentType, opas })
+        const dialog = new SelectSiderDialog();
+        dialog.BindRouterParams({ siders })
         return dialog.ShowDialogAsync();
     }
 }
