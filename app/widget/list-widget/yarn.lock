@@ -114,10 +114,10 @@
   resolved "https://registry.npmjs.org/@celmino/directoryprotocol/-/directoryprotocol-0.0.7.tgz"
   integrity sha512-yESCabHZ8eMKSfaeU8du4WhYjpwfscRmi0nyWf5JyIjEiQFx0O++KLRUlUS2xYB8zI+qt+ve3nzv4jxY+Cln7A==
 
-"@celmino/ui@^1.0.17":
-  version "1.0.17"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.17.tgz"
-  integrity sha512-BblCtN4SpHBRdjGT/HXDjB5kZaBaZOU8aNG0dO7oRztprFHH3FMJ669BAM6kKaw5IZy4UPsC9gnEIB0xze0a2g==
+"@celmino/ui@^1.0.20":
+  version "1.0.20"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.20.tgz"
+  integrity sha512-2XfX3xcceHftWCuj7WYBQbFZRHjP7Lbn7JX0wXfpjT1eoAWFOAEtpS9pSHi2YC0GkbfmhtNLlwU5+/OCFwK27w==
   dependencies:
     "@realmocean/sdk" "1.0.82"
     "@realmocean/vibe" "2.82.50"
@@ -731,7 +731,7 @@
   resolved "https://registry.npmjs.org/@realmocean/query-builder/-/query-builder-0.0.2.tgz"
   integrity sha512-/Ne5x4eWNWoBl+UD5QbK5gGXYywtHezfC+F7GCEECCpF03nwlyXPuQPE0xZ4KfNjNu3Vf6nSDdV+0m4e7COWbA==
 
-"@realmocean/sdk@1.0.82":
+"@realmocean/sdk@^1.0.82", "@realmocean/sdk@1.0.82":
   version "1.0.82"
   resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.82.tgz"
   integrity sha512-4kl1bwMaEsoe+8Ieely2m32/ZdVBmiGV2uOaIgog71ogpIvIrA5eWiywx67x6nEP5/DtDFzgf5uvEA9AbeMQpQ==
@@ -845,7 +845,7 @@
   resolved "https://registry.npmjs.org/@tuval/core/-/core-0.0.103.tgz"
   integrity sha512-yE9X6hLavSknUZWiN5sfu1hbVdZ2taaL+wJAUbpRa2glfepBsBYDHGooe11oQ5EqYEq6NZnbmYJRW9eIjPi1Gg==
 
-"@tuval/forms@^1.0.151", "@tuval/forms@^1.0.159", "@tuval/forms@^1.0.167", "@tuval/forms@^1.0.74":
+"@tuval/forms@^1.0.159", "@tuval/forms@^1.0.167", "@tuval/forms@^1.0.168", "@tuval/forms@^1.0.74":
   version "1.0.168"
   resolved "https://registry.npmjs.org/@tuval/forms/-/forms-1.0.168.tgz"
   integrity sha512-Qa3+zfXT06xrDoeZBKwpdG83rfA7eIX9Wu8apLuzjvt33bZvRP4wEnknhxl8Mw/MbHaOmsCA7WxDS/fcI+cjuQ==

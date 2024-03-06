@@ -210,7 +210,7 @@ export const ListAppletDatabase = [
                 "name": "List Items",
                 "id": "listItems",
                 "attributes": [
-                    {
+                     {
                         "key": "name",
                         "type": "string",
                         "size": 255
@@ -227,9 +227,9 @@ export const ListAppletDatabase = [
                     },
                     {
                         "key": "status",
-                        "type": "Status",
+                        "type": "string",
                         "size": 255
-                    }
+                    } 
                 ]
 
             },

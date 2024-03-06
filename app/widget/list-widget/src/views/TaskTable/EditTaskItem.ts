@@ -1,7 +1,9 @@
-import { Button, HStack, Icon, Icons, RequiredRule, Text, TextField, UIViewBuilder, UIWidget, cHorizontal, nanoid, useEffect, useFormController, useParams, useProtocol, useState } from "@tuval/forms"
+import { Button, HStack, Icon, Icons, RequiredRule, Text, UIViewBuilder, UIWidget, cHorizontal, nanoid, useEffect, useFormController, useParams, useProtocol, useState } from "@tuval/forms"
 import { StatusMarker } from "./StatusMarker"
 import { EventBus, is } from "@tuval/core"
 import { useCallback } from 'react';
+import { TextField } from "@realmocean/vibe";
+import { useCreateDocument } from "@realmocean/sdk";
 
 
 
@@ -107,91 +109,108 @@ export const PriorityView = () => {
     )
 }
 
-/* export function EditTaskItem (status: Models.TaskStage) {
+export function EditTaskItem(status: any) {
     return (
         UIViewBuilder(() => {
-            const { applet_id } = useParams();
-            const { applet, isLoading: isAppletLoaing } = useGetApplet(applet_id);
-            const { createTask } = useCreateTask([
-                Query.equal('appletId', applet_id)
-            ])
+            const { workspaceId, appletId } = useParams();
+
+            const { createDocument } = useCreateDocument(workspaceId, appletId, 'listItems')
             let createSource = 'B';
-    
+
             const controller = useFormController();
-    
-    
-            useKeyPressEvent(13, () => {
-                if (controller.validateForm()) {
-                    createTask({
-                        $id: nanoid(),
-                        appletId: applet_id,
-                        title: controller.GetValue('title'),
-                        stageId: status.$id
-                    }, (task) => {
-    
-                     
-                        EventBus.Default.fire('tasks.changed', { task })
-                      
-    
-                        EventBus.Default.fire('task.opa.hideedit', null);
-                        EventBus.Default.fire('task.opa.showedit', { stage_id: status.$id });
-                        controller.ResetForm();
-    
+            const [value, setValue] = useState('');
+
+            useKeyPressEvent(13, (e) => {
+                //   console.log(e)
+                /* createDocument({
+                    documentId: nanoid(),
+                    data: {
+                        name: value,
+                        status: status.$id
                     }
-                    );
-    
+                }, (task) => {
+                   // setValue('');
+                    EventBus.Default.fire('tasks.changed', { task })
+                    EventBus.Default.fire('task.opa.hideedit', null);
+                    EventBus.Default.fire('task.opa.showedit', { stage_id: status.$id });
                 }
-    
+                ); */
+
+
             })
-    
+
             useKeyPressEvent(27, () => {
                 EventBus.Default.fire('task.opa.hideedit', {})
             })
-    
+
             return (
                 HStack({ spacing: 10 })(
                     StatusMarker(status),
-                    TextField().placeholder('Task Name')
-                        .formField('title', [new RequiredRule('Name must be exist.')])
-                        .autofocus(true)
+                    TextField()
+                        .border('none')
+                        .value(value)
+                        //.placeholder('Task Name')
+                        //.formField('title', [new RequiredRule('Name must be exist.')])
+                        .autoFocus(true)
                         .padding(cHorizontal, 0)
                         .border('none')
-                        .shadow({ focus: 'none' }),
+                        .shadow({ focus: 'none' })
+                        .onKeyDown((e) => {
+                            if (e.code === 'Enter') {
+                         
+                                createDocument({
+                                    documentId: nanoid(),
+                                    data: {
+                                        name: e.target.value,
+                                        status: status.$id
+                                    }
+                                }, (task) => {
+                                    setValue('');
+                                    EventBus.Default.fire('tasks.changed', { task })
+                                    EventBus.Default.fire('task.opa.hideedit', null);
+                                    EventBus.Default.fire('task.opa.showedit', { stage_id: status.$id });
+                                }
+                                );
+                            }
+                        })
+                        .onChange((e) => {
+
+                            setValue(e)
+                        }),
                     HStack(
                         AssigneeView(),
-                      
+
                     ).width(),
                     Button(
                         Text('SAVE').fontSize(11).fontWeight('500')
                     ).width(52).height(22)
                         .onClick(() => {
-                            if (controller.validateForm()) {
-                                alert('asd');
-                                createTask({
-                                    $id: nanoid(),
-                                    appletId: applet_id,
-                                    title: controller.GetValue('title'),
-                                }, (task) => {
-                                  
-                                    EventBus.Default.fire('tasks.changed', { task })
-                                    EventBus.Default.fire('task.opa.hideedit', null);
-    
+
+                            createDocument({
+                                documentId: nanoid(),
+                                data: {
+                                    name: value,
+                                    status: status.$id
                                 }
-                                )
-                            }
+                            }, (task) => {
+                                EventBus.Default.fire('tasks.changed', { task })
+                                EventBus.Default.fire('task.opa.hideedit', null);
+                            })
+
+
                         }),
                     HStack(
                         Icon(Icons.Close).fontSize(20)
                     ).width().padding(cHorizontal, 10)
                         .onClick(() => EventBus.Default.fire('task.opa.hideedit', {})),
                     HStack(
-    
+
                     ).width(32)
                 )
                     .background('white')
                     .border('solid 1px #7B68EE').height(40)
-    
+
             )
         })
     )
-} */
+} 

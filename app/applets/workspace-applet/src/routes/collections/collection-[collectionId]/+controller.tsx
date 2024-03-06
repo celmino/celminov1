@@ -296,24 +296,38 @@ export class CollectionController extends UIFormController {
                         )
 
                         ,
-                        NewFieldMenuView( (field) => {
-                            if (field.type === 'text') {
-                                createStringAttribute({
-                                    databaseId,
-                                    collectionId,
-                                    key: replaceNonMatchingCharacters(field.name),
-                                    required: false,
-                                    size: 255
-                                }, (attribute) => {
-                                    createField({
-                                        data: {
-                                            ...field,
-                                            collectionId
-                                        }
-                                    }, () => void 0)
-                                })
+                        NewFieldMenuView({
+                            view: (menuIsOpen) => (
+                                HStack(
+
+                                    Icon(Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''),
+                                    Text('New Field')
+                                        .foregroundColor(menuIsOpen ? 'white' : '')
+                                        .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
+                                        .fontSize(14)
+                                        .fontWeight('500') as any
+                                )
+                            ), onNewFieldAdded: (field) => {
+                                if (field.type === 'text') {
+                                    createStringAttribute({
+                                        databaseId,
+                                        collectionId,
+                                        key: replaceNonMatchingCharacters(field.name),
+                                        required: false,
+                                        size: 255
+                                    }, (attribute) => {
+                                        createField({
+                                            data: {
+                                                ...field,
+                                                collectionId
+                                            }
+                                        }, () => void 0)
+                                    })
+                                }
                             }
                         })
+
+
 
                     )
 

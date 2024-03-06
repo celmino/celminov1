@@ -117,7 +117,7 @@
         "@realmocean/spreadsheet": "^19.37.7",
         "@tuval/cg": "^0.0.16",
         "@tuval/core": "^0.0.103",
-        "@tuval/forms": "^1.0.151",
+        "@tuval/forms": "^1.0.168",
         "@tuval/graphics": "^0.0.11",
         "@uidotdev/usehooks": "^2.1.0",
         "css-loader": "^3.2.0",
@@ -135,10 +135,11 @@
         "webpack-cli": "^4.7.2"
     },
     "dependencies": {
-        "@celmino/ui": "^1.0.17",
+        "@celmino/ui": "^1.0.20",
         "@emoji-mart/data": "^1.1.2",
         "@emoji-mart/react": "^1.1.1",
         "@realmocean/antd": "^21.0.26",
+        "@realmocean/sdk": "^1.0.82",
         "emoji-mart": "^5.5.2"
     }
 }

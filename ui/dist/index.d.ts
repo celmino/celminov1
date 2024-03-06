@@ -51,7 +51,10 @@ export class SelectAppletDialog extends DialogView {
     static Show(workspaceId: string, parent?: string): Promise<any>;
 }
 
-export const NewFieldMenuView: (view: UIView, onNewFieldAdded?: Function) => import("@tuval/forms").ReactViewClass;
+export const NewFieldMenuView: ({ view, onNewFieldAdded }: {
+    view: (menuIsOpen: boolean) => UIView;
+    onNewFieldAdded?: Function;
+}) => import("@tuval/forms").ReactViewClass;
 
 export const ColorSelect: ({ onSelect }: {
     onSelect: any;

@@ -13,7 +13,7 @@ import {
 import { rectSortingStrategy, SortableContext, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import { ReactView, Text, VStack } from "@tuval/forms";
+import { ReactView, Text, VStack, cTopLeading } from "@tuval/forms";
 import BoardSectionList from "./components/BoardSectionList";
 
 
@@ -230,9 +230,11 @@ export default function App(props) {
 
 export const TaskTable2 = (items, status) => {
     return (
+        VStack({ alignment: cTopLeading })(
         ReactView(
             <BoardSectionList items={items} status={status} />
         ).frame(true).width('100%')
+        ).padding(20)
     )
 
 }

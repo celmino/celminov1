@@ -114,10 +114,10 @@
   resolved "https://registry.npmjs.org/@base2/pretty-print-object/-/pretty-print-object-1.0.1.tgz"
   integrity sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==
 
-"@celmino/ui@^1.0.17":
-  version "1.0.17"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.17.tgz"
-  integrity sha512-BblCtN4SpHBRdjGT/HXDjB5kZaBaZOU8aNG0dO7oRztprFHH3FMJ669BAM6kKaw5IZy4UPsC9gnEIB0xze0a2g==
+"@celmino/ui@^1.0.20":
+  version "1.0.20"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.20.tgz"
+  integrity sha512-2XfX3xcceHftWCuj7WYBQbFZRHjP7Lbn7JX0wXfpjT1eoAWFOAEtpS9pSHi2YC0GkbfmhtNLlwU5+/OCFwK27w==
   dependencies:
     "@realmocean/sdk" "1.0.82"
     "@realmocean/vibe" "2.82.50"

@@ -7185,19 +7185,25 @@ var CollectionController = /** @class */ (function (_super) {
             })).width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)('com.tuvalsoft.widget.editorjs')
                 .config({
                 scrollable: false
-            })), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.NewFieldMenuView)(function (field) {
-                if (field.type === 'text') {
-                    createStringAttribute({
-                        databaseId: databaseId,
-                        collectionId: collectionId,
-                        key: replaceNonMatchingCharacters(field.name),
-                        required: false,
-                        size: 255
-                    }, function (attribute) {
-                        createField({
-                            data: field
-                        }, function () { return void 0; });
-                    });
+            })), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.NewFieldMenuView)({
+                view: function (menuIsOpen) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Icon)(_Icons__WEBPACK_IMPORTED_MODULE_5__.Icons.Plus).foregroundColor(menuIsOpen ? 'white' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('New Field')
+                    .foregroundColor(menuIsOpen ? 'white' : '')
+                    .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
+                    .fontSize(14)
+                    .fontWeight('500'))); }, onNewFieldAdded: function (field) {
+                    if (field.type === 'text') {
+                        createStringAttribute({
+                            databaseId: databaseId,
+                            collectionId: collectionId,
+                            key: replaceNonMatchingCharacters(field.name),
+                            required: false,
+                            size: 255
+                        }, function (attribute) {
+                            createField({
+                                data: __assign(__assign({}, field), { collectionId: collectionId })
+                            }, function () { return void 0; });
+                        });
+                    }
                 }
             }))
                 .height()

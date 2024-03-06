@@ -11,6 +11,7 @@ import SortableTaskItem from './SortableTaskItem';
 import { DynoDialog } from "@celmino/ui";
 import { DatePickerRenderer } from '@realmocean/antd';
 import { NewFieldMenuView } from '@celmino/ui';
+import { EditTaskItem } from '../EditTaskItem';
 
 
 
@@ -50,7 +51,7 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
 
     const { applet_id, workspaceId } = useParams();
 
-    const { attributes: fields = [], onItemSave, onNewFieldAddded = () => void 0 } = useOptions();
+    const { attributes: fields = [], onItemSave, onNewFieldAddded = () => void 0 , groupBy} = useOptions();
 
     const [mounted, setMounted] = useState(false)
 
@@ -119,12 +120,12 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                             Text('Name').fontSize(10).fontWeight('500').textTransform('uppercase')
                         ).allWidth(300).height(30),
                         ...ForEach(fields)((field: any) => (
-                            (field.key === 'name' || field.hidden) ? Fragment() :
+                            (field.key === 'name' || field.hidden || field.key === groupBy) ? Fragment() :
                                 HStack({ alignment: cLeading })(
                                     Text(field.name).fontSize(10).fontWeight('500').textTransform('uppercase')
                                 ).allWidth(100).height(30)
                         )),
-                       
+
                         /*   items.length > 0 ?
                               HStack(
                                   Text('Assignee').fontSize(10).fontWeight('500').textTransform('uppercase')
@@ -146,19 +147,33 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                                 .allWidth(100).height(30)
                         ), */
                         HStack(
-                            NewFieldMenuView( (field) => {
-                                alert(onNewFieldAddded)
-                                //alert(JSON.stringify(field))
-                                onNewFieldAddded(field)
+                            NewFieldMenuView({
+                                view: (menuIsOpen) =>
+
+                                    HStack(
+                                        Text('+').fontSize(18).fontWeight('500').cursor('pointer')
+                                        .foregroundColor(menuIsOpen ? 'white' : '')
+                                       // Icon(Icons).foregroundColor(menuIsOpen ? 'white' : ''),
+                                       /*  Text('New Field')
+                                            .foregroundColor(menuIsOpen ? 'white' : '')
+                                            .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
+                                            .fontSize(14)
+                                            .fontWeight('500') as any */
+                                    )
+                                , onNewFieldAdded: (field) => {
+                                   // alert(onNewFieldAddded)
+                                    //alert(JSON.stringify(field))
+                                    onNewFieldAddded(field)
+                                }
                             })
-                           /*  UIWidget('com.tuvalsoft.widget.custom-field-popup')
-                                .config({
-                                    label: '+',
-                                    onAction: (data) => onNewFieldAddded(data)
-                                }) */
+                            /*  UIWidget('com.tuvalsoft.widget.custom-field-popup')
+                                 .config({
+                                     label: '+',
+                                     onAction: (data) => onNewFieldAddded(data)
+                                 }) */
                         ).width(),
                         HStack(
-                            Text('+').fontSize(18).fontWeight('500').cursor('pointer')
+                          //  Text('+').fontSize(18).fontWeight('500').cursor('pointer')
                         ).allWidth(100).height(30)
                             .onClick(() => {
                                 alert('create custom field')
@@ -193,7 +208,7 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
 
                     ))}
                     {
-                        showEdit && /* EditTaskItem(status) */Text('ll').render()
+                        showEdit &&  EditTaskItem(status).render()
                     }
                 </div>
             </SortableContext>
@@ -263,10 +278,10 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                             }
                         }
 
-                        DynoDialog.Show({
+                     /*    DynoDialog.Show({
                             "title": `Create Item`,
                             'onClick': onItemSave,
-                            /*   "mutation":"_create_workspace", */
+                          
                             "actions": [
                                 {
                                     "label": "Save",
@@ -285,9 +300,9 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                             "layout": {
                                 "type": "category"
                             }
-                        })
-                        // EventBus.Default.fire('task.opa.hideedit', null);
-                        //   setShowEdit(true) ;
+                        }) */
+                         EventBus.Default.fire('task.opa.hideedit', null);
+                           setShowEdit(true) ;
                     }/* createTaskUI({ spaceId: space_id, folderId: folder_id, itemId: item_id, stageId: status.id }) */)
                     .render()
             }

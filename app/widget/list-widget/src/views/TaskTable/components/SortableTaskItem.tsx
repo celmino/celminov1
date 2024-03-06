@@ -26,7 +26,7 @@ type SortableTaskItemProps = {
 const SortableTaskItem = ({ id, task: item, status }/* : SortableTaskItemProps */) => UIViewBuilder(() => {
 
 
-    const { onItemClick = void 0, attributes: fields = [] } = useOptions();
+    const { onItemClick = void 0, attributes: fields = [], groupBy } = useOptions();
 
     const {
         attributes,
@@ -89,7 +89,7 @@ const SortableTaskItem = ({ id, task: item, status }/* : SortableTaskItemProps *
                         ).allWidth(300).allHeight(30),
 
                         ...ForEach(fields)((field: any) => (
-                            (field.key === 'name' || field.hidden) ? Fragment() :
+                            (field.key === 'name' || field.hidden || field.key === groupBy) ? Fragment() :
                                 RendererProxy(item,fields, field)
                         )),
                       
