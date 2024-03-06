@@ -22,7 +22,7 @@ const FieldTypes = {
 
 class Controller extends UIFormController {
     public override LoadView() {
-        const { onNewFieldAdded } = this.props;
+        const { onNewFieldAdded, view } = this.props;
         return (
             HStack({ alignment: cTrailing })(
                 UIViewBuilder(() => {
@@ -132,7 +132,7 @@ class Controller extends UIFormController {
                     return (
                         (PopupButton as any)(
                             HStack(
-
+                                view(menuIsOpen)
                             )
                                 .width()
 
@@ -188,16 +188,11 @@ class Controller extends UIFormController {
     }
 }
 
-export const NewFieldMenuView = (view: UIView, onNewFieldAdded?: Function) => (
-
+export const NewFieldMenuView = ({ view, onNewFieldAdded }: { view: (menuIsOpen: boolean) => UIView, onNewFieldAdded?: Function }) => (
     ReactView(
         <Controller onNewFieldAdded={onNewFieldAdded} view={view}></Controller>
     )
-
-
 )
-
-
 
 
 FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', SaveTextFieldAction);
