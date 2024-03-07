@@ -470,19 +470,17 @@ export class MainController extends BiosController {
         }
 
         return (
-            //Routes()
+            Routes()
         
-             ScrollView({ axes: cVertical, alignment: cTopLeading })(
+            /*  ScrollView({ axes: cVertical, alignment: cTopLeading })(
                 ReactView(
                     <div>
-                      {/*   {
-                            JSON.stringify(authResponse)
-                        } */}
+                     
                         <button onClick={() => refreshToken()}>Open Picker</button>
                         <GoogleDrive token={token}></GoogleDrive>
                     </div>
                 )
-            ) 
+            )  */
         )
     }
 }

@@ -9102,11 +9102,17 @@ var MainController = /** @class */ (function (_super) {
             });
             client.requestAccessToken();
         }
-        return (
-        //Routes()
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", null,
-            react__WEBPACK_IMPORTED_MODULE_3___default().createElement("button", { onClick: function () { return refreshToken(); } }, "Open Picker"),
-            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(GoogleDrive, { token: token })))));
+        return ((0,_routes_routes__WEBPACK_IMPORTED_MODULE_1__.Routes)()
+        /*  ScrollView({ axes: cVertical, alignment: cTopLeading })(
+            ReactView(
+                <div>
+                 
+                    <button onClick={() => refreshToken()}>Open Picker</button>
+                    <GoogleDrive token={token}></GoogleDrive>
+                </div>
+            )
+        )  */
+        );
     };
     return MainController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.BiosController));
