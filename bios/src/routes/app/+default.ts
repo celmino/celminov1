@@ -4,8 +4,9 @@ import { CreateWorkspaceView } from "../../views/CreateWorkspaceView";
 import { useGetCurrentOrganization } from "../../hooks/useGetCurrentOrganization";
 import { CelminoController, Guard } from "../../CelminoController";
 import { DefaultWorkspaceGuard } from "../../guards/WokspaceGuard";
+import { OrganizationGuard } from "../../guards/LoginGuard";
 
-@Guard(DefaultWorkspaceGuard)
+@Guard(OrganizationGuard)
 export class DefaultWorkspaceController extends CelminoController {
     public override LoadView(): UIView {
         return (

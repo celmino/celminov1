@@ -8,6 +8,7 @@ import { is } from "@tuval/core";
 import { useGetCurrentOrganization } from "../hooks/useGetCurrentOrganization";
 import { useGetOrganizationId } from "../hooks/useGetOrganizationId";
 import React from "react";
+import { urlFriendly } from "../utils/urlFriendly";
 
 export const CelminoLogoText = ({ width = 200, height = 30 } = {}) => (
     ReactView(
@@ -45,7 +46,7 @@ export const CreateOrganizationView = () => UIViewBuilder(() => {
         VStack(
             HStack({ alignment: cLeading, spacing: 10 })(
                 Heading('Celmino').fontSize('3rem').fontWeight('600').foregroundColor('#090e13')
-                .fontFamily('"Hagrid", sans-serif'),
+                    .fontFamily('"Hagrid", sans-serif'),
                 CelminoLogo({ color: '#02B99D' })
             ).height().padding(),
             VStack({ spacing: 5 })(
@@ -74,7 +75,9 @@ export const CreateOrganizationView = () => UIViewBuilder(() => {
 
                                     }, () => {
                                         deleteCache();
-                                        navigate(`/app/workspace/select`);
+                                        Services.Teams.get(membership.teamId).then((team) => {
+                                            navigate(`/app/${urlFriendly(team.name)}-${team.$id}/workspace/select`);
+                                        })
                                     })
 
                                 } else {

@@ -2,16 +2,21 @@ import { ID, Models, Services, useCreateDatabase, useCreateRealm } from "@realmo
 import { ButtonRenderer, InputRenderer } from "@realmocean/antd";
 import { HStack, UIFormController, UIRouteOutlet, UIView, cTopLeading, useParams, Text, VStack, Input, Button, useState, useNavigate } from "@tuval/forms";
 import { CreateWorkspaceView } from "../../../../views/CreateWorkspaceView";
+import { Guard } from "../../../../CelminoController";
+import { MembershipGuard, OrganizationGuard } from "../../../../guards/LoginGuard";
 
+
+@Guard(OrganizationGuard, MembershipGuard)
 export class OrganizationController extends UIFormController {
 
     public override LoadView(): UIView {
-        const { organizationId } = useParams();
+        const { organizationId, workspaceId } = useParams();
         const [workspaceName, setWorkspaceName] = useState();
         const { createRealm } = useCreateRealm();
         const navigate = useNavigate();
 
         return (
+            workspaceId != null ? UIRouteOutlet().width('100%').height('100%') :
             CreateWorkspaceView()
          /*    VStack({ alignment: cTopLeading })(
                 Input().renderer(InputRenderer).onChange((e: any) => {

@@ -1,17 +1,19 @@
 import { ButtonRenderer, InputRenderer } from "@realmocean/antd";
-import { Query, Services, useCreateRealm, useCreateTeam, useDeleteSession, useGetMe, useListRealms } from "@realmocean/sdk";
+import { Query, Services, useCreateRealm, useCreateTeam, useDeleteSession, useGetMe, useGetOrganization, useListRealms } from "@realmocean/sdk";
 
-import { Button, ForEach, HStack, Heading, Input, TextField, Text, UINavigate, UIViewBuilder, VStack, useNavigate, useState, Spacer, cLeading, cHorizontal, darken, Icon, Icons, HDivider } from "@tuval/forms";
+import { Button, ForEach, HStack, Heading, Input, TextField, Text, UINavigate, UIViewBuilder, VStack, useNavigate, useState, Spacer, cLeading, cHorizontal, darken, Icon, Icons, HDivider, useParams } from "@tuval/forms";
 import { useGetCurrentOrganization } from "../hooks/useGetCurrentOrganization";
+import { urlFriendly } from "../utils/urlFriendly";
 
 
 export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
+    const { organizationId } = useParams();
     const [workspaceName, setWorkspaceName] = useState('');
     const { me } = useGetMe('console');
     const navigate = useNavigate();
     // const { organizationId } = useParams();
-    const { organization, isLoading: isOrganizationLoading } = useGetCurrentOrganization();
+    const { organization, isLoading: isOrganizationLoading } = useGetOrganization({organizationId, hookEnabled: true}); // useGetCurrentOrganization();
 
     const { createRealm, isLoading } = useCreateRealm();
     const { deleteSession } = useDeleteSession('console');
@@ -55,7 +57,8 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         .cornerRadius(6)
                                         .background({ hover: darken('#7FE8D4', 0.05) })
                                         .onClick(() => {
-                                            navigate(`/app/${realm.name}-${realm.$id}`)
+                                           
+                                            navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
                                         })
                                 )
                             ).padding(cHorizontal, 20).height().maxWidth('100%'),
@@ -117,7 +120,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
 
 
-                                        navigate(`/app/${workspace.name}-${workspace.$id}`)
+                                        navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
                                     })
                                 }),
 

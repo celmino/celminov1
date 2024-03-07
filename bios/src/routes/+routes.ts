@@ -24,7 +24,15 @@ export const Routes = () => {
             UIRoute('/app', LayoutController).children(
                 UIRoute('', DefaultWorkspaceController),
                 UIRoute('*', HomeController),
-                UIRoute('organization/:organizationId', OrganizationController),
+                UIRoute(':organizationId', OrganizationController).children(
+                    UIRoute(':workspaceId', WorkspaceLayoutController).children(
+                        UIRoute('', WorkspaceController).children(
+                            UIRoute('applet/:appletId/*', AppletController),
+                            UIRoute(':appletId/*', AppletController)
+                        )
+                    ),
+                    UIRoute('workspace/select', WorkspaceSelectController)
+                ),
                 UIRoute('organization/select', OrganizationSelectController),
                 UIRoute('workspace/', WorkspaceLayoutController).children(
                     UIRoute(':workspaceId', WorkspaceController).children(
@@ -32,13 +40,8 @@ export const Routes = () => {
                         UIRoute(':appletId/*', AppletController)
                     )
                 ),
-                UIRoute(':workspaceId', WorkspaceLayoutController).children(
-                    UIRoute('', WorkspaceController).children(
-                        UIRoute('applet/:appletId/*', AppletController),
-                        UIRoute(':appletId/*', AppletController)
-                    )
-                ),
-                UIRoute('workspace/select', WorkspaceSelectController)
+
+
             ),
 
             UIRoute('/', LandingController),

@@ -87,6 +87,7 @@ services:
       - app/http.php
       - -dopcache.preload=opcache.preload=/usr/src/code/app/preload.php
     environment:
+      - _APP_NAME
       - _APP_TITLE
       - _APP_ICON
       - _APP_ENV
@@ -185,6 +186,7 @@ services:
       - _APP_ASSISTANT_OPENAI_API_KEY
       - _APP_LOCALHOST_DOMAIN
       - _APP_FRONTEND_LIBS
+
 
   realmocean-realtime:
     entrypoint: realtime

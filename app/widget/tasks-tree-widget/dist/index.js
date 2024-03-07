@@ -251,14 +251,15 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var isLoading = false;
         var items = (this.props.data || {}).items;
-        var _b = this.props.config || {}, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
-        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_12__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
+        var _b = this.props.config || {}, organizationId = _b.organizationId, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
+        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _c.organization, isOrganizationLoading = _c.isLoading; // useGetCurrentOrganization();
+        var _d = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_12__.getAppletId)() === appletId), isOpen = _d[0], setIsOpen = _d[1];
         var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_12__.getListId)();
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(workspaceId).updateDocument;
         var updateDatabase = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDatabase)(workspaceId).updateDatabase;
         var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useCreateDocument)(workspaceId, appletId, 'wm_tree').createDocument;
         var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
-        var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }), applet = _d.document, isAppletLoading = _d.isLoading;
+        var _e = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }), applet = _e.document, isAppletLoading = _e.isLoading;
         return (isAppletLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
                 .config({
@@ -367,7 +368,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                     if (onItemSelected == null) {
                         switch (item.type) {
                             case 'applet':
-                                navigate("/app/".concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet.name), "-").concat(appletId));
+                                navigate("/app/".concat(process(organization.name), "-").concat(organization.$id, "/").concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet.name), "-").concat(appletId));
                                 break;
                             case 'list':
                                 navigate("/app/".concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet), "-").concat(appletId, "/list/").concat(item.$id));

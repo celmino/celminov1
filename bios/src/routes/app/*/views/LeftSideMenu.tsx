@@ -1,6 +1,6 @@
 
 import { SelectAppletDialog } from "@celmino/ui";
-import { Models, Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useGetMe, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
+import { Models, Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useGetMe, useGetOrganization, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
 import { Text } from '@realmocean/vibe';
 import { EventBus, is } from "@tuval/core";
 import {
@@ -27,6 +27,7 @@ import React, { useEffect, useState } from "react";
 import { useGetCurrentOrganization } from "../../../../hooks/useGetCurrentOrganization";
 import { EmptyView } from "../../../../views/EmptyView";
 import { DatabaseNameView } from "./DatabaseNameView";
+import { urlFriendly } from "../../../../utils/urlFriendly";
 
 
 const expandeds = {};
@@ -237,6 +238,9 @@ export const LeftSideMenuView = (selectedItem: string) => {
                 // alert(workspaceId)
                 const { organizationId, workspaceId } = useParams();
 
+                const { organization, isLoading: isOrganizationLoading } = useGetOrganization({organizationId, hookEnabled: true}); // useGetCurrentOrganization();
+
+                
                 const { databases } = useListDatabases(workspaceId, [
                     Query.equal('category', 'applet')
                 ]);
@@ -264,11 +268,11 @@ export const LeftSideMenuView = (selectedItem: string) => {
                 return (
                     (isWorkspaceTreeLoading) ? Fragment() : (workspaceTreeITems == null) ? Text('null') :
                         VStack({ alignment: cTopLeading })(
-                            HStack().width(200).height(100).background('yellow')
+                            /* HStack().width(200).height(100).background('yellow')
                                 .onClick(() => {
                                    // createTeam({id:'admins', name:'admins'})
                                    createTeamMembership({teamId:'admins',roles:[],url:'http://localhost:9501', email:'stanoncloud@gmail.com'})
-                                }),
+                                }), */
                             VStack({ alignment: cTopLeading })(
                                 HStack(
                                     PopupButton(
@@ -373,7 +377,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                 })
                                                         ))
                                                     )
-                                                        .onClick(() => navigate(`/app/workspace/select`))
+                                                        .onClick(() => navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
                                                         .padding()
 
                                                 ).width(250)

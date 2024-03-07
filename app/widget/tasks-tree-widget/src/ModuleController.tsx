@@ -8,7 +8,7 @@ import {
 } from '@tuval/forms';
 
 import { SelectAppletDialog } from '@celmino/ui';
-import { Query, useCreateDocument, useGetDocument, useGetRealm, useListDocuments, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
+import { Query, useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useListDocuments, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
 import { DynoDialog } from '@realmocean/ui';
 import { EventBus, is } from '@tuval/core';
 import { AddBoardDialog } from './dialogs/AddBoardDialog';
@@ -213,7 +213,9 @@ export class WorkspaceTreeWidgetController extends UIController {
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
         const { items } = this.props.data || {};
-        const { workspaceId, appletId, onItemSelected, item } = this.props.config || {};
+        const { organizationId, workspaceId, appletId, onItemSelected, item } = this.props.config || {};
+
+        const { organization, isLoading: isOrganizationLoading } = useGetOrganization({organizationId, hookEnabled: true}); // useGetCurrentOrganization();
 
 
         const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
@@ -346,7 +348,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                             if (onItemSelected == null) {
                                 switch (item.type) {
                                     case 'applet':
-                                        navigate(`/app/${process(realm?.name)}-${workspaceId}/${process(applet.name)}-${appletId}`);
+                                        navigate(`/app/${process(organization.name)}-${organization.$id}/${process(realm?.name)}-${workspaceId}/${process(applet.name)}-${appletId}`);
                                         break;
                                     case 'list':
                                         navigate(`/app/${process(realm?.name)}-${workspaceId}/${process(applet)}-${appletId}/list/${item.$id}`);
