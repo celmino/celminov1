@@ -1,6 +1,6 @@
 
-import { InputRenderer, SelectRenderer } from "@realmocean/antd";
-import { VStack, Text, Select, cTopLeading } from "@tuval/forms"
+import { InputRenderer, SelectRenderer , Select} from "@realmocean/antd";
+import { VStack, Text, cTopLeading, Spinner } from "@tuval/forms"
 import { PropertyLabel } from "../PropertyLabel";
 
 export const SelectField = (textFieldInfo) => {
@@ -8,9 +8,21 @@ export const SelectField = (textFieldInfo) => {
     return (
         VStack({ alignment: cTopLeading, spacing: 2 })(
             PropertyLabel(label),
-            Select()
-                .options(options)
-                .renderer(SelectRenderer)
+            /*   Select()
+                  .options(options)
+                  .renderer(SelectRenderer) */
+            Select().placeHolder('Select Collection')
+                .dropdownRenderer(() => {
+                   // const { documents, isLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
+                    return (
+                      
+                            Text(JSON.stringify('sdfsdfds')) as any
+                    )
+                })
+                .options([{
+                    value: 1,
+                    label: 'One'
+                }]) as any
         )
     )
 }

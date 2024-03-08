@@ -29,7 +29,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MyTestController": () => (/* binding */ MyTestController)
+/* harmony export */   MyTestController: () => (/* binding */ MyTestController)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -142,7 +142,7 @@ var MyTestController = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "WidgetController": () => (/* binding */ WidgetController)
+/* harmony export */   WidgetController: () => (/* binding */ WidgetController)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -208,7 +208,7 @@ var WidgetController = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SelectViewDialog": () => (/* binding */ SelectViewDialog)
+/* harmony export */   SelectViewDialog: () => (/* binding */ SelectViewDialog)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -233,10 +233,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 };
 
 var SelectViewDialog = /** @class */ (function (_super) {
@@ -251,7 +255,7 @@ var SelectViewDialog = /** @class */ (function (_super) {
     SelectViewDialog.prototype.BindRouterParams = function (views, powerUps) {
         this.views = views;
         this.PowerUps = powerUps;
-        this.filtered_opas = __spreadArray(__spreadArray([], this.views), this.PowerUps);
+        this.filtered_opas = __spreadArray(__spreadArray([], this.views, true), this.PowerUps, true);
     };
     SelectViewDialog.prototype.OnOK = function (applet) {
         this.ShowDialogAsyncResolve(applet);
@@ -342,8 +346,8 @@ var SelectViewDialog = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActionsPanelButton": () => (/* binding */ ActionsPanelButton),
-/* harmony export */   "ActionPanel": () => (/* binding */ ActionPanel)
+/* harmony export */   ActionPanel: () => (/* binding */ ActionPanel),
+/* harmony export */   ActionsPanelButton: () => (/* binding */ ActionsPanelButton)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -409,7 +413,7 @@ var ActionPanel = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FieldContainer": () => (/* binding */ FieldContainer)
+/* harmony export */   FieldContainer: () => (/* binding */ FieldContainer)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -458,7 +462,7 @@ var FieldContainer = function (fields) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ObjectHeader": () => (/* binding */ ObjectHeader)
+/* harmony export */   ObjectHeader: () => (/* binding */ ObjectHeader)
 /* harmony export */ });
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
@@ -498,7 +502,7 @@ var ObjectHeader = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PropertyLabel": () => (/* binding */ PropertyLabel)
+/* harmony export */   PropertyLabel: () => (/* binding */ PropertyLabel)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -525,7 +529,7 @@ var PropertyLabel = function (label) { return ((0,_tuval_forms__WEBPACK_IMPORTED
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "UserField": () => (/* binding */ UserField)
+/* harmony export */   UserField: () => (/* binding */ UserField)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -557,7 +561,7 @@ var UserField = function (textFieldInfo) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SelectField": () => (/* binding */ SelectField)
+/* harmony export */   SelectField: () => (/* binding */ SelectField)
 /* harmony export */ });
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__);
@@ -569,9 +573,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var SelectField = function (textFieldInfo) {
     var label = textFieldInfo.label, value = textFieldInfo.value, onChange = textFieldInfo.onChange, placeholder = textFieldInfo.placeholder, _a = textFieldInfo.options, options = _a === void 0 ? [] : _a;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 2 })((0,_PropertyLabel__WEBPACK_IMPORTED_MODULE_2__.PropertyLabel)(label), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Select)()
-        .options(options)
-        .renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.SelectRenderer)));
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 2 })((0,_PropertyLabel__WEBPACK_IMPORTED_MODULE_2__.PropertyLabel)(label), 
+    /*   Select()
+          .options(options)
+          .renderer(SelectRenderer) */
+    (0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.Select)().placeHolder('Select Collection')
+        .dropdownRenderer(function () {
+        // const { documents, isLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(JSON.stringify('sdfsdfds'));
+    })
+        .options([{
+            value: 1,
+            label: 'One'
+        }])));
 };
 
 
@@ -586,7 +600,7 @@ var SelectField = function (textFieldInfo) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TextField": () => (/* binding */ TextField)
+/* harmony export */   TextField: () => (/* binding */ TextField)
 /* harmony export */ });
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__);
@@ -747,7 +761,7 @@ var __webpack_exports__ = {};
   \****************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RatingWidget": () => (/* binding */ RatingWidget)
+/* harmony export */   RatingWidget: () => (/* binding */ RatingWidget)
 /* harmony export */ });
 /* harmony import */ var _AppController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppController */ "./src/AppController.tsx");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {

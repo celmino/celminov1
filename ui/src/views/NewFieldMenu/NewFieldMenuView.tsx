@@ -24,7 +24,7 @@ const FieldTypes = {
 
 class Controller extends UIFormController {
     public override LoadView() {
-        const { onNewFieldAdded, view, workspaceId } = this.props;
+        const { onNewFieldAdded, view } = this.props;
         return (
             HStack({ alignment: cTrailing })(
                 UIViewBuilder(() => {
@@ -172,7 +172,7 @@ class Controller extends UIFormController {
                                     .border('1px solid #EFF0F1')
                                     .cornerRadius(6)
                                 :
-                                FieldTypes[selectedType](workspaceId, onNewFieldAdded)
+                                FieldTypes[selectedType](onNewFieldAdded)
                         )
                             .open(menuIsOpen)
                             .hideHandle(hideHandle => _hideHandle = hideHandle)
@@ -190,9 +190,9 @@ class Controller extends UIFormController {
     }
 }
 
-export const NewFieldMenuView = ({ workspaceId, view, onNewFieldAdded }: {workspaceId: string, view: (menuIsOpen: boolean) => UIView, onNewFieldAdded?: Function }) => (
+export const NewFieldMenuView = ({ view, onNewFieldAdded }: { view: (menuIsOpen: boolean) => UIView, onNewFieldAdded?: Function }) => (
     ReactView(
-        <Controller onNewFieldAdded={onNewFieldAdded} view={view} workspaceId={workspaceId}></Controller>
+        <Controller onNewFieldAdded={onNewFieldAdded} view={view}></Controller>
     )
 )
 
