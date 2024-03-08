@@ -101,12 +101,12 @@
             "@commitlint/config-conventional"
         ]
     },
-    "devDependencies": {},
     "dependencies": {
         "@realmocean/sdk": "1.0.82",
         "@realmocean/vibe": "2.82.50",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.167",
+        "@uiw/react-color-circle": "^2.1.1",
         "dts-bundle": "^0.7.3",
         "shelljs": "^0.8.5",
         "ts-loader": "^9.5.1",
