@@ -4311,6 +4311,697 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./node_modules/@uiw/color-convert/esm/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@uiw/color-convert/esm/index.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   color: () => (/* binding */ color),
+/* harmony export */   equalColorObjects: () => (/* binding */ equalColorObjects),
+/* harmony export */   equalColorString: () => (/* binding */ equalColorString),
+/* harmony export */   equalHex: () => (/* binding */ equalHex),
+/* harmony export */   getContrastingColor: () => (/* binding */ getContrastingColor),
+/* harmony export */   hexToHsva: () => (/* binding */ hexToHsva),
+/* harmony export */   hexToRgba: () => (/* binding */ hexToRgba),
+/* harmony export */   hslStringToHsla: () => (/* binding */ hslStringToHsla),
+/* harmony export */   hslStringToHsva: () => (/* binding */ hslStringToHsva),
+/* harmony export */   hslaStringToHsva: () => (/* binding */ hslaStringToHsva),
+/* harmony export */   hslaToHsl: () => (/* binding */ hslaToHsl),
+/* harmony export */   hslaToHsva: () => (/* binding */ hslaToHsva),
+/* harmony export */   hsvStringToHsva: () => (/* binding */ hsvStringToHsva),
+/* harmony export */   hsvaStringToHsva: () => (/* binding */ hsvaStringToHsva),
+/* harmony export */   hsvaToHex: () => (/* binding */ hsvaToHex),
+/* harmony export */   hsvaToHexa: () => (/* binding */ hsvaToHexa),
+/* harmony export */   hsvaToHslString: () => (/* binding */ hsvaToHslString),
+/* harmony export */   hsvaToHsla: () => (/* binding */ hsvaToHsla),
+/* harmony export */   hsvaToHslaString: () => (/* binding */ hsvaToHslaString),
+/* harmony export */   hsvaToHsv: () => (/* binding */ hsvaToHsv),
+/* harmony export */   hsvaToHsvString: () => (/* binding */ hsvaToHsvString),
+/* harmony export */   hsvaToHsvaString: () => (/* binding */ hsvaToHsvaString),
+/* harmony export */   hsvaToRgbString: () => (/* binding */ hsvaToRgbString),
+/* harmony export */   hsvaToRgba: () => (/* binding */ hsvaToRgba),
+/* harmony export */   hsvaToRgbaString: () => (/* binding */ hsvaToRgbaString),
+/* harmony export */   parseHue: () => (/* binding */ parseHue),
+/* harmony export */   rgbStringToHsva: () => (/* binding */ rgbStringToHsva),
+/* harmony export */   rgbaStringToHsva: () => (/* binding */ rgbaStringToHsva),
+/* harmony export */   rgbaToHex: () => (/* binding */ rgbaToHex),
+/* harmony export */   rgbaToHexa: () => (/* binding */ rgbaToHexa),
+/* harmony export */   rgbaToHsva: () => (/* binding */ rgbaToHsva),
+/* harmony export */   rgbaToRgb: () => (/* binding */ rgbaToRgb),
+/* harmony export */   validHex: () => (/* binding */ validHex)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+
+var RGB_MAX = 255;
+var HUE_MAX = 360;
+var SV_MAX = 100;
+/**
+ * ```js
+ * rgbaToHsva({ r: 255, g: 255, b: 255, a: 1 }) //=> { h: 0, s: 0, v: 100, a: 1 }
+ * ```
+ */
+var rgbaToHsva = _ref => {
+  var {
+    r,
+    g,
+    b,
+    a
+  } = _ref;
+  var max = Math.max(r, g, b);
+  var delta = max - Math.min(r, g, b);
+
+  // prettier-ignore
+  var hh = delta ? max === r ? (g - b) / delta : max === g ? 2 + (b - r) / delta : 4 + (r - g) / delta : 0;
+  return {
+    h: 60 * (hh < 0 ? hh + 6 : hh),
+    s: max ? delta / max * SV_MAX : 0,
+    v: max / RGB_MAX * SV_MAX,
+    a
+  };
+};
+var hsvaToHslString = hsva => {
+  var {
+    h,
+    s,
+    l
+  } = hsvaToHsla(hsva);
+  // return `hsl(${h}, ${s}%, ${l}%)`;
+  return "hsl(" + h + ", " + Math.round(s) + "%, " + Math.round(l) + "%)";
+};
+var hsvaToHsvString = _ref2 => {
+  var {
+    h,
+    s,
+    v
+  } = _ref2;
+  return "hsv(" + h + ", " + s + "%, " + v + "%)";
+};
+var hsvaToHsvaString = _ref3 => {
+  var {
+    h,
+    s,
+    v,
+    a
+  } = _ref3;
+  return "hsva(" + h + ", " + s + "%, " + v + "%, " + a + ")";
+};
+var hsvaToHslaString = hsva => {
+  var {
+    h,
+    s,
+    l,
+    a
+  } = hsvaToHsla(hsva);
+  return "hsla(" + h + ", " + s + "%, " + l + "%, " + a + ")";
+};
+var hslStringToHsla = str => {
+  var [h, s, l, a] = (str.match(/\d+/g) || []).map(Number);
+  return {
+    h,
+    s,
+    l,
+    a
+  };
+};
+var hslaStringToHsva = hslString => {
+  var matcher = /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  var match = matcher.exec(hslString);
+  if (!match) return {
+    h: 0,
+    s: 0,
+    v: 0,
+    a: 1
+  };
+  return hslaToHsva({
+    h: parseHue(match[1], match[2]),
+    s: Number(match[3]),
+    l: Number(match[4]),
+    a: match[5] === undefined ? 1 : Number(match[5]) / (match[6] ? 100 : 1)
+  });
+};
+var hslStringToHsva = hslaStringToHsva;
+var hslaToHsva = _ref4 => {
+  var {
+    h,
+    s,
+    l,
+    a
+  } = _ref4;
+  s *= (l < 50 ? l : SV_MAX - l) / SV_MAX;
+  return {
+    h: h,
+    s: s > 0 ? 2 * s / (l + s) * SV_MAX : 0,
+    v: l + s,
+    a
+  };
+};
+var hsvaToHsla = _ref5 => {
+  var {
+    h,
+    s,
+    v,
+    a
+  } = _ref5;
+  var hh = (200 - s) * v / SV_MAX;
+  return {
+    h,
+    s: hh > 0 && hh < 200 ? s * v / SV_MAX / (hh <= SV_MAX ? hh : 200 - hh) * SV_MAX : 0,
+    l: hh / 2,
+    a
+  };
+};
+var hsvaStringToHsva = hsvString => {
+  var matcher = /hsva?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  var match = matcher.exec(hsvString);
+  if (!match) return {
+    h: 0,
+    s: 0,
+    v: 0,
+    a: 1
+  };
+  return {
+    h: parseHue(match[1], match[2]),
+    s: Number(match[3]),
+    v: Number(match[4]),
+    a: match[5] === undefined ? 1 : Number(match[5]) / (match[6] ? SV_MAX : 1)
+  };
+};
+
+/**
+ * Valid CSS <angle> units.
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/angle
+ */
+var angleUnits = {
+  grad: HUE_MAX / 400,
+  turn: HUE_MAX,
+  rad: HUE_MAX / (Math.PI * 2)
+};
+var parseHue = function parseHue(value, unit) {
+  if (unit === void 0) {
+    unit = 'deg';
+  }
+  return Number(value) * (angleUnits[unit] || 1);
+};
+var hsvStringToHsva = hsvaStringToHsva;
+var rgbaStringToHsva = rgbaString => {
+  var matcher = /rgba?\(?\s*(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  var match = matcher.exec(rgbaString);
+  if (!match) return {
+    h: 0,
+    s: 0,
+    v: 0,
+    a: 1
+  };
+  return rgbaToHsva({
+    r: Number(match[1]) / (match[2] ? SV_MAX / RGB_MAX : 1),
+    g: Number(match[3]) / (match[4] ? SV_MAX / RGB_MAX : 1),
+    b: Number(match[5]) / (match[6] ? SV_MAX / RGB_MAX : 1),
+    a: match[7] === undefined ? 1 : Number(match[7]) / (match[8] ? SV_MAX : 1)
+  });
+};
+var rgbStringToHsva = rgbaStringToHsva;
+
+/** Converts an RGBA color plus alpha transparency to hex */
+var rgbaToHex = _ref6 => {
+  var {
+    r,
+    g,
+    b
+  } = _ref6;
+  var bin = r << 16 | g << 8 | b;
+  return "#" + (h => new Array(7 - h.length).join('0') + h)(bin.toString(16));
+};
+var rgbaToHexa = _ref7 => {
+  var {
+    r,
+    g,
+    b,
+    a
+  } = _ref7;
+  var alpha = typeof a === 'number' && (a * 255 | 1 << 8).toString(16).slice(1);
+  return "" + rgbaToHex({
+    r,
+    g,
+    b,
+    a
+  }) + (alpha ? alpha : '');
+};
+var hexToHsva = hex => rgbaToHsva(hexToRgba(hex));
+var hexToRgba = hex => {
+  var htemp = hex.replace('#', '');
+  if (/^#?/.test(hex) && htemp.length === 3) {
+    hex = "#" + htemp.charAt(0) + htemp.charAt(0) + htemp.charAt(1) + htemp.charAt(1) + htemp.charAt(2) + htemp.charAt(2);
+  }
+  var reg = new RegExp("[A-Za-z0-9]{2}", 'g');
+  var [r, g, b = 0, a] = hex.match(reg).map(v => parseInt(v, 16));
+  return {
+    r,
+    g,
+    b,
+    a: (a != null ? a : 255) / RGB_MAX
+  };
+};
+
+/**
+ * Converts HSVA to RGBA. Based on formula from https://en.wikipedia.org/wiki/HSL_and_HSV
+ * @param color HSVA color as an array [0-360, 0-1, 0-1, 0-1]
+ */
+var hsvaToRgba = _ref8 => {
+  var {
+    h,
+    s,
+    v,
+    a
+  } = _ref8;
+  var _h = h / 60,
+    _s = s / SV_MAX,
+    _v = v / SV_MAX,
+    hi = Math.floor(_h) % 6;
+  var f = _h - Math.floor(_h),
+    _p = RGB_MAX * _v * (1 - _s),
+    _q = RGB_MAX * _v * (1 - _s * f),
+    _t = RGB_MAX * _v * (1 - _s * (1 - f));
+  _v *= RGB_MAX;
+  var rgba = {};
+  switch (hi) {
+    case 0:
+      rgba.r = _v;
+      rgba.g = _t;
+      rgba.b = _p;
+      break;
+    case 1:
+      rgba.r = _q;
+      rgba.g = _v;
+      rgba.b = _p;
+      break;
+    case 2:
+      rgba.r = _p;
+      rgba.g = _v;
+      rgba.b = _t;
+      break;
+    case 3:
+      rgba.r = _p;
+      rgba.g = _q;
+      rgba.b = _v;
+      break;
+    case 4:
+      rgba.r = _t;
+      rgba.g = _p;
+      rgba.b = _v;
+      break;
+    case 5:
+      rgba.r = _v;
+      rgba.g = _p;
+      rgba.b = _q;
+      break;
+  }
+  rgba.r = Math.round(rgba.r);
+  rgba.g = Math.round(rgba.g);
+  rgba.b = Math.round(rgba.b);
+  return (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rgba, {
+    a
+  });
+};
+var hsvaToRgbString = hsva => {
+  var {
+    r,
+    g,
+    b
+  } = hsvaToRgba(hsva);
+  return "rgb(" + r + ", " + g + ", " + b + ")";
+};
+var hsvaToRgbaString = hsva => {
+  var {
+    r,
+    g,
+    b,
+    a
+  } = hsvaToRgba(hsva);
+  return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+};
+var rgbaToRgb = _ref9 => {
+  var {
+    r,
+    g,
+    b
+  } = _ref9;
+  return {
+    r,
+    g,
+    b
+  };
+};
+var hslaToHsl = _ref10 => {
+  var {
+    h,
+    s,
+    l
+  } = _ref10;
+  return {
+    h,
+    s,
+    l
+  };
+};
+var hsvaToHex = hsva => rgbaToHex(hsvaToRgba(hsva));
+var hsvaToHexa = hsva => rgbaToHexa(hsvaToRgba(hsva));
+var hsvaToHsv = _ref11 => {
+  var {
+    h,
+    s,
+    v
+  } = _ref11;
+  return {
+    h,
+    s,
+    v
+  };
+};
+var color = str => {
+  var rgb;
+  var hsl;
+  var hsv;
+  var rgba;
+  var hsla;
+  var hsva;
+  var hex;
+  var hexa;
+  if (typeof str === 'string' && validHex(str)) {
+    hsva = hexToHsva(str);
+    hex = str;
+  } else if (typeof str !== 'string') {
+    hsva = str;
+  }
+  if (hsva) {
+    hsv = hsvaToHsv(hsva);
+    hsla = hsvaToHsla(hsva);
+    rgba = hsvaToRgba(hsva);
+    hexa = rgbaToHexa(rgba);
+    hex = hsvaToHex(hsva);
+    hsl = hslaToHsl(hsla);
+    rgb = rgbaToRgb(rgba);
+  }
+  return {
+    rgb,
+    hsl,
+    hsv,
+    rgba,
+    hsla,
+    hsva,
+    hex,
+    hexa
+  };
+};
+var getContrastingColor = str => {
+  if (!str) {
+    return '#ffffff';
+  }
+  var col = color(str);
+  var yiq = (col.rgb.r * 299 + col.rgb.g * 587 + col.rgb.b * 114) / 1000;
+  return yiq >= 128 ? '#000000' : '#ffffff';
+};
+var equalColorObjects = (first, second) => {
+  if (first === second) return true;
+  for (var prop in first) {
+    // The following allows for a type-safe calling of this function (first & second have to be HSL, HSV, or RGB)
+    // with type-unsafe iterating over object keys. TS does not allow this without an index (`[key: string]: number`)
+    // on an object to define how iteration is normally done. To ensure extra keys are not allowed on our types,
+    // we must cast our object to unknown (as RGB demands `r` be a key, while `Record<string, x>` does not care if
+    // there is or not), and then as a type TS can iterate over.
+    if (first[prop] !== second[prop]) return false;
+  }
+  return true;
+};
+var equalColorString = (first, second) => {
+  return first.replace(/\s/g, '') === second.replace(/\s/g, '');
+};
+var equalHex = (first, second) => {
+  if (first.toLowerCase() === second.toLowerCase()) return true;
+
+  // To compare colors like `#FFF` and `ffffff` we convert them into RGB objects
+  return equalColorObjects(hexToRgba(first), hexToRgba(second));
+};
+var validHex = hex => /^#?([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
+
+/***/ }),
+
+/***/ "./node_modules/@uiw/react-color-circle/esm/Point.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@uiw/react-color-circle/esm/Point.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Point)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function Point(_ref) {
+  var {
+    style,
+    className,
+    title,
+    checked,
+    color,
+    onClick,
+    rectProps
+  } = _ref;
+  var btn = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  var handleMouseEnter = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
+    btn.current.style['transform'] = 'scale(1.2)';
+  }, []);
+  var handleMouseLeave = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(() => {
+    btn.current.style['transform'] = 'scale(1)';
+  }, []);
+  var styleWrapper = (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    '--circle-point-background-color': '#fff',
+    height: checked ? '100%' : 0,
+    width: checked ? '100%' : 0,
+    borderRadius: '50%',
+    backgroundColor: 'var(--circle-point-background-color)',
+    boxSizing: 'border-box',
+    transition: 'height 100ms ease 0s, width 100ms ease 0s'
+  }, rectProps.style);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    ref: btn,
+    onClick: onClick,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+    title: title,
+    className: className,
+    style: (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 28,
+      height: 28,
+      padding: 3,
+      borderRadius: '50%',
+      marginRight: 12,
+      marginBottom: 12,
+      boxSizing: 'border-box',
+      transform: 'scale(1)',
+      boxShadow: color + " 0px 0px " + (checked ? 5 : 0) + "px",
+      transition: 'transform 100ms ease 0s, box-shadow 100ms ease 0s'
+    }, style),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rectProps, {
+      style: styleWrapper
+    }))
+  });
+}
+
+/***/ }),
+
+/***/ "./node_modules/@uiw/react-color-circle/esm/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@uiw/react-color-circle/esm/index.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/objectDestructuringEmpty */ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _uiw_color_convert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @uiw/color-convert */ "./node_modules/@uiw/color-convert/esm/index.js");
+/* harmony import */ var _uiw_react_color_swatch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @uiw/react-color-swatch */ "./node_modules/@uiw/react-color-swatch/esm/index.js");
+/* harmony import */ var _Point__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Point */ "./node_modules/@uiw/react-color-circle/esm/Point.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var _excluded = ["prefixCls", "className", "color", "colors", "rectProps", "pointProps", "onChange"];
+
+
+
+
+
+var Circle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().forwardRef((props, ref) => {
+  var {
+      prefixCls = 'w-color-circle',
+      className,
+      color,
+      colors = [],
+      rectProps = {},
+      pointProps = {},
+      onChange: _onChange
+    } = props,
+    other = (0,_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(props, _excluded);
+  var hsva = typeof color === 'string' && (0,_uiw_color_convert__WEBPACK_IMPORTED_MODULE_5__.validHex)(color) ? (0,_uiw_color_convert__WEBPACK_IMPORTED_MODULE_5__.hexToHsva)(color) : color || {};
+  var hex = color ? (0,_uiw_color_convert__WEBPACK_IMPORTED_MODULE_5__.hsvaToHex)(hsva) : '';
+  var cls = [prefixCls, className].filter(Boolean).join(' ');
+  var clsPoint = [prefixCls + "-point", pointProps == null ? void 0 : pointProps.className].filter(Boolean).join(' ');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_uiw_react_color_swatch__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    ref: ref,
+    colors: colors,
+    color: hex
+  }, other, {
+    className: cls,
+    rectRender: _ref => {
+      var props = (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, ((0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref), _ref));
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Point__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, pointProps, {
+        style: (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props.style, pointProps.style),
+        className: clsPoint,
+        rectProps: rectProps
+      }));
+    },
+    onChange: hsvColor => {
+      _onChange && _onChange((0,_uiw_color_convert__WEBPACK_IMPORTED_MODULE_5__.color)(hsvColor));
+    }
+  }));
+});
+Circle.displayName = 'Circle';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Circle);
+
+/***/ }),
+
+/***/ "./node_modules/@uiw/react-color-swatch/esm/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@uiw/react-color-swatch/esm/index.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _uiw_color_convert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @uiw/color-convert */ "./node_modules/@uiw/color-convert/esm/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+var _excluded = ["prefixCls", "className", "color", "colors", "style", "rectProps", "onChange", "addonAfter", "addonBefore", "rectRender"];
+
+
+
+
+var Swatch = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().forwardRef((props, ref) => {
+  var {
+      prefixCls = 'w-color-swatch',
+      className,
+      color,
+      colors = [],
+      style,
+      rectProps = {},
+      onChange,
+      addonAfter,
+      addonBefore,
+      rectRender
+    } = props,
+    other = (0,_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(props, _excluded);
+  var rectStyle = (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    '--swatch-background-color': 'rgb(144, 19, 254)',
+    background: 'var(--swatch-background-color)',
+    height: 15,
+    width: 15,
+    marginRight: 5,
+    marginBottom: 5,
+    cursor: 'pointer',
+    position: 'relative',
+    outline: 'none',
+    borderRadius: 2
+  }, rectProps.style);
+  var handleClick = (hex, evn) => {
+    onChange && onChange((0,_uiw_color_convert__WEBPACK_IMPORTED_MODULE_4__.hexToHsva)(hex), (0,_uiw_color_convert__WEBPACK_IMPORTED_MODULE_4__.color)((0,_uiw_color_convert__WEBPACK_IMPORTED_MODULE_4__.hexToHsva)(hex)), evn);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: ref
+  }, other, {
+    className: [prefixCls, className || ''].filter(Boolean).join(' '),
+    style: (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      display: 'flex',
+      flexWrap: 'wrap',
+      position: 'relative'
+    }, style),
+    children: [addonBefore && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().isValidElement(addonBefore) && addonBefore, colors && Array.isArray(colors) && colors.map((item, idx) => {
+      var title = '';
+      var background = '';
+      if (typeof item === 'string') {
+        title = item;
+        background = item;
+      }
+      if (typeof item === 'object' && item.color) {
+        title = item.title || item.color;
+        background = item.color;
+      }
+      var checked = color && color.toLocaleLowerCase() === background.toLocaleLowerCase();
+      var render = rectRender && rectRender({
+        title,
+        color: background,
+        checked: !!checked,
+        style: (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rectStyle, {
+          background
+        }),
+        onClick: evn => handleClick(background, evn)
+      });
+      if (render) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+          children: render
+        }, idx);
+      }
+      var child = rectProps.children && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().isValidElement(rectProps.children) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().cloneElement(rectProps.children, {
+        color: background,
+        checked
+      }) : null;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+        tabIndex: 0,
+        title: title,
+        onClick: evn => handleClick(background, evn)
+      }, rectProps, {
+        children: child,
+        style: (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rectStyle, {
+          background
+        })
+      }), idx);
+    }), addonAfter && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().isValidElement(addonAfter) && addonAfter]
+  }));
+});
+Swatch.displayName = 'Swatch';
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Swatch);
+
+/***/ }),
+
 /***/ "./node_modules/handlebars/dist/cjs/handlebars.js":
 /*!********************************************************!*\
   !*** ./node_modules/handlebars/dist/cjs/handlebars.js ***!
@@ -9603,6 +10294,944 @@ function beautify (value, replacer, space, limit) {
 }
 
 module.exports = beautify;
+
+
+/***/ }),
+
+/***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/** @license React v16.14.0
+ * react-jsx-runtime.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+var React = __webpack_require__(/*! react */ "react");
+
+// ATTENTION
+// When adding new symbols to this file,
+// Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var REACT_ELEMENT_TYPE = 0xeac7;
+var REACT_PORTAL_TYPE = 0xeaca;
+exports.Fragment = 0xeacb;
+var REACT_STRICT_MODE_TYPE = 0xeacc;
+var REACT_PROFILER_TYPE = 0xead2;
+var REACT_PROVIDER_TYPE = 0xeacd;
+var REACT_CONTEXT_TYPE = 0xeace;
+var REACT_FORWARD_REF_TYPE = 0xead0;
+var REACT_SUSPENSE_TYPE = 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = 0xead8;
+var REACT_MEMO_TYPE = 0xead3;
+var REACT_LAZY_TYPE = 0xead4;
+var REACT_BLOCK_TYPE = 0xead9;
+var REACT_SERVER_BLOCK_TYPE = 0xeada;
+var REACT_FUNDAMENTAL_TYPE = 0xead5;
+var REACT_SCOPE_TYPE = 0xead7;
+var REACT_OPAQUE_ID_TYPE = 0xeae0;
+var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
+var REACT_OFFSCREEN_TYPE = 0xeae2;
+var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
+
+if (typeof Symbol === 'function' && Symbol.for) {
+  var symbolFor = Symbol.for;
+  REACT_ELEMENT_TYPE = symbolFor('react.element');
+  REACT_PORTAL_TYPE = symbolFor('react.portal');
+  exports.Fragment = symbolFor('react.fragment');
+  REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
+  REACT_PROFILER_TYPE = symbolFor('react.profiler');
+  REACT_PROVIDER_TYPE = symbolFor('react.provider');
+  REACT_CONTEXT_TYPE = symbolFor('react.context');
+  REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
+  REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
+  REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
+  REACT_MEMO_TYPE = symbolFor('react.memo');
+  REACT_LAZY_TYPE = symbolFor('react.lazy');
+  REACT_BLOCK_TYPE = symbolFor('react.block');
+  REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
+  REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
+  REACT_SCOPE_TYPE = symbolFor('react.scope');
+  REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
+  REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
+  REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
+  REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
+}
+
+var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+var FAUX_ITERATOR_SYMBOL = '@@iterator';
+function getIteratorFn(maybeIterable) {
+  if (maybeIterable === null || typeof maybeIterable !== 'object') {
+    return null;
+  }
+
+  var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+
+  if (typeof maybeIterator === 'function') {
+    return maybeIterator;
+  }
+
+  return null;
+}
+
+var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+
+function error(format) {
+  {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    printWarning('error', format, args);
+  }
+}
+
+function printWarning(level, format, args) {
+  // When changing this logic, you might want to also
+  // update consoleWithStackDev.www.js as well.
+  {
+    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+    var stack = '';
+
+    if (currentlyValidatingElement) {
+      var name = getComponentName(currentlyValidatingElement.type);
+      var owner = currentlyValidatingElement._owner;
+      stack += describeComponentFrame(name, currentlyValidatingElement._source, owner && getComponentName(owner.type));
+    }
+
+    stack += ReactDebugCurrentFrame.getStackAddendum();
+
+    if (stack !== '') {
+      format += '%s';
+      args = args.concat([stack]);
+    }
+
+    var argsWithFormat = args.map(function (item) {
+      return '' + item;
+    }); // Careful: RN currently depends on this prefix
+
+    argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
+    // breaks IE9: https://github.com/facebook/react/issues/13610
+    // eslint-disable-next-line react-internal/no-production-logging
+
+    Function.prototype.apply.call(console[level], console, argsWithFormat);
+  }
+}
+
+// Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
+
+var enableScopeAPI = false; // Experimental Create Event Handle API.
+
+function isValidElementType(type) {
+  if (typeof type === 'string' || typeof type === 'function') {
+    return true;
+  } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+
+
+  if (type === exports.Fragment || type === REACT_PROFILER_TYPE || type === REACT_DEBUG_TRACING_MODE_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
+    return true;
+  }
+
+  if (typeof type === 'object' && type !== null) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+
+var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
+function describeComponentFrame (name, source, ownerName) {
+  var sourceInfo = '';
+
+  if (source) {
+    var path = source.fileName;
+    var fileName = path.replace(BEFORE_SLASH_RE, '');
+
+    {
+      // In DEV, include code for a common special case:
+      // prefer "folder/index.js" instead of just "index.js".
+      if (/^index\./.test(fileName)) {
+        var match = path.match(BEFORE_SLASH_RE);
+
+        if (match) {
+          var pathBeforeSlash = match[1];
+
+          if (pathBeforeSlash) {
+            var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
+            fileName = folderName + '/' + fileName;
+          }
+        }
+      }
+    }
+
+    sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
+  } else if (ownerName) {
+    sourceInfo = ' (created by ' + ownerName + ')';
+  }
+
+  return '\n    in ' + (name || 'Unknown') + sourceInfo;
+}
+
+var Resolved = 1;
+function refineResolvedLazyComponent(lazyComponent) {
+  return lazyComponent._status === Resolved ? lazyComponent._result : null;
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
+  var functionName = innerType.displayName || innerType.name || '';
+  return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
+}
+
+function getComponentName(type) {
+  if (type == null) {
+    // Host root, text node or just invalid type.
+    return null;
+  }
+
+  {
+    if (typeof type.tag === 'number') {
+      error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
+    }
+  }
+
+  if (typeof type === 'function') {
+    return type.displayName || type.name || null;
+  }
+
+  if (typeof type === 'string') {
+    return type;
+  }
+
+  switch (type) {
+    case exports.Fragment:
+      return 'Fragment';
+
+    case REACT_PORTAL_TYPE:
+      return 'Portal';
+
+    case REACT_PROFILER_TYPE:
+      return "Profiler";
+
+    case REACT_STRICT_MODE_TYPE:
+      return 'StrictMode';
+
+    case REACT_SUSPENSE_TYPE:
+      return 'Suspense';
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return 'SuspenseList';
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_CONTEXT_TYPE:
+        return 'Context.Consumer';
+
+      case REACT_PROVIDER_TYPE:
+        return 'Context.Provider';
+
+      case REACT_FORWARD_REF_TYPE:
+        return getWrappedName(type, type.render, 'ForwardRef');
+
+      case REACT_MEMO_TYPE:
+        return getComponentName(type.type);
+
+      case REACT_BLOCK_TYPE:
+        return getComponentName(type.render);
+
+      case REACT_LAZY_TYPE:
+        {
+          var thenable = type;
+          var resolvedThenable = refineResolvedLazyComponent(thenable);
+
+          if (resolvedThenable) {
+            return getComponentName(resolvedThenable);
+          }
+
+          break;
+        }
+    }
+  }
+
+  return null;
+}
+
+var loggedTypeFailures = {};
+var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+var currentlyValidatingElement = null;
+
+function setCurrentlyValidatingElement(element) {
+  {
+    currentlyValidatingElement = element;
+  }
+}
+
+function checkPropTypes(typeSpecs, values, location, componentName, element) {
+  {
+    // $FlowFixMe This is okay but Flow doesn't know it.
+    var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+
+          error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
+        } catch (ex) {
+          error$1 = ex;
+        }
+
+        if (error$1 && !(error$1 instanceof Error)) {
+          setCurrentlyValidatingElement(element);
+
+          error('%s: type specification of %s' + ' `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error$1);
+
+          setCurrentlyValidatingElement(null);
+        }
+
+        if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error$1.message] = true;
+          setCurrentlyValidatingElement(element);
+
+          error('Failed %s type: %s', location, error$1.message);
+
+          setCurrentlyValidatingElement(null);
+        }
+      }
+    }
+  }
+}
+
+var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var RESERVED_PROPS = {
+  key: true,
+  ref: true,
+  __self: true,
+  __source: true
+};
+var specialPropKeyWarningShown;
+var specialPropRefWarningShown;
+var didWarnAboutStringRefs;
+
+{
+  didWarnAboutStringRefs = {};
+}
+
+function hasValidRef(config) {
+  {
+    if (hasOwnProperty.call(config, 'ref')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
+
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+
+  return config.ref !== undefined;
+}
+
+function hasValidKey(config) {
+  {
+    if (hasOwnProperty.call(config, 'key')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
+
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+
+  return config.key !== undefined;
+}
+
+function warnIfStringRefCannotBeAutoConverted(config, self) {
+  {
+    if (typeof config.ref === 'string' && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
+      var componentName = getComponentName(ReactCurrentOwner.current.type);
+
+      if (!didWarnAboutStringRefs[componentName]) {
+        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentName(ReactCurrentOwner.current.type), config.ref);
+
+        didWarnAboutStringRefs[componentName] = true;
+      }
+    }
+  }
+}
+
+function defineKeyPropWarningGetter(props, displayName) {
+  {
+    var warnAboutAccessingKey = function () {
+      if (!specialPropKeyWarningShown) {
+        specialPropKeyWarningShown = true;
+
+        error('%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+      }
+    };
+
+    warnAboutAccessingKey.isReactWarning = true;
+    Object.defineProperty(props, 'key', {
+      get: warnAboutAccessingKey,
+      configurable: true
+    });
+  }
+}
+
+function defineRefPropWarningGetter(props, displayName) {
+  {
+    var warnAboutAccessingRef = function () {
+      if (!specialPropRefWarningShown) {
+        specialPropRefWarningShown = true;
+
+        error('%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+      }
+    };
+
+    warnAboutAccessingRef.isReactWarning = true;
+    Object.defineProperty(props, 'ref', {
+      get: warnAboutAccessingRef,
+      configurable: true
+    });
+  }
+}
+/**
+ * Factory method to create a new React element. This no longer adheres to
+ * the class pattern, so do not use new to call it. Also, instanceof check
+ * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
+ * if something is a React Element.
+ *
+ * @param {*} type
+ * @param {*} props
+ * @param {*} key
+ * @param {string|object} ref
+ * @param {*} owner
+ * @param {*} self A *temporary* helper to detect places where `this` is
+ * different from the `owner` when React.createElement is called, so that we
+ * can warn. We want to get rid of owner and replace string `ref`s with arrow
+ * functions, and as long as `this` and owner are the same, there will be no
+ * change in behavior.
+ * @param {*} source An annotation object (added by a transpiler or otherwise)
+ * indicating filename, line number, and/or other information.
+ * @internal
+ */
+
+
+var ReactElement = function (type, key, ref, self, source, owner, props) {
+  var element = {
+    // This tag allows us to uniquely identify this as a React Element
+    $$typeof: REACT_ELEMENT_TYPE,
+    // Built-in properties that belong on the element
+    type: type,
+    key: key,
+    ref: ref,
+    props: props,
+    // Record the component responsible for creating this element.
+    _owner: owner
+  };
+
+  {
+    // The validation flag is currently mutative. We put it on
+    // an external backing store so that we can freeze the whole object.
+    // This can be replaced with a WeakMap once they are implemented in
+    // commonly used development environments.
+    element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
+    // the validation flag non-enumerable (where possible, which should
+    // include every environment we run tests in), so the test framework
+    // ignores it.
+
+    Object.defineProperty(element._store, 'validated', {
+      configurable: false,
+      enumerable: false,
+      writable: true,
+      value: false
+    }); // self and source are DEV only properties.
+
+    Object.defineProperty(element, '_self', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: self
+    }); // Two elements created in two different places should be considered
+    // equal for testing purposes and therefore we hide it from enumeration.
+
+    Object.defineProperty(element, '_source', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: source
+    });
+
+    if (Object.freeze) {
+      Object.freeze(element.props);
+      Object.freeze(element);
+    }
+  }
+
+  return element;
+};
+/**
+ * https://github.com/reactjs/rfcs/pull/107
+ * @param {*} type
+ * @param {object} props
+ * @param {string} key
+ */
+
+function jsxDEV(type, config, maybeKey, source, self) {
+  {
+    var propName; // Reserved names are extracted
+
+    var props = {};
+    var key = null;
+    var ref = null; // Currently, key can be spread in as a prop. This causes a potential
+    // issue if key is also explicitly declared (ie. <div {...props} key="Hi" />
+    // or <div key="Hi" {...props} /> ). We want to deprecate key spread,
+    // but as an intermediary step, we will use jsxDEV for everything except
+    // <div {...props} key="Hi" />, because we aren't currently able to tell if
+    // key is explicitly declared to be undefined or not.
+
+    if (maybeKey !== undefined) {
+      key = '' + maybeKey;
+    }
+
+    if (hasValidKey(config)) {
+      key = '' + config.key;
+    }
+
+    if (hasValidRef(config)) {
+      ref = config.ref;
+      warnIfStringRefCannotBeAutoConverted(config, self);
+    } // Remaining properties are added to a new props object
+
+
+    for (propName in config) {
+      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+        props[propName] = config[propName];
+      }
+    } // Resolve default props
+
+
+    if (type && type.defaultProps) {
+      var defaultProps = type.defaultProps;
+
+      for (propName in defaultProps) {
+        if (props[propName] === undefined) {
+          props[propName] = defaultProps[propName];
+        }
+      }
+    }
+
+    if (key || ref) {
+      var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
+
+      if (key) {
+        defineKeyPropWarningGetter(props, displayName);
+      }
+
+      if (ref) {
+        defineRefPropWarningGetter(props, displayName);
+      }
+    }
+
+    return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+  }
+}
+
+var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
+var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
+
+function setCurrentlyValidatingElement$1(element) {
+  currentlyValidatingElement = element;
+}
+
+var propTypesMisspellWarningShown;
+
+{
+  propTypesMisspellWarningShown = false;
+}
+/**
+ * Verifies the object is a ReactElement.
+ * See https://reactjs.org/docs/react-api.html#isvalidelement
+ * @param {?object} object
+ * @return {boolean} True if `object` is a ReactElement.
+ * @final
+ */
+
+function isValidElement(object) {
+  {
+    return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+  }
+}
+
+function getDeclarationErrorAddendum() {
+  {
+    if (ReactCurrentOwner$1.current) {
+      var name = getComponentName(ReactCurrentOwner$1.current.type);
+
+      if (name) {
+        return '\n\nCheck the render method of `' + name + '`.';
+      }
+    }
+
+    return '';
+  }
+}
+
+function getSourceInfoErrorAddendum(source) {
+  {
+    if (source !== undefined) {
+      var fileName = source.fileName.replace(/^.*[\\\/]/, '');
+      var lineNumber = source.lineNumber;
+      return '\n\nCheck your code at ' + fileName + ':' + lineNumber + '.';
+    }
+
+    return '';
+  }
+}
+/**
+ * Warn if there's no key explicitly set on dynamic arrays of children or
+ * object keys are not valid. This allows us to keep track of children between
+ * updates.
+ */
+
+
+var ownerHasKeyUseWarning = {};
+
+function getCurrentComponentErrorInfo(parentType) {
+  {
+    var info = getDeclarationErrorAddendum();
+
+    if (!info) {
+      var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
+
+      if (parentName) {
+        info = "\n\nCheck the top-level render call using <" + parentName + ">.";
+      }
+    }
+
+    return info;
+  }
+}
+/**
+ * Warn if the element doesn't have an explicit key assigned to it.
+ * This element is in an array. The array could grow and shrink or be
+ * reordered. All children that haven't already been validated are required to
+ * have a "key" property assigned to it. Error statuses are cached so a warning
+ * will only be shown once.
+ *
+ * @internal
+ * @param {ReactElement} element Element that requires a key.
+ * @param {*} parentType element's parent's type.
+ */
+
+
+function validateExplicitKey(element, parentType) {
+  {
+    if (!element._store || element._store.validated || element.key != null) {
+      return;
+    }
+
+    element._store.validated = true;
+    var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+
+    if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
+      return;
+    }
+
+    ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
+    // property, it may be the creator of the child that's responsible for
+    // assigning it a key.
+
+    var childOwner = '';
+
+    if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) {
+      // Give the component that originally created this child.
+      childOwner = " It was passed a child from " + getComponentName(element._owner.type) + ".";
+    }
+
+    setCurrentlyValidatingElement$1(element);
+
+    error('Each child in a list should have a unique "key" prop.' + '%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
+
+    setCurrentlyValidatingElement$1(null);
+  }
+}
+/**
+ * Ensure that every element either is passed in a static location, in an
+ * array with an explicit keys property defined, or in an object literal
+ * with valid key property.
+ *
+ * @internal
+ * @param {ReactNode} node Statically passed child of any type.
+ * @param {*} parentType node's parent's type.
+ */
+
+
+function validateChildKeys(node, parentType) {
+  {
+    if (typeof node !== 'object') {
+      return;
+    }
+
+    if (Array.isArray(node)) {
+      for (var i = 0; i < node.length; i++) {
+        var child = node[i];
+
+        if (isValidElement(child)) {
+          validateExplicitKey(child, parentType);
+        }
+      }
+    } else if (isValidElement(node)) {
+      // This element was passed in a valid location.
+      if (node._store) {
+        node._store.validated = true;
+      }
+    } else if (node) {
+      var iteratorFn = getIteratorFn(node);
+
+      if (typeof iteratorFn === 'function') {
+        // Entry iterators used to provide implicit keys,
+        // but now we print a separate warning for them later.
+        if (iteratorFn !== node.entries) {
+          var iterator = iteratorFn.call(node);
+          var step;
+
+          while (!(step = iterator.next()).done) {
+            if (isValidElement(step.value)) {
+              validateExplicitKey(step.value, parentType);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/**
+ * Given an element, validate that its props follow the propTypes definition,
+ * provided by the type.
+ *
+ * @param {ReactElement} element
+ */
+
+
+function validatePropTypes(element) {
+  {
+    var type = element.type;
+
+    if (type === null || type === undefined || typeof type === 'string') {
+      return;
+    }
+
+    var propTypes;
+
+    if (typeof type === 'function') {
+      propTypes = type.propTypes;
+    } else if (typeof type === 'object' && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+    // Inner props are checked in the reconciler.
+    type.$$typeof === REACT_MEMO_TYPE)) {
+      propTypes = type.propTypes;
+    } else {
+      return;
+    }
+
+    if (propTypes) {
+      // Intentionally inside to avoid triggering lazy initializers:
+      var name = getComponentName(type);
+      checkPropTypes(propTypes, element.props, 'prop', name, element);
+    } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+      propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
+
+      var _name = getComponentName(type);
+
+      error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
+    }
+
+    if (typeof type.getDefaultProps === 'function' && !type.getDefaultProps.isReactClassApproved) {
+      error('getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
+    }
+  }
+}
+/**
+ * Given a fragment, validate that it can only be provided with fragment props
+ * @param {ReactElement} fragment
+ */
+
+
+function validateFragmentProps(fragment) {
+  {
+    var keys = Object.keys(fragment.props);
+
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+
+      if (key !== 'children' && key !== 'key') {
+        setCurrentlyValidatingElement$1(fragment);
+
+        error('Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.', key);
+
+        setCurrentlyValidatingElement$1(null);
+        break;
+      }
+    }
+
+    if (fragment.ref !== null) {
+      setCurrentlyValidatingElement$1(fragment);
+
+      error('Invalid attribute `ref` supplied to `React.Fragment`.');
+
+      setCurrentlyValidatingElement$1(null);
+    }
+  }
+}
+
+function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
+  {
+    var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
+    // succeed and there will likely be errors in render.
+
+    if (!validType) {
+      var info = '';
+
+      if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
+        info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
+      }
+
+      var sourceInfo = getSourceInfoErrorAddendum(source);
+
+      if (sourceInfo) {
+        info += sourceInfo;
+      } else {
+        info += getDeclarationErrorAddendum();
+      }
+
+      var typeString;
+
+      if (type === null) {
+        typeString = 'null';
+      } else if (Array.isArray(type)) {
+        typeString = 'array';
+      } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
+        typeString = "<" + (getComponentName(type.type) || 'Unknown') + " />";
+        info = ' Did you accidentally export a JSX literal instead of a component?';
+      } else {
+        typeString = typeof type;
+      }
+
+      error('React.jsx: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', typeString, info);
+    }
+
+    var element = jsxDEV(type, props, key, source, self); // The result can be nullish if a mock or a custom function is used.
+    // TODO: Drop this when these are no longer allowed as the type argument.
+
+    if (element == null) {
+      return element;
+    } // Skip key warning if the type isn't valid since our key validation logic
+    // doesn't expect a non-string/function type and can throw confusing errors.
+    // We don't want exception behavior to differ between dev and prod.
+    // (Rendering will throw with a helpful message and as soon as the type is
+    // fixed, the key warnings will appear.)
+
+
+    if (validType) {
+      var children = props.children;
+
+      if (children !== undefined) {
+        if (isStaticChildren) {
+          if (Array.isArray(children)) {
+            for (var i = 0; i < children.length; i++) {
+              validateChildKeys(children[i], type);
+            }
+
+            if (Object.freeze) {
+              Object.freeze(children);
+            }
+          } else {
+            error('React.jsx: Static children should always be an array. ' + 'You are likely explicitly calling React.jsxs or React.jsxDEV. ' + 'Use the Babel transform instead.');
+          }
+        } else {
+          validateChildKeys(children, type);
+        }
+      }
+    }
+
+    if (type === exports.Fragment) {
+      validateFragmentProps(element);
+    } else {
+      validatePropTypes(element);
+    }
+
+    return element;
+  }
+} // These two functions exist to still get child warnings in dev
+// even with the prod transform. This means that jsxDEV is purely
+// opt-in behavior for better messages but that we won't stop
+// giving you warnings if you use production apis.
+
+function jsxWithValidationStatic(type, props, key) {
+  {
+    return jsxWithValidation(type, props, key, true);
+  }
+}
+function jsxWithValidationDynamic(type, props, key) {
+  {
+    return jsxWithValidation(type, props, key, false);
+  }
+}
+
+var jsx =  jsxWithValidationDynamic ; // we may want to special case jsxs internally to take advantage of static children.
+// for now we can ship identical prod functions
+
+var jsxs =  jsxWithValidationStatic ;
+
+exports.jsx = jsx;
+exports.jsxs = jsxs;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/react/jsx-runtime.js":
+/*!*******************************************!*\
+  !*** ./node_modules/react/jsx-runtime.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-jsx-runtime.development.js */ "./node_modules/react/cjs/react-jsx-runtime.development.js");
+}
 
 
 /***/ }),
@@ -17444,6 +19073,7 @@ if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.workerContext()) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorSelect),
+/* harmony export */   ColorView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorView),
 /* harmony export */   DynoDialog: () => (/* reexport safe */ _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__.DynoDialog),
 /* harmony export */   FormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
@@ -17809,6 +19439,97 @@ function replaceNonMatchingCharacters(originalText) {
     });
     return replacedText;
 }
+
+
+/***/ }),
+
+/***/ "./src/views/ColorCircle/ColorCircleView.tsx":
+/*!***************************************************!*\
+  !*** ./src/views/ColorCircle/ColorCircleView.tsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ColorView: () => (/* binding */ ColorView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @uiw/react-color-circle */ "./node_modules/@uiw/react-color-circle/esm/index.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var ColorView = function () {
+    var viewType = /** @class */ (function (_super) {
+        __extends(class_1, _super);
+        function class_1() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        class_1.prototype.selectedColor = function (value) {
+            this.vp_SelectedColor = value;
+            return this;
+        };
+        class_1.prototype.onChange = function (value) {
+            this.vp_OnChange = value;
+            return this;
+        };
+        class_1.prototype.render = function () {
+            var _this = this;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_2__["default"], { colors: ['#4A4A4A',
+                    '#6A849B',
+                    '#BEC5CC',
+                    '#D40915',
+                    '#E72065',
+                    '#9C2BAF',
+                    '#673DB6',
+                    '#3E53B4',
+                    '#2978FB',
+                    '#199EE3',
+                    '#1FBED3',
+                    '#159789',
+                    '#4FAF54',
+                    '#8EC351',
+                    '#FBA32F',
+                    '#FC551F',
+                    '#B04E31',
+                    '#8077F1',
+                    '#6A85FF',
+                    '#40A6E5',
+                    '#3FB1B2',
+                    '#64C6A2',
+                    '#F9BE34',
+                    '#E78845',
+                    '#DC646A',
+                    '#F17EAD',
+                    '#C580E6',
+                    '#BBA399',
+                    '#595D66'], color: this.vp_SelectedColor, onChange: function (color) {
+                    _this.vp_OnChange(color.hex);
+                } }))).maxWidth(500)
+                .render());
+        };
+        return class_1;
+    }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
+    return new viewType().onChange(function () { return void 0; });
+};
 
 
 /***/ }),
@@ -19214,12 +20935,15 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _ColorSelect__WEBPACK_IMPORTED_MODULE_0__.ColorSelect),
+/* harmony export */   ColorView: () => (/* reexport safe */ _ColorCircle_ColorCircleView__WEBPACK_IMPORTED_MODULE_3__.ColorView),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
 /* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _SelectSider__WEBPACK_IMPORTED_MODULE_2__.SelectSiderDialog)
 /* harmony export */ });
 /* harmony import */ var _ColorSelect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorSelect */ "./src/views/ColorSelect/index.ts");
 /* harmony import */ var _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewFieldMenu/NewFieldMenuView */ "./src/views/NewFieldMenu/NewFieldMenuView.tsx");
 /* harmony import */ var _SelectSider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectSider */ "./src/views/SelectSider/index.ts");
+/* harmony import */ var _ColorCircle_ColorCircleView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ColorCircle/ColorCircleView */ "./src/views/ColorCircle/ColorCircleView.tsx");
+
 
 
 
@@ -19268,6 +20992,77 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_forms__;
 
 "use strict";
 module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _extends)
+/* harmony export */ });
+function _extends() {
+  _extends = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends.apply(this, arguments);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _objectDestructuringEmpty)
+/* harmony export */ });
+function _objectDestructuringEmpty(obj) {
+  if (obj == null) throw new TypeError("Cannot destructure " + obj);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ _objectWithoutPropertiesLoose)
+/* harmony export */ });
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
 
 /***/ })
 

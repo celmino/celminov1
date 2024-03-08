@@ -3,8 +3,12 @@ import { HStack, ReactView, UIView } from "@tuval/forms"
 import React from "react"
 import Circle from '@uiw/react-color-circle';
 
+export interface IColorView extends UIView {
+    selectedColor(value: string);
+    onChange(value: Function);
+}
 
-export const ColorView = (): UIView => {
+export const ColorView = (): IColorView => {
     const viewType = class extends UIView {
 
         private vp_SelectedColor: string;
@@ -67,5 +71,4 @@ export const ColorView = (): UIView => {
     }
     return new viewType().onChange(() => void 0);
 }
-
 

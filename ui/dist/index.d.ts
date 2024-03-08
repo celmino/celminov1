@@ -26,7 +26,7 @@ export class FormBuilder {
     static getViewFactory(type: string): any;
     static getView(fieldInfo: any): any;
     static canRender(fieldInfo: any, formController?: UIFormController): boolean;
-    static render(_formMeta: string | object | object[]): import("@tuval/forms").FragmentClass | import("@tuval/forms").TextClass | import("@tuval/forms").ConfigContextClass;
+    static render(_formMeta: string | object | object[]): import("@tuval/forms").TextClass | import("@tuval/forms").FragmentClass | import("@tuval/forms").ConfigContextClass;
     static compileFormula(formula: any): string;
 }
 
@@ -35,7 +35,7 @@ export class DynoDialog extends DialogView {
     BindRouterParams(formData: any): void;
     OnOK(): void;
     OnCancel(): void;
-    LoadView(): import("@tuval/forms").UISpinnerClass | import("@tuval/forms").VStackClass;
+    LoadView(): import("@tuval/forms").VStackClass | import("@tuval/forms").UISpinnerClass;
     static Show(formData: any): Promise<any>;
 }
 
@@ -55,6 +55,8 @@ export const NewFieldMenuView: ({ view, onNewFieldAdded }: {
     view: (menuIsOpen: boolean) => UIView;
     onNewFieldAdded?: Function;
 }) => import("@tuval/forms").ReactViewClass;
+
+export const ColorView: () => UIView;
 
 export const ColorSelect: ({ onSelect }: {
     onSelect: any;
