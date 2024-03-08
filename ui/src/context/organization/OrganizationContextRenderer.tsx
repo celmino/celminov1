@@ -11,14 +11,14 @@ function OrganizationContextRenderer({ control }: { control: OrganizationContext
 
 
     const { organizationId } = useParams();
-    const { organization, isLoading } = useGetOrganization(organizationId);
+    const { organization, isLoading } = useGetOrganization({organizationId, hookEnabled: true});
 
 
     return (
         is.function(control.vp_ChildFunc) || !isLoading ?
             (
                 <OrganizationContextProvider.Provider value={organization}>
-
+                    
                     {
                         control.vp_ChildFunc()?.render()
 
