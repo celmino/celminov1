@@ -102,6 +102,7 @@
         ]
     },
     "dependencies": {
+        "@realmocean/antd": "^21.0.32",
         "@realmocean/sdk": "1.0.82",
         "@realmocean/vibe": "2.82.50",
         "@tuval/core": "^0.0.103",

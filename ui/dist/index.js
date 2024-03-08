@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("tuval$forms"), require("realmocean$sdk"), require("tuval$react"), require("tuval$core"));
+		module.exports = factory(require("tuval$forms"), require("realmocean$sdk"), require("tuval$react"), require("tuval$core"), require("realmocean$antd"));
 	else if(typeof define === 'function' && define.amd)
-		define(["tuval$forms", "realmocean$sdk", "tuval$react", "tuval$core"], factory);
+		define(["tuval$forms", "realmocean$sdk", "tuval$react", "tuval$core", "realmocean$antd"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("tuval$forms"), require("realmocean$sdk"), require("tuval$react"), require("tuval$core")) : factory(root["tuval$forms"], root["realmocean$sdk"], root["tuval$react"], root["tuval$core"]);
+		var a = typeof exports === 'object' ? factory(require("tuval$forms"), require("realmocean$sdk"), require("tuval$react"), require("tuval$core"), require("realmocean$antd")) : factory(root["tuval$forms"], root["realmocean$sdk"], root["tuval$react"], root["tuval$core"], root["realmocean$antd"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(self, (__WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__realmocean_sdk__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE__tuval_core__) => {
+})(self, (__WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__realmocean_sdk__, __WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__realmocean_antd__) => {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -19759,6 +19759,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialogs/AddRichtextFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRichtextFieldDialog.ts");
 /* harmony import */ var _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialogs/AddSelectFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddSelectFieldDialog.ts");
 /* harmony import */ var _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialogs/AddMultiSelectDialog */ "./src/views/NewFieldMenu/dialogs/AddMultiSelectDialog.ts");
+/* harmony import */ var _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dialogs/AddRelationFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -19786,12 +19787,14 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var FieldTypes = {
     'text': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
     'richtext': _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.RichTextFieldsAttributesView,
     'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView,
     'select': _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SelectFieldsAttributesView,
-    'multiselect': _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.MultiSelectFieldsAttributesView
+    'multiselect': _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.MultiSelectFieldsAttributesView,
+    'relation': _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__.RelationFieldAttributesView
 };
 var Controller = /** @class */ (function (_super) {
     __extends(Controller, _super);
@@ -19890,7 +19893,7 @@ var Controller = /** @class */ (function (_super) {
                     title: 'Relation to...',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RelationAttribute,
                     onClick: function () {
-                        alert(); //DynoDialog.Show(AddRelationFieldDialog(workspaceId,databaseId, collectionId))
+                        setSelectedType('relation');
                     }
                 }
             ];
@@ -20168,6 +20171,45 @@ var AddNumberFieldDialog = function (workspaceId, databaseId, collectionId) { re
         },
     }
 }); };
+
+
+/***/ }),
+
+/***/ "./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.ts":
+/*!******************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.ts ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RelationFieldAttributesView: () => (/* binding */ RelationFieldAttributesView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/antd */ "@realmocean/antd");
+/* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+var RelationFieldAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, 'workspace', 'applets'), documents = _a.documents, isLoading = _a.isLoading;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.Select)().placeHolder('Select Collection')
+        .dropdownRenderer(function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(JSON.stringify(workspaceId))).height(200).width(200));
+    })
+        .options([{
+            value: 1,
+            label: 'One'
+        }]))
+        .padding(20)
+        .width(380)
+        .height(515));
+})); };
 
 
 /***/ }),
@@ -20951,6 +20993,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/***/ }),
+
+/***/ "@realmocean/antd":
+/*!**********************************!*\
+  !*** external "realmocean$antd" ***!
+  \**********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__realmocean_antd__;
 
 /***/ }),
 

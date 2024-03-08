@@ -10,6 +10,7 @@ import { RichTextFieldsAttributesView, SaveRichTextFieldAction } from "./dialogs
 import { SaveSelectFieldAction, SelectFieldsAttributesView } from "./dialogs/AddSelectFieldDialog";
 import React from "react";
 import { MultiSelectFieldsAttributesView, SaveMultiSelectFieldAction } from "./dialogs/AddMultiSelectDialog";
+import { RelationFieldAttributesView } from "./dialogs/AddRelationFieldDialog";
 
 
 const FieldTypes = {
@@ -17,12 +18,13 @@ const FieldTypes = {
     'richtext': RichTextFieldsAttributesView,
     'number': NumberFieldsAttributesView,
     'select': SelectFieldsAttributesView,
-    'multiselect': MultiSelectFieldsAttributesView
+    'multiselect': MultiSelectFieldsAttributesView,
+    'relation': RelationFieldAttributesView
 }
 
 class Controller extends UIFormController {
     public override LoadView() {
-        const { onNewFieldAdded, view } = this.props;
+        const { onNewFieldAdded, view, workspaceId } = this.props;
         return (
             HStack({ alignment: cTrailing })(
                 UIViewBuilder(() => {
@@ -125,7 +127,7 @@ class Controller extends UIFormController {
                             title: 'Relation to...',
                             icon: Icons.RelationAttribute,
                             onClick: () => {
-                                alert() //DynoDialog.Show(AddRelationFieldDialog(workspaceId,databaseId, collectionId))
+                                setSelectedType('relation')
                             }
                         }
                     ]
@@ -170,7 +172,7 @@ class Controller extends UIFormController {
                                     .border('1px solid #EFF0F1')
                                     .cornerRadius(6)
                                 :
-                                FieldTypes[selectedType](onNewFieldAdded)
+                                FieldTypes[selectedType](workspaceId, onNewFieldAdded)
                         )
                             .open(menuIsOpen)
                             .hideHandle(hideHandle => _hideHandle = hideHandle)
@@ -188,9 +190,9 @@ class Controller extends UIFormController {
     }
 }
 
-export const NewFieldMenuView = ({ view, onNewFieldAdded }: { view: (menuIsOpen: boolean) => UIView, onNewFieldAdded?: Function }) => (
+export const NewFieldMenuView = ({ workspaceId, view, onNewFieldAdded }: {workspaceId: string, view: (menuIsOpen: boolean) => UIView, onNewFieldAdded?: Function }) => (
     ReactView(
-        <Controller onNewFieldAdded={onNewFieldAdded} view={view}></Controller>
+        <Controller onNewFieldAdded={onNewFieldAdded} view={view} workspaceId={workspaceId}></Controller>
     )
 )
 
