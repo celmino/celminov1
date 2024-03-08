@@ -19316,10 +19316,10 @@ __webpack_require__.r(__webpack_exports__);
 function RealmContextRenderer(_a) {
     var _b;
     var control = _a.control;
-    var organizationId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)().organizationId;
-    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetOrganization)(organizationId), organization = _c.organization, isLoading = _c.isLoading;
+    var workspaceId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)().workspaceId;
+    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetRealm)({ realmId: workspaceId, enabled: true }), realm = _c.realm, isLoading = _c.isLoading;
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) || !isLoading ?
-        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: organization }, (_b = control.vp_ChildFunc()) === null || _b === void 0 ? void 0 : _b.render())) : null);
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: realm }, (_b = control.vp_ChildFunc()) === null || _b === void 0 ? void 0 : _b.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RealmContextRenderer);
 

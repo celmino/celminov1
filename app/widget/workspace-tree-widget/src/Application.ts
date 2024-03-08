@@ -1,7 +1,7 @@
 import {  UIController } from '@tuval/forms';
 import { CustomAppletTreeModuleController } from './WidgetController';
-import { FormBuilder } from '@realmocean/ui';
 import { SaveDocumentAction } from './dialogs/AddDocumentDialog';
+import { FormBuilder } from '@celmino/ui';
 
 
 const manifest = require('./manifest');

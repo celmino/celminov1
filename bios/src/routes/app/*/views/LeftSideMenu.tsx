@@ -1,5 +1,5 @@
 
-import { SelectAppletDialog } from "@celmino/ui";
+import { SelectAppletDialog, useOrganization } from "@celmino/ui";
 import { Models, Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useGetMe, useGetOrganization, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
 import { Text } from '@realmocean/vibe';
 import { EventBus, is } from "@tuval/core";
@@ -229,10 +229,10 @@ let global_openedIDs = {};
 export const LeftSideMenuView = (selectedItem: string) => {
     const showAllWorkspaces = true;
     const { me, isLoading } = useGetMe('console');
-    const { organization: domainTeam, isLoading: isDomainTeamLoading } = useGetCurrentOrganization();
+    const  organization = useOrganization();
 
     return (
-        (isLoading || isDomainTeamLoading) ? Fragment() :
+        (isLoading) ? Fragment() :
             UIViewBuilder(() => {
                 const navigate = useNavigate();
                 // alert(workspaceId)
@@ -322,8 +322,8 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                 enabled: (organizationId == null && workspaceId != null)
                                             });
 
-                                            const { realms } = useListRealms(domainTeam != null/* (organizationId != null || realm?.teamId != null) */, [
-                                                Query.equal('teamId', domainTeam?.$id)
+                                            const { realms } = useListRealms(organization != null/* (organizationId != null || realm?.teamId != null) */, [
+                                                Query.equal('teamId', organization?.$id)
                                             ]);
 
                                             const { me } = useGetMe('console');

@@ -11,13 +11,14 @@ import {
     cLeading,
     cTopLeading,
     getAppFullName,
+    urlFriendly,
     useNavigate,
     useParams,
     useState
 } from "@tuval/forms";
 
 import { AddCollectionDialog } from "../../dialogs/AddCollection/AddCollectionDialog";
-import { DynoDialog } from "@celmino/ui";
+import { DynoDialog, useOrganization, useRealm } from "@celmino/ui";
 import { EventBus } from "@tuval/core";
 import React from "react";
 
@@ -32,7 +33,8 @@ export class CollectionsController extends UIFormController {
             Query.equal('type', 'userCollection')
         ]);
 
-        const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
+        const organization = useOrganization();
+        const  realm  = useRealm();
         const { document: applet } = useGetDocument({
             projectId: workspaceId,
             databaseId: 'workspace',
@@ -121,7 +123,7 @@ export class CollectionsController extends UIFormController {
                                     //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
                                     onChange: (index) => {
                                         setSelectedCollection(collections[index]);
-                                        navigate(`/app/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}/collections/${collections[index].name}-${collections[index].$id}`)
+                                        navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet?.name)}-${appletId}/collections/${collections[index].name}-${collections[index].$id}`)
                                         /*    setWidgetController({
                                                controller: class extends WidgetController { }
                                            });

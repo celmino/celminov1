@@ -1,7 +1,7 @@
 import { useGetOrganization, useGetRealm } from "@realmocean/sdk";
 import { is } from "@tuval/core";
-import { useParams } from "@tuval/forms";
-import React from "react";
+import {  useParams } from "@tuval/forms";
+import React,{Fragment} from "react";
 import { RealmContextClass } from "./RealmContextClass";
 import { RealmContextProvider } from "./context";
 
@@ -20,12 +20,13 @@ function RealmContextRenderer({ control }: { control: RealmContextClass }) {
                 <RealmContextProvider.Provider value={realm}>
 
                     {
+                      
                         control.vp_ChildFunc()?.render()
 
                     }
 
                 </RealmContextProvider.Provider >
-            ) : null
+            ) : <Fragment />
     )
 }
 

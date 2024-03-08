@@ -6847,7 +6847,8 @@ var CollectionsController = /** @class */ (function (_super) {
         var collections = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, appletId, 'collections', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('type', 'userCollection')
         ]).documents;
-        var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
+        var organization = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useOrganization)();
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useRealm)();
         var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
             projectId: workspaceId,
             databaseId: 'workspace',
@@ -6918,7 +6919,7 @@ var CollectionsController = /** @class */ (function (_super) {
             //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
             onChange: function (index) {
                 setSelectedCollection(collections[index]);
-                navigate("/app/".concat(realm === null || realm === void 0 ? void 0 : realm.name, "-").concat(workspaceId, "/").concat(applet === null || applet === void 0 ? void 0 : applet.name, "-").concat(appletId, "/collections/").concat(collections[index].name, "-").concat(collections[index].$id));
+                navigate("/app/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(realm.name), "-").concat(realm.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(applet === null || applet === void 0 ? void 0 : applet.name), "-").concat(appletId, "/collections/").concat(collections[index].name, "-").concat(collections[index].$id));
                 /*    setWidgetController({
                        controller: class extends WidgetController { }
                    });

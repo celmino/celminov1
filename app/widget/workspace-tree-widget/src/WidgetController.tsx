@@ -12,7 +12,7 @@ import {
 } from '@tuval/forms';
 
 import { Query, useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
-import { DynoDialog } from '@realmocean/ui';
+
 /* import { AddBoardDialog } from './dialogs/AddBoardDialog';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 import { AddFolderDialog } from './dialogs/AddFolderDialog';
@@ -24,6 +24,7 @@ import { getAppletId, getDocumentId, getListId, getViewId } from './utils';
 //import { SelectAppletDialog } from '@celmino/ui';
 import { EventBus } from '@tuval/core';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
+import { DynoDialog, useOrganization, useRealm } from '@celmino/ui';
 
 
 export class CustomAppletTreeModuleController extends UIController {
@@ -35,10 +36,10 @@ export class CustomAppletTreeModuleController extends UIController {
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
         const { items } = this.props.data || {};
-        const {organizationId, workspaceId, appletId, onItemSelected, item } = this.props.config || {};
-        const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
+        const { organizationId, workspaceId, appletId, onItemSelected, item } = this.props.config || {};
+        const realm = useRealm();
 
-        const { organization, isLoading: isOrganizationLoading } = useGetOrganization({organizationId, hookEnabled: true}); // useGetCurrentOrganization();
+        const organization = useOrganization(); // useGetCurrentOrganization();
 
         const { document: applet } = useGetDocument({
             projectId: workspaceId,
