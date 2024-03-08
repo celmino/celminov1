@@ -77,3 +77,15 @@ export class SelectSiderDialog extends DialogView {
     static Show(): Promise<any>;
 }
 
+export function OrganizationContext(childFunc: () => UIView): OrganizationContextClass;
+
+export const OrganizationContextProvider: React.Context<any>;
+export const useOrganization: () => any;
+
+export class OrganizationContextClass extends UIView {
+    /** @internal */
+    vp_ChildFunc: () => UIView;
+    childFunc(value: () => UIView): this;
+    render(): React.JSX.Element;
+}
+

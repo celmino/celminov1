@@ -19016,6 +19016,191 @@ var WorkspaceApplet = {
 
 /***/ }),
 
+/***/ "./src/context/index.ts":
+/*!******************************!*\
+  !*** ./src/context/index.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   OrganizationContext: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.OrganizationContext),
+/* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.OrganizationContextProvider),
+/* harmony export */   useOrganization: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.useOrganization)
+/* harmony export */ });
+/* harmony import */ var _organization__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./organization */ "./src/context/organization/index.ts");
+
+
+
+/***/ }),
+
+/***/ "./src/context/organization/OrganizationContext.ts":
+/*!*********************************************************!*\
+  !*** ./src/context/organization/OrganizationContext.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   OrganizationContext: () => (/* binding */ OrganizationContext)
+/* harmony export */ });
+/* harmony import */ var _OrganizationContextClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrganizationContextClass */ "./src/context/organization/OrganizationContextClass.tsx");
+
+function OrganizationContext(childFunc) {
+    return new _OrganizationContextClass__WEBPACK_IMPORTED_MODULE_0__.OrganizationContextClass().childFunc(childFunc);
+}
+
+
+/***/ }),
+
+/***/ "./src/context/organization/OrganizationContextClass.tsx":
+/*!***************************************************************!*\
+  !*** ./src/context/organization/OrganizationContextClass.tsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   OrganizationContextClass: () => (/* binding */ OrganizationContextClass)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _OrganizationContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OrganizationContextRenderer */ "./src/context/organization/OrganizationContextRenderer.tsx");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var OrganizationContextClass = /** @class */ (function (_super) {
+    __extends(OrganizationContextClass, _super);
+    function OrganizationContextClass() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    OrganizationContextClass.prototype.childFunc = function (value) {
+        this.vp_ChildFunc = value;
+        return this;
+    };
+    OrganizationContextClass.prototype.render = function () {
+        return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_OrganizationContextRenderer__WEBPACK_IMPORTED_MODULE_2__["default"], { control: this }));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], OrganizationContextClass.prototype, "vp_ChildFunc", void 0);
+    return OrganizationContextClass;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
+
+
+
+/***/ }),
+
+/***/ "./src/context/organization/OrganizationContextRenderer.tsx":
+/*!******************************************************************!*\
+  !*** ./src/context/organization/OrganizationContextRenderer.tsx ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/organization/context.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+function OrganizationContextRenderer(_a) {
+    var _b;
+    var control = _a.control;
+    var organizationId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)().organizationId;
+    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useGetOrganization)(organizationId), organization = _c.organization, isLoading = _c.isLoading;
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_ChildFunc) || !isLoading ?
+        (react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_context__WEBPACK_IMPORTED_MODULE_1__.OrganizationContextProvider.Provider, { value: organization }, (_b = control.vp_ChildFunc()) === null || _b === void 0 ? void 0 : _b.render())) : null);
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrganizationContextRenderer);
+
+
+/***/ }),
+
+/***/ "./src/context/organization/context.ts":
+/*!*********************************************!*\
+  !*** ./src/context/organization/context.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   OrganizationContextProvider: () => (/* binding */ OrganizationContextProvider),
+/* harmony export */   useOrganization: () => (/* binding */ useOrganization)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var OrganizationContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+var useOrganization = function () {
+    var organization = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(OrganizationContextProvider);
+    return organization;
+};
+
+
+/***/ }),
+
+/***/ "./src/context/organization/index.ts":
+/*!*******************************************!*\
+  !*** ./src/context/organization/index.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   OrganizationContext: () => (/* reexport safe */ _OrganizationContext__WEBPACK_IMPORTED_MODULE_0__.OrganizationContext),
+/* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.OrganizationContextProvider),
+/* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.useOrganization)
+/* harmony export */ });
+/* harmony import */ var _OrganizationContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrganizationContext */ "./src/context/organization/OrganizationContext.ts");
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/organization/context.ts");
+
+
+
+
+/***/ }),
+
 /***/ "./src/dialogs/SelectAppletDialog.ts":
 /*!*******************************************!*\
   !*** ./src/dialogs/SelectAppletDialog.ts ***!
@@ -19479,17 +19664,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   DynoDialog: () => (/* reexport safe */ _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__.DynoDialog),
 /* harmony export */   FormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
+/* harmony export */   OrganizationContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContext),
+/* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContextProvider),
 /* harmony export */   SelectAppletDialog: () => (/* reexport safe */ _dialogs__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog),
 /* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.SelectSiderDialog),
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
 /* harmony export */   compileFormula: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.compileFormula),
-/* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder)
+/* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder),
+/* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useOrganization)
 /* harmony export */ });
 /* harmony import */ var _dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dialogs */ "./src/dialogs/index.ts");
 /* harmony import */ var _views__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views */ "./src/views/index.ts");
 /* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
 /* harmony import */ var _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormBuilder/DynoDialog */ "./src/FormBuilder/DynoDialog.ts");
-/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/index.ts");
+/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+
 
 
 
