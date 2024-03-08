@@ -19027,9 +19027,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   OrganizationContext: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.OrganizationContext),
 /* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.OrganizationContextProvider),
-/* harmony export */   useOrganization: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.useOrganization)
+/* harmony export */   RealmContextProvider: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.RealmContextProvider),
+/* harmony export */   useOrganization: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.useOrganization),
+/* harmony export */   useRealm: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.useRealm)
 /* harmony export */ });
 /* harmony import */ var _organization__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./organization */ "./src/context/organization/index.ts");
+/* harmony import */ var _realm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./realm */ "./src/context/realm/index.ts");
+
 
 
 
@@ -19195,6 +19199,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _OrganizationContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrganizationContext */ "./src/context/organization/OrganizationContext.ts");
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/organization/context.ts");
+
+
+
+
+/***/ }),
+
+/***/ "./src/context/realm/context.ts":
+/*!**************************************!*\
+  !*** ./src/context/realm/context.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RealmContextProvider: () => (/* binding */ RealmContextProvider),
+/* harmony export */   useRealm: () => (/* binding */ useRealm)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RealmContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+var useRealm = function () {
+    var realm = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(RealmContextProvider);
+    return realm;
+};
+
+
+/***/ }),
+
+/***/ "./src/context/realm/index.ts":
+/*!************************************!*\
+  !*** ./src/context/realm/index.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* empty/unused harmony star reexport */
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RealmContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.RealmContextProvider),
+/* harmony export */   useRealm: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.useRealm)
+/* harmony export */ });
+Object(function webpackMissingModule() { var e = new Error("Cannot find module './OrganizationContext'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/realm/context.ts");
 
 
 
@@ -19666,12 +19716,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
 /* harmony export */   OrganizationContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContext),
 /* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContextProvider),
+/* harmony export */   RealmContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider),
 /* harmony export */   SelectAppletDialog: () => (/* reexport safe */ _dialogs__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog),
 /* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.SelectSiderDialog),
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
 /* harmony export */   compileFormula: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.compileFormula),
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder),
-/* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useOrganization)
+/* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useOrganization),
+/* harmony export */   useRealm: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useRealm)
 /* harmony export */ });
 /* harmony import */ var _dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dialogs */ "./src/dialogs/index.ts");
 /* harmony import */ var _views__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views */ "./src/views/index.ts");
