@@ -21,6 +21,7 @@ import {
     cLeading, cTopLeading,
     cTrailing,
     cVertical,
+    useMediaQuery,
     useNavigate, useParams
 } from "@tuval/forms";
 import React, { useEffect, useState } from "react";
@@ -229,7 +230,7 @@ let global_openedIDs = {};
 export const LeftSideMenuView = (selectedItem: string) => {
     const showAllWorkspaces = true;
     const { me, isLoading } = useGetMe('console');
-    const  organization = useOrganization();
+    const organization = useOrganization();
 
     return (
         (isLoading) ? Fragment() :
@@ -238,9 +239,9 @@ export const LeftSideMenuView = (selectedItem: string) => {
                 // alert(workspaceId)
                 const { organizationId, workspaceId } = useParams();
 
-                const { organization, isLoading: isOrganizationLoading } = useGetOrganization({organizationId, hookEnabled: true}); // useGetCurrentOrganization();
+                const { organization, isLoading: isOrganizationLoading } = useGetOrganization({ organizationId, hookEnabled: true }); // useGetCurrentOrganization();
 
-                
+
                 const { databases } = useListDatabases(workspaceId, [
                     Query.equal('category', 'applet')
                 ]);
@@ -260,13 +261,16 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                 const [isEditable, setIsEditable] = useState(false);
 
-                const {createTeam} = useCreateTeam(workspaceId);
-                const {createTeamMembership} =useCreateTeamMembership(workspaceId)
+                const { createTeam } = useCreateTeam(workspaceId);
+                const { createTeamMembership } = useCreateTeamMembership(workspaceId)
 
                 let _hideHandle;
 
+                const matches = useMediaQuery('(min-width: 1000px)');
+
                 return (
                     (isWorkspaceTreeLoading) ? Fragment() : (workspaceTreeITems == null) ? Text('null') :
+                    !matches ? Fragment() :
                         VStack({ alignment: cTopLeading })(
                             /* HStack().width(200).height(100).background('yellow')
                                 .onClick(() => {
@@ -751,6 +755,12 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                             )
                         )
+                           /*  .style(`
+                        @media screen and (max-width: 1000px) {
+                            display:none !important;
+                          }
+                        
+                        `) */
                             .fontFamily(fontFamily)
                             .allWidth(282)
                             .transition('width .3s cubic-bezier(.2,0,0,1) 0s')

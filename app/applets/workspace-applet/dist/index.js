@@ -6939,7 +6939,8 @@ var CollectionsController = /** @class */ (function (_super) {
             .borderBottom('1px solid rgba(0,0,0,.05)')
             .height(50), 
         //Text(JSON.stringify(collections)),
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRouteOutlet)().width('100%').height('100%')).render())));
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRouteOutlet)().width('100%').height('100%'))
+            .render())));
     };
     return CollectionsController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));

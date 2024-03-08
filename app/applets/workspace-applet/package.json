@@ -107,7 +107,7 @@
         "@realmocean/sdk": "1.0.81",
         "@realmocean/vibe": "^2.82.61",
         "@tuval/core": "^0.0.103",
-        "@tuval/forms": "^1.0.170",
+        "@tuval/forms": "^1.0.174",
         "@uiw/react-color-circle": "^2.1.0",
         "editorjs-inline-image": "^2.0.0",
         "shelljs": "^0.8.5",

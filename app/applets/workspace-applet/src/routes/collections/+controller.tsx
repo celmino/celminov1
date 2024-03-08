@@ -148,7 +148,9 @@ export class CollectionsController extends UIFormController {
 
                         UIRouteOutlet().width('100%').height('100%')
 
-                    ).render()
+                    )
+                   
+                    .render()
                 }
                 </DialogStack>
             )
