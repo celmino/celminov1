@@ -93,7 +93,7 @@
   resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.24.0.tgz"
   integrity sha512-QuP/FxEAzMSjXygs8v4N9dvdXzEHN4W1oF3PxuWAtPo08UdM17u89RDMgjLn/mlc56iM0HlLmVkO/wgR+rDgHg==
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.7", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.2.0", "@babel/runtime@^7.20.0", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.22.5", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.7":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.1", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.4", "@babel/runtime@^7.11.1", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.7", "@babel/runtime@^7.18.0", "@babel/runtime@^7.18.3", "@babel/runtime@^7.2.0", "@babel/runtime@^7.20.0", "@babel/runtime@^7.20.7", "@babel/runtime@^7.21.0", "@babel/runtime@^7.22.5", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.7", "@babel/runtime@>=7.19.0":
   version "7.22.10"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.22.10.tgz"
   integrity sha512-21t/fkKLMZI4pqP2wlmsQAWnYW1PDyKyyUV4vCi+B25ydmdaYTKXPwCj0BzSUnZf4seIiYvSA3jcZ3gdsMFkLQ==
@@ -114,15 +114,16 @@
   resolved "https://registry.npmjs.org/@celmino/directoryprotocol/-/directoryprotocol-0.0.7.tgz"
   integrity sha512-yESCabHZ8eMKSfaeU8du4WhYjpwfscRmi0nyWf5JyIjEiQFx0O++KLRUlUS2xYB8zI+qt+ve3nzv4jxY+Cln7A==
 
-"@celmino/ui@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.22.tgz"
-  integrity sha512-31YMmTxqFdPMMZFb+a7AQqFPpkGw3LY3hiWaW0L4SXCgpJUndQ1KK4aBRsPxYr9+tTFOlzx6euJDVNQNBcbdyQ==
+"@celmino/ui@^1.0.24":
+  version "1.0.24"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.24.tgz"
+  integrity sha512-J/E5vcwRxDnIFZH3l5Omx+/sHM/6K7mH57fCTqoLHQZLFjmrR+gRoHUbIYbIcK/J5VBwG534odKFdbdKt6dlYA==
   dependencies:
     "@realmocean/sdk" "1.0.82"
     "@realmocean/vibe" "2.82.50"
     "@tuval/core" "^0.0.103"
     "@tuval/forms" "^1.0.167"
+    "@uiw/react-color-circle" "^2.1.1"
     dts-bundle "^0.7.3"
     shelljs "^0.8.5"
     ts-loader "^9.5.1"
@@ -765,6 +766,22 @@
   resolved "https://registry.npmjs.org/@realmocean/spreadsheet/-/spreadsheet-19.37.7.tgz"
   integrity sha512-uil1FxGm1g5mtAJxEgin4ctFRqvGBOAo6GkpvgCPtKKrQENk57iJ1IjKxvjjLdXfOnmN7TuwVIOloxXcS+2bow==
 
+"@realmocean/vibe@^2.82.61":
+  version "2.82.61"
+  resolved "https://registry.npmjs.org/@realmocean/vibe/-/vibe-2.82.61.tgz"
+  integrity sha512-pCtIGHY279KcOg8ZL7jvLhZ1W8eGydQ9ZdZUCfi4BMBBjTTCypoydwxVuo2Wp1O4IcUQ+kve8BZaLV4UBw+lQA==
+  dependencies:
+    "@realmocean/data" "^0.0.3"
+    "@realmocean/dropdowns" "^0.0.20"
+    "@realmocean/excelexport" "^0.0.2"
+    "@realmocean/navigations" "^0.0.3"
+    "@tuval/forms" "^1.0.159"
+    antd "^5.8.4"
+    css-loader "^6.9.0"
+    dayjs "^1.11.9"
+    monday-ui-react-core "^2.82.0"
+    to-string-loader "^1.2.0"
+
 "@realmocean/vibe@2.82.50":
   version "2.82.50"
   resolved "https://registry.npmjs.org/@realmocean/vibe/-/vibe-2.82.50.tgz"
@@ -1110,6 +1127,26 @@
   version "2.1.0"
   resolved "https://registry.npmjs.org/@uidotdev/usehooks/-/usehooks-2.1.0.tgz"
   integrity sha512-D7SJiNQC1BOHgtE2dy2KvOtnRNaLWTFFHvcBLg7lZ8Jz7YcimxdUY3spqpvf/mVkGCuUHee8i/79p5vVkBgsYQ==
+
+"@uiw/color-convert@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/color-convert/-/color-convert-2.1.1.tgz"
+  integrity sha512-L421mBAT2NRsmYv7BQvofOEwV0iKee1upPVxMjo2NnkJWyIu4I+H1RxK9m3uT8yvcOlStZhv7BQBsFyJCGmIMg==
+
+"@uiw/react-color-circle@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-circle/-/react-color-circle-2.1.1.tgz"
+  integrity sha512-t/Wr6eT9GLOzywaTmJclOZ3NuirJlMk8eVxoLKM7eRePbN5WowIEMwug/towSU3YrBrEbSSWjZRhfVUqdh7kMw==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
+    "@uiw/react-color-swatch" "2.1.1"
+
+"@uiw/react-color-swatch@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.npmjs.org/@uiw/react-color-swatch/-/react-color-swatch-2.1.1.tgz"
+  integrity sha512-soKsfVgflcKSBx47PaBocKZ0beIXfk9ruE4r9778mGnDDpxc2RC5zPNfvzQkSLKW+siXIS0cscuvb/8s1zK5jw==
+  dependencies:
+    "@uiw/color-convert" "2.1.1"
 
 "@webassemblyjs/ast@^1.11.5", "@webassemblyjs/ast@1.11.6":
   version "1.11.6"

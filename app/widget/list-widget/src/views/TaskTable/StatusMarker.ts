@@ -2,9 +2,12 @@
 import { HStack, UIViewBuilder } from "@tuval/forms";
 
 export const StatusMarker = (status) => (
-    HStack()
+    HStack(
+        HStack().width(12).height(12).cornerRadius('50%').border('solid 2px white')
+    )
+   
         .background(status.bgColor || 'gray')
-        .allWidth(8).allHeight(8).marginLeft('10px').marginRight('10px').cornerRadius(2)
+        .allWidth(14).allHeight(14).marginLeft('10px').marginRight('10px').cornerRadius('50%')
 )
 
 

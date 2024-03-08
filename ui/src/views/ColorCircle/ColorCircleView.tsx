@@ -28,7 +28,8 @@ export const ColorView = (): IColorView => {
                 HStack(
                     ReactView(
                         <Circle
-                            colors={['#4A4A4A',
+                            colors={[
+                                '#4A4A4A',
                                 '#6A849B',
                                 '#BEC5CC',
                                 '#D40915',
@@ -64,7 +65,9 @@ export const ColorView = (): IColorView => {
                             }
                         />
                     )
-                ).maxWidth(500)
+                )
+                .maxWidth(500)
+                .height()
                     .render()
             )
         }

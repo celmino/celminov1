@@ -32306,6 +32306,17 @@ var ListController = /** @class */ (function (_super) {
                             }
                         });
                     },
+                    onStagePropsChanged: function (stageId, stageProps) {
+                        updateTask({
+                            databaseId: appletId,
+                            collectionId: 'listStatuses',
+                            documentId: stageId,
+                            data: {
+                                name: stageProps.name,
+                                bgColor: stageProps.color
+                            }
+                        });
+                    },
                     onNewFieldAddded: function (field) {
                         alert(JSON.stringify(field));
                         if (field.type === 'text') {

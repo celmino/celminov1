@@ -4801,7 +4801,7 @@ function Point(_ref) {
     onMouseLeave: handleMouseLeave,
     title: title,
     className: className,
-    style: (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    style: (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, style, {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -4815,7 +4815,7 @@ function Point(_ref) {
       transform: 'scale(1)',
       boxShadow: color + " 0px 0px " + (checked ? 5 : 0) + "px",
       transition: 'transform 100ms ease 0s, box-shadow 100ms ease 0s'
-    }, style),
+    }),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, rectProps, {
       style: styleWrapper
     }))
@@ -4860,7 +4860,7 @@ var Circle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().forwardRe
       color,
       colors = [],
       rectProps = {},
-      pointProps = {},
+      pointProps,
       onChange: _onChange
     } = props,
     other = (0,_babel_runtime_helpers_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(props, _excluded);
@@ -4877,7 +4877,6 @@ var Circle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().forwardRe
     rectRender: _ref => {
       var props = (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, ((0,_babel_runtime_helpers_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref), _ref));
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Point__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props, pointProps, {
-        style: (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, props.style, pointProps.style),
         className: clsPoint,
         rectProps: rectProps
       }));
@@ -19493,7 +19492,8 @@ var ColorView = function () {
         };
         class_1.prototype.render = function () {
             var _this = this;
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_2__["default"], { colors: ['#4A4A4A',
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_2__["default"], { colors: [
+                    '#4A4A4A',
                     '#6A849B',
                     '#BEC5CC',
                     '#D40915',
@@ -19521,9 +19521,12 @@ var ColorView = function () {
                     '#F17EAD',
                     '#C580E6',
                     '#BBA399',
-                    '#595D66'], color: this.vp_SelectedColor, onChange: function (color) {
+                    '#595D66'
+                ], color: this.vp_SelectedColor, onChange: function (color) {
                     _this.vp_OnChange(color.hex);
-                } }))).maxWidth(500)
+                } })))
+                .maxWidth(500)
+                .height()
                 .render());
         };
         return class_1;

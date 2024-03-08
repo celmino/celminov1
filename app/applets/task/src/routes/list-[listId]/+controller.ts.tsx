@@ -148,6 +148,17 @@ export class ListController extends UIFormController {
 
                                                                 })
                                                             },
+                                                            onStagePropsChanged:(stageId,stageProps) => {
+                                                                updateTask({
+                                                                    databaseId: appletId,
+                                                                    collectionId: 'listStatuses',
+                                                                    documentId: stageId,
+                                                                    data: {
+                                                                        name: stageProps.name,
+                                                                        bgColor: stageProps.color
+                                                                    }
+                                                                })
+                                                            },
                                                             onNewFieldAddded: (field) => {
                                                                 alert(JSON.stringify(field))
                                                                 if (field.type === 'text') {

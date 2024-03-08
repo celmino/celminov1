@@ -12,6 +12,7 @@ import { DynoDialog } from "@celmino/ui";
 import { DatePickerRenderer } from '@realmocean/antd';
 import { NewFieldMenuView } from '@celmino/ui';
 import { EditTaskItem } from '../EditTaskItem';
+import { BoardSectionTitle } from '../views/BoardSectionTitle';
 
 
 
@@ -86,24 +87,7 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                 VStack(
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
-                            HStack({ alignment: cLeading })(
-                                HStack({ alignment: cLeading, spacing: 5 })(
-                                    Text(status.name).fontSize(11),
-                                    HStack(
-                                        Icon(Icons.Edit),
-                                        Icon(Icons.Menu),
-                                    ).display('var(--show-rename)')
-                                )
-
-                                    .height(22)
-                                    .padding('0 7px')
-                                    .cornerRadius(3)
-                                    .border('1px solid transparent')
-                                    .foregroundColor(status.fgColor || 'blue')
-                                    .background(status.bgColor || 'blue').width()
-                            )
-                                .height(22).width().paddingRight('10px')
-                                .variable('--show-rename', { default: 'none', hover: 'flex' }),
+                            BoardSectionTitle(status),
 
                             Text(items.length.toString() + ' Tasks')
                                 .foregroundColor('var(--cu-content-tertiary)')

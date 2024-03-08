@@ -56,7 +56,11 @@ export const NewFieldMenuView: ({ view, onNewFieldAdded }: {
     onNewFieldAdded?: Function;
 }) => import("@tuval/forms").ReactViewClass;
 
-export const ColorView: () => UIView;
+export interface IColorView extends UIView {
+    selectedColor(value: string): any;
+    onChange(value: Function): any;
+}
+export const ColorView: () => IColorView;
 
 export const ColorSelect: ({ onSelect }: {
     onSelect: any;

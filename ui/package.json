@@ -1,6 +1,6 @@
 {
     "name": "@celmino/ui",
-    "version": "1.0.23",
+    "version": "1.0.24",
     "description": "",
     "keywords": [],
     "main": "index.js",
@@ -106,7 +106,7 @@
         "@realmocean/vibe": "2.82.50",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.167",
-        "@uiw/react-color-circle": "^2.1.1",
+        "@uiw/react-color-circle": "^2.1.0",
         "dts-bundle": "^0.7.3",
         "shelljs": "^0.8.5",
         "ts-loader": "^9.5.1",
