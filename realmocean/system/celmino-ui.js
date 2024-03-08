@@ -20219,8 +20219,9 @@ var RelationFieldAttributesView = function () { return ((0,_tuval_forms__WEBPACK
                     ]), documents = _a.documents, isLoading = _a.isLoading;
                     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(documents)(function (doc, index) {
                         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(Marker)).width(20).height(20).foregroundColor(colors[index % 3]), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(doc.name)).height(32);
-                    })).padding());
-                }));
+                    })));
+                }))
+                    .padding();
             })).height())).height(300));
     })
         .options([{

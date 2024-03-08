@@ -48,10 +48,11 @@ export const RelationFieldAttributesView = () => (
                                                                         Text(doc.name)
                                                                     ).height(32)
                                                                 )
-                                                            ).padding()
+                                                            )
                                                         )
                                                     })
                                                 )
+                                                .padding()
 
                                             )
                                         ).height()
