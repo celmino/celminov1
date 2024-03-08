@@ -34,12 +34,12 @@ export const Routes = () => {
                     UIRoute('workspace/select', WorkspaceSelectController)
                 ),
                 UIRoute('organization/select', OrganizationSelectController),
-                UIRoute('workspace/', WorkspaceLayoutController).children(
+               /*  UIRoute('workspace/', WorkspaceLayoutController).children(
                     UIRoute(':workspaceId', WorkspaceController).children(
                         UIRoute('applet/:appletId/*', AppletController),
                         UIRoute(':appletId/*', AppletController)
                     )
-                ),
+                ), */
 
 
             ),

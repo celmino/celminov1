@@ -7,10 +7,11 @@ import {
     UIController, UIView, UIViewBuilder, UIWidget, VStack,
     cLeading,
     cTopLeading,
+    urlFriendly,
     useNavigate, useParams, useState
 } from '@tuval/forms';
 
-import { Query, useCreateDocument, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
+import { Query, useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
 import { DynoDialog } from '@realmocean/ui';
 /* import { AddBoardDialog } from './dialogs/AddBoardDialog';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
@@ -34,8 +35,10 @@ export class CustomAppletTreeModuleController extends UIController {
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
         const { items } = this.props.data || {};
-        const { workspaceId, appletId, onItemSelected, item } = this.props.config || {};
+        const {organizationId, workspaceId, appletId, onItemSelected, item } = this.props.config || {};
         const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
+
+        const { organization, isLoading: isOrganizationLoading } = useGetOrganization({organizationId, hookEnabled: true}); // useGetCurrentOrganization();
 
         const { document: applet } = useGetDocument({
             projectId: workspaceId,
@@ -204,7 +207,7 @@ export class CustomAppletTreeModuleController extends UIController {
 
                             },
                             requestNavigation: () => {
-                                navigate(`/app/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}`)
+                                navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/${urlFriendly(applet?.name)}-${appletId}`)
                             },
                             requestEditMenu: () => [
 
@@ -216,12 +219,12 @@ export class CustomAppletTreeModuleController extends UIController {
                                 {
                                     title: 'Collections',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`/app/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}/collections`)
+                                    onClick: () => navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/${applet?.name}-${appletId}/collections`)
                                 },
                                 {
                                     title: 'Applet settings',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${appletId}/settings`)
+                                    onClick: () => navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/applet/${appletId}/settings`)
                                 }
 
 

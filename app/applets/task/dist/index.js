@@ -32241,6 +32241,7 @@ var ListController = /** @class */ (function (_super) {
         var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listItems'), items = _b.documents, isItemsLoading = _b.isLoading;
         var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listStatuses'), groups = _c.documents, isStatusesLoading = _c.isLoading;
         var createTask = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'listItems').createDocument;
+        var updateTask = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
         var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'fields', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
         ]), attributes = _d.documents, isLoading = _d.isLoading;
@@ -32273,13 +32274,14 @@ var ListController = /** @class */ (function (_super) {
                     })
                 }) */
             }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                var _a;
                 var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
                 return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.list')
                     .config({
                     workspaceId: workspaceId,
                     listId: appletId,
                     attributes: attributes,
-                    groups: groups,
+                    groups: groups.map(function (group) { return (__assign({ id: group.$id }, group)); }),
                     groupBy: 'status',
                     onItemSave: function (item) {
                         return (new Promise(function (resolve) {
@@ -32287,11 +32289,22 @@ var ListController = /** @class */ (function (_super) {
                                 data: item
                             }, function () {
                                 resolve(true);
-                                setTimeout(function () {
-                                    return navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId));
-                                }, 1000);
+                                /*  setTimeout(() =>
+                                     navigate(`/app/workspace/${workspaceId}/applet/${appletId}`)
+                                     , 1000) */
                             });
                         }));
+                    },
+                    onStageChange: function (itemId, stageId) {
+                        //   alert(itemId + ' ' + stageId)
+                        updateTask({
+                            databaseId: appletId,
+                            collectionId: 'listItems',
+                            documentId: itemId,
+                            data: {
+                                status: stageId
+                            }
+                        });
                     },
                     onNewFieldAddded: function (field) {
                         alert(JSON.stringify(field));
@@ -32389,7 +32402,7 @@ var ListController = /** @class */ (function (_super) {
                             })
                         });
                     },
-                    items: items !== null && items !== void 0 ? items : [],
+                    items: (_a = items === null || items === void 0 ? void 0 : items.map(function (item) { return (__assign({ id: item.$id, title: item.name }, item)); })) !== null && _a !== void 0 ? _a : [],
                     /*   stages: [{
 $id: 'AAA',
 name: 'Todo',

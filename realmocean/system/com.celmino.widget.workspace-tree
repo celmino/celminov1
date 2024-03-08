@@ -81,15 +81,16 @@ var CustomAppletTreeModuleController = /** @class */ (function (_super) {
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var isLoading = false;
         var items = (this.props.data || {}).items;
-        var _b = this.props.config || {}, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
+        var _b = this.props.config || {}, organizationId = _b.organizationId, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
         var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
+        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _c.organization, isOrganizationLoading = _c.isLoading; // useGetCurrentOrganization();
         var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
             projectId: workspaceId,
             databaseId: 'workspace',
             collectionId: 'applets',
             documentId: appletId
         }).document;
-        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_4__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
+        var _d = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_4__.getAppletId)() === appletId), isOpen = _d[0], setIsOpen = _d[1];
         var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_4__.getListId)();
         /*     const { document: list, isLoading: isListLoading } = useGetDocument({
                 projectId: workspaceId,
@@ -228,7 +229,7 @@ var CustomAppletTreeModuleController = /** @class */ (function (_super) {
                     ];
                 },
                 requestNavigation: function () {
-                    navigate("/app/".concat(realm === null || realm === void 0 ? void 0 : realm.name, "-").concat(workspaceId, "/").concat(applet === null || applet === void 0 ? void 0 : applet.name, "-").concat(appletId));
+                    navigate("/app/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet === null || applet === void 0 ? void 0 : applet.name), "-").concat(appletId));
                 },
                 requestEditMenu: function () { return [
                     {
@@ -239,12 +240,12 @@ var CustomAppletTreeModuleController = /** @class */ (function (_super) {
                     {
                         title: 'Collections',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                        onClick: function () { return navigate("/app/".concat(realm === null || realm === void 0 ? void 0 : realm.name, "-").concat(workspaceId, "/").concat(applet === null || applet === void 0 ? void 0 : applet.name, "-").concat(appletId, "/collections")); }
+                        onClick: function () { return navigate("/app/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(applet === null || applet === void 0 ? void 0 : applet.name, "-").concat(appletId, "/collections")); }
                     },
                     {
                         title: 'Applet settings',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                        onClick: function () { return navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings")); }
+                        onClick: function () { return navigate("/app/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/applet/").concat(appletId, "/settings")); }
                     }
                 ]; }
             }));

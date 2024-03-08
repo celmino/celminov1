@@ -98,7 +98,7 @@ const SortableTaskItem = ({ id, task: item, status }/* : SortableTaskItemProps *
                         .zIndex({ hover: '100' })
                         .background(isDragging ? 'rgba(255,255,255,1)' : { default: 'rgba(255,255,255,1)', hover: 'rgb(247,248,249)' } as any)
                         .borderBottom('solid 1px rgb(240, 241, 243)')
-                        .shadow({ default: isDragging ? 'rgba(0, 0, 0, 0.35) 0px 5px 15px' : '0 8px 8px -8px rgba(0,0,0, 0.1)', hover: '4px 3px 6px -3px var(--ui-border-color)' })
+                      //  .shadow({ default: isDragging ? 'rgba(0, 0, 0, 0.35) 0px 5px 15px' : '0 8px 8px -8px rgba(0,0,0, 0.1)', hover: '4px 3px 6px -3px var(--ui-border-color)' })
                         //.border('solid 1px gray')
                         .allHeight(36)
                         .variable('--show-rename', { default: '0', hover: '1' })

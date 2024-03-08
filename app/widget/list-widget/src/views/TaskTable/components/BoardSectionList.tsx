@@ -66,7 +66,7 @@ export const findBoardSectionContainer = (
 
 const BoardSectionList = ({ items, status }) => {
 
-    const { groupBy } = useOptions();
+    const { groupBy, onStageChange = () => void 0 } = useOptions();
     const tasks = items;
     const initialBoardSections = initializeBoard(status, items, groupBy);
 
@@ -79,7 +79,7 @@ const BoardSectionList = ({ items, status }) => {
 
     const updateBoardSections = useCallback(({ task }: { task: any }) => {
         // alert(JSON.stringify(task))
-     
+
         boardSections[task[groupBy]].push(task);
 
         const _index = boardSections[task[groupBy]].length - 1;
@@ -246,12 +246,7 @@ const BoardSectionList = ({ items, status }) => {
 
 
 
-
-        /*   moveTaskToStage(active.id as any, overContainer, {
-              onSuccess: () => {
-                  invalidateCache();
-              }
-          }); */
+        onStageChange(active.id, overContainer);
 
         setBoardSections((boardSection) => ({
             ...boardSection,

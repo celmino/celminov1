@@ -21,7 +21,7 @@ import { EventBus } from "@tuval/core";
 import React from "react";
 import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
-import {SelectSiderDialog} from '@celmino/ui'
+import { SelectSiderDialog } from '@celmino/ui'
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -65,6 +65,7 @@ export class ListController extends UIFormController {
         const { documents: items, isLoading: isItemsLoading } = useListDocuments(workspaceId, appletId, 'listItems');
         const { documents: groups, isLoading: isStatusesLoading } = useListDocuments(workspaceId, appletId, 'listStatuses');
         const { createDocument: createTask } = useCreateDocument(workspaceId, appletId, 'listItems');
+        const { updateDocument: updateTask } = useUpdateDocument(workspaceId);
 
         const { documents: attributes, isLoading } = useListDocuments(workspaceId, appletId, 'fields', [
             Query.equal('collectionId', 'listItems')
@@ -119,7 +120,7 @@ export class ListController extends UIFormController {
                                                             workspaceId: workspaceId,
                                                             listId: appletId,
                                                             attributes: attributes,
-                                                            groups: groups,
+                                                            groups: groups.map(group => ({ id: group.$id, ...group })),
                                                             groupBy: 'status',
                                                             onItemSave: (item) => {
                                                                 return (
@@ -128,12 +129,24 @@ export class ListController extends UIFormController {
                                                                             data: item
                                                                         }, () => {
                                                                             resolve(true);
-                                                                            setTimeout(() =>
-                                                                                navigate(`/app/workspace/${workspaceId}/applet/${appletId}`)
-                                                                                , 1000)
+                                                                            /*  setTimeout(() =>
+                                                                                 navigate(`/app/workspace/${workspaceId}/applet/${appletId}`)
+                                                                                 , 1000) */
                                                                         })
                                                                     })
                                                                 )
+                                                            },
+                                                            onStageChange: (itemId, stageId) => {
+                                                             //   alert(itemId + ' ' + stageId)
+                                                                updateTask({
+                                                                    databaseId: appletId,
+                                                                    collectionId: 'listItems',
+                                                                    documentId: itemId,
+                                                                    data: {
+                                                                        status: stageId
+                                                                    }
+
+                                                                })
                                                             },
                                                             onNewFieldAddded: (field) => {
                                                                 alert(JSON.stringify(field))
@@ -236,7 +249,7 @@ export class ListController extends UIFormController {
                                                                         })
                                                                 })
                                                             },
-                                                            items: items ?? [],
+                                                            items: items?.map(item => ({ id: item.$id, title: item.name, ...item })) ?? [],
                                                             /*   stages: [{
                         $id: 'AAA',
                     name: 'Todo',
@@ -251,8 +264,8 @@ export class ListController extends UIFormController {
                                             HStack(
                                                 Icon(SvgIcon('cu3-icon-addSmall'))
                                             )
-                                            .cursor('pointer')
-                                            .cornerRadius(6)
+                                                .cursor('pointer')
+                                                .cornerRadius(6)
                                                 .background({ hover: '#F0F1F3' })
                                                 .width(32).height(32)
                                                 .onClick(() => {
