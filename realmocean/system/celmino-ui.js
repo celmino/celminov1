@@ -19759,7 +19759,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dialogs/AddRichtextFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRichtextFieldDialog.ts");
 /* harmony import */ var _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialogs/AddSelectFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddSelectFieldDialog.ts");
 /* harmony import */ var _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialogs/AddMultiSelectDialog */ "./src/views/NewFieldMenu/dialogs/AddMultiSelectDialog.ts");
-/* harmony import */ var _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dialogs/AddRelationFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.ts");
+/* harmony import */ var _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dialogs/AddRelationFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -20175,10 +20175,10 @@ var AddNumberFieldDialog = function (workspaceId, databaseId, collectionId) { re
 
 /***/ }),
 
-/***/ "./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.ts":
-/*!******************************************************************!*\
-  !*** ./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.ts ***!
-  \******************************************************************/
+/***/ "./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.tsx":
+/*!*******************************************************************!*\
+  !*** ./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.tsx ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20192,23 +20192,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
+
+var Marker = function () { return (react__WEBPACK_IMPORTED_MODULE_3___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_3___default().createElement("path", { d: "M9 6h3c2 0 3 1 3 3v3c0 2-1 3-3 3H9c-2 0-3-1-3-3V9c0-2 1-3 3-3Z" }))); };
+var colors = [
+    'rgb(212, 9, 21)',
+    'rgb(45, 183, 245)',
+    'rgb(21, 151, 137)',
+    'rgb(148, 89, 60)',
+    'rgb(251, 163, 47)'
+];
 var RelationFieldAttributesView = function () { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
     var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)('65e576becf3312efde15', 'workspace', 'applets'), documents = _a.documents, isLoading = _a.isLoading;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.Select)().placeHolder('Select Collection')
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.Select)().placeHolder('Select Collection')
         .dropdownRenderer(function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(documents)(function (doc) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(doc.name).fontSize('1.2rem').fontWeight('500').foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-                var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)('65e576becf3312efde15', doc.$id, 'Collections', [
-                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.orderAsc('name')
-                ]), documents = _a.documents, isLoading = _a.isLoading;
-                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(documents)(function (doc) {
-                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(doc.name);
-                })).padding());
-            }));
-        }))).height());
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(documents)(function (doc) {
+                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(doc.name).fontSize('1.2rem').fontWeight('500').foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)('65e576becf3312efde15', doc.$id, 'Collections', [
+                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.orderAsc('name')
+                    ]), documents = _a.documents, isLoading = _a.isLoading;
+                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(documents)(function (doc, index) {
+                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(Marker)).width(20).height(20).foregroundColor(colors[index % 3]), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(doc.name)).height(32);
+                    })).padding());
+                }));
+            })).height())).height(300));
     })
         .options([{
             value: 1,

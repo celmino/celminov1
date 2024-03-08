@@ -10,7 +10,7 @@ export class LogoutController extends UIController {
 
 
         useEffect(() => {
-            deleteSession({ sessionId: 'current' }, () =>window.location.href = '/login');
+            deleteSession({ sessionId: 'current' }, () => window.location.href = '/login');
         }, []);
 
         return (
