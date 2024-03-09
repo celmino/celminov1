@@ -63,6 +63,10 @@ export interface IColorView extends UIView {
 }
 export const ColorView: () => IColorView;
 
+export const useAppletNavigate: () => {
+    navigate: (url: string) => void;
+};
+
 export const ColorSelect: ({ onSelect }: {
     onSelect: any;
 }) => import("@tuval/forms").HStackClass;

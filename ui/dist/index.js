@@ -19479,6 +19479,57 @@ if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.workerContext()) {
 
 /***/ }),
 
+/***/ "./src/hooks/index.ts":
+/*!****************************!*\
+  !*** ./src/hooks/index.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useAppletNavigate: () => (/* reexport safe */ _useAppletNavigate__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)
+/* harmony export */ });
+/* harmony import */ var _useAppletNavigate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useAppletNavigate */ "./src/hooks/useAppletNavigate.ts");
+
+
+
+/***/ }),
+
+/***/ "./src/hooks/useAppletNavigate.ts":
+/*!****************************************!*\
+  !*** ./src/hooks/useAppletNavigate.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useAppletNavigate: () => (/* binding */ useAppletNavigate)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context */ "./src/context/index.ts");
+
+
+const useAppletNavigate = () => {
+    const organization = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useOrganization)();
+    const { realm } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useRealm)();
+    const { applet } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useApplet)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    return {
+        navigate: (url) => {
+            if ((url === null || url === void 0 ? void 0 : url[0]) !== '/') {
+                url += '/';
+            }
+            navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+        }
+    };
+};
+
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
@@ -19507,6 +19558,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
 /* harmony export */   compileFormula: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.compileFormula),
 /* harmony export */   useApplet: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useApplet),
+/* harmony export */   useAppletNavigate: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useAppletNavigate),
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder),
 /* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useOrganization),
 /* harmony export */   useRealm: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useRealm),
@@ -19517,7 +19569,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
 /* harmony import */ var _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormBuilder/DynoDialog */ "./src/FormBuilder/DynoDialog.ts");
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/index.ts");
-/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hooks */ "./src/hooks/index.ts");
+/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+
 
 
 
