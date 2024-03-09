@@ -147,6 +147,7 @@ class Controller extends UIFormController {
                                 .transition('all .15s ease-out')
                                 .cursor('pointer')
                                 .onClick(() => {
+                                    setSelectedType(null);
                                     setMenuIsOpen(!menuIsOpen);
                                 })
                         )(

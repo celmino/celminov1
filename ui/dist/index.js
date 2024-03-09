@@ -10304,8 +10304,7 @@ module.exports = beautify;
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-/**
- * @license React
+/** @license React v16.14.0
  * react-jsx-runtime.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -10325,21 +10324,54 @@ var React = __webpack_require__(/*! react */ "react");
 // ATTENTION
 // When adding new symbols to this file,
 // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-// The Symbol used to tag the ReactElement-like types.
-var REACT_ELEMENT_TYPE = Symbol.for('react.element');
-var REACT_PORTAL_TYPE = Symbol.for('react.portal');
-var REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
-var REACT_STRICT_MODE_TYPE = Symbol.for('react.strict_mode');
-var REACT_PROFILER_TYPE = Symbol.for('react.profiler');
-var REACT_PROVIDER_TYPE = Symbol.for('react.provider');
-var REACT_CONTEXT_TYPE = Symbol.for('react.context');
-var REACT_FORWARD_REF_TYPE = Symbol.for('react.forward_ref');
-var REACT_SUSPENSE_TYPE = Symbol.for('react.suspense');
-var REACT_SUSPENSE_LIST_TYPE = Symbol.for('react.suspense_list');
-var REACT_MEMO_TYPE = Symbol.for('react.memo');
-var REACT_LAZY_TYPE = Symbol.for('react.lazy');
-var REACT_OFFSCREEN_TYPE = Symbol.for('react.offscreen');
-var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var REACT_ELEMENT_TYPE = 0xeac7;
+var REACT_PORTAL_TYPE = 0xeaca;
+exports.Fragment = 0xeacb;
+var REACT_STRICT_MODE_TYPE = 0xeacc;
+var REACT_PROFILER_TYPE = 0xead2;
+var REACT_PROVIDER_TYPE = 0xeacd;
+var REACT_CONTEXT_TYPE = 0xeace;
+var REACT_FORWARD_REF_TYPE = 0xead0;
+var REACT_SUSPENSE_TYPE = 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = 0xead8;
+var REACT_MEMO_TYPE = 0xead3;
+var REACT_LAZY_TYPE = 0xead4;
+var REACT_BLOCK_TYPE = 0xead9;
+var REACT_SERVER_BLOCK_TYPE = 0xeada;
+var REACT_FUNDAMENTAL_TYPE = 0xead5;
+var REACT_SCOPE_TYPE = 0xead7;
+var REACT_OPAQUE_ID_TYPE = 0xeae0;
+var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
+var REACT_OFFSCREEN_TYPE = 0xeae2;
+var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
+
+if (typeof Symbol === 'function' && Symbol.for) {
+  var symbolFor = Symbol.for;
+  REACT_ELEMENT_TYPE = symbolFor('react.element');
+  REACT_PORTAL_TYPE = symbolFor('react.portal');
+  exports.Fragment = symbolFor('react.fragment');
+  REACT_STRICT_MODE_TYPE = symbolFor('react.strict_mode');
+  REACT_PROFILER_TYPE = symbolFor('react.profiler');
+  REACT_PROVIDER_TYPE = symbolFor('react.provider');
+  REACT_CONTEXT_TYPE = symbolFor('react.context');
+  REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
+  REACT_SUSPENSE_TYPE = symbolFor('react.suspense');
+  REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
+  REACT_MEMO_TYPE = symbolFor('react.memo');
+  REACT_LAZY_TYPE = symbolFor('react.lazy');
+  REACT_BLOCK_TYPE = symbolFor('react.block');
+  REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
+  REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
+  REACT_SCOPE_TYPE = symbolFor('react.scope');
+  REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
+  REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
+  REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
+  REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
+}
+
+var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
 var FAUX_ITERATOR_SYMBOL = '@@iterator';
 function getIteratorFn(maybeIterable) {
   if (maybeIterable === null || typeof maybeIterable !== 'object') {
@@ -10359,13 +10391,11 @@ var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FI
 
 function error(format) {
   {
-    {
-      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-        args[_key2 - 1] = arguments[_key2];
-      }
-
-      printWarning('error', format, args);
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
     }
+
+    printWarning('error', format, args);
   }
 }
 
@@ -10374,16 +10404,23 @@ function printWarning(level, format, args) {
   // update consoleWithStackDev.www.js as well.
   {
     var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-    var stack = ReactDebugCurrentFrame.getStackAddendum();
+    var stack = '';
+
+    if (currentlyValidatingElement) {
+      var name = getComponentName(currentlyValidatingElement.type);
+      var owner = currentlyValidatingElement._owner;
+      stack += describeComponentFrame(name, currentlyValidatingElement._source, owner && getComponentName(owner.type));
+    }
+
+    stack += ReactDebugCurrentFrame.getStackAddendum();
 
     if (stack !== '') {
       format += '%s';
       args = args.concat([stack]);
-    } // eslint-disable-next-line react-internal/safe-string-coercion
-
+    }
 
     var argsWithFormat = args.map(function (item) {
-      return String(item);
+      return '' + item;
     }); // Careful: RN currently depends on this prefix
 
     argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
@@ -10394,23 +10431,9 @@ function printWarning(level, format, args) {
   }
 }
 
-// -----------------------------------------------------------------------------
+// Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
 
 var enableScopeAPI = false; // Experimental Create Event Handle API.
-var enableCacheElement = false;
-var enableTransitionTracing = false; // No known bugs, but needs performance testing
-
-var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
-// stuff. Intended to enable React core members to more easily debug scheduling
-// issues in DEV builds.
-
-var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
-
-var REACT_MODULE_REFERENCE;
-
-{
-  REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
-}
 
 function isValidElementType(type) {
   if (typeof type === 'string' || typeof type === 'function') {
@@ -10418,16 +10441,12 @@ function isValidElementType(type) {
   } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
 
 
-  if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing  || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden  || type === REACT_OFFSCREEN_TYPE || enableScopeAPI  || enableCacheElement  || enableTransitionTracing ) {
+  if (type === exports.Fragment || type === REACT_PROFILER_TYPE || type === REACT_DEBUG_TRACING_MODE_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
     return true;
   }
 
   if (typeof type === 'object' && type !== null) {
-    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
-    // types supported by any Flight configuration anywhere since
-    // we don't know which Flight build this will end up being used
-    // with.
-    type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
       return true;
     }
   }
@@ -10435,24 +10454,51 @@ function isValidElementType(type) {
   return false;
 }
 
-function getWrappedName(outerType, innerType, wrapperName) {
-  var displayName = outerType.displayName;
 
-  if (displayName) {
-    return displayName;
+var BEFORE_SLASH_RE = /^(.*)[\\\/]/;
+function describeComponentFrame (name, source, ownerName) {
+  var sourceInfo = '';
+
+  if (source) {
+    var path = source.fileName;
+    var fileName = path.replace(BEFORE_SLASH_RE, '');
+
+    {
+      // In DEV, include code for a common special case:
+      // prefer "folder/index.js" instead of just "index.js".
+      if (/^index\./.test(fileName)) {
+        var match = path.match(BEFORE_SLASH_RE);
+
+        if (match) {
+          var pathBeforeSlash = match[1];
+
+          if (pathBeforeSlash) {
+            var folderName = pathBeforeSlash.replace(BEFORE_SLASH_RE, '');
+            fileName = folderName + '/' + fileName;
+          }
+        }
+      }
+    }
+
+    sourceInfo = ' (at ' + fileName + ':' + source.lineNumber + ')';
+  } else if (ownerName) {
+    sourceInfo = ' (created by ' + ownerName + ')';
   }
 
+  return '\n    in ' + (name || 'Unknown') + sourceInfo;
+}
+
+var Resolved = 1;
+function refineResolvedLazyComponent(lazyComponent) {
+  return lazyComponent._status === Resolved ? lazyComponent._result : null;
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
   var functionName = innerType.displayName || innerType.name || '';
-  return functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName;
-} // Keep in sync with react-reconciler/getComponentNameFromFiber
+  return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
+}
 
-
-function getContextName(type) {
-  return type.displayName || 'Context';
-} // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
-
-
-function getComponentNameFromType(type) {
+function getComponentName(type) {
   if (type == null) {
     // Host root, text node or just invalid type.
     return null;
@@ -10460,7 +10506,7 @@ function getComponentNameFromType(type) {
 
   {
     if (typeof type.tag === 'number') {
-      error('Received an unexpected object in getComponentNameFromType(). ' + 'This is likely a bug in React. Please file an issue.');
+      error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
     }
   }
 
@@ -10473,14 +10519,14 @@ function getComponentNameFromType(type) {
   }
 
   switch (type) {
-    case REACT_FRAGMENT_TYPE:
+    case exports.Fragment:
       return 'Fragment';
 
     case REACT_PORTAL_TYPE:
       return 'Portal';
 
     case REACT_PROFILER_TYPE:
-      return 'Profiler';
+      return "Profiler";
 
     case REACT_STRICT_MODE_TYPE:
       return 'StrictMode';
@@ -10490,414 +10536,56 @@ function getComponentNameFromType(type) {
 
     case REACT_SUSPENSE_LIST_TYPE:
       return 'SuspenseList';
-
   }
 
   if (typeof type === 'object') {
     switch (type.$$typeof) {
       case REACT_CONTEXT_TYPE:
-        var context = type;
-        return getContextName(context) + '.Consumer';
+        return 'Context.Consumer';
 
       case REACT_PROVIDER_TYPE:
-        var provider = type;
-        return getContextName(provider._context) + '.Provider';
+        return 'Context.Provider';
 
       case REACT_FORWARD_REF_TYPE:
         return getWrappedName(type, type.render, 'ForwardRef');
 
       case REACT_MEMO_TYPE:
-        var outerName = type.displayName || null;
+        return getComponentName(type.type);
 
-        if (outerName !== null) {
-          return outerName;
-        }
-
-        return getComponentNameFromType(type.type) || 'Memo';
+      case REACT_BLOCK_TYPE:
+        return getComponentName(type.render);
 
       case REACT_LAZY_TYPE:
         {
-          var lazyComponent = type;
-          var payload = lazyComponent._payload;
-          var init = lazyComponent._init;
+          var thenable = type;
+          var resolvedThenable = refineResolvedLazyComponent(thenable);
 
-          try {
-            return getComponentNameFromType(init(payload));
-          } catch (x) {
-            return null;
+          if (resolvedThenable) {
+            return getComponentName(resolvedThenable);
           }
-        }
 
-      // eslint-disable-next-line no-fallthrough
+          break;
+        }
     }
   }
 
   return null;
 }
 
-var assign = Object.assign;
-
-// Helpers to patch console.logs to avoid logging during side-effect free
-// replaying on render function. This currently only patches the object
-// lazily which won't cover if the log function was extracted eagerly.
-// We could also eagerly patch the method.
-var disabledDepth = 0;
-var prevLog;
-var prevInfo;
-var prevWarn;
-var prevError;
-var prevGroup;
-var prevGroupCollapsed;
-var prevGroupEnd;
-
-function disabledLog() {}
-
-disabledLog.__reactDisabledLog = true;
-function disableLogs() {
-  {
-    if (disabledDepth === 0) {
-      /* eslint-disable react-internal/no-production-logging */
-      prevLog = console.log;
-      prevInfo = console.info;
-      prevWarn = console.warn;
-      prevError = console.error;
-      prevGroup = console.group;
-      prevGroupCollapsed = console.groupCollapsed;
-      prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
-
-      var props = {
-        configurable: true,
-        enumerable: true,
-        value: disabledLog,
-        writable: true
-      }; // $FlowFixMe Flow thinks console is immutable.
-
-      Object.defineProperties(console, {
-        info: props,
-        log: props,
-        warn: props,
-        error: props,
-        group: props,
-        groupCollapsed: props,
-        groupEnd: props
-      });
-      /* eslint-enable react-internal/no-production-logging */
-    }
-
-    disabledDepth++;
-  }
-}
-function reenableLogs() {
-  {
-    disabledDepth--;
-
-    if (disabledDepth === 0) {
-      /* eslint-disable react-internal/no-production-logging */
-      var props = {
-        configurable: true,
-        enumerable: true,
-        writable: true
-      }; // $FlowFixMe Flow thinks console is immutable.
-
-      Object.defineProperties(console, {
-        log: assign({}, props, {
-          value: prevLog
-        }),
-        info: assign({}, props, {
-          value: prevInfo
-        }),
-        warn: assign({}, props, {
-          value: prevWarn
-        }),
-        error: assign({}, props, {
-          value: prevError
-        }),
-        group: assign({}, props, {
-          value: prevGroup
-        }),
-        groupCollapsed: assign({}, props, {
-          value: prevGroupCollapsed
-        }),
-        groupEnd: assign({}, props, {
-          value: prevGroupEnd
-        })
-      });
-      /* eslint-enable react-internal/no-production-logging */
-    }
-
-    if (disabledDepth < 0) {
-      error('disabledDepth fell below zero. ' + 'This is a bug in React. Please file an issue.');
-    }
-  }
-}
-
-var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
-var prefix;
-function describeBuiltInComponentFrame(name, source, ownerFn) {
-  {
-    if (prefix === undefined) {
-      // Extract the VM specific prefix used by each line.
-      try {
-        throw Error();
-      } catch (x) {
-        var match = x.stack.trim().match(/\n( *(at )?)/);
-        prefix = match && match[1] || '';
-      }
-    } // We use the prefix to ensure our stacks line up with native stack frames.
-
-
-    return '\n' + prefix + name;
-  }
-}
-var reentry = false;
-var componentFrameCache;
-
-{
-  var PossiblyWeakMap = typeof WeakMap === 'function' ? WeakMap : Map;
-  componentFrameCache = new PossiblyWeakMap();
-}
-
-function describeNativeComponentFrame(fn, construct) {
-  // If something asked for a stack inside a fake render, it should get ignored.
-  if ( !fn || reentry) {
-    return '';
-  }
-
-  {
-    var frame = componentFrameCache.get(fn);
-
-    if (frame !== undefined) {
-      return frame;
-    }
-  }
-
-  var control;
-  reentry = true;
-  var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
-
-  Error.prepareStackTrace = undefined;
-  var previousDispatcher;
-
-  {
-    previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
-    // for warnings.
-
-    ReactCurrentDispatcher.current = null;
-    disableLogs();
-  }
-
-  try {
-    // This should throw.
-    if (construct) {
-      // Something should be setting the props in the constructor.
-      var Fake = function () {
-        throw Error();
-      }; // $FlowFixMe
-
-
-      Object.defineProperty(Fake.prototype, 'props', {
-        set: function () {
-          // We use a throwing setter instead of frozen or non-writable props
-          // because that won't throw in a non-strict mode function.
-          throw Error();
-        }
-      });
-
-      if (typeof Reflect === 'object' && Reflect.construct) {
-        // We construct a different control for this case to include any extra
-        // frames added by the construct call.
-        try {
-          Reflect.construct(Fake, []);
-        } catch (x) {
-          control = x;
-        }
-
-        Reflect.construct(fn, [], Fake);
-      } else {
-        try {
-          Fake.call();
-        } catch (x) {
-          control = x;
-        }
-
-        fn.call(Fake.prototype);
-      }
-    } else {
-      try {
-        throw Error();
-      } catch (x) {
-        control = x;
-      }
-
-      fn();
-    }
-  } catch (sample) {
-    // This is inlined manually because closure doesn't do it for us.
-    if (sample && control && typeof sample.stack === 'string') {
-      // This extracts the first frame from the sample that isn't also in the control.
-      // Skipping one frame that we assume is the frame that calls the two.
-      var sampleLines = sample.stack.split('\n');
-      var controlLines = control.stack.split('\n');
-      var s = sampleLines.length - 1;
-      var c = controlLines.length - 1;
-
-      while (s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c]) {
-        // We expect at least one stack frame to be shared.
-        // Typically this will be the root most one. However, stack frames may be
-        // cut off due to maximum stack limits. In this case, one maybe cut off
-        // earlier than the other. We assume that the sample is longer or the same
-        // and there for cut off earlier. So we should find the root most frame in
-        // the sample somewhere in the control.
-        c--;
-      }
-
-      for (; s >= 1 && c >= 0; s--, c--) {
-        // Next we find the first one that isn't the same which should be the
-        // frame that called our sample function and the control.
-        if (sampleLines[s] !== controlLines[c]) {
-          // In V8, the first line is describing the message but other VMs don't.
-          // If we're about to return the first line, and the control is also on the same
-          // line, that's a pretty good indicator that our sample threw at same line as
-          // the control. I.e. before we entered the sample frame. So we ignore this result.
-          // This can happen if you passed a class to function component, or non-function.
-          if (s !== 1 || c !== 1) {
-            do {
-              s--;
-              c--; // We may still have similar intermediate frames from the construct call.
-              // The next one that isn't the same should be our match though.
-
-              if (c < 0 || sampleLines[s] !== controlLines[c]) {
-                // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
-                var _frame = '\n' + sampleLines[s].replace(' at new ', ' at '); // If our component frame is labeled "<anonymous>"
-                // but we have a user-provided "displayName"
-                // splice it in to make the stack more readable.
-
-
-                if (fn.displayName && _frame.includes('<anonymous>')) {
-                  _frame = _frame.replace('<anonymous>', fn.displayName);
-                }
-
-                {
-                  if (typeof fn === 'function') {
-                    componentFrameCache.set(fn, _frame);
-                  }
-                } // Return the line we found.
-
-
-                return _frame;
-              }
-            } while (s >= 1 && c >= 0);
-          }
-
-          break;
-        }
-      }
-    }
-  } finally {
-    reentry = false;
-
-    {
-      ReactCurrentDispatcher.current = previousDispatcher;
-      reenableLogs();
-    }
-
-    Error.prepareStackTrace = previousPrepareStackTrace;
-  } // Fallback to just using the name if we couldn't make it throw.
-
-
-  var name = fn ? fn.displayName || fn.name : '';
-  var syntheticFrame = name ? describeBuiltInComponentFrame(name) : '';
-
-  {
-    if (typeof fn === 'function') {
-      componentFrameCache.set(fn, syntheticFrame);
-    }
-  }
-
-  return syntheticFrame;
-}
-function describeFunctionComponentFrame(fn, source, ownerFn) {
-  {
-    return describeNativeComponentFrame(fn, false);
-  }
-}
-
-function shouldConstruct(Component) {
-  var prototype = Component.prototype;
-  return !!(prototype && prototype.isReactComponent);
-}
-
-function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
-
-  if (type == null) {
-    return '';
-  }
-
-  if (typeof type === 'function') {
-    {
-      return describeNativeComponentFrame(type, shouldConstruct(type));
-    }
-  }
-
-  if (typeof type === 'string') {
-    return describeBuiltInComponentFrame(type);
-  }
-
-  switch (type) {
-    case REACT_SUSPENSE_TYPE:
-      return describeBuiltInComponentFrame('Suspense');
-
-    case REACT_SUSPENSE_LIST_TYPE:
-      return describeBuiltInComponentFrame('SuspenseList');
-  }
-
-  if (typeof type === 'object') {
-    switch (type.$$typeof) {
-      case REACT_FORWARD_REF_TYPE:
-        return describeFunctionComponentFrame(type.render);
-
-      case REACT_MEMO_TYPE:
-        // Memo may contain any component type so we recursively resolve it.
-        return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
-
-      case REACT_LAZY_TYPE:
-        {
-          var lazyComponent = type;
-          var payload = lazyComponent._payload;
-          var init = lazyComponent._init;
-
-          try {
-            // Lazy may contain any component type so we recursively resolve it.
-            return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-          } catch (x) {}
-        }
-    }
-  }
-
-  return '';
-}
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
 var loggedTypeFailures = {};
 var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+var currentlyValidatingElement = null;
 
 function setCurrentlyValidatingElement(element) {
   {
-    if (element) {
-      var owner = element._owner;
-      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-      ReactDebugCurrentFrame.setExtraStackFrame(stack);
-    } else {
-      ReactDebugCurrentFrame.setExtraStackFrame(null);
-    }
+    currentlyValidatingElement = element;
   }
 }
 
 function checkPropTypes(typeSpecs, values, location, componentName, element) {
   {
     // $FlowFixMe This is okay but Flow doesn't know it.
-    var has = Function.call.bind(hasOwnProperty);
+    var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
     for (var typeSpecName in typeSpecs) {
       if (has(typeSpecs, typeSpecName)) {
@@ -10909,7 +10597,6 @@ function checkPropTypes(typeSpecs, values, location, componentName, element) {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
           if (typeof typeSpecs[typeSpecName] !== 'function') {
-            // eslint-disable-next-line react-internal/prod-error-codes
             var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
             err.name = 'Invariant Violation';
             throw err;
@@ -10943,80 +10630,8 @@ function checkPropTypes(typeSpecs, values, location, componentName, element) {
   }
 }
 
-var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
-
-function isArray(a) {
-  return isArrayImpl(a);
-}
-
-/*
- * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
- * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
- *
- * The functions in this module will throw an easier-to-understand,
- * easier-to-debug exception with a clear errors message message explaining the
- * problem. (Instead of a confusing exception thrown inside the implementation
- * of the `value` object).
- */
-// $FlowFixMe only called in DEV, so void return is not possible.
-function typeName(value) {
-  {
-    // toStringTag is needed for namespaced types like Temporal.Instant
-    var hasToStringTag = typeof Symbol === 'function' && Symbol.toStringTag;
-    var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || 'Object';
-    return type;
-  }
-} // $FlowFixMe only called in DEV, so void return is not possible.
-
-
-function willCoercionThrow(value) {
-  {
-    try {
-      testStringCoercion(value);
-      return false;
-    } catch (e) {
-      return true;
-    }
-  }
-}
-
-function testStringCoercion(value) {
-  // If you ended up here by following an exception call stack, here's what's
-  // happened: you supplied an object or symbol value to React (as a prop, key,
-  // DOM attribute, CSS property, string ref, etc.) and when React tried to
-  // coerce it to a string using `'' + value`, an exception was thrown.
-  //
-  // The most common types that will cause this exception are `Symbol` instances
-  // and Temporal objects like `Temporal.Instant`. But any object that has a
-  // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
-  // exception. (Library authors do this to prevent users from using built-in
-  // numeric operators like `+` or comparison operators like `>=` because custom
-  // methods are needed to perform accurate arithmetic or comparison.)
-  //
-  // To fix the problem, coerce this object or symbol value to a string before
-  // passing it to React. The most reliable way is usually `String(value)`.
-  //
-  // To find which value is throwing, check the browser or debugger console.
-  // Before this exception was thrown, there should be `console.error` output
-  // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
-  // problem and how that type was used: key, atrribute, input value prop, etc.
-  // In most cases, this console output also shows the component and its
-  // ancestor components where the exception happened.
-  //
-  // eslint-disable-next-line react-internal/safe-string-coercion
-  return '' + value;
-}
-function checkKeyStringCoercion(value) {
-  {
-    if (willCoercionThrow(value)) {
-      error('The provided key is an unsupported type %s.' + ' This value must be coerced to a string before before using it here.', typeName(value));
-
-      return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
-    }
-  }
-}
-
 var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
 var RESERVED_PROPS = {
   key: true,
   ref: true,
@@ -11062,10 +10677,10 @@ function hasValidKey(config) {
 function warnIfStringRefCannotBeAutoConverted(config, self) {
   {
     if (typeof config.ref === 'string' && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
-      var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
+      var componentName = getComponentName(ReactCurrentOwner.current.type);
 
       if (!didWarnAboutStringRefs[componentName]) {
-        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
+        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', getComponentName(ReactCurrentOwner.current.type), config.ref);
 
         didWarnAboutStringRefs[componentName] = true;
       }
@@ -11204,18 +10819,10 @@ function jsxDEV(type, config, maybeKey, source, self) {
     // key is explicitly declared to be undefined or not.
 
     if (maybeKey !== undefined) {
-      {
-        checkKeyStringCoercion(maybeKey);
-      }
-
       key = '' + maybeKey;
     }
 
     if (hasValidKey(config)) {
-      {
-        checkKeyStringCoercion(config.key);
-      }
-
       key = '' + config.key;
     }
 
@@ -11262,15 +10869,7 @@ var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
 var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
 
 function setCurrentlyValidatingElement$1(element) {
-  {
-    if (element) {
-      var owner = element._owner;
-      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-      ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
-    } else {
-      ReactDebugCurrentFrame$1.setExtraStackFrame(null);
-    }
-  }
+  currentlyValidatingElement = element;
 }
 
 var propTypesMisspellWarningShown;
@@ -11286,7 +10885,6 @@ var propTypesMisspellWarningShown;
  * @final
  */
 
-
 function isValidElement(object) {
   {
     return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -11296,7 +10894,7 @@ function isValidElement(object) {
 function getDeclarationErrorAddendum() {
   {
     if (ReactCurrentOwner$1.current) {
-      var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
+      var name = getComponentName(ReactCurrentOwner$1.current.type);
 
       if (name) {
         return '\n\nCheck the render method of `' + name + '`.';
@@ -11376,7 +10974,7 @@ function validateExplicitKey(element, parentType) {
 
     if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) {
       // Give the component that originally created this child.
-      childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
+      childOwner = " It was passed a child from " + getComponentName(element._owner.type) + ".";
     }
 
     setCurrentlyValidatingElement$1(element);
@@ -11403,7 +11001,7 @@ function validateChildKeys(node, parentType) {
       return;
     }
 
-    if (isArray(node)) {
+    if (Array.isArray(node)) {
       for (var i = 0; i < node.length; i++) {
         var child = node[i];
 
@@ -11466,12 +11064,12 @@ function validatePropTypes(element) {
 
     if (propTypes) {
       // Intentionally inside to avoid triggering lazy initializers:
-      var name = getComponentNameFromType(type);
+      var name = getComponentName(type);
       checkPropTypes(propTypes, element.props, 'prop', name, element);
     } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
       propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
 
-      var _name = getComponentNameFromType(type);
+      var _name = getComponentName(type);
 
       error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
     }
@@ -11538,10 +11136,10 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
 
       if (type === null) {
         typeString = 'null';
-      } else if (isArray(type)) {
+      } else if (Array.isArray(type)) {
         typeString = 'array';
       } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
-        typeString = "<" + (getComponentNameFromType(type.type) || 'Unknown') + " />";
+        typeString = "<" + (getComponentName(type.type) || 'Unknown') + " />";
         info = ' Did you accidentally export a JSX literal instead of a component?';
       } else {
         typeString = typeof type;
@@ -11567,7 +11165,7 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
 
       if (children !== undefined) {
         if (isStaticChildren) {
-          if (isArray(children)) {
+          if (Array.isArray(children)) {
             for (var i = 0; i < children.length; i++) {
               validateChildKeys(children[i], type);
             }
@@ -11584,7 +11182,7 @@ function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
       }
     }
 
-    if (type === REACT_FRAGMENT_TYPE) {
+    if (type === exports.Fragment) {
       validateFragmentProps(element);
     } else {
       validatePropTypes(element);
@@ -11613,7 +11211,6 @@ var jsx =  jsxWithValidationDynamic ; // we may want to special case jsxs intern
 
 var jsxs =  jsxWithValidationStatic ;
 
-exports.Fragment = REACT_FRAGMENT_TYPE;
 exports.jsx = jsx;
 exports.jsxs = jsxs;
   })();
@@ -11665,7 +11262,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Applets = [
+const Applets = [
     /*  InvestorsInTurkey,
      APQCApplet,
      WorldApplet, */
@@ -16596,21 +16193,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16619,42 +16201,38 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 
-var DynoDialog = /** @class */ (function (_super) {
-    __extends(DynoDialog, _super);
-    function DynoDialog() {
-        var _this = _super.call(this) || this;
-        _this.Header = 'Form';
-        _this.Width = '624px';
-        _this.Position = 'right';
-        _this.Height = '100%';
-        return _this;
+class DynoDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView {
+    constructor() {
+        super();
+        this.Header = 'Form';
+        this.Width = '624px';
+        this.Position = 'right';
+        this.Height = '100%';
     }
-    DynoDialog.prototype.BindRouterParams = function (formData) {
+    BindRouterParams(formData) {
         this.form = formData;
-    };
-    DynoDialog.prototype.OnOK = function () {
+    }
+    OnOK() {
         this.ShowDialogAsyncResolve();
         this.Hide();
-    };
-    DynoDialog.prototype.OnCancel = function () {
+    }
+    OnCancel() {
         this.Hide();
-    };
-    DynoDialog.prototype.LoadView = function () {
+    }
+    LoadView() {
         return (this.form == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.render(this.form)));
-    };
-    DynoDialog.Show = function (formData) {
-        var dialog = new DynoDialog();
+    }
+    static Show(formData) {
+        const dialog = new DynoDialog();
         dialog.ShowHeader = false;
         dialog.BindRouterParams(formData);
         return dialog.ShowDialogAsync();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], DynoDialog.prototype, "form", void 0);
-    return DynoDialog;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView));
-
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], DynoDialog.prototype, "form", void 0);
 
 
 /***/ }),
@@ -16669,6 +16247,7 @@ var DynoDialog = /** @class */ (function (_super) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   FormBuilder: () => (/* binding */ FormBuilder),
+/* harmony export */   FormTitle: () => (/* binding */ FormTitle),
 /* harmony export */   UIFormBuilderContext: () => (/* binding */ UIFormBuilderContext),
 /* harmony export */   compileFormula: () => (/* binding */ compileFormula),
 /* harmony export */   useFormBuilder: () => (/* binding */ useFormBuilder)
@@ -16708,26 +16287,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_checkbox__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./views/checkbox */ "./src/FormBuilder/views/checkbox.ts");
 /* harmony import */ var _actions_CustomAction__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./actions/CustomAction */ "./src/FormBuilder/actions/CustomAction.ts");
 /* harmony import */ var _views_keyvalue__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./views/keyvalue */ "./src/FormBuilder/views/keyvalue.ts");
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 
 
 
@@ -16758,26 +16317,24 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-var UIFormBuilderContext = (0,react__WEBPACK_IMPORTED_MODULE_9__.createContext)(null);
-var useFormBuilder = function () {
-    return react__WEBPACK_IMPORTED_MODULE_9___default().useContext(UIFormBuilderContext);
-};
+const UIFormBuilderContext = (0,react__WEBPACK_IMPORTED_MODULE_9__.createContext)(null);
+const useFormBuilder = () => react__WEBPACK_IMPORTED_MODULE_9___default().useContext(UIFormBuilderContext);
 function compileFormula(formData, code) {
     if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(code)) {
         return null;
     }
-    var template = handlebars__WEBPACK_IMPORTED_MODULE_1__.compile(code);
+    const template = handlebars__WEBPACK_IMPORTED_MODULE_1__.compile(code);
     return template(formData, {
-        helpers: __assign(__assign(__assign({ counter: function () { return 1000; } }, _helpers_math__WEBPACK_IMPORTED_MODULE_17__.MathHelpers), _helpers_object__WEBPACK_IMPORTED_MODULE_18__.ObjectHelpers), _helpers_router__WEBPACK_IMPORTED_MODULE_19__.RouterHelpers)
+        helpers: Object.assign(Object.assign(Object.assign({ counter: () => 1000 }, _helpers_math__WEBPACK_IMPORTED_MODULE_17__.MathHelpers), _helpers_object__WEBPACK_IMPORTED_MODULE_18__.ObjectHelpers), _helpers_router__WEBPACK_IMPORTED_MODULE_19__.RouterHelpers)
     });
 }
-var FormTitle = function (title) {
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useDialog)();
+const FormTitle = (title) => {
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useDialog)();
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(title)
         .fontSize(20)
         .fontFamily('source sans pro semibold')
         .foregroundColor('#333D47')
-        .lineHeight('24px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Spacer)(), dialog && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Icons.Close).size(15).onClick(function () { return dialog.Hide(); })).width('2rem').height('2rem') /* .background({ hover: 'gray' }) */.cornerRadius('50%').cursor('pointer')
+        .lineHeight('24px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Spacer)(), dialog && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Icons.Close).size(15).onClick(() => dialog.Hide())).width('2rem').height('2rem') /* .background({ hover: 'gray' }) */.cornerRadius('50%').cursor('pointer')
         .shadow({ focus: '0 0 0 0.2rem rgba(38, 143, 255, 0.5)' }))
         .height(60)
         //.background('#F8FAFF')
@@ -16785,27 +16342,27 @@ var FormTitle = function (title) {
     //   .borderBottom('1px solid rgb(232, 234, 237)')
     );
 };
-var EditorView = function (textData) {
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
-    var visibleWhen = textData.visibleWhen, required = textData.required, multiline = textData.multiline, description = textData.description;
-    var canRender = false;
+const EditorView = (textData) => {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
+    const { visibleWhen, required, multiline, description } = textData;
+    let canRender = false;
     if (visibleWhen != null && !_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
-        var field = visibleWhen.field;
-        var fieldValue = visibleWhen.is;
+        const field = visibleWhen.field;
+        const fieldValue = visibleWhen.is;
         if (field != null) {
-            var fieldFormValue = formController.GetValue(field);
+            const fieldFormValue = formController.GetValue(field);
             if (fieldValue == fieldFormValue) {
                 canRender = true;
             }
         }
     }
     else if (visibleWhen != null && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
-        var fails = [];
-        for (var i = 0; i < visibleWhen.length; i++) {
-            var field = visibleWhen[i].field;
-            var fieldValue = visibleWhen[i].is;
+        const fails = [];
+        for (let i = 0; i < visibleWhen.length; i++) {
+            const field = visibleWhen[i].field;
+            const fieldValue = visibleWhen[i].is;
             if (field != null) {
-                var fieldFormValue = formController.GetValue(field);
+                const fieldFormValue = formController.GetValue(field);
                 if (fieldValue == fieldFormValue) {
                 }
                 else {
@@ -16833,71 +16390,64 @@ var EditorView = function (textData) {
                 .marginTop('4px')).height().marginBottom('16px'));
     }
 };
-var _CheckBoxFormView = function (textData) {
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
+const _CheckBoxFormView = (textData) => {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.CheckBox)()
         .checked(formController.GetValue(textData.name))
         .labelView((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(textData.label).kerning('0.00938em').lineHeight('24px').foregroundColor('#333D47').fontSize(14))
-        .onChange(function (e) { return formController.SetValue(textData.name, e); })
+        .onChange((e) => formController.SetValue(textData.name, e))
     // .formField(textData.name, [])
     ).height().marginBottom('16px'));
 };
-var CategoryFormLayout = function (columnInfo, fieldMap) {
-    var cats = {};
-    var views = [];
-    var containers = columnInfo.containers;
-    for (var key in fieldMap) {
-        var field = fieldMap[key];
+const CategoryFormLayout = (columnInfo, fieldMap) => {
+    const cats = {};
+    const views = [];
+    const { containers } = columnInfo;
+    for (let key in fieldMap) {
+        const field = fieldMap[key];
         if (fieldMap[key].type == 'virtual') {
             continue;
         }
         if (field.category != null) {
-            var list = cats[field.category] || [];
+            const list = cats[field.category] || [];
             list.push(field);
             cats[field.category] = list;
         }
         else {
-            var list = cats['Other'] || [];
+            const list = cats['Other'] || [];
             list.push(field);
             cats['Other'] = list;
         }
     }
-    var _loop_1 = function (cat) {
-        var list = cats[cat];
+    for (let cat in cats) {
+        const list = cats[cat];
         views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(cat).fontFamily('-apple-system,BlinkMacSystemFont,Segoe UI,roboto,Helvetica Neue,helvetica,arial,sans-serif')
-            .fontWeight('500').fontSize(14).foregroundColor('rgb(42, 46, 52)')).height().width(100), _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(list)(function (field) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading })((0,_components_label__WEBPACK_IMPORTED_MODULE_16__.label)(field), field.category === cat ? FormBuilder.getView(field) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Fragment)()).height();
-        })))
+            .fontWeight('500').fontSize(14).foregroundColor('rgb(42, 46, 52)')).height().width(100), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(list)((field) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading })((0,_components_label__WEBPACK_IMPORTED_MODULE_16__.label)(field), field.category === cat ? FormBuilder.getView(field) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Fragment)()).height())))
             .borderBottom('1px solid #E8EAED')
             .padding(24));
-    };
-    for (var cat in cats) {
-        _loop_1(cat);
     }
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 20 }).apply(void 0, views));
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 20 })(...views));
 };
-var ColumnFormView = function (columnInfo, fieldMap) {
-    var views = [];
-    var containers = columnInfo.containers;
-    for (var i = 0; i < containers.length; i++) {
-        var _a = containers[i], label_1 = _a.label, fields = _a.fields;
-        views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 10 }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(label_1).fontSize(17).lineHeight(22).foregroundColor('#333D47')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(fields)(function (field) {
-            return FormBuilder.getView(fieldMap[field]);
-        }), false)));
+const ColumnFormView = (columnInfo, fieldMap) => {
+    const views = [];
+    const { containers } = columnInfo;
+    for (let i = 0; i < containers.length; i++) {
+        const { label, fields } = containers[i];
+        views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(label).fontSize(17).lineHeight(22).foregroundColor('#333D47'), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(fields)((field) => FormBuilder.getView(fieldMap[field]))));
     }
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 20 }).apply(void 0, views));
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 20 })(...views));
 };
-var renderContainers = function (layout, fieldMap) {
-    var views = [];
+const renderContainers = (layout, fieldMap) => {
+    const views = [];
     if (layout != null && layout.type == null && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(layout.containers)) {
-        for (var i = 0; i < layout.containers.length; i++) {
-            var container = layout.containers[i];
+        for (let i = 0; i < layout.containers.length; i++) {
+            const container = layout.containers[i];
             if (container != null && container.type != null) {
-                var subContainers = renderContainers(container, fieldMap);
+                const subContainers = renderContainers(container, fieldMap);
                 if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(subContainers)) {
-                    views.push.apply(views, subContainers);
+                    views.push(...subContainers);
                 }
-                var factoryFunc = FormBuilder.containerFactories[container.type];
+                const factoryFunc = FormBuilder.containerFactories[container.type];
                 if (factoryFunc == null) {
                     views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(layout.type + ' not found'));
                 }
@@ -16906,10 +16456,10 @@ var renderContainers = function (layout, fieldMap) {
                 }
             }
             else if (container.fields != null) {
-                for (var i_1 = 0; i_1 < container.fields.length; i_1++) {
-                    var viewName = container.fields[i_1];
-                    var view = fieldMap[viewName];
-                    var factoryFunc = FormBuilder.viewFactories[view.type];
+                for (let i = 0; i < container.fields.length; i++) {
+                    const viewName = container.fields[i];
+                    const view = fieldMap[viewName];
+                    const factoryFunc = FormBuilder.viewFactories[view.type];
                     if (factoryFunc == null) {
                         views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(view.type + ' not found'));
                     }
@@ -16921,10 +16471,10 @@ var renderContainers = function (layout, fieldMap) {
         }
     }
     else if (layout.fields != null) {
-        for (var i = 0; i < layout.fields.length; i++) {
-            var viewName = layout.fields[i];
-            var view = fieldMap[viewName];
-            var factoryFunc = FormBuilder.viewFactories[view.type];
+        for (let i = 0; i < layout.fields.length; i++) {
+            const viewName = layout.fields[i];
+            const view = fieldMap[viewName];
+            const factoryFunc = FormBuilder.viewFactories[view.type];
             if (factoryFunc == null) {
                 views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(view.type + ' not found'));
             }
@@ -16935,86 +16485,84 @@ var renderContainers = function (layout, fieldMap) {
     }
     return views;
 };
-var CollapseFormView = function (columnInfo, fieldMap) {
-    var views = [];
-    var containers = columnInfo.containers;
-    for (var i = 0; i < containers.length; i++) {
-        var _a = containers[i], label_2 = _a.label, fields = _a.fields;
-        var subContainers = renderContainers(containers[i], fieldMap);
-        var subViews = [];
+const CollapseFormView = (columnInfo, fieldMap) => {
+    const views = [];
+    const { containers } = columnInfo;
+    for (let i = 0; i < containers.length; i++) {
+        const { label, fields } = containers[i];
+        const subContainers = renderContainers(containers[i], fieldMap);
+        const subViews = [];
         if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(subContainers)) {
-            subViews.push.apply(subViews, subContainers);
+            subViews.push(...subContainers);
         }
-        views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(label_2).fontFamily('source sans pro').fontSize(17).lineHeight(40).foregroundColor('#333D47'))
+        views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(label).fontFamily('source sans pro').fontSize(17).lineHeight(40).foregroundColor('#333D47'))
             .height()
             .padding()
             .allHeight(40)
-            .borderBottom('solid 1px #D6E4ED'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading }).apply(void 0, subViews
+            .borderBottom('solid 1px #D6E4ED'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })(...subViews
         /* ...ForEach(fields)((field) =>
             FormBuilder.getView(fieldMap[field as any])
         ) */
         ).padding()).height().background('white')
             .border('solid 1px #D6E4ED').cornerRadius(5));
     }
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 20 }).apply(void 0, views));
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 20 })(...views));
 };
-var test_me_up = 0;
-var FormBuilder = /** @class */ (function () {
-    function FormBuilder() {
-    }
-    FormBuilder.injectView = function (viewType, viewFactory) {
+const test_me_up = 0;
+class FormBuilder {
+    static injectView(viewType, viewFactory) {
         FormBuilder.viewFactories[viewType] = viewFactory;
-    };
-    FormBuilder.injectAction = function (actionType, actionFactory) {
+    }
+    static injectAction(actionType, actionFactory) {
         FormBuilder.actionFactories[actionType] = actionFactory;
-    };
-    FormBuilder.injectLayout = function (layoutType, viewFactory) {
+    }
+    static injectLayout(layoutType, viewFactory) {
         FormBuilder.layoutFactories[layoutType] = viewFactory;
-    };
-    FormBuilder.injectContainer = function (containerType, viewFactory) {
+    }
+    static injectContainer(containerType, viewFactory) {
         FormBuilder.containerFactories[containerType] = viewFactory;
-    };
-    FormBuilder.getViewFactory = function (type) {
+    }
+    static getViewFactory(type) {
         return FormBuilder.viewFactories[type];
-    };
-    FormBuilder.getView = function (fieldInfo) {
-        var viewType = fieldInfo === null || fieldInfo === void 0 ? void 0 : fieldInfo.type;
-        var viewFunc = FormBuilder.getViewFactory(viewType);
+    }
+    static getView(fieldInfo) {
+        const viewType = fieldInfo === null || fieldInfo === void 0 ? void 0 : fieldInfo.type;
+        const viewFunc = FormBuilder.getViewFactory(viewType);
         if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(viewFunc)) {
             return viewFunc(fieldInfo);
         }
         else {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(viewType + ' not found.');
         }
-    };
-    FormBuilder.canRender = function (fieldInfo, formController) {
+    }
+    static canRender(fieldInfo, formController) {
         formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
-        var name = fieldInfo.name;
-        var visibleWhen = fieldInfo.visibleWhen;
+        const { name } = fieldInfo;
+        const { visibleWhen } = fieldInfo;
         if (visibleWhen == null) {
             return true;
         }
-        var canRender = false;
+        let canRender = false;
         if (visibleWhen != null && !_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
-            var field = visibleWhen.field;
-            var fieldValue = visibleWhen.is;
+            const field = visibleWhen.field;
+            const fieldValue = visibleWhen.is;
             if (field != null) {
-                var fieldFormValue = formController.GetValue(field);
+                const fieldFormValue = formController.GetValue(field);
                 if (fieldValue == fieldFormValue) {
                     canRender = true;
                 }
             }
         }
         else if (visibleWhen != null && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
-            var fails = [];
-            for (var i = 0; i < visibleWhen.length; i++) {
-                var found = false;
-                var _a = visibleWhen[i], field = _a.field, is_1 = _a.is, isNot = _a.isNot;
-                if (Array.isArray(is_1)) {
-                    for (var j = 0; j < is_1.length; j++) {
-                        var fieldValue = visibleWhen[i].is[j];
+            const fails = [];
+            for (let i = 0; i < visibleWhen.length; i++) {
+                let found = false;
+                const { field, is, isNot } = visibleWhen[i];
+                if (Array.isArray(is)) {
+                    for (let j = 0; j < is.length; j++) {
+                        const fieldValue = visibleWhen[i].is[j];
                         if (field != null) {
-                            var fieldFormValue = formController.GetValue(field);
+                            const fieldFormValue = formController.GetValue(field);
                             if (fieldValue == fieldFormValue) {
                                 found = true;
                             }
@@ -17022,10 +16570,10 @@ var FormBuilder = /** @class */ (function () {
                     }
                 }
                 if (Array.isArray(isNot)) {
-                    for (var j = 0; j < isNot.length; j++) {
-                        var fieldValue = visibleWhen[i].isNot[j];
+                    for (let j = 0; j < isNot.length; j++) {
+                        const fieldValue = visibleWhen[i].isNot[j];
                         if (field != null) {
-                            var fieldFormValue = formController.GetValue(field);
+                            const fieldFormValue = formController.GetValue(field);
                             if (fieldValue != fieldFormValue) {
                                 found = true;
                             }
@@ -17048,15 +16596,15 @@ var FormBuilder = /** @class */ (function () {
             formController.SetValue(name, null, true);
         }
         return canRender;
-    };
-    FormBuilder.render = function (_formMeta) {
+    }
+    static render(_formMeta) {
         if (_formMeta == null) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Fragment)();
         }
-        var _a = (0,react__WEBPACK_IMPORTED_MODULE_9__.useState)(0), formIndex = _a[0], setFormIndex = _a[1];
-        var _b = (0,react__WEBPACK_IMPORTED_MODULE_9__.useState)('form'), formMode = _b[0], setFormMode = _b[1];
+        const [formIndex, setFormIndex] = (0,react__WEBPACK_IMPORTED_MODULE_9__.useState)(0);
+        const [formMode, setFormMode] = (0,react__WEBPACK_IMPORTED_MODULE_9__.useState)('form');
         //const [formMeta, setFormMeta] = useState(is.array(_formMeta) ? _formMeta[0] : _formMeta);
-        var formMeta;
+        let formMeta;
         try {
             formMeta = _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.string(_formMeta) ? JSON.parse(_formMeta) : (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(_formMeta) ? _formMeta[formIndex] : _formMeta);
         }
@@ -17064,132 +16612,130 @@ var FormBuilder = /** @class */ (function () {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(e.toString());
         }
         console.log("rendered");
-        var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
-        var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useDialog)();
-        var contextValue = {
-            nextForm: function () {
+        const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
+        const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useDialog)();
+        const contextValue = {
+            nextForm: () => {
                 setFormIndex(Math.min(formIndex + 1, _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(_formMeta) ? _formMeta.length : 0));
             },
-            prevForm: function () {
+            prevForm: () => {
                 setFormIndex(Math.max(0, formIndex - 1));
             }
         };
-        var config = formMeta.config;
+        const { config } = formMeta;
         console.log(FormBuilder.actionFactories);
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ConfigContext)(function () {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.UIViewBuilder)(function () {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ReactView)(react__WEBPACK_IMPORTED_MODULE_9___default().createElement(UIFormBuilderContext.Provider, { value: contextValue }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.UIViewBuilder)(function () {
-                    var invalidateResource = null;
-                    var isFormLoading = false;
-                    var views = [];
-                    var _a = formMeta, fieldMap = _a.fieldMap, layout = _a.layout, mode = _a.mode, resource = _a.resource, resourceId = _a.resourceId, title = _a.title, protocol = _a.protocol, mutation = _a.mutation, query = _a.query, actions = _a.actions;
-                    /*  if (protocol) {
-                      
-                         if (is.string(resource) && (is.string(resourceId) || is.number(resourceId))) {
-                             const { data, isLoading } = getOne(resource, { id: resourceId });
-                             isFormLoading = isLoading;
-                             if (!isLoading) {
-                                 if (!formController.IsLoaded) {
-                                     const keys = Object.keys(data);
-                                     for (let i = 0; i < keys.length; i++) {
-                                         const key = keys[i];
-                                         formController.SetValue(key, data[key]);
-                                     }
-                                     formController.IsLoaded = true;
-                                 }
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ConfigContext)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ReactView)(react__WEBPACK_IMPORTED_MODULE_9___default().createElement(UIFormBuilderContext.Provider, { value: contextValue }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.UIViewBuilder)(() => {
+            let invalidateResource = null;
+            let isFormLoading = false;
+            const views = [];
+            const { fieldMap, layout, mode, resource, resourceId, title, protocol, mutation, query, actions } = formMeta;
+            /*  if (protocol) {
+              
+                 if (is.string(resource) && (is.string(resourceId) || is.number(resourceId))) {
+                     const { data, isLoading } = getOne(resource, { id: resourceId });
+                     isFormLoading = isLoading;
+                     if (!isLoading) {
+                         if (!formController.IsLoaded) {
+                             const keys = Object.keys(data);
+                             for (let i = 0; i < keys.length; i++) {
+                                 const key = keys[i];
+                                 formController.SetValue(key, data[key]);
                              }
+                             formController.IsLoaded = true;
                          }
-                     } */
-                    if (layout != null && layout.type != null) {
-                        var factoryFunc = FormBuilder.layoutFactories[layout.type];
+                     }
+                 }
+             } */
+            if (layout != null && layout.type != null) {
+                const factoryFunc = FormBuilder.layoutFactories[layout.type];
+                if (factoryFunc == null) {
+                    views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(layout.type + ' not found'));
+                }
+                else {
+                    if (FormBuilder.canRender(fieldMap)) {
+                        views.push(factoryFunc(layout, fieldMap));
+                    }
+                }
+            }
+            if (layout != null && layout.type == null && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(layout.containers)) {
+                for (let i = 0; i < layout.containers.length; i++) {
+                    const container = layout.containers[i];
+                    if (container != null && container.type != null) {
+                        const factoryFunc = FormBuilder.containerFactories[container.type];
                         if (factoryFunc == null) {
                             views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(layout.type + ' not found'));
                         }
                         else {
                             if (FormBuilder.canRender(fieldMap)) {
-                                views.push(factoryFunc(layout, fieldMap));
+                                views.push(factoryFunc(container, fieldMap));
                             }
                         }
                     }
-                    if (layout != null && layout.type == null && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(layout.containers)) {
-                        for (var i = 0; i < layout.containers.length; i++) {
-                            var container = layout.containers[i];
-                            if (container != null && container.type != null) {
-                                var factoryFunc = FormBuilder.containerFactories[container.type];
-                                if (factoryFunc == null) {
-                                    views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(layout.type + ' not found'));
-                                }
-                                else {
-                                    if (FormBuilder.canRender(fieldMap)) {
-                                        views.push(factoryFunc(container, fieldMap));
-                                    }
-                                }
-                            }
-                        }
+                }
+            }
+            for (let key in fieldMap) {
+                const viewType = fieldMap[key].type;
+                if (viewType === 'virtual') {
+                    const factoryFunc = FormBuilder.viewFactories[viewType];
+                    views.push(factoryFunc(fieldMap[key]));
+                }
+            }
+            if (layout == null) {
+                for (let key in fieldMap) {
+                    const viewType = fieldMap[key].type;
+                    if (viewType === 'virtual') {
+                        continue;
                     }
-                    for (var key in fieldMap) {
-                        var viewType = fieldMap[key].type;
-                        if (viewType === 'virtual') {
-                            var factoryFunc = FormBuilder.viewFactories[viewType];
+                    const factoryFunc = FormBuilder.viewFactories[viewType];
+                    if (factoryFunc == null) {
+                        views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(viewType + ' not found'));
+                    }
+                    else {
+                        if (FormBuilder.canRender(fieldMap[key])) {
+                            views.push((0,_components_label__WEBPACK_IMPORTED_MODULE_16__.label)(fieldMap[key]));
                             views.push(factoryFunc(fieldMap[key]));
+                            views.push((0,_components_description__WEBPACK_IMPORTED_MODULE_15__.description)(fieldMap[key]));
                         }
                     }
-                    if (layout == null) {
-                        for (var key in fieldMap) {
-                            var viewType = fieldMap[key].type;
-                            if (viewType === 'virtual') {
-                                continue;
-                            }
-                            var factoryFunc = FormBuilder.viewFactories[viewType];
-                            if (factoryFunc == null) {
-                                views.push((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Text)(viewType + ' not found'));
-                            }
-                            else {
-                                if (FormBuilder.canRender(fieldMap[key])) {
-                                    views.push((0,_components_label__WEBPACK_IMPORTED_MODULE_16__.label)(fieldMap[key]));
-                                    views.push(factoryFunc(fieldMap[key]));
-                                    views.push((0,_components_description__WEBPACK_IMPORTED_MODULE_15__.description)(fieldMap[key]));
-                                }
-                            }
-                        }
+                }
+            }
+            return (isFormLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Spinner)() :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 24 })(title && FormTitle(title), 
+                //   Text(formMode).onClick(() => setFormMode(formMode === 'form' ? 'code' : 'form')),
+                formMode === 'code' ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.CodeEditor)()
+                        .value(json_beautify__WEBPACK_IMPORTED_MODULE_11___default()(formMeta, null, 2, 50))
+                        .width('100%')
+                        .height('100%') :
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })(
+                    // Text(JSON.stringify(formController.GetFormData())),
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(views)(view => view))
+                        .height()
+                        .background('white')
+                    // .padding('24px 24px 0px')
+                    )
+                        .background('white')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(actions || [])((action) => {
+                    if (FormBuilder.actionFactories[action === null || action === void 0 ? void 0 : action.type]) {
+                        return FormBuilder.actionFactories[action === null || action === void 0 ? void 0 : action.type](formMeta, action);
                     }
-                    return (isFormLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Spinner)() :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading, spacing: 24 })(title && FormTitle(title), 
-                        //   Text(formMode).onClick(() => setFormMode(formMode === 'form' ? 'code' : 'form')),
-                        formMode === 'code' ?
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.CodeEditor)()
-                                .value(json_beautify__WEBPACK_IMPORTED_MODULE_11___default()(formMeta, null, 2, 50))
-                                .width('100%')
-                                .height('100%') :
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })(
-                            // Text(JSON.stringify(formController.GetFormData())),
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(views)(function (view) { return view; })).height()
-                                .background('white')
-                            // .padding('24px 24px 0px')
-                            )
-                                .background('white')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(actions || [])(function (action) {
-                            if (FormBuilder.actionFactories[action === null || action === void 0 ? void 0 : action.type]) {
-                                return FormBuilder.actionFactories[action === null || action === void 0 ? void 0 : action.type](formMeta, action);
-                            }
-                            /* if (action?.type === 'save') {
-                                return SaveAction(formMeta, action)
-                            } else if (action?.type === 'next') {
-                                return NextFormAction(formMeta, action)
-                            } */
-                        })).height()
-                        //.borderTop('1px solid #D6E4ED')
-                        ));
-                }).render()));
-            });
-        }).config(config)
+                    /* if (action?.type === 'save') {
+                        return SaveAction(formMeta, action)
+                    } else if (action?.type === 'next') {
+                        return NextFormAction(formMeta, action)
+                    } */
+                }))
+                    .height()
+                //.borderTop('1px solid #D6E4ED')
+                ));
+        }).render())))).config(config)
         //.onChange((e) => this.code = e),
         );
-    };
-    FormBuilder.compileFormula = function (formula) {
-        var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
+    }
+    static compileFormula(formula) {
+        const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useFormController)();
         if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.string(formula)) {
             if (formula[0] === '$') {
-                var fieldName = formula.substring(1, formula.length);
+                const fieldName = formula.substring(1, formula.length);
                 return formController.GetValue(fieldName);
             }
             else {
@@ -17199,14 +16745,12 @@ var FormBuilder = /** @class */ (function () {
         else {
             return formula;
         }
-    };
-    FormBuilder.viewFactories = {};
-    FormBuilder.actionFactories = {};
-    FormBuilder.layoutFactories = {};
-    FormBuilder.containerFactories = {};
-    return FormBuilder;
-}());
-
+    }
+}
+FormBuilder.viewFactories = {};
+FormBuilder.actionFactories = {};
+FormBuilder.layoutFactories = {};
+FormBuilder.containerFactories = {};
 FormBuilder.injectView('editor', EditorView);
 FormBuilder.injectView('text', _views_text__WEBPACK_IMPORTED_MODULE_6__.TextFormView);
 FormBuilder.injectView('number', _views_number__WEBPACK_IMPORTED_MODULE_26__.NumberView);
@@ -17251,20 +16795,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var CustomAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions, onClick = action.onClick;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
-    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), loading = _a[0], setLoading = _a[1];
+const CustomAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    const { label, successAction, successActions, onClick } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const [loading, setLoading] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label))
         .loading(loading)
-        .onClick(function () {
+        .onClick(() => {
         setLoading(true);
-        onClick(formController.GetFormData()).then(function (result) {
+        onClick(formController.GetFormData()).then((result) => {
             dialog.Hide();
         });
     }));
-}); };
+});
 
 
 /***/ }),
@@ -17285,14 +16829,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
 
 
-var NextFormAction = function (formMeta, action) {
-    var label = action.label;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var formBuilder = (0,_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var views = [];
-    var _a = formMeta, fieldMap = _a.fieldMap, layout = _a.layout, mode = _a.mode, resource = _a.resource, resourceId = _a.resourceId, title = _a.title, protocol = _a.protocol, mutation = _a.mutation, query = _a.query, actions = _a.actions;
+const NextFormAction = (formMeta, action) => {
+    const { label } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const formBuilder = (0,_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    const views = [];
+    const { fieldMap, layout, mode, resource, resourceId, title, protocol, mutation, query, actions } = formMeta;
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label))
-        .onClick(function () {
+        .onClick(() => {
         formBuilder.nextForm();
     }));
 };
@@ -17316,15 +16860,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
 
 
-var PostToCallerAction = function (formMeta, action) {
-    var label = action.label;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var formBuilder = (0,_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
-    var views = [];
-    var _a = formMeta, fieldMap = _a.fieldMap, layout = _a.layout, mode = _a.mode, resource = _a.resource, resourceId = _a.resourceId, title = _a.title, protocol = _a.protocol, mutation = _a.mutation, query = _a.query, actions = _a.actions;
+const PostToCallerAction = (formMeta, action) => {
+    const { label } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const formBuilder = (0,_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const views = [];
+    const { fieldMap, layout, mode, resource, resourceId, title, protocol, mutation, query, actions } = formMeta;
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label))
-        .onClick(function () {
+        .onClick(() => {
         dialog.ShowDialogAsyncResolve(formController.GetFormData());
         dialog.Hide();
     }));
@@ -17353,25 +16897,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var SaveAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+const SaveAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
     var _a;
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var invalidateResource = null;
-    var formMutate = null;
-    var createMutate = null;
-    var updateMutate = null;
-    var isFormMutateExcuting = false;
-    var isFormLoading = false;
-    var views = [];
-    var _b = formMeta, protocol = _b.protocol, resource = _b.resource, method = _b.method;
-    var queryClient = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useQueryClient)();
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    let invalidateResource = null;
+    let formMutate = null;
+    let createMutate = null;
+    let updateMutate = null;
+    let isFormMutateExcuting = false;
+    let isFormLoading = false;
+    const views = [];
+    const { protocol, resource, method } = formMeta;
+    const queryClient = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useQueryClient)();
     if (protocol) {
-        var spacesBroker = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useBroker)(protocol);
-        var resourceMethods = (_a = spacesBroker.getResourceMethods()) === null || _a === void 0 ? void 0 : _a[resource];
+        const spacesBroker = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useBroker)(protocol);
+        const resourceMethods = (_a = spacesBroker.getResourceMethods()) === null || _a === void 0 ? void 0 : _a[resource];
         if (method === 'create') {
             createMutate = resourceMethods["create"];
         }
@@ -17382,10 +16926,10 @@ var SaveAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_I
     return ((!_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(formMutate) && !_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(createMutate) && !_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(updateMutate)) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)() :
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(label))
             .loading(isFormMutateExcuting)
-            .onClick(function () {
+            .onClick(() => {
             if (createMutate != null) {
                 createMutate(formController.GetFormData())
-                    .then(function (e) {
+                    .then((e) => {
                     queryClient.invalidateQueries([resource]);
                     /* if (is.function(invalidateResource)) {
                         invalidateResource();
@@ -17400,7 +16944,7 @@ var SaveAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_I
                         dialog.Hide();
                     }
                     if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(successActions)) {
-                        successActions.forEach(function (successAction) {
+                        successActions.forEach(successAction => {
                             if (successAction.type === 'prev') {
                                 formBuilder.prevForm();
                             }
@@ -17476,7 +17020,7 @@ var SaveAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_I
                   }); */
             }
         }));
-}); };
+});
 
 
 /***/ }),
@@ -17495,8 +17039,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var description = function (fieldInfo) {
-    var description = fieldInfo.description;
+const description = (fieldInfo) => {
+    const { description } = fieldInfo;
     return (description ?
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(description).multilineTextAlignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextAlignment.leading)
             .foregroundColor('#95ABBC')
@@ -17530,8 +17074,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var label = function (fieldInfo) {
-    var label = fieldInfo.label, required = fieldInfo.required, helpText = fieldInfo.helpText;
+const label = (fieldInfo) => {
+    const { label, required, helpText } = fieldInfo;
     return (label ?
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label + (required ? '*' : '')).kerning('.6px')
             .lineHeight('1.25').foregroundColor('rgb(101, 111, 125)').fontSize(12)
@@ -17561,13 +17105,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
-var helpIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { focusable: "false", style: {
+const helpIcon = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { focusable: "false", style: {
         color: '#95ABBC',
         fontSize: '16px',
         width: '1rem',
         height: '1rem'
     }, viewBox: "0 0 24 24", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { stroke: "currentColor", d: "M12.1,15.28H11.3c-0.56,0-0.85,0.26-0.85,0.77v0.64c0,0.51,0.28,0.77,0.85,0.77h0.81 c0.55,0,0.83-0.26,0.83-0.77v-0.64C12.93,15.53,12.66,15.28,12.1,15.28z M12,1C5.92,1,1,5.92,1,12s4.92,11,11,11s11-4.92,11-11 S18.08,1,12,1z M12,21.8c-5.41,0-9.8-4.39-9.8-9.8S6.59,2.2,12,2.2s9.8,4.39,9.8,9.8S17.41,21.8,12,21.8z M14.42,7.3 c-0.34-0.24-0.73-0.43-1.17-0.56c-0.44-0.13-0.89-0.2-1.36-0.2c-0.6,0-1.12,0.08-1.55,0.24C9.9,6.94,9.56,7.09,9.3,7.24 C9.11,7.35,9.01,7.48,9,7.62c-0.01,0.14,0.05,0.3,0.18,0.47l0.28,0.38c0.12,0.17,0.27,0.26,0.45,0.27c0.18,0.01,0.36-0.03,0.55-0.12 c0.16-0.07,0.34-0.14,0.54-0.2c0.21-0.07,0.44-0.1,0.69-0.1c0.46,0,0.84,0.12,1.15,0.36c0.31,0.24,0.47,0.54,0.47,0.89 c0,0.26-0.07,0.5-0.2,0.71c-0.13,0.21-0.3,0.4-0.51,0.59c-0.21,0.19-0.43,0.37-0.67,0.55c-0.24,0.18-0.46,0.38-0.67,0.58 c-0.21,0.21-0.38,0.43-0.51,0.68c-0.13,0.25-0.2,0.53-0.2,0.86v0.24c0,0.41,0.23,0.62,0.47,0.62h0.67c0.44,0,0.59-0.03,0.69-0.1 c0.1-0.07,0.17-0.18,0.22-0.34l0.03-0.26c0.03-0.25,0.13-0.48,0.28-0.68c0.16-0.2,0.34-0.4,0.56-0.58c0.22-0.19,0.44-0.38,0.68-0.58 c0.24-0.2,0.46-0.41,0.67-0.64c0.21-0.23,0.38-0.5,0.51-0.8c0.13-0.3,0.2-0.64,0.2-1.04c0-0.44-0.1-0.84-0.31-1.2 C15.03,7.84,14.76,7.55,14.42,7.3z" }))); };
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { stroke: "currentColor", d: "M12.1,15.28H11.3c-0.56,0-0.85,0.26-0.85,0.77v0.64c0,0.51,0.28,0.77,0.85,0.77h0.81 c0.55,0,0.83-0.26,0.83-0.77v-0.64C12.93,15.53,12.66,15.28,12.1,15.28z M12,1C5.92,1,1,5.92,1,12s4.92,11,11,11s11-4.92,11-11 S18.08,1,12,1z M12,21.8c-5.41,0-9.8-4.39-9.8-9.8S6.59,2.2,12,2.2s9.8,4.39,9.8,9.8S17.41,21.8,12,21.8z M14.42,7.3 c-0.34-0.24-0.73-0.43-1.17-0.56c-0.44-0.13-0.89-0.2-1.36-0.2c-0.6,0-1.12,0.08-1.55,0.24C9.9,6.94,9.56,7.09,9.3,7.24 C9.11,7.35,9.01,7.48,9,7.62c-0.01,0.14,0.05,0.3,0.18,0.47l0.28,0.38c0.12,0.17,0.27,0.26,0.45,0.27c0.18,0.01,0.36-0.03,0.55-0.12 c0.16-0.07,0.34-0.14,0.54-0.2c0.21-0.07,0.44-0.1,0.69-0.1c0.46,0,0.84,0.12,1.15,0.36c0.31,0.24,0.47,0.54,0.47,0.89 c0,0.26-0.07,0.5-0.2,0.71c-0.13,0.21-0.3,0.4-0.51,0.59c-0.21,0.19-0.43,0.37-0.67,0.55c-0.24,0.18-0.46,0.38-0.67,0.58 c-0.21,0.21-0.38,0.43-0.51,0.68c-0.13,0.25-0.2,0.53-0.2,0.86v0.24c0,0.41,0.23,0.62,0.47,0.62h0.67c0.44,0,0.59-0.03,0.69-0.1 c0.1-0.07,0.17-0.18,0.22-0.34l0.03-0.26c0.03-0.25,0.13-0.48,0.28-0.68c0.16-0.2,0.34-0.4,0.56-0.58c0.22-0.19,0.44-0.38,0.68-0.58 c0.24-0.2,0.46-0.41,0.67-0.64c0.21-0.23,0.38-0.5,0.51-0.8c0.13-0.3,0.2-0.64,0.2-1.04c0-0.44-0.1-0.84-0.31-1.2 C15.03,7.84,14.76,7.55,14.42,7.3z" })));
 
 
 /***/ }),
@@ -17586,8 +17130,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
 
-var MathHelpers = {
-    add: function (a, b) {
+const MathHelpers = {
+    add: (a, b) => {
         if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.number(a) && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.number(b)) {
             return Number(a) + Number(b);
         }
@@ -17612,8 +17156,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ObjectHelpers: () => (/* binding */ ObjectHelpers)
 /* harmony export */ });
-var ObjectHelpers = {
-    object: function (a) {
+const ObjectHelpers = {
+    object: (a) => {
         return a;
     }
 };
@@ -17635,9 +17179,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var RouterHelpers = {
-    router: function (paramName) {
-        var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)();
+const RouterHelpers = {
+    router: (paramName) => {
+        const params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)();
         alert(params);
         return params[paramName];
     }
@@ -17660,33 +17204,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var SelectView = function (textData) {
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var name = textData.name, options = textData.options, defaultValue = textData.defaultValue, fieldId = textData.fieldId, protocol = textData.protocol, resource = textData.resource, filter = textData.filter, sort = textData.sort, textField = textData.textField, valueField = textData.valueField;
+const SelectView = (textData) => {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    let { name, options, defaultValue, fieldId, protocol, resource, filter, sort, textField, valueField } = textData;
     if (defaultValue == null) {
         defaultValue = formController.GetValue(fieldId);
     }
-    var formState = formController.GetFieldState(name);
+    const formState = formController.GetFieldState(name);
     if (!formState.isTouched && defaultValue != null) {
         formController.SetValue(name, defaultValue, true);
     }
     if (protocol != null && resource != null) {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-            var getList = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useProtocol)(protocol).getList;
-            var data = getList(resource, { filter: filter, sort: sort }).data;
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Select)().options(data === null || data === void 0 ? void 0 : data.map(function (item) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+            const { getList } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useProtocol)(protocol);
+            const { data } = getList(resource, { filter, sort });
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Select)().options(data === null || data === void 0 ? void 0 : data.map(item => {
                 return { label: item[textField], value: item[valueField] };
             }))
-                .onChange(function (value, option) {
+                .onChange((value, option) => {
                 formController.SetValue(name, value);
             }));
         }));
     }
     else {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Select)().options(options === null || options === void 0 ? void 0 : options.map(function (item) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Select)().options(options === null || options === void 0 ? void 0 : options.map(item => {
             return { label: item.label, value: item.value };
         }))
-            .onChange(function (value, option) {
+            .onChange((value, option) => {
             formController.SetValue(name, value);
         })).height().marginBottom('16px'));
     }
@@ -17709,16 +17253,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var CheckBoxFormView = function (textData) {
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var name = textData.name, value = textData.value;
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+const CheckBoxFormView = (textData) => {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    let { name, value } = textData;
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         formController.SetValue(name, !!value);
     }, []);
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 4 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(textData.label).kerning('0.00938em').lineHeight('24px')
         .foregroundColor('#333D47').fontSize(14), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CheckBox)()
         .checked(formController.GetValue(name))
-        .onChange(function (e) { return formController.SetValue(name, e); })
+        .onChange((e) => formController.SetValue(name, e))
     // .formField(textData.name, [])
     ).height().marginBottom('16px'));
 };
@@ -17743,22 +17287,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var DataTableView = function (fieldInfo) {
-    var columns = fieldInfo.columns, query = fieldInfo.query, protocol = fieldInfo.protocol, resource = fieldInfo.resource, filter = fieldInfo.filter, sort = fieldInfo.sort;
+const DataTableView = (fieldInfo) => {
+    const { columns, query, protocol, resource, filter, sort } = fieldInfo;
     if (protocol == null) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Fragment)();
     }
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useProtocol)(protocol), _query = _a.query, getList = _a.getList;
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(0), index = _b[0], setIndex = _b[1];
-        var result = {};
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+        const { query: _query, getList } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useProtocol)(protocol);
+        const [index, setIndex] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+        let result = {};
         if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.string(query)) {
             result = _query(query);
         }
         else if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.string(resource)) {
-            result = getList(resource, { filter: filter, sort: sort });
+            result = getList(resource, { filter, sort });
         }
-        var data = result.data, isLoading = result.isLoading, invalidateQuery = result.invalidateQuery;
+        const { data, isLoading, invalidateQuery } = result;
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spinner)()) :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
             /* HStack(
@@ -17790,12 +17334,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var DatePickerView = function (fieldInfo) {
+const DatePickerView = (fieldInfo) => {
     // v.validate(fieldInfo, schema).valid;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var visibleWhen = fieldInfo.visibleWhen, required = fieldInfo.required, description = fieldInfo.description, name = fieldInfo.name, defaultValue = fieldInfo.defaultValue, startAdornment = fieldInfo.startAdornment, endAdornment = fieldInfo.endAdornment, defaultDisabled = fieldInfo.defaultDisabled, formula = fieldInfo.formula, renderer = fieldInfo.renderer;
-    var canRender = _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    let { visibleWhen, required, description, name, defaultValue, startAdornment, endAdornment, defaultDisabled, formula, renderer } = fieldInfo;
+    let canRender = _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         if (defaultValue != null) {
             formController.SetValue(name, defaultValue);
         }
@@ -17814,7 +17358,7 @@ var DatePickerView = function (fieldInfo) {
             .shadow({ focus: 'none' })
             .fontSize(15)
             .renderer(renderer)
-            .onChange(function (e) {
+            .onChange((e) => {
             formController.SetValue(name, e);
         }), endAdornment && endAdornment && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(endAdornment).foregroundColor('#677A89').fontSize(17).fontFamily('source sans pro').lineHeight(22)).height()).height().marginBottom('16px'));
     }
@@ -17845,12 +17389,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var DateTimePickerView = function (fieldInfo) {
+const DateTimePickerView = (fieldInfo) => {
     // v.validate(fieldInfo, schema).valid;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useFormController)();
-    var visibleWhen = fieldInfo.visibleWhen, required = fieldInfo.required, description = fieldInfo.description, name = fieldInfo.name, defaultValue = fieldInfo.defaultValue, startAdornment = fieldInfo.startAdornment, endAdornment = fieldInfo.endAdornment, defaultDisabled = fieldInfo.defaultDisabled, formula = fieldInfo.formula, datePickerRenderer = fieldInfo.datePickerRenderer, timePickerRenderer = fieldInfo.timePickerRenderer, onChange = fieldInfo.onChange;
-    var canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useFormController)();
+    let { visibleWhen, required, description, name, defaultValue, startAdornment, endAdornment, defaultDisabled, formula, datePickerRenderer, timePickerRenderer, onChange } = fieldInfo;
+    let canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         if (defaultValue != null) {
             formController.SetValue(name, defaultValue);
         }
@@ -17866,10 +17410,10 @@ var DateTimePickerView = function (fieldInfo) {
             .shadow({ focus: 'none' })
             .fontSize(15)
             .renderer(datePickerRenderer)
-            .onChange(function (e) {
+            .onChange((e) => {
             if (formController.GetValue(name) != null) {
-                var momentDate = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(e);
-                var momentCurrentDate = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(formController.GetValue(name));
+                const momentDate = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(e);
+                const momentCurrentDate = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(formController.GetValue(name));
                 var date = momentCurrentDate.year(momentDate.year()).month(momentDate.month()).date(momentDate.date());
                 formController.SetValue(name, date.toDate());
                 onChange === null || onChange === void 0 ? void 0 : onChange(formController, date.toDate());
@@ -17888,9 +17432,9 @@ var DateTimePickerView = function (fieldInfo) {
             .shadow({ focus: 'none' })
             .fontSize(15)
             .renderer(timePickerRenderer)
-            .onChange(function (e) {
-            var momentDate = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(formController.GetValue(name));
-            var momentTime = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(e);
+            .onChange((e) => {
+            const momentDate = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(formController.GetValue(name));
+            const momentTime = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment)(e);
             var date = momentDate.hour(momentTime.hour()).minute(momentTime.minute()).second(0);
             formController.SetValue(name, date.toDate());
             onChange === null || onChange === void 0 ? void 0 : onChange(formController, date.toDate());
@@ -17916,38 +17460,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 
 
-var KeyValueView = function (textData) {
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var visibleWhen = textData.visibleWhen, required = textData.required, multiline = textData.multiline, name = textData.name, description = textData.description;
-    var canRender = false;
+const KeyValueView = (textData) => {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    const { visibleWhen, required, multiline, name, description } = textData;
+    let canRender = false;
     if (visibleWhen != null && !_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
-        var field = visibleWhen.field;
-        var fieldValue = visibleWhen.is;
+        const field = visibleWhen.field;
+        const fieldValue = visibleWhen.is;
         if (field != null) {
-            var fieldFormValue = formController.GetValue(field);
+            const fieldFormValue = formController.GetValue(field);
             if (fieldValue == fieldFormValue) {
                 canRender = true;
             }
         }
     }
     else if (visibleWhen != null && _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.array(visibleWhen)) {
-        var fails = [];
-        for (var i = 0; i < visibleWhen.length; i++) {
-            var field = visibleWhen[i].field;
-            var fieldValue = visibleWhen[i].is;
+        const fails = [];
+        for (let i = 0; i < visibleWhen.length; i++) {
+            const field = visibleWhen[i].field;
+            const fieldValue = visibleWhen[i].is;
             if (field != null) {
-                var fieldFormValue = formController.GetValue(field);
+                const fieldFormValue = formController.GetValue(field);
                 if (fieldValue == fieldFormValue) {
                 }
                 else {
@@ -17962,50 +17497,50 @@ var KeyValueView = function (textData) {
     else {
         canRender = true;
     }
-    var keyValuePairs = formController.GetValue(name) || [];
-    var rows = __spreadArray(__spreadArray([], keyValuePairs, true), [{ key: '', value: '' }], false);
+    const keyValuePairs = formController.GetValue(name) || [];
+    const rows = [...keyValuePairs, { key: '', value: '' }];
     if (canRender) {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(rows)(function (keyValue, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)()
-                .value(keyValuePairs[index] == null ? '' : keyValuePairs[index].key)
-                .multiline(multiline)
-                .height(multiline ? '' : '38px')
-                .foregroundColor('rgb(51,61,71)')
-                .cornerRadius(2)
-                // .padding('0px 15px')
-                //.formField(textData.name, [])
-                .onChange(function (text) {
-                if (text == '') {
-                    if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(keyValuePairs[index].value)) {
-                        keyValuePairs.splice(index, 1);
-                    }
-                    else {
-                        keyValuePairs[index] = { key: text, value: keyValue.value };
-                    }
-                    formController.SetValue(name, __spreadArray([], keyValuePairs, true));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })(
+        //  Text(JSON.stringify(rows)),
+        ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(rows)((keyValue, index) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)()
+            .value(keyValuePairs[index] == null ? '' : keyValuePairs[index].key)
+            .multiline(multiline)
+            .height(multiline ? '' : '38px')
+            .foregroundColor('rgb(51,61,71)')
+            .cornerRadius(2)
+            // .padding('0px 15px')
+            //.formField(textData.name, [])
+            .onChange(text => {
+            if (text == '') {
+                if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(keyValuePairs[index].value)) {
+                    keyValuePairs.splice(index, 1);
                 }
                 else {
                     keyValuePairs[index] = { key: text, value: keyValue.value };
-                    formController.SetValue(name, __spreadArray([], keyValuePairs, true));
                 }
-            })
-                .border('1px solid #D6E4ED')
-                .shadow({ focus: 'none' })
-                .fontSize(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)()
-                .multiline(multiline)
-                .height(multiline ? '' : '38px')
-                .foregroundColor('rgb(51,61,71)')
-                .cornerRadius(2)
-                // .padding('0px 15px')
-                //.formField(textData.name, [])
-                .onChange(function (text) {
-                keyValuePairs[index] = { key: keyValue.key, value: text };
-                formController.SetValue(name, __spreadArray([], keyValuePairs, true));
-            })
-                .border('1px solid #D6E4ED')
-                .shadow({ focus: 'none' })
-                .fontSize(15));
-        })).height().marginBottom('16px'));
+                formController.SetValue(name, [...keyValuePairs]);
+            }
+            else {
+                keyValuePairs[index] = { key: text, value: keyValue.value };
+                formController.SetValue(name, [...keyValuePairs]);
+            }
+        })
+            .border('1px solid #D6E4ED')
+            .shadow({ focus: 'none' })
+            .fontSize(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)()
+            .multiline(multiline)
+            .height(multiline ? '' : '38px')
+            .foregroundColor('rgb(51,61,71)')
+            .cornerRadius(2)
+            // .padding('0px 15px')
+            //.formField(textData.name, [])
+            .onChange(text => {
+            keyValuePairs[index] = { key: keyValue.key, value: text };
+            formController.SetValue(name, [...keyValuePairs]);
+        })
+            .border('1px solid #D6E4ED')
+            .shadow({ focus: 'none' })
+            .fontSize(15)))).height().marginBottom('16px'));
     }
 };
 
@@ -18039,11 +17574,11 @@ var schema = {
         },
     }
 };
-var NumberView = function (fieldInfo) {
+const NumberView = (fieldInfo) => {
     // v.validate(fieldInfo, schema).valid;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var visibleWhen = fieldInfo.visibleWhen, required = fieldInfo.required, description = fieldInfo.description, formula = fieldInfo.formula, defaultValue = fieldInfo.defaultValue, defaultDisabled = fieldInfo.defaultDisabled, startAdornment = fieldInfo.startAdornment, endAdornment = fieldInfo.endAdornment, fieldId = fieldInfo.fieldId, name = fieldInfo.name;
-    var canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.canRender(fieldInfo, formController);
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    let { visibleWhen, required, description, formula, defaultValue, defaultDisabled, startAdornment, endAdornment, fieldId, name } = fieldInfo;
+    let canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.canRender(fieldInfo, formController);
     defaultValue = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.compileFormula(defaultValue);
     if (defaultValue == null) {
         defaultValue = formController.GetValue(fieldId);
@@ -18061,7 +17596,7 @@ var NumberView = function (fieldInfo) {
             .border({ default: '1px solid #D6E4ED', hover: '1px solid #2776C7', focus: '1px solid #2776C7' })
             .shadow({ focus: 'none' })
             .fontSize(15)
-            .onChange(function (value) {
+            .onChange((value) => {
             formController.SetValue(name, value);
         }), endAdornment && endAdornment && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(endAdornment).foregroundColor('#677A89').fontSize(17).fontFamily('source sans pro').lineHeight(22)).height()).height().marginBottom('16px'));
     }
@@ -18087,11 +17622,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var RadioGroupoFormView = function (textData) {
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+const RadioGroupoFormView = (textData) => {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 4 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(textData.label).kerning('0.00938em').lineHeight('24px')
         .foregroundColor('#333D47').fontSize(14), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRadioGroup)()
-        .radioButtons(textData.options.map(function (option) { return option.items.map(function (item) {
+        .radioButtons(textData.options.map(option => option.items.map(item => {
         if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.string(item)) {
             return {
                 label: item,
@@ -18110,9 +17645,9 @@ var RadioGroupoFormView = function (textData) {
                 value: item.value
             };
         }
-    }); })[0])
+    }))[0])
         .value(formController.GetValue(textData.name))
-        .onChange(function (e) { return formController.SetValue(textData.name, e); })
+        .onChange((e) => formController.SetValue(textData.name, e))
     // .formField(textData.name, [])
     ).height().marginBottom('16px'));
 };
@@ -18139,19 +17674,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var RangePickerView = function (fieldInfo) {
+const RangePickerView = (fieldInfo) => {
     // v.validate(fieldInfo, schema).valid;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
-    var renderer = fieldInfo.renderer, visibleWhen = fieldInfo.visibleWhen, required = fieldInfo.required, description = fieldInfo.description, name = fieldInfo.name, defaultValue = fieldInfo.defaultValue, startAdornment = fieldInfo.startAdornment, endAdornment = fieldInfo.endAdornment, defaultDisabled = fieldInfo.defaultDisabled, formula = fieldInfo.formula, value = fieldInfo.value, _a = fieldInfo.onChange, onChange = _a === void 0 ? void 0 : _a, presets = fieldInfo.presets, start_date_name = fieldInfo.start_date_name, end_date_name = fieldInfo.end_date_name;
-    var canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
+    let { renderer, visibleWhen, required, description, name, defaultValue, startAdornment, endAdornment, defaultDisabled, formula, value, onChange = void 0, presets, start_date_name, end_date_name } = fieldInfo;
+    let canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         if (defaultValue != null) {
             formController.SetValue(name, defaultValue);
         }
     }, []);
     if (canRender) {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 5 })(startAdornment && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(startAdornment).foregroundColor('#677A89').fontSize(17).fontFamily('source sans pro').lineHeight(22), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RangePicker)().presets(presets)
-            .onChange(function (values, formatString) {
+            .onChange((values, formatString) => {
             formController.SetValue(start_date_name, values[0]);
             formController.SetValue(end_date_name, values[1]);
         }), endAdornment && endAdornment && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(endAdornment).foregroundColor('#677A89').fontSize(17).fontFamily('source sans pro').lineHeight(22)).height().padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cVertical, 5)).height().marginBottom('16px')));
@@ -18190,11 +17725,11 @@ var schema = {
         },
     }
 };
-var RelativeUriView = function (fieldInfo) {
+const RelativeUriView = (fieldInfo) => {
     // v.validate(fieldInfo, schema).valid;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
-    var required = fieldInfo.required, multiline = fieldInfo.multiline, description = fieldInfo.description, formula = fieldInfo.formula, helpText = fieldInfo.helpText;
-    var canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
+    const { required, multiline, description, formula, helpText } = fieldInfo;
+    let canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
     if (canRender) {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })(
         //Text(FormBuilder.canRender(visibleWhen, formController).toString()),
@@ -18251,19 +17786,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var SegmentedView = function (fieldInfo) {
+const SegmentedView = (fieldInfo) => {
     // v.validate(fieldInfo, schema).valid;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
-    var renderer = fieldInfo.renderer, visibleWhen = fieldInfo.visibleWhen, required = fieldInfo.required, description = fieldInfo.description, name = fieldInfo.name, defaultValue = fieldInfo.defaultValue, startAdornment = fieldInfo.startAdornment, endAdornment = fieldInfo.endAdornment, defaultDisabled = fieldInfo.defaultDisabled, formula = fieldInfo.formula, options = fieldInfo.options, onChange = fieldInfo.onChange;
-    var canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
+    let { renderer, visibleWhen, required, description, name, defaultValue, startAdornment, endAdornment, defaultDisabled, formula, options, onChange } = fieldInfo;
+    let canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         if (defaultValue != null) {
             formController.SetValue(name, defaultValue);
         }
     }, []);
     if (canRender) {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 5 })(startAdornment && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(startAdornment).foregroundColor('#677A89').fontSize(17).fontFamily('source sans pro').lineHeight(22), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Segmented)().renderer(renderer)
-            .options(options).onChange(function (value) {
+            .options(options).onChange((value) => {
             formController.SetValue(name, value);
             if (onChange != null) {
                 onChange(formController, value);
@@ -18292,31 +17827,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var SelectFormView = function (textData) {
+const SelectFormView = (textData) => {
     var _a;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var name = textData.name, query = textData.query, options = textData.options, defaultValue = textData.defaultValue, fieldId = textData.fieldId, protocol = textData.protocol, resource = textData.resource, filter = textData.filter, sort = textData.sort, text = textData.text, key = textData.key;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    let { name, query, options, defaultValue, fieldId, protocol, resource, filter, sort, text, key } = textData;
     if (defaultValue == null) {
         defaultValue = formController.GetValue(fieldId);
     }
-    var formState = formController.GetFieldState(name);
+    const formState = formController.GetFieldState(name);
     if (!formState.isTouched && defaultValue != null) {
         formController.SetValue(name, defaultValue, true);
     }
     if (query != null) {
-        var body_1 = query.body, resource_1 = query.resource, text_1 = query.text, key_1 = query.key;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-            var query = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useProtocol)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DirectoryProtocol).query;
-            var data = query(body_1).data;
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dropdown)(function (option) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option[text_1]));
-            })(function (option) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option[text_1]))
-                    .paddingLeft('10px');
-            })
+        const { body, resource, text, key } = query;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+            const { query } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useProtocol)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DirectoryProtocol);
+            const { data } = query(body);
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dropdown)((option) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option[text])))((option) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option[text]))
+                .paddingLeft('10px'))
                 .floatlabel(false)
-                .dataSource(data[resource_1] /* textData?.options[0]?.items.map(item => ({ text: item, value: item })) */)
-                .fields({ text: text_1, value: key_1 })
+                .dataSource(data[resource] /* textData?.options[0]?.items.map(item => ({ text: item, value: item })) */)
+                .fields({ text: text, value: key })
                 //.placeHolder(params.placeholder)
                 .width('100%')
                 .height(38)
@@ -18328,15 +17859,11 @@ var SelectFormView = function (textData) {
         }));
     }
     else if (protocol != null && resource != null) {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-            var getList = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useProtocol)(protocol).getList;
-            var data = getList(resource, { filter: filter, sort: sort }).data;
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dropdown)(function (option) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option[text]));
-            })(function (option) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option[text]))
-                    .paddingLeft('10px');
-            })
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+            const { getList } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useProtocol)(protocol);
+            const { data } = getList(resource, { filter, sort });
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dropdown)((option) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option[text])))((option) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option[text]))
+                .paddingLeft('10px'))
                 .floatlabel(false)
                 .dataSource(data /* textData?.options[0]?.items.map(item => ({ text: item, value: item })) */)
                 .fields({ text: text, value: key })
@@ -18351,14 +17878,10 @@ var SelectFormView = function (textData) {
         }));
     }
     else {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dropdown)(function (option) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option.text));
-        })(function (option) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option.text))
-                .paddingLeft('10px');
-        })
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dropdown)((option) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option.text)))((option) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(option.text))
+            .paddingLeft('10px'))
             .floatlabel(false)
-            .dataSource((_a = options === null || options === void 0 ? void 0 : options[0]) === null || _a === void 0 ? void 0 : _a.items.map(function (item) { return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.string(item) ? { text: item, value: item } : { text: item.label, value: item.value }); }))
+            .dataSource((_a = options === null || options === void 0 ? void 0 : options[0]) === null || _a === void 0 ? void 0 : _a.items.map(item => (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.string(item) ? { text: item, value: item } : { text: item.label, value: item.value })))
             .fields({ text: 'text', value: 'value' })
             //.placeHolder(params.placeholder)
             .width('100%')
@@ -18401,11 +17924,11 @@ var schema = {
         },
     }
 };
-var TextFormView = function (fieldInfo) {
+const TextFormView = (fieldInfo) => {
     // v.validate(fieldInfo, schema).valid;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var visibleWhen = fieldInfo.visibleWhen, required = fieldInfo.required, multiline = fieldInfo.multiline, description = fieldInfo.description, formula = fieldInfo.formula, defaultValue = fieldInfo.defaultValue, defaultDisabled = fieldInfo.defaultDisabled, startAdornment = fieldInfo.startAdornment, endAdornment = fieldInfo.endAdornment, fieldId = fieldInfo.fieldId, name = fieldInfo.name;
-    var canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.canRender(fieldInfo, formController);
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    let { visibleWhen, required, multiline, description, formula, defaultValue, defaultDisabled, startAdornment, endAdornment, fieldId, name } = fieldInfo;
+    let canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.canRender(fieldInfo, formController);
     defaultValue = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.compileFormula(defaultValue);
     if (defaultValue == null) {
         defaultValue = formController.GetValue(fieldId);
@@ -18435,7 +17958,7 @@ var TextFormView = function (fieldInfo) {
                 .foregroundColor('rgb(51,61,71)')
                 .background({ disabled: '#F0F5F9' })
                 .cornerRadius(6)
-                .onBlur(function (e) {
+                .onBlur((e) => {
                 formController.SetValue(name, e.target.value);
             })
                 //.formField(fieldInfo.name, [])
@@ -18467,12 +17990,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var TreeSelectView = function (fieldInfo) {
+const TreeSelectView = (fieldInfo) => {
     // v.validate(fieldInfo, schema).valid;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
-    var renderer = fieldInfo.renderer, visibleWhen = fieldInfo.visibleWhen, required = fieldInfo.required, description = fieldInfo.description, name = fieldInfo.name, defaultValue = fieldInfo.defaultValue, startAdornment = fieldInfo.startAdornment, endAdornment = fieldInfo.endAdornment, defaultDisabled = fieldInfo.defaultDisabled, formula = fieldInfo.formula, treeData = fieldInfo.treeData, onChange = fieldInfo.onChange;
-    var canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
-    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useFormController)();
+    let { renderer, visibleWhen, required, description, name, defaultValue, startAdornment, endAdornment, defaultDisabled, formula, treeData, onChange } = fieldInfo;
+    let canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.canRender(fieldInfo, formController);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         if (defaultValue != null) {
             formController.SetValue(name, defaultValue);
         }
@@ -18512,11 +18035,11 @@ var schema = {
         },
     }
 };
-var VirtualView = function (fieldInfo) {
-    var name = fieldInfo.name, value = fieldInfo.value;
+const VirtualView = (fieldInfo) => {
+    let { name, value } = fieldInfo;
     value = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.compileFormula(value);
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var currentValue = formController.GetValue(name);
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    let currentValue = formController.GetValue(name);
     if (currentValue !== value) {
         formController.SetValue(name, value);
     }
@@ -18555,10 +18078,10 @@ var schema = {
         },
     }
 };
-var WidgetView = function (fieldInfo) {
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var required = fieldInfo.required, multiline = fieldInfo.multiline, description = fieldInfo.description, formula = fieldInfo.formula, helpText = fieldInfo.helpText, widgetName = fieldInfo.widgetName, config = fieldInfo.config;
-    var canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.canRender(fieldInfo, formController);
+const WidgetView = (fieldInfo) => {
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const { required, multiline, description, formula, helpText, widgetName, config } = fieldInfo;
+    let canRender = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.canRender(fieldInfo, formController);
     if (canRender) {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
         //Text(FormBuilder.canRender(visibleWhen, formController).toString()),
@@ -18589,7 +18112,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ActivitiesApplet: () => (/* binding */ ActivitiesApplet)
 /* harmony export */ });
-var ActivitiesApplet = {
+const ActivitiesApplet = {
     name: 'Activities',
     type: 'Applet',
     tree_type: 'com.celmino.widget.custom-applet-tree',
@@ -18625,7 +18148,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   CommunityApplet: () => (/* binding */ CommunityApplet)
 /* harmony export */ });
-var CommunityApplet = {
+const CommunityApplet = {
     name: 'Community',
     type: 'Data',
     tree_type: 'com.celmino.widget.community-applet-tree',
@@ -18661,7 +18184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   DashboardsApplet: () => (/* binding */ DashboardsApplet)
 /* harmony export */ });
-var DashboardsApplet = {
+const DashboardsApplet = {
     name: 'Dashboards',
     type: 'Applet',
     tree_type: 'com.celmino.widget.custom-applet-tree',
@@ -18697,7 +18220,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AppletDivider: () => (/* binding */ AppletDivider)
 /* harmony export */ });
-var AppletDivider = {
+const AppletDivider = {
     name: 'Divider',
     type: 'Applet',
     tree_type: 'com.celmino.widget.applet-tree-divider',
@@ -18733,7 +18256,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   EmailsApplet: () => (/* binding */ EmailsApplet)
 /* harmony export */ });
-var EmailsApplet = {
+const EmailsApplet = {
     name: 'Messaging',
     type: 'Applet',
     tree_type: 'com.celmino.widget.applet-category',
@@ -18771,7 +18294,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _schemas_ListAppletDatabase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../schemas/ListAppletDatabase */ "./src/schemas/ListAppletDatabase.ts");
 
-var ListApplet = {
+const ListApplet = {
     name: 'List Applet',
     type: 'Applet',
     tree_type: 'com.celmino.tree-item.task-list',
@@ -18800,7 +18323,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   WebsiteApplet: () => (/* binding */ WebsiteApplet)
 /* harmony export */ });
-var WebsiteApplet = {
+const WebsiteApplet = {
     name: 'Website',
     type: 'Applet',
     tree_type: 'com.celmino.widget.applet-category',
@@ -18836,7 +18359,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   WorkspaceApplet: () => (/* binding */ WorkspaceApplet)
 /* harmony export */ });
-var WorkspaceApplet = {
+const WorkspaceApplet = {
     name: 'Workspace',
     type: 'Applet',
     tree_type: 'com.celmino.widget.workspace-tree',
@@ -19076,21 +18599,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _OrganizationContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OrganizationContextRenderer */ "./src/context/organization/OrganizationContextRenderer.tsx");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19100,24 +18608,18 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var OrganizationContextClass = /** @class */ (function (_super) {
-    __extends(OrganizationContextClass, _super);
-    function OrganizationContextClass() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    OrganizationContextClass.prototype.childFunc = function (value) {
+class OrganizationContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+    childFunc(value) {
         this.vp_ChildFunc = value;
         return this;
-    };
-    OrganizationContextClass.prototype.render = function () {
+    }
+    render() {
         return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_OrganizationContextRenderer__WEBPACK_IMPORTED_MODULE_2__["default"], { control: this }));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], OrganizationContextClass.prototype, "vp_ChildFunc", void 0);
-    return OrganizationContextClass;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
-
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], OrganizationContextClass.prototype, "vp_ChildFunc", void 0);
 
 
 /***/ }),
@@ -19147,13 +18649,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function OrganizationContextRenderer(_a) {
-    var _b;
-    var control = _a.control;
-    var organizationId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)().organizationId;
-    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _c.organization, isLoading = _c.isLoading;
+function OrganizationContextRenderer({ control }) {
+    var _a;
+    const { organizationId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)();
+    const { organization, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useGetOrganization)({ organizationId, hookEnabled: true });
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_ChildFunc) || !isLoading ?
-        (react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_context__WEBPACK_IMPORTED_MODULE_1__.OrganizationContextProvider.Provider, { value: organization }, (_b = control.vp_ChildFunc()) === null || _b === void 0 ? void 0 : _b.render())) : null);
+        (react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_context__WEBPACK_IMPORTED_MODULE_1__.OrganizationContextProvider.Provider, { value: organization }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : null);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrganizationContextRenderer);
 
@@ -19176,9 +18677,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var OrganizationContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
-var useOrganization = function () {
-    var organization = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(OrganizationContextProvider);
+const OrganizationContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+const useOrganization = () => {
+    const organization = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(OrganizationContextProvider);
     return organization;
 };
 
@@ -19242,21 +18743,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _RealmContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RealmContextRenderer */ "./src/context/realm/RealmContextRenderer.tsx");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19266,24 +18752,18 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var RealmContextClass = /** @class */ (function (_super) {
-    __extends(RealmContextClass, _super);
-    function RealmContextClass() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    RealmContextClass.prototype.childFunc = function (value) {
+class RealmContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+    childFunc(value) {
         this.vp_ChildFunc = value;
         return this;
-    };
-    RealmContextClass.prototype.render = function () {
+    }
+    render() {
         return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_RealmContextRenderer__WEBPACK_IMPORTED_MODULE_2__["default"], { control: this }));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], RealmContextClass.prototype, "vp_ChildFunc", void 0);
-    return RealmContextClass;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
-
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], RealmContextClass.prototype, "vp_ChildFunc", void 0);
 
 
 /***/ }),
@@ -19313,13 +18793,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function RealmContextRenderer(_a) {
-    var _b;
-    var control = _a.control;
-    var workspaceId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)().workspaceId;
-    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetRealm)({ realmId: workspaceId, enabled: true }), realm = _c.realm, isLoading = _c.isLoading;
+function RealmContextRenderer({ control }) {
+    var _a;
+    const { workspaceId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
+    const { realm, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetRealm)({ realmId: workspaceId, enabled: true });
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) || !isLoading ?
-        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: realm }, (_b = control.vp_ChildFunc()) === null || _b === void 0 ? void 0 : _b.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: realm }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RealmContextRenderer);
 
@@ -19342,9 +18821,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var RealmContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
-var useRealm = function () {
-    var realm = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(RealmContextProvider);
+const RealmContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+const useRealm = () => {
+    const realm = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(RealmContextProvider);
     return realm;
 };
 
@@ -19392,21 +18871,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Applets__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Applets */ "./src/Applets.ts");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19422,48 +18886,12 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 
 
 
 
 
-var appletMenu = [
+const appletMenu = [
     {
         category: 'Applets',
         items: [
@@ -19493,278 +18921,184 @@ var appletMenu = [
          ]
      }, */
 ];
-var SelectAppletDialog = /** @class */ (function (_super) {
-    __extends(SelectAppletDialog, _super);
-    function SelectAppletDialog() {
-        var _this = _super.call(this) || this;
-        _this.ShowHeader = true;
-        _this.Header = 'Form';
-        _this.Width = '90vw';
-        _this.Height = '90vh';
-        _this.filtered_opas = _Applets__WEBPACK_IMPORTED_MODULE_3__.Applets;
-        return _this;
-    }
-    SelectAppletDialog.prototype.BindRouterParams = function (_a) {
-        var workspaceId = _a.workspaceId, parent = _a.parent;
+class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView {
+    BindRouterParams({ workspaceId, parent }) {
         this.workspaceId = workspaceId;
         this.parent = parent;
-    };
-    SelectAppletDialog.prototype.OnOK = function (applet) {
+    }
+    constructor() {
+        super();
+        this.ShowHeader = true;
+        this.Header = 'Form';
+        this.Width = '90vw';
+        this.Height = '90vh';
+        this.filtered_opas = _Applets__WEBPACK_IMPORTED_MODULE_3__.Applets;
+    }
+    OnOK(applet) {
         this.ShowDialogAsyncResolve(applet);
         //  this.Hide();
-    };
-    SelectAppletDialog.prototype.OnCancel = function () {
+    }
+    OnCancel() {
         this.Hide();
-    };
-    SelectAppletDialog.prototype.LoadView = function () {
-        var _this = this;
-        var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'applets').createDocument;
-        var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'ws_tree').createDocument;
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(''), installingOpa = _a[0], setInstallingOpa = _a[1];
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null), searchText = _b[0], setSearchText = _b[1];
+    }
+    LoadView() {
+        const { createDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'applets');
+        const { createDocument: createWorkspaceTreeItem } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(this.workspaceId, 'workspace', 'ws_tree');
+        const [installingOpa, setInstallingOpa] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+        const [searchText, setSearchText] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('applet').fontSize(20).fontWeight('700'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('library').fontSize(20).fontWeight('400')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)()
             .value(searchText)
             .placeholder('Search applets').minWidth(300).maxWidth(700).height(40).padding()
             .cornerRadius(6)
             .border({ default: 'solid 1px #E4EAE2', focus: 'solid 1px #E4EAE2' })
-            .onChange(function (e) {
+            .onChange((e) => {
             setSearchText(e);
-            _this.filtered_opas = _Applets__WEBPACK_IMPORTED_MODULE_3__.Applets.filter(function (opa) { return opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1; });
-        })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Close).onClick(function () { return _this.OnCancel(); })).height(50).padding().background('#F9FAFB'), 
+            this.filtered_opas = _Applets__WEBPACK_IMPORTED_MODULE_3__.Applets.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1);
+        })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Close).onClick(() => this.OnCancel())).height(50).padding().background('#F9FAFB'), 
         /*     Search().width(300).allHeight(70).padding()
                 .onChange((e) => this.filtered_opas = opas.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1)), */
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(appletMenu)(function (menu) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([(0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(menu.category).fontWeight('500').fontSize('var(--font-size-h4)')
-                    .paddingLeft('12px')
-                    .marginBottom('12px')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menu.items)(function (item) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name).fontSize('var(--font-size-h5)')
-                    .padding('var(--spacing-xs) 0 var(--spacing-xs)')
-                    .paddingLeft('12px')
-                    .cornerRadius('var(--border-radius-small)')
-                    .lineHeight('var(--font-line-height-h2)')
-                    .foregroundColor('#323338')).height();
-            }), false)).height().marginBottom('var(--spacing-large)');
-        })).padding('var(--spacing-medium)')
-            .width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.filtered_opas)(function (opa) {
-            return !opa.enabled ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(opa.image &&
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(opa.image).width(50).height(50).cornerRadius('20%')
-                        .filter(opa.type === 'Applet' ? 'grayscale(1)' : 'none'), opa.icon &&
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(opa.icon).fontSize(40).foregroundColor('rgb(109, 122, 131)')).width(50).height(50).cornerRadius('20%'), 
-                //.background(opa.iconBackColor || '#9A0707'),
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height()
-                //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
-                , (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2))
-                    .minHeight('4rem')
-                    .height(), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Add'))
-                    // .loading(isLoading && (opa.type === this.last_added_opa_type))
-                    .disabled(!opa.enabled)
-                    .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
-                    .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
-                    .loading(installingOpa === opa.type)
-                    .width('100%')
-                    .onClick(function () { return __awaiter(_this, void 0, void 0, function () {
-                    var _this = this;
-                    return __generator(this, function (_a) {
-                        /*  this.SetValue('name', opa.name);
-                         this.SetValue('folder_id', this.folder_id);
-                         this.SetValue('space_id', this.space_id);
-                        this.SetValue('item_type', 'opa');
-                         this.SetValue('item_sub_type', opa.type);
-                         this.SetValue('app_id', 'com.tuvalsoft.app.workbench');
-                         this.SetValue('content', '')
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(appletMenu)(menu => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(menu.category).fontWeight('500').fontSize('var(--font-size-h4)')
+            .paddingLeft('12px')
+            .marginBottom('12px'), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menu.items)(item => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name).fontSize('var(--font-size-h5)')
+            .padding('var(--spacing-xs) 0 var(--spacing-xs)')
+            .paddingLeft('12px')
+            .cornerRadius('var(--border-radius-small)')
+            .lineHeight('var(--font-line-height-h2)')
+            .foregroundColor('#323338')).height())).height().marginBottom('var(--spacing-large)')))
+            .padding('var(--spacing-medium)')
+            .width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.filtered_opas)(opa => !opa.enabled ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(opa.image &&
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(opa.image).width(50).height(50).cornerRadius('20%')
+                    .filter(opa.type === 'Applet' ? 'grayscale(1)' : 'none'), opa.icon &&
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(opa.icon).fontSize(40).foregroundColor('rgb(109, 122, 131)')).width(50).height(50).cornerRadius('20%'), 
+            //.background(opa.iconBackColor || '#9A0707'),
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height()
+            //    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
+            , (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.name).fontSize('1.8rem').lineHeight('2rem').maxLines(2))
+                .minHeight('4rem')
+                .height(), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('By Tuvalsoft').fontSize('1.4rem').foregroundColor('#676879'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(opa.description || '').maxLines(2).fontSize('1.4rem').foregroundColor('#676879')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Add'))
+                // .loading(isLoading && (opa.type === this.last_added_opa_type))
+                .disabled(!opa.enabled)
+                .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
+                .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
+                .loading(installingOpa === opa.type)
+                .width('100%')
+                .onClick(() => __awaiter(this, void 0, void 0, function* () {
+                /*  this.SetValue('name', opa.name);
+                 this.SetValue('folder_id', this.folder_id);
+                 this.SetValue('space_id', this.space_id);
+                this.SetValue('item_type', 'opa');
+                 this.SetValue('item_sub_type', opa.type);
+                 this.SetValue('app_id', 'com.tuvalsoft.app.workbench');
+                 this.SetValue('content', '')
 
-                         this.last_added_opa_type = opa.type; */
-                        /* fetch('./data.json')
-                        .then((response) => response.json())
-                        .then((json) => console.log(json)); */
-                        createDocument({
-                            data: {
-                                name: opa.name,
-                                opa: opa.tree_type,
-                                type: opa.applet_type,
-                                iconName: opa.iconName,
-                                iconCategory: opa.iconCategory,
-                                parent: this.parent
-                            }
-                        }, function (applet) { return __awaiter(_this, void 0, void 0, function () {
-                            var _loop_1, this_1, i;
-                            var _this = this;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        createWorkspaceTreeItem({
-                                            documentId: applet.$id,
-                                            data: {
-                                                name: opa.name,
-                                                type: 'applet',
-                                                tree_widget: opa.tree_type,
-                                                appletId: applet.$id,
-                                                parent: this.parent,
-                                                path: (new Date()).getTime().toString(),
-                                                iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
-                                                iconCategory: opa.iconCategory,
-                                            }
-                                        }, function (treeItem) {
-                                            _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: treeItem });
-                                        });
-                                        if (!opa.databases) return [3 /*break*/, 5];
-                                        setInstallingOpa(opa.type);
-                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Client.setProject(this.workspaceId);
-                                        _loop_1 = function (i) {
-                                            var template, name_1, id, category, collections, db_1, _loop_2, j, error_1;
-                                            return __generator(this, function (_b) {
-                                                switch (_b.label) {
-                                                    case 0:
-                                                        template = opa.databases[i];
-                                                        name_1 = template.name, id = template.id, category = template.category, collections = template.collections;
-                                                        _b.label = 1;
-                                                    case 1:
-                                                        _b.trys.push([1, 7, , 8]);
-                                                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(this_1.workspaceId, applet.$id, opa.name, category)];
-                                                    case 2:
-                                                        db_1 = _b.sent();
-                                                        _loop_2 = function (j) {
-                                                            var collection, name_2, id_1, attributes, documents, col, i_1, _c, key, type, _d, defaultValue, _e, size, _f;
-                                                            return __generator(this, function (_g) {
-                                                                switch (_g.label) {
-                                                                    case 0:
-                                                                        collection = collections[j];
-                                                                        name_2 = collection.name, id_1 = collection.id, attributes = collection.attributes, documents = collection.documents;
-                                                                        return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(this_1.workspaceId, db_1.$id, id_1, name_2, [], false)];
-                                                                    case 1:
-                                                                        col = _g.sent();
-                                                                        i_1 = 0;
-                                                                        _g.label = 2;
-                                                                    case 2:
-                                                                        if (!(i_1 < attributes.length)) return [3 /*break*/, 12];
-                                                                        _c = attributes[i_1], key = _c.key, type = _c.type, _d = _c.defaultValue, defaultValue = _d === void 0 ? null : _d, _e = _c.size, size = _e === void 0 ? 255 : _e;
-                                                                        _f = type;
-                                                                        switch (_f) {
-                                                                            case 'string': return [3 /*break*/, 3];
-                                                                            case 'number': return [3 /*break*/, 5];
-                                                                            case 'datetime': return [3 /*break*/, 7];
-                                                                            case 'boolean': return [3 /*break*/, 9];
-                                                                        }
-                                                                        return [3 /*break*/, 11];
-                                                                    case 3: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(this_1.workspaceId, db_1.$id, col.$id, key, size, false, '', false)];
-                                                                    case 4:
-                                                                        _g.sent();
-                                                                        return [3 /*break*/, 11];
-                                                                    case 5: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createIntegerAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false)];
-                                                                    case 6:
-                                                                        _g.sent();
-                                                                        return [3 /*break*/, 11];
-                                                                    case 7: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDatetimeAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false)];
-                                                                    case 8:
-                                                                        _g.sent();
-                                                                        return [3 /*break*/, 11];
-                                                                    case 9: return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createBooleanAttribute(this_1.workspaceId, db_1.$id, col.$id, key, false, defaultValue !== null && defaultValue !== void 0 ? defaultValue : false)];
-                                                                    case 10:
-                                                                        _g.sent();
-                                                                        return [3 /*break*/, 11];
-                                                                    case 11:
-                                                                        i_1++;
-                                                                        return [3 /*break*/, 2];
-                                                                    case 12:
-                                                                        setTimeout(function () {
-                                                                            documents === null || documents === void 0 ? void 0 : documents.forEach(function (document) { return __awaiter(_this, void 0, void 0, function () {
-                                                                                var $id, doc;
-                                                                                return __generator(this, function (_a) {
-                                                                                    switch (_a.label) {
-                                                                                        case 0:
-                                                                                            $id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
-                                                                                            if (document.$id != null) {
-                                                                                                $id = document.$id;
-                                                                                                delete document.$id;
-                                                                                            }
-                                                                                            return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(this.workspaceId, db_1.$id, col.$id, $id, document)];
-                                                                                        case 1:
-                                                                                            doc = _a.sent();
-                                                                                            console.log(doc);
-                                                                                            return [2 /*return*/];
-                                                                                    }
-                                                                                });
-                                                                            }); });
-                                                                        }, 3000);
-                                                                        return [2 /*return*/];
-                                                                }
-                                                            });
-                                                        };
-                                                        j = 0;
-                                                        _b.label = 3;
-                                                    case 3:
-                                                        if (!(j < collections.length)) return [3 /*break*/, 6];
-                                                        return [5 /*yield**/, _loop_2(j)];
-                                                    case 4:
-                                                        _b.sent();
-                                                        _b.label = 5;
-                                                    case 5:
-                                                        j++;
-                                                        return [3 /*break*/, 3];
-                                                    case 6: return [3 /*break*/, 8];
-                                                    case 7:
-                                                        error_1 = _b.sent();
-                                                        console.log(error_1);
-                                                        return [3 /*break*/, 8];
-                                                    case 8: return [2 /*return*/];
-                                                }
-                                            });
-                                        };
-                                        this_1 = this;
-                                        i = 0;
-                                        _a.label = 1;
-                                    case 1:
-                                        if (!(i < opa.databases.length)) return [3 /*break*/, 4];
-                                        return [5 /*yield**/, _loop_1(i)];
-                                    case 2:
-                                        _a.sent();
-                                        _a.label = 3;
-                                    case 3:
-                                        i++;
-                                        return [3 /*break*/, 1];
-                                    case 4:
-                                        setInstallingOpa('');
-                                        this.OnOK(applet);
-                                        return [3 /*break*/, 6];
-                                    case 5:
-                                        this.OnOK(applet);
-                                        _a.label = 6;
-                                    case 6: return [2 /*return*/];
-                                }
-                            });
-                        }); });
-                        return [2 /*return*/];
+                 this.last_added_opa_type = opa.type; */
+                /* fetch('./data.json')
+                .then((response) => response.json())
+                .then((json) => console.log(json)); */
+                createDocument({
+                    data: {
+                        name: opa.name,
+                        opa: opa.tree_type,
+                        type: opa.applet_type,
+                        iconName: opa.iconName,
+                        iconCategory: opa.iconCategory,
+                        parent: this.parent
+                    }
+                }, (applet) => __awaiter(this, void 0, void 0, function* () {
+                    createWorkspaceTreeItem({
+                        documentId: applet.$id,
+                        data: {
+                            name: opa.name,
+                            type: 'applet',
+                            tree_widget: opa.tree_type,
+                            appletId: applet.$id,
+                            parent: this.parent,
+                            path: (new Date()).getTime().toString(),
+                            iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
+                            iconCategory: opa.iconCategory,
+                        }
+                    }, (treeItem) => {
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem });
                     });
-                }); })).height()).height(250).width(290)
-                    .padding()
-                    .shadow({ hover: 'var(--box-shadow-medium)' })
-                    .cornerRadius('var(--border-radius-medium)')
-                    .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding();
-        })).wrap('wrap').height()))));
-    };
-    SelectAppletDialog.Show = function (workspaceId, parent) {
-        if (parent === void 0) { parent = '-1'; }
-        var dialog = new SelectAppletDialog();
+                    if (opa.databases) {
+                        setInstallingOpa(opa.type);
+                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Client.setProject(this.workspaceId);
+                        for (let i = 0; i < opa.databases.length; i++) {
+                            const template = opa.databases[i];
+                            const { name, id, category, collections } = template;
+                            try {
+                                const db = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.create(this.workspaceId, applet.$id, opa.name, category);
+                                for (let j = 0; j < collections.length; j++) {
+                                    const collection = collections[j];
+                                    const { name, id, attributes, documents } = collection;
+                                    const col = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createCollection(this.workspaceId, db.$id, id, name, [], false);
+                                    for (let i = 0; i < attributes.length; i++) {
+                                        const { key, type, defaultValue = null, size = 255 } = attributes[i];
+                                        switch (type) {
+                                            case 'string':
+                                                yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(this.workspaceId, db.$id, col.$id, key, size, false, '', false);
+                                                break;
+                                            case 'number':
+                                                yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createIntegerAttribute(this.workspaceId, db.$id, col.$id, key, false);
+                                                break;
+                                            case 'datetime':
+                                                yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDatetimeAttribute(this.workspaceId, db.$id, col.$id, key, false);
+                                                break;
+                                            case 'boolean':
+                                                yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createBooleanAttribute(this.workspaceId, db.$id, col.$id, key, false, defaultValue !== null && defaultValue !== void 0 ? defaultValue : false);
+                                                break;
+                                        }
+                                    }
+                                    setTimeout(() => {
+                                        documents === null || documents === void 0 ? void 0 : documents.forEach((document) => __awaiter(this, void 0, void 0, function* () {
+                                            let $id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
+                                            if (document.$id != null) {
+                                                $id = document.$id;
+                                                delete document.$id;
+                                            }
+                                            const doc = yield _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createDocument(this.workspaceId, db.$id, col.$id, $id, document);
+                                            console.log(doc);
+                                        }));
+                                    }, 3000);
+                                }
+                            }
+                            catch (error) {
+                                console.log(error);
+                            }
+                        }
+                        setInstallingOpa('');
+                        this.OnOK(applet);
+                    }
+                    else {
+                        this.OnOK(applet);
+                    }
+                }));
+            }))).height()).height(250).width(290)
+                .padding()
+                .shadow({ hover: 'var(--box-shadow-medium)' })
+                .cornerRadius('var(--border-radius-medium)')
+                .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding())).wrap('wrap').height()))));
+    }
+    static Show(workspaceId, parent = '-1') {
+        const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;
         /*  if (width) {
              dialog.Width = width;
          } */
-        dialog.BindRouterParams({ workspaceId: workspaceId, parent: parent });
+        dialog.BindRouterParams({ workspaceId, parent });
         return dialog.ShowDialogAsync();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectAppletDialog.prototype, "filtered_opas", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectAppletDialog.prototype, "workspaceId", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectAppletDialog.prototype, "parent", void 0);
-    return SelectAppletDialog;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView));
-
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectAppletDialog.prototype, "filtered_opas", void 0);
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectAppletDialog.prototype, "workspaceId", void 0);
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectAppletDialog.prototype, "parent", void 0);
 
 
 /***/ }),
@@ -19799,7 +19133,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index */ "./src/index.ts");
 
 
-var globalObject = undefined;
+let globalObject = undefined;
 /// #if WEB
 if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.workerContext()) {
     globalObject = self;
@@ -19834,6 +19168,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ColorView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorView),
 /* harmony export */   DynoDialog: () => (/* reexport safe */ _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__.DynoDialog),
 /* harmony export */   FormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder),
+/* harmony export */   FormTitle: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormTitle),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
 /* harmony export */   OrganizationContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContext),
 /* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContextProvider),
@@ -19874,7 +19209,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ListAppletDatabase: () => (/* binding */ ListAppletDatabase)
 /* harmony export */ });
-var ListAppletDatabase = [
+const ListAppletDatabase = [
     {
         "name": "List Applet",
         "id": "world",
@@ -20193,7 +19528,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   replaceNonMatchingCharacters: () => (/* binding */ replaceNonMatchingCharacters)
 /* harmony export */ });
 function replaceNonMatchingCharacters(originalText) {
-    var replacementTable = {
+    const replacementTable = {
         'ı': 'i',
         'ç': 'c',
         ' ': '_'
@@ -20225,40 +19560,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @uiw/react-color-circle */ "./node_modules/@uiw/react-color-circle/esm/index.js");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
-var ColorView = function () {
-    var viewType = /** @class */ (function (_super) {
-        __extends(class_1, _super);
-        function class_1() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        class_1.prototype.selectedColor = function (value) {
+const ColorView = () => {
+    const viewType = class extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+        selectedColor(value) {
             this.vp_SelectedColor = value;
             return this;
-        };
-        class_1.prototype.onChange = function (value) {
+        }
+        onChange(value) {
             this.vp_OnChange = value;
             return this;
-        };
-        class_1.prototype.render = function () {
-            var _this = this;
+        }
+        render() {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_2__["default"], { colors: [
                     '#4A4A4A',
                     '#6A849B',
@@ -20289,16 +19604,15 @@ var ColorView = function () {
                     '#C580E6',
                     '#BBA399',
                     '#595D66'
-                ], color: this.vp_SelectedColor, onChange: function (color) {
-                    _this.vp_OnChange(color.hex);
+                ], color: this.vp_SelectedColor, onChange: (color) => {
+                    this.vp_OnChange(color.hex);
                 } })))
                 .maxWidth(500)
                 .height()
                 .render());
-        };
-        return class_1;
-    }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
-    return new viewType().onChange(function () { return void 0; });
+        }
+    };
+    return new viewType().onChange(() => void 0);
 };
 
 
@@ -20318,7 +19632,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
-var ColorItemView = function (color) {
+const ColorItemView = (color) => {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)()
         .cursor('pointer')
         .width(20)
@@ -20351,7 +19665,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ColorItemView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorItemView */ "./src/views/ColorSelect/ColorItemView.ts");
 
 
-var colors = [
+const colors = [
     '#4A4A4A',
     '#6A849B',
     '#BEC5CC',
@@ -20382,11 +19696,8 @@ var colors = [
     '#BBA399',
     '#595D66'
 ];
-var ColorSelect = function (_a) {
-    var onSelect = _a.onSelect;
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 2 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(colors)(function (color) { return ((0,_ColorItemView__WEBPACK_IMPORTED_MODULE_1__.ColorItemView)(color)
-        .onClick(function () { return onSelect(color); })); })).wrap('wrap');
-};
+const ColorSelect = ({ onSelect }) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 2 })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(colors)((color) => ((0,_ColorItemView__WEBPACK_IMPORTED_MODULE_1__.ColorItemView)(color)
+    .onClick(() => onSelect(color))))).wrap('wrap');
 
 
 /***/ }),
@@ -20408,6 +19719,107 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/views/DialogOkButton.ts":
+/*!*************************************!*\
+  !*** ./src/views/DialogOkButton.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DialogOkButton: () => (/* binding */ DialogOkButton)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+const DialogOkButton = (label) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label).foregroundColor('white')
+    .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')
+    .fontSize('1.4rem')
+    .fontWeight('500')).width().height()
+    .cursor('pointer')
+    .border({ default: 'solid 1px rgb(64, 101, 221)', hover: 'solid 1px rgb(0, 76, 190)' })
+    .background({ default: 'rgb(64, 101, 221)', hover: 'rgb(0, 76, 190)' })
+    .cornerRadius(6)
+    .minWidth(28)
+    .minHeight(28)
+    .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 11));
+
+
+/***/ }),
+
+/***/ "./src/views/LabeledText/LabeledText.tsx":
+/*!***********************************************!*\
+  !*** ./src/views/LabeledText/LabeledText.tsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   LabeledTextInput: () => (/* binding */ LabeledTextInput)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+const LabeledTextInput = () => {
+    class _ extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+        label(value) {
+            this._Label = value;
+            return this;
+        }
+        autoFocus(value) {
+            this._AutoFocus = value;
+            return this;
+        }
+        value(value) {
+            this._Value = value;
+            return this;
+        }
+        onChange(value) {
+            this._OnChange = value;
+            return this;
+        }
+        constructor() {
+            super();
+            this.onChange(() => void 0);
+        }
+        render() {
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this._Label).fontSize('1.2rem').textTransform('uppercase'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.TextField)()
+                .autoFocus(this._AutoFocus)
+                .value(this._Value)
+                .onChange((e) => this._OnChange(e)))
+                .height()
+                .render());
+        }
+    }
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], _.prototype, "_Label", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], _.prototype, "_AutoFocus", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], _.prototype, "_Value", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], _.prototype, "_OnChange", void 0);
+    return new _();
+};
+
+
+/***/ }),
+
 /***/ "./src/views/NewFieldMenu/Icons.tsx":
 /*!******************************************!*\
   !*** ./src/views/NewFieldMenu/Icons.tsx ***!
@@ -20424,77 +19836,77 @@ __webpack_require__.r(__webpack_exports__);
 
 var Icons;
 (function (Icons) {
-    Icons.RightArrow = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M7.434 14.566a.8.8 0 0 1 0-1.132L10.87 10 7.434 6.566a.8.8 0 1 1 1.132-1.132l4 4a.8.8 0 0 1 0 1.132l-4 4a.8.8 0 0 1-1.132 0Z" }))); };
-    Icons.Plus = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10 4a.75.75 0 0 0-.75.75v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5A.75.75 0 0 0 10 4Z" }))); };
-    Icons.TextAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.2 4.786a.779.779 0 0 0-.234-.556A.807.807 0 0 0 12.4 4H2.8a.807.807 0 0 0-.566.23.779.779 0 0 0 0 1.111c.15.148.354.23.566.23h4v8.643c0 .209.084.409.234.556a.808.808 0 0 0 1.132 0 .779.779 0 0 0 .234-.556V5.571h4a.807.807 0 0 0 .566-.23.779.779 0 0 0 .234-.555Zm4 3.928h-4.8a.807.807 0 0 0-.566.23.779.779 0 0 0 0 1.112c.15.147.354.23.566.23H14v3.928c0 .209.084.409.234.556a.808.808 0 0 0 1.132 0 .779.779 0 0 0 .234-.556v-3.928h1.6a.808.808 0 0 0 .566-.23.779.779 0 0 0 0-1.112.807.807 0 0 0-.566-.23Z" }))); };
-    Icons.RichTextAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor" },
+    Icons.RightArrow = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M7.434 14.566a.8.8 0 0 1 0-1.132L10.87 10 7.434 6.566a.8.8 0 1 1 1.132-1.132l4 4a.8.8 0 0 1 0 1.132l-4 4a.8.8 0 0 1-1.132 0Z" })));
+    Icons.Plus = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10 4a.75.75 0 0 0-.75.75v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5A.75.75 0 0 0 10 4Z" })));
+    Icons.TextAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.2 4.786a.779.779 0 0 0-.234-.556A.807.807 0 0 0 12.4 4H2.8a.807.807 0 0 0-.566.23.779.779 0 0 0 0 1.111c.15.148.354.23.566.23h4v8.643c0 .209.084.409.234.556a.808.808 0 0 0 1.132 0 .779.779 0 0 0 .234-.556V5.571h4a.807.807 0 0 0 .566-.23.779.779 0 0 0 .234-.555Zm4 3.928h-4.8a.807.807 0 0 0-.566.23.779.779 0 0 0 0 1.112c.15.147.354.23.566.23H14v3.928c0 .209.084.409.234.556a.808.808 0 0 0 1.132 0 .779.779 0 0 0 .234-.556v-3.928h1.6a.808.808 0 0 0 .566-.23.779.779 0 0 0 0-1.112.807.807 0 0 0-.566-.23Z" })));
+    Icons.RichTextAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10.7 6.571h5.6a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.555.837.837 0 0 0-.205-.556A.664.664 0 0 0 16.3 5h-5.6a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .208.074.408.205.555.131.148.31.23.495.23Zm0 7.857h-7a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .209.074.409.205.556.131.147.31.23.495.23h7a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.556.837.837 0 0 0-.205-.555.664.664 0 0 0-.495-.23Zm5.6-3.142H3.7a.663.663 0 0 0-.495.23.837.837 0 0 0-.205.555c0 .209.074.409.205.556.131.147.31.23.495.23h12.6a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.556.837.837 0 0 0-.205-.555.663.663 0 0 0-.495-.23Zm0-3.143h-5.6a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .208.074.408.205.555.131.147.31.23.495.23h5.6a.664.664 0 0 0 .495-.23A.837.837 0 0 0 17 8.93a.837.837 0 0 0-.205-.556.664.664 0 0 0-.495-.23ZM8.6 3.314H3.8a.8.8 0 1 0 0 1.6h1.6v4a.8.8 0 1 0 1.6 0v-4h1.6a.8.8 0 0 0 0-1.6Z" })))); };
-    Icons.NumberAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.75 3.255a.75.75 0 0 1 .662.828L9.06 7.25h2.49l.371-3.333a.75.75 0 1 1 1.491.166L13.06 7.25h2.273a.75.75 0 0 1 0 1.5h-2.44l-.277 2.5h2.717a.75.75 0 0 1 0 1.5H12.45l-.37 3.333a.75.75 0 1 1-1.491-.166l.352-3.167H8.45l-.371 3.333a.75.75 0 1 1-1.491-.166l.352-3.167H4.667a.75.75 0 0 1 0-1.5h2.44l.277-2.5H4.667a.75.75 0 0 1 0-1.5H7.55l.37-3.333a.75.75 0 0 1 .828-.662Zm2.357 7.995.277-2.5h-2.49l-.278 2.5h2.49Z" }))); };
-    Icons.SingleSelectAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m12.157 8.392-2.294 2.08-2.137-2.033a.8.8 0 1 0-1.128 1.128l2.697 2.6a.799.799 0 0 0 1.128 0l2.862-2.639a.8.8 0 1 0-1.128-1.136ZM10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm0 14.4a6.4 6.4 0 1 1 0-12.8 6.4 6.4 0 0 1 0 12.8Z" }))); };
-    Icons.MultiSelectAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.444 4.59c-.364-.242-.888-.29-1.212.037a.783.783 0 0 0 .039 1.149L6.156 8.78a.894.894 0 0 0 1.13.037.853.853 0 0 0 .165-.127l7.308-7.312a.783.783 0 0 0-.02-1.15.891.891 0 0 0-1.213.02L6.728 6.252 4.444 4.59ZM3 15.2a.8.8 0 0 1 .8-.8h12.4a.8.8 0 0 1 0 1.6H3.8a.8.8 0 0 1-.8-.8ZM11.45 7a.8.8 0 0 1 .8-.8h4a.8.8 0 0 1 0 1.6h-4a.8.8 0 0 1-.8-.8ZM3 11.2a.8.8 0 0 1 .8-.8h12.4a.8.8 0 0 1 0 1.6H3.8a.8.8 0 0 1-.8-.8Z" }))); };
-    Icons.WorkflowAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M3.688 11.438a.689.689 0 0 0 .697-.704V8.012c0-1.19.807-1.941 2.065-1.941h5.284v1.572c0 .328.198.52.526.52a.66.66 0 0 0 .404-.144l2.68-2.235c.252-.212.259-.547 0-.766l-2.68-2.235a.62.62 0 0 0-.404-.144c-.328 0-.526.185-.526.52v1.53H6.552c-2.174 0-3.568 1.21-3.568 3.186v2.859c0 .396.308.704.704.704Zm12.624-2.906a.689.689 0 0 0-.697.704v2.745c0 1.19-.807 1.941-2.065 1.941H8.266V12.35c0-.328-.198-.52-.526-.52a.66.66 0 0 0-.404.144l-2.68 2.242c-.259.212-.259.547 0 .76l2.68 2.241a.66.66 0 0 0 .404.144c.328 0 .526-.192.526-.52v-1.545h5.182c2.174 0 3.568-1.21 3.568-3.178V9.236a.695.695 0 0 0-.704-.704Z" }))); };
-    Icons.AssignmentAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10.7 6.571h5.6a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.555.837.837 0 0 0-.205-.556A.664.664 0 0 0 16.3 5h-5.6a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .208.074.408.205.555.131.148.31.23.495.23Zm0 7.857h-7a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .209.074.409.205.556.131.147.31.23.495.23h7a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.556.837.837 0 0 0-.205-.555.664.664 0 0 0-.495-.23Zm5.6-3.142H3.7a.663.663 0 0 0-.495.23.837.837 0 0 0-.205.555c0 .209.074.409.205.556.131.147.31.23.495.23h12.6a.664.664 0 0 0 .495-.23.837.837 0 0 0 .205-.556.837.837 0 0 0-.205-.555.663.663 0 0 0-.495-.23Zm0-3.143h-5.6a.664.664 0 0 0-.495.23.837.837 0 0 0-.205.556c0 .208.074.408.205.555.131.147.31.23.495.23h5.6a.664.664 0 0 0 .495-.23A.837.837 0 0 0 17 8.93a.837.837 0 0 0-.205-.556.664.664 0 0 0-.495-.23ZM8.6 3.314H3.8a.8.8 0 1 0 0 1.6h1.6v4a.8.8 0 1 0 1.6 0v-4h1.6a.8.8 0 0 0 0-1.6Z" }))));
+    Icons.NumberAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M8.75 3.255a.75.75 0 0 1 .662.828L9.06 7.25h2.49l.371-3.333a.75.75 0 1 1 1.491.166L13.06 7.25h2.273a.75.75 0 0 1 0 1.5h-2.44l-.277 2.5h2.717a.75.75 0 0 1 0 1.5H12.45l-.37 3.333a.75.75 0 1 1-1.491-.166l.352-3.167H8.45l-.371 3.333a.75.75 0 1 1-1.491-.166l.352-3.167H4.667a.75.75 0 0 1 0-1.5h2.44l.277-2.5H4.667a.75.75 0 0 1 0-1.5H7.55l.37-3.333a.75.75 0 0 1 .828-.662Zm2.357 7.995.277-2.5h-2.49l-.278 2.5h2.49Z" })));
+    Icons.SingleSelectAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "m12.157 8.392-2.294 2.08-2.137-2.033a.8.8 0 1 0-1.128 1.128l2.697 2.6a.799.799 0 0 0 1.128 0l2.862-2.639a.8.8 0 1 0-1.128-1.136ZM10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm0 14.4a6.4 6.4 0 1 1 0-12.8 6.4 6.4 0 0 1 0 12.8Z" })));
+    Icons.MultiSelectAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.444 4.59c-.364-.242-.888-.29-1.212.037a.783.783 0 0 0 .039 1.149L6.156 8.78a.894.894 0 0 0 1.13.037.853.853 0 0 0 .165-.127l7.308-7.312a.783.783 0 0 0-.02-1.15.891.891 0 0 0-1.213.02L6.728 6.252 4.444 4.59ZM3 15.2a.8.8 0 0 1 .8-.8h12.4a.8.8 0 0 1 0 1.6H3.8a.8.8 0 0 1-.8-.8ZM11.45 7a.8.8 0 0 1 .8-.8h4a.8.8 0 0 1 0 1.6h-4a.8.8 0 0 1-.8-.8ZM3 11.2a.8.8 0 0 1 .8-.8h12.4a.8.8 0 0 1 0 1.6H3.8a.8.8 0 0 1-.8-.8Z" })));
+    Icons.WorkflowAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M3.688 11.438a.689.689 0 0 0 .697-.704V8.012c0-1.19.807-1.941 2.065-1.941h5.284v1.572c0 .328.198.52.526.52a.66.66 0 0 0 .404-.144l2.68-2.235c.252-.212.259-.547 0-.766l-2.68-2.235a.62.62 0 0 0-.404-.144c-.328 0-.526.185-.526.52v1.53H6.552c-2.174 0-3.568 1.21-3.568 3.186v2.859c0 .396.308.704.704.704Zm12.624-2.906a.689.689 0 0 0-.697.704v2.745c0 1.19-.807 1.941-2.065 1.941H8.266V12.35c0-.328-.198-.52-.526-.52a.66.66 0 0 0-.404.144l-2.68 2.242c-.259.212-.259.547 0 .76l2.68 2.241a.66.66 0 0 0 .404.144c.328 0 .526-.192.526-.52v-1.545h5.182c2.174 0 3.568-1.21 3.568-3.178V9.236a.695.695 0 0 0-.704-.704Z" })));
+    Icons.AssignmentAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10.37 11.149C9.323 10.672 8.104 10.5 7 10.5s-2.323.172-3.37.649c-1.06.483-1.983 1.302-2.351 2.587-.161.562-.152 1.244-.12 1.725.06.924.847 1.539 1.684 1.539h8.314c.837 0 1.625-.615 1.685-1.539.031-.48.04-1.163-.121-1.725-.368-1.285-1.29-2.104-2.351-2.587Zm.909 3c-.216-.755-.756-1.282-1.531-1.635C8.959 12.154 7.97 12 7 12c-.97 0-1.96.155-2.748.514-.775.353-1.315.88-1.531 1.635-.085.298-.096.761-.066 1.215a.12.12 0 0 0 .044.086c.03.027.08.05.144.05h8.314a.218.218 0 0 0 .144-.05.12.12 0 0 0 .044-.086c.03-.454.02-.917-.066-1.215ZM10.25 6.25a3.25 3.25 0 1 0-6.5 0 3.25 3.25 0 0 0 6.5 0Zm-1.5 0a1.75 1.75 0 1 0-3.5 0 1.75 1.75 0 0 0 3.5 0ZM13.818 5a2.75 2.75 0 1 1 0 5.5 2.75 2.75 0 0 1 0-5.5Zm0 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M14.008 12.015a.75.75 0 0 0 .655.834c1.371.165 2.36.711 2.634 1.67.065.227.075.595.051.971a.07.07 0 0 1-.038.01h-2.06a.75.75 0 0 0 0 1.5h2.06c.759 0 1.48-.558 1.535-1.405.026-.406.035-.997-.106-1.49-.534-1.863-2.356-2.56-3.897-2.745a.75.75 0 0 0-.834.655Z" }))); };
-    Icons.DateAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M15.6 3.6H14v-.8a.8.8 0 0 0-1.6 0v.8H7.6v-.8a.8.8 0 0 0-1.6 0v.8H4.4A2.4 2.4 0 0 0 2 6v9.6A2.4 2.4 0 0 0 4.4 18h11.2a2.4 2.4 0 0 0 2.4-2.4V6a2.4 2.4 0 0 0-2.4-2.4Zm.8 12a.8.8 0 0 1-.8.8H4.4a.8.8 0 0 1-.8-.8V10h12.8v5.6Zm0-7.2H3.6V6a.8.8 0 0 1 .8-.8H6V6a.8.8 0 0 0 1.6 0v-.8h4.8V6A.8.8 0 0 0 14 6v-.8h1.6a.8.8 0 0 1 .8.8v2.4Z" }))); };
-    Icons.CheckboxAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M14.008 12.015a.75.75 0 0 0 .655.834c1.371.165 2.36.711 2.634 1.67.065.227.075.595.051.971a.07.07 0 0 1-.038.01h-2.06a.75.75 0 0 0 0 1.5h2.06c.759 0 1.48-.558 1.535-1.405.026-.406.035-.997-.106-1.49-.534-1.863-2.356-2.56-3.897-2.745a.75.75 0 0 0-.834.655Z" })));
+    Icons.DateAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M15.6 3.6H14v-.8a.8.8 0 0 0-1.6 0v.8H7.6v-.8a.8.8 0 0 0-1.6 0v.8H4.4A2.4 2.4 0 0 0 2 6v9.6A2.4 2.4 0 0 0 4.4 18h11.2a2.4 2.4 0 0 0 2.4-2.4V6a2.4 2.4 0 0 0-2.4-2.4Zm.8 12a.8.8 0 0 1-.8.8H4.4a.8.8 0 0 1-.8-.8V10h12.8v5.6Zm0-7.2H3.6V6a.8.8 0 0 1 .8-.8H6V6a.8.8 0 0 0 1.6 0v-.8h4.8V6A.8.8 0 0 0 14 6v-.8h1.6a.8.8 0 0 1 .8.8v2.4Z" })));
+    Icons.CheckboxAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8.508 12.292a.833.833 0 0 0 1.184 0l3.4-3.4a.837.837 0 0 0-1.184-1.184L9.1 10.525 8.092 9.508a.837.837 0 1 0-1.184 1.184l1.6 1.6Z" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M2 4.5A2.5 2.5 0 0 1 4.5 2h11A2.5 2.5 0 0 1 18 4.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 15.5v-11Zm1.714.214a1 1 0 0 1 1-1h10.572a1 1 0 0 1 1 1v10.572a1 1 0 0 1-1 1H4.714a1 1 0 0 1-1-1V4.714Z" })))); };
-    Icons.URLAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M2 4.5A2.5 2.5 0 0 1 4.5 2h11A2.5 2.5 0 0 1 18 4.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 2 15.5v-11Zm1.714.214a1 1 0 0 1 1-1h10.572a1 1 0 0 1 1 1v10.572a1 1 0 0 1-1 1H4.714a1 1 0 0 1-1-1V4.714Z" }))));
+    Icons.URLAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M3.982 8.862a5.06 5.06 0 0 0 7.156 7.156l1.22-1.22a.746.746 0 1 0-1.056-1.056l-1.22 1.22a3.567 3.567 0 0 1-5.044-5.044l1.22-1.22a.747.747 0 0 0-1.056-1.056l-1.22 1.22Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.032 11.912a.747.747 0 0 0 1.056 1.056l4.88-4.88a.746.746 0 1 0-1.056-1.056l-4.88 4.88Z" }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.642 5.202a.747.747 0 1 0 1.056 1.056l1.22-1.22a3.567 3.567 0 0 1 5.044 5.044l-1.22 1.22a.746.746 0 1 0 1.056 1.056l1.22-1.22a5.06 5.06 0 0 0-7.156-7.156l-1.22 1.22Z" }))); };
-    Icons.EmailAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.55 7.2a.75.75 0 0 0-1.5 0h1.5Zm-.75 3.5h-.75.75Zm4.2 0h.75H17Zm0-.7h.75H17Zm-2.288 6.153a.75.75 0 1 0-.912-1.19l.912 1.19ZM12.05 9.999A2.05 2.05 0 0 1 10 12.05v1.5A3.55 3.55 0 0 0 13.55 10h-1.5ZM10 12.05A2.05 2.05 0 0 1 7.95 10h-1.5A3.55 3.55 0 0 0 10 13.55v-1.5ZM7.95 10A2.05 2.05 0 0 1 10 7.95v-1.5A3.55 3.55 0 0 0 6.45 10h1.5ZM10 7.95A2.05 2.05 0 0 1 12.05 10h1.5A3.55 3.55 0 0 0 10 6.45v1.5Zm2.05-.75v3.5h1.5V7.2h-1.5Zm0 3.5c0 .756.3 1.481.835 2.016l1.06-1.06a1.35 1.35 0 0 1-.395-.955h-1.5Zm.835 2.016a2.85 2.85 0 0 0 2.015.835v-1.5a1.35 1.35 0 0 1-.955-.396l-1.06 1.06Zm2.015.835c.756 0 1.48-.3 2.015-.835l-1.06-1.06a1.35 1.35 0 0 1-.955.395v1.5Zm2.015-.835a2.85 2.85 0 0 0 .835-2.015h-1.5c0 .358-.142.701-.395.954l1.06 1.06Zm.835-2.015V10h-1.5v.7h1.5Zm0-.7a7.75 7.75 0 0 0-1.68-4.817l-1.174.932A6.25 6.25 0 0 1 16.25 10h1.5Zm-1.68-4.817a7.75 7.75 0 0 0-4.309-2.73l-.34 1.46a6.25 6.25 0 0 1 3.475 2.202l1.175-.932Zm-4.309-2.73a7.75 7.75 0 0 0-5.072.54l.64 1.356a6.25 6.25 0 0 1 4.091-.435l.341-1.461Zm-5.072.54A7.75 7.75 0 0 0 3.05 6.569l1.345.664A6.25 6.25 0 0 1 7.33 4.35l-.641-1.356ZM3.05 6.569a7.75 7.75 0 0 0-.627 5.063l1.466-.316a6.25 6.25 0 0 1 .506-4.083L3.05 6.57Zm-.627 5.063a7.75 7.75 0 0 0 2.655 4.355l.953-1.159a6.25 6.25 0 0 1-2.142-3.512l-1.466.316Zm2.655 4.355a7.75 7.75 0 0 0 4.788 1.762l.026-1.5a6.25 6.25 0 0 1-3.861-1.42l-.953 1.158Zm4.788 1.762a7.75 7.75 0 0 0 4.845-1.596l-.912-1.19a6.25 6.25 0 0 1-3.907 1.286l-.026 1.5Z" }))); };
-    Icons.PhoneAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.299 12.695c1.875 1.875 4.15 3.318 6.006 3.318.833 0 1.564-.286 2.148-.935.337-.381.547-.82.547-1.258 0-.337-.127-.661-.451-.89l-1.951-1.386c-.306-.216-.566-.317-.795-.317-.299 0-.56.165-.852.457l-.464.458a.335.335 0 0 1-.241.095.659.659 0 0 1-.267-.07c-.394-.216-1.08-.807-1.716-1.436-.63-.636-1.22-1.316-1.43-1.716a.57.57 0 0 1-.077-.26c0-.083.026-.172.102-.242l.451-.464c.293-.299.464-.56.464-.858 0-.23-.108-.483-.324-.795L7.076 4.464A1.1 1.1 0 0 0 6.148 4c-.426 0-.858.19-1.24.553C4.28 5.15 4 5.888 4 6.714c0 1.856 1.424 4.106 3.299 5.98Z" }))); };
-    Icons.LocationAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 2.467a5.867 5.867 0 0 0-5.867 5.866c0 1.588.716 3.083 1.917 4.643 1.015 1.317 2.313 2.604 3.704 3.984l.246.244.246-.244c1.391-1.38 2.69-2.667 3.704-3.984 1.2-1.56 1.917-3.055 1.917-4.643A5.867 5.867 0 0 0 10 2.467ZM2.533 8.333a7.467 7.467 0 1 1 14.934 0c0 2.095-.951 3.933-2.25 5.62-1.085 1.409-2.475 2.786-3.864 4.164-.263.26-.526.521-.787.782a.8.8 0 0 1-1.132 0c-.26-.26-.524-.522-.787-.782-1.39-1.378-2.779-2.755-3.864-4.165-1.299-1.686-2.25-3.524-2.25-5.619ZM10 6.633a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4Zm-3.3 1.7a3.3 3.3 0 1 1 6.6 0 3.3 3.3 0 0 1-6.6 0Z" }))); };
-    Icons.AvatarAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.642 5.202a.747.747 0 1 0 1.056 1.056l1.22-1.22a3.567 3.567 0 0 1 5.044 5.044l-1.22 1.22a.746.746 0 1 0 1.056 1.056l1.22-1.22a5.06 5.06 0 0 0-7.156-7.156l-1.22 1.22Z" })));
+    Icons.EmailAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M13.55 7.2a.75.75 0 0 0-1.5 0h1.5Zm-.75 3.5h-.75.75Zm4.2 0h.75H17Zm0-.7h.75H17Zm-2.288 6.153a.75.75 0 1 0-.912-1.19l.912 1.19ZM12.05 9.999A2.05 2.05 0 0 1 10 12.05v1.5A3.55 3.55 0 0 0 13.55 10h-1.5ZM10 12.05A2.05 2.05 0 0 1 7.95 10h-1.5A3.55 3.55 0 0 0 10 13.55v-1.5ZM7.95 10A2.05 2.05 0 0 1 10 7.95v-1.5A3.55 3.55 0 0 0 6.45 10h1.5ZM10 7.95A2.05 2.05 0 0 1 12.05 10h1.5A3.55 3.55 0 0 0 10 6.45v1.5Zm2.05-.75v3.5h1.5V7.2h-1.5Zm0 3.5c0 .756.3 1.481.835 2.016l1.06-1.06a1.35 1.35 0 0 1-.395-.955h-1.5Zm.835 2.016a2.85 2.85 0 0 0 2.015.835v-1.5a1.35 1.35 0 0 1-.955-.396l-1.06 1.06Zm2.015.835c.756 0 1.48-.3 2.015-.835l-1.06-1.06a1.35 1.35 0 0 1-.955.395v1.5Zm2.015-.835a2.85 2.85 0 0 0 .835-2.015h-1.5c0 .358-.142.701-.395.954l1.06 1.06Zm.835-2.015V10h-1.5v.7h1.5Zm0-.7a7.75 7.75 0 0 0-1.68-4.817l-1.174.932A6.25 6.25 0 0 1 16.25 10h1.5Zm-1.68-4.817a7.75 7.75 0 0 0-4.309-2.73l-.34 1.46a6.25 6.25 0 0 1 3.475 2.202l1.175-.932Zm-4.309-2.73a7.75 7.75 0 0 0-5.072.54l.64 1.356a6.25 6.25 0 0 1 4.091-.435l.341-1.461Zm-5.072.54A7.75 7.75 0 0 0 3.05 6.569l1.345.664A6.25 6.25 0 0 1 7.33 4.35l-.641-1.356ZM3.05 6.569a7.75 7.75 0 0 0-.627 5.063l1.466-.316a6.25 6.25 0 0 1 .506-4.083L3.05 6.57Zm-.627 5.063a7.75 7.75 0 0 0 2.655 4.355l.953-1.159a6.25 6.25 0 0 1-2.142-3.512l-1.466.316Zm2.655 4.355a7.75 7.75 0 0 0 4.788 1.762l.026-1.5a6.25 6.25 0 0 1-3.861-1.42l-.953 1.158Zm4.788 1.762a7.75 7.75 0 0 0 4.845-1.596l-.912-1.19a6.25 6.25 0 0 1-3.907 1.286l-.026 1.5Z" })));
+    Icons.PhoneAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.299 12.695c1.875 1.875 4.15 3.318 6.006 3.318.833 0 1.564-.286 2.148-.935.337-.381.547-.82.547-1.258 0-.337-.127-.661-.451-.89l-1.951-1.386c-.306-.216-.566-.317-.795-.317-.299 0-.56.165-.852.457l-.464.458a.335.335 0 0 1-.241.095.659.659 0 0 1-.267-.07c-.394-.216-1.08-.807-1.716-1.436-.63-.636-1.22-1.316-1.43-1.716a.57.57 0 0 1-.077-.26c0-.083.026-.172.102-.242l.451-.464c.293-.299.464-.56.464-.858 0-.23-.108-.483-.324-.795L7.076 4.464A1.1 1.1 0 0 0 6.148 4c-.426 0-.858.19-1.24.553C4.28 5.15 4 5.888 4 6.714c0 1.856 1.424 4.106 3.299 5.98Z" })));
+    Icons.LocationAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 2.467a5.867 5.867 0 0 0-5.867 5.866c0 1.588.716 3.083 1.917 4.643 1.015 1.317 2.313 2.604 3.704 3.984l.246.244.246-.244c1.391-1.38 2.69-2.667 3.704-3.984 1.2-1.56 1.917-3.055 1.917-4.643A5.867 5.867 0 0 0 10 2.467ZM2.533 8.333a7.467 7.467 0 1 1 14.934 0c0 2.095-.951 3.933-2.25 5.62-1.085 1.409-2.475 2.786-3.864 4.164-.263.26-.526.521-.787.782a.8.8 0 0 1-1.132 0c-.26-.26-.524-.522-.787-.782-1.39-1.378-2.779-2.755-3.864-4.165-1.299-1.686-2.25-3.524-2.25-5.619ZM10 6.633a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4Zm-3.3 1.7a3.3 3.3 0 1 1 6.6 0 3.3 3.3 0 0 1-6.6 0Z" })));
+    Icons.AvatarAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { "fill-rule": "evenodd", "clip-rule": "evenodd" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6.904 8.585a3.071 3.071 0 1 1 6.143 0 3.071 3.071 0 0 1-6.143 0Zm3.072-1.57a1.571 1.571 0 1 0 0 3.141 1.571 1.571 0 0 0 0-3.142Z" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 0 0 7.338-.159 1.571 1.571 0 0 0-1.486-1.06H7.654a1.571 1.571 0 0 0-1.475 1.032c.086.064.175.127.265.187Zm-1.4-1.27A6.402 6.402 0 0 1 8.752 3.724a6.4 6.4 0 0 1 6.175 10.363 3.07 3.07 0 0 0-2.63-1.484H7.655a3.07 3.07 0 0 0-2.608 1.45Z" })))); };
-    Icons.IconAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 0 0 7.338-.159 1.571 1.571 0 0 0-1.486-1.06H7.654a1.571 1.571 0 0 0-1.475 1.032c.086.064.175.127.265.187Zm-1.4-1.27A6.402 6.402 0 0 1 8.752 3.724a6.4 6.4 0 0 1 6.175 10.363 3.07 3.07 0 0 0-2.63-1.484H7.655a3.07 3.07 0 0 0-2.608 1.45Z" }))));
+    Icons.IconAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12.25 6.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25ZM7.75 6.625a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 1.75a8.25 8.25 0 1 0 0 16.5 8.25 8.25 0 0 0 0-16.5Zm0 1.5a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5Z" }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8.238 11.643a3.707 3.707 0 0 1-.491-.428l-.149-.168a.75.75 0 0 0-1.198.903l.078.097a5.21 5.21 0 0 0 .878.81c.598.435 1.5.893 2.644.893 1.144 0 2.046-.458 2.644-.893a5.21 5.21 0 0 0 .879-.81l.077-.097a.75.75 0 0 0-1.198-.903l-.149.168c-.11.116-.276.272-.491.428-.433.315-1.031.607-1.762.607-.73 0-1.33-.292-1.762-.607Z" }))); };
-    Icons.FilesAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M16.824 9.897a.75.75 0 1 0-1.061-1.06l1.06 1.06Zm-6.657 5.596-.53-.53.53.53Zm-2.83 1.173v.75-.75Zm-4.003-4.003h-.75.75Zm1.173-2.83.53.53-.53-.53Zm6.126-6.126-.53-.53.53.53Zm1.887-.782v.75-.75Zm1.887 4.555.53.53-.53-.53Zm-6.134 6.127-.53-.53.53.53ZM6.387 11.72l-.53-.53.53.53Zm6.19-5.123a.75.75 0 0 0-1.06-1.06l1.06 1.06Zm3.186 2.24-6.127 6.126 1.061 1.06 6.127-6.126-1.061-1.06Zm-6.127 6.126c-.61.61-1.437.953-2.3.953v1.5c1.261 0 2.47-.501 3.361-1.392l-1.06-1.06Zm-2.3.953c-.862 0-1.69-.343-2.299-.953l-1.06 1.06a4.752 4.752 0 0 0 3.36 1.393v-1.5Zm-2.299-.953a3.252 3.252 0 0 1-.953-2.3h-1.5c0 1.26.501 2.47 1.392 3.36l1.061-1.06Zm-.953-2.3c0-.862.343-1.69.953-2.3l-1.06-1.06a4.752 4.752 0 0 0-1.393 3.36h1.5Zm.953-2.3 6.127-6.126-1.061-1.06-6.127 6.126 1.061 1.06Zm6.127-6.126c.36-.36.847-.562 1.356-.562v-1.5c-.906 0-1.776.36-2.417 1.001l1.06 1.061Zm1.356-.562c.509 0 .997.202 1.356.562l1.061-1.06a3.418 3.418 0 0 0-2.417-1.002v1.5Zm1.356.562c.36.36.562.848.562 1.356h1.5c0-.906-.36-1.776-1.001-2.417l-1.06 1.061Zm.562 1.356c0 .51-.202.997-.562 1.357l1.061 1.06a3.418 3.418 0 0 0 1.001-2.417h-1.5Zm-.561 1.356-6.134 6.127 1.06 1.061 6.134-6.126-1.06-1.062Zm-6.134 6.127a.584.584 0 0 1-.413.171v1.5c.553 0 1.083-.22 1.474-.61l-1.061-1.06Zm-.413.171a.584.584 0 0 1-.413-.17l-1.06 1.06c.39.39.92.61 1.473.61v-1.5Zm-.413-.17a.584.584 0 0 1-.171-.414h-1.5c0 .553.22 1.083.61 1.474l1.061-1.06Zm-.171-.414c0-.155.061-.303.171-.413l-1.06-1.06c-.392.39-.611.92-.611 1.473h1.5Zm.17-.412 5.66-5.654-1.06-1.06-5.66 5.653 1.06 1.06Z" }))); };
-    Icons.CommentsAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M8.238 11.643a3.707 3.707 0 0 1-.491-.428l-.149-.168a.75.75 0 0 0-1.198.903l.078.097a5.21 5.21 0 0 0 .878.81c.598.435 1.5.893 2.644.893 1.144 0 2.046-.458 2.644-.893a5.21 5.21 0 0 0 .879-.81l.077-.097a.75.75 0 0 0-1.198-.903l-.149.168c-.11.116-.276.272-.491.428-.433.315-1.031.607-1.762.607-.73 0-1.33-.292-1.762-.607Z" })));
+    Icons.FilesAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M16.824 9.897a.75.75 0 1 0-1.061-1.06l1.06 1.06Zm-6.657 5.596-.53-.53.53.53Zm-2.83 1.173v.75-.75Zm-4.003-4.003h-.75.75Zm1.173-2.83.53.53-.53-.53Zm6.126-6.126-.53-.53.53.53Zm1.887-.782v.75-.75Zm1.887 4.555.53.53-.53-.53Zm-6.134 6.127-.53-.53.53.53ZM6.387 11.72l-.53-.53.53.53Zm6.19-5.123a.75.75 0 0 0-1.06-1.06l1.06 1.06Zm3.186 2.24-6.127 6.126 1.061 1.06 6.127-6.126-1.061-1.06Zm-6.127 6.126c-.61.61-1.437.953-2.3.953v1.5c1.261 0 2.47-.501 3.361-1.392l-1.06-1.06Zm-2.3.953c-.862 0-1.69-.343-2.299-.953l-1.06 1.06a4.752 4.752 0 0 0 3.36 1.393v-1.5Zm-2.299-.953a3.252 3.252 0 0 1-.953-2.3h-1.5c0 1.26.501 2.47 1.392 3.36l1.061-1.06Zm-.953-2.3c0-.862.343-1.69.953-2.3l-1.06-1.06a4.752 4.752 0 0 0-1.393 3.36h1.5Zm.953-2.3 6.127-6.126-1.061-1.06-6.127 6.126 1.061 1.06Zm6.127-6.126c.36-.36.847-.562 1.356-.562v-1.5c-.906 0-1.776.36-2.417 1.001l1.06 1.061Zm1.356-.562c.509 0 .997.202 1.356.562l1.061-1.06a3.418 3.418 0 0 0-2.417-1.002v1.5Zm1.356.562c.36.36.562.848.562 1.356h1.5c0-.906-.36-1.776-1.001-2.417l-1.06 1.061Zm.562 1.356c0 .51-.202.997-.562 1.357l1.061 1.06a3.418 3.418 0 0 0 1.001-2.417h-1.5Zm-.561 1.356-6.134 6.127 1.06 1.061 6.134-6.126-1.06-1.062Zm-6.134 6.127a.584.584 0 0 1-.413.171v1.5c.553 0 1.083-.22 1.474-.61l-1.061-1.06Zm-.413.171a.584.584 0 0 1-.413-.17l-1.06 1.06c.39.39.92.61 1.473.61v-1.5Zm-.413-.17a.584.584 0 0 1-.171-.414h-1.5c0 .553.22 1.083.61 1.474l1.061-1.06Zm-.171-.414c0-.155.061-.303.171-.413l-1.06-1.06c-.392.39-.611.92-.611 1.473h1.5Zm.17-.412 5.66-5.654-1.06-1.06-5.66 5.653 1.06 1.06Z" })));
+    Icons.CommentsAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6 7.75A.75.75 0 0 1 6.75 7h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 6 7.75ZM6.75 10a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5h-4.5Z" }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M2 5.75A2.75 2.75 0 0 1 4.75 3h10.5A2.75 2.75 0 0 1 18 5.75v7.5A2.75 2.75 0 0 1 15.25 16h-.75v1.75a.75.75 0 0 1-1.13.646L9.296 16H4.75A2.75 2.75 0 0 1 2 13.25v-7.5ZM4.75 4.5c-.69 0-1.25.56-1.25 1.25v7.5c0 .69.56 1.25 1.25 1.25H9.5c.134 0 .265.036.38.104L13 16.439V15.25a.75.75 0 0 1 .75-.75h1.5c.69 0 1.25-.56 1.25-1.25v-7.5c0-.69-.56-1.25-1.25-1.25H4.75Z" }))); };
-    Icons.RelationToAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M2 5.75A2.75 2.75 0 0 1 4.75 3h10.5A2.75 2.75 0 0 1 18 5.75v7.5A2.75 2.75 0 0 1 15.25 16h-.75v1.75a.75.75 0 0 1-1.13.646L9.296 16H4.75A2.75 2.75 0 0 1 2 13.25v-7.5ZM4.75 4.5c-.69 0-1.25.56-1.25 1.25v7.5c0 .69.56 1.25 1.25 1.25H9.5c.134 0 .265.036.38.104L13 16.439V15.25a.75.75 0 0 1 .75-.75h1.5c.69 0 1.25-.56 1.25-1.25v-7.5c0-.69-.56-1.25-1.25-1.25H4.75Z" })));
+    Icons.RelationToAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.303 7.774a.75.75 0 0 1 0-.577A.75.75 0 0 1 8 6.732h4.652a.75.75 0 0 1 .287.064.703.703 0 0 1 .402.402.75.75 0 0 1 .064.287v4.55a.753.753 0 0 1-1.505.001l.004-2.743-4.025 4.025a.75.75 0 0 1-1.06-1.06l4.025-4.025-2.845.005a.75.75 0 0 1-.696-.464Z" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 1 0 7.11-10.643 6.4 6.4 0 0 0-7.11 10.643Z" })))); };
-    Icons.LookupFromAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 1 0 7.11-10.643 6.4 6.4 0 0 0-7.11 10.643Z" }))));
+    Icons.LookupFromAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.083 2a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5h-12.5ZM4.083 6.751a.75.75 0 0 0 0 1.5h3.5a.75.75 0 1 0 0-1.5h-3.5ZM3.333 12.502a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 0 1.5h-3.5a.75.75 0 0 1-.75-.75ZM4.083 16.501a.75.75 0 0 0 0 1.5h12.5a.75.75 0 0 0 0-1.5h-12.5Z" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M15.747 11.44a3.5 3.5 0 1 0-1.08 1.042l2.136 2.135a.75.75 0 0 0 1.06-1.06l-2.116-2.116Zm-2.914.062a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" })))); };
-    Icons.FormulaAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.098 17c1.857 0 3.092-1.07 3.395-3.172l.412-2.886h2.968c.552 0 .964-.403.964-.946 0-.535-.42-.939-.971-.939h-2.697l.226-1.567c.17-1.186.606-1.605 1.414-1.605.66 0 .994.085 1.297.085.529 0 .894-.357.894-.9C15 4.264 14.044 4 12.902 4c-1.857 0-3.085 1.07-3.388 3.172l-.272 1.885H6.71c-.551 0-.963.404-.963.939 0 .543.42.946.971.946h2.261l-.365 2.567c-.17 1.18-.606 1.606-1.414 1.606-.66 0-.987-.085-1.298-.085-.528 0-.901.349-.901.892C5 16.728 5.963 17 7.098 17Z" }))); };
-    Icons.DocumentAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.098 17c1.857 0 3.092-1.07 3.395-3.172l.412-2.886h2.968c.552 0 .964-.403.964-.946 0-.535-.42-.939-.971-.939h-2.697l.226-1.567c.17-1.186.606-1.605 1.414-1.605.66 0 .994.085 1.297.085.529 0 .894-.357.894-.9C15 4.264 14.044 4 12.902 4c-1.857 0-3.085 1.07-3.388 3.172l-.272 1.885H6.71c-.551 0-.963.404-.963.939 0 .543.42.946.971.946h2.261l-.365 2.567c-.17 1.18-.606 1.606-1.414 1.606-.66 0-.987-.085-1.298-.085-.528 0-.901.349-.901.892C5 16.728 5.963 17 7.098 17Z" }))); };
-    Icons.RelationAttribute = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M15.747 11.44a3.5 3.5 0 1 0-1.08 1.042l2.136 2.135a.75.75 0 0 0 1.06-1.06l-2.116-2.116Zm-2.914.062a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" }))));
+    Icons.FormulaAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.098 17c1.857 0 3.092-1.07 3.395-3.172l.412-2.886h2.968c.552 0 .964-.403.964-.946 0-.535-.42-.939-.971-.939h-2.697l.226-1.567c.17-1.186.606-1.605 1.414-1.605.66 0 .994.085 1.297.085.529 0 .894-.357.894-.9C15 4.264 14.044 4 12.902 4c-1.857 0-3.085 1.07-3.388 3.172l-.272 1.885H6.71c-.551 0-.963.404-.963.939 0 .543.42.946.971.946h2.261l-.365 2.567c-.17 1.18-.606 1.606-1.414 1.606-.66 0-.987-.085-1.298-.085-.528 0-.901.349-.901.892C5 16.728 5.963 17 7.098 17Z" })));
+    Icons.DocumentAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.098 17c1.857 0 3.092-1.07 3.395-3.172l.412-2.886h2.968c.552 0 .964-.403.964-.946 0-.535-.42-.939-.971-.939h-2.697l.226-1.567c.17-1.186.606-1.605 1.414-1.605.66 0 .994.085 1.297.085.529 0 .894-.357.894-.9C15 4.264 14.044 4 12.902 4c-1.857 0-3.085 1.07-3.388 3.172l-.272 1.885H6.71c-.551 0-.963.404-.963.939 0 .543.42.946.971.946h2.261l-.365 2.567c-.17 1.18-.606 1.606-1.414 1.606-.66 0-.987-.085-1.298-.085-.528 0-.901.349-.901.892C5 16.728 5.963 17 7.098 17Z" })));
+    Icons.RelationAttribute = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7.303 7.774a.75.75 0 0 1 0-.577A.75.75 0 0 1 8 6.732h4.652a.75.75 0 0 1 .287.064.703.703 0 0 1 .402.402.75.75 0 0 1 .064.287v4.55a.753.753 0 0 1-1.505.001l.004-2.743-4.025 4.025a.75.75 0 0 1-1.06-1.06l4.025-4.025-2.845.005a.75.75 0 0 1-.696-.464Z" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 1 0 7.11-10.643 6.4 6.4 0 0 0-7.11 10.643Z" })))); };
-    Icons.Collection = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", fill: "currentColor", "aria-hidden": "true" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.555 3.348a8 8 0 1 1 8.89 13.304 8 8 0 0 1-8.89-13.304Zm.89 11.973a6.4 6.4 0 1 0 7.11-10.643 6.4 6.4 0 0 0-7.11 10.643Z" }))));
+    Icons.Collection = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", fill: "currentColor", "aria-hidden": "true" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M16 6.4C16 3.973 13.314 3 10 3S4 4.002 4 6.4c0 2.4 2.686 3.401 6 3.401s6-.971 6-3.4Z" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.104 9.27a2.82 2.82 0 0 0-.104.774c0 2.399 2.686 3.4 6 3.4s6-.97 6-3.4a2.88 2.88 0 0 0-.1-.766 4.787 4.787 0 0 1-1.197.84c-1.289.648-2.972.898-4.703.898-1.735 0-3.418-.259-4.705-.911a4.831 4.831 0 0 1-1.19-.836Z" }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.104 12.824c-.068.24-.104.499-.104.775C4 15.998 6.686 17 10 17s6-.972 6-3.4a2.88 2.88 0 0 0-.1-.767 4.786 4.786 0 0 1-1.197.84c-1.289.648-2.972.898-4.703.898-1.735 0-3.418-.259-4.705-.911a4.83 4.83 0 0 1-1.19-.836Z" }))); };
-    Icons.Relation = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M14.998 11.998V6.912c0-.89-1.077-1.337-1.707-.707L6.205 13.29c-.63.63-.184 1.707.707 1.707h5.086c2 0 3-1 3-3Z" }))); };
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.104 12.824c-.068.24-.104.499-.104.775C4 15.998 6.686 17 10 17s6-.972 6-3.4a2.88 2.88 0 0 0-.1-.767 4.786 4.786 0 0 1-1.197.84c-1.289.648-2.972.898-4.703.898-1.735 0-3.418-.259-4.705-.911a4.83 4.83 0 0 1-1.19-.836Z" })));
+    Icons.Relation = () => (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M14.998 11.998V6.912c0-.89-1.077-1.337-1.707-.707L6.205 13.29c-.63.63-.184 1.707.707 1.707h5.086c2 0 3-1 3-3Z" })));
 })(Icons || (Icons = {}));
 
 
@@ -20527,21 +19939,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dialogs/AddSelectFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddSelectFieldDialog.ts");
 /* harmony import */ var _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dialogs/AddMultiSelectDialog */ "./src/views/NewFieldMenu/dialogs/AddMultiSelectDialog.ts");
 /* harmony import */ var _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dialogs/AddRelationFieldDialog */ "./src/views/NewFieldMenu/dialogs/AddRelationFieldDialog.tsx");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 
 
 
@@ -20555,7 +19952,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var FieldTypes = {
+const FieldTypes = {
     'text': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
     'richtext': _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.RichTextFieldsAttributesView,
     'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView,
@@ -20563,46 +19960,42 @@ var FieldTypes = {
     'multiselect': _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.MultiSelectFieldsAttributesView,
     'relation': _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__.RelationFieldAttributesView
 };
-var Controller = /** @class */ (function (_super) {
-    __extends(Controller, _super);
-    function Controller() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Controller.prototype.LoadView = function () {
-        var _a = this.props, onNewFieldAdded = _a.onNewFieldAdded, view = _a.view;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-            var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false), menuIsOpen = _a[0], setMenuIsOpen = _a[1];
-            var _b = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null), selectedType = _b[0], setSelectedType = _b[1];
-            var _hideHandle = null;
-            var AttributesMenuItems = [
+class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController {
+    LoadView() {
+        const { onNewFieldAdded, view } = this.props;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+            const [menuIsOpen, setMenuIsOpen] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
+            const [selectedType, setSelectedType] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null);
+            let _hideHandle = null;
+            const AttributesMenuItems = [
                 {
                     title: 'Text',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.TextAttribute,
-                    onClick: function () { return (setSelectedType('text')
+                    onClick: () => (setSelectedType('text')
                     //DynoDialog.Show(AddTextFieldDialog(workspaceId, databaseId, collectionId))
-                    ); }
+                    )
                 },
                 {
                     title: 'Rich Text',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RichTextAttribute,
-                    onClick: function () { return (setSelectedType('richtext')
+                    onClick: () => (setSelectedType('richtext')
                     //  DynoDialog.Show(AddNumberFieldDialog(workspaceId, databaseId, collectionId))
-                    ); }
+                    )
                 },
                 {
                     title: 'Number',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.NumberAttribute,
-                    onClick: function () { return (setSelectedType('number')); }
+                    onClick: () => (setSelectedType('number'))
                 },
                 {
                     title: 'Single Select',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.SingleSelectAttribute,
-                    onClick: function () { return (setSelectedType('select')); }
+                    onClick: () => (setSelectedType('select'))
                 },
                 {
                     title: 'Multi Select',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.MultiSelectAttribute,
-                    onClick: function () { return (setSelectedType('multiselect')); }
+                    onClick: () => (setSelectedType('multiselect'))
                 },
                 {
                     title: 'Workflow',
@@ -20615,14 +20008,14 @@ var Controller = /** @class */ (function (_super) {
                 {
                     title: 'Date',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.DateAttribute,
-                    onClick: function () { return (alert() //DynoDialog.Show(AddDatetimeFieldDialog(workspaceId, databaseId, collectionId))
-                    ); }
+                    onClick: () => (alert() //DynoDialog.Show(AddDatetimeFieldDialog(workspaceId, databaseId, collectionId))
+                    )
                 },
                 {
                     title: 'Checkbox',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.CheckboxAttribute,
-                    onClick: function () { return (alert() // DynoDialog.Show(AddBooleanFieldDialog(workspaceId, databaseId, collectionId))
-                    ); }
+                    onClick: () => (alert() // DynoDialog.Show(AddBooleanFieldDialog(workspaceId, databaseId, collectionId))
+                    )
                 },
                 {
                     title: 'URL',
@@ -20659,7 +20052,7 @@ var Controller = /** @class */ (function (_super) {
                 {
                     title: 'Relation to...',
                     icon: _Icons__WEBPACK_IMPORTED_MODULE_3__.Icons.RelationAttribute,
-                    onClick: function () {
+                    onClick: () => {
                         setSelectedType('relation');
                     }
                 }
@@ -20674,40 +20067,36 @@ var Controller = /** @class */ (function (_super) {
                 .cornerRadius(6)
                 .transition('all .15s ease-out')
                 .cursor('pointer')
-                .onClick(function () {
+                .onClick(() => {
+                setSelectedType(null);
                 setMenuIsOpen(!menuIsOpen);
             }))(selectedType == null ?
-                _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(AttributesMenuItems)(function (item) {
-                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(item.title))
-                        .background({ hover: 'rgba(81,97,108,.1)' })
-                        .padding()
-                        .cursor('pointer')
-                        .height(32)
-                        .onClick(function () {
-                        //_hideHandle();
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(item.onClick) ? item.onClick() : void 0;
-                    });
-                })).width(200)
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(AttributesMenuItems)((item) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_5__.Text)(item.title))
+                    .background({ hover: 'rgba(81,97,108,.1)' })
+                    .padding()
+                    .cursor('pointer')
+                    .height(32)
+                    .onClick(() => {
+                    //_hideHandle();
+                    _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(item.onClick) ? item.onClick() : void 0;
+                })))
+                    .width(200)
                     .marginTop(8)
                     .border('1px solid #EFF0F1')
                     .cornerRadius(6)
                 :
                     FieldTypes[selectedType](onNewFieldAdded))
                 .open(menuIsOpen)
-                .hideHandle(function (hideHandle) { return _hideHandle = hideHandle; })
+                .hideHandle(hideHandle => _hideHandle = hideHandle)
                 .dialogPosition(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogPosition.BOTTOM_END)
-                .onDidHide(function () {
+                .onDidHide(() => {
                 setMenuIsOpen(false);
                 setSelectedType(null);
             }));
         })).width());
-    };
-    return Controller;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
-var NewFieldMenuView = function (_a) {
-    var view = _a.view, onNewFieldAdded = _a.onNewFieldAdded;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded, view: view })));
-};
+    }
+}
+const NewFieldMenuView = ({ view, onNewFieldAdded }) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded, view: view })));
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
@@ -20739,23 +20128,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var MultiSelectFieldsAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddMultiSelectFieldDialog(workspaceId, databaseId, collectionId)))
-        .padding(20)
-        .width(380)
-        .height(515);
-})); };
-var SaveMultiSelectFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId, options = _a.options;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
-    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
+const MultiSelectFieldsAttributesView = (workspaceId, databaseId, collectionId) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddMultiSelectFieldDialog(workspaceId, databaseId, collectionId)))
+    .padding(20)
+    .width(380)
+    .height(515)));
+const SaveMultiSelectFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    const { databaseId, collectionId, name, workspaceId, options } = formController.GetFormData();
+    const { createStringAttribute, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId);
+    const { createDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
-    ]).createDocument;
+    ]);
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
         .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
         .minWidth(28)
@@ -20767,18 +20154,18 @@ var SaveMultiSelectFieldAction = function (formMeta, action) { return (0,_tuval_
         .cornerRadius(6)
         .background('rgb(64, 101, 221)')
         // .loading(isLoading)
-        .onClick(function () {
+        .onClick(() => {
         if (databaseId == null) {
             alert('Collection is null');
             return;
         }
         createStringAttribute({
-            databaseId: databaseId,
-            collectionId: collectionId,
+            databaseId,
+            collectionId,
             key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
             required: false,
             size: 5255
-        }, function (attribute) {
+        }, (attribute) => {
             createDocument({
                 data: {
                     key: attribute.key,
@@ -20789,11 +20176,11 @@ var SaveMultiSelectFieldAction = function (formMeta, action) { return (0,_tuval_
                     }),
                     collectionId: collectionId
                 }
-            }, function () { return dialog.Hide(); });
+            }, () => dialog.Hide());
         });
     }));
-}); };
-var AddMultiSelectFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
+});
+const AddMultiSelectFieldDialog = (workspaceId, databaseId, collectionId) => ({
     "title": 'Add multi select field',
     "actions": [
         {
@@ -20834,7 +20221,7 @@ var AddMultiSelectFieldDialog = function (workspaceId, databaseId, collectionId)
             "name": "options"
         },
     }
-}); };
+});
 
 
 /***/ }),
@@ -20860,20 +20247,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var NumberFieldsAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddNumberFieldDialog(workspaceId, databaseId, collectionId)))
-        .padding(20)
-        .width(380)
-        .height(315);
-})); };
-var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
+const NumberFieldsAttributesView = (workspaceId, databaseId, collectionId) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddNumberFieldDialog(workspaceId, databaseId, collectionId)))
+    .padding(20)
+    .width(380)
+    .height(315)));
+const SaveTextFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    const { databaseId, collectionId, name, workspaceId } = formController.GetFormData();
+    const { createStringAttribute, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId);
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
         .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
         .minWidth(28)
@@ -20885,23 +20270,23 @@ var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__
         .cornerRadius(6)
         .background('rgb(64, 101, 221)')
         // .loading(isLoading)
-        .onClick(function () {
+        .onClick(() => {
         if (databaseId == null) {
             alert('Collection is null');
             return;
         }
         createStringAttribute({
-            databaseId: databaseId,
-            collectionId: collectionId,
+            databaseId,
+            collectionId,
             key: name,
             required: false,
             size: 255
-        }, function () {
+        }, () => {
             dialog.Hide();
         });
     }));
-}); };
-var AddNumberFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
+});
+const AddNumberFieldDialog = (workspaceId, databaseId, collectionId) => ({
     "title": 'Add number field',
     "actions": [
         {
@@ -20937,7 +20322,7 @@ var AddNumberFieldDialog = function (workspaceId, databaseId, collectionId) { re
             "name": "description"
         },
     }
-}); };
+});
 
 
 /***/ }),
@@ -20961,50 +20346,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LabeledText/LabeledText */ "./src/views/LabeledText/LabeledText.tsx");
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _DialogOkButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../DialogOkButton */ "./src/views/DialogOkButton.ts");
 
 
 
 
-var Marker = function () { return (react__WEBPACK_IMPORTED_MODULE_3___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
-    react__WEBPACK_IMPORTED_MODULE_3___default().createElement("path", { d: "M9 6h3c2 0 3 1 3 3v3c0 2-1 3-3 3H9c-2 0-3-1-3-3V9c0-2 1-3 3-3Z" }))); };
-var colors = [
+
+
+
+const Marker = () => (react__WEBPACK_IMPORTED_MODULE_3___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_3___default().createElement("path", { d: "M9 6h3c2 0 3 1 3 3v3c0 2-1 3-3 3H9c-2 0-3-1-3-3V9c0-2 1-3 3-3Z" })));
+const colors = [
     'rgb(212, 9, 21)',
     'rgb(45, 183, 245)',
     'rgb(21, 151, 137)',
     'rgb(148, 89, 60)',
     'rgb(251, 163, 47)'
 ];
-var RelationFieldAttributesView = function () { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+const RelationFieldAttributesView = () => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
     var _a, _b, _c, _d;
-    var workspaceId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useOptions)().workspaceId;
-    var _e = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, 'workspace', 'applets'), applets = _e.documents, isLoading = _e.isLoading;
-    var _f = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null), selectedCollection = _f[0], setSelectedCollection = _f[1];
-    var _g = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), open = _g[0], setOpen = _g[1];
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('DATABASES')
+    const { workspaceId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useOptions)();
+    const { documents: applets, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, 'workspace', 'applets');
+    const [selectedCollection, setSelectedCollection] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+    const [open, setOpen] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_5__.FormTitle)('Add relation field'), (0,_LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_4__.LabeledTextInput)().label('Field Name').autoFocus(true), (0,_LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_4__.LabeledTextInput)().label('Relation Name (OPTIONAL)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('COLLECTION')
         .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')
         .fontSize(12)
         .foregroundColor('rgb(33, 37, 38)'), (0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.Select)()
         .open(open)
         .placeHolder('Select Collection')
-        .dropdownRenderer(function () {
+        .dropdownRenderer(() => {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(applets)(function (applet) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(applet.name).fontSize('1.2rem').fontWeight('500').foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-                    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, applet.$id, 'Collections', [
-                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.orderAsc('name')
-                    ]), collections = _a.documents, isLoading = _a.isLoading;
-                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(collections)(function (collection, index) {
-                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(Marker)).width(20).height(20).foregroundColor(colors[index % 3]), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(collection.name))
-                            .cursor('pointer')
-                            .background({ hover: 'hsl(209, 12%, 93%)' })
-                            .height(32)
-                            .onClick(function () {
-                            setSelectedCollection({ applet: applet, collection: collection });
-                        });
-                    })));
-                }))
-                    .padding();
-            })).height())).height(300));
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(applets)(applet => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(applet.name).fontSize('1.2rem').fontWeight('500').foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+                const { documents: collections, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, applet.$id, 'Collections', [
+                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.orderAsc('name')
+                ]);
+                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(collections)((collection, index) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(Marker)).width(20).height(20).foregroundColor(colors[index % 3]), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(collection.name))
+                    .cursor('pointer')
+                    .background({ hover: 'hsl(209, 12%, 93%)' })
+                    .height(32)
+                    .onClick(() => {
+                    setSelectedCollection({ applet, collection });
+                }))));
+            }))
+                .padding())).height())).height(300));
     })
         .value((_a = selectedCollection === null || selectedCollection === void 0 ? void 0 : selectedCollection.collection) === null || _a === void 0 ? void 0 : _a.$id)
         .options([{
@@ -21012,13 +20399,13 @@ var RelationFieldAttributesView = function () { return ((0,_tuval_forms__WEBPACK
             label: react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(Marker)).width(20).height(20).foregroundColor(colors[10 % 3]), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)((_c = selectedCollection === null || selectedCollection === void 0 ? void 0 : selectedCollection.applet) === null || _c === void 0 ? void 0 : _c.name).fontSize('1.4rem').fontWeight('500').foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('->').fontSize('1.4rem').fontWeight('500').foregroundColor('gray')
                 .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)((_d = selectedCollection === null || selectedCollection === void 0 ? void 0 : selectedCollection.collection) === null || _d === void 0 ? void 0 : _d.name).fontSize('1.3rem').fontWeight('400').foregroundColor('gray')).render())
         }])
-        .onClick(function () {
+        .onClick(() => {
         setOpen(!open);
-    }))
+    })).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_DialogOkButton__WEBPACK_IMPORTED_MODULE_6__.DialogOkButton)('Add field')).height())
         .padding(20)
         .width(380)
         .height(515));
-})); };
+}));
 
 
 /***/ }),
@@ -21046,21 +20433,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var RichTextFieldsAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddRichTextFieldDialog(workspaceId, databaseId, collectionId)))
-        .padding(20)
-        .width(380)
-        .height(315);
-})); };
-var SaveRichTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
-    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields').createDocument;
+const RichTextFieldsAttributesView = (workspaceId, databaseId, collectionId) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddRichTextFieldDialog(workspaceId, databaseId, collectionId)))
+    .padding(20)
+    .width(380)
+    .height(315)));
+const SaveRichTextFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    const { databaseId, collectionId, name, workspaceId } = formController.GetFormData();
+    const { createStringAttribute, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId);
+    const { createDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields');
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
         .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
         .minWidth(28)
@@ -21072,18 +20457,18 @@ var SaveRichTextFieldAction = function (formMeta, action) { return (0,_tuval_for
         .cornerRadius(6)
         .background('rgb(64, 101, 221)')
         // .loading(isLoading)
-        .onClick(function () {
+        .onClick(() => {
         if (databaseId == null) {
             alert('Collection is null');
             return;
         }
         createStringAttribute({
-            databaseId: databaseId,
-            collectionId: collectionId,
+            databaseId,
+            collectionId,
             key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
             required: false,
             size: 16255
-        }, function (attribute) {
+        }, (attribute) => {
             createDocument({
                 data: {
                     key: attribute.key,
@@ -21095,11 +20480,11 @@ var SaveRichTextFieldAction = function (formMeta, action) { return (0,_tuval_for
                     }),
                     collectionId: collectionId
                 }
-            }, function () { return dialog.Hide(); });
+            }, () => dialog.Hide());
         });
     }));
-}); };
-var AddRichTextFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
+});
+const AddRichTextFieldDialog = (workspaceId, databaseId, collectionId) => ({
     "title": 'Add richtext field',
     "actions": [
         {
@@ -21135,7 +20520,7 @@ var AddRichTextFieldDialog = function (workspaceId, databaseId, collectionId) { 
             "name": "description"
         },
     }
-}); };
+});
 
 
 /***/ }),
@@ -21163,23 +20548,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var SelectFieldsAttributesView = function (workspaceId, databaseId, collectionId) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddSelectFieldDialog(workspaceId, databaseId, collectionId)))
-        .padding(20)
-        .width(380)
-        .height(515);
-})); };
-var SaveSelectFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    var _a = formController.GetFormData(), databaseId = _a.databaseId, collectionId = _a.collectionId, name = _a.name, workspaceId = _a.workspaceId, options = _a.options;
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId), createStringAttribute = _b.createStringAttribute, isLoading = _b.isLoading;
-    var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
+const SelectFieldsAttributesView = (workspaceId, databaseId, collectionId) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddSelectFieldDialog(workspaceId, databaseId, collectionId)))
+    .padding(20)
+    .width(380)
+    .height(515)));
+const SaveSelectFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+    const { databaseId, collectionId, name, workspaceId, options } = formController.GetFormData();
+    const { createStringAttribute, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId);
+    const { createDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
-    ]).createDocument;
+    ]);
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
         .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
         .minWidth(28)
@@ -21191,18 +20574,18 @@ var SaveSelectFieldAction = function (formMeta, action) { return (0,_tuval_forms
         .cornerRadius(6)
         .background('rgb(64, 101, 221)')
         // .loading(isLoading)
-        .onClick(function () {
+        .onClick(() => {
         if (databaseId == null) {
             alert('Collection is null');
             return;
         }
         createStringAttribute({
-            databaseId: databaseId,
-            collectionId: collectionId,
+            databaseId,
+            collectionId,
             key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
             required: false,
             size: 255
-        }, function (attribute) {
+        }, (attribute) => {
             createDocument({
                 data: {
                     key: attribute.key,
@@ -21213,11 +20596,11 @@ var SaveSelectFieldAction = function (formMeta, action) { return (0,_tuval_forms
                     }),
                     collectionId: collectionId
                 }
-            }, function () { return dialog.Hide(); });
+            }, () => dialog.Hide());
         });
     }));
-}); };
-var AddSelectFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
+});
+const AddSelectFieldDialog = (workspaceId, databaseId, collectionId) => ({
     "title": 'Add select field',
     "actions": [
         {
@@ -21258,7 +20641,7 @@ var AddSelectFieldDialog = function (workspaceId, databaseId, collectionId) { re
             "name": "options"
         },
     }
-}); };
+});
 
 
 /***/ }),
@@ -21286,19 +20669,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var TextFieldsAttributesView = function (onNewFieldAdded) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.render(AddTextFieldDialog(onNewFieldAdded)))
-        .padding(20)
-        .width(380)
-        .height(315);
-})); };
-var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-    var label = action.label, successAction = action.successAction, successActions = action.successActions;
-    var formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    var dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
-    var formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
-    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
-    var _a = formController.GetFormData(), name = _a.name, onNewFieldAdded = _a.onNewFieldAdded;
+const TextFieldsAttributesView = (onNewFieldAdded) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.render(AddTextFieldDialog(onNewFieldAdded)))
+    .padding(20)
+    .width(380)
+    .height(315)));
+const SaveTextFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    const { label, successAction, successActions } = action;
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    const { name, onNewFieldAdded } = formController.GetFormData();
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Save Field'))
         .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 11)
         .minWidth(28)
@@ -21310,7 +20691,7 @@ var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__
         .cornerRadius(6)
         .background('rgb(64, 101, 221)')
         // .loading(isLoading)
-        .onClick(function () {
+        .onClick(() => {
         if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(onNewFieldAdded)) {
             onNewFieldAdded({
                 key: (0,_utils__WEBPACK_IMPORTED_MODULE_2__.replaceNonMatchingCharacters)(name),
@@ -21341,8 +20722,8 @@ var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__
              }, () => dialog.Hide())
          }) */
     }));
-}); };
-var AddTextFieldDialog = function (onNewFieldAdded) { return ({
+});
+const AddTextFieldDialog = (onNewFieldAdded) => ({
     "title": 'Add text field',
     "actions": [
         {
@@ -21368,7 +20749,7 @@ var AddTextFieldDialog = function (onNewFieldAdded) { return ({
             "name": "description"
         },
     }
-}); };
+});
 
 
 /***/ }),
@@ -21389,21 +20770,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Siders__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Siders */ "./src/views/SelectSider/Siders.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -21413,65 +20779,59 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var findOpa = function (opas, type) {
-    return opas.find(function (opa) { return opa.type == type; });
+const findOpa = (opas, type) => {
+    return opas.find(opa => opa.type == type);
 };
-var SelectSiderDialog = /** @class */ (function (_super) {
-    __extends(SelectSiderDialog, _super);
-    function SelectSiderDialog() {
-        var _this = _super.call(this) || this;
-        _this.Header = 'Select Sider';
-        _this.Width = '1300px';
-        _this.Height = '70vh';
-        return _this;
+class SelectSiderDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView {
+    constructor() {
+        super();
+        this.Header = 'Select Sider';
+        this.Width = '1300px';
+        this.Height = '70vh';
     }
-    SelectSiderDialog.prototype.BindRouterParams = function (_a) {
-        var siders = _a.siders;
+    BindRouterParams({ siders }) {
         this.opas = siders;
         this.filtered_opas = siders;
-    };
-    SelectSiderDialog.prototype.OnOK = function (applet) {
+    }
+    OnOK(applet) {
         this.ShowDialogAsyncResolve(applet);
         this.Hide();
-    };
-    SelectSiderDialog.prototype.OnCancel = function () {
+    }
+    OnCancel() {
         this.Hide();
-    };
-    SelectSiderDialog.prototype.LoadView = function () {
-        var _this = this;
-        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    }
+    LoadView() {
+        const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
         /* const { createApplet } = useCreateApplet([
             Query.equal('parentId', this.parentId),
         ]); */
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.filtered_opas)(function (opa) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(opa.image &&
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(opa.image).width(50).height(50).cornerRadius('20%'), opa.icon &&
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(opa.icon).fontSize(40).foregroundColor('white')).width(50).height(50).cornerRadius('20%').background(opa.iconBackColor || '#9A0707')
-                    .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'), 
-            // .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(opa.name).h4().ellipsis(true).ellipsisMaxLines(1).width(250), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(opa.description || '').maxLines(2), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add'))
-                .disabled(!opa.enabled)
-                .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
-                .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
-                .width('100%')
-                .onClick(function () {
-                var _opa = findOpa(_this.opas, opa.type);
-                _this.last_added_opa_type = opa.type;
-                /*   createApplet({
-                      name: opa.name,
-                      parentId: this.parentId,
-                      parentType: this.parentType,
-                      opa: opa.type,
-                      icon:'AAA',
-                      color:'#7B68EE',
-                      settings: _opa.settings
-                  }) */
-            })).height()).height(230).width(290)
-                .padding()
-                .shadow({ hover: 'var(--box-shadow-medium)' })
-                .cornerRadius('var(--border-radius-medium)')
-                .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding();
-        })).wrap('wrap').height()))
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.filtered_opas)(opa => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(opa.image &&
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(opa.image).width(50).height(50).cornerRadius('20%'), opa.icon &&
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(opa.icon).fontSize(40).foregroundColor('white')).width(50).height(50).cornerRadius('20%').background(opa.iconBackColor || '#9A0707')
+                .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'), 
+        // .shadow('0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15)'),
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Heading)(opa.name).h4().ellipsis(true).ellipsisMaxLines(1).width(250), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(opa.description || '').maxLines(2), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add'))
+            .disabled(!opa.enabled)
+            .kind(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonType.SECONDARY)
+            .size(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ButtonSize.SMALL)
+            .width('100%')
+            .onClick(() => {
+            const _opa = findOpa(this.opas, opa.type);
+            this.last_added_opa_type = opa.type;
+            /*   createApplet({
+                  name: opa.name,
+                  parentId: this.parentId,
+                  parentType: this.parentType,
+                  opa: opa.type,
+                  icon:'AAA',
+                  color:'#7B68EE',
+                  settings: _opa.settings
+              }) */
+        })).height()).height(230).width(290)
+            .padding()
+            .shadow({ hover: 'var(--box-shadow-medium)' })
+            .cornerRadius('var(--border-radius-medium)')
+            .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding())).wrap('wrap').height()))
         /* ).resource('space-folder-items')
             .onSuccess((e) => {
                 // alert(JSON.stringify(e))
@@ -21482,21 +20842,19 @@ var SelectSiderDialog = /** @class */ (function (_super) {
             })
     ) */
         );
-    };
-    SelectSiderDialog.Show = function () {
-        var dialog = new SelectSiderDialog();
+    }
+    static Show() {
+        const dialog = new SelectSiderDialog();
         dialog.BindRouterParams({ siders: _Siders__WEBPACK_IMPORTED_MODULE_2__.siders });
         return dialog.ShowDialogAsync();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectSiderDialog.prototype, "filtered_opas", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], SelectSiderDialog.prototype, "opas", void 0);
-    return SelectSiderDialog;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView));
-
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectSiderDialog.prototype, "filtered_opas", void 0);
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], SelectSiderDialog.prototype, "opas", void 0);
 
 
 /***/ }),
@@ -21512,7 +20870,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   siders: () => (/* binding */ siders)
 /* harmony export */ });
-var siders = [
+const siders = [
     {
         name: 'Figma Embedded',
         type: 'com.celmino.applet.task',

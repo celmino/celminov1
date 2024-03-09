@@ -59,7 +59,7 @@ export function compileFormula(formData: any, code: string) {
     })
 }
 
-const FormTitle = (title: string) => {
+export const FormTitle = (title: string) => {
     const dialog = useDialog();
     return (
         HStack({ alignment: cLeading })(

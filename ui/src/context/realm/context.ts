@@ -5,8 +5,8 @@ import { createContext } from "react";
 export const RealmContextProvider = createContext<any>({});
 
 export const useRealm = (): any => {
-    const realm = React.useContext(RealmContextProvider);
-    
-    return realm;
+    const { realm } = React.useContext(RealmContextProvider);
+
+    return { realm };
 }
 

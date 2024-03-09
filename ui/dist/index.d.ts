@@ -14,6 +14,7 @@ import './exports';
 export const UIFormBuilderContext: React.Context<any>;
 export const useFormBuilder: () => any;
 export function compileFormula(formData: any, code: string): string;
+export const FormTitle: (title: string) => import("@tuval/forms").HStackClass;
 export class FormBuilder {
     static viewFactories: {};
     static actionFactories: {};
