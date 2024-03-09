@@ -24,7 +24,7 @@ const Proxy = ({ control }) => (
 function AppletContextRenderer({ control }: { control: AppletContextClass }) {
 
     const { realm } = useRealm();
-    const { appletId } = useParams();
+    const { appletId = control.vp_AppletId } = useParams();
 
     const { document: applet, isLoading } = useGetDocument({ projectId: realm.$id, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
 

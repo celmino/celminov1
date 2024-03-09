@@ -19488,9 +19488,12 @@ if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.workerContext()) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   useAppletNavigate: () => (/* reexport safe */ _useAppletNavigate__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)
+/* harmony export */   useAppletNavigate: () => (/* reexport safe */ _useAppletNavigate__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate),
+/* harmony export */   useRealmNavigate: () => (/* reexport safe */ _useWorkspaceNavigation__WEBPACK_IMPORTED_MODULE_1__.useRealmNavigate)
 /* harmony export */ });
 /* harmony import */ var _useAppletNavigate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./useAppletNavigate */ "./src/hooks/useAppletNavigate.ts");
+/* harmony import */ var _useWorkspaceNavigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./useWorkspaceNavigation */ "./src/hooks/useWorkspaceNavigation.ts");
+
 
 
 
@@ -19530,6 +19533,39 @@ const useAppletNavigate = () => {
 
 /***/ }),
 
+/***/ "./src/hooks/useWorkspaceNavigation.ts":
+/*!*********************************************!*\
+  !*** ./src/hooks/useWorkspaceNavigation.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useRealmNavigate: () => (/* binding */ useRealmNavigate)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context */ "./src/context/index.ts");
+
+
+const useRealmNavigate = () => {
+    const organization = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useOrganization)();
+    const { realm } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useRealm)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    return {
+        navigate: (url) => {
+            if ((url === null || url === void 0 ? void 0 : url[0]) !== '/') {
+                url += '/';
+            }
+            navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}${url}`);
+        }
+    };
+};
+
+
+/***/ }),
+
 /***/ "./src/index.ts":
 /*!**********************!*\
   !*** ./src/index.ts ***!
@@ -19562,6 +19598,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder),
 /* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useOrganization),
 /* harmony export */   useRealm: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useRealm),
+/* harmony export */   useRealmNavigate: () => (/* reexport safe */ _hooks__WEBPACK_IMPORTED_MODULE_5__.useRealmNavigate),
 /* harmony export */   useRealmTree: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useRealmTree)
 /* harmony export */ });
 /* harmony import */ var _dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dialogs */ "./src/dialogs/index.ts");

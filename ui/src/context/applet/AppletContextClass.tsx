@@ -10,6 +10,14 @@ import AppletContextRenderer from "./AppletContextRenderer";
 export class AppletContextClass extends UIView {
 
 
+     /** @internal */
+     @ViewProperty() vp_AppletId: string;
+
+     public appletId(value: string) {
+         this.vp_AppletId = value;
+         return this;
+     }
+
     /** @internal */
     @ViewProperty() vp_ChildFunc: () => UIView;
 
