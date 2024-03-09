@@ -122,6 +122,9 @@ export class RealmContextClass extends UIView {
 
 export class AppletContextClass extends UIView {
     /** @internal */
+    vp_AppletId: string;
+    appletId(value: string): this;
+    /** @internal */
     vp_ChildFunc: () => UIView;
     childFunc(value: () => UIView): this;
     render(): React.JSX.Element;

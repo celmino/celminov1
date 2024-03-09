@@ -12,7 +12,7 @@ export const useAppletNavigate = () => {
     return {
         navigate: (url: string) => {
             if (url?.[0] !== '/') {
-                url += '/';
+                url = '/' + url;
             }
             navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet.name)}-${applet.$id}${url}`)
         }

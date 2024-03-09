@@ -18585,6 +18585,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 class AppletContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+    appletId(value) {
+        this.vp_AppletId = value;
+        return this;
+    }
     childFunc(value) {
         this.vp_ChildFunc = value;
         return this;
@@ -18593,6 +18597,9 @@ class AppletContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIVie
         return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_AppletContextRenderer__WEBPACK_IMPORTED_MODULE_2__["default"], { control: this }));
     }
 }
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], AppletContextClass.prototype, "vp_AppletId", void 0);
 __decorate([
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
 ], AppletContextClass.prototype, "vp_ChildFunc", void 0);
@@ -18636,7 +18643,7 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController 
 const Proxy = ({ control }) => (control.vp_ChildFunc().render());
 function AppletContextRenderer({ control }) {
     const { realm } = (0,_realm__WEBPACK_IMPORTED_MODULE_5__.useRealm)();
-    const { appletId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
+    const { appletId = control.vp_AppletId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
     const { document: applet, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({ projectId: realm.$id, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
         (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.AppletContextProvider.Provider, { value: { applet } },
