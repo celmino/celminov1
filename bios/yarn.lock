@@ -109,10 +109,10 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@celmino/ui@^1.0.32":
-  version "1.0.32"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.32.tgz"
-  integrity sha512-PHVyPKS3JGSp5bHrhUlOKD65DVSNwmwK5hz/o841cpwOdvuX+4Yhr3jK89WaY2WLeBBWO22LtKyJT9gMUgg2GA==
+"@celmino/ui@^1.0.35":
+  version "1.0.35"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.35.tgz"
+  integrity sha512-Jeeh9IOWk1Ngyc4hfjcbt0O7FFX7OitLv3On2rCuT4DLT/aPgXYM1DJgvFFRLiVDHEXttbOBUswX64ejM0tmmA==
   dependencies:
     "@realmocean/antd" "^21.0.33"
     "@realmocean/sdk" "1.0.82"

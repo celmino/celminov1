@@ -1,5 +1,6 @@
 
-import { Text,ForEach, HStack, Heading, HeadingSizes, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
+import { useAppletNavigate } from "@celmino/ui";
+import { Text, ForEach, HStack, Heading, HeadingSizes, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
 
 export function getSettingsName() {
     var url = window.location.href;
@@ -24,49 +25,50 @@ export class SettingsController extends UIFormController {
 
 
     public LoadView() {
-        const { workspaceId, appletId } = useParams();
+    
+        const { navigate } = useAppletNavigate();
 
         const menu = [
             {
                 id: 'general',
                 title: 'General',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/general`,
+                url: `settings/general`,
                 icon: SvgIcon('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Document Types',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/import`,
+                url: `settings/import`,
                 icon: SvgIcon('cu3-icon-importIcon')
             },
             {
                 id: 'features',
                 title: 'Features',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/features`,
+                url: `settings/features`,
                 icon: SvgIcon('cu3-icon-settings')
             },
             {
                 id: 'collections',
                 title: 'Collections',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/collections`,
+                url: `settings/collections`,
                 icon: SvgIcon('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Integrations',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/import`,
+                url: `settings/import`,
                 icon: SvgIcon('cu3-icon-importIcon')
             },
             {
                 id: 'security',
                 title: 'Security & Permissions ',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/security`,
+                url: `settings/security`,
                 icon: SvgIcon('cu3-icon-protectedAlt')
             },
             {
                 id: 'import',
                 title: 'Imports / Exports',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/import`,
+                url: `settings/import`,
                 icon: SvgIcon('cu3-icon-importIcon')
             },
 
@@ -75,7 +77,6 @@ export class SettingsController extends UIFormController {
 
         ]
 
-        const navigate = useNavigate();
         // 
         return (
             HStack(

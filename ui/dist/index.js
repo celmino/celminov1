@@ -19530,7 +19530,7 @@ const useAppletNavigate = () => {
     return {
         navigate: (url) => {
             if ((url === null || url === void 0 ? void 0 : url[0]) !== '/') {
-                url += '/';
+                url = '/' + url;
             }
             navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
         }
