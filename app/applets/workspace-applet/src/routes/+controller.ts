@@ -1,3 +1,4 @@
+import { useApplet } from "@celmino/ui";
 import { Models, useCreateCollection, useGetDatabase, useListCollections } from "@realmocean/sdk";
 import {
     UIFormController,
@@ -6,7 +7,7 @@ import {
     cTopLeading,
     useNavigate,
     useParams,
-    useState
+    useState, Text
 } from "@tuval/forms";
 
 
@@ -20,6 +21,9 @@ export class AppletController extends UIFormController {
         const [selectedCollection, setSelectedCollection] = useState<Models.Collection>(null);
 
         const navigate = useNavigate();
+
+        const {applet} = useApplet();
+
         return (
             VStack({ alignment: cTopLeading })(
            /*      HStack(

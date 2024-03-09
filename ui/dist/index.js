@@ -18708,13 +18708,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.OrganizationContextProvider),
 /* harmony export */   RealmContext: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.RealmContext),
 /* harmony export */   RealmContextProvider: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.RealmContextProvider),
+/* harmony export */   TreeContext: () => (/* reexport safe */ _tree__WEBPACK_IMPORTED_MODULE_3__.TreeContext),
+/* harmony export */   TreeContextProvider: () => (/* reexport safe */ _tree__WEBPACK_IMPORTED_MODULE_3__.TreeContextProvider),
 /* harmony export */   useApplet: () => (/* reexport safe */ _applet__WEBPACK_IMPORTED_MODULE_2__.useApplet),
 /* harmony export */   useOrganization: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.useOrganization),
-/* harmony export */   useRealm: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.useRealm)
+/* harmony export */   useRealm: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.useRealm),
+/* harmony export */   useRealmTree: () => (/* reexport safe */ _tree__WEBPACK_IMPORTED_MODULE_3__.useRealmTree)
 /* harmony export */ });
 /* harmony import */ var _organization__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./organization */ "./src/context/organization/index.ts");
 /* harmony import */ var _realm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./realm */ "./src/context/realm/index.ts");
 /* harmony import */ var _applet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applet */ "./src/context/applet/index.ts");
+/* harmony import */ var _tree__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tree */ "./src/context/tree/index.ts");
+
 
 
 
@@ -19004,6 +19009,166 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _RealmContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RealmContext */ "./src/context/realm/RealmContext.ts");
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/realm/context.ts");
+
+
+
+
+/***/ }),
+
+/***/ "./src/context/tree/TreeContext.ts":
+/*!*****************************************!*\
+  !*** ./src/context/tree/TreeContext.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeContext: () => (/* binding */ TreeContext)
+/* harmony export */ });
+/* harmony import */ var _TreeContextClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TreeContextClass */ "./src/context/tree/TreeContextClass.tsx");
+
+function TreeContext(childFunc) {
+    return new _TreeContextClass__WEBPACK_IMPORTED_MODULE_0__.TreeContextClass().childFunc(childFunc);
+}
+
+
+/***/ }),
+
+/***/ "./src/context/tree/TreeContextClass.tsx":
+/*!***********************************************!*\
+  !*** ./src/context/tree/TreeContextClass.tsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeContextClass: () => (/* binding */ TreeContextClass)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _TreeContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TreeContextRenderer */ "./src/context/tree/TreeContextRenderer.tsx");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+class TreeContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+    childFunc(value) {
+        this.vp_ChildFunc = value;
+        return this;
+    }
+    setCanDrag(value) {
+        this.vp_SetCanDrag = value;
+        return this;
+    }
+    render() {
+        return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_TreeContextRenderer__WEBPACK_IMPORTED_MODULE_2__.TreeContextRenderer, { control: this }));
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], TreeContextClass.prototype, "vp_ChildFunc", void 0);
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], TreeContextClass.prototype, "vp_SetCanDrag", void 0);
+
+
+/***/ }),
+
+/***/ "./src/context/tree/TreeContextRenderer.tsx":
+/*!**************************************************!*\
+  !*** ./src/context/tree/TreeContextRenderer.tsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeContextRenderer: () => (/* binding */ TreeContextRenderer)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/tree/context.ts");
+/* harmony import */ var _realm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../realm */ "./src/context/realm/index.ts");
+
+
+
+
+
+
+class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController {
+    LoadView() {
+        const { control } = this.props;
+        return control.vp_ChildFunc();
+    }
+}
+const Proxy = ({ control }) => (control.vp_ChildFunc().render());
+function TreeContextRenderer({ control }) {
+    const { realm } = (0,_realm__WEBPACK_IMPORTED_MODULE_5__.useRealm)();
+    const { appletId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
+    const { document: applet, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({ projectId: realm.$id, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.TreeContextProvider.Provider, { value: { setCanDrag: control.vp_SetCanDrag } },
+            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+}
+
+
+/***/ }),
+
+/***/ "./src/context/tree/context.ts":
+/*!*************************************!*\
+  !*** ./src/context/tree/context.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeContextProvider: () => (/* binding */ TreeContextProvider),
+/* harmony export */   useRealmTree: () => (/* binding */ useRealmTree)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const TreeContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+const useRealmTree = () => {
+    const e = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(TreeContextProvider);
+    return e;
+};
+
+
+/***/ }),
+
+/***/ "./src/context/tree/index.ts":
+/*!***********************************!*\
+  !*** ./src/context/tree/index.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TreeContext: () => (/* reexport safe */ _TreeContext__WEBPACK_IMPORTED_MODULE_0__.TreeContext),
+/* harmony export */   TreeContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.TreeContextProvider),
+/* harmony export */   useRealmTree: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.useRealmTree)
+/* harmony export */ });
+/* harmony import */ var _TreeContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TreeContext */ "./src/context/tree/TreeContext.ts");
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/tree/context.ts");
 
 
 
@@ -19337,12 +19502,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   RealmContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider),
 /* harmony export */   SelectAppletDialog: () => (/* reexport safe */ _dialogs__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog),
 /* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.SelectSiderDialog),
+/* harmony export */   TreeContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.TreeContext),
+/* harmony export */   TreeContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.TreeContextProvider),
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
 /* harmony export */   compileFormula: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.compileFormula),
 /* harmony export */   useApplet: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useApplet),
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder),
 /* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useOrganization),
-/* harmony export */   useRealm: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useRealm)
+/* harmony export */   useRealm: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useRealm),
+/* harmony export */   useRealmTree: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useRealmTree)
 /* harmony export */ });
 /* harmony import */ var _dialogs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dialogs */ "./src/dialogs/index.ts");
 /* harmony import */ var _views__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views */ "./src/views/index.ts");

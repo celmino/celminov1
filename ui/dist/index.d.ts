@@ -27,7 +27,7 @@ export class FormBuilder {
     static getViewFactory(type: string): any;
     static getView(fieldInfo: any): any;
     static canRender(fieldInfo: any, formController?: UIFormController): boolean;
-    static render(_formMeta: string | object | object[]): import("@tuval/forms").TextClass | import("@tuval/forms").FragmentClass | import("@tuval/forms").ConfigContextClass;
+    static render(_formMeta: string | object | object[]): import("@tuval/forms").FragmentClass | import("@tuval/forms").TextClass | import("@tuval/forms").ConfigContextClass;
     static compileFormula(formula: any): string;
 }
 
@@ -36,7 +36,7 @@ export class DynoDialog extends DialogView {
     BindRouterParams(formData: any): void;
     OnOK(): void;
     OnCancel(): void;
-    LoadView(): import("@tuval/forms").VStackClass | import("@tuval/forms").UISpinnerClass;
+    LoadView(): import("@tuval/forms").UISpinnerClass | import("@tuval/forms").VStackClass;
     static Show(formData: any): Promise<any>;
 }
 
@@ -93,6 +93,11 @@ export function AppletContext(childFunc: () => UIView): AppletContextClass;
 export const AppletContextProvider: React.Context<any>;
 export const useApplet: () => any;
 
+export function TreeContext(childFunc: () => UIView): TreeContextClass;
+
+export const TreeContextProvider: React.Context<any>;
+export const useRealmTree: () => any;
+
 export class OrganizationContextClass extends UIView {
     /** @internal */
     vp_ChildFunc: () => UIView;
@@ -111,6 +116,16 @@ export class AppletContextClass extends UIView {
     /** @internal */
     vp_ChildFunc: () => UIView;
     childFunc(value: () => UIView): this;
+    render(): React.JSX.Element;
+}
+
+export class TreeContextClass extends UIView {
+    /** @internal */
+    vp_ChildFunc: () => UIView;
+    childFunc(value: () => UIView): this;
+    /** @internal */
+    vp_SetCanDrag: (value: boolean) => void;
+    setCanDrag(value: (value: boolean) => void): this;
     render(): React.JSX.Element;
 }
 

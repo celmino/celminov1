@@ -34,7 +34,7 @@ export class CollectionsController extends UIFormController {
         ]);
 
         const organization = useOrganization();
-        const  realm  = useRealm();
+        const  {realm}  = useRealm();
         const { document: applet } = useGetDocument({
             projectId: workspaceId,
             databaseId: 'workspace',

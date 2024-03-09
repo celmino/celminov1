@@ -1,5 +1,5 @@
 
-import { SelectAppletDialog, useOrganization } from "@celmino/ui";
+import { SelectAppletDialog, TreeContext, useOrganization } from "@celmino/ui";
 import { Models, Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useGetMe, useGetOrganization, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
 import { Text } from '@realmocean/vibe';
 import { EventBus, is } from "@tuval/core";
@@ -259,7 +259,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                 const [isSorting, setIsSorting] = useState(false);
 
-                const [isEditable, setIsEditable] = useState(false);
+                // const [isEditable, setIsEditable] = useState(false);
 
                 const { createTeam } = useCreateTeam(workspaceId);
                 const { createTeamMembership } = useCreateTeamMembership(workspaceId)
@@ -270,503 +270,522 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                 return (
                     (isWorkspaceTreeLoading) ? Fragment() : (workspaceTreeITems == null) ? Text('null') :
-                    !matches ? Fragment() :
-                        VStack({ alignment: cTopLeading })(
-                            /* HStack().width(200).height(100).background('yellow')
-                                .onClick(() => {
-                                   // createTeam({id:'admins', name:'admins'})
-                                   createTeamMembership({teamId:'admins',roles:[],url:'http://localhost:9501', email:'stanoncloud@gmail.com'})
-                                }), */
+                        !matches ? Fragment() :
                             VStack({ alignment: cTopLeading })(
-                                HStack(
-                                    PopupButton(
-
-                                        HStack({ alignment: cLeading, spacing: 6 })(
-                                            HStack(
-                                                UIWidget("com.tuvalsoft.widget.icons")
-                                                    .config({
-                                                        readonly: true,
-                                                        selectedIcon: 'bookmark', //iconInfo.iconName,
-                                                        selectedCategory: 'Icons',//iconInfo.iconCategory,
-                                                        width: 32,
-                                                        height: 32,
-                                                        padding: 1,
-                                                        color: '#0E7169',
-                                                        onChange: (iconInfo) => {
-                                                            setIconInfo(iconInfo)
-                                                        }
-                                                    })
-                                            ).width(36).height(36)
-                                                //.shadow('0px 1px 4px rgba(81,97,108,0.1), 0 0 0 1px rgba(229,232,235,0.5)')
-                                                .cornerRadius(6),
-                                            VStack({ alignment: cLeading })(
-                                                Text('REALM').fontSize('1rem'),
-                                                HStack({ alignment: cLeading })(
-                                                    Text(realm?.name).fontSize(16).fontWeight('500')
-                                                        .foregroundColor('rgb(21, 23, 25)')
-                                                        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol'),
-                                                ).height()
-                                            ).height(),
-                                            Icon(DownIcon)
-
-                                        )
-                                            .height().cursor('pointer')
-                                            .padding(cHorizontal, 10)
-                                            .padding(cVertical, 5)
-                                            .background({ hover: '#E8EAED' })
-                                            .cornerRadius(6)
-
-                                    )(
-                                        UIViewBuilder(() => {
-
-
-
-                                            const { realm }: { realm: Models.Realm } = useGetRealm({
-                                                realmId: workspaceId,
-                                                enabled: (organizationId == null && workspaceId != null)
-                                            });
-
-                                            const { realms } = useListRealms(organization != null/* (organizationId != null || realm?.teamId != null) */, [
-                                                Query.equal('teamId', organization?.$id)
-                                            ]);
-
-                                            const { me } = useGetMe('console');
-                                            return (
-                                                VStack({ alignment: cTopLeading })(
-                                                    VStack(
-                                                        HStack({ alignment: cLeading, spacing: 5 })(
-                                                            HStack().width(30).height(30).cornerRadius('50%').background('gray'),
-                                                            VStack({ alignment: cLeading })(
-                                                                Text(realm.name).fontSize(14).foregroundColor('#212526'),
-                                                                Text(me.email).fontSize(12).foregroundColor('#6d7a83'),
-                                                            )
-                                                        ).padding(5)
-                                                            .cornerRadius(6)
-                                                            .background({ hover: '#ECEEEF' }),
-                                                        HStack({ alignment: cLeading, spacing: 5 })(
-                                                            Icon(SvgIcon('cu3-icon-settings')),
-                                                            Text('Settings')
-                                                        )
-                                                            .cursor('pointer')
-                                                            .padding(5)
-                                                            .height()
-                                                    ).padding(5),
-                                                    HDivider().height(1).background('#ECEDEE'),
-                                                    VStack({ alignment: cTopLeading })(
-                                                        HStack({ alignment: cLeading, spacing: 5 })(
-                                                            Icon(SvgIcon('cu3-icon-settings')),
-                                                            Text('Change Realm')
-                                                        )
-                                                            .cursor('pointer')
-                                                            .padding(5)
-                                                            .height(),
-                                                        ...ForEach(/* realms */[])(realm => (
-                                                            HStack({ alignment: cLeading })(
-                                                                Text(realm.name)
-
-                                                            ).background({ hover: '#E8EAED' })
-                                                                .cursor('pointer')
-                                                                .padding(5)
-                                                                .onClick(() => {
-
-                                                                    updatePrefs({
-                                                                        prefs: {
-                                                                            ...(me?.prefs ? me?.prefs : {}),
-                                                                            workspace: realm.$id
-                                                                        }
-
-                                                                    })
-                                                                    _hideHandle();
-                                                                    navigate(`/app/workspace/${realm.$id}`)
-                                                                })
-                                                        ))
-                                                    )
-                                                        .onClick(() => navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
-                                                        .padding()
-
-                                                ).width(250)
-                                            )
-                                        })
-
-                                    )
-                                        .hideHandle(hideHandle => _hideHandle = hideHandle)
-                                        .dialogPosition(DialogPosition.BOTTOM)
-                                )
-                                    .height()
-                                    .padding('8px 8px 8px 0px'),
-
+                                /* HStack().width(200).height(100).background('yellow')
+                                    .onClick(() => {
+                                       // createTeam({id:'admins', name:'admins'})
+                                       createTeamMembership({teamId:'admins',roles:[],url:'http://localhost:9501', email:'stanoncloud@gmail.com'})
+                                    }), */
                                 VStack({ alignment: cTopLeading })(
+                                    HStack(
+                                        PopupButton(
 
-                                    HDivider().height(1).background('#ECEDEE'),
-                                    VStack({ alignment: cTopLeading, spacing: 2 })(
-                                        ...ForEach(topMenu)(menuItem =>
-                                            HStack({ alignment: cLeading, spacing: 8 })(
-                                                Icon(menuItem.icon),
-                                                Text(menuItem.title)
-                                                    .foregroundColor('rgb(21, 23, 25)')
-                                                    .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
+                                            HStack({ alignment: cLeading, spacing: 6 })(
+                                                HStack(
+                                                    UIWidget("com.tuvalsoft.widget.icons")
+                                                        .config({
+                                                            readonly: true,
+                                                            selectedIcon: 'bookmark', //iconInfo.iconName,
+                                                            selectedCategory: 'Icons',//iconInfo.iconCategory,
+                                                            width: 32,
+                                                            height: 32,
+                                                            padding: 1,
+                                                            color: '#0E7169',
+                                                            onChange: (iconInfo) => {
+                                                                setIconInfo(iconInfo)
+                                                            }
+                                                        })
+                                                ).width(36).height(36)
+                                                    //.shadow('0px 1px 4px rgba(81,97,108,0.1), 0 0 0 1px rgba(229,232,235,0.5)')
+                                                    .cornerRadius(6),
+                                                VStack({ alignment: cLeading })(
+                                                    Text('REALM').fontSize('1rem'),
+                                                    HStack({ alignment: cLeading })(
+                                                        Text(realm?.name).fontSize(16).fontWeight('500')
+                                                            .foregroundColor('rgb(21, 23, 25)')
+                                                            .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol'),
+                                                    ).height()
+                                                ).height(),
+                                                Icon(DownIcon)
+
                                             )
-                                                .height()
-                                                .padding('6px 10px')
+                                                .height().cursor('pointer')
+                                                .padding(cHorizontal, 10)
+                                                .padding(cVertical, 5)
                                                 .background({ hover: '#E8EAED' })
                                                 .cornerRadius(6)
-                                                .cursor('pointer')
-                                                .margin('0 8px')
-                                        )
 
-                                    ).paddingTop('6px')
-
-
-                                )
-                                    //.padding()
-                                    .height(),
+                                        )(
+                                            UIViewBuilder(() => {
 
 
 
-
-                                VStack({ alignment: cTopLeading })(
-                                    /*  VStack({ alignment: cLeading })(
-                                         Text('APPLETS')
-                                             .fontSize(11)
-                                             .fontWeight('700'),
-         
-                                     ).height(40).padding('1px 18px 0 20px'), */
-
-                                    HStack({ alignment: cTrailing, spacing: 5 })(
-                                        HStack(
-                                            Icon(Icons.Add).fontSize(14)
-                                        )
-                                            .cornerRadius(6)
-                                            .foregroundColor('#7c828d')
-                                            .background({ default: '#e4e4e455', hover: '#e4e4e4' })
-
-                                            .allWidth(24).allHeight(24)
-                                            .onClick(() => {
-                                                SelectAppletDialog.Show(workspaceId);
-
-                                            }),
-                                        HStack(
-                                            Icon(Icons.Drag).fontSize(14)
-                                        )
-                                            .cornerRadius(6)
-                                            .foregroundColor('#7c828d')
-                                            .background({ default: isEditable ? '#e4e4e4' : '#e4e4e455', hover: '#e4e4e4' })
-
-                                            .allWidth(24).allHeight(24)
-                                            .onClick(() => {
-                                                setIsEditable(!isEditable)
-                                            })
-                                    ).height(40)
-                                        .cornerRadius(6)
-                                        .background('#f3f4f7')
-
-                                        .cursor('pointer'),
-                                    isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView() :
-                                        UIViewBuilder(() => {
-                                            const params = useParams();
-                                            const { deleteCache } = useDeleteCache(workspaceId);
-
-
-
-
-                                            useEffect(() => {
-                                                setTreeItems(buildTree(workspaceTreeITems));
-                                                EventBus.Default.on('applet.added', ({ treeItem }) => {
-
-                                                    deleteCache();
-                                                    Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
-                                                        Query.limit(250)
-                                                    ]).then(({ documents }) => {
-                                                        setTreeItems(buildTree(documents));
-                                                    });
-
-                                                })
-                                            }, [])
-                                            //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
-
-                                            function findChildsInTree(workspaceTree, parentNode) {
-                                                const children = [];
-                                                workspaceTree.forEach(item => {
-                                                    if (item.parent === parentNode?.$id) {
-                                                        children.push(item);
-                                                    }
-                                                })
-
-                                                return children;
-                                            }
-
-
-
-
-                                            function findItemInTree(tree, id) {
-                                                let result;
-                                                tree.forEach(item => {
-                                                    if (item.$id === id) {
-                                                        result = item;
-                                                    }
-
+                                                const { realm }: { realm: Models.Realm } = useGetRealm({
+                                                    realmId: workspaceId,
+                                                    enabled: (organizationId == null && workspaceId != null)
                                                 });
-                                                return result;
-                                            }
 
-                                            function buildClidren(workspaceTree, parentNode) {
-                                                const item = findItemInTree(workspaceTree, parentNode.$id);
-                                                let children: any[] = findChildsInTree(workspaceTree, item);
+                                                const { realms } = useListRealms(organization != null/* (organizationId != null || realm?.teamId != null) */, [
+                                                    Query.equal('teamId', organization?.$id)
+                                                ]);
 
-                                                children = sortByStringField(children, "path");
-
-                                                parentNode.children = children.map(child => {
-                                                    return {
-                                                        $id: child.$id,
-                                                        title: child.name,
-                                                        parent: child.parent,
-                                                        path: child.path,
-                                                        tree_widget: child.tree_widget,
-                                                        iconName: child.iconName,
-                                                        iconCategory: child.iconCategory,
-                                                        iconColor: child.iconColor,
-                                                        expanded: expandeds?.[child.$id] ? true : false,
-                                                        canDrag: true,
-                                                        view: (node) => {
-                                                            return (
-                                                                HStack(
-                                                                    child.tree_widget != null ?
-                                                                        UIWidget(child.tree_widget)
-                                                                            .config({
-                                                                                item: child,
-                                                                                ...(params || {}),
-                                                                                appletId: child.appletId
-                                                                            }) :
-                                                                        Text(child.name)
+                                                const { me } = useGetMe('console');
+                                                return (
+                                                    VStack({ alignment: cTopLeading })(
+                                                        VStack(
+                                                            HStack({ alignment: cLeading, spacing: 5 })(
+                                                                HStack().width(30).height(30).cornerRadius('50%').background('gray'),
+                                                                VStack({ alignment: cLeading })(
+                                                                    Text(realm.name).fontSize(14).foregroundColor('#212526'),
+                                                                    Text(me.email).fontSize(12).foregroundColor('#6d7a83'),
                                                                 )
-                                                                    .width('calc(100% - 32px)')
+                                                            ).padding(5)
+                                                                .cornerRadius(6)
+                                                                .background({ hover: '#ECEEEF' }),
+                                                            HStack({ alignment: cLeading, spacing: 5 })(
+                                                                Icon(SvgIcon('cu3-icon-settings')),
+                                                                Text('Settings')
                                                             )
-                                                        },
-                                                        children: buildClidren(workspaceTree, child)
-                                                    }
+                                                                .cursor('pointer')
+                                                                .padding(5)
+                                                                .height()
+                                                        ).padding(5),
+                                                        HDivider().height(1).background('#ECEDEE'),
+                                                        VStack({ alignment: cTopLeading })(
+                                                            HStack({ alignment: cLeading, spacing: 5 })(
+                                                                Icon(SvgIcon('cu3-icon-settings')),
+                                                                Text('Change Realm')
+                                                            )
+                                                                .cursor('pointer')
+                                                                .padding(5)
+                                                                .height(),
+                                                            ...ForEach(/* realms */[])(realm => (
+                                                                HStack({ alignment: cLeading })(
+                                                                    Text(realm.name)
+
+                                                                ).background({ hover: '#E8EAED' })
+                                                                    .cursor('pointer')
+                                                                    .padding(5)
+                                                                    .onClick(() => {
+
+                                                                        updatePrefs({
+                                                                            prefs: {
+                                                                                ...(me?.prefs ? me?.prefs : {}),
+                                                                                workspace: realm.$id
+                                                                            }
+
+                                                                        })
+                                                                        _hideHandle();
+                                                                        navigate(`/app/workspace/${realm.$id}`)
+                                                                    })
+                                                            ))
+                                                        )
+                                                            .onClick(() => navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
+                                                            .padding()
+
+                                                    ).width(250)
+                                                )
+                                            })
+
+                                        )
+                                            .hideHandle(hideHandle => _hideHandle = hideHandle)
+                                            .dialogPosition(DialogPosition.BOTTOM)
+                                    )
+                                        .height()
+                                        .padding('8px 8px 8px 0px'),
+
+                                    VStack({ alignment: cTopLeading })(
+
+                                        HDivider().height(1).background('#ECEDEE'),
+                                        VStack({ alignment: cTopLeading, spacing: 2 })(
+                                            ...ForEach(topMenu)(menuItem =>
+                                                HStack({ alignment: cLeading, spacing: 8 })(
+                                                    Icon(menuItem.icon),
+                                                    Text(menuItem.title)
+                                                        .foregroundColor('rgb(21, 23, 25)')
+                                                        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
+                                                )
+                                                    .height()
+                                                    .padding('6px 10px')
+                                                    .background({ hover: '#E8EAED' })
+                                                    .cornerRadius(6)
+                                                    .cursor('pointer')
+                                                    .margin('0 8px')
+                                            )
+
+                                        ).paddingTop('6px')
+
+
+                                    )
+                                        //.padding()
+                                        .height(),
+
+
+
+
+                                    VStack({ alignment: cTopLeading })(
+                                        /*  VStack({ alignment: cLeading })(
+                                             Text('APPLETS')
+                                                 .fontSize(11)
+                                                 .fontWeight('700'),
+             
+                                         ).height(40).padding('1px 18px 0 20px'), */
+
+                                        /* HStack({ alignment: cTrailing, spacing: 5 })(
+                                            HStack(
+                                                Icon(Icons.Add).fontSize(14)
+                                            )
+                                                .cornerRadius(6)
+                                                .foregroundColor('#7c828d')
+                                                .background({ default: '#e4e4e455', hover: '#e4e4e4' })
+
+                                                .allWidth(24).allHeight(24)
+                                                .onClick(() => {
+                                                    SelectAppletDialog.Show(workspaceId);
+
+                                                }),
+                                            HStack(
+                                                Icon(Icons.Drag).fontSize(14)
+                                            )
+                                                .cornerRadius(6)
+                                                .foregroundColor('#7c828d')
+                                                .background({ default:  '#e4e4e455', hover: '#e4e4e4' })
+
+                                                .allWidth(24).allHeight(24)
+                                                .onClick(() => {
                                                 })
+                                        ).height(40)
+                                            .cornerRadius(6)
+                                            .background('#f3f4f7')
 
-                                                return parentNode.children;
-                                            }
+                                            .cursor('pointer'), */
+                                        HStack(
+                                            HDivider().height(1).background('#ECEDEE')
+                                        ).height().padding(cVertical, 10),
+                                        isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView() :
+                                            UIViewBuilder(() => {
+                                                const params = useParams();
+                                                const { deleteCache } = useDeleteCache(workspaceId);
 
-                                            function buildTree(workspaceTree) {
-                                                const tree = [];
-                                                let rootItems = workspaceTree?.filter(item => item.parent === '-1');
-                                                rootItems = sortByStringField(rootItems, "path");
-                                                rootItems.forEach(item => {
-                                                    if (item.parent === '-1') {
-                                                        const node = {
-                                                            $id: item.$id,
-                                                            title: item.name,
-                                                            parent: item.parent,
-                                                            path: item.path,
-                                                            tree_widget: item.tree_widget,
-                                                            expanded: expandeds?.[item.$id] ? true : false,
-                                                            iconName: item.iconName,
-                                                            iconCategory: item.iconCategory,
-                                                            iconColor: item.iconColor,
-                                                            canDrag: false,
+
+
+
+                                                useEffect(() => {
+                                                    setTreeItems(buildTree(workspaceTreeITems));
+                                                    EventBus.Default.on('applet.added', ({ treeItem }) => {
+
+                                                        deleteCache();
+                                                        Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
+                                                            Query.limit(250)
+                                                        ]).then(({ documents }) => {
+                                                            setTreeItems(buildTree(documents));
+                                                        });
+
+                                                    })
+                                                }, [])
+                                                //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
+
+                                                function findChildsInTree(workspaceTree, parentNode) {
+                                                    const children = [];
+                                                    workspaceTree.forEach(item => {
+                                                        if (item.parent === parentNode?.$id) {
+                                                            children.push(item);
+                                                        }
+                                                    })
+
+                                                    return children;
+                                                }
+
+
+
+
+                                                function findItemInTree(tree, id) {
+                                                    let result;
+                                                    tree.forEach(item => {
+                                                        if (item.$id === id) {
+                                                            result = item;
+                                                        }
+
+                                                    });
+                                                    return result;
+                                                }
+
+                                                function buildClidren(workspaceTree, parentNode) {
+                                                    const item = findItemInTree(workspaceTree, parentNode.$id);
+                                                    let children: any[] = findChildsInTree(workspaceTree, item);
+
+                                                    children = sortByStringField(children, "path");
+
+                                                    parentNode.children = children.map(child => {
+                                                        return {
+                                                            $id: child.$id,
+                                                            title: child.name,
+                                                            parent: child.parent,
+                                                            path: child.path,
+                                                            tree_widget: child.tree_widget,
+                                                            iconName: child.iconName,
+                                                            iconCategory: child.iconCategory,
+                                                            iconColor: child.iconColor,
+                                                            expanded: expandeds?.[child.$id] ? true : false,
+                                                            canDrag: true,
                                                             view: (node) => {
                                                                 return (
                                                                     HStack(
-                                                                        item.tree_widget != null ?
-                                                                            UIWidget(item.tree_widget)
+                                                                        child.tree_widget != null ?
+                                                                            UIWidget(child.tree_widget, 'tree')
                                                                                 .config({
-                                                                                    item: item,
+                                                                                    item: child,
                                                                                     ...(params || {}),
-                                                                                    appletId: item.$id
+                                                                                    appletId: child.appletId
                                                                                 }) :
-                                                                            Text(item.name)
-                                                                    ).width('calc(100% - 32px)')
+                                                                            Text(child.name)
+                                                                    )
+                                                                        .width('calc(100% - 32px)')
                                                                 )
                                                             },
-                                                            children: []
-                                                        };
-                                                        tree.push(node);
-                                                        buildClidren(workspaceTree, node);
+                                                            children: buildClidren(workspaceTree, child)
+                                                        }
+                                                    })
+
+                                                    return parentNode.children;
+                                                }
+
+                                                function buildTree(workspaceTree) {
+                                                    const tree = [];
+                                                    let rootItems = workspaceTree?.filter(item => item.parent === '-1');
+                                                    rootItems = sortByStringField(rootItems, "path");
+                                                    rootItems.forEach(item => {
+                                                        if (item.parent === '-1') {
+                                                            const node = {
+                                                                $id: item.$id,
+                                                                title: item.name,
+                                                                parent: item.parent,
+                                                                path: item.path,
+                                                                tree_widget: item.tree_widget,
+                                                                expanded: expandeds?.[item.$id] ? true : false,
+                                                                iconName: item.iconName,
+                                                                iconCategory: item.iconCategory,
+                                                                iconColor: item.iconColor,
+                                                                canDrag: false,
+                                                                view: (node) => {
+                                                                    return (
+                                                                        HStack(
+                                                                            item.tree_widget != null ?
+                                                                                UIWidget(item.tree_widget, 'tree')
+                                                                                    .config({
+                                                                                        item: item,
+                                                                                        ...(params || {}),
+                                                                                        appletId: item.$id
+                                                                                    }) :
+                                                                                Text(item.name)
+                                                                        ).width('calc(100% - 32px)')
+                                                                    )
+                                                                },
+                                                                children: []
+                                                            };
+                                                            tree.push(node);
+                                                            buildClidren(workspaceTree, node);
+                                                        }
+                                                    })
+                                                    console.log('build tree');
+                                                    return tree;
+                                                }
+
+                                                const [prevTreeItems, setPrevTreeItems] = useState([]);
+                                                const [treeItems, setTreeItems] = useState([]);
+
+
+                                                const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
+                                                    if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
+                                                        return false;
                                                     }
-                                                })
-                                                console.log('build tree');
-                                                return tree;
-                                            }
 
-                                            const [prevTreeItems, setPrevTreeItems] = useState([]);
-                                            const [treeItems, setTreeItems] = useState([]);
+                                                    if (node.isTwin && nextParent && nextParent.isTwin) {
+                                                        return false;
+                                                    }
 
+                                                    const noGrandkidsDepth = nextPath.indexOf('no-grandkids');
+                                                    if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
+                                                        return false;
+                                                    }
 
-                                            const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
-                                                if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
-                                                    return false;
-                                                }
+                                                    return true;
+                                                };
+                                                return (
+                                                    VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                        HStack({ alignment: cTopLeading })(
 
-                                                if (node.isTwin && nextParent && nextParent.isTwin) {
-                                                    return false;
-                                                }
+                                                            ScrollView({ axes: cVertical, alignment: cTopLeading })(
 
-                                                const noGrandkidsDepth = nextPath.indexOf('no-grandkids');
-                                                if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
-                                                    return false;
-                                                }
-
-                                                return true;
-                                            };
-                                            return (
-                                                VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                    HStack({ alignment: cTopLeading })(
-
-                                                        ScrollView({ axes: cVertical, alignment: cTopLeading })(
-
-                                                            /*  UIWidget('com.celmino.widget.sortable-list')
-                                                                 .config({
-                                                                     items: [
-                                                                         {
-                                                                             id: 1,
-                                                                             view: (node) => (
-                                                                                 VStack(
-                                                                                     Text('Name'),
-                                                                                     TextField().height(32).padding()
+                                                                /*  UIWidget('com.celmino.widget.sortable-list')
+                                                                     .config({
+                                                                         items: [
+                                                                             {
+                                                                                 id: 1,
+                                                                                 view: (node) => (
+                                                                                     VStack(
+                                                                                         Text('Name'),
+                                                                                         TextField().height(32).padding()
+                                                                                     )
                                                                                  )
-                                                                             )
-                                                                         }
-                                                                     ]
-                                                                 }), */
+                                                                             }
+                                                                         ]
+                                                                     }), */
+                                                                TreeContext(() =>
+                                                                    UIWidget('com.celmino.widget.sortable-tree')
+                                                                        .config({
+                                                                            // canDrag: isEditable,
+                                                                            treeItems: treeItems,
+                                                                            onChange: (_treeItems) => {
+                                                                                //  setPrevTreeItems([...treeItems]);
+                                                                                setTreeItems(_treeItems);
 
-                                                            UIWidget('com.celmino.widget.sortable-tree')
-                                                                .config({
-                                                                    canDrag: isEditable,
-                                                                    treeItems: treeItems,
-                                                                    onChange: (_treeItems) => {
-                                                                        //  setPrevTreeItems([...treeItems]);
-                                                                        setTreeItems(_treeItems);
+                                                                            },
+                                                                            onVisibilityToggle: ({ node, expanded }) => {
 
-                                                                    },
-                                                                    onVisibilityToggle: ({ node, expanded }) => {
+                                                                                if (expanded) {
+                                                                                    expandeds[node.$id] = true;
+                                                                                } else {
+                                                                                    delete expandeds[node.$id];
+                                                                                }
 
-                                                                        if (expanded) {
-                                                                            expandeds[node.$id] = true;
-                                                                        } else {
-                                                                            delete expandeds[node.$id];
-                                                                        }
+                                                                                console.log(expandeds);
 
-                                                                        console.log(expandeds);
+                                                                            },
 
-                                                                    },
-
-                                                                    onMoveNode: ({ treeData }) => {
-                                                                        const newTreeData = [...treeData];
+                                                                            onMoveNode: ({ treeData }) => {
+                                                                                const newTreeData = [...treeData];
 
 
-                                                                        function reCreateIndex(parentNode) {
-                                                                            if (parentNode.children) {
-                                                                                parentNode.children.forEach((child, index) => {
-                                                                                    child.prevParent = child.parent;
-                                                                                    child.prevPath = child.path;
-                                                                                    child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                                    child.parent = parentNode.$id;
-                                                                                    if (child.prevPath == null) {
-                                                                                        child.prevPath = child.path;
+                                                                                function reCreateIndex(parentNode) {
+                                                                                    if (parentNode.children) {
+                                                                                        parentNode.children.forEach((child, index) => {
+                                                                                            child.prevParent = child.parent;
+                                                                                            child.prevPath = child.path;
+                                                                                            child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                                            child.parent = parentNode.$id;
+                                                                                            if (child.prevPath == null) {
+                                                                                                child.prevPath = child.path;
+                                                                                            }
+                                                                                            if (child.prevParent == null) {
+                                                                                                child.prevParent = child.parent;
+                                                                                            }
+                                                                                            reCreateIndex(child);
+                                                                                        });
                                                                                     }
-                                                                                    if (child.prevParent == null) {
-                                                                                        child.prevParent = child.parent;
-                                                                                    }
-                                                                                    reCreateIndex(child);
+                                                                                }
+
+                                                                                newTreeData.forEach((item, index) => {
+                                                                                    item.prevParent = item.parent;
+                                                                                    item.prevPath = item.path;
+                                                                                    item.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                                    item.parent = '-1';
+                                                                                    reCreateIndex(item);
                                                                                 });
-                                                                            }
-                                                                        }
 
-                                                                        newTreeData.forEach((item, index) => {
-                                                                            item.prevParent = item.parent;
-                                                                            item.prevPath = item.path;
-                                                                            item.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                            item.parent = '-1';
-                                                                            reCreateIndex(item);
-                                                                        });
-
-                                                                        const changes = [];
-                                                                        function getChanges(parentNode) {
-                                                                            if (parentNode.children) {
-                                                                                parentNode.children.forEach((child) => {
-                                                                                    if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
-                                                                                        // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                                                        changes.push(child);
+                                                                                const changes = [];
+                                                                                function getChanges(parentNode) {
+                                                                                    if (parentNode.children) {
+                                                                                        parentNode.children.forEach((child) => {
+                                                                                            if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                                                                // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                                                                changes.push(child);
+                                                                                            }
+                                                                                            getChanges(child);
+                                                                                        });
                                                                                     }
-                                                                                    getChanges(child);
+                                                                                }
+
+                                                                                newTreeData.forEach((item, index) => {
+                                                                                    if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                                                                        //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                                                        changes.push(item);
+                                                                                    }
+                                                                                    getChanges(item);
                                                                                 });
+
+
+                                                                                changes.forEach(item => {
+                                                                                    Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                                                                        path: item.path,
+                                                                                        parent: item.parent
+                                                                                    })
+                                                                                })
+
+                                                                                console.log(newTreeData)
+
+
                                                                             }
-                                                                        }
-
-                                                                        newTreeData.forEach((item, index) => {
-                                                                            if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
-                                                                                //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                                                changes.push(item);
-                                                                            }
-                                                                            getChanges(item);
-                                                                        });
-
-
-                                                                        changes.forEach(item => {
-                                                                            Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                                                path: item.path,
-                                                                                parent: item.parent
-                                                                            })
                                                                         })
-
-                                                                        console.log(newTreeData)
-
-
-                                                                    }
-                                                                }),
-                                                            // Text(documents[0]['opa']),
-                                                            /*  isSorting ?
-                                                                 SortableListView()
-                                                                     .items(realms)
-                                                                     .renderItem(realm =>
-                                                                         UIWidget(realm['opa'])
-                                                                             .config({
-                                                                                 ...(useParams() || {}),
-                                                                                 appletId: realm.$id
-                                                                             }),
-                                                                     )
-                                                                     .onChange(realms => setRealms(realms)) :
-                                                                 VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                                     ...ForEach(documents)(applet =>
-                                                                         UIWidget(applet['opa'])
-                                                                             .config({
-                                                                                 ...(useParams() || {}),
-                                                                                 appletId: applet.$id
-                                                                             }),
-                                                                     )
-                                                                 ) */
+                                                                )
+                                                                    .setCanDrag(() => void 0),
+                                                                // Text(documents[0]['opa']),
+                                                                /*  isSorting ?
+                                                                     SortableListView()
+                                                                         .items(realms)
+                                                                         .renderItem(realm =>
+                                                                             UIWidget(realm['opa'])
+                                                                                 .config({
+                                                                                     ...(useParams() || {}),
+                                                                                     appletId: realm.$id
+                                                                                 }),
+                                                                         )
+                                                                         .onChange(realms => setRealms(realms)) :
+                                                                     VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                                         ...ForEach(documents)(applet =>
+                                                                             UIWidget(applet['opa'])
+                                                                                 .config({
+                                                                                     ...(useParams() || {}),
+                                                                                     appletId: applet.$id
+                                                                                 }),
+                                                                         )
+                                                                     ) */
+                                                            )
                                                         )
-                                                    )
-                                                        .cornerRadius(6)
-                                                        .outline(isEditable ? 'dotted 2px green' : 'none')
-                                                    /*  ...ForEach(spaces)(space =>
-                                                         Text(space.name)
-                                                     ), */
+                                                            .cornerRadius(6),
+                                                        HStack(
+
+                                                            HStack({ spacing: 5 })(
+                                                                //FontIcon(FontIcons.Add, 'sm', '#656f7d'),
+                                                                Text('Install Applet').fontSize(11).fontWeight('500')
+                                                            )
+                                                                .margin('5px 20px')
+                                                                .cornerRadius(5)
+                                                                .cursor('pointer')
+                                                                .foregroundColor('#7c828d')
+                                                                .background({ default: '#f3f4f7', hover: '#e4e4e4' })
+                                                                .height(24)
+                                                                .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
+                                                                .padding('8px 12px 8px 26px')
+                                                                .onClick(async () => {
+                                                                    SelectAppletDialog.Show(workspaceId);
+                                                                })
 
 
+                                                        ).height(200),
+                                                        //.outline(isEditable ? 'dotted 2px green' : 'none')
 
-                                                ).padding(cHorizontal, 8)
+                                                    ).padding(cHorizontal, 8)
+                                                )
+                                            }
                                             )
-                                        }
-                                        )
-                                )
+                                    )
 
+                                )
                             )
-                        )
-                           /*  .style(`
-                        @media screen and (max-width: 1000px) {
-                            display:none !important;
-                          }
-                        
-                        `) */
-                            .fontFamily(fontFamily)
-                            .allWidth(282)
-                            .transition('width .3s cubic-bezier(.2,0,0,1) 0s')
-                            .background('#F7F8F9')
-                            .borderRight('1px solid rgba(0,0,0,0.05)')
-                            .transition('width .2s ease-in-out')
+                                /*  .style(`
+                             @media screen and (max-width: 1000px) {
+                                 display:none !important;
+                               }
+                             
+                             `) */
+                                .fontFamily(fontFamily)
+                                .allWidth(282)
+                                .transition('width .3s cubic-bezier(.2,0,0,1) 0s')
+                                .background('#F7F8F9')
+                                .borderRight('1px solid rgba(0,0,0,0.05)')
+                                .transition('width .2s ease-in-out')
                 )
             }
 

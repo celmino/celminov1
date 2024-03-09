@@ -109,16 +109,16 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@celmino/ui@^1.0.29":
-  version "1.0.29"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.29.tgz"
-  integrity sha512-zGwOpGPb+VWdwzPQq0qVhv+2Wx8VMBOyFX0bvFwm9Q5FwHO76UVlk+lvz5KXBClHX6jIvRx2Qudk6yCkyz/6Eg==
+"@celmino/ui@^1.0.32":
+  version "1.0.32"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.32.tgz"
+  integrity sha512-PHVyPKS3JGSp5bHrhUlOKD65DVSNwmwK5hz/o841cpwOdvuX+4Yhr3jK89WaY2WLeBBWO22LtKyJT9gMUgg2GA==
   dependencies:
     "@realmocean/antd" "^21.0.33"
     "@realmocean/sdk" "1.0.82"
     "@realmocean/vibe" "2.82.50"
     "@tuval/core" "^0.0.103"
-    "@tuval/forms" "^1.0.167"
+    "@tuval/forms" "^1.0.178"
     "@uiw/react-color-circle" "^2.1.0"
     dts-bundle "^0.7.3"
     shelljs "^0.8.5"
@@ -777,10 +777,10 @@
   resolved "https://registry.npmjs.org/@tuval/core/-/core-0.0.103.tgz"
   integrity sha512-yE9X6hLavSknUZWiN5sfu1hbVdZ2taaL+wJAUbpRa2glfepBsBYDHGooe11oQ5EqYEq6NZnbmYJRW9eIjPi1Gg==
 
-"@tuval/forms@^1.0.132", "@tuval/forms@^1.0.159", "@tuval/forms@^1.0.167", "@tuval/forms@^1.0.174":
-  version "1.0.174"
-  resolved "https://registry.npmjs.org/@tuval/forms/-/forms-1.0.174.tgz"
-  integrity sha512-m/I/7KLu/qRfGYEClND2aCDlInBGRAvuP921bHSAOEKePHsk8KAxfyliyzXkvOV3Fu8jivQRz6xYQxDq4s8Yjg==
+"@tuval/forms@^1.0.132", "@tuval/forms@^1.0.159", "@tuval/forms@^1.0.178", "@tuval/forms@^1.0.179":
+  version "1.0.179"
+  resolved "https://registry.npmjs.org/@tuval/forms/-/forms-1.0.179.tgz"
+  integrity sha512-0nPnPYQ1VnKcu/Fn5iIuCXvt+PuFydv/M8ixj2c337Tgs+7q1Xx7WTBgRxjRghdq3Pf3oZ39rl71ilqerlLJhw==
   dependencies:
     "@codemirror/lang-json" "^6.0.1"
     "@dnd-kit/core" "^6.0.8"

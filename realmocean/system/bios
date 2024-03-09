@@ -9245,6 +9245,42 @@ var __assign = (undefined && undefined.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -9417,7 +9453,7 @@ var LeftSideMenuView = function (selectedItem) {
             var _d = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)({}), iconInfo = _d[0], setIconInfo = _d[1];
             var updatePrefs = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdatePrefs)({}).updatePrefs;
             var _e = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false), isSorting = _e[0], setIsSorting = _e[1];
-            var _f = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false), isEditable = _f[0], setIsEditable = _f[1];
+            // const [isEditable, setIsEditable] = useState(false);
             var createTeam = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateTeam)(workspaceId).createTeam;
             var createTeamMembership = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateTeamMembership)(workspaceId).createTeamMembership;
             var _hideHandle;
@@ -9502,24 +9538,35 @@ var LeftSideMenuView = function (selectedItem) {
                              .fontWeight('700'),
 
                      ).height(40).padding('1px 18px 0 20px'), */
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTrailing, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Add).fontSize(14))
-                        .cornerRadius(6)
-                        .foregroundColor('#7c828d')
-                        .background({ default: '#e4e4e455', hover: '#e4e4e4' })
-                        .allWidth(24).allHeight(24)
-                        .onClick(function () {
-                        _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId);
-                    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Drag).fontSize(14))
-                        .cornerRadius(6)
-                        .foregroundColor('#7c828d')
-                        .background({ default: isEditable ? '#e4e4e4' : '#e4e4e455', hover: '#e4e4e4' })
-                        .allWidth(24).allHeight(24)
-                        .onClick(function () {
-                        setIsEditable(!isEditable);
-                    })).height(40)
+                    /* HStack({ alignment: cTrailing, spacing: 5 })(
+                        HStack(
+                            Icon(Icons.Add).fontSize(14)
+                        )
+                            .cornerRadius(6)
+                            .foregroundColor('#7c828d')
+                            .background({ default: '#e4e4e455', hover: '#e4e4e4' })
+
+                            .allWidth(24).allHeight(24)
+                            .onClick(() => {
+                                SelectAppletDialog.Show(workspaceId);
+
+                            }),
+                        HStack(
+                            Icon(Icons.Drag).fontSize(14)
+                        )
+                            .cornerRadius(6)
+                            .foregroundColor('#7c828d')
+                            .background({ default:  '#e4e4e455', hover: '#e4e4e4' })
+
+                            .allWidth(24).allHeight(24)
+                            .onClick(() => {
+                            })
+                    ).height(40)
                         .cornerRadius(6)
                         .background('#f3f4f7')
-                        .cursor('pointer'), isWorkspaceTreeLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? (0,_views_EmptyView__WEBPACK_IMPORTED_MODULE_6__.EmptyView)() :
+
+                        .cursor('pointer'), */
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HDivider)().height(1).background('#ECEDEE')).height().padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, 10), isWorkspaceTreeLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? (0,_views_EmptyView__WEBPACK_IMPORTED_MODULE_6__.EmptyView)() :
                         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
                             var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)();
                             var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteCache)(workspaceId).deleteCache;
@@ -9573,7 +9620,7 @@ var LeftSideMenuView = function (selectedItem) {
                                         canDrag: true,
                                         view: function (node) {
                                             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget)
+                                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
                                                     .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
                                                 (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name))
                                                 .width('calc(100% - 32px)'));
@@ -9602,7 +9649,7 @@ var LeftSideMenuView = function (selectedItem) {
                                             canDrag: false,
                                             view: function (node) {
                                                 return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget)
+                                                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
                                                         .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
                                                     (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name)).width('calc(100% - 32px)'));
                                             },
@@ -9646,85 +9693,99 @@ var LeftSideMenuView = function (selectedItem) {
                                          }
                                      ]
                                  }), */
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)('com.celmino.widget.sortable-tree')
-                                .config({
-                                canDrag: isEditable,
-                                treeItems: treeItems,
-                                onChange: function (_treeItems) {
-                                    //  setPrevTreeItems([...treeItems]);
-                                    setTreeItems(_treeItems);
-                                },
-                                onVisibilityToggle: function (_a) {
-                                    var node = _a.node, expanded = _a.expanded;
-                                    if (expanded) {
-                                        expandeds[node.$id] = true;
-                                    }
-                                    else {
-                                        delete expandeds[node.$id];
-                                    }
-                                    console.log(expandeds);
-                                },
-                                onMoveNode: function (_a) {
-                                    var treeData = _a.treeData;
-                                    var newTreeData = __spreadArray([], treeData, true);
-                                    function reCreateIndex(parentNode) {
-                                        if (parentNode.children) {
-                                            parentNode.children.forEach(function (child, index) {
-                                                child.prevParent = child.parent;
-                                                child.prevPath = child.path;
-                                                child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                child.parent = parentNode.$id;
-                                                if (child.prevPath == null) {
-                                                    child.prevPath = child.path;
-                                                }
-                                                if (child.prevParent == null) {
+                            (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.TreeContext)(function () {
+                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)('com.celmino.widget.sortable-tree')
+                                    .config({
+                                    // canDrag: isEditable,
+                                    treeItems: treeItems,
+                                    onChange: function (_treeItems) {
+                                        //  setPrevTreeItems([...treeItems]);
+                                        setTreeItems(_treeItems);
+                                    },
+                                    onVisibilityToggle: function (_a) {
+                                        var node = _a.node, expanded = _a.expanded;
+                                        if (expanded) {
+                                            expandeds[node.$id] = true;
+                                        }
+                                        else {
+                                            delete expandeds[node.$id];
+                                        }
+                                        console.log(expandeds);
+                                    },
+                                    onMoveNode: function (_a) {
+                                        var treeData = _a.treeData;
+                                        var newTreeData = __spreadArray([], treeData, true);
+                                        function reCreateIndex(parentNode) {
+                                            if (parentNode.children) {
+                                                parentNode.children.forEach(function (child, index) {
                                                     child.prevParent = child.parent;
-                                                }
-                                                reCreateIndex(child);
-                                            });
+                                                    child.prevPath = child.path;
+                                                    child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                    child.parent = parentNode.$id;
+                                                    if (child.prevPath == null) {
+                                                        child.prevPath = child.path;
+                                                    }
+                                                    if (child.prevParent == null) {
+                                                        child.prevParent = child.parent;
+                                                    }
+                                                    reCreateIndex(child);
+                                                });
+                                            }
                                         }
-                                    }
-                                    newTreeData.forEach(function (item, index) {
-                                        item.prevParent = item.parent;
-                                        item.prevPath = item.path;
-                                        item.path = addZeroDigitToNumberReturnString(index, 3);
-                                        item.parent = '-1';
-                                        reCreateIndex(item);
-                                    });
-                                    var changes = [];
-                                    function getChanges(parentNode) {
-                                        if (parentNode.children) {
-                                            parentNode.children.forEach(function (child) {
-                                                if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
-                                                    // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                    changes.push(child);
-                                                }
-                                                getChanges(child);
-                                            });
-                                        }
-                                    }
-                                    newTreeData.forEach(function (item, index) {
-                                        if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
-                                            //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                            changes.push(item);
-                                        }
-                                        getChanges(item);
-                                    });
-                                    changes.forEach(function (item) {
-                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                            path: item.path,
-                                            parent: item.parent
+                                        newTreeData.forEach(function (item, index) {
+                                            item.prevParent = item.parent;
+                                            item.prevPath = item.path;
+                                            item.path = addZeroDigitToNumberReturnString(index, 3);
+                                            item.parent = '-1';
+                                            reCreateIndex(item);
                                         });
-                                    });
-                                    console.log(newTreeData);
-                                }
-                            })))
-                                .cornerRadius(6)
-                                .outline(isEditable ? 'dotted 2px green' : 'none')
-                            /*  ...ForEach(spaces)(space =>
-                                 Text(space.name)
-                             ), */
-                            ).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 8));
+                                        var changes = [];
+                                        function getChanges(parentNode) {
+                                            if (parentNode.children) {
+                                                parentNode.children.forEach(function (child) {
+                                                    if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                        // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                        changes.push(child);
+                                                    }
+                                                    getChanges(child);
+                                                });
+                                            }
+                                        }
+                                        newTreeData.forEach(function (item, index) {
+                                            if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                                //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                changes.push(item);
+                                            }
+                                            getChanges(item);
+                                        });
+                                        changes.forEach(function (item) {
+                                            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                                path: item.path,
+                                                parent: item.parent
+                                            });
+                                        });
+                                        console.log(newTreeData);
+                                    }
+                                });
+                            })
+                                .setCanDrag(function () { return void 0; })))
+                                .cornerRadius(6), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ spacing: 5 })(
+                            //FontIcon(FontIcons.Add, 'sm', '#656f7d'),
+                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Install Applet').fontSize(11).fontWeight('500'))
+                                .margin('5px 20px')
+                                .cornerRadius(5)
+                                .cursor('pointer')
+                                .foregroundColor('#7c828d')
+                                .background({ default: '#f3f4f7', hover: '#e4e4e4' })
+                                .height(24)
+                                .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
+                                .padding('8px 12px 8px 26px')
+                                .onClick(function () { return __awaiter(void 0, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId);
+                                    return [2 /*return*/];
+                                });
+                            }); })).height(200)).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 8));
                         }))))
                         /*  .style(`
                      @media screen and (max-width: 1000px) {
@@ -10265,8 +10326,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Paths: () => (/* binding */ Paths),
 /* harmony export */   getAppName: () => (/* binding */ getAppName)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
@@ -10353,8 +10414,13 @@ var OpaLoader = function (_a) {
             _tuval_core__WEBPACK_IMPORTED_MODULE_1__.ModuleLoader.LoadBundledModule(app_path_local, opa_name).then(function (_app) {
                 if (_app != null) {
                     var app = new _app();
-                    AppCache[opa_name] = app.GetMainController();
-                    resolve(app.GetMainController());
+                    if (app.GetMainController()['applet'] != null) {
+                        AppCache[opa_name] = app.GetMainController()['applet'];
+                    }
+                    else {
+                        AppCache[opa_name] = app.GetMainController();
+                    }
+                    resolve(AppCache[opa_name]);
                 }
                 else {
                 }
@@ -10376,21 +10442,24 @@ var AppletController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AppletController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId;
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId
-        }), applet = _b.document, isLoading = _b.isLoading;
-        return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Applet Loading...') :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })(
+        /*  const { workspaceId, appletId } = useParams();
+ 
+         const { document: applet, isLoading } = useGetDocument({
+             projectId: workspaceId,
+             databaseId: 'workspace',
+             collectionId: 'applets',
+             documentId: appletId
+         }) */
+        return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
+            var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })(
             // LeftSideMenuView(''),
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)(
             //  NotesLeftMenu(note_id),
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_3___default().createElement((react__WEBPACK_IMPORTED_MODULE_3___default().Suspense), { fallback: react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spinner)()).render()) },
                 react__WEBPACK_IMPORTED_MODULE_3___default().createElement(ErrorBoundary, null,
                     react__WEBPACK_IMPORTED_MODULE_3___default().createElement(OpaLoader, { opa_name: applet.type })))).frame(true).width('100%').height('100%'))).overflow('hidden')).background('white'))).background('#FAFBFC')));
+        }));
     };
     return AppletController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));

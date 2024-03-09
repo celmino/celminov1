@@ -21,7 +21,7 @@ import { EventBus } from "@tuval/core";
 import React from "react";
 import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
-import { SelectSiderDialog } from '@celmino/ui'
+import { SelectSiderDialog, useApplet } from '@celmino/ui'
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -43,13 +43,13 @@ export class ListController extends UIFormController {
         const navigate = useNavigate();
 
         const { workspaceId, appletId, viewId } = useParams();
-
-        const { document: applet } = useGetDocument({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId
-        });
+        const { applet } = useApplet();
+        /*  const { document: applet } = useGetDocument({
+             projectId: workspaceId,
+             databaseId: 'workspace',
+             collectionId: 'applets',
+             documentId: appletId
+         }); */
 
         /* const { documents: views, isLoading: isViewsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_views');
        
@@ -137,7 +137,7 @@ export class ListController extends UIFormController {
                                                                 )
                                                             },
                                                             onStageChange: (itemId, stageId) => {
-                                                             //   alert(itemId + ' ' + stageId)
+                                                                //   alert(itemId + ' ' + stageId)
                                                                 updateTask({
                                                                     databaseId: appletId,
                                                                     collectionId: 'listItems',
@@ -148,7 +148,7 @@ export class ListController extends UIFormController {
 
                                                                 })
                                                             },
-                                                            onStagePropsChanged:(stageId,stageProps) => {
+                                                            onStagePropsChanged: (stageId, stageProps) => {
                                                                 updateTask({
                                                                     databaseId: appletId,
                                                                     collectionId: 'listStatuses',

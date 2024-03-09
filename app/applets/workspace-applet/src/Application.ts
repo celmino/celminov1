@@ -4,6 +4,7 @@ import { SaveCollectionAction } from './dialogs/AddCollection/actions/SaveCollec
 import { SaveDocumentAction } from './dialogs/AddCollection/actions/SaveDocumentAction';
 import { SaveTextFieldAction } from './dialogs/AddTextAttributeDialog';
 import { RouteController } from './routes/+routes';
+import { TreeController } from './TreeController';
 
 const manifest = require('./manifest');
 
@@ -23,7 +24,10 @@ function App(manifest: any) {
 @App(manifest)
 export class ProcessMining {
     public GetMainController() {
-       return RouteController;
+        return {
+            tree: TreeController,
+            applet: RouteController
+        };
     }
 }
 

@@ -1,4 +1,8 @@
 import { RouteController } from './routes/+routes';
+import { WorkspaceTreeWidgetController } from './TreeController';
 export declare class ProcessMining {
-    GetMainController(): typeof RouteController;
+    GetMainController(): {
+        tree: typeof WorkspaceTreeWidgetController;
+        applet: typeof RouteController;
+    };
 }

@@ -37,7 +37,7 @@ export class CustomAppletTreeModuleController extends UIController {
         const isLoading = false;
         const { items } = this.props.data || {};
         const { organizationId, workspaceId, appletId, onItemSelected, item } = this.props.config || {};
-        const realm = useRealm();
+        const {realm} = useRealm();
 
         const organization = useOrganization(); // useGetCurrentOrganization();
 

@@ -31965,6 +31965,463 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./src/TreeController.tsx":
+/*!********************************!*\
+  !*** ./src/TreeController.tsx ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   WorkspaceTreeWidgetController: () => (/* binding */ WorkspaceTreeWidgetController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./resources/Icons */ "./src/resources/Icons.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+
+
+/* import { AddBoardDialog } from './dialogs/AddBoardDialog';
+import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
+import { AddFolderDialog } from './dialogs/AddFolderDialog';
+import { AddListDialog } from './dialogs/AddListDialog';
+import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
+import { AddWhiteboardDialog } from './dialogs/AddWhiteboardDialog'; */
+
+
+var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, appletId, 'wm_tree', [
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Query.equal('parent', parentId)
+    ]), items = _a.documents, isLoading = _a.isLoading;
+    var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items)(function (item) {
+        return item.type === 'applet' ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+            var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: item.$id }), applet = _a.document, isLoading = _a.isLoading;
+            return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)(applet['opa'])
+                    .config(__assign(__assign({}, ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)() || {})), { appletId: applet.$id })));
+        })).paddingLeft("".concat(20 * level, "px")) :
+            TreeNode({
+                title: item.name,
+                level: level,
+                nodeType: item.type,
+                isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.getListId)() === item.$id || (0,_utils__WEBPACK_IMPORTED_MODULE_5__.getDocumentId)() === item.$id || (0,_utils__WEBPACK_IMPORTED_MODULE_5__.getViewId)() === item.$id,
+                subNode: function (nodeType) { return subNodes(TreeNode, level + 1, nodeType, item.$id, workspaceId, appletId, onItemSelected); },
+                requestIcon: function (nodeType, selected, expanded) {
+                    switch (nodeType) {
+                        case 'list':
+                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarList', selected ? '#7b68ee' : '#151719', '18px', '18px')).foregroundColor('#7C828D');
+                        case 'board':
+                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.BoardIcon).foregroundColor('#7C828D');
+                        case 'folder':
+                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(expanded ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolder', '#151719', '18px', '18px')).foregroundColor('#7C828D');
+                        default:
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarDoc', selected ? '#7b68ee' : '#151719', '18px', '18px')));
+                    }
+                },
+                requestNavigation: function () {
+                    if (onItemSelected == null) {
+                        switch (item.type) {
+                            case 'folder':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/folder/").concat(item.$id));
+                                break;
+                            case 'list':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.$id));
+                                break;
+                            case 'board':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
+                                break;
+                            case 'document':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/document/").concat(item.$id));
+                                break;
+                            case 'whiteboard':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/whiteboard/").concat(item.$id));
+                                break;
+                        }
+                    }
+                    else {
+                        onItemSelected({
+                            workspaceId: workspaceId,
+                            appletId: appletId,
+                            item: item
+                        });
+                    }
+                },
+                requestMenu: function () {
+                    switch (item.type) {
+                        case 'folder':
+                            return [
+                                {
+                                    title: 'List',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarList', '#151719', '18px', '18px'),
+                                    // onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    type: 'Divider'
+                                },
+                                {
+                                    title: 'Document',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+                                    //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    title: 'Whiteboard',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarWhiteboards', '#151719', '18px', '18px'),
+                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    type: 'Divider'
+                                },
+                                {
+                                    title: 'Folder',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
+                                    //onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                            ];
+                        case 'list':
+                            return [
+                                {
+                                    title: 'Add view',
+                                    type: 'Title'
+                                },
+                                {
+                                    title: 'Table',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.TableIcon).foregroundColor('#7C828D'),
+                                    //onClick: () => DynoDialog.Show(AddListDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    title: 'Board',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.BoardIcon).foregroundColor('#7C828D'),
+                                    //onClick: () => DynoDialog.Show(AddBoardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    title: 'List',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.ListIcon).foregroundColor('#7C828D'),
+                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    title: 'Timeline',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.TimelineIcon).foregroundColor('#7C828D'),
+                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    title: 'Calendar',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.CalendarIcon).foregroundColor('#7C828D'),
+                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    title: 'Report',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.ReportIcon).foregroundColor('#7C828D'),
+                                    // onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    title: 'Feed',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.FeedIcon).foregroundColor('#7C828D'),
+                                    //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                                {
+                                    type: 'Divider'
+                                },
+                                {
+                                    title: 'Folder',
+                                    icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-sidebarFolderOpen', '#151719', '18px', '18px'),
+                                    // onClick: () => DynoDialog.Show(AddFolderDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                },
+                            ];
+                    }
+                    return null;
+                }
+            });
+    })));
+}); };
+function process(value) {
+    if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.string(value)) {
+        return value == undefined ? '' : value.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase();
+    }
+    else {
+        return '';
+    }
+}
+var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
+    __extends(WorkspaceTreeWidgetController, _super);
+    function WorkspaceTreeWidgetController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    WorkspaceTreeWidgetController.prototype.LoadView = function () {
+        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
+        var isLoading = false;
+        var items = (this.props.data || {}).items;
+        var _b = this.props.config || {}, organizationId = _b.organizationId, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
+        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _c.organization, isOrganizationLoading = _c.isLoading; // useGetCurrentOrganization();
+        var _d = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_5__.getAppletId)() === appletId), isOpen = _d[0], setIsOpen = _d[1];
+        var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_5__.getListId)();
+        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDocument)(workspaceId).updateDocument;
+        var updateDatabase = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useUpdateDatabase)(workspaceId).updateDatabase;
+        var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useCreateDocument)(workspaceId, appletId, 'wm_tree').createDocument;
+        var realm = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetRealm)({ realmId: workspaceId, enabled: true }).realm;
+        var _e = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }), applet = _e.document, isAppletLoading = _e.isLoading;
+        var setCanDrag = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useRealmTree)().setCanDrag;
+        return (isAppletLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
+                .config({
+                node: item,
+                workspaceId: workspaceId,
+                appletId: appletId,
+                appletName: item.name,
+                iconName: item.iconName,
+                iconCategory: item.iconCategory,
+                isEditing: isEditing,
+                isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_5__.isAppletSettings)(appletId) || (0,_utils__WEBPACK_IMPORTED_MODULE_5__.isAppletOnly)(appletId),
+                editingChanged: function (status) { return setIsEditing(status); },
+                titleChanged: function (title) {
+                    updateDatabase({
+                        databaseId: appletId,
+                        name: title
+                    }, function () {
+                        updateDocument({
+                            databaseId: 'workspace',
+                            collectionId: 'applets',
+                            documentId: appletId,
+                            data: {
+                                name: title
+                            }
+                        }, function () {
+                            updateDocument({
+                                databaseId: 'workspace',
+                                collectionId: 'ws_tree',
+                                documentId: item.$id,
+                                data: {
+                                    name: title
+                                }
+                            }, function () {
+                                _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem: item });
+                            });
+                        });
+                    });
+                },
+                subNodes: function (TreeNode, level, nodeType, parentId, workspaceId, appletId) {
+                    return subNodes(TreeNode, level, nodeType, parentId, workspaceId, appletId, onItemSelected);
+                },
+                requestMenu: function (node) {
+                    return [
+                        {
+                            title: 'Add view',
+                            type: 'Title'
+                        },
+                        {
+                            title: 'Table',
+                            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.TableIcon).foregroundColor('#7C828D'),
+                            //onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                        },
+                        {
+                            title: 'Board',
+                            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.BoardIcon).foregroundColor('#7C828D'),
+                            //onClick: () => DynoDialog.Show(AddBoardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                        },
+                        {
+                            title: 'List',
+                            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.ListIcon).foregroundColor('#7C828D'),
+                            //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                        },
+                        {
+                            title: 'Timeline',
+                            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.TimelineIcon).foregroundColor('#7C828D'),
+                            //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                        },
+                        {
+                            title: 'Calendar',
+                            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.CalendarIcon).foregroundColor('#7C828D'),
+                            //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                        },
+                        {
+                            title: 'Report',
+                            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.ReportIcon).foregroundColor('#7C828D'),
+                            //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                        },
+                        {
+                            title: 'Feed',
+                            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.FeedIcon).foregroundColor('#7C828D'),
+                            //onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                        },
+                        {
+                            type: 'Divider'
+                        },
+                        {
+                            title: 'Applet',
+                            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_4__.AppletIcon).foregroundColor('#7C828D'),
+                            onClick: function () {
+                                _celmino_ui__WEBPACK_IMPORTED_MODULE_1__.SelectAppletDialog.Show(workspaceId, appletId).then(function (applet) {
+                                    createTreeItem({
+                                        documentId: applet.$id,
+                                        data: {
+                                            name: applet.name,
+                                            path: "/",
+                                            parent: '-1',
+                                            type: 'applet'
+                                        }
+                                    }, function () { return void 0; });
+                                });
+                            }
+                        },
+                    ];
+                },
+                requestNavigation: function () {
+                    if (onItemSelected == null) {
+                        switch (item.type) {
+                            case 'applet':
+                                navigate("/app/".concat(process(organization.name), "-").concat(organization.$id, "/").concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet.name), "-").concat(appletId));
+                                break;
+                            case 'list':
+                                navigate("/app/".concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet), "-").concat(appletId, "/list/").concat(item.$id));
+                                break;
+                            case 'board':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
+                                break;
+                            case 'document':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/document/").concat(item.$id));
+                                break;
+                            case 'whiteboard':
+                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/whiteboard/").concat(item.$id));
+                                break;
+                        }
+                    }
+                    else {
+                        onItemSelected({
+                            workspaceId: workspaceId,
+                            appletId: appletId,
+                            item: item
+                        });
+                    }
+                },
+                requestEditMenu: function () { return [
+                    {
+                        title: 'Rename',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__edit', '#151719', '18px', '18px'),
+                        onClick: function () {
+                            // setCanDrag(false);
+                            setIsEditing(true);
+                        }
+                    },
+                    {
+                        title: 'Applet settings',
+                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                        onClick: function () { return navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/general")); }
+                    }
+                ]; }
+            }));
+    };
+    return WorkspaceTreeWidgetController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+//FormBuilder.injectAction('saveSpace', SaveSpaceAction);
+
+
+/***/ }),
+
+/***/ "./src/resources/Icons.tsx":
+/*!*********************************!*\
+  !*** ./src/resources/Icons.tsx ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletIcon: () => (/* binding */ AppletIcon),
+/* harmony export */   BoardIcon: () => (/* binding */ BoardIcon),
+/* harmony export */   CalendarIcon: () => (/* binding */ CalendarIcon),
+/* harmony export */   FeedIcon: () => (/* binding */ FeedIcon),
+/* harmony export */   GridIcon: () => (/* binding */ GridIcon),
+/* harmony export */   ListIcon: () => (/* binding */ ListIcon),
+/* harmony export */   ReportIcon: () => (/* binding */ ReportIcon),
+/* harmony export */   TableIcon: () => (/* binding */ TableIcon),
+/* harmony export */   TimelineIcon: () => (/* binding */ TimelineIcon)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var TableIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4 10a1.5 1.5 0 0 1 1.5-1.5H8a1.5 1.5 0 1 1 0 3H5.5A1.5 1.5 0 0 1 4 10ZM10.5 10A1.5 1.5 0 0 1 12 8.5h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5ZM4 14.5A1.5 1.5 0 0 1 5.5 13H8a1.5 1.5 0 0 1 0 3H5.5A1.5 1.5 0 0 1 4 14.5ZM10.5 14.5A1.5 1.5 0 0 1 12 13h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5ZM4 5.5A1.5 1.5 0 0 1 5.5 4H8a1.5 1.5 0 1 1 0 3H5.5A1.5 1.5 0 0 1 4 5.5ZM10.5 5.5A1.5 1.5 0 0 1 12 4h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5Z" })))); };
+var GridIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4 10a1.5 1.5 0 0 1 1.5-1.5H8a1.5 1.5 0 1 1 0 3H5.5A1.5 1.5 0 0 1 4 10ZM10.5 10A1.5 1.5 0 0 1 12 8.5h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5ZM4 14.5A1.5 1.5 0 0 1 5.5 13H8a1.5 1.5 0 0 1 0 3H5.5A1.5 1.5 0 0 1 4 14.5ZM10.5 14.5A1.5 1.5 0 0 1 12 13h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5ZM4 5.5A1.5 1.5 0 0 1 5.5 4H8a1.5 1.5 0 1 1 0 3H5.5A1.5 1.5 0 0 1 4 5.5ZM10.5 5.5A1.5 1.5 0 0 1 12 4h2.5a1.5 1.5 0 0 1 0 3H12a1.5 1.5 0 0 1-1.5-1.5Z" })))); };
+var BoardIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4 5.5a1.5 1.5 0 1 1 3 0v5a1.5 1.5 0 0 1-3 0v-5ZM8.5 5.5a1.5 1.5 0 1 1 3 0v8a1.5 1.5 0 0 1-3 0v-8ZM14.5 4A1.5 1.5 0 0 0 13 5.5v6a1.5 1.5 0 0 0 3 0v-6A1.5 1.5 0 0 0 14.5 4Z" })))); };
+var ListIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M5.496 4C4.67 4 4 4.672 4 5.5S4.67 7 5.496 7h9.008C15.33 7 16 6.328 16 5.5S15.33 4 14.504 4H5.496ZM8.488 8.5c-.826 0-1.496.672-1.496 1.5s.67 1.5 1.496 1.5h6.016C15.33 11.5 16 10.828 16 10s-.67-1.5-1.496-1.5H8.488ZM9.984 14.5c0-.828.67-1.5 1.497-1.5h3.023c.826 0 1.496.672 1.496 1.5s-.67 1.5-1.496 1.5H11.48a1.498 1.498 0 0 1-1.497-1.5Z" })))); };
+var TimelineIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M9 5.5A1.5 1.5 0 0 1 10.5 4h4a1.5 1.5 0 0 1 0 3h-4A1.5 1.5 0 0 1 9 5.5ZM4 14.5A1.5 1.5 0 0 1 5.5 13h4a1.5 1.5 0 0 1 0 3h-4A1.5 1.5 0 0 1 4 14.5ZM5.5 8.5a1.5 1.5 0 1 0 0 3h9a1.5 1.5 0 0 0 0-3h-9Z" })))); };
+var CalendarIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M12.8 5.6a1.6 1.6 0 1 1 3.2 0 1.6 1.6 0 0 1-3.2 0ZM4 10a1.6 1.6 0 1 1 3.2 0A1.6 1.6 0 0 1 4 10ZM4 14.4a1.6 1.6 0 1 1 3.2 0 1.6 1.6 0 0 1-3.2 0ZM10 8.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2ZM8.4 14.4a1.6 1.6 0 1 1 3.2 0 1.6 1.6 0 0 1-3.2 0ZM14.4 8.4a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2ZM10 4a1.6 1.6 0 1 0 0 3.2A1.6 1.6 0 0 0 10 4Z" })))); };
+var ReportIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M15.65 5a1.65 1.65 0 0 0-1.613 2l-2.812 3.4c-.057 0-.113.005-.169.011L9.893 9.206a1.65 1.65 0 1 0-3.26.174l-1.875 1.923a1.65 1.65 0 1 0 1.51 1.317l1.875-1.924a1.737 1.737 0 0 0 .389-.02l1.087 1.126a1.65 1.65 0 1 0 3.217-.21l2.723-3.294.091.002a1.65 1.65 0 0 0 0-3.3Z" })))); };
+var FeedIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M16 12V9c0-2.047.466-3.163 1.08-3.665.426-.35.92-.783.92-1.335a1 1 0 0 0-1-1H9a4 4 0 0 0-4 4v3c0 2.047-.466 3.163-1.08 3.665-.426.35-.92.783-.92 1.335a1 1 0 0 0 1 1h8a4 4 0 0 0 4-4ZM7 7a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Zm0 3a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Z" }))); };
+var AppletIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "20", height: "20", viewBox: "0 0 16 16", fill: "none" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { "clip-path": "url(#clip0_3619_49218)" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M0.799805 3.60005C2.3462 3.60005 3.5998 4.85365 3.5998 6.40005C3.5998 4.85365 4.85341 3.60005 6.3998 3.60005C4.85341 3.60005 3.5998 2.34645 3.5998 0.800049C3.5998 2.34645 2.3462 3.60005 0.799805 3.60005Z", fill: "url(#paint0_linear_3619_49218)", stroke: "url(#paint1_linear_3619_49218)", "stroke-width": "1.2", "stroke-linecap": "round", "stroke-linejoin": "round" }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.7998 10C7.67169 10 9.9998 12.3282 9.9998 15.2C9.9998 12.3282 12.3279 10 15.1998 10C12.3279 10 9.9998 7.67193 9.9998 4.80005C9.9998 7.67193 7.67169 10 4.7998 10Z", fill: "url(#paint2_linear_3619_49218)", stroke: "url(#paint3_linear_3619_49218)", "stroke-width": "1.2", "stroke-linecap": "round", "stroke-linejoin": "round" })),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("defs", null,
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { id: "paint0_linear_3619_49218", x1: "2.1998", y1: "0.488938", x2: "4.37758", y2: "6.71116", gradientUnits: "userSpaceOnUse" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { "stop-color": "#506CF0" }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { offset: "1", "stop-color": "#9E72D5" })),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { id: "paint1_linear_3619_49218", x1: "3.5998", y1: "0.800049", x2: "3.5998", y2: "6.40005", gradientUnits: "userSpaceOnUse" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { "stop-color": "#506CF0" }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { offset: "1", "stop-color": "#9E72D5" })),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { id: "paint2_linear_3619_49218", x1: "7.3998", y1: "4.22227", x2: "11.4442", y2: "15.7778", gradientUnits: "userSpaceOnUse" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { "stop-color": "#506CF0" }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { offset: "1", "stop-color": "#9E72D5" })),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("linearGradient", { id: "paint3_linear_3619_49218", x1: "9.9998", y1: "4.80005", x2: "9.9998", y2: "15.2", gradientUnits: "userSpaceOnUse" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { "stop-color": "#506CF0" }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("stop", { offset: "1", "stop-color": "#9E72D5" })),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("clipPath", { id: "clip0_3619_49218" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("rect", { width: "16", height: "16", fill: "white" }))))); };
+
+
+/***/ }),
+
 /***/ "./src/routes/+routes.ts":
 /*!*******************************!*\
   !*** ./src/routes/+routes.ts ***!
@@ -32222,12 +32679,13 @@ var ListController = /** @class */ (function (_super) {
     ListController.prototype.LoadView = function () {
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId, viewId = _a.viewId;
-        var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId
-        }).document;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useApplet)().applet;
+        /*  const { document: applet } = useGetDocument({
+             projectId: workspaceId,
+             databaseId: 'workspace',
+             collectionId: 'applets',
+             documentId: appletId
+         }); */
         /* const { documents: views, isLoading: isViewsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_views');
        
 
@@ -33123,6 +33581,125 @@ var WhiteboardController = /** @class */ (function (_super) {
     return WhiteboardController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
+
+
+/***/ }),
+
+/***/ "./src/utils.ts":
+/*!**********************!*\
+  !*** ./src/utils.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getAppletId: () => (/* binding */ getAppletId),
+/* harmony export */   getDocumentId: () => (/* binding */ getDocumentId),
+/* harmony export */   getListId: () => (/* binding */ getListId),
+/* harmony export */   getViewId: () => (/* binding */ getViewId),
+/* harmony export */   getWhiteboardId: () => (/* binding */ getWhiteboardId),
+/* harmony export */   isAppletOnly: () => (/* binding */ isAppletOnly),
+/* harmony export */   isAppletSettings: () => (/* binding */ isAppletSettings)
+/* harmony export */ });
+function isAppletSettings(appletId) {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/applet\/([^\/]+)\/settings/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1] === appletId;
+    }
+    else {
+        return;
+    }
+}
+function isAppletOnly(appletId) {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/applet\/([^\/]+)^\//;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1] === appletId;
+    }
+    else {
+        return;
+    }
+}
+function getAppletId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/applet\/([^\/]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
+function getListId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/list\/([^]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
+function getViewId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/view\/([^]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
+function getDocumentId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/document\/([^\/]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
+function getWhiteboardId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/whiteboard\/([^\/]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
 
 
 /***/ }),
@@ -34647,12 +35224,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes/+routes */ "./src/routes/+routes.ts");
 /* harmony import */ var _widget_ListStatusWidget__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./widget/ListStatusWidget */ "./src/widget/ListStatusWidget.tsx");
+/* harmony import */ var _TreeController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TreeController */ "./src/TreeController.tsx");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -34669,7 +35248,10 @@ var ProcessMining = /** @class */ (function () {
     function ProcessMining() {
     }
     ProcessMining.prototype.GetMainController = function () {
-        return _routes_routes__WEBPACK_IMPORTED_MODULE_1__.RouteController;
+        return {
+            tree: _TreeController__WEBPACK_IMPORTED_MODULE_3__.WorkspaceTreeWidgetController,
+            applet: _routes_routes__WEBPACK_IMPORTED_MODULE_1__.RouteController
+        };
     };
     ProcessMining = __decorate([
         App(manifest)

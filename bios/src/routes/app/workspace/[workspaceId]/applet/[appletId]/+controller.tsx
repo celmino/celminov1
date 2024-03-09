@@ -1,6 +1,7 @@
+import { AppletContext, useApplet } from '@celmino/ui';
 import { useGetDocument } from '@realmocean/sdk';
 import { ModuleLoader } from '@tuval/core';
-import { cTopLeading, HStack, ReactView, Spinner, Text, UIFormController, UIView, useEffect, useLocation, useParams, useState, VStack } from '@tuval/forms';
+import { cTopLeading, HStack, ReactView, Spinner, Text, UIFormController, UIView, UIViewBuilder, useEffect, useLocation, useParams, useState, VStack } from '@tuval/forms';
 import React, { Fragment } from 'react';
 import usePromise from "react-promise-suspense";
 //import { useGetApplet } from '@celmino/sdk';
@@ -70,8 +71,12 @@ export const OpaLoader = ({ opa_name }) => {
             ModuleLoader.LoadBundledModule(app_path_local, opa_name).then((_app: any) => {
                 if (_app != null) {
                     const app = new _app();
-                    AppCache[opa_name] = app.GetMainController();
-                    resolve(app.GetMainController());
+                    if (app.GetMainController()['applet'] != null) {
+                        AppCache[opa_name] = app.GetMainController()['applet'];
+                    } else {
+                        AppCache[opa_name] = app.GetMainController();
+                    }
+                    resolve(AppCache[opa_name]);
                 } else {
 
                 }
@@ -95,54 +100,63 @@ export class AppletController extends UIFormController {
 
     public override LoadView(): UIView {
 
-        const {workspaceId, appletId } = useParams();
-
-        const { document: applet, isLoading } = useGetDocument({
-            projectId:workspaceId,
-            databaseId:'workspace',
-            collectionId:'applets',
-            documentId: appletId
-        })
+        /*  const { workspaceId, appletId } = useParams();
+ 
+         const { document: applet, isLoading } = useGetDocument({
+             projectId: workspaceId,
+             databaseId: 'workspace',
+             collectionId: 'applets',
+             documentId: appletId
+         }) */
 
 
         return (
-            isLoading ? Text('Applet Loading...') :
-                VStack(
-                    HStack({ alignment: cTopLeading })(
-                        // LeftSideMenuView(''),
-                        HStack(
-                            //  NotesLeftMenu(note_id),
-                            VStack(
-                                VStack({ alignment: cTopLeading })(
-                                    HStack({ alignment: cTopLeading })(
-                                        ReactView(
-                                            <React.Suspense fallback={
-                                                <Fragment>
-                                                    {
-                                                        VStack(
-                                                            Spinner()
-                                                        ).render()
-                                                    }
-                                                </Fragment>
-                                            } >
-                                                <ErrorBoundary>
-                                                    <OpaLoader opa_name={applet.type}></OpaLoader>
-                                                </ErrorBoundary>
-                                            </React.Suspense>
-                                        ).frame(true).width('100%').height('100%')
-                                    )
-                                ).overflow('hidden')
+            AppletContext(() => {
+                const { applet } = useApplet();
+                return (
+                    VStack(
+                        HStack({ alignment: cTopLeading })(
+                            // LeftSideMenuView(''),
+                            HStack(
+                                //  NotesLeftMenu(note_id),
+                                VStack(
+                                    VStack({ alignment: cTopLeading })(
+                                        HStack({ alignment: cTopLeading })(
+                                            ReactView(
+                                                <React.Suspense fallback={
+                                                    <Fragment>
+                                                        {
+                                                            VStack(
+                                                                Spinner()
+                                                            ).render()
+                                                        }
+                                                    </Fragment>
+                                                } >
+                                                    <ErrorBoundary>
+                                                        <OpaLoader opa_name={applet.type}></OpaLoader>
+                                                    </ErrorBoundary>
+                                                </React.Suspense>
+                                            ).frame(true).width('100%').height('100%')
+                                        )
+                                    ).overflow('hidden')
 
 
 
-                            ).background('white')
-                        )
-                    ).background('#FAFBFC')
+                                ).background('white')
+                            )
+                        ).background('#FAFBFC')
 
+                    )
                 )
+            })
+
+
 
 
         )
+
+
+
 
     }
 

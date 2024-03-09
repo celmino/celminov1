@@ -10,6 +10,7 @@ import { Text } from "@realmocean/vibe";
 import { is } from "@tuval/core";
 import { WorkbenchIcons } from "../WorkbenchIcons";
 import { AddIcon, EditIcon } from "../Icons";
+import { useRealmTree } from "@celmino/ui";
 
 export interface TreeNodeProps {
     node?: any;
@@ -45,7 +46,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
     const [expanded, setExpanded] = useState(false);
 
     const menu = requestMenu(node)
-    const editMenu = requestEditMenu(node)
+    const editMenu = requestEditMenu(node);
 
     return (
         VStack({ alignment: cTopLeading })(
@@ -71,31 +72,33 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                                         titleChanged(newTitle)
                                     }
                                     editingChanged(false);
+                                   
                                 })
-                               
-                                 
-                               
-                              
-                               
-                                
+
+
+
+
+
+
                         )
+                            .draggable(true)
                             .height()
-                            
+
                             .onDragStart((e) => {
                                 e.preventDefault();
-                                 e.stopPropagation();
-                             })
-                             .onDragOver((e) => {
+                                e.stopPropagation();
+                            })
+                            .onDragOver((e) => {
                                 e.preventDefault();
-                                 e.stopPropagation();
-                             })
-                             .onDragLeave((e) => {
+                                e.stopPropagation();
+                            })
+                            .onDragLeave((e) => {
                                 e.preventDefault();
-                                 e.stopPropagation();
-                             })
+                                e.stopPropagation();
+                            })
                             .onClickAway(() => {
                                 if (title !== newTitle) {
-                                    titleChanged(newTitle)
+                                    titleChanged(newTitle);
                                     /*  updateDocument({
                                          databaseId: 'workspace',
                                          collectionId: 'applets',
@@ -106,6 +109,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                                      }); */
                                 }
                                 editingChanged(false);
+                               
                                 //setIsEditing(false);
                             })
 
@@ -135,16 +139,16 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                         .height(),
                 (menu == null && editMenu == null) ? Fragment() :
                     HStack({ alignment: cTrailing })(
-                       
-                            menu == null ? Fragment() :
-                                MenuButton()
-                                    .model(menu)
-                                    .icon(AddIcon),
-                            editMenu == null ? Fragment() :
-                                MenuButton()
-                                    .model(editMenu)
-                                    .icon(EditIcon)
-                        
+
+                        menu == null ? Fragment() :
+                            MenuButton()
+                                .model(menu)
+                                .icon(AddIcon),
+                        editMenu == null ? Fragment() :
+                            MenuButton()
+                                .model(editMenu)
+                                .icon(EditIcon)
+
                     )
                         .onClick((e) => {
                             e.preventDefault();
