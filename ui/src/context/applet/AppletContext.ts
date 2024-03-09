@@ -1,5 +1,5 @@
 import { UIView } from "@tuval/forms";
-import { AppletContextClass as AppletContextClass } from "./AppletContextClass";
+import { AppletContextClass } from "./AppletContextClass";
 
 
 

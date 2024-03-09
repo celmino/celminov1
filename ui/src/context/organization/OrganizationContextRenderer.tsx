@@ -15,7 +15,7 @@ function OrganizationContextRenderer({ control }: { control: OrganizationContext
 
 
     return (
-        is.function(control.vp_ChildFunc) || !isLoading ?
+        is.function(control.vp_ChildFunc) && !isLoading ?
             (
                 <OrganizationContextProvider.Provider value={organization}>
                     

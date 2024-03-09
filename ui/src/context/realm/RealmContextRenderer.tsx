@@ -15,7 +15,7 @@ function RealmContextRenderer({ control }: { control: RealmContextClass }) {
 
 
     return (
-        is.function(control.vp_ChildFunc) || !isLoading ?
+        is.function(control.vp_ChildFunc) && !isLoading ?
             (
                 <RealmContextProvider.Provider value={{realm}}>
 

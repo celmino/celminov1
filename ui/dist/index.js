@@ -18539,6 +18539,160 @@ const WorkspaceApplet = {
 
 /***/ }),
 
+/***/ "./src/context/applet/AppletContext.ts":
+/*!*********************************************!*\
+  !*** ./src/context/applet/AppletContext.ts ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletContext: () => (/* binding */ AppletContext)
+/* harmony export */ });
+/* harmony import */ var _AppletContextClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppletContextClass */ "./src/context/applet/AppletContextClass.tsx");
+
+function AppletContext(childFunc) {
+    return new _AppletContextClass__WEBPACK_IMPORTED_MODULE_0__.AppletContextClass().childFunc(childFunc);
+}
+
+
+/***/ }),
+
+/***/ "./src/context/applet/AppletContextClass.tsx":
+/*!***************************************************!*\
+  !*** ./src/context/applet/AppletContextClass.tsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletContextClass: () => (/* binding */ AppletContextClass)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _AppletContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppletContextRenderer */ "./src/context/applet/AppletContextRenderer.tsx");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+class AppletContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+    childFunc(value) {
+        this.vp_ChildFunc = value;
+        return this;
+    }
+    render() {
+        return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_AppletContextRenderer__WEBPACK_IMPORTED_MODULE_2__["default"], { control: this }));
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], AppletContextClass.prototype, "vp_ChildFunc", void 0);
+
+
+/***/ }),
+
+/***/ "./src/context/applet/AppletContextRenderer.tsx":
+/*!******************************************************!*\
+  !*** ./src/context/applet/AppletContextRenderer.tsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/applet/context.ts");
+/* harmony import */ var _realm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../realm */ "./src/context/realm/index.ts");
+
+
+
+
+
+
+class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController {
+    LoadView() {
+        const { control } = this.props;
+        return control.vp_ChildFunc();
+    }
+}
+const Proxy = ({ control }) => (control.vp_ChildFunc().render());
+function AppletContextRenderer({ control }) {
+    const { realm } = (0,_realm__WEBPACK_IMPORTED_MODULE_5__.useRealm)();
+    const { appletId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
+    const { document: applet, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({ projectId: realm.$id, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.AppletContextProvider.Provider, { value: { applet } },
+            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AppletContextRenderer);
+
+
+/***/ }),
+
+/***/ "./src/context/applet/context.ts":
+/*!***************************************!*\
+  !*** ./src/context/applet/context.ts ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletContextProvider: () => (/* binding */ AppletContextProvider),
+/* harmony export */   useApplet: () => (/* binding */ useApplet)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+const AppletContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+const useApplet = () => {
+    const e = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(AppletContextProvider);
+    return { applet: e === null || e === void 0 ? void 0 : e.applet };
+};
+
+
+/***/ }),
+
+/***/ "./src/context/applet/index.ts":
+/*!*************************************!*\
+  !*** ./src/context/applet/index.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletContext: () => (/* reexport safe */ _AppletContext__WEBPACK_IMPORTED_MODULE_0__.AppletContext),
+/* harmony export */   AppletContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.AppletContextProvider),
+/* harmony export */   useApplet: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.useApplet)
+/* harmony export */ });
+/* harmony import */ var _AppletContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppletContext */ "./src/context/applet/AppletContext.ts");
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/applet/context.ts");
+
+
+
+
+/***/ }),
+
 /***/ "./src/context/index.ts":
 /*!******************************!*\
   !*** ./src/context/index.ts ***!
@@ -18548,15 +18702,20 @@ const WorkspaceApplet = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletContext: () => (/* reexport safe */ _applet__WEBPACK_IMPORTED_MODULE_2__.AppletContext),
+/* harmony export */   AppletContextProvider: () => (/* reexport safe */ _applet__WEBPACK_IMPORTED_MODULE_2__.AppletContextProvider),
 /* harmony export */   OrganizationContext: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.OrganizationContext),
 /* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.OrganizationContextProvider),
 /* harmony export */   RealmContext: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.RealmContext),
 /* harmony export */   RealmContextProvider: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.RealmContextProvider),
+/* harmony export */   useApplet: () => (/* reexport safe */ _applet__WEBPACK_IMPORTED_MODULE_2__.useApplet),
 /* harmony export */   useOrganization: () => (/* reexport safe */ _organization__WEBPACK_IMPORTED_MODULE_0__.useOrganization),
 /* harmony export */   useRealm: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.useRealm)
 /* harmony export */ });
 /* harmony import */ var _organization__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./organization */ "./src/context/organization/index.ts");
 /* harmony import */ var _realm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./realm */ "./src/context/realm/index.ts");
+/* harmony import */ var _applet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./applet */ "./src/context/applet/index.ts");
+
 
 
 
@@ -18653,7 +18812,7 @@ function OrganizationContextRenderer({ control }) {
     var _a;
     const { organizationId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)();
     const { organization, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useGetOrganization)({ organizationId, hookEnabled: true });
-    return (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_ChildFunc) || !isLoading ?
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(control.vp_ChildFunc) && !isLoading ?
         (react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_context__WEBPACK_IMPORTED_MODULE_1__.OrganizationContextProvider.Provider, { value: organization }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : null);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrganizationContextRenderer);
@@ -18797,8 +18956,8 @@ function RealmContextRenderer({ control }) {
     var _a;
     const { workspaceId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
     const { realm, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetRealm)({ realmId: workspaceId, enabled: true });
-    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) || !isLoading ?
-        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: realm }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: { realm } }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RealmContextRenderer);
 
@@ -18823,8 +18982,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const RealmContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
 const useRealm = () => {
-    const realm = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(RealmContextProvider);
-    return realm;
+    const { realm } = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(RealmContextProvider);
+    return { realm };
 };
 
 
@@ -19164,6 +19323,8 @@ if (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.workerContext()) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AppletContext),
+/* harmony export */   AppletContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AppletContextProvider),
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorSelect),
 /* harmony export */   ColorView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorView),
 /* harmony export */   DynoDialog: () => (/* reexport safe */ _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__.DynoDialog),
@@ -19178,6 +19339,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.SelectSiderDialog),
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
 /* harmony export */   compileFormula: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.compileFormula),
+/* harmony export */   useApplet: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useApplet),
 /* harmony export */   useFormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.useFormBuilder),
 /* harmony export */   useOrganization: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useOrganization),
 /* harmony export */   useRealm: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useRealm)
