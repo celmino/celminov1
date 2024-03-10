@@ -10,6 +10,6 @@ export const AlreadyLoggedInGuard = () => {
    
     return (
         isLoading ? Wait() :
-            me != null ? UINavigate('/app') : Release()
+            me != null ? UINavigate('/@') : Release()
     )
 } 

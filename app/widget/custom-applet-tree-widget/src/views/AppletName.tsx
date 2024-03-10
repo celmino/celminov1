@@ -47,7 +47,7 @@ export function AppletName(listId: string, onClickCallback: Function) {
 
                 return (
                     mode === 'readonly' ?
-                        //UIRouteLink(team ? `/app/${getAppFullName()}/team/${team.id}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}` : `/app/${getAppFullName()}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}`)(
+                        //UIRouteLink(team ? `/@/${getAppFullName()}/team/${team.id}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}` : `/@/${getAppFullName()}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}`)(
 
                         HStack({ alignment: cLeading, spacing: 5 })(
                             HStack({ alignment: cLeading })(
@@ -75,7 +75,7 @@ export function AppletName(listId: string, onClickCallback: Function) {
                                         .height(32)
                                         .onClick(() => {
                                             //alert(getAppletUrl(access_type, applet.id))
-                                            navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${applet.$id}/view/${applet.defaultViewId}`);
+                                            navigate(`/@/workspace/${workspaceId}/applet/${appletId}/list/${applet.$id}/view/${applet.defaultViewId}`);
                                         })
 
                                 ,
@@ -191,9 +191,9 @@ export function AppletName(listId: string, onClickCallback: Function) {
                                                             invalidateResCache();
             
                                                             team ?
-                                                                navigate(`/app/${getAppFullName()}/team/${team.id}/workspace/${applet.workspace_id}`)
+                                                                navigate(`/@/${getAppFullName()}/team/${team.id}/workspace/${applet.workspace_id}`)
                                                                 :
-                                                                navigate(`/app/${getAppFullName()}/workspace/${applet.workspace_id}`);
+                                                                navigate(`/@/${getAppFullName()}/workspace/${applet.workspace_id}`);
             
                                                         }
                                                     }) */

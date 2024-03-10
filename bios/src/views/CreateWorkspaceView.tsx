@@ -21,7 +21,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
 
     return (
-        isOrganizationLoading ? Text('Loading...') : organization == null ? UINavigate('/app/organization/select') :
+        isOrganizationLoading ? Text('Loading...') : organization == null ? UINavigate('/@/organization/select') :
             UIViewBuilder(() => {
                 const { realms, isLoading: isRealmsLoading } = useListRealms(organization != null, [
                     Query.equal('teamId', organization.$id)
@@ -37,7 +37,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                             )
                                 .height()
                                 .onClick(() => {
-                                    navigate('/app/organization/select');
+                                    navigate('/@/organization/select');
                                 }),
 
                             Heading('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90),
@@ -58,7 +58,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         .background({ hover: darken('#7FE8D4', 0.05) })
                                         .onClick(() => {
                                            
-                                            navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
+                                            navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
                                         })
                                 )
                             ).padding(cHorizontal, 20).height().maxWidth('100%'),
@@ -120,7 +120,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
 
 
-                                        navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
+                                        navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
                                     })
                                 }),
 

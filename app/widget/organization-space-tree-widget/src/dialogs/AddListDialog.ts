@@ -179,7 +179,7 @@ export const AddListDialog = (workspaceId: string,appletId: string, parent: stri
                      },
                      {
                          "type": "navigate",
-                         "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                         "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                      }
                      ] */
                     /*  "successActions": [{
@@ -187,7 +187,7 @@ export const AddListDialog = (workspaceId: string,appletId: string, parent: stri
                  },
                  {
                      "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                  }
                  ] */
                 }

@@ -126,9 +126,9 @@ export class MeetingController extends UIController {
         if (firtsTopic && topicId == null) {
             return (
                /*  team_id ?
-                    UINavigate(`/app/${getAppFullName()}/team/${team_id}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}/meeting/${meeting_id}/topic/${firtsTopic.id}`)
+                    UINavigate(`/@/${getAppFullName()}/team/${team_id}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}/meeting/${meeting_id}/topic/${firtsTopic.id}`)
                     : */
-                    UINavigate(`/app/workspace/${workspaceId}/applet/${appletId}/space-${spaceId}/meeting-${meetingId}/topic-${firtsTopic.id}`)
+                    UINavigate(`/@/workspace/${workspaceId}/applet/${appletId}/space-${spaceId}/meeting-${meetingId}/topic-${firtsTopic.id}`)
             )
         } else
 
@@ -190,9 +190,9 @@ export class MeetingController extends UIController {
                                         onSelected: (item) => {
 
                                             /* team_id ?
-                                                navigate(`/app/${getAppFullName()}/team/${team_id}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}/meeting/${meeting_id}/topic/${item.id}`)
+                                                navigate(`/@/${getAppFullName()}/team/${team_id}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}/meeting/${meeting_id}/topic/${item.id}`)
                                                 : */
-                                                navigate(`/app/workspace/${workspaceId}/applet/${appletId}/space-${spaceId}/meeting-${meetingId}/topic-${item.id}`);
+                                                navigate(`/@/workspace/${workspaceId}/applet/${appletId}/space-${spaceId}/meeting-${meetingId}/topic-${item.id}`);
 
                                         },
                                         onChange: (items) => {

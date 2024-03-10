@@ -1,7 +1,7 @@
-import { RealmContext } from '@celmino/ui';
+import { AnonymousContext, RealmContext } from '@celmino/ui';
 import { ProjectContext, useCreateAnonymousSession } from "@realmocean/sdk";
 import { Text as VibeText } from "@realmocean/vibe";
-import { Button, DialogPosition, Fragment, HStack, Icon, Icons, PopupButton, ReactView, Spacer, SvgIcon, Text, UIController, UIScene, UIView, UIViewBuilder, VStack, cHorizontal, cLeading, cTop, cTopLeading, cVertical, useEffect, useNavigate, useParams, useState } from "@tuval/forms";
+import { Button, DialogPosition, Fragment, HStack, Icon, Icons, PopupButton, ReactView, Spacer, SvgIcon, Text, UIController, UIRouteOutlet, UIScene, UIView, UIViewBuilder, VStack, cHorizontal, cLeading, cTop, cTopLeading, cVertical, useEffect, useNavigate, useParams, useState } from "@tuval/forms";
 import React from "react";
 
 let _hideHandle = null;
@@ -22,15 +22,9 @@ export class PublicWorkspaceLayoutController extends UIController {
 
         const { workspaceId } = useParams();
         const navigate = useNavigate();
-        const [sessionCreated, setSessionCreated] = useState(false)
-
-        const { createAnonymousSession, isLoading } = useCreateAnonymousSession(workspaceId);
-
-        useEffect(() => createAnonymousSession(()=> setSessionCreated(true)), []);
-
 
         return (
-            !sessionCreated ? Fragment() :
+            AnonymousContext(() =>
                 ProjectContext(() =>
                     RealmContext(() =>
                         UIViewBuilder(() => {
@@ -119,7 +113,7 @@ export class PublicWorkspaceLayoutController extends UIController {
                                                     HStack(
                                                         // UIRouteOutlet().width('100%').height('100%')
                                                         //Desktop('')
-                                                        //  UIRouteOutlet().width('100%').height('100%')
+                                                        UIRouteOutlet().width('100%').height('100%')
                                                         // UIRouteOutlet().width('100%').height('100%')
                                                     )
                                                         .overflow('hidden')
@@ -205,9 +199,10 @@ export class PublicWorkspaceLayoutController extends UIController {
                                 )
                             )
                         })
-
                     )
+
                 ).projectId(workspaceId)
+            )
 
 
         )

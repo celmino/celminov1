@@ -139,7 +139,7 @@ export class SelectOpaDialog extends DialogView {
                     // alert(JSON.stringify(e))
                     this.InvalidateQuerie('space-folder-items')
                     this.OnOK();
-                    navigate(`/app/com.tuvalsoft.app.workbench/_opa/${this.last_added_opa_type}/${this.space_id}/${this.folder_id}/${e.id}/${e.id}`)
+                    navigate(`/@/com.tuvalsoft.app.workbench/_opa/${this.last_added_opa_type}/${this.space_id}/${this.folder_id}/${e.id}/${e.id}`)
 
                 })
         ) */

@@ -139,66 +139,6 @@ export const DownIcon = props => (
 
 const fontFamily = '-apple-system, "BlinkMacSystemFont", "Segoe UI", "Helvetica", "Apple Color Emoji", "Arial", sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"';
 
-/* const menuModel = [
-    {
-        title: 'Home',
-        icon: () => ReactView(<HomeIcon></HomeIcon>).frame(true),
-        link: '/app/com.celmino.app.test/home',
-        subItems: [
-            {
-                name: 'Overview',
-                icon: Icons.API,
-                link: '/app/com.tuvalsoft.app.organizationmanager/b'
-
-            },
-            {
-                name: 'Sessions',
-                icon: "\\e425",
-                link: '/app/com.tuvalsoft.app.organizationmanager/sessions'
-
-            }
-        ]
-    },
-    {
-        title: 'Project Spaces',
-        icon: () => ReactView(<HomeIcon></HomeIcon>).frame(true),
-        link: '/app/com.celmino.app.test/home',
-        subItems: [
-            {
-                name: 'Overview',
-                icon: Icons.API,
-                link: '/app/com.tuvalsoft.app.organizationmanager/b'
-
-            },
-            {
-                name: 'Sessions',
-                icon: "\\e425",
-                link: '/app/com.tuvalsoft.app.organizationmanager/sessions'
-
-            }
-        ]
-    },
-
-    {
-        title: 'Drafts',
-        icon: () => ReactView(<DraftIcon></DraftIcon>).frame(true),
-        link: '/app/com.tuvalsoft.app.workbench/drafts'
-    },
-    {
-        title: 'Teams',
-        icon: () => Icon(SvgIcon('svg-sprite-teams', '#A1A1A1')),
-        link: `/app/${getAppFullName()}/teams`
-    },
-    {
-        title: 'Whiteboards',
-        icon: () => ReactView(<WhiteboardIcon></WhiteboardIcon>).frame(true),
-        link: '/app/com.tuvalsoft.app.workbench/whiteboards'
-    }
-
-
-]
- */
-//#E8EAED
 const topMenu = [
     {
         title: 'Home',
@@ -377,11 +317,11 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                                                         })
                                                                         _hideHandle();
-                                                                        navigate(`/app/workspace/${realm.$id}`)
+                                                                        navigate(`/@/workspace/${realm.$id}`)
                                                                     })
                                                             ))
                                                         )
-                                                            .onClick(() => navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
+                                                            .onClick(() => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
                                                             .padding()
 
                                                     ).width(250)

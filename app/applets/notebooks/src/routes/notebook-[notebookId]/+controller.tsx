@@ -21,7 +21,7 @@ export class NotebookController extends UIController {
 
         return (
            
-            (noteId == null && notes?.length > 0) ? UINavigate(`/app/workspace/${workspaceId}/applet/com.celmino.applet.notebooks/notebook-${notebookId}/note-${notes[0].$id}`) :
+            (noteId == null && notes?.length > 0) ? UINavigate(`/@/workspace/${workspaceId}/applet/com.celmino.applet.notebooks/notebook-${notebookId}/note-${notes[0].$id}`) :
             HStack({ alignment: cTopLeading })(
                 NoteListView(),
                 UIRouteOutlet().width('100%').height('100%')

@@ -21,7 +21,7 @@ import { EventBus } from "@tuval/core";
 import React from "react";
 import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
-import { SelectSiderDialog, useApplet } from '@celmino/ui'
+import { SelectSiderDialog, useAccount, useApplet } from '@celmino/ui'
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -85,6 +85,8 @@ export class ListController extends UIFormController {
 
         const { createStringAttribute } = useCreateStringAttribute(workspaceId);
 
+        const { account } = useAccount();
+
         return (
 
             (isLoading || isStatusesLoading) ? Fragment() :
@@ -94,7 +96,7 @@ export class ListController extends UIFormController {
                             VStack({ alignment: cTopLeading })(
                                 //ActionPanel(),
                                 //ViewHeader('test'),
-
+                                Text(JSON.stringify(account)),
                                 VStack({ alignment: cTopLeading })(
                                     ActionPanel(),
                                     ViewHeader(applet?.name, (e) => {
@@ -138,7 +140,7 @@ export class ListController extends UIFormController {
                                                                         }, () => {
                                                                             resolve(true);
                                                                             /*  setTimeout(() =>
-                                                                                 navigate(`/app/workspace/${workspaceId}/applet/${appletId}`)
+                                                                                 navigate(`/@/workspace/${workspaceId}/applet/${appletId}`)
                                                                                  , 1000) */
                                                                         })
                                                                     })

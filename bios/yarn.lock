@@ -109,13 +109,13 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@celmino/ui@^1.0.36":
-  version "1.0.36"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.36.tgz"
-  integrity sha512-dIPKbxxWYCDhcPwtYcWFIuEFRbf7jJxovAsgrC3jH5mT4He8XEZUOsERFfQg+TY2b3/dOoumWxMBe031fEYqig==
+"@celmino/ui@^1.0.37":
+  version "1.0.37"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.37.tgz"
+  integrity sha512-pbrbMLtKt8qP6vYWreuYa7b6X4YAALln8vUKO3mnFDASeocuu/RXSM1+NxrRFm46unZRDoitp0UCFk6GCY/Btg==
   dependencies:
-    "@realmocean/antd" "^21.0.33"
-    "@realmocean/sdk" "1.0.82"
+    "@realmocean/antd" "^21.0.34"
+    "@realmocean/sdk" "^1.0.88"
     "@realmocean/vibe" "2.82.50"
     "@tuval/core" "^0.0.103"
     "@tuval/forms" "^1.0.178"
@@ -629,7 +629,7 @@
   dependencies:
     "@react-editor-js/core" "2.1.0"
 
-"@realmocean/antd@^21.0.30", "@realmocean/antd@^21.0.33":
+"@realmocean/antd@^21.0.30", "@realmocean/antd@^21.0.34":
   version "21.0.34"
   resolved "https://registry.npmjs.org/@realmocean/antd/-/antd-21.0.34.tgz"
   integrity sha512-0CaJvt91ieg3A0PXT8ZW7B2Nk3oZ7bl42ORMLngEZQXPDFluj1xKJywNp/JkjW0Muo97/3xKi6jXl+dDMWEDAA==
@@ -666,30 +666,6 @@
   version "1.0.88"
   resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.88.tgz"
   integrity sha512-PG++KEVKZSVkMQpGKDe+romp6FhJ7dbnDzxLH0UB7KDKCH5J6YSUyIBrox2XvE1L1Nlesg9OS6CusjSPpxcIQQ==
-  dependencies:
-    "@editorjs/image" "^2.8.1"
-    "@editorjs/inline-code" "^1.4.0"
-    "@editorjs/link" "^2.5.0"
-    "@editorjs/list" "^1.8.0"
-    "@editorjs/marker" "^1.3.0"
-    "@editorjs/paragraph" "^2.9.0"
-    "@editorjs/quote" "^2.5.0"
-    "@editorjs/raw" "^2.4.0"
-    "@editorjs/simple-image" "^1.5.1"
-    "@editorjs/table" "^2.2.2"
-    "@editorjs/warning" "^1.3.0"
-    "@tanstack/react-query" "^4.35.7"
-    css-loader "^6.8.1"
-    react-editor-js "^2.1.0"
-    sass "^1.63.6"
-    sass-loader "^13.3.2"
-    style-loader "^3.3.3"
-    to-string-loader "^1.2.0"
-
-"@realmocean/sdk@1.0.82":
-  version "1.0.82"
-  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.82.tgz"
-  integrity sha512-4kl1bwMaEsoe+8Ieely2m32/ZdVBmiGV2uOaIgog71ogpIvIrA5eWiywx67x6nEP5/DtDFzgf5uvEA9AbeMQpQ==
   dependencies:
     "@editorjs/image" "^2.8.1"
     "@editorjs/inline-code" "^1.4.0"

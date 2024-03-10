@@ -152,7 +152,7 @@ export const ActionPanel = () => UIViewBuilder(() => {
 
 
             /*  Text('Close').onClick(() => {
-                 navigate(`/app/${getAppFullName()}/team/${team_id}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}`)
+                 navigate(`/@/${getAppFullName()}/team/${team_id}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}`)
              }) */
         )
             .background('white')

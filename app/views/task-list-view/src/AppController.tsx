@@ -92,7 +92,7 @@ export class MyTestController extends UIFormController {
                                                             }, () => {
                                                                 resolve(true);
                                                                 setTimeout(() =>
-                                                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${listId}/view/${viewId}`)
+                                                                    navigate(`/@/workspace/${workspaceId}/applet/${appletId}/list/${listId}/view/${viewId}`)
                                                                     , 1000)
                                                             })
                                                         })

@@ -123,7 +123,7 @@ export class CollectionsController extends UIFormController {
                                     //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
                                     onChange: (index) => {
                                         setSelectedCollection(collections[index]);
-                                        navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet?.name)}-${appletId}/collections/${collections[index].name}-${collections[index].$id}`)
+                                        navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet?.name)}-${appletId}/collections/${collections[index].name}-${collections[index].$id}`)
                                         /*    setWidgetController({
                                                controller: class extends WidgetController { }
                                            });

@@ -22,7 +22,7 @@ import { PublicWorkspaceLayoutController } from "./app/workspace/@controller"
 export const Routes = () => {
     return (
         UIRoutes(
-            UIRoute('/app', LayoutController).children(
+            UIRoute('/@', LayoutController).children(
                 UIRoute('', DefaultWorkspaceController),
                 UIRoute('*', HomeController),
                 UIRoute(':organizationId', OrganizationController).children(

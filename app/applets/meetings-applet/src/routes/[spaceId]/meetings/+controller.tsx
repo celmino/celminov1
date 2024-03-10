@@ -127,9 +127,9 @@ export class MeetingsController extends UIController {
                                                                     .height()
                                                                     .onClick(() => {
                                                /*  team_id ?
-                                                    navigate(`/app/${getAppFullName()}/team/${team_id}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}/meeting/${meeting.id}`)
+                                                    navigate(`/@/${getAppFullName()}/team/${team_id}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}/meeting/${meeting.id}`)
                                                     :
-                                                    navigate(`/app/${getAppFullName()}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}/meeting/${meeting.id}`);
+                                                    navigate(`/@/${getAppFullName()}/workspace/${workspace_id}/folder/${folder_id}/applet/${applet_id}/scope/${scope_id}/view/${view_id}/meeting/${meeting.id}`);
             */                                 })
                                                                 ,
 
@@ -152,7 +152,7 @@ export class MeetingsController extends UIController {
                                                                 .cursor('pointer')
                                                                 .transition('color 0.3s')
                                                                 .onClick(()=> {
-                                                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/space-${spaceId}/meeting-${meeting.$id}`)
+                                                                    navigate(`/@/workspace/${workspaceId}/applet/${appletId}/space-${spaceId}/meeting-${meeting.$id}`)
                                                                     /* openDialog({
                                                                         title: meeting.name,
                                                                         view: Text(JSON.stringify(meeting))

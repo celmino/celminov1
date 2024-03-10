@@ -172,7 +172,7 @@ export class CustomAppletTreeModuleController extends UIController {
 
                             },
                             requestNavigation: () => {
-                                navigate(`/app/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}`)
+                                navigate(`/@/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}`)
                             },
                             requestEditMenu: () => [
 
@@ -184,12 +184,12 @@ export class CustomAppletTreeModuleController extends UIController {
                                 {
                                     title: 'Collections',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`/app/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}/collections`)
+                                    onClick: () => navigate(`/@/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}/collections`)
                                 },
                                 {
                                     title: 'Applet settings',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${appletId}/settings`)
+                                    onClick: () => navigate(`/@/workspace/${workspaceId}/applet/${appletId}/settings`)
                                 }
 
 

@@ -130,7 +130,7 @@ export const _AddNoteDialog = (workspaceId: string, notebookId: string) => {
                  },
                  {
                      "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                  }
                  ] */
                 /*  "successActions": [{
@@ -138,7 +138,7 @@ export const _AddNoteDialog = (workspaceId: string, notebookId: string) => {
              },
              {
                  "type": "navigate",
-                 "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                 "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
              }
              ] */
             }

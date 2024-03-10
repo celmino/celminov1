@@ -32478,7 +32478,7 @@ var RouteController = /** @class */ (function (_super) {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
                 return class_1;
-            }(_list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__._ListController))).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('list/:listId', _list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__.ListController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('view/:viewId', /** @class */ (function (_super) {
+            }(_list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__.ListController))).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('list/:listId', _list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__.ListController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('view/:viewId', /** @class */ (function (_super) {
                 __extends(class_2, _super);
                 function class_2() {
                     return _super !== null && _super.apply(this, arguments) || this;
@@ -32719,11 +32719,12 @@ var ListController = /** @class */ (function (_super) {
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
         ]).createDocument;
         var createStringAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateStringAttribute)(workspaceId).createStringAttribute;
+        var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useAccount)().account;
         return ((isLoading || isStatusesLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
             //ActionPanel(),
             //ViewHeader('test'),
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet === null || applet === void 0 ? void 0 : applet.name, function (e) {
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(JSON.stringify(account)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet === null || applet === void 0 ? void 0 : applet.name, function (e) {
                 /* updateDocument({
                     databaseId: appletId,
                     collectionId: 'wm_lists',

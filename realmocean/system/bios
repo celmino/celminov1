@@ -8860,7 +8860,7 @@ __webpack_require__.r(__webpack_exports__);
 var AlreadyLoggedInGuard = function () {
     var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetMe)('console'), me = _a.me, isLoading = _a.isLoading;
     return (isLoading ? (0,_views_WaitViewClass__WEBPACK_IMPORTED_MODULE_2__.Wait)() :
-        me != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UINavigate)('/app') : (0,_views_WaitViewClass__WEBPACK_IMPORTED_MODULE_2__.Release)());
+        me != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UINavigate)('/@') : (0,_views_WaitViewClass__WEBPACK_IMPORTED_MODULE_2__.Release)());
 };
 
 
@@ -8896,7 +8896,7 @@ var LoginGuard = function () {
 };
 var OrganizationGuard = function () {
     var organizationId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useParams)().organizationId;
-    return (organizationId ? (0,_views_WaitViewClass__WEBPACK_IMPORTED_MODULE_2__.Release)() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UINavigate)('/app/organization/select'));
+    return (organizationId ? (0,_views_WaitViewClass__WEBPACK_IMPORTED_MODULE_2__.Release)() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UINavigate)('/@/organization/select'));
 };
 var MembershipGuard = function () {
     var organizationId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useParams)().organizationId;
@@ -8907,7 +8907,7 @@ var MembershipGuard = function () {
     ]), memberships = _c.memberships, total = _c.total, isMembershipsLoading = _c.isLoading;
     var isMember = memberships.find(function (m) { return m.userId === (me === null || me === void 0 ? void 0 : me.$id); }) != null;
     return ((isLoading || isOrganizationLoading || isMembershipsLoading) ? (0,_views_WaitViewClass__WEBPACK_IMPORTED_MODULE_2__.Wait)() :
-        isMember ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UINavigate)("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/workspace/select")) :
+        isMember ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UINavigate)("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/workspace/select")) :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('You are not member of this organization'));
 };
 
@@ -9021,7 +9021,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Routes = function () {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoutes)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/app', _app_controller__WEBPACK_IMPORTED_MODULE_10__.LayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _app_default__WEBPACK_IMPORTED_MODULE_12__.DefaultWorkspaceController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('*', _app_controller__WEBPACK_IMPORTED_MODULE_3__.HomeController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':organizationId', _app_organization_organizationId_controller__WEBPACK_IMPORTED_MODULE_4__.OrganizationController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _app_workspace_controller__WEBPACK_IMPORTED_MODULE_2__.WorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _app_workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_11__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _app_workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_5__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _app_workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_5__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('workspace/select', _app_workspace_select_controller__WEBPACK_IMPORTED_MODULE_8__.WorkspaceSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('organization/select', _app_organization_select_controller__WEBPACK_IMPORTED_MODULE_9__.OrganizationSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _app_controller__WEBPACK_IMPORTED_MODULE_10__.PublicLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _app_workspace_controller__WEBPACK_IMPORTED_MODULE_16__.PublicWorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _app_workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_11__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _app_workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_5__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _app_workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_5__.AppletController)))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _LandingController__WEBPACK_IMPORTED_MODULE_15__.LandingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/login', _login_controller__WEBPACK_IMPORTED_MODULE_6__.LoginController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/signup', _signup_controller__WEBPACK_IMPORTED_MODULE_7__.SignupController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/logout', _logout_controller__WEBPACK_IMPORTED_MODULE_1__.LogoutController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/reset-password', _reset_password_controller__WEBPACK_IMPORTED_MODULE_13__.ResetPasswordController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/update-password', _update_password_controller__WEBPACK_IMPORTED_MODULE_14__.UpdatePasswordController)));
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoutes)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@', _app_controller__WEBPACK_IMPORTED_MODULE_10__.LayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _app_default__WEBPACK_IMPORTED_MODULE_12__.DefaultWorkspaceController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('*', _app_controller__WEBPACK_IMPORTED_MODULE_3__.HomeController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':organizationId', _app_organization_organizationId_controller__WEBPACK_IMPORTED_MODULE_4__.OrganizationController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _app_workspace_controller__WEBPACK_IMPORTED_MODULE_2__.WorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _app_workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_11__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _app_workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_5__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _app_workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_5__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('workspace/select', _app_workspace_select_controller__WEBPACK_IMPORTED_MODULE_8__.WorkspaceSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('organization/select', _app_organization_select_controller__WEBPACK_IMPORTED_MODULE_9__.OrganizationSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _app_controller__WEBPACK_IMPORTED_MODULE_10__.PublicLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _app_workspace_controller__WEBPACK_IMPORTED_MODULE_16__.PublicWorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _app_workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_11__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _app_workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_5__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _app_workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_5__.AppletController)))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _LandingController__WEBPACK_IMPORTED_MODULE_15__.LandingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/login', _login_controller__WEBPACK_IMPORTED_MODULE_6__.LoginController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/signup', _signup_controller__WEBPACK_IMPORTED_MODULE_7__.SignupController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/logout', _logout_controller__WEBPACK_IMPORTED_MODULE_1__.LogoutController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/reset-password', _reset_password_controller__WEBPACK_IMPORTED_MODULE_13__.ResetPasswordController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/update-password', _update_password_controller__WEBPACK_IMPORTED_MODULE_14__.UpdatePasswordController)));
 };
 
 
@@ -9113,7 +9113,7 @@ var LandingController = /** @class */ (function (_super) {
     LandingController.prototype.LoadView = function () {
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
         var subDomain = (0,_hooks_useGetSubdomain__WEBPACK_IMPORTED_MODULE_3__.useGetSubdomain)();
-        return (!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(subDomain) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/app') :
+        return (!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(subDomain) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/@') :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
             // Header
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(LeftLogo, null))).width().height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Log in')
@@ -9346,66 +9346,6 @@ var SearchIcon = function (props) { return (react__WEBPACK_IMPORTED_MODULE_5___d
 var DownIcon = function (props) { return (react__WEBPACK_IMPORTED_MODULE_5___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", fill: "currentColor", "aria-hidden": "true" },
     react__WEBPACK_IMPORTED_MODULE_5___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M5.434 7.434a.8.8 0 0 1 1.132 0L10 10.87l3.434-3.435a.8.8 0 0 1 1.132 1.132l-4 4a.8.8 0 0 1-1.132 0l-4-4a.8.8 0 0 1 0-1.132Z" }))); };
 var fontFamily = '-apple-system, "BlinkMacSystemFont", "Segoe UI", "Helvetica", "Apple Color Emoji", "Arial", sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"';
-/* const menuModel = [
-    {
-        title: 'Home',
-        icon: () => ReactView(<HomeIcon></HomeIcon>).frame(true),
-        link: '/app/com.celmino.app.test/home',
-        subItems: [
-            {
-                name: 'Overview',
-                icon: Icons.API,
-                link: '/app/com.tuvalsoft.app.organizationmanager/b'
-
-            },
-            {
-                name: 'Sessions',
-                icon: "\\e425",
-                link: '/app/com.tuvalsoft.app.organizationmanager/sessions'
-
-            }
-        ]
-    },
-    {
-        title: 'Project Spaces',
-        icon: () => ReactView(<HomeIcon></HomeIcon>).frame(true),
-        link: '/app/com.celmino.app.test/home',
-        subItems: [
-            {
-                name: 'Overview',
-                icon: Icons.API,
-                link: '/app/com.tuvalsoft.app.organizationmanager/b'
-
-            },
-            {
-                name: 'Sessions',
-                icon: "\\e425",
-                link: '/app/com.tuvalsoft.app.organizationmanager/sessions'
-
-            }
-        ]
-    },
-
-    {
-        title: 'Drafts',
-        icon: () => ReactView(<DraftIcon></DraftIcon>).frame(true),
-        link: '/app/com.tuvalsoft.app.workbench/drafts'
-    },
-    {
-        title: 'Teams',
-        icon: () => Icon(SvgIcon('svg-sprite-teams', '#A1A1A1')),
-        link: `/app/${getAppFullName()}/teams`
-    },
-    {
-        title: 'Whiteboards',
-        icon: () => ReactView(<WhiteboardIcon></WhiteboardIcon>).frame(true),
-        link: '/app/com.tuvalsoft.app.workbench/whiteboards'
-    }
-
-
-]
- */
-//#E8EAED
 var topMenu = [
     {
         title: 'Home',
@@ -9512,8 +9452,8 @@ var LeftSideMenuView = function (selectedItem) {
                                 prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { workspace: realm.$id })
                             });
                             _hideHandle();
-                            navigate("/app/workspace/".concat(realm.$id));
-                        })); }), false)).onClick(function () { return navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_7__.urlFriendly)(organization.name), "-").concat(organization.$id, "/workspace/select")); })
+                            navigate("/@/workspace/".concat(realm.$id));
+                        })); }), false)).onClick(function () { return navigate("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_7__.urlFriendly)(organization.name), "-").concat(organization.$id, "/workspace/select")); })
                             .padding()).width(250));
                     }))
                         .hideHandle(function (hideHandle) { return _hideHandle = hideHandle; })
@@ -10165,8 +10105,8 @@ var WorkspaceLayoutController = /** @class */ (function (_super) {
                     return ((!isMembershipLoading && memberships.length === 0) ? (0,_views_CreateOrganizationView__WEBPACK_IMPORTED_MODULE_5__.CreateOrganizationView)() :
                         isRealmsLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Realms loading...') :
                             realms.length === 0 ? (0,_views_CreateWorkspaceView__WEBPACK_IMPORTED_MODULE_6__.CreateWorkspaceView)() :
-                                (organizationId == null && workspaceId == null && !_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.nullOrEmpty(me === null || me === void 0 ? void 0 : me.prefs.workspace)) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/app/workspace/".concat(me === null || me === void 0 ? void 0 : me.prefs.workspace)) :
-                                    (organizationId == null && workspaceId == null && realms.length > 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/app/workspace/".concat(realms[0].$id)) :
+                                (organizationId == null && workspaceId == null && !_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.nullOrEmpty(me === null || me === void 0 ? void 0 : me.prefs.workspace)) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/@/workspace/".concat(me === null || me === void 0 ? void 0 : me.prefs.workspace)) :
+                                    (organizationId == null && workspaceId == null && realms.length > 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/@/workspace/".concat(realms[0].$id)) :
                                         isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Loading...') :
                                             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
                                                 return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIScene)(isError ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)('/login') :
@@ -10188,7 +10128,6 @@ var WorkspaceLayoutController = /** @class */ (function (_super) {
                                                                 .cornerRadius(6)
                                                                 .background({ hover: '#ECEEEF' })).padding(5),
                                                             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('ORGANIZATION(S)').fontSize(12)).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cVertical, 5)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ForEach)(teams)(function (team) {
-                                                            // UIRouteLink(`/app/organization/${team.$id}`)(
                                                             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(team.name)).allHeight(32)
                                                                 .cursor('pointer')
                                                                 .background({ hover: '#F0F1F3' })
@@ -10200,7 +10139,7 @@ var WorkspaceLayoutController = /** @class */ (function (_super) {
                                                                     updatePrefs({
                                                                         prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { organization: team.$id })
                                                                     }, function () {
-                                                                        navigate("/app/organization/".concat(team.$id));
+                                                                        navigate("/@/organization/".concat(team.$id));
                                                                     });
                                                                 }
                                                                 else {
@@ -10246,7 +10185,6 @@ var WorkspaceLayoutController = /** @class */ (function (_super) {
                                                                 .cornerRadius(6)
                                                                 .background({ hover: '#ECEEEF' })).padding(5),
                                                             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('ORGANIZATION(S)').fontSize(12)).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cVertical, 5)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ForEach)(teams)(function (team) {
-                                                            // UIRouteLink(`/app/organization/${team.$id}`)(
                                                             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)(team.name)).allHeight(32)
                                                                 .cursor('pointer')
                                                                 .background({ hover: '#F0F1F3' })
@@ -10258,7 +10196,7 @@ var WorkspaceLayoutController = /** @class */ (function (_super) {
                                                                     updatePrefs({
                                                                         prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { organization: team.$id })
                                                                     }, function () {
-                                                                        navigate("/app/organization/".concat(team.$id));
+                                                                        navigate("/@/organization/".concat(team.$id));
                                                                     });
                                                                 }
                                                                 else {
@@ -10355,11 +10293,8 @@ var PublicWorkspaceLayoutController = /** @class */ (function (_super) {
     PublicWorkspaceLayoutController.prototype.LoadView = function () {
         var workspaceId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useParams)().workspaceId;
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useState)(false), sessionCreated = _a[0], setSessionCreated = _a[1];
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateAnonymousSession)(workspaceId), createAnonymousSession = _b.createAnonymousSession, isLoading = _b.isLoading;
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () { return createAnonymousSession(function () { return setSessionCreated(true); }); }, []);
-        return (!sessionCreated ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)() :
-            (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.ProjectContext)(function () {
+        return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AnonymousContext)(function () {
+            return (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.ProjectContext)(function () {
                 return (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.RealmContext)(function () {
                     return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
                         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
@@ -10390,7 +10325,7 @@ var PublicWorkspaceLayoutController = /** @class */ (function (_super) {
                                 .foregroundColor('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)(
                             // UIRouteOutlet().width('100%').height('100%')
                             //Desktop('')
-                            //  UIRouteOutlet().width('100%').height('100%')
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIRouteOutlet)().width('100%').height('100%')
                             // UIRouteOutlet().width('100%').height('100%')
                             )
                                 .overflow('hidden')
@@ -10420,7 +10355,8 @@ var PublicWorkspaceLayoutController = /** @class */ (function (_super) {
                         }));
                     });
                 });
-            }).projectId(workspaceId));
+            }).projectId(workspaceId);
+        }));
     };
     return PublicWorkspaceLayoutController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIController));
@@ -10561,18 +10497,12 @@ var OpaLoader = function (_a) {
     //const { opa_name } = useParams();
     //let opa_name = 'com.tuvalsoft.opa.task';
     var location = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
-    /* if (`/app/${app_name}` === location.pathname && Paths[app_name] != null && Paths[app_name] !== `/app/${app_name}`) {
-        console.log(`/app/${app_name}` === location.pathname)
-        return (<Navigate to={Paths[app_name]}></Navigate>)
-    } else {
-        Paths[app_name] = location.pathname;
-    } */
     var controllerPromise = new Promise(function (resolve, reject) {
         if (AppCache[opa_name]) {
             resolve(AppCache[opa_name]);
         }
         else {
-            var app_path = "/realmocean/store/app/open-testing/".concat(opa_name);
+            var app_path = "/realmocean/store/@/open-testing/".concat(opa_name);
             // alert(app_path)
             var app_path_local = "/system/".concat(opa_name);
             _tuval_core__WEBPACK_IMPORTED_MODULE_1__.ModuleLoader.LoadBundledModule(app_path_local, opa_name).then(function (_app) {
@@ -10732,7 +10662,7 @@ var WorkspaceSelectController = /** @class */ (function (_super) {
     WorkspaceSelectController.prototype.LoadView = function () {
         var _a = (0,_hooks_useGetOrganizationId__WEBPACK_IMPORTED_MODULE_2__.useGetOrganizationId)(), organizationId = _a.organizationId, isLoading = _a.isLoading;
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
-            organizationId == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/app/organization/select') :
+            organizationId == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/@/organization/select') :
                 (0,_views_CreateWorkspaceView__WEBPACK_IMPORTED_MODULE_1__.CreateWorkspaceView)());
     };
     return WorkspaceSelectController;
@@ -10888,7 +10818,7 @@ var LoginController = /** @class */ (function (_super) {
             .background('white')
             .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
             .onClick(function () {
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Accounts.createOAuth2Session("google", "".concat(window.location.protocol, "//").concat(window.location.host, "/app"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Accounts.createOAuth2Session("google", "".concat(window.location.protocol, "//").concat(window.location.host, "/@"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
         }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(MicrosoftLogo), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Sign in with Microsoft').fontFamily('"Graphik Regular", sans-serif').fontSize(20)).height(48).width('100%')
             .minWidth('32rem')
             .maxWidth('40rem')
@@ -10896,7 +10826,7 @@ var LoginController = /** @class */ (function (_super) {
             .background('white')
             .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
             .onClick(function () {
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Accounts.createOAuth2Session("microsoft", "".concat(window.location.protocol, "//").concat(window.location.host, "/app"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Accounts.createOAuth2Session("microsoft", "".concat(window.location.protocol, "//").concat(window.location.host, "/@"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
         })).height().width().paddingTop('3rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('OR').padding('0 20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)')).padding('2.4rem 0').maxWidth('40rem').height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().fontSize('1.8rem')
             .allHeight(40)
             //  .placeholder('Enter your email')
@@ -11226,7 +11156,7 @@ var SignupController = /** @class */ (function (_super) {
                                         prefs: __assign(__assign({}, ((account === null || account === void 0 ? void 0 : account.prefs) ? account === null || account === void 0 ? void 0 : account.prefs : {})), { organization: team.$id })
                                     }, function () {
                                         deleteCache();
-                                        navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_2__.urlFriendly)(organization.name), "-").concat(organization.$id, "/workspace/select"));
+                                        navigate("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_2__.urlFriendly)(organization.name), "-").concat(organization.$id, "/workspace/select"));
                                     });
                                     return [3 /*break*/, 3];
                                 case 2:
@@ -11432,11 +11362,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _utils_urlFriendly__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/urlFriendly */ "./src/utils/urlFriendly.ts");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_urlFriendly__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/urlFriendly */ "./src/utils/urlFriendly.ts");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -11491,21 +11419,20 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
-
 var CelminoLogoText = function (_a) {
     var _b = _a === void 0 ? {} : _a, _c = _b.width, width = _c === void 0 ? 200 : _c, _d = _b.height, height = _d === void 0 ? 30 : _d;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement("svg", { width: width, viewBox: "1.7000000476837158 -35.900001525878906 248.24000549316406 36.400001525878906", height: height, "data-palette-color": "#233565" },
-        react__WEBPACK_IMPORTED_MODULE_5___default().createElement("path", { d: "M19.7 0.5L19.7 0.5Q16.25 0.5 13.03-0.3 9.8-1.1 7.25-3.1 4.7-5.1 3.2-8.65 1.7-12.2 1.7-17.7L1.7-17.7Q1.7-22.65 3.15-26.13 4.6-29.6 7.1-31.75 9.6-33.9 12.85-34.9 16.1-35.9 19.7-35.9L19.7-35.9Q22.25-35.9 24.68-35.5 27.1-35.1 28.2-34.6L28.2-34.6 34.25-29.55 29.25-21.3 19.7-25.7Q18-25.7 16.53-24.78 15.05-23.85 14.13-22.08 13.2-20.3 13.2-17.7L13.2-17.7Q13.2-14.4 14.23-12.63 15.25-10.85 17.18-10.2 19.1-9.55 21.75-9.55L21.75-9.55Q24.3-9.55 26.58-10.08 28.85-10.6 30.6-11.3 32.35-12 33.25-12.5L33.25-12.5 33.25-2.5Q32.25-2 30.43-1.28 28.6-0.55 25.93-0.03 23.25 0.5 19.7 0.5ZM67.7 0L39.75 0 38.75-3 39.75-8 39.75-35.4 65.5-35.4 68-33.9 64.7-25.4 60.2-25.9 50.85-25.9 50.85-21.9 63.2-21.9 63.2-13.65 56.3-13.65 50.85-14.15 50.85-9.5 64.7-9.5 70.65-3.2 67.7 0ZM100.6 0L74.65 0 73.65-3 74.65-8 74.65-35.4 85.65-35.4 85.65-16.35 85.15-9.5 86.15-9.5 95.1-10 98.65-10.5 103.05-3.2 100.6 0ZM118.74 0L107.04 0 107.04-27.35 106.04-32.35 107.09-35.35 118.74-35.35 128.54-17.85 129.54-17.85 137.64-35.35 149.59-35.35 150.09-32.35 149.59-27.55 149.59 0 138.54 0 138.69-4.25 138.69-18.2 138.14-18.2 136.24-12.95 132.64-5 124.64-5 118.74-18.2 118.24-18.2 118.24-14.15 118.74 0ZM167.64 0L156.59 0 156.59-27.4 156.09-32.4 156.59-35.4 167.64-35.4 167.64 0ZM186.24 0L174.64 0 174.64-27.35 173.64-32.35 174.64-35.35 184.69-35.35 194.79-22.75 197.19-18.6 197.69-18.6 197.69-35.35 209.24-35.35 209.24-32.35 208.74-27.35 208.74 0 198.79 0 186.24-17.1 185.74-17.1 185.74-14.1 186.24 0ZM231.94 0.5L231.94 0.5Q228.74 0.5 225.56-0.28 222.39-1.05 219.76-3.05 217.14-5.05 215.54-8.6 213.94-12.15 213.94-17.7L213.94-17.7Q213.94-23.25 215.54-26.8 217.14-30.35 219.76-32.35 222.39-34.35 225.56-35.13 228.74-35.9 231.94-35.9L231.94-35.9Q235.14-35.9 238.31-35.1 241.49-34.3 244.11-32.3 246.74-30.3 248.34-26.75 249.94-23.2 249.94-17.7L249.94-17.7Q249.94-12.2 248.34-8.65 246.74-5.1 244.11-3.1 241.49-1.1 238.31-0.3 235.14 0.5 231.94 0.5ZM231.94-9.5L231.94-9.5Q235.19-9.5 236.84-11.48 238.49-13.45 238.49-17.7L238.49-17.7Q238.49-21.9 236.84-23.9 235.19-25.9 231.94-25.9L231.94-25.9Q225.44-25.9 225.44-17.7L225.44-17.7Q225.44-13.5 227.06-11.5 228.69-9.5 231.94-9.5Z", opacity: "1", transform: "matrix(1,0,0,1,0,0)", fill: "#233565", className: "wordmark-text-0", "data-fill-palette-color": "primary" }))));
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement("svg", { width: width, viewBox: "1.7000000476837158 -35.900001525878906 248.24000549316406 36.400001525878906", height: height, "data-palette-color": "#233565" },
+        react__WEBPACK_IMPORTED_MODULE_4___default().createElement("path", { d: "M19.7 0.5L19.7 0.5Q16.25 0.5 13.03-0.3 9.8-1.1 7.25-3.1 4.7-5.1 3.2-8.65 1.7-12.2 1.7-17.7L1.7-17.7Q1.7-22.65 3.15-26.13 4.6-29.6 7.1-31.75 9.6-33.9 12.85-34.9 16.1-35.9 19.7-35.9L19.7-35.9Q22.25-35.9 24.68-35.5 27.1-35.1 28.2-34.6L28.2-34.6 34.25-29.55 29.25-21.3 19.7-25.7Q18-25.7 16.53-24.78 15.05-23.85 14.13-22.08 13.2-20.3 13.2-17.7L13.2-17.7Q13.2-14.4 14.23-12.63 15.25-10.85 17.18-10.2 19.1-9.55 21.75-9.55L21.75-9.55Q24.3-9.55 26.58-10.08 28.85-10.6 30.6-11.3 32.35-12 33.25-12.5L33.25-12.5 33.25-2.5Q32.25-2 30.43-1.28 28.6-0.55 25.93-0.03 23.25 0.5 19.7 0.5ZM67.7 0L39.75 0 38.75-3 39.75-8 39.75-35.4 65.5-35.4 68-33.9 64.7-25.4 60.2-25.9 50.85-25.9 50.85-21.9 63.2-21.9 63.2-13.65 56.3-13.65 50.85-14.15 50.85-9.5 64.7-9.5 70.65-3.2 67.7 0ZM100.6 0L74.65 0 73.65-3 74.65-8 74.65-35.4 85.65-35.4 85.65-16.35 85.15-9.5 86.15-9.5 95.1-10 98.65-10.5 103.05-3.2 100.6 0ZM118.74 0L107.04 0 107.04-27.35 106.04-32.35 107.09-35.35 118.74-35.35 128.54-17.85 129.54-17.85 137.64-35.35 149.59-35.35 150.09-32.35 149.59-27.55 149.59 0 138.54 0 138.69-4.25 138.69-18.2 138.14-18.2 136.24-12.95 132.64-5 124.64-5 118.74-18.2 118.24-18.2 118.24-14.15 118.74 0ZM167.64 0L156.59 0 156.59-27.4 156.09-32.4 156.59-35.4 167.64-35.4 167.64 0ZM186.24 0L174.64 0 174.64-27.35 173.64-32.35 174.64-35.35 184.69-35.35 194.79-22.75 197.19-18.6 197.69-18.6 197.69-35.35 209.24-35.35 209.24-32.35 208.74-27.35 208.74 0 198.79 0 186.24-17.1 185.74-17.1 185.74-14.1 186.24 0ZM231.94 0.5L231.94 0.5Q228.74 0.5 225.56-0.28 222.39-1.05 219.76-3.05 217.14-5.05 215.54-8.6 213.94-12.15 213.94-17.7L213.94-17.7Q213.94-23.25 215.54-26.8 217.14-30.35 219.76-32.35 222.39-34.35 225.56-35.13 228.74-35.9 231.94-35.9L231.94-35.9Q235.14-35.9 238.31-35.1 241.49-34.3 244.11-32.3 246.74-30.3 248.34-26.75 249.94-23.2 249.94-17.7L249.94-17.7Q249.94-12.2 248.34-8.65 246.74-5.1 244.11-3.1 241.49-1.1 238.31-0.3 235.14 0.5 231.94 0.5ZM231.94-9.5L231.94-9.5Q235.19-9.5 236.84-11.48 238.49-13.45 238.49-17.7L238.49-17.7Q238.49-21.9 236.84-23.9 235.19-25.9 231.94-25.9L231.94-25.9Q225.44-25.9 225.44-17.7L225.44-17.7Q225.44-13.5 227.06-11.5 228.69-9.5 231.94-9.5Z", opacity: "1", transform: "matrix(1,0,0,1,0,0)", fill: "#233565", className: "wordmark-text-0", "data-fill-palette-color": "primary" }))));
 };
 var CelminoLogoText1 = function (_a) {
     var _b = _a === void 0 ? {} : _a, _c = _b.width, width = _c === void 0 ? 200 : _c, _d = _b.height, height = _d === void 0 ? 30 : _d;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement("svg", { width: width, viewBox: "1.7000000476837158 -35.900001525878906 248.24000549316406 36.400001525878906", height: height, "data-palette-color": "#233565" },
-        react__WEBPACK_IMPORTED_MODULE_5___default().createElement("path", { d: "M19.7 0.5L19.7 0.5Q16.25 0.5 13.03-0.3 9.8-1.1 7.25-3.1 4.7-5.1 3.2-8.65 1.7-12.2 1.7-17.7L1.7-17.7Q1.7-22.65 3.15-26.13 4.6-29.6 7.1-31.75 9.6-33.9 12.85-34.9 16.1-35.9 19.7-35.9L19.7-35.9Q22.25-35.9 24.68-35.5 27.1-35.1 28.2-34.6L28.2-34.6 34.25-29.55 29.25-21.3 19.7-25.7Q18-25.7 16.53-24.78 15.05-23.85 14.13-22.08 13.2-20.3 13.2-17.7L13.2-17.7Q13.2-14.4 14.23-12.63 15.25-10.85 17.18-10.2 19.1-9.55 21.75-9.55L21.75-9.55Q24.3-9.55 26.58-10.08 28.85-10.6 30.6-11.3 32.35-12 33.25-12.5L33.25-12.5 33.25-2.5Q32.25-2 30.43-1.28 28.6-0.55 25.93-0.03 23.25 0.5 19.7 0.5ZM67.7 0L39.75 0 38.75-3 39.75-8 39.75-35.4 65.5-35.4 68-33.9 64.7-25.4 60.2-25.9 50.85-25.9 50.85-21.9 63.2-21.9 63.2-13.65 56.3-13.65 50.85-14.15 50.85-9.5 64.7-9.5 70.65-3.2 67.7 0ZM100.6 0L74.65 0 73.65-3 74.65-8 74.65-35.4 85.65-35.4 85.65-16.35 85.15-9.5 86.15-9.5 95.1-10 98.65-10.5 103.05-3.2 100.6 0ZM118.74 0L107.04 0 107.04-27.35 106.04-32.35 107.09-35.35 118.74-35.35 128.54-17.85 129.54-17.85 137.64-35.35 149.59-35.35 150.09-32.35 149.59-27.55 149.59 0 138.54 0 138.69-4.25 138.69-18.2 138.14-18.2 136.24-12.95 132.64-5 124.64-5 118.74-18.2 118.24-18.2 118.24-14.15 118.74 0ZM167.64 0L156.59 0 156.59-27.4 156.09-32.4 156.59-35.4 167.64-35.4 167.64 0ZM186.24 0L174.64 0 174.64-27.35 173.64-32.35 174.64-35.35 184.69-35.35 194.79-22.75 197.19-18.6 197.69-18.6 197.69-35.35 209.24-35.35 209.24-32.35 208.74-27.35 208.74 0 198.79 0 186.24-17.1 185.74-17.1 185.74-14.1 186.24 0ZM231.94 0.5L231.94 0.5Q228.74 0.5", opacity: "1", transform: "matrix(1,0,0,1,0,0)", fill: "#233565", className: "wordmark-text-0", "data-fill-palette-color": "primary" }))));
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement("svg", { width: width, viewBox: "1.7000000476837158 -35.900001525878906 248.24000549316406 36.400001525878906", height: height, "data-palette-color": "#233565" },
+        react__WEBPACK_IMPORTED_MODULE_4___default().createElement("path", { d: "M19.7 0.5L19.7 0.5Q16.25 0.5 13.03-0.3 9.8-1.1 7.25-3.1 4.7-5.1 3.2-8.65 1.7-12.2 1.7-17.7L1.7-17.7Q1.7-22.65 3.15-26.13 4.6-29.6 7.1-31.75 9.6-33.9 12.85-34.9 16.1-35.9 19.7-35.9L19.7-35.9Q22.25-35.9 24.68-35.5 27.1-35.1 28.2-34.6L28.2-34.6 34.25-29.55 29.25-21.3 19.7-25.7Q18-25.7 16.53-24.78 15.05-23.85 14.13-22.08 13.2-20.3 13.2-17.7L13.2-17.7Q13.2-14.4 14.23-12.63 15.25-10.85 17.18-10.2 19.1-9.55 21.75-9.55L21.75-9.55Q24.3-9.55 26.58-10.08 28.85-10.6 30.6-11.3 32.35-12 33.25-12.5L33.25-12.5 33.25-2.5Q32.25-2 30.43-1.28 28.6-0.55 25.93-0.03 23.25 0.5 19.7 0.5ZM67.7 0L39.75 0 38.75-3 39.75-8 39.75-35.4 65.5-35.4 68-33.9 64.7-25.4 60.2-25.9 50.85-25.9 50.85-21.9 63.2-21.9 63.2-13.65 56.3-13.65 50.85-14.15 50.85-9.5 64.7-9.5 70.65-3.2 67.7 0ZM100.6 0L74.65 0 73.65-3 74.65-8 74.65-35.4 85.65-35.4 85.65-16.35 85.15-9.5 86.15-9.5 95.1-10 98.65-10.5 103.05-3.2 100.6 0ZM118.74 0L107.04 0 107.04-27.35 106.04-32.35 107.09-35.35 118.74-35.35 128.54-17.85 129.54-17.85 137.64-35.35 149.59-35.35 150.09-32.35 149.59-27.55 149.59 0 138.54 0 138.69-4.25 138.69-18.2 138.14-18.2 136.24-12.95 132.64-5 124.64-5 118.74-18.2 118.24-18.2 118.24-14.15 118.74 0ZM167.64 0L156.59 0 156.59-27.4 156.09-32.4 156.59-35.4 167.64-35.4 167.64 0ZM186.24 0L174.64 0 174.64-27.35 173.64-32.35 174.64-35.35 184.69-35.35 194.79-22.75 197.19-18.6 197.69-18.6 197.69-35.35 209.24-35.35 209.24-32.35 208.74-27.35 208.74 0 198.79 0 186.24-17.1 185.74-17.1 185.74-14.1 186.24 0ZM231.94 0.5L231.94 0.5Q228.74 0.5", opacity: "1", transform: "matrix(1,0,0,1,0,0)", fill: "#233565", className: "wordmark-text-0", "data-fill-palette-color": "primary" }))));
 };
 var CelminoLogo = function (_a) {
     var _b = _a === void 0 ? {} : _a, _c = _b.width, width = _c === void 0 ? 52 : _c, _d = _b.height, height = _d === void 0 ? 58 : _d, _e = _b.color, color = _e === void 0 ? '#8bd8bc' : _e;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: color, viewBox: "7.210000038146973 4 49.58000183105469 56", x: "409.4248", y: "0", height: height, width: width, id: "s-0" },
-        react__WEBPACK_IMPORTED_MODULE_5___default().createElement("path", { d: "M49.13 20.84l-16-9.26V4L55.7 17.05ZM32 50.52L16 41.26V22.74l16-9.26 16 9.26V41.26ZM30.91 11.58l-16 9.26L8.3 17.05 30.91 4ZM13.77 22.74V41.26L7.21 45.05V19Zm1.1 20.42l16 9.26V60L8.3 47Zm18.22 9.26l16-9.26L55.7 47 33.09 60ZM50.23 41.26V22.74L56.79 19v26.1Z" }))));
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: color, viewBox: "7.210000038146973 4 49.58000183105469 56", x: "409.4248", y: "0", height: height, width: width, id: "s-0" },
+        react__WEBPACK_IMPORTED_MODULE_4___default().createElement("path", { d: "M49.13 20.84l-16-9.26V4L55.7 17.05ZM32 50.52L16 41.26V22.74l16-9.26 16 9.26V41.26ZM30.91 11.58l-16 9.26L8.3 17.05 30.91 4ZM13.77 22.74V41.26L7.21 45.05V19Zm1.1 20.42l16 9.26V60L8.3 47Zm18.22 9.26l16-9.26L55.7 47 33.09 60ZM50.23 41.26V22.74L56.79 19v26.1Z" }))));
 };
 var CreateOrganizationView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
     var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteCache)('console').deleteCache;
@@ -11528,19 +11455,18 @@ var CreateOrganizationView = function () { return (0,_tuval_forms__WEBPACK_IMPOR
             .cornerRadius(6)
             .background({ hover: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.darken)('#7FE8D4', 0.05) })
             .onClick(function () {
-            if (_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.localhost()) {
-                updatePrefs({
-                    prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { organization: membership.teamId })
-                }, function () {
-                    deleteCache();
-                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.get(membership.teamId).then(function (team) {
-                        navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_6__.urlFriendly)(team.name), "-").concat(team.$id, "/workspace/select"));
-                    });
+            //   if (is.localhost()) {
+            updatePrefs({
+                prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { organization: membership.teamId })
+            }, function () {
+                deleteCache();
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.get(membership.teamId).then(function (team) {
+                    navigate("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_5__.urlFriendly)(team.name), "-").concat(team.$id, "/workspace/select"));
                 });
-            }
-            else {
-                window.location.href = "https://".concat(membership.teamId, ".celmino.io");
-            }
+            });
+            /* } else {
+                window.location.href = `https://${membership.teamId}.celmino.io`;
+            } */
         });
     })).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cHorizontal, 20).height().maxWidth('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_3__.Text)('Create Organization').fontSize('20px')
         .padding('1.6rem 2rem 1.6rem 0')
@@ -11566,17 +11492,13 @@ var CreateOrganizationView = function () { return (0,_tuval_forms__WEBPACK_IMPOR
                            const nameAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false);
                            const opaAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false);
                            const typeAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false); */
-                        if (_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.localhost()) {
-                            updatePrefs({
-                                prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { organization: team.$id })
-                            }, function () {
-                                deleteCache();
-                                navigate("/app/workspace/select");
-                            });
-                        }
-                        else {
-                            window.location.href = "https://".concat(organizationId, ".celmino.io");
-                        }
+                        // if (is.localhost()) {
+                        updatePrefs({
+                            prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { organization: team.$id })
+                        }, function () {
+                            deleteCache();
+                            navigate("/@/workspace/select");
+                        });
                         return [2 /*return*/];
                     });
                 }); });
@@ -11661,7 +11583,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
     var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _b.organization, isOrganizationLoading = _b.isLoading; // useGetCurrentOrganization();
     var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRealm)(), createRealm = _c.createRealm, isLoading = _c.isLoading;
     var deleteSession = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteSession)('console').deleteSession;
-    return (isOrganizationLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Loading...') : organization == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)('/app/organization/select') :
+    return (isOrganizationLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Loading...') : organization == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)('/@/organization/select') :
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
             var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListRealms)(organization != null, [
                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('teamId', organization.$id)
@@ -11671,7 +11593,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                 .fontSize(16))
                 .height()
                 .onClick(function () {
-                navigate('/app/organization/select');
+                navigate('/@/organization/select');
             }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(realms)(function (realm) {
                 return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(realm.name).fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icons.MoveArrowRight))
                     .cursor('pointer')
@@ -11681,7 +11603,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                     .cornerRadius(6)
                     .background({ hover: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.darken)('#7FE8D4', 0.05) })
                     .onClick(function () {
-                    navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(realm.name, "-").concat(realm.$id));
+                    navigate("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(realm.name, "-").concat(realm.$id));
                 });
             })).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cHorizontal, 20).height().maxWidth('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Create a new realm').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height().padding('1.6rem 2rem 1.6rem 0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Log in with another email').fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')).height().padding('1.6rem 2rem 1.6rem 0')
                 .onClick(function () {
@@ -11765,7 +11687,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
                                 case 19:
                                     _a.sent();
-                                    navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(workspace.name, "-").concat(workspace.$id));
+                                    navigate("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(workspace.name, "-").concat(workspace.$id));
                                     return [2 /*return*/];
                             }
                         });

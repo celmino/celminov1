@@ -66,7 +66,7 @@ export const CreateOrganizationView = () => UIViewBuilder(() => {
                             .cornerRadius(6)
                             .background({ hover: darken('#7FE8D4', 0.05) })
                             .onClick(() => {
-                                if (is.localhost()) {
+                             //   if (is.localhost()) {
                                     updatePrefs({
                                         prefs: {
                                             ...(me?.prefs ? me?.prefs : {}),
@@ -76,13 +76,13 @@ export const CreateOrganizationView = () => UIViewBuilder(() => {
                                     }, () => {
                                         deleteCache();
                                         Services.Teams.get(membership.teamId).then((team) => {
-                                            navigate(`/app/${urlFriendly(team.name)}-${team.$id}/workspace/select`);
+                                            navigate(`/@/${urlFriendly(team.name)}-${team.$id}/workspace/select`);
                                         })
                                     })
 
-                                } else {
+                                /* } else {
                                     window.location.href = `https://${membership.teamId}.celmino.io`;
-                                }
+                                } */
                             })
                     )
                 ).padding(cHorizontal, 20).height().maxWidth('100%')
@@ -124,7 +124,7 @@ export const CreateOrganizationView = () => UIViewBuilder(() => {
                                    const opaAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false);
                                    const typeAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false); */
 
-                                if (is.localhost()) {
+                               // if (is.localhost()) {
                                     updatePrefs({
                                         prefs: {
                                             ...(me?.prefs ? me?.prefs : {}),
@@ -133,12 +133,12 @@ export const CreateOrganizationView = () => UIViewBuilder(() => {
 
                                     }, () => {
                                         deleteCache();
-                                        navigate(`/app/workspace/select`);
+                                        navigate(`/@/workspace/select`);
                                     })
 
-                                } else {
+                               /*  } else {
                                     window.location.href = `https://${organizationId}.celmino.io`;
-                                }
+                                } */
                             })
 
 

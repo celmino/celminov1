@@ -123,7 +123,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                                     {
                                         title: 'Applet settings',
                                         icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                        onClick: () => navigate(`/app/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}/settings/general`)
+                                        onClick: () => navigate(`/@/${realm?.name}-${workspaceId}/${applet?.name}-${appletId}/settings/general`)
                                     },
                                     {
                                         title: 'Delete Workspace Data',
@@ -153,7 +153,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                 //.clipPath('polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 50%, 0 0)')
             )
                 .onClick(() => {
-                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}`);
+                    navigate(`/@/workspace/${workspaceId}/applet/${appletId}`);
                 })
         )
     }

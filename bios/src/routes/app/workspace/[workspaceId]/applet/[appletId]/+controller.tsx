@@ -53,19 +53,11 @@ export const OpaLoader = ({ opa_name }) => {
     //let opa_name = 'com.tuvalsoft.opa.task';
     const location = useLocation();
 
-
-    /* if (`/app/${app_name}` === location.pathname && Paths[app_name] != null && Paths[app_name] !== `/app/${app_name}`) {
-        console.log(`/app/${app_name}` === location.pathname)
-        return (<Navigate to={Paths[app_name]}></Navigate>)
-    } else {
-        Paths[app_name] = location.pathname;
-    } */
-
     const controllerPromise = new Promise((resolve, reject) => {
         if (AppCache[opa_name]) {
             resolve(AppCache[opa_name]);
         } else {
-            const app_path = `/realmocean/store/app/open-testing/${opa_name}`;
+            const app_path = `/realmocean/store/@/open-testing/${opa_name}`;
             // alert(app_path)
             const app_path_local = `/system/${opa_name}`;
             ModuleLoader.LoadBundledModule(app_path_local, opa_name).then((_app: any) => {

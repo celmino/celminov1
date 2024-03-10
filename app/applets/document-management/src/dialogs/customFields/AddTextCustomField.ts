@@ -17,7 +17,7 @@ export const AddTextCustomField =  {
                  },
                  {
                      "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                  }
                  ] */
             }

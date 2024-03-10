@@ -113,7 +113,7 @@ export class AppController2 extends UIController {
                         {
                             title: 'Applet settings',
                             icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                            onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${node.appletId}/settings/general`)
+                            onClick: () => navigate(`/@/workspace/${workspaceId}/applet/${node.appletId}/settings/general`)
                         },
                         
                         {
@@ -137,10 +137,10 @@ export class AppController2 extends UIController {
                         if (onItemSelected == null) {
                             switch (item.type) {
                                 case 'folder':
-                                    navigate(`/app/${realm?.name}-${workspaceId}/${applet.name}-${applet.$id}/folder/${item.$id}`);
+                                    navigate(`/@/${realm?.name}-${workspaceId}/${applet.name}-${applet.$id}/folder/${item.$id}`);
                                     break;
                                 case 'document':
-                                    navigate(`/app/${realm?.name}-${workspaceId}/${applet.name}-${applet.$id}/document/${item.$id}`);
+                                    navigate(`/@/${realm?.name}-${workspaceId}/${applet.name}-${applet.$id}/document/${item.$id}`);
                                     break;
 
                             }

@@ -30,43 +30,43 @@ export class SettingsController extends UIFormController {
             {
                 id: 'general',
                 title: 'General',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/general`,
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/general`,
                 icon: SvgIcon('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Document Types',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/import`,
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/import`,
                 icon: SvgIcon('cu3-icon-importIcon')
             },
             {
                 id: 'features',
                 title: 'Features',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/features`,
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/features`,
                 icon: SvgIcon('cu3-icon-settings')
             },
             {
                 id: 'collections',
                 title: 'Collections',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/collections`,
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/collections`,
                 icon: SvgIcon('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Integrations',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/import`,
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/import`,
                 icon: SvgIcon('cu3-icon-importIcon')
             },
             {
                 id: 'security',
                 title: 'Security & Permissions ',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/security`,
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/security`,
                 icon: SvgIcon('cu3-icon-protectedAlt')
             },
             {
                 id: 'import',
                 title: 'Imports / Exports',
-                url: `/app/workspace/${workspaceId}/applet/${appletId}/settings/import`,
+                url: `/@/workspace/${workspaceId}/applet/${appletId}/settings/import`,
                 icon: SvgIcon('cu3-icon-importIcon')
             },
 

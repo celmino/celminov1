@@ -9,7 +9,7 @@ import { RealmContextProvider } from "./context";
 
 function RealmContextRenderer({ control }: { control: RealmContextClass }) {
 
-
+  
     const { workspaceId } = useParams();
     const { realm, isLoading } = useGetRealm({ realmId: workspaceId, enabled: true });
 

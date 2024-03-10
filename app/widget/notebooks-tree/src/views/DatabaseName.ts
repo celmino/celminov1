@@ -31,8 +31,7 @@ export function DatabaseName(database: Models.Database, selected: boolean, onCli
 
             return (
                 mode === 'readonly' ?
-                    //UIRouteLink(team ? `/app/${getAppFullName()}/team/${team.id}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}` : `/app/${getAppFullName()}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}`)(
-
+                  
                     HStack({ alignment: cLeading, spacing: 5 })(
                         HStack({ alignment: cLeading })(
                           /*   HStack({ alignment: cTrailing })(
@@ -166,9 +165,9 @@ export function DatabaseName(database: Models.Database, selected: boolean, onCli
                                                         invalidateResCache();
         
                                                         team ?
-                                                            navigate(`/app/${getAppFullName()}/team/${team.id}/workspace/${applet.workspace_id}`)
+                                                            navigate(`/@/${getAppFullName()}/team/${team.id}/workspace/${applet.workspace_id}`)
                                                             :
-                                                            navigate(`/app/${getAppFullName()}/workspace/${applet.workspace_id}`);
+                                                            navigate(`/@/${getAppFullName()}/workspace/${applet.workspace_id}`);
         
                                                     }
                                                 }) */

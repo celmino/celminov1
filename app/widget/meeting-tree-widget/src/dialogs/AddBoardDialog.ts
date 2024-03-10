@@ -76,7 +76,7 @@ export const AddBoardDialog = (workspaceId: string, appletId: string, parent: st
                      },
                      {
                          "type": "navigate",
-                         "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                         "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                      }
                      ] */
                     /*  "successActions": [{
@@ -84,7 +84,7 @@ export const AddBoardDialog = (workspaceId: string, appletId: string, parent: st
                  },
                  {
                      "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                  }
                  ] */
                 }

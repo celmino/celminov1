@@ -17,7 +17,7 @@ export const OrganizationGuard = () => {
     const { organizationId } = useParams();
 
     return (
-        organizationId ? Release() : UINavigate('/app/organization/select')
+        organizationId ? Release() : UINavigate('/@/organization/select')
     )
 }
 
@@ -36,7 +36,7 @@ export const MembershipGuard = () => {
 
     return (
         (isLoading || isOrganizationLoading || isMembershipsLoading) ? Wait() :
-            isMember ? UINavigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`)  :
+            isMember ? UINavigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`)  :
            Text('You are not member of this organization')
               
     )

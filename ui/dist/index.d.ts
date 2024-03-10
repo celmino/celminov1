@@ -27,7 +27,7 @@ export class FormBuilder {
     static getViewFactory(type: string): any;
     static getView(fieldInfo: any): any;
     static canRender(fieldInfo: any, formController?: UIFormController): boolean;
-    static render(_formMeta: string | object | object[]): import("@tuval/forms").TextClass | import("@tuval/forms").FragmentClass | import("@tuval/forms").ConfigContextClass;
+    static render(_formMeta: string | object | object[]): import("@tuval/forms").FragmentClass | import("@tuval/forms").TextClass | import("@tuval/forms").ConfigContextClass;
     static compileFormula(formula: any): string;
 }
 
@@ -36,7 +36,7 @@ export class DynoDialog extends DialogView {
     BindRouterParams(formData: any): void;
     OnOK(): void;
     OnCancel(): void;
-    LoadView(): import("@tuval/forms").VStackClass | import("@tuval/forms").UISpinnerClass;
+    LoadView(): import("@tuval/forms").UISpinnerClass | import("@tuval/forms").VStackClass;
     static Show(formData: any): Promise<any>;
 }
 
@@ -106,6 +106,16 @@ export function TreeContext(childFunc: () => UIView): TreeContextClass;
 export const TreeContextProvider: React.Context<any>;
 export const useRealmTree: () => any;
 
+export function AccountContext(childFunc: () => UIView): AccountContextClass;
+
+export const AccountContextProvider: React.Context<any>;
+export const useAccount: () => any;
+
+export function AnonymousContext(childFunc: () => UIView): AnonymousContextClass;
+
+export const AnonymousContextProvider: React.Context<any>;
+export const useAnonymousAccount: () => any;
+
 export class OrganizationContextClass extends UIView {
     /** @internal */
     vp_ChildFunc: () => UIView;
@@ -137,6 +147,20 @@ export class TreeContextClass extends UIView {
     /** @internal */
     vp_SetCanDrag: (value: boolean) => void;
     setCanDrag(value: (value: boolean) => void): this;
+    render(): React.JSX.Element;
+}
+
+export class AccountContextClass extends UIView {
+    /** @internal */
+    vp_ChildFunc: () => UIView;
+    childFunc(value: () => UIView): this;
+    render(): React.JSX.Element;
+}
+
+export class AnonymousContextClass extends UIView {
+    /** @internal */
+    vp_ChildFunc: () => UIView;
+    childFunc(value: () => UIView): this;
     render(): React.JSX.Element;
 }
 

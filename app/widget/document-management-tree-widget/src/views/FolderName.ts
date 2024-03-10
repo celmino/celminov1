@@ -57,7 +57,7 @@ export const FolderName = (folderId: string, isOpen: boolean, isLoading: boolean
                         .onClick(() => {
                             //alert(getAppletUrl(access_type, applet.id))
 
-                            navigate(`/app/workspace/${workspaceId}/applet/${appletId}/folder/${folderId}`);
+                            navigate(`/@/workspace/${workspaceId}/applet/${appletId}/folder/${folderId}`);
                         }),
 
                     /* Heading(folder.name).h6().ellipsisMaxLines(1).ellipsis(true)

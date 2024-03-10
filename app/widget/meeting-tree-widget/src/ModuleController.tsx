@@ -64,19 +64,19 @@ const subNodes = (TreeNode, level, nodeType, parentId, workspaceId, appletId, on
                         if (onItemSelected == null) {
                             switch (item.type) {
                                 case 'space':
-                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/space-${item.$id}/meetings`);
+                                    navigate(`/@/workspace/${workspaceId}/applet/${appletId}/space-${item.$id}/meetings`);
                                     break;
                                 case 'list':
-                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${item.$id}`);
+                                    navigate(`/@/workspace/${workspaceId}/applet/${appletId}/list/${item.$id}`);
                                     break;
                                 case 'board':
-                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${item.parent}/view/${item.$id}`);
+                                    navigate(`/@/workspace/${workspaceId}/applet/${appletId}/list/${item.parent}/view/${item.$id}`);
                                     break;
                                 case 'document':
-                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/document/${item.$id}`);
+                                    navigate(`/@/workspace/${workspaceId}/applet/${appletId}/document/${item.$id}`);
                                     break;
                                 case 'whiteboard':
-                                    navigate(`/app/workspace/${workspaceId}/applet/${appletId}/whiteboard/${item.$id}`);
+                                    navigate(`/@/workspace/${workspaceId}/applet/${appletId}/whiteboard/${item.$id}`);
                                     break;
 
                             }
@@ -259,19 +259,19 @@ export class WorkspaceTreeWidgetController extends UIController {
                             if (onItemSelected == null) {
                                 switch (item.type) {
                                     case 'space':
-                                        navigate(`/app/${process(realm?.name)}-${workspaceId}/${process(applet?.name)}-${appletId}/${process(item.name)}-${item.$id}/meetings`);
+                                        navigate(`/@/${process(realm?.name)}-${workspaceId}/${process(applet?.name)}-${appletId}/${process(item.name)}-${item.$id}/meetings`);
                                         break;
                                     case 'list':
-                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${item.$id}`);
+                                        navigate(`/@/workspace/${workspaceId}/applet/${appletId}/list/${item.$id}`);
                                         break;
                                     case 'board':
-                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/list/${item.parent}/view/${item.$id}`);
+                                        navigate(`/@/workspace/${workspaceId}/applet/${appletId}/list/${item.parent}/view/${item.$id}`);
                                         break;
                                     case 'document':
-                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/document/${item.$id}`);
+                                        navigate(`/@/workspace/${workspaceId}/applet/${appletId}/document/${item.$id}`);
                                         break;
                                     case 'whiteboard':
-                                        navigate(`/app/workspace/${workspaceId}/applet/${appletId}/whiteboard/${item.$id}`);
+                                        navigate(`/@/workspace/${workspaceId}/applet/${appletId}/whiteboard/${item.$id}`);
                                         break;
 
                                 }
@@ -340,7 +340,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                             {
                                 title: 'Applet settings',
                                 icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                onClick: () => navigate(`/app/workspace/${workspaceId}/applet/${appletId}/settings/general`)
+                                onClick: () => navigate(`/@/workspace/${workspaceId}/applet/${appletId}/settings/general`)
                             }
                         ]
 

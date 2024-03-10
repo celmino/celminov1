@@ -11,7 +11,7 @@ export const WorkspaceGuard = () => {
     return {
         release: workspaceId,
         view: (
-            UINavigate('/app/workspace/select')
+            UINavigate('/@/workspace/select')
         )
     }
 }
@@ -28,8 +28,8 @@ export const DefaultWorkspaceGuard = () => {
         workspaceId != null ? Release() :
             isLoading ? Text('fdsfsdf') :
                 isRealmsLoading ? Wait() :
-                    (realms?.length === 0) ? UINavigate(`/app/${organization.name}-${organization.$id}/workspace/select`) :
-                        UINavigate(`/app/${organization.name}-${organization.$id}/${realms[0].name}-${realms[0].$id}`)
+                    (realms?.length === 0) ? UINavigate(`/@/${organization.name}-${organization.$id}/workspace/select`) :
+                        UINavigate(`/@/${organization.name}-${organization.$id}/${realms[0].name}-${realms[0].$id}`)
 
 
 

@@ -1,7 +1,7 @@
-import { useGetDocument, useGetMe, useGetOrganization, useGetRealm, useProjectServices } from "@realmocean/sdk";
+import { Services, useGetDocument, useGetMe, useGetOrganization, useGetRealm, useProjectServices } from "@realmocean/sdk";
 import { is } from "@tuval/core";
 import { ReactView, UIController, UIView, useParams, useState, Text } from "@tuval/forms";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { AnonymousContextClass } from "./AnonymousContextClass";
 import { AnonymousContextProvider } from "./context";
 import { RealmContextProvider, useRealm } from "../realm";
@@ -23,13 +23,17 @@ const Proxy = ({ control }) => (
 
 export function AnonymousContextRenderer({ control }: { control: AnonymousContextClass }) {
 
+    const {workspaceId} = useParams();
+
     const [isError, setIsError] = useState(false);
     const [account, setAccount] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const { realm } = useRealm();
-    const { Services } = useProjectServices();
+    
+    //const { Services } = useProjectServices();
+    Services.Client.setProject(workspaceId);
 
-    Services.Accounts.get()
+    useEffect(()=> {
+        Services.Accounts.get()
         .then((account) => {
             setAccount(account);
             setIsLoading(false);
@@ -40,6 +44,8 @@ export function AnonymousContextRenderer({ control }: { control: AnonymousContex
                 setIsLoading(false);
             })
         })
+    },[])
+    
 
     return (
         isError ? Text('Account Error').render() :

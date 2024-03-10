@@ -82,7 +82,7 @@ export const AddFolderDialog = (workspaceId: string, appletId: string, parent: s
                      },
                      {
                          "type": "navigate",
-                         "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                         "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                      }
                      ] */
                     /*  "successActions": [{
@@ -90,7 +90,7 @@ export const AddFolderDialog = (workspaceId: string, appletId: string, parent: s
                  },
                  {
                      "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                  }
                  ] */
                 }

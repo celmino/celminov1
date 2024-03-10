@@ -30,8 +30,7 @@ export function DatabaseNameView(database: Models.Database, selected: boolean, o
 
             return (
                 mode === 'readonly' ?
-                    //UIRouteLink(team ? `/app/${getAppFullName()}/team/${team.id}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}` : `/app/${getAppFullName()}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}`)(
-
+               
                     HStack({ alignment: cLeading, spacing: 5 })(
                         HStack({ alignment: cLeading })(
                              HStack({ alignment: cTrailing })(
@@ -49,7 +48,7 @@ export function DatabaseNameView(database: Models.Database, selected: boolean, o
                                         .foregroundColor(selected ? '#7b68ee' : '#151719')
                                 ).onClick(() => {
                                     //alert(getAppletUrl(access_type, applet.id))
-                                    navigate(`/app/com.celmino.app.test/workspace/${workspaceId}/database/${database.$id}`);
+                                    navigate(`/@/com.celmino.app.test/workspace/${workspaceId}/database/${database.$id}`);
                                 })
 
                             ,
@@ -165,9 +164,9 @@ export function DatabaseNameView(database: Models.Database, selected: boolean, o
                                                         invalidateResCache();
         
                                                         team ?
-                                                            navigate(`/app/${getAppFullName()}/team/${team.id}/workspace/${applet.workspace_id}`)
+                                                            navigate(`/@/${getAppFullName()}/team/${team.id}/workspace/${applet.workspace_id}`)
                                                             :
-                                                            navigate(`/app/${getAppFullName()}/workspace/${applet.workspace_id}`);
+                                                            navigate(`/@/${getAppFullName()}/workspace/${applet.workspace_id}`);
         
                                                     }
                                                 }) */

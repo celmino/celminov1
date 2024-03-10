@@ -73,7 +73,7 @@ export class SignupController extends UIController {
     
                                             }, () => {
                                                 deleteCache();
-                                                navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`);
+                                                navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`);
                                             })
                                         } catch(e) {
                                             alert('Hata')

@@ -209,7 +209,7 @@ export class TreeController extends UIController {
 
                             },
                             requestNavigation: () => {
-                                navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/${urlFriendly(applet?.name)}-${appletId}`)
+                                navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/${urlFriendly(applet?.name)}-${appletId}`)
                             },
                             requestEditMenu: () => [
 
@@ -221,12 +221,12 @@ export class TreeController extends UIController {
                                 {
                                     title: 'Collections',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/${applet?.name}-${appletId}/collections`)
+                                    onClick: () => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/${applet?.name}-${appletId}/collections`)
                                 },
                                 {
                                     title: 'Applet settings',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/applet/${appletId}/settings`)
+                                    onClick: () => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/applet/${appletId}/settings`)
                                 }
 
 

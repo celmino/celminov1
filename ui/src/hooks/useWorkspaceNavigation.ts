@@ -13,7 +13,7 @@ export const useRealmNavigate = () => {
             if (url?.[0] !== '/') {
                 url += '/';
             }
-            navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}${url}`)
+            navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}${url}`)
         }
     }
 

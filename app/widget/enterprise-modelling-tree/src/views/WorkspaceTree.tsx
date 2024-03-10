@@ -107,7 +107,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                         .showIcon(true).blockNode(true)
                         .rootStyle({width: '100%'})
                         .onSelect((value, info)=> {
-                            navigate(`/app/workspace/${workspaceId}/applet/com.celmino.applet.enterprisemodelling/${value}`)
+                            navigate(`/@/workspace/${workspaceId}/applet/com.celmino.applet.enterprisemodelling/${value}`)
                         })
                         .treeData(
                             [

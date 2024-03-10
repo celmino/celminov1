@@ -73,7 +73,7 @@ export const AddWhiteboardDialog = (workspaceId: string, parent: string, path: s
                      },
                      {
                          "type": "navigate",
-                         "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                         "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                      }
                      ] */
                     /*  "successActions": [{
@@ -81,7 +81,7 @@ export const AddWhiteboardDialog = (workspaceId: string, parent: string, path: s
                  },
                  {
                      "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                  }
                  ] */
                 }

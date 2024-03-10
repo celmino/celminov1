@@ -54,7 +54,7 @@ export class AppletController extends UIFormController {
                             //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
                             onChange: (index) => {
                                 setSelectedCollection(collections[index]);
-                                navigate(`/app/workspace/${workspaceId}/applet/${appletId}/collection-${collections[index].$id}`)
+                                navigate(`/@/workspace/${workspaceId}/applet/${appletId}/collection-${collections[index].$id}`)
                                 /*    setWidgetController({
                                        controller: class extends WidgetController { }
                                    });

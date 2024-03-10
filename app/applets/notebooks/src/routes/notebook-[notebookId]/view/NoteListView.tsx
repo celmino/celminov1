@@ -66,7 +66,7 @@ export const NoteListView = () => UIViewBuilder(() => {
                     .border(noteId === note.$id ? '2px solid #E6E6E6' : '2px solid white' )
                     .borderBottom(noteId === note.$id ? '2px solid #E6E6E6' : '1px solid #E6E6E6' )
                     .borderTop(noteId === note.$id ? '1px solid #E6E6E6' : '0px solid #E6E6E6' )
-                    .onClick(() => navigate(`/app/workspace/${workspaceId}/applet/com.celmino.applet.notebooks/notebook-${notebookId}/note-${note.$id}`))
+                    .onClick(() => navigate(`/@/workspace/${workspaceId}/applet/com.celmino.applet.notebooks/notebook-${notebookId}/note-${note.$id}`))
 
             )
         ).width(400)

@@ -45,8 +45,8 @@ export class WorkspaceLayoutController extends UIController {
                             (!isMembershipLoading && memberships.length === 0) ? CreateOrganizationView() :
                                 isRealmsLoading ? Text('Realms loading...') :
                                     realms.length === 0 ? CreateWorkspaceView() :
-                                        (organizationId == null && workspaceId == null && !is.nullOrEmpty(me?.prefs.workspace)) ? UINavigate(`/app/workspace/${me?.prefs.workspace}`) :
-                                            (organizationId == null && workspaceId == null && realms.length > 0) ? UINavigate(`/app/workspace/${realms[0].$id}`) :
+                                        (organizationId == null && workspaceId == null && !is.nullOrEmpty(me?.prefs.workspace)) ? UINavigate(`/@/workspace/${me?.prefs.workspace}`) :
+                                            (organizationId == null && workspaceId == null && realms.length > 0) ? UINavigate(`/@/workspace/${realms[0].$id}`) :
                                                 isLoading ? Text('Loading...') :
                                                     UIViewBuilder(() =>
                                                         UIScene(
@@ -108,8 +108,7 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                     VibeText('ORGANIZATION(S)').fontSize(12)
                                                                                                 ).padding(cVertical, 5),
                                                                                                 ...ForEach(teams)(team =>
-                                                                                                    // UIRouteLink(`/app/organization/${team.$id}`)(
-                                                                                                    HStack({ alignment: cLeading })(
+                                                                                                     HStack({ alignment: cLeading })(
                                                                                                         Text(team.name)
                                                                                                     ).allHeight(32)
                                                                                                         .cursor('pointer')
@@ -126,7 +125,7 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                                     }
 
                                                                                                                 }, () => {
-                                                                                                                    navigate(`/app/organization/${team.$id}`)
+                                                                                                                    navigate(`/@/organization/${team.$id}`)
                                                                                                                 })
 
                                                                                                             } else {
@@ -223,7 +222,6 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                     VibeText('ORGANIZATION(S)').fontSize(12)
                                                                                                 ).padding(cVertical, 5),
                                                                                                 ...ForEach(teams)(team =>
-                                                                                                    // UIRouteLink(`/app/organization/${team.$id}`)(
                                                                                                     HStack({ alignment: cLeading })(
                                                                                                         Text(team.name)
                                                                                                     ).allHeight(32)
@@ -241,7 +239,7 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                                     }
 
                                                                                                                 }, () => {
-                                                                                                                    navigate(`/app/organization/${team.$id}`)
+                                                                                                                    navigate(`/@/organization/${team.$id}`)
                                                                                                                 })
 
                                                                                                             } else {

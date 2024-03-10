@@ -114,7 +114,7 @@ export class LoginController extends CelminoController {
                                 .onClick(() => {
                                     Services.Accounts.createOAuth2Session(
                                         "google",
-                                        `${window.location.protocol}//${window.location.host}/app`,
+                                        `${window.location.protocol}//${window.location.host}/@`,
                                         `${window.location.protocol}//${window.location.host}/login-failure`
                                     )
 
@@ -131,7 +131,7 @@ export class LoginController extends CelminoController {
                                 .onClick(() => {
                                     Services.Accounts.createOAuth2Session(
                                         "microsoft",
-                                        `${window.location.protocol}//${window.location.host}/app`,
+                                        `${window.location.protocol}//${window.location.host}/@`,
                                         `${window.location.protocol}//${window.location.host}/login-failure`
                                     )
 

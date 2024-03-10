@@ -10,7 +10,7 @@ export class WorkspaceSelectController extends UIController {
       
          return (
             isLoading ? Spinner() :
-                organizationId == null ? UINavigate('/app/organization/select') :
+                organizationId == null ? UINavigate('/@/organization/select') :
                     CreateWorkspaceView()
         ) 
     }

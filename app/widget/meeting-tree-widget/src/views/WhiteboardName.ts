@@ -39,8 +39,7 @@ export function WhiteboardName(whiteboard: any, isOpen: boolean, onClickCallback
 
             return (
                 mode === 'readonly' ?
-                    //UIRouteLink(team ? `/app/${getAppFullName()}/team/${team.id}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}` : `/app/${getAppFullName()}/workspace/${spaceItem.id}/folder/${folder.id}/applet/${applet.id}/scope/${applet.scope_id}`)(
-
+                 
                     HStack({ alignment: cLeading, spacing: 5 })(
                         HStack({ alignment: cLeading })(
                             HStack(
@@ -76,7 +75,7 @@ export function WhiteboardName(whiteboard: any, isOpen: boolean, onClickCallback
                                     .onClick(() => {
                                         //alert(getAppletUrl(access_type, applet.id))
 
-                                        navigate(`/app/workspace/${workspaceId}/applet/com.celmino.applet.workmanagement/whiteboard/${whiteboard.$id}`);
+                                        navigate(`/@/workspace/${workspaceId}/applet/com.celmino.applet.workmanagement/whiteboard/${whiteboard.$id}`);
                                     })
 
                             ,
@@ -191,9 +190,9 @@ export function WhiteboardName(whiteboard: any, isOpen: boolean, onClickCallback
                                                         invalidateResCache();
         
                                                         team ?
-                                                            navigate(`/app/${getAppFullName()}/team/${team.id}/workspace/${applet.workspace_id}`)
+                                                            navigate(`/@/${getAppFullName()}/team/${team.id}/workspace/${applet.workspace_id}`)
                                                             :
-                                                            navigate(`/app/${getAppFullName()}/workspace/${applet.workspace_id}`);
+                                                            navigate(`/@/${getAppFullName()}/workspace/${applet.workspace_id}`);
         
                                                     }
                                                 }) */

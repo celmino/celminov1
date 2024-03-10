@@ -20,7 +20,7 @@ export const ListStatusesDialog = {
             },
             {
                 "type": "navigate",
-                "url": `/app/${getAppFullName()}/workspace/{{id}}`
+                "url": `/@/${getAppFullName()}/workspace/{{id}}`
             }
             ]
         }
