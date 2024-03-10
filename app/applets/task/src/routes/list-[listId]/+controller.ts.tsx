@@ -12,7 +12,7 @@ import {
     cVertical,
     useDialogStack,
     useNavigate,
-    useParams, Text, Fragment, Icon, SvgIcon, cTop
+    useParams, Text, Fragment, Icon, SvgIcon, cTop, UIView
 } from "@tuval/forms";
 
 
@@ -34,6 +34,14 @@ function replaceNonMatchingCharacters(originalText) {
     });
 
     return replacedText;
+}
+
+export class _ListController extends UIFormController {
+    LoadView(): UIView {
+        return (
+            Text('sdf')
+        )
+    }
 }
 
 export class ListController extends UIFormController {

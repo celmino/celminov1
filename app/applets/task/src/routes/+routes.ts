@@ -2,7 +2,7 @@ import { UIController, UIRoute, UIRoutes, UIView, UIViewBuilder, VStack } from "
 import { MyTestController } from "../AppController";
 import { ViewController } from "./list-[listId]/view-[viewId]/+controller";
 import { DocumentController } from "./document-[documentId]/+controller";
-import { ListController } from "./list-[listId]/+controller.ts";
+import { ListController, _ListController } from "./list-[listId]/+controller.ts";
 import { WhiteboardController } from "./whiteboard-[whiteboardId]/+controller";
 import { SettingsController } from "./settings/+controller";
 import { FeatureSettingsController } from "./settings/features/+controller";
@@ -16,7 +16,7 @@ export class RouteController extends UIController {
             UIViewBuilder(() =>
                 VStack(
                     UIRoutes(
-                        UIRoute('/', class extends ListController {}).children(
+                        UIRoute('/', class extends _ListController {}).children(
                             UIRoute('list/:listId', ListController).children(
                                 UIRoute('view/:viewId', class extends  ViewController {}),
                             ),

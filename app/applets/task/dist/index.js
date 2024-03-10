@@ -32478,7 +32478,7 @@ var RouteController = /** @class */ (function (_super) {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
                 return class_1;
-            }(_list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__.ListController))).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('list/:listId', _list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__.ListController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('view/:viewId', /** @class */ (function (_super) {
+            }(_list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__._ListController))).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('list/:listId', _list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__.ListController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('view/:viewId', /** @class */ (function (_super) {
                 __extends(class_2, _super);
                 function class_2() {
                     return _super !== null && _super.apply(this, arguments) || this;
@@ -32616,7 +32616,8 @@ var DocumentController = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   ListController: () => (/* binding */ ListController)
+/* harmony export */   ListController: () => (/* binding */ ListController),
+/* harmony export */   _ListController: () => (/* binding */ _ListController)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -32671,6 +32672,17 @@ function replaceNonMatchingCharacters(originalText) {
     });
     return replacedText;
 }
+var _ListController = /** @class */ (function (_super) {
+    __extends(_ListController, _super);
+    function _ListController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    _ListController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('sdf'));
+    };
+    return _ListController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController));
+
 var ListController = /** @class */ (function (_super) {
     __extends(ListController, _super);
     function ListController() {

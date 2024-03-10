@@ -12,3 +12,12 @@ export class LayoutController extends CelminoController {
         )
     }
 }
+
+
+export class PublicLayoutController extends CelminoController {
+    public override LoadView(): UIView {
+        return (
+            UIRouteOutlet().width("100%").height("100%")
+        )
+    }
+}

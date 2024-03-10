@@ -10,12 +10,13 @@ import { LoginController } from "./login/+controller"
 import { SignupController } from "./signup/+controller"
 import { WorkspaceSelectController } from "./app/workspace/select/+controller"
 import { OrganizationSelectController } from "./app/organization/select/+controller"
-import { LayoutController } from "./app/+controller"
+import { LayoutController, PublicLayoutController } from "./app/+controller"
 import { WorkspaceController } from "./app/workspace/[workspaceId]/+controller"
 import { DefaultWorkspaceController } from "./app/+default"
 import { ResetPasswordController } from "./reset-password/+controller"
 import { UpdatePasswordController } from "./update-password/+controller"
 import { LandingController } from "./LandingController"
+import { PublicWorkspaceLayoutController } from "./app/workspace/@controller"
 
 
 export const Routes = () => {
@@ -42,6 +43,15 @@ export const Routes = () => {
                 ), */
 
 
+            ),
+
+            UIRoute('/@public', PublicLayoutController).children(
+                UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(
+                    UIRoute('', WorkspaceController).children(
+                        UIRoute('applet/:appletId/*', AppletController),
+                        UIRoute(':appletId/*', AppletController)
+                    )
+                )
             ),
 
             UIRoute('/', LandingController),
