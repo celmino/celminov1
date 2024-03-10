@@ -1,5 +1,5 @@
 import { UIView } from "@tuval/forms";
-import { AccountContextClass as AnonymousContextClass } from "./AnonymousContextClass";
+import { AnonymousContextClass as AnonymousContextClass } from "./AnonymousContextClass";
 
 
 

@@ -1,9 +1,9 @@
-import { useGetDocument, useGetMe, useGetOrganization, useGetRealm } from "@realmocean/sdk";
+import { useGetDocument, useGetMe, useGetOrganization, useGetRealm, useProjectServices } from "@realmocean/sdk";
 import { is } from "@tuval/core";
-import { ReactView, UIController, UIView, useParams } from "@tuval/forms";
+import { ReactView, UIController, UIView, useParams, useState, Text } from "@tuval/forms";
 import React, { Fragment } from "react";
-import { AccountContextClass } from "./AnonymousContextClass";
-import { AccountContextProvider } from "./context";
+import { AnonymousContextClass } from "./AnonymousContextClass";
+import { AnonymousContextProvider } from "./context";
 import { RealmContextProvider, useRealm } from "../realm";
 
 
@@ -21,21 +21,35 @@ const Proxy = ({ control }) => (
 
 
 
-function AccountContextRenderer({ control }: { control: AccountContextClass }) {
+export function AnonymousContextRenderer({ control }: { control: AnonymousContextClass }) {
 
-    const { me, isLoading, isError } = useGetMe('console');
+    const [isError, setIsError] = useState(false);
+    const [account, setAccount] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const { realm } = useRealm();
+    const { Services } = useProjectServices();
+
+    Services.Accounts.get()
+        .then((account) => {
+            setAccount(account);
+            setIsLoading(false);
+        })
+        .catch(() => {
+            Services.Accounts.createAnonymousSession().then((account) => {
+                setAccount(account);
+                setIsLoading(false);
+            })
+        })
 
     return (
-
-        is.function(control.vp_ChildFunc) && !isLoading ?
-            (
-                <AccountContextProvider.Provider value={{ account: me }}>
-                    <Proxy control={control}></Proxy>
-                </AccountContextProvider.Provider>
-            ) : <Fragment />
+        isError ? Text('Account Error').render() :
+            is.function(control.vp_ChildFunc) && !isLoading ?
+                (
+                    <AnonymousContextProvider.Provider value={{ account: account }}>
+                        <Proxy control={control}></Proxy>
+                    </AnonymousContextProvider.Provider>
+                ) : <Fragment />
     )
 
 }
 
-
-export default AccountContextRenderer;

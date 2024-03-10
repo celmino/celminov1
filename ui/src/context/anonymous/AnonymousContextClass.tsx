@@ -2,12 +2,12 @@
 import { useGetOrganization } from "@realmocean/sdk";
 import { UIView, ViewProperty } from "@tuval/forms";
 import React from "react";
-import AccountContextRenderer from "./AnonymousContextRenderer";
+import {AnonymousContextRenderer} from "./AnonymousContextRenderer";
 
 
 
 
-export class AccountContextClass extends UIView {
+export class AnonymousContextClass extends UIView {
 
     /** @internal */
     @ViewProperty() vp_ChildFunc: () => UIView;
@@ -18,6 +18,6 @@ export class AccountContextClass extends UIView {
     }
 
     public render() {
-        return (<AccountContextRenderer control={this} ></AccountContextRenderer>)
+        return (<AnonymousContextRenderer control={this} ></AnonymousContextRenderer>)
     }
 }

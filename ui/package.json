@@ -103,7 +103,7 @@
     },
     "dependencies": {
         "@realmocean/antd": "^21.0.34",
-        "@realmocean/sdk": "1.0.82",
+        "@realmocean/sdk": "^1.0.88",
         "@realmocean/vibe": "2.82.50",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.178",
