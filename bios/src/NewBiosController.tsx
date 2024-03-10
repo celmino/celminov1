@@ -14,7 +14,7 @@ import {
     cVertical
 } from "@tuval/forms";
 import { Routes } from "./routes/+routes";
-import useDrivePicker from 'react-google-drive-picker'
+//import useDrivePicker from 'react-google-drive-picker'
 import React, { useEffect, useState } from "react";
 import { is } from "@tuval/core";
 declare var google: any;
@@ -433,7 +433,7 @@ export class MainController extends BiosController {
        }
 
 
-         const [openPicker, authResponse] = useDrivePicker();
+         const [openPicker, authResponse] = {} as any//useDrivePicker();
         const handleOpenPicker = () => {
             openPicker({
                 clientId: "371171867863-sn17pmbfubttmcr7j646qf8uhfvrp4u7.apps.googleusercontent.com",

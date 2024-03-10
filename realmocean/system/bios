@@ -8360,10 +8360,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes/+routes */ "./src/routes/+routes.ts");
-/* harmony import */ var react_google_drive_picker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-google-drive-picker */ "../../../node_modules/react-google-drive-picker/dist/index.js");
-/* harmony import */ var react_google_drive_picker__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_google_drive_picker__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -8390,7 +8388,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 };
 
 
-
+//import useDrivePicker from 'react-google-drive-picker'
 
 var queryClient = new _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.QueryClient({
     defaultOptions: {
@@ -8653,15 +8651,15 @@ var GoogleDrive = /** @class */ (function (_super) {
             }
             var img = "";
             if (item.iconLink) {
-                img = react__WEBPACK_IMPORTED_MODULE_3___default().createElement("img", { src: item.iconLink.replace("16", "128"), title: item.id });
+                img = react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", { src: item.iconLink.replace("16", "128"), title: item.id });
             }
             var thumb = "";
             if (self.thumbnails && item.thumbnailLink) {
-                thumb = react__WEBPACK_IMPORTED_MODULE_3___default().createElement("span", null,
-                    react__WEBPACK_IMPORTED_MODULE_3___default().createElement("br", null),
-                    react__WEBPACK_IMPORTED_MODULE_3___default().createElement("img", { src: item.thumbnailLink, title: item.id }));
+                thumb = react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", null,
+                    react__WEBPACK_IMPORTED_MODULE_2___default().createElement("br", null),
+                    react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", { src: item.thumbnailLink, title: item.id }));
             }
-            return react__WEBPACK_IMPORTED_MODULE_3___default().createElement("li", { style: style, key: item.id, className: "collection-item", onClick: self.handleClick(item) },
+            return react__WEBPACK_IMPORTED_MODULE_2___default().createElement("li", { style: style, key: item.id, className: "collection-item", onClick: self.handleClick(item) },
                 img,
                 " ",
                 item.name);
@@ -8676,7 +8674,7 @@ var GoogleDrive = /** @class */ (function (_super) {
             }
             var img = "";
             if (item.iconLink) {
-                img = react__WEBPACK_IMPORTED_MODULE_3___default().createElement("img", { src: item.iconLink.replace("16", "128"), title: item.id });
+                img = react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", { src: item.iconLink.replace("16", "128"), title: item.id });
             }
             var thumb = "";
             var thumbnailImage = item.thumbnailLink ? item.thumbnailLink : item.iconLink.replace("16", "128");
@@ -8690,8 +8688,8 @@ var GoogleDrive = /** @class */ (function (_super) {
             if (!item.thumbnailLink) {
                 imageStyle.backgroundSize = '50px';
             }
-            thumb = react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", { className: "card-image", style: imageStyle },
-                react__WEBPACK_IMPORTED_MODULE_3___default().createElement("span", { className: "card-title" }));
+            thumb = react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { className: "card-image", style: imageStyle },
+                react__WEBPACK_IMPORTED_MODULE_2___default().createElement("span", { className: "card-title" }));
             var labelStyle = {
                 height: '60px',
                 lineHeight: '1.1em',
@@ -8721,28 +8719,28 @@ var GoogleDrive = /** @class */ (function (_super) {
         var parentItems = this.state.parents.map(function (item, pos) { return itemComp(item, pos, true); });
         var listFolders = this.state.folderData.map(function (item, pos) { return cardComp(item, self.state.parents.length, false); });
         var listItems = this.state.data.map(function (item, pos) { return cardComp(item, self.state.parents.length, false); });
-        return (react__WEBPACK_IMPORTED_MODULE_3___default().createElement("main", null,
-            react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", { className: "container" },
-                react__WEBPACK_IMPORTED_MODULE_3___default().createElement("iframe", { style: { position: 'fixed', left: '500px', top: '10px' }, width: 900, height: 900, src: this.state.url }),
-                react__WEBPACK_IMPORTED_MODULE_3___default().createElement("ul", { className: "collection" }, parentItems),
-                react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", { className: "row" },
+        return (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("main", null,
+            react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { className: "container" },
+                react__WEBPACK_IMPORTED_MODULE_2___default().createElement("iframe", { style: { position: 'fixed', left: '500px', top: '10px' }, width: 900, height: 900, src: this.state.url }),
+                react__WEBPACK_IMPORTED_MODULE_2___default().createElement("ul", { className: "collection" }, parentItems),
+                react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { className: "row" },
                     listFolders,
                     listItems),
-                this.state.loading ? react__WEBPACK_IMPORTED_MODULE_3___default().createElement("img", { width: "100%", src: "loading.gif" }) : null)));
+                this.state.loading ? react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", { width: "100%", src: "loading.gif" }) : null)));
     };
     GoogleDrive.prototype.componentDidMount = function () {
         this.loadData();
         this.loadFolderData();
     };
     return GoogleDrive;
-}((react__WEBPACK_IMPORTED_MODULE_3___default().Component)));
+}((react__WEBPACK_IMPORTED_MODULE_2___default().Component)));
 var MainController = /** @class */ (function (_super) {
     __extends(MainController, _super);
     function MainController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MainController.prototype.LoadBiosView = function () {
-        var _a = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(''), token = _a[0], setToken = _a[1];
+        var _a = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(''), token = _a[0], setToken = _a[1];
         var CLIENT_ID = '371171867863-sn17pmbfubttmcr7j646qf8uhfvrp4u7.apps.googleusercontent.com';
         var API_KEY = 'AIzaSyDxz6OCqsMIFTzNrSfgRThEubqQaYeJb5o';
         function verifyGoogleToken(token) {
@@ -8786,7 +8784,7 @@ var MainController = /** @class */ (function (_super) {
             });
             client.requestAccessToken();
         }
-        var _b = react_google_drive_picker__WEBPACK_IMPORTED_MODULE_2___default()(), openPicker = _b[0], authResponse = _b[1];
+        var _b = {}, openPicker = _b[0], authResponse = _b[1]; //useDrivePicker();
         var handleOpenPicker = function () {
             openPicker({
                 clientId: "371171867863-sn17pmbfubttmcr7j646qf8uhfvrp4u7.apps.googleusercontent.com",
@@ -10787,7 +10785,10 @@ var LoginController = /** @class */ (function (_super) {
             .fontFamily('"Graphik Regular", sans-serif')
             .cursor('pointer')
             .onClick(function () {
+            alert('');
             navigate('/reset-password');
+            // Services.Accounts.createAnonymousSession().then(account => alert(JSON.stringify(account)));
+            // navigate('/')
         }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Sign up')
             .fontSize('1.6rem')
             .fontFamily('"Graphik Regular", sans-serif')
@@ -11721,289 +11722,6 @@ var ReleaseViewClass = /** @class */ (function (_super) {
 var Wait = function () { return (new WaitViewClass()); };
 var Release = function () { return (new ReleaseViewClass()); };
 
-
-/***/ }),
-
-/***/ "../../../node_modules/react-google-drive-picker/dist/index.js":
-/*!*********************************************************************!*\
-  !*** ../../../node_modules/react-google-drive-picker/dist/index.js ***!
-  \*********************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var react_1 = __webpack_require__(/*! react */ "react");
-var typeDefs_1 = __webpack_require__(/*! ./typeDefs */ "../../../node_modules/react-google-drive-picker/dist/typeDefs.js");
-var useInjectScript_1 = __importDefault(__webpack_require__(/*! ./useInjectScript */ "../../../node_modules/react-google-drive-picker/dist/useInjectScript.js"));
-function useDrivePicker() {
-    var defaultScopes = ['https://www.googleapis.com/auth/drive.readonly'];
-    var _a = (0, useInjectScript_1.default)('https://apis.google.com/js/api.js'), loaded = _a[0], error = _a[1];
-    var _b = (0, useInjectScript_1.default)('https://accounts.google.com/gsi/client'), loadedGsi = _b[0], errorGsi = _b[1];
-    var _c = (0, react_1.useState)(false), pickerApiLoaded = _c[0], setpickerApiLoaded = _c[1];
-    var _d = (0, react_1.useState)(false), openAfterAuth = _d[0], setOpenAfterAuth = _d[1];
-    var _e = (0, react_1.useState)(false), authWindowVisible = _e[0], setAuthWindowVisible = _e[1];
-    var _f = (0, react_1.useState)(typeDefs_1.defaultConfiguration), config = _f[0], setConfig = _f[1];
-    var _g = (0, react_1.useState)(), authRes = _g[0], setAuthRes = _g[1];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    var picker;
-    // get the apis from googleapis
-    (0, react_1.useEffect)(function () {
-        if (loaded && !error && loadedGsi && !errorGsi && !pickerApiLoaded) {
-            loadApis();
-        }
-    }, [loaded, error, loadedGsi, errorGsi, pickerApiLoaded]);
-    // use effect to open picker after auth
-    (0, react_1.useEffect)(function () {
-        if (openAfterAuth &&
-            config.token &&
-            loaded &&
-            !error &&
-            loadedGsi &&
-            !errorGsi &&
-            pickerApiLoaded) {
-            createPicker(config);
-            setOpenAfterAuth(false);
-        }
-    }, [
-        openAfterAuth,
-        config.token,
-        loaded,
-        error,
-        loadedGsi,
-        errorGsi,
-        pickerApiLoaded,
-    ]);
-    // open the picker
-    var openPicker = function (config) {
-        // global scope given conf
-        setConfig(config);
-        // if we didnt get token generate token.
-        if (!config.token) {
-            var client = google.accounts.oauth2.initTokenClient({
-                client_id: config.clientId,
-                scope: (config.customScopes
-                    ? __spreadArray(__spreadArray([], defaultScopes, true), config.customScopes, true) : defaultScopes).join(' '),
-                callback: function (tokenResponse) {
-                    setAuthRes(tokenResponse);
-                    createPicker(__assign(__assign({}, config), { token: tokenResponse.access_token }));
-                },
-            });
-            client.requestAccessToken();
-        }
-        // if we have token and everything is loaded open the picker
-        if (config.token && loaded && !error && pickerApiLoaded) {
-            return createPicker(config);
-        }
-    };
-    // load the Drive picker api
-    var loadApis = function () {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        window.gapi.load('auth');
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        window.gapi.load('picker', { callback: onPickerApiLoad });
-    };
-    var onPickerApiLoad = function () {
-        setpickerApiLoaded(true);
-    };
-    var createPicker = function (_a) {
-        var token = _a.token, _b = _a.appId, appId = _b === void 0 ? '' : _b, _c = _a.supportDrives, supportDrives = _c === void 0 ? false : _c, developerKey = _a.developerKey, _d = _a.viewId, viewId = _d === void 0 ? 'DOCS' : _d, disabled = _a.disabled, multiselect = _a.multiselect, setOrigin = _a.setOrigin, _e = _a.showUploadView, showUploadView = _e === void 0 ? false : _e, showUploadFolders = _a.showUploadFolders, _f = _a.setParentFolder, setParentFolder = _f === void 0 ? '' : _f, viewMimeTypes = _a.viewMimeTypes, customViews = _a.customViews, _g = _a.locale, locale = _g === void 0 ? 'en' : _g, setIncludeFolders = _a.setIncludeFolders, setSelectFolderEnabled = _a.setSelectFolderEnabled, _h = _a.disableDefaultView, disableDefaultView = _h === void 0 ? false : _h, callbackFunction = _a.callbackFunction;
-        if (disabled)
-            return false;
-        var view = new google.picker.DocsView(google.picker.ViewId[viewId]);
-        if (viewMimeTypes)
-            view.setMimeTypes(viewMimeTypes);
-        if (setIncludeFolders)
-            view.setIncludeFolders(true);
-        if (setSelectFolderEnabled)
-            view.setSelectFolderEnabled(true);
-        var uploadView = new google.picker.DocsUploadView();
-        if (viewMimeTypes)
-            uploadView.setMimeTypes(viewMimeTypes);
-        if (showUploadFolders)
-            uploadView.setIncludeFolders(true);
-        if (setParentFolder)
-            uploadView.setParent(setParentFolder);
-        if (setParentFolder)
-            view.setParent(setParentFolder);
-        picker = new google.picker.PickerBuilder()
-            .setAppId(appId)
-            .setOAuthToken(token)
-            .setDeveloperKey(developerKey)
-            .setLocale(locale)
-            .setCallback(callbackFunction);
-        if (setOrigin) {
-            picker.setOrigin(setOrigin);
-        }
-        if (!disableDefaultView) {
-            picker.addView(view);
-        }
-        if (customViews) {
-            customViews.map(function (view) { return picker.addView(view); });
-        }
-        if (multiselect) {
-            picker.enableFeature(google.picker.Feature.MULTISELECT_ENABLED);
-        }
-        if (showUploadView)
-            picker.addView(uploadView);
-        if (supportDrives) {
-            picker.enableFeature(google.picker.Feature.SUPPORT_DRIVES);
-        }
-        picker.build().setVisible(true);
-        return true;
-    };
-    return [openPicker, authRes];
-}
-exports["default"] = useDrivePicker;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-
-/***/ "../../../node_modules/react-google-drive-picker/dist/typeDefs.js":
-/*!************************************************************************!*\
-  !*** ../../../node_modules/react-google-drive-picker/dist/typeDefs.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.defaultConfiguration = void 0;
-exports.defaultConfiguration = {
-    clientId: '',
-    developerKey: '',
-    viewId: 'DOCS',
-    callbackFunction: function () { return null; },
-};
-//# sourceMappingURL=typeDefs.js.map
-
-/***/ }),
-
-/***/ "../../../node_modules/react-google-drive-picker/dist/useInjectScript.js":
-/*!*******************************************************************************!*\
-  !*** ../../../node_modules/react-google-drive-picker/dist/useInjectScript.js ***!
-  \*******************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-var react_1 = __webpack_require__(/*! react */ "react");
-var injectorState = {
-    queue: {},
-    injectorMap: {},
-    scriptMap: {},
-};
-function useInjectScript(url) {
-    var _a = (0, react_1.useState)({
-        loaded: false,
-        error: false,
-    }), state = _a[0], setState = _a[1];
-    (0, react_1.useEffect)(function () {
-        var _a, _b, _c, _d, _e;
-        if (!((_a = injectorState.injectorMap) === null || _a === void 0 ? void 0 : _a[url])) {
-            injectorState.injectorMap[url] = 'init';
-        }
-        // check if the script is already cached
-        if (injectorState.injectorMap[url] === 'loaded') {
-            setState({
-                loaded: true,
-                error: false,
-            });
-            return;
-        }
-        // check if the script already errored
-        if (injectorState.injectorMap[url] === 'error') {
-            setState({
-                loaded: true,
-                error: true,
-            });
-            return;
-        }
-        var onScriptEvent = function (error) {
-            var _a, _b, _c, _d;
-            // Get all error or load functions and call them
-            if (error)
-                console.log('error loading the script');
-            (_b = (_a = injectorState.queue) === null || _a === void 0 ? void 0 : _a[url]) === null || _b === void 0 ? void 0 : _b.forEach(function (job) { return job(error); });
-            if (error && injectorState.scriptMap[url]) {
-                (_d = (_c = injectorState.scriptMap) === null || _c === void 0 ? void 0 : _c[url]) === null || _d === void 0 ? void 0 : _d.remove();
-                injectorState.injectorMap[url] = 'error';
-            }
-            else
-                injectorState.injectorMap[url] = 'loaded';
-            delete injectorState.scriptMap[url];
-        };
-        var stateUpdate = function (error) {
-            setState({
-                loaded: true,
-                error: error,
-            });
-        };
-        if (!((_b = injectorState.scriptMap) === null || _b === void 0 ? void 0 : _b[url])) {
-            injectorState.scriptMap[url] = document.createElement('script');
-            if (injectorState.scriptMap[url]) {
-                injectorState.scriptMap[url].src = url;
-                injectorState.scriptMap[url].async = true;
-                // append the script to the body
-                document.body.append(injectorState.scriptMap[url]);
-                injectorState.scriptMap[url].addEventListener('load', function () {
-                    return onScriptEvent(false);
-                });
-                injectorState.scriptMap[url].addEventListener('error', function () {
-                    return onScriptEvent(true);
-                });
-                injectorState.injectorMap[url] = 'loading';
-            }
-        }
-        if (!((_c = injectorState.queue) === null || _c === void 0 ? void 0 : _c[url])) {
-            injectorState.queue[url] = [stateUpdate];
-        }
-        else {
-            (_e = (_d = injectorState.queue) === null || _d === void 0 ? void 0 : _d[url]) === null || _e === void 0 ? void 0 : _e.push(stateUpdate);
-        }
-        // remove the event listeners
-        return function () {
-            var _a, _b;
-            //checks the main injector instance
-            //prevents Cannot read property 'removeEventListener' of null in hot reload
-            if (!injectorState.scriptMap[url])
-                return;
-            (_a = injectorState.scriptMap[url]) === null || _a === void 0 ? void 0 : _a.removeEventListener('load', function () {
-                return onScriptEvent(true);
-            });
-            (_b = injectorState.scriptMap[url]) === null || _b === void 0 ? void 0 : _b.removeEventListener('error', function () {
-                return onScriptEvent(true);
-            });
-        };
-    }, [url]);
-    return [state.loaded, state.error];
-}
-exports["default"] = useInjectScript;
-//# sourceMappingURL=useInjectScript.js.map
 
 /***/ }),
 

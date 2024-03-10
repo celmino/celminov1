@@ -611,7 +611,7 @@
   dependencies:
     "@react-editor-js/core" "2.1.0"
 
-"@realmocean/antd@^21.0.33":
+"@realmocean/antd@^21.0.34":
   version "21.0.34"
   resolved "https://registry.npmjs.org/@realmocean/antd/-/antd-21.0.34.tgz"
   integrity sha512-0CaJvt91ieg3A0PXT8ZW7B2Nk3oZ7bl42ORMLngEZQXPDFluj1xKJywNp/JkjW0Muo97/3xKi6jXl+dDMWEDAA==

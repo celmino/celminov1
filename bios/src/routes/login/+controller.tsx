@@ -191,7 +191,10 @@ export class LoginController extends CelminoController {
                                         .fontFamily('"Graphik Regular", sans-serif')
                                         .cursor('pointer')
                                         .onClick(() => {
+                                            alert('')
                                             navigate('/reset-password');
+                                           // Services.Accounts.createAnonymousSession().then(account => alert(JSON.stringify(account)));
+                                           // navigate('/')
                                         }),
                                     Spacer(),
                                     Text('Sign up')
