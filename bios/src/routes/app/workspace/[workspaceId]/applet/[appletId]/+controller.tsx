@@ -100,6 +100,7 @@ export class AppletController extends UIFormController {
 
     public override LoadView(): UIView {
 
+        const { appletId } = useParams();
         /*  const { workspaceId, appletId } = useParams();
  
          const { document: applet, isLoading } = useGetDocument({
@@ -148,7 +149,7 @@ export class AppletController extends UIFormController {
 
                     )
                 )
-            })
+            }).appletId(appletId)
 
 
 

@@ -18643,8 +18643,8 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController 
 const Proxy = ({ control }) => (control.vp_ChildFunc().render());
 function AppletContextRenderer({ control }) {
     const { realm } = (0,_realm__WEBPACK_IMPORTED_MODULE_5__.useRealm)();
-    const { appletId = control.vp_AppletId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
-    const { document: applet, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({ projectId: realm.$id, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
+    //const { appletId = control.vp_AppletId } = useParams();
+    const { document: applet, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({ projectId: realm.$id, databaseId: 'workspace', collectionId: 'applets', documentId: control.vp_AppletId });
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
         (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.AppletContextProvider.Provider, { value: { applet } },
             react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
@@ -19529,7 +19529,7 @@ const useAppletNavigate = () => {
     const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
     return {
         navigate: (url) => {
-            if ((url === null || url === void 0 ? void 0 : url[0]) !== '/') {
+            if ((url === null || url === void 0 ? void 0 : url.length) > 0 && (url === null || url === void 0 ? void 0 : url[0]) !== '/') {
                 url = '/' + url;
             }
             navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
