@@ -331,8 +331,19 @@ export class FormBuilder {
     public static injectView(viewType: string, viewFactory: any) {
         FormBuilder.viewFactories[viewType] = viewFactory;
     }
-    public static injectAction(actionType: string, actionFactory: any) {
-        FormBuilder.actionFactories[actionType] = actionFactory;
+
+    public static injectAction(actionFactory: any);
+    public static injectAction(actionType: string, actionFactory: any);
+    public static injectAction(...args: any[]) {
+        if (args.length === 1) {
+            const actionFactory = args[0];
+            FormBuilder.actionFactories[actionFactory.Id] = actionFactory;
+        } else {
+            const actionType = args[0];
+            const actionFactory = args[0];
+            FormBuilder.actionFactories[actionType] = actionFactory;
+        }
+
     }
     public static injectLayout(layoutType: string, viewFactory: any) {
         FormBuilder.layoutFactories[layoutType] = viewFactory;
@@ -552,7 +563,7 @@ export class FormBuilder {
 
                                     return (
                                         isFormLoading ? Spinner() :
-                                            VStack({ alignment: cTopLeading, spacing:24 })(
+                                            VStack({ alignment: cTopLeading, spacing: 24 })(
                                                 title && FormTitle(title),
                                                 //   Text(formMode).onClick(() => setFormMode(formMode === 'form' ? 'code' : 'form')),
                                                 formMode === 'code' ?
@@ -590,7 +601,7 @@ export class FormBuilder {
 
                                                 )
                                                     .height()
-                                                    //.borderTop('1px solid #D6E4ED')
+                                                //.borderTop('1px solid #D6E4ED')
 
                                             )
 

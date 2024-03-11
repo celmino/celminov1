@@ -9,6 +9,7 @@ import { WebsiteApplet } from "./applets/Website";
 import { WorldApplet } from "./applets/World";
 import { CommunityApplet } from "./applets/Community";
 import { ListApplet } from "./applets/ListApplet";
+import { DatabaseApplet } from "./applets/Database";
 
 
 export const Applets = [
@@ -16,6 +17,7 @@ export const Applets = [
      APQCApplet,
      WorldApplet, */
      DashboardsApplet,
+     DatabaseApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -279,68 +281,7 @@ export const Applets = [
             }
         ]
     },
-    {
-        name: 'Database',
-        type: 'Applet',
-        tree_type: 'com.celmino.widget.custom-applet-tree',
-        applet_type: 'com.celmino.applet.custom',
-        description: 'Monitor your process details in timeframe chart.',
-        // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
-        icon: '\\d278',
-        iconBackColor: '#66B47C',
-        enabled: true,
-        databases: [
-            {
-                "name": "Custom Applet",
-                "id": "document_management",
-                "category": "app",
-                "collections": [
-                    {
-                        "name": "Menu Tree",
-                        "id": "wm_tree",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "type",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "path",
-                                "type": "string"
-                            },
-                            {
-                                "key": "viewer",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_category",
-                                "type": "string"
-                            },
-                            {
-                                "key": "bg_color",
-                                "type": "string"
-                            },
-                            {
-                                "key": "fg_color",
-                                "type": "string"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
+    
     {
         name: 'Spider',
         type: 'Applet',
