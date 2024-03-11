@@ -32058,19 +32058,19 @@ var subNodes = function (TreeNode, level, nodeType, parentId, workspaceId, apple
                     if (onItemSelected == null) {
                         switch (item.type) {
                             case 'folder':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/folder/").concat(item.$id));
+                                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/folder/").concat(item.$id));
                                 break;
                             case 'list':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.$id));
+                                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.$id));
                                 break;
                             case 'board':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
+                                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
                                 break;
                             case 'document':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/document/").concat(item.$id));
+                                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/document/").concat(item.$id));
                                 break;
                             case 'whiteboard':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/whiteboard/").concat(item.$id));
+                                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/whiteboard/").concat(item.$id));
                                 break;
                         }
                     }
@@ -32308,16 +32308,16 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                                 navigate("");
                                 break;
                             case 'list':
-                                navigate("/app/".concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet), "-").concat(appletId, "/list/").concat(item.$id));
+                                navigate("/@/".concat(process(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(process(applet), "-").concat(appletId, "/list/").concat(item.$id));
                                 break;
                             case 'board':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
+                                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/list/").concat(item.parent, "/view/").concat(item.$id));
                                 break;
                             case 'document':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/document/").concat(item.$id));
+                                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/document/").concat(item.$id));
                                 break;
                             case 'whiteboard':
-                                navigate("/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/whiteboard/").concat(item.$id));
+                                navigate("/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/whiteboard/").concat(item.$id));
                                 break;
                         }
                     }
@@ -32761,7 +32761,7 @@ var ListController = /** @class */ (function (_super) {
                             }, function () {
                                 resolve(true);
                                 /*  setTimeout(() =>
-                                     navigate(`/app/workspace/${workspaceId}/applet/${appletId}`)
+                                     navigate(`/@/workspace/${workspaceId}/applet/${appletId}`)
                                      , 1000) */
                             });
                         }));
@@ -33028,7 +33028,7 @@ var OpaLoader = function (_a) {
             resolve(AppCache[opa_name]);
         }
         else {
-            var app_path = "/realmocean/store/app/open-testing/".concat(opa_name);
+            var app_path = "/realmocean/store/@/open-testing/".concat(opa_name);
             // alert(app_path)
             var app_path_local = "/system/".concat(opa_name, ".app");
             _tuval_core__WEBPACK_IMPORTED_MODULE_1__.ModuleLoader.LoadBundledModule(app_path_local, opa_name).then(function (_app) {

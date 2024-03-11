@@ -6108,7 +6108,7 @@ var TreeController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TreeController.prototype.LoadView = function () {
-        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useAppletNavigate)().navigate;
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var isLoading = false;
         var items = (this.props.data || {}).items;
@@ -6260,7 +6260,7 @@ var TreeController = /** @class */ (function (_super) {
                     ];
                 },
                 requestNavigation: function () {
-                    navigate("/app/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet === null || applet === void 0 ? void 0 : applet.name), "-").concat(appletId));
+                    navigate("");
                 },
                 requestEditMenu: function () { return [
                     {
@@ -6271,12 +6271,12 @@ var TreeController = /** @class */ (function (_super) {
                     {
                         title: 'Collections',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                        onClick: function () { return navigate("/app/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/").concat(applet === null || applet === void 0 ? void 0 : applet.name, "-").concat(appletId, "/collections")); }
+                        onClick: function () { return navigate("collections"); }
                     },
                     {
                         title: 'Applet settings',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                        onClick: function () { return navigate("/app/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm === null || realm === void 0 ? void 0 : realm.name), "-").concat(workspaceId, "/applet/").concat(appletId, "/settings")); }
+                        onClick: function () { return navigate("settings/general"); }
                     }
                 ]; }
             }));
@@ -6605,7 +6605,7 @@ var AddDocumentDialog = function (workspaceId, appletId, parent, path) {
                      },
                      {
                          "type": "navigate",
-                         "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                         "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                      }
                      ] */
                     /*  "successActions": [{
@@ -6613,7 +6613,7 @@ var AddDocumentDialog = function (workspaceId, appletId, parent, path) {
                  },
                  {
                      "type": "navigate",
-                     "url": "/app/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
                  }
                  ] */
                 }
@@ -7381,7 +7381,7 @@ var CollectionsController = /** @class */ (function (_super) {
             //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
             onChange: function (index) {
                 setSelectedCollection(collections[index]);
-                navigate("/app/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(realm.name), "-").concat(realm.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(applet === null || applet === void 0 ? void 0 : applet.name), "-").concat(appletId, "/collections/").concat(collections[index].name, "-").concat(collections[index].$id));
+                navigate("/@/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(realm.name), "-").concat(realm.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(applet === null || applet === void 0 ? void 0 : applet.name), "-").concat(appletId, "/collections/").concat(collections[index].name, "-").concat(collections[index].$id));
                 /*    setWidgetController({
                        controller: class extends WidgetController { }
                    });
@@ -8466,43 +8466,43 @@ var SettingsController = /** @class */ (function (_super) {
             {
                 id: 'general',
                 title: 'General',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/general"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/general"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Document Types',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
             },
             {
                 id: 'features',
                 title: 'Features',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/features"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/features"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'collections',
                 title: 'Collections',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/collections"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/collections"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Integrations',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
             },
             {
                 id: 'security',
                 title: 'Security & Permissions ',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/security"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/security"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-protectedAlt')
             },
             {
                 id: 'import',
                 title: 'Imports / Exports',
-                url: "/app/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
+                url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
                 icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
             },
         ];

@@ -24,7 +24,7 @@ import { getAppletId, getDocumentId, getListId, getViewId } from './utils';
 //import { SelectAppletDialog } from '@celmino/ui';
 import { EventBus } from '@tuval/core';
 //import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
-import { DynoDialog, useOrganization, useRealm } from '@celmino/ui';
+import { DynoDialog, useAppletNavigate, useOrganization, useRealm } from '@celmino/ui';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 
 
@@ -32,13 +32,13 @@ export class TreeController extends UIController {
 
     public override LoadView(): UIView {
 
-        const navigate = useNavigate();
+        const { navigate } = useAppletNavigate();
 
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
         const { items } = this.props.data || {};
         const { organizationId, workspaceId, appletId, onItemSelected, item } = this.props.config || {};
-        const {realm} = useRealm();
+        const { realm } = useRealm();
 
         const organization = useOrganization(); // useGetCurrentOrganization();
 
@@ -209,7 +209,7 @@ export class TreeController extends UIController {
 
                             },
                             requestNavigation: () => {
-                                navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/${urlFriendly(applet?.name)}-${appletId}`)
+                                navigate(``)
                             },
                             requestEditMenu: () => [
 
@@ -221,12 +221,12 @@ export class TreeController extends UIController {
                                 {
                                     title: 'Collections',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/${applet?.name}-${appletId}/collections`)
+                                    onClick: () => navigate(`collections`)
                                 },
                                 {
                                     title: 'Applet settings',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm?.name)}-${workspaceId}/applet/${appletId}/settings`)
+                                    onClick: () => navigate(`settings/general`)
                                 }
 
 
