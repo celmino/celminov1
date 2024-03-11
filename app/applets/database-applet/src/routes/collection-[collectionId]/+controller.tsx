@@ -193,16 +193,7 @@ export class CollectionController extends UIFormController {
         const { collection }: { collection: Models.Collection } = useGetCollection(workspaceId, databaseId, collectionId);
         const [collectionName, setCollectionName] = useState<string>(collection?.name ?? 'New Collection');
         const [showDialog, setShowDialog] = useState<boolean>(false);
-        /* let documents = [];
-        if (_documents != null) {
-            documents = [..._documents];
-            documents.push({
-                indexNo: _documents.length + 1,
-                type: 'addRow'
-            })
-        } */
-
-
+       
 
         let index = 1;
         return (

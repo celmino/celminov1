@@ -98,7 +98,6 @@ export class TreeController extends UIController {
                                             navigate(``);
                                             break;
                                         case 'collection':
-                                            alert(`${urlFriendly(item.name)}-${item.$id}`);
                                             navigate(`${urlFriendly(item.name)}-${item.$id}`);
                                             break;
 

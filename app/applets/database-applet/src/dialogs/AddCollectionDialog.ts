@@ -176,7 +176,7 @@ export const SaveCollectionAction = (formMeta, action) => UIViewBuilder(() => {
                                             name: collection.name,
                                             type: 'collection',
                                             parent: databaseId,
-                                            tree_widget: 'com.celmino.widget.database',
+                                            tree_widget: 'com.celmino.applet.database',
                                             appletId,
                                             path: (new Date()).getTime().toString(),
                                             iconName: 'document',

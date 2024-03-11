@@ -6161,7 +6161,6 @@ var TreeController = /** @class */ (function (_super) {
                                 navigate("");
                                 break;
                             case 'collection':
-                                alert("".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-").concat(item.$id));
                                 navigate("".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-").concat(item.$id));
                                 break;
                         }
@@ -7185,14 +7184,6 @@ var CollectionController = /** @class */ (function (_super) {
         var collection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetCollection)(workspaceId, databaseId, collectionId).collection;
         var _d = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)((_a = collection === null || collection === void 0 ? void 0 : collection.name) !== null && _a !== void 0 ? _a : 'New Collection'), collectionName = _d[0], setCollectionName = _d[1];
         var _e = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false), showDialog = _e[0], setShowDialog = _e[1];
-        /* let documents = [];
-        if (_documents != null) {
-            documents = [..._documents];
-            documents.push({
-                indexNo: _documents.length + 1,
-                type: 'addRow'
-            })
-        } */
         var index = 1;
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Geometry)(function (_a) {
