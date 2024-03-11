@@ -21,7 +21,8 @@ export class FormBuilder {
     static layoutFactories: {};
     static containerFactories: {};
     static injectView(viewType: string, viewFactory: any): void;
-    static injectAction(actionType: string, actionFactory: any): void;
+    static injectAction(actionFactory: any): any;
+    static injectAction(actionType: string, actionFactory: any): any;
     static injectLayout(layoutType: string, viewFactory: any): void;
     static injectContainer(containerType: string, viewFactory: any): void;
     static getViewFactory(type: string): any;

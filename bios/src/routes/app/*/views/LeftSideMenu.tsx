@@ -403,7 +403,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         HStack(
                                             HDivider().height(1).background('#ECEDEE')
                                         ).height().padding(cVertical, 10),
-                                        isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView() :
+                                        isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView(workspaceId) :
                                             UIViewBuilder(() => {
                                                 const params = useParams();
                                                 const { deleteCache } = useDeleteCache(workspaceId);
@@ -488,17 +488,19 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                         ).appletId(child.appletId))
                                                                 } else {
                                                                     return (
-                                                                        HStack(
-                                                                            child.tree_widget != null ?
-                                                                                UIWidget(child.tree_widget, 'tree')
-                                                                                    .config({
-                                                                                        item: child,
-                                                                                        ...(params || {}),
-                                                                                        appletId: child.appletId
-                                                                                    }) :
-                                                                                Text(child.name)
-                                                                        )
-                                                                            .width('calc(100% - 32px)')
+                                                                        AppletContext(() =>
+                                                                            HStack(
+                                                                                child.tree_widget != null ?
+                                                                                    UIWidget(child.tree_widget, 'tree')
+                                                                                        .config({
+                                                                                            item: child,
+                                                                                            ...(params || {}),
+                                                                                            appletId: child.appletId
+                                                                                        }) :
+                                                                                    Text(child.name)
+                                                                            )
+                                                                                .width('calc(100% - 32px)')
+                                                                        ).appletId(child.appletId)
                                                                     )
                                                                 }
                                                             },
@@ -543,16 +545,18 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                             ).appletId(item.appletId))
                                                                     } else {
                                                                         return (
-                                                                            HStack(
-                                                                                item.tree_widget != null ?
-                                                                                    UIWidget(item.tree_widget, 'tree')
-                                                                                        .config({
-                                                                                            item: item,
-                                                                                            ...(params || {}),
-                                                                                            appletId: item.$id
-                                                                                        }) :
-                                                                                    Text(item.name)
-                                                                            ).width('calc(100% - 32px)')
+                                                                            AppletContext(() =>
+                                                                                HStack(
+                                                                                    item.tree_widget != null ?
+                                                                                        UIWidget(item.tree_widget, 'tree')
+                                                                                            .config({
+                                                                                                item: item,
+                                                                                                ...(params || {}),
+                                                                                                appletId: item.$id
+                                                                                            }) :
+                                                                                        Text(item.name)
+                                                                                ).width('calc(100% - 32px)')
+                                                                            ).appletId(item.appletId)
                                                                         )
                                                                     }
                                                                 },

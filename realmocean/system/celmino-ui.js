@@ -11254,6 +11254,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
 /* harmony import */ var _applets_Community__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/Community */ "./src/applets/Community.ts");
 /* harmony import */ var _applets_ListApplet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./applets/ListApplet */ "./src/applets/ListApplet.ts");
+/* harmony import */ var _applets_Database__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./applets/Database */ "./src/applets/Database.ts");
+
 
 
 
@@ -11267,6 +11269,7 @@ const Applets = [
      APQCApplet,
      WorldApplet, */
     _applets_Dashboards__WEBPACK_IMPORTED_MODULE_2__.DashboardsApplet,
+    _applets_Database__WEBPACK_IMPORTED_MODULE_8__.DatabaseApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -11498,68 +11501,6 @@ const Applets = [
                 "id": "document_management",
                 "category": "app",
                 "collections": []
-            }
-        ]
-    },
-    {
-        name: 'Database',
-        type: 'Applet',
-        tree_type: 'com.celmino.widget.custom-applet-tree',
-        applet_type: 'com.celmino.applet.custom',
-        description: 'Monitor your process details in timeframe chart.',
-        // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
-        icon: '\\d278',
-        iconBackColor: '#66B47C',
-        enabled: true,
-        databases: [
-            {
-                "name": "Custom Applet",
-                "id": "document_management",
-                "category": "app",
-                "collections": [
-                    {
-                        "name": "Menu Tree",
-                        "id": "wm_tree",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "type",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "path",
-                                "type": "string"
-                            },
-                            {
-                                "key": "viewer",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_category",
-                                "type": "string"
-                            },
-                            {
-                                "key": "bg_color",
-                                "type": "string"
-                            },
-                            {
-                                "key": "fg_color",
-                                "type": "string"
-                            }
-                        ]
-                    }
-                ]
             }
         ]
     },
@@ -16513,8 +16454,16 @@ class FormBuilder {
     static injectView(viewType, viewFactory) {
         FormBuilder.viewFactories[viewType] = viewFactory;
     }
-    static injectAction(actionType, actionFactory) {
-        FormBuilder.actionFactories[actionType] = actionFactory;
+    static injectAction(...args) {
+        if (args.length === 1) {
+            const actionFactory = args[0];
+            FormBuilder.actionFactories[actionFactory.Id] = actionFactory;
+        }
+        else {
+            const actionType = args[0];
+            const actionFactory = args[0];
+            FormBuilder.actionFactories[actionType] = actionFactory;
+        }
     }
     static injectLayout(layoutType, viewFactory) {
         FormBuilder.layoutFactories[layoutType] = viewFactory;
@@ -18202,6 +18151,145 @@ const DashboardsApplet = {
             "id": "world",
             "category": "app",
             "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Database.ts":
+/*!*********************************!*\
+  !*** ./src/applets/Database.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DatabaseApplet: () => (/* binding */ DatabaseApplet)
+/* harmony export */ });
+const DatabaseApplet = {
+    name: 'Database',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.database',
+    applet_type: 'com.celmino.applet.database',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d278',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Workspace",
+            "id": "workspace_applet",
+            "category": "app",
+            "collections": [
+                {
+                    "name": "Collections",
+                    "id": "collections",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fields",
+                    "id": "fields",
+                    "attributes": [
+                        {
+                            "key": "key",
+                            "type": "string"
+                        },
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fieldInfo",
+                            "type": "string",
+                            "size": 18900
+                        },
+                        {
+                            "key": "collectionId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "Documents",
+                    "id": "documents",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "parent",
+                            "type": "string"
+                        },
+                        {
+                            "key": "path",
+                            "type": "string"
+                        },
+                        {
+                            "key": "viewer",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_category",
+                            "type": "string"
+                        },
+                        {
+                            "key": "bg_color",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fg_color",
+                            "type": "string"
+                        }
+                    ],
+                },
+                {
+                    "name": "Document Contents",
+                    "id": "documentContents",
+                    "attributes": [
+                        {
+                            "key": "content",
+                            "type": "string",
+                            "size": 932000
+                        }
+                    ],
+                }
+            ]
         }
     ]
 };

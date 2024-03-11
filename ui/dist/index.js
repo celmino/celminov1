@@ -16454,8 +16454,16 @@ class FormBuilder {
     static injectView(viewType, viewFactory) {
         FormBuilder.viewFactories[viewType] = viewFactory;
     }
-    static injectAction(actionType, actionFactory) {
-        FormBuilder.actionFactories[actionType] = actionFactory;
+    static injectAction(...args) {
+        if (args.length === 1) {
+            const actionFactory = args[0];
+            FormBuilder.actionFactories[actionFactory.Id] = actionFactory;
+        }
+        else {
+            const actionType = args[0];
+            const actionFactory = args[0];
+            FormBuilder.actionFactories[actionType] = actionFactory;
+        }
     }
     static injectLayout(layoutType, viewFactory) {
         FormBuilder.layoutFactories[layoutType] = viewFactory;
