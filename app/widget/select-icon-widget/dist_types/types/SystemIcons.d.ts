@@ -12,4 +12,10 @@ export declare const SystemIcons: {
         tags: string[];
         icon: () => React.JSX.Element;
     };
+    table: {
+        category: string;
+        name: string;
+        tags: string[];
+        icon: () => React.JSX.Element;
+    };
 };

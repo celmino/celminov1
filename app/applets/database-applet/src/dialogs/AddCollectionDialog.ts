@@ -179,7 +179,7 @@ export const SaveCollectionAction = (formMeta, action) => UIViewBuilder(() => {
                                             tree_widget: 'com.celmino.applet.database',
                                             appletId,
                                             path: (new Date()).getTime().toString(),
-                                            iconName: 'document',
+                                            iconName: 'table',
                                             iconCategory: 'SystemIcons',
                                             //viewer:'com.tuvalsoft.viewer.document'
                                         }

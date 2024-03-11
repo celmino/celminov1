@@ -6378,10 +6378,10 @@ var SaveCollectionAction = function (formMeta, action) { return (0,_tuval_forms_
                                     name: collection.name,
                                     type: 'collection',
                                     parent: databaseId,
-                                    tree_widget: 'com.celmino.widget.database',
+                                    tree_widget: 'com.celmino.applet.database',
                                     appletId: appletId,
                                     path: (new Date()).getTime().toString(),
-                                    iconName: 'document',
+                                    iconName: 'table',
                                     iconCategory: 'SystemIcons',
                                     //viewer:'com.tuvalsoft.viewer.document'
                                 }
