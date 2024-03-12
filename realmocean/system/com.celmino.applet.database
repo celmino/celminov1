@@ -6071,6 +6071,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _dialogs_AddCollectionDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dialogs/AddCollectionDialog */ "./src/dialogs/AddCollectionDialog.ts");
 /* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./resources/Icons */ "./src/resources/Icons.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -6086,6 +6087,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -6113,7 +6115,7 @@ var TreeController = /** @class */ (function (_super) {
                 appletName: item.name,
                 iconName: item.iconName,
                 iconCategory: item.iconCategory,
-                //isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
+                isSelected: (0,_utils__WEBPACK_IMPORTED_MODULE_6__.isSelected)(item),
                 isEditing: isEditing,
                 editingChanged: function (status) { return setIsEditing(status); },
                 titleChanged: function (title) {
@@ -8420,6 +8422,94 @@ var SimpleImage = /** @class */ (function () {
     return SimpleImage;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/utils.ts":
+/*!**********************!*\
+  !*** ./src/utils.ts ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getDocumentId: () => (/* binding */ getDocumentId),
+/* harmony export */   getListId: () => (/* binding */ getListId),
+/* harmony export */   getViewId: () => (/* binding */ getViewId),
+/* harmony export */   getWhiteboardId: () => (/* binding */ getWhiteboardId),
+/* harmony export */   isSelected: () => (/* binding */ isSelected)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+function isSelected(item) {
+    if (item.type === 'collection') {
+        var url = window.location.href;
+        var indexOf = url.indexOf("".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-").concat(item.$id));
+        return indexOf > -1;
+    }
+    else {
+        return false;
+    }
+}
+function getListId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/list\/([^]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
+function getViewId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/view\/([^]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
+function getDocumentId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/document\/([^\/]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
+function getWhiteboardId() {
+    var url = window.location.href;
+    // Regex deseni
+    var regexPattern = /\/whiteboard\/([^\/]+)/;
+    // Regex eşleşmesi
+    var matches = url.match(regexPattern);
+    // Eğer eşleşme varsa, list parametresini al
+    if (matches && matches.length > 1) {
+        return matches[1];
+    }
+    else {
+        return;
+    }
+}
 
 
 /***/ }),

@@ -16109,7 +16109,7 @@ const Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
-    _applets_Divider__WEBPACK_IMPORTED_MODULE_3__.AppletDivider,
+    _applets_Divider__WEBPACK_IMPORTED_MODULE_3__.AppletCategory,
     _applets_Website__WEBPACK_IMPORTED_MODULE_5__.WebsiteApplet,
     _applets_Emails__WEBPACK_IMPORTED_MODULE_4__.EmailsApplet,
     _applets_Activities__WEBPACK_IMPORTED_MODULE_0__.ActivitiesApplet,
@@ -18306,12 +18306,12 @@ const DatabaseApplet = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AppletDivider: () => (/* binding */ AppletDivider)
+/* harmony export */   AppletCategory: () => (/* binding */ AppletCategory)
 /* harmony export */ });
-const AppletDivider = {
-    name: 'Divider',
+const AppletCategory = {
+    name: 'Category',
     type: 'Applet',
-    tree_type: 'com.celmino.widget.applet-tree-divider',
+    tree_type: 'com.celmino.applet.category',
     applet_type: 'com.celmino.applet.category',
     description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
     // image: '/images/applets/documents.png',
@@ -18322,7 +18322,7 @@ const AppletDivider = {
     enabled: true,
     databases: [
         {
-            "name": "Divider",
+            "name": "Category",
             "id": "applet_category",
             "category": "app",
             "collections": []

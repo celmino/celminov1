@@ -1,5 +1,5 @@
-import { Button, Fragment, HDivider, HStack, Heading, HeadingSizes, Icon, Input, ReactView, SecureField, Spacer, Text, TextField, UIController, UIImage, UINavigate, UIView, UIViewBuilder, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
-import { Services, useCreateEmailSession, useCreateTeam, useGetMe } from "@realmocean/sdk";
+import { Services, useCreateEmailSession } from "@realmocean/sdk";
+import { HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
 import { AlreadyLoggedInGuard } from "../../guards/AlreadyLoggedInGuard";
@@ -114,7 +114,7 @@ export class LoginController extends CelminoController {
                                 .onClick(() => {
                                     Services.Accounts.createOAuth2Session(
                                         "google",
-                                        `${window.location.protocol}//${window.location.host}/@`,
+                                        `${window.location.protocol}//${window.location.host}/@/login-success`,
                                         `${window.location.protocol}//${window.location.host}/login-failure`
                                     )
 
@@ -131,7 +131,7 @@ export class LoginController extends CelminoController {
                                 .onClick(() => {
                                     Services.Accounts.createOAuth2Session(
                                         "microsoft",
-                                        `${window.location.protocol}//${window.location.host}/@`,
+                                        `${window.location.protocol}//${window.location.host}/@/login-success`,
                                         `${window.location.protocol}//${window.location.host}/login-failure`
                                     )
 

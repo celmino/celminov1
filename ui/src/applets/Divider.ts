@@ -1,7 +1,7 @@
-export const AppletDivider = {
-    name: 'Divider',
+export const AppletCategory = {
+    name: 'Category',
     type: 'Applet',
-    tree_type: 'com.celmino.widget.applet-tree-divider',
+    tree_type: 'com.celmino.applet.category',
     applet_type: 'com.celmino.applet.category',
     description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
     // image: '/images/applets/documents.png',
@@ -12,7 +12,7 @@ export const AppletDivider = {
     enabled: true,
     databases: [
         {
-            "name": "Divider",
+            "name": "Category",
             "id": "applet_category",
             "category": "app",
             "collections": []

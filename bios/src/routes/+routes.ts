@@ -1,22 +1,23 @@
 import { UIRoute, UIRoutes } from "@tuval/forms"
 
 import { LogoutController } from "./logout/+controller"
-import { WorkspaceLayoutController } from "./app/workspace/+controller"
-import { HomeController } from "./app/*/+controller"
-import { OrganizationController } from "./app/organization/[organizationId]/+controller"
-import { AppletController } from "./app/workspace/[workspaceId]/applet/[appletId]/+controller"
+import { WorkspaceLayoutController } from "./@/workspace/+controller"
+import { HomeController } from "./@/*/+controller"
+import { OrganizationController } from "./@/organization/[organizationId]/+controller"
+import { AppletController } from "./@/workspace/[workspaceId]/applet/[appletId]/+controller"
 import { RedirectToAppController } from "./RedirectToAppController"
 import { LoginController } from "./login/+controller"
 import { SignupController } from "./signup/+controller"
-import { WorkspaceSelectController } from "./app/workspace/select/+controller"
-import { OrganizationSelectController } from "./app/organization/select/+controller"
-import { LayoutController, PublicLayoutController } from "./app/+controller"
-import { WorkspaceController } from "./app/workspace/[workspaceId]/+controller"
-import { DefaultWorkspaceController } from "./app/+default"
+import { WorkspaceSelectController } from "./@/workspace/select/+controller"
+import { OrganizationSelectController } from "./@/organization/select/+controller"
+import { LayoutController, PublicLayoutController } from "./@/+controller"
+import { WorkspaceController } from "./@/workspace/[workspaceId]/+controller"
+import { DefaultWorkspaceController } from "./@/+default"
 import { ResetPasswordController } from "./reset-password/+controller"
 import { UpdatePasswordController } from "./update-password/+controller"
 import { LandingController } from "./LandingController"
-import { PublicWorkspaceLayoutController } from "./app/workspace/@controller"
+import { PublicWorkspaceLayoutController } from "./@/workspace/@controller"
+import { LoginSuccess } from "./@/login-success/+controller"
 
 
 export const Routes = () => {
@@ -24,6 +25,7 @@ export const Routes = () => {
         UIRoutes(
             UIRoute('/@', LayoutController).children(
                 UIRoute('', DefaultWorkspaceController),
+                UIRoute('login-success', LoginSuccess),
                 UIRoute('*', HomeController),
                 UIRoute(':organizationId', OrganizationController).children(
                     UIRoute(':workspaceId', WorkspaceLayoutController).children(

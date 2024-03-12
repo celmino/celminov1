@@ -13,7 +13,7 @@ import { DynoDialog, useApplet, useAppletNavigate, useRealm } from '@celmino/ui'
 import { EventBus } from '@tuval/core';
 import { AddCollectionDialog } from './dialogs/AddCollectionDialog';
 import { TableIcon } from './resources/Icons';
-
+import { isSelected } from './utils';
 
 export class TreeController extends UIController {
 
@@ -28,6 +28,8 @@ export class TreeController extends UIController {
         const { applet } = useApplet();
         const { updateDocument } = useUpdateDocument(workspaceId);
 
+       
+
         return (
 
             UIViewBuilder(() => {
@@ -41,7 +43,7 @@ export class TreeController extends UIController {
                             appletName: item.name,
                             iconName: item.iconName,
                             iconCategory: item.iconCategory,
-                            //isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
+                            isSelected: isSelected(item),
                             isEditing: isEditing,
                             editingChanged: (status) => setIsEditing(status),
                             titleChanged: (title) => {
@@ -159,5 +161,7 @@ export class TreeController extends UIController {
         )
     }
 }
+
+
 
 //FormBuilder.injectAction('saveSpace', SaveSpaceAction);

@@ -2,7 +2,7 @@ import { APQCApplet } from "./applets/APQC";
 import { ActivitiesApplet } from "./applets/Activities";
 import { WorkspaceApplet } from "./applets/Workspace";
 import { DashboardsApplet } from "./applets/Dashboards";
-import { AppletDivider } from "./applets/Divider";
+import { AppletCategory } from "./applets/Divider";
 import { EmailsApplet } from "./applets/Emails";
 import { InvestorsInTurkey } from "./applets/InvestorsInTurkey";
 import { WebsiteApplet } from "./applets/Website";
@@ -4968,7 +4968,7 @@ export const Applets = [
         iconBackColor: '#66B47C',
         enabled: true
     },
-    AppletDivider,
+    AppletCategory,
     WebsiteApplet,
     EmailsApplet,
     ActivitiesApplet,

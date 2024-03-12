@@ -102,6 +102,7 @@
         ]
     },
     "dependencies": {
+        "@celmino/ui": "^1.0.38",
         "@realmocean/antd": "^21.0.34",
         "@realmocean/sdk": "^1.0.89",
         "@realmocean/vibe": "2.82.50",

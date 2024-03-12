@@ -1,21 +1,15 @@
+import { urlFriendly } from "@tuval/forms";
 
-export function getAppletId() {
-    var url = window.location.href;
+export function isSelected(item: any) {
 
-    // Regex deseni
-    var regexPattern = /\/applet\/([^\/]+)/;
+    if (item.type === 'collection') {
+        var url = window.location.href;
 
-    // Regex eşleşmesi
-    var matches = url.match(regexPattern);
-
-    // Eğer eşleşme varsa, list parametresini al
-    if (matches && matches.length > 1) {
-        return matches[1];
-
+        const indexOf = url.indexOf(`${urlFriendly(item.name)}-${item.$id}`);
+        return indexOf > -1;
     } else {
-        return;
+        return false;
     }
-
 }
 
 
