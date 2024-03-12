@@ -94,9 +94,6 @@ export class ListController extends UIFormController {
                     <DialogStack>
                         {
                             VStack({ alignment: cTopLeading })(
-                                //ActionPanel(),
-                                //ViewHeader('test'),
-                                Text(JSON.stringify(account)),
                                 VStack({ alignment: cTopLeading })(
                                     ActionPanel(),
                                     ViewHeader(applet?.name, (e) => {
