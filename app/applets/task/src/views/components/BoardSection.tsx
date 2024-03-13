@@ -20,9 +20,6 @@ type BoardSectionProps = {
 };
 
 const BoardSection = ({ id, title, tasks, status }: BoardSectionProps) => {
-
-
-
     const [showEdit, setShowEdit] = useState(false);
 
     const { setNodeRef } = useDroppable({
@@ -67,7 +64,8 @@ const BoardSection = ({ id, title, tasks, status }: BoardSectionProps) => {
                 strategy={verticalListSortingStrategy}
             >
                 <div ref={setNodeRef} style={{ width: '100%' }}>
-                    {tasks.map((task) => (
+                    {
+                    tasks.map((task) => (
 
                         <SortableTaskItem id={task?.id} task={task} status={status} />
 

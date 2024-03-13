@@ -77,11 +77,40 @@ const BoardSectionList = ({ items, status }) => {
     const [boardSections, setBoardSections] =
         useState<BoardSectionsType>(initialBoardSections);
 
+    const updateBoardSectionsForUpdate = useCallback(({ task }: { task: any }) => {
+
+        const _index = boardSections[task[groupBy]].length - 1;
+
+
+        unstable_batchedUpdates(() => {
+            setBoardSections((items) => {
+                const a = {
+                    ...items,
+                    [task[groupBy]]: arrayMove(
+                        boardSections[task[groupBy]],
+                        _index,
+                        _index
+                    ),
+                }
+                //console.log(JSON.stringify(a))
+                return a;
+            }
+            );
+        });
+
+
+
+        // setBoardSections({ ...boardSections });
+    }, [])
+
     const updateBoardSections = useCallback(({ task }: { task: any }) => {
         // alert(JSON.stringify(task))
 
 
-       boardSections[task[groupBy]].push(task);
+        boardSections[task[groupBy]].push({
+            id: task.$id,
+            ...task
+        });
 
         const _index = boardSections[task[groupBy]].length - 1;
 
@@ -137,9 +166,11 @@ const BoardSectionList = ({ items, status }) => {
 
     useEffect(() => {
         EventBus.Default.on('tasks.changed', updateBoardSections);
+        EventBus.Default.on('tasks.updated', updateBoardSectionsForUpdate);
         EventBus.Default.on('tasks.cache.changed', updateFromCache);
         return () => {
             EventBus.Default.off('tasks.changed', updateBoardSections);
+            EventBus.Default.off('tasks.updated', updateBoardSectionsForUpdate);
             EventBus.Default.off('tasks.cache.changed', updateFromCache);
         }
     })
@@ -236,18 +267,23 @@ const BoardSectionList = ({ items, status }) => {
         }
 
 
+        const activeTask = boardSections[activeContainer].find(
+            (task) => task.id === active.id
+        );
 
         const activeIndex = boardSections[activeContainer].findIndex(
-            (task) => task.$id === active.id
+            (task) => task.id === active.id
         );
         const overIndex = boardSections[overContainer].findIndex(
-            (task) => task.$id === over?.id
+            (task) => task.id === over?.id
         );
 
 
 
 
+        activeTask[groupBy] = overContainer;
         onStageChange(active.id, overContainer);
+
 
         setBoardSections((boardSection) => ({
             ...boardSection,
@@ -257,6 +293,7 @@ const BoardSectionList = ({ items, status }) => {
                 overIndex
             ),
         }));
+
         //}
 
         setActiveTaskId(null);

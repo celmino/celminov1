@@ -71,7 +71,9 @@ export class ListController extends UIFormController {
         const { updateDocument } = useUpdateDocument(workspaceId); */
 
         const { documents: items, isLoading: isItemsLoading } = useListDocuments(workspaceId, appletId, 'listItems');
-        const { documents: groups, isLoading: isStatusesLoading } = useListDocuments(workspaceId, appletId, 'listStatuses');
+        const { documents: groups, isLoading: isStatusesLoading } = useListDocuments(workspaceId, appletId, 'listStatuses', [
+            Query.orderAsc('orderBy')
+        ]);
         const { createDocument: createTask } = useCreateDocument(workspaceId, appletId, 'listItems');
         const { updateDocument: updateTask } = useUpdateDocument(workspaceId);
 
@@ -133,7 +135,7 @@ export class ListController extends UIFormController {
                                                             groups: groups.map(group => ({ id: group.$id, ...group })),
                                                             groupBy: 'status',
                                                             onItemChanged: (itemId: string, data: any) => {
-                                                       
+
                                                                 updateDocument({
                                                                     databaseId: appletId,
                                                                     collectionId: 'listItems',

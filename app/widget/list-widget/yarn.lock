@@ -114,16 +114,16 @@
   resolved "https://registry.npmjs.org/@celmino/directoryprotocol/-/directoryprotocol-0.0.7.tgz"
   integrity sha512-yESCabHZ8eMKSfaeU8du4WhYjpwfscRmi0nyWf5JyIjEiQFx0O++KLRUlUS2xYB8zI+qt+ve3nzv4jxY+Cln7A==
 
-"@celmino/ui@^1.0.25":
-  version "1.0.25"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.25.tgz"
-  integrity sha512-osF4RpwaGeZEPpZM2BrkTephjVMxx9HJUx6wjYIkRloKCzHJHCBicX7dJJ/fKDRhaS2r612Iw3hhyXERP7XrDA==
+"@celmino/ui@^1.0.38":
+  version "1.0.38"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.38.tgz"
+  integrity sha512-qOoA0hrABVGfimm6j/V4g3e2NBVppEMlQVqSIMGV3bw64bTEP2MVzKByJvMqSd2xAbQBqJd1BIpdsh8XnVQdUA==
   dependencies:
-    "@realmocean/antd" "^21.0.32"
-    "@realmocean/sdk" "1.0.82"
+    "@realmocean/antd" "^21.0.34"
+    "@realmocean/sdk" "^1.0.89"
     "@realmocean/vibe" "2.82.50"
     "@tuval/core" "^0.0.103"
-    "@tuval/forms" "^1.0.167"
+    "@tuval/forms" "^1.0.178"
     "@uiw/react-color-circle" "^2.1.0"
     dts-bundle "^0.7.3"
     shelljs "^0.8.5"
@@ -649,10 +649,10 @@
   dependencies:
     "@react-editor-js/core" "2.1.0"
 
-"@realmocean/antd@^21.0.26", "@realmocean/antd@^21.0.32":
-  version "21.0.32"
-  resolved "https://registry.npmjs.org/@realmocean/antd/-/antd-21.0.32.tgz"
-  integrity sha512-D2VyW6UAR4vIpOB1WEY4iZfxSKsFaeG94ifSAiEMHEJbRAmS5CrsLo8ji+e6hkAw7Eo+SXzdprikeydRQIYBpA==
+"@realmocean/antd@^21.0.26", "@realmocean/antd@^21.0.34":
+  version "21.0.34"
+  resolved "https://registry.npmjs.org/@realmocean/antd/-/antd-21.0.34.tgz"
+  integrity sha512-0CaJvt91ieg3A0PXT8ZW7B2Nk3oZ7bl42ORMLngEZQXPDFluj1xKJywNp/JkjW0Muo97/3xKi6jXl+dDMWEDAA==
   dependencies:
     "@realmocean/data" "^0.0.3"
     "@realmocean/dropdowns" "^0.0.20"
@@ -732,10 +732,10 @@
   resolved "https://registry.npmjs.org/@realmocean/query-builder/-/query-builder-0.0.2.tgz"
   integrity sha512-/Ne5x4eWNWoBl+UD5QbK5gGXYywtHezfC+F7GCEECCpF03nwlyXPuQPE0xZ4KfNjNu3Vf6nSDdV+0m4e7COWbA==
 
-"@realmocean/sdk@^1.0.82", "@realmocean/sdk@1.0.82":
-  version "1.0.82"
-  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.82.tgz"
-  integrity sha512-4kl1bwMaEsoe+8Ieely2m32/ZdVBmiGV2uOaIgog71ogpIvIrA5eWiywx67x6nEP5/DtDFzgf5uvEA9AbeMQpQ==
+"@realmocean/sdk@^1.0.82", "@realmocean/sdk@^1.0.89":
+  version "1.0.89"
+  resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.89.tgz"
+  integrity sha512-s86AjqlAUcZQ2VA0IxrMBfoO0BMaIjv2mj2572YUAHd5KoWnOFS06RyTT0vBz3rdyhr/3ymmux0PCZELnLgcTg==
   dependencies:
     "@editorjs/image" "^2.8.1"
     "@editorjs/inline-code" "^1.4.0"
@@ -766,10 +766,10 @@
   resolved "https://registry.npmjs.org/@realmocean/spreadsheet/-/spreadsheet-19.37.7.tgz"
   integrity sha512-uil1FxGm1g5mtAJxEgin4ctFRqvGBOAo6GkpvgCPtKKrQENk57iJ1IjKxvjjLdXfOnmN7TuwVIOloxXcS+2bow==
 
-"@realmocean/vibe@^2.82.61":
-  version "2.82.61"
-  resolved "https://registry.npmjs.org/@realmocean/vibe/-/vibe-2.82.61.tgz"
-  integrity sha512-pCtIGHY279KcOg8ZL7jvLhZ1W8eGydQ9ZdZUCfi4BMBBjTTCypoydwxVuo2Wp1O4IcUQ+kve8BZaLV4UBw+lQA==
+"@realmocean/vibe@^2.82.62":
+  version "2.82.62"
+  resolved "https://registry.npmjs.org/@realmocean/vibe/-/vibe-2.82.62.tgz"
+  integrity sha512-frCawYi2iTG4n19GWAyBrZjCm4PIpraedSX7GjasySaOH/wxvoMkcUk4NGA32YzCS1kNB1vB4lFfVeaDrQdcyA==
   dependencies:
     "@realmocean/data" "^0.0.3"
     "@realmocean/dropdowns" "^0.0.20"
@@ -862,10 +862,10 @@
   resolved "https://registry.npmjs.org/@tuval/core/-/core-0.0.103.tgz"
   integrity sha512-yE9X6hLavSknUZWiN5sfu1hbVdZ2taaL+wJAUbpRa2glfepBsBYDHGooe11oQ5EqYEq6NZnbmYJRW9eIjPi1Gg==
 
-"@tuval/forms@^1.0.132", "@tuval/forms@^1.0.159", "@tuval/forms@^1.0.167", "@tuval/forms@^1.0.168":
-  version "1.0.168"
-  resolved "https://registry.npmjs.org/@tuval/forms/-/forms-1.0.168.tgz"
-  integrity sha512-Qa3+zfXT06xrDoeZBKwpdG83rfA7eIX9Wu8apLuzjvt33bZvRP4wEnknhxl8Mw/MbHaOmsCA7WxDS/fcI+cjuQ==
+"@tuval/forms@^1.0.132", "@tuval/forms@^1.0.159", "@tuval/forms@^1.0.168", "@tuval/forms@^1.0.178":
+  version "1.0.179"
+  resolved "https://registry.npmjs.org/@tuval/forms/-/forms-1.0.179.tgz"
+  integrity sha512-0nPnPYQ1VnKcu/Fn5iIuCXvt+PuFydv/M8ixj2c337Tgs+7q1Xx7WTBgRxjRghdq3Pf3oZ39rl71ilqerlLJhw==
   dependencies:
     "@codemirror/lang-json" "^6.0.1"
     "@dnd-kit/core" "^6.0.8"

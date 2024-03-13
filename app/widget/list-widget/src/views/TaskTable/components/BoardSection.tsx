@@ -52,7 +52,7 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
 
     const { applet_id, workspaceId } = useParams();
 
-    const { fields = [], onItemSave, onNewFieldAddded = () => void 0 , groupBy} = useOptions();
+    const { fields = [], onItemSave, onNewFieldAddded = () => void 0, groupBy } = useOptions();
 
     const [mounted, setMounted] = useState(false)
 
@@ -102,7 +102,7 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
                             Text('Name').fontSize(10).fontWeight('500').textTransform('uppercase')
-                        ).allWidth(300).height(30),
+                        ).allWidth(500).height(30),
                         ...ForEach(fields)((field: any) => (
                             (field.key === 'name' || field.hidden || field.key === groupBy) ? Fragment() :
                                 HStack({ alignment: cLeading })(
@@ -133,19 +133,18 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                         HStack(
                             NewFieldMenuView({
                                 view: (menuIsOpen) =>
-
                                     HStack(
                                         Text('+').fontSize(18).fontWeight('500').cursor('pointer')
-                                        .foregroundColor(menuIsOpen ? 'white' : '')
-                                       // Icon(Icons).foregroundColor(menuIsOpen ? 'white' : ''),
-                                       /*  Text('New Field')
                                             .foregroundColor(menuIsOpen ? 'white' : '')
-                                            .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
-                                            .fontSize(14)
-                                            .fontWeight('500') as any */
+                                        // Icon(Icons).foregroundColor(menuIsOpen ? 'white' : ''),
+                                        /*  Text('New Field')
+                                             .foregroundColor(menuIsOpen ? 'white' : '')
+                                             .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
+                                             .fontSize(14)
+                                             .fontWeight('500') as any */
                                     )
                                 , onNewFieldAdded: (field) => {
-                                   // alert(onNewFieldAddded)
+                                    // alert(onNewFieldAddded)
                                     //alert(JSON.stringify(field))
                                     onNewFieldAddded(field)
                                 }
@@ -157,7 +156,7 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                                  }) */
                         ).width(),
                         HStack(
-                          //  Text('+').fontSize(18).fontWeight('500').cursor('pointer')
+                            //  Text('+').fontSize(18).fontWeight('500').cursor('pointer')
                         ).allWidth(100).height(30)
                             .onClick(() => {
                                 alert('create custom field')
@@ -186,13 +185,12 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                 strategy={verticalListSortingStrategy}
             >
                 <div ref={setNodeRef} style={{ width: '100%' }}>
-                    {items.map((task) => (
-
-                        <SortableTaskItem id={task.$id} task={task} status={status} />
-
-                    ))}
                     {
-                        showEdit &&  EditTaskItem(status).render()
+                        items.map((task) => (
+                            <SortableTaskItem id={task?.id } task={task} status={status} />
+                        ))}
+                    {
+                        showEdit && EditTaskItem(status).render()
                     }
                 </div>
             </SortableContext>
@@ -262,31 +260,31 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
                             }
                         }
 
-                     /*    DynoDialog.Show({
-                            "title": `Create Item`,
-                            'onClick': onItemSave,
-                          
-                            "actions": [
-                                {
-                                    "label": "Save",
-                                    "type": "saveItem"
-                                }
-                            ],
-                            "fieldMap": {
-                                "status": {
-                                    "name": "status",
-                                    "type": "virtual",
-                                    "value": status.$id
-                                },
-                                ..._fields
-
-                            },
-                            "layout": {
-                                "type": "category"
-                            }
-                        }) */
-                         EventBus.Default.fire('task.opa.hideedit', null);
-                           setShowEdit(true) ;
+                        /*    DynoDialog.Show({
+                               "title": `Create Item`,
+                               'onClick': onItemSave,
+                             
+                               "actions": [
+                                   {
+                                       "label": "Save",
+                                       "type": "saveItem"
+                                   }
+                               ],
+                               "fieldMap": {
+                                   "status": {
+                                       "name": "status",
+                                       "type": "virtual",
+                                       "value": status.$id
+                                   },
+                                   ..._fields
+   
+                               },
+                               "layout": {
+                                   "type": "category"
+                               }
+                           }) */
+                        EventBus.Default.fire('task.opa.hideedit', null);
+                        setShowEdit(true);
                     }/* createTaskUI({ spaceId: space_id, folderId: folder_id, itemId: item_id, stageId: status.id }) */)
                     .render()
             }

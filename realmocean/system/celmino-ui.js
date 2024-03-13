@@ -20302,26 +20302,34 @@ const ListAppletDatabase = [
                         "key": "fgColor",
                         "type": "string",
                         "size": 50
+                    },
+                    {
+                        "key": "orderBy",
+                        "type": "number",
+                        "size": 10
                     }
                 ],
                 "documents": [
                     {
                         "name": "To Do",
                         "description": "To Do",
-                        "bgColor": "#D3D3D3",
-                        "fgColor": "white"
+                        "bgColor": "#D40915",
+                        "fgColor": "white",
+                        "orderBy": 1
                     },
                     {
                         "name": "In Progress",
                         "description": "In Progress",
-                        "bgColor": "#D3D3D3",
-                        "fgColor": "white"
+                        "bgColor": "#FBA32F",
+                        "fgColor": "white",
+                        "orderBy": 2
                     },
                     {
                         "name": "Done",
                         "description": "Done",
-                        "bgColor": "#D3D3D3",
-                        "fgColor": "white"
+                        "bgColor": "#4FAF54",
+                        "fgColor": "white",
+                        "orderBy": 3
                     }
                 ]
             },

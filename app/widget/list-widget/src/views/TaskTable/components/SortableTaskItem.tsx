@@ -44,27 +44,12 @@ const SortableTaskItem = ({ id, task: item, status }/* : SortableTaskItemProps *
         // background:isDragging ? 'blue' : '',
     };
 
-    /*   const { assignResponsibleToTask } = useAssignResponsibleToTask();
-      const { updateTask } = useUpdateTask(); */
-
-    const { access_type, team_id, applet_id, view_id } = useParams();
-    const navigate = useNavigate();
-
-
-
-    const { openDialog } = useDialogStack();
-
+  
     return (
         ReactView(
             <div ref={setNodeRef} style={style} {...attributes}   >
                 {
-                    /* isDragging ?
-                    HStack(
-                        HDivider().background('blue').height(2)
-                    )
-                    .height()
-                    .render()
-                    : */
+                  
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
                             ReactView(
@@ -86,14 +71,14 @@ const SortableTaskItem = ({ id, task: item, status }/* : SortableTaskItemProps *
                                 }
 
                                 )
-                        ).allWidth(300).allHeight(30),
+                        ).allWidth(500).allHeight(30),
 
-                        ...ForEach(fields)((field: any) => (
-                            (field.key === 'name' || field.hidden || field.key === groupBy) ? Fragment() :
-                                RendererProxy(item,fields, field)
-                        )),
+                          ...ForEach(fields)((field: any) => (
+                             (field.key === 'name' || field.hidden || field.key === groupBy) ? Fragment() :
+                                RendererProxy(item,fields, field).allWidth(100)
+                        )), 
                       
-                        HStack().allWidth(100)
+                        HStack().allWidth(100) 
                     )
                         .zIndex({ hover: '100' })
                         .background(isDragging ? 'rgba(255,255,255,1)' : { default: 'rgba(255,255,255,1)', hover: 'rgb(247,248,249)' } as any)
