@@ -20950,9 +20950,9 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
     }
 }
 const NewFieldMenuView = ({ view, onNewFieldAdded }) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded, view: view })));
-_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
-_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.SaveMultiSelectFieldAction);
 
 
@@ -21391,33 +21391,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SaveSelectFieldAction: () => (/* binding */ SaveSelectFieldAction),
 /* harmony export */   SelectFieldsAttributesView: () => (/* binding */ SelectFieldsAttributesView)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-
-const SelectFieldsAttributesView = (workspaceId, databaseId, collectionId) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddSelectFieldDialog(workspaceId, databaseId, collectionId)))
+const SelectFieldsAttributesView = (onNewFieldAdded) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.render(AddSelectFieldDialog(onNewFieldAdded)))
     .padding(20)
     .width(380)
     .height(515)));
-const SaveSelectFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+const SaveSelectFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
     const { label, successAction, successActions } = action;
-    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    const { databaseId, collectionId, name, workspaceId, options } = formController.GetFormData();
-    const { createStringAttribute, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId);
-    const { createDocument } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, 'fields', [
-        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
-    ]);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
-        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    const { name, options, onNewFieldAdded } = formController.GetFormData();
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Save Field'))
+        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 11)
         .minWidth(28)
         .minHeight(28)
         .height()
@@ -21428,54 +21422,33 @@ const SaveSelectFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMP
         .background('rgb(64, 101, 221)')
         // .loading(isLoading)
         .onClick(() => {
-        if (databaseId == null) {
-            alert('Collection is null');
-            return;
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.function(onNewFieldAdded)) {
+            onNewFieldAdded({
+                key: name,
+                name: name,
+                type: 'select',
+                fieldInfo: JSON.stringify({
+                    options: options
+                })
+            });
         }
-        createStringAttribute({
-            databaseId,
-            collectionId,
-            key: (0,_utils__WEBPACK_IMPORTED_MODULE_3__.replaceNonMatchingCharacters)(name),
-            required: false,
-            size: 255
-        }, (attribute) => {
-            createDocument({
-                data: {
-                    key: attribute.key,
-                    name: name,
-                    type: 'select',
-                    fieldInfo: JSON.stringify({
-                        options: options
-                    }),
-                    collectionId: collectionId
-                }
-            }, () => dialog.Hide());
-        });
+        dialog.Hide();
     }));
 });
-const AddSelectFieldDialog = (workspaceId, databaseId, collectionId) => ({
+SaveSelectFieldAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
+const AddSelectFieldDialog = (onNewFieldAdded) => ({
     "title": 'Add select field',
     "actions": [
         {
             "label": "Save",
-            "type": "com.celmino-ui.actions.saveSelectField"
+            "type": SaveSelectFieldAction.Id
         }
     ],
     "fieldMap": {
-        "workspaceId": {
-            "name": "workspaceId",
+        "onNewFieldAdded": {
+            "name": "onNewFieldAdded",
             "type": "virtual",
-            "value": workspaceId
-        },
-        "databaseId": {
-            "name": "databaseId",
-            "type": "virtual",
-            "value": databaseId
-        },
-        "collectionId": {
-            "name": "collectionId",
-            "type": "virtual",
-            "value": collectionId
+            "value": onNewFieldAdded
         },
         "name": {
             "label": "NAME",
@@ -21576,12 +21549,13 @@ const SaveTextFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPOR
          }) */
     }));
 });
+SaveTextFieldAction.Id = "com.celmino-ui.actions.saveTextField";
 const AddTextFieldDialog = (onNewFieldAdded) => ({
     "title": 'Add text field',
     "actions": [
         {
             "label": "custom",
-            "type": "com.celmino-ui.actions.saveTextField"
+            "type": SaveTextFieldAction.Id
         }
     ],
     "fieldMap": {

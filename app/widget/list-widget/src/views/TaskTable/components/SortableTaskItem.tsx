@@ -26,7 +26,7 @@ type SortableTaskItemProps = {
 const SortableTaskItem = ({ id, task: item, status }/* : SortableTaskItemProps */) => UIViewBuilder(() => {
 
 
-    const { onItemClick = void 0, attributes: fields = [], groupBy } = useOptions();
+    const { onItemClick = void 0,  fields = [], groupBy } = useOptions();
 
     const {
         attributes,

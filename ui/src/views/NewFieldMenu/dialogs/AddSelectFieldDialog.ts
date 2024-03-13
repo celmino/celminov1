@@ -1,13 +1,14 @@
 import { Query, useCreateDocument, useCreateStringAttribute } from "@realmocean/sdk";
-import { HStack, Text, UIViewBuilder, VStack, cHorizontal, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
+import { HStack, Text, UIViewBuilder, VStack, cHorizontal, nanoid, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
 import { FormBuilder } from "../../../FormBuilder/FormBuilder";
 import { replaceNonMatchingCharacters } from "../../../utils";
+import { is } from "@tuval/core";
 
 
-export const SelectFieldsAttributesView = (workspaceId, databaseId, collectionId) => (
+export const SelectFieldsAttributesView = (onNewFieldAdded) => (
     UIViewBuilder(() =>
         VStack(
-            FormBuilder.render(AddSelectFieldDialog(workspaceId, databaseId, collectionId))
+            FormBuilder.render(AddSelectFieldDialog(onNewFieldAdded))
         )
             .padding(20)
             .width(380)
@@ -23,13 +24,8 @@ export const SaveSelectFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const formBuilder = useFormBuilder();
     const navigate = useNavigate();
 
-    const { databaseId, collectionId, name, workspaceId, options } = formController.GetFormData();
+    const { name, options, onNewFieldAdded } = formController.GetFormData();
 
-    const { createStringAttribute, isLoading } = useCreateStringAttribute(workspaceId);
-
-    const { createDocument } = useCreateDocument(workspaceId, databaseId, 'fields', [
-        Query.equal('collectionId', collectionId)
-    ])
 
     return (
         HStack(
@@ -47,59 +43,40 @@ export const SaveSelectFieldAction = (formMeta, action) => UIViewBuilder(() => {
             // .loading(isLoading)
             .onClick(() => {
 
-                if (databaseId == null) {
-                    alert('Collection is null');
-                    return;
+                if (is.function(onNewFieldAdded)) {
+                    onNewFieldAdded({
+                        key: name,
+                        name: name,
+                        type: 'select',
+                        fieldInfo: JSON.stringify({
+                            options: options
+                        })
+                    })
+
                 }
 
-                createStringAttribute({
-                    databaseId,
-                    collectionId,
-                    key: replaceNonMatchingCharacters(name),
-                    required: false,
-                    size: 255
-                }, (attribute) => {
-                    createDocument({
-                        data: {
-                            key: attribute.key,
-                            name: name,
-                            type: 'select',
-                            fieldInfo: JSON.stringify({
-                                options: options
-                            }),
-                            collectionId: collectionId
-                        }
-                    }, () => dialog.Hide())
-                })
+                dialog.Hide();
             })
+
     )
 })
 
 
+SaveSelectFieldAction.Id = nanoid();
 
-export const AddSelectFieldDialog = (workspaceId: string, databaseId: string, collectionId: string) => ({
+export const AddSelectFieldDialog = (onNewFieldAdded: Function) => ({
     "title": 'Add select field',
     "actions": [
         {
             "label": "Save",
-            "type": "com.celmino-ui.actions.saveSelectField"
+            "type": SaveSelectFieldAction.Id
         }
     ],
     "fieldMap": {
-        "workspaceId": {
-            "name": "workspaceId",
+        "onNewFieldAdded": {
+            "name": "onNewFieldAdded",
             "type": "virtual",
-            "value": workspaceId
-        },
-        "databaseId": {
-            "name": "databaseId",
-            "type": "virtual",
-            "value": databaseId
-        },
-        "collectionId": {
-            "name": "collectionId",
-            "type": "virtual",
-            "value": collectionId
+            "value": onNewFieldAdded
         },
         "name": {
             "label": "NAME",

@@ -198,8 +198,8 @@ export const NewFieldMenuView = ({ view, onNewFieldAdded }: { view: (menuIsOpen:
 )
 
 
-FormBuilder.injectAction('com.celmino-ui.actions.saveTextField', SaveTextFieldAction);
+FormBuilder.injectAction( SaveTextFieldAction);
 FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', SaveRichTextFieldAction);
-FormBuilder.injectAction('com.celmino-ui.actions.saveSelectField', SaveSelectFieldAction);
+FormBuilder.injectAction(SaveSelectFieldAction);
 FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', SaveMultiSelectFieldAction);
 

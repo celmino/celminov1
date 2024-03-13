@@ -87,6 +87,9 @@ export class ListController extends UIFormController {
 
         const { account } = useAccount();
 
+        const { updateDocument } = useUpdateDocument(workspaceId);
+
+
         return (
 
             (isLoading || isStatusesLoading) ? Fragment() :
@@ -126,9 +129,18 @@ export class ListController extends UIFormController {
                                                         .config({
                                                             workspaceId: workspaceId,
                                                             listId: appletId,
-                                                            attributes: attributes,
+                                                            fields: attributes,
                                                             groups: groups.map(group => ({ id: group.$id, ...group })),
                                                             groupBy: 'status',
+                                                            onItemChanged: (itemId: string, data: any) => {
+                                                       
+                                                                updateDocument({
+                                                                    databaseId: appletId,
+                                                                    collectionId: 'listItems',
+                                                                    documentId: itemId,
+                                                                    data: data
+                                                                })
+                                                            },
                                                             onItemSave: (item) => {
                                                                 return (
                                                                     new Promise((resolve) => {
@@ -169,6 +181,21 @@ export class ListController extends UIFormController {
                                                             onNewFieldAddded: (field) => {
                                                                 alert(JSON.stringify(field))
                                                                 if (field.type === 'text') {
+                                                                    createStringAttribute({
+                                                                        databaseId: appletId,
+                                                                        collectionId: 'listItems',
+                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                        required: false,
+                                                                        size: 255
+                                                                    }, (attribute) => {
+                                                                        createField({
+                                                                            data: {
+                                                                                ...field,
+                                                                                collectionId: 'listItems'
+                                                                            }
+                                                                        }, () => void 0)
+                                                                    })
+                                                                } else if (field.type === 'select') {
                                                                     createStringAttribute({
                                                                         databaseId: appletId,
                                                                         collectionId: 'listItems',

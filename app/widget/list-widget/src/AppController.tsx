@@ -138,8 +138,8 @@ export class MyTestController extends UIFormController {
 
 
 
-        const { attributes, items, groupBy, onItemClick , groups} = this.props.config;
-        const field = attributes.find((field) => field.key === groupBy);
+        const { fields, items, groupBy, onItemClick , groups} = this.props.config;
+        const field = fields.find((field) => field.key === groupBy);
         /* let groups = [];
 
         if (field?.type === 'dropdown') {

@@ -80,7 +80,8 @@ const BoardSectionList = ({ items, status }) => {
     const updateBoardSections = useCallback(({ task }: { task: any }) => {
         // alert(JSON.stringify(task))
 
-        boardSections[task[groupBy]].push(task);
+
+       boardSections[task[groupBy]].push(task);
 
         const _index = boardSections[task[groupBy]].length - 1;
 

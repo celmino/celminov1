@@ -52,7 +52,7 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
 
     const { applet_id, workspaceId } = useParams();
 
-    const { attributes: fields = [], onItemSave, onNewFieldAddded = () => void 0 , groupBy} = useOptions();
+    const { fields = [], onItemSave, onNewFieldAddded = () => void 0 , groupBy} = useOptions();
 
     const [mounted, setMounted] = useState(false)
 

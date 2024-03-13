@@ -32720,6 +32720,7 @@ var ListController = /** @class */ (function (_super) {
         ]).createDocument;
         var createStringAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateStringAttribute)(workspaceId).createStringAttribute;
         var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useAccount)().account;
+        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
         return ((isLoading || isStatusesLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet === null || applet === void 0 ? void 0 : applet.name, function (e) {
                 /* updateDocument({
@@ -32748,9 +32749,17 @@ var ListController = /** @class */ (function (_super) {
                     .config({
                     workspaceId: workspaceId,
                     listId: appletId,
-                    attributes: attributes,
+                    fields: attributes,
                     groups: groups.map(function (group) { return (__assign({ id: group.$id }, group)); }),
                     groupBy: 'status',
+                    onItemChanged: function (itemId, data) {
+                        updateDocument({
+                            databaseId: appletId,
+                            collectionId: 'listItems',
+                            documentId: itemId,
+                            data: data
+                        });
+                    },
                     onItemSave: function (item) {
                         return (new Promise(function (resolve) {
                             createTask({
@@ -32788,6 +32797,19 @@ var ListController = /** @class */ (function (_super) {
                     onNewFieldAddded: function (field) {
                         alert(JSON.stringify(field));
                         if (field.type === 'text') {
+                            createStringAttribute({
+                                databaseId: appletId,
+                                collectionId: 'listItems',
+                                key: replaceNonMatchingCharacters(field.name),
+                                required: false,
+                                size: 255
+                            }, function (attribute) {
+                                createField({
+                                    data: __assign(__assign({}, field), { collectionId: 'listItems' })
+                                }, function () { return void 0; });
+                            });
+                        }
+                        else if (field.type === 'select') {
                             createStringAttribute({
                                 databaseId: appletId,
                                 collectionId: 'listItems',

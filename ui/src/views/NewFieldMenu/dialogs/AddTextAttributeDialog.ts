@@ -80,13 +80,13 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
 })
 
 
-
+SaveTextFieldAction.Id = "com.celmino-ui.actions.saveTextField"
 export const AddTextFieldDialog = (onNewFieldAdded: Function) => ({
     "title": 'Add text field',
     "actions": [
         {
             "label": "custom",
-            "type": "com.celmino-ui.actions.saveTextField"
+            "type": SaveTextFieldAction.Id
         }
     ],
     "fieldMap": {
