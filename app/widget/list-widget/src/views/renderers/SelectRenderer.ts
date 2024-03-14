@@ -38,18 +38,18 @@ export const SelectRenderer = (item, fields, field) => {
                         HStack({ alignment: cLeading })(
                             PopupButton(
                                 HStack({ alignment: cLeading })(
-                                    item[field.key] == null ?
-                                        Text('Select ' + field.name) :
+                                    (item[field.key] == null || item[field.key] == '-1') ?
+                                        Text('-') :
                                         Text(field.fieldInfo.options?.find((option) => option.value === item[field.key])?.label || '')
                                 )
-                                    .width()
+                                    .cursor('pointer')
                                     .cornerRadius(6)
-                                    .padding()
-                                    .border('1px solid #E8EAED')
+                                    //.padding()
+                                    //.border('1px solid #E8EAED')
                                     .height(30)
 
                             )(
-                                VStack({ alignment: cTopLeading, spacing:5 })(
+                                VStack({ alignment: cTopLeading, spacing: 5 })(
                                     HStack(
                                         Text('SELECT AN OPTION')
                                     )
@@ -57,15 +57,15 @@ export const SelectRenderer = (item, fields, field) => {
                                         .padding('0 12px'),
                                     HStack(
                                         TextField()
-                                        .fontSize(10)
-                                        .background('transparent')
-                                        .border('none')
-                                        .placeHolder('Type to search or add..')
+                                            .fontSize(10)
+                                            .background('transparent')
+                                            .border('none')
+                                            .placeHolder('Type to search or add..')
                                     )
-                                    .background('#f9f9f9')
+                                        .background('#f9f9f9')
                                         .height(30)
                                         .padding('0 12px'),
-                                    ...ForEach(field.fieldInfo.options)((option: any) =>
+                                    ...ForEach([{ label: '-', value: '-1' }, ...field.fieldInfo.options])((option: any) =>
                                         HStack(
                                             HStack({ alignment: cLeading })(
                                                 Text(option.label)
@@ -102,17 +102,17 @@ export const SelectRenderer = (item, fields, field) => {
                                                     }
                                                 })
                                         )
-                                        .height()
-                                        .padding('2px 10px')
-                                        .background({hover:'#f9f9f9'})
-                                        .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s')
+                                            .height()
+                                            .padding('2px 10px')
+                                            .background({ hover: '#f9f9f9' })
+                                            .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s')
                                     )
 
                                 ).width(200)
                                     .minHeight(100)
                                     .height(70 + field.fieldInfo.options.length * 40)
                                     .maxHeight(400)
-                                    //.padding()
+                                //.padding()
                             )
                                 .hideHandle(hideHandle => _hideHandle = hideHandle)
                                 .dialogPosition(DialogPosition.BOTTOM_START)

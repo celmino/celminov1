@@ -1,1 +1,4 @@
-export declare const SaveCollectionAction: (formMeta: any, action: any) => import("@tuval/forms").UIViewBuilderClass;
+export declare const SaveCollectionAction: {
+    (formMeta: any, action: any): import("@tuval/forms").UIViewBuilderClass;
+    Id: string;
+};

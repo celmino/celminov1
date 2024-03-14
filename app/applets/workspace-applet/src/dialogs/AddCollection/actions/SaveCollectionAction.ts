@@ -3,6 +3,7 @@ import {
     Button,
     Text,
     UIViewBuilder,
+    nanoid,
     useDialog,
     useFormController
 } from "@tuval/forms";
@@ -107,4 +108,4 @@ export const SaveCollectionAction = (formMeta, action) => UIViewBuilder(() => {
 )
 
 
-
+SaveCollectionAction.Id = nanoid()

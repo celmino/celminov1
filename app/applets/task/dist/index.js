@@ -32721,6 +32721,7 @@ var ListController = /** @class */ (function (_super) {
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
         ]).createDocument;
         var createStringAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateStringAttribute)(workspaceId).createStringAttribute;
+        var createRelationshipAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRelationshipAttribute)(workspaceId).createRelationshipAttribute;
         var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useAccount)().account;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
         return ((isLoading || isStatusesLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
@@ -32797,7 +32798,6 @@ var ListController = /** @class */ (function (_super) {
                         });
                     },
                     onNewFieldAddded: function (field) {
-                        alert(JSON.stringify(field));
                         if (field.type === 'text') {
                             createStringAttribute({
                                 databaseId: appletId,
@@ -32821,6 +32821,21 @@ var ListController = /** @class */ (function (_super) {
                             }, function (attribute) {
                                 createField({
                                     data: __assign(__assign({}, field), { collectionId: 'listItems' })
+                                }, function () { return void 0; });
+                            });
+                        }
+                        else if (field.type === 'relation') {
+                            //alert(JSON.stringify(field))
+                            createStringAttribute({
+                                databaseId: appletId,
+                                collectionId: 'listItems',
+                                key: replaceNonMatchingCharacters(field.name),
+                                required: false,
+                                size: 255
+                            }, function (attribute) {
+                                field.fieldInfo = JSON.stringify(__assign({ workspaceId: workspaceId, databaseId: appletId, collectionId: 'listItems' }, field.fieldInfo));
+                                createField({
+                                    data: __assign(__assign({}, field), { key: replaceNonMatchingCharacters(field.name), collectionId: 'listItems' })
                                 }, function () { return void 0; });
                             });
                         }

@@ -3,6 +3,7 @@ import {
     Button,
     Text,
     UIViewBuilder,
+    nanoid,
     useDialog, useFormBuilder,
     useFormController,
     useNavigate
@@ -69,4 +70,4 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
 )
 
 
-
+SaveDocumentAction.Id = nanoid();

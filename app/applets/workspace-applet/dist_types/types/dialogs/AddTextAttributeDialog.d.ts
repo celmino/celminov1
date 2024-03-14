@@ -1,4 +1,7 @@
-export declare const SaveTextFieldAction: (formMeta: any, action: any) => import("@tuval/forms").UIViewBuilderClass;
+export declare const SaveTextFieldAction: {
+    (formMeta: any, action: any): import("@tuval/forms").UIViewBuilderClass;
+    Id: string;
+};
 export declare const AddTextFieldDialog: (workspaceId: string, databaseId: string, collectionId: string) => {
     title: string;
     actions: {

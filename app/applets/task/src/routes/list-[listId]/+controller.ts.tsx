@@ -16,7 +16,7 @@ import {
 } from "@tuval/forms";
 
 
-import { ID, Query, Services, useCreateDocument, useCreateStringAttribute, useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
+import { ID, Query, Services, useCreateDocument, useCreateRelationshipAttribute, useCreateStringAttribute, useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
 import React from "react";
 import { ActionPanel } from "../../views/ActionPanel";
@@ -86,6 +86,7 @@ export class ListController extends UIFormController {
         ])
 
         const { createStringAttribute } = useCreateStringAttribute(workspaceId);
+        const { createRelationshipAttribute } = useCreateRelationshipAttribute(workspaceId);
 
         const { account } = useAccount();
 
@@ -181,7 +182,7 @@ export class ListController extends UIFormController {
                                                                 })
                                                             },
                                                             onNewFieldAddded: (field) => {
-                                                                alert(JSON.stringify(field))
+
                                                                 if (field.type === 'text') {
                                                                     createStringAttribute({
                                                                         databaseId: appletId,
@@ -208,6 +209,31 @@ export class ListController extends UIFormController {
                                                                         createField({
                                                                             data: {
                                                                                 ...field,
+                                                                                collectionId: 'listItems'
+                                                                            }
+                                                                        }, () => void 0)
+                                                                    })
+                                                                } else if (field.type === 'relation') {
+                                                                    //alert(JSON.stringify(field))
+
+                                                                    createStringAttribute({
+                                                                        databaseId: appletId,
+                                                                        collectionId: 'listItems',
+                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                        required: false,
+                                                                        size: 255
+                                                                    }, (attribute) => {
+                                                                        field.fieldInfo = JSON.stringify({
+                                                                            workspaceId: workspaceId,
+                                                                            databaseId: appletId,
+                                                                            collectionId: 'listItems',
+                                                                            ...field.fieldInfo
+                                                                        })
+
+                                                                        createField({
+                                                                            data: {
+                                                                                ...field,
+                                                                                key: replaceNonMatchingCharacters(field.name),
                                                                                 collectionId: 'listItems'
                                                                             }
                                                                         }, () => void 0)

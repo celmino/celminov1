@@ -778,6 +778,16 @@ services:
   #     - SMARTHOST_HOST=smtp
   #     - SMARTHOST_PORT=587
 
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - realmocean
+      
   redis:
     image: redis:7.0.4-alpine
     <<: *x-logging

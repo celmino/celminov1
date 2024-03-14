@@ -34,8 +34,8 @@ export class ProcessMining {
 
 //FormBuilder.injectView('liststatus', ListStatusWidget)
 
-FormBuilder.injectAction('ca_saveCollection', SaveCollectionAction)
-FormBuilder.injectAction('ca_SaveDocument', SaveDocumentAction)
-FormBuilder.injectAction('ca_saveTextField', SaveTextFieldAction)
+FormBuilder.injectAction(SaveCollectionAction)
+FormBuilder.injectAction( SaveDocumentAction)
+FormBuilder.injectAction(SaveTextFieldAction) 
 
 

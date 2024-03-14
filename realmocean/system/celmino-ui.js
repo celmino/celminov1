@@ -18450,7 +18450,7 @@ __webpack_require__.r(__webpack_exports__);
 const WorkspaceApplet = {
     name: 'Workspace',
     type: 'Applet',
-    tree_type: 'com.celmino.widget.workspace-tree',
+    tree_type: 'com.celmino.applet.category',
     applet_type: 'com.celmino.applet.category',
     description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
     // image: '/images/applets/documents.png',
@@ -20125,6 +20125,14 @@ const ListAppletDatabase = [
                         "type": "string"
                     },
                     {
+                        "key": "custom",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "width",
+                        "type": "string",
+                    },
+                    {
                         "key": "fieldInfo",
                         "type": "string",
                         "size": 18900
@@ -20144,6 +20152,8 @@ const ListAppletDatabase = [
                         "key": "name",
                         "name": "Name",
                         "type": "string",
+                        "width": "300px",
+                        "custom": false,
                         "fieldInfo": JSON.stringify({
                             "size": 255,
                         }),
@@ -20153,6 +20163,8 @@ const ListAppletDatabase = [
                         "key": "description",
                         "name": "Description",
                         "type": "string",
+                        "width": "300px",
+                        "custom": false,
                         "fieldInfo": JSON.stringify({
                             "size": 16777216,
                         }),
@@ -20162,6 +20174,8 @@ const ListAppletDatabase = [
                         "key": "mark",
                         "name": "Mark",
                         "type": "string",
+                        "width": "100px",
+                        "custom": false,
                         "fieldInfo": JSON.stringify({
                             "size": 10,
                         }),
@@ -20173,6 +20187,90 @@ const ListAppletDatabase = [
                         "type": "string",
                         "fieldInfo": JSON.stringify({
                             "size": 255,
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "PRIORITY",
+                        "name": "Priority",
+                        "type": "select",
+                        "width": "100px",
+                        "custom": false,
+                        "fieldInfo": JSON.stringify({
+                            "options": [
+                                {
+                                    key: 'High',
+                                    value: 2
+                                },
+                                {
+                                    key: 'Medium',
+                                    value: 1
+                                },
+                                {
+                                    key: 'Low',
+                                    value: 0
+                                }
+                            ],
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "MULTITASK",
+                        "name": "Multitask",
+                        "type": "select",
+                        "width": "100px",
+                        "custom": false,
+                        "fieldInfo": JSON.stringify({
+                            "options": [
+                                {
+                                    key: 'Yes',
+                                    value: "Y"
+                                },
+                                {
+                                    key: 'No',
+                                    value: "N"
+                                }
+                            ],
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "NOT_VIEWED",
+                        "name": "Not Viewed",
+                        "type": "select",
+                        "width": "100px",
+                        "custom": false,
+                        "fieldInfo": JSON.stringify({
+                            "options": [
+                                {
+                                    key: 'Yes',
+                                    value: "Y"
+                                },
+                                {
+                                    key: 'No',
+                                    value: "N"
+                                }
+                            ],
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "REPLICATE",
+                        "name": "Replicate",
+                        "type": "select",
+                        "width": "100px",
+                        "custom": false,
+                        "fieldInfo": JSON.stringify({
+                            "options": [
+                                {
+                                    key: 'Yes',
+                                    value: "Y"
+                                },
+                                {
+                                    key: 'No',
+                                    value: "N"
+                                }
+                            ],
                         }),
                         "collectionId": "listItems",
                     },
@@ -20276,6 +20374,30 @@ const ListAppletDatabase = [
                         "key": "status",
                         "type": "string",
                         "size": 255
+                    },
+                    {
+                        "key": "PRIORITY",
+                        "type": "string",
+                        "size": 1255,
+                        "defaultValue": "1"
+                    },
+                    {
+                        "key": "MULTITASK",
+                        "type": "string",
+                        "size": 1255,
+                        "defaultValue": "N"
+                    },
+                    {
+                        "key": "NOT_VIEWED",
+                        "type": "string",
+                        "size": 1255,
+                        "defaultValue": "N"
+                    },
+                    {
+                        "key": "REPLICATE",
+                        "type": "string",
+                        "size": 1255,
+                        "defaultValue": "N"
                     }
                 ]
             },
@@ -20824,7 +20946,7 @@ const FieldTypes = {
 class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController {
     LoadView() {
         const { onNewFieldAdded, view } = this.props;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.OptionsContext)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
             const [menuIsOpen, setMenuIsOpen] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
             const [selectedType, setSelectedType] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null);
             let _hideHandle = null;
@@ -20954,7 +21076,7 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
                 setMenuIsOpen(false);
                 setSelectedType(null);
             }));
-        })).width());
+        })).width()).options(this.props));
     }
 }
 const NewFieldMenuView = ({ view, onNewFieldAdded }) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded, view: view })));
@@ -21210,6 +21332,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../LabeledText/LabeledText */ "./src/views/LabeledText/LabeledText.tsx");
 /* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
 /* harmony import */ var _DialogOkButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../DialogOkButton */ "./src/views/DialogOkButton.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+
 
 
 
@@ -21232,7 +21356,9 @@ const RelationFieldAttributesView = () => ((0,_tuval_forms__WEBPACK_IMPORTED_MOD
     const { documents: applets, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useListDocuments)(workspaceId, 'workspace', 'applets');
     const [selectedCollection, setSelectedCollection] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
     const [open, setOpen] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_5__.FormTitle)('Add relation field'), (0,_LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_4__.LabeledTextInput)().label('Field Name').autoFocus(true), (0,_LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_4__.LabeledTextInput)().label('Relation Name (OPTIONAL)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('COLLECTION')
+    const { onNewFieldAdded } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useOptions)();
+    const [name, setName] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)();
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_5__.FormTitle)('Add relation field'), (0,_LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_4__.LabeledTextInput)().label('Field Name').autoFocus(true).onChange((e) => setName(e)), (0,_LabeledText_LabeledText__WEBPACK_IMPORTED_MODULE_4__.LabeledTextInput)().label('Relation Name (OPTIONAL)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('COLLECTION')
         .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')
         .fontSize(12)
         .foregroundColor('rgb(33, 37, 38)'), (0,_realmocean_antd__WEBPACK_IMPORTED_MODULE_1__.Select)()
@@ -21262,7 +21388,19 @@ const RelationFieldAttributesView = () => ((0,_tuval_forms__WEBPACK_IMPORTED_MOD
         }])
         .onClick(() => {
         setOpen(!open);
-    })).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_DialogOkButton__WEBPACK_IMPORTED_MODULE_6__.DialogOkButton)('Add field')).height())
+    })).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_DialogOkButton__WEBPACK_IMPORTED_MODULE_6__.DialogOkButton)('Add field')
+        .onClick(() => {
+        var _a, _b;
+        onNewFieldAdded({
+            key: (0,_utils__WEBPACK_IMPORTED_MODULE_7__.replaceNonMatchingCharacters)(name),
+            name: name,
+            type: 'relation',
+            fieldInfo: {
+                relatedDatabaseId: (_a = selectedCollection === null || selectedCollection === void 0 ? void 0 : selectedCollection.applet) === null || _a === void 0 ? void 0 : _a.$id,
+                relatedCollectionId: (_b = selectedCollection === null || selectedCollection === void 0 ? void 0 : selectedCollection.collection) === null || _b === void 0 ? void 0 : _b.$id,
+            }
+        });
+    })).height())
         .padding(20)
         .width(380)
         .height(515));

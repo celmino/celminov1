@@ -6301,12 +6301,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AddCollectionDialog: () => (/* binding */ AddCollectionDialog)
 /* harmony export */ });
+/* harmony import */ var _actions_SaveCollectionAction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actions/SaveCollectionAction */ "./src/dialogs/AddCollection/actions/SaveCollectionAction.ts");
+
 var AddCollectionDialog = function (workspaceId, appletId) { return ({
     "title": 'Create collection',
     "actions": [
         {
             "label": "Save",
-            "type": "ca_saveCollection"
+            "type": _actions_SaveCollectionAction__WEBPACK_IMPORTED_MODULE_0__.SaveCollectionAction.Id
         }
     ],
     "fieldMap": {
@@ -6424,6 +6426,7 @@ var SaveCollectionAction = function (formMeta, action) { return (0,_tuval_forms_
         });
     }));
 }); };
+SaveCollectionAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.nanoid)();
 
 
 /***/ }),
@@ -6494,6 +6497,7 @@ var SaveDocumentAction = function (formMeta, action) { return (0,_tuval_forms__W
         });
     }));
 }); };
+SaveDocumentAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.nanoid)();
 
 
 /***/ }),
@@ -6711,6 +6715,7 @@ var SaveTextFieldAction = function (formMeta, action) { return (0,_tuval_forms__
         });
     }));
 }); };
+SaveTextFieldAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.nanoid)();
 var AddTextFieldDialog = function (workspaceId, databaseId, collectionId) { return ({
     "title": 'Add text field',
     "actions": [
@@ -9374,9 +9379,9 @@ var ProcessMining = /** @class */ (function () {
 }());
 
 //FormBuilder.injectView('liststatus', ListStatusWidget)
-_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('ca_saveCollection', _dialogs_AddCollection_actions_SaveCollectionAction__WEBPACK_IMPORTED_MODULE_1__.SaveCollectionAction);
-_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('ca_SaveDocument', _dialogs_AddCollection_actions_SaveDocumentAction__WEBPACK_IMPORTED_MODULE_2__.SaveDocumentAction);
-_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction('ca_saveTextField', _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_3__.SaveTextFieldAction);
+_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction(_dialogs_AddCollection_actions_SaveCollectionAction__WEBPACK_IMPORTED_MODULE_1__.SaveCollectionAction);
+_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction(_dialogs_AddCollection_actions_SaveDocumentAction__WEBPACK_IMPORTED_MODULE_2__.SaveDocumentAction);
+_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.FormBuilder.injectAction(_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_3__.SaveTextFieldAction);
 
 })();
 

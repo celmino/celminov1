@@ -2,7 +2,7 @@
 export const WorkspaceApplet = {
     name: 'Workspace',
     type: 'Applet',
-    tree_type: 'com.celmino.widget.workspace-tree',
+    tree_type: 'com.celmino.applet.category',
     applet_type: 'com.celmino.applet.category',
     description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
     // image: '/images/applets/documents.png',

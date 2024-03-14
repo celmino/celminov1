@@ -6,6 +6,7 @@ import React from "react";
 import { LabeledTextInput } from "../../LabeledText/LabeledText";
 import { FormTitle } from "../../../FormBuilder/FormBuilder";
 import { DialogOkButton } from "../../DialogOkButton";
+import { replaceNonMatchingCharacters } from "../../../utils";
 
 const Marker = () => (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" aria-hidden="true" >
@@ -26,11 +27,13 @@ export const RelationFieldAttributesView = () => (
         const { documents: applets, isLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
         const [selectedCollection, setSelectedCollection] = useState(null);
         const [open, setOpen] = useState(false);
-        return (
+        const { onNewFieldAdded } = useOptions();
+        const [name, setName] = useState();
 
+        return (
             VStack({ alignment: cTopLeading, spacing: 10 })(
                 FormTitle('Add relation field'),
-                LabeledTextInput().label('Field Name').autoFocus(true),
+                LabeledTextInput().label('Field Name').autoFocus(true).onChange((e) => setName(e)),
                 LabeledTextInput().label('Relation Name (OPTIONAL)'),
                 VStack({ alignment: cTopLeading, spacing: 5 })(
                     Text('COLLECTION')
@@ -102,18 +105,32 @@ export const RelationFieldAttributesView = () => (
                             </div>
                         }])
                         .onClick(() => {
+
+                          
+
                             setOpen(!open)
                         })
                 ).height(),
                 Spacer(),
                 HStack({ alignment: cLeading })(
                     DialogOkButton('Add field')
-                ).height()
+                        .onClick(() => {
+                            onNewFieldAdded({
+                                key: replaceNonMatchingCharacters(name),
+                                name: name,
+                                type: 'relation',
+                                fieldInfo: {
+                                    relatedDatabaseId: selectedCollection?.applet?.$id,
+                                    relatedCollectionId: selectedCollection?.collection?.$id,
+                                }
+                            })
+                        })
+                        ).height()
+                )
+                    .padding(20)
+                    .width(380)
+                    .height(515)
             )
-                .padding(20)
-                .width(380)
-                .height(515)
-        )
     }
     )
 )

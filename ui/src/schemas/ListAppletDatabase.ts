@@ -40,8 +40,8 @@ export const ListAppletDatabase = [
                         "$id": "views",
                         "name": "Views"
                     },
-                      // ---------- View Contents Collection --------------------
-                      {
+                    // ---------- View Contents Collection --------------------
+                    {
                         "$id": "viewContents",
                         "name": "View Contents"
                     }
@@ -64,6 +64,14 @@ export const ListAppletDatabase = [
                         "type": "string"
                     },
                     {
+                        "key": "custom",
+                        "type": "boolean"
+                    },
+                    {
+                        "key": "width",
+                        "type": "string",
+                    },
+                    {
                         "key": "fieldInfo",
                         "type": "string",
                         "size": 18900
@@ -83,6 +91,8 @@ export const ListAppletDatabase = [
                         "key": "name",
                         "name": "Name",
                         "type": "string",
+                        "width":"300px",
+                        "custom": false,
 
                         "fieldInfo": JSON.stringify({
                             "size": 255,
@@ -93,6 +103,9 @@ export const ListAppletDatabase = [
                         "key": "description",
                         "name": "Description",
                         "type": "string",
+                        "width":"300px",
+                        "custom": false,
+
 
                         "fieldInfo": JSON.stringify({
                             "size": 16777216,
@@ -103,6 +116,9 @@ export const ListAppletDatabase = [
                         "key": "mark",
                         "name": "Mark",
                         "type": "string",
+                        "width":"100px",
+                        "custom": false,
+
 
                         "fieldInfo": JSON.stringify({
                             "size": 10,
@@ -116,6 +132,94 @@ export const ListAppletDatabase = [
 
                         "fieldInfo": JSON.stringify({
                             "size": 255,
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "PRIORITY",
+                        "name": "Priority",
+                        "type": "select",
+                        "width":"100px",
+                        "custom": false,
+
+                        "fieldInfo": JSON.stringify({
+                            "options": [
+                                {
+                                    key: 'High',
+                                    value: 2
+                                },
+                                {
+                                    key: 'Medium',
+                                    value: 1
+                                },
+                                {
+                                    key: 'Low',
+                                    value: 0
+                                }
+                            ],
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "MULTITASK",
+                        "name": "Multitask",
+                        "type": "select",
+                        "width":"100px",
+                        "custom": false,
+
+                        "fieldInfo": JSON.stringify({
+                            "options": [
+                                {
+                                    key: 'Yes',
+                                    value: "Y"
+                                },
+                                {
+                                    key: 'No',
+                                    value: "N"
+                                }
+                            ],
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "NOT_VIEWED",
+                        "name": "Not Viewed",
+                        "type": "select",
+                        "width":"100px",
+                        "custom": false,
+
+                        "fieldInfo": JSON.stringify({
+                            "options": [
+                                {
+                                    key: 'Yes',
+                                    value: "Y"
+                                },
+                                {
+                                    key: 'No',
+                                    value: "N"
+                                }
+                            ],
+                        }),
+                        "collectionId": "listItems",
+                    },
+                    {
+                        "key": "REPLICATE",
+                        "name": "Replicate",
+                        "type": "select",
+                        "width":"100px",
+                        "custom": false,
+
+                        "fieldInfo": JSON.stringify({
+                            "options": [
+                                {
+                                    key: 'Yes',
+                                    value: "Y"
+                                },
+                                {
+                                    key: 'No',
+                                    value: "N"
+                                }
+                            ],
                         }),
                         "collectionId": "listItems",
                     },
@@ -183,8 +287,8 @@ export const ListAppletDatabase = [
                         }),
                         "collectionId": "views",
                     },
-                     // ---------- View Contents Fields --------------------
-                     {
+                    // ---------- View Contents Fields --------------------
+                    {
                         "key": "viewId",
                         "name": "View ID",
                         "type": "string",
@@ -210,7 +314,7 @@ export const ListAppletDatabase = [
                 "name": "List Items",
                 "id": "listItems",
                 "attributes": [
-                     {
+                    {
                         "key": "name",
                         "type": "string",
                         "size": 255
@@ -229,7 +333,33 @@ export const ListAppletDatabase = [
                         "key": "status",
                         "type": "string",
                         "size": 255
-                    } 
+                    },
+                    {
+                        "key": "PRIORITY",
+                        "type": "string",
+                        "size": 1255,
+                        "defaultValue": "1"
+                    },
+                    {
+                        "key": "MULTITASK",
+                        "type": "string",
+                        "size": 1255,
+                        "defaultValue": "N"
+                    },
+                    {
+                        "key": "NOT_VIEWED",
+                        "type": "string",
+                        "size": 1255,
+                        "defaultValue": "N"
+                    },
+                    {
+                        "key": "REPLICATE",
+                        "type": "string",
+                        "size": 1255,
+                        "defaultValue": "N"
+                    }
+
+                    
                 ]
 
             },
@@ -270,24 +400,23 @@ export const ListAppletDatabase = [
                         "description": "To Do",
                         "bgColor": "#D40915",
                         "fgColor": "white",
-                        "orderBy":1
+                        "orderBy": 1
                     },
                     {
                         "name": "In Progress",
                         "description": "In Progress",
                         "bgColor": "#FBA32F",
                         "fgColor": "white",
-                        "orderBy":2
+                        "orderBy": 2
                     },
                     {
                         "name": "Done",
                         "description": "Done",
                         "bgColor": "#4FAF54",
                         "fgColor": "white",
-                        "orderBy":3
+                        "orderBy": 3
                     }
                 ]
-
             },
             {
                 "name": "Views",

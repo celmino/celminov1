@@ -1,5 +1,5 @@
 import { useCreateCollection, Permission, Role, useCreateStringAttribute } from "@realmocean/sdk";
-import { Button, FormBuilder, HStack, Text, UIViewBuilder, cHorizontal, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
+import { Button, FormBuilder, HStack, Text, UIViewBuilder, cHorizontal, nanoid, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
 
 
 
@@ -53,7 +53,7 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
     )
 })
 
-
+SaveTextFieldAction.Id = nanoid();
 
 export const AddTextFieldDialog = (workspaceId: string, databaseId: string, collectionId: string) => ({
     "title": 'Add text field',
