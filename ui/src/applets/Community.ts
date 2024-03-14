@@ -10,7 +10,7 @@ export const CommunityApplet = {
     iconName: 'bell',
     icon: '\\d1e1',
     iconBackColor: '#66B47C',
-    enabled: true,
+    enabled: false,
     databases: [
         {
             "name": "World",

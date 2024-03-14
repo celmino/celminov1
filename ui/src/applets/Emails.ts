@@ -9,7 +9,7 @@ export const EmailsApplet = {
     iconName: 'bell',
     icon: '\\d339',
     iconBackColor: '#66B47C',
-    enabled: true,
+    enabled: false,
     databases: [
         {
             "name": "Emails",

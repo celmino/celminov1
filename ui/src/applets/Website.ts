@@ -9,7 +9,7 @@ export const WebsiteApplet = {
     iconName: 'bell',
     icon: '\\d320',
     iconBackColor: '#66B47C',
-    enabled: true,
+    enabled: false,
     databases: [
         {
             "name": "Website",
