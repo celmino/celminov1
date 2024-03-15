@@ -11,6 +11,7 @@ export const CommunityApplet = {
     icon: '\\d1e1',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "World",

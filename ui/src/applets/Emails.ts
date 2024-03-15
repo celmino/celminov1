@@ -10,6 +10,7 @@ export const EmailsApplet = {
     icon: '\\d339',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Emails",

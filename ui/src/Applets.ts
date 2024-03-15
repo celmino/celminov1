@@ -11,6 +11,7 @@ import { CommunityApplet } from "./applets/Community";
 import { ListApplet } from "./applets/TaskListApplet";
 import { DatabaseApplet } from "./applets/Database";
 import { Clock } from "./applets/Clock";
+import { FeedApplet } from "./applets/Feed";
 
 
 export const Applets = [
@@ -27,6 +28,7 @@ export const Applets = [
      DashboardsApplet,
      DatabaseApplet,
      Clock,
+     FeedApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',

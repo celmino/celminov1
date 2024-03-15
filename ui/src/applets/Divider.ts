@@ -10,6 +10,7 @@ export const AppletCategory = {
     icon: '\\d2dc',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Category",

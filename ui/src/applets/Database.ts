@@ -12,6 +12,7 @@ export const DatabaseApplet = {
     icon: '\\d278',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Workspace",

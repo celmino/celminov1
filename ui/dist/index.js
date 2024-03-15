@@ -11256,6 +11256,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
 /* harmony import */ var _applets_Database__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./applets/Database */ "./src/applets/Database.ts");
 /* harmony import */ var _applets_Clock__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./applets/Clock */ "./src/applets/Clock.ts");
+/* harmony import */ var _applets_Feed__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applets/Feed */ "./src/applets/Feed.ts");
+
 
 
 
@@ -11280,6 +11282,7 @@ const Applets = [
     _applets_Dashboards__WEBPACK_IMPORTED_MODULE_2__.DashboardsApplet,
     _applets_Database__WEBPACK_IMPORTED_MODULE_8__.DatabaseApplet,
     _applets_Clock__WEBPACK_IMPORTED_MODULE_9__.Clock,
+    _applets_Feed__WEBPACK_IMPORTED_MODULE_10__.FeedApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -18077,6 +18080,7 @@ const ActivitiesApplet = {
     icon: '\\d320',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "World",
@@ -18110,9 +18114,10 @@ const Clock = {
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d2dc',
+    icon: '\\d224',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Category",
@@ -18149,6 +18154,7 @@ const CommunityApplet = {
     icon: '\\d1e1',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "World",
@@ -18185,6 +18191,7 @@ const DashboardsApplet = {
     icon: '\\d320',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Dashboards",
@@ -18221,6 +18228,7 @@ const DatabaseApplet = {
     icon: '\\d278',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Workspace",
@@ -18360,6 +18368,7 @@ const AppletCategory = {
     icon: '\\d2dc',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Category",
@@ -18396,12 +18405,100 @@ const EmailsApplet = {
     icon: '\\d339',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Emails",
             "id": "applet_category",
             "category": "app",
             "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Feed.ts":
+/*!*****************************!*\
+  !*** ./src/applets/Feed.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FeedApplet: () => (/* binding */ FeedApplet)
+/* harmony export */ });
+const FeedApplet = {
+    name: 'Feed',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.feed',
+    applet_type: 'com.celmino.applet.feed',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d1df',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    version: [1, 0, 1],
+    databases: [
+        {
+            "name": "Feed",
+            "id": "workspace_applet",
+            "category": "app",
+            "collections": [
+                {
+                    "name": "Collections",
+                    "id": "collections",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fields",
+                    "id": "fields",
+                    "attributes": [
+                        {
+                            "key": "key",
+                            "type": "string"
+                        },
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fieldInfo",
+                            "type": "string",
+                            "size": 18900
+                        },
+                        {
+                            "key": "collectionId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 };
@@ -18431,9 +18528,10 @@ const ListApplet = {
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d2dc',
+    icon: '\\d1e4',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: _schemas_TaskListDatabase_TaskListDatabase__WEBPACK_IMPORTED_MODULE_0__.ListAppletDatabase
 };
 
@@ -18463,6 +18561,7 @@ const WebsiteApplet = {
     icon: '\\d320',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Website",
@@ -18499,6 +18598,7 @@ const WorkspaceApplet = {
     icon: '\\d27f',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Workspace",

@@ -1,5 +1,5 @@
 
-export const WorkspaceApplet = {
+export const FeedApplet = {
     name: 'Feed',
     type: 'Applet',
     tree_type: 'com.celmino.applet.feed',
@@ -8,9 +8,10 @@ export const WorkspaceApplet = {
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d320',
+    icon: '\\d1df',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Feed",

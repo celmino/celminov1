@@ -12,6 +12,7 @@ export const ActivitiesApplet = {
     icon: '\\d320',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "World",
