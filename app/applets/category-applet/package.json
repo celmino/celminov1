@@ -107,6 +107,7 @@
         "@realmocean/vibe": "^2.82.45",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.166",
+        "react-clock": "^4.6.0",
         "shelljs": "^0.8.5",
         "ts-loader": "^9.5.1",
         "typescript": "^5.3.3",

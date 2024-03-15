@@ -84,13 +84,13 @@ export class ListController extends UIFormController {
             Query.equal('viewId', 'applet')
         ]);
 
-     
+
 
         const { createDocument: createField } = useCreateDocument(workspaceId, appletId, 'fields', [
             Query.equal('collectionId', 'listItems')
         ])
 
-        const { updateDocument: updateFieldSetting } = useUpdateDocument(workspaceId);
+        const { createDocument: createViewSetting } = useCreateDocument(workspaceId, appletId, 'viewSettings');
 
         const { createStringAttribute } = useCreateStringAttribute(workspaceId);
         const { createRelationshipAttribute } = useCreateRelationshipAttribute(workspaceId);
@@ -106,16 +106,25 @@ export class ListController extends UIFormController {
 
                 UIViewBuilder(() => {
 
-                    const { fields = [] }: { fields: any[] } = JSON.parse(viewSetting.setting);
-                    const resultFields = attributes
-                        .filter((field) => fields.findIndex((_) => _.key === field.key) > -1)
-                    /*   .map(field => {
-                          const index = fields.findIndex((_) => _.key === field.key);
-                          return {
-                              ...field,
-                              width: fields[index].width
-                          }
-                      }) */
+                    let resultFields = attributes;
+                    if (viewSettings != null) {
+                        resultFields = attributes
+                            .filter((field) => {
+                                const index = viewSettings.findIndex((_) => _.key === field.key);
+                                if (index > -1) {
+                                    return viewSettings[index].hidden === false;
+                                } else {
+                                    return false;
+                                }
+                            })
+                    }
+                    /* .map(field => {
+                       const index = fields.findIndex((_) => _.key === field.key);
+                       return {
+                           ...field,
+                           width: fields[index].width
+                       }
+                   })  */
 
                     return (
                         ReactView(
@@ -220,23 +229,15 @@ export class ListController extends UIFormController {
                                                                                         collectionId: 'listItems'
                                                                                     }
                                                                                 }, () => {
-                                                                                    const settings = { ...JSON.parse(viewSetting.setting) };
 
-                                                                                    settings.fields.push({
-                                                                                        key: replaceNonMatchingCharacters(field.name),
-                                                                                        width: '100px'
-                                                                                    });
-
-                                                                                    updateFieldSetting({
-                                                                                        databaseId: appletId,
-                                                                                        collectionId: 'viewSettings',
-                                                                                        documentId: 'applet',
+                                                                                    createViewSetting({
                                                                                         data: {
-                                                                                            setting: JSON.stringify({
-                                                                                                ...settings
-                                                                                            })
+                                                                                            viewId: 'applet',
+                                                                                            key: replaceNonMatchingCharacters(field.name),
+                                                                                            hidden: false
                                                                                         }
-                                                                                    })
+                                                                                    }, () => void 0)
+
                                                                                 })
                                                                             })
                                                                         } else if (field.type === 'select') {

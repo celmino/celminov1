@@ -2,14 +2,16 @@ import {
     HDivider,
     HStack,
     MenuButton,
+    ReactView,
     SvgIcon,
-    Text, TextField, UIController, UIView, UIViewBuilder, cLeading, cVertical, useNavigate, useState
+    Text, TextField, UIController, UIView, UIViewBuilder, cLeading, cVertical, useEffect, useNavigate, useState
 } from '@tuval/forms';
 
 import { Query, Services, useGetDocument, useGetRealm, useListDocuments, useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
 import React from 'react';
 import { useApplet, useAppletNavigate } from '@celmino/ui'
+import Clock from 'react-clock';
 
 export const EditIcon = () => (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm5 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm3.5 1.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path></svg>
@@ -32,6 +34,15 @@ export class TreeController extends UIController {
 
         const { applet } = useApplet();
 
+        const [value, setValue] = useState(new Date());
+
+        useEffect(() => {
+            const interval = setInterval(() => setValue(new Date()), 1000);
+
+            return () => {
+                clearInterval(interval);
+            };
+        }, []);
 
 
         return (
@@ -93,21 +104,27 @@ export class TreeController extends UIController {
                     :
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
-                            HStack(
-                                // HDivider().background('#E4EAE2').height(1),
+                            ReactView(
+                             
+                                 
+                                    <Clock value={value} size={30}/>
+                               
+                            )
+                            /* HStack(
+                              
                                 Text(item?.name)
                                     .foregroundColor('white')
                                     .fontSize('1rem')
                                     .fontWeight('500')
                                     .textTransform('uppercase'),
-                                // HDivider().background('#E4EAE2').height(1),
+                               
                             )
                                 .width()
                                 .height(24)
                                 .padding('4px 8px 4px 5px')
                                 .cornerRadius(6)
-                                //  .background('rgb(16, 144, 224)')
-                                .background(applet?.themeColor ?? 'rgb(16, 144, 224)')
+                              
+                                .background(applet?.themeColor ?? 'rgb(16, 144, 224)') */
                         )
                         ,
                         HStack(

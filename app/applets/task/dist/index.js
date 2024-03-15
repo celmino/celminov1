@@ -32716,32 +32716,39 @@ var ListController = /** @class */ (function (_super) {
         var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'fields', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
         ]), attributes = _d.documents, isLoading = _d.isLoading;
-        var _e = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
-            projectId: workspaceId,
-            databaseId: appletId,
-            collectionId: 'viewSettings',
-            documentId: 'applet'
-        }), viewSetting = _e.document, isViewSettingLoading = _e.isLoading;
+        var _e = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'viewSettings', [
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('viewId', 'applet')
+        ]), viewSettings = _e.documents, isFieldSettingsLoading = _e.isLoading;
         var createField = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'fields', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
         ]).createDocument;
-        var updateFieldSetting = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
+        var createViewSetting = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'viewSettings').createDocument;
         var createStringAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateStringAttribute)(workspaceId).createStringAttribute;
         var createRelationshipAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRelationshipAttribute)(workspaceId).createRelationshipAttribute;
         var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useAccount)().account;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
-        return ((isLoading || isStatusesLoading || isViewSettingLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+        return ((isLoading || isStatusesLoading || isFieldSettingsLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-                var _a = JSON.parse(viewSetting.setting).fields, fields = _a === void 0 ? [] : _a;
-                var resultFields = attributes
-                    .filter(function (field) { return fields.findIndex(function (_) { return _.key === field.key; }) > -1; });
-                /*   .map(field => {
-                      const index = fields.findIndex((_) => _.key === field.key);
-                      return {
-                          ...field,
-                          width: fields[index].width
-                      }
-                  }) */
+                var resultFields = attributes;
+                if (viewSettings != null) {
+                    resultFields = attributes
+                        .filter(function (field) {
+                        var index = viewSettings.findIndex(function (_) { return _.key === field.key; });
+                        if (index > -1) {
+                            return viewSettings[index].hidden === false;
+                        }
+                        else {
+                            return false;
+                        }
+                    });
+                }
+                /* .map(field => {
+                   const index = fields.findIndex((_) => _.key === field.key);
+                   return {
+                       ...field,
+                       width: fields[index].width
+                   }
+               })  */
                 return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet === null || applet === void 0 ? void 0 : applet.name, function (e) {
                     /* updateDocument({
                         databaseId: appletId,
@@ -32826,19 +32833,13 @@ var ListController = /** @class */ (function (_super) {
                                     createField({
                                         data: __assign(__assign({}, field), { key: replaceNonMatchingCharacters(field.name), collectionId: 'listItems' })
                                     }, function () {
-                                        var settings = __assign({}, JSON.parse(viewSetting.setting));
-                                        settings.fields.push({
-                                            key: replaceNonMatchingCharacters(field.name),
-                                            width: '100px'
-                                        });
-                                        updateFieldSetting({
-                                            databaseId: appletId,
-                                            collectionId: 'viewSettings',
-                                            documentId: 'applet',
+                                        createViewSetting({
                                             data: {
-                                                setting: JSON.stringify(__assign({}, settings))
+                                                viewId: 'applet',
+                                                key: replaceNonMatchingCharacters(field.name),
+                                                hidden: false
                                             }
-                                        });
+                                        }, function () { return void 0; });
                                     });
                                 });
                             }
