@@ -11255,6 +11255,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Community__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/Community */ "./src/applets/Community.ts");
 /* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
 /* harmony import */ var _applets_Database__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./applets/Database */ "./src/applets/Database.ts");
+/* harmony import */ var _applets_Clock__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./applets/Clock */ "./src/applets/Clock.ts");
+
 
 
 
@@ -11277,6 +11279,7 @@ const Applets = [
     _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_7__.ListApplet,
     _applets_Dashboards__WEBPACK_IMPORTED_MODULE_2__.DashboardsApplet,
     _applets_Database__WEBPACK_IMPORTED_MODULE_8__.DatabaseApplet,
+    _applets_Clock__WEBPACK_IMPORTED_MODULE_9__.Clock,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -18087,6 +18090,42 @@ const ActivitiesApplet = {
 
 /***/ }),
 
+/***/ "./src/applets/Clock.ts":
+/*!******************************!*\
+  !*** ./src/applets/Clock.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Clock: () => (/* binding */ Clock)
+/* harmony export */ });
+const Clock = {
+    name: 'Clock',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.clock',
+    applet_type: 'com.celmino.applet.clock',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d2dc',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Category",
+            "id": "applet_category",
+            "category": "app",
+            "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
 /***/ "./src/applets/Community.ts":
 /*!**********************************!*\
   !*** ./src/applets/Community.ts ***!
@@ -18388,7 +18427,7 @@ const ListApplet = {
     type: 'Applet',
     tree_type: 'com.celmino.applet.task-list',
     applet_type: 'com.celmino.applet.task-list',
-    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    description: 'Task List applet is designed to help users organize, prioritize, and track tasks within their projects. It allows setting deadlines, managing dependencies, and assigning tasks to team members. This applet streamlines project management processes and enhances team communication, enabling easy monitoring of progress to ensure timely completion of all tasks.',
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
@@ -18453,7 +18492,7 @@ const WorkspaceApplet = {
     type: 'Applet',
     tree_type: 'com.celmino.applet.workspace',
     applet_type: 'com.celmino.applet.workspace',
-    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    description: 'Workspace applet offers a customizable virtual environment tailored for managing and collaborating on various projects and tasks. It integrates seamlessly with other Celmino applets, providing a central hub for users to access, share, and organize resources efficiently. This applet facilitates team collaboration, document sharing, and real-time communication, making it easier to maintain productivity and streamline workflows. With the Workspace applet, teams can create a cohesive work environment that adapts to their specific project needs and goals.',
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',

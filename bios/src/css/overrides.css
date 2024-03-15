@@ -380,28 +380,3 @@ div.e-spin-show.e-spinner-pane {
     transition: transform cubic-bezier(.68,0,.27,1.55) .2s
 }
 
-.react-clock__second-hand__body:before {
-    content: "";
-    display: none;
-    width: 7px;
-    height: 7px;
-    position: absolute;
-    bottom: 20%;
-    left: 50%;
-    background-color: red;
-    border-radius: 50%;
-    transform: translate(-50%) translateY(-50%)
-}
-
-.react-clock__second-hand__body:after {
-    content: "";
-    display: none;
-    width: 1px;
-    height: 1px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    background-color: red;
-    border-radius: 50%;
-    transform: translate(-50%)
-}

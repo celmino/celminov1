@@ -4,7 +4,7 @@ export const WorkspaceApplet = {
     type: 'Applet',
     tree_type: 'com.celmino.applet.workspace',
     applet_type: 'com.celmino.applet.workspace',
-    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    description: 'Workspace applet offers a customizable virtual environment tailored for managing and collaborating on various projects and tasks. It integrates seamlessly with other Celmino applets, providing a central hub for users to access, share, and organize resources efficiently. This applet facilitates team collaboration, document sharing, and real-time communication, making it easier to maintain productivity and streamline workflows. With the Workspace applet, teams can create a cohesive work environment that adapts to their specific project needs and goals.',
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',

@@ -10,6 +10,7 @@ import { WorldApplet } from "./applets/World";
 import { CommunityApplet } from "./applets/Community";
 import { ListApplet } from "./applets/TaskListApplet";
 import { DatabaseApplet } from "./applets/Database";
+import { Clock } from "./applets/Clock";
 
 
 export const Applets = [
@@ -25,6 +26,7 @@ export const Applets = [
      ListApplet,
      DashboardsApplet,
      DatabaseApplet,
+     Clock,
     {
         name: 'CRM - Gıda',
         type: 'Template',
