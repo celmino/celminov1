@@ -11235,10 +11235,10 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./src/Applets.ts":
-/*!************************!*\
-  !*** ./src/Applets.ts ***!
-  \************************/
+/***/ "./src/AppletList.ts":
+/*!***************************!*\
+  !*** ./src/AppletList.ts ***!
+  \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11253,9 +11253,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
 /* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
 /* harmony import */ var _applets_Community__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/Community */ "./src/applets/Community.ts");
-/* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
-/* harmony import */ var _applets_Database__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./applets/Database */ "./src/applets/Database.ts");
-/* harmony import */ var _applets_Clock__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./applets/Clock */ "./src/applets/Clock.ts");
+/* harmony import */ var _applets_Database__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./applets/Database */ "./src/applets/Database.ts");
+/* harmony import */ var _applets_Clock__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./applets/Clock */ "./src/applets/Clock.ts");
+/* harmony import */ var _applets_Feed__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./applets/Feed */ "./src/applets/Feed.ts");
+/* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
+/* harmony import */ var _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./applets/Meetings */ "./src/applets/Meetings.ts");
+
+
 
 
 
@@ -11276,10 +11280,12 @@ const Applets = [
     _applets_Emails__WEBPACK_IMPORTED_MODULE_4__.EmailsApplet,
     _applets_Activities__WEBPACK_IMPORTED_MODULE_0__.ActivitiesApplet,
     _applets_Community__WEBPACK_IMPORTED_MODULE_6__.CommunityApplet,
-    _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_7__.ListApplet,
+    _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_10__.ListApplet,
     _applets_Dashboards__WEBPACK_IMPORTED_MODULE_2__.DashboardsApplet,
-    _applets_Database__WEBPACK_IMPORTED_MODULE_8__.DatabaseApplet,
-    _applets_Clock__WEBPACK_IMPORTED_MODULE_9__.Clock,
+    _applets_Database__WEBPACK_IMPORTED_MODULE_7__.DatabaseApplet,
+    _applets_Clock__WEBPACK_IMPORTED_MODULE_8__.Clock,
+    _applets_Feed__WEBPACK_IMPORTED_MODULE_9__.FeedApplet,
+    _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__.MeetingsApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -15880,110 +15886,6 @@ const Applets = [
         ]
     },
     {
-        name: 'Meetings',
-        type: 'Applet',
-        tree_type: 'com.celmino.widget.meeeting-tree',
-        applet_type: 'com.celmino.applet.meetings',
-        description: 'Monitor your process details in timeframe chart.',
-        // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
-        icon: '\\d25f',
-        iconBackColor: '#66B47C',
-        enabled: false,
-        databases: [
-            {
-                "name": "Meetings",
-                "id": "meetings",
-                "category": "app",
-                "collections": [
-                    {
-                        "name": "Menu Tree",
-                        "id": "wm_tree",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "type",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "path",
-                                "type": "string"
-                            },
-                            {
-                                "key": "viewer",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_category",
-                                "type": "string"
-                            },
-                            {
-                                "key": "bg_color",
-                                "type": "string"
-                            },
-                            {
-                                "key": "fg_color",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Meeting Space",
-                        "id": "meeting_space",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Meeting",
-                        "id": "meeting",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "start_at",
-                                "type": "datetime"
-                            },
-                            {
-                                "key": "end_at",
-                                "type": "datetime"
-                            },
-                            {
-                                "key": "is_template",
-                                "type": "boolean",
-                                "defaultValue": false
-                            },
-                            {
-                                "key": "sections",
-                                "type": "string",
-                                "size": 100000
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
         name: 'Processes',
         type: 'Applet',
         tree_type: 'com.celmino.applet.enterprise-modelling',
@@ -18077,6 +17979,7 @@ const ActivitiesApplet = {
     icon: '\\d320',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "World",
@@ -18110,9 +18013,10 @@ const Clock = {
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d2dc',
+    icon: '\\d224',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Category",
@@ -18149,6 +18053,7 @@ const CommunityApplet = {
     icon: '\\d1e1',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "World",
@@ -18185,6 +18090,7 @@ const DashboardsApplet = {
     icon: '\\d320',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Dashboards",
@@ -18221,6 +18127,7 @@ const DatabaseApplet = {
     icon: '\\d278',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Workspace",
@@ -18357,9 +18264,10 @@ const AppletCategory = {
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d2dc',
+    icon: '\\d1f7',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Category",
@@ -18396,12 +18304,165 @@ const EmailsApplet = {
     icon: '\\d339',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Emails",
             "id": "applet_category",
             "category": "app",
             "collections": []
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Feed.ts":
+/*!*****************************!*\
+  !*** ./src/applets/Feed.ts ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FeedApplet: () => (/* binding */ FeedApplet)
+/* harmony export */ });
+const FeedApplet = {
+    name: 'Feed',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.feed',
+    applet_type: 'com.celmino.applet.feed',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d1df',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    version: [1, 0, 1],
+    databases: [
+        {
+            "name": "Feed",
+            "id": "workspace_applet",
+            "category": "app",
+            "collections": [
+                {
+                    "name": "Collections",
+                    "id": "collections",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                },
+                {
+                    "name": "Fields",
+                    "id": "fields",
+                    "attributes": [
+                        {
+                            "key": "key",
+                            "type": "string"
+                        },
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fieldInfo",
+                            "type": "string",
+                            "size": 18900
+                        },
+                        {
+                            "key": "collectionId",
+                            "type": "string"
+                        },
+                        {
+                            "key": "order",
+                            "type": "number"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Meetings.ts":
+/*!*********************************!*\
+  !*** ./src/applets/Meetings.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MeetingsApplet: () => (/* binding */ MeetingsApplet)
+/* harmony export */ });
+const MeetingsApplet = {
+    name: 'Meetings',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.meetings',
+    applet_type: 'com.celmino.applet.meetings',
+    description: 'Monitor your process details in timeframe chart.',
+    // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
+    iconCategory: 'Icons',
+    iconName: 'calender',
+    icon: '\\d25f',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Meetings",
+            "id": "meetings",
+            "category": "app",
+            "collections": [
+                {
+                    "name": "Meeting",
+                    "id": "meeting",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "start_at",
+                            "type": "datetime"
+                        },
+                        {
+                            "key": "end_at",
+                            "type": "datetime"
+                        },
+                        {
+                            "key": "is_template",
+                            "type": "boolean",
+                            "defaultValue": false
+                        },
+                        {
+                            "key": "sections",
+                            "type": "string",
+                            "size": 100000
+                        }
+                    ]
+                }
+            ]
         }
     ]
 };
@@ -18431,9 +18492,10 @@ const ListApplet = {
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d2dc',
+    icon: '\\d1e4',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: _schemas_TaskListDatabase_TaskListDatabase__WEBPACK_IMPORTED_MODULE_0__.ListAppletDatabase
 };
 
@@ -18463,6 +18525,7 @@ const WebsiteApplet = {
     icon: '\\d320',
     iconBackColor: '#66B47C',
     enabled: false,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Website",
@@ -18499,6 +18562,7 @@ const WorkspaceApplet = {
     icon: '\\d27f',
     iconBackColor: '#66B47C',
     enabled: true,
+    version: [1, 0, 1],
     databases: [
         {
             "name": "Workspace",
@@ -18663,6 +18727,26 @@ const WorkspaceApplet = {
         }
     ]
 };
+
+
+/***/ }),
+
+/***/ "./src/applets/index.ts":
+/*!******************************!*\
+  !*** ./src/applets/index.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FeedApplet: () => (/* reexport safe */ _Feed__WEBPACK_IMPORTED_MODULE_1__.FeedApplet),
+/* harmony export */   ListApplet: () => (/* reexport safe */ _TaskListApplet__WEBPACK_IMPORTED_MODULE_0__.ListApplet)
+/* harmony export */ });
+/* harmony import */ var _TaskListApplet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskListApplet */ "./src/applets/TaskListApplet.ts");
+/* harmony import */ var _Feed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Feed */ "./src/applets/Feed.ts");
+
+
 
 
 /***/ }),
@@ -19641,6 +19725,66 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/dialogs/AboutDialog.ts":
+/*!************************************!*\
+  !*** ./src/dialogs/AboutDialog.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AboutDialog: () => (/* binding */ AboutDialog)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+class AboutDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView {
+    constructor() {
+        super();
+        this.ShowHeader = false;
+        this.Header = 'Form';
+        this.Width = '724px';
+        this.Height = '600px';
+    }
+    BindRouterParams({ applet }) {
+        this.applet = applet;
+    }
+    OnOK() {
+        this.ShowDialogAsyncResolve();
+        this.Hide();
+    }
+    OnCancel() {
+        this.Hide();
+    }
+    LoadView() {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.name)
+            .fontSize('2rem')
+            .fontWeight('500'))
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.description))
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.version.join('.')))
+            .padding());
+    }
+    static Show(applet) {
+        const dialog = new AboutDialog();
+        dialog.ShowHeader = false;
+        dialog.BindRouterParams({ applet });
+        return dialog.ShowDialogAsync();
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], AboutDialog.prototype, "applet", void 0);
+
+
+/***/ }),
+
 /***/ "./src/dialogs/SelectAppletDialog.ts":
 /*!*******************************************!*\
   !*** ./src/dialogs/SelectAppletDialog.ts ***!
@@ -19658,9 +19802,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Applets__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Applets */ "./src/Applets.ts");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _AppletList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AppletList */ "./src/AppletList.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19722,7 +19866,7 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
         this.Header = 'Form';
         this.Width = '90vw';
         this.Height = '90vh';
-        this.filtered_opas = _Applets__WEBPACK_IMPORTED_MODULE_3__.Applets;
+        this.filtered_opas = _AppletList__WEBPACK_IMPORTED_MODULE_4__.Applets;
     }
     OnOK(applet) {
         this.ShowDialogAsyncResolve(applet);
@@ -19743,7 +19887,7 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
             .border({ default: 'solid 1px #E4EAE2', focus: 'solid 1px #E4EAE2' })
             .onChange((e) => {
             setSearchText(e);
-            this.filtered_opas = _Applets__WEBPACK_IMPORTED_MODULE_3__.Applets.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1);
+            this.filtered_opas = _AppletList__WEBPACK_IMPORTED_MODULE_4__.Applets.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1);
         })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Close).onClick(() => this.OnCancel())).height(50).padding().background('#F9FAFB'), 
         /*     Search().width(300).allHeight(70).padding()
                 .onChange((e) => this.filtered_opas = opas.filter(opa => opa.name.toLowerCase().indexOf(e.toLowerCase()) > -1)), */
@@ -19809,7 +19953,7 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                             iconCategory: opa.iconCategory,
                         }
                     }, (treeItem) => {
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem });
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem });
                     });
                     if (opa.databases) {
                         setInstallingOpa(opa.type);
@@ -19902,9 +20046,12 @@ __decorate([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AboutDialog: () => (/* reexport safe */ _AboutDialog__WEBPACK_IMPORTED_MODULE_1__.AboutDialog),
 /* harmony export */   SelectAppletDialog: () => (/* reexport safe */ _SelectAppletDialog__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog)
 /* harmony export */ });
 /* harmony import */ var _SelectAppletDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SelectAppletDialog */ "./src/dialogs/SelectAppletDialog.ts");
+/* harmony import */ var _AboutDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AboutDialog */ "./src/dialogs/AboutDialog.ts");
+
 
 
 
@@ -20041,6 +20188,7 @@ const useRealmNavigate = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AboutDialog: () => (/* reexport safe */ _dialogs__WEBPACK_IMPORTED_MODULE_0__.AboutDialog),
 /* harmony export */   AccountContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AccountContext),
 /* harmony export */   AccountContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AccountContextProvider),
 /* harmony export */   AnonymousContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.AnonymousContext),
@@ -20050,8 +20198,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorSelect),
 /* harmony export */   ColorView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorView),
 /* harmony export */   DynoDialog: () => (/* reexport safe */ _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__.DynoDialog),
+/* harmony export */   FeedApplet: () => (/* reexport safe */ _applets__WEBPACK_IMPORTED_MODULE_6__.FeedApplet),
 /* harmony export */   FormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder),
 /* harmony export */   FormTitle: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormTitle),
+/* harmony export */   ListApplet: () => (/* reexport safe */ _applets__WEBPACK_IMPORTED_MODULE_6__.ListApplet),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
 /* harmony export */   OrganizationContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContext),
 /* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContextProvider),
@@ -20079,7 +20229,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormBuilder/DynoDialog */ "./src/FormBuilder/DynoDialog.ts");
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/index.ts");
 /* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hooks */ "./src/hooks/index.ts");
-/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+/* harmony import */ var _applets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets */ "./src/applets/index.ts");
+/* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
+
 
 
 

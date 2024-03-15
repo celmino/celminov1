@@ -7,7 +7,7 @@ export const AppletCategory = {
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d2dc',
+    icon: '\\d1f7',
     iconBackColor: '#66B47C',
     enabled: true,
     version: [1, 0, 1],

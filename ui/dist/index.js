@@ -11257,6 +11257,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Clock__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./applets/Clock */ "./src/applets/Clock.ts");
 /* harmony import */ var _applets_Feed__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./applets/Feed */ "./src/applets/Feed.ts");
 /* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
+/* harmony import */ var _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./applets/Meetings */ "./src/applets/Meetings.ts");
+
 
 
 
@@ -11283,6 +11285,7 @@ const Applets = [
     _applets_Database__WEBPACK_IMPORTED_MODULE_7__.DatabaseApplet,
     _applets_Clock__WEBPACK_IMPORTED_MODULE_8__.Clock,
     _applets_Feed__WEBPACK_IMPORTED_MODULE_9__.FeedApplet,
+    _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__.MeetingsApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -15883,110 +15886,6 @@ const Applets = [
         ]
     },
     {
-        name: 'Meetings',
-        type: 'Applet',
-        tree_type: 'com.celmino.widget.meeeting-tree',
-        applet_type: 'com.celmino.applet.meetings',
-        description: 'Monitor your process details in timeframe chart.',
-        // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
-        icon: '\\d25f',
-        iconBackColor: '#66B47C',
-        enabled: false,
-        databases: [
-            {
-                "name": "Meetings",
-                "id": "meetings",
-                "category": "app",
-                "collections": [
-                    {
-                        "name": "Menu Tree",
-                        "id": "wm_tree",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "type",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "path",
-                                "type": "string"
-                            },
-                            {
-                                "key": "viewer",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_category",
-                                "type": "string"
-                            },
-                            {
-                                "key": "bg_color",
-                                "type": "string"
-                            },
-                            {
-                                "key": "fg_color",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Meeting Space",
-                        "id": "meeting_space",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Meeting",
-                        "id": "meeting",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "start_at",
-                                "type": "datetime"
-                            },
-                            {
-                                "key": "end_at",
-                                "type": "datetime"
-                            },
-                            {
-                                "key": "is_template",
-                                "type": "boolean",
-                                "defaultValue": false
-                            },
-                            {
-                                "key": "sections",
-                                "type": "string",
-                                "size": 100000
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
         name: 'Processes',
         type: 'Applet',
         tree_type: 'com.celmino.applet.enterprise-modelling',
@@ -18365,7 +18264,7 @@ const AppletCategory = {
     // image: '/images/applets/documents.png',
     iconCategory: 'Icons',
     iconName: 'bell',
-    icon: '\\d2dc',
+    icon: '\\d1f7',
     iconBackColor: '#66B47C',
     enabled: true,
     version: [1, 0, 1],
@@ -18495,6 +18394,71 @@ const FeedApplet = {
                         {
                             "key": "order",
                             "type": "number"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Meetings.ts":
+/*!*********************************!*\
+  !*** ./src/applets/Meetings.ts ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MeetingsApplet: () => (/* binding */ MeetingsApplet)
+/* harmony export */ });
+const MeetingsApplet = {
+    name: 'Meetings',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.meetings',
+    applet_type: 'com.celmino.applet.meetings',
+    description: 'Monitor your process details in timeframe chart.',
+    // image: '/static/opa/images/com.tuvalsoft.opa.task/icon.png',
+    iconCategory: 'Icons',
+    iconName: 'calender',
+    icon: '\\d25f',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Meetings",
+            "id": "meetings",
+            "category": "app",
+            "collections": [
+                {
+                    "name": "Meeting",
+                    "id": "meeting",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "start_at",
+                            "type": "datetime"
+                        },
+                        {
+                            "key": "end_at",
+                            "type": "datetime"
+                        },
+                        {
+                            "key": "is_template",
+                            "type": "boolean",
+                            "defaultValue": false
+                        },
+                        {
+                            "key": "sections",
+                            "type": "string",
+                            "size": 100000
                         }
                     ]
                 }

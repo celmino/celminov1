@@ -10,7 +10,7 @@ import { useCreateDocument, useGetDocument, useUpdateDocument } from '@realmocea
 
 import { EventBus } from '@tuval/core';
 //import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
-import { DynoDialog, useAppletNavigate, useOrganization, useRealm } from '@celmino/ui';
+import { AboutDialog, DynoDialog, FeedApplet, useAppletNavigate, useOrganization, useRealm } from '@celmino/ui';
 
 
 export class TreeController extends UIController {
@@ -76,9 +76,6 @@ export class TreeController extends UIController {
                             requestMenu: () => {
                                 return [
                                    
-
-
-
                                 ]
 
 
@@ -87,21 +84,20 @@ export class TreeController extends UIController {
                                 navigate(``)
                             },
                             requestEditMenu: () => [
-
                                 {
                                     title: 'Rename',
                                     icon: SvgIcon('svg-sprite-global__edit', '#151719', '18px', '18px'),
                                     onClick: () => setIsEditing(true)
                                 },
                                 {
-                                    title: 'Collections',
-                                    icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                                    onClick: () => navigate(`collections`)
-                                },
-                                {
                                     title: 'Applet settings',
                                     icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
                                     onClick: () => navigate(`settings/general`)
+                                },
+                                {
+                                    title: 'About',
+                                    icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
+                                    onClick: () => AboutDialog.Show(FeedApplet)
                                 }
 
 

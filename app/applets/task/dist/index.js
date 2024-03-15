@@ -31965,26 +31965,6 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./src/AboutApplet.ts":
-/*!****************************!*\
-  !*** ./src/AboutApplet.ts ***!
-  \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AboutApplet: () => (/* binding */ AboutApplet)
-/* harmony export */ });
-var AboutApplet = {
-    name: 'Task List',
-    description: 'sdfsdfds',
-    version: '1.0.1'
-};
-
-
-/***/ }),
-
 /***/ "./src/TreeController.tsx":
 /*!********************************!*\
   !*** ./src/TreeController.tsx ***!
@@ -32006,7 +31986,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./resources/Icons */ "./src/resources/Icons.tsx");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
-/* harmony import */ var _dialogs_AboutDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialogs/AboutDialog */ "./src/dialogs/AboutDialog.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -32032,7 +32011,6 @@ import { AddFolderDialog } from './dialogs/AddFolderDialog';
 import { AddListDialog } from './dialogs/AddListDialog';
 import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { AddWhiteboardDialog } from './dialogs/AddWhiteboardDialog'; */
-
 
 
 var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
@@ -32204,7 +32182,7 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
                     {
                         title: 'About',
                         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                        onClick: function () { return _dialogs_AboutDialog__WEBPACK_IMPORTED_MODULE_6__.AboutDialog.Show(); }
+                        onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_1__.AboutDialog.Show(_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.ListApplet); }
                     }
                 ]; }
             }));
@@ -32213,81 +32191,6 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 //FormBuilder.injectAction('saveSpace', SaveSpaceAction);
-
-
-/***/ }),
-
-/***/ "./src/dialogs/AboutDialog.ts":
-/*!************************************!*\
-  !*** ./src/dialogs/AboutDialog.ts ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   AboutDialog: () => (/* binding */ AboutDialog)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _AboutApplet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../AboutApplet */ "./src/AboutApplet.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var AboutDialog = /** @class */ (function (_super) {
-    __extends(AboutDialog, _super);
-    function AboutDialog() {
-        var _this = _super.call(this) || this;
-        _this.ShowHeader = false;
-        _this.Header = 'Form';
-        _this.Width = '424px';
-        _this.Height = '200px';
-        return _this;
-    }
-    AboutDialog.prototype.BindRouterParams = function () {
-    };
-    AboutDialog.prototype.OnOK = function () {
-        this.ShowDialogAsyncResolve();
-        this.Hide();
-    };
-    AboutDialog.prototype.OnCancel = function () {
-        this.Hide();
-    };
-    AboutDialog.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(_AboutApplet__WEBPACK_IMPORTED_MODULE_1__.AboutApplet.name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(_AboutApplet__WEBPACK_IMPORTED_MODULE_1__.AboutApplet.description), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(_AboutApplet__WEBPACK_IMPORTED_MODULE_1__.AboutApplet.version)));
-    };
-    AboutDialog.Show = function () {
-        var dialog = new AboutDialog();
-        dialog.ShowHeader = false;
-        dialog.BindRouterParams();
-        return dialog.ShowDialogAsync();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
-    ], AboutDialog.prototype, "form", void 0);
-    return AboutDialog;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView));
-
 
 
 /***/ }),
