@@ -53,6 +53,17 @@ export class SelectAppletDialog extends DialogView {
     static Show(workspaceId: string, parent?: string): Promise<any>;
 }
 
+export class AboutDialog extends DialogView {
+    constructor();
+    BindRouterParams({ applet }: {
+        applet: any;
+    }): void;
+    OnOK(): void;
+    OnCancel(): void;
+    LoadView(): import("@tuval/forms").VStackClass;
+    static Show(applet: any): Promise<any>;
+}
+
 export const NewFieldMenuView: ({ view, onNewFieldAdded }: {
     view: (menuIsOpen: boolean) => UIView;
     onNewFieldAdded?: Function;
