@@ -18767,6 +18767,26 @@ const WorkspaceApplet = {
 
 /***/ }),
 
+/***/ "./src/applets/index.ts":
+/*!******************************!*\
+  !*** ./src/applets/index.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FeedApplet: () => (/* reexport safe */ _Feed__WEBPACK_IMPORTED_MODULE_1__.FeedApplet),
+/* harmony export */   ListApplet: () => (/* reexport safe */ _TaskListApplet__WEBPACK_IMPORTED_MODULE_0__.ListApplet)
+/* harmony export */ });
+/* harmony import */ var _TaskListApplet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskListApplet */ "./src/applets/TaskListApplet.ts");
+/* harmony import */ var _Feed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Feed */ "./src/applets/Feed.ts");
+
+
+
+
+/***/ }),
+
 /***/ "./src/context/account/AccountContext.ts":
 /*!***********************************************!*\
   !*** ./src/context/account/AccountContext.ts ***!
@@ -19766,8 +19786,8 @@ class AboutDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView {
         super();
         this.ShowHeader = false;
         this.Header = 'Form';
-        this.Width = '424px';
-        this.Height = '200px';
+        this.Width = '724px';
+        this.Height = '600px';
     }
     BindRouterParams({ applet }) {
         this.applet = applet;
@@ -19780,7 +19800,12 @@ class AboutDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogView {
         this.Hide();
     }
     LoadView() {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.description), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.version.join('.'))));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.name)
+            .fontSize('2rem')
+            .fontWeight('500'))
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.description))
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.applet.version.join('.')))
+            .padding());
     }
     static Show(applet) {
         const dialog = new AboutDialog();
@@ -20209,9 +20234,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorSelect),
 /* harmony export */   ColorView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.ColorView),
 /* harmony export */   DynoDialog: () => (/* reexport safe */ _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__.DynoDialog),
+/* harmony export */   FeedApplet: () => (/* reexport safe */ _applets__WEBPACK_IMPORTED_MODULE_6__.FeedApplet),
 /* harmony export */   FormBuilder: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder),
 /* harmony export */   FormTitle: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormTitle),
-/* harmony export */   ListApplet: () => (/* reexport safe */ _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_6__.ListApplet),
+/* harmony export */   ListApplet: () => (/* reexport safe */ _applets__WEBPACK_IMPORTED_MODULE_6__.ListApplet),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
 /* harmony export */   OrganizationContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContext),
 /* harmony export */   OrganizationContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.OrganizationContextProvider),
@@ -20239,7 +20265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormBuilder_DynoDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormBuilder/DynoDialog */ "./src/FormBuilder/DynoDialog.ts");
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/index.ts");
 /* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hooks */ "./src/hooks/index.ts");
-/* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
+/* harmony import */ var _applets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets */ "./src/applets/index.ts");
 /* harmony import */ var _exports__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./exports */ "./src/exports.ts");
 
 

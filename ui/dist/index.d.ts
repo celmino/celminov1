@@ -41,6 +41,48 @@ export class DynoDialog extends DialogView {
     static Show(formData: any): Promise<any>;
 }
 
+export class SelectAppletDialog extends DialogView {
+    BindRouterParams({ workspaceId, parent }: {
+        workspaceId: any;
+        parent: any;
+    }): void;
+    constructor();
+    OnOK(applet: any): void;
+    OnCancel(): void;
+    LoadView(): UIView;
+    static Show(workspaceId: string, parent?: string): Promise<any>;
+}
+
+export class AboutDialog extends DialogView {
+    constructor();
+    BindRouterParams({ applet }: {
+        applet: any;
+    }): void;
+    OnOK(): void;
+    OnCancel(): void;
+    LoadView(): import("@tuval/forms").VStackClass;
+    static Show(applet: any): Promise<any>;
+}
+
+export const NewFieldMenuView: ({ view, onNewFieldAdded }: {
+    view: (menuIsOpen: boolean) => UIView;
+    onNewFieldAdded?: Function;
+}) => import("@tuval/forms").ReactViewClass;
+
+export interface IColorView extends UIView {
+    selectedColor(value: string): any;
+    onChange(value: Function): any;
+}
+export const ColorView: () => IColorView;
+
+export const useAppletNavigate: () => {
+    navigate: (url: string) => void;
+};
+
+export const useRealmNavigate: () => {
+    navigate: (url: string) => void;
+};
+
 export const ListApplet: {
     name: string;
     type: string;
@@ -125,46 +167,36 @@ export const ListApplet: {
     }[];
 };
 
-export class SelectAppletDialog extends DialogView {
-    BindRouterParams({ workspaceId, parent }: {
-        workspaceId: any;
-        parent: any;
-    }): void;
-    constructor();
-    OnOK(applet: any): void;
-    OnCancel(): void;
-    LoadView(): UIView;
-    static Show(workspaceId: string, parent?: string): Promise<any>;
-}
-
-export class AboutDialog extends DialogView {
-    constructor();
-    BindRouterParams({ applet }: {
-        applet: any;
-    }): void;
-    OnOK(): void;
-    OnCancel(): void;
-    LoadView(): import("@tuval/forms").VStackClass;
-    static Show(applet: any): Promise<any>;
-}
-
-export const NewFieldMenuView: ({ view, onNewFieldAdded }: {
-    view: (menuIsOpen: boolean) => UIView;
-    onNewFieldAdded?: Function;
-}) => import("@tuval/forms").ReactViewClass;
-
-export interface IColorView extends UIView {
-    selectedColor(value: string): any;
-    onChange(value: Function): any;
-}
-export const ColorView: () => IColorView;
-
-export const useAppletNavigate: () => {
-    navigate: (url: string) => void;
-};
-
-export const useRealmNavigate: () => {
-    navigate: (url: string) => void;
+export const FeedApplet: {
+    name: string;
+    type: string;
+    tree_type: string;
+    applet_type: string;
+    description: string;
+    iconCategory: string;
+    iconName: string;
+    icon: string;
+    iconBackColor: string;
+    enabled: boolean;
+    version: number[];
+    databases: {
+        name: string;
+        id: string;
+        category: string;
+        collections: {
+            name: string;
+            id: string;
+            attributes: ({
+                key: string;
+                type: string;
+                size?: undefined;
+            } | {
+                key: string;
+                type: string;
+                size: number;
+            })[];
+        }[];
+    }[];
 };
 
 export const ColorSelect: ({ onSelect }: {
