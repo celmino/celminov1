@@ -1,4 +1,5 @@
 import { DialogView, FormBuilder, Spinner, Text, VStack, ViewProperty } from "@tuval/forms";
+import { ListApplet } from "../applets/TaskListApplet";
 
 
 
@@ -15,7 +16,7 @@ export class AboutDialog extends DialogView {
         this.Height = '200px'
     }
 
-    public BindRouterParams({applet}) {
+    public BindRouterParams({ applet }) {
         this.applet = applet;
     }
 
@@ -29,7 +30,7 @@ export class AboutDialog extends DialogView {
     }
 
     public override LoadView() {
-     
+
         return (
             VStack(
                 Text(this.applet.name),
@@ -37,14 +38,15 @@ export class AboutDialog extends DialogView {
                 Text(this.applet.version.join('.')),
             )
         )
-           
+
     }
 
     public static Show(applet: any) {
         const dialog = new AboutDialog();
         dialog.ShowHeader = false;
-        
-        dialog.BindRouterParams({applet});
+
+        dialog.BindRouterParams({ applet });
         return dialog.ShowDialogAsync();
     }
+   
 }

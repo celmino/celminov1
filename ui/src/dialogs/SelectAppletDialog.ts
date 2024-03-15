@@ -2,8 +2,8 @@ import { Button, ButtonSize, ButtonType, DialogView, ForEach, TextField, HStack,
 
 import { useCreateDocument, Services, ID } from "@realmocean/sdk";
 import { Text } from "@realmocean/vibe";
-import { Applets } from "../Applets";
 import { EventBus } from "@tuval/core";
+import { Applets } from "../AppletList";
 
 
 const appletMenu = [

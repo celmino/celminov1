@@ -8,10 +8,10 @@ import { InvestorsInTurkey } from "./applets/InvestorsInTurkey";
 import { WebsiteApplet } from "./applets/Website";
 import { WorldApplet } from "./applets/World";
 import { CommunityApplet } from "./applets/Community";
-import { ListApplet } from "./applets/TaskListApplet";
 import { DatabaseApplet } from "./applets/Database";
 import { Clock } from "./applets/Clock";
 import { FeedApplet } from "./applets/Feed";
+import { ListApplet } from "./applets/TaskListApplet";
 
 
 export const Applets = [

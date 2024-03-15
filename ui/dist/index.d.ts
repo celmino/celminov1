@@ -28,7 +28,7 @@ export class FormBuilder {
     static getViewFactory(type: string): any;
     static getView(fieldInfo: any): any;
     static canRender(fieldInfo: any, formController?: UIFormController): boolean;
-    static render(_formMeta: string | object | object[]): import("@tuval/forms").FragmentClass | import("@tuval/forms").TextClass | import("@tuval/forms").ConfigContextClass;
+    static render(_formMeta: string | object | object[]): import("@tuval/forms").TextClass | import("@tuval/forms").FragmentClass | import("@tuval/forms").ConfigContextClass;
     static compileFormula(formula: any): string;
 }
 
@@ -37,269 +37,11 @@ export class DynoDialog extends DialogView {
     BindRouterParams(formData: any): void;
     OnOK(): void;
     OnCancel(): void;
-    LoadView(): import("@tuval/forms").UISpinnerClass | import("@tuval/forms").VStackClass;
+    LoadView(): import("@tuval/forms").VStackClass | import("@tuval/forms").UISpinnerClass;
     static Show(formData: any): Promise<any>;
 }
 
-export class SelectAppletDialog extends DialogView {
-    BindRouterParams({ workspaceId, parent }: {
-        workspaceId: any;
-        parent: any;
-    }): void;
-    constructor();
-    OnOK(applet: any): void;
-    OnCancel(): void;
-    LoadView(): UIView;
-    static Show(workspaceId: string, parent?: string): Promise<any>;
-}
-
-export class AboutDialog extends DialogView {
-    constructor();
-    BindRouterParams({ applet }: {
-        applet: any;
-    }): void;
-    OnOK(): void;
-    OnCancel(): void;
-    LoadView(): import("@tuval/forms").VStackClass;
-    static Show(applet: any): Promise<any>;
-}
-
-export const NewFieldMenuView: ({ view, onNewFieldAdded }: {
-    view: (menuIsOpen: boolean) => UIView;
-    onNewFieldAdded?: Function;
-}) => import("@tuval/forms").ReactViewClass;
-
-export interface IColorView extends UIView {
-    selectedColor(value: string): any;
-    onChange(value: Function): any;
-}
-export const ColorView: () => IColorView;
-
-export const useAppletNavigate: () => {
-    navigate: (url: string) => void;
-};
-
-export const useRealmNavigate: () => {
-    navigate: (url: string) => void;
-};
-
-export declare const ActivitiesApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: any[];
-    }[];
-};
-
-export declare const Clock: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: any[];
-    }[];
-};
-
-export declare const CommunityApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: any[];
-    }[];
-};
-
-export declare const DashboardsApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: any[];
-    }[];
-};
-
-export declare const DatabaseApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: {
-            name: string;
-            id: string;
-            attributes: ({
-                key: string;
-                type: string;
-                size?: undefined;
-            } | {
-                key: string;
-                type: string;
-                size: number;
-            })[];
-        }[];
-    }[];
-};
-
-export declare const AppletCategory: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: any[];
-    }[];
-};
-
-export declare const EmailsApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: any[];
-    }[];
-};
-
-export declare const FeedApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: {
-            name: string;
-            id: string;
-            attributes: ({
-                key: string;
-                type: string;
-                size?: undefined;
-            } | {
-                key: string;
-                type: string;
-                size: number;
-            })[];
-        }[];
-    }[];
-};
-
-export declare const InvestorsInTurkey: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: {
-            name: string;
-            id: string;
-            attributes: {
-                key: string;
-                type: string;
-            }[];
-            documents: {
-                name: string;
-                investerType: string;
-                location: string;
-                link: string;
-            }[];
-        }[];
-    }[];
-};
-
-export declare const ListApplet: {
+export const ListApplet: {
     name: string;
     type: string;
     tree_type: string;
@@ -383,76 +125,46 @@ export declare const ListApplet: {
     }[];
 };
 
-export declare const WebsiteApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: any[];
-    }[];
+export class SelectAppletDialog extends DialogView {
+    BindRouterParams({ workspaceId, parent }: {
+        workspaceId: any;
+        parent: any;
+    }): void;
+    constructor();
+    OnOK(applet: any): void;
+    OnCancel(): void;
+    LoadView(): UIView;
+    static Show(workspaceId: string, parent?: string): Promise<any>;
+}
+
+export class AboutDialog extends DialogView {
+    constructor();
+    BindRouterParams({ applet }: {
+        applet: any;
+    }): void;
+    OnOK(): void;
+    OnCancel(): void;
+    LoadView(): import("@tuval/forms").VStackClass;
+    static Show(applet: any): Promise<any>;
+}
+
+export const NewFieldMenuView: ({ view, onNewFieldAdded }: {
+    view: (menuIsOpen: boolean) => UIView;
+    onNewFieldAdded?: Function;
+}) => import("@tuval/forms").ReactViewClass;
+
+export interface IColorView extends UIView {
+    selectedColor(value: string): any;
+    onChange(value: Function): any;
+}
+export const ColorView: () => IColorView;
+
+export const useAppletNavigate: () => {
+    navigate: (url: string) => void;
 };
 
-export declare const WorkspaceApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: {
-            name: string;
-            id: string;
-            attributes: ({
-                key: string;
-                type: string;
-                size?: undefined;
-            } | {
-                key: string;
-                type: string;
-                size: number;
-            })[];
-        }[];
-    }[];
-};
-
-export declare const WorldApplet: {
-    name: string;
-    type: string;
-    tree_type: string;
-    applet_type: string;
-    description: string;
-    iconCategory: string;
-    iconName: string;
-    icon: string;
-    iconBackColor: string;
-    enabled: boolean;
-    version: number[];
-    databases: {
-        name: string;
-        id: string;
-        category: string;
-        collections: any[];
-    }[];
+export const useRealmNavigate: () => {
+    navigate: (url: string) => void;
 };
 
 export const ColorSelect: ({ onSelect }: {
