@@ -37,11 +37,13 @@ export const Fields =
         },
         {
             "key": "custom",
-            "type": "boolean"
+            "type": "boolean",
+            "defaultValue": false,
         },
         {
-            "key": "width",
-            "type": "string",
+            "key": "system",
+            "type": "boolean",
+            "defaultValue": true,
         },
         {
             "key": "fieldInfo",

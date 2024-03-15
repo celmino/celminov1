@@ -4,7 +4,6 @@ export const ListItemsCollectionFields = [
         "key": "name",
         "name": "Name",
         "type": "string",
-        "width": "300px",
         "custom": false,
 
         "fieldInfo": JSON.stringify({
@@ -16,7 +15,6 @@ export const ListItemsCollectionFields = [
         "key": "description",
         "name": "Description",
         "type": "string",
-        "width": "300px",
         "custom": false,
 
 
@@ -29,8 +27,8 @@ export const ListItemsCollectionFields = [
         "key": "mark",
         "name": "Mark",
         "type": "string",
-        "width": "100px",
         "custom": false,
+        'system': true,
 
 
         "fieldInfo": JSON.stringify({
@@ -42,6 +40,7 @@ export const ListItemsCollectionFields = [
         "key": "status",
         "name": "Status",
         "type": "string",
+        'system': true,
 
         "fieldInfo": JSON.stringify({
             "size": 255,
@@ -52,8 +51,8 @@ export const ListItemsCollectionFields = [
         "key": "PRIORITY",
         "name": "Priority",
         "type": "select",
-        "width": "100px",
         "custom": false,
+        'system': true,
 
         "fieldInfo": JSON.stringify({
             "options": [
@@ -77,8 +76,8 @@ export const ListItemsCollectionFields = [
         "key": "MULTITASK",
         "name": "Multitask",
         "type": "select",
-        "width": "100px",
         "custom": false,
+        'system': true,
 
         "fieldInfo": JSON.stringify({
             "options": [
@@ -98,8 +97,8 @@ export const ListItemsCollectionFields = [
         "key": "NOT_VIEWED",
         "name": "Not Viewed",
         "type": "select",
-        "width": "100px",
         "custom": false,
+        'system': true,
 
         "fieldInfo": JSON.stringify({
             "options": [
@@ -119,8 +118,8 @@ export const ListItemsCollectionFields = [
         "key": "REPLICATE",
         "name": "Replicate",
         "type": "select",
-        "width": "100px",
         "custom": false,
+        'system': true,
 
         "fieldInfo": JSON.stringify({
             "options": [

@@ -32701,9 +32701,6 @@ var ListController = /** @class */ (function (_super) {
         /* const { documents: views, isLoading: isViewsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_views');
        
 
-        
-
-
 
        
         const { createDocument: createView } = useCreateDocument(workspaceId, appletId, 'wm_list_' + listId + '_views');
@@ -32719,228 +32716,261 @@ var ListController = /** @class */ (function (_super) {
         var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'fields', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
         ]), attributes = _d.documents, isLoading = _d.isLoading;
+        var _e = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
+            projectId: workspaceId,
+            databaseId: appletId,
+            collectionId: 'viewSettings',
+            documentId: 'applet'
+        }), viewSetting = _e.document, isViewSettingLoading = _e.isLoading;
         var createField = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'fields', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
         ]).createDocument;
+        var updateFieldSetting = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
         var createStringAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateStringAttribute)(workspaceId).createStringAttribute;
         var createRelationshipAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRelationshipAttribute)(workspaceId).createRelationshipAttribute;
         var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useAccount)().account;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
-        return ((isLoading || isStatusesLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet === null || applet === void 0 ? void 0 : applet.name, function (e) {
-                /* updateDocument({
-                    databaseId: appletId,
-                    collectionId: 'wm_lists',
-                    documentId: listId,
-                    data: {
-                        name: e
-                    }
-                }, ()=> {
-                    updateDocument({
-                        databaseId: 'workspace',
-                        collectionId: 'ws_tree',
+        return ((isLoading || isStatusesLoading || isViewSettingLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                var _a = JSON.parse(viewSetting.setting).fields, fields = _a === void 0 ? [] : _a;
+                var resultFields = attributes
+                    .filter(function (field) { return fields.findIndex(function (_) { return _.key === field.key; }) > -1; });
+                /*   .map(field => {
+                      const index = fields.findIndex((_) => _.key === field.key);
+                      return {
+                          ...field,
+                          width: fields[index].width
+                      }
+                  }) */
+                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet === null || applet === void 0 ? void 0 : applet.name, function (e) {
+                    /* updateDocument({
+                        databaseId: appletId,
+                        collectionId: 'wm_lists',
                         documentId: listId,
                         data: {
                             name: e
                         }
                     }, ()=> {
-                        EventBus.Default.fire('applet.added', { treeItem: list })
-                    })
-                }) */
-            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-                var _a;
-                var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
-                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.list')
-                    .config({
-                    workspaceId: workspaceId,
-                    listId: appletId,
-                    fields: attributes,
-                    groups: groups.map(function (group) { return (__assign({ id: group.$id }, group)); }),
-                    groupBy: 'status',
-                    onItemChanged: function (itemId, data) {
                         updateDocument({
-                            databaseId: appletId,
-                            collectionId: 'listItems',
-                            documentId: itemId,
-                            data: data
-                        });
-                    },
-                    onItemSave: function (item) {
-                        return (new Promise(function (resolve) {
-                            createTask({
-                                data: item
-                            }, function () {
-                                resolve(true);
-                                /*  setTimeout(() =>
-                                     navigate(`/@/workspace/${workspaceId}/applet/${appletId}`)
-                                     , 1000) */
-                            });
-                        }));
-                    },
-                    onStageChange: function (itemId, stageId) {
-                        //   alert(itemId + ' ' + stageId)
-                        updateTask({
-                            databaseId: appletId,
-                            collectionId: 'listItems',
-                            documentId: itemId,
+                            databaseId: 'workspace',
+                            collectionId: 'ws_tree',
+                            documentId: listId,
                             data: {
-                                status: stageId
+                                name: e
                             }
-                        });
-                    },
-                    onStagePropsChanged: function (stageId, stageProps) {
-                        updateTask({
-                            databaseId: appletId,
-                            collectionId: 'listStatuses',
-                            documentId: stageId,
-                            data: {
-                                name: stageProps.name,
-                                bgColor: stageProps.color
+                        }, ()=> {
+                            EventBus.Default.fire('applet.added', { treeItem: list })
+                        })
+                    }) */
+                }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                    var _a;
+                    var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
+                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.list')
+                        .config({
+                        workspaceId: workspaceId,
+                        listId: appletId,
+                        fields: resultFields,
+                        groups: groups.map(function (group) { return (__assign({ id: group.$id }, group)); }),
+                        groupBy: 'status',
+                        onItemChanged: function (itemId, data) {
+                            updateDocument({
+                                databaseId: appletId,
+                                collectionId: 'listItems',
+                                documentId: itemId,
+                                data: data
+                            });
+                        },
+                        onItemSave: function (item) {
+                            return (new Promise(function (resolve) {
+                                createTask({
+                                    data: item
+                                }, function () {
+                                    resolve(true);
+                                    /*  setTimeout(() =>
+                                         navigate(`/@/workspace/${workspaceId}/applet/${appletId}`)
+                                         , 1000) */
+                                });
+                            }));
+                        },
+                        onStageChange: function (itemId, stageId) {
+                            //   alert(itemId + ' ' + stageId)
+                            updateTask({
+                                databaseId: appletId,
+                                collectionId: 'listItems',
+                                documentId: itemId,
+                                data: {
+                                    status: stageId
+                                }
+                            });
+                        },
+                        onStagePropsChanged: function (stageId, stageProps) {
+                            updateTask({
+                                databaseId: appletId,
+                                collectionId: 'listStatuses',
+                                documentId: stageId,
+                                data: {
+                                    name: stageProps.name,
+                                    bgColor: stageProps.color
+                                }
+                            });
+                        },
+                        onNewFieldAddded: function (field) {
+                            if (field.type === 'text') {
+                                createStringAttribute({
+                                    databaseId: appletId,
+                                    collectionId: 'listItems',
+                                    key: replaceNonMatchingCharacters(field.name),
+                                    required: false,
+                                    size: 255
+                                }, function (attribute) {
+                                    createField({
+                                        data: __assign(__assign({}, field), { key: replaceNonMatchingCharacters(field.name), collectionId: 'listItems' })
+                                    }, function () {
+                                        var settings = __assign({}, JSON.parse(viewSetting.setting));
+                                        settings.fields.push({
+                                            key: replaceNonMatchingCharacters(field.name),
+                                            width: '100px'
+                                        });
+                                        updateFieldSetting({
+                                            databaseId: appletId,
+                                            collectionId: 'viewSettings',
+                                            documentId: 'applet',
+                                            data: {
+                                                setting: JSON.stringify(__assign({}, settings))
+                                            }
+                                        });
+                                    });
+                                });
                             }
-                        });
-                    },
-                    onNewFieldAddded: function (field) {
-                        if (field.type === 'text') {
-                            createStringAttribute({
-                                databaseId: appletId,
-                                collectionId: 'listItems',
-                                key: replaceNonMatchingCharacters(field.name),
-                                required: false,
-                                size: 255
-                            }, function (attribute) {
-                                createField({
-                                    data: __assign(__assign({}, field), { collectionId: 'listItems' })
-                                }, function () { return void 0; });
-                            });
-                        }
-                        else if (field.type === 'select') {
-                            createStringAttribute({
-                                databaseId: appletId,
-                                collectionId: 'listItems',
-                                key: replaceNonMatchingCharacters(field.name),
-                                required: false,
-                                size: 255
-                            }, function (attribute) {
-                                createField({
-                                    data: __assign(__assign({}, field), { collectionId: 'listItems' })
-                                }, function () { return void 0; });
-                            });
-                        }
-                        else if (field.type === 'relation') {
-                            //alert(JSON.stringify(field))
-                            createStringAttribute({
-                                databaseId: appletId,
-                                collectionId: 'listItems',
-                                key: replaceNonMatchingCharacters(field.name),
-                                required: false,
-                                size: 255
-                            }, function (attribute) {
-                                field.fieldInfo = JSON.stringify(__assign({ workspaceId: workspaceId, databaseId: appletId, collectionId: 'listItems' }, field.fieldInfo));
-                                createField({
-                                    data: __assign(__assign({}, field), { key: replaceNonMatchingCharacters(field.name), collectionId: 'listItems' })
-                                }, function () { return void 0; });
-                            });
-                        }
-                        // alert(JSON.stringify(type))
-                        /*  if (formData.type === 'text') {
-                             await Services.Databases.createStringAttribute(workspaceId, appletId, 'wm_list_' + listId, formData.key, 255, false);
-                             await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                 name: formData.name,
-                                 key: replaceNonMatchingCharacters(formData.name),
-                                 type: 'string',
-                                 hidden: false
-                             });
-                         } else if (formData.type === 'number') {
-                             const key = replaceNonMatchingCharacters(formData.name);
-                             console.log(key)
-                             await Services.Databases.createIntegerAttribute(workspaceId, appletId, 'wm_list_' + listId, key, false);
-                             await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                 name: formData.name,
-                                 key: key,
-                                 type: 'number',
-                                 hidden: false
-                             });
-                         } else if (formData.type === 'formula') {
-                             await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                 name: formData.name,
-                                 key: replaceNonMatchingCharacters(formData.name),
-                                 type: 'formula',
-                                 type_content: JSON.stringify({
-                                     expression: formData.formula
-                                 }),
-                                 hidden: false
-                             });
-                         }
-                         else {
-                             alert('field type not found')
-                         } */
-                    },
-                    onItemClick: function (item) {
-                        openDialog({
-                            title: 'Open',
-                            view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)("com.celmino.widget.object-editor")
-                                .config({
-                                objectId: item.$id,
-                                views: [],
-                                //powerUps: PowerUps,
-                                // headerIcon: Icon(OkrIcons.KeyResultIcon({ width: 36, height: 36 })),
-                                header: item.name,
-                                onHeaderChange: function (title) { alert(title); },
-                                //description: metric?.description,
-                                onDescriptionChange: function (description) {
-                                    /*  updateTask(object_id, {
-                                         description: description
-                                     }, {
-                                         onSuccess: () => {
-                                             invalidateCache();
-                                         }
-                                     }) */
-                                },
-                                fields: {
-                                    "assignee": {
-                                        type: "user",
-                                        label: 'Assignee',
+                            else if (field.type === 'select') {
+                                createStringAttribute({
+                                    databaseId: appletId,
+                                    collectionId: 'listItems',
+                                    key: replaceNonMatchingCharacters(field.name),
+                                    required: false,
+                                    size: 255
+                                }, function (attribute) {
+                                    createField({
+                                        data: __assign(__assign({}, field), { collectionId: 'listItems' })
+                                    }, function () { return void 0; });
+                                });
+                            }
+                            else if (field.type === 'relation') {
+                                //alert(JSON.stringify(field))
+                                createStringAttribute({
+                                    databaseId: appletId,
+                                    collectionId: 'listItems',
+                                    key: replaceNonMatchingCharacters(field.name),
+                                    required: false,
+                                    size: 255
+                                }, function (attribute) {
+                                    field.fieldInfo = JSON.stringify(__assign({ workspaceId: workspaceId, databaseId: appletId, collectionId: 'listItems' }, field.fieldInfo));
+                                    createField({
+                                        data: __assign(__assign({}, field), { key: replaceNonMatchingCharacters(field.name), collectionId: 'listItems' })
+                                    }, function () { return void 0; });
+                                });
+                            }
+                            // alert(JSON.stringify(type))
+                            /*  if (formData.type === 'text') {
+                                 await Services.Databases.createStringAttribute(workspaceId, appletId, 'wm_list_' + listId, formData.key, 255, false);
+                                 await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
+                                     name: formData.name,
+                                     key: replaceNonMatchingCharacters(formData.name),
+                                     type: 'string',
+                                     hidden: false
+                                 });
+                             } else if (formData.type === 'number') {
+                                 const key = replaceNonMatchingCharacters(formData.name);
+                                 console.log(key)
+                                 await Services.Databases.createIntegerAttribute(workspaceId, appletId, 'wm_list_' + listId, key, false);
+                                 await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
+                                     name: formData.name,
+                                     key: key,
+                                     type: 'number',
+                                     hidden: false
+                                 });
+                             } else if (formData.type === 'formula') {
+                                 await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
+                                     name: formData.name,
+                                     key: replaceNonMatchingCharacters(formData.name),
+                                     type: 'formula',
+                                     type_content: JSON.stringify({
+                                         expression: formData.formula
+                                     }),
+                                     hidden: false
+                                 });
+                             }
+                             else {
+                                 alert('field type not found')
+                             } */
+                        },
+                        onItemClick: function (item) {
+                            openDialog({
+                                title: 'Open',
+                                view: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)("com.celmino.widget.object-editor")
+                                    .config({
+                                    objectId: item.$id,
+                                    views: [],
+                                    //powerUps: PowerUps,
+                                    // headerIcon: Icon(OkrIcons.KeyResultIcon({ width: 36, height: 36 })),
+                                    header: item.name,
+                                    onHeaderChange: function (title) { alert(title); },
+                                    //description: metric?.description,
+                                    onDescriptionChange: function (description) {
+                                        /*  updateTask(object_id, {
+                                             description: description
+                                         }, {
+                                             onSuccess: () => {
+                                                 invalidateCache();
+                                             }
+                                         }) */
                                     },
-                                    "title": {
-                                        type: "text",
-                                        label: "Title",
-                                        value: '',
-                                        onChange: function (value) {
-                                            alert(value);
-                                        }
-                                    },
-                                    "state": {
-                                        type: "select",
-                                        label: "State",
-                                        options: [],
-                                        value: null,
-                                        onChange: function (value) {
-                                            alert(value);
+                                    fields: {
+                                        "assignee": {
+                                            type: "user",
+                                            label: 'Assignee',
+                                        },
+                                        "title": {
+                                            type: "text",
+                                            label: "Title",
+                                            value: '',
+                                            onChange: function (value) {
+                                                alert(value);
+                                            }
+                                        },
+                                        "state": {
+                                            type: "select",
+                                            label: "State",
+                                            options: [],
+                                            value: null,
+                                            onChange: function (value) {
+                                                alert(value);
+                                            }
                                         }
                                     }
-                                }
-                            })
-                        });
-                    },
-                    items: (_a = items === null || items === void 0 ? void 0 : items.map(function (item) { return (__assign({ id: item.$id, title: item.name }, item)); })) !== null && _a !== void 0 ? _a : [],
-                    /*   stages: [{
+                                })
+                            });
+                        },
+                        items: (_a = items === null || items === void 0 ? void 0 : items.map(function (item) { return (__assign({ id: item.$id, title: item.name }, item)); })) !== null && _a !== void 0 ? _a : [],
+                        /*   stages: [{
 $id: 'AAA',
 name: 'Todo',
 color: '#FF0000:#00FF00'
-                      }] */
-                }));
-            })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-addSmall')))
-                .cursor('pointer')
-                .cornerRadius(6)
-                .background({ hover: '#F0F1F3' })
-                .width(32).height(32)
-                .onClick(function () {
-                _celmino_ui__WEBPACK_IMPORTED_MODULE_5__.SelectSiderDialog.Show();
-            }))
-                .background('white')
-                .borderLeft('solid 1px #E8EAED')
-                .padding('12px 8px')
-                .width(60))).background('#F9FAFB')).render())));
+                          }] */
+                    }));
+                })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('cu3-icon-addSmall')))
+                    .cursor('pointer')
+                    .cornerRadius(6)
+                    .background({ hover: '#F0F1F3' })
+                    .width(32).height(32)
+                    .onClick(function () {
+                    _celmino_ui__WEBPACK_IMPORTED_MODULE_5__.SelectSiderDialog.Show();
+                }))
+                    .background('white')
+                    .borderLeft('solid 1px #E8EAED')
+                    .padding('12px 8px')
+                    .width(60))).background('#F9FAFB')).render())));
+            }));
     };
     return ListController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController));

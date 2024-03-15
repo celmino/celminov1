@@ -80,9 +80,17 @@ export class ListController extends UIFormController {
             Query.equal('collectionId', 'listItems')
         ]);
 
+        const { documents: viewSettings, isLoading: isFieldSettingsLoading } = useListDocuments(workspaceId, appletId, 'viewSettings', [
+            Query.equal('viewId', 'applet')
+        ]);
+
+     
+
         const { createDocument: createField } = useCreateDocument(workspaceId, appletId, 'fields', [
             Query.equal('collectionId', 'listItems')
         ])
+
+        const { updateDocument: updateFieldSetting } = useUpdateDocument(workspaceId);
 
         const { createStringAttribute } = useCreateStringAttribute(workspaceId);
         const { createRelationshipAttribute } = useCreateRelationshipAttribute(workspaceId);
@@ -94,270 +102,307 @@ export class ListController extends UIFormController {
 
         return (
 
-            (isLoading || isStatusesLoading) ? Fragment() :
-                ReactView(
-                    <DialogStack>
-                        {
-                            VStack({ alignment: cTopLeading })(
-                                VStack({ alignment: cTopLeading })(
-                                    ActionPanel(),
-                                    ViewHeader(applet?.name, (e) => {
-                                        /* updateDocument({
-                                            databaseId: appletId,
-                                            collectionId: 'wm_lists',
-                                            documentId: listId,
-                                            data: {
-                                                name: e
-                                            }
-                                        }, ()=> {
-                                            updateDocument({
-                                                databaseId: 'workspace',
-                                                collectionId: 'ws_tree',
-                                                documentId: listId,
-                                                data: {
-                                                    name: e
-                                                }
-                                            }, ()=> {
-                                                EventBus.Default.fire('applet.added', { treeItem: list })
-                                            })
-                                        }) */
-                                    }),
-                                    HStack({ alignment: cTopLeading })(
+            (isLoading || isStatusesLoading || isFieldSettingsLoading) ? Fragment() :
+
+                UIViewBuilder(() => {
+
+                    const { fields = [] }: { fields: any[] } = JSON.parse(viewSetting.setting);
+                    const resultFields = attributes
+                        .filter((field) => fields.findIndex((_) => _.key === field.key) > -1)
+                    /*   .map(field => {
+                          const index = fields.findIndex((_) => _.key === field.key);
+                          return {
+                              ...field,
+                              width: fields[index].width
+                          }
+                      }) */
+
+                    return (
+                        ReactView(
+                            <DialogStack>
+                                {
+                                    VStack({ alignment: cTopLeading })(
                                         VStack({ alignment: cTopLeading })(
-                                            UIViewBuilder(() => {
-                                                const { openDialog } = useDialogStack();
-                                                return (
-                                                    UIWidget('com.celmino.widget.list')
-                                                        .config({
-                                                            workspaceId: workspaceId,
-                                                            listId: appletId,
-                                                            fields: attributes,
-                                                            groups: groups.map(group => ({ id: group.$id, ...group })),
-                                                            groupBy: 'status',
-                                                            onItemChanged: (itemId: string, data: any) => {
+                                            ActionPanel(),
+                                            ViewHeader(applet?.name, (e) => {
+                                                /* updateDocument({
+                                                    databaseId: appletId,
+                                                    collectionId: 'wm_lists',
+                                                    documentId: listId,
+                                                    data: {
+                                                        name: e
+                                                    }
+                                                }, ()=> {
+                                                    updateDocument({
+                                                        databaseId: 'workspace',
+                                                        collectionId: 'ws_tree',
+                                                        documentId: listId,
+                                                        data: {
+                                                            name: e
+                                                        }
+                                                    }, ()=> {
+                                                        EventBus.Default.fire('applet.added', { treeItem: list })
+                                                    })
+                                                }) */
+                                            }),
+                                            HStack({ alignment: cTopLeading })(
+                                                VStack({ alignment: cTopLeading })(
+                                                    UIViewBuilder(() => {
+                                                        const { openDialog } = useDialogStack();
+                                                        return (
+                                                            UIWidget('com.celmino.widget.list')
+                                                                .config({
+                                                                    workspaceId: workspaceId,
+                                                                    listId: appletId,
+                                                                    fields: resultFields,
+                                                                    groups: groups.map(group => ({ id: group.$id, ...group })),
+                                                                    groupBy: 'status',
+                                                                    onItemChanged: (itemId: string, data: any) => {
 
-                                                                updateDocument({
-                                                                    databaseId: appletId,
-                                                                    collectionId: 'listItems',
-                                                                    documentId: itemId,
-                                                                    data: data
-                                                                })
-                                                            },
-                                                            onItemSave: (item) => {
-                                                                return (
-                                                                    new Promise((resolve) => {
-                                                                        createTask({
-                                                                            data: item
-                                                                        }, () => {
-                                                                            resolve(true);
-                                                                            /*  setTimeout(() =>
-                                                                                 navigate(`/@/workspace/${workspaceId}/applet/${appletId}`)
-                                                                                 , 1000) */
-                                                                        })
-                                                                    })
-                                                                )
-                                                            },
-                                                            onStageChange: (itemId, stageId) => {
-                                                                //   alert(itemId + ' ' + stageId)
-                                                                updateTask({
-                                                                    databaseId: appletId,
-                                                                    collectionId: 'listItems',
-                                                                    documentId: itemId,
-                                                                    data: {
-                                                                        status: stageId
-                                                                    }
-
-                                                                })
-                                                            },
-                                                            onStagePropsChanged: (stageId, stageProps) => {
-                                                                updateTask({
-                                                                    databaseId: appletId,
-                                                                    collectionId: 'listStatuses',
-                                                                    documentId: stageId,
-                                                                    data: {
-                                                                        name: stageProps.name,
-                                                                        bgColor: stageProps.color
-                                                                    }
-                                                                })
-                                                            },
-                                                            onNewFieldAddded: (field) => {
-
-                                                                if (field.type === 'text') {
-                                                                    createStringAttribute({
-                                                                        databaseId: appletId,
-                                                                        collectionId: 'listItems',
-                                                                        key: replaceNonMatchingCharacters(field.name),
-                                                                        required: false,
-                                                                        size: 255
-                                                                    }, (attribute) => {
-                                                                        createField({
-                                                                            data: {
-                                                                                ...field,
-                                                                                collectionId: 'listItems'
-                                                                            }
-                                                                        }, () => void 0)
-                                                                    })
-                                                                } else if (field.type === 'select') {
-                                                                    createStringAttribute({
-                                                                        databaseId: appletId,
-                                                                        collectionId: 'listItems',
-                                                                        key: replaceNonMatchingCharacters(field.name),
-                                                                        required: false,
-                                                                        size: 255
-                                                                    }, (attribute) => {
-                                                                        createField({
-                                                                            data: {
-                                                                                ...field,
-                                                                                collectionId: 'listItems'
-                                                                            }
-                                                                        }, () => void 0)
-                                                                    })
-                                                                } else if (field.type === 'relation') {
-                                                                    //alert(JSON.stringify(field))
-
-                                                                    createStringAttribute({
-                                                                        databaseId: appletId,
-                                                                        collectionId: 'listItems',
-                                                                        key: replaceNonMatchingCharacters(field.name),
-                                                                        required: false,
-                                                                        size: 255
-                                                                    }, (attribute) => {
-                                                                        field.fieldInfo = JSON.stringify({
-                                                                            workspaceId: workspaceId,
+                                                                        updateDocument({
                                                                             databaseId: appletId,
                                                                             collectionId: 'listItems',
-                                                                            ...field.fieldInfo
+                                                                            documentId: itemId,
+                                                                            data: data
                                                                         })
-
-                                                                        createField({
+                                                                    },
+                                                                    onItemSave: (item) => {
+                                                                        return (
+                                                                            new Promise((resolve) => {
+                                                                                createTask({
+                                                                                    data: item
+                                                                                }, () => {
+                                                                                    resolve(true);
+                                                                                    /*  setTimeout(() =>
+                                                                                         navigate(`/@/workspace/${workspaceId}/applet/${appletId}`)
+                                                                                         , 1000) */
+                                                                                })
+                                                                            })
+                                                                        )
+                                                                    },
+                                                                    onStageChange: (itemId, stageId) => {
+                                                                        //   alert(itemId + ' ' + stageId)
+                                                                        updateTask({
+                                                                            databaseId: appletId,
+                                                                            collectionId: 'listItems',
+                                                                            documentId: itemId,
                                                                             data: {
-                                                                                ...field,
-                                                                                key: replaceNonMatchingCharacters(field.name),
-                                                                                collectionId: 'listItems'
+                                                                                status: stageId
                                                                             }
-                                                                        }, () => void 0)
-                                                                    })
-                                                                }
-                                                                // alert(JSON.stringify(type))
-                                                                /*  if (formData.type === 'text') {
-                                                                     await Services.Databases.createStringAttribute(workspaceId, appletId, 'wm_list_' + listId, formData.key, 255, false);
-                                                                     await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                                                         name: formData.name,
-                                                                         key: replaceNonMatchingCharacters(formData.name),
-                                                                         type: 'string',
-                                                                         hidden: false
-                                                                     });
-                                                                 } else if (formData.type === 'number') {
-                                                                     const key = replaceNonMatchingCharacters(formData.name);
-                                                                     console.log(key)
-                                                                     await Services.Databases.createIntegerAttribute(workspaceId, appletId, 'wm_list_' + listId, key, false);
-                                                                     await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                                                         name: formData.name,
-                                                                         key: key,
-                                                                         type: 'number',
-                                                                         hidden: false
-                                                                     });
-                                                                 } else if (formData.type === 'formula') {
-                                                                     await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                                                         name: formData.name,
-                                                                         key: replaceNonMatchingCharacters(formData.name),
-                                                                         type: 'formula',
-                                                                         type_content: JSON.stringify({
-                                                                             expression: formData.formula
-                                                                         }),
-                                                                         hidden: false
-                                                                     });
-                                                                 }
-                                                                 else {
-                                                                     alert('field type not found')
-                                                                 } */
 
-
-                                                            },
-                                                            onItemClick: (item) => {
-                                                                openDialog({
-                                                                    title: 'Open',
-                                                                    view: UIWidget("com.celmino.widget.object-editor")
-                                                                        .config({
-                                                                            objectId: item.$id,
-                                                                            views: [],
-                                                                            //powerUps: PowerUps,
-                                                                            // headerIcon: Icon(OkrIcons.KeyResultIcon({ width: 36, height: 36 })),
-                                                                            header: item.name,
-                                                                            onHeaderChange: (title) => { alert(title) },
-                                                                            //description: metric?.description,
-                                                                            onDescriptionChange: (description) => {
-                                                                                /*  updateTask(object_id, {
-                                                                                     description: description
-                                                                                 }, {
-                                                                                     onSuccess: () => {
-                                                                                         invalidateCache();
-                                                                                     }
-                                                                                 }) */
-                                                                            },
-                                                                            fields: {
-                                                                                "assignee": {
-                                                                                    type: "user",
-                                                                                    label: 'Assignee',
-                                                                                },
-                                                                                "title": {
-                                                                                    type: "text",
-                                                                                    label: "Title",
-                                                                                    value: '',
-                                                                                    onChange: (value) => {
-                                                                                        alert(value)
-                                                                                    }
-                                                                                },
-                                                                                "state": {
-                                                                                    type: "select",
-                                                                                    label: "State",
-                                                                                    options: [],
-                                                                                    value: null,
-                                                                                    onChange: (value) => {
-                                                                                        alert(value)
-                                                                                    }
-                                                                                }
+                                                                        })
+                                                                    },
+                                                                    onStagePropsChanged: (stageId, stageProps) => {
+                                                                        updateTask({
+                                                                            databaseId: appletId,
+                                                                            collectionId: 'listStatuses',
+                                                                            documentId: stageId,
+                                                                            data: {
+                                                                                name: stageProps.name,
+                                                                                bgColor: stageProps.color
                                                                             }
                                                                         })
+                                                                    },
+                                                                    onNewFieldAddded: (field) => {
+
+                                                                        if (field.type === 'text') {
+                                                                            createStringAttribute({
+                                                                                databaseId: appletId,
+                                                                                collectionId: 'listItems',
+                                                                                key: replaceNonMatchingCharacters(field.name),
+                                                                                required: false,
+                                                                                size: 255
+                                                                            }, (attribute) => {
+                                                                                createField({
+                                                                                    data: {
+                                                                                        ...field,
+                                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                                        collectionId: 'listItems'
+                                                                                    }
+                                                                                }, () => {
+                                                                                    const settings = { ...JSON.parse(viewSetting.setting) };
+
+                                                                                    settings.fields.push({
+                                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                                        width: '100px'
+                                                                                    });
+
+                                                                                    updateFieldSetting({
+                                                                                        databaseId: appletId,
+                                                                                        collectionId: 'viewSettings',
+                                                                                        documentId: 'applet',
+                                                                                        data: {
+                                                                                            setting: JSON.stringify({
+                                                                                                ...settings
+                                                                                            })
+                                                                                        }
+                                                                                    })
+                                                                                })
+                                                                            })
+                                                                        } else if (field.type === 'select') {
+                                                                            createStringAttribute({
+                                                                                databaseId: appletId,
+                                                                                collectionId: 'listItems',
+                                                                                key: replaceNonMatchingCharacters(field.name),
+                                                                                required: false,
+                                                                                size: 255
+                                                                            }, (attribute) => {
+                                                                                createField({
+                                                                                    data: {
+                                                                                        ...field,
+                                                                                        collectionId: 'listItems'
+                                                                                    }
+                                                                                }, () => void 0)
+                                                                            })
+                                                                        } else if (field.type === 'relation') {
+                                                                            //alert(JSON.stringify(field))
+
+                                                                            createStringAttribute({
+                                                                                databaseId: appletId,
+                                                                                collectionId: 'listItems',
+                                                                                key: replaceNonMatchingCharacters(field.name),
+                                                                                required: false,
+                                                                                size: 255
+                                                                            }, (attribute) => {
+                                                                                field.fieldInfo = JSON.stringify({
+                                                                                    workspaceId: workspaceId,
+                                                                                    databaseId: appletId,
+                                                                                    collectionId: 'listItems',
+                                                                                    ...field.fieldInfo
+                                                                                })
+
+                                                                                createField({
+                                                                                    data: {
+                                                                                        ...field,
+                                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                                        collectionId: 'listItems'
+                                                                                    }
+                                                                                }, () => void 0)
+                                                                            })
+                                                                        }
+                                                                        // alert(JSON.stringify(type))
+                                                                        /*  if (formData.type === 'text') {
+                                                                             await Services.Databases.createStringAttribute(workspaceId, appletId, 'wm_list_' + listId, formData.key, 255, false);
+                                                                             await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
+                                                                                 name: formData.name,
+                                                                                 key: replaceNonMatchingCharacters(formData.name),
+                                                                                 type: 'string',
+                                                                                 hidden: false
+                                                                             });
+                                                                         } else if (formData.type === 'number') {
+                                                                             const key = replaceNonMatchingCharacters(formData.name);
+                                                                             console.log(key)
+                                                                             await Services.Databases.createIntegerAttribute(workspaceId, appletId, 'wm_list_' + listId, key, false);
+                                                                             await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
+                                                                                 name: formData.name,
+                                                                                 key: key,
+                                                                                 type: 'number',
+                                                                                 hidden: false
+                                                                             });
+                                                                         } else if (formData.type === 'formula') {
+                                                                             await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
+                                                                                 name: formData.name,
+                                                                                 key: replaceNonMatchingCharacters(formData.name),
+                                                                                 type: 'formula',
+                                                                                 type_content: JSON.stringify({
+                                                                                     expression: formData.formula
+                                                                                 }),
+                                                                                 hidden: false
+                                                                             });
+                                                                         }
+                                                                         else {
+                                                                             alert('field type not found')
+                                                                         } */
+
+
+                                                                    },
+                                                                    onItemClick: (item) => {
+                                                                        openDialog({
+                                                                            title: 'Open',
+                                                                            view: UIWidget("com.celmino.widget.object-editor")
+                                                                                .config({
+                                                                                    objectId: item.$id,
+                                                                                    views: [],
+                                                                                    //powerUps: PowerUps,
+                                                                                    // headerIcon: Icon(OkrIcons.KeyResultIcon({ width: 36, height: 36 })),
+                                                                                    header: item.name,
+                                                                                    onHeaderChange: (title) => { alert(title) },
+                                                                                    //description: metric?.description,
+                                                                                    onDescriptionChange: (description) => {
+                                                                                        /*  updateTask(object_id, {
+                                                                                             description: description
+                                                                                         }, {
+                                                                                             onSuccess: () => {
+                                                                                                 invalidateCache();
+                                                                                             }
+                                                                                         }) */
+                                                                                    },
+                                                                                    fields: {
+                                                                                        "assignee": {
+                                                                                            type: "user",
+                                                                                            label: 'Assignee',
+                                                                                        },
+                                                                                        "title": {
+                                                                                            type: "text",
+                                                                                            label: "Title",
+                                                                                            value: '',
+                                                                                            onChange: (value) => {
+                                                                                                alert(value)
+                                                                                            }
+                                                                                        },
+                                                                                        "state": {
+                                                                                            type: "select",
+                                                                                            label: "State",
+                                                                                            options: [],
+                                                                                            value: null,
+                                                                                            onChange: (value) => {
+                                                                                                alert(value)
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                })
+                                                                        })
+                                                                    },
+                                                                    items: items?.map(item => ({ id: item.$id, title: item.name, ...item })) ?? [],
+                                                                    /*   stages: [{
+                                $id: 'AAA',
+                            name: 'Todo',
+                            color: '#FF0000:#00FF00'
+                                                                      }] */
                                                                 })
-                                                            },
-                                                            items: items?.map(item => ({ id: item.$id, title: item.name, ...item })) ?? [],
-                                                            /*   stages: [{
-                        $id: 'AAA',
-                    name: 'Todo',
-                    color: '#FF0000:#00FF00'
-                                                              }] */
+                                                        )
+                                                    })
+
+                                                ),
+                                                VStack({ alignment: cTop })(
+                                                    HStack(
+                                                        Icon(SvgIcon('cu3-icon-addSmall'))
+                                                    )
+                                                        .cursor('pointer')
+                                                        .cornerRadius(6)
+                                                        .background({ hover: '#F0F1F3' })
+                                                        .width(32).height(32)
+                                                        .onClick(() => {
+                                                            SelectSiderDialog.Show()
                                                         })
                                                 )
-                                            })
-
-                                        ),
-                                        VStack({ alignment: cTop })(
-                                            HStack(
-                                                Icon(SvgIcon('cu3-icon-addSmall'))
+                                                    .background('white')
+                                                    .borderLeft('solid 1px #E8EAED')
+                                                    .padding('12px 8px')
+                                                    .width(60)
                                             )
-                                                .cursor('pointer')
-                                                .cornerRadius(6)
-                                                .background({ hover: '#F0F1F3' })
-                                                .width(32).height(32)
-                                                .onClick(() => {
-                                                    SelectSiderDialog.Show()
-                                                })
-                                        )
-                                            .background('white')
-                                            .borderLeft('solid 1px #E8EAED')
-                                            .padding('12px 8px')
-                                            .width(60)
-                                    )
-                                ).background('#F9FAFB')
+                                        ).background('#F9FAFB')
 
 
 
 
-                            ).render()
-                        }
-                    </DialogStack>
-                )
+                                    ).render()
+                                }
+                            </DialogStack>
+                        )
+                    )
+                })
+
 
 
 

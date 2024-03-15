@@ -11253,7 +11253,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Emails__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./applets/Emails */ "./src/applets/Emails.ts");
 /* harmony import */ var _applets_Website__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./applets/Website */ "./src/applets/Website.ts");
 /* harmony import */ var _applets_Community__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./applets/Community */ "./src/applets/Community.ts");
-/* harmony import */ var _applets_ListApplet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./applets/ListApplet */ "./src/applets/ListApplet.ts");
+/* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
 /* harmony import */ var _applets_Database__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./applets/Database */ "./src/applets/Database.ts");
 
 
@@ -11274,7 +11274,7 @@ const Applets = [
     _applets_Emails__WEBPACK_IMPORTED_MODULE_4__.EmailsApplet,
     _applets_Activities__WEBPACK_IMPORTED_MODULE_0__.ActivitiesApplet,
     _applets_Community__WEBPACK_IMPORTED_MODULE_6__.CommunityApplet,
-    _applets_ListApplet__WEBPACK_IMPORTED_MODULE_7__.ListApplet,
+    _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_7__.ListApplet,
     _applets_Dashboards__WEBPACK_IMPORTED_MODULE_2__.DashboardsApplet,
     _applets_Database__WEBPACK_IMPORTED_MODULE_8__.DatabaseApplet,
     {
@@ -18370,10 +18370,10 @@ const EmailsApplet = {
 
 /***/ }),
 
-/***/ "./src/applets/ListApplet.ts":
-/*!***********************************!*\
-  !*** ./src/applets/ListApplet.ts ***!
-  \***********************************/
+/***/ "./src/applets/TaskListApplet.ts":
+/*!***************************************!*\
+  !*** ./src/applets/TaskListApplet.ts ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -18381,7 +18381,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ListApplet: () => (/* binding */ ListApplet)
 /* harmony export */ });
-/* harmony import */ var _schemas_ListAppletDatabase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../schemas/ListAppletDatabase */ "./src/schemas/ListAppletDatabase.ts");
+/* harmony import */ var _schemas_TaskListDatabase_TaskListDatabase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../schemas/TaskListDatabase/TaskListDatabase */ "./src/schemas/TaskListDatabase/TaskListDatabase.ts");
 
 const ListApplet = {
     name: 'Task List',
@@ -18395,7 +18395,7 @@ const ListApplet = {
     icon: '\\d2dc',
     iconBackColor: '#66B47C',
     enabled: true,
-    databases: _schemas_ListAppletDatabase__WEBPACK_IMPORTED_MODULE_0__.ListAppletDatabase
+    databases: _schemas_TaskListDatabase_TaskListDatabase__WEBPACK_IMPORTED_MODULE_0__.ListAppletDatabase
 };
 
 
@@ -20052,10 +20052,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/schemas/ListAppletDatabase.ts":
-/*!*******************************************!*\
-  !*** ./src/schemas/ListAppletDatabase.ts ***!
-  \*******************************************/
+/***/ "./src/schemas/TaskListDatabase/TaskListDatabase.ts":
+/*!**********************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/TaskListDatabase.ts ***!
+  \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20063,439 +20063,741 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   ListAppletDatabase: () => (/* binding */ ListAppletDatabase)
 /* harmony export */ });
+/* harmony import */ var _collections_Collections__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./collections/Collections */ "./src/schemas/TaskListDatabase/collections/Collections/index.ts");
+/* harmony import */ var _collections_Fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./collections/Fields */ "./src/schemas/TaskListDatabase/collections/Fields/index.ts");
+/* harmony import */ var _collections_ListItems__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./collections/ListItems */ "./src/schemas/TaskListDatabase/collections/ListItems/index.ts");
+/* harmony import */ var _collections_ListStatuses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./collections/ListStatuses */ "./src/schemas/TaskListDatabase/collections/ListStatuses/index.ts");
+/* harmony import */ var _collections_ViewContents__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./collections/ViewContents */ "./src/schemas/TaskListDatabase/collections/ViewContents/index.ts");
+/* harmony import */ var _collections_ViewSettings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./collections/ViewSettings */ "./src/schemas/TaskListDatabase/collections/ViewSettings/index.ts");
+/* harmony import */ var _collections_Views__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./collections/Views */ "./src/schemas/TaskListDatabase/collections/Views/index.ts");
+
+
+
+
+
+
+
 const ListAppletDatabase = [
     {
         "name": "List Applet",
         "id": "world",
         "category": "applet",
         "collections": [
-            {
-                "name": "Collections",
-                "id": "collections",
-                "attributes": [
-                    {
-                        "key": "name",
-                        "type": "string"
-                    },
-                    {
-                        "key": "type",
-                        "type": "string"
-                    },
-                    {
-                        "key": "order",
-                        "type": "number"
-                    }
-                ],
-                "documents": [
-                    // ---------- List Items Collection --------------------
-                    {
-                        "$id": "listItems",
-                        "name": "List Items"
-                    },
-                    // ---------- List Status Collection --------------------
-                    {
-                        "$id": "listStatuses",
-                        "name": "List Statuses"
-                    },
-                    // ---------- Views Collection --------------------
-                    {
-                        "$id": "views",
-                        "name": "Views"
-                    },
-                    // ---------- View Contents Collection --------------------
-                    {
-                        "$id": "viewContents",
-                        "name": "View Contents"
-                    }
-                ]
-            },
-            {
-                "name": "Fields",
-                "id": "fields",
-                "attributes": [
-                    {
-                        "key": "key",
-                        "type": "string"
-                    },
-                    {
-                        "key": "name",
-                        "type": "string"
-                    },
-                    {
-                        "key": "type",
-                        "type": "string"
-                    },
-                    {
-                        "key": "custom",
-                        "type": "boolean"
-                    },
-                    {
-                        "key": "width",
-                        "type": "string",
-                    },
-                    {
-                        "key": "fieldInfo",
-                        "type": "string",
-                        "size": 18900
-                    },
-                    {
-                        "key": "collectionId",
-                        "type": "string"
-                    },
-                    {
-                        "key": "order",
-                        "type": "number"
-                    }
-                ],
-                "documents": [
-                    // ---------- List Items Fields --------------------
-                    {
-                        "key": "name",
-                        "name": "Name",
-                        "type": "string",
-                        "width": "300px",
-                        "custom": false,
-                        "fieldInfo": JSON.stringify({
-                            "size": 255,
-                        }),
-                        "collectionId": "listItems",
-                    },
-                    {
-                        "key": "description",
-                        "name": "Description",
-                        "type": "string",
-                        "width": "300px",
-                        "custom": false,
-                        "fieldInfo": JSON.stringify({
-                            "size": 16777216,
-                        }),
-                        "collectionId": "listItems",
-                    },
-                    {
-                        "key": "mark",
-                        "name": "Mark",
-                        "type": "string",
-                        "width": "100px",
-                        "custom": false,
-                        "fieldInfo": JSON.stringify({
-                            "size": 10,
-                        }),
-                        "collectionId": "listItems",
-                    },
-                    {
-                        "key": "status",
-                        "name": "Status",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 255,
-                        }),
-                        "collectionId": "listItems",
-                    },
-                    {
-                        "key": "PRIORITY",
-                        "name": "Priority",
-                        "type": "select",
-                        "width": "100px",
-                        "custom": false,
-                        "fieldInfo": JSON.stringify({
-                            "options": [
-                                {
-                                    key: 'High',
-                                    value: 2
-                                },
-                                {
-                                    key: 'Medium',
-                                    value: 1
-                                },
-                                {
-                                    key: 'Low',
-                                    value: 0
-                                }
-                            ],
-                        }),
-                        "collectionId": "listItems",
-                    },
-                    {
-                        "key": "MULTITASK",
-                        "name": "Multitask",
-                        "type": "select",
-                        "width": "100px",
-                        "custom": false,
-                        "fieldInfo": JSON.stringify({
-                            "options": [
-                                {
-                                    key: 'Yes',
-                                    value: "Y"
-                                },
-                                {
-                                    key: 'No',
-                                    value: "N"
-                                }
-                            ],
-                        }),
-                        "collectionId": "listItems",
-                    },
-                    {
-                        "key": "NOT_VIEWED",
-                        "name": "Not Viewed",
-                        "type": "select",
-                        "width": "100px",
-                        "custom": false,
-                        "fieldInfo": JSON.stringify({
-                            "options": [
-                                {
-                                    key: 'Yes',
-                                    value: "Y"
-                                },
-                                {
-                                    key: 'No',
-                                    value: "N"
-                                }
-                            ],
-                        }),
-                        "collectionId": "listItems",
-                    },
-                    {
-                        "key": "REPLICATE",
-                        "name": "Replicate",
-                        "type": "select",
-                        "width": "100px",
-                        "custom": false,
-                        "fieldInfo": JSON.stringify({
-                            "options": [
-                                {
-                                    key: 'Yes',
-                                    value: "Y"
-                                },
-                                {
-                                    key: 'No',
-                                    value: "N"
-                                }
-                            ],
-                        }),
-                        "collectionId": "listItems",
-                    },
-                    // ---------- List Statuses Fields --------------------
-                    {
-                        "key": "name",
-                        "name": "Name",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 255,
-                        }),
-                        "collectionId": "listStatuses",
-                    },
-                    {
-                        "key": "description",
-                        "name": "Description",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 16777216,
-                        }),
-                        "collectionId": "listStatuses",
-                    },
-                    {
-                        "key": "color",
-                        "name": "Color",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 50,
-                        }),
-                        "collectionId": "listStatuses",
-                    },
-                    // ---------- Views Fields --------------------
-                    {
-                        "key": "name",
-                        "name": "Name",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 255,
-                        }),
-                        "collectionId": "views",
-                    },
-                    {
-                        "key": "description",
-                        "name": "Description",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 16777216,
-                        }),
-                        "collectionId": "views",
-                    },
-                    {
-                        "key": "type",
-                        "name": "Type",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 255,
-                        }),
-                        "collectionId": "views",
-                    },
-                    // ---------- View Contents Fields --------------------
-                    {
-                        "key": "viewId",
-                        "name": "View ID",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 255,
-                        }),
-                        "collectionId": "viewContents",
-                    },
-                    {
-                        "key": "content",
-                        "name": "Content",
-                        "type": "string",
-                        "fieldInfo": JSON.stringify({
-                            "size": 16777216,
-                        }),
-                        "collectionId": "viewContents",
-                    }
-                ]
-            },
-            {
-                "name": "List Items",
-                "id": "listItems",
-                "attributes": [
-                    {
-                        "key": "name",
-                        "type": "string",
-                        "size": 255
-                    },
-                    {
-                        "key": "description",
-                        "type": "string",
-                        "size": 16777216
-                    },
-                    {
-                        "key": "mark",
-                        "type": "string",
-                        "size": 10
-                    },
-                    {
-                        "key": "status",
-                        "type": "string",
-                        "size": 255
-                    },
-                    {
-                        "key": "PRIORITY",
-                        "type": "string",
-                        "size": 1255,
-                        "defaultValue": "1"
-                    },
-                    {
-                        "key": "MULTITASK",
-                        "type": "string",
-                        "size": 1255,
-                        "defaultValue": "N"
-                    },
-                    {
-                        "key": "NOT_VIEWED",
-                        "type": "string",
-                        "size": 1255,
-                        "defaultValue": "N"
-                    },
-                    {
-                        "key": "REPLICATE",
-                        "type": "string",
-                        "size": 1255,
-                        "defaultValue": "N"
-                    }
-                ]
-            },
-            {
-                "name": "List Statuses",
-                "id": "listStatuses",
-                "attributes": [
-                    {
-                        "key": "name",
-                        "type": "string",
-                        "size": 255
-                    },
-                    {
-                        "key": "description",
-                        "type": "string",
-                        "size": 16777216
-                    },
-                    {
-                        "key": "bgColor",
-                        "type": "string",
-                        "size": 50
-                    },
-                    {
-                        "key": "fgColor",
-                        "type": "string",
-                        "size": 50
-                    },
-                    {
-                        "key": "orderBy",
-                        "type": "number",
-                        "size": 10
-                    }
-                ],
-                "documents": [
-                    {
-                        "name": "To Do",
-                        "description": "To Do",
-                        "bgColor": "#D40915",
-                        "fgColor": "white",
-                        "orderBy": 1
-                    },
-                    {
-                        "name": "In Progress",
-                        "description": "In Progress",
-                        "bgColor": "#FBA32F",
-                        "fgColor": "white",
-                        "orderBy": 2
-                    },
-                    {
-                        "name": "Done",
-                        "description": "Done",
-                        "bgColor": "#4FAF54",
-                        "fgColor": "white",
-                        "orderBy": 3
-                    }
-                ]
-            },
-            {
-                "name": "Views",
-                "id": "views",
-                "attributes": [
-                    {
-                        "key": "name",
-                        "type": "string",
-                        "size": 255
-                    },
-                    {
-                        "key": "description",
-                        "type": "string",
-                        "size": 16777216
-                    },
-                    {
-                        "key": "type",
-                        "type": "string",
-                        "size": 255
-                    }
-                ]
-            },
-            {
-                "name": "View Contents",
-                "id": "viewContents",
-                "attributes": [
-                    {
-                        "key": "viewId",
-                        "type": "string",
-                        "size": 255
-                    },
-                    {
-                        "key": "content",
-                        "type": "string",
-                        "size": 16777216
-                    }
-                ]
-            }
+            _collections_Collections__WEBPACK_IMPORTED_MODULE_0__.Collections,
+            _collections_Fields__WEBPACK_IMPORTED_MODULE_1__.Fields,
+            _collections_ListItems__WEBPACK_IMPORTED_MODULE_2__.ListItemsCollection,
+            _collections_ListStatuses__WEBPACK_IMPORTED_MODULE_3__.ListStatusesCollection,
+            _collections_Views__WEBPACK_IMPORTED_MODULE_6__.ViewsCollection,
+            _collections_ViewContents__WEBPACK_IMPORTED_MODULE_4__.ViewContentsCollection,
+            _collections_ViewSettings__WEBPACK_IMPORTED_MODULE_5__.ViewSettings
         ]
     }
 ];
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/Collections/index.ts":
+/*!***********************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/Collections/index.ts ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Collections: () => (/* binding */ Collections)
+/* harmony export */ });
+/* harmony import */ var _applet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../applet */ "./src/schemas/applet.ts");
+
+const Collections = Object.assign(Object.assign({}, _applet__WEBPACK_IMPORTED_MODULE_0__.Collections), { "documents": [
+        // ---------- List Items Collection --------------------
+        {
+            "$id": "listItems",
+            "name": "List Items"
+        },
+        // ---------- List Status Collection --------------------
+        {
+            "$id": "listStatuses",
+            "name": "List Statuses"
+        },
+        // ---------- Views Collection --------------------
+        {
+            "$id": "views",
+            "name": "Views"
+        },
+        // ---------- View Contents Collection --------------------
+        {
+            "$id": "viewContents",
+            "name": "View Contents"
+        }
+    ] });
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/Fields/documents/ListItems.ts":
+/*!********************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/Fields/documents/ListItems.ts ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListItemsCollectionFields: () => (/* binding */ ListItemsCollectionFields)
+/* harmony export */ });
+const ListItemsCollectionFields = [
+    {
+        "key": "name",
+        "name": "Name",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "listItems",
+    },
+    {
+        "key": "description",
+        "name": "Description",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 16777216,
+        }),
+        "collectionId": "listItems",
+    },
+    {
+        "key": "mark",
+        "name": "Mark",
+        "type": "string",
+        "custom": false,
+        'system': true,
+        "fieldInfo": JSON.stringify({
+            "size": 10,
+        }),
+        "collectionId": "listItems",
+    },
+    {
+        "key": "status",
+        "name": "Status",
+        "type": "string",
+        'system': true,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "listItems",
+    },
+    {
+        "key": "PRIORITY",
+        "name": "Priority",
+        "type": "select",
+        "custom": false,
+        'system': true,
+        "fieldInfo": JSON.stringify({
+            "options": [
+                {
+                    key: 'High',
+                    value: 2
+                },
+                {
+                    key: 'Medium',
+                    value: 1
+                },
+                {
+                    key: 'Low',
+                    value: 0
+                }
+            ],
+        }),
+        "collectionId": "listItems",
+    },
+    {
+        "key": "MULTITASK",
+        "name": "Multitask",
+        "type": "select",
+        "custom": false,
+        'system': true,
+        "fieldInfo": JSON.stringify({
+            "options": [
+                {
+                    key: 'Yes',
+                    value: "Y"
+                },
+                {
+                    key: 'No',
+                    value: "N"
+                }
+            ],
+        }),
+        "collectionId": "listItems",
+    },
+    {
+        "key": "NOT_VIEWED",
+        "name": "Not Viewed",
+        "type": "select",
+        "custom": false,
+        'system': true,
+        "fieldInfo": JSON.stringify({
+            "options": [
+                {
+                    key: 'Yes',
+                    value: "Y"
+                },
+                {
+                    key: 'No',
+                    value: "N"
+                }
+            ],
+        }),
+        "collectionId": "listItems",
+    },
+    {
+        "key": "REPLICATE",
+        "name": "Replicate",
+        "type": "select",
+        "custom": false,
+        'system': true,
+        "fieldInfo": JSON.stringify({
+            "options": [
+                {
+                    key: 'Yes',
+                    value: "Y"
+                },
+                {
+                    key: 'No',
+                    value: "N"
+                }
+            ],
+        }),
+        "collectionId": "listItems",
+    },
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/Fields/documents/ListStatuses.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/Fields/documents/ListStatuses.ts ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListStatusesFields: () => (/* binding */ ListStatusesFields)
+/* harmony export */ });
+const ListStatusesFields = [
+    {
+        "key": "name",
+        "name": "Name",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "listStatuses",
+    },
+    {
+        "key": "description",
+        "name": "Description",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 16777216,
+        }),
+        "collectionId": "listStatuses",
+    },
+    {
+        "key": "color",
+        "name": "Color",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 50,
+        }),
+        "collectionId": "listStatuses",
+    },
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/Fields/documents/ViewContents.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/Fields/documents/ViewContents.ts ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ViewContentsFields: () => (/* binding */ ViewContentsFields)
+/* harmony export */ });
+const ViewContentsFields = [
+    {
+        "key": "viewId",
+        "name": "View ID",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "viewContents",
+    },
+    {
+        "key": "content",
+        "name": "Content",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 16777216,
+        }),
+        "collectionId": "viewContents",
+    }
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/Fields/documents/Views.ts":
+/*!****************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/Fields/documents/Views.ts ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ViewsFields: () => (/* binding */ ViewsFields)
+/* harmony export */ });
+const ViewsFields = [
+    {
+        "key": "name",
+        "name": "Name",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "views",
+    },
+    {
+        "key": "description",
+        "name": "Description",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 16777216,
+        }),
+        "collectionId": "views",
+    },
+    {
+        "key": "type",
+        "name": "Type",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "views",
+    },
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/Fields/index.ts":
+/*!******************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/Fields/index.ts ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Fields: () => (/* binding */ Fields)
+/* harmony export */ });
+/* harmony import */ var _applet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../applet */ "./src/schemas/applet.ts");
+/* harmony import */ var _documents_ListItems__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./documents/ListItems */ "./src/schemas/TaskListDatabase/collections/Fields/documents/ListItems.ts");
+/* harmony import */ var _documents_ListStatuses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./documents/ListStatuses */ "./src/schemas/TaskListDatabase/collections/Fields/documents/ListStatuses.ts");
+/* harmony import */ var _documents_ViewContents__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./documents/ViewContents */ "./src/schemas/TaskListDatabase/collections/Fields/documents/ViewContents.ts");
+/* harmony import */ var _documents_Views__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./documents/Views */ "./src/schemas/TaskListDatabase/collections/Fields/documents/Views.ts");
+
+
+
+
+
+const Fields = Object.assign(Object.assign({}, _applet__WEBPACK_IMPORTED_MODULE_0__.Fields), { "documents": [
+        ..._documents_ListItems__WEBPACK_IMPORTED_MODULE_1__.ListItemsCollectionFields,
+        ..._documents_ListStatuses__WEBPACK_IMPORTED_MODULE_2__.ListStatusesFields,
+        ..._documents_Views__WEBPACK_IMPORTED_MODULE_4__.ViewsFields,
+        ..._documents_ViewContents__WEBPACK_IMPORTED_MODULE_3__.ViewContentsFields
+    ] });
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/ListItems/index.ts":
+/*!*********************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/ListItems/index.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListItemsCollection: () => (/* binding */ ListItemsCollection)
+/* harmony export */ });
+const ListItemsCollection = {
+    "name": "List Items",
+    "id": "listItems",
+    "attributes": [
+        {
+            "key": "name",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "description",
+            "type": "string",
+            "size": 16777216
+        },
+        {
+            "key": "mark",
+            "type": "string",
+            "size": 10
+        },
+        {
+            "key": "status",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "PRIORITY",
+            "type": "string",
+            "size": 1255,
+            "defaultValue": "1"
+        },
+        {
+            "key": "MULTITASK",
+            "type": "string",
+            "size": 1255,
+            "defaultValue": "N"
+        },
+        {
+            "key": "NOT_VIEWED",
+            "type": "string",
+            "size": 1255,
+            "defaultValue": "N"
+        },
+        {
+            "key": "REPLICATE",
+            "type": "string",
+            "size": 1255,
+            "defaultValue": "N"
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/ListStatuses/documents.ts":
+/*!****************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/ListStatuses/documents.ts ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   documents: () => (/* binding */ documents)
+/* harmony export */ });
+const documents = [
+    {
+        "name": "To Do",
+        "description": "To Do",
+        "bgColor": "#D40915",
+        "fgColor": "white",
+        "orderBy": 1
+    },
+    {
+        "name": "In Progress",
+        "description": "In Progress",
+        "bgColor": "#FBA32F",
+        "fgColor": "white",
+        "orderBy": 2
+    },
+    {
+        "name": "Done",
+        "description": "Done",
+        "bgColor": "#4FAF54",
+        "fgColor": "white",
+        "orderBy": 3
+    }
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/ListStatuses/index.ts":
+/*!************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/ListStatuses/index.ts ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListStatusesCollection: () => (/* binding */ ListStatusesCollection)
+/* harmony export */ });
+/* harmony import */ var _documents__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./documents */ "./src/schemas/TaskListDatabase/collections/ListStatuses/documents.ts");
+
+const ListStatusesCollection = {
+    "name": "List Statuses",
+    "id": "listStatuses",
+    "attributes": [
+        {
+            "key": "name",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "description",
+            "type": "string",
+            "size": 16777216
+        },
+        {
+            "key": "bgColor",
+            "type": "string",
+            "size": 50
+        },
+        {
+            "key": "fgColor",
+            "type": "string",
+            "size": 50
+        },
+        {
+            "key": "orderBy",
+            "type": "number",
+            "size": 10
+        }
+    ],
+    "documents": [..._documents__WEBPACK_IMPORTED_MODULE_0__.documents]
+};
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/ViewContents/index.ts":
+/*!************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/ViewContents/index.ts ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ViewContentsCollection: () => (/* binding */ ViewContentsCollection)
+/* harmony export */ });
+const ViewContentsCollection = {
+    "name": "View Contents",
+    "id": "viewContents",
+    "attributes": [
+        {
+            "key": "viewId",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "content",
+            "type": "string",
+            "size": 16777216
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/ViewSettings/documents.ts":
+/*!****************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/ViewSettings/documents.ts ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   documents: () => (/* binding */ documents)
+/* harmony export */ });
+const documents = [
+    {
+        "viewId": 'applet',
+        "key": "name",
+        "hidden": false
+    },
+    {
+        "viewId": 'applet',
+        "key": "description",
+        "hidden": false
+    },
+    {
+        "viewId": 'applet',
+        "key": "mark",
+        "hidden": true
+    },
+    {
+        "viewId": 'applet',
+        "key": "status",
+        "hidden": true
+    }
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/ViewSettings/index.ts":
+/*!************************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/ViewSettings/index.ts ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ViewSettings: () => (/* binding */ ViewSettings)
+/* harmony export */ });
+/* harmony import */ var _documents__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./documents */ "./src/schemas/TaskListDatabase/collections/ViewSettings/documents.ts");
+
+const ViewSettings = {
+    "name": "View Settings",
+    "id": "viewSettings",
+    "attributes": [
+        {
+            "key": "viewId",
+            "type": "string",
+            "size": 255,
+        },
+        {
+            "key": "key",
+            "type": "string",
+            "size": 255,
+        },
+        {
+            "key": "hidden",
+            "type": "boolean",
+            "defaultValue": true
+        },
+    ],
+    "documents": _documents__WEBPACK_IMPORTED_MODULE_0__.documents
+};
+
+
+/***/ }),
+
+/***/ "./src/schemas/TaskListDatabase/collections/Views/index.ts":
+/*!*****************************************************************!*\
+  !*** ./src/schemas/TaskListDatabase/collections/Views/index.ts ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ViewsCollection: () => (/* binding */ ViewsCollection)
+/* harmony export */ });
+const ViewsCollection = {
+    "name": "Views",
+    "id": "views",
+    "attributes": [
+        {
+            "key": "name",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "description",
+            "type": "string",
+            "size": 16777216
+        },
+        {
+            "key": "type",
+            "type": "string",
+            "size": 255
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/schemas/applet.ts":
+/*!*******************************!*\
+  !*** ./src/schemas/applet.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Collections: () => (/* binding */ Collections),
+/* harmony export */   Fields: () => (/* binding */ Fields)
+/* harmony export */ });
+const Collections = {
+    "name": "Collections",
+    "id": "collections",
+    "attributes": [
+        {
+            "key": "name",
+            "type": "string"
+        },
+        {
+            "key": "type",
+            "type": "string"
+        },
+        {
+            "key": "order",
+            "type": "number"
+        }
+    ]
+};
+const Fields = {
+    "name": "Fields",
+    "id": "fields",
+    "attributes": [
+        {
+            "key": "key",
+            "type": "string"
+        },
+        {
+            "key": "name",
+            "type": "string"
+        },
+        {
+            "key": "type",
+            "type": "string"
+        },
+        {
+            "key": "custom",
+            "type": "boolean",
+            "defaultValue": false,
+        },
+        {
+            "key": "system",
+            "type": "boolean",
+            "defaultValue": true,
+        },
+        {
+            "key": "fieldInfo",
+            "type": "string",
+            "size": 18900
+        },
+        {
+            "key": "collectionId",
+            "type": "string"
+        },
+        {
+            "key": "order",
+            "type": "number"
+        }
+    ]
+};
 
 
 /***/ }),
