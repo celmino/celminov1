@@ -1,4 +1,4 @@
 import { UIController, UIView } from "@tuval/forms";
-export declare class MeetingsController extends UIController {
+export declare class AppletController extends UIController {
     LoadView(): UIView;
 }

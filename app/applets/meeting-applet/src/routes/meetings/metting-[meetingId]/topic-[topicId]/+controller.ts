@@ -3,7 +3,7 @@ import { UIController, UIView, useState, useParams, HStack, cTopLeading, VStack,
 
 import { useGetDocument } from "@realmocean/sdk";
 import { Text } from "@realmocean/vibe";
-import { AssignUser } from "../../../views/AssignUser";
+import { AssignUser } from "../../../../views/AssignUser";
 
 const findTopic = (items: any[], topic_id) => {
     if (items == null) return null;

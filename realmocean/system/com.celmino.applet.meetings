@@ -4740,10 +4740,149 @@ var AddMeetingSpace = function (workspaceId, appletId, parent) { return ({
 
 /***/ }),
 
-/***/ "./src/routes/+controller.tsx":
-/*!************************************!*\
-  !*** ./src/routes/+controller.tsx ***!
-  \************************************/
+/***/ "./src/routes/+controller.ts":
+/*!***********************************!*\
+  !*** ./src/routes/+controller.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletController: () => (/* binding */ AppletController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+
+var menu = [
+    {
+        key: 'overview',
+        title: 'Overview'
+    },
+    {
+        key: 'meetings',
+        title: 'Meetings'
+    }
+];
+var AppletController = /** @class */ (function (_super) {
+    __extends(AppletController, _super);
+    function AppletController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AppletController.prototype.LoadView = function () {
+        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('overview'), selected = _a[0], setSelected = _a[1];
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, __spreadArray(__spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menu)(function (mennuItem) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).borderBottom('solid 1px #E2E8F0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(mennuItem.title)
+                .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'))
+                .padding()
+                .width()
+                .border(selected === mennuItem.key ? 'solid 1px #E2E8F0' : 'solid 1px white')
+                .borderBottom(selected === mennuItem.key ? 'solid 1px #F8FAFC' : 'solid 1px #E2E8F0')
+                .background(selected === mennuItem.key ? '#F8FAFC' : 'white')).width().border('none')
+                .onClick(function () { return setSelected(mennuItem.key); });
+        }), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white')], false)).height(40)
+            .background('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width('100%').height('100%'))
+            .background('#F8FAFC')));
+    };
+    return AppletController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/+routes.ts":
+/*!*******************************!*\
+  !*** ./src/routes/+routes.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RouteController: () => (/* binding */ RouteController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _meetings_controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./meetings/+controller */ "./src/routes/meetings/+controller.tsx");
+/* harmony import */ var _settings_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./settings/+controller */ "./src/routes/settings/+controller.ts");
+/* harmony import */ var _settings_features_controller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./settings/features/+controller */ "./src/routes/settings/features/+controller.ts");
+/* harmony import */ var _settings_general_controller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./settings/general/+controller */ "./src/routes/settings/general/+controller.ts");
+/* harmony import */ var _meetings_metting_meetingId_controller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./meetings/metting-[meetingId]/+controller */ "./src/routes/meetings/metting-[meetingId]/+controller.ts");
+/* harmony import */ var _meetings_metting_meetingId_topic_topicId_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./meetings/metting-[meetingId]/topic-[topicId]/+controller */ "./src/routes/meetings/metting-[meetingId]/topic-[topicId]/+controller.ts");
+/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./+controller */ "./src/routes/+controller.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+
+
+var RouteController = /** @class */ (function (_super) {
+    __extends(RouteController, _super);
+    function RouteController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    RouteController.prototype.routeView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoutes)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _controller__WEBPACK_IMPORTED_MODULE_7__.AppletController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('meetings', _meetings_controller__WEBPACK_IMPORTED_MODULE_1__.MeetingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':meetingId', _meetings_metting_meetingId_controller__WEBPACK_IMPORTED_MODULE_5__.MeetingController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':topicId', _meetings_metting_meetingId_topic_topicId_controller__WEBPACK_IMPORTED_MODULE_6__.TopicController)))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/settings', _settings_controller__WEBPACK_IMPORTED_MODULE_2__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('features', _settings_features_controller__WEBPACK_IMPORTED_MODULE_3__.FeatureSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_4__.GeneralSettingsController))))
+                .background('var(--primary-background-color)');
+        }));
+    };
+    RouteController.prototype.LoadView = function () {
+        return this.routeView();
+    };
+    return RouteController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/meetings/+controller.tsx":
+/*!*********************************************!*\
+  !*** ./src/routes/meetings/+controller.tsx ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4763,11 +4902,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _dialogs_AddMeetingDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dialogs/AddMeetingDialog */ "./src/dialogs/AddMeetingDialog.ts");
+/* harmony import */ var _dialogs_AddMeetingDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../dialogs/AddMeetingDialog */ "./src/dialogs/AddMeetingDialog.ts");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _views_EmptyView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../views/EmptyView */ "./src/views/EmptyView.ts");
-/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./views/ActionPanel */ "./src/routes/views/ActionPanel.tsx");
+/* harmony import */ var _views_EmptyView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../views/EmptyView */ "./src/views/EmptyView.ts");
+/* harmony import */ var _views_ActionPanel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../views/ActionPanel */ "./src/routes/views/ActionPanel.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4923,72 +5062,10 @@ var MeetingsController = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/routes/+routes.ts":
-/*!*******************************!*\
-  !*** ./src/routes/+routes.ts ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   RouteController: () => (/* binding */ RouteController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./+controller */ "./src/routes/+controller.tsx");
-/* harmony import */ var _settings_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./settings/+controller */ "./src/routes/settings/+controller.ts");
-/* harmony import */ var _settings_features_controller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./settings/features/+controller */ "./src/routes/settings/features/+controller.ts");
-/* harmony import */ var _settings_general_controller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./settings/general/+controller */ "./src/routes/settings/general/+controller.ts");
-/* harmony import */ var _metting_meetingId_controller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./metting-[meetingId]/+controller */ "./src/routes/metting-[meetingId]/+controller.ts");
-/* harmony import */ var _metting_meetingId_topic_topicId_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./metting-[meetingId]/topic-[topicId]/+controller */ "./src/routes/metting-[meetingId]/topic-[topicId]/+controller.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-
-
-
-
-var RouteController = /** @class */ (function (_super) {
-    __extends(RouteController, _super);
-    function RouteController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    RouteController.prototype.routeView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoutes)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _controller__WEBPACK_IMPORTED_MODULE_1__.MeetingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':meetingId', _metting_meetingId_controller__WEBPACK_IMPORTED_MODULE_5__.MeetingController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':topicId', _metting_meetingId_topic_topicId_controller__WEBPACK_IMPORTED_MODULE_6__.TopicController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/settings', _settings_controller__WEBPACK_IMPORTED_MODULE_2__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('features', _settings_features_controller__WEBPACK_IMPORTED_MODULE_3__.FeatureSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_4__.GeneralSettingsController))))
-                .background('var(--primary-background-color)');
-        }));
-    };
-    RouteController.prototype.LoadView = function () {
-        return this.routeView();
-    };
-    return RouteController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/routes/metting-[meetingId]/+controller.ts":
-/*!*******************************************************!*\
-  !*** ./src/routes/metting-[meetingId]/+controller.ts ***!
-  \*******************************************************/
+/***/ "./src/routes/meetings/metting-[meetingId]/+controller.ts":
+/*!****************************************************************!*\
+  !*** ./src/routes/meetings/metting-[meetingId]/+controller.ts ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5148,10 +5225,10 @@ var MeetingController = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/routes/metting-[meetingId]/topic-[topicId]/+controller.ts":
-/*!***********************************************************************!*\
-  !*** ./src/routes/metting-[meetingId]/topic-[topicId]/+controller.ts ***!
-  \***********************************************************************/
+/***/ "./src/routes/meetings/metting-[meetingId]/topic-[topicId]/+controller.ts":
+/*!********************************************************************************!*\
+  !*** ./src/routes/meetings/metting-[meetingId]/topic-[topicId]/+controller.ts ***!
+  \********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -5165,7 +5242,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _views_AssignUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../views/AssignUser */ "./src/views/AssignUser.ts");
+/* harmony import */ var _views_AssignUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../views/AssignUser */ "./src/views/AssignUser.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
