@@ -8,7 +8,7 @@ import { InvestorsInTurkey } from "./applets/InvestorsInTurkey";
 import { WebsiteApplet } from "./applets/Website";
 import { WorldApplet } from "./applets/World";
 import { CommunityApplet } from "./applets/Community";
-import { ListApplet } from "./applets/ListApplet";
+import { ListApplet } from "./applets/TaskListApplet";
 import { DatabaseApplet } from "./applets/Database";
 
 

@@ -62,15 +62,14 @@ export class ListController extends UIFormController {
         /* const { documents: views, isLoading: isViewsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_views');
        
 
-        
-
-
 
        
         const { createDocument: createView } = useCreateDocument(workspaceId, appletId, 'wm_list_' + listId + '_views');
         const { updateDocument } = useUpdateDocument(workspaceId); */
 
-        const { documents: items, isLoading: isItemsLoading } = useListDocuments(workspaceId, appletId, 'listItems');
+        const { documents: items, isLoading: isItemsLoading } = useListDocuments(workspaceId, appletId, 'listItems', [
+            Query.limit(1000)
+        ]);
         const { documents: groups, isLoading: isStatusesLoading } = useListDocuments(workspaceId, appletId, 'listStatuses', [
             Query.orderAsc('orderBy')
         ]);

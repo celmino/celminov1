@@ -32708,7 +32708,9 @@ var ListController = /** @class */ (function (_super) {
        
         const { createDocument: createView } = useCreateDocument(workspaceId, appletId, 'wm_list_' + listId + '_views');
         const { updateDocument } = useUpdateDocument(workspaceId); */
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listItems'), items = _b.documents, isItemsLoading = _b.isLoading;
+        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listItems', [
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(1000)
+        ]), items = _b.documents, isItemsLoading = _b.isLoading;
         var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listStatuses', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.orderAsc('orderBy')
         ]), groups = _c.documents, isStatusesLoading = _c.isLoading;
