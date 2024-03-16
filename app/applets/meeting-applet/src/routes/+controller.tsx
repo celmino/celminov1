@@ -44,7 +44,7 @@ export class AppletController extends UIController {
                     {
                         VStack({ alignment: cTop })(
                             ActionPanel(),
-                            ViewHeader(applet.name, ()=> void 0),
+                            ViewHeader(applet.name, () => void 0),
                             VStack(
                                 HStack(
                                     HStack().borderBottom('solid 1px #E2E8F0').background('white'),
@@ -60,20 +60,23 @@ export class AppletController extends UIController {
                                                 .cornerRadius('6px 6px 0px 0px')
                                                 .cursor('pointer')
                                                 .foregroundColor(selected === menuItem.key ? 'rgb(30, 41, 59)' : 'rgb(100, 116, 139)')
-                                                .padding()
+                                                .padding('6px')
+                                                .paddingBottom('11px')
                                                 .width()
 
                                                 .border({ default: selected === menuItem.key ? 'solid 1px #E2E8F0' : 'solid 1px white', hover: 'solid 1px #E2E8F0' })
                                                 .borderBottom({ default: selected === menuItem.key ? 'solid 1px #F8FAFC' : 'solid 1px #E2E8F0', hover: 'solid 1px #F8FAFC' })
                                                 .background({ default: selected === menuItem.key ? '#F8FAFC' : 'white', hover: '#F8FAFC' })
-                                        ).width().border('none')
+                                        )
+                                            .width()
+                                            .border('none')
                                             .onClick(() => setSelected(menuItem.key))
                                         ,
                                     ),
 
                                     HStack().borderBottom('solid 1px #E2E8F0').background('white'),
-                                ).height(40)
-                                    
+                                ).height(39)
+
                                     .background('white'),
                                 VStack(
                                     UIRouteOutlet().width('100%').height('100%')

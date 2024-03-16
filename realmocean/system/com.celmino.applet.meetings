@@ -4855,13 +4855,16 @@ var AppletController = /** @class */ (function (_super) {
                 .cornerRadius('6px 6px 0px 0px')
                 .cursor('pointer')
                 .foregroundColor(selected === menuItem.key ? 'rgb(30, 41, 59)' : 'rgb(100, 116, 139)')
-                .padding()
+                .padding('6px')
+                .paddingBottom('11px')
                 .width()
                 .border({ default: selected === menuItem.key ? 'solid 1px #E2E8F0' : 'solid 1px white', hover: 'solid 1px #E2E8F0' })
                 .borderBottom({ default: selected === menuItem.key ? 'solid 1px #F8FAFC' : 'solid 1px #E2E8F0', hover: 'solid 1px #F8FAFC' })
-                .background({ default: selected === menuItem.key ? '#F8FAFC' : 'white', hover: '#F8FAFC' })).width().border('none')
+                .background({ default: selected === menuItem.key ? '#F8FAFC' : 'white', hover: '#F8FAFC' }))
+                .width()
+                .border('none')
                 .onClick(function () { return setSelected(menuItem.key); });
-        }), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white')], false)).height(40)
+        }), false), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white')], false)).height(39)
             .background('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width('100%').height('100%'))
             .background('#F8FAFC'))).render())));
     };
