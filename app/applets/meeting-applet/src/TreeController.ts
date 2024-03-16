@@ -122,7 +122,7 @@ export class TreeController extends UIController {
                             requestNavigation: () => {
                                 switch (item.type) {
                                     case 'applet':
-                                        navigate(``);
+                                        navigate(`meetings`);
                                 }
                             },
                             requestEditMenu: () => [

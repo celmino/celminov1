@@ -32470,6 +32470,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../views/ViewHeader */ "./src/views/ViewHeader.ts");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../resources/Icons */ "./src/resources/Icons.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -32496,6 +32497,7 @@ var __assign = (undefined && undefined.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+
 
 
 
@@ -32591,26 +32593,18 @@ var ListController = /** @class */ (function (_super) {
                    }
                })  */
                 return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_3__.ActionPanel)(), (0,_views_ViewHeader__WEBPACK_IMPORTED_MODULE_4__.ViewHeader)(applet === null || applet === void 0 ? void 0 : applet.name, function (e) {
-                    /* updateDocument({
-                        databaseId: appletId,
-                        collectionId: 'wm_lists',
-                        documentId: listId,
-                        data: {
-                            name: e
-                        }
-                    }, ()=> {
-                        updateDocument({
-                            databaseId: 'workspace',
-                            collectionId: 'ws_tree',
-                            documentId: listId,
-                            data: {
-                                name: e
-                            }
-                        }, ()=> {
-                            EventBus.Default.fire('applet.added', { treeItem: list })
-                        })
-                    }) */
-                }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                }), (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.TabMenu)().menuItems([
+                    {
+                        key: 'overview',
+                        icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_6__.TableIcon,
+                        title: 'Overview'
+                    },
+                    {
+                        key: 'tasks',
+                        icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_6__.TableIcon,
+                        title: 'Tasks'
+                    },
+                ]).selectedKey('overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
                     var _a;
                     var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
                     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.list')

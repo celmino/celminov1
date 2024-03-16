@@ -1,13 +1,18 @@
 
-import { EditableHeader, EditableHeadingSizes, Fragment, HStack, Icon, SvgIcon, UIViewBuilder, VStack, cLeading, Text, cTopLeading, cHorizontal, useDialogStack } from "@tuval/forms";
+import { EditableHeader, EditableHeadingSizes, Fragment, HStack, Icon, SvgIcon, UIViewBuilder, VStack, cLeading, Text, cTopLeading, cHorizontal, useDialogStack, UIWidget } from "@tuval/forms";
 
 import { is } from "@tuval/core";
+import { useApplet, useRealm } from "@celmino/ui";
+import { useUpdateDocument } from "@realmocean/sdk";
 
 
 const fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif'
 export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilder(() => {
 
     const { openDialog } = useDialogStack();
+    const { realm } = useRealm();
+    const { applet } = useApplet();
+    const { updateDocument } = useUpdateDocument(realm.$id);
     /*  const { access_type, team_id, applet_id, view_id } = useParams();
  
      const navigate = useNavigate(); */
@@ -15,19 +20,40 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
     return (
         VStack({ alignment: cTopLeading })(
             VStack({ alignment: cTopLeading })(
-              /*   HStack({ alignment: cLeading, spacing: 5 })(
-                    Icon(SvgIcon('svg-sprite-global__comment', '#87909e')),
-                    Text('Add comment').fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
-                )
-                    .foregroundColor('#87909e')
-                    .height(28).width().padding('0 15px').cornerRadius(4).background({ hover: 'rgb(240, 241, 243)' })
-                    .onClick(() => {
-                        openDialog({
-                            title: 'Open',
-                            view: Text('Hans')
-                        })
-                    }), */
-                HStack({ alignment: cLeading, spacing: 5 })(
+                /*   HStack({ alignment: cLeading, spacing: 5 })(
+                      Icon(SvgIcon('svg-sprite-global__comment', '#87909e')),
+                      Text('Add comment').fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
+                  )
+                      .foregroundColor('#87909e')
+                      .height(28).width().padding('0 15px').cornerRadius(4).background({ hover: 'rgb(240, 241, 243)' })
+                      .onClick(() => {
+                          openDialog({
+                              title: 'Open',
+                              view: Text('Hans')
+                          })
+                      }), */
+                HStack({ alignment: cLeading })(
+                    HStack(
+                        UIWidget("com.tuvalsoft.widget.icons")
+                            .config({
+                                onChange: (value) => {
+                                    updateDocument({
+                                        databaseId: 'workspace',
+                                        collectionId: 'applets',
+                                        documentId: applet.$id,
+                                        data: {
+                                            iconName: value.iconName,
+                                            iconCategory: value.iconCategory
+                                        }
+                                    })
+                                },
+                                selectedIcon: applet?.iconName,
+                                color: applet?.bg_color,
+                                selectedCategory: applet?.iconCategory,
+                                width: 40,
+                                height: 40
+                            })
+                    ).width().height(),
 
                     //  _StatusMarker(task?.stage_id),
                     is.string(header) ?
@@ -57,7 +83,7 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
                        ).height().width()
                    ).height() */
             ).height()
-                
+
             // .borderBottom('1px solid #F2F2F2')
         )
             .paddingBottom('0px')

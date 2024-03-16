@@ -7,6 +7,10 @@ import { GeneralSettingsController } from "./settings/general/+controller";
 import { MeetingController } from "./meetings/metting-[meetingId]/+controller";
 import { TopicController } from "./meetings/metting-[meetingId]/topic-[topicId]/+controller";
 import { AppletController } from "./+controller";
+import { OverviewController } from "./overview/+controller";
+import { TasksController } from "./tasks/+controller";
+import { FilesController } from "./files/+controller";
+import { FeedController } from "./feed/+controller";
 
 
 
@@ -23,7 +27,11 @@ export class RouteController extends UIController {
                                 UIRoute(':meetingId', MeetingController).children(
                                     UIRoute(':topicId', TopicController),
                                 ),
-                            )
+                            ),
+                            UIRoute('overview', OverviewController),
+                            UIRoute('tasks', TasksController),
+                            UIRoute('files', FilesController),
+                            UIRoute('feed', FeedController)
                         ),
                         UIRoute('/settings', SettingsController).children(
                             UIRoute('features', FeatureSettingsController),

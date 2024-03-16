@@ -28,7 +28,7 @@ export class FormBuilder {
     static getViewFactory(type: string): any;
     static getView(fieldInfo: any): any;
     static canRender(fieldInfo: any, formController?: UIFormController): boolean;
-    static render(_formMeta: string | object | object[]): import("@tuval/forms").FragmentClass | import("@tuval/forms").TextClass | import("@tuval/forms").ConfigContextClass;
+    static render(_formMeta: string | object | object[]): import("@tuval/forms").TextClass | import("@tuval/forms").FragmentClass | import("@tuval/forms").ConfigContextClass;
     static compileFormula(formula: any): string;
 }
 
@@ -37,7 +37,7 @@ export class DynoDialog extends DialogView {
     BindRouterParams(formData: any): void;
     OnOK(): void;
     OnCancel(): void;
-    LoadView(): import("@tuval/forms").UISpinnerClass | import("@tuval/forms").VStackClass;
+    LoadView(): import("@tuval/forms").VStackClass | import("@tuval/forms").UISpinnerClass;
     static Show(formData: any): Promise<any>;
 }
 
@@ -74,6 +74,15 @@ export interface IColorView extends UIView {
     onChange(value: Function): any;
 }
 export const ColorView: () => IColorView;
+
+type FunctionValue<View, T> = (value: T) => View;
+export interface ITabMenu extends UIView {
+    menuItems: FunctionValue<ITabMenu, any[]>;
+    selectedKey: FunctionValue<ITabMenu, string>;
+    onSelect: FunctionValue<ITabMenu, Function>;
+}
+export const TabMenu: () => ITabMenu;
+export {};
 
 export const useAppletNavigate: () => {
     navigate: (url: string) => void;

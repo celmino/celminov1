@@ -20209,6 +20209,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   RealmContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider),
 /* harmony export */   SelectAppletDialog: () => (/* reexport safe */ _dialogs__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog),
 /* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.SelectSiderDialog),
+/* harmony export */   TabMenu: () => (/* reexport safe */ _views__WEBPACK_IMPORTED_MODULE_1__.TabMenu),
 /* harmony export */   TreeContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.TreeContext),
 /* harmony export */   TreeContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.TreeContextProvider),
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
@@ -22604,6 +22605,90 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/views/TabMenu/TabMenu.ts":
+/*!**************************************!*\
+  !*** ./src/views/TabMenu/TabMenu.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TabMenu: () => (/* binding */ TabMenu)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+const TabMenu = () => {
+    class _ extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+        menuItems(value) {
+            this._MenuItems = value;
+            return this;
+        }
+        selectedKey(value) {
+            this._SelectedKey = value;
+            return this;
+        }
+        onSelect(value) {
+            this._OnSelect = value;
+            return this;
+        }
+        constructor() {
+            super();
+            this.onSelect(() => void 0);
+        }
+        render() {
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white'), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this._MenuItems)(menuItem => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).borderBottom('solid 1px #E2E8F0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(menuItem.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(menuItem.title)
+                .fontWeight('500')
+                .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'))
+                .cornerRadius('6px 6px 0px 0px')
+                .cursor('pointer')
+                .foregroundColor(this._SelectedKey === menuItem.key ? 'rgb(30, 41, 59)' : 'rgb(100, 116, 139)')
+                .padding('6px')
+                .paddingBottom('11px')
+                .width()
+                .border({ default: this._SelectedKey === menuItem.key ? 'solid 1px #E2E8F0' : 'solid 1px white', hover: 'solid 1px #E2E8F0' })
+                .borderBottom({ default: this._SelectedKey === menuItem.key ? 'solid 1px #F8FAFC' : 'solid 1px #E2E8F0', hover: 'solid 1px #F8FAFC' })
+                .background({ default: this._SelectedKey === menuItem.key ? '#F8FAFC' : 'white', hover: '#F8FAFC' }))
+                .width()
+                .border('none')
+                .onClick(() => this._OnSelect(menuItem))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)().icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Menu)
+                .model([
+                {
+                    title: 'Set as template',
+                    onClick: () => {
+                        //  updateMeeting(meeting.$id, { is_template: 1 })
+                    }
+                }
+            ])).width().height()
+                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 10)
+                .position('absolute')
+                .right('0px')).height(39)
+                .background('white')
+                .render());
+        }
+    }
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], _.prototype, "_MenuItems", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], _.prototype, "_SelectedKey", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], _.prototype, "_OnSelect", void 0);
+    return new _();
+};
+
+
+/***/ }),
+
 /***/ "./src/views/index.ts":
 /*!****************************!*\
   !*** ./src/views/index.ts ***!
@@ -22616,12 +22701,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ColorSelect: () => (/* reexport safe */ _ColorSelect__WEBPACK_IMPORTED_MODULE_0__.ColorSelect),
 /* harmony export */   ColorView: () => (/* reexport safe */ _ColorCircle_ColorCircleView__WEBPACK_IMPORTED_MODULE_3__.ColorView),
 /* harmony export */   NewFieldMenuView: () => (/* reexport safe */ _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__.NewFieldMenuView),
-/* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _SelectSider__WEBPACK_IMPORTED_MODULE_2__.SelectSiderDialog)
+/* harmony export */   SelectSiderDialog: () => (/* reexport safe */ _SelectSider__WEBPACK_IMPORTED_MODULE_2__.SelectSiderDialog),
+/* harmony export */   TabMenu: () => (/* reexport safe */ _TabMenu_TabMenu__WEBPACK_IMPORTED_MODULE_4__.TabMenu)
 /* harmony export */ });
 /* harmony import */ var _ColorSelect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorSelect */ "./src/views/ColorSelect/index.ts");
 /* harmony import */ var _NewFieldMenu_NewFieldMenuView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewFieldMenu/NewFieldMenuView */ "./src/views/NewFieldMenu/NewFieldMenuView.tsx");
 /* harmony import */ var _SelectSider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectSider */ "./src/views/SelectSider/index.ts");
 /* harmony import */ var _ColorCircle_ColorCircleView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ColorCircle/ColorCircleView */ "./src/views/ColorCircle/ColorCircleView.tsx");
+/* harmony import */ var _TabMenu_TabMenu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TabMenu/TabMenu */ "./src/views/TabMenu/TabMenu.ts");
+
 
 
 

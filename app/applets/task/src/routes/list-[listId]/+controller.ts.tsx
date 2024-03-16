@@ -21,7 +21,8 @@ import { EventBus } from "@tuval/core";
 import React from "react";
 import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
-import { SelectSiderDialog, useAccount, useApplet } from '@celmino/ui'
+import { SelectSiderDialog, TabMenu, useAccount, useApplet } from '@celmino/ui'
+import { TableIcon } from "../../resources/Icons";
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -134,26 +135,20 @@ export class ListController extends UIFormController {
                                         VStack({ alignment: cTopLeading })(
                                             ActionPanel(),
                                             ViewHeader(applet?.name, (e) => {
-                                                /* updateDocument({
-                                                    databaseId: appletId,
-                                                    collectionId: 'wm_lists',
-                                                    documentId: listId,
-                                                    data: {
-                                                        name: e
-                                                    }
-                                                }, ()=> {
-                                                    updateDocument({
-                                                        databaseId: 'workspace',
-                                                        collectionId: 'ws_tree',
-                                                        documentId: listId,
-                                                        data: {
-                                                            name: e
-                                                        }
-                                                    }, ()=> {
-                                                        EventBus.Default.fire('applet.added', { treeItem: list })
-                                                    })
-                                                }) */
+                                               
                                             }),
+                                            TabMenu().menuItems([
+                                                {
+                                                    key: 'overview',
+                                                    icon: TableIcon,
+                                                    title: 'Overview'
+                                                },
+                                                {
+                                                    key: 'tasks',
+                                                    icon: TableIcon,
+                                                    title: 'Tasks'
+                                                },
+                                            ]).selectedKey('overview'),
                                             HStack({ alignment: cTopLeading })(
                                                 VStack({ alignment: cTopLeading })(
                                                     UIViewBuilder(() => {
