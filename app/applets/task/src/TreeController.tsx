@@ -171,7 +171,7 @@ export class WorkspaceTreeWidgetController extends UIController {
                             if (onItemSelected == null) {
                                 switch (item.type) {
                                     case 'applet':
-                                        navigate(``);
+                                        navigate(`tasks`);
                                         break;
                                     case 'list':
                                         //  navigate(`/@/${process(realm?.name)}-${workspaceId}/${process(applet)}-${appletId}/list/${item.$id}`);

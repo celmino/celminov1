@@ -7,6 +7,7 @@ import { WhiteboardController } from "./whiteboard-[whiteboardId]/+controller";
 import { SettingsController } from "./settings/+controller";
 import { FeatureSettingsController } from "./settings/features/+controller";
 import { GeneralSettingsController } from "./settings/general/+controller";
+import { AppletController } from "./+controller";
 
 
 export class RouteController extends UIController {
@@ -16,10 +17,11 @@ export class RouteController extends UIController {
             UIViewBuilder(() =>
                 VStack(
                     UIRoutes(
-                        UIRoute('/', class extends ListController {}).children(
-                            UIRoute('list/:listId', ListController).children(
+                        UIRoute('/', AppletController).children(
+                            UIRoute('tasks',   class extends ListController {}),
+                            /* UIRoute('list/:listId', ListController).children(
                                 UIRoute('view/:viewId', class extends  ViewController {}),
-                            ),
+                            ), */
                           
                             UIRoute('document/:documentId',   class extends  DocumentController {} ),
                             UIRoute('whiteboard/:whiteboardId',   class extends  WhiteboardController {} ),

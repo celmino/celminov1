@@ -1,4 +1,4 @@
-import { UIFormController } from "@tuval/forms";
-export declare class AppletController extends UIFormController {
-    LoadView(): import("@tuval/forms").UIRouteOutletClass;
+import { UIController, UIView } from "@tuval/forms";
+export declare class AppletController extends UIController {
+    LoadView(): UIView;
 }

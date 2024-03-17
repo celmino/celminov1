@@ -54,7 +54,10 @@ export const TabMenu = (): ITabMenu => {
                                 Icon(menuItem.icon),
                                 Text(menuItem.title)
                                     .fontWeight('500')
-                                    .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')
+                                    .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'),
+                                menuItem.contextMenu &&
+                                MenuButton().icon(Icons.Menu)
+                                    .model(menuItem.contextMenu)
                             )
                                 .cornerRadius('6px 6px 0px 0px')
                                 .cursor('pointer')
@@ -65,6 +68,7 @@ export const TabMenu = (): ITabMenu => {
                                 .border({ default: this._SelectedKey === menuItem.key ? 'solid 1px #E2E8F0' : 'solid 1px white', hover: 'solid 1px #E2E8F0' })
                                 .borderBottom({ default: this._SelectedKey === menuItem.key ? 'solid 1px #F8FAFC' : 'solid 1px #E2E8F0', hover: 'solid 1px #F8FAFC' })
                                 .background({ default: this._SelectedKey === menuItem.key ? '#F8FAFC' : 'white', hover: '#F8FAFC' })
+                                .variable('--icon-color', { default: this._SelectedKey === menuItem.key ? 'rgb(30, 41, 59)' : 'rgb(100, 116, 139)' })
                         )
                             .width()
                             .border('none')

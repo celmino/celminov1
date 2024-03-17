@@ -1,4 +1,4 @@
-import React from 'react';
+/// <reference types="react" />
 declare type BoardSectionProps = {
     id: string;
     title: string;
@@ -6,5 +6,5 @@ declare type BoardSectionProps = {
     status: any;
 };
 export declare const SaveItemAction: (formMeta: any, action: any) => import("@tuval/forms").UIViewBuilderClass;
-declare function BoardSection({ id, items, status }: BoardSectionProps): React.JSX.Element;
+declare function BoardSection({ id, items, status }: BoardSectionProps): JSX.Element;
 export default BoardSection;

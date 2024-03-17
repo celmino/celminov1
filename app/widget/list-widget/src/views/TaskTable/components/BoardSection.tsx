@@ -5,7 +5,7 @@ import {
     verticalListSortingStrategy
 } from '@dnd-kit/sortable';
 import { EventBus } from '@tuval/core';
-import { Button, ForEach, Fragment, HStack, Icon, Icons, Spacer, Text, Fragment as UIFragment, UIViewBuilder, UIWidget, VStack, cLeading, useDialog, useEffect, useFormBuilder, useFormController, useNavigate, useOptions, useParams, useState } from '@tuval/forms';
+import { Button, ForEach, Fragment, HStack, Icon, Icons, ReactView, Spacer, Text, Fragment as UIFragment, UIViewBuilder, UIWidget, VStack, cLeading, cTopLeading, useDialog, useEffect, useFormBuilder, useFormController, useNavigate, useOptions, useParams, useState } from '@tuval/forms';
 import React, { Fragment as ReactFragment } from 'react';
 import SortableTaskItem from './SortableTaskItem';
 import { DynoDialog } from "@celmino/ui";
@@ -82,213 +82,223 @@ function BoardSection({ id, items, status }: BoardSectionProps) {
 
 
     return (
-        <ReactFragment>
-            {
-                VStack(
-                    HStack({ alignment: cLeading })(
-                        HStack({ alignment: cLeading })(
-                            BoardSectionTitle(status),
-
-                            Text(items.length.toString() + ' Tasks')
-                                .foregroundColor('var(--cu-content-tertiary)')
-                                .fontSize(10)
-                                .fontWeight('500')
-                                .textOverflow('ellipsis')
-                                .whiteSpace('nowrap')
-                                .textTransform('uppercase')
-                        ).allWidth(200).height(30)
-
-                    ).height(),
-                    HStack({ alignment: cLeading })(
-                        HStack({ alignment: cLeading })(
-                            Text('Name').fontSize(10).fontWeight('500').textTransform('uppercase')
-                        ).allWidth(500).height(30),
-                        ...ForEach(fields)((field: any) => (
-                            (field.key === 'name' || field.hidden || field.key === groupBy) ? Fragment() :
+        VStack({alignment:cTopLeading})(
+            ReactView(
+                <ReactFragment>
+                    {
+                        VStack(
+                            HStack({ alignment: cLeading })(
                                 HStack({ alignment: cLeading })(
-                                    Text(field.name).fontSize(10).fontWeight('500').textTransform('uppercase')
-                                ).allWidth(100).height(30)
-                        )),
+                                    BoardSectionTitle(status),
 
-                        /*   items.length > 0 ?
-                              HStack(
-                                  Text('Assignee').fontSize(10).fontWeight('500').textTransform('uppercase')
-                              ).allWidth(100).height(30) : UIFragment(),
-                          items.length > 0 ?
-                              HStack(
-                                  Text('Due date').fontSize(10).fontWeight('500').textTransform('uppercase')
-                              ).allWidth(100).height(30) : UIFragment(),
-                          items.length > 0 ?
-                              HStack(
-                                  Text('Priority').fontSize(10).fontWeight('500').textTransform('uppercase')
-                              ).allWidth(100).height(30) : UIFragment(), */
+                                    Text(items.length.toString() + ' Tasks')
+                                        .foregroundColor('var(--cu-content-tertiary)')
+                                        .fontSize(10)
+                                        .fontWeight('500')
+                                        .textOverflow('ellipsis')
+                                        .whiteSpace('nowrap')
+                                        .textTransform('uppercase')
+                                ).allWidth(200).height(30)
 
-                        /* ...ForEach(isCustomFieldsLoading ? [] : customFields)((field: any) =>
-                            HStack(
-                                Text(field.name).fontSize(10).fontWeight('500').textTransform('uppercase')
-    
-                            )
-                                .allWidth(100).height(30)
-                        ), */
-                        HStack(
-                            NewFieldMenuView({
-                                view: (menuIsOpen) =>
+                            ).height(),
+                            HStack({ alignment: cLeading })(
+                                HStack({ alignment: cLeading })(
+                                    Text('Name').fontSize(10).fontWeight('500').textTransform('uppercase')
+                                ).allWidth(500).height(30),
+                                ...ForEach(fields)((field: any) => (
+                                    (field.key === 'name' || field.hidden || field.key === groupBy) ? Fragment() :
+                                        HStack({ alignment: cLeading })(
+                                            Text(field.name).fontSize(10).fontWeight('500').textTransform('uppercase')
+                                        ).allWidth(100).height(30)
+                                )),
+
+                                /*   items.length > 0 ?
+                                      HStack(
+                                          Text('Assignee').fontSize(10).fontWeight('500').textTransform('uppercase')
+                                      ).allWidth(100).height(30) : UIFragment(),
+                                  items.length > 0 ?
+                                      HStack(
+                                          Text('Due date').fontSize(10).fontWeight('500').textTransform('uppercase')
+                                      ).allWidth(100).height(30) : UIFragment(),
+                                  items.length > 0 ?
+                                      HStack(
+                                          Text('Priority').fontSize(10).fontWeight('500').textTransform('uppercase')
+                                      ).allWidth(100).height(30) : UIFragment(), */
+
+                                /* ...ForEach(isCustomFieldsLoading ? [] : customFields)((field: any) =>
                                     HStack(
-                                        Text('+').fontSize(18).fontWeight('500').cursor('pointer')
-                                            .foregroundColor(menuIsOpen ? 'white' : '')
-                                        // Icon(Icons).foregroundColor(menuIsOpen ? 'white' : ''),
-                                        /*  Text('New Field')
-                                             .foregroundColor(menuIsOpen ? 'white' : '')
-                                             .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
-                                             .fontSize(14)
-                                             .fontWeight('500') as any */
+                                        Text(field.name).fontSize(10).fontWeight('500').textTransform('uppercase')
+            
                                     )
-                                , onNewFieldAdded: (field) => {
-                                    // alert(onNewFieldAddded)
-                                    //alert(JSON.stringify(field))
-                                    onNewFieldAddded(field)
-                                }
-                            })
-                            /*  UIWidget('com.tuvalsoft.widget.custom-field-popup')
-                                 .config({
-                                     label: '+',
-                                     onAction: (data) => onNewFieldAddded(data)
-                                 }) */
-                        ).width(),
-                        HStack(
-                            //  Text('+').fontSize(18).fontWeight('500').cursor('pointer')
-                        ).allWidth(100).height(30)
-                            .onClick(() => {
-                                alert('create custom field')
-                                /* createTaskCustomField({
-                                    name: 'Test',
-                                    type: 'short_text',
-                                    entity: {
-                                        id: applet?.scope_id,
-                                        name: 'item',
-                                        type: 'com.type.dsf.com',
-                                        subcategory_access: true
-                                    },
-                                    order_column: 0,
-                                    scope_id: applet?.scope_id
-                                }) */
-                            })
-                        ,
+                                        .allWidth(100).height(30)
+                                ), */
+                                HStack(
+                                    NewFieldMenuView({
+                                        view: (menuIsOpen) =>
+                                            HStack(
+                                                Text('+').fontSize(18).fontWeight('500').cursor('pointer')
+                                                    .foregroundColor(menuIsOpen ? 'white' : '')
+                                                // Icon(Icons).foregroundColor(menuIsOpen ? 'white' : ''),
+                                                /*  Text('New Field')
+                                                     .foregroundColor(menuIsOpen ? 'white' : '')
+                                                     .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,'Segoe UI','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'")
+                                                     .fontSize(14)
+                                                     .fontWeight('500') as any */
+                                            )
+                                        , onNewFieldAdded: (field) => {
+                                            // alert(onNewFieldAddded)
+                                            //alert(JSON.stringify(field))
+                                            onNewFieldAddded(field)
+                                        }
+                                    })
+                                    /*  UIWidget('com.tuvalsoft.widget.custom-field-popup')
+                                         .config({
+                                             label: '+',
+                                             onAction: (data) => onNewFieldAddded(data)
+                                         }) */
+                                ).width(),
+                                HStack(
+                                    //  Text('+').fontSize(18).fontWeight('500').cursor('pointer')
+                                ).allWidth(100).height(30)
+                                    .onClick(() => {
+                                        alert('create custom field')
+                                        /* createTaskCustomField({
+                                            name: 'Test',
+                                            type: 'short_text',
+                                            entity: {
+                                                id: applet?.scope_id,
+                                                name: 'item',
+                                                type: 'com.type.dsf.com',
+                                                subcategory_access: true
+                                            },
+                                            order_column: 0,
+                                            scope_id: applet?.scope_id
+                                        }) */
+                                    })
+                                ,
 
-                    ).height()
-                ).height()
-                    .render()
-            }
-            <SortableContext
-                id={id}
-                items={items}
-                strategy={verticalListSortingStrategy}
-            >
-                <div ref={setNodeRef} style={{ width: '100%' }}>
-                    {
-                        items.map((task) => (
-                            <SortableTaskItem id={task?.id } task={task} status={status} />
-                        ))}
-                    {
-                        showEdit && EditTaskItem(status).render()
+                            ).height()
+                        ).height()
+                            .render()
                     }
-                </div>
-            </SortableContext>
-            {
-                HStack(
-                    Icon(Icons.Add),
-                    Text('New Task')
-                )
-                    .marginTop(5)
-                    .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                    .cursor('pointer')
-                    .padding('4px 7px')
-                    .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                    .height(24)
-                    .lineHeight('1')
-                    .fontSize(11)
-                    .fontWeight('400')
-                    .foregroundColor('#7c828d')
-                    .cornerRadius(3)
-                    .background({ hover: 'rgba(188,192,199,.3)' }).width()
-                    .onClick(() => {
-                        const _fields = {};
-
-                        for (let i = 0; i < fields?.length; i++) {
-                            const anyAttribute: any = fields[i];
-                            if (anyAttribute.type === 'string') {
-                                const stringAttribute = anyAttribute;
-                                _fields[stringAttribute.key] = {
-                                    label: stringAttribute.name,
-                                    type: 'text',
-                                    category: 'string',
-                                    name: stringAttribute.key
-                                }
-                            } else if (anyAttribute.type === 'number') {
-                                const integerAttribute = anyAttribute;
-                                _fields[integerAttribute.key] = {
-                                    label: integerAttribute.name,
-                                    type: 'number',
-                                    category: 'number',
-                                    name: integerAttribute.key
-                                }
-                            } else if (anyAttribute.type === 'boolean') {
-                                const integerAttribute = anyAttribute;
-                                _fields[integerAttribute.key] = {
-                                    label: integerAttribute.name,
-                                    type: 'checkbox',
-                                    name: integerAttribute.key
-                                }
-                            } else if (anyAttribute.type === 'datetime') {
-                                const integerAttribute = anyAttribute;
-                                _fields[integerAttribute.key] = {
-                                    label: integerAttribute.name,
-                                    type: 'datepicker',
-                                    name: integerAttribute.key,
-                                    value: new Date(),
-                                    renderer: DatePickerRenderer
-                                }
-                            } else if (anyAttribute.type === 'relationship') {
-                                const relationAttribute = anyAttribute;
-                                _fields[relationAttribute.key] = {
-                                    label: relationAttribute.name,
-                                    type: 'relation',
-                                    name: relationAttribute.key,
-                                    relatedCollection: relationAttribute.relatedCollection,
-                                    relationType: relationAttribute.relationType,
-                                }
+                    <SortableContext
+                        id={id}
+                        items={items}
+                        strategy={verticalListSortingStrategy}
+                    >
+                        <div ref={setNodeRef} style={{ width: '100%' }}>
+                            {
+                                items.map((task) => (
+                                    <SortableTaskItem id={task?.id} task={task} status={status} />
+                                ))}
+                            {
+                                showEdit && EditTaskItem(status).render()
                             }
-                        }
+                        </div>
+                    </SortableContext>
+                    {
+                        HStack(
+                            Icon(Icons.Add),
+                            Text('New Task')
+                        )
+                            .marginTop(5)
+                            .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
+                            .cursor('pointer')
+                            .padding('4px 7px')
+                            .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
+                            .height(24)
+                            .lineHeight('1')
+                            .fontSize(11)
+                            .fontWeight('400')
+                            .foregroundColor('#7c828d')
+                            .cornerRadius(3)
+                            .background({ hover: 'rgba(188,192,199,.3)' }).width()
+                            .onClick(() => {
+                                const _fields = {};
 
-                        /*    DynoDialog.Show({
-                               "title": `Create Item`,
-                               'onClick': onItemSave,
-                             
-                               "actions": [
-                                   {
-                                       "label": "Save",
-                                       "type": "saveItem"
-                                   }
-                               ],
-                               "fieldMap": {
-                                   "status": {
-                                       "name": "status",
-                                       "type": "virtual",
-                                       "value": status.$id
-                                   },
-                                   ..._fields
-   
-                               },
-                               "layout": {
-                                   "type": "category"
-                               }
-                           }) */
-                        EventBus.Default.fire('task.opa.hideedit', null);
-                        setShowEdit(true);
-                    }/* createTaskUI({ spaceId: space_id, folderId: folder_id, itemId: item_id, stageId: status.id }) */)
-                    .render()
-            }
-        </ReactFragment>
+                                for (let i = 0; i < fields?.length; i++) {
+                                    const anyAttribute: any = fields[i];
+                                    if (anyAttribute.type === 'string') {
+                                        const stringAttribute = anyAttribute;
+                                        _fields[stringAttribute.key] = {
+                                            label: stringAttribute.name,
+                                            type: 'text',
+                                            category: 'string',
+                                            name: stringAttribute.key
+                                        }
+                                    } else if (anyAttribute.type === 'number') {
+                                        const integerAttribute = anyAttribute;
+                                        _fields[integerAttribute.key] = {
+                                            label: integerAttribute.name,
+                                            type: 'number',
+                                            category: 'number',
+                                            name: integerAttribute.key
+                                        }
+                                    } else if (anyAttribute.type === 'boolean') {
+                                        const integerAttribute = anyAttribute;
+                                        _fields[integerAttribute.key] = {
+                                            label: integerAttribute.name,
+                                            type: 'checkbox',
+                                            name: integerAttribute.key
+                                        }
+                                    } else if (anyAttribute.type === 'datetime') {
+                                        const integerAttribute = anyAttribute;
+                                        _fields[integerAttribute.key] = {
+                                            label: integerAttribute.name,
+                                            type: 'datepicker',
+                                            name: integerAttribute.key,
+                                            value: new Date(),
+                                            renderer: DatePickerRenderer
+                                        }
+                                    } else if (anyAttribute.type === 'relationship') {
+                                        const relationAttribute = anyAttribute;
+                                        _fields[relationAttribute.key] = {
+                                            label: relationAttribute.name,
+                                            type: 'relation',
+                                            name: relationAttribute.key,
+                                            relatedCollection: relationAttribute.relatedCollection,
+                                            relationType: relationAttribute.relationType,
+                                        }
+                                    }
+                                }
+
+                                /*    DynoDialog.Show({
+                                       "title": `Create Item`,
+                                       'onClick': onItemSave,
+                                     
+                                       "actions": [
+                                           {
+                                               "label": "Save",
+                                               "type": "saveItem"
+                                           }
+                                       ],
+                                       "fieldMap": {
+                                           "status": {
+                                               "name": "status",
+                                               "type": "virtual",
+                                               "value": status.$id
+                                           },
+                                           ..._fields
+           
+                                       },
+                                       "layout": {
+                                           "type": "category"
+                                       }
+                                   }) */
+                                EventBus.Default.fire('task.opa.hideedit', null);
+                                setShowEdit(true);
+                            }/* createTaskUI({ spaceId: space_id, folderId: folder_id, itemId: item_id, stageId: status.id }) */)
+                            .render()
+                    }
+                </ReactFragment>
+            )
+        )
+        .padding()
+        .height()
+            .background('white')
+            .shadow('0 1px 2px 0 rgba(0, 0, 0, 0.1)')
+            .cornerRadius(6)
+            .render()
 
     );
 };

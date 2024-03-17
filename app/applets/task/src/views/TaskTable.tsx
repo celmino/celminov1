@@ -157,7 +157,7 @@ function App(props) {
                             ),
                             HStack(
                                 Icon(Icons.Add),
-                                Text('New Task')
+                                Text('_New Task')
                             )
                                 .padding('4px 7px')
                                 .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')

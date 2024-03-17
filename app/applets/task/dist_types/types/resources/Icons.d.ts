@@ -8,3 +8,7 @@ export declare const CalendarIcon: () => React.JSX.Element;
 export declare const ReportIcon: () => React.JSX.Element;
 export declare const FeedIcon: () => React.JSX.Element;
 export declare const AppletIcon: () => React.JSX.Element;
+export declare const OverviewIcon: () => React.JSX.Element;
+export declare const MeetingsIcon: () => React.JSX.Element;
+export declare const TaskIcon: () => React.JSX.Element;
+export declare const FilesIcon: () => React.JSX.Element;
