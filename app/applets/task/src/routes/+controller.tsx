@@ -12,7 +12,7 @@ import {
 } from "@tuval/forms";
 import { ActionPanel } from "../views/ActionPanel";
 import { ViewHeader } from "../views/ViewHeader";
-import React from "react";
+import React, { Fragment } from "react";
 
 
 export class AppletController extends UIController {
@@ -21,9 +21,11 @@ export class AppletController extends UIController {
         const { applet } = useApplet();
         return (
             ReactView(
-                <DialogStack>
+             
+                 <DialogStack>
                     {
                         VStack({ alignment: cTop })(
+
                             ActionPanel(),
                             ViewHeader(applet.name, () => void 0),
                             VStack(
@@ -34,7 +36,7 @@ export class AppletController extends UIController {
                             )
                         ).render()
                     }
-                </DialogStack>
+                </DialogStack> 
             )
         )
     }

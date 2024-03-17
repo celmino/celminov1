@@ -12,3 +12,7 @@ export declare const OverviewIcon: () => React.JSX.Element;
 export declare const MeetingsIcon: () => React.JSX.Element;
 export declare const TaskIcon: () => React.JSX.Element;
 export declare const FilesIcon: () => React.JSX.Element;
+export declare const SettingsIcon: () => React.JSX.Element;
+export declare const MembersIcon: () => React.JSX.Element;
+export declare const TabsIcon: () => React.JSX.Element;
+export declare const StatusesIcon: () => React.JSX.Element;

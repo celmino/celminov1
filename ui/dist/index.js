@@ -22644,11 +22644,21 @@ const TabMenu = () => {
             this.onSelect(() => void 0);
         }
         render() {
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white'), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this._MenuItems)(menuItem => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).borderBottom('solid 1px #E2E8F0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(menuItem.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(menuItem.title)
-                .fontWeight('500')
-                .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'), (menuItem.contextMenu && this._SelectedKey === menuItem.key) &&
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)().icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Menu)
-                    .model(menuItem.contextMenu))
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white').width(), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this._MenuItems)(menuItem => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).borderBottom('solid 1px #E2E8F0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((menuItem.contextMenu && this._SelectedKey === menuItem.key) ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PopupButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(menuItem.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(menuItem.title)
+                    .fontWeight('500')
+                    .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('dfsdfsdf'))
+                    .cornerRadius(6)
+                    .background('white')
+                    .width(200)
+                    .height(200)
+                    .marginTop(13)
+                    .marginLeft(-10))
+                    .dialogPosition(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogPosition.BOTTOM_START)
+                :
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(menuItem.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(menuItem.title)
+                        .fontWeight('500')
+                        .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')))
                 .cornerRadius('6px 6px 0px 0px')
                 .cursor('pointer')
                 .foregroundColor(this._SelectedKey === menuItem.key ? 'rgb(30, 41, 59)' : 'rgb(100, 116, 139)')
@@ -22661,7 +22671,11 @@ const TabMenu = () => {
                 .variable('--icon-color', { default: this._SelectedKey === menuItem.key ? 'rgb(30, 41, 59)' : 'rgb(100, 116, 139)' }))
                 .width()
                 .border('none')
-                .onClick(() => this._OnSelect(menuItem))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)().icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Menu)
+                .onClick(() => {
+                if (this._SelectedKey !== menuItem.key) {
+                    this._OnSelect(menuItem);
+                }
+            })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)().icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Menu)
                 .model([
                 {
                     title: 'Set as template',

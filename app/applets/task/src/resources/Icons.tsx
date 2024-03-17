@@ -67,28 +67,46 @@ export const FeedIcon = () => (
 
 
 export const AppletIcon = () => (
-    <svg width="20" height="20"  viewBox="0 0 16 16" fill="none"><g clip-path="url(#clip0_3619_49218)"><path d="M0.799805 3.60005C2.3462 3.60005 3.5998 4.85365 3.5998 6.40005C3.5998 4.85365 4.85341 3.60005 6.3998 3.60005C4.85341 3.60005 3.5998 2.34645 3.5998 0.800049C3.5998 2.34645 2.3462 3.60005 0.799805 3.60005Z" fill="url(#paint0_linear_3619_49218)" stroke="url(#paint1_linear_3619_49218)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.7998 10C7.67169 10 9.9998 12.3282 9.9998 15.2C9.9998 12.3282 12.3279 10 15.1998 10C12.3279 10 9.9998 7.67193 9.9998 4.80005C9.9998 7.67193 7.67169 10 4.7998 10Z" fill="url(#paint2_linear_3619_49218)" stroke="url(#paint3_linear_3619_49218)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></g><defs><linearGradient id="paint0_linear_3619_49218" x1="2.1998" y1="0.488938" x2="4.37758" y2="6.71116" gradientUnits="userSpaceOnUse"><stop stop-color="#506CF0"></stop><stop offset="1" stop-color="#9E72D5"></stop></linearGradient><linearGradient id="paint1_linear_3619_49218" x1="3.5998" y1="0.800049" x2="3.5998" y2="6.40005" gradientUnits="userSpaceOnUse"><stop stop-color="#506CF0"></stop><stop offset="1" stop-color="#9E72D5"></stop></linearGradient><linearGradient id="paint2_linear_3619_49218" x1="7.3998" y1="4.22227" x2="11.4442" y2="15.7778" gradientUnits="userSpaceOnUse"><stop stop-color="#506CF0"></stop><stop offset="1" stop-color="#9E72D5"></stop></linearGradient><linearGradient id="paint3_linear_3619_49218" x1="9.9998" y1="4.80005" x2="9.9998" y2="15.2" gradientUnits="userSpaceOnUse"><stop stop-color="#506CF0"></stop><stop offset="1" stop-color="#9E72D5"></stop></linearGradient><clipPath id="clip0_3619_49218"><rect width="16" height="16" fill="white"></rect></clipPath></defs></svg>
+    <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><g clip-path="url(#clip0_3619_49218)"><path d="M0.799805 3.60005C2.3462 3.60005 3.5998 4.85365 3.5998 6.40005C3.5998 4.85365 4.85341 3.60005 6.3998 3.60005C4.85341 3.60005 3.5998 2.34645 3.5998 0.800049C3.5998 2.34645 2.3462 3.60005 0.799805 3.60005Z" fill="url(#paint0_linear_3619_49218)" stroke="url(#paint1_linear_3619_49218)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.7998 10C7.67169 10 9.9998 12.3282 9.9998 15.2C9.9998 12.3282 12.3279 10 15.1998 10C12.3279 10 9.9998 7.67193 9.9998 4.80005C9.9998 7.67193 7.67169 10 4.7998 10Z" fill="url(#paint2_linear_3619_49218)" stroke="url(#paint3_linear_3619_49218)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></g><defs><linearGradient id="paint0_linear_3619_49218" x1="2.1998" y1="0.488938" x2="4.37758" y2="6.71116" gradientUnits="userSpaceOnUse"><stop stop-color="#506CF0"></stop><stop offset="1" stop-color="#9E72D5"></stop></linearGradient><linearGradient id="paint1_linear_3619_49218" x1="3.5998" y1="0.800049" x2="3.5998" y2="6.40005" gradientUnits="userSpaceOnUse"><stop stop-color="#506CF0"></stop><stop offset="1" stop-color="#9E72D5"></stop></linearGradient><linearGradient id="paint2_linear_3619_49218" x1="7.3998" y1="4.22227" x2="11.4442" y2="15.7778" gradientUnits="userSpaceOnUse"><stop stop-color="#506CF0"></stop><stop offset="1" stop-color="#9E72D5"></stop></linearGradient><linearGradient id="paint3_linear_3619_49218" x1="9.9998" y1="4.80005" x2="9.9998" y2="15.2" gradientUnits="userSpaceOnUse"><stop stop-color="#506CF0"></stop><stop offset="1" stop-color="#9E72D5"></stop></linearGradient><clipPath id="clip0_3619_49218"><rect width="16" height="16" fill="white"></rect></clipPath></defs></svg>
 )
 
 
-export const OverviewIcon = ()=> (
-    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={16} height={16}>
+export const OverviewIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={16} height={16}>
         <path fill="currentColor" d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336c-13.3 0-24 10.7-24 24s10.7 24 24 24h80c13.3 0 24-10.7 24-24s-10.7-24-24-24h-8V248c0-13.3-10.7-24-24-24H216c-13.3 0-24 10.7-24 24s10.7 24 24 24h24v64H216zm40-144a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"></path></svg>
 )
 
-export const MeetingsIcon = ()=> (
-    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"  width={16} height={16}>
+export const MeetingsIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={16} height={16}>
         <path fill="currentColor" d="M128 0c13.3 0 24 10.7 24 24V64H296V24c0-13.3 10.7-24 24-24s24 10.7 24 24V64h40c35.3 0 64 28.7 64 64v16 48V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V192 144 128C0 92.7 28.7 64 64 64h40V24c0-13.3 10.7-24 24-24zM400 192H48V448c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V192zM112 256h96c8.8 0 16 7.2 16 16v96c0 8.8-7.2 16-16 16H112c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16z"></path></svg>
 )
 
-export const TaskIcon = ()=> (
+export const TaskIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={16} height={16}><path fill="currentColor" d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"></path></svg>
 )
 
-export const FilesIcon = ()=> (
-    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width={16} height={16}><path fill="currentColor" d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120z"></path></svg>
+export const FilesIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width={16} height={16}><path fill="currentColor" d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120z"></path></svg>
 )
 
 /* export const FeedIcon = () =>(
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={16} height={16}><path fill="currentColor" d="M0 56C0 42.7 10.7 32 24 32c234.2 0 424 189.8 424 424c0 13.3-10.7 24-24 24s-24-10.7-24-24C400 248.3 231.7 80 24 80C10.7 80 0 69.3 0 56zM64 432a16 16 0 1 0 0-32 16 16 0 1 0 0 32zm0-80a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM24 176c154.6 0 280 125.4 280 280c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-128.1-103.9-232-232-232c-13.3 0-24-10.7-24-24s10.7-24 24-24z"></path></svg>
 ) */
+
+export const SettingsIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={16} height={16}><path fill="currentColor" d="M256 0c17 0 33.6 1.7 49.8 4.8c7.9 1.5 21.8 6.1 29.4 20.1c2 3.7 3.6 7.6 4.6 11.8l9.3 38.5C350.5 81 360.3 86.7 366 85l38-11.2c4-1.2 8.1-1.8 12.2-1.9c16.1-.5 27 9.4 32.3 15.4c22.1 25.1 39.1 54.6 49.9 86.3c2.6 7.6 5.6 21.8-2.7 35.4c-2.2 3.6-4.9 7-8 10L459 246.3c-4.2 4-4.2 15.5 0 19.5l28.7 27.3c3.1 3 5.8 6.4 8 10c8.2 13.6 5.2 27.8 2.7 35.4c-10.8 31.7-27.8 61.1-49.9 86.3c-5.3 6-16.3 15.9-32.3 15.4c-4.1-.1-8.2-.8-12.2-1.9L366 427c-5.7-1.7-15.5 4-16.9 9.8l-9.3 38.5c-1 4.2-2.6 8.2-4.6 11.8c-7.7 14-21.6 18.5-29.4 20.1C289.6 510.3 273 512 256 512s-33.6-1.7-49.8-4.8c-7.9-1.5-21.8-6.1-29.4-20.1c-2-3.7-3.6-7.6-4.6-11.8l-9.3-38.5c-1.4-5.8-11.2-11.5-16.9-9.8l-38 11.2c-4 1.2-8.1 1.8-12.2 1.9c-16.1 .5-27-9.4-32.3-15.4c-22-25.1-39.1-54.6-49.9-86.3c-2.6-7.6-5.6-21.8 2.7-35.4c2.2-3.6 4.9-7 8-10L53 265.7c4.2-4 4.2-15.5 0-19.5L24.2 218.9c-3.1-3-5.8-6.4-8-10C8 195.3 11 181.1 13.6 173.6c10.8-31.7 27.8-61.1 49.9-86.3c5.3-6 16.3-15.9 32.3-15.4c4.1 .1 8.2 .8 12.2 1.9L146 85c5.7 1.7 15.5-4 16.9-9.8l9.3-38.5c1-4.2 2.6-8.2 4.6-11.8c7.7-14 21.6-18.5 29.4-20.1C222.4 1.7 239 0 256 0zM218.1 51.4l-8.5 35.1c-7.8 32.3-45.3 53.9-77.2 44.6L97.9 120.9c-16.5 19.3-29.5 41.7-38 65.7l26.2 24.9c24 22.8 24 66.2 0 89L59.9 325.4c8.5 24 21.5 46.4 38 65.7l34.6-10.2c31.8-9.4 69.4 12.3 77.2 44.6l8.5 35.1c24.6 4.5 51.3 4.5 75.9 0l8.5-35.1c7.8-32.3 45.3-53.9 77.2-44.6l34.6 10.2c16.5-19.3 29.5-41.7 38-65.7l-26.2-24.9c-24-22.8-24-66.2 0-89l26.2-24.9c-8.5-24-21.5-46.4-38-65.7l-34.6 10.2c-31.8 9.4-69.4-12.3-77.2-44.6l-8.5-35.1c-24.6-4.5-51.3-4.5-75.9 0zM208 256a48 48 0 1 0 96 0 48 48 0 1 0 -96 0zm48 96a96 96 0 1 1 0-192 96 96 0 1 1 0 192z"></path></svg>
+)
+
+export const MembersIcon = () => (
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width={16} height={16}><path fill="currentColor" d="M144 160A80 80 0 1 0 144 0a80 80 0 1 0 0 160zm368 0A80 80 0 1 0 512 0a80 80 0 1 0 0 160zM0 298.7C0 310.4 9.6 320 21.3 320H234.7c.2 0 .4 0 .7 0c-26.6-23.5-43.3-57.8-43.3-96c0-7.6 .7-15 1.9-22.3c-13.6-6.3-28.7-9.7-44.6-9.7H106.7C47.8 192 0 239.8 0 298.7zM405.3 320H618.7c11.8 0 21.3-9.6 21.3-21.3C640 239.8 592.2 192 533.3 192H490.7c-15.9 0-31 3.5-44.6 9.7c1.3 7.2 1.9 14.7 1.9 22.3c0 38.2-16.8 72.5-43.3 96c.2 0 .4 0 .7 0zM320 176a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm0 144a96 96 0 1 0 0-192 96 96 0 1 0 0 192zm-58.7 80H378.7c39.8 0 73.2 27.2 82.6 64H178.7c9.5-36.8 42.9-64 82.6-64zm0-48C187.7 352 128 411.7 128 485.3c0 14.7 11.9 26.7 26.7 26.7H485.3c14.7 0 26.7-11.9 26.7-26.7C512 411.7 452.3 352 378.7 352H261.3z"></path></svg>
+)
+
+export const TabsIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={16} height={16}><path fill="currentColor" d="M432 48H208c-17.7 0-32 14.3-32 32V96H128V80c0-44.2 35.8-80 80-80H432c44.2 0 80 35.8 80 80V304c0 44.2-35.8 80-80 80H416V336h16c17.7 0 32-14.3 32-32V80c0-17.7-14.3-32-32-32zM48 448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V256H48V448zM64 128H320c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V192c0-35.3 28.7-64 64-64z"></path></svg>
+)
+
+export const StatusesIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width={16} height={16} style={{transform:'rotate(90deg)'}} ><path fill="currentColor" d="M48 112l0 288H96V112H48zM0 112C0 85.5 21.5 64 48 64H96c26.5 0 48 21.5 48 48V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112zm224 0V400h48V112H224zm-48 0c0-26.5 21.5-48 48-48h48c26.5 0 48 21.5 48 48V400c0 26.5-21.5 48-48 48H224c-26.5 0-48-21.5-48-48V112z"></path></svg>
+)
+

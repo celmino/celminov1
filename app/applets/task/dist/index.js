@@ -32212,9 +32212,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   GridIcon: () => (/* binding */ GridIcon),
 /* harmony export */   ListIcon: () => (/* binding */ ListIcon),
 /* harmony export */   MeetingsIcon: () => (/* binding */ MeetingsIcon),
+/* harmony export */   MembersIcon: () => (/* binding */ MembersIcon),
 /* harmony export */   OverviewIcon: () => (/* binding */ OverviewIcon),
 /* harmony export */   ReportIcon: () => (/* binding */ ReportIcon),
+/* harmony export */   SettingsIcon: () => (/* binding */ SettingsIcon),
+/* harmony export */   StatusesIcon: () => (/* binding */ StatusesIcon),
 /* harmony export */   TableIcon: () => (/* binding */ TableIcon),
+/* harmony export */   TabsIcon: () => (/* binding */ TabsIcon),
 /* harmony export */   TaskIcon: () => (/* binding */ TaskIcon),
 /* harmony export */   TimelineIcon: () => (/* binding */ TimelineIcon)
 /* harmony export */ });
@@ -32273,7 +32277,15 @@ var FilesIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { fill: "currentColor", d: "M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm56 256c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24H264c13.3 0 24-10.7 24-24s-10.7-24-24-24H120z" }))); };
 /* export const FeedIcon = () =>(
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={16} height={16}><path fill="currentColor" d="M0 56C0 42.7 10.7 32 24 32c234.2 0 424 189.8 424 424c0 13.3-10.7 24-24 24s-24-10.7-24-24C400 248.3 231.7 80 24 80C10.7 80 0 69.3 0 56zM64 432a16 16 0 1 0 0-32 16 16 0 1 0 0 32zm0-80a64 64 0 1 1 0 128 64 64 0 1 1 0-128zM24 176c154.6 0 280 125.4 280 280c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-128.1-103.9-232-232-232c-13.3 0-24-10.7-24-24s10.7-24 24-24z"></path></svg>
-) */ 
+) */
+var SettingsIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512", width: 16, height: 16 },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { fill: "currentColor", d: "M256 0c17 0 33.6 1.7 49.8 4.8c7.9 1.5 21.8 6.1 29.4 20.1c2 3.7 3.6 7.6 4.6 11.8l9.3 38.5C350.5 81 360.3 86.7 366 85l38-11.2c4-1.2 8.1-1.8 12.2-1.9c16.1-.5 27 9.4 32.3 15.4c22.1 25.1 39.1 54.6 49.9 86.3c2.6 7.6 5.6 21.8-2.7 35.4c-2.2 3.6-4.9 7-8 10L459 246.3c-4.2 4-4.2 15.5 0 19.5l28.7 27.3c3.1 3 5.8 6.4 8 10c8.2 13.6 5.2 27.8 2.7 35.4c-10.8 31.7-27.8 61.1-49.9 86.3c-5.3 6-16.3 15.9-32.3 15.4c-4.1-.1-8.2-.8-12.2-1.9L366 427c-5.7-1.7-15.5 4-16.9 9.8l-9.3 38.5c-1 4.2-2.6 8.2-4.6 11.8c-7.7 14-21.6 18.5-29.4 20.1C289.6 510.3 273 512 256 512s-33.6-1.7-49.8-4.8c-7.9-1.5-21.8-6.1-29.4-20.1c-2-3.7-3.6-7.6-4.6-11.8l-9.3-38.5c-1.4-5.8-11.2-11.5-16.9-9.8l-38 11.2c-4 1.2-8.1 1.8-12.2 1.9c-16.1 .5-27-9.4-32.3-15.4c-22-25.1-39.1-54.6-49.9-86.3c-2.6-7.6-5.6-21.8 2.7-35.4c2.2-3.6 4.9-7 8-10L53 265.7c4.2-4 4.2-15.5 0-19.5L24.2 218.9c-3.1-3-5.8-6.4-8-10C8 195.3 11 181.1 13.6 173.6c10.8-31.7 27.8-61.1 49.9-86.3c5.3-6 16.3-15.9 32.3-15.4c4.1 .1 8.2 .8 12.2 1.9L146 85c5.7 1.7 15.5-4 16.9-9.8l9.3-38.5c1-4.2 2.6-8.2 4.6-11.8c7.7-14 21.6-18.5 29.4-20.1C222.4 1.7 239 0 256 0zM218.1 51.4l-8.5 35.1c-7.8 32.3-45.3 53.9-77.2 44.6L97.9 120.9c-16.5 19.3-29.5 41.7-38 65.7l26.2 24.9c24 22.8 24 66.2 0 89L59.9 325.4c8.5 24 21.5 46.4 38 65.7l34.6-10.2c31.8-9.4 69.4 12.3 77.2 44.6l8.5 35.1c24.6 4.5 51.3 4.5 75.9 0l8.5-35.1c7.8-32.3 45.3-53.9 77.2-44.6l34.6 10.2c16.5-19.3 29.5-41.7 38-65.7l-26.2-24.9c-24-22.8-24-66.2 0-89l26.2-24.9c-8.5-24-21.5-46.4-38-65.7l-34.6 10.2c-31.8 9.4-69.4-12.3-77.2-44.6l-8.5-35.1c-24.6-4.5-51.3-4.5-75.9 0zM208 256a48 48 0 1 0 96 0 48 48 0 1 0 -96 0zm48 96a96 96 0 1 1 0-192 96 96 0 1 1 0 192z" }))); };
+var MembersIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 640 512", width: 16, height: 16 },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { fill: "currentColor", d: "M144 160A80 80 0 1 0 144 0a80 80 0 1 0 0 160zm368 0A80 80 0 1 0 512 0a80 80 0 1 0 0 160zM0 298.7C0 310.4 9.6 320 21.3 320H234.7c.2 0 .4 0 .7 0c-26.6-23.5-43.3-57.8-43.3-96c0-7.6 .7-15 1.9-22.3c-13.6-6.3-28.7-9.7-44.6-9.7H106.7C47.8 192 0 239.8 0 298.7zM405.3 320H618.7c11.8 0 21.3-9.6 21.3-21.3C640 239.8 592.2 192 533.3 192H490.7c-15.9 0-31 3.5-44.6 9.7c1.3 7.2 1.9 14.7 1.9 22.3c0 38.2-16.8 72.5-43.3 96c.2 0 .4 0 .7 0zM320 176a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm0 144a96 96 0 1 0 0-192 96 96 0 1 0 0 192zm-58.7 80H378.7c39.8 0 73.2 27.2 82.6 64H178.7c9.5-36.8 42.9-64 82.6-64zm0-48C187.7 352 128 411.7 128 485.3c0 14.7 11.9 26.7 26.7 26.7H485.3c14.7 0 26.7-11.9 26.7-26.7C512 411.7 452.3 352 378.7 352H261.3z" }))); };
+var TabsIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512", width: 16, height: 16 },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { fill: "currentColor", d: "M432 48H208c-17.7 0-32 14.3-32 32V96H128V80c0-44.2 35.8-80 80-80H432c44.2 0 80 35.8 80 80V304c0 44.2-35.8 80-80 80H416V336h16c17.7 0 32-14.3 32-32V80c0-17.7-14.3-32-32-32zM48 448c0 8.8 7.2 16 16 16H320c8.8 0 16-7.2 16-16V256H48V448zM64 128H320c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V192c0-35.3 28.7-64 64-64z" }))); };
+var StatusesIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 320 512", width: 16, height: 16, style: { transform: 'rotate(90deg)' } },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { fill: "currentColor", d: "M48 112l0 288H96V112H48zM0 112C0 85.5 21.5 64 48 64H96c26.5 0 48 21.5 48 48V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112zm224 0V400h48V112H224zm-48 0c0-26.5 21.5-48 48-48h48c26.5 0 48 21.5 48 48V400c0 26.5-21.5 48-48 48H224c-26.5 0-48-21.5-48-48V112z" }))); };
 
 
 /***/ }),
@@ -32348,14 +32360,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _list_listId_view_viewId_controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list-[listId]/view-[viewId]/+controller */ "./src/routes/list-[listId]/view-[viewId]/+controller.tsx");
+/* harmony import */ var _lists_view_viewId_controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lists/view-[viewId]/+controller */ "./src/routes/lists/view-[viewId]/+controller.tsx");
 /* harmony import */ var _document_documentId_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./document-[documentId]/+controller */ "./src/routes/document-[documentId]/+controller.tsx");
-/* harmony import */ var _list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./list-[listId]/+controller.ts */ "./src/routes/list-[listId]/+controller.ts.tsx");
+/* harmony import */ var _lists_controller_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lists/+controller.ts */ "./src/routes/lists/+controller.ts.tsx");
 /* harmony import */ var _whiteboard_whiteboardId_controller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./whiteboard-[whiteboardId]/+controller */ "./src/routes/whiteboard-[whiteboardId]/+controller.tsx");
 /* harmony import */ var _settings_controller__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./settings/+controller */ "./src/routes/settings/+controller.ts");
 /* harmony import */ var _settings_features_controller__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./settings/features/+controller */ "./src/routes/settings/features/+controller.ts");
 /* harmony import */ var _settings_general_controller__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./settings/general/+controller */ "./src/routes/settings/general/+controller.ts");
 /* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./+controller */ "./src/routes/+controller.tsx");
+/* harmony import */ var _overview_controller__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./overview/+controller */ "./src/routes/overview/+controller.ts");
+/* harmony import */ var _team_controller__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./team/+controller */ "./src/routes/team/+controller.ts");
+/* harmony import */ var _settings_members_controller__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./settings/members/+controller */ "./src/routes/settings/members/+controller.ts");
+/* harmony import */ var _settings_tabs_controller__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./settings/tabs/+controller */ "./src/routes/settings/tabs/+controller.ts");
+/* harmony import */ var _settings_statuses_controller__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./settings/statuses/+controller */ "./src/routes/settings/statuses/+controller.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -32380,6 +32397,11 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+
+
+
+
 var RouteController = /** @class */ (function (_super) {
     __extends(RouteController, _super);
     function RouteController() {
@@ -32393,7 +32415,7 @@ var RouteController = /** @class */ (function (_super) {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
                 return class_1;
-            }(_list_listId_controller_ts__WEBPACK_IMPORTED_MODULE_3__.ListController))), 
+            }(_lists_controller_ts__WEBPACK_IMPORTED_MODULE_3__.ListController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('overview', _overview_controller__WEBPACK_IMPORTED_MODULE_9__.OverviewController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('team', _team_controller__WEBPACK_IMPORTED_MODULE_10__.TeamController), 
             /* UIRoute('list/:listId', ListController).children(
                 UIRoute('view/:viewId', class extends  ViewController {}),
             ), */
@@ -32409,7 +32431,7 @@ var RouteController = /** @class */ (function (_super) {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
                 return class_3;
-            }(_whiteboard_whiteboardId_controller__WEBPACK_IMPORTED_MODULE_4__.WhiteboardController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':view_id', _list_listId_view_viewId_controller__WEBPACK_IMPORTED_MODULE_1__.ViewController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':view_id/*', _list_listId_view_viewId_controller__WEBPACK_IMPORTED_MODULE_1__.ViewController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/settings', _settings_controller__WEBPACK_IMPORTED_MODULE_5__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('features', _settings_features_controller__WEBPACK_IMPORTED_MODULE_6__.FeatureSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_7__.GeneralSettingsController))))
+            }(_whiteboard_whiteboardId_controller__WEBPACK_IMPORTED_MODULE_4__.WhiteboardController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':view_id', _lists_view_viewId_controller__WEBPACK_IMPORTED_MODULE_1__.ViewController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':view_id/*', _lists_view_viewId_controller__WEBPACK_IMPORTED_MODULE_1__.ViewController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/settings', _settings_controller__WEBPACK_IMPORTED_MODULE_5__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('features', _settings_features_controller__WEBPACK_IMPORTED_MODULE_6__.FeatureSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_7__.GeneralSettingsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('members', _settings_members_controller__WEBPACK_IMPORTED_MODULE_11__.MembersController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('tabs', _settings_tabs_controller__WEBPACK_IMPORTED_MODULE_12__.TabsController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('statuses', _settings_statuses_controller__WEBPACK_IMPORTED_MODULE_13__.StatusesController))))
                 .background('var(--primary-background-color)');
         }));
     };
@@ -32520,10 +32542,10 @@ var DocumentController = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/routes/list-[listId]/+controller.ts.tsx":
-/*!*****************************************************!*\
-  !*** ./src/routes/list-[listId]/+controller.ts.tsx ***!
-  \*****************************************************/
+/***/ "./src/routes/lists/+controller.ts.tsx":
+/*!*********************************************!*\
+  !*** ./src/routes/lists/+controller.ts.tsx ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -32538,7 +32560,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../resources/Icons */ "./src/resources/Icons.tsx");
+/* harmony import */ var _views_AppletTabMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../views/AppletTabMenu */ "./src/views/AppletTabMenu.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -32662,31 +32684,7 @@ var ListController = /** @class */ (function (_super) {
                  ViewHeader(applet?.name, (e) => {
                     
                  }), */
-                (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.TabMenu)().menuItems([
-                    {
-                        key: 'overview',
-                        icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_3__.OverviewIcon,
-                        title: 'Overview'
-                    },
-                    {
-                        key: 'tasks',
-                        icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_3__.TaskIcon,
-                        title: 'Tasks',
-                        contextMenu: [
-                            {
-                                title: 'Set as template',
-                                onClick: function () {
-                                    //  updateMeeting(meeting.$id, { is_template: 1 })
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        key: 'teams',
-                        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)('svg-sprite-cu2-view-3', 'var(--icon-color)'),
-                        title: 'Team'
-                    }
-                ]).selectedKey('tasks'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                (0,_views_AppletTabMenu__WEBPACK_IMPORTED_MODULE_3__.AppletTabMenu)('tasks'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
                     var _a;
                     var openDialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialogStack)().openDialog;
                     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.list')
@@ -32921,10 +32919,10 @@ color: '#FF0000:#00FF00'
 
 /***/ }),
 
-/***/ "./src/routes/list-[listId]/view-[viewId]/+controller.tsx":
-/*!****************************************************************!*\
-  !*** ./src/routes/list-[listId]/view-[viewId]/+controller.tsx ***!
-  \****************************************************************/
+/***/ "./src/routes/lists/view-[viewId]/+controller.tsx":
+/*!********************************************************!*\
+  !*** ./src/routes/lists/view-[viewId]/+controller.tsx ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -33124,6 +33122,52 @@ var ErrorBoundaryInner = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/routes/overview/+controller.ts":
+/*!********************************************!*\
+  !*** ./src/routes/overview/+controller.ts ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   OverviewController: () => (/* binding */ OverviewController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _views_AppletTabMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../views/AppletTabMenu */ "./src/views/AppletTabMenu.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var OverviewController = /** @class */ (function (_super) {
+    __extends(OverviewController, _super);
+    function OverviewController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    OverviewController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_views_AppletTabMenu__WEBPACK_IMPORTED_MODULE_1__.AppletTabMenu)('overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Overview')));
+    };
+    return OverviewController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
 /***/ "./src/routes/settings/+controller.ts":
 /*!********************************************!*\
   !*** ./src/routes/settings/+controller.ts ***!
@@ -33140,6 +33184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../resources/Icons */ "./src/resources/Icons.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -33164,6 +33209,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+
 
 
 function getSettingsName() {
@@ -33192,62 +33238,47 @@ var SettingsController = /** @class */ (function (_super) {
                 id: 'general',
                 title: 'General',
                 url: "settings/general",
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
+                icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_2__.SettingsIcon
             },
             {
-                id: 'import',
-                title: 'Document Types',
-                url: "settings/import",
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
+                id: 'members',
+                title: 'Members',
+                url: "settings/members",
+                icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_2__.MembersIcon
             },
             {
-                id: 'features',
-                title: 'Features',
-                url: "settings/features",
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
+                id: 'tabs',
+                title: 'Tabs',
+                url: "settings/tabs",
+                icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_2__.TabsIcon
             },
             {
-                id: 'collections',
-                title: 'Collections',
-                url: "settings/collections",
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
-            },
-            {
-                id: 'import',
-                title: 'Integrations',
-                url: "settings/import",
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
-            },
-            {
-                id: 'security',
-                title: 'Security & Permissions ',
-                url: "settings/security",
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-protectedAlt')
-            },
-            {
-                id: 'import',
-                title: 'Imports / Exports',
-                url: "settings/import",
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
-            },
+                id: 'statuses',
+                title: 'Statuses',
+                url: "settings/statuses",
+                icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_2__.StatusesIcon
+            }
         ];
         // 
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Heading)('DOCUMENT APPLET').h3().foregroundColor('rgb(101, 111, 125)')
                 .fontSize(11).fontWeight('600')).padding('16px 8px 8px').height()], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(menu)(function (item) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 8 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.title).fontSize(14).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)')
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 8 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.title)
+                .fontSize('1.5rem')
                 .fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
-                .lineHeight(16)).height(32)
+                .fontWeight('500')
+                .lineHeight(16)).height()
+                .foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : '#94A3B8')
                 .cornerRadius(6)
                 .background({ default: item.id === getSettingsName() ? '#E5E4FC' : '', hover: '#E8EAED' })
-                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 8)
+                .padding( /* cHorizontal, 8) */)
                 .cursor('pointer')
                 .onClick(function () {
                 navigate(item.url);
             });
         }), false)).padding()
-            .background('#F7F8F9')
-            .allWidth(240)
-            .margin('0 8px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRouteOutlet)().width('100%').height('100%')));
+            .background('white')
+            .borderRight('solid 1px #E2E8F0')
+            .allWidth(240), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRouteOutlet)().width('100%').height('100%')));
     };
     return SettingsController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
@@ -33408,9 +33439,13 @@ var GeneralSettingsController = /** @class */ (function (_super) {
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId;
         var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }).document;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('General').fontSize(24).fontWeight('600')
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('General').fontSize(18).fontWeight('500')
+            .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')
             .foregroundColor('rgb(42, 46, 52)')
             .lineHeight(32))
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cHorizontal, 16)
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cVertical, 20)
+            .borderBottom('solid 1px #E2E8F0')
             .height()
             .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Applet').fontSize(20).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
@@ -33480,10 +33515,239 @@ var GeneralSettingsController = /** @class */ (function (_super) {
                 });
             }
         }).width(200))
-            .padding('24px 48px'));
+            .height()
+            .background('white')
+            .cornerRadius(8)
+            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
+            .border('solid 1px #E2E8F0'))
+            .padding('20px')
+            .background('#F8FAFC'));
     };
     return GeneralSettingsController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIFormController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/members/+controller.ts":
+/*!****************************************************!*\
+  !*** ./src/routes/settings/members/+controller.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MembersController: () => (/* binding */ MembersController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var MembersController = /** @class */ (function (_super) {
+    __extends(MembersController, _super);
+    function MembersController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    MembersController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Members').fontSize(18).fontWeight('500')
+            .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')
+            .foregroundColor('rgb(42, 46, 52)')
+            .lineHeight(32))
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 16)
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, 20)
+            .borderBottom('solid 1px #E2E8F0')
+            .height()
+            .margin('0 0 30px'))
+            .height()
+            .background('white')
+            .cornerRadius(8)
+            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
+            .border('solid 1px #E2E8F0'))
+            .padding('20px')
+            .background('#F8FAFC'));
+    };
+    return MembersController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/+controller.ts":
+/*!*****************************************************!*\
+  !*** ./src/routes/settings/statuses/+controller.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   StatusesController: () => (/* binding */ StatusesController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var StatusesController = /** @class */ (function (_super) {
+    __extends(StatusesController, _super);
+    function StatusesController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    StatusesController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Statuses').fontSize(18).fontWeight('500')
+            .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')
+            .foregroundColor('rgb(42, 46, 52)')
+            .lineHeight(32))
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 16)
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, 20)
+            .borderBottom('solid 1px #E2E8F0')
+            .height()
+            .margin('0 0 30px'))
+            .height()
+            .background('white')
+            .cornerRadius(8)
+            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
+            .border('solid 1px #E2E8F0'))
+            .padding('20px')
+            .background('#F8FAFC'));
+    };
+    return StatusesController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/tabs/+controller.ts":
+/*!*************************************************!*\
+  !*** ./src/routes/settings/tabs/+controller.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TabsController: () => (/* binding */ TabsController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var TabsController = /** @class */ (function (_super) {
+    __extends(TabsController, _super);
+    function TabsController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TabsController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Tabs').fontSize(18).fontWeight('500')
+            .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial')
+            .foregroundColor('rgb(42, 46, 52)')
+            .lineHeight(32))
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 16)
+            .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, 20)
+            .borderBottom('solid 1px #E2E8F0')
+            .height()
+            .margin('0 0 30px'))
+            .height()
+            .background('white')
+            .cornerRadius(8)
+            .shadow('rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px')
+            .border('solid 1px #E2E8F0'))
+            .padding('20px')
+            .background('#F8FAFC'));
+    };
+    return TabsController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/team/+controller.ts":
+/*!****************************************!*\
+  !*** ./src/routes/team/+controller.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   TeamController: () => (/* binding */ TeamController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _views_AppletTabMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../views/AppletTabMenu */ "./src/views/AppletTabMenu.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var TeamController = /** @class */ (function (_super) {
+    __extends(TeamController, _super);
+    function TeamController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    TeamController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_views_AppletTabMenu__WEBPACK_IMPORTED_MODULE_1__.AppletTabMenu)('team'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Team')));
+    };
+    return TeamController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 
 
@@ -33792,6 +34056,59 @@ var ActionPanel = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_
     }))
         .background('white')
         .height().padding(8));
+}); };
+
+
+/***/ }),
+
+/***/ "./src/views/AppletTabMenu.ts":
+/*!************************************!*\
+  !*** ./src/views/AppletTabMenu.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppletTabMenu: () => (/* binding */ AppletTabMenu)
+/* harmony export */ });
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../resources/Icons */ "./src/resources/Icons.tsx");
+
+
+
+var AppletTabMenu = function (selectedKey) { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(function () {
+    var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)().navigate;
+    return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.TabMenu)().menuItems([
+        {
+            key: 'overview',
+            icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_2__.OverviewIcon,
+            title: 'Overview'
+        },
+        {
+            key: 'tasks',
+            icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_2__.TaskIcon,
+            title: 'Tasks',
+            contextMenu: [
+                {
+                    title: 'Set as template',
+                    onClick: function () {
+                        //  updateMeeting(meeting.$id, { is_template: 1 })
+                    }
+                }
+            ]
+        },
+        {
+            key: 'team',
+            icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('svg-sprite-cu2-view-3', 'var(--icon-color)'),
+            title: 'Team'
+        }
+    ])
+        .selectedKey(selectedKey)
+        .onSelect(function (item) { return navigate(item.key); }));
 }); };
 
 

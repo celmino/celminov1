@@ -23,6 +23,7 @@ import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
 import { SelectSiderDialog, TabMenu, useAccount, useApplet } from '@celmino/ui'
 import { OverviewIcon, TableIcon, TaskIcon } from "../../resources/Icons";
+import { AppletTabMenu } from "../../views/AppletTabMenu";
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -133,32 +134,7 @@ export class ListController extends UIFormController {
                              ViewHeader(applet?.name, (e) => {
                                 
                              }), */
-                            TabMenu().menuItems([
-                                {
-                                    key: 'overview',
-                                    icon: OverviewIcon,
-                                    title: 'Overview'
-                                },
-                                {
-                                    key: 'tasks',
-                                    icon: TaskIcon,
-                                    title: 'Tasks',
-                                    contextMenu: [
-                                        {
-                                            title: 'Set as template',
-                                            onClick: () => {
-                                                //  updateMeeting(meeting.$id, { is_template: 1 })
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    key: 'teams',
-                                    icon: SvgIcon('svg-sprite-cu2-view-3', 'var(--icon-color)'),
-                                    title: 'Team'
-
-                                }
-                            ]).selectedKey('tasks'),
+                            AppletTabMenu('tasks'),
                             HStack({ alignment: cTopLeading })(
                                 VStack({ alignment: cTopLeading })(
                                     UIViewBuilder(() => {

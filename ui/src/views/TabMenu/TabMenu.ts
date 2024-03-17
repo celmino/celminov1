@@ -1,4 +1,4 @@
-import { ForEach, HStack, Icon, Icons, MenuButton, UIView, ViewProperty, cHorizontal, Text } from "@tuval/forms";
+import { ForEach, HStack, Icon, Icons, MenuButton, UIView, ViewProperty, cHorizontal, Text, PopupButton, DialogPosition } from "@tuval/forms";
 
 
 
@@ -51,13 +51,38 @@ export const TabMenu = (): ITabMenu => {
                         HStack(
                             HStack().width(10).borderBottom('solid 1px #E2E8F0'),
                             HStack({ spacing: 5 })(
-                                Icon(menuItem.icon),
-                                Text(menuItem.title)
-                                    .fontWeight('500')
-                                    .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'),
-                                (menuItem.contextMenu && this._SelectedKey === menuItem.key) &&
-                                MenuButton().icon(Icons.Menu)
-                                    .model(menuItem.contextMenu)
+                                (menuItem.contextMenu && this._SelectedKey === menuItem.key) ?
+                                    PopupButton(
+                                        HStack({ spacing: 5 })(
+                                            Icon(menuItem.icon),
+                                            Text(menuItem.title)
+                                                .fontWeight('500')
+                                                .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'),
+                                        )
+
+                                    )(
+                                        HStack(
+                                            Text('dfsdfsdf')
+                                        )
+                                            .cornerRadius(6)
+                                            .background('white')
+                                            .width(200)
+                                            .height(200)
+                                            .marginTop(13)
+                                            .marginLeft(-10)
+                                    )
+                                        .dialogPosition(DialogPosition.BOTTOM_START)
+
+                                    :
+                                    HStack({ spacing: 5 })(
+                                        Icon(menuItem.icon),
+                                        Text(menuItem.title)
+                                            .fontWeight('500')
+                                            .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'),
+                                    )
+
+                                ,
+
                             )
                                 .cornerRadius('6px 6px 0px 0px')
                                 .cursor('pointer')
@@ -72,7 +97,12 @@ export const TabMenu = (): ITabMenu => {
                         )
                             .width()
                             .border('none')
-                            .onClick(() => this._OnSelect(menuItem))
+                            .onClick(() => {
+                                if (this._SelectedKey !== menuItem.key) {
+                                    this._OnSelect(menuItem);
+                                }
+                            })
+
                         ,
                     ),
 

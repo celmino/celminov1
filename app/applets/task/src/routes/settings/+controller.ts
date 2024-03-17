@@ -1,6 +1,7 @@
 
 import { useAppletNavigate } from "@celmino/ui";
 import { Text, ForEach, HStack, Heading, HeadingSizes, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
+import { MembersIcon, SettingsIcon, StatusesIcon, TabsIcon } from "../../resources/Icons";
 
 export function getSettingsName() {
     var url = window.location.href;
@@ -25,7 +26,7 @@ export class SettingsController extends UIFormController {
 
 
     public LoadView() {
-    
+
         const { navigate } = useAppletNavigate();
 
         const menu = [
@@ -33,48 +34,26 @@ export class SettingsController extends UIFormController {
                 id: 'general',
                 title: 'General',
                 url: `settings/general`,
-                icon: SvgIcon('cu3-icon-settings')
+                icon: SettingsIcon
             },
             {
-                id: 'import',
-                title: 'Document Types',
-                url: `settings/import`,
-                icon: SvgIcon('cu3-icon-importIcon')
+                id: 'members',
+                title: 'Members',
+                url: `settings/members`,
+                icon: MembersIcon
             },
             {
-                id: 'features',
-                title: 'Features',
-                url: `settings/features`,
-                icon: SvgIcon('cu3-icon-settings')
+                id: 'tabs',
+                title: 'Tabs',
+                url: `settings/tabs`,
+                icon: TabsIcon
             },
             {
-                id: 'collections',
-                title: 'Collections',
-                url: `settings/collections`,
-                icon: SvgIcon('cu3-icon-settings')
-            },
-            {
-                id: 'import',
-                title: 'Integrations',
-                url: `settings/import`,
-                icon: SvgIcon('cu3-icon-importIcon')
-            },
-            {
-                id: 'security',
-                title: 'Security & Permissions ',
-                url: `settings/security`,
-                icon: SvgIcon('cu3-icon-protectedAlt')
-            },
-            {
-                id: 'import',
-                title: 'Imports / Exports',
-                url: `settings/import`,
-                icon: SvgIcon('cu3-icon-importIcon')
-            },
-
-
-
-
+                id: 'statuses',
+                title: 'Statuses',
+                url: `settings/statuses`,
+                icon: StatusesIcon
+            }
         ]
 
         // 
@@ -88,26 +67,32 @@ export class SettingsController extends UIFormController {
                     ,
                     ...ForEach(menu)(item =>
                         HStack({ alignment: cLeading, spacing: 8 })(
-                            Icon(item.icon).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)'),
-                            Text(item.title).fontSize(14).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)')
+                            Icon(item.icon),
+
+                            Text(item.title)
+                                .fontSize('1.5rem')
                                 .fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
+                                .fontWeight('500')
                                 .lineHeight(16)
 
 
-                        ).height(32)
+                        ).height()
+                            .foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : '#94A3B8')
 
                             .cornerRadius(6)
                             .background({ default: item.id === getSettingsName() ? '#E5E4FC' : '', hover: '#E8EAED' })
-                            .padding(cHorizontal, 8)
+                            .padding(/* cHorizontal, 8) */)
                             .cursor('pointer')
+
                             .onClick(() => {
                                 navigate(item.url);
                             })
                     )
                 ).padding()
-                    .background('#F7F8F9')
+                .background('white')
+                    .borderRight('solid 1px #E2E8F0')
                     .allWidth(240)
-                    .margin('0 8px'),
+                 ,
                 UIRouteOutlet().width('100%').height('100%')
             )
 
