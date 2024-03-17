@@ -32671,7 +32671,15 @@ var ListController = /** @class */ (function (_super) {
                     {
                         key: 'tasks',
                         icon: _resources_Icons__WEBPACK_IMPORTED_MODULE_3__.TaskIcon,
-                        title: 'Tasks'
+                        title: 'Tasks',
+                        contextMenu: [
+                            {
+                                title: 'Set as template',
+                                onClick: function () {
+                                    //  updateMeeting(meeting.$id, { is_template: 1 })
+                                }
+                            }
+                        ]
                     },
                     {
                         key: 'teams',

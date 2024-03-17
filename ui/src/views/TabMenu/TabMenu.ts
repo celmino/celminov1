@@ -55,7 +55,7 @@ export const TabMenu = (): ITabMenu => {
                                 Text(menuItem.title)
                                     .fontWeight('500')
                                     .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'),
-                                menuItem.contextMenu &&
+                                (menuItem.contextMenu && this._SelectedKey === menuItem.key) &&
                                 MenuButton().icon(Icons.Menu)
                                     .model(menuItem.contextMenu)
                             )

@@ -22646,7 +22646,9 @@ const TabMenu = () => {
         render() {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().borderBottom('solid 1px #E2E8F0').background('white'), ...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this._MenuItems)(menuItem => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).borderBottom('solid 1px #E2E8F0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(menuItem.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(menuItem.title)
                 .fontWeight('500')
-                .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'))
+                .fontFamily('Inter Variable,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial'), (menuItem.contextMenu && this._SelectedKey === menuItem.key) &&
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.MenuButton)().icon(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icons.Menu)
+                    .model(menuItem.contextMenu))
                 .cornerRadius('6px 6px 0px 0px')
                 .cursor('pointer')
                 .foregroundColor(this._SelectedKey === menuItem.key ? 'rgb(30, 41, 59)' : 'rgb(100, 116, 139)')

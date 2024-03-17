@@ -1,8 +1,8 @@
 import { UIController, UIRoute, UIRoutes, UIView, UIViewBuilder, VStack } from "@tuval/forms";
 import { MyTestController } from "../AppController";
-import { ViewController } from "./list-[listId]/view-[viewId]/+controller";
+import { ViewController } from "./lists/view-[viewId]/+controller";
 import { DocumentController } from "./document-[documentId]/+controller";
-import { ListController, _ListController } from "./list-[listId]/+controller.ts";
+import { ListController, _ListController } from "./lists/+controller.ts";
 import { WhiteboardController } from "./whiteboard-[whiteboardId]/+controller";
 import { SettingsController } from "./settings/+controller";
 import { FeatureSettingsController } from "./settings/features/+controller";
