@@ -3,5 +3,5 @@ export declare class _ListController extends UIFormController {
     LoadView(): UIView;
 }
 export declare class ListController extends UIFormController {
-    LoadView(): import("@tuval/forms").FragmentClass | import("@tuval/forms").UIViewBuilderClass;
+    LoadView(): import("@tuval/forms").VStackClass;
 }

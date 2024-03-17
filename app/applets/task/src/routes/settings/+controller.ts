@@ -61,7 +61,7 @@ export class SettingsController extends UIFormController {
             HStack(
                 VStack({ alignment: cTopLeading })(
                     HStack({ alignment: cLeading })(
-                        Heading('DOCUMENT APPLET').h3().foregroundColor('rgb(101, 111, 125)')
+                        Heading('TASK LIST APPLET').h3().foregroundColor('rgb(101, 111, 125)')
                             .fontSize(11).fontWeight('600')
                     ).padding('16px 8px 8px').height()
                     ,

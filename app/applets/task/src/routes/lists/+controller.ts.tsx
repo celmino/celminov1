@@ -103,38 +103,35 @@ export class ListController extends UIFormController {
 
 
         return (
+            VStack({ alignment: cTopLeading })(
+                AppletTabMenu('tasks'),
+                (isLoading || isStatusesLoading || isFieldSettingsLoading) ? Fragment() :
 
-            (isLoading || isStatusesLoading || isFieldSettingsLoading) ? Fragment() :
+                    UIViewBuilder(() => {
 
-                UIViewBuilder(() => {
+                        let resultFields = attributes;
+                        if (viewSettings != null) {
+                            resultFields = attributes
+                                .filter((field) => {
+                                    const index = viewSettings.findIndex((_) => _.key === field.key);
+                                    if (index > -1) {
+                                        return viewSettings[index].hidden === false;
+                                    } else {
+                                        return false;
+                                    }
+                                })
+                        }
+                        /* .map(field => {
+                           const index = fields.findIndex((_) => _.key === field.key);
+                           return {
+                               ...field,
+                               width: fields[index].width
+                           }
+                       })  */
 
-                    let resultFields = attributes;
-                    if (viewSettings != null) {
-                        resultFields = attributes
-                            .filter((field) => {
-                                const index = viewSettings.findIndex((_) => _.key === field.key);
-                                if (index > -1) {
-                                    return viewSettings[index].hidden === false;
-                                } else {
-                                    return false;
-                                }
-                            })
-                    }
-                    /* .map(field => {
-                       const index = fields.findIndex((_) => _.key === field.key);
-                       return {
-                           ...field,
-                           width: fields[index].width
-                       }
-                   })  */
+                        return (
 
-                    return (
-                        VStack({ alignment: cTopLeading })(
-                            /*  ActionPanel(),
-                             ViewHeader(applet?.name, (e) => {
-                                
-                             }), */
-                            AppletTabMenu('tasks'),
+
                             HStack({ alignment: cTopLeading })(
                                 VStack({ alignment: cTopLeading })(
                                     UIViewBuilder(() => {
@@ -373,9 +370,10 @@ export class ListController extends UIFormController {
                                     .padding('12px 8px')
                                     .width(60)
                             )
-                        ).background('#F9FAFB')
-                    )
-                })
+
+                        )
+                    })
+            ).background('#F9FAFB')
 
 
 
