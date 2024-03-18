@@ -1,6 +1,6 @@
 {
     "name": "@celmino/ui",
-    "version": "1.0.44",
+    "version": "1.0.46",
     "description": "",
     "keywords": [],
     "main": "index.js",
@@ -104,7 +104,7 @@
     "dependencies": {
         "@celmino/ui": "^1.0.38",
         "@realmocean/antd": "^21.0.34",
-        "@realmocean/sdk": "^1.0.89",
+        "@realmocean/sdk": "^1.0.94",
         "@realmocean/vibe": "2.82.50",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.178",

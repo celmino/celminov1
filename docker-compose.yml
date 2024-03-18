@@ -10,42 +10,12 @@ x-logging: &x-logging
 version: '3'
 
 services:
-  traefik:
-    image: traefik:2.9
-    <<: *x-logging
-    container_name: realmocean-traefik
-    command:
-      - --log.level=DEBUG
-      - --api.insecure=true
-      - --providers.file.directory=/storage/config
-      - --providers.file.watch=true
-      - --providers.docker=true
-      - --providers.docker.exposedByDefault=false
-      - --providers.docker.constraints=Label(`traefik.constraint-label-stack`,`realmocean`)
-      - --entrypoints.realmocean_web.address=:80
-      - --entrypoints.realmocean_websecure.address=:443
-      - --accesslog=true
-    ports:
-      - 80:80
-      - 8080:80
-      - 443:443
-      - 9500:8080
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - realmocean-config:/storage/config:ro
-      - realmocean-certificates:/storage/certificates:ro
-    depends_on:
-      - realmocean
-    networks:
-      - gateway
-      - realmocean
-
   realmocean:
     container_name: realmocean-dev
     <<: *x-logging
     image: realmocean/realmocean:dev
     ports: 
-      - 9501:80
+      - 80:80
     networks:
       - realmocean
     labels:

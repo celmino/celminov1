@@ -102,9 +102,9 @@
         ]
     },
     "dependencies": {
-        "@celmino/ui": "^1.0.37",
+        "@celmino/ui": "^1.0.46",
         "@realmocean/antd": "^21.0.30",
-        "@realmocean/sdk": "^1.0.89",
+        "@realmocean/sdk": "^1.0.93",
         "@realmocean/vibe": "^2.82.61",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.179",

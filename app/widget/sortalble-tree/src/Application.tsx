@@ -58,7 +58,7 @@ export class Tree extends React.Component<any, any> {
             <SortableTree
 
                 scaffoldBlockPxWidth={32}
-                rowHeight={() => 30}
+                rowHeight={() => 28}
                 treeData={this.props.items}
                 onChange={this.props.onChange}
                 onMoveNode={this.props.onMoveNode}
@@ -78,7 +78,7 @@ export class MyTestController extends UIFormController {
         return (
             HStack({ alignment: 'cTopLeading' })(
                 ReactView(
-                    <div style={{ height: '500px', width: '100%' }}>
+                    <div style={{  width: '100%' }}>
                         <Tree items={treeItems} onChange={onChange} onMoveNode={onMoveNode} onVisibilityToggle={onVisibilityToggle} canDrag={canDrag} />
                     </div>
                 )

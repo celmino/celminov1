@@ -1,12 +1,14 @@
 import { Spinner, Text, UIController, UINavigate, UIView } from "@tuval/forms";
 import { CreateWorkspaceView } from "../../../../views/CreateWorkspaceView";
 import { useGetOrganizationId } from "../../../../hooks/useGetOrganizationId";
+import { useCreateMagicURL } from "@realmocean/sdk";
 
 
 export class WorkspaceSelectController extends UIController {
     public override LoadView(): UIView {
 
         const { organizationId, isLoading } = useGetOrganizationId();
+        
       
          return (
             isLoading ? Spinner() :

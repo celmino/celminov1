@@ -1,8 +1,8 @@
-import { UIRoute, UIRoutes } from "@tuval/forms"
+import { HStack, UIController, UIRoute, UIRouteOutlet, UIRoutes, UIView, cTopLeading } from "@tuval/forms"
 
 import { LogoutController } from "./logout/+controller"
 import { WorkspaceLayoutController } from "./@/workspace/+controller"
-import { HomeController } from "./@/*/+controller"
+
 import { OrganizationController } from "./@/organization/[organizationId]/+controller"
 import { AppletController } from "./@/workspace/[workspaceId]/applet/[appletId]/+controller"
 import { RedirectToAppController } from "./RedirectToAppController"
@@ -10,19 +10,34 @@ import { LoginController } from "./login/+controller"
 import { SignupController } from "./signup/+controller"
 import { WorkspaceSelectController } from "./@/workspace/select/+controller"
 import { OrganizationSelectController } from "./@/organization/select/+controller"
-import { LayoutController, PublicLayoutController } from "./@/+controller"
+import { LayoutController, PublicLayoutController, RealmLayoutController } from "./@/+controller"
 import { WorkspaceController } from "./@/workspace/[workspaceId]/+controller"
-import { DefaultWorkspaceController } from "./@/+default"
+import { DefaultWorkspaceController, TestDefaultWorkspaceController } from "./@/+default"
 import { ResetPasswordController } from "./reset-password/+controller"
 import { UpdatePasswordController } from "./update-password/+controller"
 import { LandingController } from "./LandingController"
 import { PublicWorkspaceLayoutController } from "./@/workspace/@controller"
 import { LoginSuccess } from "./@/login-success/+controller"
+import { LeftSideMenuView } from "./@/*/views/LeftSideMenu"
+
+
+export class HomeController extends UIController {
+    public override LoadView(): UIView {
+        return (
+             HStack({ alignment: cTopLeading })(
+                LeftSideMenuView('Home'),
+                UIRouteOutlet().width("100%").height("100%")
+            ) 
+        )
+    }
+}
 
 
 export const Routes = () => {
     return (
         UIRoutes(
+
+            // Console Routes
             UIRoute('/@', LayoutController).children(
                 UIRoute('', DefaultWorkspaceController),
                 UIRoute('login-success', LoginSuccess),
@@ -46,6 +61,13 @@ export const Routes = () => {
 
 
             ),
+
+              // Team Routes
+              UIRoute('/@Team', RealmLayoutController).children(
+                UIRoute('', TestDefaultWorkspaceController),
+        
+            ),
+
 
             UIRoute('/@public', PublicLayoutController).children(
                 UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(

@@ -129,7 +129,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                             )
 
                                 //.width('calc(100% - 40px)')
-                                .height(32)
+                                .allHeight(28)
                             : title
                     )
                         .onClick(() => {
@@ -163,7 +163,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                 .transform('translate3d(0px, 0, 0)')
                 .fontWeight('500')
                 .height()//.padding(5)
-                .minHeight(30)
+                .allHeight(28)
                 //.padding(cVertical, isEditing ? 0 : 5)
                 .paddingLeft(`${20 * level}px`)
                 .background({ default: isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })

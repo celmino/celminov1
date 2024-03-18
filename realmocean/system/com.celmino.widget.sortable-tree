@@ -51034,7 +51034,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         .transition('opacity .12s ease-in-out')
                         .position('absolute')
                         //.background('#FCE8E8')
-                        .allWidth(30).allHeight(30)
+                        .allWidth(28).allHeight(28)
                         .opacity('var(--opacity-icon)')
                         .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                     .transition('transform .12s ease-in-out'))
@@ -51050,7 +51050,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         treeIndex: treeIndex,
                     });
                 }))
-                    .allWidth(30).allHeight(30)
+                    .allWidth(28).allHeight(28)
                     .transition('transform .12s ease-in-out')
                     .render()))), (node.children == null || node.children.length === 0 && node.iconName != null) && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
                 //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
@@ -51067,10 +51067,10 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     .transition('opacity .12s ease-in-out')
                     // .position('absolute')
                     //.background('#FCE8E8')
-                    .allWidth(30).allHeight(30)
+                    .allWidth(28).allHeight(28)
                     // .opacity('var(--opacity-icon)')
                     .cornerRadius(5))
-                    .allWidth(30).allHeight(30)
+                    .allWidth(28).allHeight(28)
                     .transition('transform .12s ease-in-out')), _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
                     node: node,
                     path: path,
@@ -51098,7 +51098,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                             .transition('opacity .12s ease-in-out')
                             .position('absolute')
                             //.background('#FCE8E8')
-                            .allWidth(30).allHeight(30)
+                            .allWidth(28).allHeight(28)
                             .opacity('var(--opacity-icon)')
                             .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                         .transition('transform .12s ease-in-out'))
@@ -51114,7 +51114,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                             treeIndex: treeIndex,
                         });
                     }))
-                        .allWidth(30).allHeight(30)
+                        .allWidth(28).allHeight(28)
                         .transition('transform .12s ease-in-out')
                         .render()))), (node.children == null || node.children.length === 0 && node.iconName != null) && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
                     //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
@@ -51131,10 +51131,10 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         .transition('opacity .12s ease-in-out')
                         // .position('absolute')
                         //.background('#FCE8E8')
-                        .allWidth(30).allHeight(30)
+                        .allWidth(28).allHeight(28)
                         // .opacity('var(--opacity-icon)')
                         .cornerRadius(5))
-                        .allWidth(30).allHeight(30)
+                        .allWidth(28).allHeight(28)
                         .transition('transform .12s ease-in-out')), _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
                         node: node,
                         path: path,
@@ -54562,7 +54562,7 @@ var Tree = /** @class */ (function (_super) {
         return _this;
     }
     Tree.prototype.render = function () {
-        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 30; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode, onVisibilityToggle: this.props.onVisibilityToggle, canDrag: this.props.canDrag }));
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 28; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode, onVisibilityToggle: this.props.onVisibilityToggle, canDrag: this.props.canDrag }));
     };
     return Tree;
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component)));
@@ -54574,7 +54574,7 @@ var MyTestController = /** @class */ (function (_super) {
     }
     MyTestController.prototype.LoadView = function () {
         var _a = this.props.config, treeItems = _a.treeItems, onChange = _a.onChange, onMoveNode = _a.onMoveNode, onVisibilityToggle = _a.onVisibilityToggle, canDrag = _a.canDrag;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { height: '500px', width: '100%' } },
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: { width: '100%' } },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Tree, { items: treeItems, onChange: onChange, onMoveNode: onMoveNode, onVisibilityToggle: onVisibilityToggle, canDrag: canDrag })))));
     };
     return MyTestController;

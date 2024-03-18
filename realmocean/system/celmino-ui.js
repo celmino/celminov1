@@ -18870,14 +18870,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _anonymous__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../anonymous */ "./src/context/anonymous/index.ts");
+/* harmony import */ var _user_context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user/context */ "./src/context/user/context.ts");
+
 
 
 
 const AccountContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
 const useAccount = () => {
+    var _a;
     const { account = null } = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(AccountContextProvider);
+    const { user = null } = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(_user_context__WEBPACK_IMPORTED_MODULE_2__.UserContextProvider);
     const { account: anonymousAccount } = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(_anonymous__WEBPACK_IMPORTED_MODULE_1__.AnonymousContextProvider);
-    return { account: account !== null && account !== void 0 ? account : anonymousAccount };
+    return { account: (_a = account !== null && account !== void 0 ? account : user) !== null && _a !== void 0 ? _a : anonymousAccount };
 };
 
 
@@ -19254,6 +19258,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   RealmContextProvider: () => (/* reexport safe */ _realm__WEBPACK_IMPORTED_MODULE_1__.RealmContextProvider),
 /* harmony export */   TreeContext: () => (/* reexport safe */ _tree__WEBPACK_IMPORTED_MODULE_3__.TreeContext),
 /* harmony export */   TreeContextProvider: () => (/* reexport safe */ _tree__WEBPACK_IMPORTED_MODULE_3__.TreeContextProvider),
+/* harmony export */   UserContext: () => (/* reexport safe */ _user__WEBPACK_IMPORTED_MODULE_6__.UserContext),
+/* harmony export */   UserContextProvider: () => (/* reexport safe */ _user__WEBPACK_IMPORTED_MODULE_6__.UserContextProvider),
 /* harmony export */   useAccount: () => (/* reexport safe */ _account__WEBPACK_IMPORTED_MODULE_4__.useAccount),
 /* harmony export */   useAnonymousAccount: () => (/* reexport safe */ _anonymous__WEBPACK_IMPORTED_MODULE_5__.useAnonymousAccount),
 /* harmony export */   useApplet: () => (/* reexport safe */ _applet__WEBPACK_IMPORTED_MODULE_2__.useApplet),
@@ -19267,6 +19273,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tree__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tree */ "./src/context/tree/index.ts");
 /* harmony import */ var _account__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./account */ "./src/context/account/index.ts");
 /* harmony import */ var _anonymous__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./anonymous */ "./src/context/anonymous/index.ts");
+/* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user */ "./src/context/user/index.ts");
+
 
 
 
@@ -19721,6 +19729,170 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/tree/context.ts");
 
 
+
+
+/***/ }),
+
+/***/ "./src/context/user/UserContext.ts":
+/*!*****************************************!*\
+  !*** ./src/context/user/UserContext.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserContext: () => (/* binding */ UserContext)
+/* harmony export */ });
+/* harmony import */ var _UserContextClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserContextClass */ "./src/context/user/UserContextClass.tsx");
+
+function UserContext(childFunc) {
+    return new _UserContextClass__WEBPACK_IMPORTED_MODULE_0__.UserContextClass().childFunc(childFunc);
+}
+
+
+/***/ }),
+
+/***/ "./src/context/user/UserContextClass.tsx":
+/*!***********************************************!*\
+  !*** ./src/context/user/UserContextClass.tsx ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserContextClass: () => (/* binding */ UserContextClass)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _userContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./userContextRenderer */ "./src/context/user/userContextRenderer.tsx");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+class UserContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
+    childFunc(value) {
+        this.vp_ChildFunc = value;
+        return this;
+    }
+    render() {
+        return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.UserContextRenderer, { control: this }));
+    }
+}
+__decorate([
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+], UserContextClass.prototype, "vp_ChildFunc", void 0);
+
+
+/***/ }),
+
+/***/ "./src/context/user/context.ts":
+/*!*************************************!*\
+  !*** ./src/context/user/context.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserContextProvider: () => (/* binding */ UserContextProvider)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const UserContextProvider = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+
+
+/***/ }),
+
+/***/ "./src/context/user/index.ts":
+/*!***********************************!*\
+  !*** ./src/context/user/index.ts ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserContext: () => (/* reexport safe */ _UserContext__WEBPACK_IMPORTED_MODULE_0__.UserContext),
+/* harmony export */   UserContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_1__.UserContextProvider)
+/* harmony export */ });
+/* harmony import */ var _UserContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserContext */ "./src/context/user/UserContext.ts");
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./context */ "./src/context/user/context.ts");
+
+
+
+
+/***/ }),
+
+/***/ "./src/context/user/userContextRenderer.tsx":
+/*!**************************************************!*\
+  !*** ./src/context/user/userContextRenderer.tsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserContextRenderer: () => (/* binding */ UserContextRenderer),
+/* harmony export */   useGetSubdomain: () => (/* binding */ useGetSubdomain)
+/* harmony export */ });
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/user/context.ts");
+
+
+
+
+
+class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController {
+    LoadView() {
+        const { control } = this.props;
+        return control.vp_ChildFunc();
+    }
+}
+const Proxy = ({ control }) => (control.vp_ChildFunc().render());
+const useGetSubdomain = (url = window.location.hostname) => {
+    const names = url.split('.');
+    if (names.length === 2) {
+        return names[0];
+    }
+    else {
+        return null;
+    }
+};
+function UserContextRenderer({ control }) {
+    // const [account, setAccount] = useState(null);
+    const urlParams = new URLSearchParams(window.location.search);
+    const secret = urlParams.get('secret');
+    const userId = urlParams.get('userId');
+    const subdomain = useGetSubdomain();
+    // alert(secret)
+    const { me: account, isLoading, isError } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetMe)(subdomain);
+    /*      useEffect(() => {
+            Services.Client.setProject(subdomain);
+            Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
+                setAccount(account)
+            })
+        }, [])  */
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.UserContextProvider.Provider, { value: { user: account } },
+            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+}
 
 
 /***/ }),
@@ -20213,6 +20385,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TreeContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.TreeContext),
 /* harmony export */   TreeContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.TreeContextProvider),
 /* harmony export */   UIFormBuilderContext: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.UIFormBuilderContext),
+/* harmony export */   UserContext: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.UserContext),
+/* harmony export */   UserContextProvider: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.UserContextProvider),
 /* harmony export */   compileFormula: () => (/* reexport safe */ _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.compileFormula),
 /* harmony export */   useAccount: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useAccount),
 /* harmony export */   useAnonymousAccount: () => (/* reexport safe */ _context__WEBPACK_IMPORTED_MODULE_4__.useAnonymousAccount),

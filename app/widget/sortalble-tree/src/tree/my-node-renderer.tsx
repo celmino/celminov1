@@ -156,7 +156,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                     .transition('opacity .12s ease-in-out')
                                                                                     .position('absolute')
                                                                                     //.background('#FCE8E8')
-                                                                                    .allWidth(30).allHeight(30)
+                                                                                    .allWidth(28).allHeight(28)
                                                                                     .opacity('var(--opacity-icon)')
                                                                                     .cornerRadius(5),
                                                                                 HStack(
@@ -177,7 +177,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                         })
                                                                                     )
                                                                             )
-                                                                                .allWidth(30).allHeight(30)
+                                                                                .allWidth(28).allHeight(28)
                                                                                 .transition('transform .12s ease-in-out')
 
                                                                                 .render()
@@ -214,11 +214,11 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                         .transition('opacity .12s ease-in-out')
                                                                         // .position('absolute')
                                                                         //.background('#FCE8E8')
-                                                                        .allWidth(30).allHeight(30)
+                                                                        .allWidth(28).allHeight(28)
                                                                         // .opacity('var(--opacity-icon)')
                                                                         .cornerRadius(5)
                                                                 )
-                                                                    .allWidth(30).allHeight(30)
+                                                                    .allWidth(28).allHeight(28)
                                                                     .transition('transform .12s ease-in-out')
 
                                                             ),
@@ -269,7 +269,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                 .transition('opacity .12s ease-in-out')
                                                                 .position('absolute')
                                                                 //.background('#FCE8E8')
-                                                                .allWidth(30).allHeight(30)
+                                                                .allWidth(28).allHeight(28)
                                                                 .opacity('var(--opacity-icon)')
                                                                 .cornerRadius(5),
                                                             HStack(
@@ -290,7 +290,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                     })
                                                                 )
                                                         )
-                                                            .allWidth(30).allHeight(30)
+                                                            .allWidth(28).allHeight(28)
                                                             .transition('transform .12s ease-in-out')
 
                                                             .render()
@@ -327,11 +327,11 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                     .transition('opacity .12s ease-in-out')
                                                     // .position('absolute')
                                                     //.background('#FCE8E8')
-                                                    .allWidth(30).allHeight(30)
+                                                    .allWidth(28).allHeight(28)
                                                     // .opacity('var(--opacity-icon)')
                                                     .cornerRadius(5)
                                             )
-                                                .allWidth(30).allHeight(30)
+                                                .allWidth(28).allHeight(28)
                                                 .transition('transform .12s ease-in-out')
 
                                         ),
