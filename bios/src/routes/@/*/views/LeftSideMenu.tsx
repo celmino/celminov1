@@ -1,5 +1,5 @@
 
-import { AppletContext, SelectAppletDialog, TreeContext, useOrganization } from "@celmino/ui";
+import { AppletContext, SelectAppletDialog, TreeContext, useOrganization, useRealm } from "@celmino/ui";
 import { Models, Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useGetMe, useGetOrganization, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
 import { Text } from '@realmocean/vibe';
 import { EventBus, is } from "@tuval/core";
@@ -197,18 +197,18 @@ function addZeroDigitToNumberReturnString(number, countOfZero) {
 
 let global_openedIDs = {};
 export const LeftSideMenuView = (selectedItem: string) => {
-    const showAllWorkspaces = true;
-    const { me, isLoading } = useGetMe('console');
-    const organization = useOrganization();
+
 
     return (
-        (isLoading) ? Fragment() :
             UIViewBuilder(() => {
                 const navigate = useNavigate();
-                // alert(workspaceId)
-                const { organizationId, workspaceId } = useParams();
+                const {realm} = useRealm();
+                const workspaceId = realm.$id;
 
-                const { organization, isLoading: isOrganizationLoading } = useGetOrganization({ organizationId, hookEnabled: true }); // useGetCurrentOrganization();
+                // alert(workspaceId)
+              //  const { organizationId, workspaceId } = useParams();
+
+               // const { organization, isLoading: isOrganizationLoading } = useGetOrganization({ organizationId, hookEnabled: true }); // useGetCurrentOrganization();
 
 
                 const { databases } = useListDatabases(workspaceId, [
@@ -221,7 +221,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                     // Query.equal('opa', 'com.celmino.widget.enterprise-modelling-tree')
                 ]);
 
-                const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
+               // const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
                 const [iconInfo, setIconInfo] = useState<any>({});
 
                 const { updatePrefs } = useUpdatePrefs({});
@@ -287,15 +287,6 @@ export const LeftSideMenuView = (selectedItem: string) => {
 
                                         )(
                                             UIViewBuilder(() => {
-                                                const { realm }: { realm: Models.Realm } = useGetRealm({
-                                                    realmId: workspaceId,
-                                                    enabled: (organizationId == null && workspaceId != null)
-                                                });
-
-                                                const { realms } = useListRealms(organization != null/* (organizationId != null || realm?.teamId != null) */, [
-                                                    Query.equal('teamId', organization?.$id)
-                                                ]);
-
                                                 const { me } = useGetMe('console');
                                                 return (
                                                     VStack({ alignment: cTopLeading })(
@@ -346,7 +337,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                     })
                                                             ))
                                                         )
-                                                            .onClick(() => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
+                                                          //  .onClick(() => navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/workspace/select`))
                                                             .padding()
                                                     ).width(250)
                                                 )

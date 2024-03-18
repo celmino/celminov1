@@ -64,8 +64,10 @@ export const Routes = () => {
 
               // Team Routes
               UIRoute('/@Team', RealmLayoutController).children(
-                UIRoute('', TestDefaultWorkspaceController),
-        
+                UIRoute('', WorkspaceController).children(
+                    UIRoute('applet/:appletId/*', AppletController),
+                    UIRoute(':appletId/*', AppletController)
+                )
             ),
 
 

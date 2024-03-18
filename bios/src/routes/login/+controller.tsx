@@ -2,7 +2,6 @@ import { Services, useCreateEmailSession } from "@realmocean/sdk";
 import { HDivider, HStack, Heading, Icon, ReactView, SecureField, Spacer, Text, TextField, UIView, VStack, cLeading, cTop, useNavigate, useState } from "@tuval/forms";
 import React from "react";
 import { CelminoController, Guard } from "../../CelminoController";
-import { AlreadyLoggedInGuard } from "../../guards/AlreadyLoggedInGuard";
 
 const LeftLogo = () => (
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="207" viewBox="0 0 1000 207">
@@ -71,7 +70,7 @@ window.location.search: "?query=1"
 var subDomain = /:\/\/([^\/]+)/.exec(window.location.href)[1];
 */
 
-@Guard(AlreadyLoggedInGuard)
+
 export class LoginController extends CelminoController {
     public override LoadView(): UIView {
 

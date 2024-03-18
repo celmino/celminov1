@@ -1,15 +1,16 @@
 import { useGetOrganization, useGetRealm } from "@realmocean/sdk";
 import { is } from "@tuval/core";
-import {  useParams } from "@tuval/forms";
-import React,{Fragment} from "react";
+import { useParams } from "@tuval/forms";
+import React, { Fragment } from "react";
 import { RealmContextClass } from "./RealmContextClass";
 import { RealmContextProvider } from "./context";
+import { useGetSubdomain } from "../user/userContextRenderer";
 
 
 
-function RealmContextRenderer({ control }: { control: RealmContextClass }) {
+export function RealmContextRenderer({ control }: { control: RealmContextClass }) {
 
-  
+
     const { workspaceId } = useParams();
     const { realm, isLoading } = useGetRealm({ realmId: workspaceId, enabled: true });
 
@@ -17,10 +18,10 @@ function RealmContextRenderer({ control }: { control: RealmContextClass }) {
     return (
         is.function(control.vp_ChildFunc) && !isLoading ?
             (
-                <RealmContextProvider.Provider value={{realm}}>
+                <RealmContextProvider.Provider value={{ realm }}>
 
                     {
-                      
+
                         control.vp_ChildFunc()?.render()
 
                     }
@@ -30,4 +31,32 @@ function RealmContextRenderer({ control }: { control: RealmContextClass }) {
     )
 }
 
-export default RealmContextRenderer;
+
+export function SubDomainRealmContextRenderer({ control }: { control: RealmContextClass }) {
+
+
+    const subdomain = useGetSubdomain();
+
+
+    return (
+        is.function(control.vp_ChildFunc) ?
+            (
+                <RealmContextProvider.Provider value={{
+                    realm: {
+                        $id: subdomain,
+                        name: 'Realm'
+                    }
+                }}>
+
+                    {
+
+                        control.vp_ChildFunc()?.render()
+
+                    }
+
+                </RealmContextProvider.Provider >
+            ) : <Fragment />
+    )
+}
+
+

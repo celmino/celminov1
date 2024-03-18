@@ -19464,7 +19464,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _RealmContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RealmContextRenderer */ "./src/context/realm/RealmContextRenderer.tsx");
+/* harmony import */ var _user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../user/userContextRenderer */ "./src/context/user/userContextRenderer.tsx");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _RealmContextRenderer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RealmContextRenderer */ "./src/context/realm/RealmContextRenderer.tsx");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19474,13 +19477,21 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 class RealmContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView {
     childFunc(value) {
         this.vp_ChildFunc = value;
         return this;
     }
     render() {
-        return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_RealmContextRenderer__WEBPACK_IMPORTED_MODULE_2__["default"], { control: this }));
+        const subdomain = (0,_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.useGetSubdomain)();
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.nullOrEmpty(subdomain)) {
+            return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_RealmContextRenderer__WEBPACK_IMPORTED_MODULE_4__.RealmContextRenderer, { control: this }));
+        }
+        else {
+            return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_RealmContextRenderer__WEBPACK_IMPORTED_MODULE_4__.SubDomainRealmContextRenderer, { control: this }));
+        }
     }
 }
 __decorate([
@@ -19499,7 +19510,8 @@ __decorate([
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   RealmContextRenderer: () => (/* binding */ RealmContextRenderer),
+/* harmony export */   SubDomainRealmContextRenderer: () => (/* binding */ SubDomainRealmContextRenderer)
 /* harmony export */ });
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
@@ -19510,6 +19522,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/realm/context.ts");
+/* harmony import */ var _user_userContextRenderer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user/userContextRenderer */ "./src/context/user/userContextRenderer.tsx");
+
 
 
 
@@ -19522,7 +19536,17 @@ function RealmContextRenderer({ control }) {
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
         (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: { realm } }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RealmContextRenderer);
+function SubDomainRealmContextRenderer({ control }) {
+    var _a;
+    const subdomain = (0,_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_5__.useGetSubdomain)();
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) ?
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: {
+                realm: {
+                    $id: subdomain,
+                    name: 'Realm'
+                }
+            } }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+}
 
 
 /***/ }),
@@ -19784,7 +19808,15 @@ class UserContextClass extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView 
         return this;
     }
     render() {
-        return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.UserContextRenderer, { control: this }));
+        const urlParams = new URLSearchParams(window.location.search);
+        const secret = urlParams.get('secret');
+        const userId = urlParams.get('userId');
+        if (userId != null && secret != null) {
+            return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.NewUserContextRenderer, { control: this }));
+        }
+        else {
+            return (react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.UserContextRenderer, { control: this }));
+        }
     }
 }
 __decorate([
@@ -19842,6 +19874,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   NewUserContextRenderer: () => (/* binding */ NewUserContextRenderer),
 /* harmony export */   UserContextRenderer: () => (/* binding */ UserContextRenderer),
 /* harmony export */   useGetSubdomain: () => (/* binding */ useGetSubdomain)
 /* harmony export */ });
@@ -19875,21 +19908,27 @@ const useGetSubdomain = (url = window.location.hostname) => {
         return null;
     }
 };
-function UserContextRenderer({ control }) {
-    // const [account, setAccount] = useState(null);
+function NewUserContextRenderer({ control }) {
+    const [account, setAccount] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(null);
     const urlParams = new URLSearchParams(window.location.search);
     const secret = urlParams.get('secret');
     const userId = urlParams.get('userId');
     const subdomain = useGetSubdomain();
     // alert(secret)
+    // const { me: account, isLoading, isError } = useGetMe(subdomain);
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Client.setProject(subdomain);
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
+            window.location.href = '/@Team';
+        });
+    }, []);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('User logged in').render());
+}
+function UserContextRenderer({ control }) {
+    const subdomain = useGetSubdomain();
+    // alert(secret)
     const { me: account, isLoading, isError } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetMe)(subdomain);
-    /*      useEffect(() => {
-            Services.Client.setProject(subdomain);
-            Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
-                setAccount(account)
-            })
-        }, [])  */
-    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && account != null ?
         (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.UserContextProvider.Provider, { value: { user: account } },
             react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
@@ -20187,6 +20226,7 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                 .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding())).wrap('wrap').height()))));
     }
     static Show(workspaceId, parent = '-1') {
+        alert(workspaceId);
         const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;
         /*  if (width) {
@@ -20298,6 +20338,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context */ "./src/context/index.ts");
+/* harmony import */ var _context_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/user/userContextRenderer */ "./src/context/user/userContextRenderer.tsx");
+
 
 
 const useAppletNavigate = () => {
@@ -20310,7 +20352,13 @@ const useAppletNavigate = () => {
             if ((url === null || url === void 0 ? void 0 : url.length) > 0 && (url === null || url === void 0 ? void 0 : url[0]) !== '/') {
                 url = '/' + url;
             }
-            navigate(`/@/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+            const subdomain = (0,_context_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.useGetSubdomain)();
+            if (subdomain) {
+                navigate(`/@Team/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+            }
+            else {
+                navigate(`/@/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+            }
         }
     };
 };

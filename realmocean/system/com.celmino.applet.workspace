@@ -6066,12 +6066,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
 /* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _resources_Icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./resources/Icons */ "./src/resources/Icons.tsx");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils */ "./src/utils.ts");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dialogs/AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dialogs/AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -6096,7 +6095,6 @@ import { AddListDialog } from './dialogs/AddListDialog';
 import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { AddWhiteboardDialog } from './dialogs/AddWhiteboardDialog'; */
 
-
 //import { SelectAppletDialog } from '@celmino/ui';
 
 //import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
@@ -6108,40 +6106,19 @@ var TreeController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TreeController.prototype.LoadView = function () {
-        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useAppletNavigate)().navigate;
+        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useAppletNavigate)().navigate;
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isEditing = _a[0], setIsEditing = _a[1];
         var isLoading = false;
         var items = (this.props.data || {}).items;
-        var _b = this.props.config || {}, organizationId = _b.organizationId, workspaceId = _b.workspaceId, appletId = _b.appletId, onItemSelected = _b.onItemSelected, item = _b.item;
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useRealm)().realm;
-        var organization = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_5__.useOrganization)(); // useGetCurrentOrganization();
-        var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId
-        }).document;
-        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utils__WEBPACK_IMPORTED_MODULE_3__.getAppletId)() === appletId), isOpen = _c[0], setIsOpen = _c[1];
-        var listId = (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getListId)();
-        /*     const { document: list, isLoading: isListLoading } = useGetDocument({
-                projectId: workspaceId,
-                databaseId: appletId,
-                collectionId: 'wm_lists',
-                documentId: listId
-            }, { enabled: listId != null }); */
-        /*  useEffect(() => {
-             if (list! + null) {
-                 setExpanded(true);
-             }
-         }, []); */
-        // const [expanded, setExpanded] = useLocalStorageState('work_management_tree', false);
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
-        var createTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'wm_tree').createDocument;
+        var item = (this.props.config || {}).item;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useApplet)().applet;
+        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(realm.$id).updateDocument;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)('com.celmino.widget.applet-tree')
                 .config({
                 node: item,
-                workspaceId: workspaceId,
+                workspaceId: realm.$id,
                 appletId: item.appletId,
                 appletName: item.name,
                 iconName: item.iconName,
@@ -6153,7 +6130,7 @@ var TreeController = /** @class */ (function (_super) {
                     updateDocument({
                         databaseId: 'workspace',
                         collectionId: 'applets',
-                        documentId: appletId,
+                        documentId: applet.$id,
                         data: {
                             name: title
                         }
@@ -6166,7 +6143,7 @@ var TreeController = /** @class */ (function (_super) {
                                 name: title
                             }
                         }, function () {
-                            _tuval_core__WEBPACK_IMPORTED_MODULE_4__.EventBus.Default.fire('applet.added', { treeItem: item });
+                            _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.fire('applet.added', { treeItem: item });
                         });
                     });
                 },
@@ -6220,7 +6197,7 @@ var TreeController = /** @class */ (function (_super) {
                         {
                             title: 'Document',
                             icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(_resources_Icons__WEBPACK_IMPORTED_MODULE_2__.DocumentIcon).foregroundColor('#7C828D'),
-                            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_5__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_6__.AddDocumentDialog)(workspaceId, appletId, item.$id, "".concat(item.path, "/").concat(item.$id))); }
+                            onClick: function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_4__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_5__.AddDocumentDialog)(realm.$id, applet.$id, item.$id, "".concat(item.path, "/").concat(item.$id))); }
                         },
                         {
                             title: 'Whiteboard',
@@ -8556,9 +8533,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @uiw/react-color-circle */ "./node_modules/@uiw/react-color-circle/esm/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @uiw/react-color-circle */ "./node_modules/@uiw/react-color-circle/esm/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -8580,15 +8559,18 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var GeneralSettingsController = /** @class */ (function (_super) {
     __extends(GeneralSettingsController, _super);
     function GeneralSettingsController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     GeneralSettingsController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId;
-        var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }).document;
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useApplet)().applet;
+        //  const { workspaceId, appletId } = useParams();
+        //  const { document: applet } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
+        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(realm.$id).updateDocument;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('General').fontSize(24).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
             .lineHeight(32))
@@ -8615,7 +8597,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
                 updateDocument({
                     databaseId: 'workspace',
                     collectionId: 'applets',
-                    documentId: appletId,
+                    documentId: applet.$id,
                     data: {
                         iconName: value.iconName,
                         iconCategory: value.iconCategory
@@ -8624,7 +8606,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
                     updateDocument({
                         databaseId: 'workspace',
                         collectionId: 'ws_tree',
-                        documentId: appletId,
+                        documentId: applet.$id,
                         data: {
                             iconName: value.iconName,
                             iconCategory: value.iconCategory
@@ -8650,7 +8632,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Theme Color')
             .fontSize(16).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
-            .lineHeight(32)).height().width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_4___default().createElement(_uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_5__["default"], { colors: ['#4A4A4A',
+            .lineHeight(32)).height().width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_uiw_react_color_circle__WEBPACK_IMPORTED_MODULE_6__["default"], { colors: ['#4A4A4A',
                 '#6A849B',
                 '#BEC5CC',
                 '#D40915',
@@ -8682,7 +8664,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
                 updateDocument({
                     databaseId: 'workspace',
                     collectionId: 'applets',
-                    documentId: appletId,
+                    documentId: applet.$id,
                     data: {
                         themeColor: color.hex
                     }
@@ -8690,7 +8672,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
                     updateDocument({
                         databaseId: 'workspace',
                         collectionId: 'ws_tree',
-                        documentId: appletId,
+                        documentId: applet.$id,
                         data: {
                             iconColor: color.hex
                         }
@@ -8831,95 +8813,6 @@ var SimpleImage = /** @class */ (function () {
     return SimpleImage;
 }());
 
-
-
-/***/ }),
-
-/***/ "./src/utils.ts":
-/*!**********************!*\
-  !*** ./src/utils.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   getAppletId: () => (/* binding */ getAppletId),
-/* harmony export */   getDocumentId: () => (/* binding */ getDocumentId),
-/* harmony export */   getListId: () => (/* binding */ getListId),
-/* harmony export */   getViewId: () => (/* binding */ getViewId),
-/* harmony export */   getWhiteboardId: () => (/* binding */ getWhiteboardId)
-/* harmony export */ });
-function getAppletId() {
-    var url = window.location.href;
-    // Regex deseni
-    var regexPattern = /\/applet\/([^\/]+)/;
-    // Regex eşleşmesi
-    var matches = url.match(regexPattern);
-    // Eğer eşleşme varsa, list parametresini al
-    if (matches && matches.length > 1) {
-        return matches[1];
-    }
-    else {
-        return;
-    }
-}
-function getListId() {
-    var url = window.location.href;
-    // Regex deseni
-    var regexPattern = /\/list\/([^]+)/;
-    // Regex eşleşmesi
-    var matches = url.match(regexPattern);
-    // Eğer eşleşme varsa, list parametresini al
-    if (matches && matches.length > 1) {
-        return matches[1];
-    }
-    else {
-        return;
-    }
-}
-function getViewId() {
-    var url = window.location.href;
-    // Regex deseni
-    var regexPattern = /\/view\/([^]+)/;
-    // Regex eşleşmesi
-    var matches = url.match(regexPattern);
-    // Eğer eşleşme varsa, list parametresini al
-    if (matches && matches.length > 1) {
-        return matches[1];
-    }
-    else {
-        return;
-    }
-}
-function getDocumentId() {
-    var url = window.location.href;
-    // Regex deseni
-    var regexPattern = /\/document\/([^\/]+)/;
-    // Regex eşleşmesi
-    var matches = url.match(regexPattern);
-    // Eğer eşleşme varsa, list parametresini al
-    if (matches && matches.length > 1) {
-        return matches[1];
-    }
-    else {
-        return;
-    }
-}
-function getWhiteboardId() {
-    var url = window.location.href;
-    // Regex deseni
-    var regexPattern = /\/whiteboard\/([^\/]+)/;
-    // Regex eşleşmesi
-    var matches = url.match(regexPattern);
-    // Eğer eşleşme varsa, list parametresini al
-    if (matches && matches.length > 1) {
-        return matches[1];
-    }
-    else {
-        return;
-    }
-}
 
 
 /***/ }),

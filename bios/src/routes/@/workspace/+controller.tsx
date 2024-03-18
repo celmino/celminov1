@@ -6,7 +6,7 @@ import React from "react";
 import { CreateOrganizationView } from "../../../views/CreateOrganizationView";
 import { useGetCurrentOrganization } from "../../../hooks/useGetCurrentOrganization";
 import { CreateWorkspaceView } from "../../../views/CreateWorkspaceView";
-import { RealmContext, useOrganization } from '@celmino/ui';
+import { RealmContext, useOrganization, useRealm } from '@celmino/ui';
 
 let _hideHandle = null;
 export class WorkspaceLayoutController extends UIController {
@@ -17,7 +17,7 @@ export class WorkspaceLayoutController extends UIController {
     }
     public LoadView(): UIView {
 
-        const { workspaceId } = useParams();
+        const { realm } = useRealm();
         const navigate = useNavigate();
 
         const { me, isLoading, isError } = useGetMe('console');
@@ -33,8 +33,6 @@ export class WorkspaceLayoutController extends UIController {
                         const { updatePrefs } = useUpdatePrefs({});
 
                         
-
-
                         const { memberships, isLoading: isMembershipLoading } = useListAccountMemberships('console')
 
                         const { organizationId, workspaceId } = useParams();
@@ -292,7 +290,7 @@ export class WorkspaceLayoutController extends UIController {
                                                     )
                         )
                     })
-                ).projectId(workspaceId)
+                ).projectId(realm.$id)
 
             )
 

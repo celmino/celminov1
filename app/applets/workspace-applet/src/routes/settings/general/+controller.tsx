@@ -2,18 +2,20 @@ import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
 import { Text as VibeText } from "@realmocean/vibe";
 import { EventBus } from "@tuval/core";
 import { HStack, ReactView, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading, useParams } from "@tuval/forms";
-import { ColorSelect } from '@celmino/ui'
+import { ColorSelect, useApplet, useRealm } from '@celmino/ui'
 import Circle from '@uiw/react-color-circle';
 import React from "react";
 
 export class GeneralSettingsController extends UIFormController {
     public LoadView() {
 
-        const { workspaceId, appletId } = useParams();
+        const { realm } = useRealm();
+        const { applet } = useApplet();
+        //  const { workspaceId, appletId } = useParams();
 
-        const { document: applet } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
+        //  const { document: applet } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
 
-        const { updateDocument } = useUpdateDocument(workspaceId);
+        const { updateDocument } = useUpdateDocument(realm.$id);
 
         return (
             VStack({ alignment: cTopLeading })(
@@ -63,7 +65,7 @@ export class GeneralSettingsController extends UIFormController {
                                     updateDocument({
                                         databaseId: 'workspace',
                                         collectionId: 'applets',
-                                        documentId: appletId,
+                                        documentId: applet.$id,
                                         data: {
                                             iconName: value.iconName,
                                             iconCategory: value.iconCategory
@@ -72,7 +74,7 @@ export class GeneralSettingsController extends UIFormController {
                                         updateDocument({
                                             databaseId: 'workspace',
                                             collectionId: 'ws_tree',
-                                            documentId: appletId,
+                                            documentId: applet.$id,
                                             data: {
                                                 iconName: value.iconName,
                                                 iconCategory: value.iconCategory
@@ -144,7 +146,7 @@ export class GeneralSettingsController extends UIFormController {
                                     updateDocument({
                                         databaseId: 'workspace',
                                         collectionId: 'applets',
-                                        documentId: appletId,
+                                        documentId: applet.$id,
                                         data: {
                                             themeColor: color.hex
                                         }
@@ -152,7 +154,7 @@ export class GeneralSettingsController extends UIFormController {
                                         updateDocument({
                                             databaseId: 'workspace',
                                             collectionId: 'ws_tree',
-                                            documentId: appletId,
+                                            documentId: applet.$id,
                                             data: {
                                                 iconColor: color.hex
                                             }

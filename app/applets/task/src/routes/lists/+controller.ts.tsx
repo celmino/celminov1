@@ -21,7 +21,7 @@ import { EventBus } from "@tuval/core";
 import React from "react";
 import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
-import { SelectSiderDialog, TabMenu, useAccount, useApplet } from '@celmino/ui'
+import { SelectSiderDialog, TabMenu, useAccount, useApplet, useRealm } from '@celmino/ui'
 import { OverviewIcon, TableIcon, TaskIcon } from "../../resources/Icons";
 import { AppletTabMenu } from "../../views/AppletTabMenu";
 
@@ -50,24 +50,11 @@ export class ListController extends UIFormController {
 
 
     public LoadView() {
-        const navigate = useNavigate();
-
-        const { workspaceId, appletId, viewId } = useParams();
-        const { applet } = useApplet();
-        /*  const { document: applet } = useGetDocument({
-             projectId: workspaceId,
-             databaseId: 'workspace',
-             collectionId: 'applets',
-             documentId: appletId
-         }); */
-
-        /* const { documents: views, isLoading: isViewsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_views');
        
-
-
-       
-        const { createDocument: createView } = useCreateDocument(workspaceId, appletId, 'wm_list_' + listId + '_views');
-        const { updateDocument } = useUpdateDocument(workspaceId); */
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
 
         const { documents: items, isLoading: isItemsLoading } = useListDocuments(workspaceId, appletId, 'listItems', [
             Query.limit(1000)

@@ -32619,36 +32619,24 @@ var ListController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ListController.prototype.LoadView = function () {
-        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId, viewId = _a.viewId;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useRealm)().realm;
         var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useApplet)().applet;
-        /*  const { document: applet } = useGetDocument({
-             projectId: workspaceId,
-             databaseId: 'workspace',
-             collectionId: 'applets',
-             documentId: appletId
-         }); */
-        /* const { documents: views, isLoading: isViewsLoading } = useListDocuments(workspaceId, appletId, 'wm_list_' + listId + '_views');
-       
-
-
-       
-        const { createDocument: createView } = useCreateDocument(workspaceId, appletId, 'wm_list_' + listId + '_views');
-        const { updateDocument } = useUpdateDocument(workspaceId); */
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listItems', [
+        var workspaceId = realm.$id;
+        var appletId = applet.$id;
+        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listItems', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(1000)
-        ]), items = _b.documents, isItemsLoading = _b.isLoading;
-        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listStatuses', [
+        ]), items = _a.documents, isItemsLoading = _a.isLoading;
+        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'listStatuses', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.orderAsc('orderBy')
-        ]), groups = _c.documents, isStatusesLoading = _c.isLoading;
+        ]), groups = _b.documents, isStatusesLoading = _b.isLoading;
         var createTask = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'listItems').createDocument;
         var updateTask = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
-        var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'fields', [
+        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'fields', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
-        ]), attributes = _d.documents, isLoading = _d.isLoading;
-        var _e = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'viewSettings', [
+        ]), attributes = _c.documents, isLoading = _c.isLoading;
+        var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(workspaceId, appletId, 'viewSettings', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('viewId', 'applet')
-        ]), viewSettings = _e.documents, isFieldSettingsLoading = _e.isLoading;
+        ]), viewSettings = _d.documents, isFieldSettingsLoading = _d.isLoading;
         var createField = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'fields', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('collectionId', 'listItems')
         ]).createDocument;

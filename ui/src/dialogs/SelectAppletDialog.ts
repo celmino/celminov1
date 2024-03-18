@@ -292,6 +292,7 @@ export class SelectAppletDialog extends DialogView {
         )
     }
     public static Show(workspaceId: string, parent: string = '-1') {
+        
         const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;
         /*  if (width) {

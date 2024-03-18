@@ -24,7 +24,7 @@ import { getAppletId, getDocumentId, getListId, getViewId } from './utils';
 //import { SelectAppletDialog } from '@celmino/ui';
 import { EventBus } from '@tuval/core';
 //import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
-import { DynoDialog, useAppletNavigate, useOrganization, useRealm } from '@celmino/ui';
+import { DynoDialog, useApplet, useAppletNavigate, useOrganization, useRealm } from '@celmino/ui';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 
 
@@ -37,42 +37,13 @@ export class TreeController extends UIController {
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
         const { items } = this.props.data || {};
-        const { organizationId, workspaceId, appletId, onItemSelected, item } = this.props.config || {};
+        const {  item } = this.props.config || {};
         const { realm } = useRealm();
+        const { applet } = useApplet();
+      
 
-        const organization = useOrganization(); // useGetCurrentOrganization();
+        const { updateDocument } = useUpdateDocument(realm.$id);
 
-        const { document: applet } = useGetDocument({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId
-        });
-
-        const [isOpen, setIsOpen] = useState(getAppletId() === appletId);
-
-        let listId = getListId();
-
-
-        /*     const { document: list, isLoading: isListLoading } = useGetDocument({
-                projectId: workspaceId,
-                databaseId: appletId,
-                collectionId: 'wm_lists',
-                documentId: listId
-            }, { enabled: listId != null }); */
-
-
-
-        /*  useEffect(() => {
-             if (list! + null) {
-                 setExpanded(true);
-             }
-         }, []); */
-
-        // const [expanded, setExpanded] = useLocalStorageState('work_management_tree', false);
-        const { updateDocument } = useUpdateDocument(workspaceId);
-
-        const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'wm_tree');
 
         return (
 
@@ -82,7 +53,7 @@ export class TreeController extends UIController {
                     UIWidget('com.celmino.widget.applet-tree')
                         .config({
                             node: item,
-                            workspaceId,
+                            workspaceId: realm.$id,
                             appletId: item.appletId,
                             appletName: item.name,
                             iconName: item.iconName,
@@ -95,7 +66,7 @@ export class TreeController extends UIController {
                                 updateDocument({
                                     databaseId: 'workspace',
                                     collectionId: 'applets',
-                                    documentId: appletId,
+                                    documentId: applet.$id,
                                     data: {
                                         name: title
                                     }
@@ -163,7 +134,7 @@ export class TreeController extends UIController {
                                     {
                                         title: 'Document',
                                         icon: Icon(DocumentIcon).foregroundColor('#7C828D'),
-                                        onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, item.$id, `${item.path}/${item.$id}`))
+                                        onClick: () => DynoDialog.Show(AddDocumentDialog(realm.$id, applet.$id, item.$id, `${item.path}/${item.$id}`))
                                     },
                                     {
                                         title: 'Whiteboard',

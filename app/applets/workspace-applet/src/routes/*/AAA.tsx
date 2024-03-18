@@ -7,6 +7,7 @@ import { EventBus, is } from "@tuval/core";
 import { SimpleImage } from "../../tools/SimplePlugin";
 import InlineImage from 'editorjs-inline-image';
 import { Editor } from './view/Editor';
+import { useApplet, useRealm } from "@celmino/ui";
 
 const docs = [
     { uri: "https://url-to-my-pdf.pdf" }, // Remote file
@@ -16,19 +17,15 @@ export class HomeController extends UIController {
 
 
     public override LoadView(): UIView {
-        const { workspaceId, appletId } = useParams();
-        const { document: applet, isLoading: isDocumentLoading } = useGetDocument({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId
-        })
+        const {realm} = useRealm();
+        const {applet} = useApplet();
 
+      
         const { document: treeItem, isLoading: isTreeItemLoading } = useGetDocument({
-            projectId: workspaceId,
+            projectId: realm.$id,
             databaseId: 'workspace',
             collectionId: 'ws_tree',
-            documentId: appletId
+            documentId: applet.$id
         })
 
         /* 

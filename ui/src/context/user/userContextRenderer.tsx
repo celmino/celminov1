@@ -1,6 +1,6 @@
 import { Services, useGetDocument, useGetMe, useGetOrganization, useGetRealm, useUpdateMagicURLSession } from "@realmocean/sdk";
 import { is } from "@tuval/core";
-import { ReactView, UIController, UIView, useEffect, useParams, useState } from "@tuval/forms";
+import { ReactView, Text, UIController, UINavigate, UIView, useEffect, useNavigate, useParams, useState } from "@tuval/forms";
 import React, { Fragment } from "react";
 import { UserContextClass } from "./UserContextClass";
 import { UserContextProvider } from "./context";
@@ -29,29 +29,41 @@ export const useGetSubdomain = (url = window.location.hostname) => {
 };
 
 
-export function UserContextRenderer({ control }: { control: UserContextClass }) {
+export function NewUserContextRenderer({ control }: { control: UserContextClass }) {
 
-   // const [account, setAccount] = useState(null);
+    const [account, setAccount] = useState(null);
+
 
     const urlParams = new URLSearchParams(window.location.search);
     const secret = urlParams.get('secret');
     const userId = urlParams.get('userId');
 
     const subdomain = useGetSubdomain();
-   // alert(secret)
-    const { me: account, isLoading, isError } = useGetMe(subdomain);
+    // alert(secret)
+    // const { me: account, isLoading, isError } = useGetMe(subdomain);
 
-/*      useEffect(() => {
+    useEffect(() => {
         Services.Client.setProject(subdomain);
         Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
-            setAccount(account)
+            
+            window.location.href='/@Team';
         })
-    }, [])  */
+    }, [])
+    return (
+       Text('User logged in').render()
+    )
 
+}
+
+
+export function UserContextRenderer({ control }: { control: UserContextClass }) {
+
+    const subdomain = useGetSubdomain();
+    // alert(secret)
+    const { me: account, isLoading, isError } = useGetMe(subdomain);
 
     return (
-
-        is.function(control.vp_ChildFunc) && !isLoading?
+        is.function(control.vp_ChildFunc) && account != null ?
             (
                 <UserContextProvider.Provider value={{ user: account }}>
                     <Proxy control={control}></Proxy>
@@ -60,5 +72,4 @@ export function UserContextRenderer({ control }: { control: UserContextClass }) 
     )
 
 }
-
 
