@@ -13,6 +13,7 @@ import {
     Icons,
     PopupButton,
     ScrollView,
+    Spacer,
     SvgIcon,
     UIViewBuilder,
     UIWidget,
@@ -29,6 +30,7 @@ import { useGetCurrentOrganization } from "../../../../hooks/useGetCurrentOrgani
 import { EmptyView } from "../../../../views/EmptyView";
 import { DatabaseNameView } from "./DatabaseNameView";
 import { urlFriendly } from "../../../../utils/urlFriendly";
+import { CalendarIcon, InboxIcon, MyDayIcon, TimelineIcon, TimerIcon, UpIcon, UpcommingIcon, UpdatesIcon } from "../../../../assets/Icons";
 
 
 const expandeds = {};
@@ -141,15 +143,42 @@ const fontFamily = '-apple-system, "BlinkMacSystemFont", "Segoe UI", "Helvetica"
 
 const topMenu = [
     {
-        title: 'Home',
-        icon: SvgIcon('cu3-icon-sidebarHome', 'rgb(79, 87, 98)', '20px', '20px'),
+        title: 'Updates',
+        icon: UpdatesIcon,
         url: ''
     },
     {
         title: 'Inbox',
-        icon: SvgIcon('cu3-icon-sidebarInbox', 'rgb(79, 87, 98)', '20px', '20px'),
+        icon: InboxIcon,
         url: ''
     },
+    {
+        title: 'My Day',
+        icon: MyDayIcon,
+        url: ''
+    },
+    {
+        title: 'Calendar',
+        icon: CalendarIcon,
+        url: ''
+    },
+    {
+        title: 'Upcomming',
+        icon: UpcommingIcon,
+        url: ''
+    },
+    {
+        title: 'Timeline',
+        icon: TimelineIcon,
+        url: ''
+    },
+    {
+        title: 'Timer',
+        icon: TimerIcon,
+        url: ''
+    },
+
+
     {
         title: 'Search',
         icon: SvgIcon('cu3-icon-search', 'rgb(79, 87, 98)', '16px', '16px'),
@@ -217,7 +246,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                        // createTeam({id:'admins', name:'admins'})
                                        createTeamMembership({teamId:'admins',roles:[],url:'http://localhost:9501', email:'stanoncloud@gmail.com'})
                                     }), */
-                                VStack({ alignment: cTopLeading })(
+                                VStack({ alignment: cTopLeading, spacing: 10 })(
                                     HStack(
                                         PopupButton(
 
@@ -344,9 +373,9 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                     Icon(menuItem.icon),
                                                     Text(menuItem.title)
                                                         .foregroundColor('rgb(21, 23, 25)')
-                                                        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')
+                                                        .fontFamily('"system-ui",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif')
                                                 )
-                                                    .height()
+                                                    .allHeight(28)
                                                     .padding('6px 10px')
                                                     .background({ hover: '#E8EAED' })
                                                     .cornerRadius(6)
@@ -361,394 +390,361 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         //.padding()
                                         .height(),
 
-
-
-
-                                    VStack({ alignment: cTopLeading })(
-                                        /*  VStack({ alignment: cLeading })(
-                                             Text('APPLETS')
-                                                 .fontSize(11)
-                                                 .fontWeight('700'),
-             
-                                         ).height(40).padding('1px 18px 0 20px'), */
-
-                                        /* HStack({ alignment: cTrailing, spacing: 5 })(
-                                            HStack(
-                                                Icon(Icons.Add).fontSize(14)
-                                            )
-                                                .cornerRadius(6)
-                                                .foregroundColor('#7c828d')
-                                                .background({ default: '#e4e4e455', hover: '#e4e4e4' })
-
-                                                .allWidth(24).allHeight(24)
-                                                .onClick(() => {
-                                                    SelectAppletDialog.Show(workspaceId);
-
-                                                }),
-                                            HStack(
-                                                Icon(Icons.Drag).fontSize(14)
-                                            )
-                                                .cornerRadius(6)
-                                                .foregroundColor('#7c828d')
-                                                .background({ default:  '#e4e4e455', hover: '#e4e4e4' })
-
-                                                .allWidth(24).allHeight(24)
-                                                .onClick(() => {
-                                                })
-                                        ).height(40)
-                                            .cornerRadius(6)
-                                            .background('#f3f4f7')
-
-                                            .cursor('pointer'), */
-                                        HStack(
-                                            HDivider().height(1).background('#ECEDEE')
-                                        ).height().padding(cVertical, 10),
-                                        isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView(workspaceId) :
-                                            UIViewBuilder(() => {
-                                                const params = useParams();
-                                                const { deleteCache } = useDeleteCache(workspaceId);
+                                    UIViewBuilder(() => {
+                                        const [appletsOpen, setAppletsOpen] = useState(true);
+                                        return (
+                                            VStack({ alignment: cTopLeading })(
+                                                HStack({ alignment: cLeading })(
+                                                    Text('Applets')
+                                                        .fontSize(12)
+                                                        .fontWeight('500')
+                                                        .foregroundColor('rgb(73, 84, 99)'),
+                                                    Spacer(),
+                                                    HStack(
+                                                        Icon(UpIcon)
+                                                    ).width(20)
+                                                    .onClick(()=> setAppletsOpen(!appletsOpen))
+                                                )
+                                                    .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
+                                                    .height(24).padding(10),
+                                                appletsOpen ?
+                                                    VStack({ alignment: cTopLeading })(
+                                                        isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView(workspaceId) :
+                                                            UIViewBuilder(() => {
+                                                                const params = useParams();
+                                                                const { deleteCache } = useDeleteCache(workspaceId);
 
 
 
 
-                                                useEffect(() => {
-                                                    setTreeItems(buildTree(workspaceTreeITems));
-                                                    EventBus.Default.on('applet.added', ({ treeItem }) => {
+                                                                useEffect(() => {
+                                                                    setTreeItems(buildTree(workspaceTreeITems));
+                                                                    EventBus.Default.on('applet.added', ({ treeItem }) => {
 
-                                                        deleteCache();
-                                                        Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
-                                                            Query.limit(250)
-                                                        ]).then(({ documents }) => {
-                                                            setTreeItems(buildTree(documents));
-                                                        });
+                                                                        deleteCache();
+                                                                        Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
+                                                                            Query.limit(250)
+                                                                        ]).then(({ documents }) => {
+                                                                            setTreeItems(buildTree(documents));
+                                                                        });
 
-                                                    })
-                                                }, [])
-                                                //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
+                                                                    })
+                                                                }, [])
+                                                                //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
 
-                                                function findChildsInTree(workspaceTree, parentNode) {
-                                                    const children = [];
-                                                    workspaceTree.forEach(item => {
-                                                        if (item.parent === parentNode?.$id) {
-                                                            children.push(item);
-                                                        }
-                                                    })
+                                                                function findChildsInTree(workspaceTree, parentNode) {
+                                                                    const children = [];
+                                                                    workspaceTree.forEach(item => {
+                                                                        if (item.parent === parentNode?.$id) {
+                                                                            children.push(item);
+                                                                        }
+                                                                    })
 
-                                                    return children;
-                                                }
-
-
-
-
-                                                function findItemInTree(tree, id) {
-                                                    let result;
-                                                    tree.forEach(item => {
-                                                        if (item.$id === id) {
-                                                            result = item;
-                                                        }
-
-                                                    });
-                                                    return result;
-                                                }
-
-                                                function buildClidren(workspaceTree, parentNode) {
-                                                    const item = findItemInTree(workspaceTree, parentNode.$id);
-                                                    let children: any[] = findChildsInTree(workspaceTree, item);
-
-                                                    children = sortByStringField(children, "path");
-
-                                                    parentNode.children = children.map(child => {
-                                                        return {
-                                                            $id: child.$id,
-                                                            title: child.name,
-                                                            parent: child.parent,
-                                                            path: child.path,
-                                                            tree_widget: child.tree_widget,
-                                                            iconName: child.iconName,
-                                                            iconCategory: child.iconCategory,
-                                                            iconColor: child.iconColor,
-                                                            expanded: expandeds?.[child.$id] ? true : false,
-                                                            canDrag: true,
-                                                            view: (node) => {
-                                                                if (child.type === 'applet') {
-                                                                    return (
-                                                                        AppletContext(() =>
-                                                                            HStack(
-                                                                                child.tree_widget != null ?
-                                                                                    UIWidget(child.tree_widget, 'tree')
-                                                                                        .config({
-                                                                                            item: child,
-                                                                                            ...(params || {}),
-                                                                                            appletId: child.appletId
-                                                                                        }) :
-                                                                                    Text(child.name)
-                                                                            )
-                                                                                .width('calc(100% - 32px)')
-
-                                                                        ).appletId(child.appletId))
-                                                                } else {
-                                                                    return (
-                                                                        AppletContext(() =>
-                                                                            HStack(
-                                                                                child.tree_widget != null ?
-                                                                                    UIWidget(child.tree_widget, 'tree')
-                                                                                        .config({
-                                                                                            item: child,
-                                                                                            ...(params || {}),
-                                                                                            appletId: child.appletId
-                                                                                        }) :
-                                                                                    Text(child.name)
-                                                                            )
-                                                                                .width('calc(100% - 32px)')
-                                                                        ).appletId(child.appletId)
-                                                                    )
+                                                                    return children;
                                                                 }
-                                                            },
-                                                            children: buildClidren(workspaceTree, child)
-                                                        }
-                                                    })
-
-                                                    return parentNode.children;
-                                                }
-
-                                                function buildTree(workspaceTree) {
-                                                    const tree = [];
-                                                    let rootItems = workspaceTree?.filter(item => item.parent === '-1');
-                                                    rootItems = sortByStringField(rootItems, "path");
-                                                    rootItems.forEach(item => {
-                                                        if (item.parent === '-1') {
-                                                            const node = {
-                                                                $id: item.$id,
-                                                                title: item.name,
-                                                                parent: item.parent,
-                                                                path: item.path,
-                                                                tree_widget: item.tree_widget,
-                                                                expanded: expandeds?.[item.$id] ? true : false,
-                                                                iconName: item.iconName,
-                                                                iconCategory: item.iconCategory,
-                                                                iconColor: item.iconColor,
-                                                                canDrag: false,
-                                                                view: (node) => {
-                                                                    if (item.type === 'applet') {
-                                                                        return (
-                                                                            AppletContext(() =>
-                                                                                HStack(
-                                                                                    item.tree_widget != null ?
-                                                                                        UIWidget(item.tree_widget, 'tree')
-                                                                                            .config({
-                                                                                                item: item,
-                                                                                                ...(params || {}),
-                                                                                                appletId: item.$id
-                                                                                            }) :
-                                                                                        Text(item.name)
-                                                                                ).width('calc(100% - 32px)')
-                                                                            ).appletId(item.appletId))
-                                                                    } else {
-                                                                        return (
-                                                                            AppletContext(() =>
-                                                                                HStack(
-                                                                                    item.tree_widget != null ?
-                                                                                        UIWidget(item.tree_widget, 'tree')
-                                                                                            .config({
-                                                                                                item: item,
-                                                                                                ...(params || {}),
-                                                                                                appletId: item.$id
-                                                                                            }) :
-                                                                                        Text(item.name)
-                                                                                ).width('calc(100% - 32px)')
-                                                                            ).appletId(item.appletId)
-                                                                        )
-                                                                    }
-                                                                },
-                                                                children: []
-                                                            };
-                                                            tree.push(node);
-                                                            buildClidren(workspaceTree, node);
-                                                        }
-                                                    })
-                                                    console.log('build tree');
-                                                    return tree;
-                                                }
-
-                                                const [prevTreeItems, setPrevTreeItems] = useState([]);
-                                                const [treeItems, setTreeItems] = useState([]);
 
 
-                                                const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
-                                                    if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
-                                                        return false;
-                                                    }
 
-                                                    if (node.isTwin && nextParent && nextParent.isTwin) {
-                                                        return false;
-                                                    }
 
-                                                    const noGrandkidsDepth = nextPath.indexOf('no-grandkids');
-                                                    if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
-                                                        return false;
-                                                    }
+                                                                function findItemInTree(tree, id) {
+                                                                    let result;
+                                                                    tree.forEach(item => {
+                                                                        if (item.$id === id) {
+                                                                            result = item;
+                                                                        }
 
-                                                    return true;
-                                                };
-                                                return (
-                                                    VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                        HStack({ alignment: cTopLeading })(
+                                                                    });
+                                                                    return result;
+                                                                }
 
-                                                            ScrollView({ axes: cVertical, alignment: cTopLeading })(
+                                                                function buildClidren(workspaceTree, parentNode) {
+                                                                    const item = findItemInTree(workspaceTree, parentNode.$id);
+                                                                    let children: any[] = findChildsInTree(workspaceTree, item);
 
-                                                                /*  UIWidget('com.celmino.widget.sortable-list')
-                                                                     .config({
-                                                                         items: [
-                                                                             {
-                                                                                 id: 1,
-                                                                                 view: (node) => (
-                                                                                     VStack(
-                                                                                         Text('Name'),
-                                                                                         TextField().height(32).padding()
-                                                                                     )
-                                                                                 )
-                                                                             }
-                                                                         ]
-                                                                     }), */
-                                                                TreeContext(() =>
-                                                                    UIWidget('com.celmino.widget.sortable-tree')
-                                                                        .config({
-                                                                            // canDrag: isEditable,
-                                                                            treeItems: treeItems,
-                                                                            onChange: (_treeItems) => {
-                                                                                //  setPrevTreeItems([...treeItems]);
-                                                                                setTreeItems(_treeItems);
+                                                                    children = sortByStringField(children, "path");
 
-                                                                            },
-                                                                            onVisibilityToggle: ({ node, expanded }) => {
+                                                                    parentNode.children = children.map(child => {
+                                                                        return {
+                                                                            $id: child.$id,
+                                                                            title: child.name,
+                                                                            parent: child.parent,
+                                                                            path: child.path,
+                                                                            tree_widget: child.tree_widget,
+                                                                            iconName: child.iconName,
+                                                                            iconCategory: child.iconCategory,
+                                                                            iconColor: child.iconColor,
+                                                                            expanded: expandeds?.[child.$id] ? true : false,
+                                                                            canDrag: true,
+                                                                            view: (node) => {
+                                                                                if (child.type === 'applet') {
+                                                                                    return (
+                                                                                        AppletContext(() =>
+                                                                                            HStack(
+                                                                                                child.tree_widget != null ?
+                                                                                                    UIWidget(child.tree_widget, 'tree')
+                                                                                                        .config({
+                                                                                                            item: child,
+                                                                                                            ...(params || {}),
+                                                                                                            appletId: child.appletId
+                                                                                                        }) :
+                                                                                                    Text(child.name)
+                                                                                            )
+                                                                                                .width('calc(100% - 32px)')
 
-                                                                                if (expanded) {
-                                                                                    expandeds[node.$id] = true;
+                                                                                        ).appletId(child.appletId))
                                                                                 } else {
-                                                                                    delete expandeds[node.$id];
+                                                                                    return (
+                                                                                        AppletContext(() =>
+                                                                                            HStack(
+                                                                                                child.tree_widget != null ?
+                                                                                                    UIWidget(child.tree_widget, 'tree')
+                                                                                                        .config({
+                                                                                                            item: child,
+                                                                                                            ...(params || {}),
+                                                                                                            appletId: child.appletId
+                                                                                                        }) :
+                                                                                                    Text(child.name)
+                                                                                            )
+                                                                                                .width('calc(100% - 32px)')
+                                                                                        ).appletId(child.appletId)
+                                                                                    )
                                                                                 }
-
-                                                                                console.log(expandeds);
-
                                                                             },
+                                                                            children: buildClidren(workspaceTree, child)
+                                                                        }
+                                                                    })
 
-                                                                            onMoveNode: ({ treeData }) => {
-                                                                                const newTreeData = [...treeData];
+                                                                    return parentNode.children;
+                                                                }
 
-
-                                                                                function reCreateIndex(parentNode) {
-                                                                                    if (parentNode.children) {
-                                                                                        parentNode.children.forEach((child, index) => {
-                                                                                            child.prevParent = child.parent;
-                                                                                            child.prevPath = child.path;
-                                                                                            child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                                            child.parent = parentNode.$id;
-                                                                                            if (child.prevPath == null) {
-                                                                                                child.prevPath = child.path;
-                                                                                            }
-                                                                                            if (child.prevParent == null) {
-                                                                                                child.prevParent = child.parent;
-                                                                                            }
-                                                                                            reCreateIndex(child);
-                                                                                        });
+                                                                function buildTree(workspaceTree) {
+                                                                    const tree = [];
+                                                                    let rootItems = workspaceTree?.filter(item => item.parent === '-1');
+                                                                    rootItems = sortByStringField(rootItems, "path");
+                                                                    rootItems.forEach(item => {
+                                                                        if (item.parent === '-1') {
+                                                                            const node = {
+                                                                                $id: item.$id,
+                                                                                title: item.name,
+                                                                                parent: item.parent,
+                                                                                path: item.path,
+                                                                                tree_widget: item.tree_widget,
+                                                                                expanded: expandeds?.[item.$id] ? true : false,
+                                                                                iconName: item.iconName,
+                                                                                iconCategory: item.iconCategory,
+                                                                                iconColor: item.iconColor,
+                                                                                canDrag: false,
+                                                                                view: (node) => {
+                                                                                    if (item.type === 'applet') {
+                                                                                        return (
+                                                                                            AppletContext(() =>
+                                                                                                HStack(
+                                                                                                    item.tree_widget != null ?
+                                                                                                        UIWidget(item.tree_widget, 'tree')
+                                                                                                            .config({
+                                                                                                                item: item,
+                                                                                                                ...(params || {}),
+                                                                                                                appletId: item.$id
+                                                                                                            }) :
+                                                                                                        Text(item.name)
+                                                                                                ).width('calc(100% - 32px)')
+                                                                                            ).appletId(item.appletId))
+                                                                                    } else {
+                                                                                        return (
+                                                                                            AppletContext(() =>
+                                                                                                HStack(
+                                                                                                    item.tree_widget != null ?
+                                                                                                        UIWidget(item.tree_widget, 'tree')
+                                                                                                            .config({
+                                                                                                                item: item,
+                                                                                                                ...(params || {}),
+                                                                                                                appletId: item.$id
+                                                                                                            }) :
+                                                                                                        Text(item.name)
+                                                                                                ).width('calc(100% - 32px)')
+                                                                                            ).appletId(item.appletId)
+                                                                                        )
                                                                                     }
-                                                                                }
+                                                                                },
+                                                                                children: []
+                                                                            };
+                                                                            tree.push(node);
+                                                                            buildClidren(workspaceTree, node);
+                                                                        }
+                                                                    })
+                                                                    console.log('build tree');
+                                                                    return tree;
+                                                                }
 
-                                                                                newTreeData.forEach((item, index) => {
-                                                                                    item.prevParent = item.parent;
-                                                                                    item.prevPath = item.path;
-                                                                                    item.path = addZeroDigitToNumberReturnString(index, 3);
-                                                                                    item.parent = '-1';
-                                                                                    reCreateIndex(item);
-                                                                                });
+                                                                const [prevTreeItems, setPrevTreeItems] = useState([]);
+                                                                const [treeItems, setTreeItems] = useState([]);
 
-                                                                                const changes = [];
-                                                                                function getChanges(parentNode) {
-                                                                                    if (parentNode.children) {
-                                                                                        parentNode.children.forEach((child) => {
-                                                                                            if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
-                                                                                                // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                                                                changes.push(child);
+
+                                                                const canDrop = ({ node, nextParent, prevPath, nextPath }) => {
+                                                                    if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
+                                                                        return false;
+                                                                    }
+
+                                                                    if (node.isTwin && nextParent && nextParent.isTwin) {
+                                                                        return false;
+                                                                    }
+
+                                                                    const noGrandkidsDepth = nextPath.indexOf('no-grandkids');
+                                                                    if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
+                                                                        return false;
+                                                                    }
+
+                                                                    return true;
+                                                                };
+                                                                return (
+                                                                    VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                                        HStack({ alignment: cTopLeading })(
+
+                                                                            ScrollView({ axes: cVertical, alignment: cTopLeading })(
+                                                                                TreeContext(() =>
+                                                                                    UIWidget('com.celmino.widget.sortable-tree')
+                                                                                        .config({
+                                                                                            // canDrag: isEditable,
+                                                                                            treeItems: treeItems,
+                                                                                            onChange: (_treeItems) => {
+                                                                                                //  setPrevTreeItems([...treeItems]);
+                                                                                                setTreeItems(_treeItems);
+
+                                                                                            },
+                                                                                            onVisibilityToggle: ({ node, expanded }) => {
+
+                                                                                                if (expanded) {
+                                                                                                    expandeds[node.$id] = true;
+                                                                                                } else {
+                                                                                                    delete expandeds[node.$id];
+                                                                                                }
+
+                                                                                                console.log(expandeds);
+
+                                                                                            },
+
+                                                                                            onMoveNode: ({ treeData }) => {
+                                                                                                const newTreeData = [...treeData];
+
+
+                                                                                                function reCreateIndex(parentNode) {
+                                                                                                    if (parentNode.children) {
+                                                                                                        parentNode.children.forEach((child, index) => {
+                                                                                                            child.prevParent = child.parent;
+                                                                                                            child.prevPath = child.path;
+                                                                                                            child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                                                            child.parent = parentNode.$id;
+                                                                                                            if (child.prevPath == null) {
+                                                                                                                child.prevPath = child.path;
+                                                                                                            }
+                                                                                                            if (child.prevParent == null) {
+                                                                                                                child.prevParent = child.parent;
+                                                                                                            }
+                                                                                                            reCreateIndex(child);
+                                                                                                        });
+                                                                                                    }
+                                                                                                }
+
+                                                                                                newTreeData.forEach((item, index) => {
+                                                                                                    item.prevParent = item.parent;
+                                                                                                    item.prevPath = item.path;
+                                                                                                    item.path = addZeroDigitToNumberReturnString(index, 3);
+                                                                                                    item.parent = '-1';
+                                                                                                    reCreateIndex(item);
+                                                                                                });
+
+                                                                                                const changes = [];
+                                                                                                function getChanges(parentNode) {
+                                                                                                    if (parentNode.children) {
+                                                                                                        parentNode.children.forEach((child) => {
+                                                                                                            if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                                                                                // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                                                                                changes.push(child);
+                                                                                                            }
+                                                                                                            getChanges(child);
+                                                                                                        });
+                                                                                                    }
+                                                                                                }
+
+                                                                                                newTreeData.forEach((item, index) => {
+                                                                                                    if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                                                                                        //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                                                                        changes.push(item);
+                                                                                                    }
+                                                                                                    getChanges(item);
+                                                                                                });
+
+
+                                                                                                changes.forEach(item => {
+                                                                                                    Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                                                                                        path: item.path,
+                                                                                                        parent: item.parent
+                                                                                                    })
+                                                                                                })
+
+                                                                                                console.log(newTreeData)
+
+
                                                                                             }
-                                                                                            getChanges(child);
-                                                                                        });
-                                                                                    }
-                                                                                }
+                                                                                        })
+                                                                                )
+                                                                                    .setCanDrag(() => void 0),
+                                                                                // Text(documents[0]['opa']),
+                                                                                /*  isSorting ?
+                                                                                     SortableListView()
+                                                                                         .items(realms)
+                                                                                         .renderItem(realm =>
+                                                                                             UIWidget(realm['opa'])
+                                                                                                 .config({
+                                                                                                     ...(useParams() || {}),
+                                                                                                     appletId: realm.$id
+                                                                                                 }),
+                                                                                         )
+                                                                                         .onChange(realms => setRealms(realms)) :
+                                                                                     VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                                                         ...ForEach(documents)(applet =>
+                                                                                             UIWidget(applet['opa'])
+                                                                                                 .config({
+                                                                                                     ...(useParams() || {}),
+                                                                                                     appletId: applet.$id
+                                                                                                 }),
+                                                                                         )
+                                                                                     ) */
+                                                                            )
+                                                                        )
+                                                                            .cornerRadius(6),
+                                                                        HStack(
 
-                                                                                newTreeData.forEach((item, index) => {
-                                                                                    if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
-                                                                                        //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                                                        changes.push(item);
-                                                                                    }
-                                                                                    getChanges(item);
-                                                                                });
-
-
-                                                                                changes.forEach(item => {
-                                                                                    Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                                                        path: item.path,
-                                                                                        parent: item.parent
-                                                                                    })
+                                                                            HStack({ spacing: 5 })(
+                                                                                //FontIcon(FontIcons.Add, 'sm', '#656f7d'),
+                                                                                Text('Install Applet').fontSize(11).fontWeight('500')
+                                                                            )
+                                                                                .margin('5px 20px')
+                                                                                .cornerRadius(5)
+                                                                                .cursor('pointer')
+                                                                                .foregroundColor('#7c828d')
+                                                                                .background({ default: '#f3f4f7', hover: '#e4e4e4' })
+                                                                                .height(24)
+                                                                                .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
+                                                                                .padding('8px 12px 8px 26px')
+                                                                                .onClick(async () => {
+                                                                                    SelectAppletDialog.Show(workspaceId);
                                                                                 })
 
-                                                                                console.log(newTreeData)
 
+                                                                        ).height(200),
+                                                                        //.outline(isEditable ? 'dotted 2px green' : 'none')
 
-                                                                            }
-                                                                        })
+                                                                    ).padding(cHorizontal, 8)
                                                                 )
-                                                                    .setCanDrag(() => void 0),
-                                                                // Text(documents[0]['opa']),
-                                                                /*  isSorting ?
-                                                                     SortableListView()
-                                                                         .items(realms)
-                                                                         .renderItem(realm =>
-                                                                             UIWidget(realm['opa'])
-                                                                                 .config({
-                                                                                     ...(useParams() || {}),
-                                                                                     appletId: realm.$id
-                                                                                 }),
-                                                                         )
-                                                                         .onChange(realms => setRealms(realms)) :
-                                                                     VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                                         ...ForEach(documents)(applet =>
-                                                                             UIWidget(applet['opa'])
-                                                                                 .config({
-                                                                                     ...(useParams() || {}),
-                                                                                     appletId: applet.$id
-                                                                                 }),
-                                                                         )
-                                                                     ) */
+                                                            }
                                                             )
-                                                        )
-                                                            .cornerRadius(6),
-                                                        HStack(
-
-                                                            HStack({ spacing: 5 })(
-                                                                //FontIcon(FontIcons.Add, 'sm', '#656f7d'),
-                                                                Text('Install Applet').fontSize(11).fontWeight('500')
-                                                            )
-                                                                .margin('5px 20px')
-                                                                .cornerRadius(5)
-                                                                .cursor('pointer')
-                                                                .foregroundColor('#7c828d')
-                                                                .background({ default: '#f3f4f7', hover: '#e4e4e4' })
-                                                                .height(24)
-                                                                .transition('background .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                                                                .padding('8px 12px 8px 26px')
-                                                                .onClick(async () => {
-                                                                    SelectAppletDialog.Show(workspaceId);
-                                                                })
-
-
-                                                        ).height(200),
-                                                        //.outline(isEditable ? 'dotted 2px green' : 'none')
-
-                                                    ).padding(cHorizontal, 8)
-                                                )
-                                            }
+                                                    ) : Fragment()
                                             )
+                                        )
+                                    }
                                     )
+
 
                                 )
                             )
