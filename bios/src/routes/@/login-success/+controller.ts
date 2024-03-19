@@ -27,7 +27,7 @@ export class LoginSuccess extends CelminoController {
                                         ...(account?.prefs ? account?.prefs : {}),
                                         organization: team.$id
                                     }).then(() => {
-                                        navigate(`/@/organization-${team.$id}`);
+                                        navigate(`/app/organization-${team.$id}`);
                                     })
                                 });
 
@@ -38,8 +38,8 @@ export class LoginSuccess extends CelminoController {
                         return Text('Organization Creating')
                     })
                     :
-                    account.prefs?.organization != null ? UINavigate(`/@/organization-${account.prefs?.organization}`) :
-                        UINavigate(`/@/organization-${account.$id}`)
+                    account.prefs?.organization != null ? UINavigate(`/app/organization-${account.prefs?.organization}`) :
+                        UINavigate(`/app/organization-${account.$id}`)
 
 
         )

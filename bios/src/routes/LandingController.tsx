@@ -41,7 +41,7 @@ export class LandingController extends UIController {
         const navigate = useNavigate();
         const subDomain = useGetSubdomain();
         return (
-            !is.nullOrEmpty(subDomain) ? UINavigate('/@') :
+            !is.nullOrEmpty(subDomain) ? UINavigate('/app') :
             VStack({ alignment: cTopLeading })(
                 // Header
                 HStack(

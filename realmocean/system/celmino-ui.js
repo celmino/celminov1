@@ -19913,7 +19913,7 @@ function NewUserContextRenderer({ control }) {
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Client.setProject(subdomain);
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
-            navigate('/@Team');
+            navigate('/@');
         });
     }, []);
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)().render());
@@ -20347,10 +20347,10 @@ const useAppletNavigate = () => {
             }
             const subdomain = (0,_context_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.useGetSubdomain)();
             if (subdomain) {
-                navigate(`/@Team/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+                navigate(`/@/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
             }
             else {
-                navigate(`/@/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+                navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
             }
         }
     };

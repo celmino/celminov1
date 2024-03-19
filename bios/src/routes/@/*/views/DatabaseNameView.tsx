@@ -48,7 +48,7 @@ export function DatabaseNameView(database: Models.Database, selected: boolean, o
                                         .foregroundColor(selected ? '#7b68ee' : '#151719')
                                 ).onClick(() => {
                                     //alert(getAppletUrl(access_type, applet.id))
-                                    navigate(`/@/com.celmino.app.test/workspace/${workspaceId}/database/${database.$id}`);
+                                    navigate(`/app/com.celmino.app.test/workspace/${workspaceId}/database/${database.$id}`);
                                 })
 
                             ,

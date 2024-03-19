@@ -321,7 +321,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                 .onClick(()=> {
                                                                     const protocol = useGetProtocol();
                                                                     const domainName = useGetHDomainName();
-                                                                    window.location.href = `${protocol}//${domainName}/@`
+                                                                    window.location.href = `${protocol}//${domainName}/app`
                                                                     
                                                                 }),
                                                             ...ForEach(/* realms */[])(realm => (

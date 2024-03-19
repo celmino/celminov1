@@ -12,6 +12,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
     const { organizationId } = useParams();
     const [workspaceName, setWorkspaceName] = useState('');
+    const [workspaceId, setWorkspaceId] = useState('');
     const { me } = useGetMe('console');
     const navigate = useNavigate();
     // const { organizationId } = useParams();
@@ -27,7 +28,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
 
     return (
-        isOrganizationLoading ? Text('Loading...') : organization == null ? UINavigate('/@/organization/select') :
+        isOrganizationLoading ? Text('Loading...') : organization == null ? UINavigate('/app/organization/select') :
             UIViewBuilder(() => {
                 const { realms, isLoading: isRealmsLoading } = useListRealms(organization != null, [
                     Query.equal('teamId', organization.$id)
@@ -43,7 +44,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                             )
                                 .height()
                                 .onClick(() => {
-                                    navigate('/@/organization/select');
+                                    navigate('/app/organization/select');
                                 }),
 
                             Heading('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90),
@@ -79,7 +80,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
                                                         const protocol = useGetProtocol();
                                                         const hostName = useGetHostName();
-                                                        window.location.href = `${protocol}//${realmId}.${hostName}/@Team/?userId=${userName}&secret=${token}`
+                                                        window.location.href = `${protocol}//${realmId}.${hostName}/@/?userId=${userName}&secret=${token}`
                                                         // alert(data?.message?.split('&'))
                                                     })
                                                     //navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
@@ -101,6 +102,17 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                 }),
                             HStack(
                                 TextField()
+                                .padding()
+                                .border('none')
+                                .borderBottom('1px solid #000')
+                                .background('transparent')
+                                .outline({ focus: 'none' })
+                                .maxWidth(300)
+                                .onChange((value: string) => {
+                                    setWorkspaceName(value)
+                                }),
+                                HStack().allWidth(20),
+                                TextField()
                                     .padding()
                                     .border('none')
                                     .borderBottom('1px solid #000')
@@ -108,7 +120,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                     .outline({ focus: 'none' })
                                     .maxWidth(300)
                                     .onChange((value: string) => {
-                                        setWorkspaceName(value)
+                                        setWorkspaceId(value)
                                     })
 
                             ).width('50%')
@@ -118,6 +130,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                 .disabled(isLoading)
                                 .onClick(async () => {
                                     createRealm({
+                                        realmId: workspaceId,
                                         name: workspaceName,
                                         organizationId: organization?.$id,
                                     }, async (workspace) => {
@@ -147,7 +160,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
 
 
-                                        navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
+                                        navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
                                     })
                                 }),
 

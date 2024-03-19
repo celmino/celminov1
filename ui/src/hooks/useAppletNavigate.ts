@@ -17,10 +17,10 @@ export const useAppletNavigate = () => {
             }
             const subdomain = useGetSubdomain();
             if (subdomain) {
-                navigate(`/@Team/${urlFriendly(applet.name)}-${applet.$id}${url}`)
+                navigate(`/@/${urlFriendly(applet.name)}-${applet.$id}${url}`)
             } else {
 
-                navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet.name)}-${applet.$id}${url}`)
+                navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet.name)}-${applet.$id}${url}`)
             }
         }
     }

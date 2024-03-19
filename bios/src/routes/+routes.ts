@@ -38,7 +38,7 @@ export const Routes = () => {
         UIRoutes(
 
             // Console Routes
-            UIRoute('/@', LayoutController).children(
+            UIRoute('/app', LayoutController).children(
                 UIRoute('', DefaultWorkspaceController),
                 UIRoute('login-success', LoginSuccess),
                 UIRoute('*', HomeController),
@@ -63,7 +63,7 @@ export const Routes = () => {
             ),
 
               // Team Routes
-              UIRoute('/@Team', RealmLayoutController).children(
+              UIRoute('/@', RealmLayoutController).children(
                 UIRoute('', WorkspaceController).children(
                     UIRoute('applet/:appletId/*', AppletController),
                     UIRoute(':appletId/*', AppletController)

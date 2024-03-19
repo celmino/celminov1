@@ -9160,9 +9160,9 @@ var HomeController = /** @class */ (function (_super) {
 var Routes = function () {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoutes)(
     // Console Routes
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@', _controller__WEBPACK_IMPORTED_MODULE_9__.LayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _default__WEBPACK_IMPORTED_MODULE_11__.DefaultWorkspaceController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('login-success', _login_success_controller__WEBPACK_IMPORTED_MODULE_16__.LoginSuccess), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('*', HomeController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':organizationId', _organization_organizationId_controller__WEBPACK_IMPORTED_MODULE_3__.OrganizationController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _workspace_controller__WEBPACK_IMPORTED_MODULE_2__.WorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('workspace/select', _workspace_select_controller__WEBPACK_IMPORTED_MODULE_7__.WorkspaceSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('organization/select', _organization_select_controller__WEBPACK_IMPORTED_MODULE_8__.OrganizationSelectController)), 
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/app', _controller__WEBPACK_IMPORTED_MODULE_9__.LayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _default__WEBPACK_IMPORTED_MODULE_11__.DefaultWorkspaceController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('login-success', _login_success_controller__WEBPACK_IMPORTED_MODULE_16__.LoginSuccess), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('*', HomeController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':organizationId', _organization_organizationId_controller__WEBPACK_IMPORTED_MODULE_3__.OrganizationController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _workspace_controller__WEBPACK_IMPORTED_MODULE_2__.WorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('workspace/select', _workspace_select_controller__WEBPACK_IMPORTED_MODULE_7__.WorkspaceSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('organization/select', _organization_select_controller__WEBPACK_IMPORTED_MODULE_8__.OrganizationSelectController)), 
     // Team Routes
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@Team', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _controller__WEBPACK_IMPORTED_MODULE_9__.PublicLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _workspace_controller__WEBPACK_IMPORTED_MODULE_15__.PublicWorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _LandingController__WEBPACK_IMPORTED_MODULE_14__.LandingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/login', _login_controller__WEBPACK_IMPORTED_MODULE_5__.LoginController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/signup', _signup_controller__WEBPACK_IMPORTED_MODULE_6__.SignupController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/logout', _logout_controller__WEBPACK_IMPORTED_MODULE_1__.LogoutController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/reset-password', _reset_password_controller__WEBPACK_IMPORTED_MODULE_12__.ResetPasswordController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/update-password', _update_password_controller__WEBPACK_IMPORTED_MODULE_13__.UpdatePasswordController)));
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _controller__WEBPACK_IMPORTED_MODULE_9__.PublicLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _workspace_controller__WEBPACK_IMPORTED_MODULE_15__.PublicWorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/', _LandingController__WEBPACK_IMPORTED_MODULE_14__.LandingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/login', _login_controller__WEBPACK_IMPORTED_MODULE_5__.LoginController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/signup', _signup_controller__WEBPACK_IMPORTED_MODULE_6__.SignupController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/logout', _logout_controller__WEBPACK_IMPORTED_MODULE_1__.LogoutController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/reset-password', _reset_password_controller__WEBPACK_IMPORTED_MODULE_12__.ResetPasswordController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/update-password', _update_password_controller__WEBPACK_IMPORTED_MODULE_13__.UpdatePasswordController)));
 };
 
 
@@ -9396,7 +9396,7 @@ var LeftSideMenuView = function (selectedItem) {
                             .onClick(function () {
                             var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_8__.useGetProtocol)();
                             var domainName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_8__.useGetHDomainName)();
-                            window.location.href = "".concat(protocol, "//").concat(domainName, "/@");
+                            window.location.href = "".concat(protocol, "//").concat(domainName, "/app");
                         })], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ForEach)(/* realms */ [])(function (realm) { return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(realm.name)).background({ hover: '#E8EAED' })
                         .cursor('pointer')
                         .padding(5)
@@ -9830,8 +9830,8 @@ var DefaultWorkspaceController = /** @class */ (function (_super) {
         var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAccount)().account;
         var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListAccountMemberships)('console'), memberships = _c.memberships, isMembershipLoading = _c.isLoading;
         return (isMembershipLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)() :
-            ((_a = account.prefs) === null || _a === void 0 ? void 0 : _a.organization) != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)("/@/organization-".concat((_b = account.prefs) === null || _b === void 0 ? void 0 : _b.organization)) :
-                memberships.length > 0 ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)("/@/organization-".concat(memberships[0].teamId)) :
+            ((_a = account.prefs) === null || _a === void 0 ? void 0 : _a.organization) != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)("/app/organization-".concat((_b = account.prefs) === null || _b === void 0 ? void 0 : _b.organization)) :
+                memberships.length > 0 ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)("/app/organization-".concat(memberships[0].teamId)) :
                     (0,_views_CreateOrganizationView__WEBPACK_IMPORTED_MODULE_5__.CreateOrganizationView)());
     };
     return DefaultWorkspaceController;
@@ -9932,15 +9932,15 @@ var LoginSuccess = /** @class */ (function (_super) {
                         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Services.Teams.create(account.$id, account.name)
                             .then(function (team) {
                             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.Services.Accounts.updatePrefs(__assign(__assign({}, ((account === null || account === void 0 ? void 0 : account.prefs) ? account === null || account === void 0 ? void 0 : account.prefs : {})), { organization: team.$id })).then(function () {
-                                navigate("/@/organization-".concat(team.$id));
+                                navigate("/app/organization-".concat(team.$id));
                             });
                         });
                     }, []);
                     return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Organization Creating');
                 })
                 :
-                    ((_a = account.prefs) === null || _a === void 0 ? void 0 : _a.organization) != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/@/organization-".concat((_b = account.prefs) === null || _b === void 0 ? void 0 : _b.organization)) :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/@/organization-".concat(account.$id)));
+                    ((_a = account.prefs) === null || _a === void 0 ? void 0 : _a.organization) != null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/app/organization-".concat((_b = account.prefs) === null || _b === void 0 ? void 0 : _b.organization)) :
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/app/organization-".concat(account.$id)));
     };
     return LoginSuccess;
 }(_CelminoController__WEBPACK_IMPORTED_MODULE_1__.CelminoController));
@@ -10143,8 +10143,8 @@ var WorkspaceLayoutController = /** @class */ (function (_super) {
                         return ((!isMembershipLoading && memberships.length === 0) ? (0,_views_CreateOrganizationView__WEBPACK_IMPORTED_MODULE_5__.CreateOrganizationView)() :
                             isRealmsLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Realms loading...') :
                                 realms.length === 0 ? (0,_views_CreateWorkspaceView__WEBPACK_IMPORTED_MODULE_6__.CreateWorkspaceView)() :
-                                    (organizationId == null && workspaceId == null && !_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.nullOrEmpty(me === null || me === void 0 ? void 0 : me.prefs.workspace)) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/@/workspace/".concat(me === null || me === void 0 ? void 0 : me.prefs.workspace)) :
-                                        (organizationId == null && workspaceId == null && realms.length > 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/@/workspace/".concat(realms[0].$id)) :
+                                    (organizationId == null && workspaceId == null && !_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.nullOrEmpty(me === null || me === void 0 ? void 0 : me.prefs.workspace)) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/app/workspace/".concat(me === null || me === void 0 ? void 0 : me.prefs.workspace)) :
+                                        (organizationId == null && workspaceId == null && realms.length > 0) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)("/app/workspace/".concat(realms[0].$id)) :
                                             isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Loading...') :
                                                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIViewBuilder)(function () {
                                                     return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIScene)(isError ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UINavigate)('/login') :
@@ -10234,7 +10234,7 @@ var WorkspaceLayoutController = /** @class */ (function (_super) {
                                                                         updatePrefs({
                                                                             prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { organization: team.$id })
                                                                         }, function () {
-                                                                            navigate("/@/organization/".concat(team.$id));
+                                                                            navigate("/app/organization/".concat(team.$id));
                                                                         });
                                                                     }
                                                                     else {
@@ -10693,7 +10693,7 @@ var WorkspaceSelectController = /** @class */ (function (_super) {
     WorkspaceSelectController.prototype.LoadView = function () {
         var _a = (0,_hooks_useGetOrganizationId__WEBPACK_IMPORTED_MODULE_2__.useGetOrganizationId)(), organizationId = _a.organizationId, isLoading = _a.isLoading;
         return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
-            organizationId == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/@/organization/select') :
+            organizationId == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/app/organization/select') :
                 (0,_views_CreateWorkspaceView__WEBPACK_IMPORTED_MODULE_1__.CreateWorkspaceView)());
     };
     return WorkspaceSelectController;
@@ -10789,7 +10789,7 @@ var LandingController = /** @class */ (function (_super) {
     LandingController.prototype.LoadView = function () {
         var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
         var subDomain = (0,_hooks_useGetSubdomain__WEBPACK_IMPORTED_MODULE_3__.useGetSubdomain)();
-        return (!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(subDomain) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/@') :
+        return (!_tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.nullOrEmpty(subDomain) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('/app') :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
             // Header
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(LeftLogo, null))).width().height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Log in')
@@ -10970,7 +10970,7 @@ var LoginController = /** @class */ (function (_super) {
             .background('white')
             .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
             .onClick(function () {
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createOAuth2Session("google", "".concat(window.location.protocol, "//").concat(window.location.host, "/@/login-success"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createOAuth2Session("google", "".concat(window.location.protocol, "//").concat(window.location.host, "/app/login-success"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
         }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(MicrosoftLogo), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Sign in with Microsoft').fontFamily('"Graphik Regular", sans-serif').fontSize(20)).height(48).width('100%')
             .minWidth('32rem')
             .maxWidth('40rem')
@@ -10978,7 +10978,7 @@ var LoginController = /** @class */ (function (_super) {
             .background('white')
             .shadow({ hover: '0 4px 16px rgba(0, 0, 0, 0.1)' })
             .onClick(function () {
-            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createOAuth2Session("microsoft", "".concat(window.location.protocol, "//").concat(window.location.host, "/@/login-success"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
+            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createOAuth2Session("microsoft", "".concat(window.location.protocol, "//").concat(window.location.host, "/app/login-success"), "".concat(window.location.protocol, "//").concat(window.location.host, "/login-failure"));
         })).height().width().paddingTop('3rem'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('OR').padding('0 20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height(1).background('rgba(125, 141, 154, 0.1)')).padding('2.4rem 0').maxWidth('40rem').height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)().fontSize('1.8rem')
             .allHeight(40)
             //  .placeholder('Enter your email')
@@ -11305,7 +11305,7 @@ var SignupController = /** @class */ (function (_super) {
                                         prefs: __assign(__assign({}, ((account === null || account === void 0 ? void 0 : account.prefs) ? account === null || account === void 0 ? void 0 : account.prefs : {})), { organization: team.$id })
                                     }, function () {
                                         deleteCache();
-                                        navigate("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_2__.urlFriendly)(organization.name), "-").concat(organization.$id, "/workspace/select"));
+                                        navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_2__.urlFriendly)(organization.name), "-").concat(organization.$id, "/workspace/select"));
                                     });
                                     return [3 /*break*/, 3];
                                 case 2:
@@ -11610,7 +11610,7 @@ var CreateOrganizationView = function () { return (0,_tuval_forms__WEBPACK_IMPOR
             }, function () {
                 deleteCache();
                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Teams.get(membership.teamId).then(function (team) {
-                    navigate("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_5__.urlFriendly)(team.name), "-").concat(team.$id, "/workspace/select"));
+                    navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_5__.urlFriendly)(team.name), "-").concat(team.$id, "/workspace/select"));
                 });
             });
             /* } else {
@@ -11646,7 +11646,7 @@ var CreateOrganizationView = function () { return (0,_tuval_forms__WEBPACK_IMPOR
                             prefs: __assign(__assign({}, ((me === null || me === void 0 ? void 0 : me.prefs) ? me === null || me === void 0 ? void 0 : me.prefs : {})), { organization: team.$id })
                         }, function () {
                             deleteCache();
-                            navigate("/@/workspace/select");
+                            navigate("/app/workspace/select");
                         });
                         return [2 /*return*/];
                     });
@@ -11731,14 +11731,15 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
     var organizationId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)().organizationId;
     var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(''), workspaceName = _a[0], setWorkspaceName = _a[1];
+    var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(''), workspaceId = _b[0], setWorkspaceId = _b[1];
     var me = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetMe)('console').me;
     var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
     // const { organizationId } = useParams();
-    var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _b.organization, isOrganizationLoading = _b.isLoading; // useGetCurrentOrganization();
-    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRealm)(), createRealm = _c.createRealm, isLoading = _c.isLoading;
+    var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetOrganization)({ organizationId: organizationId, hookEnabled: true }), organization = _c.organization, isOrganizationLoading = _c.isLoading; // useGetCurrentOrganization();
+    var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRealm)(), createRealm = _d.createRealm, isLoading = _d.isLoading;
     var deleteSession = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteSession)('console').deleteSession;
     var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useAccount)().account;
-    return (isOrganizationLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Loading...') : organization == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)('/@/organization/select') :
+    return (isOrganizationLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Loading...') : organization == null ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)('/app/organization/select') :
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
             var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListRealms)(organization != null, [
                 _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.equal('teamId', organization.$id)
@@ -11748,7 +11749,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                 .fontSize(16))
                 .height()
                 .onClick(function () {
-                navigate('/@/organization/select');
+                navigate('/app/organization/select');
             }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('Realms').fontFamily('"Hagrid", sans-serif').fontSize('6rem').foregroundColor('#090e13').lineHeight(90), _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(realms)(function (realm) {
                 return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIViewBuilder)(function () {
                     var createMagicURL = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateMagicURL)(realm.$id).createMagicURL;
@@ -11772,7 +11773,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                             var realmId = params[3];
                             var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_5__.useGetProtocol)();
                             var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_5__.useGetHostName)();
-                            window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@Team/?userId=").concat(userName, "&secret=").concat(token);
+                            window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@/?userId=").concat(userName, "&secret=").concat(token);
                             // alert(data?.message?.split('&'))
                         });
                         //navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
@@ -11790,6 +11791,15 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                 .maxWidth(300)
                 .onChange(function (value) {
                 setWorkspaceName(value);
+            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)().allWidth(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)()
+                .padding()
+                .border('none')
+                .borderBottom('1px solid #000')
+                .background('transparent')
+                .outline({ focus: 'none' })
+                .maxWidth(300)
+                .onChange(function (value) {
+                setWorkspaceId(value);
             })).width('50%')
                 .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Button)().renderer(_realmocean_antd__WEBPACK_IMPORTED_MODULE_0__.ButtonRenderer).label('Submit')
                 .loading(isLoading)
@@ -11797,6 +11807,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                 .onClick(function () { return __awaiter(void 0, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     createRealm({
+                        realmId: workspaceId,
                         name: workspaceName,
                         organizationId: organization === null || organization === void 0 ? void 0 : organization.$id,
                     }, function (workspace) { return __awaiter(void 0, void 0, void 0, function () {
@@ -11860,7 +11871,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
                                 case 19:
                                     _a.sent();
-                                    navigate("/@/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(workspace.name, "-").concat(workspace.$id));
+                                    navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(workspace.name, "-").concat(workspace.$id));
                                     return [2 /*return*/];
                             }
                         });

@@ -12,8 +12,8 @@ export class DefaultWorkspaceController extends CelminoController {
     const { memberships, isLoading: isMembershipLoading } = useListAccountMemberships('console');
     return (
       isMembershipLoading ? Fragment() :
-        account.prefs?.organization != null ? UINavigate(`/@/organization-${account.prefs?.organization}`) :
-          memberships.length > 0 ? UINavigate(`/@/organization-${memberships[0].teamId}`) :
+        account.prefs?.organization != null ? UINavigate(`/app/organization-${account.prefs?.organization}`) :
+          memberships.length > 0 ? UINavigate(`/app/organization-${memberships[0].teamId}`) :
             CreateOrganizationView()
     )
   }

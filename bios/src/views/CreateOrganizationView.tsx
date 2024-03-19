@@ -76,7 +76,7 @@ export const CreateOrganizationView = () => UIViewBuilder(() => {
                                     }, () => {
                                         deleteCache();
                                         Services.Teams.get(membership.teamId).then((team) => {
-                                            navigate(`/@/${urlFriendly(team.name)}-${team.$id}/workspace/select`);
+                                            navigate(`/app/${urlFriendly(team.name)}-${team.$id}/workspace/select`);
                                         })
                                     })
 
@@ -133,7 +133,7 @@ export const CreateOrganizationView = () => UIViewBuilder(() => {
 
                                     }, () => {
                                         deleteCache();
-                                        navigate(`/@/workspace/select`);
+                                        navigate(`/app/workspace/select`);
                                     })
 
                                /*  } else {

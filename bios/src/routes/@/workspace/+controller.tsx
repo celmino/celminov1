@@ -46,8 +46,8 @@ export class WorkspaceLayoutController extends UIController {
                                 (!isMembershipLoading && memberships.length === 0) ? CreateOrganizationView() :
                                     isRealmsLoading ? Text('Realms loading...') :
                                         realms.length === 0 ? CreateWorkspaceView() :
-                                            (organizationId == null && workspaceId == null && !is.nullOrEmpty(me?.prefs.workspace)) ? UINavigate(`/@/workspace/${me?.prefs.workspace}`) :
-                                                (organizationId == null && workspaceId == null && realms.length > 0) ? UINavigate(`/@/workspace/${realms[0].$id}`) :
+                                            (organizationId == null && workspaceId == null && !is.nullOrEmpty(me?.prefs.workspace)) ? UINavigate(`/app/workspace/${me?.prefs.workspace}`) :
+                                                (organizationId == null && workspaceId == null && realms.length > 0) ? UINavigate(`/app/workspace/${realms[0].$id}`) :
                                                     isLoading ? Text('Loading...') :
                                                         UIViewBuilder(() =>
                                                             UIScene(
@@ -240,7 +240,7 @@ export class WorkspaceLayoutController extends UIController {
                                                                                                                         }
 
                                                                                                                     }, () => {
-                                                                                                                        navigate(`/@/organization/${team.$id}`)
+                                                                                                                        navigate(`/app/organization/${team.$id}`)
                                                                                                                     })
 
                                                                                                                 } else {
