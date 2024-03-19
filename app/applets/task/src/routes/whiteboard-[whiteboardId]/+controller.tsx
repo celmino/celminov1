@@ -7,8 +7,6 @@ import { ActionPanel } from "../../views/ActionPanel";
 import { ViewHeader } from "../../views/ViewHeader";
 
 export class WhiteboardController extends UIController {
-
-
     public override LoadView(): UIView {
         const {whiteboardId } = useParams();
         const {realm} = useRealm();

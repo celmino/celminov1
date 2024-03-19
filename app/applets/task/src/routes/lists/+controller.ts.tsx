@@ -43,9 +43,9 @@ export class ListController extends UIFormController {
 
 
     public LoadView() {
-       
-        const {realm} = useRealm();
-        const {applet} = useApplet();
+
+        const { realm } = useRealm();
+        const { applet } = useApplet();
         const workspaceId = realm.$id;
         const appletId = applet.$id;
 
@@ -55,6 +55,7 @@ export class ListController extends UIFormController {
         const { documents: groups, isLoading: isStatusesLoading } = useListDocuments(workspaceId, appletId, 'listStatuses', [
             Query.orderAsc('orderBy')
         ]);
+
         const { createDocument: createTask } = useCreateDocument(workspaceId, appletId, 'listItems');
         const { updateDocument: updateTask } = useUpdateDocument(workspaceId);
 
@@ -133,16 +134,16 @@ export class ListController extends UIFormController {
                                                             data: data
                                                         })
                                                     },
-                                                    onItemSave: (item) => {
+                                                    onItemSave: (data) => {
+
                                                         return (
                                                             new Promise((resolve) => {
+
                                                                 createTask({
-                                                                    data: item
-                                                                }, () => {
-                                                                    resolve(true);
-                                                                    /*  setTimeout(() =>
-                                                                         navigate(`/@/workspace/${workspaceId}/applet/${appletId}`)
-                                                                         , 1000) */
+                                                                    data: data
+                                                                }, (task) => {
+                                                                    resolve(task);
+
                                                                 })
                                                             })
                                                         )

@@ -10418,11 +10418,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _views_LeftSideMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../* /views/LeftSideMenu */ "./src/routes/@/*/views/LeftSideMenu.tsx");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../hooks/useGetProtocol */ "./src/hooks/useGetProtocol.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -10440,35 +10435,13 @@ var __extends = (undefined && undefined.__extends) || (function () {
 })();
 
 
-
-
-
 var WorkspaceController = /** @class */ (function (_super) {
     __extends(WorkspaceController, _super);
     function WorkspaceController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     WorkspaceController.prototype.LoadView = function () {
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useRealm)().realm;
-        var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useAccount)().account;
-        var createMagicURL = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useCreateMagicURL)(realm.$id).createMagicURL;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Create url')).onClick(function () {
-            createMagicURL({
-                userId: account.$id,
-                email: account.email,
-                url: 'http://test.localhost/login'
-            }, function (data) {
-                var _a;
-                var params = (_a = data === null || data === void 0 ? void 0 : data.message) === null || _a === void 0 ? void 0 : _a.split('&');
-                var userName = params[0];
-                var token = params[1];
-                var realmId = params[3];
-                var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetProtocol)();
-                var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_4__.useGetHostName)();
-                window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@Team/?userId=").concat(userName, "&secret=").concat(token);
-                // alert(data?.message?.split('&'))
-            });
-        }), (0,_views_LeftSideMenu__WEBPACK_IMPORTED_MODULE_1__.LeftSideMenuView)('Home'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width("100%").height("100%")));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_LeftSideMenu__WEBPACK_IMPORTED_MODULE_1__.LeftSideMenuView)('Home'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width("100%").height("100%")));
     };
     return WorkspaceController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));

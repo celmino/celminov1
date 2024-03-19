@@ -32692,15 +32692,12 @@ var ListController = /** @class */ (function (_super) {
                                 data: data
                             });
                         },
-                        onItemSave: function (item) {
+                        onItemSave: function (data) {
                             return (new Promise(function (resolve) {
                                 createTask({
-                                    data: item
-                                }, function () {
-                                    resolve(true);
-                                    /*  setTimeout(() =>
-                                         navigate(`/@/workspace/${workspaceId}/applet/${appletId}`)
-                                         , 1000) */
+                                    data: data
+                                }, function (task) {
+                                    resolve(task);
                                 });
                             }));
                         },

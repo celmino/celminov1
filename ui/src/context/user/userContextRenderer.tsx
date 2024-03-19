@@ -46,8 +46,8 @@ export function NewUserContextRenderer({ control }: { control: UserContextClass 
     useEffect(() => {
         Services.Client.setProject(subdomain);
         Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
-            
-           navigate('/@Team');
+
+            navigate('/@Team');
         })
     }, [])
     return (

@@ -1,4 +1,4 @@
-import { Button, HStack, Icon, Icons, RequiredRule, Text, UIViewBuilder, UIWidget, cHorizontal, nanoid, useEffect, useFormController, useParams, useProtocol, useState } from "@tuval/forms"
+import { Button, HStack, Icon, Icons, RequiredRule, Text, UIViewBuilder, UIWidget, cHorizontal, nanoid, useEffect, useFormController, useOptions, useParams, useProtocol, useState } from "@tuval/forms"
 import { StatusMarker } from "./StatusMarker"
 import { EventBus, is } from "@tuval/core"
 import { useCallback } from 'react';
@@ -112,10 +112,11 @@ export const PriorityView = () => {
 export function EditTaskItem(status: any) {
     return (
         UIViewBuilder(() => {
-            const { workspaceId, appletId } = useParams();
 
-            const { createDocument } = useCreateDocument(workspaceId, appletId, 'listItems')
-            let createSource = 'B';
+          
+            const { onItemSave } = useOptions();
+
+             let createSource = 'B';
 
             const controller = useFormController();
             const [value, setValue] = useState('');
@@ -157,20 +158,17 @@ export function EditTaskItem(status: any) {
                         .shadow({ focus: 'none' })
                         .onKeyDown((e) => {
                             if (e.code === 'Enter') {
-                         
-                                createDocument({
-                                    documentId: nanoid(),
-                                    data: {
-                                        name: e.target.value,
-                                        status: status.$id
-                                    }
-                                }, (task) => {
+                                onItemSave({
+                                    name: e.target.value,
+                                    status: status.$id
+                                }).then((task)=> {
                                     setValue('');
                                     EventBus.Default.fire('tasks.changed', { task })
                                     EventBus.Default.fire('task.opa.hideedit', null);
                                     EventBus.Default.fire('task.opa.showedit', { stage_id: status.$id });
-                                }
-                                );
+                             
+                                });
+                              
                             }
                         })
                         .onChange((e) => {
@@ -186,7 +184,7 @@ export function EditTaskItem(status: any) {
                     ).width(52).height(22)
                         .onClick(() => {
 
-                            createDocument({
+                          /*   createDocument({
                                 documentId: nanoid(),
                                 data: {
                                     name: value,
@@ -195,7 +193,7 @@ export function EditTaskItem(status: any) {
                             }, (task) => {
                                 EventBus.Default.fire('tasks.changed', { task })
                                 EventBus.Default.fire('task.opa.hideedit', null);
-                            })
+                            }) */
 
 
                         }),
