@@ -19894,7 +19894,7 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController 
 const Proxy = ({ control }) => (control.vp_ChildFunc().render());
 const useGetSubdomain = (url = window.location.hostname) => {
     const names = url.split('.');
-    if (names.length === 2) {
+    if ((url.indexOf('localhost') > -1 && names.length === 2) || names.length === 3) {
         return names[0];
     }
     else {

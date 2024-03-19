@@ -9068,10 +9068,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   useGetSubdomain: () => (/* binding */ useGetSubdomain)
 /* harmony export */ });
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+
 var useGetSubdomain = function (url) {
     if (url === void 0) { url = window.location.hostname; }
     var names = url.split('.');
-    if (names.length === 2) {
+    if ((_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.localhost() && names.length === 2) || names.length === 3) {
         return names[0];
     }
     else {
