@@ -18,34 +18,29 @@ import {
 } from "@tuval/forms";
 
 import { AddCollectionDialog } from "../../dialogs/AddCollection/AddCollectionDialog";
-import { DynoDialog, useOrganization, useRealm } from "@celmino/ui";
+import { DynoDialog, useApplet, useAppletNavigate, useOrganization, useRealm } from "@celmino/ui";
 import { EventBus } from "@tuval/core";
 import React from "react";
 
 
 export class CollectionsController extends UIFormController {
     public LoadView() {
-        const { workspaceId, appletId } = useParams();
-        const { database } = useGetDatabase(workspaceId, appletId);
-        const { createCollection } = useCreateCollection(workspaceId);
+
+        const { realm } = useRealm();
+        const { applet } = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
 
         const { documents: collections } = useListDocuments(workspaceId, appletId, 'collections', [
             Query.equal('type', 'userCollection')
         ]);
 
         const organization = useOrganization();
-        const  {realm}  = useRealm();
-        const { document: applet } = useGetDocument({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId,
 
-        })
 
         const [selectedCollection, setSelectedCollection] = useState<Models.Document>(null);
         const { updateDocument } = useUpdateDocument(workspaceId);
-        const navigate = useNavigate();
+        const {navigate} = useAppletNavigate();
         return (
             ReactView(
                 <DialogStack>{
@@ -123,7 +118,7 @@ export class CollectionsController extends UIFormController {
                                     //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
                                     onChange: (index) => {
                                         setSelectedCollection(collections[index]);
-                                        navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet?.name)}-${appletId}/collections/${collections[index].name}-${collections[index].$id}`)
+                                        navigate(`collections/${collections[index].name}-${collections[index].$id}`)
                                         /*    setWidgetController({
                                                controller: class extends WidgetController { }
                                            });
@@ -149,8 +144,8 @@ export class CollectionsController extends UIFormController {
                         UIRouteOutlet().width('100%').height('100%')
 
                     )
-                   
-                    .render()
+
+                        .render()
                 }
                 </DialogStack>
             )

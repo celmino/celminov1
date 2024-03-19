@@ -1,19 +1,26 @@
-import { ColorSelect } from "@celmino/ui";
-import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
+import { ColorSelect, useApplet, useRealm } from "@celmino/ui";
+import { useUpdateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
 
 import {
-    HStack, TextField, UIFormController, UIWidget, VStack, cLeading,
-    cTopLeading, useParams, Text, cHorizontal, cVertical
+    HStack,
+    Text,
+    TextField, UIFormController, UIWidget, VStack,
+    cHorizontal,
+    cLeading,
+    cTopLeading,
+    cVertical
 } from "@tuval/forms";
 
 export class GeneralSettingsController extends UIFormController {
     public LoadView() {
 
-        const { workspaceId, appletId } = useParams();
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
 
-        const { document: applet } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
-
+    
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         return (

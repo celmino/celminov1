@@ -1,17 +1,16 @@
 import {
-    ForEach, FormBuilder, Fragment, HStack,
+    Fragment,
     Icon,
-    ReactView,
     SvgIcon,
-    UIController, UIView, UIViewBuilder, UIWidget, VStack,
-    cLeading, cTopLeading,
-    useNavigate, useParams, useState
+    UIController, UIView,
+    UIWidget,
+    useState
 } from '@tuval/forms';
 
-import { AboutDialog,   SelectAppletDialog, useAppletNavigate, useRealmTree, ListApplet } from '@celmino/ui';
-import { Query, useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useListDocuments, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
+import { AboutDialog, ListApplet, SelectAppletDialog, useAppletNavigate, useRealmTree } from '@celmino/ui';
+import { useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
 
-import { EventBus, is } from '@tuval/core';
+import { EventBus } from '@tuval/core';
 /* import { AddBoardDialog } from './dialogs/AddBoardDialog';
 import { AddDocumentDialog } from './dialogs/AddDocumentDialog';
 import { AddFolderDialog } from './dialogs/AddFolderDialog';
@@ -19,8 +18,7 @@ import { AddListDialog } from './dialogs/AddListDialog';
 import { SaveSpaceAction } from './dialogs/AddSpaceDialog';
 import { AddWhiteboardDialog } from './dialogs/AddWhiteboardDialog'; */
 import { AppletIcon, BoardIcon, CalendarIcon, FeedIcon, ListIcon, ReportIcon, TableIcon, TimelineIcon } from './resources/Icons';
-import { getAppletId, getDocumentId, getListId, getViewId, isAppletOnly, isAppletSettings } from './utils';
-import React from 'react';
+import { getAppletId, getListId, isAppletOnly, isAppletSettings } from './utils';
 
 
 

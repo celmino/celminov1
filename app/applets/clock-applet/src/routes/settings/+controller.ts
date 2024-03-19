@@ -1,5 +1,6 @@
+import { useApplet, useRealm } from "@celmino/ui";
 import { Text } from "@realmocean/vibe";
-import { ForEach, HStack, Heading, HeadingSizes, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
+import { ForEach, HStack, Heading, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate } from "@tuval/forms";
 
 export function getSettingsName() {
     var url = window.location.href;
@@ -24,7 +25,10 @@ export class SettingsController extends UIFormController {
 
 
     public LoadView() {
-        const { workspaceId, appletId } = useParams();
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
 
         const menu = [
             {

@@ -31,6 +31,7 @@ import { EmptyView } from "../../../../views/EmptyView";
 import { DatabaseNameView } from "./DatabaseNameView";
 import { urlFriendly } from "../../../../utils/urlFriendly";
 import { CalendarIcon, InboxIcon, MyDayIcon, TimelineIcon, TimerIcon, UpIcon, UpcommingIcon, UpdatesIcon } from "../../../../assets/Icons";
+import { useGetHDomainName, useGetHostName, useGetProtocol } from "../../../../hooks/useGetProtocol";
 
 
 const expandeds = {};
@@ -316,7 +317,13 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             )
                                                                 .cursor('pointer')
                                                                 .padding(5)
-                                                                .height(),
+                                                                .height()
+                                                                .onClick(()=> {
+                                                                    const protocol = useGetProtocol();
+                                                                    const domainName = useGetHDomainName();
+                                                                    window.location.href = `${protocol}//${domainName}/@`
+                                                                    
+                                                                }),
                                                             ...ForEach(/* realms */[])(realm => (
                                                                 HStack({ alignment: cLeading })(
                                                                     Text(realm.name)

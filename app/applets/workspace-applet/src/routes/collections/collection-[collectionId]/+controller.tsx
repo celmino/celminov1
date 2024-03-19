@@ -1,5 +1,5 @@
 import {
-    Models, Query, useCreateDocument, useCreateStringAttribute, useDeleteAttribute, useGetCollection,
+    Models, Query, useCreateDatabase, useCreateDocument, useCreateStringAttribute, useDeleteAttribute, useGetCollection,
     useGetDatabase, useListDocuments, useUpdateCollection, useUpdateDocument
 } from "@realmocean/sdk";
 import { DatePickerRenderer, InputRenderer } from "@realmocean/antd";
@@ -40,7 +40,7 @@ import { useState } from "react";
 import { Icons } from "../../../Icons";
 import { ColorItemView } from "./views/ColorItemView";
 import { AddTextFieldDialog } from "../../../dialogs/AddTextAttributeDialog";
-import { DynoDialog, FormBuilder, NewFieldMenuView } from "@celmino/ui";
+import { DynoDialog, FormBuilder, NewFieldMenuView, useApplet, useRealm } from "@celmino/ui";
 import { TextField } from "@realmocean/vibe";
 import { TextFieldView } from "./views/FieldViews/Text";
 import { RichTextFieldView } from "./views/FieldViews/Richtext";
@@ -165,7 +165,12 @@ function getAttributeIcon(type: string) {
 let _hideHandle = null;
 export class CollectionController extends UIFormController {
     public override LoadView(): UIView {
-        const { workspaceId, appletId: databaseId, collectionId } = useParams();
+        const { collectionId } = useParams();
+
+        const  {realm}  = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const databaseId = applet.$id;
 
 
         const { database } = useGetDatabase(workspaceId, databaseId);
@@ -174,6 +179,10 @@ export class CollectionController extends UIFormController {
         const { updateCollection } = useUpdateCollection(workspaceId);
 
         const { createDocument } = useCreateDocument(workspaceId, databaseId, collectionId);
+
+        const { createDatabase } = useCreateDatabase('myproject');
+
+
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         //const { createDocument } = useCreateDocument(workspaceId);
@@ -526,7 +535,12 @@ export class CollectionController extends UIFormController {
             
                                     //.renderer(TestRenderer)
                                     .onClick(() => {
-                                        createDocument({
+
+                                        createDatabase({
+                                            name:'dasf',
+                                            category:'sdf'
+                                        })
+                                       /*  createDocument({
                                             documentId: nanoid(),
                                             data: {
                                                 name: ''
@@ -534,78 +548,8 @@ export class CollectionController extends UIFormController {
                                         }, (document) => {
                                             EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
             
-                                        })
-                                        /*  const _fields = {};
-                         
-                                         for (let i = 0; i < fields?.length; i++) {
-                                             const attribute: any = fields[i];
-                                             if (attribute.type === 'text') {
-                                                 _fields[attribute.key] = {
-                                                     label: attribute.name,
-                                                     type: 'text',
-                                                     name: attribute.key
-                                                 }
-                                             } else if (attribute.type === 'number') {
-                                                 _fields[attribute.key] = {
-                                                     label: attribute.key,
-                                                     type: 'number',
-                                                     name: attribute.name
-                                                 }
-                                             } else if (attribute.type === 'boolean') {
-                                                 _fields[attribute.key] = {
-                                                     label: attribute.key,
-                                                     type: 'checkbox',
-                                                     name: attribute.name
-                                                 }
-                                             } else if (attribute.type === 'datetime') {
-                                                 _fields[attribute.key] = {
-                                                     label: attribute.key,
-                                                     type: 'datepicker',
-                                                     name: attribute.key,
-                                                     value: new Date(),
-                                                     renderer: DatePickerRenderer
-                                                 }
-                                             } else if (attribute.type === 'relationship') {
-                                                 _fields[attribute.key] = {
-                                                     label: attribute.key,
-                                                     type: 'relation',
-                                                     name: attribute.key,
-                                                     relatedCollection: attribute.relatedCollection,
-                                                     relationType: attribute.relationType,
-                                                 }*/
-                                        /*  }
-                                     } */
-            
-                                        /*  DynoDialog.Show({
-                                             "title": `Create ${collection?.name}`,
-                                             "actions": [
-                                                 {
-                                                     "label": "Save",
-                                                     "type": "ca_SaveDocument"
-                                                 }
-                                             ],
-                                             "fieldMap": {
-                                                 "workspaceId": {
-                                                     "name": "workspaceId",
-                                                     "type": "virtual",
-                                                     "value": workspaceId
-                                                 },
-                                                 "databaseId": {
-                                                     "name": "databaseId",
-                                                     "type": "virtual",
-                                                     "value": databaseId
-                                                 },
-                                                 "collectionId": {
-                                                     "name": "collectionId",
-                                                     "type": "virtual",
-                                                     "value": collectionId
-                                                 },
-                                                 ..._fields
-                         
-                                             } 
-                                         }
-                                         );
-                        */
+                                        }) */
+                                      
                                     }),
             
             

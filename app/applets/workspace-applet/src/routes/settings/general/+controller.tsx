@@ -167,32 +167,7 @@ export class GeneralSettingsController extends UIFormController {
                             />
                         )
                     ).maxWidth(500),
-                    /*  ColorSelect({
-                         onSelect: (color) => {
- 
-                             updateDocument({
-                                 databaseId: 'workspace',
-                                 collectionId: 'applets',
-                                 documentId: appletId,
-                                 data: {
-                                     themeColor: color
-                                 }
-                             }, () => {
-                                 updateDocument({
-                                     databaseId: 'workspace',
-                                     collectionId: 'ws_tree',
-                                     documentId: appletId,
-                                     data: {
-                                         iconColor: color
-                                     }
-                                 }, (item) => {
-                                     EventBus.Default.fire('applet.added', { treeItem: item })
-                                 })
-                             })
- 
- 
-                         }
-                     }).width(500)  */
+                  
                 )
                     .height()
                     .margin('0 0 30px'),

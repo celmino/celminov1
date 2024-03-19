@@ -4,12 +4,18 @@ import { ViewHeader } from "../../views/ViewHeader";
 import React from "react";
 import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
+import { useApplet, useRealm } from "@celmino/ui";
 
 export class DocumentController extends UIController {
 
 
     public override LoadView(): UIView {
-        const { workspaceId, appletId, documentId } = useParams();
+        const { documentId } = useParams();
+        const { realm } = useRealm();
+        const { applet } = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+
         const { document } = useGetDocument({
             projectId: workspaceId,
             databaseId: appletId,
@@ -33,7 +39,7 @@ export class DocumentController extends UIController {
                         {
                             VStack(
                                 ActionPanel(),
-                                ViewHeader(document?.name, (e)=> {
+                                ViewHeader(document?.name, (e) => {
                                     updateDocument({
                                         databaseId: appletId,
                                         collectionId: 'wm_documents',

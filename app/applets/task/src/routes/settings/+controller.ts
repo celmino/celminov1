@@ -1,6 +1,6 @@
 
 import { useAppletNavigate } from "@celmino/ui";
-import { Text, ForEach, HStack, Heading, HeadingSizes, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
+import { ForEach, HStack, Heading, Icon, Text, UIFormController, UIRouteOutlet, VStack, cLeading, cTopLeading } from "@tuval/forms";
 import { MembersIcon, SettingsIcon, StatusesIcon, TabsIcon } from "../../resources/Icons";
 
 export function getSettingsName() {

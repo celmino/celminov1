@@ -21,14 +21,10 @@ const Proxy = ({ control }) => (
 
 export function TreeContextRenderer({ control }: { control: TreeContextClass }) {
 
-    const { realm } = useRealm();
-    const { appletId } = useParams();
-
-    const { document: applet, isLoading } = useGetDocument({ projectId: realm.$id, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
-
+   
     return (
 
-        is.function(control.vp_ChildFunc) && !isLoading ?
+        is.function(control.vp_ChildFunc) ?
             (
                 <TreeContextProvider.Provider value={{ setCanDrag: control.vp_SetCanDrag }}>
 

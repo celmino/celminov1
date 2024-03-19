@@ -1,9 +1,9 @@
 
-import { EditableHeader, EditableHeadingSizes, Fragment, HStack, Icon, SvgIcon, UIViewBuilder, VStack, cLeading, Text, cTopLeading, cHorizontal, useDialogStack, UIWidget } from "@tuval/forms";
+import { EditableHeader, EditableHeadingSizes, Fragment, HStack, UIViewBuilder, UIWidget, VStack, cLeading, cTopLeading, useDialogStack } from "@tuval/forms";
 
-import { is } from "@tuval/core";
 import { useApplet, useRealm } from "@celmino/ui";
 import { useUpdateDocument } from "@realmocean/sdk";
+import { is } from "@tuval/core";
 
 
 const fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif'
@@ -13,9 +13,7 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
     const { realm } = useRealm();
     const { applet } = useApplet();
     const { updateDocument } = useUpdateDocument(realm.$id);
-    /*  const { access_type, team_id, applet_id, view_id } = useParams();
- 
-     const navigate = useNavigate(); */
+  
 
     return (
         VStack({ alignment: cTopLeading })(

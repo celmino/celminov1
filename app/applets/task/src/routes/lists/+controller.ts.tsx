@@ -1,28 +1,21 @@
 import {
-    DialogStack,
+    Fragment,
     HStack,
-    ReactView,
-    ScrollView,
+    Icon, SvgIcon,
+    Text,
     UIFormController,
-    UIRouteOutlet,
+    UIView,
     UIViewBuilder,
     UIWidget,
     VStack,
-    cLeading, cTopLeading,
-    cVertical,
-    useDialogStack,
-    useNavigate,
-    useParams, Text, Fragment, Icon, SvgIcon, cTop, UIView
+    cTop,
+    cTopLeading,
+    useDialogStack
 } from "@tuval/forms";
 
 
-import { ID, Query, Services, useCreateDocument, useCreateRelationshipAttribute, useCreateStringAttribute, useGetDocument, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
-import { EventBus } from "@tuval/core";
-import React from "react";
-import { ActionPanel } from "../../views/ActionPanel";
-import { ViewHeader } from "../../views/ViewHeader";
-import { SelectSiderDialog, TabMenu, useAccount, useApplet, useRealm } from '@celmino/ui'
-import { OverviewIcon, TableIcon, TaskIcon } from "../../resources/Icons";
+import { SelectSiderDialog, useAccount, useApplet, useRealm } from '@celmino/ui';
+import { Query, useCreateDocument, useCreateRelationshipAttribute, useCreateStringAttribute, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { AppletTabMenu } from "../../views/AppletTabMenu";
 
 function replaceNonMatchingCharacters(originalText) {
@@ -369,27 +362,3 @@ export class ListController extends UIFormController {
     }
 
 }
-/* export class MyTestController extends UIFormController {
-    LoadView(): UIView {
-         const { applet_id } = useParams();
-        const { createTask } = useCreateTask([]);
-       const { tasks } = useListTasks();
-
-       // const {stageSets} = useListTaskStageSets(); 
-        return (
-            
-            // Text(JSON.stringify(stageSets)),
-            Text(JSON.stringify(tasks))
-                .onClick(() => {
-                    createTask({
-                        appletId: applet_id,
-                        $id: ID.unique(),
-                        title: 'Hello world',
-                        
-
-                    })
-                })
- 
-        )
-    }
-} */

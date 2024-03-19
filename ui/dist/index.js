@@ -19529,15 +19529,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const Proxy = ({ control }) => (control.vp_ChildFunc().render());
 function RealmContextRenderer({ control }) {
-    var _a;
     const { workspaceId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
     const { realm, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetRealm)({ realmId: workspaceId, enabled: true });
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
-        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: { realm } }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: { realm } },
+            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
 function SubDomainRealmContextRenderer({ control }) {
-    var _a;
     const subdomain = (0,_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_5__.useGetSubdomain)();
     return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) ?
         (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.RealmContextProvider.Provider, { value: {
@@ -19545,7 +19545,8 @@ function SubDomainRealmContextRenderer({ control }) {
                     $id: subdomain,
                     name: 'Realm'
                 }
-            } }, (_a = control.vp_ChildFunc()) === null || _a === void 0 ? void 0 : _a.render())) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+            } },
+            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
 
 
@@ -19676,23 +19677,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   TreeContextRenderer: () => (/* binding */ TreeContextRenderer)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/tree/context.ts");
-/* harmony import */ var _realm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../realm */ "./src/context/realm/index.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context */ "./src/context/tree/context.ts");
 
 
 
 
-
-
-class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController {
+class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController {
     LoadView() {
         const { control } = this.props;
         return control.vp_ChildFunc();
@@ -19700,12 +19696,9 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController 
 }
 const Proxy = ({ control }) => (control.vp_ChildFunc().render());
 function TreeContextRenderer({ control }) {
-    const { realm } = (0,_realm__WEBPACK_IMPORTED_MODULE_5__.useRealm)();
-    const { appletId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
-    const { document: applet, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({ projectId: realm.$id, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
-    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && !isLoading ?
-        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.TreeContextProvider.Provider, { value: { setCanDrag: control.vp_SetCanDrag } },
-            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+    return (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(control.vp_ChildFunc) ?
+        (react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_context__WEBPACK_IMPORTED_MODULE_3__.TreeContextProvider.Provider, { value: { setCanDrag: control.vp_SetCanDrag } },
+            react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_2___default().createElement(react__WEBPACK_IMPORTED_MODULE_2__.Fragment, null));
 }
 
 
@@ -19914,15 +19907,16 @@ function NewUserContextRenderer({ control }) {
     const secret = urlParams.get('secret');
     const userId = urlParams.get('userId');
     const subdomain = useGetSubdomain();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
     // alert(secret)
     // const { me: account, isLoading, isError } = useGetMe(subdomain);
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Client.setProject(subdomain);
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
-            window.location.href = '/@Team';
+            navigate('/@Team');
         });
     }, []);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('User logged in').render());
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)().render());
 }
 function UserContextRenderer({ control }) {
     const subdomain = useGetSubdomain();
@@ -20226,7 +20220,6 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                 .border({ default: 'solid 1px var(--layout-border-color)', hover: 'solid 1px var(--dialog-background-color)' })).width().height().padding())).wrap('wrap').height()))));
     }
     static Show(workspaceId, parent = '-1') {
-        alert(workspaceId);
         const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;
         /*  if (width) {

@@ -1,7 +1,8 @@
 
+import { useApplet, useRealm } from '@celmino/ui';
 import { useGetDocument } from '@realmocean/sdk';
 import { ModuleLoader } from '@tuval/core';
-import { BrokerContext, cTopLeading, HStack, ReactView, Spinner, Text, UIFormController, UIView, UIWidget, useEffect, useLocation, useParams, useState, VStack } from '@tuval/forms';
+import { cTopLeading, HStack, ReactView, Spinner, Text, UIFormController, UIView, useEffect, useLocation, useParams, useState, VStack } from '@tuval/forms';
 import React, { Fragment } from 'react';
 import usePromise from "react-promise-suspense";
 
@@ -50,7 +51,6 @@ const AppCache = {}
 export const Paths = {}
 
 export const OpaLoader = ({ view_qn, content, onSave }) => {
-    //const { opa_name } = useParams();
     let opa_name = view_qn;
     const location = useLocation();
 
@@ -90,7 +90,11 @@ export class ViewController extends UIFormController {
 
 
     public override LoadView(): UIView {
-        const { workspaceId,appletId, listId, viewId } = useParams();
+        const {  listId, viewId } = useParams();
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
        // alert(viewId)
         const { document: view, isLoading } = useGetDocument({
             projectId: workspaceId,

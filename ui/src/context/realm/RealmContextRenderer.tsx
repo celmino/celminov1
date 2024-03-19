@@ -8,6 +8,11 @@ import { useGetSubdomain } from "../user/userContextRenderer";
 
 
 
+
+const Proxy = ({ control }) => (
+    control.vp_ChildFunc().render()
+)
+
 export function RealmContextRenderer({ control }: { control: RealmContextClass }) {
 
 
@@ -19,13 +24,7 @@ export function RealmContextRenderer({ control }: { control: RealmContextClass }
         is.function(control.vp_ChildFunc) && !isLoading ?
             (
                 <RealmContextProvider.Provider value={{ realm }}>
-
-                    {
-
-                        control.vp_ChildFunc()?.render()
-
-                    }
-
+                    <Proxy control={control}></Proxy>
                 </RealmContextProvider.Provider >
             ) : <Fragment />
     )
@@ -47,13 +46,7 @@ export function SubDomainRealmContextRenderer({ control }: { control: RealmConte
                         name: 'Realm'
                     }
                 }}>
-
-                    {
-
-                        control.vp_ChildFunc()?.render()
-
-                    }
-
+                    <Proxy control={control}></Proxy>
                 </RealmContextProvider.Provider >
             ) : <Fragment />
     )

@@ -1,7 +1,6 @@
 import { AppletContext, useApplet } from '@celmino/ui';
-import { useGetDocument } from '@realmocean/sdk';
 import { ModuleLoader } from '@tuval/core';
-import { cTopLeading, HStack, ReactView, Spinner, Text, UIFormController, UIView, UIViewBuilder, useEffect, useLocation, useParams, useState, VStack } from '@tuval/forms';
+import { HStack, ReactView, Spinner, UIFormController, UIView, VStack, cTopLeading, useEffect, useLocation, useParams, useState } from '@tuval/forms';
 import React, { Fragment } from 'react';
 import usePromise from "react-promise-suspense";
 //import { useGetApplet } from '@celmino/sdk';
@@ -93,14 +92,7 @@ export class AppletController extends UIFormController {
     public override LoadView(): UIView {
 
         const { appletId } = useParams();
-        /*  const { workspaceId, appletId } = useParams();
- 
-         const { document: applet, isLoading } = useGetDocument({
-             projectId: workspaceId,
-             databaseId: 'workspace',
-             collectionId: 'applets',
-             documentId: appletId
-         }) */
+       
 
 
         return (

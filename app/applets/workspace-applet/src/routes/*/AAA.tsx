@@ -19,6 +19,8 @@ export class HomeController extends UIController {
     public override LoadView(): UIView {
         const {realm} = useRealm();
         const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
 
       
         const { document: treeItem, isLoading: isTreeItemLoading } = useGetDocument({
@@ -38,7 +40,7 @@ export class HomeController extends UIController {
 
         const { updateDocument } = useUpdateDocument(workspaceId);
         return (
-            (isDocumentLoading || isTreeItemLoading) ? Fragment() :
+            (isTreeItemLoading) ? Fragment() :
                 ReactView(
                     //@ts-ignore
                     <DialogStack>

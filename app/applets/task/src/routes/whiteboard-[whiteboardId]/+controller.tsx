@@ -1,15 +1,20 @@
-import { UIController, UIView, useParams, Routes, Text, UIWidget, VStack, ReactView, DialogStack, Fragment } from "@tuval/forms";
-import { ActionPanel } from "../../views/ActionPanel";
-import { ViewHeader } from "../../views/ViewHeader";
-import React from "react";
+import { useApplet, useRealm } from "@celmino/ui";
 import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
 import { is } from "@tuval/core";
+import { DialogStack, Fragment, ReactView, UIController, UIView, UIWidget, VStack, useParams } from "@tuval/forms";
+import React from "react";
+import { ActionPanel } from "../../views/ActionPanel";
+import { ViewHeader } from "../../views/ViewHeader";
 
 export class WhiteboardController extends UIController {
 
 
     public override LoadView(): UIView {
-        const { workspaceId, appletId,whiteboardId } = useParams();
+        const {whiteboardId } = useParams();
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
         const { document } = useGetDocument({
             projectId: workspaceId,
             databaseId: appletId,

@@ -31,6 +31,16 @@ export const useGetHostName= () => {
     return window.location.hostname;
 }
 
+export const useGetHDomainName= () => {
+    const name = window.location.hostname.split('.');
+    if (name.length > 1) {
+        return name[1];
+    } else {
+        return window.location.hostname;
+    }
+}
+
+
 export const useGetOrigin= () => {
     return window.location.origin;
 }

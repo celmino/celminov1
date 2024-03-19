@@ -1,3 +1,4 @@
+import { useApplet, useRealm } from "@celmino/ui";
 import { Models, useCreateCollection, useGetDatabase, useListCollections } from "@realmocean/sdk";
 import {
     HStack,
@@ -8,17 +9,19 @@ import {
     VStack,
     cLeading,
     cTopLeading,
-    getAppFullName,
     useNavigate,
-    useParams,
     useState
 } from "@tuval/forms";
-import { DynoDialog } from "@celmino/ui";
 
 
 export class AppletController extends UIFormController {
     public LoadView() {
-        const { workspaceId, appletId } = useParams();
+
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+
         const { database } = useGetDatabase(workspaceId, appletId);
         const { createCollection } = useCreateCollection(workspaceId);
         const { collections } = useListCollections(workspaceId, appletId);

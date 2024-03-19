@@ -6920,6 +6920,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tools_SimplePlugin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../tools/SimplePlugin */ "./src/tools/SimplePlugin/index.tsx");
 /* harmony import */ var editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! editorjs-inline-image */ "./node_modules/editorjs-inline-image/dist/bundle.js");
 /* harmony import */ var editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_8__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -6943,6 +6945,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var docs = [
     { uri: "https://url-to-my-pdf.pdf" }, // Remote file
 ];
@@ -6952,19 +6955,16 @@ var HomeController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     HomeController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId;
-        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId
-        }), applet = _b.document, isDocumentLoading = _b.isLoading;
-        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
-            projectId: workspaceId,
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.useApplet)().applet;
+        var workspaceId = realm.$id;
+        var appletId = applet.$id;
+        var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
+            projectId: realm.$id,
             databaseId: 'workspace',
             collectionId: 'ws_tree',
-            documentId: appletId
-        }), treeItem = _c.document, isTreeItemLoading = _c.isLoading;
+            documentId: applet.$id
+        }), treeItem = _a.document, isTreeItemLoading = _a.isLoading;
         /*
                 const { document: content, isLoading } = useGetDocument({
                     projectId: workspaceId,
@@ -6973,7 +6973,7 @@ var HomeController = /** @class */ (function (_super) {
                     documentId: documentId
                 }) */
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useUpdateDocument)(workspaceId).updateDocument;
-        return ((isDocumentLoading || isTreeItemLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
+        return ((isTreeItemLoading) ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(
             //@ts-ignore
             react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_ActionPanel__WEBPACK_IMPORTED_MODULE_1__.ActionPanel)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)("com.tuvalsoft.widget.icons")
@@ -7109,12 +7109,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AppletController: () => (/* binding */ AppletController)
 /* harmony export */ });
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -7131,42 +7127,16 @@ var __extends = (undefined && undefined.__extends) || (function () {
     };
 })();
 
-
-
 var AppletController = /** @class */ (function (_super) {
     __extends(AppletController, _super);
     function AppletController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AppletController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId;
-        var database = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDatabase)(workspaceId, appletId).database;
-        var createCollection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateCollection)(workspaceId).createCollection;
-        var collections = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListCollections)(workspaceId, appletId).collections;
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(null), selectedCollection = _b[0], setSelectedCollection = _b[1];
-        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
-        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })(
-        /*      HStack(
-                 HStack({ alignment: cLeading })(
-                     Text(database?.name)
-                         .fontFamily("ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol")
-                         .fontSize(18)
-                         .fontWeight("500")
-                 )
-                     .padding('6px 12px 6px 6px')
-             )
-                 .paddingTop('12px')
-                 .paddingBottom('8px')
-                 .paddingRight('24px')
-
-                 .background('white')
-                 .height(),
-*/
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIRouteOutlet)().width('100%').height('100%')));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width('100%').height('100%')));
     };
     return AppletController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController));
 
 
 
@@ -7285,23 +7255,17 @@ var CollectionsController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     CollectionsController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId;
-        var database = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDatabase)(workspaceId, appletId).database;
-        var createCollection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateCollection)(workspaceId).createCollection;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useApplet)().applet;
+        var workspaceId = realm.$id;
+        var appletId = applet.$id;
         var collections = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, appletId, 'collections', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('type', 'userCollection')
         ]).documents;
         var organization = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useOrganization)();
-        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useRealm)().realm;
-        var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({
-            projectId: workspaceId,
-            databaseId: 'workspace',
-            collectionId: 'applets',
-            documentId: appletId,
-        }).document;
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(null), selectedCollection = _b[0], setSelectedCollection = _b[1];
+        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(null), selectedCollection = _a[0], setSelectedCollection = _a[1];
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
-        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useAppletNavigate)().navigate;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_5___default().createElement(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.DialogStack, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIWidget)("com.tuvalsoft.widget.icons")
             .config({
             onChange: function (value) {
@@ -7363,7 +7327,7 @@ var CollectionsController = /** @class */ (function (_super) {
             //selectedIndex: taskViews?.findIndex(x => x.id === object_view_id),
             onChange: function (index) {
                 setSelectedCollection(collections[index]);
-                navigate("/@/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(realm.name), "-").concat(realm.$id, "/").concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.urlFriendly)(applet === null || applet === void 0 ? void 0 : applet.name), "-").concat(appletId, "/collections/").concat(collections[index].name, "-").concat(collections[index].$id));
+                navigate("collections/".concat(collections[index].name, "-").concat(collections[index].$id));
                 /*    setWidgetController({
                        controller: class extends WidgetController { }
                    });
@@ -7544,16 +7508,21 @@ var CollectionController = /** @class */ (function (_super) {
     }
     CollectionController.prototype.LoadView = function () {
         var _a;
-        var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useParams)(), workspaceId = _b.workspaceId, databaseId = _b.appletId, collectionId = _b.collectionId;
+        var collectionId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.useParams)().collectionId;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_8__.useApplet)().applet;
+        var workspaceId = realm.$id;
+        var databaseId = applet.$id;
         var database = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDatabase)(workspaceId, databaseId).database;
         var deleteAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useDeleteAttribute)(workspaceId).deleteAttribute;
         var updateCollection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateCollection)(workspaceId).updateCollection;
         var createDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDocument)(workspaceId, databaseId, collectionId).createDocument;
+        var createDatabase = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateDatabase)('myproject').createDatabase;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
         //const { createDocument } = useCreateDocument(workspaceId);
-        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, databaseId, collectionId, [
+        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, databaseId, collectionId, [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.limit(1000)
-        ]), documents = _c.documents, isLoading = _c.isLoading;
+        ]), documents = _b.documents, isLoading = _b.isLoading;
         var fields = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useListDocuments)(workspaceId, databaseId, 'fields', [
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
         ]).documents;
@@ -7562,8 +7531,8 @@ var CollectionController = /** @class */ (function (_super) {
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Query.equal('collectionId', collectionId)
         ]).createDocument;
         var collection = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetCollection)(workspaceId, databaseId, collectionId).collection;
-        var _d = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)((_a = collection === null || collection === void 0 ? void 0 : collection.name) !== null && _a !== void 0 ? _a : 'New Collection'), collectionName = _d[0], setCollectionName = _d[1];
-        var _e = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false), showDialog = _e[0], setShowDialog = _e[1];
+        var _c = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)((_a = collection === null || collection === void 0 ? void 0 : collection.name) !== null && _a !== void 0 ? _a : 'New Collection'), collectionName = _c[0], setCollectionName = _c[1];
+        var _d = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false), showDialog = _d[0], setShowDialog = _d[1];
         /* let documents = [];
         if (_documents != null) {
             documents = [..._documents];
@@ -7781,84 +7750,19 @@ var CollectionController = /** @class */ (function (_super) {
             })))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Button)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Text)('Create Document'))
                 //.renderer(TestRenderer)
                 .onClick(function () {
-                createDocument({
-                    documentId: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)(),
-                    data: {
-                        name: ''
-                    }
-                }, function (document) {
-                    _tuval_core__WEBPACK_IMPORTED_MODULE_2__.EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
+                createDatabase({
+                    name: 'dasf',
+                    category: 'sdf'
                 });
-                /*  const _fields = {};
- 
-                 for (let i = 0; i < fields?.length; i++) {
-                     const attribute: any = fields[i];
-                     if (attribute.type === 'text') {
-                         _fields[attribute.key] = {
-                             label: attribute.name,
-                             type: 'text',
-                             name: attribute.key
-                         }
-                     } else if (attribute.type === 'number') {
-                         _fields[attribute.key] = {
-                             label: attribute.key,
-                             type: 'number',
-                             name: attribute.name
-                         }
-                     } else if (attribute.type === 'boolean') {
-                         _fields[attribute.key] = {
-                             label: attribute.key,
-                             type: 'checkbox',
-                             name: attribute.name
-                         }
-                     } else if (attribute.type === 'datetime') {
-                         _fields[attribute.key] = {
-                             label: attribute.key,
-                             type: 'datepicker',
-                             name: attribute.key,
-                             value: new Date(),
-                             renderer: DatePickerRenderer
-                         }
-                     } else if (attribute.type === 'relationship') {
-                         _fields[attribute.key] = {
-                             label: attribute.key,
-                             type: 'relation',
-                             name: attribute.key,
-                             relatedCollection: attribute.relatedCollection,
-                             relationType: attribute.relationType,
-                         }*/
-                /*  }
-             } */
-                /*  DynoDialog.Show({
-                     "title": `Create ${collection?.name}`,
-                     "actions": [
-                         {
-                             "label": "Save",
-                             "type": "ca_SaveDocument"
-                         }
-                     ],
-                     "fieldMap": {
-                         "workspaceId": {
-                             "name": "workspaceId",
-                             "type": "virtual",
-                             "value": workspaceId
-                         },
-                         "databaseId": {
-                             "name": "databaseId",
-                             "type": "virtual",
-                             "value": databaseId
-                         },
-                         "collectionId": {
-                             "name": "collectionId",
-                             "type": "virtual",
-                             "value": collectionId
-                         },
-                         ..._fields
- 
+                /*  createDocument({
+                     documentId: nanoid(),
+                     data: {
+                         name: ''
                      }
-                 }
-                 );
-*/
+                 }, (document) => {
+                     EventBus.Default.fire('editCell', { editingCell: fields[0].$id, editingRow: document.$id });
+
+                 }) */
             })).render())));
     };
     return CollectionController;

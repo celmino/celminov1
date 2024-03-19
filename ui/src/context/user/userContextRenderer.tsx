@@ -1,6 +1,6 @@
 import { Services, useGetDocument, useGetMe, useGetOrganization, useGetRealm, useUpdateMagicURLSession } from "@realmocean/sdk";
 import { is } from "@tuval/core";
-import { ReactView, Text, UIController, UINavigate, UIView, useEffect, useNavigate, useParams, useState } from "@tuval/forms";
+import { ReactView, Text, UIController, UINavigate, UIView, useEffect, useNavigate, useParams, useState, Fragment as TuvalFragment } from "@tuval/forms";
 import React, { Fragment } from "react";
 import { UserContextClass } from "./UserContextClass";
 import { UserContextProvider } from "./context";
@@ -39,6 +39,7 @@ export function NewUserContextRenderer({ control }: { control: UserContextClass 
     const userId = urlParams.get('userId');
 
     const subdomain = useGetSubdomain();
+    const navigate = useNavigate();
     // alert(secret)
     // const { me: account, isLoading, isError } = useGetMe(subdomain);
 
@@ -46,11 +47,11 @@ export function NewUserContextRenderer({ control }: { control: UserContextClass 
         Services.Client.setProject(subdomain);
         Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
             
-            window.location.href='/@Team';
+           navigate('/@Team');
         })
     }, [])
     return (
-       Text('User logged in').render()
+        TuvalFragment().render()
     )
 
 }

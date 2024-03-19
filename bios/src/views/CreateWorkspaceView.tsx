@@ -1,9 +1,11 @@
 import { ButtonRenderer, InputRenderer } from "@realmocean/antd";
-import { Query, Services, useCreateRealm, useCreateTeam, useDeleteSession, useGetMe, useGetOrganization, useListRealms } from "@realmocean/sdk";
+import { Query, Services, useCreateMagicURL, useCreateRealm, useCreateTeam, useDeleteSession, useGetMe, useGetOrganization, useListRealms } from "@realmocean/sdk";
 
 import { Button, ForEach, HStack, Heading, Input, TextField, Text, UINavigate, UIViewBuilder, VStack, useNavigate, useState, Spacer, cLeading, cHorizontal, darken, Icon, Icons, HDivider, useParams } from "@tuval/forms";
 import { useGetCurrentOrganization } from "../hooks/useGetCurrentOrganization";
 import { urlFriendly } from "../utils/urlFriendly";
+import { useAccount, useRealm } from "@celmino/ui";
+import { useGetHostName, useGetProtocol } from "../hooks/useGetProtocol";
 
 
 export const CreateWorkspaceView = () => UIViewBuilder(() => {
@@ -13,10 +15,14 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
     const { me } = useGetMe('console');
     const navigate = useNavigate();
     // const { organizationId } = useParams();
-    const { organization, isLoading: isOrganizationLoading } = useGetOrganization({organizationId, hookEnabled: true}); // useGetCurrentOrganization();
+    const { organization, isLoading: isOrganizationLoading } = useGetOrganization({ organizationId, hookEnabled: true }); // useGetCurrentOrganization();
 
     const { createRealm, isLoading } = useCreateRealm();
     const { deleteSession } = useDeleteSession('console');
+
+
+    const { account } = useAccount();
+
 
 
 
@@ -44,22 +50,43 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
                             VStack(
                                 ...ForEach(realms)(realm =>
-                                    HStack({ alignment: cLeading, spacing: 10 })(
-                                        HStack({ alignment: cLeading })(
-                                            Text(realm.name).fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
-                                        ).height(),
-                                        Icon(Icons.MoveArrowRight)
-                                    )
-                                        .cursor('pointer')
-                                        .height()
-                                        .padding('1.6rem 2rem 1.6rem 0')
-                                        .foregroundColor('#242938')
-                                        .cornerRadius(6)
-                                        .background({ hover: darken('#7FE8D4', 0.05) })
-                                        .onClick(() => {
-                                           
-                                            navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
-                                        })
+                                    UIViewBuilder(() => {
+                                        const { createMagicURL } = useCreateMagicURL(realm.$id);
+                                        return (
+                                            HStack({ alignment: cLeading, spacing: 10 })(
+                                                HStack({ alignment: cLeading })(
+                                                    Text(realm.name).fontFamily('"Graphik Regular", sans-serif').fontSize('2rem')
+                                                ).height(),
+                                                Icon(Icons.MoveArrowRight)
+                                            )
+                                                .cursor('pointer')
+                                                .height()
+                                                .padding('1.6rem 2rem 1.6rem 0')
+                                                .foregroundColor('#242938')
+                                                .cornerRadius(6)
+                                                .background({ hover: darken('#7FE8D4', 0.05) })
+                                                .onClick(() => {
+                                                    createMagicURL({
+                                                        userId: account.$id,
+                                                        email: account.email,
+                                                        url: ''
+                                                    }, (data: any) => {
+                                                        const params = data?.message?.split('&');
+                                                        const userName = params[0];
+                                                        const token = params[1];
+                                                        const realmId = params[3];
+
+
+                                                        const protocol = useGetProtocol();
+                                                        const hostName = useGetHostName();
+                                                        window.location.href = `${protocol}//${realmId}.${hostName}/@Team/?userId=${userName}&secret=${token}`
+                                                        // alert(data?.message?.split('&'))
+                                                    })
+                                                    //navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)
+                                                })
+                                        )
+                                    })
+
                                 )
                             ).padding(cHorizontal, 20).height().maxWidth('100%'),
                             HDivider().height(1).background('rgba(125, 141, 154, 0.1)'),
