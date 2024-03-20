@@ -1,5 +1,5 @@
 
-import { AppletContext, SelectAppletDialog, TreeContext, useAccount, useOrganization, useRealm } from "@celmino/ui";
+import { AppletContext, SelectAppletDialog, TreeContext, useAccount, useOrganization, useRealm, useRealmNavigate } from "@celmino/ui";
 import { Models, Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useDeleteSession, useGetMe, useGetOrganization, useGetRealm, useListDatabases, useListDocuments, useListRealms, useUpdatePrefs } from "@realmocean/sdk";
 import { Text } from '@realmocean/vibe';
 import { EventBus, is } from "@tuval/core";
@@ -204,7 +204,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
         UIViewBuilder(() => {
             const { account, isAnonymous } = useAccount();
 
-            const navigate = useNavigate();
+            const {navigate} = useRealmNavigate();
             const { realm } = useRealm();
             const workspaceId = realm.$id;
 
@@ -314,7 +314,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             .padding(5)
                                                             .height()
                                                             .onClick(() => {
-                                                                navigate('/@/settings/general')
+                                                                navigate('settings/general')
 
                                                             }),
                                                     ).padding(5),
@@ -363,7 +363,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                         }
                                                                     })
                                                                     _hideHandle();
-                                                                    navigate(`/@/workspace/${realm.$id}`)
+                                                                   // navigate(`/@/workspace/${realm.$id}`)
                                                                 })
                                                         ))
                                                     )

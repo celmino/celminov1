@@ -5,6 +5,7 @@ import React, { Fragment } from "react";
 import { UserContextClass } from "./UserContextClass";
 import { UserContextProvider } from "./context";
 import { RealmContextProvider, useRealm } from "../realm";
+import { useRealmNavigate } from "../../hooks/useWorkspaceNavigation";
 
 
 class Controller extends UIController {
@@ -40,7 +41,7 @@ export function NewUserContextRenderer({ control }: { control: UserContextClass 
     const userId = urlParams.get('userId');
 
     const subdomain = useGetSubdomain();
-    const navigate = useNavigate();
+    const {navigate} = useRealmNavigate();
     // alert(secret)
     // const { me: account, isLoading, isError } = useGetMe(subdomain);
 
@@ -48,7 +49,7 @@ export function NewUserContextRenderer({ control }: { control: UserContextClass 
         Services.Client.setProject(subdomain);
         Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
 
-            navigate('/@');
+            navigate('');
         })
     }, [])
     return (

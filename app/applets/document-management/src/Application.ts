@@ -2,6 +2,7 @@ import { FormBuilder, UIController } from '@tuval/forms';
 import { MyTestController } from './AppController';
 import { RouteController } from './routes/+routes';
 import { ListStatusWidget } from './widget/ListStatusWidget';
+import { TreeController } from './TreeController';
 
 const manifest = require('./manifest');
 
@@ -21,7 +22,10 @@ function App(manifest: any) {
 @App(manifest)
 export class ProcessMining {
     public GetMainController() {
-       return RouteController;
+        return {
+            applet: MyTestController,
+            tree: TreeController
+        };
     }
 }
 

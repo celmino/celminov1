@@ -9343,7 +9343,7 @@ var global_openedIDs = {};
 var LeftSideMenuView = function (selectedItem) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
         var _a = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAccount)(), account = _a.account, isAnonymous = _a.isAnonymous;
-        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
+        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealmNavigate)().navigate;
         var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
         var workspaceId = realm.$id;
         var deleteSession = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteSession)(realm.$id).deleteSession;
@@ -9405,7 +9405,7 @@ var LeftSideMenuView = function (selectedItem) {
                         .padding(5)
                         .height()
                         .onClick(function () {
-                        navigate('/@/settings/general');
+                        navigate('settings/general');
                     })).padding(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HDivider)().height(1).background('#ECEDEE'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.SvgIcon)('cu3-icon-settings')), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Change Realm'))
                             .cursor('pointer')
                             .padding(5)
@@ -9431,7 +9431,7 @@ var LeftSideMenuView = function (selectedItem) {
                             prefs: __assign(__assign({}, ((account === null || account === void 0 ? void 0 : account.prefs) ? account === null || account === void 0 ? void 0 : account.prefs : {})), { workspace: realm.$id })
                         });
                         _hideHandle();
-                        navigate("/@/workspace/".concat(realm.$id));
+                        // navigate(`/@/workspace/${realm.$id}`)
                     })); }), false)).padding()).width(250));
                 }))
                     .hideHandle(function (hideHandle) { return _hideHandle = hideHandle; })
@@ -12018,7 +12018,7 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                             var realmId = params[3];
                             var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_5__.useGetProtocol)();
                             var hostName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_5__.useGetHostName)();
-                            window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@/?userId=").concat(userName, "&secret=").concat(token);
+                            window.location.href = "".concat(protocol, "//").concat(realmId, ".").concat(hostName, "/@team/?userId=").concat(userName, "&secret=").concat(token);
                             // alert(data?.message?.split('&'))
                         });
                         //navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)

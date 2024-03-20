@@ -11258,6 +11258,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_Feed__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./applets/Feed */ "./src/applets/Feed.ts");
 /* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
 /* harmony import */ var _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./applets/Meetings */ "./src/applets/Meetings.ts");
+/* harmony import */ var _applets_Documents__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./applets/Documents */ "./src/applets/Documents.ts");
+
 
 
 
@@ -11286,6 +11288,7 @@ const Applets = [
     _applets_Clock__WEBPACK_IMPORTED_MODULE_8__.Clock,
     _applets_Feed__WEBPACK_IMPORTED_MODULE_9__.FeedApplet,
     _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__.MeetingsApplet,
+    _applets_Documents__WEBPACK_IMPORTED_MODULE_12__.DocumentsApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -15633,159 +15636,6 @@ const Applets = [
         ]
     },
     {
-        name: 'Documents',
-        type: 'Applet',
-        tree_type: 'com.celmino.widget.document-management-tree',
-        applet_type: 'com.celmino.applet.document-management',
-        description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
-        // image: '/images/applets/documents.png',
-        iconCategory: 'Icons',
-        iconName: 'bell',
-        icon: '\\d1e2',
-        iconBackColor: '#66B47C',
-        enabled: false,
-        databases: [
-            {
-                "name": "Document Management",
-                "id": "document_management",
-                "category": "app",
-                "collections": [
-                    {
-                        "name": "Menu Tree",
-                        "id": "dm_tree",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "type",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "path",
-                                "type": "string"
-                            },
-                            {
-                                "key": "viewer",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_category",
-                                "type": "string"
-                            },
-                            {
-                                "key": "bg_color",
-                                "type": "string"
-                            },
-                            {
-                                "key": "fg_color",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Folders",
-                        "id": "dm_folders",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "path",
-                                "type": "string"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Documents",
-                        "id": "dm_documents",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "type",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "path",
-                                "type": "string"
-                            },
-                            {
-                                "key": "viewer",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "icon_category",
-                                "type": "string"
-                            },
-                            {
-                                "key": "bg_color",
-                                "type": "string"
-                            },
-                            {
-                                "key": "fg_color",
-                                "type": "string"
-                            }
-                        ],
-                    },
-                    {
-                        "name": "Document Contents",
-                        "id": "dm_document_contents",
-                        "attributes": [
-                            {
-                                "key": "content",
-                                "type": "string",
-                                "size": 932000
-                            }
-                        ],
-                    },
-                    {
-                        "name": "views",
-                        "id": "dm_views",
-                        "attributes": [
-                            {
-                                "key": "name",
-                                "type": "string"
-                            },
-                            {
-                                "key": "parent",
-                                "type": "string"
-                            },
-                            {
-                                "key": "type",
-                                "type": "string"
-                            }
-                        ],
-                    }
-                ]
-            }
-        ]
-    },
-    {
         name: 'Notebooks',
         type: 'Applet',
         tree_type: 'com.celmino.widget.notebook-tree',
@@ -18281,6 +18131,174 @@ const AppletCategory = {
 
 /***/ }),
 
+/***/ "./src/applets/Documents.ts":
+/*!**********************************!*\
+  !*** ./src/applets/Documents.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DocumentsApplet: () => (/* binding */ DocumentsApplet)
+/* harmony export */ });
+const DocumentsApplet = {
+    name: 'Documents',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.document-management',
+    applet_type: 'com.celmino.applet.document-management',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d1e2',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    databases: [
+        {
+            "name": "Document Management",
+            "id": "document_management",
+            "category": "app",
+            "collections": [
+                {
+                    "name": "Menu Tree",
+                    "id": "dm_tree",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "parent",
+                            "type": "string"
+                        },
+                        {
+                            "key": "path",
+                            "type": "string"
+                        },
+                        {
+                            "key": "viewer",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_category",
+                            "type": "string"
+                        },
+                        {
+                            "key": "bg_color",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fg_color",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "Folders",
+                    "id": "dm_folders",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "parent",
+                            "type": "string"
+                        },
+                        {
+                            "key": "path",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "name": "Documents",
+                    "id": "dm_documents",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        },
+                        {
+                            "key": "parent",
+                            "type": "string"
+                        },
+                        {
+                            "key": "path",
+                            "type": "string"
+                        },
+                        {
+                            "key": "viewer",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "icon_category",
+                            "type": "string"
+                        },
+                        {
+                            "key": "bg_color",
+                            "type": "string"
+                        },
+                        {
+                            "key": "fg_color",
+                            "type": "string"
+                        }
+                    ],
+                },
+                {
+                    "name": "Document Contents",
+                    "id": "dm_document_contents",
+                    "attributes": [
+                        {
+                            "key": "content",
+                            "type": "string",
+                            "size": 932000
+                        }
+                    ],
+                },
+                {
+                    "name": "views",
+                    "id": "dm_views",
+                    "attributes": [
+                        {
+                            "key": "name",
+                            "type": "string"
+                        },
+                        {
+                            "key": "parent",
+                            "type": "string"
+                        },
+                        {
+                            "key": "type",
+                            "type": "string"
+                        }
+                    ],
+                }
+            ]
+        }
+    ]
+};
+
+
+/***/ }),
+
 /***/ "./src/applets/Emails.ts":
 /*!*******************************!*\
   !*** ./src/applets/Emails.ts ***!
@@ -19893,6 +19911,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/user/context.ts");
+/* harmony import */ var _hooks_useWorkspaceNavigation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hooks/useWorkspaceNavigation */ "./src/hooks/useWorkspaceNavigation.ts");
+
 
 
 
@@ -19920,13 +19940,13 @@ function NewUserContextRenderer({ control }) {
     const secret = urlParams.get('secret');
     const userId = urlParams.get('userId');
     const subdomain = useGetSubdomain();
-    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+    const { navigate } = (0,_hooks_useWorkspaceNavigation__WEBPACK_IMPORTED_MODULE_5__.useRealmNavigate)();
     // alert(secret)
     // const { me: account, isLoading, isError } = useGetMe(subdomain);
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Client.setProject(subdomain);
         _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.updateMagicURLSession(userId, secret).then((account) => {
-            navigate('/@');
+            navigate('');
         });
     }, []);
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)().render());
