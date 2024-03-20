@@ -428,7 +428,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         .height(24)
                                                         .padding(cHorizontal, 15)
                                                         .padding(cVertical, 5),
-                                                    appletsOpen ?
+                                                    
                                                         VStack({ alignment: cTopLeading })(
                                                             isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView(workspaceId) :
                                                                 UIViewBuilder(() => {
@@ -751,7 +751,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                     )
                                                                 }
                                                                 )
-                                                        ) : Fragment(),
+                                                        ) ,
                                                     HStack({ alignment: cLeading })(
                                                         Text('Private')
                                                             .fontSize(12)

@@ -9461,222 +9461,221 @@ var LeftSideMenuView = function (selectedItem) {
                         .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
                         .height(24)
                         .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 15)
-                        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, 5), appletsOpen ?
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })(isWorkspaceTreeLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? (0,_views_EmptyView__WEBPACK_IMPORTED_MODULE_6__.EmptyView)(workspaceId) :
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
-                                var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)();
-                                var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteCache)(workspaceId).deleteCache;
-                                (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
-                                    setTreeItems(buildTree(workspaceTreeITems));
-                                    _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.on('applet.added', function (_a) {
-                                        var treeItem = _a.treeItem;
-                                        deleteCache();
-                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
-                                            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250)
-                                        ]).then(function (_a) {
-                                            var documents = _a.documents;
-                                            setTreeItems(buildTree(documents));
-                                        });
+                        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, 5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })(isWorkspaceTreeLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? (0,_views_EmptyView__WEBPACK_IMPORTED_MODULE_6__.EmptyView)(workspaceId) :
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
+                            var params = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)();
+                            var deleteCache = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useDeleteCache)(workspaceId).deleteCache;
+                            (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
+                                setTreeItems(buildTree(workspaceTreeITems));
+                                _tuval_core__WEBPACK_IMPORTED_MODULE_3__.EventBus.Default.on('applet.added', function (_a) {
+                                    var treeItem = _a.treeItem;
+                                    deleteCache();
+                                    _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.listDocuments(workspaceId, 'workspace', 'ws_tree', [
+                                        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.limit(250)
+                                    ]).then(function (_a) {
+                                        var documents = _a.documents;
+                                        setTreeItems(buildTree(documents));
                                     });
-                                }, []);
-                                //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
-                                function findChildsInTree(workspaceTree, parentNode) {
-                                    var children = [];
-                                    workspaceTree.forEach(function (item) {
-                                        if (item.parent === (parentNode === null || parentNode === void 0 ? void 0 : parentNode.$id)) {
-                                            children.push(item);
-                                        }
-                                    });
-                                    return children;
-                                }
-                                function findItemInTree(tree, id) {
-                                    var result;
-                                    tree.forEach(function (item) {
-                                        if (item.$id === id) {
-                                            result = item;
-                                        }
-                                    });
-                                    return result;
-                                }
-                                function buildClidren(workspaceTree, parentNode) {
-                                    var item = findItemInTree(workspaceTree, parentNode.$id);
-                                    var children = findChildsInTree(workspaceTree, item);
-                                    children = sortByStringField(children, "path");
-                                    parentNode.children = children.map(function (child) {
-                                        return {
-                                            $id: child.$id,
-                                            title: child.name,
-                                            parent: child.parent,
-                                            path: child.path,
-                                            tree_widget: child.tree_widget,
-                                            iconName: child.iconName,
-                                            iconCategory: child.iconCategory,
-                                            iconColor: child.iconColor,
-                                            expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : false,
-                                            canDrag: true,
+                                });
+                            }, []);
+                            //const [realms, setRealms] = useState(documents.map(document => ({ id: document.$id, ...document })));
+                            function findChildsInTree(workspaceTree, parentNode) {
+                                var children = [];
+                                workspaceTree.forEach(function (item) {
+                                    if (item.parent === (parentNode === null || parentNode === void 0 ? void 0 : parentNode.$id)) {
+                                        children.push(item);
+                                    }
+                                });
+                                return children;
+                            }
+                            function findItemInTree(tree, id) {
+                                var result;
+                                tree.forEach(function (item) {
+                                    if (item.$id === id) {
+                                        result = item;
+                                    }
+                                });
+                                return result;
+                            }
+                            function buildClidren(workspaceTree, parentNode) {
+                                var item = findItemInTree(workspaceTree, parentNode.$id);
+                                var children = findChildsInTree(workspaceTree, item);
+                                children = sortByStringField(children, "path");
+                                parentNode.children = children.map(function (child) {
+                                    return {
+                                        $id: child.$id,
+                                        title: child.name,
+                                        parent: child.parent,
+                                        path: child.path,
+                                        tree_widget: child.tree_widget,
+                                        iconName: child.iconName,
+                                        iconCategory: child.iconCategory,
+                                        iconColor: child.iconColor,
+                                        expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : false,
+                                        canDrag: true,
+                                        view: function (node) {
+                                            if (child.type === 'applet') {
+                                                return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
+                                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
+                                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
+                                                            .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
+                                                        (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name))
+                                                        .width('calc(100% - 32px)');
+                                                }).appletId(child.appletId));
+                                            }
+                                            else {
+                                                return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
+                                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
+                                                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
+                                                            .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
+                                                        (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name))
+                                                        .width('calc(100% - 32px)');
+                                                }).appletId(child.appletId));
+                                            }
+                                        },
+                                        children: buildClidren(workspaceTree, child)
+                                    };
+                                });
+                                return parentNode.children;
+                            }
+                            function buildTree(workspaceTree) {
+                                var tree = [];
+                                var rootItems = workspaceTree === null || workspaceTree === void 0 ? void 0 : workspaceTree.filter(function (item) { return item.parent === '-1'; });
+                                rootItems = sortByStringField(rootItems, "path");
+                                rootItems.forEach(function (item) {
+                                    if (item.parent === '-1') {
+                                        var node = {
+                                            $id: item.$id,
+                                            title: item.name,
+                                            parent: item.parent,
+                                            path: item.path,
+                                            tree_widget: item.tree_widget,
+                                            expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : false,
+                                            iconName: item.iconName,
+                                            iconCategory: item.iconCategory,
+                                            iconColor: item.iconColor,
+                                            canDrag: false,
                                             view: function (node) {
-                                                if (child.type === 'applet') {
+                                                if (item.type === 'applet') {
                                                     return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
-                                                                .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
-                                                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name))
-                                                            .width('calc(100% - 32px)');
-                                                    }).appletId(child.appletId));
+                                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
+                                                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
+                                                                .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
+                                                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name)).width('calc(100% - 32px)');
+                                                    }).appletId(item.appletId));
                                                 }
                                                 else {
                                                     return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(child.tree_widget != null ?
-                                                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(child.tree_widget, 'tree')
-                                                                .config(__assign(__assign({ item: child }, (params || {})), { appletId: child.appletId })) :
-                                                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(child.name))
-                                                            .width('calc(100% - 32px)');
-                                                    }).appletId(child.appletId));
+                                                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
+                                                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
+                                                                .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
+                                                            (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name)).width('calc(100% - 32px)');
+                                                    }).appletId(item.appletId));
                                                 }
                                             },
-                                            children: buildClidren(workspaceTree, child)
+                                            children: []
                                         };
-                                    });
-                                    return parentNode.children;
+                                        tree.push(node);
+                                        buildClidren(workspaceTree, node);
+                                    }
+                                });
+                                console.log('build tree');
+                                return tree;
+                            }
+                            var _a = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), prevTreeItems = _a[0], setPrevTreeItems = _a[1];
+                            var _b = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), treeItems = _b[0], setTreeItems = _b[1];
+                            var canDrop = function (_a) {
+                                var node = _a.node, nextParent = _a.nextParent, prevPath = _a.prevPath, nextPath = _a.nextPath;
+                                if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
+                                    return false;
                                 }
-                                function buildTree(workspaceTree) {
-                                    var tree = [];
-                                    var rootItems = workspaceTree === null || workspaceTree === void 0 ? void 0 : workspaceTree.filter(function (item) { return item.parent === '-1'; });
-                                    rootItems = sortByStringField(rootItems, "path");
-                                    rootItems.forEach(function (item) {
-                                        if (item.parent === '-1') {
-                                            var node = {
-                                                $id: item.$id,
-                                                title: item.name,
-                                                parent: item.parent,
-                                                path: item.path,
-                                                tree_widget: item.tree_widget,
-                                                expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : false,
-                                                iconName: item.iconName,
-                                                iconCategory: item.iconCategory,
-                                                iconColor: item.iconColor,
-                                                canDrag: false,
-                                                view: function (node) {
-                                                    if (item.type === 'applet') {
-                                                        return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
-                                                                    .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
-                                                                (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name)).width('calc(100% - 32px)');
-                                                        }).appletId(item.appletId));
-                                                    }
-                                                    else {
-                                                        return ((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.AppletContext)(function () {
-                                                            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)(item.tree_widget != null ?
-                                                                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)(item.tree_widget, 'tree')
-                                                                    .config(__assign(__assign({ item: item }, (params || {})), { appletId: item.$id })) :
-                                                                (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)(item.name)).width('calc(100% - 32px)');
-                                                        }).appletId(item.appletId));
-                                                    }
-                                                },
-                                                children: []
-                                            };
-                                            tree.push(node);
-                                            buildClidren(workspaceTree, node);
+                                if (node.isTwin && nextParent && nextParent.isTwin) {
+                                    return false;
+                                }
+                                var noGrandkidsDepth = nextPath.indexOf('no-grandkids');
+                                if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
+                                    return false;
+                                }
+                                return true;
+                            };
+                            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.TreeContext)(function () {
+                                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)('com.celmino.widget.sortable-tree')
+                                    .config({
+                                    // canDrag: isEditable,
+                                    treeItems: treeItems,
+                                    onChange: function (_treeItems) {
+                                        //  setPrevTreeItems([...treeItems]);
+                                        setTreeItems(_treeItems);
+                                    },
+                                    onVisibilityToggle: function (_a) {
+                                        var node = _a.node, expanded = _a.expanded;
+                                        if (expanded) {
+                                            expandeds[node.$id] = true;
                                         }
-                                    });
-                                    console.log('build tree');
-                                    return tree;
-                                }
-                                var _a = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), prevTreeItems = _a[0], setPrevTreeItems = _a[1];
-                                var _b = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)([]), treeItems = _b[0], setTreeItems = _b[1];
-                                var canDrop = function (_a) {
-                                    var node = _a.node, nextParent = _a.nextParent, prevPath = _a.prevPath, nextPath = _a.nextPath;
-                                    if (prevPath.indexOf('trap') >= 0 && nextPath.indexOf('trap') < 0) {
-                                        return false;
-                                    }
-                                    if (node.isTwin && nextParent && nextParent.isTwin) {
-                                        return false;
-                                    }
-                                    var noGrandkidsDepth = nextPath.indexOf('no-grandkids');
-                                    if (noGrandkidsDepth >= 0 && nextPath.length - noGrandkidsDepth > 2) {
-                                        return false;
-                                    }
-                                    return true;
-                                };
-                                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.TreeContext)(function () {
-                                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIWidget)('com.celmino.widget.sortable-tree')
-                                        .config({
-                                        // canDrag: isEditable,
-                                        treeItems: treeItems,
-                                        onChange: function (_treeItems) {
-                                            //  setPrevTreeItems([...treeItems]);
-                                            setTreeItems(_treeItems);
-                                        },
-                                        onVisibilityToggle: function (_a) {
-                                            var node = _a.node, expanded = _a.expanded;
-                                            if (expanded) {
-                                                expandeds[node.$id] = true;
-                                            }
-                                            else {
-                                                delete expandeds[node.$id];
-                                            }
-                                            console.log(expandeds);
-                                        },
-                                        onMoveNode: function (_a) {
-                                            var treeData = _a.treeData;
-                                            var newTreeData = __spreadArray([], treeData, true);
-                                            function reCreateIndex(parentNode) {
-                                                if (parentNode.children) {
-                                                    parentNode.children.forEach(function (child, index) {
-                                                        child.prevParent = child.parent;
+                                        else {
+                                            delete expandeds[node.$id];
+                                        }
+                                        console.log(expandeds);
+                                    },
+                                    onMoveNode: function (_a) {
+                                        var treeData = _a.treeData;
+                                        var newTreeData = __spreadArray([], treeData, true);
+                                        function reCreateIndex(parentNode) {
+                                            if (parentNode.children) {
+                                                parentNode.children.forEach(function (child, index) {
+                                                    child.prevParent = child.parent;
+                                                    child.prevPath = child.path;
+                                                    child.path = addZeroDigitToNumberReturnString(index, 3);
+                                                    child.parent = parentNode.$id;
+                                                    if (child.prevPath == null) {
                                                         child.prevPath = child.path;
-                                                        child.path = addZeroDigitToNumberReturnString(index, 3);
-                                                        child.parent = parentNode.$id;
-                                                        if (child.prevPath == null) {
-                                                            child.prevPath = child.path;
-                                                        }
-                                                        if (child.prevParent == null) {
-                                                            child.prevParent = child.parent;
-                                                        }
-                                                        reCreateIndex(child);
-                                                    });
-                                                }
-                                            }
-                                            newTreeData.forEach(function (item, index) {
-                                                item.prevParent = item.parent;
-                                                item.prevPath = item.path;
-                                                item.path = addZeroDigitToNumberReturnString(index, 3);
-                                                item.parent = '-1';
-                                                reCreateIndex(item);
-                                            });
-                                            var changes = [];
-                                            function getChanges(parentNode) {
-                                                if (parentNode.children) {
-                                                    parentNode.children.forEach(function (child) {
-                                                        if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
-                                                            // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
-                                                            changes.push(child);
-                                                        }
-                                                        getChanges(child);
-                                                    });
-                                                }
-                                            }
-                                            newTreeData.forEach(function (item, index) {
-                                                if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
-                                                    //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
-                                                    changes.push(item);
-                                                }
-                                                getChanges(item);
-                                            });
-                                            changes.forEach(function (item) {
-                                                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
-                                                    path: item.path,
-                                                    parent: item.parent
+                                                    }
+                                                    if (child.prevParent == null) {
+                                                        child.prevParent = child.parent;
+                                                    }
+                                                    reCreateIndex(child);
                                                 });
-                                            });
-                                            console.log(newTreeData);
+                                            }
                                         }
-                                    });
-                                })
-                                    .setCanDrag(function () { return void 0; }))
-                                    .cornerRadius(6)).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 8));
-                            })) : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Private')
+                                        newTreeData.forEach(function (item, index) {
+                                            item.prevParent = item.parent;
+                                            item.prevPath = item.path;
+                                            item.path = addZeroDigitToNumberReturnString(index, 3);
+                                            item.parent = '-1';
+                                            reCreateIndex(item);
+                                        });
+                                        var changes = [];
+                                        function getChanges(parentNode) {
+                                            if (parentNode.children) {
+                                                parentNode.children.forEach(function (child) {
+                                                    if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                        // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
+                                                        changes.push(child);
+                                                    }
+                                                    getChanges(child);
+                                                });
+                                            }
+                                        }
+                                        newTreeData.forEach(function (item, index) {
+                                            if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                                //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
+                                                changes.push(item);
+                                            }
+                                            getChanges(item);
+                                        });
+                                        changes.forEach(function (item) {
+                                            _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
+                                                path: item.path,
+                                                parent: item.parent
+                                            });
+                                        });
+                                        console.log(newTreeData);
+                                    }
+                                });
+                            })
+                                .setCanDrag(function () { return void 0; }))
+                                .cornerRadius(6)).padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cHorizontal, 8));
+                        })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Private')
                         .fontSize(12)
                         .fontWeight('500')
                         .foregroundColor('rgb(73, 84, 99)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Add)).width(20)
