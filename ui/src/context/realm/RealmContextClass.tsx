@@ -24,6 +24,7 @@ export class RealmContextClass extends UIView {
     public render() {
 
         const subdomain = useGetSubdomain();
+       
         if (is.nullOrEmpty(subdomain)) {
             return (<RealmContextRenderer control={this} ></RealmContextRenderer>)
         } else {

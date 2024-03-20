@@ -13,10 +13,7 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
     const { realm } = useRealm();
     const { applet } = useApplet();
     const { updateDocument } = useUpdateDocument(realm.$id);
-    /*  const { access_type, team_id, applet_id, view_id } = useParams();
- 
-     const navigate = useNavigate(); */
-
+  
     return (
         VStack({ alignment: cTopLeading })(
             VStack({ alignment: cTopLeading })(

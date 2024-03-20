@@ -18881,7 +18881,14 @@ const useAccount = () => {
     const { account = null } = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(AccountContextProvider);
     const { user = null } = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(_user_context__WEBPACK_IMPORTED_MODULE_2__.UserContextProvider);
     const { account: anonymousAccount } = react__WEBPACK_IMPORTED_MODULE_0___default().useContext(_anonymous__WEBPACK_IMPORTED_MODULE_1__.AnonymousContextProvider);
-    return { account: (_a = account !== null && account !== void 0 ? account : user) !== null && _a !== void 0 ? _a : anonymousAccount };
+    let isAnonymous = true;
+    if (account == null && user == null && anonymousAccount != null) {
+        isAnonymous = true;
+    }
+    else {
+        isAnonymous = false;
+    }
+    return { account: (_a = account !== null && account !== void 0 ? account : user) !== null && _a !== void 0 ? _a : anonymousAccount, isAnonymous };
 };
 
 
@@ -18989,6 +18996,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context */ "./src/context/anonymous/context.ts");
+/* harmony import */ var _user_userContextRenderer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user/userContextRenderer */ "./src/context/user/userContextRenderer.tsx");
+
 
 
 
@@ -19002,7 +19011,7 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController 
 }
 const Proxy = ({ control }) => (control.vp_ChildFunc().render());
 function AnonymousContextRenderer({ control }) {
-    const { workspaceId } = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)();
+    const workspaceId = (0,_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_5__.useGetSubdomain)();
     const [isError, setIsError] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
     const [account, setAccount] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(null);
     const [isLoading, setIsLoading] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useState)(true);
@@ -19016,8 +19025,12 @@ function AnonymousContextRenderer({ control }) {
         })
             .catch(() => {
             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.createAnonymousSession().then((account) => {
-                setAccount(account);
-                setIsLoading(false);
+                _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.Services.Accounts.updatePrefs({
+                    isAnonymous: true
+                }).then(() => {
+                    setAccount(account);
+                    setIsLoading(false);
+                });
             });
         });
     }, []);
@@ -19919,12 +19932,15 @@ function NewUserContextRenderer({ control }) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)().render());
 }
 function UserContextRenderer({ control }) {
+    var _a;
     const subdomain = useGetSubdomain();
     // alert(secret)
     const { me: account, isLoading, isError } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetMe)(subdomain);
-    return (_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && account != null ?
-        (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.UserContextProvider.Provider, { value: { user: account } },
-            react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
+    return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Fragment)().render() :
+        ((_a = account === null || account === void 0 ? void 0 : account.prefs) === null || _a === void 0 ? void 0 : _a.isAnonymous) === true ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UINavigate)('/@/login').render() :
+            _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(control.vp_ChildFunc) && account != null ?
+                (react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_context__WEBPACK_IMPORTED_MODULE_4__.UserContextProvider.Provider, { value: { user: account } },
+                    react__WEBPACK_IMPORTED_MODULE_3___default().createElement(Proxy, { control: control }))) : react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null));
 }
 
 
@@ -20336,6 +20352,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const useAppletNavigate = () => {
+    const { account, isAnonymous } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useAccount)();
     const organization = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useOrganization)();
     const { realm } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useRealm)();
     const { applet } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useApplet)();
@@ -20347,7 +20364,7 @@ const useAppletNavigate = () => {
             }
             const subdomain = (0,_context_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.useGetSubdomain)();
             if (subdomain) {
-                navigate(`/@/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+                navigate(`/@${isAnonymous ? 'public' : ''}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
             }
             else {
                 navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);

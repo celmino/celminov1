@@ -1,4 +1,4 @@
-import { DynoDialog, useAppletNavigate } from '@celmino/ui';
+import { DynoDialog, useApplet, useAppletNavigate, useRealm } from '@celmino/ui';
 import { ButtonRenderer, SegmentedRenderer } from '@realmocean/antd';
 import { Text } from "@realmocean/vibe";
 import { moment } from "@tuval/core";
@@ -16,7 +16,11 @@ export class MeetingsController extends UIController {
 
     public override LoadView(): UIView {
         const { navigate } = useAppletNavigate();
-        const { workspaceId, appletId, meetingId } = useParams();
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+        const {  meetingId } = useParams();
         const [showTemplates, setShowTemplates] = React.useState(false);
         const { documents: meetings, isLoading } = useListDocuments(workspaceId, appletId, 'meeting');
 

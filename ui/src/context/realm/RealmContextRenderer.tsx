@@ -36,7 +36,7 @@ export function SubDomainRealmContextRenderer({ control }: { control: RealmConte
 
     const subdomain = useGetSubdomain();
 
-
+  
     return (
         is.function(control.vp_ChildFunc) ?
             (

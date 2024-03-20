@@ -64,7 +64,10 @@ export function UserContextRenderer({ control }: { control: UserContextClass }) 
     // alert(secret)
     const { me: account, isLoading, isError } = useGetMe(subdomain);
 
+    
     return (
+        isLoading ? TuvalFragment().render() :
+         account?.prefs?.isAnonymous === true ? UINavigate('/@/login').render() :
         is.function(control.vp_ChildFunc) && account != null ?
             (
                 <UserContextProvider.Provider value={{ user: account }}>

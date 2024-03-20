@@ -4,6 +4,7 @@ import { UIController, UIView, useState, useParams, HStack, cTopLeading, VStack,
 import { useGetDocument } from "@realmocean/sdk";
 import { Text } from "@realmocean/vibe";
 import { AssignUser } from "../../../../views/AssignUser";
+import { useApplet, useRealm } from "@celmino/ui";
 
 const findTopic = (items: any[], topic_id) => {
     if (items == null) return null;
@@ -29,7 +30,12 @@ export class TopicController extends UIController {
         const [api, setApi] = useState<any>();
         const [selectedViewIndex, setSelectedViewIndex] = useState(0);
 
-        const { workspaceId, appletId, meetingId, topicId } = useParams();
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+
+        const {  meetingId, topicId } = useParams();
         const { document: meeting, isLoading } = useGetDocument({
             projectId: workspaceId,
             databaseId: appletId,

@@ -71,13 +71,13 @@ export const Routes = () => {
             ),
 
 
-            UIRoute('/@public', PublicLayoutController).children(
-                UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(
+            UIRoute('/@public', PublicWorkspaceLayoutController).children(
+              //  UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(
                     UIRoute('', WorkspaceController).children(
-                        UIRoute('applet/:appletId/*', AppletController),
+              //          UIRoute('applet/:appletId/*', AppletController),
                         UIRoute(':appletId/*', AppletController)
                     )
-                )
+              //  )
             ),
 
             UIRoute('/', LandingController),

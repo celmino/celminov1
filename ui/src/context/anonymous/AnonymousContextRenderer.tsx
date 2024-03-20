@@ -5,6 +5,7 @@ import React, { Fragment, useEffect } from "react";
 import { AnonymousContextClass } from "./AnonymousContextClass";
 import { AnonymousContextProvider } from "./context";
 import { RealmContextProvider, useRealm } from "../realm";
+import { useGetSubdomain } from "../user/userContextRenderer";
 
 
 class Controller extends UIController {
@@ -23,29 +24,35 @@ const Proxy = ({ control }) => (
 
 export function AnonymousContextRenderer({ control }: { control: AnonymousContextClass }) {
 
-    const {workspaceId} = useParams();
+    const workspaceId = useGetSubdomain();
 
     const [isError, setIsError] = useState(false);
     const [account, setAccount] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    
+
     //const { Services } = useProjectServices();
     Services.Client.setProject(workspaceId);
 
-    useEffect(()=> {
+
+    useEffect(() => {
         Services.Accounts.get()
-        .then((account) => {
-            setAccount(account);
-            setIsLoading(false);
-        })
-        .catch(() => {
-            Services.Accounts.createAnonymousSession().then((account) => {
+            .then((account) => {
                 setAccount(account);
                 setIsLoading(false);
             })
-        })
-    },[])
-    
+            .catch(() => {
+                Services.Accounts.createAnonymousSession().then((account) => {
+                    Services.Accounts.updatePrefs({
+                        isAnonymous: true
+                    }).then(() => {
+                        setAccount(account);
+                        setIsLoading(false);
+                    })
+
+                })
+            })
+    }, [])
+
 
     return (
         isError ? Text('Account Error').render() :

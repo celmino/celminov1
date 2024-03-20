@@ -1,9 +1,11 @@
 import { useNavigate, urlFriendly } from '@tuval/forms'
-import { useApplet, useOrganization, useRealm } from "../context"
+import { useAccount, useApplet, useOrganization, useRealm } from "../context"
 import { useGetSubdomain } from '../context/user/userContextRenderer';
 
 
+
 export const useAppletNavigate = () => {
+    const { account,isAnonymous } = useAccount();
     const organization = useOrganization();
     const { realm } = useRealm();
     const { applet } = useApplet();
@@ -17,7 +19,7 @@ export const useAppletNavigate = () => {
             }
             const subdomain = useGetSubdomain();
             if (subdomain) {
-                navigate(`/@/${urlFriendly(applet.name)}-${applet.$id}${url}`)
+                navigate(`/@${isAnonymous ? 'public' : ''}/${urlFriendly(applet.name)}-${applet.$id}${url}`)
             } else {
 
                 navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet.name)}-${applet.$id}${url}`)

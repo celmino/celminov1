@@ -1,8 +1,8 @@
-import { cLeading, cTopLeading, Fragment, getAppFullName, HStack, Spacer, Spinner, Text, TextAlignment, UIController, UINavigate, UIRouteOutlet, UIView, UIWidget, urlFriendly, useNavigate, useParams, useState, VStack } from "@tuval/forms";
+import { cLeading, cTopLeading, Fragment, HStack, Spacer, Spinner, Text, TextAlignment, UIController, UIRouteOutlet, UIView, UIWidget, urlFriendly, useParams, useState, VStack } from "@tuval/forms";
 
+import { useApplet, useAppletNavigate } from "@celmino/ui";
 import { useGetDocument } from "@realmocean/sdk";
 import { moment } from "@tuval/core";
-import { useAppletNavigate } from "@celmino/ui";
 
 
 const findFirstTopic = (items: any[]) => {
@@ -51,7 +51,12 @@ export class MeetingController extends UIController {
         const [api, setApi] = useState<any>();
         const { navigate } = useAppletNavigate();
         const [selectedItem, setSelectedItem] = useState<any>();
-        const { workspaceId, appletId, spaceId, meetingId, topicId } = useParams();
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
+
+        const {  meetingId, topicId } = useParams();
         const { document: meeting, isLoading } = useGetDocument({
             projectId: workspaceId,
             databaseId: appletId,
@@ -162,4 +167,8 @@ export class MeetingController extends UIController {
 
             )
     }
+}
+
+function useRealm(): { realm: any; } {
+    throw new Error("Function not implemented.");
 }

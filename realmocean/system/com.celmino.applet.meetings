@@ -5053,9 +5053,13 @@ var MeetingsController = /** @class */ (function (_super) {
     }
     MeetingsController.prototype.LoadView = function () {
         var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAppletNavigate)().navigate;
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId, meetingId = _a.meetingId;
-        var _b = react__WEBPACK_IMPORTED_MODULE_5___default().useState(false), showTemplates = _b[0], setShowTemplates = _b[1];
-        var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_7__.useListDocuments)(workspaceId, appletId, 'meeting'), meetings = _c.documents, isLoading = _c.isLoading;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+        var workspaceId = realm.$id;
+        var appletId = applet.$id;
+        var meetingId = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.useParams)().meetingId;
+        var _a = react__WEBPACK_IMPORTED_MODULE_5___default().useState(false), showTemplates = _a[0], setShowTemplates = _a[1];
+        var _b = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_7__.useListDocuments)(workspaceId, appletId, 'meeting'), meetings = _b.documents, isLoading = _b.isLoading;
         if (meetingId != null) {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIRouteOutlet)().width('100%').height('100%'));
         }
@@ -5176,12 +5180,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
-/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -5245,10 +5249,14 @@ var MeetingController = /** @class */ (function (_super) {
     }
     MeetingController.prototype.LoadView = function () {
         var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(), api = _a[0], setApi = _a[1];
-        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_3__.useAppletNavigate)().navigate;
+        var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useAppletNavigate)().navigate;
         var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(), selectedItem = _b[0], setSelectedItem = _b[1];
-        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)(), workspaceId = _c.workspaceId, appletId = _c.appletId, spaceId = _c.spaceId, meetingId = _c.meetingId, topicId = _c.topicId;
-        var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
+        var realm = useRealm().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_1__.useApplet)().applet;
+        var workspaceId = realm.$id;
+        var appletId = applet.$id;
+        var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)(), meetingId = _c.meetingId, topicId = _c.topicId;
+        var _d = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_2__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
             collectionId: 'meeting',
@@ -5268,12 +5276,12 @@ var MeetingController = /** @class */ (function (_super) {
         }
         else
             return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)() :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(meeting === null || meeting === void 0 ? void 0 : meeting.name, " on ").concat(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment.utc(meeting === null || meeting === void 0 ? void 0 : meeting.start_at).local().format('MMM DD, YYYY')))
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(meeting === null || meeting === void 0 ? void 0 : meeting.name, " on ").concat(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.moment.utc(meeting === null || meeting === void 0 ? void 0 : meeting.start_at).local().format('MMM DD, YYYY')))
                     .fontSize(22).fontWeight('700').lineHeight(30)
                     .fontFamily('Poppins, sans-serif, Helvetica, Arial'), 
                 //Monday, August 21, 2023 • 14:30 - 15:30 Bu workspace yeni
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment.utc(meeting === null || meeting === void 0 ? void 0 : meeting.start_at).local().format('dddd, MMMM DD, YYYY • HH:mm'))).fontSize(13).fontWeight('700').lineHeight(26)
-                    .fontFamily('Poppins, sans-serif, Helvetica, Arial'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment.utc(meeting === null || meeting === void 0 ? void 0 : meeting.end_at).local().format('- HH:mm'))).fontSize(13).fontWeight('700').lineHeight(26)
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.moment.utc(meeting === null || meeting === void 0 ? void 0 : meeting.start_at).local().format('dddd, MMMM DD, YYYY • HH:mm'))).fontSize(13).fontWeight('700').lineHeight(26)
+                    .fontFamily('Poppins, sans-serif, Helvetica, Arial'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.moment.utc(meeting === null || meeting === void 0 ? void 0 : meeting.end_at).local().format('- HH:mm'))).fontSize(13).fontWeight('700').lineHeight(26)
                     .fontFamily('Poppins, sans-serif, Helvetica, Arial')).height()).maxWidth('95%'))
                     .height(80)
                     //.background('linear-gradient(73deg, rgb(0, 114, 206), rgb(47, 148, 231))'),
@@ -5303,7 +5311,7 @@ var MeetingController = /** @class */ (function (_super) {
                         //AssignUser({ account_id: item.account_id, readonly: true, width: 24, height: 24 }) : HStack().width(24).height(24),
                         (((_a = findDuration(meeting === null || meeting === void 0 ? void 0 : meeting.sections, item)) === null || _a === void 0 ? void 0 : _a[0]) || (item.duration != null && item.duration != 0)) ? meeting.is_template === 1 ?
                             item.duration ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(item.duration, "'")).foregroundColor('#00263A') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() :
-                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.moment.utc(meeting.start_at).add((_b = findDuration(meeting === null || meeting === void 0 ? void 0 : meeting.sections, item)) === null || _b === void 0 ? void 0 : _b[0], 'm').local().format('HH:mm'))).fontSize(14).fontWeight('700').foregroundColor('rgb(136, 149, 167)') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()));
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.moment.utc(meeting.start_at).add((_b = findDuration(meeting === null || meeting === void 0 ? void 0 : meeting.sections, item)) === null || _b === void 0 ? void 0 : _b[0], 'm').local().format('HH:mm'))).fontSize(14).fontWeight('700').foregroundColor('rgb(136, 149, 167)') : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()));
                     },
                     onSelected: function (item) {
                         /* team_id ?
@@ -5322,6 +5330,9 @@ var MeetingController = /** @class */ (function (_super) {
     return MeetingController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
+function useRealm() {
+    throw new Error("Function not implemented.");
+}
 
 
 /***/ }),
@@ -5344,6 +5355,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
 /* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _views_AssignUser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../views/AssignUser */ "./src/views/AssignUser.ts");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_4__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -5368,6 +5381,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+
 
 
 
@@ -5397,7 +5411,11 @@ var TopicController = /** @class */ (function (_super) {
         var _a, _b;
         var _c = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(), api = _c[0], setApi = _c[1];
         var _d = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(0), selectedViewIndex = _d[0], setSelectedViewIndex = _d[1];
-        var _e = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)(), workspaceId = _e.workspaceId, appletId = _e.appletId, meetingId = _e.meetingId, topicId = _e.topicId;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_4__.useApplet)().applet;
+        var workspaceId = realm.$id;
+        var appletId = applet.$id;
+        var _e = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useParams)(), meetingId = _e.meetingId, topicId = _e.topicId;
         var _f = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
@@ -5654,10 +5672,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   SettingsController: () => (/* binding */ SettingsController),
 /* harmony export */   getSettingsName: () => (/* binding */ getSettingsName)
 /* harmony export */ });
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -5684,6 +5704,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 };
 
 
+
 function getSettingsName() {
     var url = window.location.href;
     // Regex deseni
@@ -5704,61 +5725,64 @@ var SettingsController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     SettingsController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId;
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+        var workspaceId = realm.$id;
+        var appletId = applet.$id;
         var menu = [
             {
                 id: 'general',
                 title: 'General',
                 url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/general"),
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
+                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Document Types',
                 url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
+                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-importIcon')
             },
             {
                 id: 'features',
                 title: 'Features',
                 url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/features"),
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
+                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'collections',
                 title: 'Collections',
                 url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/collections"),
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-settings')
+                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-settings')
             },
             {
                 id: 'import',
                 title: 'Integrations',
                 url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
+                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-importIcon')
             },
             {
                 id: 'security',
                 title: 'Security & Permissions ',
                 url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/security"),
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-protectedAlt')
+                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-protectedAlt')
             },
             {
                 id: 'import',
                 title: 'Imports / Exports',
                 url: "/@/workspace/".concat(workspaceId, "/applet/").concat(appletId, "/settings/import"),
-                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-importIcon')
+                icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.SvgIcon)('cu3-icon-importIcon')
             },
         ];
-        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+        var navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
         // 
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Heading)('DOCUMENT APPLET').h3().foregroundColor('rgb(101, 111, 125)')
-                .fontSize(11).fontWeight('600')).padding('16px 8px 8px').height()], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(menu)(function (item) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 8 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title).fontSize(14).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)')
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Heading)('DOCUMENT APPLET').h3().foregroundColor('rgb(101, 111, 125)')
+                .fontSize(11).fontWeight('600')).padding('16px 8px 8px').height()], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(menu)(function (item) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 8 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Icon)(item.icon).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)'), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)(item.title).fontSize(14).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)')
                 .fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
                 .lineHeight(16)).height(32)
                 .cornerRadius(6)
                 .background({ default: item.id === getSettingsName() ? '#E5E4FC' : '', hover: '#E8EAED' })
-                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 8)
+                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cHorizontal, 8)
                 .cursor('pointer')
                 .onClick(function () {
                 navigate(item.url);
@@ -5766,10 +5790,10 @@ var SettingsController = /** @class */ (function (_super) {
         }), false)).padding()
             .background('#F7F8F9')
             .allWidth(240)
-            .margin('0 8px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIRouteOutlet)().width('100%').height('100%')));
+            .margin('0 8px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIRouteOutlet)().width('100%').height('100%')));
     };
     return SettingsController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));
 
 
 
@@ -5894,12 +5918,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   GeneralSettingsController: () => (/* binding */ GeneralSettingsController)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
-/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/vibe */ "./node_modules/@realmocean/vibe/index.js");
+/* harmony import */ var _realmocean_vibe__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -5918,26 +5944,29 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var GeneralSettingsController = /** @class */ (function (_super) {
     __extends(GeneralSettingsController, _super);
     function GeneralSettingsController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     GeneralSettingsController.prototype.LoadView = function () {
-        var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.useParams)(), workspaceId = _a.workspaceId, appletId = _a.appletId;
-        var applet = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useGetDocument)({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId }).document;
-        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useUpdateDocument)(workspaceId).updateDocument;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('General').fontSize(24).fontWeight('600')
+        var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+        var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+        var workspaceId = realm.$id;
+        var appletId = applet.$id;
+        var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('General').fontSize(24).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
             .lineHeight(32))
             .height()
-            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Applet').fontSize(20).fontWeight('600')
+            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Applet').fontSize(20).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
             .lineHeight(32))
             .height()
-            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Name').fontSize(16).fontWeight('600')
+            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Name').fontSize(16).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
-            .lineHeight(32)).height().width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TextField)()
+            .lineHeight(32)).height().width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.TextField)()
             .value(applet === null || applet === void 0 ? void 0 : applet.name)
             .border('0')
             .outline({ focus: 'none' })
@@ -5945,9 +5974,9 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             .padding(12)
             .cornerRadius(6)).height().width(400))
             .height()
-            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_1__.Text)('Icon').fontSize(16).fontWeight('600')
+            .margin('0 0 30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Icon').fontSize(16).fontWeight('600')
             .foregroundColor('rgb(42, 46, 52)')
-            .lineHeight(32)).height().width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIWidget)("com.tuvalsoft.widget.icons")
+            .lineHeight(32)).height().width(300), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIWidget)("com.tuvalsoft.widget.icons")
             .config({
             onChange: function (value) {
                 updateDocument({
@@ -5977,7 +6006,7 @@ var GeneralSettingsController = /** @class */ (function (_super) {
             .padding('24px 48px'));
     };
     return GeneralSettingsController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIFormController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.UIFormController));
 
 
 
@@ -6316,9 +6345,6 @@ var ViewHeader = function (header, onHeaderChange) {
         var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useRealm)().realm;
         var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_2__.useApplet)().applet;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_3__.useUpdateDocument)(realm.$id).updateDocument;
-        /*  const { access_type, team_id, applet_id, view_id } = useParams();
-     
-         const navigate = useNavigate(); */
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
         /*   HStack({ alignment: cLeading, spacing: 5 })(
               Icon(SvgIcon('svg-sprite-global__comment', '#87909e')),
