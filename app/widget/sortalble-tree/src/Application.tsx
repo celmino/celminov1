@@ -58,7 +58,7 @@ export class Tree extends React.Component<any, any> {
             <SortableTree
 
                 scaffoldBlockPxWidth={32}
-                rowHeight={() => 28}
+                rowHeight={() => 30}
                 treeData={this.props.items}
                 onChange={this.props.onChange}
                 onMoveNode={this.props.onMoveNode}

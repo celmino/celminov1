@@ -51016,6 +51016,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
         }
         var light = 0.812;
         var dark = 0.188;
+        var size = 30;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", __assign({ style: { width: '100%' } }, otherProps),
             react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, canDrag ?
                 connectDragPreview(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_3__["default"])('rst__row', isLandingPadActive && 'rst__rowLandingPad', isLandingPadActive && !canDrop && 'rst__rowCancelPad', isSearchMatch && 'rst__rowSearchMatch', isSearchFocus && 'rst__rowSearchFocus', rowDirectionClass, className), style: __assign({ opacity: isDraggedDescendant ? 0.5 : 1 }, style) }, connectDragSource(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { style: { width: '100%' } }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(!_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(node.iconName) &&
@@ -51034,7 +51035,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         .transition('opacity .12s ease-in-out')
                         .position('absolute')
                         //.background('#FCE8E8')
-                        .allWidth(28).allHeight(28)
+                        .allWidth(size).allHeight(size)
                         .opacity('var(--opacity-icon)')
                         .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                     .transition('transform .12s ease-in-out'))
@@ -51050,7 +51051,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         treeIndex: treeIndex,
                     });
                 }))
-                    .allWidth(28).allHeight(28)
+                    .allWidth(size).allHeight(size)
                     .transition('transform .12s ease-in-out')
                     .render()))), (node.children == null || node.children.length === 0 && node.iconName != null) && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
                 //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
@@ -51067,10 +51068,10 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     .transition('opacity .12s ease-in-out')
                     // .position('absolute')
                     //.background('#FCE8E8')
-                    .allWidth(28).allHeight(28)
+                    .allWidth(size).allHeight(size)
                     // .opacity('var(--opacity-icon)')
                     .cornerRadius(5))
-                    .allWidth(28).allHeight(28)
+                    .allWidth(size).allHeight(size)
                     .transition('transform .12s ease-in-out')), _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
                     node: node,
                     path: path,
@@ -51098,7 +51099,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                             .transition('opacity .12s ease-in-out')
                             .position('absolute')
                             //.background('#FCE8E8')
-                            .allWidth(28).allHeight(28)
+                            .allWidth(size).allHeight(size)
                             .opacity('var(--opacity-icon)')
                             .cornerRadius(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(CaretDown1).transform(node.expanded ? 'rotate(90deg)' : '')
                         .transition('transform .12s ease-in-out'))
@@ -51114,7 +51115,7 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                             treeIndex: treeIndex,
                         });
                     }))
-                        .allWidth(28).allHeight(28)
+                        .allWidth(size).allHeight(size)
                         .transition('transform .12s ease-in-out')
                         .render()))), (node.children == null || node.children.length === 0 && node.iconName != null) && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(
                     //   is.nullOrEmpty(iconName) ? requestIcon(nodeType, isSelected, expanded) /* Icon(WorkbenchIcons.DocIcon2) */ :
@@ -51131,10 +51132,10 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         .transition('opacity .12s ease-in-out')
                         // .position('absolute')
                         //.background('#FCE8E8')
-                        .allWidth(28).allHeight(28)
+                        .allWidth(size).allHeight(size)
                         // .opacity('var(--opacity-icon)')
                         .cornerRadius(5))
-                        .allWidth(28).allHeight(28)
+                        .allWidth(size).allHeight(size)
                         .transition('transform .12s ease-in-out')), _tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.function(node.view) ? node.view(node, function () { return toggleChildrenVisibility({
                         node: node,
                         path: path,
@@ -54562,7 +54563,7 @@ var Tree = /** @class */ (function (_super) {
         return _this;
     }
     Tree.prototype.render = function () {
-        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 28; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode, onVisibilityToggle: this.props.onVisibilityToggle, canDrag: this.props.canDrag }));
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_tree__WEBPACK_IMPORTED_MODULE_1__["default"], { scaffoldBlockPxWidth: 32, rowHeight: function () { return 30; }, treeData: this.props.items, onChange: this.props.onChange, onMoveNode: this.props.onMoveNode, onVisibilityToggle: this.props.onVisibilityToggle, canDrag: this.props.canDrag }));
     };
     return Tree;
 }((react__WEBPACK_IMPORTED_MODULE_0___default().Component)));

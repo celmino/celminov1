@@ -313,6 +313,10 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                             .cursor('pointer')
                                                             .padding(5)
                                                             .height()
+                                                            .onClick(() => {
+                                                                navigate('/@/settings/general')
+
+                                                            }),
                                                     ).padding(5),
                                                     HDivider().height(1).background('#ECEDEE'),
                                                     VStack({ alignment: cTopLeading })(
@@ -386,7 +390,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                     .fontFamily('"system-ui",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif')
                                             )
                                                 .allHeight(28)
-                                                .padding('6px 10px')
+                                                .padding('6px 5px')
                                                 .background({ hover: '#E8EAED' })
                                                 .cornerRadius(6)
                                                 .cursor('pointer')
@@ -403,12 +407,12 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                     return (
                                         VStack({ alignment: cTopLeading })(
                                             ScrollView({ axes: cVertical, alignment: cTopLeading })(
-                                                VStack({ alignment: cTopLeading })(
+                                                VStack({ alignment: cTopLeading, spacing: 5 })(
                                                     HStack({ alignment: cLeading })(
                                                         Text('Applets')
                                                             .fontSize(12)
                                                             .fontWeight('500')
-                                                            .foregroundColor('rgb(73, 84, 99)'),
+                                                            .foregroundColor('rgb(80, 90, 100)'),
                                                         Spacer(),
                                                         isAnonymous ? Fragment() :
                                                             HStack(

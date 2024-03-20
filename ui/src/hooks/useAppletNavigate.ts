@@ -19,7 +19,7 @@ export const useAppletNavigate = () => {
             }
             const subdomain = useGetSubdomain();
             if (subdomain) {
-                navigate(`/@${isAnonymous ? 'public' : ''}/${urlFriendly(applet.name)}-${applet.$id}${url}`)
+                navigate(`/@${isAnonymous ? 'public' : 'team'}/${urlFriendly(applet.name)}-${applet.$id}${url}`)
             } else {
 
                 navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet.name)}-${applet.$id}${url}`)

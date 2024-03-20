@@ -5394,7 +5394,7 @@ var TreeNode2 = function (treeNodeProps) { return (0,_tuval_forms__WEBPACK_IMPOR
         .transform('translate3d(0px, 0, 0)')
         .fontWeight('500')
         .height() //.padding(5)
-        .allHeight(28)
+        .allHeight(30)
         //.padding(cVertical, isEditing ? 0 : 5)
         .paddingLeft("".concat(20 * level, "px"))
         .background({ default: isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })

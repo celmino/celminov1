@@ -163,7 +163,7 @@ export const TreeNode2 = (treeNodeProps: TreeNodeProps) => UIViewBuilder(() => {
                 .transform('translate3d(0px, 0, 0)')
                 .fontWeight('500')
                 .height()//.padding(5)
-                .allHeight(28)
+                .allHeight(30)
                 //.padding(cVertical, isEditing ? 0 : 5)
                 .paddingLeft(`${20 * level}px`)
                 .background({ default: isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })

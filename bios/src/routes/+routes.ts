@@ -19,15 +19,18 @@ import { LandingController } from "./LandingController"
 import { PublicWorkspaceLayoutController } from "./@/workspace/@controller"
 import { LoginSuccess } from "./@/login-success/+controller"
 import { LeftSideMenuView } from "./@/*/views/LeftSideMenu"
+import { SettingsController } from "./@/settings/+controller"
+import { GeneralSettingController } from "./@/settings/general/+controller"
+import { SecuritySettingController } from "./@/settings/security/+controller"
 
 
 export class HomeController extends UIController {
     public override LoadView(): UIView {
         return (
-             HStack({ alignment: cTopLeading })(
+            HStack({ alignment: cTopLeading })(
                 LeftSideMenuView('Home'),
                 UIRouteOutlet().width("100%").height("100%")
-            ) 
+            )
         )
     }
 }
@@ -52,32 +55,36 @@ export const Routes = () => {
                     UIRoute('workspace/select', WorkspaceSelectController)
                 ),
                 UIRoute('organization/select', OrganizationSelectController),
-               /*  UIRoute('workspace/', WorkspaceLayoutController).children(
-                    UIRoute(':workspaceId', WorkspaceController).children(
-                        UIRoute('applet/:appletId/*', AppletController),
-                        UIRoute(':appletId/*', AppletController)
-                    )
-                ), */
+                /*  UIRoute('workspace/', WorkspaceLayoutController).children(
+                     UIRoute(':workspaceId', WorkspaceController).children(
+                         UIRoute('applet/:appletId/*', AppletController),
+                         UIRoute(':appletId/*', AppletController)
+                     )
+                 ), */
 
 
             ),
 
-              // Team Routes
-              UIRoute('/@', RealmLayoutController).children(
+            // Team Routes
+            UIRoute('/@team', RealmLayoutController).children(
                 UIRoute('', WorkspaceController).children(
                     UIRoute('applet/:appletId/*', AppletController),
                     UIRoute(':appletId/*', AppletController)
+                ),
+                UIRoute('settings', SettingsController).children(
+                    UIRoute('general', GeneralSettingController),
+                    UIRoute('security', SecuritySettingController)
                 )
             ),
 
 
             UIRoute('/@public', PublicWorkspaceLayoutController).children(
-              //  UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(
-                    UIRoute('', WorkspaceController).children(
-              //          UIRoute('applet/:appletId/*', AppletController),
-                        UIRoute(':appletId/*', AppletController)
-                    )
-              //  )
+                //  UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(
+                UIRoute('', WorkspaceController).children(
+                    //          UIRoute('applet/:appletId/*', AppletController),
+                    UIRoute(':appletId/*', AppletController)
+                )
+                //  )
             ),
 
             UIRoute('/', LandingController),

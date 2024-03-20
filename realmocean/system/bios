@@ -8932,32 +8932,32 @@ __webpack_require__.r(__webpack_exports__);
 
 var UpIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { id: "Layer_1", "data-name": "Layer 1", xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 16 16" },
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { fill: "none", stroke: "currentColor", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.5", d: "M11.32 6.67L8 9.33 4.68 6.67" }))); };
-var UpdatesIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "18", height: "18", viewBox: "0 0 18 18", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+var UpdatesIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "16", height: "16", viewBox: "0 0 18 18", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M16.6004 12.6886C16.6004 12.6886 14.3405 11.3543 14.3405 7.41805C14.422 6.63338 14.2951 5.84156 13.972 5.11767C13.6488 4.39378 13.1401 3.7618 12.494 3.28168C12.0677 3.02628 11.6028 2.83718 11.116 2.72126V2.64121C11.116 2.20593 10.9374 1.78848 10.6196 1.4807C10.3017 1.17291 9.87062 1 9.4211 1C8.97158 1 8.54047 1.17291 8.22261 1.4807C7.90475 1.78848 7.72618 2.20593 7.72618 2.64121V2.72126C7.61076 2.72071 7.49704 2.74823 7.39546 2.80132C6.22418 3.12156 4.55682 4.25573 4.55682 7.41805C4.55682 11.2342 2.37961 12.7553 2.28315 12.7553C2.1678 12.8175 2.07932 12.9176 2.0338 13.0376C1.98829 13.1576 1.98875 13.2894 2.03511 13.4091C2.08002 13.5263 2.16083 13.6275 2.26672 13.699C2.37261 13.7705 2.49853 13.8091 2.62764 13.8094H6.77537V13.9695C6.73799 14.3402 6.77841 14.7143 6.89419 15.0695C7.00997 15.4246 7.19872 15.7534 7.4491 16.0361C7.69948 16.3188 8.0063 16.5495 8.35114 16.7144C8.69597 16.8793 9.07168 16.975 9.45568 16.9957C9.83969 17.0164 10.2241 16.9617 10.5857 16.8349C10.9473 16.7081 11.2787 16.5118 11.5599 16.2577C11.8412 16.0037 12.0664 15.6973 12.2222 15.3568C12.378 15.0163 12.4611 14.6488 12.4664 14.2764V13.8094H16.4212C16.6693 13.8094 17 13.676 17 13.4091C17 13.1423 16.7657 12.9154 16.6004 12.6886Z", stroke: "#F27B71", "stroke-width": "1.5", "stroke-linecap": "round", "stroke-linejoin": "round" }))); };
-var InboxIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", viewBox: "0 0 18 18" },
+var InboxIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 18 18" },
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { id: "Layer_1", "data-name": "Layer 1" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { fill: "none", stroke: "#ff78ad", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.5", id: "UI" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M5 1.84h8a1 1 0 0 1 .89.6L16.51 9a5.51 5.51 0 0 1 .38 2v3.05a2.09 2.09 0 0 1-2.1 2.09H3.21a2.09 2.09 0 0 1-2.1-2.09V11a5.51 5.51 0 0 1 .38-2L4.1 2.44A1 1 0 0 1 5 1.84zM5.92 10a3.08 3.08 0 1 0 6.16 0M5.92 9.99L3.52 9.99M12.08 9.99L14.48 9.99" }))))); };
-var MyDayIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", viewBox: "0 0 18 18" },
+var MyDayIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 18 18" },
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { id: "Layer_1", "data-name": "Layer 1", fill: "none", stroke: "#56bf6f", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.5" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("circle", { cx: "9", cy: "9.01", r: "1.33" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("circle", { cx: "9", cy: "9", r: "7.44" }),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("circle", { cx: "9", cy: "9.01", r: "4.35" })))); };
-var CalendarIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", viewBox: "0 0 18 18" },
+var CalendarIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 18 18" },
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { id: "Layer_1", "data-name": "Layer 1" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { fill: "none", stroke: "#00a0fc", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.5", id: "UI" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("rect", { x: "1.59", y: "2.51", width: "14.83", height: "14.48", rx: "2.9" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.59 6.92L13.41 6.92M5.04 1.09L5.04 2.13M12.88 1.09L12.88 2.13" })),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("rect", { x: "10.15", y: "10.31", width: "2.95", height: "2.95", rx: ".76", fill: "none", stroke: "#00a0fc", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.5" })))); };
-var UpcommingIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", viewBox: "0 0 18 18" },
+var UpcommingIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 18 18" },
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { id: "Layer_1", "data-name": "Layer 1" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("g", { fill: "none", stroke: "#a77ceb", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.5", id: "UI" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("rect", { x: "1.57", y: "2.45", width: "14.87", height: "14.51", rx: "2.91" }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M4.58 6.87L13.42 6.87M5.03 1.03L5.03 2.45M12.89 1.03L12.89 2.45" })),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { fill: "none", stroke: "#a77ceb", "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "1.5", d: "M5.6 11.96L12.33 11.96M10.52 9.95L12.72 11.96 10.52 13.97" })))); };
-var TimelineIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "18", height: "18", viewBox: "0 0 18 18", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+var TimelineIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "16", height: "16", viewBox: "0 0 18 18", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M6.95251 1.78876V16.3575M9 10.8563H14.3212C14.4803 10.8563 14.6377 10.8878 14.7845 10.949 14.9313 11.0102 15.0645 11.0998 15.1764 11.2128 15.2884 11.3258 15.3768 11.4598 15.4366 11.6072 15.4964 11.7545 15.5265 11.9122 15.525 12.0713V13.1963C15.525 13.5166 15.3986 13.8239 15.1731 14.0514 14.9477 14.279 14.6415 14.4083 14.3212 14.4113H9M9 4.01627H9.66375C9.98403 4.01923 10.2902 4.14855 10.5156 4.37608 10.7411 4.60362 10.8675 4.91097 10.8675 5.23127V6.35627C10.8705 6.51676 10.8416 6.67626 10.7826 6.82554 10.7236 6.97482 10.6356 7.11093 10.5236 7.22599 10.4117 7.34106 10.2781 7.4328 10.1305 7.49593 9.98291 7.55905 9.82427 7.59231 9.66375 7.59377H9M4.89375 7.59377H4.23C3.90776 7.59377 3.59872 7.46576 3.37086 7.2379 3.14301 7.01004 3.015 6.701 3.015 6.37877V5.25377C3.01049 5.09287 3.03829 4.9327 3.09676 4.78274 3.15523 4.63278 3.24318 4.49606 3.35541 4.38068 3.46764 4.26531 3.60187 4.17361 3.75016 4.11101 3.89845 4.04842 4.05779 4.0162 4.21875 4.01627H4.89375M4.89375 14.4338H2.64375C2.32242 14.4308 2.01508 14.3019 1.78786 14.0747 1.56064 13.8474 1.43169 13.5401 1.42875 13.2188V12.0938C1.42264 11.7753 1.54182 11.4672 1.76065 11.2357 1.97948 11.0043 2.28045 10.868 2.59875 10.8563H4.84875M16.0538 7.59377H14.1525C14.0432 7.59386 13.9351 7.57185 13.8345 7.52905 13.734 7.48624 13.6431 7.42354 13.5675 7.34472 13.4918 7.26589 13.4329 7.17257 13.3942 7.07036 13.3555 6.96816 13.3379 6.85919 13.3425 6.75002V4.82627C13.3425 4.61144 13.4278 4.40541 13.5797 4.25351 13.7316 4.1016 13.9377 4.01627 14.1525 4.01627H16.065C16.2798 4.01627 16.4859 4.1016 16.6378 4.25351 16.7897 4.40541 16.875 4.61144 16.875 4.82627V6.75002C16.8796 6.86015 16.8617 6.97006 16.8223 7.07302 16.783 7.17598 16.723 7.26983 16.6462 7.34882 16.5693 7.42781 16.4771 7.49027 16.3752 7.53239 16.2734 7.57451 16.164 7.59539 16.0538 7.59377z", stroke: "#FF78AD", "stroke-width": "1.5", "stroke-linejoin": "round" }))); };
-var TimerIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "18", height: "18", viewBox: "0 0 18 18", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+var TimerIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "16", height: "16", viewBox: "0 0 18 18", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
     react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M9.00003 16.4482C12.4698 16.4482 15.2827 13.6354 15.2827 10.1656 15.2827 6.69582 12.4698 3.883 9.00003 3.883 5.53023 3.883 2.71741 6.69582 2.71741 10.1656 2.71741 13.6354 5.53023 16.4482 9.00003 16.4482zM9.25229 9.83447L11.4475 7.66312M7.55722 1.40815L10.2688 1.40815", stroke: "#F27B71", "stroke-width": "1.5", "stroke-linecap": "round", "stroke-linejoin": "round" }))); };
 
 
@@ -9113,6 +9113,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _workspace_controller__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./@/workspace/@controller */ "./src/routes/@/workspace/@controller.tsx");
 /* harmony import */ var _login_success_controller__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./@/login-success/+controller */ "./src/routes/@/login-success/+controller.ts");
 /* harmony import */ var _views_LeftSideMenu__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./@/* /views/LeftSideMenu */ "./src/routes/@/*/views/LeftSideMenu.tsx");
+/* harmony import */ var _settings_controller__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./@/settings/+controller */ "./src/routes/@/settings/+controller.ts");
+/* harmony import */ var _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./@/settings/general/+controller */ "./src/routes/@/settings/general/+controller.ts");
+/* harmony import */ var _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./@/settings/security/+controller */ "./src/routes/@/settings/security/+controller.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -9128,6 +9131,9 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
+
+
 
 
 
@@ -9162,7 +9168,7 @@ var Routes = function () {
     // Console Routes
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/app', _controller__WEBPACK_IMPORTED_MODULE_9__.LayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _default__WEBPACK_IMPORTED_MODULE_11__.DefaultWorkspaceController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('login-success', _login_success_controller__WEBPACK_IMPORTED_MODULE_16__.LoginSuccess), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('*', HomeController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':organizationId', _organization_organizationId_controller__WEBPACK_IMPORTED_MODULE_3__.OrganizationController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':workspaceId', _workspace_controller__WEBPACK_IMPORTED_MODULE_2__.WorkspaceLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('workspace/select', _workspace_select_controller__WEBPACK_IMPORTED_MODULE_7__.WorkspaceSelectController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('organization/select', _organization_select_controller__WEBPACK_IMPORTED_MODULE_8__.OrganizationSelectController)), 
     // Team Routes
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _workspace_controller__WEBPACK_IMPORTED_MODULE_15__.PublicWorkspaceLayoutController).children(
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@team', _controller__WEBPACK_IMPORTED_MODULE_9__.RealmLayoutController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('applet/:appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)(':appletId/*', _workspace_workspaceId_applet_appletId_controller__WEBPACK_IMPORTED_MODULE_4__.AppletController)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('settings', _settings_controller__WEBPACK_IMPORTED_MODULE_18__.SettingsController).children((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('general', _settings_general_controller__WEBPACK_IMPORTED_MODULE_19__.GeneralSettingController), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('security', _settings_security_controller__WEBPACK_IMPORTED_MODULE_20__.SecuritySettingController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('/@public', _workspace_controller__WEBPACK_IMPORTED_MODULE_15__.PublicWorkspaceLayoutController).children(
     //  UIRoute(':workspaceId', PublicWorkspaceLayoutController).children(
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('', _workspace_workspaceId_controller__WEBPACK_IMPORTED_MODULE_10__.WorkspaceController).children(
     //          UIRoute('applet/:appletId/*', AppletController),
@@ -9397,7 +9403,10 @@ var LeftSideMenuView = function (selectedItem) {
                         .background({ hover: '#ECEEEF' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.SvgIcon)('cu3-icon-settings')), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Settings'))
                         .cursor('pointer')
                         .padding(5)
-                        .height()).padding(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HDivider)().height(1).background('#ECEDEE'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.SvgIcon)('cu3-icon-settings')), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Change Realm'))
+                        .height()
+                        .onClick(function () {
+                        navigate('/@/settings/general');
+                    })).padding(5), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HDivider)().height(1).background('#ECEDEE'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.SvgIcon)('cu3-icon-settings')), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Change Realm'))
                             .cursor('pointer')
                             .padding(5)
                             .height()
@@ -9433,7 +9442,7 @@ var LeftSideMenuView = function (selectedItem) {
                         .foregroundColor('rgb(21, 23, 25)')
                         .fontFamily('"system-ui",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif'))
                         .allHeight(28)
-                        .padding('6px 10px')
+                        .padding('6px 5px')
                         .background({ hover: '#E8EAED' })
                         .cornerRadius(6)
                         .cursor('pointer')
@@ -9442,10 +9451,10 @@ var LeftSideMenuView = function (selectedItem) {
                     //.padding()
                     .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.UIViewBuilder)(function () {
                     var _a = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(true), appletsOpen = _a[0], setAppletsOpen = _a[1];
-                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Applets')
+                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Applets')
                         .fontSize(12)
                         .fontWeight('500')
-                        .foregroundColor('rgb(73, 84, 99)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Spacer)(), isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
+                        .foregroundColor('rgb(80, 90, 100)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Spacer)(), isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
                         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Add)).width(20)
                             .onClick(function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_assets_Icons__WEBPACK_IMPORTED_MODULE_7__.UpIcon)).width(20)
                         .onClick(function () { return setAppletsOpen(!appletsOpen); }))
@@ -10062,6 +10071,283 @@ var OrganizationSelectController = /** @class */ (function (_super) {
     return OrganizationSelectController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
+
+
+/***/ }),
+
+/***/ "./src/routes/@/settings/+controller.ts":
+/*!**********************************************!*\
+  !*** ./src/routes/@/settings/+controller.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SettingsController: () => (/* binding */ SettingsController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var SettingsController = /** @class */ (function (_super) {
+    __extends(SettingsController, _super);
+    function SettingsController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    SettingsController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width('100%').height('100%'));
+    };
+    return SettingsController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/@/settings/general/+controller.ts":
+/*!******************************************************!*\
+  !*** ./src/routes/@/settings/general/+controller.ts ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GeneralSettingController: () => (/* binding */ GeneralSettingController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/SettingsMenu */ "./src/routes/@/settings/views/SettingsMenu.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var GeneralSettingController = /** @class */ (function (_super) {
+    __extends(GeneralSettingController, _super);
+    function GeneralSettingController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    GeneralSettingController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__.SettingsMenu)('general'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('general')));
+    };
+    return GeneralSettingController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/@/settings/security/+controller.ts":
+/*!*******************************************************!*\
+  !*** ./src/routes/@/settings/security/+controller.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SecuritySettingController: () => (/* binding */ SecuritySettingController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/SettingsMenu */ "./src/routes/@/settings/views/SettingsMenu.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var SecuritySettingController = /** @class */ (function (_super) {
+    __extends(SecuritySettingController, _super);
+    function SecuritySettingController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    SecuritySettingController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_views_SettingsMenu__WEBPACK_IMPORTED_MODULE_1__.SettingsMenu)('security'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('security')));
+    };
+    return SecuritySettingController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/routes/@/settings/views/SettingsIcons.tsx":
+/*!*******************************************************!*\
+  !*** ./src/routes/@/settings/views/SettingsIcons.tsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BackIcon: () => (/* binding */ BackIcon),
+/* harmony export */   ExportSettingsIcon: () => (/* binding */ ExportSettingsIcon),
+/* harmony export */   GeneralSettingsIcon: () => (/* binding */ GeneralSettingsIcon),
+/* harmony export */   ImportSettingsIcon: () => (/* binding */ ImportSettingsIcon),
+/* harmony export */   SecuritySettingsIcon: () => (/* binding */ SecuritySettingsIcon)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var BackIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M9.546 15.584a.8.8 0 0 1-1.13-.037l-5-5.343a.8.8 0 0 1 .01-1.104l5-5.157a.8.8 0 0 1 1.148 1.114l-3.684 3.8H16a.8.8 0 0 1 0 1.6H5.844l3.74 3.996a.8.8 0 0 1-.038 1.131Z" }))); };
+var GeneralSettingsIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M11.5 3.75c-1.12 0-2.067.736-2.386 1.75H2.75a.75.75 0 0 0 0 1.5h6.364A2.501 2.501 0 1 0 11.5 3.75Zm-.864 2.5a.864.864 0 1 0 1.728 0 .864.864 0 0 0-1.728 0Z" }),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M15.5 6.25a.75.75 0 0 1 .75-.75h1a.75.75 0 0 1 0 1.5h-1a.75.75 0 0 1-.75-.75Z" }),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M2 13.75a.75.75 0 0 1 .75-.75h1.364a2.501 2.501 0 1 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Zm4.5.864a.864.864 0 1 1 0-1.728.864.864 0 0 1 0 1.728Z" }),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M10.5 13.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Z" }))); };
+var SecuritySettingsIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10 6a2.417 2.417 0 0 0-.75 4.715v1.535a.75.75 0 0 0 1.5 0v-1.535A2.418 2.418 0 0 0 10 6Zm-.917 2.417a.917.917 0 1 1 1.834 0 .917.917 0 0 1-1.834 0Z" }),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M10.572 1.155a1.75 1.75 0 0 0-1.144 0L3.866 3.08a1.723 1.723 0 0 0-1.162 1.516 39.942 39.942 0 0 0-.081 3.103c.02 1.208.116 2.542.409 3.517.489 1.63 1.653 3.213 2.812 4.494a28.561 28.561 0 0 0 3.105 2.92c.616.499 1.486.499 2.102 0a28.571 28.571 0 0 0 3.105-2.92c1.159-1.28 2.323-2.864 2.812-4.495.293-.974.389-2.308.409-3.516a39.933 39.933 0 0 0-.081-3.103 1.723 1.723 0 0 0-1.162-1.516l-5.562-1.925ZM10 2.572l5.643 1.925c.096.033.15.113.156.195.043.677.098 1.81.078 2.982-.02 1.191-.117 2.348-.345 3.11-.392 1.307-1.375 2.69-2.488 3.92-1.1 1.215-2.372 2.252-3.044 2.796-.036.03.034.004 0 .004-.672-.544-1.944-1.585-3.044-2.8-1.113-1.23-2.096-2.613-2.488-3.92-.229-.762-.325-1.919-.345-3.11A38.45 38.45 0 0 1 4.2 4.692a.223.223 0 0 1 .156-.195L10 2.572Z" }))); };
+var ImportSettingsIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M9.47 11.78a.75.75 0 0 0 1.06 0l2.499-2.5a.75.75 0 0 0-1.06-1.06l-1.22 1.22V1.75a.75.75 0 1 0-1.499 0v7.69L8.031 8.22a.75.75 0 1 0-1.06 1.06l2.499 2.5Z" }),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M3.5 8.25a.75.75 0 0 1 .75-.75H5A.75.75 0 0 0 5 6h-.75A2.25 2.25 0 0 0 2 8.25v6.5A2.25 2.25 0 0 0 4.25 17h11.5A2.25 2.25 0 0 0 18 14.75v-6.5A2.25 2.25 0 0 0 15.75 6H15a.75.75 0 0 0 0 1.5h.75a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75H4.25a.75.75 0 0 1-.75-.75v-6.5Z" }))); };
+var ExportSettingsIcon = function () { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", xmlns: "http://www.w3.org/2000/svg", width: "18", height: "18", fill: "currentColor", "aria-hidden": "true" },
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M9.47 1.22a.75.75 0 0 1 1.06 0l2.499 2.5a.75.75 0 0 1-1.06 1.06l-1.22-1.22v7.69a.75.75 0 1 1-1.499 0V3.56L8.031 4.78a.75.75 0 1 1-1.06-1.06l2.499-2.5Z" }),
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M3.5 8.25a.75.75 0 0 1 .75-.75H5A.75.75 0 0 0 5 6h-.75A2.25 2.25 0 0 0 2 8.25v6.5A2.25 2.25 0 0 0 4.25 17h11.5A2.25 2.25 0 0 0 18 14.75v-6.5A2.25 2.25 0 0 0 15.75 6H15a.75.75 0 0 0 0 1.5h.75a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75H4.25a.75.75 0 0 1-.75-.75v-6.5Z" }))); };
+
+
+/***/ }),
+
+/***/ "./src/routes/@/settings/views/SettingsMenu.ts":
+/*!*****************************************************!*\
+  !*** ./src/routes/@/settings/views/SettingsMenu.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SettingsMenu: () => (/* binding */ SettingsMenu)
+/* harmony export */ });
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _SettingsIcons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SettingsIcons */ "./src/routes/@/settings/views/SettingsIcons.tsx");
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+
+
+
+var SettingsMenu = function (selectedId) {
+    var navigate = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealmNavigate)().navigate;
+    var menu = [
+        {
+            name: 'Realm',
+            menuItems: [
+                {
+                    id: 'general',
+                    title: 'General',
+                    icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_2__.GeneralSettingsIcon,
+                },
+                {
+                    id: 'security',
+                    title: 'Security',
+                    icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_2__.SecuritySettingsIcon,
+                },
+                {
+                    id: 'import',
+                    title: 'Import',
+                    icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_2__.ImportSettingsIcon,
+                },
+                {
+                    id: 'export',
+                    title: 'Export',
+                    icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_2__.ExportSettingsIcon,
+                }
+            ]
+        }
+    ];
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(_SettingsIcons__WEBPACK_IMPORTED_MODULE_2__.BackIcon))
+        .cursor('pointer')
+        .cornerRadius(4)
+        .padding(4)
+        .width()
+        .height()
+        .background({ hover: 'rgba(109, 122, 131, 0.15)' })
+        .transition('all .15s ease-out')
+        .onClick(function () {
+        navigate('');
+    }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Settings')
+        .lineHeight('1.25')
+        .fontSize(16)
+        .fontWeight('500')
+        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Realm')
+        .fontSize(12)
+        .lineHeight('1.5')
+        .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol')).height())
+        .padding('8px 0 8px 8px')
+        .allHeight(73), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().background('#ECEDEE').height(1), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(menu)(function (item) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading }).apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.name)
+                .textTransform("uppercase")
+                .fontSize(12)
+                .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol'))
+                .height(30)
+                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 5)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(item.menuItems)(function (menuItem) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(menuItem.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(menuItem.title)
+                .fontFamily('ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"!important'))
+                .cornerRadius(6)
+                .cursor(selectedId === menuItem.id ? '' : 'pointer')
+                .background({ default: selectedId === menuItem.id ? '#E6EDFE' : '', hover: selectedId === menuItem.id ? '#E6EDFE' : '#EBEDEF' })
+                .foregroundColor('rgb(21, 23, 25)')
+                .allHeight(30)
+                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 5)
+                .onClick(function () {
+                navigate('settings/' + menuItem.id);
+            });
+        }), false)).height();
+    })).padding())
+        .allWidth(240)
+        .background('#F9FAFB'));
+};
 
 
 /***/ }),
