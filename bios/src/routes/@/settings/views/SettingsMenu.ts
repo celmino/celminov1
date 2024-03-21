@@ -1,12 +1,12 @@
 import { useAppletNavigate, useRealmNavigate } from "@celmino/ui";
 import { ForEach, HDivider, HStack, Icon, Text, VStack, cHorizontal, cLeading, cTopLeading } from "@tuval/forms";
-import { BackIcon, ExportSettingsIcon, GeneralSettingsIcon, ImportSettingsIcon, SecuritySettingsIcon } from "./SettingsIcons";
+import { AISettingsIcon, BackIcon, ExportSettingsIcon, GeneralSettingsIcon, ImportSettingsIcon, SecuritySettingsIcon, UsersSettingIcon } from "./SettingsIcons";
 
 
 
 export const SettingsMenu = (selectedId: string) => {
 
-    const {navigate} = useRealmNavigate();
+    const { navigate } = useRealmNavigate();
     const menu = [
         {
             name: 'Realm',
@@ -30,7 +30,18 @@ export const SettingsMenu = (selectedId: string) => {
                     id: 'export',
                     title: 'Export',
                     icon: ExportSettingsIcon,
-                }
+                },
+                {
+                    id: 'ai',
+                    title: 'AI',
+                    icon: AISettingsIcon,
+                },
+                {
+                    id: 'users',
+                    title: 'Users',
+                    icon: UsersSettingIcon,
+                },
+
             ]
         }
 
@@ -51,7 +62,7 @@ export const SettingsMenu = (selectedId: string) => {
                     .padding(4)
                     .width()
                     .height()
-                    .background({hover:'rgba(109, 122, 131, 0.15)'})
+                    .background({ hover: 'rgba(109, 122, 131, 0.15)' })
                     .transition('all .15s ease-out')
                     .onClick(() => {
                         navigate('')
