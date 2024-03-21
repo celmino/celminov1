@@ -19,12 +19,25 @@ function getParentCount(node) {
 
 }
 
+function getSelectedId() {
+    const regex = /\[(.*?)\]/;
+    const match = window.location.href.match(regex);
+
+    if (match && match[1]) {
+        return match[1];
+    } else {
+        return null;
+    }
+}
+
+
 class MyNodeRendererDefault extends React.Component<any, any> {
     render() {
         const {
             scaffoldBlockPxWidth,
             scaffoldBlockCount,
             toggleChildrenVisibility,
+            toggleSelected,
             connectDragPreview,
             connectDragSource,
             isDragging,
@@ -108,6 +121,9 @@ class MyNodeRendererDefault extends React.Component<any, any> {
         const light = 0.812;
         const dark = 0.188;
         const size = 30;
+
+        const paths: string[] = node.fullPath?.split('/') ?? [];
+        const isSelected = paths[paths.length - 1] === getSelectedId();
         return (
             HStack({ alignment: 'cTopLeading' })(
                 ReactView(
@@ -148,7 +164,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                                             readonly: true,
                                                                                             selectedIcon: node.iconName,
                                                                                             selectedCategory: node.iconCategory,
-                                                                                            color: node.iconColor ,
+                                                                                            color: node.iconColor,
                                                                                             width: 24,
                                                                                             height: 24,
                                                                                             padding: 1
@@ -228,7 +244,15 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                                 node,
                                                                 path,
                                                                 treeIndex,
-                                                            })) :
+                                                            }))
+                                                            .onClick(() =>
+                                                            toggleSelected({
+                                                                node,
+                                                                path,
+                                                                treeIndex,
+                                                            })
+                                                        ) 
+                                                                :
                                                                 HStack({ alignment: 'cLeading' })(
                                                                     Text(nodeTitle)
                                                                 )
@@ -319,7 +343,7 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                                             readonly: true,
                                                             selectedIcon: node.iconName,
                                                             selectedCategory: node.iconCategory,
-                                                            color: node.iconColor ,
+                                                            color: node.iconColor,
                                                             width: 24,
                                                             height: 24,
                                                             padding: 1
@@ -341,7 +365,15 @@ class MyNodeRendererDefault extends React.Component<any, any> {
                                             node,
                                             path,
                                             treeIndex,
-                                        })) :
+                                        }))
+                                            .onClick(() =>
+                                                toggleSelected({
+                                                    node,
+                                                    path,
+                                                    treeIndex,
+                                                })
+                                            )
+                                            :
                                             HStack({ alignment: 'cLeading' })(
                                                 Text(nodeTitle)
                                             )
@@ -355,12 +387,14 @@ class MyNodeRendererDefault extends React.Component<any, any> {
             )
                 .height()
                 .cornerRadius(6)
-                .background({ default: node.isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
+                .background({ default: isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
                 // .transition('all .12s ease-in-out')
                 .paddingLeft(`${(scaffoldBlockCount - 1) * 20}px`)
                 //  .paddingLeft(parentNode != null ? `${getParentCount(parentNode) * 20}px` : '')
                 .variable(`--opacity-caret`, { default: '0', hover: '1' })
-                .variable(`--opacity-icon`, { default: '1', hover: '0' }).render()
+                .variable(`--opacity-icon`, { default: '1', hover: '0' })
+
+                .render()
         )
 
     }

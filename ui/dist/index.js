@@ -20242,16 +20242,17 @@ const useAppletNavigate = () => {
     const { applet } = (0,_context__WEBPACK_IMPORTED_MODULE_1__.useApplet)();
     const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
     return {
-        navigate: (url) => {
+        navigate: (url, selectApplet = true) => {
             if ((url === null || url === void 0 ? void 0 : url.length) > 0 && (url === null || url === void 0 ? void 0 : url[0]) !== '/') {
                 url = '/' + url;
             }
+            const appletId = selectApplet ? `[${applet.$id}]` : applet.$id;
             const subdomain = (0,_context_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.useGetSubdomain)();
             if (subdomain) {
-                navigate(`/@${isAnonymous ? 'public' : 'team'}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+                navigate(`/@${isAnonymous ? 'public' : 'team'}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
             }
             else {
-                navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${applet.$id}${url}`);
+                navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
             }
         }
     };

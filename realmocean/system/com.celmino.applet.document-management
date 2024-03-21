@@ -39413,10 +39413,10 @@ var TreeController = /** @class */ (function (_super) {
                 if (onItemSelected == null) {
                     switch (item.type) {
                         case 'folder':
-                            navigate("f/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-").concat(item.$id));
+                            navigate("f/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-[").concat(item.$id, "]"), false);
                             break;
                         case 'document':
-                            navigate("d/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-").concat(item.$id));
+                            navigate("d/".concat((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(item.name), "-[").concat(item.$id, "]"), false);
                             break;
                     }
                 }

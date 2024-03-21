@@ -137,6 +137,7 @@ class ReactSortableTree extends React.Component<any, any> {
     };
 
     this.toggleChildrenVisibility = this.toggleChildrenVisibility.bind(this);
+    this.toggleSelected = this.toggleSelected.bind(this);
     this.moveNode = this.moveNode.bind(this);
     this.startDrag = this.startDrag.bind(this);
     this.dragHover = this.dragHover.bind(this);
@@ -211,7 +212,7 @@ class ReactSortableTree extends React.Component<any, any> {
 
   // listen to dragging
   componentDidUpdate(prevProps, prevState) {
-   ReactSortableTree.loadLazyChildren(this.props, this.state);
+    ReactSortableTree.loadLazyChildren(this.props, this.state);
     // if it is not the same then call the onDragStateChanged
     if (this.state.dragging !== prevState.dragging) {
       if (this.props.onDragStateChanged) {
@@ -244,6 +245,21 @@ class ReactSortableTree extends React.Component<any, any> {
       (this as any).endDrag();
     }
   }
+
+  toggleSelected({ node: targetNode, path }) {
+    const { instanceProps } = this.state;
+
+    const treeData = changeNodeAtPath({
+      treeData: instanceProps.treeData,
+      path,
+      newNode: ({ node }) => ({ ...node, expanded: node.expanded }),
+      getNodeKey: this.props.getNodeKey,
+    });
+
+    this.props.onChange(treeData);
+
+  }
+
 
   toggleChildrenVisibility({ node: targetNode, path }) {
     const { instanceProps } = this.state;
@@ -513,7 +529,7 @@ class ReactSortableTree extends React.Component<any, any> {
       treeData: instanceProps.treeData,
       getNodeKey: props.getNodeKey,
       callback: ({ node, path, lowerSiblingCounts, treeIndex }) => {
-        
+
         // If the node has children defined by a function, and is either expanded
         //  or set to load even before expansion, run the function.
         if (
@@ -522,7 +538,7 @@ class ReactSortableTree extends React.Component<any, any> {
           (node.expanded || props.loadCollapsedLazyChildren)
         ) {
           // Call the children fetching function
-          
+
           node.children({
             node,
             path,
@@ -614,6 +630,7 @@ class ReactSortableTree extends React.Component<any, any> {
           isSearchFocus={isSearchFocus}
           canDrag={rowCanDrag}
           toggleChildrenVisibility={this.toggleChildrenVisibility}
+          toggleSelected={this.toggleSelected}
           {...sharedProps}
           {...nodeProps}
         />

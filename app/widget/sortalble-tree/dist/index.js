@@ -50972,15 +50972,26 @@ function getParentCount(node) {
     }
     return count;
 }
+function getSelectedId() {
+    var regex = /\[(.*?)\]/;
+    var match = window.location.href.match(regex);
+    if (match && match[1]) {
+        return match[1];
+    }
+    else {
+        return null;
+    }
+}
 var MyNodeRendererDefault = /** @class */ (function (_super) {
     __extends(MyNodeRendererDefault, _super);
     function MyNodeRendererDefault() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyNodeRendererDefault.prototype.render = function () {
-        var _a = this.props, scaffoldBlockPxWidth = _a.scaffoldBlockPxWidth, scaffoldBlockCount = _a.scaffoldBlockCount, toggleChildrenVisibility = _a.toggleChildrenVisibility, connectDragPreview = _a.connectDragPreview, connectDragSource = _a.connectDragSource, isDragging = _a.isDragging, canDrop = _a.canDrop, canDrag = _a.canDrag, node = _a.node, title = _a.title, subtitle = _a.subtitle, draggedNode = _a.draggedNode, path = _a.path, treeIndex = _a.treeIndex, isSearchMatch = _a.isSearchMatch, isSearchFocus = _a.isSearchFocus, buttons = _a.buttons, className = _a.className, style = _a.style, didDrop = _a.didDrop, treeId = _a.treeId, isOver = _a.isOver, // Not needed, but preserved for other renderers
-        parentNode = _a.parentNode, // Needed for dndManager
-        rowDirection = _a.rowDirection, otherProps = __rest(_a, ["scaffoldBlockPxWidth", "scaffoldBlockCount", "toggleChildrenVisibility", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "buttons", "className", "style", "didDrop", "treeId", "isOver", "parentNode", "rowDirection"]);
+        var _a, _b;
+        var _c = this.props, scaffoldBlockPxWidth = _c.scaffoldBlockPxWidth, scaffoldBlockCount = _c.scaffoldBlockCount, toggleChildrenVisibility = _c.toggleChildrenVisibility, toggleSelected = _c.toggleSelected, connectDragPreview = _c.connectDragPreview, connectDragSource = _c.connectDragSource, isDragging = _c.isDragging, canDrop = _c.canDrop, canDrag = _c.canDrag, node = _c.node, title = _c.title, subtitle = _c.subtitle, draggedNode = _c.draggedNode, path = _c.path, treeIndex = _c.treeIndex, isSearchMatch = _c.isSearchMatch, isSearchFocus = _c.isSearchFocus, buttons = _c.buttons, className = _c.className, style = _c.style, didDrop = _c.didDrop, treeId = _c.treeId, isOver = _c.isOver, // Not needed, but preserved for other renderers
+        parentNode = _c.parentNode, // Needed for dndManager
+        rowDirection = _c.rowDirection, otherProps = __rest(_c, ["scaffoldBlockPxWidth", "scaffoldBlockCount", "toggleChildrenVisibility", "toggleSelected", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "buttons", "className", "style", "didDrop", "treeId", "isOver", "parentNode", "rowDirection"]);
         var nodeTitle = title || node.title;
         var nodeSubtitle = subtitle || node.subtitle;
         var rowDirectionClass = rowDirection === 'rtl' ? 'rst__rtl' : null;
@@ -51017,6 +51028,8 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
         var light = 0.812;
         var dark = 0.188;
         var size = 30;
+        var paths = (_b = (_a = node.fullPath) === null || _a === void 0 ? void 0 : _a.split('/')) !== null && _b !== void 0 ? _b : [];
+        var isSelected = paths[paths.length - 1] === getSelectedId();
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cTopLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", __assign({ style: { width: '100%' } }, otherProps),
             react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, canDrag ?
                 connectDragPreview(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_3__["default"])('rst__row', isLandingPadActive && 'rst__rowLandingPad', isLandingPadActive && !canDrop && 'rst__rowCancelPad', isSearchMatch && 'rst__rowSearchMatch', isSearchFocus && 'rst__rowSearchFocus', rowDirectionClass, className), style: __assign({ opacity: isDraggedDescendant ? 0.5 : 1 }, style) }, connectDragSource(react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", { style: { width: '100%' } }, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(toggleChildrenVisibility && node.children && (node.children.length > 0 || typeof node.children === 'function') && (react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(!_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(node.iconName) &&
@@ -51076,8 +51089,16 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                     node: node,
                     path: path,
                     treeIndex: treeIndex,
-                }); }) :
-                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(nodeTitle)))
+                }); })
+                    .onClick(function () {
+                    return toggleSelected({
+                        node: node,
+                        path: path,
+                        treeIndex: treeIndex,
+                    });
+                })
+                    :
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(nodeTitle)))
                     .cursor('pointer')
                     .render()), {
                     dropEffect: 'move',
@@ -51140,18 +51161,27 @@ var MyNodeRendererDefault = /** @class */ (function (_super) {
                         node: node,
                         path: path,
                         treeIndex: treeIndex,
-                    }); }) :
-                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(nodeTitle)))
+                    }); })
+                        .onClick(function () {
+                        return toggleSelected({
+                            node: node,
+                            path: path,
+                            treeIndex: treeIndex,
+                        });
+                    })
+                        :
+                            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: 'cLeading' })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(nodeTitle)))
                         .cursor('pointer')
                         .render()))))
             .height()
             .cornerRadius(6)
-            .background({ default: node.isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
+            .background({ default: isSelected ? '#E6EDFE' : '', hover: '#EBEDEF' })
             // .transition('all .12s ease-in-out')
             .paddingLeft("".concat((scaffoldBlockCount - 1) * 20, "px"))
             //  .paddingLeft(parentNode != null ? `${getParentCount(parentNode) * 20}px` : '')
             .variable("--opacity-caret", { default: '0', hover: '1' })
-            .variable("--opacity-icon", { default: '1', hover: '0' }).render());
+            .variable("--opacity-icon", { default: '1', hover: '0' })
+            .render());
     };
     return MyNodeRendererDefault;
 }((react__WEBPACK_IMPORTED_MODULE_2___default().Component)));
@@ -51378,6 +51408,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
             },
         };
         _this.toggleChildrenVisibility = _this.toggleChildrenVisibility.bind(_this);
+        _this.toggleSelected = _this.toggleSelected.bind(_this);
         _this.moveNode = _this.moveNode.bind(_this);
         _this.startDrag = _this.startDrag.bind(_this);
         _this.dragHover = _this.dragHover.bind(_this);
@@ -51459,6 +51490,20 @@ var ReactSortableTree = /** @class */ (function (_super) {
         if (!monitor.isDragging() && this.state.draggingTreeData) {
             this.endDrag();
         }
+    };
+    ReactSortableTree.prototype.toggleSelected = function (_a) {
+        var targetNode = _a.node, path = _a.path;
+        var instanceProps = this.state.instanceProps;
+        var treeData = (0,_utils_tree_data_utils__WEBPACK_IMPORTED_MODULE_10__.changeNodeAtPath)({
+            treeData: instanceProps.treeData,
+            path: path,
+            newNode: function (_a) {
+                var node = _a.node;
+                return (__assign(__assign({}, node), { expanded: node.expanded }));
+            },
+            getNodeKey: this.props.getNodeKey,
+        });
+        this.props.onChange(treeData);
     };
     ReactSortableTree.prototype.toggleChildrenVisibility = function (_a) {
         var targetNode = _a.node, path = _a.path;
@@ -51744,7 +51789,7 @@ var ReactSortableTree = /** @class */ (function (_super) {
             rowDirection: rowDirection,
         };
         return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TreeNodeRenderer, __assign({ style: style, key: nodeKey, listIndex: listIndex, getPrevRow: getPrevRow, lowerSiblingCounts: lowerSiblingCounts, swapFrom: swapFrom, swapLength: swapLength, swapDepth: swapDepth }, sharedProps),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(NodeContentRenderer, __assign({ parentNode: parentNode, isSearchMatch: isSearchMatch, isSearchFocus: isSearchFocus, canDrag: rowCanDrag, toggleChildrenVisibility: this.toggleChildrenVisibility }, sharedProps, nodeProps))));
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(NodeContentRenderer, __assign({ parentNode: parentNode, isSearchMatch: isSearchMatch, isSearchFocus: isSearchFocus, canDrag: rowCanDrag, toggleChildrenVisibility: this.toggleChildrenVisibility, toggleSelected: this.toggleSelected }, sharedProps, nodeProps))));
     };
     ReactSortableTree.prototype.render = function () {
         var _this = this;

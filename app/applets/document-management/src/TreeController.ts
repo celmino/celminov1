@@ -123,10 +123,10 @@ export class TreeController extends UIController {
                         if (onItemSelected == null) {
                             switch (item.type) {
                                 case 'folder':
-                                    navigate(`f/${urlFriendly(item.name)}-${item.$id}`);
+                                    navigate(`f/${urlFriendly(item.name)}-[${item.$id}]`, false);
                                     break;
                                 case 'document':
-                                    navigate(`d/${urlFriendly(item.name)}-${item.$id}`);
+                                    navigate(`d/${urlFriendly(item.name)}-[${item.$id}]`, false);
                                     break;
 
                             }

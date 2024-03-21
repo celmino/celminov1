@@ -64,7 +64,6 @@ export class WorkspaceTreeWidgetController extends UIController {
                         isSelected: isAppletSettings(appletId) || isAppletOnly(appletId),
                         editingChanged: (status) => setIsEditing(status),
                         titleChanged: (title) => {
-
                             updateDatabase({
                                 databaseId: appletId,
                                 name: title
