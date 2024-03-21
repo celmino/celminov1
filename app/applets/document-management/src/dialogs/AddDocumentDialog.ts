@@ -1,6 +1,6 @@
 import { useCreateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
-import { UIViewBuilder, useFormController, useDialog, useFormBuilder, useNavigate, Button, Text } from "@tuval/forms";
+import { UIViewBuilder, useFormController, useDialog, useFormBuilder, useNavigate, Button, Text, nanoid } from "@tuval/forms";
 
 
 export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
@@ -21,9 +21,8 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
     const { workspaceId, appletId } = formMeta;
 
     const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
-    const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'dm_tree');
-    const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'dm_documents');
-    const { createDocument: createDocumentContent } = useCreateDocument(workspaceId, appletId, 'dm_document_contents');
+    const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'documents');
+    const { createDocument: createDocumentContent } = useCreateDocument(workspaceId, appletId, 'documentContent');
 
     return (
         Button(
@@ -47,44 +46,34 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
                                 content: ''
                             }
                         }, (document) => {
-                            
+
                             createWorkspaceTreeItem({
                                 documentId: document.$id,
                                 data: {
                                     name: data.name,
                                     type: 'document',
-                                    parent:data.parent,
-                                    tree_widget: 'com.celmino.widget.document-management-tree',
+                                    parent: data.parent,
+                                    tree_widget: 'com.celmino.applet.document-management',
                                     appletId,
                                     path: (new Date()).getTime().toString(),
                                     iconName: 'document',
                                     iconCategory: 'SystemIcons',
                                     //viewer:'com.tuvalsoft.viewer.document'
                                 }
-                            }, (item)=> {
-                               
-                                EventBus.Default.fire('applet.added', { treeItem: item})
+                            }, (item) => {
+
+                                EventBus.Default.fire('applet.added', { treeItem: item });
+                                dialog.Hide();
                             })
-
-                            createTreeItem({
-                                documentId: document.$id,
-                                data: {
-                                    ...data,
-                                    type: 'document',
-                                    viewer: 'com.tuvalsoft.viewer.document'
-                                }
-                            }, () => dialog.Hide())
-
                         })
-
                     }
                 )
-
             })
     )
 }
 )
 
+SaveDocumentAction.Id = nanoid();
 
 export const AddDocumentDialog = (workspaceId: string, appletId: string, parent: string, path: string, type: string = 'document') => {
     if (workspaceId == null) {
@@ -98,7 +87,7 @@ export const AddDocumentDialog = (workspaceId: string, appletId: string, parent:
             "actions": [
                 {
                     "label": "Save",
-                    "type": "saveDocument",
+                    "type": SaveDocumentAction.Id,
                     /*  "successActions": [{
                          "type": "hide"
                      },

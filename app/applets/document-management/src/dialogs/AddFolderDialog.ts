@@ -4,6 +4,7 @@ import {
     Button,
     Text,
     UIViewBuilder,
+    nanoid,
     useDialog, useFormBuilder, useFormController, useNavigate
 } from "@tuval/forms";
 
@@ -27,8 +28,7 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
 
     const {  workspaceId, appletId } = formMeta;
     const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
-    const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'dm_tree');
-    const { createDocument, isLoading } = useCreateDocument(workspaceId,appletId, 'dm_folders');
+    const { createDocument, isLoading } = useCreateDocument(workspaceId,appletId, 'folders');
    
     return (
         Button(
@@ -53,7 +53,7 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
                                 name: data.name,
                                 type: 'folder',
                                 parent:data.parent,
-                                tree_widget: 'com.celmino.widget.document-management-tree',
+                                tree_widget: 'com.celmino.applet.document-management',
                                 appletId,
                                 path: (new Date()).getTime().toString(),
                                 iconName: 'cu3-icon-sidebarFolder',
@@ -75,7 +75,7 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
 }
 )
 
-
+SaveFolderAction.Id = nanoid();
 export const AddFolderDialog = (workspaceId: string, appletId: string, parent: string, path: string) => {
     if (workspaceId == null) {
         alert("spaceId is null")
@@ -88,7 +88,7 @@ export const AddFolderDialog = (workspaceId: string, appletId: string, parent: s
             "actions": [
                 {
                     "label": "Save",
-                    "type": "dm_saveFolder",
+                    "type": SaveFolderAction.Id ,
                     /*  "successActions": [{
                          "type": "hide"
                      },

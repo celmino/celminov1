@@ -1,8 +1,8 @@
-import { MyTestController } from './AppController';
+import { RouteController } from './routes/+routes';
 import { TreeController } from './TreeController';
 export declare class ProcessMining {
     GetMainController(): {
-        applet: typeof MyTestController;
+        applet: typeof RouteController;
         tree: typeof TreeController;
     };
 }

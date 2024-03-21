@@ -9,6 +9,7 @@ import { FolderName } from "./view/FolderName";
 import { FolderHeader } from "./view/FolderHeader";
 import { DocumentName } from "./view/DocumentName";
 import { FolderView } from "./view/FolderView";
+import { useApplet, useRealm } from "@celmino/ui";
 
 export class FolderController extends UIController {
 
@@ -16,18 +17,22 @@ export class FolderController extends UIController {
     public override LoadView(): UIView {
 
 
-        const { workspaceId, appletId, folderId } = useParams();
+        const { folderId } = useParams();
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id; 
         const { document } = useGetDocument({
             projectId: workspaceId,
             databaseId: appletId,
-            collectionId: 'dm_folders',
+            collectionId: 'folders',
             documentId: folderId
         })
 
-        const { documents: folders, isLoading: isFoldersLoading } = useListDocuments(workspaceId, appletId, 'dm_folders', [
+        const { documents: folders, isLoading: isFoldersLoading } = useListDocuments(workspaceId, appletId, 'folders', [
             Query.equal('parent', folderId)
         ]);
-        const { documents: documents, isLoading } = useListDocuments(workspaceId, appletId, 'dm_documents', [
+        const { documents: documents, isLoading } = useListDocuments(workspaceId, appletId, 'documents', [
             Query.equal('parent', folderId)
         ]);
 

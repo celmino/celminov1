@@ -49,7 +49,7 @@ export const FolderView = (workspaceId: string, folderId: string) => UIViewBuild
                     const { openDialog } = useDialogStack();
                     return (
                         HStack({ alignment: cTopLeading })(
-                            Table()
+                            (Table as any)()
                                 .height()
                                 .columns([
                                     {
@@ -101,7 +101,7 @@ export const FolderView = (workspaceId: string, folderId: string) => UIViewBuild
 
                                 ])
                                 .isLoading(isDocumentsLoading)
-                                .rows([].concat(documents?.map(document => ({ ...document }))))
+                                .rows([].concat(documents?.map(document => ({ ...document })))) 
                         )
                             .padding()
                     )

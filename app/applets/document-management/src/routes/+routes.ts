@@ -18,11 +18,11 @@ export class RouteController extends UIController {
                 VStack(
                     UIRoutes(
                         UIRoute('/', MyTestController).children(
-                            UIRoute('list/:listId', ListController).children(
+                         /*    UIRoute('list/:listId', ListController).children(
                                 UIRoute('view/:viewId', class extends  ViewController {}),
-                            ),
-                            UIRoute('folder/:folderId',   class extends  FolderController {} ),
-                            UIRoute('document/:documentId',   class extends  DocumentController {} ),
+                            ), */
+                            UIRoute('f/:folderId',   class extends  FolderController {} ),
+                            UIRoute('d/:documentId',   class extends  DocumentController {} ),
                             UIRoute('whiteboard/:whiteboardId',   class extends  WhiteboardController {} ),
                             UIRoute(':view_id', ViewController),
                             UIRoute(':view_id/*', ViewController)

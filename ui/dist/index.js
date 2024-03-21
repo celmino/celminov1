@@ -18142,6 +18142,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   DocumentsApplet: () => (/* binding */ DocumentsApplet)
 /* harmony export */ });
+/* harmony import */ var _schemas_DocumentsDatabase_DocumentsDatabase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../schemas/DocumentsDatabase/DocumentsDatabase */ "./src/schemas/DocumentsDatabase/DocumentsDatabase.ts");
+
 const DocumentsApplet = {
     name: 'Documents',
     type: 'Applet',
@@ -18154,146 +18156,7 @@ const DocumentsApplet = {
     icon: '\\d1e2',
     iconBackColor: '#66B47C',
     enabled: true,
-    databases: [
-        {
-            "name": "Document Management",
-            "id": "document_management",
-            "category": "app",
-            "collections": [
-                {
-                    "name": "Menu Tree",
-                    "id": "dm_tree",
-                    "attributes": [
-                        {
-                            "key": "name",
-                            "type": "string"
-                        },
-                        {
-                            "key": "type",
-                            "type": "string"
-                        },
-                        {
-                            "key": "parent",
-                            "type": "string"
-                        },
-                        {
-                            "key": "path",
-                            "type": "string"
-                        },
-                        {
-                            "key": "viewer",
-                            "type": "string"
-                        },
-                        {
-                            "key": "icon_name",
-                            "type": "string"
-                        },
-                        {
-                            "key": "icon_category",
-                            "type": "string"
-                        },
-                        {
-                            "key": "bg_color",
-                            "type": "string"
-                        },
-                        {
-                            "key": "fg_color",
-                            "type": "string"
-                        }
-                    ]
-                },
-                {
-                    "name": "Folders",
-                    "id": "dm_folders",
-                    "attributes": [
-                        {
-                            "key": "name",
-                            "type": "string"
-                        },
-                        {
-                            "key": "parent",
-                            "type": "string"
-                        },
-                        {
-                            "key": "path",
-                            "type": "string"
-                        }
-                    ]
-                },
-                {
-                    "name": "Documents",
-                    "id": "dm_documents",
-                    "attributes": [
-                        {
-                            "key": "name",
-                            "type": "string"
-                        },
-                        {
-                            "key": "type",
-                            "type": "string"
-                        },
-                        {
-                            "key": "parent",
-                            "type": "string"
-                        },
-                        {
-                            "key": "path",
-                            "type": "string"
-                        },
-                        {
-                            "key": "viewer",
-                            "type": "string"
-                        },
-                        {
-                            "key": "icon_name",
-                            "type": "string"
-                        },
-                        {
-                            "key": "icon_category",
-                            "type": "string"
-                        },
-                        {
-                            "key": "bg_color",
-                            "type": "string"
-                        },
-                        {
-                            "key": "fg_color",
-                            "type": "string"
-                        }
-                    ],
-                },
-                {
-                    "name": "Document Contents",
-                    "id": "dm_document_contents",
-                    "attributes": [
-                        {
-                            "key": "content",
-                            "type": "string",
-                            "size": 932000
-                        }
-                    ],
-                },
-                {
-                    "name": "views",
-                    "id": "dm_views",
-                    "attributes": [
-                        {
-                            "key": "name",
-                            "type": "string"
-                        },
-                        {
-                            "key": "parent",
-                            "type": "string"
-                        },
-                        {
-                            "key": "type",
-                            "type": "string"
-                        }
-                    ],
-                }
-            ]
-        }
-    ]
+    databases: _schemas_DocumentsDatabase_DocumentsDatabase__WEBPACK_IMPORTED_MODULE_0__.DocumentsDatabase
 };
 
 
@@ -20190,6 +20053,7 @@ class SelectAppletDialog extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialo
                             appletId: applet.$id,
                             parent: this.parent,
                             path: (new Date()).getTime().toString(),
+                            fullPath: '/' + applet.$id,
                             iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
                             iconCategory: opa.iconCategory,
                         }
@@ -20502,6 +20366,422 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+/***/ }),
+
+/***/ "./src/schemas/DocumentsDatabase/Collections/index.ts":
+/*!************************************************************!*\
+  !*** ./src/schemas/DocumentsDatabase/Collections/index.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Collections: () => (/* binding */ Collections)
+/* harmony export */ });
+/* harmony import */ var _applet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../applet */ "./src/schemas/applet.ts");
+
+const Collections = Object.assign(Object.assign({}, _applet__WEBPACK_IMPORTED_MODULE_0__.Collections), { "documents": [
+        // ---------- List Items Collection --------------------
+        {
+            "$id": "folders",
+            "name": "Folders"
+        },
+        // ---------- List Status Collection --------------------
+        {
+            "$id": "listStatuses",
+            "name": "List Statuses"
+        },
+        // ---------- Views Collection --------------------
+        {
+            "$id": "views",
+            "name": "Views"
+        },
+        // ---------- View Contents Collection --------------------
+        {
+            "$id": "viewContents",
+            "name": "View Contents"
+        }
+    ] });
+
+
+/***/ }),
+
+/***/ "./src/schemas/DocumentsDatabase/DocumentContent/index.ts":
+/*!****************************************************************!*\
+  !*** ./src/schemas/DocumentsDatabase/DocumentContent/index.ts ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DocumentContentCollection: () => (/* binding */ DocumentContentCollection)
+/* harmony export */ });
+const DocumentContentCollection = {
+    "name": "Document Content",
+    "id": "documentContent",
+    "attributes": [
+        {
+            "key": "content",
+            "type": "string",
+            "size": 932000
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/schemas/DocumentsDatabase/Documents/index.ts":
+/*!**********************************************************!*\
+  !*** ./src/schemas/DocumentsDatabase/Documents/index.ts ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DocumentCollection: () => (/* binding */ DocumentCollection)
+/* harmony export */ });
+const DocumentCollection = {
+    "name": "Documents",
+    "id": "documents",
+    "attributes": [
+        {
+            "key": "name",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "description",
+            "type": "string",
+            "size": 16777216
+        },
+        {
+            "key": "parent",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "type",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "path",
+            "type": "string",
+            "size": 2255
+        },
+        {
+            "key": "viewer",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "iconName",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "iconCategory",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "bg_color",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "fg_color",
+            "type": "string",
+            "size": 255
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/schemas/DocumentsDatabase/DocumentsDatabase.ts":
+/*!************************************************************!*\
+  !*** ./src/schemas/DocumentsDatabase/DocumentsDatabase.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DocumentsDatabase: () => (/* binding */ DocumentsDatabase)
+/* harmony export */ });
+/* harmony import */ var _Collections__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Collections */ "./src/schemas/DocumentsDatabase/Collections/index.ts");
+/* harmony import */ var _DocumentContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DocumentContent */ "./src/schemas/DocumentsDatabase/DocumentContent/index.ts");
+/* harmony import */ var _Documents__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Documents */ "./src/schemas/DocumentsDatabase/Documents/index.ts");
+/* harmony import */ var _Fields__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fields */ "./src/schemas/DocumentsDatabase/Fields/index.ts");
+/* harmony import */ var _Folders__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Folders */ "./src/schemas/DocumentsDatabase/Folders/index.ts");
+
+
+
+
+
+const DocumentsDatabase = [
+    {
+        "name": "Document Management",
+        "id": "document_management",
+        "category": "app",
+        "collections": [
+            _Collections__WEBPACK_IMPORTED_MODULE_0__.Collections,
+            _Fields__WEBPACK_IMPORTED_MODULE_3__.Fields,
+            _Folders__WEBPACK_IMPORTED_MODULE_4__.FoldersCollection,
+            _Documents__WEBPACK_IMPORTED_MODULE_2__.DocumentCollection,
+            _DocumentContent__WEBPACK_IMPORTED_MODULE_1__.DocumentContentCollection
+        ]
+    }
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/DocumentsDatabase/Fields/documents/DocumentCollectionFields.ts":
+/*!************************************************************************************!*\
+  !*** ./src/schemas/DocumentsDatabase/Fields/documents/DocumentCollectionFields.ts ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DocumentCollectionFields: () => (/* binding */ DocumentCollectionFields)
+/* harmony export */ });
+const DocumentCollectionFields = [
+    {
+        "key": "name",
+        "name": "Name",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "description",
+        "name": "Description",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 16777216,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "parent",
+        "name": "Parent",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "type",
+        "name": "Type",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "path",
+        "name": "Path",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 2255,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "viewer",
+        "name": "Viewer",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "iconName",
+        "name": "Icon Name",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "iconCategory",
+        "name": "Icon Category",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "bgColor",
+        "name": "Icon Background Color",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "documents",
+    },
+    {
+        "key": "fgColor",
+        "name": "Icon Foreground Color",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "documents",
+    },
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/DocumentsDatabase/Fields/documents/FolderCollectionFields.ts":
+/*!**********************************************************************************!*\
+  !*** ./src/schemas/DocumentsDatabase/Fields/documents/FolderCollectionFields.ts ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FolderCollectionFields: () => (/* binding */ FolderCollectionFields)
+/* harmony export */ });
+const FolderCollectionFields = [
+    {
+        "key": "name",
+        "name": "Name",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "folders",
+    },
+    {
+        "key": "description",
+        "name": "Description",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 16777216,
+        }),
+        "collectionId": "folders",
+    },
+    {
+        "key": "parent",
+        "name": "Parent",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "folders",
+    },
+    {
+        "key": "path",
+        "name": "Path",
+        "type": "string",
+        "custom": false,
+        "fieldInfo": JSON.stringify({
+            "size": 2255,
+        }),
+        "collectionId": "folders",
+    },
+];
+
+
+/***/ }),
+
+/***/ "./src/schemas/DocumentsDatabase/Fields/index.ts":
+/*!*******************************************************!*\
+  !*** ./src/schemas/DocumentsDatabase/Fields/index.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Fields: () => (/* binding */ Fields)
+/* harmony export */ });
+/* harmony import */ var _applet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../applet */ "./src/schemas/applet.ts");
+/* harmony import */ var _documents_DocumentCollectionFields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./documents/DocumentCollectionFields */ "./src/schemas/DocumentsDatabase/Fields/documents/DocumentCollectionFields.ts");
+/* harmony import */ var _documents_FolderCollectionFields__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./documents/FolderCollectionFields */ "./src/schemas/DocumentsDatabase/Fields/documents/FolderCollectionFields.ts");
+
+
+
+const Fields = Object.assign(Object.assign({}, _applet__WEBPACK_IMPORTED_MODULE_0__.Fields), { "documents": [
+        ..._documents_FolderCollectionFields__WEBPACK_IMPORTED_MODULE_2__.FolderCollectionFields,
+        ..._documents_DocumentCollectionFields__WEBPACK_IMPORTED_MODULE_1__.DocumentCollectionFields,
+        ..._documents_DocumentCollectionFields__WEBPACK_IMPORTED_MODULE_1__.DocumentCollectionFields
+    ] });
+
+
+/***/ }),
+
+/***/ "./src/schemas/DocumentsDatabase/Folders/index.ts":
+/*!********************************************************!*\
+  !*** ./src/schemas/DocumentsDatabase/Folders/index.ts ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   FoldersCollection: () => (/* binding */ FoldersCollection)
+/* harmony export */ });
+const FoldersCollection = {
+    "name": "Folders",
+    "id": "folders",
+    "attributes": [
+        {
+            "key": "name",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "description",
+            "type": "string",
+            "size": 16777216
+        },
+        {
+            "key": "parent",
+            "type": "string",
+            "size": 255
+        },
+        {
+            "key": "path",
+            "type": "string",
+            "size": 2255
+        }
+    ]
+};
 
 
 /***/ }),

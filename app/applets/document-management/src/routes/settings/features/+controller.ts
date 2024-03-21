@@ -37,7 +37,7 @@ export class FeatureSettingsController extends UIFormController {
                 HStack({ alignment: cLeading })(
                     Text('Features').fontSize(24).fontWeight('600')
                     .foregroundColor('rgb(42, 46, 52)')
-                    .lineHeight(32)
+                    .lineHeight(32) as any
                 )
                 .height()
                 .margin('0 0 30px'),
@@ -65,13 +65,13 @@ export class FeatureSettingsController extends UIFormController {
                                 .foregroundColor('#505050')
                                 .marginBottom('12px')
                                 .padding('0 15px')
-                                .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s'),
+                                .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s') as any,
     
       
                             Text(setting.description)
                             .lineHeight(18)
                             .fontSize(12)
-                            .foregroundColor('rgb(42, 46, 52)')
+                            .foregroundColor('rgb(42, 46, 52)') as any
                         )
                             .background('rgb(247, 248, 249)')
                             .border('1px solid rgb(232, 234, 237)')

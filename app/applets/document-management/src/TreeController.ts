@@ -3,12 +3,13 @@ import {
     SvgIcon,
     UIController, UIView,
     UIWidget,
+    urlFriendly,
     useNavigate, useState
 } from '@tuval/forms';
 
 import { Services, useGetDocument, useGetRealm, useUpdateDocument } from '@realmocean/sdk';
 import { EventBus, is } from '@tuval/core';
-import { useApplet, useRealm } from '@celmino/ui';
+import { useApplet, useAppletNavigate, useRealm } from '@celmino/ui';
 import { ContextMenu } from './views/ContextMenu';
 
 
@@ -27,7 +28,7 @@ export class TreeController extends UIController {
 
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
-        const { item, workspaceId, appletId, onItemSelected } = this.props.config || {};
+        const { item, onItemSelected } = this.props.config || {};
 
 
 
@@ -35,8 +36,11 @@ export class TreeController extends UIController {
         const { realm } = useRealm();
         const { applet } = useApplet();
 
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
 
-        const navigate = useNavigate();
+
+        const {navigate} = useAppletNavigate();
 
 
         const { updateDocument } = useUpdateDocument(workspaceId);
@@ -95,7 +99,7 @@ export class TreeController extends UIController {
                         {
                             title: 'Applet settings',
                             icon: SvgIcon('svg-sprite-global__settings', '#151719', '18px', '18px'),
-                            onClick: () => navigate(`/@/workspace/${workspaceId}/applet/${node.appletId}/settings/general`)
+                            onClick: () => navigate(`settings/general`)
                         },
 
                         {
@@ -119,10 +123,10 @@ export class TreeController extends UIController {
                         if (onItemSelected == null) {
                             switch (item.type) {
                                 case 'folder':
-                                    navigate(`/@/${realm?.name}-${workspaceId}/${applet.name}-${applet.$id}/folder/${item.$id}`);
+                                    navigate(`f/${urlFriendly(item.name)}-${item.$id}`);
                                     break;
                                 case 'document':
-                                    navigate(`/@/${realm?.name}-${workspaceId}/${applet.name}-${applet.$id}/document/${item.$id}`);
+                                    navigate(`d/${urlFriendly(item.name)}-${item.$id}`);
                                     break;
 
                             }

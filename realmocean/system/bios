@@ -9256,6 +9256,16 @@ function a(strings) {
     });
     return str;
 }
+function getSelected() {
+    var regex = /\[(.*?)\]/;
+    var match = window.location.href.match(regex);
+    if (match && match[1]) {
+        return match[1];
+    }
+    else {
+        return null;
+    }
+}
 function sortByStringField(arr, field) {
     return arr.slice().sort(function (a, b) {
         var nameA = a[field].toUpperCase(); // Büyük/küçük harf duyarlı sıralama için
@@ -9507,11 +9517,12 @@ var LeftSideMenuView = function (selectedItem) {
                                         title: child.name,
                                         parent: child.parent,
                                         path: child.path,
+                                        fullPath: child.fullPath,
                                         tree_widget: child.tree_widget,
                                         iconName: child.iconName,
                                         iconCategory: child.iconCategory,
                                         iconColor: child.iconColor,
-                                        expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : false,
+                                        expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : window.location.href.indexOf(child.$id) > -1,
                                         canDrag: true,
                                         view: function (node) {
                                             if (child.type === 'applet') {
@@ -9549,8 +9560,9 @@ var LeftSideMenuView = function (selectedItem) {
                                             title: item.name,
                                             parent: item.parent,
                                             path: item.path,
+                                            fullPath: item.fullPath,
                                             tree_widget: item.tree_widget,
-                                            expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : false,
+                                            expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[item.$id]) ? true : window.location.href.indexOf(item.$id) > -1,
                                             iconName: item.iconName,
                                             iconCategory: item.iconCategory,
                                             iconColor: item.iconColor,
@@ -9625,8 +9637,10 @@ var LeftSideMenuView = function (selectedItem) {
                                                 parentNode.children.forEach(function (child, index) {
                                                     child.prevParent = child.parent;
                                                     child.prevPath = child.path;
+                                                    child.prevFullPath = child.fullPath;
                                                     child.path = addZeroDigitToNumberReturnString(index, 3);
                                                     child.parent = parentNode.$id;
+                                                    child.fullPath = parentNode.fullPath + '/' + child.$id;
                                                     if (child.prevPath == null) {
                                                         child.prevPath = child.path;
                                                     }
@@ -9640,7 +9654,9 @@ var LeftSideMenuView = function (selectedItem) {
                                         newTreeData.forEach(function (item, index) {
                                             item.prevParent = item.parent;
                                             item.prevPath = item.path;
+                                            item.prevFullPath = item.fullPath;
                                             item.path = addZeroDigitToNumberReturnString(index, 3);
+                                            item.fullPath = '/' + item.$id;
                                             item.parent = '-1';
                                             reCreateIndex(item);
                                         });
@@ -9648,7 +9664,7 @@ var LeftSideMenuView = function (selectedItem) {
                                         function getChanges(parentNode) {
                                             if (parentNode.children) {
                                                 parentNode.children.forEach(function (child) {
-                                                    if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath)) {
+                                                    if (child.parent !== child.prevParent || (child.parent === child.prevParent && child.path !== child.prevPath) || child.fullPath !== child.prevFullPath) {
                                                         // console.log(child.title, child.prevPath, child.path, child.parent, child.prevParent)
                                                         changes.push(child);
                                                     }
@@ -9657,7 +9673,7 @@ var LeftSideMenuView = function (selectedItem) {
                                             }
                                         }
                                         newTreeData.forEach(function (item, index) {
-                                            if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath)) {
+                                            if (item.parent !== item.prevParent || (item.parent === item.prevParent && item.path !== item.prevPath) || item.fullPath !== item.prevFullPath) {
                                                 //console.log('Burada', item.prevPath, item.path, item.title, item.parent, item.prevParent)
                                                 changes.push(item);
                                             }
@@ -9666,6 +9682,7 @@ var LeftSideMenuView = function (selectedItem) {
                                         changes.forEach(function (item) {
                                             _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.updateDocument(workspaceId, 'workspace', 'ws_tree', item.$id, {
                                                 path: item.path,
+                                                fullPath: item.fullPath,
                                                 parent: item.parent
                                             });
                                         });

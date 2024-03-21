@@ -1184,7 +1184,7 @@
   resolved "https://registry.npmjs.org/@tuval/core/-/core-0.0.103.tgz"
   integrity sha512-yE9X6hLavSknUZWiN5sfu1hbVdZ2taaL+wJAUbpRa2glfepBsBYDHGooe11oQ5EqYEq6NZnbmYJRW9eIjPi1Gg==
 
-"@tuval/forms@^1.0.132", "@tuval/forms@^1.0.178":
+"@tuval/forms@^1.0.132", "@tuval/forms@^1.0.178", "@tuval/forms@^1.0.179":
   version "1.0.179"
   resolved "https://registry.yarnpkg.com/@tuval/forms/-/forms-1.0.179.tgz#d0defa156c9369ed8453053af3caea4955ba5313"
   integrity sha512-0nPnPYQ1VnKcu/Fn5iIuCXvt+PuFydv/M8ixj2c337Tgs+7q1Xx7WTBgRxjRghdq3Pf3oZ39rl71ilqerlLJhw==

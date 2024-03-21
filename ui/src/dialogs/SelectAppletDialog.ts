@@ -207,7 +207,8 @@ export class SelectAppletDialog extends DialogView {
                                                                     tree_widget: opa.tree_type,
                                                                     appletId: applet.$id,
                                                                     parent: this.parent,
-                                                                    path: (new Date()).getTime().toString(),
+                                                                    path: (new Date()).getTime().toString() ,
+                                                                    fullPath:'/' + applet.$id,
                                                                     iconName: opa.tree_type === 'com.celmino.widget.applet-category' ? null : opa.iconName,
                                                                     iconCategory: opa.iconCategory,
                                                                 }
@@ -292,7 +293,7 @@ export class SelectAppletDialog extends DialogView {
         )
     }
     public static Show(workspaceId: string, parent: string = '-1') {
-        
+
         const dialog = new SelectAppletDialog();
         dialog.ShowHeader = false;
         /*  if (width) {

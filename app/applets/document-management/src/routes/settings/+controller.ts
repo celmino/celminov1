@@ -1,3 +1,4 @@
+import { useApplet, useAppletNavigate, useRealm } from "@celmino/ui";
 import { Text } from "@realmocean/vibe";
 import { ForEach, HStack, Heading, HeadingSizes, Icon, SvgIcon, UIFormController, UIRouteOutlet, VStack, cHorizontal, cLeading, cTopLeading, useNavigate, useParams } from "@tuval/forms";
 
@@ -24,7 +25,10 @@ export class SettingsController extends UIFormController {
 
 
     public LoadView() {
-        const { workspaceId, appletId } = useParams();
+        const { realm } = useRealm();
+        const { applet } = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
 
         const menu = [
             {
@@ -75,7 +79,7 @@ export class SettingsController extends UIFormController {
 
         ]
 
-        const navigate = useNavigate();
+        const {navigate} = useAppletNavigate();
         // 
         return (
             HStack(
@@ -90,7 +94,7 @@ export class SettingsController extends UIFormController {
                             Icon(item.icon).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)'),
                             Text(item.title).fontSize(14).foregroundColor(item.id === getSettingsName() ? 'rgb(84, 77, 201)' : 'rgb(42, 46, 52)')
                                 .fontFamily('-apple-system, "system-ui", "Segoe UI", roboto, "Helvetica Neue", helvetica, arial, sans-serif')
-                                .lineHeight(16)
+                                .lineHeight(16) as any
 
 
                         ).height(32)
@@ -100,7 +104,7 @@ export class SettingsController extends UIFormController {
                             .padding(cHorizontal, 8)
                             .cursor('pointer')
                             .onClick(() => {
-                                navigate(item.url);
+                                navigate(`settings/${item.id}`);
                             })
                     )
                 ).padding()

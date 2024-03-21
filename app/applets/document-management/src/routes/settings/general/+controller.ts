@@ -1,16 +1,18 @@
 import { useGetDocument, useUpdateDocument } from "@realmocean/sdk";
-import { Text } from "@realmocean/vibe";
+import { Text} from "@realmocean/vibe";
 import { EventBus } from "@tuval/core";
 import { HStack, TextField, UIFormController, UIWidget, VStack, cLeading, cTopLeading, useParams } from "@tuval/forms";
-import { ColorSelect } from '@celmino/ui'
+import { ColorSelect, useApplet, useRealm } from '@celmino/ui'
 
 export class GeneralSettingsController extends UIFormController {
     public LoadView() {
 
-        const { workspaceId, appletId } = useParams();
+        const { realm } = useRealm();
+        const { applet } = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id;
 
-        const { document: applet } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
-
+       
         const { updateDocument } = useUpdateDocument(workspaceId);
 
         return (
@@ -18,14 +20,14 @@ export class GeneralSettingsController extends UIFormController {
                 HStack({ alignment: cLeading })(
                     Text('General').fontSize(24).fontWeight('600')
                         .foregroundColor('rgb(42, 46, 52)')
-                        .lineHeight(32)
+                        .lineHeight(32) as any
                 )
                     .height()
                     .margin('0 0 30px'),
                 HStack({ alignment: cLeading })(
                     Text('Applet').fontSize(20).fontWeight('600')
                         .foregroundColor('rgb(42, 46, 52)')
-                        .lineHeight(32)
+                        .lineHeight(32) as any
                 )
                     .height()
                     .margin('0 0 30px'),
@@ -33,7 +35,7 @@ export class GeneralSettingsController extends UIFormController {
                     HStack({ alignment: cLeading })(
                         Text('Name').fontSize(16).fontWeight('600')
                             .foregroundColor('rgb(42, 46, 52)')
-                            .lineHeight(32)
+                            .lineHeight(32) as any
                     ).height().width(300),
                     HStack(
                         TextField()
@@ -52,7 +54,7 @@ export class GeneralSettingsController extends UIFormController {
                     HStack({ alignment: cLeading })(
                         Text('Icon').fontSize(16).fontWeight('600')
                             .foregroundColor('rgb(42, 46, 52)')
-                            .lineHeight(32)
+                            .lineHeight(32) as any
                     ).height().width(300),
                     HStack(
                         UIWidget("com.tuvalsoft.widget.icons")
@@ -103,15 +105,11 @@ export class GeneralSettingsController extends UIFormController {
                         Text('Theme Color')
                             .fontSize(16).fontWeight('600')
                             .foregroundColor('rgb(42, 46, 52)')
-                            .lineHeight(32),
+                            .lineHeight(32) as any,
                     ).height().width(300)
-                    
                 )
                     .height()
                     .margin('0 0 30px'),
-
-
-
             )
                 .padding('24px 48px')
         )
