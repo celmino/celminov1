@@ -1,4 +1,5 @@
 import { HStack, Text, UIController, VStack, cHorizontal, cLeading, cTopLeading, cVertical } from "@tuval/forms";
+import { ListStatusView } from "./views/ListStatusView";
 
 export class StatusesController extends UIController {
     public LoadView() {
@@ -15,7 +16,8 @@ export class StatusesController extends UIController {
                         .padding(cVertical, 20)
                         .borderBottom('solid 1px #E2E8F0')
                         .height()
-                        .margin('0 0 30px')
+                        .margin('0 0 30px'),
+                        ListStatusView()
 
                 )
                     .height()

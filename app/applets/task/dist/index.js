@@ -32195,6 +32195,35 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/hooks/useTaskStatus.ts":
+/*!************************************!*\
+  !*** ./src/hooks/useTaskStatus.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useTaskStatus: () => (/* binding */ useTaskStatus)
+/* harmony export */ });
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var useTaskStatus = function () {
+    var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+    var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useListDocuments)(realm.$id, applet.$id, 'listStatuses', [
+        _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Query.orderAsc('orderBy')
+    ]), documents = _a.documents, isLoading = _a.isLoading;
+    return { statuses: documents, isLoading: isLoading };
+};
+
+
+/***/ }),
+
 /***/ "./src/resources/Icons.tsx":
 /*!*********************************!*\
   !*** ./src/resources/Icons.tsx ***!
@@ -33573,6 +33602,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _views_ListStatusView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/ListStatusView */ "./src/routes/settings/statuses/views/ListStatusView.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -33589,6 +33619,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
     };
 })();
 
+
 var StatusesController = /** @class */ (function (_super) {
     __extends(StatusesController, _super);
     function StatusesController() {
@@ -33603,7 +33634,7 @@ var StatusesController = /** @class */ (function (_super) {
             .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, 20)
             .borderBottom('solid 1px #E2E8F0')
             .height()
-            .margin('0 0 30px'))
+            .margin('0 0 30px'), (0,_views_ListStatusView__WEBPACK_IMPORTED_MODULE_1__.ListStatusView)())
             .height()
             .background('white')
             .cornerRadius(8)
@@ -33615,6 +33646,1160 @@ var StatusesController = /** @class */ (function (_super) {
     return StatusesController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Container/Container.tsx":
+/*!********************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Container/Container.tsx ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Container: () => (/* binding */ Container)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+
+
+var ContainerClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: flex;\n  flex-direction: column;\n  grid-auto-rows: max-content;\n  overflow: hidden;\n  box-sizing: border-box;\n  appearance: none;\n  outline: none;\n  min-width: 350px;\n  /* margin: 10px; */\n  margin-bottom: 20px;\n  border-radius: 5px;\n  min-height: 50px; \n  transition: background-color 350ms ease;\n  /* background-color: rgba(246, 246, 246, 1); */\n  /* border: 1px solid rgba(0, 0, 0, 0.05); */\n  font-size: 1em;\n\n  ul {\n    display: grid;\n    grid-gap: 10px;\n    grid-template-columns: repeat(var(--columns, 1), 1fr);\n    list-style: none;\n    /*  padding: 10px;  */\n    margin: 0;\n  }\n\n  &.scrollable {\n    ul {\n      overflow-y: auto;\n    }\n  }\n\n  &.placeholder {\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    color: rgba(0, 0, 0, 0.5);\n    background-color: transparent;\n    border-style: dashed;\n    border-color: rgba(0, 0, 0, 0.08);\n\n    &:hover {\n      border-color: rgba(0, 0, 0, 0.15);\n    }\n  }\n\n  &.hover {\n    /* background-color: rgb(235, 235, 235, 1); */\n  }\n\n  &.unstyled {\n    overflow: visible;\n    background-color: transparent !important;\n    border: none !important;\n  }\n\n  &.horizontal {\n    width: 100%;\n\n    ul {\n      grid-auto-flow: column;\n    }\n  }\n\n  &.shadow {\n    box-shadow: 0 1px 10px 0 rgba(34, 33, 81, 0.1);\n  }\n\n  &:focus-visible {\n    border-color: transparent;\n    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0), 0 0px 0px 2px #4c9ffe;\n  }\n\n"], ["\n  display: flex;\n  flex-direction: column;\n  grid-auto-rows: max-content;\n  overflow: hidden;\n  box-sizing: border-box;\n  appearance: none;\n  outline: none;\n  min-width: 350px;\n  /* margin: 10px; */\n  margin-bottom: 20px;\n  border-radius: 5px;\n  min-height: 50px; \n  transition: background-color 350ms ease;\n  /* background-color: rgba(246, 246, 246, 1); */\n  /* border: 1px solid rgba(0, 0, 0, 0.05); */\n  font-size: 1em;\n\n  ul {\n    display: grid;\n    grid-gap: 10px;\n    grid-template-columns: repeat(var(--columns, 1), 1fr);\n    list-style: none;\n    /*  padding: 10px;  */\n    margin: 0;\n  }\n\n  &.scrollable {\n    ul {\n      overflow-y: auto;\n    }\n  }\n\n  &.placeholder {\n    justify-content: center;\n    align-items: center;\n    cursor: pointer;\n    color: rgba(0, 0, 0, 0.5);\n    background-color: transparent;\n    border-style: dashed;\n    border-color: rgba(0, 0, 0, 0.08);\n\n    &:hover {\n      border-color: rgba(0, 0, 0, 0.15);\n    }\n  }\n\n  &.hover {\n    /* background-color: rgb(235, 235, 235, 1); */\n  }\n\n  &.unstyled {\n    overflow: visible;\n    background-color: transparent !important;\n    border: none !important;\n  }\n\n  &.horizontal {\n    width: 100%;\n\n    ul {\n      grid-auto-flow: column;\n    }\n  }\n\n  &.shadow {\n    box-shadow: 0 1px 10px 0 rgba(34, 33, 81, 0.1);\n  }\n\n  &:focus-visible {\n    border-color: transparent;\n    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0), 0 0px 0px 2px #4c9ffe;\n  }\n\n"])));
+var ActionClassName = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\ndisplay: flex;\n\n  > *:first-child:not(:last-child) {\n    opacity: 0;\n\n    &:focus-visible {\n      opacity: 1;\n    }\n  }\n  "], ["\ndisplay: flex;\n\n  > *:first-child:not(:last-child) {\n    opacity: 0;\n\n    &:focus-visible {\n      opacity: 1;\n    }\n  }\n  "])));
+var HeaderClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\ndisplay: flex;\npadding: 5px 20px;\npadding-right: 8px;\nalign-items: center;\njustify-content: space-between;\n/* background-color: #fff; */\nborder-top-left-radius: 5px;\nborder-top-right-radius: 5px;\n/* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */\n\n&:hover {\n  .Actions > * {\n    opacity: 1 !important;\n  }\n}\n"], ["\ndisplay: flex;\npadding: 5px 20px;\npadding-right: 8px;\nalign-items: center;\njustify-content: space-between;\n/* background-color: #fff; */\nborder-top-left-radius: 5px;\nborder-top-right-radius: 5px;\n/* border-bottom: 1px solid rgba(0, 0, 0, 0.08); */\n\n&:hover {\n  .Actions > * {\n    opacity: 1 !important;\n  }\n}\n"])));
+var Container = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_a, ref) {
+    var _b;
+    var children = _a.children, template = _a.template, _c = _a.columns, columns = _c === void 0 ? 1 : _c, handleProps = _a.handleProps, horizontal = _a.horizontal, hover = _a.hover, onClick = _a.onClick, onRemove = _a.onRemove, label = _a.label, placeholder = _a.placeholder, style = _a.style, scrollable = _a.scrollable, shadow = _a.shadow, unstyled = _a.unstyled, props = __rest(_a, ["children", "template", "columns", "handleProps", "horizontal", "hover", "onClick", "onRemove", "label", "placeholder", "style", "scrollable", "shadow", "unstyled"]);
+    var Component = onClick ? 'button' : 'div';
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Component, __assign({}, props, { ref: ref, style: __assign(__assign({}, style), { '--columns': columns }), className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ContainerClass, unstyled && "unstyled", horizontal && "horizontal", hover && "hover", placeholder && "placeholder", scrollable && "scrollable", shadow && "shadow"), onClick: onClick, tabIndex: onClick ? 0 : undefined }),
+        _tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(template) ? (_b = template({ label: label })) === null || _b === void 0 ? void 0 : _b.render() : void 0,
+        (!_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(template) && label) ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: HeaderClass },
+            label,
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: ActionClassName }))) : null,
+        placeholder ? children : react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, children)));
+});
+var templateObject_1, templateObject_2, templateObject_3;
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Container/index.ts":
+/*!***************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Container/index.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Container: () => (/* reexport safe */ _Container__WEBPACK_IMPORTED_MODULE_0__.Container)
+/* harmony export */ });
+/* harmony import */ var _Container__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Container */ "./src/routes/settings/statuses/views/Container/Container.tsx");
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/Item.tsx":
+/*!**********************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/Item.tsx ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Item: () => (/* binding */ Item)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components */ "./src/routes/settings/statuses/views/Item/components/index.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+
+
+
+/* @keyframes pop {
+  0% {
+    transform: scale(1);
+    box-shadow: var(--box-shadow);
+  }
+  100% {
+    transform: scale(var(--scale));
+    box-shadow: var(--box-shadow-picked-up);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} */
+var ItemClass = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\nposition: relative;\n  display: flex;\n  flex-grow: 1;\n  align-items: center;\n /*  padding: 18px 20px; */\n   background-color: #fff; \n  /* box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15); */\n  outline: none;\n  border-radius: calc(4px / var(--scale-x, 1));\n  box-sizing: border-box;\n  list-style: none;\n  transform-origin: 50% 50%;\n\n  -webkit-tap-highlight-color: transparent;\n\n  color:  #333;\n  font-weight: 400;\n  font-size: 1rem;\n  white-space: nowrap;\n\n  transform: scale(var(--scale, 1));\n  transition: box-shadow 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);\n\n  &:focus-visible {\n    box-shadow: 0 0px 4px 1px #4c9ffe,  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n  }\n\n  &:not(.withHandle) {\n    touch-action: manipulation;\n    cursor: grab;\n  }\n\n  &.dragging:not(.dragOverlay) {\n    opacity: var(--dragging-opacity, 0.5);\n    z-index: 0;\n\n    &:focus {\n      box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    }\n  }\n\n  &.disabled {\n    color: #999;\n    background-color: #f1f1f1;\n    &:focus {\n      box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.1),  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    }\n    cursor: not-allowed;\n  }\n\n  &.dragOverlay {\n    cursor: inherit;\n    /* box-shadow: 0 0px 6px 2px #4c9ffe; */\n    animation: pop 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);\n    transform: scale(var(--scale)); \n    box-shadow: var(--box-shadow-picked-up);\n    opacity: 1;\n  }\n\n  &.color:before {\n    content: '';\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    left: 0;\n    height: 100%;\n    width: 3px;\n    display: block;\n    border-top-left-radius: 3px;\n    border-bottom-left-radius: 3px;\n    background-color: var(--color);\n  }\n\n  &:hover {\n    .Remove {\n      visibility: visible;\n    }\n  }\n"], ["\nposition: relative;\n  display: flex;\n  flex-grow: 1;\n  align-items: center;\n /*  padding: 18px 20px; */\n   background-color: #fff; \n  /* box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15); */\n  outline: none;\n  border-radius: calc(4px / var(--scale-x, 1));\n  box-sizing: border-box;\n  list-style: none;\n  transform-origin: 50% 50%;\n\n  -webkit-tap-highlight-color: transparent;\n\n  color:  #333;\n  font-weight: 400;\n  font-size: 1rem;\n  white-space: nowrap;\n\n  transform: scale(var(--scale, 1));\n  transition: box-shadow 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);\n\n  &:focus-visible {\n    box-shadow: 0 0px 4px 1px #4c9ffe,  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n  }\n\n  &:not(.withHandle) {\n    touch-action: manipulation;\n    cursor: grab;\n  }\n\n  &.dragging:not(.dragOverlay) {\n    opacity: var(--dragging-opacity, 0.5);\n    z-index: 0;\n\n    &:focus {\n      box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    }\n  }\n\n  &.disabled {\n    color: #999;\n    background-color: #f1f1f1;\n    &:focus {\n      box-shadow: 0 0px 4px 1px rgba(0, 0, 0, 0.1),  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    }\n    cursor: not-allowed;\n  }\n\n  &.dragOverlay {\n    cursor: inherit;\n    /* box-shadow: 0 0px 6px 2px #4c9ffe; */\n    animation: pop 200ms cubic-bezier(0.18, 0.67, 0.6, 1.22);\n    transform: scale(var(--scale)); \n    box-shadow: var(--box-shadow-picked-up);\n    opacity: 1;\n  }\n\n  &.color:before {\n    content: '';\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    left: 0;\n    height: 100%;\n    width: 3px;\n    display: block;\n    border-top-left-radius: 3px;\n    border-bottom-left-radius: 3px;\n    background-color: var(--color);\n  }\n\n  &:hover {\n    .Remove {\n      visibility: visible;\n    }\n  }\n"])));
+var Wrapper = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  display: flex;\n  box-sizing: border-box;\n  transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0)\n    scaleX(var(--scale-x, 1)) scaleY(var(--scale-y, 1));\n  transform-origin: 0 0;\n  touch-action: manipulation;\n\n  &.fadeIn {\n    animation: fadeIn 500ms ease;\n  }\n\n  &.dragOverlay {\n    --scale: 1.05;\n    --box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    --box-shadow-picked-up: 0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05),\n      -1px 0 15px 0 rgba(34, 33, 81, 0.01),\n      0px 15px 15px 0 rgba(34, 33, 81, 0.25);\n    z-index: 999;\n  }\n"], ["\n  display: flex;\n  box-sizing: border-box;\n  transform: translate3d(var(--translate-x, 0), var(--translate-y, 0), 0)\n    scaleX(var(--scale-x, 1)) scaleY(var(--scale-y, 1));\n  transform-origin: 0 0;\n  touch-action: manipulation;\n\n  &.fadeIn {\n    animation: fadeIn 500ms ease;\n  }\n\n  &.dragOverlay {\n    --scale: 1.05;\n    --box-shadow:  0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05), 0 1px calc(3px / var(--scale-x, 1)) 0 rgba(34, 33, 81, 0.15);\n    --box-shadow-picked-up: 0 0 0 calc(1px / var(--scale-x, 1)) rgba(63, 63, 68, 0.05),\n      -1px 0 15px 0 rgba(34, 33, 81, 0.01),\n      0px 15px 15px 0 rgba(34, 33, 81, 0.25);\n    z-index: 999;\n  }\n"])));
+var _Rempve = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\nvisibility: hidden;\n"], ["\nvisibility: hidden;\n"])));
+var Actions = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.css)(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  display: flex;\n  align-self: flex-start;\n  /* margin-top: -12px; */\n  margin-left: auto;\n  margin-bottom: -15px;\n  margin-left: 10px;\n  height:100%\n"], ["\n  display: flex;\n  align-self: flex-start;\n  /* margin-top: -12px; */\n  margin-left: auto;\n  margin-bottom: -15px;\n  margin-left: 10px;\n  height:100%\n"])));
+var Item = react__WEBPACK_IMPORTED_MODULE_0___default().memo(react__WEBPACK_IMPORTED_MODULE_0___default().forwardRef(function (_a, ref) {
+    var color = _a.color, dragOverlay = _a.dragOverlay, dragging = _a.dragging, disabled = _a.disabled, fadeIn = _a.fadeIn, handle = _a.handle, handleProps = _a.handleProps, height = _a.height, index = _a.index, listeners = _a.listeners, onRemove = _a.onRemove, renderItem = _a.renderItem, template = _a.template, sorting = _a.sorting, style = _a.style, transition = _a.transition, transform = _a.transform, value = _a.value, wrapperStyle = _a.wrapperStyle, props = __rest(_a, ["color", "dragOverlay", "dragging", "disabled", "fadeIn", "handle", "handleProps", "height", "index", "listeners", "onRemove", "renderItem", "template", "sorting", "style", "transition", "transform", "value", "wrapperStyle"]);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        if (!dragOverlay) {
+            return;
+        }
+        document.body.style.cursor = 'grabbing';
+        return function () {
+            document.body.style.cursor = '';
+        };
+    }, [dragOverlay]);
+    return renderItem ? (renderItem({
+        dragOverlay: Boolean(dragOverlay),
+        dragging: Boolean(dragging),
+        sorting: Boolean(sorting),
+        index: index,
+        fadeIn: Boolean(fadeIn),
+        listeners: listeners,
+        ref: ref,
+        style: style,
+        transform: transform,
+        transition: transition,
+        value: value,
+    })) : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", { className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(Wrapper, fadeIn && 'fadeIn', sorting && 'sorting', dragOverlay && 'dragOverlay'), style: __assign(__assign({}, wrapperStyle), { transition: [transition, wrapperStyle === null || wrapperStyle === void 0 ? void 0 : wrapperStyle.transition]
+                .filter(Boolean)
+                .join(', '), '--translate-x': transform
+                ? "".concat(Math.round(transform.x), "px")
+                : undefined, '--translate-y': transform
+                ? "".concat(Math.round(transform.y), "px")
+                : undefined, '--scale-x': (transform === null || transform === void 0 ? void 0 : transform.scaleX)
+                ? "".concat(transform.scaleX)
+                : undefined, '--scale-y': (transform === null || transform === void 0 ? void 0 : transform.scaleY)
+                ? "".concat(transform.scaleY)
+                : undefined, '--index': index, '--color': color }), ref: ref },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({ className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ItemClass, dragging && 'dragging', handle && 'withHandle', dragOverlay && 'dragOverlay', disabled && 'disabled', color && 'color'), style: style, "data-cypress": "draggable-item" }, (!handle ? listeners : undefined), props, { tabIndex: !handle ? 0 : undefined }), _tuval_core__WEBPACK_IMPORTED_MODULE_4__.is.function(template) ? template({
+            dragOverlay: Boolean(dragOverlay),
+            dragging: Boolean(dragging),
+            sorting: Boolean(sorting),
+            index: index,
+            fadeIn: Boolean(fadeIn),
+            listeners: listeners,
+            handleView: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ReactView)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.Handle, __assign({}, handleProps, listeners))),
+            ref: ref,
+            style: style,
+            transform: transform,
+            transition: transition,
+            value: value
+        }).render() : "dfsdf")));
+}));
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/components/Action/Action.tsx":
+/*!******************************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/components/Action/Action.tsx ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Action: () => (/* binding */ Action)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+var __makeTemplateObject = (undefined && undefined.__makeTemplateObject) || function (cooked, raw) {
+    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+    return cooked;
+};
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+
+
+
+var ActionClassName = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.css)(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n\n  display: flex;\n  width: 12px;\n  padding: 5px;\n  align-items: center;\n  justify-content: center;\n  flex: 0 0 auto;\n  touch-action: none;\n  cursor: var(--cursor, pointer);\n  border-radius: 5px;\n  border: none;\n  outline: none;\n  appearance: none;\n  background-color: transparent;\n  -webkit-tap-highlight-color: transparent;\n\n  @media (hover: hover) {\n    &:hover {\n     /*  background-color: var(--action-background, rgba(0, 0, 0, 0.05)); */\n\n      svg {\n        fill: #6f7b88;\n      }\n    }\n  }\n\n  svg {\n    flex: 0 0 auto;\n    margin: auto;\n    height: 100%;\n    overflow: visible;\n    fill: #919eab;\n  }\n\n  &:active {\n    background-color: var(--background, rgba(0, 0, 0, 0.05));\n\n    svg {\n      fill: var(--fill, #788491);\n    }\n  }\n\n  &:focus-visible {\n    outline: none;\n    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0),\n      0 0px 0px 2px #4c9ffe;\n  }\n\n\n"], ["\n\n  display: flex;\n  width: 12px;\n  padding: 5px;\n  align-items: center;\n  justify-content: center;\n  flex: 0 0 auto;\n  touch-action: none;\n  cursor: var(--cursor, pointer);\n  border-radius: 5px;\n  border: none;\n  outline: none;\n  appearance: none;\n  background-color: transparent;\n  -webkit-tap-highlight-color: transparent;\n\n  @media (hover: hover) {\n    &:hover {\n     /*  background-color: var(--action-background, rgba(0, 0, 0, 0.05)); */\n\n      svg {\n        fill: #6f7b88;\n      }\n    }\n  }\n\n  svg {\n    flex: 0 0 auto;\n    margin: auto;\n    height: 100%;\n    overflow: visible;\n    fill: #919eab;\n  }\n\n  &:active {\n    background-color: var(--background, rgba(0, 0, 0, 0.05));\n\n    svg {\n      fill: var(--fill, #788491);\n    }\n  }\n\n  &:focus-visible {\n    outline: none;\n    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0),\n      0 0px 0px 2px #4c9ffe;\n  }\n\n\n"])));
+var Action = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_a, ref) {
+    var active = _a.active, className = _a.className, cursor = _a.cursor, style = _a.style, props = __rest(_a, ["active", "className", "cursor", "style"]);
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", __assign({ ref: ref }, props, { className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(ActionClassName, className), tabIndex: 0, style: __assign(__assign({}, style), { cursor: cursor, '--fill': active === null || active === void 0 ? void 0 : active.fill, '--background': active === null || active === void 0 ? void 0 : active.background }) })));
+});
+var templateObject_1;
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/components/Action/index.ts":
+/*!****************************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/components/Action/index.ts ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Action: () => (/* reexport safe */ _Action__WEBPACK_IMPORTED_MODULE_0__.Action)
+/* harmony export */ });
+/* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Action */ "./src/routes/settings/statuses/views/Item/components/Action/Action.tsx");
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/components/Handle/Handle.tsx":
+/*!******************************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/components/Handle/Handle.tsx ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Handle: () => (/* binding */ Handle)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Action */ "./src/routes/settings/statuses/views/Item/components/Action/index.ts");
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+var Handle = (0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (props, ref) {
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Action__WEBPACK_IMPORTED_MODULE_1__.Action, __assign({ ref: ref, cursor: "grab", "data-cypress": "draggable-handle" }, props),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { viewBox: "0 0 20 20", width: "12" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z" }))));
+});
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/components/Handle/index.ts":
+/*!****************************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/components/Handle/index.ts ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Handle: () => (/* reexport safe */ _Handle__WEBPACK_IMPORTED_MODULE_0__.Handle)
+/* harmony export */ });
+/* harmony import */ var _Handle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Handle */ "./src/routes/settings/statuses/views/Item/components/Handle/Handle.tsx");
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/components/Remove/Remove.tsx":
+/*!******************************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/components/Remove/Remove.tsx ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Remove: () => (/* binding */ Remove)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Action */ "./src/routes/settings/statuses/views/Item/components/Action/index.ts");
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+function Remove(props) {
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Action__WEBPACK_IMPORTED_MODULE_1__.Action, __assign({}, props, { active: {
+            fill: 'rgba(255, 70, 70, 0.95)',
+            background: 'rgba(255, 70, 70, 0.1)',
+        } }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", { width: "8", viewBox: "0 0 22 22", xmlns: "http://www.w3.org/2000/svg" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", { d: "M2.99998 -0.000206962C2.7441 -0.000206962 2.48794 0.0972617 2.29294 0.292762L0.292945 2.29276C-0.0980552 2.68376 -0.0980552 3.31682 0.292945 3.70682L7.58591 10.9998L0.292945 18.2928C-0.0980552 18.6838 -0.0980552 19.3168 0.292945 19.7068L2.29294 21.7068C2.68394 22.0978 3.31701 22.0978 3.70701 21.7068L11 14.4139L18.2929 21.7068C18.6829 22.0978 19.317 22.0978 19.707 21.7068L21.707 19.7068C22.098 19.3158 22.098 18.6828 21.707 18.2928L14.414 10.9998L21.707 3.70682C22.098 3.31682 22.098 2.68276 21.707 2.29276L19.707 0.292762C19.316 -0.0982383 18.6829 -0.0982383 18.2929 0.292762L11 7.58573L3.70701 0.292762C3.51151 0.0972617 3.25585 -0.000206962 2.99998 -0.000206962Z" }))));
+}
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/components/Remove/index.ts":
+/*!****************************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/components/Remove/index.ts ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Remove: () => (/* reexport safe */ _Remove__WEBPACK_IMPORTED_MODULE_0__.Remove)
+/* harmony export */ });
+/* harmony import */ var _Remove__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Remove */ "./src/routes/settings/statuses/views/Item/components/Remove/Remove.tsx");
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/components/index.ts":
+/*!*********************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/components/index.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Action: () => (/* reexport safe */ _Action__WEBPACK_IMPORTED_MODULE_0__.Action),
+/* harmony export */   Handle: () => (/* reexport safe */ _Handle__WEBPACK_IMPORTED_MODULE_1__.Handle),
+/* harmony export */   Remove: () => (/* reexport safe */ _Remove__WEBPACK_IMPORTED_MODULE_2__.Remove)
+/* harmony export */ });
+/* harmony import */ var _Action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Action */ "./src/routes/settings/statuses/views/Item/components/Action/index.ts");
+/* harmony import */ var _Handle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Handle */ "./src/routes/settings/statuses/views/Item/components/Handle/index.ts");
+/* harmony import */ var _Remove__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Remove */ "./src/routes/settings/statuses/views/Item/components/Remove/index.ts");
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/Item/index.ts":
+/*!**********************************************************!*\
+  !*** ./src/routes/settings/statuses/views/Item/index.ts ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Action: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_1__.Action),
+/* harmony export */   Handle: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_1__.Handle),
+/* harmony export */   Item: () => (/* reexport safe */ _Item__WEBPACK_IMPORTED_MODULE_0__.Item),
+/* harmony export */   Remove: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_1__.Remove)
+/* harmony export */ });
+/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Item */ "./src/routes/settings/statuses/views/Item/Item.tsx");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components */ "./src/routes/settings/statuses/views/Item/components/index.ts");
+
+
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/ListStatusView.tsx":
+/*!***************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/ListStatusView.tsx ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ListStatusView: () => (/* binding */ ListStatusView),
+/* harmony export */   restrictToHorizontalAxis: () => (/* binding */ restrictToHorizontalAxis)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _MultipleContainers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MultipleContainers */ "./src/routes/settings/statuses/views/MultipleContainers.tsx");
+/* harmony import */ var _hooks_useTaskStatus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../hooks/useTaskStatus */ "./src/hooks/useTaskStatus.ts");
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+
+
+var restrictToHorizontalAxis = function (_a) {
+    var transform = _a.transform, over = _a.over;
+    return __assign(__assign({}, transform), { x: 0 });
+};
+var statuses = [
+    {
+        id: '1',
+        title: 'To Do',
+        stageId: '1'
+    },
+    {
+        id: '2',
+        title: 'In Progress',
+        stageId: '1'
+    },
+    {
+        id: '3',
+        title: 'Done',
+        stageId: '1'
+    }
+];
+var stages = [
+    {
+        id: "1",
+        status_name: "Active Statuses",
+        status_background_color: "",
+        status_color: ""
+    },
+    {
+        id: "2",
+        status_name: "Done Statuses",
+        status_background_color: "",
+        status_color: ""
+    }
+];
+var ListStatusView = function () {
+    /* const dialog = useDialog();
+    const navigate = useNavigate();
+
+    const { columns, resource, filter, sort } = fieldInfo;
+    const { getList } = useProtocol(WorkProtocol);
+    const { data: workspaces, isLoading } = getList('workspaces', {
+        filter: {
+            tenant_id: useSessionService().TenantId
+        }
+    }) */
+    var _a = (0,_hooks_useTaskStatus__WEBPACK_IMPORTED_MODULE_3__.useTaskStatus)(), statuses = _a.statuses, isLoading = _a.isLoading;
+    return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_MultipleContainers__WEBPACK_IMPORTED_MODULE_2__.MultipleContainers, { handle: true, items: {
+            "Opened Status": statuses
+                .filter(function (statu) { return statu.type === 'opened'; })
+                .map(function (statu) { return ({
+                id: statu.$id,
+                title: statu.name,
+                color: statu.bgColor
+            }); }),
+            "Active Statuses": statuses
+                .filter(function (statu) { return statu.type === 'active'; })
+                .map(function (statu) { return ({
+                id: statu.$id,
+                title: statu.name,
+                color: statu.bgColor
+            }); }),
+            "Done Statuses": statuses
+                .filter(function (statu) { return statu.type === 'done'; })
+                .map(function (statu) { return ({
+                id: statu.$id,
+                title: statu.name,
+                color: statu.bgColor
+            }); }),
+            "Closed Status": statuses
+                .filter(function (statu) { return statu.type === 'closed'; })
+                .map(function (statu) { return ({
+                id: statu.$id,
+                title: statu.name,
+                color: statu.bgColor
+            }); }),
+        }, vertical: true, 
+        // modifiers={[restrictToHorizontalAxis]}
+        /*  cancelDrop={(args: CancelDropArguments) => {
+             if (args.over.id === "1")
+                 return true;
+             return false
+         }} */
+        placeholderTemplate: function (_a) {
+            var containerId = _a.containerId;
+            return containerId === 'Done Statuses' ?
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Move statuses here to consider tasks Done.')
+                    .fontSize(11)
+                    .foregroundColor('#2229'))
+                    .border('1px dashed #cbc9cf')
+                    .height(30)
+                :
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)();
+        }, containerLabelTemplate: function (_a) {
+            var label = _a.label;
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label)).textTransform("uppercase").fontSize(9).fontWeight('500').foregroundColor('rgb(107, 119, 140)')
+                .height(30);
+        }, template: function (args) {
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((args.value.id !== "1" && args.value.id !== "4") ? args.handleView : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(13).height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).height(10).background(args.value.color).cornerRadius(2), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(args.value.title).fontSize(12).textTransform('uppercase')).foregroundColor(args.value.color))
+                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5)
+                .border(args.dragOverlay ? '' : '1px solid #d8d8d8')
+                .cornerRadius(3)
+                .height(28).background('white'));
+        } })).frame(true).width('100%')));
+};
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/MultipleContainers.tsx":
+/*!*******************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/MultipleContainers.tsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   MultipleContainers: () => (/* binding */ MultipleContainers),
+/* harmony export */   TRASH_ID: () => (/* binding */ TRASH_ID),
+/* harmony export */   createRange: () => (/* binding */ createRange)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var _dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @dnd-kit/core */ "./node_modules/@dnd-kit/core/dist/core.esm.js");
+/* harmony import */ var _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @dnd-kit/sortable */ "./node_modules/@dnd-kit/sortable/dist/sortable.esm.js");
+/* harmony import */ var _dnd_kit_utilities__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @dnd-kit/utilities */ "./node_modules/@dnd-kit/utilities/dist/utilities.esm.js");
+/* harmony import */ var _multipleContainersKeyboardCoordinates__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./multipleContainersKeyboardCoordinates */ "./src/routes/settings/statuses/views/multipleContainersKeyboardCoordinates.ts");
+/* harmony import */ var _Item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Item */ "./src/routes/settings/statuses/views/Item/index.ts");
+/* harmony import */ var _Container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Container */ "./src/routes/settings/statuses/views/Container/index.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_9__);
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (undefined && undefined.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+
+
+
+
+
+
+
+
+
+
+var defaultInitializer = function (index) { return index; };
+function createRange(length, initializer) {
+    if (initializer === void 0) { initializer = defaultInitializer; }
+    return __spreadArray([], new Array(length), true).map(function (_, index) { return initializer(index); });
+}
+var animateLayoutChanges = function (args) {
+    return (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.defaultAnimateLayoutChanges)(__assign(__assign({}, args), { wasDragging: true }));
+};
+function DroppableContainer(_a) {
+    var _b;
+    var children = _a.children, template = _a.template, _c = _a.columns, columns = _c === void 0 ? 1 : _c, disabled = _a.disabled, id = _a.id, items = _a.items, style = _a.style, props = __rest(_a, ["children", "template", "columns", "disabled", "id", "items", "style"]);
+    var _d = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.useSortable)({
+        id: id,
+        data: {
+            type: 'container',
+            children: items,
+        },
+        animateLayoutChanges: animateLayoutChanges,
+    }), active = _d.active, attributes = _d.attributes, isDragging = _d.isDragging, listeners = _d.listeners, over = _d.over, setNodeRef = _d.setNodeRef, transition = _d.transition, transform = _d.transform;
+    var isOverContainer = over
+        ? (id === over.id && ((_b = active === null || active === void 0 ? void 0 : active.data.current) === null || _b === void 0 ? void 0 : _b.type) !== 'container') ||
+            items.includes(over.id)
+        : false;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Container__WEBPACK_IMPORTED_MODULE_7__.Container, __assign({ ref: disabled ? undefined : setNodeRef, style: __assign(__assign({}, style), { transition: transition, transform: _dnd_kit_utilities__WEBPACK_IMPORTED_MODULE_4__.CSS.Translate.toString(transform), opacity: isDragging ? 0.5 : undefined }), hover: isOverContainer, handleProps: __assign(__assign({}, attributes), listeners), columns: columns, template: template }, props), children));
+}
+var dropAnimation = {
+    sideEffects: (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.defaultDropAnimationSideEffects)({
+        styles: {
+            active: {
+                opacity: '0.5',
+            },
+        },
+    }),
+};
+var TRASH_ID = 'void';
+var PLACEHOLDER_ID = 'placeholder';
+var empty = [];
+function MultipleContainers(_a) {
+    var _b = _a.adjustScale, adjustScale = _b === void 0 ? false : _b, _c = _a.itemCount, itemCount = _c === void 0 ? 3 : _c, cancelDrop = _a.cancelDrop, columns = _a.columns, _d = _a.handle, handle = _d === void 0 ? false : _d, initialItems = _a.items, containerStyle = _a.containerStyle, _e = _a.coordinateGetter, coordinateGetter = _e === void 0 ? _multipleContainersKeyboardCoordinates__WEBPACK_IMPORTED_MODULE_5__.coordinateGetter : _e, _f = _a.getItemStyles, getItemStyles = _f === void 0 ? function () { return ({}); } : _f, _g = _a.wrapperStyle, wrapperStyle = _g === void 0 ? function () { return ({}); } : _g, _h = _a.minimal, minimal = _h === void 0 ? false : _h, modifiers = _a.modifiers, renderItem = _a.renderItem, template = _a.template, containerLabelTemplate = _a.containerLabelTemplate, placeholderTemplate = _a.placeholderTemplate, _j = _a.strategy, strategy = _j === void 0 ? _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.verticalListSortingStrategy : _j, _k = _a.trashable, trashable = _k === void 0 ? false : _k, _l = _a.vertical, vertical = _l === void 0 ? false : _l, scrollable = _a.scrollable;
+    var _m = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
+        return initialItems !== null && initialItems !== void 0 ? initialItems : {
+            A: createRange(itemCount, function (index) { return "A".concat(index + 1); }),
+            B: createRange(itemCount, function (index) { return "B".concat(index + 1); }),
+            C: createRange(itemCount, function (index) { return "C".concat(index + 1); }),
+            D: createRange(itemCount, function (index) { return "D".concat(index + 1); }),
+        };
+    }), items = _m[0], setItems = _m[1];
+    var _o = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(Object.keys(items)), containers = _o[0], setContainers = _o[1];
+    var _p = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), activeId = _p[0], setActiveId = _p[1];
+    var lastOverId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+    var recentlyMovedToNewContainer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
+    var isSortingContainer = activeId ? containers.includes(activeId) : false;
+    /**
+     * Custom collision detection strategy optimized for multiple containers
+     *
+     * - First, find any droppable containers intersecting with the pointer.
+     * - If there are none, find intersecting containers with the active draggable.
+     * - If there are no intersecting containers, return the last matched intersection
+     *
+     */
+    var collisionDetectionStrategy = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (args) {
+        var _a;
+        if (activeId && activeId in items) {
+            return (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.closestCenter)(__assign(__assign({}, args), { droppableContainers: args.droppableContainers.filter(function (container) { return container.id in items; }) }));
+        }
+        // Start by finding any intersecting droppable
+        var pointerIntersections = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.pointerWithin)(args);
+        var intersections = pointerIntersections.length > 0
+            ? // If there are droppables intersecting with the pointer, return those
+                pointerIntersections
+            : (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.rectIntersection)(args);
+        var overId = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.getFirstCollision)(intersections, 'id');
+        if (overId != null) {
+            if (overId === TRASH_ID) {
+                // If the intersecting droppable is the trash, return early
+                // Remove this if you're not using trashable functionality in your app
+                return intersections;
+            }
+            if (overId in items) {
+                var containerItems_1 = items[overId];
+                // If a container is matched and it contains items (columns 'A', 'B', 'C')
+                if (containerItems_1.length > 0) {
+                    // Return the closest droppable within that container
+                    overId = (_a = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.closestCenter)(__assign(__assign({}, args), { droppableContainers: args.droppableContainers.filter(function (container) {
+                            return container.id !== overId &&
+                                containerItems_1.findIndex(function (item) { return item.id === container.id; }) > -1;
+                        }) }))[0]) === null || _a === void 0 ? void 0 : _a.id;
+                }
+            }
+            lastOverId.current = overId;
+            return [{ id: /* overId === "1" ?activeId : */ overId }];
+        }
+        // When a draggable item moves to a new container, the layout may shift
+        // and the `overId` may become `null`. We manually set the cached `lastOverId`
+        // to the id of the draggable item that was moved to the new container, otherwise
+        // the previous `overId` will be returned which can cause items to incorrectly shift positions
+        if (recentlyMovedToNewContainer.current) {
+            lastOverId.current = activeId;
+        }
+        // If no droppable is matched, return the last match
+        return lastOverId.current ? [{ id: lastOverId.current }] : [];
+    }, [activeId, items]);
+    var _q = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), clonedItems = _q[0], setClonedItems = _q[1];
+    var sensors = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensors)((0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.MouseSensor), (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.TouchSensor), (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useSensor)(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.KeyboardSensor, {
+        coordinateGetter: coordinateGetter,
+    }));
+    var findContainer = function (id) {
+        if (id in items) {
+            return id;
+        }
+        return Object.keys(items).find(function (key) { return items[key].find(function (item) { return item.id === id; }); });
+    };
+    var getIndex = function (id) {
+        var container = findContainer(id);
+        if (!container) {
+            return -1;
+        }
+        var index = items[container].findIndex(function (item) { return item.id === id; });
+        return index;
+    };
+    var getItem = function (id) {
+        var container = findContainer(id);
+        if (!container) {
+            return -1;
+        }
+        var item = items[container].find(function (item) { return item.id === id; });
+        return item;
+    };
+    var onDragCancel = function () {
+        if (clonedItems) {
+            // Reset items to their original state in case items have been
+            // Dragged across containers
+            setItems(clonedItems);
+        }
+        setActiveId(null);
+        setClonedItems(null);
+    };
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        requestAnimationFrame(function () {
+            recentlyMovedToNewContainer.current = false;
+        });
+    }, [items]);
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.DndContext, { sensors: sensors, collisionDetection: collisionDetectionStrategy, measuring: {
+            droppable: {
+                strategy: _dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.MeasuringStrategy.Always,
+            }
+        }, onDragStart: function (_a) {
+            var active = _a.active;
+            setActiveId(active.id);
+            setClonedItems(items);
+        }, onDragOver: function (_a) {
+            var active = _a.active, over = _a.over;
+            var overId = over === null || over === void 0 ? void 0 : over.id;
+            console.log("overId", overId);
+            if (overId == null || overId === TRASH_ID || active.id in items) {
+                return;
+            }
+            var overContainer = findContainer(overId);
+            if (overContainer === 'Opened Status') {
+                return;
+            }
+            if (overContainer === 'Closed Status') {
+                return;
+            }
+            var activeContainer = findContainer(active.id);
+            if (!overContainer || !activeContainer) {
+                return;
+            }
+            if (activeContainer !== overContainer) {
+                setItems(function (items) {
+                    var _a;
+                    var activeItems = items[activeContainer];
+                    var overItems = items[overContainer];
+                    var overIndex = overItems.findIndex(function (item) { return item.id === overId; });
+                    var activeIndex = activeItems.findIndex(function (item) { return item.id === active.id; });
+                    var newIndex;
+                    if (overId in items) {
+                        newIndex = overItems.length + 1;
+                    }
+                    else {
+                        var isBelowOverItem = over &&
+                            active.rect.current.translated &&
+                            active.rect.current.translated.top >
+                                over.rect.top + over.rect.height;
+                        var modifier = isBelowOverItem ? 1 : 0;
+                        newIndex =
+                            overIndex >= 0 ? overIndex + modifier : overItems.length + 1;
+                    }
+                    recentlyMovedToNewContainer.current = true;
+                    return __assign(__assign({}, items), (_a = {}, _a[activeContainer] = items[activeContainer].filter(function (item) { return item.id !== active.id; }), _a[overContainer] = __spreadArray(__spreadArray(__spreadArray([], items[overContainer].slice(0, newIndex), true), [
+                        items[activeContainer][activeIndex]
+                    ], false), items[overContainer].slice(newIndex, items[overContainer].length), true), _a));
+                });
+            }
+        }, onDragEnd: function (_a) {
+            var active = _a.active, over = _a.over;
+            debugger;
+            if (active.id in items && (over === null || over === void 0 ? void 0 : over.id)) {
+                setContainers(function (containers) {
+                    var activeIndex = containers.indexOf(active.id);
+                    var overIndex = containers.indexOf(over.id);
+                    return (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(containers, activeIndex, overIndex);
+                });
+            }
+            var activeContainer = findContainer(active.id);
+            if (!activeContainer) {
+                setActiveId(null);
+                return;
+            }
+            var overId = over === null || over === void 0 ? void 0 : over.id;
+            if (overId == null) {
+                setActiveId(null);
+                return;
+            }
+            if (overId === TRASH_ID) {
+                setItems(function (items) {
+                    var _a;
+                    return (__assign(__assign({}, items), (_a = {}, _a[activeContainer] = items[activeContainer].filter(function (item) { return item.id !== activeId; }), _a)));
+                });
+                setActiveId(null);
+                return;
+            }
+            if (overId === PLACEHOLDER_ID) {
+                var newContainerId_1 = getNextContainerId();
+                (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(function () {
+                    setContainers(function (containers) { return __spreadArray(__spreadArray([], containers, true), [newContainerId_1], false); });
+                    setItems(function (items) {
+                        var _a;
+                        return (__assign(__assign({}, items), (_a = {}, _a[activeContainer] = items[activeContainer].filter(function (item) { return item.id !== activeId; }), _a[newContainerId_1] = [active.id], _a)));
+                    });
+                    setActiveId(null);
+                });
+                return;
+            }
+            var overContainer = findContainer(overId);
+            if (overContainer) {
+                var activeIndex_1 = items[activeContainer].findIndex(function (item) { return item.id === active.id; });
+                var overIndex_1 = items[overContainer].findIndex(function (item) { return item.id === overId; });
+                if (activeIndex_1 !== overIndex_1) {
+                    setItems(function (items) {
+                        var _a;
+                        return (__assign(__assign({}, items), (_a = {}, _a[overContainer] = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(items[overContainer], activeIndex_1, overIndex_1), _a)));
+                    });
+                }
+            }
+            setActiveId(null);
+        }, cancelDrop: cancelDrop, onDragCancel: onDragCancel, modifiers: modifiers },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { style: {
+                display: 'inline-grid',
+                boxSizing: 'border-box',
+                padding: 20,
+                gridAutoFlow: vertical ? 'row' : 'column',
+            } },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: __spreadArray(__spreadArray([], containers, true), [PLACEHOLDER_ID], false), strategy: vertical
+                    ? _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.verticalListSortingStrategy
+                    : _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.horizontalListSortingStrategy },
+                containers.map(function (containerId) {
+                    var _a;
+                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DroppableContainer, { key: containerId, id: containerId, label: minimal ? undefined : "".concat(containerId), template: containerLabelTemplate, columns: columns, items: items[containerId], scrollable: scrollable, style: containerStyle, unstyled: minimal, onRemove: function () { return handleRemove(containerId); } },
+                        (items[containerId].length === 0 && _tuval_core__WEBPACK_IMPORTED_MODULE_9__.is.function(placeholderTemplate)) ? ((_a = placeholderTemplate({ containerId: containerId })) === null || _a === void 0 ? void 0 : _a.render()) : void 0,
+                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: items[containerId], strategy: strategy }, items[containerId].map(function (value, index) {
+                            return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SortableItem, { disabled: isSortingContainer, key: value.id, id: value.id, value: value, index: index, handle: handle, style: getItemStyles, wrapperStyle: wrapperStyle, renderItem: renderItem, template: template, containerId: containerId, getIndex: getIndex }));
+                        })),
+                        containerId === 'Active Statuses' && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.Text)("Add Status"))
+                            .cursor('pointer')
+                            .width()
+                            .background({ default: '#7b68ee', hover: '#5b43ea' })
+                            .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s')
+                            .foregroundColor('white')
+                            .padding('0 10px')
+                            .cornerRadius(4)
+                            .height(28).fontSize(14)
+                            .onClick(function () {
+                            items[containerId].push({ id: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.nanoid)(), title: "_In Progress", color: '#A875FF' });
+                            var _index = items[containerId].length - 1;
+                            console.log(items);
+                            (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(function () {
+                                setItems(function (items) {
+                                    var _a;
+                                    return (__assign(__assign({}, items), (_a = {}, _a[containerId] = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(items[containerId], _index, _index), _a)));
+                                });
+                            });
+                        })
+                            .render())));
+                }),
+                minimal ? undefined : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DroppableContainer, { id: PLACEHOLDER_ID, disabled: isSortingContainer, items: empty, onClick: handleAddColumn, placeholder: true }, "+ Add column")))),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.DragOverlay, { adjustScale: adjustScale, dropAnimation: dropAnimation }, activeId
+            ? containers.includes(activeId)
+                ? renderContainerDragOverlay(activeId)
+                : renderSortableItemDragOverlay(activeId)
+            : null),
+        trashable && activeId && !containers.includes(activeId) ? (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Trash, { id: TRASH_ID })) : null));
+    function renderSortableItemDragOverlay(id) {
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Item__WEBPACK_IMPORTED_MODULE_6__.Item, { value: getItem(id), handle: handle, style: getItemStyles({
+                containerId: findContainer(id),
+                overIndex: -1,
+                index: getIndex(id),
+                value: id,
+                isSorting: true,
+                isDragging: true,
+                isDragOverlay: true,
+            }), color: getColor(id), wrapperStyle: wrapperStyle({ index: 0 }), renderItem: renderItem, template: template, dragOverlay: true }));
+    }
+    function renderContainerDragOverlay(containerId) {
+        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Container__WEBPACK_IMPORTED_MODULE_7__.Container, { label: "".concat(containerId), columns: columns, style: {
+                height: '100%',
+            }, shadow: true, unstyled: false }, items[containerId].map(function (item, index) { return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Item__WEBPACK_IMPORTED_MODULE_6__.Item, { key: item, value: item, handle: handle, style: getItemStyles({
+                containerId: containerId,
+                overIndex: -1,
+                index: getIndex(item),
+                value: item,
+                isDragging: false,
+                isSorting: false,
+                isDragOverlay: false,
+            }), color: getColor(item), wrapperStyle: wrapperStyle({ index: index }), renderItem: renderItem, template: template })); })));
+    }
+    function handleRemove(containerID) {
+        setContainers(function (containers) {
+            return containers.filter(function (id) { return id !== containerID; });
+        });
+    }
+    function handleAddColumn() {
+        var newContainerId = getNextContainerId();
+        (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(function () {
+            setContainers(function (containers) { return __spreadArray(__spreadArray([], containers, true), [newContainerId], false); });
+            setItems(function (items) {
+                var _a;
+                return (__assign(__assign({}, items), (_a = {}, _a[newContainerId] = [], _a)));
+            });
+        });
+    }
+    function getNextContainerId() {
+        var containerIds = Object.keys(items);
+        var lastContainerId = containerIds[containerIds.length - 1];
+        return String.fromCharCode(lastContainerId.charCodeAt(0) + 1);
+    }
+}
+function getColor(id) {
+    switch (String(id)[0]) {
+        case 'A':
+            return '#7193f1';
+        case 'B':
+            return '#ffda6c';
+        case 'C':
+            return '#00bcd4';
+        case 'D':
+            return '#ef769f';
+    }
+    return undefined;
+}
+function Trash(_a) {
+    var id = _a.id;
+    var _b = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.useDroppable)({
+        id: id,
+    }), setNodeRef = _b.setNodeRef, isOver = _b.isOver;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { ref: setNodeRef, style: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'fixed',
+            left: '50%',
+            marginLeft: -150,
+            bottom: 20,
+            width: 300,
+            height: 60,
+            borderRadius: 5,
+            border: '1px solid',
+            borderColor: isOver ? 'red' : '#DDD',
+        } }, "Drop here to delete"));
+}
+function SortableItem(_a) {
+    var disabled = _a.disabled, id = _a.id, value = _a.value, index = _a.index, handle = _a.handle, renderItem = _a.renderItem, template = _a.template, style = _a.style, containerId = _a.containerId, getIndex = _a.getIndex, wrapperStyle = _a.wrapperStyle;
+    var _b = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.useSortable)({
+        id: id,
+    }), setNodeRef = _b.setNodeRef, setActivatorNodeRef = _b.setActivatorNodeRef, listeners = _b.listeners, isDragging = _b.isDragging, isSorting = _b.isSorting, over = _b.over, overIndex = _b.overIndex, transform = _b.transform, transition = _b.transition;
+    var mounted = useMountStatus();
+    var mountedWhileDragging = isDragging && !mounted;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Item__WEBPACK_IMPORTED_MODULE_6__.Item, { ref: disabled ? undefined : setNodeRef, value: value, dragging: isDragging, sorting: isSorting, handle: handle, handleProps: handle ? { ref: setActivatorNodeRef } : undefined, index: index, wrapperStyle: wrapperStyle({ index: index }), style: style({
+            index: index,
+            value: id,
+            isDragging: isDragging,
+            isSorting: isSorting,
+            overIndex: over ? getIndex(over.id) : overIndex,
+            containerId: containerId,
+        }), color: getColor(id), transition: transition, transform: transform, fadeIn: mountedWhileDragging, listeners: listeners, renderItem: renderItem, template: template }));
+}
+function useMountStatus() {
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isMounted = _a[0], setIsMounted = _a[1];
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        var timeout = setTimeout(function () { return setIsMounted(true); }, 500);
+        return function () { return clearTimeout(timeout); };
+    }, []);
+    return isMounted;
+}
+
+
+/***/ }),
+
+/***/ "./src/routes/settings/statuses/views/multipleContainersKeyboardCoordinates.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/routes/settings/statuses/views/multipleContainersKeyboardCoordinates.ts ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   coordinateGetter: () => (/* binding */ coordinateGetter)
+/* harmony export */ });
+/* harmony import */ var _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @dnd-kit/core */ "./node_modules/@dnd-kit/core/dist/core.esm.js");
+
+var directions = [
+    _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Down,
+    _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Right,
+    _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Up,
+    _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Left,
+];
+var coordinateGetter = function (event, _a) {
+    var _b;
+    var _c = _a.context, active = _c.active, droppableRects = _c.droppableRects, droppableContainers = _c.droppableContainers, collisionRect = _c.collisionRect;
+    if (directions.includes(event.code)) {
+        event.preventDefault();
+        if (!active || !collisionRect) {
+            return;
+        }
+        var filteredContainers_1 = [];
+        droppableContainers.getEnabled().forEach(function (entry) {
+            var _a;
+            if (!entry || (entry === null || entry === void 0 ? void 0 : entry.disabled)) {
+                return;
+            }
+            var rect = droppableRects.get(entry.id);
+            if (!rect) {
+                return;
+            }
+            var data = entry.data.current;
+            if (data) {
+                var type = data.type, children = data.children;
+                if (type === 'container' && (children === null || children === void 0 ? void 0 : children.length) > 0) {
+                    if (((_a = active.data.current) === null || _a === void 0 ? void 0 : _a.type) !== 'container') {
+                        return;
+                    }
+                }
+            }
+            switch (event.code) {
+                case _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Down:
+                    if (collisionRect.top < rect.top) {
+                        filteredContainers_1.push(entry);
+                    }
+                    break;
+                case _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Up:
+                    if (collisionRect.top > rect.top) {
+                        filteredContainers_1.push(entry);
+                    }
+                    break;
+                case _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Left:
+                    if (collisionRect.left >= rect.left + rect.width) {
+                        filteredContainers_1.push(entry);
+                    }
+                    break;
+                case _dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.KeyboardCode.Right:
+                    if (collisionRect.left + collisionRect.width <= rect.left) {
+                        filteredContainers_1.push(entry);
+                    }
+                    break;
+            }
+        });
+        var collisions = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.closestCorners)({
+            active: active,
+            collisionRect: collisionRect,
+            droppableRects: droppableRects,
+            droppableContainers: filteredContainers_1,
+            pointerCoordinates: null,
+        });
+        var closestId = (0,_dnd_kit_core__WEBPACK_IMPORTED_MODULE_0__.getFirstCollision)(collisions, 'id');
+        if (closestId != null) {
+            var newDroppable = droppableContainers.get(closestId);
+            var newNode = newDroppable === null || newDroppable === void 0 ? void 0 : newDroppable.node.current;
+            var newRect = newDroppable === null || newDroppable === void 0 ? void 0 : newDroppable.rect.current;
+            if (newNode && newRect) {
+                if (newDroppable.id === 'placeholder') {
+                    return {
+                        x: newRect.left + (newRect.width - collisionRect.width) / 2,
+                        y: newRect.top + (newRect.height - collisionRect.height) / 2,
+                    };
+                }
+                if (((_b = newDroppable.data.current) === null || _b === void 0 ? void 0 : _b.type) === 'container') {
+                    return {
+                        x: newRect.left + 20,
+                        y: newRect.top + 74,
+                    };
+                }
+                return {
+                    x: newRect.left,
+                    y: newRect.top,
+                };
+            }
+        }
+    }
+    return undefined;
+};
 
 
 /***/ }),

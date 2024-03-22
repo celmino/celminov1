@@ -15,6 +15,11 @@ export const ListStatusesCollection = {
             "size": 16777216
         },
         {
+            "key": "type",
+            "type": "string",
+            "size": 255
+        },
+        {
             "key": "bgColor",
             "type": "string",
             "size": 50

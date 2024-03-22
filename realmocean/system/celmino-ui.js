@@ -21044,6 +21044,15 @@ const ListStatusesFields = [
         "collectionId": "listStatuses",
     },
     {
+        "key": "type",
+        "name": "Type",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "listStatuses",
+    },
+    {
         "key": "color",
         "name": "Color",
         "type": "string",
@@ -21247,6 +21256,7 @@ const documents = [
     {
         "name": "To Do",
         "description": "To Do",
+        "type": "opened",
         "bgColor": "#D40915",
         "fgColor": "white",
         "orderBy": 1
@@ -21256,11 +21266,13 @@ const documents = [
         "description": "In Progress",
         "bgColor": "#FBA32F",
         "fgColor": "white",
+        "type": "active",
         "orderBy": 2
     },
     {
         "name": "Done",
         "description": "Done",
+        "type": "closed",
         "bgColor": "#4FAF54",
         "fgColor": "white",
         "orderBy": 3
@@ -21296,6 +21308,11 @@ const ListStatusesCollection = {
             "key": "description",
             "type": "string",
             "size": 16777216
+        },
+        {
+            "key": "type",
+            "type": "string",
+            "size": 255
         },
         {
             "key": "bgColor",
