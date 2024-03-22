@@ -39271,7 +39271,11 @@ var MyTestController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     MyTestController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width('100%').height('100%'));
+        return (
+        /* ReactView(
+            <PopoverDemo></PopoverDemo>
+        ) */
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRouteOutlet)().width('100%').height('100%'));
     };
     return MyTestController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIFormController));
@@ -39998,7 +40002,7 @@ var DocumentController = /** @class */ (function (_super) {
         var _c = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useGetDocument)({
             projectId: workspaceId,
             databaseId: appletId,
-            collectionId: 'documentContents',
+            collectionId: 'documentContent',
             documentId: documentId
         }), content = _c.document, isLoading = _c.isLoading;
         var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_4__.useUpdateDocument)(workspaceId).updateDocument;
@@ -40057,7 +40061,7 @@ var DocumentController = /** @class */ (function (_super) {
                         console.log(data);
                         updateDocument({
                             databaseId: appletId,
-                            collectionId: 'documentContents',
+                            collectionId: 'documentContent',
                             documentId: documentId,
                             data: {
                                 content: JSON.stringify(data)

@@ -35,7 +35,7 @@ export class DocumentController extends UIController {
         const { document: content, isLoading } = useGetDocument({
             projectId: workspaceId,
             databaseId: appletId,
-            collectionId: 'documentContents',
+            collectionId: 'documentContent',
             documentId: documentId
         })
 
@@ -104,7 +104,7 @@ export class DocumentController extends UIController {
                                                     console.log(data)
                                                     updateDocument({
                                                         databaseId: appletId,
-                                                        collectionId: 'documentContents',
+                                                        collectionId: 'documentContent',
                                                         documentId: documentId,
                                                         data: {
                                                             content: JSON.stringify(data)
