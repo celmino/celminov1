@@ -76,7 +76,7 @@ const EditorComponent = ({ defaultValue, onChange }) => {
         };
     }, []);
 
-    return <Fragment><div id='editorjs' style={{ width: '50%', border: 'solid 1px gray' }} ></div></Fragment>;
+    return <Fragment><div id='editorjs' style={{ width: '100%' }} ></div></Fragment>;
 }
 
 export default EditorComponent;
