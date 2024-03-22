@@ -1,10 +1,11 @@
 import { Modifier } from "@dnd-kit/core/dist/modifiers";
-import { Fragment, HStack, ReactView, Text, VStack, cHorizontal, cLeading } from "@tuval/forms";
+import { Fragment, HStack, ReactView, Text, TextField, UIViewBuilder, VStack, cHorizontal, cLeading } from "@tuval/forms";
 
 import React from "react";
 import { MultipleContainers } from "./MultipleContainers";
 import { useTaskStatus } from "../../../../hooks/useTaskStatus";
 import { useCreateStatus } from "../../../../hooks/useCreateStatus";
+
 
 
 export const restrictToHorizontalAxis: Modifier = ({ transform, over }) => {
@@ -62,7 +63,7 @@ export const ListStatusView = () => {
 
     const { statuses, isLoading } = useTaskStatus();
     const { createStatus } = useCreateStatus();
-    
+
     return (
         isLoading ? Fragment() : VStack(
             ReactView(
@@ -72,6 +73,7 @@ export const ListStatusView = () => {
                         .map(statu => ({
                             id: statu.$id,
                             title: statu.name,
+                            type: statu.type,
                             color: statu.bgColor
                         })),
                     "Active Statuses": statuses
@@ -79,6 +81,7 @@ export const ListStatusView = () => {
                         .map(statu => ({
                             id: statu.$id,
                             title: statu.name,
+                            type: statu.type,
                             color: statu.bgColor
                         })),
                     "Done Statuses": statuses
@@ -86,6 +89,7 @@ export const ListStatusView = () => {
                         .map(statu => ({
                             id: statu.$id,
                             title: statu.name,
+                            type: statu.type,
                             color: statu.bgColor
                         })),
                     "Closed Status": statuses
@@ -93,6 +97,7 @@ export const ListStatusView = () => {
                         .map(statu => ({
                             id: statu.$id,
                             title: statu.name,
+                            type: statu.type,
                             color: statu.bgColor
                         })),
                 }} vertical
@@ -123,17 +128,24 @@ export const ListStatusView = () => {
                     }
                     template={(args) => {
                         return (
-                            HStack({ alignment: cLeading, spacing: 5 })(
-                                (args.value.id !== "1" && args.value.id !== "4") ? args.handleView : HStack().width(13).height(20),
-                                HStack().width(10).height(10).background(args.value.color).cornerRadius(2),
-                                HStack({ alignment: cLeading })(
-                                    Text(args.value.title).fontSize(12).textTransform('uppercase')
-                                ).foregroundColor(args.value.color)
+                            UIViewBuilder(() => {
+                                return (
+                                    HStack({ alignment: cLeading, spacing: 5 })(
+                                        (args.value.type !== "opened" && args.value.type !== "closed") ? args.handleView : HStack().width(13).height(20),
+                                        HStack().width(10).height(10).background(args.value.color).cornerRadius(2),
+                                        HStack({ alignment: cLeading })(
+                                            TextField().value(args.value.title)
+                                            .border('none')
+                                            // Text(args.value.title).fontSize(12).textTransform('uppercase')
+                                        ).foregroundColor(args.value.color)
+                                    )
+                                        .padding(cHorizontal, 5)
+                                        .border(args.dragOverlay ? '' : '1px solid #d8d8d8')
+                                        .cornerRadius(3)
+                                        .height(28).background('white')
+                                )
+                            }
                             )
-                                .padding(cHorizontal, 5)
-                                .border(args.dragOverlay ? '' : '1px solid #d8d8d8')
-                                .cornerRadius(3)
-                                .height(28).background('white')
                         )
                     }} />
             ).frame(true).width('100%')

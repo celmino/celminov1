@@ -32195,6 +32195,50 @@ var WorkspaceTreeWidgetController = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/hooks/useCreateStatus.ts":
+/*!**************************************!*\
+  !*** ./src/hooks/useCreateStatus.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useCreateStatus: () => (/* binding */ useCreateStatus)
+/* harmony export */ });
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @celmino/ui */ "@celmino/ui");
+/* harmony import */ var _celmino_ui__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_celmino_ui__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
+/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__);
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+
+var useCreateStatus = function () {
+    var realm = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useRealm)().realm;
+    var applet = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useApplet)().applet;
+    var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(realm.$id, applet.$id, 'listStatuses'), createDocument = _a.createDocument, isLoading = _a.isLoading;
+    var createStatus = function (status, onSuccess) {
+        if (onSuccess === void 0) { onSuccess = function () { return void 0; }; }
+        createDocument({
+            data: __assign({}, status)
+        }, function (status) { return onSuccess(status); });
+    };
+    return { createStatus: createStatus, isLoading: isLoading };
+};
+
+
+/***/ }),
+
 /***/ "./src/hooks/useTaskStatus.ts":
 /*!************************************!*\
   !*** ./src/hooks/useTaskStatus.ts ***!
@@ -32623,6 +32667,15 @@ var __assign = (undefined && undefined.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 
 
 
@@ -32711,7 +32764,7 @@ var ListController = /** @class */ (function (_super) {
                         workspaceId: workspaceId,
                         listId: appletId,
                         fields: resultFields,
-                        groups: groups.map(function (group) { return (__assign({ id: group.$id }, group)); }),
+                        groups: __spreadArray(__spreadArray(__spreadArray(__spreadArray([], groups.filter(function (group) { return group.type === 'opened'; }), true), groups.filter(function (group) { return group.type === 'active'; }), true), groups.filter(function (group) { return group.type === 'done'; }), true), groups.filter(function (group) { return group.type === 'closed'; }), true).map(function (group) { return (__assign({ id: group.$id }, group)); }),
                         groupBy: 'status',
                         onItemChanged: function (itemId, data) {
                             updateDocument({
@@ -34108,6 +34161,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _MultipleContainers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MultipleContainers */ "./src/routes/settings/statuses/views/MultipleContainers.tsx");
 /* harmony import */ var _hooks_useTaskStatus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../hooks/useTaskStatus */ "./src/hooks/useTaskStatus.ts");
+/* harmony import */ var _hooks_useCreateStatus__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../hooks/useCreateStatus */ "./src/hooks/useCreateStatus.ts");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -34119,6 +34173,7 @@ var __assign = (undefined && undefined.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+
 
 
 
@@ -34170,12 +34225,14 @@ var ListStatusView = function () {
         }
     }) */
     var _a = (0,_hooks_useTaskStatus__WEBPACK_IMPORTED_MODULE_3__.useTaskStatus)(), statuses = _a.statuses, isLoading = _a.isLoading;
+    var createStatus = (0,_hooks_useCreateStatus__WEBPACK_IMPORTED_MODULE_4__.useCreateStatus)().createStatus;
     return (isLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)() : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_MultipleContainers__WEBPACK_IMPORTED_MODULE_2__.MultipleContainers, { handle: true, items: {
             "Opened Status": statuses
                 .filter(function (statu) { return statu.type === 'opened'; })
                 .map(function (statu) { return ({
                 id: statu.$id,
                 title: statu.name,
+                type: statu.type,
                 color: statu.bgColor
             }); }),
             "Active Statuses": statuses
@@ -34183,6 +34240,7 @@ var ListStatusView = function () {
                 .map(function (statu) { return ({
                 id: statu.$id,
                 title: statu.name,
+                type: statu.type,
                 color: statu.bgColor
             }); }),
             "Done Statuses": statuses
@@ -34190,6 +34248,7 @@ var ListStatusView = function () {
                 .map(function (statu) { return ({
                 id: statu.$id,
                 title: statu.name,
+                type: statu.type,
                 color: statu.bgColor
             }); }),
             "Closed Status": statuses
@@ -34197,6 +34256,7 @@ var ListStatusView = function () {
                 .map(function (statu) { return ({
                 id: statu.$id,
                 title: statu.name,
+                type: statu.type,
                 color: statu.bgColor
             }); }),
         }, vertical: true, 
@@ -34221,11 +34281,16 @@ var ListStatusView = function () {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(label)).textTransform("uppercase").fontSize(9).fontWeight('500').foregroundColor('rgb(107, 119, 140)')
                 .height(30);
         }, template: function (args) {
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((args.value.id !== "1" && args.value.id !== "4") ? args.handleView : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(13).height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).height(10).background(args.value.color).cornerRadius(2), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(args.value.title).fontSize(12).textTransform('uppercase')).foregroundColor(args.value.color))
-                .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5)
-                .border(args.dragOverlay ? '' : '1px solid #d8d8d8')
-                .cornerRadius(3)
-                .height(28).background('white'));
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
+                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((args.value.type !== "opened" && args.value.type !== "closed") ? args.handleView : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(13).height(20), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().width(10).height(10).background(args.value.color).cornerRadius(2), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().value(args.value.title)
+                    .border('none')
+                // Text(args.value.title).fontSize(12).textTransform('uppercase')
+                ).foregroundColor(args.value.color))
+                    .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cHorizontal, 5)
+                    .border(args.dragOverlay ? '' : '1px solid #d8d8d8')
+                    .cornerRadius(3)
+                    .height(28).background('white'));
+            }));
         } })).frame(true).width('100%')));
 };
 
@@ -34258,6 +34323,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _hooks_useCreateStatus__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../hooks/useCreateStatus */ "./src/hooks/useCreateStatus.ts");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -34289,6 +34355,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+
 
 
 
@@ -34554,15 +34621,16 @@ function MultipleContainers(_a) {
             } },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: __spreadArray(__spreadArray([], containers, true), [PLACEHOLDER_ID], false), strategy: vertical
                     ? _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.verticalListSortingStrategy
-                    : _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.horizontalListSortingStrategy },
-                containers.map(function (containerId) {
-                    var _a;
-                    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DroppableContainer, { key: containerId, id: containerId, label: minimal ? undefined : "".concat(containerId), template: containerLabelTemplate, columns: columns, items: items[containerId], scrollable: scrollable, style: containerStyle, unstyled: minimal, onRemove: function () { return handleRemove(containerId); } },
-                        (items[containerId].length === 0 && _tuval_core__WEBPACK_IMPORTED_MODULE_9__.is.function(placeholderTemplate)) ? ((_a = placeholderTemplate({ containerId: containerId })) === null || _a === void 0 ? void 0 : _a.render()) : void 0,
-                        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: items[containerId], strategy: strategy }, items[containerId].map(function (value, index) {
-                            return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SortableItem, { disabled: isSortingContainer, key: value.id, id: value.id, value: value, index: index, handle: handle, style: getItemStyles, wrapperStyle: wrapperStyle, renderItem: renderItem, template: template, containerId: containerId, getIndex: getIndex }));
-                        })),
-                        containerId === 'Active Statuses' && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.Text)("Add Status"))
+                    : _dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.horizontalListSortingStrategy }, containers.map(function (containerId) {
+                var _a;
+                return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DroppableContainer, { key: containerId, id: containerId, label: minimal ? undefined : "".concat(containerId), template: containerLabelTemplate, columns: columns, items: items[containerId], scrollable: scrollable, style: containerStyle, unstyled: minimal, onRemove: function () { return handleRemove(containerId); } },
+                    (items[containerId].length === 0 && _tuval_core__WEBPACK_IMPORTED_MODULE_9__.is.function(placeholderTemplate)) ? ((_a = placeholderTemplate({ containerId: containerId })) === null || _a === void 0 ? void 0 : _a.render()) : void 0,
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.SortableContext, { items: items[containerId], strategy: strategy }, items[containerId].map(function (value, index) {
+                        return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SortableItem, { disabled: isSortingContainer, key: value.id, id: value.id, value: value, index: index, handle: handle, style: getItemStyles, wrapperStyle: wrapperStyle, renderItem: renderItem, template: template, containerId: containerId, getIndex: getIndex }));
+                    })),
+                    (containerId === 'Active Statuses' || containerId === 'Done Statuses') && ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.UIViewBuilder)(function () {
+                        var createStatus = (0,_hooks_useCreateStatus__WEBPACK_IMPORTED_MODULE_10__.useCreateStatus)().createStatus;
+                        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.Text)("Add Status"))
                             .cursor('pointer')
                             .width()
                             .background({ default: '#7b68ee', hover: '#5b43ea' })
@@ -34572,19 +34640,30 @@ function MultipleContainers(_a) {
                             .cornerRadius(4)
                             .height(28).fontSize(14)
                             .onClick(function () {
-                            items[containerId].push({ id: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_8__.nanoid)(), title: "_In Progress", color: '#A875FF' });
-                            var _index = items[containerId].length - 1;
-                            console.log(items);
-                            (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(function () {
-                                setItems(function (items) {
-                                    var _a;
-                                    return (__assign(__assign({}, items), (_a = {}, _a[containerId] = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(items[containerId], _index, _index), _a)));
+                            createStatus({
+                                name: 'In Progress',
+                                type: containerId === 'Active Statuses' ? 'active' : 'done',
+                                bgColor: '#A875FF',
+                                orderBy: new Date().getTime()
+                            }, function (status) {
+                                items[containerId].push({
+                                    id: status.$id,
+                                    title: status.name,
+                                    color: status.bgColor,
+                                    tyoe: containerId === 'Active Statuses' ? 'active' : 'done'
+                                });
+                                var _index = items[containerId].length - 1;
+                                (0,react_dom__WEBPACK_IMPORTED_MODULE_1__.unstable_batchedUpdates)(function () {
+                                    setItems(function (items) {
+                                        var _a;
+                                        return (__assign(__assign({}, items), (_a = {}, _a[containerId] = (0,_dnd_kit_sortable__WEBPACK_IMPORTED_MODULE_3__.arrayMove)(items[containerId], _index, _index), _a)));
+                                    });
                                 });
                             });
-                        })
-                            .render())));
-                }),
-                minimal ? undefined : (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(DroppableContainer, { id: PLACEHOLDER_ID, disabled: isSortingContainer, items: empty, onClick: handleAddColumn, placeholder: true }, "+ Add column")))),
+                        }));
+                    })
+                        .render())));
+            }))),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_dnd_kit_core__WEBPACK_IMPORTED_MODULE_2__.DragOverlay, { adjustScale: adjustScale, dropAnimation: dropAnimation }, activeId
             ? containers.includes(activeId)
                 ? renderContainerDragOverlay(activeId)

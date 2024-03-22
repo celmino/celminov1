@@ -123,7 +123,13 @@ export class ListController extends UIFormController {
                                                     workspaceId: workspaceId,
                                                     listId: appletId,
                                                     fields: resultFields,
-                                                    groups: groups.map(group => ({ id: group.$id, ...group })),
+                                                    groups: [
+                                                        ...groups.filter(group => group.type === 'opened'),
+                                                        ...groups.filter(group => group.type === 'active'),
+                                                        ...groups.filter(group => group.type === 'done'),
+                                                        ...groups.filter(group => group.type === 'closed')
+
+                                                    ].map(group => ({ id: group.$id, ...group })),
                                                     groupBy: 'status',
                                                     onItemChanged: (itemId: string, data: any) => {
 

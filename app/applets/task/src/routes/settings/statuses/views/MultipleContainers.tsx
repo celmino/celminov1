@@ -37,10 +37,11 @@ import { coordinateGetter as multipleContainersCoordinateGetter } from './multip
 
 import { Item } from './Item';
 import { Container, ContainerProps } from './Container';
-import { Button, HStack, Text, UIView, nanoid } from '@tuval/forms';
+import { Button, HStack, Text, UIView, UIViewBuilder, nanoid } from '@tuval/forms';
 import { is } from '@tuval/core';
 import { MyKeyboardSensor, MyMouseSensor } from './Sensors';
 import { myVerticalListSortingStrategy } from './SortStrategy';
+import { useCreateStatus } from '../../../../hooks/useCreateStatus';
 
 
 
@@ -552,49 +553,68 @@ export function MultipleContainers({
                                 })}
                             </SortableContext>
                             {
-                                containerId === 'Active Statuses' && (
-                                    UIView
-                                    HStack(
-                                        Text("Add Status")
-                                    )
-                                    .cursor('pointer')
-                                    .width()
-                                    .background({default:'#7b68ee', hover:'#5b43ea'})
-                                    .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s')
-                                    .foregroundColor('white')
-                                    .padding('0 10px')
-                                    .cornerRadius(4)
-                                    .height(28).fontSize(14)
-                                        .onClick(() => {
-
-
-                                            (items as any)[containerId].push(
-                                                { id: nanoid(), title: "_In Progress", color: '#A875FF' },
+                                (containerId === 'Active Statuses' || containerId === 'Done Statuses') && (
+                                    UIViewBuilder(() => {
+                                        const { createStatus } = useCreateStatus();
+                                        return (
+                                            HStack(
+                                                Text("Add Status")
                                             )
+                                                .cursor('pointer')
+                                                .width()
+                                                .background({ default: '#7b68ee', hover: '#5b43ea' })
+                                                .transition('all .2s cubic-bezier(.785,.135,.15,.86) 0s')
+                                                .foregroundColor('white')
+                                                .padding('0 10px')
+                                                .cornerRadius(4)
+                                                .height(28).fontSize(14)
+                                                .onClick(() => {
 
-                                            const _index = (items as any)[containerId].length - 1;
-                                            console.log(items);
+                                                    createStatus({
+                                                        name: 'In Progress',
+                                                        type: containerId === 'Active Statuses' ? 'active' :  'done',
+                                                        bgColor: '#A875FF',
+                                                        orderBy:new Date().getTime()
+
+                                                    }, (status) => {
+
+                                                        (items as any)[containerId].push(
+                                                            {
+                                                                id: status.$id,
+                                                                title: status.name,
+                                                                color: status.bgColor,
+                                                                tyoe : containerId === 'Active Statuses' ? 'active' :  'done'
+                                                            },
+                                                        )
+
+                                                        const _index = (items as any)[containerId].length - 1;
+                                                   
+
+                                                        unstable_batchedUpdates(() => {
+                                                            setItems((items) => ({
+                                                                ...items,
+                                                                [containerId]: arrayMove(
+                                                                    items[containerId],
+                                                                    _index,
+                                                                    _index
+                                                                ),
+                                                            }));
+
+                                                        });
+                                                    });
 
 
-                                            unstable_batchedUpdates(() => {
-                                                setItems((items) => ({
-                                                    ...items,
-                                                    [containerId]: arrayMove(
-                                                        items[containerId],
-                                                        _index,
-                                                        _index
-                                                    ),
-                                                }));
+                                                })
+                                        )
 
-                                            });
+                                    })
 
-                                        })
                                         .render()
                                 )
                             }
                         </DroppableContainer>
                     ))}
-                    {minimal ? undefined : (
+                   {/*  {minimal ? undefined : (
                         <DroppableContainer
                             id={PLACEHOLDER_ID}
                             disabled={isSortingContainer}
@@ -604,7 +624,7 @@ export function MultipleContainers({
                         >
                             + Add column
                         </DroppableContainer>
-                    )}
+                    )} */}
                 </SortableContext>
             </div>
             <DragOverlay adjustScale={adjustScale} dropAnimation={dropAnimation}>

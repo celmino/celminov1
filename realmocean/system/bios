@@ -12135,20 +12135,23 @@ var CreateWorkspaceView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED
                                     return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false)];
                                 case 14:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false)];
                                 case 15:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false)];
                                 case 16:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false)];
                                 case 17:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false)];
                                 case 18:
                                     _a.sent();
-                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false)];
                                 case 19:
+                                    _a.sent();
+                                    return [4 /*yield*/, _realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1')];
+                                case 20:
                                     _a.sent();
                                     navigate("/app/".concat((0,_utils_urlFriendly__WEBPACK_IMPORTED_MODULE_3__.urlFriendly)(organization.name), "-").concat(organization.$id, "/").concat(workspace.name, "-").concat(workspace.$id));
                                     return [2 /*return*/];
