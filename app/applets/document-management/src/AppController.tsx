@@ -4,8 +4,6 @@ import {
     UIRouteOutlet,
     useState
 } from "@tuval/forms";
-import React from "react";
-import PopoverDemo from "./Test";
 
 
 export class MyTestController extends UIFormController {

@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import * as Popover from '@radix-ui/react-popover';
 import { styled, keyframes } from '@stitches/react';
 import { violet, mauve, blackA } from '@radix-ui/colors';
@@ -166,4 +166,4 @@ const Text = styled('p', {
     fontWeight: 500,
 });
 
-export default PopoverDemo;
+export default PopoverDemo; */

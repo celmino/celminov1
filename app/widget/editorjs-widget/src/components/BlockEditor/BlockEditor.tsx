@@ -21,6 +21,7 @@ import { TiptapProps } from './types'
 import { EditorHeader } from './components/EditorHeader'
 import { TextMenu } from '../menus/TextMenu'
 import { ContentItemMenu } from '../menus/ContentItemMenu'
+import { HStack, ReactView, ScrollView, cTop, cTopLeading, cVertical } from '@tuval/forms'
 
 export const BlockEditor = ({ aiToken, ydoc, provider }: TiptapProps) => {
   const aiState = useAIState()
@@ -49,7 +50,7 @@ export const BlockEditor = ({ aiToken, ydoc, provider }: TiptapProps) => {
   return (
     <EditorContext.Provider value={providerValue}>
       <div className="flex h-full" ref={menuContainerRef}>
-     {/*    <button onClick={()=> console.log(editor.getJSON())}>Get HTML</button> */}
+        {/*    <button onClick={()=> console.log(editor.getJSON())}>Get HTML</button> */}
         <Sidebar isOpen={leftSidebar.isOpen} onClose={leftSidebar.close} editor={editor} />
         <div className="relative flex flex-col flex-1 h-full overflow-hidden">
           <EditorHeader
@@ -60,9 +61,18 @@ export const BlockEditor = ({ aiToken, ydoc, provider }: TiptapProps) => {
             isSidebarOpen={leftSidebar.isOpen}
             toggleSidebar={leftSidebar.toggle}
           />
-          <EditorContent editor={editor}
-            //@ts-ignore
-            ref={editorRef} className="flex-1 overflow-y-auto" />
+          {
+            HStack(
+              ScrollView({ axes: cVertical, alignment: cTop })(
+                ReactView(
+                  <EditorContent editor={editor}
+                    //@ts-ignore
+                    ref={editorRef} />
+                )
+              )
+            ).render()
+
+          }
           <ContentItemMenu editor={editor} />
           <LinkMenu editor={editor} appendTo={menuContainerRef} />
           <TextMenu editor={editor} />

@@ -39903,7 +39903,7 @@ var RouteController = /** @class */ (function (_super) {
                     return _super !== null && _super.apply(this, arguments) || this;
                 }
                 return class_1;
-            }(_folder_folderId_controller__WEBPACK_IMPORTED_MODULE_5__.FolderController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('d/:documentId', /** @class */ (function (_super) {
+            }(_folder_folderId_controller__WEBPACK_IMPORTED_MODULE_5__.FolderController))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIRoute)('d/:documentId', window.location.hash ? _document_documentId_controller__WEBPACK_IMPORTED_MODULE_3__.DocumentController : /** @class */ (function (_super) {
                 __extends(class_2, _super);
                 function class_2() {
                     return _super !== null && _super.apply(this, arguments) || this;
@@ -39938,7 +39938,8 @@ var RouteController = /** @class */ (function (_super) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DocumentController": () => (/* binding */ DocumentController)
+/* harmony export */   "DocumentController": () => (/* binding */ DocumentController),
+/* harmony export */   "HashController": () => (/* binding */ HashController)
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
@@ -40026,54 +40027,67 @@ var DocumentController = /** @class */ (function (_super) {
 
                          })
                  ) */
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)(document === null || document === void 0 ? void 0 : document.viewer)
-                    .config({
-                    defaultValue: _tuval_core__WEBPACK_IMPORTED_MODULE_5__.is.nullOrEmpty(content === null || content === void 0 ? void 0 : content.content) ? null : JSON.parse(content.content),
-                    clamp: true,
-                    workspaceId: workspaceId,
-                    appletId: appletId,
-                    tools: {
-                        image: {
-                            class: (editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7___default()),
-                            inlineToolbar: true,
-                            config: {
-                                embed: {
-                                    display: true,
-                                },
-                                unsplash: {
-                                    appName: 'your_app_name',
-                                    clientId: 'your_client_id'
+                window.location.hash ?
+                    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIWidget)(document === null || document === void 0 ? void 0 : document.viewer)
+                        .config({
+                        defaultValue: _tuval_core__WEBPACK_IMPORTED_MODULE_5__.is.nullOrEmpty(content === null || content === void 0 ? void 0 : content.content) ? null : JSON.parse(content.content),
+                        clamp: true,
+                        workspaceId: workspaceId,
+                        appletId: appletId,
+                        tools: {
+                            image: {
+                                class: (editorjs_inline_image__WEBPACK_IMPORTED_MODULE_7___default()),
+                                inlineToolbar: true,
+                                config: {
+                                    embed: {
+                                        display: true,
+                                    },
+                                    unsplash: {
+                                        appName: 'your_app_name',
+                                        clientId: 'your_client_id'
+                                    }
                                 }
+                            },
+                            link: {
+                                class: _tools_SimplePlugin__WEBPACK_IMPORTED_MODULE_6__.SimpleImage,
+                                inlineToolbar: true,
+                                shortcut: 'CMD+SHIFT+W',
+                                config: {
+                                    workspaceId: workspaceId,
+                                    appletId: appletId,
+                                    openDialog: openDialog
+                                },
                             }
                         },
-                        link: {
-                            class: _tools_SimplePlugin__WEBPACK_IMPORTED_MODULE_6__.SimpleImage,
-                            inlineToolbar: true,
-                            shortcut: 'CMD+SHIFT+W',
-                            config: {
-                                workspaceId: workspaceId,
-                                appletId: appletId,
-                                openDialog: openDialog
-                            },
+                        onChange: function (data) {
+                            console.log(data);
+                            updateDocument({
+                                databaseId: appletId,
+                                collectionId: 'documentContent',
+                                documentId: documentId,
+                                data: {
+                                    content: JSON.stringify(data)
+                                }
+                            });
                         }
-                    },
-                    onChange: function (data) {
-                        console.log(data);
-                        updateDocument({
-                            databaseId: appletId,
-                            collectionId: 'documentContent',
-                            documentId: documentId,
-                            data: {
-                                content: JSON.stringify(data)
-                            }
-                        });
-                    }
-                }));
+                    })
+                    : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('##'));
             }))
                 .background('white')
                 .render())));
     };
     return DocumentController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+var HashController = /** @class */ (function (_super) {
+    __extends(HashController, _super);
+    function HashController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    HashController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UINavigate)('##'));
+    };
+    return HashController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 

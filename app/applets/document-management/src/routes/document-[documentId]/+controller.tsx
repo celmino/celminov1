@@ -1,4 +1,4 @@
-import { UIController, UIView, useParams, Routes, Text, UIWidget, VStack, ReactView, DialogStack, Fragment, cTopLeading, UIViewBuilder, HStack, Button, useDialogStack, TextField, useState } from "@tuval/forms";
+import { UIController, UIView, useParams, Routes, Text, UIWidget, VStack, ReactView, DialogStack, Fragment, cTopLeading, UIViewBuilder, HStack, Button, useDialogStack, TextField, useState, useNavigate, useEffect, UINavigate } from "@tuval/forms";
 import { ActionPanel } from "../../views/ActionPanel";
 import { DocumentHeader } from "../../views/ViewHeader";
 import React from "react";
@@ -17,6 +17,7 @@ export class DocumentController extends UIController {
 
 
     public override LoadView(): UIView {
+
         const { documentId = this.props.documentId } = useParams();
 
         const { realm } = useRealm();
@@ -68,50 +69,52 @@ export class DocumentController extends UIController {
  
                                                  })
                                          ) */
-                                        UIWidget(document?.viewer)
-                                            .config({
-                                                defaultValue: is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
-                                                clamp: true,
-                                                workspaceId: workspaceId,
-                                                appletId: appletId,
-                                                tools: {
-                                                    image: {
-                                                        class: InlineImage,
-                                                        inlineToolbar: true,
-                                                        config: {
-                                                            embed: {
-                                                                display: true,
-                                                            },
-                                                            unsplash: {
-                                                                appName: 'your_app_name',
-                                                                clientId: 'your_client_id'
+                                        window.location.hash ?
+                                            UIWidget(document?.viewer)
+                                                .config({
+                                                    defaultValue: is.nullOrEmpty(content?.content) ? null : JSON.parse(content.content),
+                                                    clamp: true,
+                                                    workspaceId: workspaceId,
+                                                    appletId: appletId,
+                                                    tools: {
+                                                        image: {
+                                                            class: InlineImage,
+                                                            inlineToolbar: true,
+                                                            config: {
+                                                                embed: {
+                                                                    display: true,
+                                                                },
+                                                                unsplash: {
+                                                                    appName: 'your_app_name',
+                                                                    clientId: 'your_client_id'
+                                                                }
                                                             }
+                                                        },
+                                                        link: {
+                                                            class: SimpleImage,
+                                                            inlineToolbar: true,
+                                                            shortcut: 'CMD+SHIFT+W',
+                                                            config: {
+                                                                workspaceId: workspaceId,
+                                                                appletId: appletId,
+                                                                openDialog
+
+                                                            },
                                                         }
                                                     },
-                                                    link: {
-                                                        class: SimpleImage,
-                                                        inlineToolbar: true,
-                                                        shortcut: 'CMD+SHIFT+W',
-                                                        config: {
-                                                            workspaceId: workspaceId,
-                                                            appletId: appletId,
-                                                            openDialog
-
-                                                        },
+                                                    onChange: (data) => {
+                                                        console.log(data)
+                                                        updateDocument({
+                                                            databaseId: appletId,
+                                                            collectionId: 'documentContent',
+                                                            documentId: documentId,
+                                                            data: {
+                                                                content: JSON.stringify(data)
+                                                            }
+                                                        })
                                                     }
-                                                },
-                                                onChange: (data) => {
-                                                    console.log(data)
-                                                    updateDocument({
-                                                        databaseId: appletId,
-                                                        collectionId: 'documentContent',
-                                                        documentId: documentId,
-                                                        data: {
-                                                            content: JSON.stringify(data)
-                                                        }
-                                                    })
-                                                }
-                                            })
+                                                })
+                                            : UINavigate('##')
                                     )
                                 })
 
@@ -123,6 +126,16 @@ export class DocumentController extends UIController {
                 )
 
 
+        )
+    }
+
+}
+
+
+export class HashController extends UIController {
+    public override LoadView(): UIView {
+        return (
+            UINavigate('##')
         )
     }
 

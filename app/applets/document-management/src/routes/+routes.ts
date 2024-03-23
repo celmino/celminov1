@@ -22,7 +22,7 @@ export class RouteController extends UIController {
                                 UIRoute('view/:viewId', class extends  ViewController {}),
                             ), */
                             UIRoute('f/:folderId',   class extends  FolderController {} ),
-                            UIRoute('d/:documentId',   class extends  DocumentController {} ),
+                            UIRoute('d/:documentId',  window.location.hash ? DocumentController : class extends  DocumentController {  } ),
                             UIRoute('whiteboard/:whiteboardId',   class extends  WhiteboardController {} ),
                             UIRoute(':view_id', ViewController),
                             UIRoute(':view_id/*', ViewController)

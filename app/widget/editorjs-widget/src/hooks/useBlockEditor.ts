@@ -16,7 +16,7 @@ import { useSidebar } from './useSidebar'
 import { initialContent } from '../initialContent'
 import Document from '@tiptap/extension-document'
 import Placeholder from '@tiptap/extension-placeholder'
-import { useOptions } from '@tuval/forms'
+import { useOptions, useParams } from '@tuval/forms'
 
 //const TIPTAP_AI_APP_ID = process.env.NEXT_PUBLIC_TIPTAP_AI_APP_ID
 //const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL || 'https://api.tiptap.dev/v1/ai'
@@ -45,7 +45,8 @@ export const useBlockEditor = ({
   const [collabState, setCollabState] = useState<WebSocketStatus>(WebSocketStatus.Connecting)
   const { setIsAiLoading, setAiError } = useContext(EditorContext)
 
-  const { onChange = () => void 0 , defaultValue} = useOptions();
+  const { onChange = () => void 0, defaultValue } = useOptions();
+
 
   const editor = useEditor(
     {
@@ -123,7 +124,6 @@ export const useBlockEditor = ({
     },
     [ydoc, provider],
   )
-
 
 
   const users = useMemo(() => {
