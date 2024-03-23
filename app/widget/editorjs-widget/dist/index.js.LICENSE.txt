@@ -1,0 +1,12 @@
+/**
+ * @license lucide-react v0.363.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+
+/**!
+* tippy.js v6.3.7
+* (c) 2017-2021 atomiks
+* MIT License
+*/

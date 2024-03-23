@@ -14,6 +14,9 @@ import { randomElement } from '../utils'
 import { EditorUser } from '../components/BlockEditor/types'
 import { useSidebar } from './useSidebar'
 import { initialContent } from '../initialContent'
+import Document from '@tiptap/extension-document'
+import Placeholder from '@tiptap/extension-placeholder'
+import { useOptions } from '@tuval/forms'
 
 //const TIPTAP_AI_APP_ID = process.env.NEXT_PUBLIC_TIPTAP_AI_APP_ID
 //const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL || 'https://api.tiptap.dev/v1/ai'
@@ -23,6 +26,11 @@ declare global {
     editor: Editor | null
   }
 }
+let filterTimeout;
+
+const CustomDocument = Document.extend({
+  content: 'heading block*',
+})
 
 export const useBlockEditor = ({
   aiToken,
@@ -37,48 +45,72 @@ export const useBlockEditor = ({
   const [collabState, setCollabState] = useState<WebSocketStatus>(WebSocketStatus.Connecting)
   const { setIsAiLoading, setAiError } = useContext(EditorContext)
 
+  const { onChange = () => void 0 , defaultValue} = useOptions();
+
   const editor = useEditor(
     {
       autofocus: true,
       onCreate: ({ editor }) => {
+        editor.commands.setContent(defaultValue ?? initialContent);
         provider?.on('synced', () => {
           if (editor.isEmpty) {
-            editor.commands.setContent(initialContent)
+
+
           }
         })
       },
+      onUpdate: ({ editor }) => {
+        clearTimeout(filterTimeout)
+        filterTimeout = setTimeout(() => {
+          onChange(editor.getJSON())
+          console.log(editor.getJSON())
+        }, 2000)
+
+      },
       extensions: [
+        CustomDocument,
         ...ExtensionKit({
           provider,
+        }),
+        Placeholder.configure({
+          placeholder: ({ node }) => {
+
+            if (node.type.name === 'heading') {
+              return 'What’s the title?'
+            }
+
+            return 'Can you add some further context?'
+          },
         }),
         Collaboration.configure({
           document: ydoc,
         }),
-      /*   CollaborationCursor.configure({
-          provider,
-          user: {
-            name: randomElement(userNames),
-            color: randomElement(userColors),
-          },
-        }), */
-       /*  Ai.configure({
-          appId: TIPTAP_AI_APP_ID,
-          token: aiToken,
-          baseUrl: TIPTAP_AI_BASE_URL,
-          autocompletion: true,
-          onLoading: () => {
-            setIsAiLoading(true)
-            setAiError(null)
-          },
-          onSuccess: () => {
-            setIsAiLoading(false)
-            setAiError(null)
-          },
-          onError: error => {
-            setIsAiLoading(false)
-            setAiError(error.message)
-          },
-        }), */
+
+        /*   CollaborationCursor.configure({
+            provider,
+            user: {
+              name: randomElement(userNames),
+              color: randomElement(userColors),
+            },
+          }), */
+        /*  Ai.configure({
+           appId: TIPTAP_AI_APP_ID,
+           token: aiToken,
+           baseUrl: TIPTAP_AI_BASE_URL,
+           autocompletion: true,
+           onLoading: () => {
+             setIsAiLoading(true)
+             setAiError(null)
+           },
+           onSuccess: () => {
+             setIsAiLoading(false)
+             setAiError(null)
+           },
+           onError: error => {
+             setIsAiLoading(false)
+             setAiError(error.message)
+           },
+         }), */
       ],
       editorProps: {
         attributes: {
@@ -91,6 +123,8 @@ export const useBlockEditor = ({
     },
     [ydoc, provider],
   )
+
+
 
   const users = useMemo(() => {
     if (!editor?.storage.collaborationCursor?.users) {

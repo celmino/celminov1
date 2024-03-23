@@ -1,11 +1,13 @@
 docker run -it --rm \
     --volume /var/run/docker.sock:/var/run/docker.sock \
-    realmocean/celmino:1.0.83
+    realmocean/celmino:1.0.84
     # docker stop $(docker ps -a -q)
 
     # docker rm $(docker ps -a -q)
 
     # docker rmi $(docker images | grep 'realmocean/realmocean')
+
+    # docker rmi $(docker images | grep 'realmocean/celmino')
 
     # for delete volumes 
 

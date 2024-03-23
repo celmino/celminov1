@@ -103,8 +103,6 @@
     "devDependencies": {
         "@celmino/directoryprotocol": "^0.0.7",
         "@codexteam/ajax": "^4.2.0",
-        "@editorjs/nested-list": "^1.4.2",
-        "@editorjs/table": "^2.3.0",
         "@hocuspocus/provider": "^2.11.3",
         "@popperjs/core": "^2.11.8",
         "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -163,8 +161,6 @@
         "d3-graphviz": "^4.0.0",
         "declaration-bundler-webpack-plugin": "^1.0.3",
         "dts-bundle": "^0.7.3",
-        "editorjs-drag-drop": "^1.1.13",
-        "editorjs-table": "^1.4.10",
         "editorjs-toggle-block": "^0.3.14",
         "ifdef-loader": "^2.3.0",
         "lucide-react": "^0.363.0",
@@ -183,11 +179,10 @@
         "typescript": "^5.4.3",
         "url-polyfill": "^1.1.12",
         "webpack": "^5.47.0",
+        "webpack-bundle-analyzer": "^4.10.1",
         "webpack-cli": "^4.7.2"
     },
     "dependencies": {
-        "@editorjs/editorjs": "^2.29.0",
-        "@editorjs/list": "^1.9.0",
         "@tiptap/extension-typography": "^2.2.4",
         "@tiptap/react": "^2.2.4",
         "@tiptap/starter-kit": "^2.2.4",

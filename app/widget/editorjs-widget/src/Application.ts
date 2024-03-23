@@ -1,4 +1,4 @@
-import { UIController } from '@tuval/forms';
+
 import { EditorJsController } from './AppController';
 
 

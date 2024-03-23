@@ -154,11 +154,11 @@ export const ExtensionKit = ({ provider, userId, userName = 'Maxi' }: ExtensionK
   TableHeader,
   TableRow,
   Typography,
-  Placeholder.configure({
+ /*  Placeholder.configure({
     includeChildren: true,
     showOnlyCurrent: false,
     placeholder: () => '',
-  }),
+  }), */
   SlashCommand,
   Focus,
   Figcaption,

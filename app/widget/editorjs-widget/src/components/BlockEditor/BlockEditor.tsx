@@ -49,6 +49,7 @@ export const BlockEditor = ({ aiToken, ydoc, provider }: TiptapProps) => {
   return (
     <EditorContext.Provider value={providerValue}>
       <div className="flex h-full" ref={menuContainerRef}>
+     {/*    <button onClick={()=> console.log(editor.getJSON())}>Get HTML</button> */}
         <Sidebar isOpen={leftSidebar.isOpen} onClose={leftSidebar.close} editor={editor} />
         <div className="relative flex flex-col flex-1 h-full overflow-hidden">
           <EditorHeader
