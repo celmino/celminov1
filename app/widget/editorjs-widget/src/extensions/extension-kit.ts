@@ -2,7 +2,14 @@
 
 import { HocuspocusProvider } from '@hocuspocus/provider'
 
-import { API } from '@/lib/api'
+export class API {
+  public static uploadImage = async () => {
+    await new Promise(r => setTimeout(r, 500))
+    return '/placeholder-image.jpg'
+  }
+}
+
+
 
 import {
   AiWriter,
@@ -45,10 +52,10 @@ import {
   TaskItem,
   TaskList,
 } from '.'
-import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight'
+//import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight'
 import { ImageUpload } from './ImageUpload'
 import { TableOfContentsNode } from './TableOfContentsNode'
-import { lowlight } from 'lowlight'
+//import  lowlight  from 'lowlight'
 
 interface ExtensionKitProps {
   provider?: HocuspocusProvider | null
@@ -87,10 +94,10 @@ export const ExtensionKit = ({ provider, userId, userName = 'Maxi' }: ExtensionK
     history: false,
     codeBlock: false,
   }),
-  CodeBlockLowlight.configure({
+  /* CodeBlockLowlight.configure({
     lowlight,
     defaultLanguage: null,
-  }),
+  }), */
   TextStyle,
   FontSize,
   FontFamily,

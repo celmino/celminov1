@@ -32,6 +32,7 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
     <DragHandle
       pluginKey="ContentItemMenu"
       editor={editor}
+      //@ts-ignore
       onNodeChange={data.handleNodeChange}
       tippyOptions={{
         offset: [-2, 16],

@@ -1,4 +1,3 @@
-'use client'
 
 import { WebSocketStatus } from '@hocuspocus/provider'
 import { EditorContent, PureEditorContent } from '@tiptap/react'
@@ -8,7 +7,7 @@ import { LinkMenu } from '../menus'
 
 import { useBlockEditor } from '../../hooks/useBlockEditor'
 
-import '@/styles/index.css'
+import '../../styles/index.scss'
 
 import { Sidebar } from '../Sidebar'
 import { Loader } from '../ui/Loader'

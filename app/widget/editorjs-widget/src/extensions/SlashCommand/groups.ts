@@ -84,7 +84,7 @@ export const GROUPS: Group[] = [
         description: 'Task list with todo items',
         aliases: ['todo'],
         action: editor => {
-          editor.chain().focus().toggleTaskList().run()
+          (editor as any).chain().focus().toggleTaskList().run()
         },
       },
       {
@@ -119,7 +119,7 @@ export const GROUPS: Group[] = [
         description: 'Insert a table',
         shouldBeHidden: editor => editor.isActive('columns'),
         action: editor => {
-          editor.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
+          (editor as any).chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: false }).run()
         },
       },
       {
@@ -147,7 +147,7 @@ export const GROUPS: Group[] = [
             .focus(editor.state.selection.head - 1)
             .run()
         },
-      },
+      } as any,
       {
         name: 'horizontalRule',
         label: 'Horizontal Rule',

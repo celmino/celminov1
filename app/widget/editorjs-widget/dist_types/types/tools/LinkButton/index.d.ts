@@ -1,4 +1,4 @@
-import './index.css';
+import './index.scss';
 export default class LinkButton {
     api: any;
     config: any;

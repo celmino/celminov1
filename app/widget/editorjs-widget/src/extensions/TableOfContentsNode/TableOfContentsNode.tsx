@@ -1,6 +1,7 @@
 import { Node, NodeViewRendererProps } from '@tiptap/core'
 import { NodeViewWrapper, ReactNodeViewRenderer } from '@tiptap/react'
-import { TableOfContents } from '@/components/TableOfContents'
+import { TableOfContents } from '../../components/TableOfContents'
+import React from 'react'
 
 const TableOfNodeContent = (props: NodeViewRendererProps) => {
   const { editor } = props

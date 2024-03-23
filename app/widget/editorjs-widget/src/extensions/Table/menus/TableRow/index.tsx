@@ -1,11 +1,11 @@
 import { BubbleMenu as BaseBubbleMenu } from '@tiptap/react'
 import React, { useCallback } from 'react'
-import * as PopoverMenu from '@/components/ui/PopoverMenu'
+import * as PopoverMenu from '../../../../components/ui/PopoverMenu'
 
-import { Toolbar } from '@/components/ui/Toolbar'
+import { Toolbar } from '../../../../components/ui/Toolbar'
 import { isRowGripSelected } from './utils'
-import { Icon } from '@/components/ui/Icon'
-import { MenuProps, ShouldShowProps } from '@/components/menus/types'
+import { Icon } from '../../../../components/ui/Icon'
+import { MenuProps, ShouldShowProps } from '../../../../components/menus/types'
 
 export const TableRowMenu = React.memo(({ editor, appendTo }: MenuProps): JSX.Element => {
   const shouldShow = useCallback(
@@ -20,15 +20,15 @@ export const TableRowMenu = React.memo(({ editor, appendTo }: MenuProps): JSX.El
   )
 
   const onAddRowBefore = useCallback(() => {
-    editor.chain().focus().addRowBefore().run()
+    (editor as any).chain().focus().addRowBefore().run()
   }, [editor])
 
   const onAddRowAfter = useCallback(() => {
-    editor.chain().focus().addRowAfter().run()
+    (editor as any).chain().focus().addRowAfter().run()
   }, [editor])
 
   const onDeleteRow = useCallback(() => {
-    editor.chain().focus().deleteRow().run()
+    (editor as any).chain().focus().deleteRow().run()
   }, [editor])
 
   return (

@@ -1,11 +1,11 @@
 import { BubbleMenu as BaseBubbleMenu } from '@tiptap/react'
 import React, { useCallback } from 'react'
-import * as PopoverMenu from '@/components/ui/PopoverMenu'
+import * as PopoverMenu from '../../../../components/ui/PopoverMenu'
 
-import { Toolbar } from '@/components/ui/Toolbar'
+import { Toolbar } from '../../../../components/ui/Toolbar'
 import { isColumnGripSelected } from './utils'
-import { Icon } from '@/components/ui/Icon'
-import { MenuProps, ShouldShowProps } from '@/components/menus/types'
+import { Icon } from '../../../../components/ui/Icon'
+import { MenuProps, ShouldShowProps } from '../../../../components/menus/types'
 
 export const TableColumnMenu = React.memo(({ editor, appendTo }: MenuProps): JSX.Element => {
   const shouldShow = useCallback(
@@ -20,15 +20,15 @@ export const TableColumnMenu = React.memo(({ editor, appendTo }: MenuProps): JSX
   )
 
   const onAddColumnBefore = useCallback(() => {
-    editor.chain().focus().addColumnBefore().run()
+    (editor as any).chain().focus().addColumnBefore().run()
   }, [editor])
 
   const onAddColumnAfter = useCallback(() => {
-    editor.chain().focus().addColumnAfter().run()
+    (editor as any).chain().focus().addColumnAfter().run()
   }, [editor])
 
   const onDeleteColumn = useCallback(() => {
-    editor.chain().focus().deleteColumn().run()
+    (editor as any).chain().focus().deleteColumn().run()
   }, [editor])
 
   return (

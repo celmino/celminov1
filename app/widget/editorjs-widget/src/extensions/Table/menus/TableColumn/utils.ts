@@ -1,6 +1,6 @@
 import { Editor } from '@tiptap/react'
 import { EditorState } from '@tiptap/pm/state'
-import { EditorView } from '@tiptap/pm/view'
+//import { EditorView } from '@tiptap/pm/view'
 
 import { isTableSelected } from '../../utils'
 import { Table } from '../..'
@@ -12,7 +12,7 @@ export const isColumnGripSelected = ({
   from,
 }: {
   editor: Editor
-  view: EditorView
+  view: any /* EditorView */
   state: EditorState
   from: number
 }) => {

@@ -1,9 +1,10 @@
-import { Spinner } from '@/components/ui/Spinner'
+import { Spinner } from '../../../components/ui/Spinner'
 import { useDropZone, useFileUpload, useUploader } from './hooks'
-import { Button } from '@/components/ui/Button'
-import { Icon } from '@/components/ui/Icon'
-import { cn } from '@/lib/utils'
+import { Button } from '../../../components/ui/Button'
+import { Icon } from '../../../components/ui/Icon'
+import { cn } from '../../../utils'
 import { ChangeEvent, useCallback } from 'react'
+import React from 'react'
 
 export const ImageUploader = ({ onUpload }: { onUpload: (url: string) => void }) => {
   const { loading, uploadFile } = useUploader({ onUpload })
@@ -11,7 +12,7 @@ export const ImageUploader = ({ onUpload }: { onUpload: (url: string) => void })
   const { draggedInside, onDrop, onDragEnter, onDragLeave } = useDropZone({ uploader: uploadFile })
 
   const onFileChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => (e.target.files ? uploadFile(e.target.files[0]) : null),
+    (e: ChangeEvent<HTMLInputElement>) => (e.target.files ? (uploadFile as any)(e.target.files[0]) : null),
     [uploadFile],
   )
 

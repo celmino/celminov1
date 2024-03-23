@@ -1,6 +1,14 @@
 import { DragEvent, useCallback, useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
-import { API } from '@/lib/api'
+
+export class API {
+  public static uploadImage = async () => {
+    await new Promise(r => setTimeout(r, 500))
+    return '/placeholder-image.jpg'
+  }
+}
+
+export default API
 
 export const useUploader = ({ onUpload }: { onUpload: (url: string) => void }) => {
   const [loading, setLoading] = useState(false)

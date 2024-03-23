@@ -1,4 +1,4 @@
-'use client'
+
 
 // TODO: File causes circular dependency issue in ESLint
 /* eslint-disable */
@@ -15,7 +15,7 @@ export { Typography } from '@tiptap/extension-typography'
 export { Color } from '@tiptap/extension-color'
 export { FocusClasses as Focus } from '@tiptap/extension-focus'
 export { Dropcursor } from '@tiptap/extension-dropcursor'
-export { CollaborationCursor } from '@tiptap/extension-collaboration-cursor'
+//export { CollaborationCursor } from '@tiptap/extension-collaboration-cursor'
 export { Subscript } from '@tiptap/extension-subscript'
 export { TableOfContents } from '@tiptap-pro/extension-table-of-contents'
 export { Superscript } from '@tiptap/extension-superscript'

@@ -1,6 +1,6 @@
 import TiptapTableHeader from '@tiptap/extension-table-header'
 import { Plugin } from '@tiptap/pm/state'
-import { Decoration, DecorationSet } from '@tiptap/pm/view'
+import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { getCellsInRow, isColumnSelected, selectColumn } from './utils'
 

@@ -3,11 +3,12 @@ import { useCallback } from 'react'
 import { sticky } from 'tippy.js'
 import { v4 as uuid } from 'uuid'
 
-import { MenuProps } from '@/components/menus/types'
-import { getRenderContainer } from '@/lib/utils/getRenderContainer'
-import { Toolbar } from '@/components/ui/Toolbar'
+import { MenuProps } from '../../../components/menus/types'
+import { getRenderContainer } from '../../../utils/getRenderContainer'
+import { Toolbar } from '../../../components/ui/Toolbar'
 import { ColumnLayout } from '../Columns'
-import { Icon } from '@/components/ui/Icon'
+import { Icon } from '../../../components/ui/Icon'
+import React from 'react'
 
 export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
   const getReferenceClientRect = useCallback(() => {
@@ -64,7 +65,9 @@ export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
           active={editor.isActive('columns', { layout: ColumnLayout.TwoColumn })}
           onClick={onColumnTwo}
         >
-          <Icon name="Columns" />
+          <Icon 
+          //@ts-ignore
+          name="Columns" />
         </Toolbar.Button>
         <Toolbar.Button
           tooltip="Sidebar right"

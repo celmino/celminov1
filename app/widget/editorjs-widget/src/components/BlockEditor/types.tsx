@@ -1,5 +1,5 @@
 import { TiptapCollabProvider } from '@hocuspocus/provider'
-import { Language } from '@tiptap-pro/extension-ai'
+//import { Language } from '@tiptap-pro/extension-ai'
 import * as Y from 'yjs'
 
 export interface TiptapProps {
@@ -19,7 +19,7 @@ export type EditorUser = {
 export type LanguageOption = {
   name: string
   label: string
-  value: Language
+  value: any/* Language */
 }
 
 export type AiTone =

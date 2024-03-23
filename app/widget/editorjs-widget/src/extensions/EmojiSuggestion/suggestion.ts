@@ -19,7 +19,7 @@ export const emojiSuggestion = {
 
   render: () => {
     let component: ReactRenderer
-    let popup: Instance
+    let popup: any
 
     return {
       onStart: (props: SuggestionProps<any>) => {
@@ -55,7 +55,7 @@ export const emojiSuggestion = {
           return true
         }
 
-        return component.ref?.onKeyDown(props)
+        return (component as any).ref?.onKeyDown(props)
       },
 
       onExit() {

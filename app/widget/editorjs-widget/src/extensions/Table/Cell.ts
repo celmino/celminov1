@@ -1,6 +1,6 @@
 import { mergeAttributes, Node } from '@tiptap/core'
 import { Plugin } from '@tiptap/pm/state'
-import { Decoration, DecorationSet } from '@tiptap/pm/view'
+import { Decoration, DecorationSet } from 'prosemirror-view'
 
 import { getCellsInColumn, isRowSelected, selectRow } from './utils'
 
