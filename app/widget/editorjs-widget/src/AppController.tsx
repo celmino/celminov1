@@ -11,13 +11,14 @@ import {
   useOptions
 } from '@tuval/forms';
 
-import { Editor } from '@realmocean/editor';
 import { LinkTool } from './tools/link'
 import { SimpleImage } from './tools/SimplePlugin';
 
 import EditorJS from '@editorjs/editorjs';
 import EditorComponent from './EditorComponent';
 import React from 'react';
+import { Note } from './Tiptap';
+
 
 
 export class EditorJsController extends UIController {
@@ -27,7 +28,9 @@ export class EditorJsController extends UIController {
       ScrollView({ axes: cVertical, alignment: cTopLeading })(
         HStack({ alignment: cTopLeading })(
           ReactView(
-            <EditorComponent defaultValue={defaultValue} onChange={onChange}></EditorComponent>
+            <div style={{width:'100%', fontSize:'1.4rem'}}>
+          <Note></Note>
+          </div>
           )
         )
           .height()
