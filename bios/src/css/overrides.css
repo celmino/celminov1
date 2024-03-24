@@ -380,3 +380,10 @@ div.e-spin-show.e-spinner-pane {
     transition: transform cubic-bezier(.68,0,.27,1.55) .2s
 }
 
+.e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card, .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-container .e-card {
+    border: none !important;
+}
+
+.e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper, .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-container {
+    padding: 0px !important;
+}

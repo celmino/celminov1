@@ -1,0 +1,12 @@
+.e-kanban .e-kanban-table .e-header-cells {
+    background-color: transparent !important;
+}
+
+.e-kanban .e-kanban-header .e-header-cells {
+    padding: 0px !important;
+    height: auto !important;
+}
+
+.e-kanban .e-kanban-table.e-content-table .e-content-row:not(.e-swimlane-row) td {
+    background-color: transparent !important;
+}

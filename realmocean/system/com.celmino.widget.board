@@ -56,11 +56,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-};
 
 
 var MyTestController = /** @class */ (function (_super) {
@@ -82,59 +77,71 @@ var MyTestController = /** @class */ (function (_super) {
         EventBus.Default.off('tasks.changed', this.tasksChanged.bind(this))
     } */
     MyTestController.prototype.LoadView = function () {
-        var _a;
-        var _b = this.props.config, attributes = _b.attributes, items = _b.items, groupBy = _b.groupBy, onItemClick = _b.onItemClick;
+        var _a = this.props.config, attributes = _a.attributes, items = _a.items, groupBy = _a.groupBy, groups = _a.groups, onItemClick = _a.onItemClick;
         var field = attributes.find(function (field) { return field.key === groupBy; });
-        var groups = [];
-        if ((field === null || field === void 0 ? void 0 : field.type) === 'dropdown') {
-            var _c = JSON.parse((_a = field.type_content) !== null && _a !== void 0 ? _a : '{}').options, options = _c === void 0 ? [] : _c;
-            groups = options;
-        }
+        /*  if (field?.type === 'dropdown') {
+             const { options = [] } = JSON.parse(field.type_content ?? '{}');
+             groups = options;
+         } */
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_realmocean_kanban__WEBPACK_IMPORTED_MODULE_1__.UIKanban)()
-            .dataSource(items.map(function (item) { return ({
-            Id: item.$id,
-            Title: item.name,
-            Status: item.status,
-            Summary: '',
-            Type: "Story",
-            Priority: "Low",
-            Tags: "Analyze,Customer",
-            Estimate: 3.5,
-            Assignee: "Nancy Davloio",
-            RankId: 1,
-            Color: "#02897B",
-            ClassName: "e-story, e-low, e-nancy-davloio"
-        }); }))
+            .dataSource(items.map(function (item) {
+            var _a;
+            return ({
+                Id: item.$id,
+                Title: item.name,
+                Status: item.status,
+                Summary: '',
+                Type: "Story",
+                Priority: "Low",
+                Tags: "Analyze,Customer",
+                Estimate: 3.5,
+                Assignee: "Nancy Davloio",
+                RankId: 1,
+                Color: (_a = groups.find(function (group) { return group.$id === item.status; })) === null || _a === void 0 ? void 0 : _a.bgColor,
+                ClassName: "e-story, e-low, e-nancy-davloio"
+            });
+        }))
             .columns(groups.map(function (group) { return ({
             headerText: group.name,
             keyField: group.$id,
-            allowToggle: true
+            allowToggle: false
         }); }))
             .cardTemplate(function (e) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(e.Title).fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(e.Summary)
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(e.Title).fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(e.Summary)
                 .lineHeight('20px')
-                .multilineTextAlignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextAlignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 }).apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(e.Tags.split(','))(function (item) {
+                .multilineTextAlignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextAlignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(e.Tags.split(','))(function (item) {
                 return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item))
                     .allHeight(23).padding(10)
                     .width()
                     .background('#ececec')
                     .foregroundColor('#6b6b6b');
-            })), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(),
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIAvatar)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('ST'))])).height())
-                .minHeight(110)
-                .borderLeft("solid 4px " + e.Color).padding(7)
+            })))
+                .cornerRadius(6)
+                .margin(3)
+                .border('solid 1px rgb(232, 234, 237)')
+                .shadow('rgba(0, 0, 0, 0.055) 0px 1px 2px 0px'))
+                .allHeight(110)
+                .padding(5)
                 .onClick(function () {
                 // console.log();
                 onItemClick(items.find(function (item) { return item.$id === e.Id; }));
             });
         })
             .headerTemplate(function (e) {
+            var _a, _b;
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(e.headerText).fontSize(15).fontWeight('500'))
+                .height(30)
+                .padding()
+                .margin(3)
+                .cornerRadius(6)
+                .shadow('rgba(0, 0, 0, 0.106) 0px 1px 3px 0px, rgba(0, 0, 0, 0.106) 0px 1px 2px -1px')
+                .borderTop("solid 3px " + ((_b = (_a = groups.find(function (group) { return group.$id === e.keyField; })) === null || _a === void 0 ? void 0 : _a.bgColor) !== null && _b !== void 0 ? _b : ''))
                 .height();
         })))
+            .background('white')
             .cornerRadius(10)
             .padding(20)
-            .border('solid 1px rgb(240, 241,243)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)().height(50)));
+            .border('solid 1px rgb(240, 241,243)')));
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()

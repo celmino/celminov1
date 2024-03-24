@@ -39,14 +39,14 @@ export class MyTestController extends UIFormController {
 
     public override LoadView(): UIView {
 
-        const { attributes, items, groupBy, onItemClick } = this.props.config;
+        const { attributes, items, groupBy, groups, onItemClick } = this.props.config;
         const field = attributes.find((field) => field.key === groupBy);
-        let groups = [];
 
-        if (field?.type === 'dropdown') {
-            const { options = [] } = JSON.parse(field.type_content ?? '{}');
-            groups = options;
-        }
+
+        /*  if (field?.type === 'dropdown') {
+             const { options = [] } = JSON.parse(field.type_content ?? '{}');
+             groups = options;
+         } */
 
         return (
 
@@ -66,7 +66,7 @@ export class MyTestController extends UIFormController {
                                     Estimate: 3.5,
                                     Assignee: "Nancy Davloio",
                                     RankId: 1,
-                                    Color: "#02897B",
+                                    Color: groups.find(group => group.$id === item.status)?.bgColor,
                                     ClassName: "e-story, e-low, e-nancy-davloio"
                                 }))
 
@@ -75,37 +75,41 @@ export class MyTestController extends UIFormController {
                                 groups.map(group => ({
                                     headerText: group.name,
                                     keyField: group.$id,
-                                    allowToggle: true
+                                    allowToggle: false
                                 }))
                             )
                             .cardTemplate((e) =>
                                 VStack({ alignment: cTopLeading, spacing: 5 })(
-                                    Text(e.Title).fontWeight('500'),
-                                    Text(e.Summary)
-                                        .lineHeight('20px')
-                                        .multilineTextAlignment(TextAlignment.leading),
-                                    Spacer(),
-                                    HStack({ alignment: cLeading, spacing: 5 })(
-                                        ...ForEach(e.Tags.split(',') as string[])((item: string) =>
-                                            HStack(
-                                                Text(item)
-                                            )
-                                                .allHeight(23).padding(10)
-                                                .width()
-                                                .background('#ececec')
-                                                .foregroundColor('#6b6b6b')
-
-                                        ),
+                                    VStack(
+                                        Text(e.Title).fontWeight('500'),
+                                        Text(e.Summary)
+                                            .lineHeight('20px')
+                                            .multilineTextAlignment(TextAlignment.leading),
                                         Spacer(),
-                                        UIAvatar(
-                                            Text('ST')
+                                        HStack({ alignment: cLeading, spacing: 5 })(
+                                            ...ForEach(e.Tags.split(',') as string[])((item: string) =>
+                                                HStack(
+                                                    Text(item)
+                                                )
+                                                    .allHeight(23).padding(10)
+                                                    .width()
+                                                    .background('#ececec')
+                                                    .foregroundColor('#6b6b6b')
+
+                                            ),
+                                           
                                         )
-                                    ).height()
+                                    )
+                                    .cornerRadius(6)
+                                    .margin(3)
+                                        .border('solid 1px rgb(232, 234, 237)')
+                                        .shadow('rgba(0, 0, 0, 0.055) 0px 1px 2px 0px')
                                 )
-                                    .minHeight(110)
-                                    .borderLeft(`solid 4px ${e.Color}`).padding(7)
-                                    .onClick(()=> {
-                                       // console.log();
+                                    .allHeight(110)
+                                    
+                                    .padding(5)
+                                    .onClick(() => {
+                                        // console.log();
                                         onItemClick(items.find(item => item.$id === e.Id));
                                     })
 
@@ -114,7 +118,12 @@ export class MyTestController extends UIFormController {
                                 HStack({ alignment: cLeading, spacing: 10 })(
                                     Text(e.headerText).fontSize(15).fontWeight('500')
                                 )
-
+                                    .height(30)
+                                    .padding()
+                                    .margin(3)
+                                    .cornerRadius(6)
+                                    .shadow('rgba(0, 0, 0, 0.106) 0px 1px 3px 0px, rgba(0, 0, 0, 0.106) 0px 1px 2px -1px')
+                                    .borderTop(`solid 3px ${groups.find(group => group.$id === e.keyField)?.bgColor ?? ''}`)
                                     .height()
 
                             )
@@ -123,11 +132,12 @@ export class MyTestController extends UIFormController {
 
                     )
                 )
+                    .background('white')
 
                     .cornerRadius(10)
                     .padding(20)
                     .border('solid 1px rgb(240, 241,243)'),
-                HStack().height(50)
+
             )
 
 

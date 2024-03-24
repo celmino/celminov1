@@ -4,5 +4,6 @@ export interface IView {
     name: string;
     description: string;
     type: string;
+    icon: string;
    
 }

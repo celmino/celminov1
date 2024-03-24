@@ -28,6 +28,7 @@ export class AppletController extends UIController {
 
                             ActionPanel(),
                             ViewHeader(applet.name, () => void 0),
+                            
                             VStack(
                                 VStack(
                                     UIRouteOutlet().width('100%').height('100%')

@@ -66,7 +66,8 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
                         is.function(header) ? header() : Fragment(),
                 )
                     .background('white')
-                    .height().paddingBottom('10px'),
+                    .height()
+                    //.paddingBottom('10px'),
                 /*    HStack({ alignment: cLeading, spacing: 10 })(
                        HStack({ spacing: 5 })(
                            HStack(
@@ -82,7 +83,7 @@ export const ViewHeader = (header, onHeaderChange: any = void 0) => UIViewBuilde
 
             // .borderBottom('1px solid #F2F2F2')
         )
-            .paddingBottom('0px')
+            //.paddingBottom('0px')
             .height()
 
 

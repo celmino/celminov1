@@ -23,18 +23,18 @@ export class RouteController extends UIController {
                 VStack(
                     UIRoutes(
                         UIRoute('/', AppletController).children(
-                            UIRoute('tasks', class extends ListController { }),
+                            UIRoute('', ListController ),
+                            UIRoute(':viewId',  ViewController ),
+                         /* 
                             UIRoute('overview', OverviewController),
                             UIRoute('team', TeamController),
                            
-                            /* UIRoute('list/:listId', ListController).children(
-                                UIRoute('view/:viewId', class extends  ViewController {}),
-                            ), */
+                          
 
                             UIRoute('document/:documentId', class extends DocumentController { }),
                             UIRoute('whiteboard/:whiteboardId', class extends WhiteboardController { }),
                             UIRoute(':view_id', ViewController),
-                            UIRoute(':view_id/*', ViewController)
+                            UIRoute(':view_id/*', ViewController) */
                         ),
                         UIRoute('/settings', SettingsController).children(
                             UIRoute('features', FeatureSettingsController),
