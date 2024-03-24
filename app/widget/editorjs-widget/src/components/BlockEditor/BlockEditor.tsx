@@ -65,7 +65,7 @@ export const BlockEditor = ({ aiToken, ydoc, provider }: TiptapProps) => {
             HStack(
               ScrollView({ axes: cVertical, alignment: cTop })(
                 ReactView(
-                  <EditorContent editor={editor}
+                  <EditorContent editor={editor} style={{width:'100%'}}
                     //@ts-ignore
                     ref={editorRef} />
                 )

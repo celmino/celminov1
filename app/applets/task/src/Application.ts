@@ -1,7 +1,6 @@
 import { FormBuilder, UIController } from '@tuval/forms';
 import { MyTestController } from './AppController';
 import { RouteController } from './routes/+routes';
-import { ListStatusWidget } from './widget/ListStatusWidget';
 import { WorkspaceTreeWidgetController } from './TreeController';
 
 const manifest = require('./manifest');
@@ -30,6 +29,5 @@ export class ProcessMining {
 }
 
 
-FormBuilder.injectView('liststatus', ListStatusWidget)
 
 

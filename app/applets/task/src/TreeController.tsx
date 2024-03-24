@@ -7,7 +7,7 @@ import {
     useState
 } from '@tuval/forms';
 
-import { AboutDialog, ListApplet, SelectAppletDialog, useAppletNavigate, useRealmTree } from '@celmino/ui';
+import { AboutDialog, ListApplet, SelectAppletDialog, useApplet, useAppletNavigate, useRealm, useRealmTree } from '@celmino/ui';
 import { useCreateDocument, useGetDocument, useGetOrganization, useGetRealm, useUpdateDatabase, useUpdateDocument } from '@realmocean/sdk';
 
 import { EventBus } from '@tuval/core';
@@ -30,8 +30,13 @@ export class WorkspaceTreeWidgetController extends UIController {
 
         const [isEditing, setIsEditing] = useState(false);
         const isLoading = false;
-        const { items } = this.props.data || {};
-        const { organizationId, workspaceId, appletId, onItemSelected, item } = this.props.config || {};
+
+        const {realm} = useRealm();
+        const {applet} = useApplet();
+        const workspaceId = realm.$id;
+        const appletId = applet.$id; 
+
+        const { organizationId,onItemSelected, item } = this.props.config || {};
 
         const { organization, isLoading: isOrganizationLoading } = useGetOrganization({ organizationId, hookEnabled: true }); // useGetCurrentOrganization();
 
@@ -44,13 +49,13 @@ export class WorkspaceTreeWidgetController extends UIController {
         const { updateDatabase } = useUpdateDatabase(workspaceId);
 
         const { createDocument: createTreeItem } = useCreateDocument(workspaceId, appletId, 'wm_tree');
-        const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
-        const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
+       // const { realm } = useGetRealm({ realmId: workspaceId, enabled: true });
+       // const { document: applet, isLoading: isAppletLoading } = useGetDocument({ projectId: workspaceId, databaseId: 'workspace', collectionId: 'applets', documentId: appletId });
 
         const { setCanDrag } = useRealmTree();
 
         return (
-            isAppletLoading ? Fragment() :
+            
 
                 UIWidget('com.celmino.widget.applet-tree')
                     .config({

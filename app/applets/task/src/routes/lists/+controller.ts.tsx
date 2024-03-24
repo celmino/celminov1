@@ -17,6 +17,7 @@ import {
 import { SelectSiderDialog, useAccount, useApplet, useRealm } from '@celmino/ui';
 import { Query, useCreateDocument, useCreateRelationshipAttribute, useCreateStringAttribute, useListDocuments, useUpdateDocument } from "@realmocean/sdk";
 import { AppletTabMenu } from "../../views/AppletTabMenu";
+import { ViewsTab } from "./views/ViewsTabMenu";
 
 function replaceNonMatchingCharacters(originalText) {
     const replacementTable = {
@@ -85,7 +86,7 @@ export class ListController extends UIFormController {
 
         return (
             VStack({ alignment: cTopLeading })(
-                AppletTabMenu('tasks'),
+                ViewsTab('1'),
                 (isLoading || isStatusesLoading || isFieldSettingsLoading) ? Fragment() :
 
                     UIViewBuilder(() => {
