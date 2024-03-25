@@ -52209,7 +52209,7 @@ var TreeNode = /** @class */ (function (_super) {
             style = { left: scaffoldBlockPxWidth * scaffoldBlockCount };
         }
         style['left'] = '0px';
-        return connectDropTarget(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({}, otherProps, { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_1__["default"])('rst__node', scaffoldBlockCount === 1 ? 'rst__node_sticky' : '', rowDirectionClass) }),
+        return connectDropTarget(react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", __assign({}, otherProps, { className: (0,_utils_classnames__WEBPACK_IMPORTED_MODULE_1__["default"])('rst__node', 'rst__node_sticky_' + scaffoldBlockCount, rowDirectionClass) }),
             scaffold,
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "rst__nodeContent", style: style }, react__WEBPACK_IMPORTED_MODULE_0__.Children.map(children, function (child) {
                 return (0,react__WEBPACK_IMPORTED_MODULE_0__.cloneElement)(child, {

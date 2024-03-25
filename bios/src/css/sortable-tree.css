@@ -505,11 +505,26 @@
   position: relative;
   text-align: left;
 }
-.rst__node_sticky{
+.rst__node_sticky_1{
 
   position: sticky;
   background-color: #F7F8F9;
   top: 0px;
+  z-index: 10;
+}
+.rst__node_sticky_2{
+
+  position: sticky;
+  background-color: #F7F8F9;
+  top: 30px;
+  z-index: 10;
+}
+
+.rst__node_sticky_3{
+
+  position: sticky;
+  background-color: #F7F8F9;
+  top: 60px;
   z-index: 10;
 }
 

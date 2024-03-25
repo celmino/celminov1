@@ -148,7 +148,7 @@ class TreeNode extends React.Component<any,any> {
     return connectDropTarget(
       <div
         {...otherProps}
-        className={classnames('rst__node',scaffoldBlockCount === 1 ? 'rst__node_sticky' : '',rowDirectionClass)}
+        className={classnames('rst__node',  'rst__node_sticky_' + scaffoldBlockCount,rowDirectionClass)}
       >
         {scaffold}
 
