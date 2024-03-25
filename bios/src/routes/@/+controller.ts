@@ -29,11 +29,11 @@ export class RealmLayoutController extends CelminoController {
     public override LoadView(): UIView {
         return (
             UserContext(() =>
-                RealmContext(() =>
+              
                     UIRouteOutlet().width("100%").height("100%")
                 )
 
-            )
+            
 
         )
     }

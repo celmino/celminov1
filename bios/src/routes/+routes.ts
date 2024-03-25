@@ -11,7 +11,7 @@ import { SignupController } from "./signup/+controller"
 import { WorkspaceSelectController } from "./@/workspace/select/+controller"
 import { OrganizationSelectController } from "./@/organization/select/+controller"
 import { LayoutController, PersonelRealmLayoutController, PublicLayoutController, RealmLayoutController } from "./@/+controller"
-import { WorkspaceController } from "./@/workspace/[workspaceId]/+controller"
+import { PersonelWorkspaceController, WorkspaceController } from "./@/workspace/[workspaceId]/+controller"
 import { DefaultWorkspaceController, TestDefaultWorkspaceController } from "./@/+default"
 import { ResetPasswordController } from "./reset-password/+controller"
 import { UpdatePasswordController } from "./update-password/+controller"
@@ -77,9 +77,9 @@ export const Routes = () => {
                 )
             ),
 
-             // Personel Routes
-             UIRoute('/@personel', PersonelRealmLayoutController).children(
-                UIRoute('', WorkspaceController).children(
+            // Personel Routes
+            UIRoute('/@personel', RealmLayoutController).children(
+                UIRoute('', PersonelWorkspaceController).children(
                     UIRoute('applet/:appletId/*', AppletController),
                     UIRoute(':appletId/*', AppletController)
                 ),

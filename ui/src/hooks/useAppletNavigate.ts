@@ -5,10 +5,10 @@ import { is } from '@tuval/core';
 
 
 
-export const useAppletNavigate = (): {navigate: Function} => {
-    const { account,isAnonymous } = useAccount();
+export const useAppletNavigate = (): { navigate: Function } => {
+    const { account, isAnonymous } = useAccount();
     const organization = useOrganization();
-    const { realm } = useRealm();
+    const { realm, isPersonel } = useRealm();
     const { applet } = useApplet();
 
     const navigate = useNavigate();
@@ -21,7 +21,9 @@ export const useAppletNavigate = (): {navigate: Function} => {
 
             const appletId = selectApplet ? `[${applet.$id}]` : applet.$id;
             const subdomain = useGetSubdomain();
-            if (subdomain) {
+            if (isPersonel) {
+                navigate(`/@personel/${urlFriendly(applet.name)}-${appletId}${url}`)
+            } else if (subdomain) {
                 navigate(`/@${isAnonymous ? 'public' : 'team'}/${urlFriendly(applet.name)}-${appletId}${url}`)
             } else {
 

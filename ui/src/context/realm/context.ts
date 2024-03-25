@@ -9,6 +9,6 @@ export const useRealm = (): any => {
     const { realm } = React.useContext(RealmContextProvider);
     const { realm: personelRealm } = React.useContext(PersonelRealmContextProvider);
 
-    return { realm: realm ?? personelRealm };
+    return { realm: personelRealm ?? realm, isPersonel: personelRealm != null };
 }
 

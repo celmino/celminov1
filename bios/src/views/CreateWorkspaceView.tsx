@@ -165,6 +165,46 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
                                         navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
                                     })
                                 }),
+                                Button().renderer(ButtonRenderer).label('Create Personel Workspace')
+                                .loading(isLoading)
+                                .disabled(isLoading)
+                                .onClick(async () => {
+                                    createRealm({
+                                        realmId: account.$id,
+                                        name: account.name,
+                                        organizationId: account.$id,
+                                    }, async (workspace) => {
+
+
+                                        const database = await Services.Databases.create(workspace.$id, 'workspace', 'Workspace', 'workspace');
+                                        const appletCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'applets', 'Applets');
+                                        const nameAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'name', 255, false);
+                                        const parent = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'parent', 255, false);
+                                        const opaAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'opa', 255, false);
+                                        const typeAttr = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'type', 255, false);
+                                        const iconName = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconName', 255, false);
+                                        const iconCategory = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'iconCategory', 255, false);
+                                        const themeColor = await Services.Databases.createStringAttribute(workspace.$id, database.$id, appletCol.$id, 'themeColor', 255, false, '-1');
+
+                                        //Tree Collection Creating
+                                        const treeCol = await Services.Databases.createCollection(workspace.$id, database.$id, 'ws_tree', 'Workspace Tree');
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'name', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'type', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'parent', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'path', 1255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'fullPath', 1255, false);
+                                        
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'tree_widget', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'appletId', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconName', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconCategory', 255, false);
+                                        await Services.Databases.createStringAttribute(workspace.$id, database.$id, treeCol.$id, 'iconColor', 255, false, '-1');
+
+
+
+                                        //navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${workspace.name}-${workspace.$id}`)
+                                    })
+                                }),
 
                             HStack(
                                 Text('Log in with another email')
