@@ -415,29 +415,28 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                     const [appletsOpen, setAppletsOpen] = useState(true);
                                     return (
                                         VStack({ alignment: cTopLeading })(
-                                            ScrollView({ axes: cVertical, alignment: cTopLeading })(
-                                                VStack({ alignment: cTopLeading, spacing: 5 })(
-                                                    HStack({ alignment: cLeading })(
-                                                        Text('Applets')
-                                                            .fontSize(12)
-                                                            .fontWeight('500')
-                                                            .foregroundColor('rgb(80, 90, 100)'),
-                                                        Spacer(),
-                                                        isAnonymous ? Fragment() :
-                                                            HStack(
-                                                                Icon(Icons.Add)
-                                                            ).width(20)
-                                                                .onClick(() => SelectAppletDialog.Show(workspaceId)),
+                                            VStack({ alignment: cTopLeading, spacing: 5 })(
+                                                HStack({ alignment: cLeading })(
+                                                    Text('Applets')
+                                                        .fontSize(12)
+                                                        .fontWeight('500')
+                                                        .foregroundColor('rgb(80, 90, 100)'),
+                                                    Spacer(),
+                                                    isAnonymous ? Fragment() :
                                                         HStack(
-                                                            Icon(UpIcon)
+                                                            Icon(Icons.Add)
                                                         ).width(20)
-                                                            .onClick(() => setAppletsOpen(!appletsOpen))
-                                                    )
-                                                        .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
-                                                        .height(24)
-                                                        .padding(cHorizontal, 15)
-                                                        .padding(cVertical, 5),
-
+                                                            .onClick(() => SelectAppletDialog.Show(workspaceId)),
+                                                    HStack(
+                                                        Icon(UpIcon)
+                                                    ).width(20)
+                                                        .onClick(() => setAppletsOpen(!appletsOpen))
+                                                )
+                                                    .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
+                                                    .height(24)
+                                                    .padding(cHorizontal, 15)
+                                                    .padding(cVertical, 5),
+                                                ScrollView({ axes: cVertical, alignment: cTopLeading })(
                                                     VStack({ alignment: cTopLeading })(
                                                         isWorkspaceTreeLoading ? Fragment() : (workspaceTreeITems == null || workspaceTreeITems.length === 0) ? EmptyView(workspaceId) :
                                                             UIViewBuilder(() => {
@@ -776,79 +775,81 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                 )
                                                             }
                                                             )
-                                                    ),
-                                                    HStack({ alignment: cLeading })(
-                                                        Text('Private')
-                                                            .fontSize(12)
-                                                            .fontWeight('500')
-                                                            .foregroundColor('rgb(73, 84, 99)'),
-                                                        Spacer(),
-                                                        HStack(
-                                                            Icon(Icons.Add)
-                                                        ).width(20)
-                                                            .onClick(() => SelectAppletDialog.Show(workspaceId)),
-                                                        HStack(
-                                                            Icon(UpIcon)
-                                                        ).width(20)
-                                                            .onClick(() => setAppletsOpen(!appletsOpen))
                                                     )
-                                                        .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
-                                                        .height(24).padding(10),
-                                                    HStack({ alignment: cLeading })(
-                                                        Text('Channels')
-                                                            .fontSize(12)
-                                                            .fontWeight('500')
-                                                            .foregroundColor('rgb(73, 84, 99)'),
-                                                        Spacer(),
-                                                        HStack(
-                                                            Icon(Icons.Add)
-                                                        ).width(20)
-                                                            .onClick(() => SelectAppletDialog.Show(workspaceId)),
-                                                        HStack(
-                                                            Icon(UpIcon)
-                                                        ).width(20)
-                                                            .onClick(() => setAppletsOpen(!appletsOpen))
-                                                    )
-                                                        .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
-                                                        .height(24).padding(10),
+                                                    .height()
+                                                ),
+                                                HStack({ alignment: cLeading })(
+                                                    Text('Private')
+                                                        .fontSize(12)
+                                                        .fontWeight('500')
+                                                        .foregroundColor('rgb(73, 84, 99)'),
+                                                    Spacer(),
+                                                    HStack(
+                                                        Icon(Icons.Add)
+                                                    ).width(20)
+                                                        .onClick(() => SelectAppletDialog.Show(workspaceId)),
+                                                    HStack(
+                                                        Icon(UpIcon)
+                                                    ).width(20)
+                                                        .onClick(() => setAppletsOpen(!appletsOpen))
+                                                )
+                                                    .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
+                                                    .height(24).padding(10),
+                                                HStack({ alignment: cLeading })(
+                                                    Text('Channels')
+                                                        .fontSize(12)
+                                                        .fontWeight('500')
+                                                        .foregroundColor('rgb(73, 84, 99)'),
+                                                    Spacer(),
+                                                    HStack(
+                                                        Icon(Icons.Add)
+                                                    ).width(20)
+                                                        .onClick(() => SelectAppletDialog.Show(workspaceId)),
+                                                    HStack(
+                                                        Icon(UpIcon)
+                                                    ).width(20)
+                                                        .onClick(() => setAppletsOpen(!appletsOpen))
+                                                )
+                                                    .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
+                                                    .height(24).padding(10),
 
-                                                    HStack({ alignment: cLeading })(
-                                                        Text('Discussions')
-                                                            .fontSize(12)
-                                                            .fontWeight('500')
-                                                            .foregroundColor('rgb(73, 84, 99)'),
-                                                        Spacer(),
-                                                        HStack(
-                                                            Icon(Icons.Add)
-                                                        ).width(20)
-                                                            .onClick(() => SelectAppletDialog.Show(workspaceId)),
-                                                        HStack(
-                                                            Icon(UpIcon)
-                                                        ).width(20)
-                                                            .onClick(() => setAppletsOpen(!appletsOpen))
-                                                    )
-                                                        .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
-                                                        .height(24).padding(10),
+                                                HStack({ alignment: cLeading })(
+                                                    Text('Discussions')
+                                                        .fontSize(12)
+                                                        .fontWeight('500')
+                                                        .foregroundColor('rgb(73, 84, 99)'),
+                                                    Spacer(),
+                                                    HStack(
+                                                        Icon(Icons.Add)
+                                                    ).width(20)
+                                                        .onClick(() => SelectAppletDialog.Show(workspaceId)),
+                                                    HStack(
+                                                        Icon(UpIcon)
+                                                    ).width(20)
+                                                        .onClick(() => setAppletsOpen(!appletsOpen))
+                                                )
+                                                    .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
+                                                    .height(24).padding(10),
 
-                                                    HStack({ alignment: cLeading })(
-                                                        Text('Direct Messages')
-                                                            .fontSize(12)
-                                                            .fontWeight('500')
-                                                            .foregroundColor('rgb(73, 84, 99)'),
-                                                        Spacer(),
-                                                        HStack(
-                                                            Icon(Icons.Add)
-                                                        ).width(20)
-                                                            .onClick(() => SelectAppletDialog.Show(workspaceId)),
-                                                        HStack(
-                                                            Icon(UpIcon)
-                                                        ).width(20)
-                                                            .onClick(() => setAppletsOpen(!appletsOpen))
-                                                    )
-                                                        .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
-                                                        .height(24).padding(10),
-                                                ).height()
+                                                HStack({ alignment: cLeading })(
+                                                    Text('Direct Messages')
+                                                        .fontSize(12)
+                                                        .fontWeight('500')
+                                                        .foregroundColor('rgb(73, 84, 99)'),
+                                                    Spacer(),
+                                                    HStack(
+                                                        Icon(Icons.Add)
+                                                    ).width(20)
+                                                        .onClick(() => SelectAppletDialog.Show(workspaceId)),
+                                                    HStack(
+                                                        Icon(UpIcon)
+                                                    ).width(20)
+                                                        .onClick(() => setAppletsOpen(!appletsOpen))
+                                                )
+                                                    .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
+                                                    .height(24).padding(10),
                                             )
+
                                         )
                                     )
                                 }

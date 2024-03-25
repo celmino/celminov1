@@ -536,6 +536,22 @@
   z-index: 10;
 }
 
+.rst__node_sticky_5{
+
+  position: sticky;
+  background-color: #F7F8F9;
+  top: 120px;
+  z-index: 10;
+}
+
+.rst__node_sticky_6{
+
+  position: sticky;
+  background-color: #F7F8F9;
+  top: 150px;
+  z-index: 10;
+}
+
 .rst__node.rst__rtl {
   text-align: right;
 }
