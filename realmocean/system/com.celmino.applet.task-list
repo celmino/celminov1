@@ -33068,15 +33068,34 @@ var ViewsTab = function (selectedId) { return (0,_tuval_forms__WEBPACK_IMPORTED_
                     .height(28)
                     .width())((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(function () {
                     var createView = (0,_hooks_useCreateView__WEBPACK_IMPORTED_MODULE_3__.useCreateView)().createView;
-                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('List')).height()
-                        .cursor('pointer')
-                        .onClick(function () {
-                        createView({
-                            name: 'List',
-                            icon: 'svg-sprite-cu2-view-1',
-                            type: 'list'
+                    var menu = [
+                        {
+                            viewName: 'List',
+                            viewType: 'list',
+                            viewIcon: 'svg-sprite-cu2-view-1'
+                        },
+                        {
+                            viewName: 'Kanban',
+                            viewType: 'kanban',
+                            viewIcon: 'svg-sprite-cu2-view-2'
+                        }
+                    ];
+                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menu)(function (menuItem) {
+                        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.SvgIcon)(menuItem.viewIcon)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(menuItem.viewName))
+                            .padding()
+                            .height(28)
+                            .cornerRadius(6)
+                            .cursor('pointer')
+                            .foregroundColor({ hover: 'white' })
+                            .background({ hover: '#7F77F1' })
+                            .onClick(function () {
+                            createView({
+                                name: menuItem.viewName,
+                                icon: menuItem.viewIcon,
+                                type: menuItem.viewType
+                            });
                         });
-                    }));
+                    })).padding());
                 }))
                     .width(200)
                     .height(300))

@@ -1,4 +1,4 @@
-import { DialogPosition, ForEach, Fragment, HStack, Icon, PopupButton, SvgIcon, Text, UIViewBuilder, VStack, cLeading, urlFriendly, useMediaQuery } from "@tuval/forms";
+import { DialogPosition, ForEach, Fragment, HStack, Icon, PopupButton, SvgIcon, Text, UIViewBuilder, VStack, cLeading, cTopLeading, urlFriendly, useMediaQuery } from "@tuval/forms";
 import { useListViews } from "../../../hooks/useListViews";
 import { useAppletNavigate } from "@celmino/ui";
 import { useCreateView } from "../../../hooks/useCreateView";
@@ -155,18 +155,47 @@ export const ViewsTab = (selectedId: string) => UIViewBuilder(() => {
                                             UIViewBuilder
                                                 (() => {
                                                     const { createView } = useCreateView();
+                                                    const menu = [
+                                                        {
+                                                            viewName: 'List',
+                                                            viewType: 'list',
+                                                            viewIcon: 'svg-sprite-cu2-view-1'
+                                                        },
+                                                        {
+                                                            viewName: 'Kanban',
+                                                            viewType: 'kanban',
+                                                            viewIcon: 'svg-sprite-cu2-view-2'
+                                                        }
+                                                    ]
                                                     return (
-                                                        VStack(
-                                                            Text('List')
-                                                        ).height()
-                                                            .cursor('pointer')
-                                                            .onClick(() => {
-                                                                createView({
-                                                                    name: 'List',
-                                                                    icon: 'svg-sprite-cu2-view-1',
-                                                                    type: 'list'
-                                                                })
-                                                            })
+                                                        VStack
+                                                            ({ alignment: cTopLeading })(
+                                                                ...ForEach
+                                                                    (menu)
+                                                                    (menuItem =>
+                                                                        HStack
+                                                                            ({ alignment: cLeading, spacing: 5 })
+                                                                            (
+                                                                                Icon(SvgIcon(menuItem.viewIcon)),
+                                                                                Text(menuItem.viewName)
+                                                                            )
+                                                                            .padding()
+                                                                            .height(28)
+                                                                            .cornerRadius(6)
+                                                                            .cursor('pointer')
+                                                                            .foregroundColor({ hover: 'white' })
+                                                                            .background({ hover: '#7F77F1' })
+                                                                            .onClick(() => {
+                                                                                createView({
+                                                                                    name: menuItem.viewName,
+                                                                                    icon: menuItem.viewIcon,
+                                                                                    type: menuItem.viewType
+                                                                                })
+                                                                            })
+                                                                    )
+
+                                                            )
+                                                            .padding()
                                                     )
 
                                                 })

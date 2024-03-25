@@ -505,6 +505,13 @@
   position: relative;
   text-align: left;
 }
+.rst__node_sticky{
+
+  position: sticky;
+  background-color: #F7F8F9;
+  top: 0px;
+  z-index: 10;
+}
 
 .rst__node.rst__rtl {
   text-align: right;

@@ -30,6 +30,7 @@ class TreeNode extends React.Component<any,any> {
     // Construct the scaffold representing the structure of the tree
     const scaffoldBlockCount = lowerSiblingCounts.length;
     const scaffold = [];
+    let cssName = ''
     lowerSiblingCounts.forEach((lowerSiblingCount, i) => {
       let lineClass = '';
       if (lowerSiblingCount > 0) {
@@ -44,6 +45,7 @@ class TreeNode extends React.Component<any,any> {
           // +--+--+
           lineClass =
             'rst__lineHalfHorizontalRight rst__lineHalfVerticalBottom';
+            
         } else if (i === scaffoldBlockCount - 1) {
           // Last scaffold block in the row, right before the row content
           // +--+--+
@@ -146,7 +148,7 @@ class TreeNode extends React.Component<any,any> {
     return connectDropTarget(
       <div
         {...otherProps}
-        className={classnames('rst__node', rowDirectionClass)}
+        className={classnames('rst__node',scaffoldBlockCount === 1 ? 'rst__node_sticky' : '',rowDirectionClass)}
       >
         {scaffold}
 
