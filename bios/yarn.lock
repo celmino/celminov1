@@ -109,14 +109,13 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
-"@celmino/ui@^1.0.38", "@celmino/ui@^1.0.46":
-  version "1.0.46"
-  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.46.tgz"
-  integrity sha512-sBZAYoQlaksDS7AYTbaFGSdP89Vcv9UGVAYQy4C7THbdc/Giid7dxA6J/NB7a8t7sOIl+F+jvLYbZOXZMlBW5A==
+"@celmino/ui@^1.0.48":
+  version "1.0.48"
+  resolved "https://registry.npmjs.org/@celmino/ui/-/ui-1.0.48.tgz"
+  integrity sha512-piBew3V9qkV78vBsUajQfAeZxY5fQdCwLmxUBCKSEf9wMYM+fdy/AzNttE0bc7kRpFwz4L8k+NRaXkRvo8sj6Q==
   dependencies:
-    "@celmino/ui" "^1.0.38"
     "@realmocean/antd" "^21.0.34"
-    "@realmocean/sdk" "^1.0.89"
+    "@realmocean/sdk" "^1.0.100"
     "@realmocean/vibe" "2.82.50"
     "@tuval/core" "^0.0.103"
     "@tuval/forms" "^1.0.178"
@@ -663,7 +662,7 @@
   resolved "https://registry.npmjs.org/@realmocean/navigations/-/navigations-0.0.3.tgz"
   integrity sha512-zsNno1NP0GIP53xaFy0m+DpqPiyGD0bOb8TFl5PjjiUd/ndlPbupoZdligDHvCAIJ2U7v+NnJ9LWO6OA8sChUQ==
 
-"@realmocean/sdk@^1.0.100", "@realmocean/sdk@^1.0.89":
+"@realmocean/sdk@^1.0.100":
   version "1.0.100"
   resolved "https://registry.npmjs.org/@realmocean/sdk/-/sdk-1.0.100.tgz"
   integrity sha512-c/I34KQL+ovbU+1bS/5xztHTZXuGFxzSQ1e+0YiaULAMBYSpzsh/zSP8GK/4+YXpFmEbOoyUS7urknEPHuKjvA==

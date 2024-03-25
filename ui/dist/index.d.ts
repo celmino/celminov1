@@ -233,6 +233,10 @@ export function RealmContext(childFunc: () => UIView): RealmContextClass;
 export const RealmContextProvider: React.Context<any>;
 export const useRealm: () => any;
 
+export function PersonelRealmContext(childFunc: () => UIView): PersonelRealmContextClass;
+
+export const PersonelRealmContextProvider: React.Context<any>;
+
 export function AppletContext(childFunc: () => UIView): AppletContextClass;
 
 export const AppletContextProvider: React.Context<any>;
@@ -268,6 +272,13 @@ export class OrganizationContextClass extends UIView {
 }
 
 export class RealmContextClass extends UIView {
+    /** @internal */
+    vp_ChildFunc: () => UIView;
+    childFunc(value: () => UIView): this;
+    render(): React.JSX.Element;
+}
+
+export class PersonelRealmContextClass extends UIView {
     /** @internal */
     vp_ChildFunc: () => UIView;
     childFunc(value: () => UIView): this;
