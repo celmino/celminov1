@@ -528,6 +528,14 @@
   z-index: 10;
 }
 
+.rst__node_sticky_4{
+
+  position: sticky;
+  background-color: #F7F8F9;
+  top: 90px;
+  z-index: 10;
+}
+
 .rst__node.rst__rtl {
   text-align: right;
 }
