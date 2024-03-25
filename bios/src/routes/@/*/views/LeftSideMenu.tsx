@@ -189,6 +189,11 @@ const topMenu = [
         title: 'Timer',
         icon: TimerIcon,
         url: ''
+    },
+    {
+        title: 'Direct Messages',
+        icon: TimerIcon,
+        url: ''
     }
 
 ]
@@ -427,7 +432,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                 HStack({ alignment: cLeading, spacing: 8 })
                                                                     (
                                                                         Icon(UpdatesIcon),
-                                                                        Text('My Realm')
+                                                                        Text(`My Realm`)
                                                                             .foregroundColor('rgb(21, 23, 25)')
                                                                             .fontFamily('"system-ui",-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif'),
 
