@@ -417,7 +417,27 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                         VStack({ alignment: cTopLeading })(
                                             VStack({ alignment: cTopLeading, spacing: 5 })(
                                                 HStack({ alignment: cLeading })(
-                                                    Text('Applets')
+                                                    Text('My Space')
+                                                        .fontSize(12)
+                                                        .fontWeight('500')
+                                                        .foregroundColor('rgb(80, 90, 100)'),
+                                                    Spacer(),
+                                                    isAnonymous ? Fragment() :
+                                                        HStack(
+                                                            Icon(Icons.Add)
+                                                        ).width(20)
+                                                            .onClick(() => SelectAppletDialog.Show(workspaceId)),
+                                                    HStack(
+                                                        Icon(UpIcon)
+                                                    ).width(20)
+                                                        .onClick(() => setAppletsOpen(!appletsOpen))
+                                                )
+                                                    .background({ hover: 'rgba(22, 102, 223, 0.09999999999999998)' })
+                                                    .height(24)
+                                                    .padding(cHorizontal, 15)
+                                                    .padding(cVertical, 5),
+                                                HStack({ alignment: cLeading })(
+                                                    Text('Team Space')
                                                         .fontSize(12)
                                                         .fontWeight('500')
                                                         .foregroundColor('rgb(80, 90, 100)'),
