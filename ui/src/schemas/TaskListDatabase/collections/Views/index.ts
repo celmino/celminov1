@@ -17,6 +17,18 @@ export const ViewsCollection = {
             "key": "type",
             "type": "string",
             "size": 255
+        },
+        {
+            "key": "icon",
+            "type": "string",
+            "size": 255
+        }
+    ],
+    "documents": [
+        {
+            "name": 'List',
+            "type": "list",
+            "icon": "svg-sprite-cu2-view-1"
         }
     ]
 }

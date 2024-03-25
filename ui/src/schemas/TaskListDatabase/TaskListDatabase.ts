@@ -22,7 +22,6 @@ export const ListAppletDatabase = [
             ViewsCollection,
             ViewContentsCollection,
             ViewSettings
-
         ]
     }
 ]

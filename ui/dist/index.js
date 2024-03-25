@@ -21140,6 +21140,15 @@ const ViewsFields = [
         }),
         "collectionId": "views",
     },
+    {
+        "key": "icon",
+        "name": "Icon",
+        "type": "string",
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "views",
+    },
 ];
 
 
@@ -21472,6 +21481,18 @@ const ViewsCollection = {
             "key": "type",
             "type": "string",
             "size": 255
+        },
+        {
+            "key": "icon",
+            "type": "string",
+            "size": 255
+        }
+    ],
+    "documents": [
+        {
+            "name": 'List',
+            "type": "list",
+            "icon": "svg-sprite-cu2-view-1"
         }
     ]
 };

@@ -31,4 +31,14 @@ export const ViewsFields = [
         }),
         "collectionId": "views",
     },
+    {
+        "key": "icon",
+        "name": "Icon",
+        "type": "string",
+
+        "fieldInfo": JSON.stringify({
+            "size": 255,
+        }),
+        "collectionId": "views",
+    },
 ]
