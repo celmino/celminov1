@@ -1,7 +1,8 @@
-import { DialogPosition, ForEach, Fragment, HStack, Icon, PopupButton, SvgIcon, Text, UIViewBuilder, VStack, cLeading, cTopLeading, urlFriendly, useMediaQuery } from "@tuval/forms";
+import { DialogPosition, ForEach, Fragment, HStack, Icon, PopupButton, SvgIcon, Text, UIViewBuilder, VStack, cLeading, cTopLeading, urlFriendly, useMediaQuery, useState } from "@tuval/forms";
 import { useListViews } from "../../../hooks/useListViews";
 import { useAppletNavigate } from "@celmino/ui";
 import { useCreateView } from "../../../hooks/useCreateView";
+import { ViewOptions } from "./ViewOptions";
 
 
 /* const views = [
@@ -51,21 +52,69 @@ export const ViewsTab = (selectedId: string) => UIViewBuilder(() => {
                         VStack
                             ({ alignment: cLeading })
                             (
-                                HStack
-                                    ({ alignment: cLeading, spacing: 4 })
-                                    (
-                                        Icon
-                                            (SvgIcon(view.icon)),
-                                        MenuItemText
-                                            (view.name),
+                                selectedId === view.$id ?
+                                    UIViewBuilder(() => {
+                                        const [menuIsOpen, setMenuIsOpen] = useState(false);
+                                      //  let _hideHandle = null;
+                                        return (
+                                            PopupButton
+                                                (
+                                                    HStack
+                                                        ({ alignment: cLeading, spacing: 4 })
+                                                        (
+                                                            Icon
+                                                                (SvgIcon(view.icon)),
+                                                            MenuItemText
+                                                                (view.name),
 
-                                    )
-                                    .cursor('pointer')
-                                    .background({ hover: 'rgb(240, 241, 243)' })
-                                    .cornerRadius(6)
-                                    .padding('0 7px 0 6px')
-                                    .height(28)
-                                    .width(),
+                                                        )
+                                                        .cursor('pointer')
+                                                        .background({default :menuIsOpen ? 'rgb(240, 241, 243)'  : '', hover: 'rgb(240, 241, 243)' })
+                                                        .cornerRadius(6)
+                                                        .padding('0 7px 0 6px')
+                                                        .height(28)
+                                                        .width()
+                                                        .onClick(()=> {
+                                                            setMenuIsOpen(!menuIsOpen);
+                                                        })
+                                                )
+                                                (
+                                                    HStack
+                                                        (
+                                                            ViewOptions(()=>setMenuIsOpen(false))
+                                                        )
+                                                        .width()
+                                                        .height()
+                                                )
+                                                .open(menuIsOpen)
+                                                .dialogPosition(DialogPosition.BOTTOM_START)
+                                                .dialogOffset({
+                                                    main: 15,
+                                                    secondary: 0
+                                                })
+                                                //.hideHandle(hideHandle => _hideHandle = hideHandle)
+                                                .onDidHide(() => {
+                                                    setMenuIsOpen(false);
+                                                })
+                                        )
+                                    })
+
+                                    :
+                                    HStack
+                                        ({ alignment: cLeading, spacing: 4 })
+                                        (
+                                            Icon
+                                                (SvgIcon(view.icon)),
+                                            MenuItemText
+                                                (view.name),
+
+                                        )
+                                        .cursor('pointer')
+                                        .background({ hover: 'rgb(240, 241, 243)' })
+                                        .cornerRadius(6)
+                                        .padding('0 7px 0 6px')
+                                        .height(28)
+                                        .width(),
                                 selectedId !== view.$id ? Fragment() :
                                     HStack
                                         ()
@@ -165,7 +214,18 @@ export const ViewsTab = (selectedId: string) => UIViewBuilder(() => {
                                                             viewName: 'Kanban',
                                                             viewType: 'kanban',
                                                             viewIcon: 'svg-sprite-cu2-view-2'
+                                                        },
+                                                        {
+                                                            viewName: 'Calendar',
+                                                            viewType: 'calendar',
+                                                            viewIcon: 'svg-sprite-cu2-view-5'
+                                                        },
+                                                        {
+                                                            viewName: 'Gantt',
+                                                            viewType: 'gantt',
+                                                            viewIcon: 'svg-sprite-cu2-view-7'
                                                         }
+
                                                     ]
                                                     return (
                                                         VStack
@@ -174,17 +234,18 @@ export const ViewsTab = (selectedId: string) => UIViewBuilder(() => {
                                                                     (menu)
                                                                     (menuItem =>
                                                                         HStack
-                                                                            ({ alignment: cLeading, spacing: 5 })
+                                                                            ({ alignment: cLeading, spacing: 9 })
                                                                             (
                                                                                 Icon(SvgIcon(menuItem.viewIcon)),
-                                                                                Text(menuItem.viewName)
+                                                                                MenuItemText(menuItem.viewName)
                                                                             )
                                                                             .padding()
-                                                                            .height(28)
+                                                                            .height()
                                                                             .cornerRadius(6)
                                                                             .cursor('pointer')
-                                                                            .foregroundColor({ hover: 'white' })
-                                                                            .background({ hover: '#7F77F1' })
+                                                                            //.foregroundColor({ hover: 'white' })
+                                                                            .background({ hover: '#F6F7F9' })
+                                                                            .transition('background-color .2s cubic-bezier(.785,.135,.15,.86) 0s')
                                                                             .onClick(() => {
                                                                                 createView({
                                                                                     name: menuItem.viewName,
@@ -202,7 +263,7 @@ export const ViewsTab = (selectedId: string) => UIViewBuilder(() => {
 
                                         )
                                         .width(200)
-                                        .height(300)
+                                        .height()
                                 )
                                 .dialogPosition(DialogPosition.BOTTOM_START)
                         )

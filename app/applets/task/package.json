@@ -107,7 +107,7 @@
         "@headlessui/react": "^1.7.18",
         "@realmocean/sdk": "^1.0.92",
         "@tuval/core": "^0.0.103",
-        "@tuval/forms": "^1.0.168",
+        "@tuval/forms": "^1.0.180",
         "react-promise-suspense": "^0.3.4",
         "shelljs": "^0.8.5",
         "ts-loader": "^9.5.1",
