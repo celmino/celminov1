@@ -108,6 +108,7 @@
         "@realmocean/vibe": "^2.82.61",
         "@tuval/core": "^0.0.103",
         "@tuval/forms": "^1.0.179",
+        "@uiw/react-split": "^5.9.3",
         "ifdef-loader": "^2.3.2",
         "is-valid-domain": "^0.1.6",
         "react-promise-suspense": "^0.3.4",
