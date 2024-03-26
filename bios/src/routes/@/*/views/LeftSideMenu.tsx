@@ -1,6 +1,6 @@
 
 import { AppletContext, PersonelRealmContext, SelectAppletDialog, TreeContext, useAccount, useRealm, useRealmNavigate } from "@celmino/ui";
-import { Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useDeleteSession, useListDatabases, useListDocuments, useUpdatePrefs } from "@realmocean/sdk";
+import { Query, Services, useCreateTeam, useCreateTeamMembership, useDeleteCache, useDeleteSession, useListDocuments, useUpdatePrefs } from "@realmocean/sdk";
 import { Text } from '@realmocean/vibe';
 import { EventBus, is } from "@tuval/core";
 import {
@@ -12,7 +12,6 @@ import {
     Icon,
     Icons,
     PopupButton,
-    ReactView,
     ScrollView,
     Spacer,
     SvgIcon,
@@ -29,8 +28,6 @@ import React, { useEffect, useState } from "react";
 import { CalendarIcon, InboxIcon, MyDayIcon, TimelineIcon, TimerIcon, UpIcon, UpcommingIcon, UpdatesIcon } from "../../../../assets/Icons";
 import { useGetHDomainName, useGetProtocol } from "../../../../hooks/useGetProtocol";
 import { EmptyView } from "../../../../views/EmptyView";
-import Split from '@uiw/react-split';
-
 
 const expandeds = {};
 function a(strings: TemplateStringsArray, ...expr: Array<any>): string {
@@ -69,6 +66,7 @@ function sortByStringField(arr, field) {
         return 0;
     });
 }
+
 
 export const CaretDown1 = props => (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M13.276 8.5 8.813 4.294C8.143 3.666 7 4.111 7 5v10c0 .89 1.144 1.334 1.813.706l4.463-4.206c.965-1 .965-2 0-3Z"></path></svg>
