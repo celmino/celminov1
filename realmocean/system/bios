@@ -9836,7 +9836,7 @@ var LeftSideMenuView = function (selectedItem) {
                             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading })((0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('My Realm')
                                 .fontSize(12)
                                 .fontWeight('500')
-                                .foregroundColor('rgb(80, 90, 100)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Spacer)(), isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
+                                .foregroundColor('rgb(80, 90, 100)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.SvgIcon)('cu3-icon-link')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Spacer)(), isAnonymous ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Fragment)() :
                                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icons.Add)).width(20)
                                     .onClick(function () { return _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.SelectAppletDialog.Show(workspaceId); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)(_assets_Icons__WEBPACK_IMPORTED_MODULE_6__.UpIcon)).width(20)
                                 .onClick(function () { return setAppletsOpen(!appletsOpen); }))
