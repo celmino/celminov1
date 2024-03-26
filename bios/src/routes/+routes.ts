@@ -66,7 +66,7 @@ export const Routes = () => {
             ),
 
             // Team Routes
-            UIRoute('/@team', RealmLayoutController).children(
+            UIRoute('/@realm', RealmLayoutController).children(
                 UIRoute('', WorkspaceController).children(
                     UIRoute('applet/:appletId/*', AppletController),
                     UIRoute(':appletId/*', AppletController)
@@ -78,7 +78,7 @@ export const Routes = () => {
             ),
 
             // Personel Routes
-            UIRoute('/@personel', RealmLayoutController).children(
+            UIRoute('/@private', RealmLayoutController).children(
                 UIRoute('', PersonelWorkspaceController).children(
                     UIRoute('applet/:appletId/*', AppletController),
                     UIRoute(':appletId/*', AppletController)

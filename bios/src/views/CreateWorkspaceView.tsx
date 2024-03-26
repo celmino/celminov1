@@ -80,7 +80,7 @@ export const CreateWorkspaceView = () => UIViewBuilder(() => {
 
                                                         const protocol = useGetProtocol();
                                                         const hostName = useGetHostName();
-                                                        window.location.href = `${protocol}//${realmId}.${hostName}/@team/?userId=${userName}&secret=${token}`
+                                                        window.location.href = `${protocol}//${realmId}.${hostName}/@realm/?userId=${userName}&secret=${token}`
                                                         // alert(data?.message?.split('&'))
                                                     })
                                                     //navigate(`/@/${urlFriendly(organization.name)}-${organization.$id}/${realm.name}-${realm.$id}`)

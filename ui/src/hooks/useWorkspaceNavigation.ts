@@ -18,9 +18,8 @@ export const useRealmNavigate = () => {
             }
             const subdomain = useGetSubdomain();
             if (subdomain) {
-                navigate(`/@${isAnonymous ? 'public' : 'team'}${url}`)
+                navigate(`/@${isAnonymous ? 'public' : 'realm'}${url}`)
             } else {
-
                 navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}${url}`)
             }
         }

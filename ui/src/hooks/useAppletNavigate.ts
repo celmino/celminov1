@@ -22,9 +22,9 @@ export const useAppletNavigate = (): { navigate: Function } => {
             const appletId = selectApplet ? `[${applet.$id}]` : applet.$id;
             const subdomain = useGetSubdomain();
             if (isPersonel) {
-                navigate(`/@personel/${urlFriendly(applet.name)}-${appletId}${url}`)
+                navigate(`/@private/${urlFriendly(applet.name)}-${appletId}${url}`)
             } else if (subdomain) {
-                navigate(`/@${isAnonymous ? 'public' : 'team'}/${urlFriendly(applet.name)}-${appletId}${url}`)
+                navigate(`/@${isAnonymous ? 'public' : 'realm'}/${urlFriendly(applet.name)}-${appletId}${url}`)
             } else {
 
                 navigate(`/app/${urlFriendly(organization.name)}-${organization.$id}/${urlFriendly(realm.name)}-${realm.$id}/${urlFriendly(applet.name)}-${appletId}${url}`)

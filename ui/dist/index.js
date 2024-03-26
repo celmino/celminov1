@@ -20394,10 +20394,10 @@ const useAppletNavigate = () => {
             const appletId = selectApplet ? `[${applet.$id}]` : applet.$id;
             const subdomain = (0,_context_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.useGetSubdomain)();
             if (isPersonel) {
-                navigate(`/@personel/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
+                navigate(`/@private/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
             }
             else if (subdomain) {
-                navigate(`/@${isAnonymous ? 'public' : 'team'}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
+                navigate(`/@${isAnonymous ? 'public' : 'realm'}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
             }
             else {
                 navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(applet.name)}-${appletId}${url}`);
@@ -20440,7 +20440,7 @@ const useRealmNavigate = () => {
             }
             const subdomain = (0,_context_user_userContextRenderer__WEBPACK_IMPORTED_MODULE_2__.useGetSubdomain)();
             if (subdomain) {
-                navigate(`/@${isAnonymous ? 'public' : 'team'}${url}`);
+                navigate(`/@${isAnonymous ? 'public' : 'realm'}${url}`);
             }
             else {
                 navigate(`/app/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(organization.name)}-${organization.$id}/${(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.urlFriendly)(realm.name)}-${realm.$id}${url}`);
