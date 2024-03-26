@@ -435,23 +435,24 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                     (isWorkspaceTreeLoading) ? Fragment() : (workspaceTreeITems == null) ? Text('null') :
                                                                         VStack({ alignment: cTopLeading })
                                                                             (
-                                                                                HStack({ alignment: cLeading })(
-                                                                                    Text('My Realm')
-                                                                                        .fontSize(12)
-                                                                                        .fontWeight('500')
-                                                                                        .foregroundColor('rgb(80, 90, 100)'),
-                                                                                        Icon(SvgIcon('cu3-icon-link')),
-                                                                                    Spacer(),
-                                                                                    isAnonymous ? Fragment() :
+                                                                                HStack({ alignment: cLeading, spacing: 5 })
+                                                                                    (
+                                                                                        Text('My Realm')
+                                                                                            .fontSize(14)
+                                                                                            .fontWeight('500')
+                                                                                            .foregroundColor('rgb(80, 90, 100)'),
+                                                                                        Icon(SvgIcon('cu3-icon-link','#87909E','14px')),
+                                                                                        Spacer(),
+                                                                                        isAnonymous ? Fragment() :
+                                                                                            HStack(
+                                                                                                Icon(Icons.Add)
+                                                                                            ).width(20)
+                                                                                                .onClick(() => SelectAppletDialog.Show(workspaceId)),
                                                                                         HStack(
-                                                                                            Icon(Icons.Add)
+                                                                                            Icon(UpIcon)
                                                                                         ).width(20)
-                                                                                            .onClick(() => SelectAppletDialog.Show(workspaceId)),
-                                                                                    HStack(
-                                                                                        Icon(UpIcon)
-                                                                                    ).width(20)
-                                                                                        .onClick(() => setAppletsOpen(!appletsOpen))
-                                                                                )
+                                                                                            .onClick(() => setAppletsOpen(!appletsOpen))
+                                                                                    )
                                                                                     .position('sticky')
                                                                                     .top('0px')
                                                                                     .zIndex(10)
@@ -805,7 +806,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                                 .height()
 
                                                                                         )
-                                                                                       
+
 
                                                                             )
                                                                 )

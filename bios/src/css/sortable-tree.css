@@ -532,7 +532,7 @@
   white-space: nowrap;
   position: relative;
   text-align: left;
-  --sticky: 30px;
+  --sticky: 29px;
 }
 
 .rst__node_sticky_1 {
