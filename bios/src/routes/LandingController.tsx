@@ -36,10 +36,18 @@ const LeftLogo = () => (
     </svg>
 )
 
+
+
 export class LandingController extends UIController {
     public override LoadView(): UIView {
         const navigate = useNavigate();
         const subDomain = useGetSubdomain();
+
+        return (
+            UIWidget('com.celmino.widget.flow')
+            .config({})
+        )
+
         return (
             !is.nullOrEmpty(subDomain) ? UINavigate('/app') :
             VStack({ alignment: cTopLeading })(

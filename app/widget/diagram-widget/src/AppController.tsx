@@ -5,8 +5,9 @@ import {
     UIView,
     useState
 } from '@tuval/forms';
-import { Flow } from './Flow';
 import React from 'react';
+import { CustomNodeFlow } from './views/CustomNodeFlow';
+import { Flow } from './views/Flow';
 
 
 

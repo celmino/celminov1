@@ -36095,51 +36095,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Flow__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Flow */ "./src/Flow.tsx");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _views_Flow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/Flow */ "./src/views/Flow.tsx");
 
 
 
 class MyTestController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {
     LoadView() {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_Flow__WEBPACK_IMPORTED_MODULE_1__.Flow, null)));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ReactView)(react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_views_Flow__WEBPACK_IMPORTED_MODULE_2__.Flow, null)));
     }
-}
-
-
-/***/ }),
-
-/***/ "./src/Flow.tsx":
-/*!**********************!*\
-  !*** ./src/Flow.tsx ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Flow": () => (/* binding */ Flow)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _diagram_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./diagram/react */ "./src/diagram/react/index.ts");
-
-
-
-const initialNodes = [
-    { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
-    { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
-];
-const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
-function Flow() {
-    const [nodes, setNodes, onNodesChange] = (0,_diagram_react__WEBPACK_IMPORTED_MODULE_1__.useNodesState)(initialNodes);
-    const [edges, setEdges, onEdgesChange] = (0,_diagram_react__WEBPACK_IMPORTED_MODULE_1__.useEdgesState)(initialEdges);
-    const onConnect = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((params) => setEdges((eds) => (0,_diagram_react__WEBPACK_IMPORTED_MODULE_1__.addEdge)(params, eds)), [setEdges]);
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_diagram_react__WEBPACK_IMPORTED_MODULE_1__.ReactFlow, { nodes: nodes, edges: edges, onNodesChange: onNodesChange, onEdgesChange: onEdgesChange, onConnect: onConnect },
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_diagram_react__WEBPACK_IMPORTED_MODULE_1__.MiniMap, null),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_diagram_react__WEBPACK_IMPORTED_MODULE_1__.Controls, null),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_diagram_react__WEBPACK_IMPORTED_MODULE_1__.Background, null)));
 }
 
 
@@ -45921,6 +45886,61 @@ function getDimensionsAfterResize(startValues, controlDirection, pointerPosition
         x: nodeOrigin[0] * distX * (!affectsX ? 1 : -1) + x,
         y: nodeOrigin[1] * distY * (!affectsY ? 1 : -1) + y,
     };
+}
+
+
+/***/ }),
+
+/***/ "./src/views/Flow.tsx":
+/*!****************************!*\
+  !*** ./src/views/Flow.tsx ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Flow": () => (/* binding */ Flow)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _diagram_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../diagram/react */ "./src/diagram/react/index.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+const initialNodes = [
+    {
+        id: '1',
+        type: 'input',
+        data: { label: 'Input Node' },
+        position: { x: 250, y: 25 },
+    },
+    {
+        id: '2',
+        // you can also pass a React component as a label
+        data: { label: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('sdfs')).render()) },
+        position: { x: 100, y: 125 },
+    },
+    {
+        id: '3',
+        type: 'output',
+        data: { label: 'Output Node' },
+        position: { x: 250, y: 250 },
+    },
+];
+const initialEdges = [
+    { id: 'e1-2', source: '1', target: '2' },
+    { id: 'e2-3', source: '2', target: '3', animated: true },
+];
+function Flow() {
+    const [nodes, setNodes] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialNodes);
+    const [edges, setEdges] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialEdges);
+    const onNodesChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((changes) => setNodes((nds) => (0,_diagram_react__WEBPACK_IMPORTED_MODULE_1__.applyNodeChanges)(changes, nds)), [setNodes]);
+    const onEdgesChange = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)((changes) => setEdges((eds) => (0,_diagram_react__WEBPACK_IMPORTED_MODULE_1__.applyEdgeChanges)(changes, eds)), [setEdges]);
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_diagram_react__WEBPACK_IMPORTED_MODULE_1__.ReactFlow, { nodes: nodes, edges: edges, onNodesChange: onNodesChange, onEdgesChange: onEdgesChange, fitView: true }));
 }
 
 
