@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import type { OnViewportChange } from '@xyflow/system';
+import type { OnViewportChange } from '../../system';
 
 import { useStoreApi } from './useStore';
 

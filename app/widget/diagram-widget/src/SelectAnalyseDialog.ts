@@ -25,7 +25,6 @@ import {
     useProtocol,
     useState
 } from "@tuval/forms";
-import { CategoryList } from "./views/CategoryList";
 import { PowerUps } from "./PowerUps";
 
 

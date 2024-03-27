@@ -2,9 +2,6 @@ import React from 'react';
 import { useCallback } from 'react';
 
 
-
-import './styles/base.css';
-import './styles/style.css';
 import { useNodesState, useEdgesState, addEdge, ReactFlow, MiniMap, Controls, Background } from './diagram/react';
 
 const initialNodes = [

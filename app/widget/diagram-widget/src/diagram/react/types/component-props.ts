@@ -20,7 +20,7 @@ import type {
   OnError,
   ColorMode,
   SnapGrid,
-} from '@xyflow/system';
+} from '../../system';
 
 import type {
   OnSelectionChangeFunc,

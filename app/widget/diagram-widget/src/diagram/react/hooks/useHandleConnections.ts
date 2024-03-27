@@ -5,7 +5,7 @@ import {
   HandleType,
   areConnectionMapsEqual,
   handleConnectionChange,
-} from '@xyflow/system';
+} from '../../system';
 
 import { useStore } from './useStore';
 import { useNodeId } from '../contexts/NodeIdContext';

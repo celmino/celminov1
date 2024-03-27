@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import type { UpdateNodeInternals, NodeDimensionUpdate } from '@xyflow/system';
+import type { UpdateNodeInternals, NodeDimensionUpdate } from '../../system';
 
 import { useStoreApi } from '../hooks/useStore';
 

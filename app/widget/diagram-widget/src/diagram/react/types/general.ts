@@ -12,7 +12,7 @@ import {
   XYPosition,
   OnBeforeDeleteBase,
   Connection,
-} from '@xyflow/system';
+} from '../../system';
 
 import type { NodeChange, EdgeChange, Node, Edge, ReactFlowInstance, EdgeProps, NodeProps } from '.';
 
@@ -158,7 +158,7 @@ export type ViewportHelperFunctions = {
 };
 
 export type OnBeforeDelete<NodeType extends Node = Node, EdgeType extends Edge = Edge> = OnBeforeDeleteBase<
-  NodeType,
+  any,
   EdgeType
 >;
 

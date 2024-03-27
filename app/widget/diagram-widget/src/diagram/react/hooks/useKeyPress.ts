@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { isInputDOMNode, type KeyCode } from '@xyflow/system';
+import { isInputDOMNode, type KeyCode } from '../../system';
 
 type Keys = Array<string>;
 type PressedKeys = Set<string>;
@@ -55,7 +55,7 @@ export function useKeyPress(
   }, [keyCode]);
 
   useEffect(() => {
-    const target = options?.target || defaultDoc;
+    const target : any= options?.target || defaultDoc;
 
     if (keyCode !== null) {
       const downHandler = (event: KeyboardEvent) => {
@@ -106,13 +106,13 @@ export function useKeyPress(
         setKeyPressed(false);
       };
 
-      target?.addEventListener('keydown', downHandler as EventListenerOrEventListenerObject);
-      target?.addEventListener('keyup', upHandler as EventListenerOrEventListenerObject);
+      target?.addEventListener('keydown', downHandler );
+      target?.addEventListener('keyup', upHandler );
       window.addEventListener('blur', resetHandler);
 
       return () => {
-        target?.removeEventListener('keydown', downHandler as EventListenerOrEventListenerObject);
-        target?.removeEventListener('keyup', upHandler as EventListenerOrEventListenerObject);
+        target?.removeEventListener('keydown', downHandler );
+        target?.removeEventListener('keyup', upHandler);
         window.removeEventListener('blur', resetHandler);
       };
     }

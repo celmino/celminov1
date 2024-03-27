@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { shallow } from 'zustand/shallow';
-import { isEdgeVisible } from '@xyflow/system';
+import { isEdgeVisible } from '../../system';
 
 import { useStore } from './useStore';
 import { type ReactFlowState } from '../types';

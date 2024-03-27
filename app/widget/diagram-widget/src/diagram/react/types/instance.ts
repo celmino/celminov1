@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-import type { Rect, Viewport } from '@xyflow/system';
+import type { Rect, Viewport } from '../../system';
 import type { Node, Edge, ViewportHelperFunctions } from '.';
 
 export type ReactFlowJsonObject<NodeType extends Node = Node, EdgeType extends Edge = Edge> = {

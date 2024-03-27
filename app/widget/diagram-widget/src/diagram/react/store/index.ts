@@ -8,7 +8,7 @@ import {
   Dimensions,
   updateNodeDimensions as updateNodeDimensionsSystem,
   updateConnectionLookup,
-} from '@xyflow/system';
+} from '../../system';
 
 import { applyEdgeChanges, applyNodeChanges, createSelectionChange, getSelectionChanges } from '../utils/changes';
 import getInitialState from './initialState';

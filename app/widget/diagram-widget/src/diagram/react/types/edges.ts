@@ -15,7 +15,7 @@ import type {
   EdgePosition,
   StepPathOptions,
   OnError,
-} from '@xyflow/system';
+} from '../../system';
 
 import { EdgeTypes, Node } from '.';
 

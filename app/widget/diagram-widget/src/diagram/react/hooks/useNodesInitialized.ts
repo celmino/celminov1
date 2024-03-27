@@ -1,4 +1,4 @@
-import { internalsSymbol } from '@xyflow/system';
+import { internalsSymbol } from '../../system';
 
 import { useStore } from './useStore';
 import type { ReactFlowState } from '../types';

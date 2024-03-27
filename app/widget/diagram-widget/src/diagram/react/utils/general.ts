@@ -1,5 +1,5 @@
 import { ReactNode, Ref, RefAttributes, forwardRef } from 'react';
-import { isNodeBase, isEdgeBase } from '@xyflow/system';
+import { isNodeBase, isEdgeBase } from '../../system';
 
 import type { Edge, Node } from '../types';
 

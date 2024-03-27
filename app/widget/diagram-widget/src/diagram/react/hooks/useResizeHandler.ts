@@ -1,5 +1,5 @@
 import { useEffect, type MutableRefObject } from 'react';
-import { errorMessages, getDimensions } from '@xyflow/system';
+import { errorMessages, getDimensions } from '../../system';
 
 import { useStoreApi } from '../hooks/useStore';
 

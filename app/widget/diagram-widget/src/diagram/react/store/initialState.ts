@@ -7,7 +7,7 @@ import {
   Transform,
   updateConnectionLookup,
   devWarn,
-} from '@xyflow/system';
+} from '../../system';
 
 import type { Edge, Node, ReactFlowStore } from '../types';
 

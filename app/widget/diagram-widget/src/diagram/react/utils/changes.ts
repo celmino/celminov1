@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { EdgeLookup, NodeLookup } from '@xyflow/system';
+import { EdgeLookup, NodeLookup } from '../../system';
 import type { Node, Edge, EdgeChange, NodeChange, NodeSelectionChange, EdgeSelectionChange } from '../types';
 
 export function handleParentExpand(updatedElements: any[], updateItem: any) {

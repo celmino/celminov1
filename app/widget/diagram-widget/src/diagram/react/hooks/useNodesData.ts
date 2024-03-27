@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { shallowNodeData } from '@xyflow/system';
+import { shallowNodeData } from '../../system';
 
 import { useStore } from '../hooks/useStore';
 import type { Node } from '../types';
@@ -14,8 +14,8 @@ import type { Node } from '../types';
  */
 export function useNodesData<NodeType extends Node = Node>(
   nodeId: string
-): Pick<NodeType, 'id' | 'type' | 'data'> | null;
-export function useNodesData<NodeType extends Node = Node>(nodeIds: string[]): Pick<NodeType, 'id' | 'type' | 'data'>[];
+): any;
+export function useNodesData<NodeType extends Node = Node>(nodeIds: string[]): any[];
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function useNodesData(nodeIds: any): any {
   const nodesData = useStore(

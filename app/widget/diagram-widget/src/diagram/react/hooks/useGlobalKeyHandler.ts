@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import type { KeyCode } from '@xyflow/system';
+import type { KeyCode } from '../../system';
 
 import { useStoreApi } from '../hooks/useStore';
 import { useKeyPress, UseKeyPressOptions } from './useKeyPress';

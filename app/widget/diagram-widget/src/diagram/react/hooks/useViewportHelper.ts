@@ -5,7 +5,7 @@ import {
   fitView,
   type XYPosition,
   rendererPointToPoint,
-} from '@xyflow/system';
+} from '../../system';
 
 import { useStoreApi, useStore } from '../hooks/useStore';
 import type { ViewportHelperFunctions, ReactFlowState } from '../types';

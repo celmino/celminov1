@@ -25,7 +25,7 @@ import {
   type EdgeLookup,
   type ConnectionLookup,
   type NodeLookup,
-} from '@xyflow/system';
+} from '../../system';
 
 import type {
   Edge,

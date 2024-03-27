@@ -84,7 +84,7 @@ export {
   type ControlPosition,
   type ControlLinePosition,
   type ResizeControlVariant,
-} from '@xyflow/system';
+} from '../system';
 
 // system utils
 export {
@@ -104,4 +104,4 @@ export {
   updateEdge,
   getConnectedEdges,
   internalsSymbol,
-} from '@xyflow/system';
+} from '../system';

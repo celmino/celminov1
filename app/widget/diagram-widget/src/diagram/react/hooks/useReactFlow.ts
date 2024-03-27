@@ -6,7 +6,7 @@ import {
   nodeHasDimensions,
   nodeToRect,
   type Rect,
-} from '@xyflow/system';
+} from '../../system';
 
 import useViewportHelper from './useViewportHelper';
 import { useStoreApi } from './useStore';
@@ -98,7 +98,7 @@ export function useReactFlow<NodeType extends Node = Node, EdgeType extends Edge
     }
 
     if (setElementsQueue.current.edges.length) {
-      const { edges = [], setEdges, hasDefaultEdges, onEdgesChange, edgeLookup } = store.getState();
+      const { edges = [], setEdges, hasDefaultEdges, onEdgesChange, edgeLookup } = store.getState() as any;
 
       let next = edges as EdgeType[];
       for (const payload of setElementsQueue.current.edges) {
@@ -223,7 +223,7 @@ export function useReactFlow<NodeType extends Node = Node, EdgeType extends Edge
     []
   );
 
-  const getNodeRect = useCallback((nodeOrRect: NodeType | { id: NodeType['id'] }): Rect | null => {
+  const getNodeRect = useCallback((nodeOrRect: any ): Rect | null => {
     const node =
       isNode(nodeOrRect) && nodeHasDimensions(nodeOrRect)
         ? nodeOrRect
@@ -276,7 +276,7 @@ export function useReactFlow<NodeType extends Node = Node, EdgeType extends Edge
   const updateNode = useCallback<Instance.UpdateNode<NodeType>>(
     (id, nodeUpdate, options = { replace: true }) => {
       setNodes((prevNodes) =>
-        prevNodes.map((node) => {
+        prevNodes.map((node: any) => {
           if (node.id === id) {
             const nextNode = typeof nodeUpdate === 'function' ? nodeUpdate(node as NodeType) : nodeUpdate;
             return options.replace && isNode(nextNode) ? (nextNode as NodeType) : { ...node, ...nextNode };
@@ -293,7 +293,7 @@ export function useReactFlow<NodeType extends Node = Node, EdgeType extends Edge
     (id, dataUpdate, options = { replace: false }) => {
       updateNode(
         id,
-        (node) => {
+        (node: any) => {
           const nextData = typeof dataUpdate === 'function' ? dataUpdate(node) : dataUpdate;
           return options.replace ? { ...node, data: nextData } : { ...node, data: { ...node.data, ...nextData } };
         },

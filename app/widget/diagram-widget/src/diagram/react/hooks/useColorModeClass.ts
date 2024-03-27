@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { ColorMode, ColorModeClass } from '@xyflow/system';
+import type { ColorMode, ColorModeClass } from '../../system';
 
 function getMediaQuery() {
   if (typeof window === 'undefined' || !window.matchMedia) {

@@ -1,5 +1,5 @@
 import { shallow } from 'zustand/shallow';
-import type { Viewport } from '@xyflow/system';
+import type { Viewport } from '../../system';
 
 import { useStore } from '../hooks/useStore';
 import type { ReactFlowState } from '../types';

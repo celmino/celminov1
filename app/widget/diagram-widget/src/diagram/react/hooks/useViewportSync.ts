@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import type { Viewport } from '@xyflow/system';
+import type { Viewport } from '../../system';
 
 import { useStore, useStoreApi } from './useStore';
 import type { ReactFlowState } from '../types';

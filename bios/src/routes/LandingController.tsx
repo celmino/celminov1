@@ -1,4 +1,4 @@
-import { HStack, Heading, ReactView, Spacer, UIController, UINavigate, UIView, VStack, cLeading, cTopLeading, useNavigate } from "@tuval/forms";
+import { HStack, Heading, ReactView, Spacer, UIController, UINavigate, UIView, UIWidget, VStack, cLeading, cTopLeading, useNavigate } from "@tuval/forms";
 import { Text } from "@realmocean/vibe";
 import React from "react";
 import { useGetSubdomain } from "../hooks/useGetSubdomain";
@@ -43,6 +43,8 @@ export class LandingController extends UIController {
         return (
             !is.nullOrEmpty(subDomain) ? UINavigate('/app') :
             VStack({ alignment: cTopLeading })(
+                UIWidget('com.celmino.widget.flow')
+                .config({}),
                 // Header
                 HStack(
                     HStack(

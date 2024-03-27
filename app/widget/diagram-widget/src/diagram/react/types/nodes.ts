@@ -1,5 +1,5 @@
 import type { CSSProperties, MouseEvent as ReactMouseEvent } from 'react';
-import type { CoordinateExtent, NodeBase, NodeOrigin, OnError, NodeProps as NodePropsBase } from '@xyflow/system';
+import type { CoordinateExtent, NodeBase, NodeOrigin, OnError, NodeProps as NodePropsBase } from '../../system';
 
 import { NodeTypes } from './general';
 

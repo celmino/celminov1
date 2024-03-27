@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
-import { XYDrag, type XYDragInstance } from '@xyflow/system';
+import { XYDrag, type XYDragInstance } from '../../system';
 
 import { handleNodeClick } from '../components/Nodes/utils';
 import { useStoreApi } from './useStore';

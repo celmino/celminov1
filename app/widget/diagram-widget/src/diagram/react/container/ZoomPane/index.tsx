@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from 'react';
 import { shallow } from 'zustand/shallow';
-import { XYPanZoom, PanOnScrollMode, type Transform, type PanZoomInstance } from '@xyflow/system';
+import { XYPanZoom, PanOnScrollMode, type Transform, type PanZoomInstance } from '../../../system';
 
 import { useKeyPress } from '../../hooks/useKeyPress';
 import { useResizeHandler } from '../../hooks/useResizeHandler';
@@ -9,6 +9,7 @@ import { useStore, useStoreApi } from '../../hooks/useStore';
 import { containerStyle } from '../../styles/utils';
 import type { FlowRendererProps } from '../FlowRenderer';
 import type { ReactFlowState } from '../../types';
+import React from 'react';
 
 type ZoomPaneProps = Omit<
   FlowRendererProps,

@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { calculateNodePosition, snapPosition, type XYPosition } from '@xyflow/system';
+import { calculateNodePosition, snapPosition, type XYPosition } from '../../system';
 
 import { Node } from '../types';
 import { useStoreApi } from './useStore';

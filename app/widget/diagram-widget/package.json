@@ -139,6 +139,7 @@
     },
     "dependencies": {
         "classcat": "^5.0.4",
+        "d3": "^7.9.0",
         "zustand": "^4.5.2"
     }
 }

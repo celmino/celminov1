@@ -1,4 +1,4 @@
-import type { XYPosition, Dimensions } from '@xyflow/system';
+import type { XYPosition, Dimensions } from '../../system';
 
 import type { Node, Edge } from '.';
 

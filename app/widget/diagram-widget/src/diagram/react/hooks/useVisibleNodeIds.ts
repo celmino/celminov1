@@ -1,4 +1,4 @@
-import { getNodesInside } from '@xyflow/system';
+import { getNodesInside } from '../../system';
 import { shallow } from 'zustand/shallow';
 
 import { useStore } from './useStore';
