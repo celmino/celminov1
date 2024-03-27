@@ -3,6 +3,7 @@ import { useContext, type ReactNode } from 'react';
 import StoreContext from '../../contexts/RFStoreContext';
 import { ReactFlowProvider } from '../../components/ReactFlowProvider';
 import type { Node, Edge } from '../../types';
+import React, { Fragment } from 'react';
 
 export function Wrapper({
   children,
@@ -28,7 +29,7 @@ export function Wrapper({
   if (isWrapped) {
     // we need to wrap it with a fragment because it's not allowed for children to be a ReactNode
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18051
-    return <>{children}</>;
+    return <Fragment>{children}</Fragment>;
   }
 
   return (

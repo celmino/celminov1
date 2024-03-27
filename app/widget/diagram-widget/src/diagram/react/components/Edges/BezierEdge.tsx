@@ -1,8 +1,9 @@
 import { memo } from 'react';
-import { Position, getBezierPath } from '@xyflow/system';
+import { Position, getBezierPath } from '../../../system';
 
 import { BaseEdge } from './BaseEdge';
 import type { BezierEdgeProps } from '../../types';
+import React from 'react';
 
 function createBezierEdge(params: { isInternal: boolean }) {
   // eslint-disable-next-line react/display-name

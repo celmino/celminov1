@@ -1,8 +1,9 @@
 import { memo } from 'react';
-import { Position, getSmoothStepPath } from '@xyflow/system';
+import { Position, getSmoothStepPath } from '../../../system';
 
 import { BaseEdge } from './BaseEdge';
 import type { SmoothStepEdgeProps } from '../../types';
+import React from 'react';
 
 function createSmoothStepEdge(params: { isInternal: boolean }) {
   // eslint-disable-next-line react/display-name

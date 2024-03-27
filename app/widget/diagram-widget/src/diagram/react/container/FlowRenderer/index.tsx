@@ -8,6 +8,7 @@ import { ZoomPane } from '../ZoomPane';
 import { Pane } from '../Pane';
 import { NodesSelection } from '../../components/NodesSelection';
 import type { ReactFlowState, Node } from '../../types';
+import React from 'react';
 
 export type FlowRendererProps<NodeType extends Node = Node> = Omit<
   GraphViewProps<NodeType>,

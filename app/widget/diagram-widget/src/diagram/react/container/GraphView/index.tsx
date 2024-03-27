@@ -9,6 +9,7 @@ import { useViewportSync } from '../../hooks/useViewportSync';
 import { ConnectionLineWrapper } from '../../components/ConnectionLine';
 import { useNodeOrEdgeTypesWarning } from './useNodeOrEdgeTypesWarning';
 import type { Edge, Node, ReactFlowProps } from '../../types';
+import React from 'react';
 
 export type GraphViewProps<NodeType extends Node = Node, EdgeType extends Edge = Edge> = Omit<
   ReactFlowProps<NodeType, EdgeType>,

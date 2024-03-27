@@ -10,7 +10,7 @@ import {
   internalsSymbol,
   isInputDOMNode,
   nodeHasDimensions,
-} from '@xyflow/system';
+} from '../../../system';
 
 import { useStore, useStoreApi } from '../../hooks/useStore';
 import { Provider } from '../../contexts/NodeIdContext';
@@ -20,6 +20,7 @@ import { useMoveSelectedNodes } from '../../hooks/useMoveSelectedNodes';
 import { handleNodeClick } from '../Nodes/utils';
 import { arrowKeyDiffs, builtinNodeTypes, getNodeInlineStyleDimensions } from './utils';
 import type { Node, NodeWrapperProps } from '../../types';
+import React from 'react';
 
 export function NodeWrapper<NodeType extends Node>({
   id,
@@ -44,7 +45,7 @@ export function NodeWrapper<NodeType extends Node>({
   onError,
 }: NodeWrapperProps<NodeType>) {
   const { node, positionAbsoluteX, positionAbsoluteY, zIndex, isParent } = useStore((s) => {
-    const node = s.nodeLookup.get(id)! as NodeType;
+    const node: any = s.nodeLookup.get(id)! as NodeType;
 
     const positionAbsolute = nodeExtent
       ? clampPosition(node.computed?.positionAbsolute, nodeExtent)

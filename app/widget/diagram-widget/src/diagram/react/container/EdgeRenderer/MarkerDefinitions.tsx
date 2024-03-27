@@ -1,8 +1,9 @@
 import { memo, useMemo } from 'react';
-import { type MarkerProps, createMarkerIds } from '@xyflow/system';
+import { type MarkerProps, createMarkerIds } from '../../../system';
 
 import { useStore } from '../../hooks/useStore';
 import { useMarkerSymbol } from './MarkerSymbols';
+import React from 'react';
 
 type MarkerDefinitionsProps = {
   defaultColor: string;

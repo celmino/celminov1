@@ -7,6 +7,7 @@ import MarkerDefinitions from './MarkerDefinitions';
 import { GraphViewProps } from '../GraphView';
 import { EdgeWrapper } from '../../components/EdgeWrapper';
 import type { Edge, ReactFlowState, Node } from '../../types';
+import React from 'react';
 
 type EdgeRendererProps<EdgeType extends Edge = Edge> = Pick<
   GraphViewProps<Node, EdgeType>,

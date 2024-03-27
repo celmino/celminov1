@@ -18,12 +18,13 @@ import {
   type Connection,
   type HandleType,
   ConnectionMode,
-} from '@xyflow/system';
+} from '../../../system';
 
 import { useStore, useStoreApi } from '../../hooks/useStore';
 import { useNodeId } from '../../contexts/NodeIdContext';
 import { type ReactFlowState } from '../../types';
 import { fixedForwardRef } from '../../utils';
+import React from 'react';
 
 export interface HandleComponentProps extends HandleProps, Omit<HTMLAttributes<HTMLDivElement>, 'id'> {}
 

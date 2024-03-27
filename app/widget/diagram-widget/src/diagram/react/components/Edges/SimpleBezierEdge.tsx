@@ -1,8 +1,9 @@
 import { memo } from 'react';
-import { Position, getBezierEdgeCenter } from '@xyflow/system';
+import { Position, getBezierEdgeCenter } from '../../../system';
 
 import { BaseEdge } from './BaseEdge';
 import type { SimpleBezierEdgeProps } from '../../types';
+import React from 'react';
 
 export interface GetSimpleBezierPathParams {
   sourceX: number;

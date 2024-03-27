@@ -5,13 +5,14 @@
 import { useRef, type MouseEvent as ReactMouseEvent, type ReactNode } from 'react';
 import { shallow } from 'zustand/shallow';
 import cc from 'classcat';
-import { getNodesInside, getEventPosition, SelectionMode } from '@xyflow/system';
+import { getNodesInside, getEventPosition, SelectionMode } from '../../../system';
 
 import { UserSelection } from '../../components/UserSelection';
 import { containerStyle } from '../../styles/utils';
 import { useStore, useStoreApi } from '../../hooks/useStore';
 import { getSelectionChanges } from '../../utils';
 import type { ReactFlowProps, ReactFlowState, NodeChange, EdgeChange } from '../../types';
+import React from 'react';
 
 type PaneProps = {
   isSelecting: boolean;

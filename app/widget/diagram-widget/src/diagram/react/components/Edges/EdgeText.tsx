@@ -1,8 +1,9 @@
 import { memo, useState, useCallback } from 'react';
 import cc from 'classcat';
-import type { Rect } from '@xyflow/system';
+import type { Rect } from '../../../system';
 
 import type { EdgeTextProps } from '../../types';
+import React from 'react';
 
 function EdgeTextComponent({
   x,

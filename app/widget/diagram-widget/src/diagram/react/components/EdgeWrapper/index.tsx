@@ -7,13 +7,14 @@ import {
   getEdgePosition,
   errorMessages,
   getElevatedEdgeZIndex,
-} from '@xyflow/system';
+} from '../../../system';
 
 import { useStoreApi, useStore } from '../../hooks/useStore';
 import { ARIA_EDGE_DESC_KEY } from '../A11yDescriptions';
 import { builtinEdgeTypes, nullPosition } from './utils';
 import { EdgeUpdateAnchors } from './EdgeUpdateAnchors';
 import type { Edge, EdgeWrapperProps } from '../../types';
+import React from 'react';
 
 export function EdgeWrapper<EdgeType extends Edge = Edge>({
   id,
@@ -36,7 +37,7 @@ export function EdgeWrapper<EdgeType extends Edge = Edge>({
   onError,
   disableKeyboardA11y,
 }: EdgeWrapperProps<EdgeType>): JSX.Element | null {
-  let edge = useStore((s) => s.edgeLookup.get(id)!) as EdgeType;
+  let edge: any = useStore((s) => s.edgeLookup.get(id)!) as EdgeType;
   const defaultEdgeOptions = useStore((s) => s.defaultEdgeOptions);
   edge = defaultEdgeOptions ? { ...defaultEdgeOptions, ...edge } : edge;
 

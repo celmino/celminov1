@@ -1,8 +1,9 @@
-import { isNumeric } from '@xyflow/system';
+import { isNumeric } from '../../../system';
 import cc from 'classcat';
 
 import { EdgeText } from './EdgeText';
 import type { BaseEdgeProps } from '../../types';
+import React, { Fragment } from 'react';
 
 export function BaseEdge({
   id,
@@ -22,7 +23,7 @@ export function BaseEdge({
   interactionWidth = 20,
 }: BaseEdgeProps) {
   return (
-    <>
+    <Fragment>
       <path
         id={id}
         style={style}
@@ -53,6 +54,6 @@ export function BaseEdge({
           labelBgBorderRadius={labelBgBorderRadius}
         />
       ) : null}
-    </>
+    </Fragment>
   );
 }

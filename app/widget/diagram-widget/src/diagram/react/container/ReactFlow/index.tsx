@@ -1,6 +1,6 @@
 import { ForwardedRef, type CSSProperties } from 'react';
 import cc from 'classcat';
-import { ConnectionLineType, PanOnScrollMode, SelectionMode, infiniteExtent, isMacOs } from '@xyflow/system';
+import { ConnectionLineType, PanOnScrollMode, SelectionMode, infiniteExtent, isMacOs } from '../../../system';
 
 import { A11yDescriptions } from '../../components/A11yDescriptions';
 import { Attribution } from '../../components/Attribution';
@@ -12,6 +12,7 @@ import { Wrapper } from './Wrapper';
 import type { Edge, Node, ReactFlowProps } from '../../types';
 import { defaultViewport as initViewport, defaultNodeOrigin } from './init-values';
 import { fixedForwardRef } from '../../utils/general';
+import React from 'react';
 
 const wrapperStyle: CSSProperties = {
   width: '100%',

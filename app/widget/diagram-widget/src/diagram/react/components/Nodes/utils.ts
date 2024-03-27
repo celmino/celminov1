@@ -1,6 +1,6 @@
 import type { RefObject } from 'react';
 import type { StoreApi } from 'zustand';
-import { errorMessages } from '@xyflow/system';
+import { errorMessages } from '../../../system';
 
 import type { ReactFlowState } from '../../types';
 

@@ -10,11 +10,12 @@ import {
   getSmoothStepPath,
   type ConnectionStatus,
   type HandleType,
-} from '@xyflow/system';
+} from '../../../system';
 
 import { useStore } from '../../hooks/useStore';
 import { getSimpleBezierPath } from '../Edges/SimpleBezierEdge';
 import type { ConnectionLineComponent, ReactFlowState, ReactFlowStore } from '../../types';
+import React from 'react';
 
 type ConnectionLineProps = {
   nodeId: string;

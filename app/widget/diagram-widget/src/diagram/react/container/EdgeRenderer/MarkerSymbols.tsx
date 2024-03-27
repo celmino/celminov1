@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
-import { errorMessages, MarkerType, type EdgeMarker } from '@xyflow/system';
+import { errorMessages, MarkerType, type EdgeMarker } from '../../../system';
 
 import { useStoreApi } from '../../hooks/useStore';
+import React from 'react';
 
 type SymbolProps = Omit<EdgeMarker, 'type'>;
 

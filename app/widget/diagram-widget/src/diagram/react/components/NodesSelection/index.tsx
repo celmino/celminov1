@@ -5,13 +5,14 @@
 import { useRef, useEffect, type MouseEvent, type KeyboardEvent } from 'react';
 import cc from 'classcat';
 import { shallow } from 'zustand/shallow';
-import { getNodesBounds } from '@xyflow/system';
+import { getNodesBounds } from '../../../system';
 
 import { useStore, useStoreApi } from '../../hooks/useStore';
 import { useDrag } from '../../hooks/useDrag';
 import { useMoveSelectedNodes } from '../../hooks/useMoveSelectedNodes';
 import { arrowKeyDiffs } from '../NodeWrapper/utils';
 import type { Node, ReactFlowState } from '../../types';
+import React from 'react';
 
 export type NodesSelectionProps<NodeType> = {
   onSelectionContextMenu?: (event: MouseEvent, nodes: NodeType[]) => void;
@@ -60,7 +61,7 @@ export function NodesSelection<NodeType extends Node>({
 
   const onContextMenu = onSelectionContextMenu
     ? (event: MouseEvent) => {
-        const selectedNodes = store.getState().nodes.filter((n) => n.selected);
+        const selectedNodes = store.getState().nodes.filter((n: any) => n.selected);
         onSelectionContextMenu(event, selectedNodes);
       }
     : undefined;

@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 
 import { SmoothStepEdge } from './SmoothStepEdge';
 import type { StepEdgeProps } from '../../types';
+import React from 'react';
 
 function createStepEdge(params: { isInternal: boolean }) {
   // eslint-disable-next-line react/display-name

@@ -5,7 +5,7 @@
  */
 import { useEffect, useRef } from 'react';
 import { shallow } from 'zustand/shallow';
-import { infiniteExtent, type CoordinateExtent } from '@xyflow/system';
+import { infiniteExtent, type CoordinateExtent } from '../../../system';
 
 import { useStore, useStoreApi } from '../../hooks/useStore';
 import type { Node, Edge, ReactFlowState, ReactFlowProps, FitViewOptions } from '../../types';

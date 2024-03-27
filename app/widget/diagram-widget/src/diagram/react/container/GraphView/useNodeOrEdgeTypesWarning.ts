@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { errorMessages } from '@xyflow/system';
+import { errorMessages } from '../../../system';
 
 import type { EdgeTypes, NodeTypes } from '../../types';
 import { useStoreApi } from '../../hooks/useStore';

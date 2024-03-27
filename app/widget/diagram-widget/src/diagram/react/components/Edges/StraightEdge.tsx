@@ -1,8 +1,9 @@
 import { memo } from 'react';
-import { getStraightPath } from '@xyflow/system';
+import { getStraightPath } from '../../../system';
 
 import { BaseEdge } from './BaseEdge';
 import type { StraightEdgeProps } from '../../types';
+import React from 'react';
 
 function createStraightEdge(params: { isInternal: boolean }) {
   // eslint-disable-next-line react/display-name

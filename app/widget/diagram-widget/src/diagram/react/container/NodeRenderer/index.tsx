@@ -8,6 +8,7 @@ import { GraphViewProps } from '../GraphView';
 import { useResizeObserver } from './useResizeObserver';
 import { NodeWrapper } from '../../components/NodeWrapper';
 import type { Node, ReactFlowState } from '../../types';
+import React from 'react';
 
 export type NodeRendererProps<NodeType extends Node> = Pick<
   GraphViewProps<NodeType>,

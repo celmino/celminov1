@@ -1,9 +1,10 @@
 // Updatable edges have a anchors around their handles to update the edge.
-import { XYHandle, type Connection, EdgePosition } from '@xyflow/system';
+import { XYHandle, type Connection, EdgePosition } from '../../../system';
 
 import { EdgeAnchor } from '../Edges/EdgeAnchor';
 import type { EdgeWrapperProps, Edge } from '../../types/edges';
 import { useStoreApi } from '../../hooks/useStore';
+import React, { Fragment } from 'react';
 
 type EdgeUpdateAnchorsProps<EdgeType extends Edge = Edge> = {
   edge: EdgeType;
@@ -59,7 +60,7 @@ export function EdgeUpdateAnchors<EdgeType extends Edge = Edge>({
       panBy,
       updateConnection,
     } = store.getState();
-    const nodeId = isSourceHandle ? edge.target : edge.source;
+    const nodeId = isSourceHandle ? (edge as any).target : (edge as any).source;
     const handleId = (isSourceHandle ? targetHandleId : sourceHandleId) || null;
     const handleType = isSourceHandle ? 'target' : 'source';
 
@@ -108,7 +109,7 @@ export function EdgeUpdateAnchors<EdgeType extends Edge = Edge>({
   const onEdgeUpdaterMouseOut = () => setUpdateHover(false);
 
   return (
-    <>
+    <Fragment>
       {(isUpdatable === 'source' || isUpdatable === true) && (
         <EdgeAnchor
           position={sourcePosition}
@@ -133,6 +134,6 @@ export function EdgeUpdateAnchors<EdgeType extends Edge = Edge>({
           type="target"
         />
       )}
-    </>
+    </Fragment>
   );
 }

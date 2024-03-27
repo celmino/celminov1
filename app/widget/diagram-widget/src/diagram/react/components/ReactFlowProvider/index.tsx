@@ -5,6 +5,7 @@ import { UseBoundStoreWithEqualityFn } from 'zustand/traditional';
 import { Provider } from '../../contexts/RFStoreContext';
 import { createRFStore } from '../../store';
 import type { ReactFlowState, Node, Edge } from '../../types';
+import React from 'react';
 
 export function ReactFlowProvider({
   children,

@@ -1,9 +1,10 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import cc from 'classcat';
-import type { PanelPosition } from '@xyflow/system';
+import type { PanelPosition } from '../../../system';
 
 import { useStore } from '../../hooks/useStore';
 import type { ReactFlowState } from '../../types';
+import React from 'react';
 
 export type PanelProps = HTMLAttributes<HTMLDivElement> & {
   /** Set position of the panel

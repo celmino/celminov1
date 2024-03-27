@@ -1,4 +1,4 @@
-import type { XYPosition } from '@xyflow/system';
+import type { XYPosition } from '../../../system';
 
 import { InputNode } from '../Nodes/InputNode';
 import { DefaultNode } from '../Nodes/DefaultNode';
@@ -21,7 +21,7 @@ export const builtinNodeTypes: NodeTypes = {
 };
 
 export function getNodeInlineStyleDimensions<NodeType extends Node = Node>(
-  node: NodeType
+  node: any
 ): {
   width: number | string | undefined;
   height: number | string | undefined;

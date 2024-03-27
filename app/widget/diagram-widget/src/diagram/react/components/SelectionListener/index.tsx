@@ -9,6 +9,7 @@ import { shallow } from 'zustand/shallow';
 
 import { useStore, useStoreApi } from '../../hooks/useStore';
 import type { ReactFlowState, OnSelectionChangeFunc, Node, Edge } from '../../types';
+import React from 'react';
 
 type SelectionListenerProps = {
   onSelectionChange?: OnSelectionChangeFunc;
