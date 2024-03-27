@@ -14,6 +14,7 @@ import { FeedApplet } from "./applets/Feed";
 import { ListApplet } from "./applets/TaskListApplet";
 import { MeetingsApplet } from "./applets/Meetings";
 import { DocumentsApplet } from "./applets/Documents";
+import { ModellingApplet } from "./applets/Modelling";
 
 export const Applets = [
     /*  InvestorsInTurkey,
@@ -32,6 +33,7 @@ export const Applets = [
      FeedApplet,
      MeetingsApplet,
      DocumentsApplet,
+     ModellingApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',

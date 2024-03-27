@@ -111,7 +111,7 @@
         "@realmocean/inputs": "^21.0.0-beta.3",
         "@realmocean/navigations": "^21.0.0-beta.28",
         "@realmocean/query-builder": "^0.0.2",
-        "@realmocean/sdk": "^1.0.13",
+        "@realmocean/sdk": "^1.0.100",
         "@realmocean/services": "^21.0.0-beta.5",
         "@realmocean/spreadsheet": "^19.37.7",
         "@tldraw/assets": "2.0.0-beta.3",
@@ -138,8 +138,11 @@
         "webpack-cli": "^4.7.2"
     },
     "dependencies": {
+        "@celmino/ui": "^1.0.48",
+        "@dagrejs/dagre": "^1.1.1",
         "classcat": "^5.0.4",
         "d3": "^7.9.0",
+        "d3-hierarchy": "^3.1.2",
         "zustand": "^4.5.2"
     }
 }

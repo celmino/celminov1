@@ -5,7 +5,6 @@ import { SettingsController } from "./settings/+controller";
 import { FeatureSettingsController } from "./settings/features/+controller";
 import { GeneralSettingsController } from "./settings/general/+controller";
 import { MembersController } from "./settings/members/+controller";
-import { StatusesController } from "./settings/statuses/+controller";
 import { TabsController } from "./settings/tabs/+controller";
 
 
@@ -26,7 +25,7 @@ export class RouteController extends UIController {
                             UIRoute('general', GeneralSettingsController),
                             UIRoute('members', MembersController),
                             UIRoute('tabs', TabsController),
-                            UIRoute('statuses', StatusesController)
+                           // UIRoute('statuses', StatusesController)
                         )
                     )
                 )

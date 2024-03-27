@@ -11259,6 +11259,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _applets_TaskListApplet__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applets/TaskListApplet */ "./src/applets/TaskListApplet.ts");
 /* harmony import */ var _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./applets/Meetings */ "./src/applets/Meetings.ts");
 /* harmony import */ var _applets_Documents__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./applets/Documents */ "./src/applets/Documents.ts");
+/* harmony import */ var _applets_Modelling__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./applets/Modelling */ "./src/applets/Modelling.ts");
+
 
 
 
@@ -11289,6 +11291,7 @@ const Applets = [
     _applets_Feed__WEBPACK_IMPORTED_MODULE_9__.FeedApplet,
     _applets_Meetings__WEBPACK_IMPORTED_MODULE_11__.MeetingsApplet,
     _applets_Documents__WEBPACK_IMPORTED_MODULE_12__.DocumentsApplet,
+    _applets_Modelling__WEBPACK_IMPORTED_MODULE_13__.ModellingApplet,
     {
         name: 'CRM - Gıda',
         type: 'Template',
@@ -18344,6 +18347,43 @@ const MeetingsApplet = {
                     ]
                 }
             ]
+        }
+    ]
+};
+
+
+/***/ }),
+
+/***/ "./src/applets/Modelling.ts":
+/*!**********************************!*\
+  !*** ./src/applets/Modelling.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ModellingApplet: () => (/* binding */ ModellingApplet)
+/* harmony export */ });
+const ModellingApplet = {
+    name: 'Modelling',
+    type: 'Applet',
+    tree_type: 'com.celmino.applet.modelling',
+    applet_type: 'com.celmino.applet.modelling',
+    description: 'Documents applet is effortless document management, offering seamless organization and collaboration capabilities. Access, edit, and share documents with ease, enhancing productivity across workspaces.',
+    // image: '/images/applets/documents.png',
+    iconCategory: 'Icons',
+    iconName: 'bell',
+    icon: '\\d1e7',
+    iconBackColor: '#66B47C',
+    enabled: true,
+    version: [1, 0, 1],
+    databases: [
+        {
+            "name": "Category",
+            "id": "applet_category",
+            "category": "app",
+            "collections": []
         }
     ]
 };

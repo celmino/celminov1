@@ -30,6 +30,10 @@ const fs = require('fs');
 
 const manifest = require('./src/manifest');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+
+
 const umdConfig = {
     target: 'web',
     mode: 'development',
@@ -74,6 +78,7 @@ const umdConfig = {
         '@realmocean/gantt': 'realmocean$gantt',
         '@realmocean/sdk': 'realmocean$sdk',
         '@realmocean/ui': 'realmocean$ui',
+        '@realmocean/atlaskit': 'realmocean$atlaskit',
 
         '@celmino/ui': 'celmino$ui',
 
@@ -166,7 +171,9 @@ const umdConfig = {
         filename: 'index.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    plugins: [{
+    plugins: [
+       // new BundleAnalyzerPlugin(),
+        {
         apply: (compiler) => {
             compiler.hooks.afterEmit.tap('AfterEmitPlugin', (compilation) => {
                 const file = './dist/index.js';

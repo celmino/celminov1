@@ -44,75 +44,68 @@ export class LandingController extends UIController {
         const subDomain = useGetSubdomain();
 
         return (
-            UIWidget('com.celmino.widget.flow')
-            .config({})
-        )
-
-        return (
             !is.nullOrEmpty(subDomain) ? UINavigate('/app') :
-            VStack({ alignment: cTopLeading })(
-                UIWidget('com.celmino.widget.flow')
-                .config({}),
-                // Header
-                HStack(
-                    HStack(
-                        ReactView(
-                            <LeftLogo></LeftLogo>
-                        )
-                    ).width().height(),
-                    Spacer(),
-                    HStack(
-                        Text('Log in')
-                            .padding('0 2rem')
-                            .lineHeight('1.6')
-                            .fontFamily('Graphik Regular,sans-serif')
-                            .fontSize('1.8rem').foregroundColor('#090e13')
-                    )
-                        .width()
-                        .height()
-                        .cursor('pointer')
-
-                        .onClick(() => navigate('/login')),
-                    HStack(
-                        Text('Sign up')
-                            .fontFamily('Graphik Medium,sans-serif')
-                            .fontSize('1.8rem')
-                            .foregroundColor('#242938')
-                            .lineHeight('3.4rem')
-
-                    )
-                        .padding('.5rem 2.5rem')
-                        .width()
-                        .border('solid 2px #242938')
-                        .onClick(() => navigate('/signup')),
-                ).height().position('fixed')
-                    .padding('3rem calc(50% - 660px)')
-                    .paddingRight('%4').paddingLeft('%4')
-                    .marginBottom('5rem')
-                    .transition('background .25s,box-shadow .35s')
-                    .zIndex(5)
-                ,
                 VStack({ alignment: cTopLeading })(
-                    VStack({ alignment: cLeading, spacing: 20 })(
+                    // Header
+                    HStack(
                         HStack(
-                            Text('Build your company brain').fontFamily('"Hagrid", sans-serif').fontSize('8rem').foregroundColor('#090e13').lineHeight('1.1')
-                            .maxLines(2)
-                        ).height().maxWidth('80%'),
-                        HStack({ alignment: cLeading })(
-                            Text('Open source alternative to Monday.com, Click Up and Notion with self-hosting and data ownership.').lineHeight('1.6')
-                                .maxLines(2)
+                            ReactView(
+                                <LeftLogo></LeftLogo>
+                            )
+                        ).width().height(),
+                        Spacer(),
+                        HStack(
+                            Text('Log in')
+                                .padding('0 2rem')
+                                .lineHeight('1.6')
                                 .fontFamily('Graphik Regular,sans-serif')
-                                .fontSize('3.2rem').foregroundColor('#090e13')
+                                .fontSize('1.8rem').foregroundColor('#090e13')
                         )
-                            .paddingTop('1rem')
-                            .paddingBottom('3rem')
-                            .maxWidth('80%').height()
-                    ).height()
-                        .padding('0 calc(50% - 572px)')
+                            .width()
+                            .height()
+                            .cursor('pointer')
+
+                            .onClick(() => navigate('/login')),
+                        HStack(
+                            Text('Sign up')
+                                .fontFamily('Graphik Medium,sans-serif')
+                                .fontSize('1.8rem')
+                                .foregroundColor('#242938')
+                                .lineHeight('3.4rem')
+
+                        )
+                            .padding('.5rem 2.5rem')
+                            .width()
+                            .border('solid 2px #242938')
+                            .onClick(() => navigate('/signup')),
+                    ).height().position('fixed')
+                        .padding('3rem calc(50% - 660px)')
+                        .paddingRight('%4').paddingLeft('%4')
+                        .marginBottom('5rem')
+                        .transition('background .25s,box-shadow .35s')
+                        .zIndex(5)
+                    ,
+                    VStack({ alignment: cTopLeading })(
+                        VStack({ alignment: cLeading, spacing: 20 })(
+                            HStack(
+                                Text('Build your company brain').fontFamily('"Hagrid", sans-serif').fontSize('8rem').foregroundColor('#090e13').lineHeight('1.1')
+                                    .maxLines(2)
+                            ).height().maxWidth('80%'),
+                            HStack({ alignment: cLeading })(
+                                Text('Open source alternative to Monday.com, Click Up and Notion with self-hosting and data ownership.').lineHeight('1.6')
+                                    .maxLines(2)
+                                    .fontFamily('Graphik Regular,sans-serif')
+                                    .fontSize('3.2rem').foregroundColor('#090e13')
+                            )
+                                .paddingTop('1rem')
+                                .paddingBottom('3rem')
+                                .maxWidth('80%').height()
+                        ).height()
+                            .padding('0 calc(50% - 572px)')
+                    )
+                        .padding('20rem 0 10rem')
+                        .margin('0 0 5rem')
                 )
-                    .padding('20rem 0 10rem')
-                    .margin('0 0 5rem')
-            )
 
         )
     }
