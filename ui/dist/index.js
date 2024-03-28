@@ -16124,7 +16124,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_relativeuri__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/relativeuri */ "./src/FormBuilder/views/relativeuri.ts");
 /* harmony import */ var _views_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/select */ "./src/FormBuilder/views/select.ts");
 /* harmony import */ var _views_text__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/text */ "./src/FormBuilder/views/text.ts");
-/* harmony import */ var _views_virtual__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/virtual */ "./src/FormBuilder/views/virtual.ts");
+/* harmony import */ var _views_virtual__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/virtual */ "./src/FormBuilder/views/virtual.tsx");
 /* harmony import */ var _views_widget__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/widget */ "./src/FormBuilder/views/widget.ts");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
@@ -16570,10 +16570,48 @@ class FormBuilder {
                     }
                 }
             }
+            const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.useDialog)();
             return (isFormLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Spinner)() :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.Form)({})(title && (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormHeader)(title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormSection)(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(views)(view => view)))
-                    .display('block'))
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.Form)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })(title && (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormHeader)(title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(views)(view => view))
+                    .display('block'), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormFooter)((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.ButtonGroup)(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(actions || [])((action) => {
+                    if (FormBuilder.actionFactories[action === null || action === void 0 ? void 0 : action.type]) {
+                        return FormBuilder.actionFactories[action === null || action === void 0 ? void 0 : action.type](formMeta, action);
+                    }
+                }), 
+                /*  LoadingButton()
+                     .appearance("primary")
+                     .label('Save')
+                     .type("submit"), */
+                (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.Button)().label('Cancel')
+                    .onClick(() => {
+                    dialog.Hide();
+                }))))
                     .onSubmit((data) => alert(JSON.stringify(data))))
+                    .padding()
+            /* VStack({ alignment: cTopLeading })
+                (
+                    Form({})
+                        (
+                            title && FormHeader(title),
+
+                            VStack(
+                                ...ForEach(views)(view => view),
+                             
+                            )
+                            ,
+                            FormFooter(
+                                ButtonGroup(
+                                    LoadingButton()
+                                    .appearance("primary")
+                                    .label('Save')
+                                        .type("submit"),
+                                       Button().label('Cancel')
+                                )
+                            )
+
+                        )
+                        .onSubmit((data) => alert(JSON.stringify(data)))
+                ) */
             /*  VStack({ alignment: cTopLeading, spacing: 24 })(
                  title && FormTitle(title),
                 
@@ -17905,10 +17943,10 @@ const TreeSelectView = (fieldInfo) => {
 
 /***/ }),
 
-/***/ "./src/FormBuilder/views/virtual.ts":
-/*!******************************************!*\
-  !*** ./src/FormBuilder/views/virtual.ts ***!
-  \******************************************/
+/***/ "./src/FormBuilder/views/virtual.tsx":
+/*!*******************************************!*\
+  !*** ./src/FormBuilder/views/virtual.tsx ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -17919,7 +17957,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__);
 //import { Validator } from "jsonschema";
+
 
 
 //const v = new Validator();
@@ -17935,12 +17976,16 @@ var schema = {
 const VirtualView = (fieldInfo) => {
     let { name, value } = fieldInfo;
     value = _FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.compileFormula(value);
-    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
-    let currentValue = formController.GetValue(name);
-    if (currentValue !== value) {
-        formController.SetValue(name, value);
-    }
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)();
+    /*  const formController = useFormController();
+     let currentValue = formController.GetValue(name);
+ 
+     if (currentValue !== value){
+         formController.SetValue(name, value);
+     }
+  */
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.FormField)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)())
+        .name(name)
+        .defaultValue(value));
 };
 
 

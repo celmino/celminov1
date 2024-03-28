@@ -11,7 +11,7 @@ import { TextFormView } from "./views/text";
 import { VirtualView } from "./views/virtual";
 import { WidgetView } from "./views/widget";
 
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useCallback } from "react";
 
 
 
@@ -35,7 +35,7 @@ import { NumberView } from "./views/number";
 import { CheckBoxFormView } from "./views/checkbox";
 import { CustomAction } from "./actions/CustomAction";
 import { KeyValueView } from "./views/keyvalue";
-import { Form, FormField, FormHeader, FormSection, TextField } from "@realmocean/atlaskit";
+import { Button, ButtonGroup, Form, FormField, FormFooter, FormHeader, FormSection, LoadingButton, TextField } from "@realmocean/atlaskit";
 
 
 export const UIFormBuilderContext = createContext(null!);
@@ -456,6 +456,7 @@ export class FormBuilder {
         console.log("rendered")
         const formController = useFormController();
         const dialog = useDialog();
+
         const contextValue = {
             nextForm: () => {
                 setFormIndex(Math.min(formIndex + 1, is.array(_formMeta) ? _formMeta.length : 0))
@@ -468,7 +469,9 @@ export class FormBuilder {
         const { config } = formMeta as any;
 
 
-        console.log(FormBuilder.actionFactories)
+        console.log(FormBuilder.actionFactories);
+
+
         return (
             ConfigContext(() =>
                 UIViewBuilder(() =>
@@ -562,30 +565,70 @@ export class FormBuilder {
                                         }
                                     }
 
+                                    const dialog = useDialog();
                                     return (
                                         isFormLoading ? Spinner() :
-                                            VStack({ alignment: cTopLeading })
-                                                (
-                                                    Form({})
-                                                        (
-                                                            title && FormHeader(title),
-                                                            VStack(
-                                                                FormSection(
-                                                                    ...ForEach(views)(view => view),
-                                                                    /*  FormField((props, error) => {
-                                                                         return (
-                                                                             Fragment
-                                                                                 (
-                                                                                     TextField().props(props)
-                                                                                 )
-                                                                         )
-                                                                     }) */
-                                                                )
-                                                            )
-                                                            .display('block')
+                                            VStack({ alignment: cTopLeading })(
+                                                Form({ alignment: cTopLeading })
+                                                    (
+
+                                                        title && FormHeader(title),
+
+
+                                                        VStack({ alignment: cTopLeading })(
+                                                            ...ForEach(views)(view => view),
+
                                                         )
-                                                        .onSubmit((data) => alert(JSON.stringify(data)))
-                                                )
+                                                            .display('block')
+                                                        ,
+
+                                                        FormFooter(
+                                                            ButtonGroup(
+                                                                ...ForEach(actions || [])((action: any) => {
+                                                                    if (FormBuilder.actionFactories[action?.type]) {
+                                                                        return FormBuilder.actionFactories[action?.type](formMeta, action)
+                                                                    }
+
+                                                                }),
+                                                                /*  LoadingButton()
+                                                                     .appearance("primary")
+                                                                     .label('Save')
+                                                                     .type("submit"), */
+                                                                Button().label('Cancel')
+                                                                    .onClick(() => {
+                                                                        dialog.Hide();
+                                                                    })
+                                                            )
+                                                        )
+
+                                                    )
+                                                    .onSubmit((data) => alert(JSON.stringify(data)))
+                                            )
+                                                .padding()
+                                        /* VStack({ alignment: cTopLeading })
+                                            (
+                                                Form({})
+                                                    (
+                                                        title && FormHeader(title),
+
+                                                        VStack(
+                                                            ...ForEach(views)(view => view),
+                                                         
+                                                        )
+                                                        ,
+                                                        FormFooter(
+                                                            ButtonGroup(
+                                                                LoadingButton()
+                                                                .appearance("primary")
+                                                                .label('Save')
+                                                                    .type("submit"),
+                                                                   Button().label('Cancel')
+                                                            )
+                                                        )
+
+                                                    )
+                                                    .onSubmit((data) => alert(JSON.stringify(data)))
+                                            ) */
                                         /*  VStack({ alignment: cTopLeading, spacing: 24 })(
                                              title && FormTitle(title),
                                             

@@ -1,8 +1,10 @@
 //import { Validator } from "jsonschema";
 
 
-import { Fragment, useFormController } from "@tuval/forms";
+import { Fragment, ReactView, useFormController } from "@tuval/forms";
 import { FormBuilder } from "../FormBuilder";
+import React from "react";
+import { FormField } from "@realmocean/atlaskit";
 
 //const v = new Validator();
 
@@ -26,14 +28,23 @@ export const VirtualView = (fieldInfo: any) => {
     let { name, value } = fieldInfo;
     value = FormBuilder.compileFormula(value);
 
-    const formController = useFormController();
-    let currentValue = formController.GetValue(name);
 
-    if (currentValue !== value){
-        formController.SetValue(name, value);
-    }
 
-    return Fragment();
+    /*  const formController = useFormController();
+     let currentValue = formController.GetValue(name);
+ 
+     if (currentValue !== value){
+         formController.SetValue(name, value);
+     }
+  */
+    return (
+        FormField(() =>
+            Fragment()
+        )
+            .name(name)
+            .defaultValue(value)
+
+    )
 
 
 

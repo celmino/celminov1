@@ -1,3 +1,4 @@
+import { LoadingButton, useFormState } from "@realmocean/atlaskit";
 import { useCreateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
 import {
@@ -26,33 +27,41 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
     const views = [];
 
 
-    const {  workspaceId, appletId } = formMeta;
+    const { workspaceId, appletId } = formMeta;
     const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
-    const { createDocument, isLoading } = useCreateDocument(workspaceId,appletId, 'folders');
-   
-    return (
-        Button(
-            Text('Save Folder')
-        )
-            .loading(isLoading)
-            .onClick(() => {
+    const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'folders');
 
-                const data = { ...formController.GetFormData() }
-                
+    const formData: any = useFormState();
+
+
+    return (
+        LoadingButton()
+            .appearance("primary")
+            .label('Save_')
+           // .type("submit")
+             .onClick(() => {
+            
+
+            
+                alert(JSON.stringify(formData))
+                return ;
+
+            
+
                 createDocument(
                     {
 
                         data: {
-                            ...data
+                            ...formData.values
                         }
                     },
                     (folder) => {
                         createWorkspaceTreeItem({
                             documentId: folder.$id,
                             data: {
-                                name: data.name,
+                                name: formData.values.name,
                                 type: 'folder',
-                                parent:data.parent,
+                                parent: formData.values.parent,
                                 tree_widget: 'com.celmino.applet.document-management',
                                 appletId,
                                 path: (new Date()).getTime().toString(),
@@ -60,17 +69,17 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
                                 iconCategory: 'SvgIcons',
                                 //viewer:'com.tuvalsoft.viewer.document'
                             }
-                        }, (item)=> {
-                            EventBus.Default.fire('applet.added', { treeItem: item});
+                        }, (item) => {
+                            EventBus.Default.fire('applet.added', { treeItem: item });
                             dialog.Hide();
                         })
 
-                     
+
 
                     }
                 )
 
-            })
+            }) as any 
     )
 }
 )
@@ -82,13 +91,13 @@ export const AddFolderDialog = (workspaceId: string, appletId: string, parent: s
     } else {
         return {
             "title": 'Create folder',
-            "workspaceId":workspaceId,
-            "appletId":appletId,
+            "workspaceId": workspaceId,
+            "appletId": appletId,
             /*   "mutation":"_create_workspace", */
             "actions": [
                 {
                     "label": "Save",
-                    "type": SaveFolderAction.Id ,
+                    "type": SaveFolderAction.Id,
                     /*  "successActions": [{
                          "type": "hide"
                      },
@@ -123,12 +132,12 @@ export const AddFolderDialog = (workspaceId: string, appletId: string, parent: s
                     "type": "virtual",
                     "value": parent
                 },
-              /*   "description": {
-                    "label": "Description",
-                    "type": "text",
-                    "multiline": true,
-                    "name": "description"
-                } */
+                /*   "description": {
+                      "label": "Description",
+                      "type": "text",
+                      "multiline": true,
+                      "name": "description"
+                  } */
 
             }
         }
