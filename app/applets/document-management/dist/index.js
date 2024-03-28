@@ -39653,11 +39653,9 @@ var SaveFolderAction = function (formMeta, action) { return (0,_tuval_forms__WEB
     var formData = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.useFormState)();
     return (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.LoadingButton)()
         .appearance("primary")
-        .label('Save_')
+        .label('Save')
         // .type("submit")
         .onClick(function () {
-        alert(JSON.stringify(formData));
-        return;
         createDocument({
             data: __assign({}, formData.values)
         }, function (folder) {
@@ -39715,11 +39713,11 @@ var AddFolderDialog = function (workspaceId, appletId, parent, path) {
                 }
             ],
             "fieldMap": {
-                "path": {
-                    "name": "path",
-                    "type": "virtual",
-                    "value": path
-                },
+                /*  "path": {
+                     "name": "path",
+                     "type": "virtual",
+                     "value": path
+                 }, */
                 "folder_name": {
                     "label": "Name",
                     "type": "text",

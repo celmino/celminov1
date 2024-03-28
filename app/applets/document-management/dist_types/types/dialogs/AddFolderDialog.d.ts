@@ -11,11 +11,6 @@ export declare const AddFolderDialog: (workspaceId: string, appletId: string, pa
         type: string;
     }[];
     fieldMap: {
-        path: {
-            name: string;
-            type: string;
-            value: string;
-        };
         folder_name: {
             label: string;
             type: string;

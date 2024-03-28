@@ -37,17 +37,9 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
     return (
         LoadingButton()
             .appearance("primary")
-            .label('Save_')
+            .label('Save')
            // .type("submit")
              .onClick(() => {
-            
-
-            
-                alert(JSON.stringify(formData))
-                return ;
-
-            
-
                 createDocument(
                     {
 
@@ -117,11 +109,11 @@ export const AddFolderDialog = (workspaceId: string, appletId: string, parent: s
                 }
             ],
             "fieldMap": {
-                "path": {
+               /*  "path": {
                     "name": "path",
                     "type": "virtual",
                     "value": path
-                },
+                }, */
                 "folder_name": {
                     "label": "Name",
                     "type": "text",
