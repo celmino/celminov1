@@ -17896,11 +17896,64 @@ const _TextFormView = (fieldInfo) => {
 };
 const TextFormView = (fieldInfo) => {
     let { label, name } = fieldInfo;
-    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.FormField)((props, error) => {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.TextField)().props(props)));
+    const [fieldValue, setFieldValue] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    const [fieldHasError, setFieldHasError] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    const [selectHasError, setSelectHasError] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+    const [errorMessageText, setErrorMessageText] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    const [messageId, setMessageId] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+    const errorMessages = {
+        shortUsername: 'Please enter a username longer than 4 characters',
+        validUsername: 'Nice one, this username is available',
+        usernameInUse: 'This username is already taken, try entering another one',
+        selectError: 'Please select a color',
+    };
+    const { shortUsername, validUsername, usernameInUse, selectError } = errorMessages;
+    const handleBlurEvent = () => {
+        if (fieldValue.length >= 5) {
+            setFieldHasError(false);
+            setErrorMessageText('IS_VALID');
+        }
+        else {
+            setFieldHasError(true);
+            if (fieldValue.length <= 5) {
+                setErrorMessageText('TOO_SHORT');
+            }
+        }
+    };
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        switch (errorMessageText) {
+            case 'IS_VALID':
+                setMessageId('-valid');
+                break;
+            case 'TOO_SHORT':
+            case 'IN_USE':
+                setMessageId('-error');
+                break;
+            default:
+                setMessageId('-error');
+        }
+    }, [errorMessageText]);
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.FormField)((props, error, valid, meta) => {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.TextField)().props(props)
+            .onBlur(handleBlurEvent), error ?
+            (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.ErrorMessage)(' This username is already in use, try another one')
+            : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)()
+        /* !fieldHasError && errorMessageText === 'IS_VALID' &&
+        ValidMessage(validUsername)
+        ,
+        fieldHasError && errorMessageText === 'TOO_SHORT' &&
+        ErrorMessage(shortUsername)
+        ,
+        fieldHasError && errorMessageText === 'IN_USE' &&
+        ErrorMessage(usernameInUse) */
+        ));
     })
+        .isRequired(true)
         .label(label)
-        .name(name));
+        .name(name)
+        .validate((value) => {
+        return value && value.length < 8 ? 'TOO_SHORT' : undefined;
+    }));
 };
 
 

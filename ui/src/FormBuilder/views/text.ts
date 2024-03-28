@@ -1,7 +1,7 @@
 //import { Validator } from "jsonschema";
-import { HStack, TextField, VStack, cLeading, cTopLeading, useFormController, Text, Fragment } from "@tuval/forms";
+import { HStack, TextField, VStack, cLeading, cTopLeading, useFormController, Text, Fragment, useState, useEffect } from "@tuval/forms";
 import { FormBuilder, compileFormula } from "../FormBuilder";
-import { FormField , TextField as A} from "@realmocean/atlaskit";
+import { FormField, TextField as A, ValidMessage, ErrorMessage } from "@realmocean/atlaskit";
 
 
 //const v = new Validator();
@@ -68,7 +68,7 @@ export const _TextFormView = (fieldInfo: any) => {
                             .cornerRadius(6)
                             .onBlur((e) => {
                                 formController.SetValue(name, e.target.value);
-                               
+
                             })
                             //.formField(fieldInfo.name, [])
                             .border({ default: '1px solid rgb(214, 217, 222)', hover: '1px solid #2776C7', focus: '1px solid #2776C7' })
@@ -94,17 +94,80 @@ export const _TextFormView = (fieldInfo: any) => {
 
 export const TextFormView = (fieldInfo: any) => {
     let { label, name } = fieldInfo;
-    
+
+    const [fieldValue, setFieldValue] = useState('');
+    const [fieldHasError, setFieldHasError] = useState(false);
+    const [selectHasError, setSelectHasError] = useState(false);
+    const [errorMessageText, setErrorMessageText] = useState('');
+    const [messageId, setMessageId] = useState('');
+
+    const errorMessages = {
+        shortUsername: 'Please enter a username longer than 4 characters',
+        validUsername: 'Nice one, this username is available',
+        usernameInUse: 'This username is already taken, try entering another one',
+        selectError: 'Please select a color',
+    };
+
+    const { shortUsername, validUsername, usernameInUse, selectError } =
+        errorMessages;
+
+
+    const handleBlurEvent = () => {
+       
+        if (fieldValue.length >= 5) {
+            setFieldHasError(false);
+            setErrorMessageText('IS_VALID');
+        } else {
+            setFieldHasError(true);
+            if (fieldValue.length <= 5) {
+                setErrorMessageText('TOO_SHORT');
+            }
+        }
+    }
+
+    useEffect(() => {
+        switch (errorMessageText) {
+            case 'IS_VALID':
+                setMessageId('-valid');
+                break;
+            case 'TOO_SHORT':
+            case 'IN_USE':
+                setMessageId('-error');
+                break;
+            default:
+                setMessageId('-error');
+        }
+    }, [errorMessageText]);
+
     return (
-        FormField((props, error) => {
+        FormField(( props, error, valid, meta) => {
             return (
                 Fragment
                     (
                         A().props(props)
+                        .onBlur(handleBlurEvent)
+                        ,
+                        error ?
+                        ErrorMessage(' This username is already in use, try another one')
+                        : Fragment()
+                             
+                          
+                        /* !fieldHasError && errorMessageText === 'IS_VALID' &&
+                        ValidMessage(validUsername)
+                        ,
+                        fieldHasError && errorMessageText === 'TOO_SHORT' &&
+                        ErrorMessage(shortUsername)
+                        ,
+                        fieldHasError && errorMessageText === 'IN_USE' &&
+                        ErrorMessage(usernameInUse) */
                     )
             )
         })
-        .label(label)
-        .name(name)
+            .isRequired(true)
+            .label(label)
+            .name(name)
+            .validate((value) => {
+               return  value && value.length < 8 ? 'TOO_SHORT' : undefined
+            })
     )
 }

@@ -39650,12 +39650,17 @@ var SaveFolderAction = function (formMeta, action) { return (0,_tuval_forms__WEB
     var workspaceId = formMeta.workspaceId, appletId = formMeta.appletId;
     var createWorkspaceTreeItem = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, 'workspace', 'ws_tree').createDocument;
     var _a = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'folders'), createDocument = _a.createDocument, isLoading = _a.isLoading;
-    var formData = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.useFormState)();
+    var formData = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.useFormState)({
+        values: true,
+        errors: true
+    });
     return (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__.LoadingButton)()
         .appearance("primary")
         .label('Save')
         // .type("submit")
         .onClick(function () {
+        alert(JSON.stringify(formData));
+        return;
         createDocument({
             data: __assign({}, formData.values)
         }, function (folder) {
@@ -39722,6 +39727,11 @@ var AddFolderDialog = function (workspaceId, appletId, parent, path) {
                     "label": "Name",
                     "type": "text",
                     "name": "name"
+                },
+                "folder_test": {
+                    "label": "Test",
+                    "type": "text",
+                    "name": "test"
                 },
                 "parent": {
                     "name": "parent",

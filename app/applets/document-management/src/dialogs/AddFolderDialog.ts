@@ -31,7 +31,10 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
     const { createDocument: createWorkspaceTreeItem } = useCreateDocument(workspaceId, 'workspace', 'ws_tree');
     const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'folders');
 
-    const formData: any = useFormState();
+    const formData: any = useFormState({
+        values: true,
+        errors:true
+    });
 
 
     return (
@@ -40,6 +43,10 @@ export const SaveFolderAction = (formMeta, action) => UIViewBuilder(() => {
             .label('Save')
            // .type("submit")
              .onClick(() => {
+
+                alert(JSON.stringify(formData))
+                return;
+
                 createDocument(
                     {
 
@@ -119,6 +126,7 @@ export const AddFolderDialog = (workspaceId: string, appletId: string, parent: s
                     "type": "text",
                     "name": "name"
                 },
+                
                 "parent": {
                     "name": "parent",
                     "type": "virtual",
