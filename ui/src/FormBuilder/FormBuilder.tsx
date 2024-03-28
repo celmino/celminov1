@@ -554,7 +554,7 @@ export class FormBuilder {
                                                 views.push(Text(viewType + ' not found'))
                                             } else {
                                                 if (FormBuilder.canRender(fieldMap[key])) {
-                                                    views.push(label(fieldMap[key]));
+                                                    // views.push(label(fieldMap[key]));
                                                     views.push(factoryFunc(fieldMap[key]));
                                                     views.push(description(fieldMap[key]));
                                                 }
@@ -566,20 +566,25 @@ export class FormBuilder {
                                         isFormLoading ? Spinner() :
                                             VStack({ alignment: cTopLeading })
                                                 (
-                                                    Form({})(
-                                                        title && FormHeader(title),
-                                                        FormSection(
-                                                            ...ForEach(views)(view => view),
-                                                            FormField((props, error) => {
-                                                                return (
-                                                                    Fragment
-                                                                        (
-                                                                            TextField().props(props)
-                                                                        )
+                                                    Form({})
+                                                        (
+                                                            title && FormHeader(title),
+                                                            VStack(
+                                                                FormSection(
+                                                                    ...ForEach(views)(view => view),
+                                                                    /*  FormField((props, error) => {
+                                                                         return (
+                                                                             Fragment
+                                                                                 (
+                                                                                     TextField().props(props)
+                                                                                 )
+                                                                         )
+                                                                     }) */
                                                                 )
-                                                            })
+                                                            )
+                                                            .display('block')
                                                         )
-                                                    )
+                                                        .onSubmit((data) => alert(JSON.stringify(data)))
                                                 )
                                         /*  VStack({ alignment: cTopLeading, spacing: 24 })(
                                              title && FormTitle(title),

@@ -93,7 +93,8 @@ export const _TextFormView = (fieldInfo: any) => {
 
 
 export const TextFormView = (fieldInfo: any) => {
-
+    let { label, name } = fieldInfo;
+    
     return (
         FormField((props, error) => {
             return (
@@ -103,5 +104,7 @@ export const TextFormView = (fieldInfo: any) => {
                     )
             )
         })
+        .label(label)
+        .name(name)
     )
 }

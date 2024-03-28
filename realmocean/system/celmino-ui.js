@@ -16563,7 +16563,7 @@ class FormBuilder {
                     }
                     else {
                         if (FormBuilder.canRender(fieldMap[key])) {
-                            views.push((0,_components_label__WEBPACK_IMPORTED_MODULE_15__.label)(fieldMap[key]));
+                            // views.push(label(fieldMap[key]));
                             views.push(factoryFunc(fieldMap[key]));
                             views.push((0,_components_description__WEBPACK_IMPORTED_MODULE_14__.description)(fieldMap[key]));
                         }
@@ -16571,9 +16571,9 @@ class FormBuilder {
                 }
             }
             return (isFormLoading ? (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Spinner)() :
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.Form)({})(title && (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormHeader)(title), (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormSection)((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormField)((props, error) => {
-                    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.Fragment)((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.TextField)().props(props)));
-                }))))
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_10__.cTopLeading })((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.Form)({})(title && (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormHeader)(title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.VStack)((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_29__.FormSection)(...(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_10__.ForEach)(views)(view => view)))
+                    .display('block'))
+                    .onSubmit((data) => alert(JSON.stringify(data))))
             /*  VStack({ alignment: cTopLeading, spacing: 24 })(
                  title && FormTitle(title),
                 
@@ -17857,9 +17857,12 @@ const _TextFormView = (fieldInfo) => {
     }
 };
 const TextFormView = (fieldInfo) => {
+    let { label, name } = fieldInfo;
     return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.FormField)((props, error) => {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fragment)((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_2__.TextField)().props(props)));
-    }));
+    })
+        .label(label)
+        .name(name));
 };
 
 
