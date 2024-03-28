@@ -16,11 +16,6 @@ export declare const AddFolderDialog: (workspaceId: string, appletId: string, pa
             type: string;
             name: string;
         };
-        folder_test: {
-            label: string;
-            type: string;
-            name: string;
-        };
         parent: {
             name: string;
             type: string;

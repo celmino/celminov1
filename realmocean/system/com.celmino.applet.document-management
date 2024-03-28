@@ -39728,11 +39728,6 @@ var AddFolderDialog = function (workspaceId, appletId, parent, path) {
                     "type": "text",
                     "name": "name"
                 },
-                "folder_test": {
-                    "label": "Test",
-                    "type": "text",
-                    "name": "test"
-                },
                 "parent": {
                     "name": "parent",
                     "type": "virtual",
