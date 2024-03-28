@@ -1,6 +1,7 @@
 //import { Validator } from "jsonschema";
-import { HStack, TextField, VStack, cLeading, cTopLeading, useFormController, Text } from "@tuval/forms";
+import { HStack, TextField, VStack, cLeading, cTopLeading, useFormController, Text, Fragment } from "@tuval/forms";
 import { FormBuilder, compileFormula } from "../FormBuilder";
+import { FormField , TextField as A} from "@realmocean/atlaskit";
 
 
 //const v = new Validator();
@@ -21,7 +22,7 @@ export interface TextFieldInfo {
 }
 
 
-export const TextFormView = (fieldInfo: any) => {
+export const _TextFormView = (fieldInfo: any) => {
     // v.validate(fieldInfo, schema).valid;
 
     const formController = useFormController();
@@ -88,4 +89,19 @@ export const TextFormView = (fieldInfo: any) => {
             ).height().marginBottom('16px')
         )
     }
+}
+
+
+export const TextFormView = (fieldInfo: any) => {
+
+    return (
+        FormField((props, error) => {
+            return (
+                Fragment
+                    (
+                        A().props(props)
+                    )
+            )
+        })
+    )
 }

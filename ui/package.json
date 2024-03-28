@@ -103,10 +103,11 @@
     },
     "dependencies": {
         "@realmocean/antd": "^21.0.34",
+        "@realmocean/atlaskit": "^17.8.11",
         "@realmocean/sdk": "^1.0.100",
         "@realmocean/vibe": "2.82.50",
         "@tuval/core": "^0.0.103",
-        "@tuval/forms": "^1.0.178",
+        "@tuval/forms": "^1.0.180",
         "@uiw/react-color-circle": "^2.1.0",
         "dts-bundle": "^0.7.3",
         "shelljs": "^0.8.5",

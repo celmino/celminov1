@@ -73,6 +73,7 @@ const umdConfig = {
 
         '@realmocean/sdk': 'realmocean$sdk',
         '@realmocean/antd': 'realmocean$antd',
+        '@realmocean/atlaskit': 'realmocean$atlaskit',
        
         
         'react': 'tuval$react',

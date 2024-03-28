@@ -40,7 +40,7 @@ export const RelationFieldAttributesView = () => (
                         .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')
                         .fontSize(12)
                         .foregroundColor('rgb(33, 37, 38)'),
-                    Select()
+                   /*  Select()
                         .open(open)
                         .placeHolder('Select Collection')
                         .dropdownRenderer(() => {
@@ -109,7 +109,7 @@ export const RelationFieldAttributesView = () => (
                           
 
                             setOpen(!open)
-                        })
+                        }) */
                 ).height(),
                 Spacer(),
                 HStack({ alignment: cLeading })(

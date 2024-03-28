@@ -15,7 +15,7 @@ import React, { createContext, useState } from "react";
 
 
 
-import { CheckBox, CodeEditor, ConfigContext, ForEach, Fragment, HStack, Icon, Icons, ReactView, ScrollView, Spacer, Spinner, Text, TextAlignment, TextField, UIFormController, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical, useDialog, useFormController } from "@tuval/forms";
+import { CheckBox, CodeEditor, ConfigContext, ForEach, Fragment, HStack, Icon, Icons, ReactView, ScrollView, Spacer, Spinner, Text, TextAlignment, UIFormController, UIView, UIViewBuilder, VStack, cLeading, cTopLeading, cVertical, useDialog, useFormController } from "@tuval/forms";
 import beautify from "json-beautify";
 import { NextFormAction } from "./actions/NextFormAction";
 import { PostToCallerAction } from "./actions/PostToCallerAction";
@@ -35,6 +35,7 @@ import { NumberView } from "./views/number";
 import { CheckBoxFormView } from "./views/checkbox";
 import { CustomAction } from "./actions/CustomAction";
 import { KeyValueView } from "./views/keyvalue";
+import { Form, FormField, FormHeader, FormSection, TextField } from "@realmocean/atlaskit";
 
 
 export const UIFormBuilderContext = createContext(null!);
@@ -563,47 +564,60 @@ export class FormBuilder {
 
                                     return (
                                         isFormLoading ? Spinner() :
-                                            VStack({ alignment: cTopLeading, spacing: 24 })(
-                                                title && FormTitle(title),
-                                                //   Text(formMode).onClick(() => setFormMode(formMode === 'form' ? 'code' : 'form')),
-                                                formMode === 'code' ?
-                                                    CodeEditor()
-                                                        .value(beautify(formMeta, null, 2, 50))
-                                                        .width('100%')
-                                                        .height('100%') :
-
-                                                    ScrollView({ axes: cVertical, alignment: cTopLeading })(
-                                                        VStack({ alignment: cTopLeading })(
-                                                            // Text(JSON.stringify(formController.GetFormData())),
-                                                            VStack({ alignment: cTopLeading })(
-                                                                ...ForEach(views)(view => view)
-                                                            )
-                                                                .height()
-                                                                .background('white')
-                                                            // .padding('24px 24px 0px')
-
+                                            VStack({ alignment: cTopLeading })
+                                                (
+                                                    Form({})(
+                                                        title && FormHeader(title),
+                                                        FormSection(
+                                                            ...ForEach(views)(view => view),
+                                                            FormField((props, error) => {
+                                                                return (
+                                                                    Fragment
+                                                                        (
+                                                                            TextField().props(props)
+                                                                        )
+                                                                )
+                                                            })
                                                         )
-                                                            .background('white')
-                                                    ),
-
-                                                HStack({ alignment: cLeading })(
-
-                                                    ...ForEach(actions || [])((action: any) => {
-                                                        if (FormBuilder.actionFactories[action?.type]) {
-                                                            return FormBuilder.actionFactories[action?.type](formMeta, action)
-                                                        }
-                                                        /* if (action?.type === 'save') {
-                                                            return SaveAction(formMeta, action)
-                                                        } else if (action?.type === 'next') {
-                                                            return NextFormAction(formMeta, action)
-                                                        } */
-                                                    })
-
+                                                    )
                                                 )
-                                                    .height()
-                                                //.borderTop('1px solid #D6E4ED')
+                                        /*  VStack({ alignment: cTopLeading, spacing: 24 })(
+                                             title && FormTitle(title),
+                                            
+                                             formMode === 'code' ?
+                                                 CodeEditor()
+                                                     .value(beautify(formMeta, null, 2, 50))
+                                                     .width('100%')
+                                                     .height('100%') :
 
-                                            )
+                                                 ScrollView({ axes: cVertical, alignment: cTopLeading })(
+                                                     VStack({ alignment: cTopLeading })(
+                                                       
+                                                         VStack({ alignment: cTopLeading })(
+                                                             ...ForEach(views)(view => view)
+                                                         )
+                                                             .height()
+                                                             .background('white')
+                                                       
+
+                                                     )
+                                                         .background('white')
+                                                 ),
+
+                                             HStack({ alignment: cLeading })(
+
+                                                 ...ForEach(actions || [])((action: any) => {
+                                                     if (FormBuilder.actionFactories[action?.type]) {
+                                                         return FormBuilder.actionFactories[action?.type](formMeta, action)
+                                                     }
+                                                   
+                                                 })
+
+                                             )
+                                                 .height()
+                                           
+
+                                         ) */
 
                                     )
 
