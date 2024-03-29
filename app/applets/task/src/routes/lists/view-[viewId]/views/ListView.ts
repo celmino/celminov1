@@ -1,7 +1,8 @@
 import { useRealm, useApplet, useAccount, SelectSiderDialog } from "@celmino/ui";
-import { useListDocuments, Query, useCreateDocument, useUpdateDocument, useCreateStringAttribute, useCreateRelationshipAttribute } from "@realmocean/sdk";
+import { useListDocuments, Query, useCreateDocument, useUpdateDocument, useCreateStringAttribute, useCreateRelationshipAttribute, useCreateIntegerAttribute } from "@realmocean/sdk";
 import { Fragment, HStack, Icon, SvgIcon, UIViewBuilder, UIWidget, VStack, cTop, cTopLeading, useDialogStack, useParams } from "@tuval/forms";
 import { ViewsTab } from "../../views/ViewsTabMenu";
+import { EventBus } from "@tuval/core";
 
 
 function replaceNonMatchingCharacters(originalText) {
@@ -52,6 +53,7 @@ export const ListView = () => UIViewBuilder(() => {
     const { createDocument: createViewSetting } = useCreateDocument(workspaceId, appletId, 'viewSettings');
 
     const { createStringAttribute } = useCreateStringAttribute(workspaceId);
+    const { createIntegerAttribute } = useCreateIntegerAttribute(workspaceId);
     const { createRelationshipAttribute } = useCreateRelationshipAttribute(workspaceId);
 
     const { account } = useAccount();
@@ -102,7 +104,6 @@ export const ListView = () => UIViewBuilder(() => {
                                                 ].map(group => ({ id: group.$id, ...group })),
                                                 groupBy: 'status',
                                                 onItemChanged: (itemId: string, data: any) => {
-
                                                     updateDocument({
                                                         databaseId: appletId,
                                                         collectionId: 'listItems',
@@ -111,10 +112,8 @@ export const ListView = () => UIViewBuilder(() => {
                                                     })
                                                 },
                                                 onItemSave: (data) => {
-
                                                     return (
                                                         new Promise((resolve) => {
-
                                                             createTask({
                                                                 data: data
                                                             }, (task) => {
@@ -156,6 +155,31 @@ export const ListView = () => UIViewBuilder(() => {
                                                             key: replaceNonMatchingCharacters(field.name),
                                                             required: false,
                                                             size: 255
+                                                        }, (attribute) => {
+                                                            createField({
+                                                                data: {
+                                                                    ...field,
+                                                                    key: replaceNonMatchingCharacters(field.name),
+                                                                    collectionId: 'listItems'
+                                                                }
+                                                            }, () => {
+
+                                                                createViewSetting({
+                                                                    data: {
+                                                                        viewId: 'applet',
+                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                        hidden: false
+                                                                    }
+                                                                }, () => void 0)
+
+                                                            })
+                                                        })
+                                                    } else if (field.type === 'number') {
+                                                        createIntegerAttribute({
+                                                            databaseId: appletId,
+                                                            collectionId: 'listItems',
+                                                            key: replaceNonMatchingCharacters(field.name),
+                                                            required: false,
                                                         }, (attribute) => {
                                                             createField({
                                                                 data: {

@@ -1,5 +1,5 @@
 import { EventBus, is } from "@tuval/core"
-import { Fragment, HStack, Icon, SvgIcon, Text, UIViewBuilder, cLeading, useOptions, useState } from "@tuval/forms"
+import { Fragment, HStack, Icon, ReactView, SvgIcon, Text, UIController, UIView, UIViewBuilder, UIWidget, VStack, cLeading, useDialogStack, useNavigate, useOptions, useState } from "@tuval/forms"
 import { TextField } from '@realmocean/vibe'
 import React from "react"
 
@@ -15,27 +15,64 @@ export const RichTextFieldRenderer = (item, fields, field) => {
                 const { onItemChanged } = useOptions();
                 const [isEdit, setIsEdit] = useState(false);
                 const [value, setValue] = useState(item[field.key]);
+                const { openDialog } = useDialogStack();
+                const navigate = useNavigate();
+
                 return (
                     HStack({ alignment: cLeading })(
                         Icon(RichTextIcon)
                     )
-                    .foregroundColor('#6D7A83')
+                        .foregroundColor('#6D7A83')
 
 
-                    /* .onClick(() => {
-                        setIsEdit(true)
-                    })
-                    .onClickAway(() => {
-                        if (isEdit) {
-                            onItemChanged(item.$id, {
-                                [field.key]: value
-                            });
+                        .onClick(() => {
+                            // setIsEdit(true)
+                            navigate(`#${item.$id}::`);
+                            openDialog({
+                                title: 'Open',
+                                view: UIViewBuilder(() => {
+                                    class _ extends UIController {
+                                        LoadView(): UIView {
+                                            const {item, name} = this.props;
+                                            return (
+                                                UIWidget('com.tuvalsoft.widget.editorjs')
+                                                    .config({
+                                                        defaultValue: is.nullOrEmpty(item[name]) ? null : JSON.parse(item[name]),
+                                                        onChange: (data) => {
+                                                            item[name] = JSON.stringify(data);
+                                                            onItemChanged(item.$id, {
+                                                                [name]: JSON.stringify(data)
+                                                            });
 
-                            item[field.key] = value;
-                            EventBus.Default.fire('tasks.updated', { task: item })
-                            setIsEdit(false);
-                        }
-                    }) */
+                                                        }
+
+                                                    })
+                                            )
+                                        }
+                                    }
+                                    return (
+                                        VStack(
+                                            Text(item['name']),
+                                            ReactView(
+                                                <_ item={item} name={field.key} ></_>
+                                            )
+
+                                        )
+                                    )
+                                })
+                            })
+                        })
+                    /* .onClickAway(() => {
+                      if (isEdit) {
+                          onItemChanged(item.$id, {
+                              [field.key]: value
+                          });
+
+                          item[field.key] = value;
+                          EventBus.Default.fire('tasks.updated', { task: item })
+                          setIsEdit(false);
+                      }
+                  }) */
                 )
             })
         )

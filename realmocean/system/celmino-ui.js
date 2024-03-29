@@ -22495,7 +22495,7 @@ __webpack_require__.r(__webpack_exports__);
 const FieldTypes = {
     'text': _dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.TextFieldsAttributesView,
     'richtext': _dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.RichTextFieldsAttributesView,
-    'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldsAttributesView,
+    'number': _dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.NumberFieldAttributesView,
     'select': _dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SelectFieldsAttributesView,
     'multiselect': _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.MultiSelectFieldsAttributesView,
     'relation': _dialogs_AddRelationFieldDialog__WEBPACK_IMPORTED_MODULE_11__.RelationFieldAttributesView
@@ -22645,6 +22645,7 @@ class Controller extends _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIFormControl
 const NewFieldMenuView = ({ view, onNewFieldAdded }) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ReactView)(react__WEBPACK_IMPORTED_MODULE_2___default().createElement(Controller, { onNewFieldAdded: onNewFieldAdded, view: view })));
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_dialogs_AddTextAttributeDialog__WEBPACK_IMPORTED_MODULE_4__.SaveTextFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_dialogs_AddRichtextFieldDialog__WEBPACK_IMPORTED_MODULE_8__.SaveRichTextFieldAction);
+_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_dialogs_AddNumberFieldDialog__WEBPACK_IMPORTED_MODULE_7__.SaveNumberFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction(_dialogs_AddSelectFieldDialog__WEBPACK_IMPORTED_MODULE_9__.SaveSelectFieldAction);
 _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_6__.FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', _dialogs_AddMultiSelectDialog__WEBPACK_IMPORTED_MODULE_10__.SaveMultiSelectFieldAction);
 
@@ -22782,84 +22783,91 @@ const AddMultiSelectFieldDialog = (workspaceId, databaseId, collectionId) => ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   AddNumberFieldDialog: () => (/* binding */ AddNumberFieldDialog),
-/* harmony export */   NumberFieldsAttributesView: () => (/* binding */ NumberFieldsAttributesView),
-/* harmony export */   SaveTextFieldAction: () => (/* binding */ SaveTextFieldAction)
+/* harmony export */   NumberFieldAttributesView: () => (/* binding */ NumberFieldAttributesView),
+/* harmony export */   SaveNumberFieldAction: () => (/* binding */ SaveNumberFieldAction)
 /* harmony export */ });
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/sdk */ "@realmocean/sdk");
-/* harmony import */ var _realmocean_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../FormBuilder/FormBuilder */ "./src/FormBuilder/FormBuilder.tsx");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils */ "./src/utils.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
+/* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
-const NumberFieldsAttributesView = (workspaceId, databaseId, collectionId) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_2__.FormBuilder.render(AddNumberFieldDialog(workspaceId, databaseId, collectionId)))
-    .padding(20)
-    .width(380)
-    .height(315)));
-const SaveTextFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIViewBuilder)(() => {
+
+
+const NumberFieldAttributesView = (onNewFieldAdded) => ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_FormBuilder_FormBuilder__WEBPACK_IMPORTED_MODULE_1__.FormBuilder.render(AddNumberFieldDialog(onNewFieldAdded)))
+    .padding(20)));
+const SaveNumberFieldAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIViewBuilder)(() => {
+    var _a;
     const { label, successAction, successActions } = action;
-    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormController)();
-    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useDialog)();
-    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useFormBuilder)();
-    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
-    const { databaseId, collectionId, name, workspaceId } = formController.GetFormData();
-    const { createStringAttribute, isLoading } = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_0__.useCreateStringAttribute)(workspaceId);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Save Field'))
-        .padding(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cHorizontal, 11)
-        .minWidth(28)
-        .minHeight(28)
-        .height()
-        .width()
-        .fontSize(14)
-        .foregroundColor('white')
-        .cornerRadius(6)
-        .background('rgb(64, 101, 221)')
-        // .loading(isLoading)
+    const formController = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormController)();
+    const dialog = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useDialog)();
+    const formBuilder = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useFormBuilder)();
+    const navigate = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useNavigate)();
+    const { onNewFieldAdded } = formMeta;
+    const formState = (0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.useFormState)({ values: true, errors: true });
+    return ((0,_realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_4__.LoadingButton)().label('Save')
+        .appearance('primary')
+        .isDisabled(_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.nullOrEmpty((_a = formState === null || formState === void 0 ? void 0 : formState.values) === null || _a === void 0 ? void 0 : _a.name))
         .onClick(() => {
-        if (databaseId == null) {
-            alert('Collection is null');
-            return;
+        const _onNewFieldAdded = onNewFieldAdded === null || onNewFieldAdded === void 0 ? void 0 : onNewFieldAdded.value;
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.function(_onNewFieldAdded)) {
+            _onNewFieldAdded({
+                key: (0,_utils__WEBPACK_IMPORTED_MODULE_2__.replaceNonMatchingCharacters)(formState.values.name),
+                name: formState.values.name,
+                type: 'number',
+                fieldInfo: JSON.stringify({
+                    size: 32
+                })
+            });
         }
-        createStringAttribute({
-            databaseId,
-            collectionId,
-            key: name,
-            required: false,
-            size: 255
-        }, () => {
-            dialog.Hide();
-        });
+        /*  createStringAttribute({
+             databaseId,
+             collectionId,
+             key: replaceNonMatchingCharacters(name),
+             required: false,
+             size: 255
+         }, (attribute) => {
+             createDocument({
+                 data: {
+                     key: attribute.key,
+                     name: name,
+                     type: 'text',
+                     fieldInfo: JSON.stringify({
+                         size: 255
+                     }),
+                     collectionId: collectionId
+                 }
+             }, () => dialog.Hide())
+         }) */
     }));
 });
-const AddNumberFieldDialog = (workspaceId, databaseId, collectionId) => ({
+SaveNumberFieldAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.nanoid)();
+const AddNumberFieldDialog = (onNewFieldAdded) => ({
     "title": 'Add number field',
+    "width": "420px",
+    "height": "320px",
+    "onNewFieldAdded": {
+        "name": "onNewFieldAdded",
+        "type": "virtual",
+        "value": onNewFieldAdded
+    },
     "actions": [
         {
-            "label": "Save",
-            "type": "ca_saveTextField"
+            "label": "custom",
+            "type": SaveNumberFieldAction.Id
         }
     ],
     "fieldMap": {
-        "workspaceId": {
-            "name": "workspaceId",
-            "type": "virtual",
-            "value": workspaceId
-        },
-        "databaseId": {
-            "name": "databaseId",
-            "type": "virtual",
-            "value": databaseId
-        },
-        "collectionId": {
-            "name": "collectionId",
-            "type": "virtual",
-            "value": collectionId
-        },
         "name": {
             "label": "NAME",
             "type": "text",
-            "name": "name"
+            "name": "name",
+            "autofocus": true
         },
         "description": {
             "label": "DESCRIPTION (OPTIONAL)",

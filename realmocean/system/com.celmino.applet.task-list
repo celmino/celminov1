@@ -32739,6 +32739,7 @@ var ListView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__
     ]).createDocument;
     var createViewSetting = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateDocument)(workspaceId, appletId, 'viewSettings').createDocument;
     var createStringAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateStringAttribute)(workspaceId).createStringAttribute;
+    var createIntegerAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateIntegerAttribute)(workspaceId).createIntegerAttribute;
     var createRelationshipAttribute = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useCreateRelationshipAttribute)(workspaceId).createRelationshipAttribute;
     var account = (0,_celmino_ui__WEBPACK_IMPORTED_MODULE_0__.useAccount)().account;
     var updateDocument = (0,_realmocean_sdk__WEBPACK_IMPORTED_MODULE_1__.useUpdateDocument)(workspaceId).updateDocument;
@@ -32814,6 +32815,26 @@ var ListView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__
                                 key: replaceNonMatchingCharacters(field.name),
                                 required: false,
                                 size: 255
+                            }, function (attribute) {
+                                createField({
+                                    data: __assign(__assign({}, field), { key: replaceNonMatchingCharacters(field.name), collectionId: 'listItems' })
+                                }, function () {
+                                    createViewSetting({
+                                        data: {
+                                            viewId: 'applet',
+                                            key: replaceNonMatchingCharacters(field.name),
+                                            hidden: false
+                                        }
+                                    }, function () { return void 0; });
+                                });
+                            });
+                        }
+                        else if (field.type === 'number') {
+                            createIntegerAttribute({
+                                databaseId: appletId,
+                                collectionId: 'listItems',
+                                key: replaceNonMatchingCharacters(field.name),
+                                required: false,
                             }, function (attribute) {
                                 createField({
                                     data: __assign(__assign({}, field), { key: replaceNonMatchingCharacters(field.name), collectionId: 'listItems' })

@@ -1,5 +1,5 @@
 import { FormulaRenderer } from "./FormulaRenderer";
-import { NumberRenderer } from "./NumberRenderer";
+import { NumberFieldRenderer } from "./NumberRenderer";
 import { RelationFieldRenderer } from "./RelationFirldRenderer";
 import { RichTextFieldRenderer } from "./RichTextRenderer";
 import { SelectRenderer } from "./SelectRenderer";
@@ -15,7 +15,7 @@ export const RendererProxy = (item, fields, field) => {
         case "select":
             return SelectRenderer(item, fields, field);
         case "number":
-            return NumberRenderer(item, fields, field);
+            return NumberFieldRenderer(item, fields, field);
         case "formula":
             return FormulaRenderer(item, fields, field);
         case "relation":

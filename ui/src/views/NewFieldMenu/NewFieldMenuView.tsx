@@ -5,7 +5,7 @@ import { Icons } from "./Icons";
 import { AddTextFieldDialog, SaveTextFieldAction, TextFieldsAttributesView } from "./dialogs/AddTextAttributeDialog";
 import { Text } from "@realmocean/vibe";
 import { FormBuilder } from "../../FormBuilder/FormBuilder";
-import { NumberFieldsAttributesView } from "./dialogs/AddNumberFieldDialog";
+import { NumberFieldAttributesView, SaveNumberFieldAction } from "./dialogs/AddNumberFieldDialog";
 import { RichTextFieldsAttributesView, SaveRichTextFieldAction } from "./dialogs/AddRichtextFieldDialog";
 import { SaveSelectFieldAction, SelectFieldsAttributesView } from "./dialogs/AddSelectFieldDialog";
 import React from "react";
@@ -16,7 +16,7 @@ import { RelationFieldAttributesView } from "./dialogs/AddRelationFieldDialog";
 const FieldTypes = {
     'text': TextFieldsAttributesView,
     'richtext': RichTextFieldsAttributesView,
-    'number': NumberFieldsAttributesView,
+    'number': NumberFieldAttributesView,
     'select': SelectFieldsAttributesView,
     'multiselect': MultiSelectFieldsAttributesView,
     'relation': RelationFieldAttributesView
@@ -216,6 +216,7 @@ export const NewFieldMenuView = ({ view, onNewFieldAdded }: { view: (menuIsOpen:
 
 FormBuilder.injectAction(SaveTextFieldAction);
 FormBuilder.injectAction( SaveRichTextFieldAction);
+FormBuilder.injectAction( SaveNumberFieldAction);
 FormBuilder.injectAction(SaveSelectFieldAction);
 FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', SaveMultiSelectFieldAction);
 
