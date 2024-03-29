@@ -214,6 +214,18 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/react" "^11.7.1"
 
+"@atlaskit/textarea@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/textarea/-/textarea-5.2.0.tgz#dd186b85793e315d5c242adbae90cfa3238a7fcb"
+  integrity sha512-HgFdQhqIvAbvjiM4FH1+q7uq5V6CI+wOuxiTdFkQxo6xjtLAED4rUh2YRU6z4A2xHwMi44VcwBigxn8SgR1nvQ==
+  dependencies:
+    "@atlaskit/analytics-next" "^9.2.0"
+    "@atlaskit/platform-feature-flags" "^0.2.0"
+    "@atlaskit/theme" "^12.6.0"
+    "@atlaskit/tokens" "^1.42.0"
+    "@babel/runtime" "^7.0.0"
+    "@emotion/react" "^11.7.1"
+
 "@atlaskit/textfield@^6.1.3":
   version "6.1.3"
   resolved "https://registry.yarnpkg.com/@atlaskit/textfield/-/textfield-6.1.3.tgz#aad1e48b0a7f27429d4ed0792e2ff04949503df0"
@@ -1092,7 +1104,7 @@
 
 "@realmocean/antd@^21.0.34":
   version "21.0.34"
-  resolved "https://registry.npmjs.org/@realmocean/antd/-/antd-21.0.34.tgz"
+  resolved "https://registry.yarnpkg.com/@realmocean/antd/-/antd-21.0.34.tgz#d034e38cb41c74976e85698dec742a32377c6cdb"
   integrity sha512-0CaJvt91ieg3A0PXT8ZW7B2Nk3oZ7bl42ORMLngEZQXPDFluj1xKJywNp/JkjW0Muo97/3xKi6jXl+dDMWEDAA==
   dependencies:
     "@realmocean/data" "^0.0.3"
@@ -1103,14 +1115,15 @@
     antd "^5.15.1"
     dayjs "^1.11.9"
 
-"@realmocean/atlaskit@^17.8.22":
-  version "17.8.22"
-  resolved "https://registry.yarnpkg.com/@realmocean/atlaskit/-/atlaskit-17.8.22.tgz#fec1d653b0c4eda6824a192418808f35d4feac14"
-  integrity sha512-GKMLu2vuxvhPKVwgrPWsLLZY3aFWZsHVv7bJGCG+P5mysX3Sm/2x971bqJ3lc+7SCXiAKDbkLwkD3J2jtDBE/g==
+"@realmocean/atlaskit@^17.8.24":
+  version "17.8.24"
+  resolved "https://registry.yarnpkg.com/@realmocean/atlaskit/-/atlaskit-17.8.24.tgz#943e52dbdd39c5a63ac4e490f62602e5d593a660"
+  integrity sha512-n5NHWeGGhp9JkMKHZUTtM/dvc2Cyq1+u1L1HlhHuHSEZRdbyhLunhbE54a/O3Ac7Ibs62N5q36Z2WF81zRWslw==
   dependencies:
     "@atlaskit/button" "^17.8.0"
     "@atlaskit/checkbox" "^13.1.3"
     "@atlaskit/form" "^9.1.0"
+    "@atlaskit/textarea" "^5.2.0"
     "@atlaskit/textfield" "^6.1.3"
     "@elastic/datemath" "^5.0.3"
     "@elastic/eui" "^93.2.0"

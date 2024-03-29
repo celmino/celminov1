@@ -484,7 +484,7 @@ export class FormBuilder {
                                     let isFormLoading = false;
 
                                     const views = []
-                                    const { fieldMap, layout, mode, resource, resourceId, title, protocol, mutation, query, actions } = formMeta as any;
+                                    const { fieldMap, layout, mode, resource, resourceId, title, protocol, mutation, query, actions, width = '100%', height = '100%' } = formMeta as any;
 
                                     /*  if (protocol) {
                                       
@@ -604,6 +604,8 @@ export class FormBuilder {
                                                     )
                                                     .onSubmit((data) => alert(JSON.stringify(data)))
                                             )
+                                             .width(width)
+                                            .height(height) 
                                                 .padding()
                                         /* VStack({ alignment: cTopLeading })
                                             (

@@ -1,7 +1,7 @@
 //import { Validator } from "jsonschema";
 import { HStack, TextField, VStack, cLeading, cTopLeading, useFormController, Text, Fragment, useState, useEffect } from "@tuval/forms";
 import { FormBuilder, compileFormula } from "../FormBuilder";
-import { FormField, TextField as A, ValidMessage, ErrorMessage } from "@realmocean/atlaskit";
+import { FormField, TextField as A, ValidMessage, ErrorMessage, TextArea } from "@realmocean/atlaskit";
 
 
 //const v = new Validator();
@@ -93,7 +93,7 @@ export const _TextFormView = (fieldInfo: any) => {
 
 
 export const TextFormView = (fieldInfo: any) => {
-    let { label, name } = fieldInfo;
+    let { label, name, multiline, autofocus } = fieldInfo;
 
     const [fieldValue, setFieldValue] = useState('');
     const [fieldHasError, setFieldHasError] = useState(false);
@@ -113,7 +113,7 @@ export const TextFormView = (fieldInfo: any) => {
 
 
     const handleBlurEvent = () => {
-       
+
         if (fieldValue.length >= 5) {
             setFieldHasError(false);
             setErrorMessageText('IS_VALID');
@@ -140,18 +140,20 @@ export const TextFormView = (fieldInfo: any) => {
     }, [errorMessageText]);
 
     return (
-        FormField(( props, error, valid, meta) => {
+        FormField((props, error, valid, meta) => {
             return (
                 Fragment
                     (
-                        A().props(props)
-                        .onBlur(handleBlurEvent)
+                        multiline ?
+                            TextArea().props(props).onBlur(handleBlurEvent).autoFocus(autofocus) :
+                            A().props(props).autoFocus(autofocus)
+                                .onBlur(handleBlurEvent)
                         ,
                         error ?
-                        ErrorMessage(' This username is already in use, try another one')
-                        : Fragment()
-                             
-                          
+                            ErrorMessage(' This username is already in use, try another one')
+                            : Fragment()
+
+
                         /* !fieldHasError && errorMessageText === 'IS_VALID' &&
                         ValidMessage(validUsername)
                         ,
@@ -167,7 +169,7 @@ export const TextFormView = (fieldInfo: any) => {
             .label(label)
             .name(name)
             .validate((value) => {
-               return  value && value.length < 8 ? 'TOO_SHORT' : undefined
+                return value && value.length < 8 ? 'TOO_SHORT' : undefined
             })
     )
 }

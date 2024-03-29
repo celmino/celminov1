@@ -175,7 +175,39 @@ export const ListView = () => UIViewBuilder(() => {
 
                                                             })
                                                         })
-                                                    } else if (field.type === 'select') {
+                                                    } else if (field.type === 'richtext') {
+                                                        createStringAttribute({
+                                                            databaseId: appletId,
+                                                            collectionId: 'listItems',
+                                                            key: replaceNonMatchingCharacters(field.name),
+                                                            required: false,
+                                                            size: 150000
+                                                        }, (attribute) => {
+                                                            createField({
+                                                                data: {
+                                                                    key: attribute.key,
+                                                                    name: field.name,
+                                                                    type: 'richtext',
+                                                                    fieldInfo: JSON.stringify({
+                                                                        size: 150000
+                                                                    }),
+                                                                    collectionId: 'listItems'
+                                                                }
+                                                            }, () => {
+
+                                                                createViewSetting({
+                                                                    data: {
+                                                                        viewId: 'applet',
+                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                        hidden: false
+                                                                    }
+                                                                }, () => void 0)
+
+                                                            })
+                                                        })
+                                                    }
+
+                                                    else if (field.type === 'select') {
                                                         createStringAttribute({
                                                             databaseId: appletId,
                                                             collectionId: 'listItems',

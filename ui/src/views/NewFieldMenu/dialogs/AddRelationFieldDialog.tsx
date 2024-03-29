@@ -7,6 +7,7 @@ import { LabeledTextInput } from "../../LabeledText/LabeledText";
 import { FormTitle } from "../../../FormBuilder/FormBuilder";
 import { DialogOkButton } from "../../DialogOkButton";
 import { replaceNonMatchingCharacters } from "../../../utils";
+import { useRealm } from "../../../context";
 
 const Marker = () => (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" aria-hidden="true" >
@@ -23,7 +24,9 @@ const colors = [
 ]
 export const RelationFieldAttributesView = () => (
     UIViewBuilder(() => {
-        const { workspaceId } = useOptions();
+        const {realm} = useRealm();
+
+        const workspaceId  = realm.$id;
         const { documents: applets, isLoading } = useListDocuments(workspaceId, 'workspace', 'applets');
         const [selectedCollection, setSelectedCollection] = useState(null);
         const [open, setOpen] = useState(false);
@@ -40,7 +43,7 @@ export const RelationFieldAttributesView = () => (
                         .fontFamily('ui-sans-serif, -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"')
                         .fontSize(12)
                         .foregroundColor('rgb(33, 37, 38)'),
-                   /*  Select()
+                     Select()
                         .open(open)
                         .placeHolder('Select Collection')
                         .dropdownRenderer(() => {
@@ -83,7 +86,7 @@ export const RelationFieldAttributesView = () => (
                                             ).height()
                                         )
 
-                                ).height(300)
+                                ).height(300) as any
                             )
                         })
                         .value(selectedCollection?.collection?.$id)
@@ -109,7 +112,7 @@ export const RelationFieldAttributesView = () => (
                           
 
                             setOpen(!open)
-                        }) */
+                        })  as any
                 ).height(),
                 Spacer(),
                 HStack({ alignment: cLeading })(

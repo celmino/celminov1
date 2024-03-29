@@ -1,5 +1,5 @@
 import { is } from "@tuval/core";
-import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, DialogPosition, UIController, ReactView, UIFormController, UIView, OptionsContext } from "@tuval/forms";
+import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, DialogPosition, UIController, ReactView, UIFormController, UIView, OptionsContext, DialogContext } from "@tuval/forms";
 import { useState } from "react";
 import { Icons } from "./Icons";
 import { AddTextFieldDialog, SaveTextFieldAction, TextFieldsAttributesView } from "./dialogs/AddTextAttributeDialog";
@@ -152,34 +152,48 @@ class Controller extends UIFormController {
                                         setMenuIsOpen(!menuIsOpen);
                                     })
                             )(
-                                selectedType == null ?
-                                    VStack(
-                                        ...ForEach(AttributesMenuItems)((item) =>
-                                            HStack({ alignment: cLeading, spacing: 10 })(
-                                                Icon(item.icon),
-                                                Text(item.title) as any
-                                            )
-                                                .background({ hover: 'rgba(81,97,108,.1)' })
-                                                .padding()
-                                                .cursor('pointer')
-                                                .height(32)
-                                                .onClick(() => {
-                                                    //_hideHandle();
-                                                    is.function(item.onClick) ? item.onClick() : void 0;
-                                                })
-                                        )
-                                    )
-                                        .width(200)
-                                        .marginTop(8)
-                                        .border('1px solid #EFF0F1')
-                                        .cornerRadius(6)
-                                    :
-                                    FieldTypes[selectedType](onNewFieldAdded)
+                                ReactView(
+                                    <DialogContext.Provider value={{
+                                        Hide: () =>{
+                                            setMenuIsOpen(false);
+                                            setSelectedType(null);
+                                        }
+                                    }}>
+                                        {
+                                            selectedType == null ?
+                                                VStack(
+                                                    ...ForEach(AttributesMenuItems)((item) =>
+                                                        HStack({ alignment: cLeading, spacing: 10 })(
+                                                            Icon(item.icon),
+                                                            Text(item.title) as any
+                                                        )
+                                                            .background({ hover: 'rgba(81,97,108,.1)' })
+                                                            .padding()
+                                                            .cursor('pointer')
+                                                            .height(32)
+                                                            .onClick(() => {
+                                                                //_hideHandle();
+                                                                is.function(item.onClick) ? item.onClick() : void 0;
+                                                            })
+                                                    )
+                                                )
+                                                    .width(200)
+                                                    .marginTop(8)
+                                                    .border('1px solid #EFF0F1')
+                                                    .cornerRadius(6)
+                                                    .render()
+                                                :
+                                                FieldTypes[selectedType](onNewFieldAdded).render()
+                                        }
+                                    </DialogContext.Provider>
+                                )
+
                             )
                                 .open(menuIsOpen)
                                 .hideHandle(hideHandle => _hideHandle = hideHandle)
                                 .dialogPosition(DialogPosition.BOTTOM_END)
                                 .onDidHide(() => {
+                                    
                                     setMenuIsOpen(false);
                                     setSelectedType(null);
                                 })
@@ -201,7 +215,7 @@ export const NewFieldMenuView = ({ view, onNewFieldAdded }: { view: (menuIsOpen:
 
 
 FormBuilder.injectAction(SaveTextFieldAction);
-FormBuilder.injectAction('com.celmino-ui.actions.saveRichTextField', SaveRichTextFieldAction);
+FormBuilder.injectAction( SaveRichTextFieldAction);
 FormBuilder.injectAction(SaveSelectFieldAction);
 FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', SaveMultiSelectFieldAction);
 

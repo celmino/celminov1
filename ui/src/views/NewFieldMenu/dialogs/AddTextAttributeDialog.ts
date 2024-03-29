@@ -3,6 +3,7 @@ import { HStack, Text, UIViewBuilder, VStack, cHorizontal, useDialog, useFormBui
 import { FormBuilder } from "../../../FormBuilder/FormBuilder";
 import { replaceNonMatchingCharacters } from "../../../utils";
 import { is } from "@tuval/core";
+import { LoadingButton, useFormState } from "@realmocean/atlaskit";
 
 
 export const TextFieldsAttributesView = (onNewFieldAdded) => (
@@ -11,8 +12,6 @@ export const TextFieldsAttributesView = (onNewFieldAdded) => (
             FormBuilder.render(AddTextFieldDialog(onNewFieldAdded))
         )
             .padding(20)
-            .width(380)
-            .height(315)
     )
 )
 
@@ -24,29 +23,24 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const formBuilder = useFormBuilder();
     const navigate = useNavigate();
 
-    const { name, onNewFieldAdded } = formController.GetFormData();
+    const { onNewFieldAdded } = formMeta;
+    const formState = useFormState({ values: true, errors: true });
 
 
     return (
-        HStack(
-            Text('Save Field')
-        )
-            .padding(cHorizontal, 11)
-            .minWidth(28)
-            .minHeight(28)
-            .height()
-            .width()
-            .fontSize(14)
-            .foregroundColor('white')
-            .cornerRadius(6)
-            .background('rgb(64, 101, 221)')
-            // .loading(isLoading)
-            .onClick(() => {
+        LoadingButton(
 
-                if (is.function(onNewFieldAdded)) {
-                    onNewFieldAdded({
-                        key: replaceNonMatchingCharacters(name),
-                        name: name,
+        ).label('Save')
+            .appearance('primary')
+            .isDisabled(is.nullOrEmpty(formState?.values?.name))
+
+            .onClick(() => {
+               const _onNewFieldAdded = onNewFieldAdded?.value;
+                if (is.function(_onNewFieldAdded)) {
+                    alert('dfs')
+                    _onNewFieldAdded({
+                        key: replaceNonMatchingCharacters(formState.values.name),
+                        name: formState.values.name,
                         type: 'text',
                         fieldInfo: JSON.stringify({
                             size: 255
@@ -83,6 +77,13 @@ export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
 SaveTextFieldAction.Id = "com.celmino-ui.actions.saveTextField"
 export const AddTextFieldDialog = (onNewFieldAdded: Function) => ({
     "title": 'Add text field',
+    "width": "420px",
+    "height": "320px",
+    "onNewFieldAdded": {
+        "name": "onNewFieldAdded",
+        "type": "virtual",
+        "value": onNewFieldAdded
+    },
     "actions": [
         {
             "label": "custom",
@@ -90,16 +91,11 @@ export const AddTextFieldDialog = (onNewFieldAdded: Function) => ({
         }
     ],
     "fieldMap": {
-       
-        "onNewFieldAdded": {
-            "name": "onNewFieldAdded",
-            "type": "virtual",
-            "value": onNewFieldAdded
-        },
         "name": {
             "label": "NAME",
             "type": "text",
-            "name": "name"
+            "name": "name",
+            "autofocus": true
         },
         "description": {
             "label": "DESCRIPTION (OPTIONAL)",

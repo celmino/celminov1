@@ -32828,6 +32828,35 @@ var ListView = function () { return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__
                                 });
                             });
                         }
+                        else if (field.type === 'richtext') {
+                            createStringAttribute({
+                                databaseId: appletId,
+                                collectionId: 'listItems',
+                                key: replaceNonMatchingCharacters(field.name),
+                                required: false,
+                                size: 150000
+                            }, function (attribute) {
+                                createField({
+                                    data: {
+                                        key: attribute.key,
+                                        name: field.name,
+                                        type: 'richtext',
+                                        fieldInfo: JSON.stringify({
+                                            size: 150000
+                                        }),
+                                        collectionId: 'listItems'
+                                    }
+                                }, function () {
+                                    createViewSetting({
+                                        data: {
+                                            viewId: 'applet',
+                                            key: replaceNonMatchingCharacters(field.name),
+                                            hidden: false
+                                        }
+                                    }, function () { return void 0; });
+                                });
+                            });
+                        }
                         else if (field.type === 'select') {
                             createStringAttribute({
                                 databaseId: appletId,
