@@ -32,6 +32,10 @@ export const MultiSelectRenderer = (item, fields, field) => {
                 let _hideHandle = null;
 
                 const values: string[] = item[field.key]?.split(',') ?? [];
+
+              
+
+
                 return (
 
                     HStack({ alignment: cLeading })(
@@ -43,7 +47,7 @@ export const MultiSelectRenderer = (item, fields, field) => {
                                         Text(
                                             values.map(value =>
                                                 field.fieldInfo.options?.find((option) => option.value === value)?.label || ''
-                                            ).join(',')
+                                            ).join(' , ')
                                         )
                                 )
                                     .cursor('pointer')
@@ -69,7 +73,7 @@ export const MultiSelectRenderer = (item, fields, field) => {
                                         .background('#f9f9f9')
                                         .height(30)
                                         .padding('0 12px'),
-                                    ...ForEach([{ label: '-', value: '-1' }, ...field.fieldInfo.options].filter(option => values.findIndex(option.value) === -1))((option: any) =>
+                                    ...ForEach([ ...field.fieldInfo.options].filter(option =>  values.findIndex(value => value === option.value ) === -1))((option: any) =>
                                         HStack(
                                             HStack({ alignment: cLeading })(
                                                 Text(option.label)
