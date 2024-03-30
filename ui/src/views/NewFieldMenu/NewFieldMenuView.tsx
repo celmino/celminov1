@@ -2,23 +2,23 @@ import { is } from "@tuval/core";
 import { HStack, cTrailing, UIViewBuilder, PopupButton, Icon, cHorizontal, VStack, ForEach, cLeading, DialogPosition, UIController, ReactView, UIFormController, UIView, OptionsContext, DialogContext } from "@tuval/forms";
 import { useState } from "react";
 import { Icons } from "./Icons";
-import { AddTextFieldDialog, SaveTextFieldAction, TextFieldsAttributesView } from "./dialogs/AddTextAttributeDialog";
+import { AddTextFieldDialog, SaveTextFieldAction } from "./dialogs/AddTextAttributeDialog";
 import { Text } from "@realmocean/vibe";
 import { FormBuilder } from "../../FormBuilder/FormBuilder";
-import { NumberFieldAttributesView, SaveNumberFieldAction } from "./dialogs/AddNumberFieldDialog";
-import { RichTextFieldsAttributesView, SaveRichTextFieldAction } from "./dialogs/AddRichtextFieldDialog";
-import { SaveSelectFieldAction, SelectFieldsAttributesView } from "./dialogs/AddSelectFieldDialog";
+import { AddNumberFieldDialog, SaveNumberFieldAction } from "./dialogs/AddNumberFieldDialog";
+import { AddRichTextFieldDialog, SaveRichTextFieldAction } from "./dialogs/AddRichtextFieldDialog";
+import { AddSelectFieldDialog, SaveSelectFieldAction } from "./dialogs/AddSelectFieldDialog";
 import React from "react";
-import { MultiSelectFieldsAttributesView, SaveMultiSelectFieldAction } from "./dialogs/AddMultiSelectDialog";
+import { AddMultiSelectFieldDialog, SaveMultiSelectFieldAction } from "./dialogs/AddMultiSelectDialog";
 import { RelationFieldAttributesView } from "./dialogs/AddRelationFieldDialog";
 
 
 const FieldTypes = {
-    'text': TextFieldsAttributesView,
-    'richtext': RichTextFieldsAttributesView,
-    'number': NumberFieldAttributesView,
-    'select': SelectFieldsAttributesView,
-    'multiselect': MultiSelectFieldsAttributesView,
+    'text': AddTextFieldDialog,
+    'richtext': AddRichTextFieldDialog,
+    'number': AddNumberFieldDialog,
+    'select': AddSelectFieldDialog,
+    'multiselect': AddMultiSelectFieldDialog,
     'relation': RelationFieldAttributesView
 }
 
@@ -154,7 +154,7 @@ class Controller extends UIFormController {
                             )(
                                 ReactView(
                                     <DialogContext.Provider value={{
-                                        Hide: () =>{
+                                        Hide: () => {
                                             setMenuIsOpen(false);
                                             setSelectedType(null);
                                         }
@@ -183,7 +183,15 @@ class Controller extends UIFormController {
                                                     .cornerRadius(6)
                                                     .render()
                                                 :
-                                                FieldTypes[selectedType](onNewFieldAdded).render()
+                                                UIViewBuilder(() =>
+                                                    VStack
+                                                        (
+                                                            FormBuilder.render(FieldTypes[selectedType](onNewFieldAdded))
+                                                        )
+                                                        .padding()
+                                                )
+
+                                                    .render()
                                         }
                                     </DialogContext.Provider>
                                 )
@@ -193,7 +201,7 @@ class Controller extends UIFormController {
                                 .hideHandle(hideHandle => _hideHandle = hideHandle)
                                 .dialogPosition(DialogPosition.BOTTOM_END)
                                 .onDidHide(() => {
-                                    
+
                                     setMenuIsOpen(false);
                                     setSelectedType(null);
                                 })
@@ -215,8 +223,9 @@ export const NewFieldMenuView = ({ view, onNewFieldAdded }: { view: (menuIsOpen:
 
 
 FormBuilder.injectAction(SaveTextFieldAction);
-FormBuilder.injectAction( SaveRichTextFieldAction);
-FormBuilder.injectAction( SaveNumberFieldAction);
+FormBuilder.injectAction(SaveRichTextFieldAction);
+FormBuilder.injectAction(SaveNumberFieldAction);
 FormBuilder.injectAction(SaveSelectFieldAction);
+
 FormBuilder.injectAction('com.celmino-ui.actions.saveMultiSelectField', SaveMultiSelectFieldAction);
 

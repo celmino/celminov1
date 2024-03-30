@@ -232,19 +232,59 @@ export const ListView = () => UIViewBuilder(() => {
                                                     }
 
                                                     else if (field.type === 'select') {
+
                                                         createStringAttribute({
                                                             databaseId: appletId,
                                                             collectionId: 'listItems',
                                                             key: replaceNonMatchingCharacters(field.name),
                                                             required: false,
-                                                            size: 255
+                                                            size: 150000
+                                                        }, (attribute) => {
+
+                                                            createField({
+                                                                data: {
+                                                                    ...field,
+                                                                    key: replaceNonMatchingCharacters(field.name),
+                                                                    collectionId: 'listItems'
+                                                                }
+                                                            }, () => {
+
+                                                                createViewSetting({
+                                                                    data: {
+                                                                        viewId: 'applet',
+                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                        hidden: false
+                                                                    }
+                                                                }, () => void 0)
+
+                                                            })
+                                                        })
+                                                    } else if (field.type === 'multiselect') {
+
+                                                        createStringAttribute({
+                                                            databaseId: appletId,
+                                                            collectionId: 'listItems',
+                                                            key: replaceNonMatchingCharacters(field.name),
+                                                            required: false,
+                                                            size: 150000
                                                         }, (attribute) => {
                                                             createField({
                                                                 data: {
                                                                     ...field,
+                                                                    key: replaceNonMatchingCharacters(field.name),
                                                                     collectionId: 'listItems'
                                                                 }
-                                                            }, () => void 0)
+                                                            }, () => {
+
+                                                                createViewSetting({
+                                                                    data: {
+                                                                        viewId: 'applet',
+                                                                        key: replaceNonMatchingCharacters(field.name),
+                                                                        hidden: false
+                                                                    }
+                                                                }, () => void 0)
+
+                                                            })
                                                         })
                                                     } else if (field.type === 'relation') {
                                                         //alert(JSON.stringify(field))
@@ -272,41 +312,7 @@ export const ListView = () => UIViewBuilder(() => {
                                                             }, () => void 0)
                                                         })
                                                     }
-                                                    // alert(JSON.stringify(type))
-                                                    /*  if (formData.type === 'text') {
-                                                         await Services.Databases.createStringAttribute(workspaceId, appletId, 'wm_list_' + listId, formData.key, 255, false);
-                                                         await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                                             name: formData.name,
-                                                             key: replaceNonMatchingCharacters(formData.name),
-                                                             type: 'string',
-                                                             hidden: false
-                                                         });
-                                                     } else if (formData.type === 'number') {
-                                                         const key = replaceNonMatchingCharacters(formData.name);
-                                                         console.log(key)
-                                                         await Services.Databases.createIntegerAttribute(workspaceId, appletId, 'wm_list_' + listId, key, false);
-                                                         await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                                             name: formData.name,
-                                                             key: key,
-                                                             type: 'number',
-                                                             hidden: false
-                                                         });
-                                                     } else if (formData.type === 'formula') {
-                                                         await Services.Databases.createDocument(workspaceId, appletId, 'wm_list_' + listId + '_att', ID.unique(), {
-                                                             name: formData.name,
-                                                             key: replaceNonMatchingCharacters(formData.name),
-                                                             type: 'formula',
-                                                             type_content: JSON.stringify({
-                                                                 expression: formData.formula
-                                                             }),
-                                                             hidden: false
-                                                         });
-                                                     }
-                                                     else {
-                                                         alert('field type not found')
-                                                     } */
-
-
+                                                  
                                                 },
                                                 onItemClick: (item) => {
                                                     openDialog({

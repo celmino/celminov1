@@ -6,14 +6,7 @@ import { is } from "@tuval/core";
 import { LoadingButton, useFormState } from "@realmocean/atlaskit";
 
 
-export const NumberFieldAttributesView = (onNewFieldAdded) => (
-    UIViewBuilder(() =>
-        VStack(
-            FormBuilder.render(AddNumberFieldDialog(onNewFieldAdded))
-        )
-            .padding(20)
-    )
-)
+
 
 export const SaveNumberFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const { label, successAction, successActions } = action;

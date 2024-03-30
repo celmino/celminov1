@@ -6,14 +6,7 @@ import { FormBuilder } from "../../../FormBuilder/FormBuilder";
 import { replaceNonMatchingCharacters } from "../../../utils";
 
 
-export const RichTextFieldsAttributesView = (onNewFieldAdded) => (
-    UIViewBuilder(() =>
-        VStack(
-            FormBuilder.render(AddRichTextFieldDialog(onNewFieldAdded))
-        )
-            .padding(20)
-    )
-)
+
 
 export const SaveRichTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const { label, successAction, successActions } = action;
@@ -37,7 +30,6 @@ export const SaveRichTextFieldAction = (formMeta, action) => UIViewBuilder(() =>
             .onClick(() => {
                const _onNewFieldAdded = onNewFieldAdded?.value;
                 if (is.function(_onNewFieldAdded)) {
-                    alert('dfs')
                     _onNewFieldAdded({
                         key: replaceNonMatchingCharacters(formState.values.name),
                         name: formState.values.name,
@@ -47,28 +39,6 @@ export const SaveRichTextFieldAction = (formMeta, action) => UIViewBuilder(() =>
                         })
                     });
                 }
-
-
-
-                /*  createStringAttribute({
-                     databaseId,
-                     collectionId,
-                     key: replaceNonMatchingCharacters(name),
-                     required: false,
-                     size: 255
-                 }, (attribute) => {
-                     createDocument({
-                         data: {
-                             key: attribute.key,
-                             name: name,
-                             type: 'text',
-                             fieldInfo: JSON.stringify({
-                                 size: 255
-                             }),
-                             collectionId: collectionId
-                         }
-                     }, () => dialog.Hide())
-                 }) */
             })
     )
 })

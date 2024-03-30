@@ -1,106 +1,54 @@
-import { Query, useCreateDocument, useCreateStringAttribute } from "@realmocean/sdk";
-import { HStack, Text, UIViewBuilder, VStack, cHorizontal, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
+import { is } from "@tuval/core";
+import { HStack, Text, UIViewBuilder, VStack, cHorizontal, nanoid, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
 import { FormBuilder } from "../../../FormBuilder/FormBuilder";
+
+import { useFormState, LoadingButton } from "@realmocean/atlaskit";
 import { replaceNonMatchingCharacters } from "../../../utils";
 
 
-export const MultiSelectFieldsAttributesView = (workspaceId, databaseId, collectionId) => (
-    UIViewBuilder(() =>
-        VStack(
-            FormBuilder.render(AddMultiSelectFieldDialog(workspaceId, databaseId, collectionId))
-        )
-            .padding(20)
-            .width(380)
-            .height(515)
-    )
-)
-
 export const SaveMultiSelectFieldAction = (formMeta, action) => UIViewBuilder(() => {
-    const { label, successAction, successActions } = action;
-
-    const formController = useFormController();
     const dialog = useDialog();
-    const formBuilder = useFormBuilder();
-    const navigate = useNavigate();
 
-    const { databaseId, collectionId, name, workspaceId, options } = formController.GetFormData();
-
-    const { createStringAttribute, isLoading } = useCreateStringAttribute(workspaceId);
-
-    const { createDocument } = useCreateDocument(workspaceId, databaseId, 'fields', [
-        Query.equal('collectionId', collectionId)
-    ])
+    const { onNewFieldAdded } = formMeta;
+    const formState = useFormState({ values: true, errors: true });
 
     return (
-        HStack(
-            Text('Save Field')
-        )
-            .padding(cHorizontal, 11)
-            .minWidth(28)
-            .minHeight(28)
-            .height()
-            .width()
-            .fontSize(14)
-            .foregroundColor('white')
-            .cornerRadius(6)
-            .background('rgb(64, 101, 221)')
-            // .loading(isLoading)
+
+        LoadingButton(
+
+        ).label('Save')
+            .appearance('primary')
+            .isDisabled(is.nullOrEmpty(formState?.values?.name))
+
             .onClick(() => {
-
-                if (databaseId == null) {
-                    alert('Collection is null');
-                    return;
+                if (is.function(onNewFieldAdded)) {
+                    onNewFieldAdded({
+                        key: replaceNonMatchingCharacters(formState.values.name),
+                        name: formState.values.name,
+                        type: 'multiselect',
+                        fieldInfo: JSON.stringify({
+                            options: formState.values.options
+                        })
+                    });
                 }
-
-                createStringAttribute({
-                    databaseId,
-                    collectionId,
-                    key: replaceNonMatchingCharacters(name),
-                    required: false,
-                    size: 5255
-                }, (attribute) => {
-                    createDocument({
-                        data: {
-                            key: attribute.key,
-                            name: name,
-                            type: 'multiselect',
-                            fieldInfo: JSON.stringify({
-                                options: options
-                            }),
-                            collectionId: collectionId
-                        }
-                    }, () => dialog.Hide())
-                })
+                dialog.Hide();
             })
     )
 })
 
 
+SaveMultiSelectFieldAction.Id = nanoid();
 
-export const AddMultiSelectFieldDialog = (workspaceId: string, databaseId: string, collectionId: string) => ({
+export const AddMultiSelectFieldDialog = (onNewFieldAdded: Function) => ({
     "title": 'Add multi select field',
+    "onNewFieldAdded": onNewFieldAdded,
     "actions": [
         {
             "label": "Save",
-            "type": "com.celmino-ui.actions.saveMultiSelectField"
+            "type": SaveMultiSelectFieldAction.Id
         }
     ],
     "fieldMap": {
-        "workspaceId": {
-            "name": "workspaceId",
-            "type": "virtual",
-            "value": workspaceId
-        },
-        "databaseId": {
-            "name": "databaseId",
-            "type": "virtual",
-            "value": databaseId
-        },
-        "collectionId": {
-            "name": "collectionId",
-            "type": "virtual",
-            "value": collectionId
-        },
         "name": {
             "label": "NAME",
             "type": "text",
@@ -121,3 +69,4 @@ export const AddMultiSelectFieldDialog = (workspaceId: string, databaseId: strin
     }
 })
 
+FormBuilder.injectAction(SaveMultiSelectFieldAction);

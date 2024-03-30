@@ -1,4 +1,5 @@
 import { FormulaRenderer } from "./FormulaRenderer";
+import { MultiSelectRenderer } from "./MultiSelectRenderer";
 import { NumberFieldRenderer } from "./NumberRenderer";
 import { RelationFieldRenderer } from "./RelationFirldRenderer";
 import { RichTextFieldRenderer } from "./RichTextRenderer";
@@ -14,6 +15,8 @@ export const RendererProxy = (item, fields, field) => {
             return RichTextFieldRenderer(item, fields, field);
         case "select":
             return SelectRenderer(item, fields, field);
+        case "multiselect":
+            return MultiSelectRenderer(item, fields, field);
         case "number":
             return NumberFieldRenderer(item, fields, field);
         case "formula":

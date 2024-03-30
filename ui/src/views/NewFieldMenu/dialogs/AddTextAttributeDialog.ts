@@ -6,14 +6,7 @@ import { is } from "@tuval/core";
 import { LoadingButton, useFormState } from "@realmocean/atlaskit";
 
 
-export const TextFieldsAttributesView = (onNewFieldAdded) => (
-    UIViewBuilder(() =>
-        VStack(
-            FormBuilder.render(AddTextFieldDialog(onNewFieldAdded))
-        )
-            .padding(20)
-    )
-)
+
 
 export const SaveTextFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const { label, successAction, successActions } = action;

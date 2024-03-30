@@ -1,20 +1,11 @@
-import { Query, useCreateDocument, useCreateStringAttribute } from "@realmocean/sdk";
+import { is } from "@tuval/core";
 import { HStack, Text, UIViewBuilder, VStack, cHorizontal, nanoid, useDialog, useFormBuilder, useFormController, useNavigate } from "@tuval/forms";
 import { FormBuilder } from "../../../FormBuilder/FormBuilder";
+
+import { useFormState, LoadingButton } from "@realmocean/atlaskit";
 import { replaceNonMatchingCharacters } from "../../../utils";
-import { is } from "@tuval/core";
 
 
-export const SelectFieldsAttributesView = (onNewFieldAdded) => (
-    UIViewBuilder(() =>
-        VStack(
-            FormBuilder.render(AddSelectFieldDialog(onNewFieldAdded))
-        )
-            .padding(20)
-            .width(380)
-            .height(515)
-    )
-)
 
 export const SaveSelectFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const { label, successAction, successActions } = action;
@@ -24,40 +15,29 @@ export const SaveSelectFieldAction = (formMeta, action) => UIViewBuilder(() => {
     const formBuilder = useFormBuilder();
     const navigate = useNavigate();
 
-    const { name, options, onNewFieldAdded } = formController.GetFormData();
-
+    const { onNewFieldAdded } = formMeta;
+    const formState = useFormState({ values: true, errors: true });
 
     return (
-        HStack(
-            Text('Save Field')
-        )
-            .padding(cHorizontal, 11)
-            .minWidth(28)
-            .minHeight(28)
-            .height()
-            .width()
-            .fontSize(14)
-            .foregroundColor('white')
-            .cornerRadius(6)
-            .background('rgb(64, 101, 221)')
-            // .loading(isLoading)
-            .onClick(() => {
 
+        LoadingButton(
+
+        ).label('Save')
+            .appearance('primary')
+            .isDisabled(is.nullOrEmpty(formState?.values?.name))
+
+            .onClick(() => {
                 if (is.function(onNewFieldAdded)) {
                     onNewFieldAdded({
-                        key: name,
-                        name: name,
+                        key: replaceNonMatchingCharacters(formState.values.name),
+                        name: formState.values.name,
                         type: 'select',
                         fieldInfo: JSON.stringify({
-                            options: options
+                            options: formState.values.options
                         })
-                    })
-
+                    });
                 }
-
-                dialog.Hide();
             })
-
     )
 })
 
@@ -66,6 +46,7 @@ SaveSelectFieldAction.Id = nanoid();
 
 export const AddSelectFieldDialog = (onNewFieldAdded: Function) => ({
     "title": 'Add select field',
+    "onNewFieldAdded": onNewFieldAdded,
     "actions": [
         {
             "label": "Save",
@@ -73,11 +54,6 @@ export const AddSelectFieldDialog = (onNewFieldAdded: Function) => ({
         }
     ],
     "fieldMap": {
-        "onNewFieldAdded": {
-            "name": "onNewFieldAdded",
-            "type": "virtual",
-            "value": onNewFieldAdded
-        },
         "name": {
             "label": "NAME",
             "type": "text",
