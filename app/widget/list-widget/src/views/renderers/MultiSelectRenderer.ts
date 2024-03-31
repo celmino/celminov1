@@ -33,7 +33,7 @@ export const MultiSelectRenderer = (item, fields, field) => {
 
                 const values: string[] = item[field.key]?.split(',') ?? [];
 
-              
+
 
 
                 return (
@@ -42,13 +42,18 @@ export const MultiSelectRenderer = (item, fields, field) => {
                         HStack({ alignment: cLeading })(
                             PopupButton(
                                 HStack({ alignment: cLeading })(
-                                    (values.length === 0) ?
-                                        Text('-') :
-                                        Text(
-                                            values.map(value =>
-                                                field.fieldInfo.options?.find((option) => option.value === value)?.label || ''
-                                            ).join(' , ')
+                                    ...ForEach(values)(value => {
+                                        const label = field.fieldInfo.options?.find((option) => option.value === value)?.label;
+                                        return (
+                                            HStack(
+                                                Text(label)
+                                            )
+                                                .padding(5)
+                                                .border('solid 1px gray')
+                                                .width()
                                         )
+                                    })
+
                                 )
                                     .cursor('pointer')
                                     .cornerRadius(6)
@@ -73,7 +78,7 @@ export const MultiSelectRenderer = (item, fields, field) => {
                                         .background('#f9f9f9')
                                         .height(30)
                                         .padding('0 12px'),
-                                    ...ForEach([ ...field.fieldInfo.options].filter(option =>  values.findIndex(value => value === option.value ) === -1))((option: any) =>
+                                    ...ForEach([...field.fieldInfo.options].filter(option => values.findIndex(value => value === option.value) === -1))((option: any) =>
                                         HStack(
                                             HStack({ alignment: cLeading })(
                                                 Text(option.label)
