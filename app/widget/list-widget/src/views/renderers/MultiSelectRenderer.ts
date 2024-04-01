@@ -32,8 +32,8 @@ export const MultiSelectRenderer = (item, fields, field) => {
                 let _hideHandle = null;
 
                 const values: string[] = item[field.key]?.split(',') ?? [];
-
-
+debugger;
+               
 
 
                 return (
@@ -41,19 +41,20 @@ export const MultiSelectRenderer = (item, fields, field) => {
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
                             PopupButton(
-                                HStack({ alignment: cLeading })(
+                                values.length === 0 ? Text(values.length.toString()): 
+                                HStack({ alignment: cLeading, spacing: 5 })(
                                     ...ForEach(values)(value => {
                                         const label = field.fieldInfo.options?.find((option) => option.value === value)?.label;
                                         return (
                                             HStack(
                                                 Text(label)
                                             )
+                                                .cornerRadius(4)
                                                 .padding(5)
-                                                .border('solid 1px gray')
+                                                .border({ default: 'solid 1px #E9EBED', hover: 'solid 1px #D7DCDF' })
                                                 .width()
                                         )
                                     })
-
                                 )
                                     .cursor('pointer')
                                     .cornerRadius(6)
@@ -63,6 +64,44 @@ export const MultiSelectRenderer = (item, fields, field) => {
 
                             )(
                                 VStack({ alignment: cTopLeading, spacing: 5 })(
+                                    HStack({ alignment: cLeading, spacing: 5 })(
+                                        ...ForEach(values)(value => {
+                                            const label = field.fieldInfo.options?.find((option) => option.value === value)?.label;
+                                            return (
+                                                HStack(
+                                                    HStack(
+                                                        Text(label)
+                                                    )
+                                                        .cornerRadius(4)
+                                                        .padding(5)
+                                                        .border({ default: 'solid 1px #E9EBED', hover: 'solid 1px #D7DCDF' })
+                                                        .width(),
+                                                    HStack(
+                                                        Text('x')
+                                                    )
+                                                        .width(16).height(16)
+                                                        .onClick(() => {
+                                                            const index = values.indexOf(value);
+                                                            if (index > -1) {
+                                                                values.splice(index, 1);
+                                                                onItemChanged(item.$id, {
+                                                                    [field.key]: values.length === 0 ? '' : values.join(',')
+                                                                });
+
+                                                                item[field.key] = values.length === 0 ? '' : values.join(',');
+                                                                EventBus.Default.fire('tasks.updated', { task: item })
+
+                                                            }
+                                                        })
+                                                )
+                                            )
+                                        })
+                                    )
+                                        .cursor('pointer')
+                                        .cornerRadius(6)
+                                        //.padding()
+                                        //.border('1px solid #E8EAED')
+                                        .height(30),
                                     HStack(
                                         Text('SELECT AN OPTION')
                                     )
