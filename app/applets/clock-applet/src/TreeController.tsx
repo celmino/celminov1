@@ -44,14 +44,14 @@ class Clock extends React.Component<any, any> {
                 Text(
                     `${new Date().getDay()}/${new Date().getMonth() + 1}/${new Date().getFullYear()}`
                 )
-                    .fontSize('2rem')
+                    .fontSize(20)
                     .fontFamily('digital-7')
                     .foregroundColor('white'),
                 Spacer(),
                 Text(
                     this.state.time.toString()
                 )
-                    .fontSize('2rem')
+                    .fontSize(20)
                     .fontFamily('digital-7')
                     .foregroundColor('white')
                 //.foregroundColor('lime')

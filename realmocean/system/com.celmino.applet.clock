@@ -8735,10 +8735,10 @@ var Clock = /** @class */ (function (_super) {
     };
     Clock.prototype.render = function () {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("".concat(new Date().getDay(), "/").concat(new Date().getMonth() + 1, "/").concat(new Date().getFullYear()))
-            .fontSize('2rem')
+            .fontSize(20)
             .fontFamily('digital-7')
             .foregroundColor('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.state.time.toString())
-            .fontSize('2rem')
+            .fontSize(20)
             .fontFamily('digital-7')
             .foregroundColor('white')
         //.foregroundColor('lime')
