@@ -31,36 +31,33 @@ export const MultiSelectRenderer = (item, fields, field) => {
 
                 let _hideHandle = null;
 
-                const values: string[] = item[field.key]?.split(',') ?? [];
-debugger;
-               
-
+                const values: string[] = is.nullOrEmpty(item[field.key]) ? [] : item[field.key]?.split(',');
 
                 return (
 
                     HStack({ alignment: cLeading })(
                         HStack({ alignment: cLeading })(
                             PopupButton(
-                                values.length === 0 ? Text(values.length.toString()): 
-                                HStack({ alignment: cLeading, spacing: 5 })(
-                                    ...ForEach(values)(value => {
-                                        const label = field.fieldInfo.options?.find((option) => option.value === value)?.label;
-                                        return (
-                                            HStack(
-                                                Text(label)
+                                values.length === 0 ? Text(values.length.toString()) :
+                                    HStack({ alignment: cLeading, spacing: 5 })(
+                                        ...ForEach(values)(value => {
+                                            const label = field.fieldInfo.options?.find((option) => option.value === value)?.label;
+                                            return (
+                                                HStack(
+                                                    Text(label)
+                                                )
+                                                    .cornerRadius(4)
+                                                    .padding(5)
+                                                    .border({ default: 'solid 1px #E9EBED', hover: 'solid 1px #D7DCDF' })
+                                                    .width()
                                             )
-                                                .cornerRadius(4)
-                                                .padding(5)
-                                                .border({ default: 'solid 1px #E9EBED', hover: 'solid 1px #D7DCDF' })
-                                                .width()
-                                        )
-                                    })
-                                )
-                                    .cursor('pointer')
-                                    .cornerRadius(6)
-                                    //.padding()
-                                    //.border('1px solid #E8EAED')
-                                    .height(30)
+                                        })
+                                    )
+                                        .cursor('pointer')
+                                        .cornerRadius(6)
+                                        //.padding()
+                                        //.border('1px solid #E8EAED')
+                                        .height(30)
 
                             )(
                                 VStack({ alignment: cTopLeading, spacing: 5 })(
