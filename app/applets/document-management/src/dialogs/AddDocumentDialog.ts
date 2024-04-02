@@ -1,3 +1,4 @@
+import { LoadingButton, useFormState } from "@realmocean/atlaskit";
 import { useCreateDocument } from "@realmocean/sdk";
 import { EventBus } from "@tuval/core";
 import { UIViewBuilder, useFormController, useDialog, useFormBuilder, useNavigate, Button, Text, nanoid } from "@tuval/forms";
@@ -24,14 +25,17 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
     const { createDocument, isLoading } = useCreateDocument(workspaceId, appletId, 'documents');
     const { createDocument: createDocumentContent } = useCreateDocument(workspaceId, appletId, 'documentContent');
 
+    const formData: any = useFormState({
+        values: true,
+        errors:true
+    });
+    
     return (
-        Button(
-            Text('Save')
-        )
-            .loading(isLoading)
+        LoadingButton().appearance("primary").label('Save')
+           // .loading(isLoading)
             .onClick(() => {
 
-                const data = { ...formController.GetFormData() }
+                const data = formData?.values ?? {};
 
                 createDocument(
                     {
@@ -131,7 +135,8 @@ export const AddDocumentDialog = (workspaceId: string, appletId: string, parent:
                 "viewer": {
                     "name": "viewer",
                     "type": "virtual",
-                    "value": "com.tuvalsoft.widget.editorjs"
+                    // "value": "com.tuvalsoft.widget.editorjs"
+                    "value": "com.tuvalsoft.widget.markdown"
                 },
                 /*   "description": {
                       "label": "Description",

@@ -37,45 +37,30 @@ __webpack_require__.r(__webpack_exports__);
 class EditorJsController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController {
     LoadView() {
         const { onChange = void 0, defaultValue = null, tools, scrollable = true, clamp = false } = this.props.config || {};
-        const mdStr = `<p align="center">
-  <a href="https://github.com/uiwjs/react-markdown-editor/actions">
-    <img alt="Build & Deploy" src="https://github.com/uiwjs/react-markdown-editor/actions/workflows/ci.yml/badge.svg">
-  </a>
-  <a href="https://www.npmjs.com/package/@uiw/react-markdown-editor">
-    <img alt="NPM Download" src="https://img.shields.io/npm/dm/@uiw/react-markdown-editor.svg?style=flat">
-  </a>
-  <a href="https://www.npmjs.com/package/@uiw/react-markdown-editor">
-    <img alt="npm version" src="https://img.shields.io/npm/v/@uiw/react-markdown-editor.svg">
-  </a>
-</p>
-
-<p align="center">
-  A markdown editor with preview, implemented with React.js and TypeScript.
-</p>
-
-<!--rehype:ignore:start-->
-[![React Markdown Editor](https://user-images.githubusercontent.com/1680273/191638380-55abdad5-09b8-45f2-952e-6b9879fcf4fa.png)](https://uiwjs.github.io/react-markdown-editor/)
-
-<!--rehype:ignore:end-->
-
-
-> Migrate from @uiw/react-markdown-editor [4.x to 5.x.](https://github.com/uiwjs/react-markdown-editor/releases/tag/v5.0.0)
-
-## Install
-
-
-<!--rehype:ignore:start-->
-
-## Document
-
-Official document [demo preview](https://uiwjs.github.io/react-markdown-editor/) ([🇨🇳中国镜像网站](http://uiw.gitee.io/react-markdown-editor/))
-
-<!--rehype:ignore:end-->
-
-    `;
-        const [markdown, setMarkdown] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(mdStr);
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.OptionsContext)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(mdStr).renderingType(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RenderingTypes.Markdown))
+        const [markdown, setMarkdown] = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultValue !== null && defaultValue !== void 0 ? defaultValue : {
+            content: ''
+        });
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.OptionsContext)(() => (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical, alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(markdown.content).renderingType(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RenderingTypes.Markdown), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().value(markdown.content).multiline(true).onChange((e) => {
+            setMarkdown({
+                content: e
+            });
+            onChange({
+                content: e
+            });
+        })
+        /*  ReactView(
+          <div style={{ width: '100%', fontSize: '1.4rem' }}>
+            <MarkdownEditor
+              value={markdown}
+              height="200px"
+              onChange={(value, viewUpdate) => setMarkdown(value)}
+            />
+          </div>
+        )  */
+        )
             .fontSize('14px')
+            .width()
+            .height()))
         //.width('calc(100% - 40px)')
         // .border({ default: 'solid 1px #E2E2E2' }).tabIndex(0).cornerRadius(5)
         // .padding()

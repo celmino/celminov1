@@ -47,8 +47,6 @@ export class DocumentController extends UIController {
                     <DialogStack>
                         {
                             VStack({ alignment: cTopLeading })(
-                                UIWidget('com.tuvalsoft.widget.markdown')
-                                .config({}),
                                 ActionPanel(),
                                 DocumentHeader(document?.name, (e) => {
                                     updateDocument({
