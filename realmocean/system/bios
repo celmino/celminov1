@@ -11881,7 +11881,7 @@ var LeftSideMenuView = function (selectedItem) {
                         .onClick(function () {
                         var protocol = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_7__.useGetProtocol)();
                         var domainName = (0,_hooks_useGetProtocol__WEBPACK_IMPORTED_MODULE_7__.useGetHDomainName)();
-                        window.location.href = "".concat(protocol, "//").concat(domainName, "/app");
+                        window.location.href = _tuval_core__WEBPACK_IMPORTED_MODULE_3__.is.localhost() ? "".concat(protocol, "//").concat(domainName, "/app") : 'https://celmino.io';
                     }),
                     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_4__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.Icon)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_4__.SvgIcon)('cu3-icon-settings')), (0,_realmocean_vibe__WEBPACK_IMPORTED_MODULE_2__.Text)('Logout'))
                         .cursor('pointer')
@@ -11995,7 +11995,7 @@ var LeftSideMenuView = function (selectedItem) {
                                                     tree_widget: child.tree_widget,
                                                     iconName: child.iconName,
                                                     iconCategory: child.iconCategory,
-                                                    iconColor: child.iconColor,
+                                                    iconColor: parentNode.iconColor,
                                                     expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : (selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath.indexOf(child.$id)) > -1,
                                                     canDrag: true,
                                                     view: function (node) {
@@ -12241,7 +12241,7 @@ var LeftSideMenuView = function (selectedItem) {
                                             tree_widget: child.tree_widget,
                                             iconName: child.iconName,
                                             iconCategory: child.iconCategory,
-                                            iconColor: child.iconColor,
+                                            iconColor: parentNode.iconColor,
                                             expanded: (expandeds === null || expandeds === void 0 ? void 0 : expandeds[child.$id]) ? true : (selectedItem === null || selectedItem === void 0 ? void 0 : selectedItem.fullPath.indexOf(child.$id)) > -1,
                                             canDrag: true,
                                             view: function (node) {

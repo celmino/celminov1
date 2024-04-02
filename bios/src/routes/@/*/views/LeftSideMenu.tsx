@@ -335,7 +335,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                         .onClick(() => {
                                                             const protocol = useGetProtocol();
                                                             const domainName = useGetHDomainName();
-                                                            window.location.href = `${protocol}//${domainName}/app`
+                                                            window.location.href = is.localhost() ? `${protocol}//${domainName}/app` : 'https://celmino.io'
 
                                                         }),
                                                     HStack({ alignment: cLeading, spacing: 5 })(
@@ -522,7 +522,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                                                         tree_widget: child.tree_widget,
                                                                                                                         iconName: child.iconName,
                                                                                                                         iconCategory: child.iconCategory,
-                                                                                                                        iconColor: child.iconColor,
+                                                                                                                        iconColor: parentNode.iconColor,
                                                                                                                         expanded: expandeds?.[child.$id] ? true : selectedItem?.fullPath.indexOf(child.$id) > -1,
                                                                                                                         canDrag: true,
                                                                                                                         view: (node) => {
@@ -910,7 +910,7 @@ export const LeftSideMenuView = (selectedItem: string) => {
                                                                                             tree_widget: child.tree_widget,
                                                                                             iconName: child.iconName,
                                                                                             iconCategory: child.iconCategory,
-                                                                                            iconColor: child.iconColor,
+                                                                                            iconColor: parentNode.iconColor,
                                                                                             expanded: expandeds?.[child.$id] ? true : selectedItem?.fullPath.indexOf(child.$id) > -1,
                                                                                             canDrag: true,
                                                                                             view: (node) => {
