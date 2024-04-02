@@ -39407,6 +39407,7 @@ class TreeController extends _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIControl
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AddDocumentDialog": () => (/* binding */ AddDocumentDialog),
+/* harmony export */   "AddWhiteboardDialog": () => (/* binding */ AddWhiteboardDialog),
 /* harmony export */   "SaveDocumentAction": () => (/* binding */ SaveDocumentAction)
 /* harmony export */ });
 /* harmony import */ var _realmocean_atlaskit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @realmocean/atlaskit */ "@realmocean/atlaskit");
@@ -39478,7 +39479,76 @@ const SaveDocumentAction = (formMeta, action) => (0,_tuval_forms__WEBPACK_IMPORT
     }));
 });
 SaveDocumentAction.Id = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.nanoid)();
-const AddDocumentDialog = (workspaceId, appletId, parent, path, type = 'document') => {
+const AddDocumentDialog = (workspaceId, appletId, parent, path, type = 'document', viewer = 'com.tuvalsoft.widget.editorjs') => {
+    if (workspaceId == null) {
+        alert("spaceId is null");
+    }
+    else {
+        return {
+            "title": 'Create document',
+            "workspaceId": workspaceId,
+            "appletId": appletId,
+            /*   "mutation":"_create_workspace", */
+            "actions": [
+                {
+                    "label": "Save",
+                    "type": SaveDocumentAction.Id,
+                    /*  "successActions": [{
+                         "type": "hide"
+                     },
+                     {
+                         "type": "navigate",
+                         "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     }
+                     ] */
+                    /*  "successActions": [{
+                     "type": "hide"
+                 },
+                 {
+                     "type": "navigate",
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                 }
+                 ] */
+                }
+            ],
+            "fieldMap": {
+                "list_name": {
+                    "label": "name",
+                    "type": "text",
+                    "name": "name"
+                },
+                "type": {
+                    "name": "type",
+                    "type": "virtual",
+                    "value": type
+                },
+                "parent": {
+                    "name": "parent",
+                    "type": "virtual",
+                    "value": parent
+                },
+                "path": {
+                    "name": "path",
+                    "type": "virtual",
+                    "value": path
+                },
+                "viewer": {
+                    "name": "viewer",
+                    "type": "virtual",
+                    "value": viewer
+                    //"value": "com.tuvalsoft.widget.markdown"
+                },
+                /*   "description": {
+                      "label": "Description",
+                      "type": "text",
+                      "multiline": true,
+                      "name": "description"
+                  } */
+            }
+        };
+    }
+};
+const AddWhiteboardDialog = (workspaceId, appletId, parent, path, type = 'document') => {
     if (workspaceId == null) {
         alert("spaceId is null");
     }
@@ -39535,7 +39605,7 @@ const AddDocumentDialog = (workspaceId, appletId, parent, path, type = 'document
                     "name": "viewer",
                     "type": "virtual",
                     // "value": "com.tuvalsoft.widget.editorjs"
-                    "value": "com.tuvalsoft.widget.markdown"
+                    "value": "com.tuvalsoft.widget.whiteboard"
                 },
                 /*   "description": {
                       "label": "Description",
@@ -39671,6 +39741,92 @@ const AddFolderDialog = (workspaceId, appletId, parent, path) => {
                     "name": "parent",
                     "type": "virtual",
                     "value": parent
+                },
+                /*   "description": {
+                      "label": "Description",
+                      "type": "text",
+                      "multiline": true,
+                      "name": "description"
+                  } */
+            }
+        };
+    }
+};
+
+
+/***/ }),
+
+/***/ "./src/dialogs/AddMarkdownDialog.ts":
+/*!******************************************!*\
+  !*** ./src/dialogs/AddMarkdownDialog.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AddMarkdownDialog": () => (/* binding */ AddMarkdownDialog)
+/* harmony export */ });
+/* harmony import */ var _AddDocumentDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
+
+const AddMarkdownDialog = (workspaceId, appletId, parent, path, type = 'document') => {
+    if (workspaceId == null) {
+        alert("spaceId is null");
+    }
+    else {
+        return {
+            "title": 'Create document',
+            "workspaceId": workspaceId,
+            "appletId": appletId,
+            /*   "mutation":"_create_workspace", */
+            "actions": [
+                {
+                    "label": "Save",
+                    "type": _AddDocumentDialog__WEBPACK_IMPORTED_MODULE_0__.SaveDocumentAction.Id,
+                    /*  "successActions": [{
+                         "type": "hide"
+                     },
+                     {
+                         "type": "navigate",
+                         "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     }
+                     ] */
+                    /*  "successActions": [{
+                     "type": "hide"
+                 },
+                 {
+                     "type": "navigate",
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                 }
+                 ] */
+                }
+            ],
+            "fieldMap": {
+                "list_name": {
+                    "label": "name",
+                    "type": "text",
+                    "name": "name"
+                },
+                "type": {
+                    "name": "type",
+                    "type": "virtual",
+                    "value": type
+                },
+                "parent": {
+                    "name": "parent",
+                    "type": "virtual",
+                    "value": parent
+                },
+                "path": {
+                    "name": "path",
+                    "type": "virtual",
+                    "value": path
+                },
+                "viewer": {
+                    "name": "viewer",
+                    "type": "virtual",
+                    // "value": "com.tuvalsoft.widget.editorjs"
+                    "value": "com.tuvalsoft.widget.markdown"
                 },
                 /*   "description": {
                       "label": "Description",
@@ -41018,6 +41174,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _dialogs_AddFolderDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dialogs/AddFolderDialog */ "./src/dialogs/AddFolderDialog.ts");
 /* harmony import */ var _dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dialogs/AddDocumentDialog */ "./src/dialogs/AddDocumentDialog.ts");
+/* harmony import */ var _dialogs_AddMarkdownDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dialogs/AddMarkdownDialog */ "./src/dialogs/AddMarkdownDialog.ts");
+
 
 
 
@@ -41035,6 +41193,16 @@ const ContextMenu = (workspaceId, appletId, parent = '-1', path = '/') => [
         onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'document'))
     },
     {
+        title: 'Markdown Document',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddMarkdownDialog__WEBPACK_IMPORTED_MODULE_4__.AddMarkdownDialog)(workspaceId, appletId, parent, path, 'document'))
+    },
+    {
+        title: 'Whiteboard Document',
+        icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddWhiteboardDialog)(workspaceId, appletId, parent, path, 'document'))
+    },
+    {
         title: 'Wiki document',
         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
         onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'wiki'))
@@ -41047,7 +41215,7 @@ const ContextMenu = (workspaceId, appletId, parent = '-1', path = '/') => [
     {
         title: 'Spreadsheet',
         icon: (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.SvgIcon)('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.spreadsheet'))
+        onClick: () => _celmino_ui__WEBPACK_IMPORTED_MODULE_0__.DynoDialog.Show((0,_dialogs_AddDocumentDialog__WEBPACK_IMPORTED_MODULE_3__.AddDocumentDialog)(workspaceId, appletId, parent, path, 'document', 'com.tuvalsoft.widget.spreadsheet'))
     },
     {
         title: 'Google sheets',

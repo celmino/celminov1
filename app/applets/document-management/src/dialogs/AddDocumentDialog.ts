@@ -27,12 +27,12 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
 
     const formData: any = useFormState({
         values: true,
-        errors:true
+        errors: true
     });
-    
+
     return (
         LoadingButton().appearance("primary").label('Save')
-           // .loading(isLoading)
+            // .loading(isLoading)
             .onClick(() => {
 
                 const data = formData?.values ?? {};
@@ -79,7 +79,79 @@ export const SaveDocumentAction = (formMeta, action) => UIViewBuilder(() => {
 
 SaveDocumentAction.Id = nanoid();
 
-export const AddDocumentDialog = (workspaceId: string, appletId: string, parent: string, path: string, type: string = 'document') => {
+export const AddDocumentDialog = (workspaceId: string, appletId: string, parent: string, path: string, type: string = 'document', viewer: string = 'com.tuvalsoft.widget.editorjs') => {
+    if (workspaceId == null) {
+        alert("spaceId is null")
+    } else {
+        return {
+            "title": 'Create document',
+            "workspaceId": workspaceId,
+            "appletId": appletId,
+            /*   "mutation":"_create_workspace", */
+            "actions": [
+                {
+                    "label": "Save",
+                    "type": SaveDocumentAction.Id,
+                    /*  "successActions": [{
+                         "type": "hide"
+                     },
+                     {
+                         "type": "navigate",
+                         "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                     }
+                     ] */
+                    /*  "successActions": [{
+                     "type": "hide"
+                 },
+                 {
+                     "type": "navigate",
+                     "url": "/@/com.tuvalsoft.app.procetra/workspace/{{id}}"
+                 }
+                 ] */
+                }
+            ],
+            "fieldMap": {
+
+                "list_name": {
+                    "label": "name",
+                    "type": "text",
+                    "name": "name"
+                },
+                "type": {
+                    "name": "type",
+                    "type": "virtual",
+                    "value": type
+                },
+                "parent": {
+                    "name": "parent",
+                    "type": "virtual",
+                    "value": parent
+                },
+                "path": {
+                    "name": "path",
+                    "type": "virtual",
+                    "value": path
+                },
+                "viewer": {
+                    "name": "viewer",
+                    "type": "virtual",
+                    "value": viewer
+                    //"value": "com.tuvalsoft.widget.markdown"
+                },
+                /*   "description": {
+                      "label": "Description",
+                      "type": "text",
+                      "multiline": true,
+                      "name": "description"
+                  } */
+
+            }
+        }
+    }
+}
+
+
+export const AddWhiteboardDialog = (workspaceId: string, appletId: string, parent: string, path: string, type: string = 'document') => {
     if (workspaceId == null) {
         alert("spaceId is null")
     } else {
@@ -136,7 +208,7 @@ export const AddDocumentDialog = (workspaceId: string, appletId: string, parent:
                     "name": "viewer",
                     "type": "virtual",
                     // "value": "com.tuvalsoft.widget.editorjs"
-                    "value": "com.tuvalsoft.widget.markdown"
+                    "value": "com.tuvalsoft.widget.whiteboard"
                 },
                 /*   "description": {
                       "label": "Description",

@@ -1,7 +1,8 @@
 import { DynoDialog } from "@celmino/ui";
 import { SvgIcon } from "@tuval/forms";
 import { AddFolderDialog } from "../dialogs/AddFolderDialog";
-import { AddDocumentDialog } from "../dialogs/AddDocumentDialog";
+import { AddDocumentDialog, AddWhiteboardDialog } from "../dialogs/AddDocumentDialog";
+import { AddMarkdownDialog } from "../dialogs/AddMarkdownDialog";
 
 //import { opas } from "./Opas";
 
@@ -19,6 +20,16 @@ export const ContextMenu = (workspaceId: string, appletId: string, parent = '-1'
         onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, parent, path, 'document'))
     },
     {
+        title: 'Markdown Document',
+        icon: SvgIcon('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => DynoDialog.Show(AddMarkdownDialog(workspaceId, appletId, parent, path, 'document'))
+    },
+    {
+        title: 'Whiteboard Document',
+        icon: SvgIcon('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
+        onClick: () => DynoDialog.Show(AddWhiteboardDialog(workspaceId, appletId, parent, path, 'document'))
+    },
+    {
         title: 'Wiki document',
         icon: SvgIcon('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
         onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, parent, path, 'wiki'))
@@ -31,7 +42,7 @@ export const ContextMenu = (workspaceId: string, appletId: string, parent = '-1'
     {
         title: 'Spreadsheet',
         icon: SvgIcon('cu3-icon-sidebarDoc', '#151719', '18px', '18px'),
-        onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, parent, path, 'com.tuvalsoft.widget.spreadsheet'))
+        onClick: () => DynoDialog.Show(AddDocumentDialog(workspaceId, appletId, parent, path, 'document','com.tuvalsoft.widget.spreadsheet'))
     },
     {
         title: 'Google sheets',
